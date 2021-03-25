@@ -1,0 +1,8 @@
+{
+  "name": "@tecsinapse/design-system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
