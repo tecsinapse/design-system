@@ -1,33 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "./build/",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "typeRoots": [
-      "./packages/design-system/typings"
-      // path to your typings directory (relative to tsconfig.json)
-    ],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": false,
     "noImplicitAny": false,
-    "importHelpers": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
     "strict": true,
-    "resolveJsonModule": true,
-    "isolatedModules": false,
-    "noEmit": false,
-    "strictPropertyInitialization": false
+    "jsx": "react",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "removeComments": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@tecsinapse/*": ["packages/*/src"],
+      "*": ["node_modules", "packages"]
+    }
   },
-  "exclude": ["node_modules/**", "build", ".storybook", "dist"]
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "babelCore": "@babel/core"
+  },
+  "include": ["packages", "jest-dom/extend-expect"],
+  "exclude": ["node_modules", "dist"]
 }
