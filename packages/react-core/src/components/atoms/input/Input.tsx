@@ -1,6 +1,6 @@
 import React from 'react';
-import { TextInput } from 'react-native';
-import styled from '@emotion/native';
+import { TextInput, Platform } from 'react-native';
+import styled, { css } from '@emotion/native';
 
 export interface InputProps {
   onChange: (value: string | number) => void;
@@ -44,11 +44,14 @@ const StyledInput = styled(TextInput)`
   padding: 10px;
   border-color: ${({ theme }) => theme.primary.main};
   border-radius: 4px;
-  &:focus {
-    outline-width: 2px;
-    outline-color: ${({ theme }) => theme.primary.main};
-  },
-}
+  ${({ theme }) =>
+    Platform.OS === 'web' &&
+    css`
+      &:focus {
+        outline-width: 2px;
+        outline-color: ${theme.primary.main};
+      }
+    `}
 `;
 
 export default Input;

@@ -17,7 +17,9 @@ const Button = (props: ButtonProps): JSX.Element => {
   const { children, onClick } = props;
   return (
     <View>
-      <StyledButton onPress={onClick}>{children}</StyledButton>
+      <StyledButton accessibilityRole="button" onPress={onClick}>
+        {children}
+      </StyledButton>
     </View>
   );
 };
