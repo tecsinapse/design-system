@@ -1,6 +1,6 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { Story } from '@storybook/react';
-import Button from './Button';
+import Button, { ButtonProps } from './Button';
 import Text from '../text/Text';
 import { action } from '@storybook/addon-actions';
 
@@ -9,9 +9,15 @@ export default {
   component: Button,
 };
 
-const Template: Story<ComponentProps<typeof Button>> = args => (
+interface ButtonPropsExtended extends ButtonProps {
+  label: string;
+}
+
+const Template: Story<ButtonPropsExtended> = args => (
   <div style={{ width: 200 }}>
-    <Button {...args} />
+    <Button {...args}>
+      <Text>{args.label}</Text>
+    </Button>
   </div>
 );
 
@@ -19,5 +25,5 @@ export const Base = Template.bind({});
 
 Base.args = {
   onClick: action('onClick'),
-  children: <Text>Button</Text>,
+  label: 'Button',
 };

@@ -4,12 +4,12 @@ import styled from '@emotion/native';
 
 const StyledButton = styled(TouchableHighlight)`
   padding: 10px;
-  background-color: blue;
+  background-color: ${props => props.theme.backgroundColor || 'blue'};
   border-radius: 4px;
 `;
 
 export interface ButtonProps {
-  children?: JSX.Element;
+  children: JSX.Element;
   onClick?: () => void;
 }
 

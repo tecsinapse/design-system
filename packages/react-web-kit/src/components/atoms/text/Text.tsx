@@ -1,13 +1,4 @@
-import React from 'react';
-import { Text as RNText } from 'react-native';
+import { Text, TextProps } from '@tecsinapse/react-core';
 
-export interface TextProps {
-  children?: JSX.Element | string;
-}
-
-const Text = (props: TextProps): JSX.Element => {
-  const { children } = props;
-  return <RNText style={{ color: '#fff' }}>{children}</RNText>;
-};
-
+export { TextProps };
 export default Text;
