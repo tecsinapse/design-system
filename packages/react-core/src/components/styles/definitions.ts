@@ -20,14 +20,14 @@ export const lightTheme = {
   },
 };
 
-const misc = {
+export const misc = {
   shadow: 'rgba(12, 15, 20, 0.07)',
   overlay: 'rgba(12, 15, 20, 0.21)',
   bodyBg: '#FAFBFC',
   bodyColor: '#000',
 };
 
-const spacings = {
+export const spacings = {
   nano: '2px',
   micro: '4px',
   mili: '8px',
@@ -40,13 +40,13 @@ const spacings = {
   peta: '64px',
 };
 
-const iconSizes = {
+export const iconSizes = {
   centi: '1rem', // 16px
   deca: '1.5rem', // 24px
   kilo: '2rem', // 32px
 };
 
-const borderRadius = {
+export const borderRadius = {
   nano: '2px',
   micro: '4px',
   mili: '8px',
@@ -54,12 +54,12 @@ const borderRadius = {
   pill: '999999px',
 };
 
-const borderWidth = {
+export const borderWidth = {
   pico: '1px',
   nano: '2px',
 };
 
-const typography = {
+export const typography = {
   headings: {
     h5: {
       fontSize: '1rem', // 16px
@@ -94,19 +94,19 @@ const typography = {
   },
 };
 
-const fontStack = {
+export const fontStack = {
   default:
     'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   mono: 'Consolas, monaco, monospace',
 };
 
-const fontWeight = {
+export const fontWeight = {
   regular: '400',
   bold: '700',
   black: '900',
 };
 
-const fontStyles = {
+export const fontStyles = {
   normal: 'normal',
   italic: 'italic',
 };
