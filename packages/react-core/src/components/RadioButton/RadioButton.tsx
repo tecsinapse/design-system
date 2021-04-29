@@ -1,8 +1,7 @@
 import React from 'react';
-import { Text } from '@tecsinapse/react-core';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import styled, { css } from '@emotion/native';
-import { borderRadius, lightTheme, spacings } from '../styles/definitions';
+import { borderRadius, spacings } from '@tecsinapse/react-core';
 
 export interface RadioButtonProps {
   options: Array<string>;
@@ -12,17 +11,21 @@ export interface RadioButtonProps {
 }
 
 export const RadioButton = (props: RadioButtonProps): JSX.Element => {
-  const { options, onChangeSelect, selected } = props;
+  const { options, onChangeSelect, selected, orientation } = props;
 
   return (
-    <View>
+    <ViewOrientation orientation={orientation}>
       {options.map((option, index) => (
-        <ButtonStyle onPress={() => onChangeSelect(option, index)}>
+        <ButtonStyle
+          key={index}
+          onPress={() => onChangeSelect(option, index)}
+          accessibilityRole="radio"
+        >
           <OutlineCircle>{selected === index && <InnerCircle />}</OutlineCircle>
           <TextStyle>{option}</TextStyle>
         </ButtonStyle>
       ))}
-    </View>
+    </ViewOrientation>
   );
 };
 
@@ -30,11 +33,11 @@ const InnerCircle = styled(View)`
   width: 10px;
   height: 10px;
   border-radius: ${borderRadius.circle};
-  background-color: ${lightTheme.primary.main};
+  background-color: ${({ theme }) => theme.primary.main};
 `;
 
 const TextStyle = styled(Text)`
-  margin-left: 50%;
+  margin-left: ${spacings.mili};
 `;
 
 const ButtonStyle = styled(TouchableOpacity)`
@@ -47,13 +50,12 @@ const OutlineCircle = styled(View)`
   width: 20px;
   height: 20px;
   border-radius: ${borderRadius.circle};
-  border-color: ${lightTheme.primary.main};
+  border-color: ${({ theme }) => theme.primary.main};
   border-width: 2px;
   justify-content: center;
   align-items: center;
 `;
-
-/// FINALIZAR ESSA VIEW PARA FUNCIONAMENTO CORRETO DA ORIENTAÇÃO
+/// ajustar espaçamento quando for horizontal
 const ViewOrientation = styled(View)`
   ${({ orientation }) =>
     orientation === 'horizontal' &&

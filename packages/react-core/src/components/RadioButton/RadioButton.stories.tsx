@@ -32,5 +32,5 @@ Base.args = {
     'Option 5',
     'Option 6',
   ],
-  orientation: 'horizontal',
+  orientation: 'vertical',
 };
