@@ -3,7 +3,7 @@ import { Story } from '@storybook/react';
 import { SwitchProps, Switch } from './Switch';
 
 export default {
-  title: 'Badge',
+  title: 'Switch',
   component: Switch,
 };
 
