@@ -2,8 +2,12 @@ import React from 'react';
 import { View } from 'react-native';
 import styled from '@emotion/native';
 
-export const Paper = () => {
-  return <PaperStyled />;
+export interface PaperProps {
+  children?: JSX.Element;
+  style?: any;
+}
+export const Paper = ({ children, style = {} }: PaperProps): JSX.Element => {
+  return <PaperStyled style={style}>{children}</PaperStyled>;
 };
 
 const PaperStyled = styled(View)`

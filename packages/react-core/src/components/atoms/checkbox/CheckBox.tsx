@@ -1,16 +1,13 @@
-import { CheckBox as CheckBoxRN } from 'react-native';
-import { useState } from 'react';
-import React from 'react';
-import { Text as T } from '@tecsinapse/react-core';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, CheckBox as CheckBoxRN } from 'react-native';
 import styled from '@emotion/native';
-import { spacings } from '@tecsinapse/react-core';
+import { spacings, Text } from '@tecsinapse/react-core';
 
 export interface CheckBoxProps {
   label?: string;
 }
 
-export const CheckBox = ({ label }) => {
+export const CheckBox = ({ label }: CheckBoxProps): JSX.Element => {
   const [selected, setSelected] = useState(false);
   return (
     <ViewStyle>
