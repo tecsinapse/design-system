@@ -7,7 +7,10 @@ export default {
   component: Switch,
 };
 
-const Template: Story<SwitchProps> = args => <Switch labels={args.labels} />;
+const Template: Story<SwitchProps> = args => {
+  const [active, setActive] = React.useState(false);
+  return <Switch labels={args.labels} active={active} onChange={setActive} />;
+};
 
 export const Base = Template.bind({});
 

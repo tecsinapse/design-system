@@ -7,8 +7,5 @@ export const BadgeStyle = styled(View)`
   background-color: ${({ theme, variant }) => theme[variant].main};
   width: 70px;
   align-items: center;
-`;
-export const TextStyle = styled(Text)`
-  color: ${({ theme }) => theme.success.contrast};
-  font-weight: bold;
+  ${({ style }) => style}
 `;

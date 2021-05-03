@@ -1,19 +1,15 @@
 import React from 'react';
-import { ThemeProp } from '@tecsinapse/react-core';
-import { BadgeStyle, TextStyle } from './styled';
+import { BadgeStyle } from './styled';
+import { ClassNamesProps } from '@emotion/react';
 
 export interface BadgeProps {
-  variant?: string;
-  theme?: ThemeProp;
+  children?: JSX.Element;
+  variant: string;
+  style: ClassNamesProps;
 }
 
-const Badge = (props: BadgeProps): JSX.Element => {
-  const { variant } = props;
-  return (
-    <BadgeStyle variant={variant}>
-      <TextStyle>Badge</TextStyle>
-    </BadgeStyle>
-  );
+const Badge = ({ children, variant }: BadgeProps): JSX.Element => {
+  return <BadgeStyle variant={variant}>{children}</BadgeStyle>;
 };
 
 export default Badge;

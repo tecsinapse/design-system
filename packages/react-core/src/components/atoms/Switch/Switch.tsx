@@ -4,19 +4,24 @@ import { ViewStyle, SwitchStyle } from './styled';
 
 export interface SwitchProps {
   labels?: { left?: string; right?: string };
+  onChange: (active: boolean) => void;
+  active: boolean;
 }
+
 const Switch = (props: SwitchProps): JSX.Element => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const { labels } = props;
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const { labels, onChange, active } = props;
+
+  const handleChange = () => {
+    onChange(!active);
+  };
   return (
     <ViewStyle>
       {labels?.left && <Text>{labels.left}</Text>}
       <SwitchStyle
         trackColor="gray"
-        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-        onValueChange={toggleSwitch}
-        value={isEnabled}
+        thumbColor={active ? '#f5dd4b' : '#f4f3f4'}
+        onValueChange={handleChange}
+        value={active}
         accessibilityRole="switch"
       />
       {labels?.right && <Text>{labels.right}</Text>}
