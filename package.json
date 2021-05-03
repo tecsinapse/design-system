@@ -55,8 +55,8 @@
     "build:declarations": "lerna run --parallel 'build:declaration'",
     "prebuild": "run-p tsc lint",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",
-    "lint": "run-p -c lint:*",
-    "fix": "yarn lint:ts --fix",
+    "lint": "run-p -c lint:fix",
+    "list:fix": "yarn lint:ts --fix",
     "tsc": "tsc"
   },
   "resolutions": {
