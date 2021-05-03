@@ -1,30 +1,57 @@
+const white = '#fff';
+const black = '#000';
+
+const primaryGradation = {
+  xlight: '#fef5e6',
+  light: '#fbc26a',
+  medium: '#f89907',
+  dark: '#c77a05',
+  xdark: '#633d03',
+};
+
+const secondaryGradation = {
+  xlight: '#f8f7f7',
+  light: '#c2bfbc',
+  medium: '#85807a',
+  dark: '#5d5955',
+  xdark: '#282625',
+};
+
 export const lightTheme = {
-  primary: { main: '#4791db', contrastText: '#ffffff' },
-  secondary: { main: '#e33371', contrastText: '#ffffff' },
+  primary: {
+    ...primaryGradation,
+  },
+  secondary: { ...secondaryGradation },
   error: {
-    main: '#e57373',
-    contrastText: '#ffffff',
+    main: '#e25043',
+    contrastText: black,
   },
   warning: {
-    main: '#ffb74d',
-    contrastText: '#ffffff',
+    main: '#ffc700',
+    contrastText: '#282625',
   },
   success: {
-    main: '#81c784',
-    contrastText: '#ffffff',
+    main: '#2db783',
+    contrastText: white,
   },
-  info: { main: '#64b5f6', contrastText: '#fff' },
+  info: { main: '#2a9ef6', contrastText: white },
   text: {
-    main: '#000',
+    main: '#282625',
     contrast: '#fff',
   },
 };
 
+const hex2rgba = (hex, alpha = 1) => {
+  const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
+
+  return `rgba(${r},${g},${b},${alpha})`;
+};
+
 export const misc = {
-  shadow: 'rgba(12, 15, 20, 0.07)',
-  overlay: 'rgba(12, 15, 20, 0.21)',
-  bodyBg: '#FAFBFC',
-  bodyColor: '#000',
+  shadow: 'rgba(133, 128, 122, 0.2)',
+  overlay: 'rgba(40, 38, 37, 0.5)',
+  bodyBg: '#f8f7f7',
+  bodyColor: '#282625',
 };
 
 export const spacings = {
