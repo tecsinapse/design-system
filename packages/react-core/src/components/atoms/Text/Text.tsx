@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text as RNText } from 'react-native';
-import styled from '@emotion/native';
-import { ThemeProp } from '../../styles/ThemeProvider';
+import { StyledText } from './styled';
+import { ClassNamesProps } from '@emotion/react';
 
 export interface TextProps {
   children: JSX.Element | string;
   contrast?: boolean;
-  style?: any;
+  style?: ClassNamesProps;
 }
 
 const Text = (props: TextProps): JSX.Element => {
@@ -16,18 +15,6 @@ const Text = (props: TextProps): JSX.Element => {
       {children}
     </StyledText>
   );
-};
-
-const StyledText = styled(RNText)`
-  color: ${(props: StyledProps) =>
-    props.contrast ? props.theme.text.contrast : props.theme.text.main};
-  ${({ style }) => style}
-`;
-
-type StyledProps = {
-  contrast?: boolean;
-  theme: ThemeProp;
-  style?: any;
 };
 
 export default Text;

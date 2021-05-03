@@ -1,7 +1,11 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import styled, { css } from '@emotion/native';
-import { borderRadius, spacings } from '@tecsinapse/react-core';
+import {
+  TextStyle,
+  ButtonStyle,
+  InnerCircle,
+  OutlineCircle,
+  ViewOrientation,
+} from './styled';
 
 export interface RadioButtonProps {
   options: Array<string>;
@@ -10,7 +14,7 @@ export interface RadioButtonProps {
   orientation: string;
 }
 
-export const RadioButton = (props: RadioButtonProps): JSX.Element => {
+const RadioButton = (props: RadioButtonProps): JSX.Element => {
   const { options, onChangeSelect, selected, orientation } = props;
 
   return (
@@ -29,37 +33,4 @@ export const RadioButton = (props: RadioButtonProps): JSX.Element => {
   );
 };
 
-const InnerCircle = styled(View)`
-  width: 10px;
-  height: 10px;
-  border-radius: ${borderRadius.circle};
-  background-color: ${({ theme }) => theme.primary.main};
-`;
-
-const TextStyle = styled(Text)`
-  margin-left: ${spacings.mili};
-`;
-
-const ButtonStyle = styled(TouchableOpacity)`
-  flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-`;
-
-const OutlineCircle = styled(View)`
-  width: 20px;
-  height: 20px;
-  border-radius: ${borderRadius.circle};
-  border-color: ${({ theme }) => theme.primary.main};
-  border-width: 2px;
-  justify-content: center;
-  align-items: center;
-`;
-/// ajustar espaçamento quando for horizontal
-const ViewOrientation = styled(View)`
-  ${({ orientation }) =>
-    orientation === 'horizontal' &&
-    css`
-      flex-direction: row;
-    `},
-`;
+export default RadioButton;

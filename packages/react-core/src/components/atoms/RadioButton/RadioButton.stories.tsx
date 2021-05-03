@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RadioButtonProps, RadioButton } from './RadioButton';
+import { RadioButtonProps, default as RadioButton } from './RadioButton';
 import { Story } from '@storybook/react';
 
 export default {

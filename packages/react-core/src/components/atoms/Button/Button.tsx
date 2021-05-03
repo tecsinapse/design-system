@@ -1,12 +1,6 @@
 import React from 'react';
-import { View, TouchableHighlight } from 'react-native';
-import styled from '@emotion/native';
-
-const StyledButton = styled(TouchableHighlight)`
-  padding: 10px;
-  background-color: ${({ theme }) => theme.primary.main};
-  border-radius: 4px;
-`;
+import { View } from 'react-native';
+import { StyledButton } from './styled';
 
 export interface ButtonProps {
   children: JSX.Element;

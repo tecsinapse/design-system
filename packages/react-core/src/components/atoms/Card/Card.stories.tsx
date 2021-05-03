@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import { Card } from './Card';
+import { default as Card } from './Card';
 
 export default {
   title: 'Card',

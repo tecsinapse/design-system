@@ -1,7 +1,7 @@
 import { InputProps, Input as InputCore } from '@tecsinapse/react-core';
 import React from 'react';
 
-interface InputPropsNative extends InputProps {
+export interface InputPropsNative extends InputProps {
   onBlur?: () => void;
   onFocus?: () => void;
   focused?: boolean;

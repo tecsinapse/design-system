@@ -1,17 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
-import styled from '@emotion/native';
-
+import { ClassNamesProps } from '@emotion/react';
+import { PaperStyled } from './styled';
 export interface PaperProps {
   children?: JSX.Element;
-  style?: any;
+  style?: ClassNamesProps;
 }
-export const Paper = ({ children, style = {} }: PaperProps): JSX.Element => {
+export const Paper = ({ children, style }: PaperProps): JSX.Element => {
   return <PaperStyled style={style}>{children}</PaperStyled>;
 };
-
-const PaperStyled = styled(View)`
-  background: white;
-  padding: 30px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-`;

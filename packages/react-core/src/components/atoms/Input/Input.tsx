@@ -1,6 +1,5 @@
 import React from 'react';
-import { TextInput, Platform } from 'react-native';
-import styled, { css } from '@emotion/native';
+import { default as InputStyle } from './styled';
 
 export interface InputProps {
   onChange: (value: string | number) => void;
@@ -34,7 +33,7 @@ const Input = (props: InputProps): JSX.Element => {
   } = props;
 
   return (
-    <StyledInput
+    <InputStyle
       onChangeText={onChange}
       value={value}
       placeholder={placeholder}
@@ -47,32 +46,5 @@ const Input = (props: InputProps): JSX.Element => {
     />
   );
 };
-
-const baseStyled = ({ theme }) => css`
-  padding: 10px;
-  border-color: ${theme.primary.main};
-  border-radius: 4px;
-`;
-const StyledInput = styled(TextInput)`
-  ${props => baseStyled(props)};
-  border-width: 1px;
-  padding: 10px;
-  border-color: ${({ theme }) => theme.primary.main};
-  border-radius: 4px;
-  ${({ theme }) =>
-    Platform.OS === 'web' &&
-    css`
-      &:focus {
-        outline-width: 2px;
-        outline-color: ${theme.primary.main};
-      }
-    `},
-  ${({ focused, theme }) =>
-    focused &&
-    css`
-      border-width: 2px;
-      ${baseStyled({ theme })};
-    `},
-`;
 
 export default Input;

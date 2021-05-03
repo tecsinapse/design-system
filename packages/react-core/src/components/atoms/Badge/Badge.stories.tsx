@@ -7,6 +7,10 @@ export default {
   component: Badge,
 };
 
-const Template: Story<BadgeProps> = () => <Badge />;
+const Template: Story<BadgeProps> = args => <Badge variant={args.variant}/>;
 
 export const Base = Template.bind({});
+
+Base.args = {
+  variant: 'info'
+}

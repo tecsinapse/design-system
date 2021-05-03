@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { View, Switch as SwitchRN } from 'react-native';
 import { Text } from '@tecsinapse/react-core';
-import styled from '@emotion/native';
+import { ViewStyle, SwitchStyle } from './styled';
 
 export interface SwitchProps {
   labels?: { left?: string; right?: string };
 }
-export const Switch = (props: SwitchProps): JSX.Element => {
+const Switch = (props: SwitchProps): JSX.Element => {
   const [isEnabled, setIsEnabled] = useState(false);
   const { labels } = props;
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -25,10 +24,4 @@ export const Switch = (props: SwitchProps): JSX.Element => {
   );
 };
 
-const ViewStyle = styled(View)`
-  flex-direction: row;
-`;
-
-const SwitchStyle = styled(SwitchRN)`
-  margin: 0px 10px 0px 10px;
-`;
+export default Switch;
