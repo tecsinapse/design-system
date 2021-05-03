@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Paper } from './Paper';
 import { Story } from '@storybook/react';
 
@@ -7,7 +7,7 @@ export default {
   component: Paper,
 };
 
-const Template: Story = args => {
+const Template: Story = () => {
   return <Paper />;
 };
 

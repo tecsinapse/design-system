@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button';
-import Text from '../text/Text';
+import Text from '../Text/Text';
 import { action } from '@storybook/addon-actions';
 
 export default {

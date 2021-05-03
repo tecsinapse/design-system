@@ -8,7 +8,7 @@ export interface BadgeProps {
   theme?: ThemeProp;
 }
 
-export const Badge = (props: BadgeProps): JSX.Element => {
+const Badge = (props: BadgeProps): JSX.Element => {
   const { variant } = props;
   return (
     <BadgeStyle variant={variant}>
@@ -17,10 +17,12 @@ export const Badge = (props: BadgeProps): JSX.Element => {
   );
 };
 
+export default Badge;
+
 /// implementar variants
 const BadgeStyle = styled(View)`
   border-radius: ${borderRadius.pill};
-  background-color: ${({ theme }) => theme.info.main};
+  background-color: ${({ theme, variant }) => theme[variant].main};
   width: 70px;
   align-items: center;
 `;

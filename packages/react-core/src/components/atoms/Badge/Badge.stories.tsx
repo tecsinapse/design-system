@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, BadgeProps } from './Badge';
+import { default as Badge, BadgeProps } from './Badge';
 import { Story } from '@storybook/react';
 
 export default {
