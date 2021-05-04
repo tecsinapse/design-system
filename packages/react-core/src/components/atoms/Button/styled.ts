@@ -1,14 +1,12 @@
-import styled from '@emotion/native';
+import styled, { css } from '@emotion/native';
 import { TouchableHighlight } from 'react-native';
-import { css } from '@emotion/react';
 
 const variantStyles = (theme, color, variant = 'filled') => {
   if (variant === 'outlined') {
     return css`
-      border-color: ${theme.colors[color].main};
+      border-color: ${theme.colors[color].medium};
     `;
   }
-
   if (variant === 'text') {
     return css`
       background-color: unset;
@@ -16,7 +14,7 @@ const variantStyles = (theme, color, variant = 'filled') => {
   }
 
   return css`
-    background-color: ${theme.colors[color].main};
+    background-color: ${theme.colors[color].medium};
   `;
 };
 

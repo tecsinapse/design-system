@@ -8,16 +8,16 @@ export interface ButtonProps {
   children: JSX.Element;
   onClick?: () => void;
   style?: ClassNamesProps;
-  color: ColorType;
-  variant: VariantType;
+  color?: ColorType;
+  variant?: VariantType;
 }
 
 const Button: FC<ButtonProps> = ({
   children,
   onClick,
   style,
-  color,
-  variant,
+  color = 'primary',
+  variant = 'filled',
 }): JSX.Element => {
   return (
     <View>

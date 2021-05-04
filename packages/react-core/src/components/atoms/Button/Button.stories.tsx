@@ -26,4 +26,6 @@ export const Base = Template.bind({});
 Base.args = {
   onClick: action('onClick'),
   label: 'Button',
+  color: 'primary',
+  variant: 'filled',
 };

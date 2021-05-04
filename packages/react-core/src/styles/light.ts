@@ -29,26 +29,28 @@ const secondaryGradation = {
 };
 
 export const lightTheme = {
-  primary: {
-    ...primaryGradation,
-  },
-  secondary: { ...secondaryGradation },
-  error: {
-    main: '#e25043',
-    contrastText: black,
-  },
-  warning: {
-    main: '#ffc700',
-    contrastText: '#282625',
-  },
-  success: {
-    main: '#2db783',
-    contrastText: white,
-  },
-  info: { main: '#2a9ef6', contrastText: white },
-  text: {
-    main: '#282625',
-    contrast: '#fff',
+  colors: {
+    primary: {
+      ...primaryGradation,
+    },
+    secondary: { ...secondaryGradation },
+    error: {
+      main: '#e25043',
+      contrastText: black,
+    },
+    warning: {
+      main: '#ffc700',
+      contrastText: '#282625',
+    },
+    success: {
+      main: '#2db783',
+      contrastText: white,
+    },
+    info: { main: '#2a9ef6', contrastText: white },
+    text: {
+      main: '#282625',
+      contrast: '#fff',
+    },
   },
   miscellaneous,
   spacings,
