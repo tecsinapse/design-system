@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { Text } from '@tecsinapse/react-core';
+import { Text } from '../Text/index';
 import { View } from 'react-native';
 import { spacings } from '../../styles/definitions';
 
