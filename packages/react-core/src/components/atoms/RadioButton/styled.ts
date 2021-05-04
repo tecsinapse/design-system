@@ -1,5 +1,5 @@
 import styled, { css } from '@emotion/native';
-import { spacings, borderRadius } from '../../styles/definitions';
+import { spacings, borderRadius } from '../../../styles/definitions';
 
 import { View, TouchableOpacity, Text } from 'react-native';
 
@@ -7,7 +7,7 @@ export const InnerCircle = styled(View)`
   width: 10px;
   height: 10px;
   border-radius: ${borderRadius.circle};
-  background-color: ${({ theme }) => theme.primary.medium};
+  background-color: ${({ theme }) => theme.colors.primary.medium};
 `;
 
 export const TextStyle = styled(Text)`
@@ -25,7 +25,7 @@ export const OutlineCircle = styled(View)`
   width: 20px;
   height: 20px;
   border-radius: ${borderRadius.circle};
-  border-color: ${({ theme }) => theme.primary.medium};
+  border-color: ${({ theme }) => theme.colors.primary.medium};
   border-width: 2px;
   justify-content: center;
   align-items: center;

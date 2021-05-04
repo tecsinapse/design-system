@@ -2,7 +2,7 @@ import { Story } from '@storybook/react';
 import React from 'react';
 import { Card } from './index';
 import { Text } from './../Text/index';
-import { spacings, typography } from '../../styles/definitions';
+import { spacings, typography } from '../../../styles/definitions';
 import styled from '@emotion/native';
 import { View } from 'react-native';
 

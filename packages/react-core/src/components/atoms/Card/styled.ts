@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { Paper } from '../Paper/index';
-import { spacings } from '../../styles/definitions';
+import { spacings } from '../../../styles/definitions';
 
 export const CardStyle = styled(Paper)`
   width: 400px;
