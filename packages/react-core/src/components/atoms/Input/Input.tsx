@@ -1,5 +1,6 @@
 import React from 'react';
 import { default as InputStyle } from './styled';
+import { ClassNamesProps } from '@emotion/react';
 
 export interface InputProps {
   onChange: (value: string | number) => void;
@@ -17,6 +18,7 @@ export interface InputProps {
   focused?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;
+  style?: ClassNamesProps;
 }
 
 const Input = (props: InputProps): JSX.Element => {
@@ -30,6 +32,7 @@ const Input = (props: InputProps): JSX.Element => {
     onFocus,
     focused,
     onBlur,
+    style,
   } = props;
 
   return (
@@ -43,6 +46,7 @@ const Input = (props: InputProps): JSX.Element => {
       onFocus={onFocus}
       onBlur={onBlur}
       focused={focused}
+      style={style}
     />
   );
 };

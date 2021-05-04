@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import Text, { TextProps } from './Text';
+import { Text, TextProps } from './index';
 
 export default {
   title: 'Text',

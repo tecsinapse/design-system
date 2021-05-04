@@ -1,16 +1,17 @@
-export { default as Button } from './components/atoms/Button/Button';
-export * from './components/atoms/Button/Button';
-export { default as Text } from './components/atoms/Text/Text';
-export * from './components/atoms/Text/Text';
+export { Button, ButtonProps } from './components/atoms/Button/index';
+export { Card, CardProps } from './components/atoms/Card/index';
+export { Switch, SwitchProps } from './components/atoms/Switch/index';
+export { Text, TextProps } from './components/atoms/Text/index';
+export {
+  RadioButton,
+  RadioButtonProps,
+} from './components/atoms/RadioButton/index';
+export { Badge, BadgeProps } from './components/atoms/Badge/index';
+export { Checkbox, CheckboxProps } from './components/atoms/Checkbox/index';
+export { Paper, PaperProps } from './components/atoms/Paper/index';
+export { Input, InputProps } from './components/atoms/Input/index';
 export {
   default as ThemeProvider,
   ThemeProp,
 } from './components/styles/ThemeProvider';
-export { default as Input, InputProps } from './components/atoms/Input/Input';
 export * from './components/styles/definitions';
-export { Paper } from './components/atoms/Paper/Paper';
-export { default as Card } from './components/atoms/Card/Card';
-export { default as Badge, BadgeProps } from './components/atoms/Badge/Badge';
-export { Switch } from './components/atoms/Switch/Switch';
-export { RadioButton } from './components/atoms/RadioButton/RadioButton';
-export { default as Checkbox } from './components/atoms/Checkbox/CheckBox';

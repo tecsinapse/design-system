@@ -1,7 +1,7 @@
 import React from 'react';
-import { default as Badge, BadgeProps } from './Badge';
+import { Badge, BadgeProps } from './index';
 import { Story } from '@storybook/react';
-import { Text } from '@tecsinapse/react-core';
+import { Text } from '../Text/index';
 
 export default {
   title: 'Badge',
@@ -17,5 +17,5 @@ const Template: Story<BadgeProps> = args => (
 export const Base = Template.bind({});
 
 Base.args = {
-  variant: 'info',
+  variant: 'success',
 };

@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { borderRadius, Text } from '@tecsinapse/react-core';
+import { borderRadius } from '../../styles/definitions';
 import { View } from 'react-native';
 
 export const BadgeStyle = styled(View)`

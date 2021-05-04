@@ -1,5 +1,6 @@
 import styled, { css } from '@emotion/native';
-import { borderRadius, spacings } from '@tecsinapse/react-core';
+import { spacings, borderRadius } from '../../styles/definitions';
+
 import { View, TouchableOpacity, Text } from 'react-native';
 
 export const InnerCircle = styled(View)`
@@ -36,4 +37,5 @@ export const ViewOrientation = styled(View)`
     css`
       flex-direction: row;
     `},
+  ${({ style }) => style}
 `;

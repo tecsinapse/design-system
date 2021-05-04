@@ -27,6 +27,7 @@ const StyledInput = styled(TextInput)`
       border-width: 2px;
       ${baseStyled({ theme })};
     `},
+  ${({ style }) => style}
 `;
 
 export default StyledInput;

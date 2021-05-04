@@ -1,23 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
-import { default as CardStyle, TextInfo, TextTitle } from './styled';
+import { CardStyle } from './styled';
+import { ClassNamesProps } from '@emotion/react';
 
 export interface CardProps {
-  children: JSX.Element;
+  children?: JSX.Element;
+  style?: ClassNamesProps;
 }
 
-const Card = ({ children }: CardProps): JSX.Element => {
-  return (
-    <CardStyle>
-      <View>
-        <TextTitle>Title</TextTitle>
-        <TextInfo>
-          Text description Text description Text description Text description
-          Text description Text description Text description Text description
-        </TextInfo>
-      </View>
-    </CardStyle>
-  );
+const Card = (props: CardProps): JSX.Element => {
+  const { children, style } = props;
+  return <CardStyle style={style}>{children}</CardStyle>;
 };
 
 export default Card;

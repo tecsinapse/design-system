@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper } from './Paper';
+import { Paper } from './index';
 import { Story } from '@storybook/react';
 
 export default {

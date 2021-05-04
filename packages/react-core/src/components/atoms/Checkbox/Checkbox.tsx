@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { CheckBox as CheckBoxRN } from 'react-native';
 import { ViewStyle, TextStyle } from './styled';
-export interface CheckBoxProps {
+import { ClassNamesProps } from '@emotion/react';
+
+export interface CheckboxProps {
   label?: string;
+  style?: ClassNamesProps;
 }
 
-const CheckBox = ({ label }: CheckBoxProps): JSX.Element => {
+const Checkbox = ({ label, style }: CheckboxProps): JSX.Element => {
   const [selected, setSelected] = useState(false);
   return (
-    <ViewStyle>
+    <ViewStyle style={style}>
       <CheckBoxRN value={selected} onValueChange={setSelected} />
       {label && <TextStyle>{label}</TextStyle>}
     </ViewStyle>
   );
 };
 
-export default CheckBox;
+export default Checkbox;
