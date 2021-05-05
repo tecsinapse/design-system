@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
-    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
+    "build:es": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
@@ -17,6 +17,7 @@
   },
   "repository": {
     "type": "git",
+    "directory": "packages/react-native-kit",
     "url": "git+ssh://git@github.com/tecsinapse/design-system.git"
   },
   "bugs": {
