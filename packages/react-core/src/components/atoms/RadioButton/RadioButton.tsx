@@ -10,15 +10,18 @@ import { StyleProp, ViewProps } from 'react-native';
 
 export interface RadioButtonProps {
   options?: string[];
-  onChangeSelect?: (opt: string, i: number) => void;
+  onChangeSelect: (opt: string, i: number) => void;
   selected?: number;
+}
+
+export interface OrientationProps {
   orientation?: 'vertical' | 'horizontal';
   style?: StyleProp<ViewProps>;
 }
 
-const RadioButton: FC<RadioButtonProps> = ({
+const RadioButton: FC<RadioButtonProps & OrientationProps> = ({
   options = [],
-  onChangeSelect = () => {},
+  onChangeSelect,
   selected,
   orientation = 'vertical',
   style,

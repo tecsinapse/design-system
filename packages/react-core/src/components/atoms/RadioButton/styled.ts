@@ -1,6 +1,7 @@
 import styled, { css } from '@emotion/native';
 import { View, TouchableOpacity, Text } from 'react-native';
-import { RadioButtonProps, StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '@tecsinapse/react-core';
+import { OrientationProps } from './RadioButton';
 
 export const InnerCircle = styled(View)<Partial<StyleProps>>`
   width: 10px;
@@ -30,7 +31,7 @@ export const OutlineCircle = styled(View)<Partial<StyleProps>>`
   align-items: center;
 `;
 
-export const ViewOrientation = styled(View)<RadioButtonProps>`
+export const ViewOrientation = styled(View)<OrientationProps>`
   ${({ orientation }) =>
     orientation === 'horizontal' &&
     css`

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
 import { StyledButton } from './styled';
 import { ColorScale, ColorType, VariantType } from '@tecsinapse/react-core';
 

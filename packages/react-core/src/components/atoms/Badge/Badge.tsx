@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { BadgeStyle } from './styled';
-import { ClassNamesProps } from '@emotion/react';
 import { StyleProp, ViewStyle } from 'react-native';
 
 export interface BadgeProps {
