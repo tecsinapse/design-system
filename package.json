@@ -51,18 +51,20 @@
     "url-loader": "^4.1.1"
   },
   "scripts": {
-    "postinstall": "yarn build && lerna link",
+    "start": "lerna run start --stream",
     "build": "lerna run --parallel 'build:es'",
     "storybook": "start-storybook -p 7007",
     "build:storybook": "build-storybook",
     "postbuild": "yarn build:declarations",
     "build:declarations": "lerna run --parallel 'build:declaration'",
-    "prebuild": "rimraf -rf packages/*/dist/ && run-p tsc lint",
+    "prebuild": "rimraf -rf packages/*/dist/",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",
     "lint": "run-p -c lint:fix",
     "lint:fix": "yarn lint:ts --fix",
-    "tsc": "tsc",
-    "prettify": "prettier --write ./**/*.{ts,tsx,json} && prettier --write *.{ts,tsx,json}"
+    "prettify": "prettier --write ./**/*.{ts,tsx,json} && prettier --write *.{ts,tsx,json}",
+    "prepublish": "yarn build",
+    "bootstrap": "yarn build",
+    "tsc": "tsc"
   },
   "resolutions": {
     "babel-core": "^7.0.0-bridge.0"
