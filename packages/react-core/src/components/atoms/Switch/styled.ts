@@ -3,9 +3,8 @@ import { View, Switch as SwitchRN } from 'react-native';
 
 export const ViewStyle = styled(View)`
   flex-direction: row;
-  ${({ style }) => style}
 `;
 
 export const SwitchStyle = styled(SwitchRN)`
-  margin: 0px 10px 0px 10px;
+  margin: 0 10px;
 `;

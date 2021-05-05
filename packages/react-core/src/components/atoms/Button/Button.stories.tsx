@@ -27,5 +27,6 @@ Base.args = {
   onClick: action('onClick'),
   label: 'Button',
   color: 'primary',
-  variant: 'filled',
+  variant: 'outlined',
+  tone: 'medium',
 };

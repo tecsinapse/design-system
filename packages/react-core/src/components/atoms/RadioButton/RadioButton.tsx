@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   TextStyle,
   ButtonStyle,
@@ -6,19 +6,23 @@ import {
   OutlineCircle,
   ViewOrientation,
 } from './styled';
-import { ClassNamesProps } from '@emotion/react';
+import { StyleProp, ViewProps } from 'react-native';
 
 export interface RadioButtonProps {
-  options: Array<string>;
-  onChangeSelect: (opt: string, i: number) => void;
-  selected: number;
-  orientation: string;
-  style?: ClassNamesProps;
+  options?: string[];
+  onChangeSelect?: (opt: string, i: number) => void;
+  selected?: number;
+  orientation?: 'vertical' | 'horizontal';
+  style?: StyleProp<ViewProps>;
 }
 
-const RadioButton = (props: RadioButtonProps): JSX.Element => {
-  const { options, onChangeSelect, selected, orientation, style } = props;
-
+const RadioButton: FC<RadioButtonProps> = ({
+  options = [],
+  onChangeSelect = () => {},
+  selected,
+  orientation = 'vertical',
+  style,
+}): JSX.Element => {
   return (
     <ViewOrientation orientation={orientation} style={style}>
       {options.map((option, index) => (

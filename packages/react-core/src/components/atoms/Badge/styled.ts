@@ -1,11 +1,17 @@
-import styled from '@emotion/native';
-import { borderRadius } from '../../../styles/definitions';
+import styled, { css } from '@emotion/native';
 import { View } from 'react-native';
+import { BadgeProps } from './Badge';
+import { StyleProps } from '@tecsinapse/react-core';
 
-export const BadgeStyle = styled(View)`
-  border-radius: ${borderRadius.pill};
-  background-color: ${({ theme, variant }) => theme.colors[variant].main};
-  width: 70px;
-  align-items: center;
-  ${({ style }) => style}
-`;
+const baseStyle = ({ theme, variant }: StyleProps & BadgeProps) => {
+  return css`
+    border-radius: ${theme.borderRadius.pill};
+    background-color: ${theme.colors[variant].main};
+    width: 70px;
+    align-items: center;
+  `;
+};
+
+export const BadgeStyle = styled(View)<BadgeProps & Partial<StyleProps>>(
+  baseStyle
+);

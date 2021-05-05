@@ -1,26 +1,31 @@
 import styled, { css } from '@emotion/native';
 import { TouchableHighlight } from 'react-native';
+import { ButtonProps } from './Button';
+import { StyleProps } from '../../../types/defaults';
 
-const variantStyles = (theme, color, variant = 'filled') => {
-  if (variant === 'outlined') {
-    return css`
-      border-color: ${theme.colors[color].medium};
-    `;
-  }
-  if (variant === 'text') {
-    return css`
-      background-color: unset;
-    `;
-  }
-
-  return css`
-    background-color: ${theme.colors[color].medium};
-  `;
-};
-
-export const StyledButton = styled(TouchableHighlight)`
-  padding: 10px;
-  border-radius: 4px;
-  ${({ color, variant, theme }) => variantStyles(theme, color, variant)}
-  ${({ style }) => style}
+const baseStyles = ({ theme }: StyleProps & ButtonProps) => css`
+  padding: ${theme.spacings.mili};
+  border-radius: ${theme.borderRadius.micro};
 `;
+
+const textVariant = ({ variant }: StyleProps & ButtonProps) =>
+  variant === 'text' &&
+  css`
+    background-color: unset;
+  `;
+
+const outlineVariant = ({
+  theme,
+  color = 'primary',
+  variant = 'outlined',
+  tone = 'medium',
+}: StyleProps & ButtonProps) =>
+  variant === 'outlined' &&
+  css`
+    border-color: ${theme.colors[color][tone]};
+    border-width: ${theme.borderWidth.nano};
+  `;
+
+export const StyledButton = styled(TouchableHighlight)<
+  ButtonProps & Partial<StyleProps>
+>(baseStyles, textVariant, outlineVariant);

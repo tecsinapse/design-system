@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { CardStyle } from './styled';
-import { ClassNamesProps } from '@emotion/react';
+import { StyleProp, ViewProps } from 'react-native';
 
 export interface CardProps {
   children?: JSX.Element;
-  style?: ClassNamesProps;
+  style?: StyleProp<ViewProps>;
 }
 
-const Card = (props: CardProps): JSX.Element => {
-  const { children, style } = props;
+const Card: FC<CardProps> = ({ children, style }): JSX.Element => {
   return <CardStyle style={style}>{children}</CardStyle>;
 };
 

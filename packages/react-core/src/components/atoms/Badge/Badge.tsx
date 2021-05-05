@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { BadgeStyle } from './styled';
 import { ClassNamesProps } from '@emotion/react';
+import { StyleProp, ViewStyle } from 'react-native';
 
 export interface BadgeProps {
   children?: JSX.Element;
   variant: string;
-  style?: ClassNamesProps;
+  style?: StyleProp<ViewStyle>;
 }
 
-const Badge = (props: BadgeProps): JSX.Element => {
-  const { children, variant, style } = props;
+const Badge: FC<BadgeProps> = ({ children, variant, style }): JSX.Element => {
   return (
     <BadgeStyle style={style} variant={variant}>
       {children}
