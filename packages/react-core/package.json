@@ -1,5 +1,6 @@
 {
   "name": "@tecsinapse/react-core",
+  "description": "TecSinapse hybrid React components",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -7,5 +8,22 @@
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
+  },
+  "dependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/native": "^11.0.0",
+    "@emotion/react": "^11.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tecsinapse/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tecsinapse/design-system/issues"
+  },
+  "homepage": "https://tecsinapse.github.io/design-system/",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   }
 }
