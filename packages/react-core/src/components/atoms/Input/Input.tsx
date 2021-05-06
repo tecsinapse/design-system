@@ -1,10 +1,10 @@
-import React from 'react';
-import { default as InputStyle } from './styled';
-import { ClassNamesProps } from '@emotion/react';
+import React, { FC } from 'react';
+import { StyledInput } from './styled';
+import { StyleProp, TextStyle } from 'react-native';
 
 export interface InputProps {
-  onChange: (value: string | number) => void;
-  value: string | number;
+  onChange?: (value: string) => void;
+  value?: string;
   placeholder?: string;
   type?:
     | 'default'
@@ -13,30 +13,28 @@ export interface InputProps {
     | 'numeric'
     | 'email-address'
     | 'phone-pad';
-  defaultValue?: string | number;
+  defaultValue?: string;
   disabled?: boolean;
   focused?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;
-  style?: ClassNamesProps;
+  style?: StyleProp<TextStyle>;
 }
 
-const Input = (props: InputProps): JSX.Element => {
-  const {
-    onChange,
-    placeholder,
-    type = 'default',
-    value,
-    defaultValue,
-    disabled = false,
-    onFocus,
-    focused,
-    onBlur,
-    style,
-  } = props;
-
+const Input: FC<InputProps> = ({
+  onChange,
+  placeholder,
+  type = 'default',
+  value,
+  defaultValue,
+  disabled = false,
+  onFocus,
+  focused,
+  onBlur,
+  style,
+}): JSX.Element => {
   return (
-    <InputStyle
+    <StyledInput
       onChangeText={onChange}
       value={value}
       placeholder={placeholder}

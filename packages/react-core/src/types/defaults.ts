@@ -8,6 +8,14 @@ export type ColorType =
 
 export type VariantType = 'filled' | 'outlined' | 'text';
 
+export type ColorScale =
+  | 'xlight'
+  | 'light'
+  | 'medium'
+  | 'dark'
+  | 'xdark'
+  | 'main';
+
 export type Miscellaneous = {
   shadow: string;
   overlay: string;
@@ -107,6 +115,10 @@ export type ThemeProp = {
 };
 
 export interface ThemeProviderProps {
-  children?: JSX.Element;
+  children: JSX.Element;
+  theme: ThemeProp;
+}
+
+export interface StyleProps {
   theme: ThemeProp;
 }

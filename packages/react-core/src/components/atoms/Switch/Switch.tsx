@@ -1,26 +1,29 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Text } from '@tecsinapse/react-core';
 import { ViewStyle, SwitchStyle } from './styled';
-import { ClassNamesProps } from '@emotion/react';
+import { StyleProp, ViewProps } from 'react-native';
 
 export interface SwitchProps {
   labels?: { left?: string; right?: string };
   onChange: (active: boolean) => void;
   active: boolean;
-  style?: ClassNamesProps;
+  style?: StyleProp<ViewProps>;
 }
 
-const Switch = (props: SwitchProps): JSX.Element => {
-  const { labels, onChange, active, style } = props;
-
+const Switch: FC<SwitchProps> = ({
+  labels,
+  onChange,
+  active,
+  style,
+}): JSX.Element => {
   const handleChange = () => {
     onChange(!active);
   };
+
   return (
     <ViewStyle style={style}>
       {labels?.left && <Text>{labels.left}</Text>}
       <SwitchStyle
-        trackColor="gray"
         thumbColor={active ? '#f5dd4b' : '#f4f3f4'}
         onValueChange={handleChange}
         value={active}

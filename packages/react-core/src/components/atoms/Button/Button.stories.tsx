@@ -28,4 +28,5 @@ Base.args = {
   label: 'Button',
   color: 'primary',
   variant: 'filled',
+  tone: 'medium',
 };

@@ -1,14 +1,12 @@
-import React from 'react';
-import { ClassNamesProps } from '@emotion/react';
+import React, { FC } from 'react';
 import { PaperStyled } from './styled';
+import { StyleProp, ViewProps } from 'react-native';
 
 export interface PaperProps {
   children?: JSX.Element;
-  style?: ClassNamesProps;
+  style?: StyleProp<ViewProps>;
 }
-const Paper = (props: PaperProps): JSX.Element => {
-  const { children, style } = props;
-
+const Paper: FC<PaperProps> = ({ children, style }): JSX.Element => {
   return <PaperStyled style={style}>{children}</PaperStyled>;
 };
 
