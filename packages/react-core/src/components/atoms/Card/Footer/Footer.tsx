@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
-import { ClassNamesProps } from '@emotion/react';
-import { View } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
 
 export interface FooterProps {
   children: JSX.Element;
-  style?: ClassNamesProps;
+  style?: StyleProp<ViewStyle>;
 }
 
 const Footer: FC<FooterProps> = (props): JSX.Element => {
