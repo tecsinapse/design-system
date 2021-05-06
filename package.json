@@ -10,8 +10,7 @@
   "dependencies": {
     "@emotion/core": "^11.0.0",
     "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.0.0",
-    "@storybook/addon-docs": "^6.2.9"
+    "@emotion/react": "^11.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",
@@ -21,6 +20,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-actions": "^6.2.7",
     "@storybook/addon-controls": "^6.2.7",
+    "@storybook/addon-docs": "^6.2.7",
     "@storybook/addon-storysource": "^6.2.7",
     "@storybook/addon-viewport": "^6.2.7",
     "@storybook/addons": "^6.2.7",
