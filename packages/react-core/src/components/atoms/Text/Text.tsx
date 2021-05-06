@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { StyledText } from './styled';
-import { ClassNamesProps } from '@emotion/react';
+import { StyleProp, TextStyle } from 'react-native';
 
 export interface TextProps {
-  children: JSX.Element | string;
   contrast?: boolean;
-  style?: ClassNamesProps;
+  style?: StyleProp<TextStyle>;
 }
 
-const Text = (props: TextProps): JSX.Element => {
-  const { children, contrast = false, style = {} } = props;
+const Text: FC<TextProps> = ({
+  children,
+  contrast = false,
+  style,
+}): JSX.Element => {
   return (
     <StyledText contrast={contrast} style={style}>
       {children}

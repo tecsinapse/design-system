@@ -1,33 +1,32 @@
 import styled, { css } from '@emotion/native';
 import { TextInput, Platform } from 'react-native';
+import { InputProps, StyleProps } from '@tecsinapse/react-core';
 
-export const baseStyled = ({ theme }) => css`
+const baseStyles = ({ theme }) => css`
   padding: 10px;
   border-color: ${theme.colors.primary.medium};
   border-radius: 4px;
-`;
-
-const StyledInput = styled(TextInput)`
-  ${props => baseStyled(props)};
   border-width: 1px;
-  padding: 10px;
-  border-color: ${({ theme }) => theme.colors.primary.medium};
-  border-radius: 4px;
-  ${({ theme }) =>
-    Platform.OS === 'web' &&
-    css`
-      &:focus {
-        outline-width: 2px;
-        outline-color: ${theme.colors.primary.medium};
-      }
-    `},
-  ${({ focused, theme }) =>
-    focused &&
-    css`
-      border-width: 2px;
-      ${baseStyled({ theme })};
-    `},
-  ${({ style }) => style}
 `;
 
-export default StyledInput;
+const focusedStyles = ({ focused, theme }: InputProps & Partial<StyleProps>) =>
+  focused &&
+  css`
+    ${baseStyles({ theme })}
+    border-width: 2px;
+  `;
+
+const webStyles = ({ theme }: StyleProps) =>
+  Platform.OS === 'web' &&
+  css`
+    ${baseStyles({ theme })}
+    &:focus {
+      outline-width: 2px;
+      outline-color: ${theme.colors.primary.medium};
+    }
+  `;
+
+export const StyledInput = styled(TextInput)<InputProps & Partial<StyleProps>>(
+  focusedStyles,
+  webStyles
+);

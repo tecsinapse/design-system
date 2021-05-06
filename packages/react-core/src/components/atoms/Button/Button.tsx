@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
 import { StyledButton } from './styled';
-import { ClassNamesProps } from '@emotion/react';
-import { ColorType, VariantType } from '@tecsinapse/react-core';
+import { ColorScale, ColorType, VariantType } from '@tecsinapse/react-core';
 
 export interface ButtonProps {
   children: JSX.Element;
   onClick?: () => void;
-  style?: ClassNamesProps;
+  style?: StyleProp<ViewStyle>;
   color?: ColorType;
   variant?: VariantType;
+  tone?: ColorScale;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -18,19 +18,19 @@ const Button: FC<ButtonProps> = ({
   style,
   color = 'primary',
   variant = 'filled',
+  tone = 'medium',
 }): JSX.Element => {
   return (
-    <View>
-      <StyledButton
-        accessibilityRole="button"
-        onPress={onClick}
-        style={style}
-        color={color}
-        variant={variant}
-      >
-        {children}
-      </StyledButton>
-    </View>
+    <StyledButton
+      accessibilityRole="button"
+      onPress={onClick}
+      style={style}
+      color={color}
+      variant={variant}
+      tone={tone}
+    >
+      {children}
+    </StyledButton>
   );
 };
 

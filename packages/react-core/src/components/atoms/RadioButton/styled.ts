@@ -1,17 +1,17 @@
 import styled, { css } from '@emotion/native';
-import { spacings, borderRadius } from '../../../styles/definitions';
-
 import { View, TouchableOpacity, Text } from 'react-native';
+import { StyleProps } from '@tecsinapse/react-core';
+import { OrientationProps } from './RadioButton';
 
-export const InnerCircle = styled(View)`
+export const InnerCircle = styled(View)<Partial<StyleProps>>`
   width: 10px;
   height: 10px;
-  border-radius: ${borderRadius.circle};
+  border-radius: ${({ theme }) => theme.borderRadius.circle};
   background-color: ${({ theme }) => theme.colors.primary.medium};
 `;
 
-export const TextStyle = styled(Text)`
-  margin-left: ${spacings.mili};
+export const TextStyle = styled(Text)<Partial<StyleProps>>`
+  margin-left: ${({ theme }) => theme.spacings.mili};
 `;
 
 export const ButtonStyle = styled(TouchableOpacity)`
@@ -21,21 +21,20 @@ export const ButtonStyle = styled(TouchableOpacity)`
   margin-right: 5px;
 `;
 
-export const OutlineCircle = styled(View)`
+export const OutlineCircle = styled(View)<Partial<StyleProps>>`
   width: 20px;
   height: 20px;
-  border-radius: ${borderRadius.circle};
+  border-radius: ${({ theme }) => theme.borderRadius.circle};
   border-color: ${({ theme }) => theme.colors.primary.medium};
   border-width: 2px;
   justify-content: center;
   align-items: center;
 `;
 
-export const ViewOrientation = styled(View)`
+export const ViewOrientation = styled(View)<OrientationProps>`
   ${({ orientation }) =>
     orientation === 'horizontal' &&
     css`
       flex-direction: row;
     `},
-  ${({ style }) => style}
 `;
