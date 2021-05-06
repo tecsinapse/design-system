@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction/Get Started" />
+
+# Get Started
+Below contains instructions on how to use the design-system in web and native applications (React and React Native)
+
+## Install
+
+`yarn add @design-system/react-core`  Contains components in common between web and native. <br/>
+`yarn add @design-system/react-native-kit` Contains web-specific components. <br/>
+`yarn add @design-system/react-web-kit` Contains components specific to native applications.
+
+### **Use**
+
+Import components you want into your UI
+
+`import { ThemeProvider, Button, lightTheme } from ‘@design-system/react-core’;`
+
+and use them like so
+
+```jsx
+
+const App = () => (
+
+  <ThemeProvider theme="ligthTheme">
+
+    <Button onClick={() => console.log('Button clicked')}>Button</Button>
+
+  </ThemeProvider>
+
+);
+
+```
+
+### Developing
+
+Running locally
+
+```
+
+    yarn install && yarn storybook
+
+```
