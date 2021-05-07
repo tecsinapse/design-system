@@ -117,14 +117,3 @@ export const zIndex: ZIndex = {
   sidebar: 800,
   modal: 1000,
 };
-
-/*
-
-2rem/32px	A Visual Type Scale - h1
-1.625rem/26px	A Visual Type Scale - h2
-1.25rem/20px	A Visual Type Scale - h3
-1.125rem/18px	A Visual Type Scale - h4
-1rem/16px	A Visual Type Scale - h5
-0.875rem/14.00px	A Visual Type Scale - text
-0.75rem/12px	A Visual Type Scale - subtitle
- */
