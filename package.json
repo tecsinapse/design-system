@@ -56,7 +56,7 @@
     "start": "lerna run start --stream",
     "build": "lerna run --parallel 'build:es'",
     "storybook": "start-storybook -p 7007",
-    "build:storybook": "build-storybook",
+    "build:storybook": "rimraf -rf sbdocs/ && build-storybook -o sbdocs/",
     "postbuild": "yarn build:declarations",
     "build:declarations": "lerna run --parallel 'build:declaration'",
     "prebuild": "rimraf -rf packages/*/dist/",
