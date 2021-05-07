@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Build
 
 on: push
 
@@ -37,12 +37,3 @@ jobs:
 
       - name: Build storybook
         run: yarn build:storybook
-
-      - name: Deploy docs when tag
-        if: startsWith(github.ref, 'refs/tags/@tecsinapse/react-*@*')
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          target_branch: gh-pages
-          build_dir: sbdocs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
