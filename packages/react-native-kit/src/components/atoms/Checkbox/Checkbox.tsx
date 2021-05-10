@@ -4,22 +4,21 @@ import { StyledCheckbox, ViewStyled, TextStyle } from './styled';
 import { Ionicons } from '@expo/vector-icons';
 
 export interface CheckboxProps {
-  label?: string;
   style?: StyleProp<ViewStyle>;
   checked?: boolean;
-  onPress: (checked: boolean) => void;
+  onChange: (checked: boolean) => void;
 }
 
-const Checkbox: FC<CheckboxProps> = ({ checked, onPress, label, style }) => {
+const Checkbox: FC<CheckboxProps> = ({ checked, onChange, style, children }) => {
   const handleChange = () => {
-    onPress(!checked);
+    onChange(!checked);
   };
   return (
     <ViewStyled style={style}>
-      <StyledCheckbox checked={checked} onPress={handleChange}>
+      <StyledCheckbox checked={checked} onChange={handleChange}>
         {checked && <Ionicons name="checkmark" />}
       </StyledCheckbox>
-      <TextStyle>{label}</TextStyle>
+      {children}
     </ViewStyled>
   );
 };

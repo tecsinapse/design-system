@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { ViewStyle } from 'react-native';
 import { ViewStyled } from './styled';
 
 export interface CheckboxProps {
-  label?: string;
   style?: ViewStyle;
+  children?: JSX.Element;
 }
 
-const Checkbox = ({ label, style }: CheckboxProps): JSX.Element => {
+const Checkbox: FC<CheckboxProps> = ({ style, children }): JSX.Element => {
   return (
     <ViewStyled style={style}>
-      <input type="checkbox" id={label} name={label} />
-      <label htmlFor={label}>{label}</label>
+      <input type="checkbox" id="checkbox" name="checkbox" />
+      {children}
     </ViewStyled>
   );
 };
