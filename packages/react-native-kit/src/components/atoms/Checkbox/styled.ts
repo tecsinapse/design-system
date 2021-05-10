@@ -1,7 +1,7 @@
 import styled, { css } from '@emotion/native';
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { CheckboxProps } from './Checkbox';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps, Text } from '@tecsinapse/react-core';
 
 const baseStyles = ({ theme }) => css`
   width: ${theme.spacings.centi};
@@ -21,6 +21,13 @@ const checkBoxChecked = ({ theme, checked }: StyleProps & CheckboxProps) =>
     background-color: ${theme.colors.primary.medium};
   `;
 
+export const ViewStyled = styled(View)<Partial<CheckboxProps & StyleProps>>`
+  flex-direction: row;
+`;
+
+export const TextStyle = styled(Text)<Partial<StyleProps>>`
+  padding-left: ${({ theme }) => theme.spacings.centi};
+`;
 export const StyledCheckbox = styled(Pressable)<
   CheckboxProps & Partial<StyleProps>
 >(baseStyles, checkBoxChecked);

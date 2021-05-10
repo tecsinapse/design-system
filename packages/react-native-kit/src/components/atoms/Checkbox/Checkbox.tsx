@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { StyledCheckbox } from './styled';
+import { StyledCheckbox, ViewStyled, TextStyle } from './styled';
 import { Ionicons } from '@expo/vector-icons';
-import { Text } from '@tecsinapse/react-core';
 
 export interface CheckboxProps {
   label?: string;
@@ -16,12 +15,12 @@ const Checkbox: FC<CheckboxProps> = ({ checked, onPress, label, style }) => {
     onPress(!checked);
   };
   return (
-    <View style={style}>
+    <ViewStyled style={style}>
       <StyledCheckbox checked={checked} onPress={handleChange}>
         {checked && <Ionicons name="checkmark" />}
-        <Text>{label}</Text>
       </StyledCheckbox>
-    </View>
+      <TextStyle>{label}</TextStyle>
+    </ViewStyled>
   );
 };
 
