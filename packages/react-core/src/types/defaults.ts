@@ -8,13 +8,9 @@ export type ColorType =
 
 export type VariantType = 'filled' | 'outlined' | 'text';
 
-export type ColorScale =
-  | 'xlight'
-  | 'light'
-  | 'medium'
-  | 'dark'
-  | 'xdark'
-  | 'main';
+export type ColorScale = 'xlight' | 'light' | 'medium' | 'dark' | 'xdark';
+
+export type FontColorScale = 'light' | 'medium' | 'dark' | 'orange';
 
 export type Miscellaneous = {
   shadow: string;
@@ -73,6 +69,13 @@ export type FontStack = {
   mono: string;
 };
 
+export type FontColor = {
+  light: string;
+  medium: string;
+  dark: string; // default
+  orange: string;
+};
+
 export type ZIndex = {
   default: number;
   absolute: number;
@@ -97,11 +100,10 @@ export type ThemeProp = {
   colors: {
     primary: ColorGradation;
     secondary: ColorGradation;
-    error: { main: string; contrastText: string };
-    success: { main: string; contrastText: string };
-    info: { main: string; contrastText: string };
-    warning: { main: string; contrastText: string };
-    text: { main: string; contrast: string };
+    error: ColorGradation;
+    success: ColorGradation;
+    info: ColorGradation;
+    warning: ColorGradation;
   };
   miscellaneous: Miscellaneous;
   spacings: Spacings;
@@ -109,13 +111,15 @@ export type ThemeProp = {
   borderRadius: BorderRadius;
   borderWidth: BorderWidth;
   typography: Typography;
-  fontStack: FontStack;
-  fontWeight: FontWeight;
+  font: {
+    color: FontColor;
+    stack: FontStack;
+    weight: FontWeight;
+  };
   zIndex: ZIndex;
 };
 
 export interface ThemeProviderProps {
-  children: JSX.Element;
   theme: ThemeProp;
 }
 

@@ -1,6 +1,7 @@
 import {
   BorderRadius,
   BorderWidth,
+  FontColor,
   FontStack,
   FontWeight,
   IconSizes,
@@ -12,6 +13,37 @@ import {
 export const white = '#fff';
 export const black = '#000';
 
+export const statusColors = {
+  error: {
+    xlight: '#fdf3f2',
+    light: '#ee9891',
+    medium: '#e04638',
+    dark: '#9b2318',
+    xdark: '#58240e',
+  },
+  warning: {
+    xlight: '#fffcf0',
+    light: '#ffe380',
+    medium: '#ffc700',
+    dark: '#cc9f00',
+    xdark: '#665000',
+  },
+  success: {
+    xlight: '#f3fcf8',
+    light: '#99e6c9',
+    medium: '#2db783',
+    dark: '#238f67',
+    xdark: '#14523b',
+  },
+  info: {
+    xlight: '#f0f8fe',
+    light: '#85c7fa',
+    medium: '#239bf6',
+    dark: '#0873c4',
+    xdark: '#043962',
+  },
+};
+
 export const hex2rgba: (hex, alpha?: number) => string = (hex, alpha = 1) => {
   const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
 
@@ -19,7 +51,7 @@ export const hex2rgba: (hex, alpha?: number) => string = (hex, alpha = 1) => {
 };
 
 export const miscellaneous: Miscellaneous = {
-  shadow: 'rgba(133, 128, 122, 0.2)',
+  shadow: 'rgba(133, 128, 122, 0.04)',
   overlay: 'rgba(40, 38, 37, 0.5)',
   bodyBg: '#f8f7f7',
   bodyColor: '#282625',
@@ -104,6 +136,13 @@ export const fontWeight: FontWeight = {
   black: '900',
 };
 
+export const fontColor: FontColor = {
+  light: white,
+  medium: '#85807a',
+  dark: '#353231', // default
+  orange: '#f89907',
+};
+
 export const zIndex: ZIndex = {
   default: 0,
   absolute: 1,
@@ -117,14 +156,3 @@ export const zIndex: ZIndex = {
   sidebar: 800,
   modal: 1000,
 };
-
-/*
-
-2rem/32px	A Visual Type Scale - h1
-1.625rem/26px	A Visual Type Scale - h2
-1.25rem/20px	A Visual Type Scale - h3
-1.125rem/18px	A Visual Type Scale - h4
-1rem/16px	A Visual Type Scale - h5
-0.875rem/14.00px	A Visual Type Scale - text
-0.75rem/12px	A Visual Type Scale - subtitle
- */

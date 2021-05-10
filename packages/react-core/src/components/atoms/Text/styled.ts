@@ -4,5 +4,5 @@ import { StyleProps, TextProps } from '@tecsinapse/react-core';
 
 export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
   color: ${({ theme, contrast }) =>
-    contrast ? theme.colors.text.contrast : theme.colors.text.main};
+    contrast ? theme.font.color.light : theme.font.color.dark};
 `;
