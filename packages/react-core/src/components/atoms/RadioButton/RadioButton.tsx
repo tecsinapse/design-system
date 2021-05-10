@@ -9,22 +9,14 @@ import {
 } from './styled';
 
 export interface RadioButtonProps {
-  /**
-   * Value of the radio button
-   */
-  value: string;
-  /**
-   * Status of radio button.
-   */
   onChange: (checked: boolean) => void;
-
   checked: boolean;
 }
 
 const RadioButton: FC<RadioButtonProps> = ({
   onChange,
   checked,
-  value,
+  children,
 }): JSX.Element => {
   const handleChange = () => {
     onChange(!checked);
@@ -44,7 +36,7 @@ const RadioButton: FC<RadioButtonProps> = ({
           ) : null}
         </ViewRadioStyled>
       </ButtonContainerStyled>
-      <TextStyled>{value}</TextStyled>
+      {children}
     </ViewContainerStyled>
   );
 };
