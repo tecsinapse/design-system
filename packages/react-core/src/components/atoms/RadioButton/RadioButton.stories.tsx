@@ -8,29 +8,14 @@ export default {
 };
 
 const Template: Story<RadioButtonProps> = args => {
-  const [selected, setSelected] = useState(1);
+  const [checked, setChecked] = useState(false);
   return (
-    <RadioButton
-      orientation={args.orientation}
-      options={args.options}
-      selected={selected}
-      onChangeSelect={(opt, i) => {
-        setSelected(i);
-      }}
-    />
+    <RadioButton value={args.value} checked={checked} onChange={setChecked} />
   );
 };
 
 export const Base = Template.bind({});
 
 Base.args = {
-  options: [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-    'Option 6',
-  ],
-  orientation: 'vertical',
+  value: 'Checkbox',
 };

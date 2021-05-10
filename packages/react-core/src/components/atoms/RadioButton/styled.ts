@@ -1,40 +1,43 @@
-import styled, { css } from '@emotion/native';
-import { View, TouchableOpacity, Text } from 'react-native';
-import { StyleProps } from '@tecsinapse/react-core';
-import { OrientationProps } from './RadioButton';
+import styled from '@emotion/native';
+import { TouchableWithoutFeedback, View } from 'react-native';
+import { StyleProps, Text } from '../../../index';
 
-export const InnerCircle = styled(View)<Partial<StyleProps>>`
-  width: 10px;
-  height: 10px;
-  border-radius: ${({ theme }) => theme.borderRadius.circle};
-  background-color: ${({ theme }) => theme.colors.primary.medium};
-`;
-
-export const TextStyle = styled(Text)<Partial<StyleProps>>`
-  margin-left: ${({ theme }) => theme.spacings.mili};
-`;
-
-export const ButtonStyle = styled(TouchableOpacity)`
+export const ViewContainerStyled = styled(View)`
   flex-direction: row;
-  align-items: center;
-  margin-top: 10px;
-  margin-right: 5px;
 `;
 
-export const OutlineCircle = styled(View)<Partial<StyleProps>>`
-  width: 20px;
-  height: 20px;
+export const TextStyled = styled(Text)`
+  padding-top: 10px;
+`;
+
+export const ButtonContainerStyled = styled(TouchableWithoutFeedback)<
+  Partial<StyleProps>
+>`
   border-radius: ${({ theme }) => theme.borderRadius.circle};
+`;
+
+export const ViewRadioStyled = styled(View)<Partial<StyleProps>>`
+  height: 20px;
+  width: 20px;
+  border-radius: ${({ theme }) => theme.borderRadius.circle};
+  margin: ${({ theme }) => theme.spacings.mili};
   border-color: ${({ theme }) => theme.colors.primary.medium};
   border-width: 2px;
-  justify-content: center;
-  align-items: center;
 `;
 
-export const ViewOrientation = styled(View)<OrientationProps>`
-  ${({ orientation }) =>
-    orientation === 'horizontal' &&
-    css`
-      flex-direction: row;
-    `},
+export const RadioContainer = styled(View)`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const RadioChecked = styled(View)<Partial<StyleProps>>`
+  height: 10px;
+  width: 10px;
+  border-radius: ${({ theme }) => theme.borderRadius.circle};
+  background-color: ${({ theme }) => theme.colors.primary.medium};
 `;
