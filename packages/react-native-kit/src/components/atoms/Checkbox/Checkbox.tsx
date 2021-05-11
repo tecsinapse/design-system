@@ -7,18 +7,30 @@ export interface CheckboxProps {
   style?: StyleProp<ViewStyle>;
   checked?: boolean;
   onChange: (checked: boolean) => void;
+  labelPosition: 'left' | 'right';
 }
 
-const Checkbox: FC<CheckboxProps> = ({ checked, onChange, style, children }) => {
+const Checkbox: FC<CheckboxProps> = ({
+  checked,
+  onChange,
+  style,
+  children,
+  labelPosition,
+}) => {
   const handleChange = () => {
     onChange(!checked);
   };
   return (
     <ViewStyled style={style}>
-      <StyledCheckbox checked={checked} onChange={handleChange}>
+      {labelPosition === 'left' && children}
+      <StyledCheckbox
+        checked={checked}
+        onChange={handleChange}
+        labelPosition={labelPosition}
+      >
         {checked && <Ionicons name="checkmark" />}
       </StyledCheckbox>
-      {children}
+      {labelPosition === 'right' && children}
     </ViewStyled>
   );
 };
