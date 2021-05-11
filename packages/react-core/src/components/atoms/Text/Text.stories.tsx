@@ -7,10 +7,24 @@ export default {
   component: Text,
 };
 
-const Template: Story<TextProps> = args => <Text>{args.children}</Text>;
+const Template: Story<TextProps> = ({
+  variantColor,
+  fontWeight,
+  typography,
+}) => (
+  <Text
+    variantColor={variantColor}
+    fontWeight={fontWeight}
+    typography={typography}
+  >
+    Text
+  </Text>
+);
 
 export const Base = Template.bind({});
 
 Base.args = {
-  children: 'Text',
+  variantColor: 'orange',
+  fontWeight: 'regular',
+  typography: 'h1',
 };
