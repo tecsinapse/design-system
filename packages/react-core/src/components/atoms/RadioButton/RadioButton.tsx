@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import {
   ButtonContainerStyled,
   RadioContainer,
-  TextStyled,
   ViewContainerStyled,
   ViewRadioStyled,
   RadioChecked,
@@ -11,18 +10,21 @@ import {
 export interface RadioButtonProps {
   onChange: (checked: boolean) => void;
   checked: boolean;
+  labelPositon: 'left' | 'right';
 }
 
 const RadioButton: FC<RadioButtonProps> = ({
   onChange,
   checked,
   children,
+  labelPositon,
 }): JSX.Element => {
   const handleChange = () => {
     onChange(!checked);
   };
   return (
     <ViewContainerStyled>
+      {labelPositon === 'left' && children}
       <ButtonContainerStyled
         onPress={() => handleChange()}
         accessibilityRole="radio"
@@ -36,7 +38,7 @@ const RadioButton: FC<RadioButtonProps> = ({
           ) : null}
         </ViewRadioStyled>
       </ButtonContainerStyled>
-      {children}
+      {labelPositon === 'right' && children}
     </ViewContainerStyled>
   );
 };

@@ -1,13 +1,9 @@
 import styled from '@emotion/native';
 import { TouchableWithoutFeedback, View } from 'react-native';
-import { StyleProps, Text } from '../../../index';
+import { StyleProps } from '../../../index';
 
 export const ViewContainerStyled = styled(View)`
   flex-direction: row;
-`;
-
-export const TextStyled = styled(Text)`
-  padding-top: 10px;
 `;
 
 export const ButtonContainerStyled = styled(TouchableWithoutFeedback)<

@@ -9,10 +9,14 @@ export default {
   component: RadioButton,
 };
 
-const Template: Story<RadioButtonProps> = args => {
+const Template: Story<RadioButtonProps> = ({ labelPositon }) => {
   const [checked, setChecked] = useState(false);
   return (
-    <RadioButton checked={checked} onChange={setChecked}>
+    <RadioButton
+      checked={checked}
+      onChange={setChecked}
+      labelPositon={labelPositon}
+    >
       <TextStyled>Radio Button</TextStyled>
     </RadioButton>
   );
@@ -20,7 +24,9 @@ const Template: Story<RadioButtonProps> = args => {
 
 export const Base = Template.bind({});
 
-Base.args = {};
+Base.args = {
+  labelPositon: 'left',
+};
 
 const TextStyled = styled(Text)`
   padding-top: 10px;
