@@ -55,6 +55,15 @@ export type Typography = {
   lineHeight: string;
   fontSize: string;
 };
+export type TypographyTypes =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'base'
+  | 'sub';
 
 export type ColorGradation = {
   xlight: string;
@@ -68,13 +77,14 @@ export type FontStack = {
   default: string;
   mono: string;
 };
-
 export type FontColor = {
   light: string;
   medium: string;
   dark: string; // default
   orange: string;
 };
+
+export type FontColorType = 'light' | 'medium' | 'dark' | 'orange';
 
 export type ZIndex = {
   default: number;
@@ -96,6 +106,8 @@ export type FontWeight = {
   black: string;
 };
 
+export type FontWeightType = 'regular' | 'bold' | 'black';
+
 export type ThemeProp = {
   colors: {
     primary: ColorGradation;
@@ -110,7 +122,16 @@ export type ThemeProp = {
   iconSizes: IconSizes;
   borderRadius: BorderRadius;
   borderWidth: BorderWidth;
-  typography: Typography;
+  typography: {
+    h1: Typography;
+    h2: Typography;
+    h3: Typography;
+    h4: Typography;
+    h5: Typography;
+    h6: Typography;
+    base: Typography;
+    sub: Typography;
+  };
   font: {
     color: FontColor;
     stack: FontStack;
