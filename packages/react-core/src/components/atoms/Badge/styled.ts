@@ -3,12 +3,18 @@ import { View } from 'react-native';
 import { BadgeProps } from './Badge';
 import { StyleProps } from '@tecsinapse/react-core';
 
-const baseStyle = ({ theme, variant }: StyleProps & BadgeProps) => {
+const baseStyle = ({
+  theme,
+  color = 'error',
+  tone = 'medium',
+  borderRadius = 'pill',
+}: StyleProps & BadgeProps) => {
   return css`
-    border-radius: ${theme.borderRadius.pill};
-    background-color: ${theme.colors[variant].medium};
-    width: 70px;
+    border-radius: ${theme.borderRadius[borderRadius]};
+    background-color: ${theme.colors[color][tone]};
     align-items: center;
+    padding: ${theme.spacings.micro};
+    display: inline-block;
   `;
 };
 

@@ -12,6 +12,8 @@ export type ColorScale = 'xlight' | 'light' | 'medium' | 'dark' | 'xdark';
 
 export type FontColorScale = 'light' | 'medium' | 'dark' | 'orange';
 
+export type BorderRadiusType = 'nano' | 'micro' | 'mili' | 'circle' | 'pill';
+
 export type Miscellaneous = {
   shadow: string;
   overlay: string;
