@@ -63,7 +63,8 @@ export type TypographyTypes =
   | 'h5'
   | 'h6'
   | 'base'
-  | 'sub';
+  | 'sub'
+  | 'label';
 
 export type ColorGradation = {
   xlight: string;
@@ -83,8 +84,6 @@ export type FontColor = {
   dark: string; // default
   orange: string;
 };
-
-export type FontColorType = 'light' | 'medium' | 'dark' | 'orange';
 
 export type ZIndex = {
   default: number;

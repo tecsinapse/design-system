@@ -24,7 +24,7 @@ const Template: Story<TextProps> = ({
 export const Base = Template.bind({});
 
 Base.args = {
-  variantColor: 'orange',
+  variantColor: 'dark',
   fontWeight: 'regular',
-  typography: 'h1',
+  typography: 'h3',
 };

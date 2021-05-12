@@ -9,4 +9,6 @@ export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
     fontWeight && theme.font.weight[fontWeight]};
   font-size: ${({ theme, typography }) =>
     typography && theme.typography[typography].fontSize};
+  line-height: ${({ theme, typography }) =>
+    typography && theme.typography[typography].lineHeight};
 `;

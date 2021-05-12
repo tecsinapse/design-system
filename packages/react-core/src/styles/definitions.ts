@@ -118,6 +118,10 @@ export const typography = {
     fontSize: '0.75rem', // 12px
     lineHeight: '1.125rem', // 18px
   },
+  label: {
+    fontSize: '0.625rem',
+    lineHeight: '0.75rem',
+  },
 };
 
 export const fontStack: FontStack = {
