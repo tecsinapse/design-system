@@ -10,7 +10,7 @@ export default {
 
 const Template: Story<BadgeProps> = args => (
   <Badge variant={args.variant}>
-    <Text contrast>Badge</Text>
+    <Text>Badge</Text>
   </Badge>
 );
 
