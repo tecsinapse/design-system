@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
-import { StyledCheckbox, ViewStyled, TextStyle } from './styled';
+import { StyleProp, ViewStyle } from 'react-native';
+import { StyledCheckbox, ViewStyled } from './styled';
 import { Ionicons } from '@expo/vector-icons';
 
 export interface CheckboxProps {

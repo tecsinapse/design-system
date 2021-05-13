@@ -19,9 +19,11 @@ const Button: FC<ButtonProps> = ({
   color = 'primary',
   variant = 'filled',
   tone = 'medium',
+  ...rest
 }): JSX.Element => {
   return (
     <StyledButton
+      {...rest}
       accessibilityRole="button"
       onPress={onClick}
       style={style}

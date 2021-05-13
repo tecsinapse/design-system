@@ -1,6 +1,5 @@
-import styled from '@emotion/native';
-import { View } from 'react-native';
+import styled from '@emotion/styled';
 
-export const ViewStyled = styled(View)`
+export const DivStyled = styled('div')`
   flex-direction: row;
 `;

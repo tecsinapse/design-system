@@ -9,7 +9,7 @@ import {
 
 export interface TextProps {
   style?: StyleProp<TextStyle>;
-  variantColor?: FontColorScale;
+  color?: FontColorScale;
   fontWeight?: FontWeightType;
   typography?: TypographyTypes;
 }
@@ -17,14 +17,16 @@ export interface TextProps {
 const Text: FC<TextProps> = ({
   children,
   style,
-  variantColor = 'dark',
+  color = 'dark',
   fontWeight = 'regular',
   typography = 'base',
+  ...rest
 }): JSX.Element => {
   return (
     <StyledText
+      {...rest}
       style={style}
-      variantColor={variantColor}
+      color={color}
       fontWeight={fontWeight}
       typography={typography}
     >

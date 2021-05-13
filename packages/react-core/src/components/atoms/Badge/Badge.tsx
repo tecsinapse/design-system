@@ -11,24 +11,19 @@ export interface BadgeProps {
   children?: JSX.Element;
   color: ColorType;
   tone?: ColorScale;
-  borderRadius: BorderRadiusType;
+  variant?: BorderRadiusType;
   style?: StyleProp<ViewStyle>;
 }
 
 const Badge: FC<BadgeProps> = ({
   children,
-  color,
   style,
-  tone,
-  borderRadius,
+  color = 'primary',
+  tone = 'medium',
+  variant = 'pill',
 }): JSX.Element => {
   return (
-    <BadgeStyle
-      style={style}
-      color={color}
-      tone={tone}
-      borderRadius={borderRadius}
-    >
+    <BadgeStyle style={style} color={color} tone={tone} variant={variant}>
       {children}
     </BadgeStyle>
   );

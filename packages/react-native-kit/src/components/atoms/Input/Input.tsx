@@ -1,13 +1,16 @@
 import { InputProps, Input as InputCore } from '@tecsinapse/react-core';
-import React from 'react';
+import React, { FC } from 'react';
 
 export interface InputPropsNative extends InputProps {
   onBlur?: () => void;
   onFocus?: () => void;
-  focused?: boolean;
 }
-const Input = (props: InputPropsNative): JSX.Element => {
-  const { onFocus: onFocusExternal } = props;
+
+const Input: FC<InputPropsNative> = ({
+  onFocus: onFocusExternal,
+  onBlur: onBlurExternal,
+  ...rest
+}): JSX.Element => {
   const [onFocus, setOnFocus] = React.useState<boolean>(false);
 
   const handleFocus = () => {
@@ -16,12 +19,20 @@ const Input = (props: InputPropsNative): JSX.Element => {
       onFocusExternal();
     }
   };
+
+  const handleBlur = () => {
+    setOnFocus(false);
+    if (onBlurExternal) {
+      onBlurExternal();
+    }
+  };
+
   return (
     <InputCore
-      onBlur={() => setOnFocus(false)}
+      {...rest}
+      onBlur={handleBlur}
       onFocus={handleFocus}
       focused={onFocus}
-      {...props}
     />
   );
 };

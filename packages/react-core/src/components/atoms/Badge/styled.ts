@@ -5,12 +5,12 @@ import { StyleProps } from '@tecsinapse/react-core';
 
 const baseStyle = ({
   theme,
-  color = 'error',
+  color,
   tone = 'medium',
-  borderRadius = 'pill',
+  variant = 'pill',
 }: StyleProps & BadgeProps) => {
   return css`
-    border-radius: ${theme.borderRadius[borderRadius]};
+    border-radius: ${theme.borderRadius[variant]};
     background-color: ${theme.colors[color][tone]};
     align-items: center;
     padding: ${theme.spacings.micro};

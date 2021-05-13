@@ -1,24 +1,28 @@
-import React, { FC } from 'react';
-import { ViewStyle } from 'react-native';
-import { ViewStyled } from './styled';
+import React, { CSSProperties, FC } from 'react';
+import { DivStyled } from './styled';
 
 export interface CheckboxProps {
-  style?: ViewStyle;
+  style?: CSSProperties;
   children?: JSX.Element;
   labelPosition: 'left' | 'right';
+  id?: string;
+  name?: string;
 }
 
 const Checkbox: FC<CheckboxProps> = ({
   style,
   children,
   labelPosition,
+  id,
+  name,
+  ...rest
 }): JSX.Element => {
   return (
-    <ViewStyled style={style}>
+    <DivStyled style={style}>
       {labelPosition === 'left' && children}
-      <input type="checkbox" id="checkbox" name="checkbox" />
+      <input {...rest} type="checkbox" id={id} name={name} />
       {labelPosition === 'right' && children}
-    </ViewStyled>
+    </DivStyled>
   );
 };
 
