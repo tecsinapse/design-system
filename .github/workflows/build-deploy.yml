@@ -65,6 +65,6 @@ jobs:
         with:
           target_branch: gh-pages
           build_dir: sbdocs
-          repo: ${{ GITHUB_REPOSITORY }}
+          repo: ${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
