@@ -25,7 +25,7 @@ const Template: Story<RadioButtonProps> = ({ labelPositon }) => {
 export const Base = Template.bind({});
 
 Base.args = {
-  labelPositon: 'left',
+  labelPositon: 'right',
 };
 
 const TextStyled = styled(Text)`

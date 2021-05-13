@@ -1,10 +1,9 @@
-import React, { CSSProperties, FC } from 'react';
+import React, { CSSProperties, FC, ReactNode } from 'react';
 import { DivStyled } from './styled';
 
 export interface CheckboxProps {
   style?: CSSProperties;
-  children?: JSX.Element;
-  labelPosition: 'left' | 'right';
+  labelPosition?: 'left' | 'right';
   id?: string;
   name?: string;
 }
@@ -12,7 +11,7 @@ export interface CheckboxProps {
 const Checkbox: FC<CheckboxProps> = ({
   style,
   children,
-  labelPosition,
+  labelPosition = 'right',
   id,
   name,
   ...rest

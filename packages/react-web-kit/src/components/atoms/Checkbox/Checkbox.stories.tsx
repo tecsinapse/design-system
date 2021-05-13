@@ -1,26 +1,21 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import { default as Checkbox, CheckboxProps } from './Checkbox';
-import { Text } from '../../../index';
-import styled from '@emotion/native';
+import { Text } from '@tecsinapse/react-core';
 
 export default {
-  title: 'Checkbox',
+  title: 'Components/Checkbox',
   component: Checkbox,
 };
 
 const Template: Story<CheckboxProps> = ({ labelPosition }) => (
   <Checkbox labelPosition={labelPosition}>
-    <TextStyled>CheckBox</TextStyled>
+    <Text>CheckBox</Text>
   </Checkbox>
 );
 
 export const Base = Template.bind({});
 
 Base.args = {
-  labelPosition: 'left',
+  labelPosition: 'right',
 };
-
-const TextStyled = styled(Text)`
-  padding-top: 1px;
-`;

@@ -10,18 +10,19 @@ import {
 export interface RadioButtonProps {
   onChange: (checked: boolean) => void;
   checked: boolean;
-  labelPositon: 'left' | 'right';
+  labelPositon?: 'left' | 'right';
 }
 
 const RadioButton: FC<RadioButtonProps> = ({
   onChange,
   checked,
   children,
-  labelPositon,
+  labelPositon = 'right',
 }): JSX.Element => {
   const handleChange = () => {
-    onChange(!checked);
+    onChange(true);
   };
+
   return (
     <ViewContainerStyled>
       {labelPositon === 'left' && children}

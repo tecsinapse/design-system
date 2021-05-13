@@ -10,13 +10,20 @@ export default {
 
 const Template: Story<InputProps> = args => {
   const { defaultValue = '' } = args;
-  const [value, setValue] = useState<string | number>(defaultValue);
+  const [value, setValue] = useState<string>(defaultValue);
+
+  const onChange = text => {
+    setValue(text);
+    if (args.onChange) {
+      args.onChange(text);
+    }
+  };
 
   return (
     <Input
       {...args}
       value={value}
-      onChange={text => setValue(text)}
+      onChange={onChange}
       placeholder={args.placeholder}
     />
   );
@@ -25,7 +32,7 @@ const Template: Story<InputProps> = args => {
 export const Base = Template.bind({});
 
 Base.args = {
-  onChange: action('onClick'),
+  onChange: value => action('onChange')(value),
   placeholder: 'Name',
   defaultValue: '',
   disabled: false,
