@@ -3,6 +3,12 @@ import { Text as RNText } from 'react-native';
 import { StyleProps, TextProps } from '@tecsinapse/react-core';
 
 export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
-  color: ${({ theme, contrast }) =>
-    contrast ? theme.font.color.light : theme.font.color.dark};
+  color: ${({ theme, variantColor }) =>
+    variantColor && theme.font.color[variantColor]};
+  font-weight: ${({ theme, fontWeight }) =>
+    fontWeight && theme.font.weight[fontWeight]};
+  font-size: ${({ theme, typography }) =>
+    typography && theme.typography[typography].fontSize};
+  line-height: ${({ theme, typography }) =>
+    typography && theme.typography[typography].lineHeight};
 `;

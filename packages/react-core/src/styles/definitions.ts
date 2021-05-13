@@ -90,37 +90,37 @@ export const borderWidth: BorderWidth = {
 };
 
 export const typography = {
-  headings: {
-    h5: {
-      fontSize: '1rem', // 16px
-      lineHeight: '1.5rem', // 24px
-    },
-    h4: {
-      fontSize: '1.125rem', // 18px
-      lineHeight: '1.688rem', // 27px
-    },
-    h3: {
-      fontSize: '1.25rem', // 20px
-      lineHeight: '2rem', // 32px
-    },
-    h2: {
-      fontSize: '1.625rem', // 26px
-      lineHeight: '2.375rem', // 38px
-    },
-    h1: {
-      fontSize: '2rem', // 32px
-      lineHeight: '2.625rem', // 42px
-    },
+  h5: {
+    fontSize: '1rem', // 16px
+    lineHeight: '1.5rem', // 24px
   },
-  text: {
-    base: {
-      fontSize: '0.875rem', // 14px
-      lineHeight: '1.313rem', // 21px
-    },
-    sub: {
-      fontSize: '0.75rem', // 12px
-      lineHeight: '1.125rem', // 18px
-    },
+  h4: {
+    fontSize: '1.125rem', // 18px
+    lineHeight: '1.688rem', // 27px
+  },
+  h3: {
+    fontSize: '1.25rem', // 20px
+    lineHeight: '2rem', // 32px
+  },
+  h2: {
+    fontSize: '1.625rem', // 26px
+    lineHeight: '2.375rem', // 38px
+  },
+  h1: {
+    fontSize: '2rem', // 32px
+    lineHeight: '2.625rem', // 42px
+  },
+  base: {
+    fontSize: '0.875rem', // 14px
+    lineHeight: '1.313rem', // 21px
+  },
+  sub: {
+    fontSize: '0.75rem', // 12px
+    lineHeight: '1.125rem', // 18px
+  },
+  label: {
+    fontSize: '0.625rem',
+    lineHeight: '0.75rem',
   },
 };
 
