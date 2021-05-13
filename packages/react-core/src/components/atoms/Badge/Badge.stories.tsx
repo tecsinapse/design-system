@@ -8,14 +8,16 @@ export default {
   component: Badge,
 };
 
-const Template: Story<BadgeProps> = args => (
-  <Badge variant={args.variant}>
-    <Text contrast>Badge</Text>
+const Template: Story<BadgeProps> = ({ color, borderRadius, tone }) => (
+  <Badge color={color} borderRadius={borderRadius} tone={tone}>
+    <Text>Badge</Text>
   </Badge>
 );
 
 export const Base = Template.bind({});
 
 Base.args = {
-  variant: 'success',
+  color: 'success',
+  borderRadius: 'circle',
+  tone: 'light',
 };
