@@ -3,7 +3,7 @@ import { Paper } from './index';
 import { Story } from '@storybook/react';
 
 export default {
-  title: 'Paper',
+  title: 'Components/Paper',
   component: Paper,
 };
 

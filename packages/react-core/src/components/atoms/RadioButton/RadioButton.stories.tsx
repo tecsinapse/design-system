@@ -3,7 +3,7 @@ import { RadioButtonProps, default as RadioButton } from './RadioButton';
 import { Story } from '@storybook/react';
 
 export default {
-  title: 'RadioButton',
+  title: 'Components/RadioButton',
   component: RadioButton,
 };
 

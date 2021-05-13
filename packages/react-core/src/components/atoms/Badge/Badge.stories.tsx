@@ -4,7 +4,7 @@ import { Story } from '@storybook/react';
 import { Text } from '../Text/index';
 
 export default {
-  title: 'Badge',
+  title: 'Components/Badge',
   component: Badge,
 };
 

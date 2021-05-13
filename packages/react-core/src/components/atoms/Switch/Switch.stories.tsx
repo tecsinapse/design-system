@@ -3,7 +3,7 @@ import { Story } from '@storybook/react';
 import { SwitchProps, default as Switch } from './Switch';
 
 export default {
-  title: 'Switch',
+  title: 'Components/Switch',
   component: Switch,
 };
 
