@@ -3,14 +3,14 @@ import { BadgeStyle } from './styled';
 import { StyleProp, ViewStyle } from 'react-native';
 import {
   BorderRadiusType,
-  ColorScale,
+  ColorGradationType,
   ColorType,
 } from '@tecsinapse/react-core';
 
 export interface BadgeProps {
   children?: JSX.Element;
   color: ColorType;
-  tone?: ColorScale;
+  tone?: ColorGradationType;
   variant?: BorderRadiusType;
   style?: StyleProp<ViewStyle>;
 }

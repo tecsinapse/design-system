@@ -2,16 +2,16 @@ import React, { FC } from 'react';
 import { StyledText } from './styled';
 import { StyleProp, TextStyle } from 'react-native';
 import {
-  FontColorScale,
+  FontColorType,
   FontWeightType,
-  TypographyTypes,
+  TypographyVariationType
 } from '@tecsinapse/react-core';
 
 export interface TextProps {
   style?: StyleProp<TextStyle>;
-  color?: FontColorScale;
+  color?: FontColorType;
   fontWeight?: FontWeightType;
-  typography?: TypographyTypes;
+  typography?: TypographyVariationType;
 }
 
 const Text: FC<TextProps> = ({

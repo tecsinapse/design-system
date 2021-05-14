@@ -1,15 +1,16 @@
+import { ThemeProp } from '../types/defaults';
 import {
   borderRadius,
   borderWidth,
   fontColor,
   fontStack,
   fontWeight,
-  iconSizes,
+  iconSize,
   miscellaneous,
-  spacings,
-  statusColors,
+  spacing,
+  statusColor,
   typography,
-  zIndex,
+  zIndex
 } from './definitions';
 
 const primaryGradation = {
@@ -28,17 +29,17 @@ const secondaryGradation = {
   xdark: '#353231',
 };
 
-export const lightTheme = {
-  colors: {
+export const lightTheme: ThemeProp = {
+  color: {
     primary: {
       ...primaryGradation,
     },
     secondary: { ...secondaryGradation },
-    ...statusColors,
+    ...statusColor,
   },
   miscellaneous,
-  spacings,
-  iconSizes,
+  spacing,
+  iconSize,
   borderRadius,
   borderWidth,
   typography,
@@ -47,5 +48,5 @@ export const lightTheme = {
     stack: fontStack,
     weight: fontWeight,
   },
-  zIndex,
+  zIndex
 };

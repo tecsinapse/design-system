@@ -1,19 +1,21 @@
 import {
   BorderRadius,
   BorderWidth,
+  Color,
   FontColor,
   FontStack,
   FontWeight,
-  IconSizes,
+  IconSize,
   Miscellaneous,
-  Spacings,
-  ZIndex,
+  Spacing,
+  TypographyVariation,
+  ZIndex
 } from '../types/defaults';
 
 export const white = '#fff';
 export const black = '#000';
 
-export const statusColors = {
+export const statusColor = {
   error: {
     xlight: '#fdf3f2',
     light: '#ee9891',
@@ -57,7 +59,7 @@ export const miscellaneous: Miscellaneous = {
   bodyColor: '#282625',
 };
 
-export const spacings: Spacings = {
+export const spacing: Spacing = {
   nano: '2px',
   micro: '4px',
   mili: '8px',
@@ -70,7 +72,7 @@ export const spacings: Spacings = {
   peta: '64px',
 };
 
-export const iconSizes: IconSizes = {
+export const iconSize: IconSize = {
   centi: '1rem', // 16px
   deca: '1.5rem', // 24px
   kilo: '2rem', // 32px
@@ -89,7 +91,12 @@ export const borderWidth: BorderWidth = {
   nano: '2px',
 };
 
-export const typography = {
+export const typography: TypographyVariation = {
+  // TODO: H6 wasn't defined! It's the same of H5
+  h6: {
+    fontSize: '1rem', // 16px
+    lineHeight: '1.5rem', // 24px
+  },
   h5: {
     fontSize: '1rem', // 16px
     lineHeight: '1.5rem', // 24px

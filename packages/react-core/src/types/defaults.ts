@@ -1,18 +1,24 @@
-export type ColorType =
-  | 'primary'
-  | 'secondary'
-  | 'error'
-  | 'success'
-  | 'info'
-  | 'warning';
 
-export type VariantType = 'filled' | 'outlined' | 'text';
+export type Color = {
+  primary: ColorGradation;
+  secondary: ColorGradation;
+  error: ColorGradation;
+  success: ColorGradation;
+  info: ColorGradation;
+  warning: ColorGradation;
+}
 
-export type ColorScale = 'xlight' | 'light' | 'medium' | 'dark' | 'xdark';
-
-export type FontColorScale = 'light' | 'medium' | 'dark' | 'orange';
-
-export type BorderRadiusType = 'nano' | 'micro' | 'mili' | 'circle' | 'pill';
+export type TypographyVariation = {
+  h1: Typography;
+  h2: Typography;
+  h3: Typography;
+  h4: Typography;
+  h5: Typography;
+  h6: Typography;
+  base: Typography;
+  sub: Typography;
+  label: Typography;
+};
 
 export type Miscellaneous = {
   shadow: string;
@@ -21,7 +27,7 @@ export type Miscellaneous = {
   bodyColor: string;
 };
 
-export type Spacings = {
+export type Spacing = {
   nano: string;
   micro: string;
   mili: string;
@@ -34,7 +40,7 @@ export type Spacings = {
   peta: string;
 };
 
-export type IconSizes = {
+export type IconSize = {
   centi: string;
   deca: string;
   kilo: string;
@@ -57,16 +63,6 @@ export type Typography = {
   lineHeight: string;
   fontSize: string;
 };
-export type TypographyTypes =
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'h5'
-  | 'h6'
-  | 'base'
-  | 'sub'
-  | 'label';
 
 export type ColorGradation = {
   xlight: string;
@@ -80,6 +76,7 @@ export type FontStack = {
   default: string;
   mono: string;
 };
+
 export type FontColor = {
   light: string;
   medium: string;
@@ -107,32 +104,14 @@ export type FontWeight = {
   black: string;
 };
 
-export type FontWeightType = 'regular' | 'bold' | 'black';
-
 export type ThemeProp = {
-  colors: {
-    primary: ColorGradation;
-    secondary: ColorGradation;
-    error: ColorGradation;
-    success: ColorGradation;
-    info: ColorGradation;
-    warning: ColorGradation;
-  };
+  color: Color;
   miscellaneous: Miscellaneous;
-  spacings: Spacings;
-  iconSizes: IconSizes;
+  spacing: Spacing;
+  iconSize: IconSize;
   borderRadius: BorderRadius;
   borderWidth: BorderWidth;
-  typography: {
-    h1: Typography;
-    h2: Typography;
-    h3: Typography;
-    h4: Typography;
-    h5: Typography;
-    h6: Typography;
-    base: Typography;
-    sub: Typography;
-  };
+  typography: TypographyVariation;
   font: {
     color: FontColor;
     stack: FontStack;
@@ -148,3 +127,19 @@ export interface ThemeProviderProps {
 export interface StyleProps {
   theme: ThemeProp;
 }
+
+export type ColorType = keyof Color;
+
+export type SpacingType = keyof Spacing;
+
+export type TypographyVariationType = keyof TypographyVariation;
+
+export type FontWeightType = keyof FontWeight;
+
+export type VariantType = 'filled' | 'outlined' | 'text';
+
+export type ColorGradationType = keyof ColorGradation
+
+export type FontColorType = keyof FontColor
+
+export type BorderRadiusType = keyof BorderRadius

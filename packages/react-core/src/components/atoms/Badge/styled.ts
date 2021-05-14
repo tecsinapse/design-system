@@ -11,9 +11,9 @@ const baseStyle = ({
 }: StyleProps & BadgeProps) => {
   return css`
     border-radius: ${theme.borderRadius[variant]};
-    background-color: ${theme.colors[color][tone]};
+    background-color: ${theme.color[color][tone]};
     align-items: center;
-    padding: ${theme.spacings.micro};
+    padding: ${theme.spacing.micro};
     display: inline-block;
   `;
 };

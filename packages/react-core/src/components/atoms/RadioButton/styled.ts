@@ -16,8 +16,8 @@ export const ViewRadioStyled = styled(View)<Partial<StyleProps>>`
   height: 20px;
   width: 20px;
   border-radius: ${({ theme }) => theme.borderRadius.circle};
-  margin: ${({ theme }) => theme.spacings.mili};
-  border-color: ${({ theme }) => theme.colors.primary.medium};
+  margin: ${({ theme }) => theme.spacing.mili};
+  border-color: ${({ theme }) => theme.color.primary.medium};
   border-width: 2px;
 `;
 
@@ -35,5 +35,5 @@ export const RadioChecked = styled(View)<Partial<StyleProps>>`
   height: 10px;
   width: 10px;
   border-radius: ${({ theme }) => theme.borderRadius.circle};
-  background-color: ${({ theme }) => theme.colors.primary.medium};
+  background-color: ${({ theme }) => theme.color.primary.medium};
 `;
