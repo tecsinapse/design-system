@@ -57,7 +57,6 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
-      - run: ls ./sbdocs/
           
       - name: Build storybook
         run: yarn build:storybook
