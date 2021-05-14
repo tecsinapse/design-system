@@ -1,36 +1,33 @@
 import React, { useState } from 'react';
 import { RadioButtonProps, default as RadioButton } from './RadioButton';
+import { Text } from '../Text/index';
 import { Story } from '@storybook/react';
+import styled from '@emotion/native';
 
 export default {
-  title: 'RadioButton',
+  title: 'Components/RadioButton',
   component: RadioButton,
 };
 
-const Template: Story<RadioButtonProps> = args => {
-  const [selected, setSelected] = useState(1);
+const Template: Story<RadioButtonProps> = ({ labelPositon }) => {
+  const [checked, setChecked] = useState(false);
   return (
     <RadioButton
-      orientation={args.orientation}
-      options={args.options}
-      selected={selected}
-      onChangeSelect={(opt, i) => {
-        setSelected(i);
-      }}
-    />
+      checked={checked}
+      onChange={setChecked}
+      labelPositon={labelPositon}
+    >
+      <TextStyled>Radio Button</TextStyled>
+    </RadioButton>
   );
 };
 
 export const Base = Template.bind({});
 
 Base.args = {
-  options: [
-    'Option 1',
-    'Option 2',
-    'Option 3',
-    'Option 4',
-    'Option 5',
-    'Option 6',
-  ],
-  orientation: 'vertical',
+  labelPositon: 'right',
 };
+
+const TextStyled = styled(Text)`
+  padding-top: 10px;
+`;

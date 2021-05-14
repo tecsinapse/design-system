@@ -32,9 +32,11 @@ const Input: FC<InputProps> = ({
   focused,
   onBlur,
   style,
+  ...rest
 }): JSX.Element => {
   return (
     <StyledInput
+      {...rest}
       onChangeText={onChange}
       value={value}
       placeholder={placeholder}

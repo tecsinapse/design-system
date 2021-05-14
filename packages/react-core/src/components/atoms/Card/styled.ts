@@ -8,6 +8,6 @@ export const CardStyle = styled(Paper)<CardProps & Partial<StyleProps>>`
   max-width: 90vw;
   max-height: 90vh;
   margin-bottom: 1rem;
-  padding-top: ${({ theme }) => theme.spacings.centi};
-  padding-left: ${({ theme }) => theme.spacings.deca};
+  padding-top: ${({ theme }) => theme.spacing.centi};
+  padding-left: ${({ theme }) => theme.spacing.deca};
 `;

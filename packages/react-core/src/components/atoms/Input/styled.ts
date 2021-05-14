@@ -4,7 +4,7 @@ import { InputProps, StyleProps } from '@tecsinapse/react-core';
 
 const baseStyles = ({ theme }) => css`
   padding: 10px;
-  border-color: ${theme.colors.primary.medium};
+  border-color: ${theme.color.primary.medium};
   border-radius: 4px;
   border-width: 1px;
 `;
@@ -22,7 +22,7 @@ const webStyles = ({ theme }: StyleProps) =>
     ${baseStyles({ theme })}
     &:focus {
       outline-width: 2px;
-      outline-color: ${theme.colors.primary.medium};
+      outline-color: ${theme.color.primary.medium};
     }
   `;
 

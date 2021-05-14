@@ -3,14 +3,20 @@ import { Story } from '@storybook/react';
 import { Text, TextProps } from './index';
 
 export default {
-  title: 'Text',
+  title: 'Components/Text',
   component: Text,
 };
 
-const Template: Story<TextProps> = args => <Text>{args.children}</Text>;
+const Template: Story<TextProps> = ({ color, fontWeight, typography }) => (
+  <Text color={color} fontWeight={fontWeight} typography={typography}>
+    Text
+  </Text>
+);
 
 export const Base = Template.bind({});
 
 Base.args = {
-  children: 'Text',
+  color: 'dark',
+  fontWeight: 'regular',
+  typography: 'h3',
 };

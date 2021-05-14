@@ -9,7 +9,7 @@ import { Footer } from './Footer/index';
 import { View } from 'react-native';
 
 export default {
-  title: 'Card',
+  title: 'Components/Card',
   component: Card,
 };
 

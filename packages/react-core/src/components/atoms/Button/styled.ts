@@ -3,8 +3,8 @@ import { TouchableHighlight } from 'react-native';
 import { ButtonProps } from './Button';
 import { StyleProps } from '../../../types/defaults';
 
-const baseStyles = ({ theme }) => css`
-  padding: ${theme.spacings.mili};
+const baseStyles = ({ theme }: StyleProps) => css`
+  padding: ${theme.spacing.mili};
   border-radius: ${theme.borderRadius.micro};
 `;
 
@@ -23,7 +23,7 @@ const outlineVariant = ({
 }: StyleProps & ButtonProps) =>
   variant === 'outlined' &&
   css`
-    border-color: ${theme.colors[color][tone]};
+    border-color: ${theme.color[color][tone]};
     border-width: ${theme.borderWidth.pico};
     ${baseStyles({ theme })}
   `;
@@ -36,7 +36,7 @@ const filledVariant = ({
 }: StyleProps & ButtonProps) =>
   variant === 'filled' &&
   css`
-    background-color: ${theme.colors[color][tone]};
+    background-color: ${theme.color[color][tone]};
     ${baseStyles({ theme })}
   `;
 

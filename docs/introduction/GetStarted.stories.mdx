@@ -7,15 +7,15 @@ Below contains instructions on how to use the design-system in web and native ap
 
 ## Install
 
-`yarn add @design-system/react-core`  Contains components in common between web and native. <br/>
-`yarn add @design-system/react-native-kit` Contains web-specific components. <br/>
-`yarn add @design-system/react-web-kit` Contains components specific to native applications.
+`yarn add @tecsinapse/react-core`  Contains components in common between web and native. <br/>
+`yarn add @tecsinapse/react-native-kit` Contains components specific to native applications. <br/>
+`yarn add @tecsinapse/react-web-kit` Contains web-specific components.
 
 ### **Use**
 
 Import components you want into your UI
 
-`import { ThemeProvider, Button, lightTheme } from ‘@design-system/react-core’;`
+`import { ThemeProvider, Button, lightTheme } from ‘@tecsinapse/react-core’;`
 
 and use them like so
 
@@ -23,10 +23,8 @@ and use them like so
 
 const App = () => (
 
-  <ThemeProvider theme="ligthTheme">
-
+  <ThemeProvider theme={lightTheme}>
     <Button onClick={() => console.log('Button clicked')}>Button</Button>
-
   </ThemeProvider>
 
 );

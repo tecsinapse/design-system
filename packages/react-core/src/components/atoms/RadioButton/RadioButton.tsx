@@ -1,44 +1,46 @@
 import React, { FC } from 'react';
 import {
-  TextStyle,
-  ButtonStyle,
-  InnerCircle,
-  OutlineCircle,
-  ViewOrientation,
+  ButtonContainerStyled,
+  RadioContainer,
+  ViewContainerStyled,
+  ViewRadioStyled,
+  RadioChecked,
 } from './styled';
-import { StyleProp, ViewProps } from 'react-native';
 
 export interface RadioButtonProps {
-  options?: string[];
-  onChangeSelect: (opt: string, i: number) => void;
-  selected?: number;
+  onChange: (checked: boolean) => void;
+  checked: boolean;
+  labelPositon?: 'left' | 'right';
 }
 
-export interface OrientationProps {
-  orientation?: 'vertical' | 'horizontal';
-  style?: StyleProp<ViewProps>;
-}
-
-const RadioButton: FC<RadioButtonProps & OrientationProps> = ({
-  options = [],
-  onChangeSelect,
-  selected,
-  orientation = 'vertical',
-  style,
+const RadioButton: FC<RadioButtonProps> = ({
+  onChange,
+  checked,
+  children,
+  labelPositon = 'right',
 }): JSX.Element => {
+  const handleChange = () => {
+    onChange(true);
+  };
+
   return (
-    <ViewOrientation orientation={orientation} style={style}>
-      {options.map((option, index) => (
-        <ButtonStyle
-          key={index}
-          onPress={() => onChangeSelect(option, index)}
-          accessibilityRole="radio"
-        >
-          <OutlineCircle>{selected === index && <InnerCircle />}</OutlineCircle>
-          <TextStyle>{option}</TextStyle>
-        </ButtonStyle>
-      ))}
-    </ViewOrientation>
+    <ViewContainerStyled>
+      {labelPositon === 'left' && children}
+      <ButtonContainerStyled
+        onPress={() => handleChange()}
+        accessibilityRole="radio"
+        accessibilityLiveRegion="polite"
+      >
+        <ViewRadioStyled>
+          {checked ? (
+            <RadioContainer>
+              <RadioChecked />
+            </RadioContainer>
+          ) : null}
+        </ViewRadioStyled>
+      </ButtonContainerStyled>
+      {labelPositon === 'right' && children}
+    </ViewContainerStyled>
   );
 };
 

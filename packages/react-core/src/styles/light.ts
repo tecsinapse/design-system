@@ -1,22 +1,23 @@
+import { ThemeProp } from '../types/defaults';
 import {
-  black,
   borderRadius,
   borderWidth,
+  fontColor,
   fontStack,
   fontWeight,
-  iconSizes,
+  iconSize,
   miscellaneous,
-  spacings,
+  spacing,
+  statusColor,
   typography,
-  white,
-  zIndex,
+  zIndex
 } from './definitions';
 
 const primaryGradation = {
-  xlight: '#fef5e6',
-  light: '#fbc26a',
+  xlight: '#fef9f0',
+  light: '#fccb83',
   medium: '#f89907',
-  dark: '#c77a05',
+  dark: '#ae6b05',
   xdark: '#633d03',
 };
 
@@ -25,40 +26,27 @@ const secondaryGradation = {
   light: '#c2bfbc',
   medium: '#85807a',
   dark: '#5d5955',
-  xdark: '#282625',
+  xdark: '#353231',
 };
 
-export const lightTheme = {
-  colors: {
+export const lightTheme: ThemeProp = {
+  color: {
     primary: {
       ...primaryGradation,
     },
     secondary: { ...secondaryGradation },
-    error: {
-      main: '#e25043',
-      contrastText: black,
-    },
-    warning: {
-      main: '#ffc700',
-      contrastText: '#282625',
-    },
-    success: {
-      main: '#2db783',
-      contrastText: white,
-    },
-    info: { main: '#2a9ef6', contrastText: white },
-    text: {
-      main: '#282625',
-      contrast: '#fff',
-    },
+    ...statusColor,
   },
   miscellaneous,
-  spacings,
-  iconSizes,
+  spacing,
+  iconSize,
   borderRadius,
   borderWidth,
   typography,
-  fontStack,
-  fontWeight,
-  zIndex,
+  font: {
+    color: fontColor,
+    stack: fontStack,
+    weight: fontWeight,
+  },
+  zIndex
 };

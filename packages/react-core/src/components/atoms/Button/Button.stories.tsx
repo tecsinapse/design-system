@@ -5,7 +5,7 @@ import Text from '../Text/Text';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Button',
+  title: 'Components/Button',
   component: Button,
 };
 
@@ -16,7 +16,7 @@ interface ButtonPropsExtended extends ButtonProps {
 const Template: Story<ButtonPropsExtended> = args => (
   <div style={{ width: 200 }}>
     <Button {...args}>
-      <Text contrast>{args.label}</Text>
+      <Text color="light">{args.label}</Text>
     </Button>
   </div>
 );

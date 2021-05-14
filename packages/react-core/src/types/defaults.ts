@@ -1,20 +1,24 @@
-export type ColorType =
-  | 'primary'
-  | 'secondary'
-  | 'error'
-  | 'success'
-  | 'info'
-  | 'warning';
 
-export type VariantType = 'filled' | 'outlined' | 'text';
+export type Color = {
+  primary: ColorGradation;
+  secondary: ColorGradation;
+  error: ColorGradation;
+  success: ColorGradation;
+  info: ColorGradation;
+  warning: ColorGradation;
+}
 
-export type ColorScale =
-  | 'xlight'
-  | 'light'
-  | 'medium'
-  | 'dark'
-  | 'xdark'
-  | 'main';
+export type TypographyVariation = {
+  h1: Typography;
+  h2: Typography;
+  h3: Typography;
+  h4: Typography;
+  h5: Typography;
+  h6: Typography;
+  base: Typography;
+  sub: Typography;
+  label: Typography;
+};
 
 export type Miscellaneous = {
   shadow: string;
@@ -23,7 +27,7 @@ export type Miscellaneous = {
   bodyColor: string;
 };
 
-export type Spacings = {
+export type Spacing = {
   nano: string;
   micro: string;
   mili: string;
@@ -36,7 +40,7 @@ export type Spacings = {
   peta: string;
 };
 
-export type IconSizes = {
+export type IconSize = {
   centi: string;
   deca: string;
   kilo: string;
@@ -73,6 +77,13 @@ export type FontStack = {
   mono: string;
 };
 
+export type FontColor = {
+  light: string;
+  medium: string;
+  dark: string; // default
+  orange: string;
+};
+
 export type ZIndex = {
   default: number;
   absolute: number;
@@ -94,31 +105,41 @@ export type FontWeight = {
 };
 
 export type ThemeProp = {
-  colors: {
-    primary: ColorGradation;
-    secondary: ColorGradation;
-    error: { main: string; contrastText: string };
-    success: { main: string; contrastText: string };
-    info: { main: string; contrastText: string };
-    warning: { main: string; contrastText: string };
-    text: { main: string; contrast: string };
-  };
+  color: Color;
   miscellaneous: Miscellaneous;
-  spacings: Spacings;
-  iconSizes: IconSizes;
+  spacing: Spacing;
+  iconSize: IconSize;
   borderRadius: BorderRadius;
   borderWidth: BorderWidth;
-  typography: Typography;
-  fontStack: FontStack;
-  fontWeight: FontWeight;
+  typography: TypographyVariation;
+  font: {
+    color: FontColor;
+    stack: FontStack;
+    weight: FontWeight;
+  };
   zIndex: ZIndex;
 };
 
 export interface ThemeProviderProps {
-  children: JSX.Element;
   theme: ThemeProp;
 }
 
 export interface StyleProps {
   theme: ThemeProp;
 }
+
+export type ColorType = keyof Color;
+
+export type SpacingType = keyof Spacing;
+
+export type TypographyVariationType = keyof TypographyVariation;
+
+export type FontWeightType = keyof FontWeight;
+
+export type VariantType = 'filled' | 'outlined' | 'text';
+
+export type ColorGradationType = keyof ColorGradation
+
+export type FontColorType = keyof FontColor
+
+export type BorderRadiusType = keyof BorderRadius
