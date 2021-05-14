@@ -57,6 +57,7 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
+      - run: ls ./sbdocs/
           
       - name: Deploy docs
         uses: peaceiris/actions-gh-pages@v3
