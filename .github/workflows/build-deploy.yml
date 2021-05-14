@@ -58,6 +58,9 @@ jobs:
           path: ./*
           key: ${{ github.sha }}
           
+      - name: Build storybook
+        run: yarn build:storybook
+          
       - name: Deploy docs
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -65,5 +68,5 @@ jobs:
           publish_dir: ./sbdocs
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Deploy to GitHub pages'
+          commit_message: 'Deploy to GitHub pages:'
           
