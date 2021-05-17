@@ -2,27 +2,31 @@ import styled, { css } from '@emotion/native';
 import { TextInput, Platform } from 'react-native';
 import { InputProps, StyleProps } from '@tecsinapse/react-core';
 
-const baseStyles = ({ theme }) => css`
-  padding: 10px;
-  border-color: ${theme.color.primary.medium};
-  border-radius: 4px;
-  border-width: 1px;
+const baseStyles = ({ theme, color = 'primary' }) => css`
+  padding: ${theme.spacing.mili};
+  border-color: ${theme.color[color].medium};
+  border-radius: ${theme.borderRadius.micro};
+  border-width: ${theme.borderWidth.pico};
 `;
 
-const focusedStyles = ({ focused, theme }: InputProps & Partial<StyleProps>) =>
+const focusedStyles = ({
+  focused,
+  theme,
+  color = 'primary',
+}: InputProps & StyleProps) =>
   focused &&
   css`
-    ${baseStyles({ theme })}
-    border-width: 2px;
+    ${baseStyles({ theme, color })}
+    border-width: ${theme.borderWidth.nano};
   `;
 
-const webStyles = ({ theme }: StyleProps) =>
+const webStyles = ({ theme, color = 'primary' }: StyleProps & InputProps) =>
   Platform.OS === 'web' &&
   css`
-    ${baseStyles({ theme })}
+    ${baseStyles({ theme, color })}
     &:focus {
-      outline-width: 2px;
-      outline-color: ${theme.color.primary.medium};
+      outline-width: ${theme?.borderWidth.nano};
+      outline-color: ${theme.color[color].medium};
     }
   `;
 

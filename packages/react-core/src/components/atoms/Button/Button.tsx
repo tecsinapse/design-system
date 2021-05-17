@@ -1,15 +1,19 @@
 import React, { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { StyledButton } from './styled';
-import { ColorGradationType, ColorType, VariantType } from '@tecsinapse/react-core';
+import {
+  ColorGradationType,
+  ColorType,
+  VariantType,
+} from '@tecsinapse/react-core';
 
 export interface ButtonProps {
-  children: JSX.Element;
   onClick?: () => void;
   style?: StyleProp<ViewStyle>;
   color?: ColorType;
   variant?: VariantType;
   tone?: ColorGradationType;
+  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({

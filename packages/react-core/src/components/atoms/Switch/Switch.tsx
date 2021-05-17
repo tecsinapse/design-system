@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
-import { Text } from '@tecsinapse/react-core';
 import { ViewStyle, SwitchStyle } from './styled';
-import { StyleProp, ViewProps } from 'react-native';
+import { StyleProp, ViewStyle as ViewStyleRN } from 'react-native';
 
 export interface SwitchProps {
   onChange: (active: boolean) => void;
   active: boolean;
-  style?: StyleProp<ViewProps>;
+  style?: StyleProp<ViewStyleRN>;
 }
 
 const Switch: FC<SwitchProps> = ({ onChange, active, style }): JSX.Element => {

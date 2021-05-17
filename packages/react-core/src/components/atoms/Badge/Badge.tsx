@@ -8,7 +8,6 @@ import {
 } from '@tecsinapse/react-core';
 
 export interface BadgeProps {
-  children?: JSX.Element;
   color: ColorType;
   tone?: ColorGradationType;
   variant?: BorderRadiusType;

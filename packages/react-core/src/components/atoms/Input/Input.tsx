@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { StyledInput } from './styled';
 import { StyleProp, TextStyle } from 'react-native';
+import { ColorType } from '@tecsinapse/react-core';
 
 export interface InputProps {
   onChange?: (value: string) => void;
@@ -19,6 +20,7 @@ export interface InputProps {
   onFocus?: () => void;
   onBlur?: () => void;
   style?: StyleProp<TextStyle>;
+  color?: ColorType;
 }
 
 const Input: FC<InputProps> = ({
@@ -32,6 +34,7 @@ const Input: FC<InputProps> = ({
   focused,
   onBlur,
   style,
+  color = 'primary',
   ...rest
 }): JSX.Element => {
   return (
@@ -46,6 +49,7 @@ const Input: FC<InputProps> = ({
       onFocus={onFocus}
       onBlur={onBlur}
       focused={focused}
+      color={color}
       style={style}
     />
   );

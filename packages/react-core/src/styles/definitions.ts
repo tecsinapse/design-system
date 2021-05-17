@@ -9,7 +9,7 @@ import {
   Miscellaneous,
   Spacing,
   TypographyVariation,
-  ZIndex
+  ZIndex,
 } from '../types/defaults';
 
 export const white = '#fff';
@@ -53,8 +53,8 @@ export const hex2rgba: (hex, alpha?: number) => string = (hex, alpha = 1) => {
 };
 
 export const miscellaneous: Miscellaneous = {
-  shadow: 'rgba(133, 128, 122, 0.04)',
-  overlay: 'rgba(40, 38, 37, 0.5)',
+  shadow: '#85807a', // rgba(133, 128, 122, 0.04)
+  overlay: '#282625', // rgba(40, 38, 37, 0.5)
   bodyBg: '#f8f7f7',
   bodyColor: '#282625',
 };

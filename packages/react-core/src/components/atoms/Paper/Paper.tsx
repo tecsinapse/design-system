@@ -1,13 +1,21 @@
 import React, { FC } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
 import { PaperStyled } from './styled';
-import { StyleProp, ViewProps } from 'react-native';
 
 export interface PaperProps {
-  children?: JSX.Element;
-  style?: StyleProp<ViewProps>;
+  style?: StyleProp<ViewStyle>;
+  elevated?: boolean;
 }
-const Paper: FC<PaperProps> = ({ children, style }): JSX.Element => {
-  return <PaperStyled style={style}>{children}</PaperStyled>;
-};
+
+const Paper: FC<PaperProps> = ({
+  children,
+  style,
+  elevated,
+  ...rest
+}): JSX.Element => (
+  <PaperStyled {...rest} style={style} elevated={elevated}>
+    {children}
+  </PaperStyled>
+);
 
 export default Paper;
