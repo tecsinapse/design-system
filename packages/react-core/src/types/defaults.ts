@@ -1,4 +1,3 @@
-
 export type Color = {
   primary: ColorGradation;
   secondary: ColorGradation;
@@ -6,7 +5,7 @@ export type Color = {
   success: ColorGradation;
   info: ColorGradation;
   warning: ColorGradation;
-}
+};
 
 export type TypographyVariation = {
   h1: Typography;
@@ -137,8 +136,8 @@ export type FontWeightType = keyof FontWeight;
 
 export type VariantType = 'filled' | 'outlined' | 'text';
 
-export type ColorGradationType = keyof ColorGradation
+export type ColorGradationType = keyof ColorGradation;
 
-export type FontColorType = keyof FontColor
+export type FontColorType = keyof FontColor;
 
-export type BorderRadiusType = keyof BorderRadius
+export type BorderRadiusType = keyof BorderRadius;
