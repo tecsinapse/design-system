@@ -1,7 +1,7 @@
 import {
   BorderRadius,
   BorderWidth,
-  Color,
+
   FontColor,
   FontStack,
   FontWeight,
@@ -9,7 +9,7 @@ import {
   Miscellaneous,
   Spacing,
   TypographyVariation,
-  ZIndex,
+  ZIndex
 } from '../types/defaults';
 
 export const white = '#fff';
@@ -48,7 +48,6 @@ export const statusColor = {
 
 export const hex2rgba: (hex, alpha?: number) => string = (hex, alpha = 1) => {
   const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
-
   return `rgba(${r},${g},${b},${alpha})`;
 };
 
@@ -73,9 +72,12 @@ export const spacing: Spacing = {
 };
 
 export const iconSize: IconSize = {
-  centi: '1rem', // 16px
-  deca: '1.5rem', // 24px
-  kilo: '2rem', // 32px
+  // centi: '1rem', // 16px
+  // deca: '1.5rem', // 24px
+  // kilo: '2rem', // 32px
+  centi: '16px',
+  deca: '24px',
+  kilo: '32px'
 };
 
 export const borderRadius: BorderRadius = {
@@ -94,40 +96,58 @@ export const borderWidth: BorderWidth = {
 export const typography: TypographyVariation = {
   // TODO: H6 wasn't defined! It's the same of H5
   h6: {
-    fontSize: '1rem', // 16px
-    lineHeight: '1.5rem', // 24px
+    // fontSize: '1rem', // 16px
+    // lineHeight: '1.5rem', // 24px
+    fontSize: '16px',
+    lineHeight: '24px',
   },
   h5: {
-    fontSize: '1rem', // 16px
-    lineHeight: '1.5rem', // 24px
+    // fontSize: '1rem', // 16px
+    // lineHeight: '1.5rem', // 24px
+    fontSize: '16px',
+    lineHeight: '24px',
   },
   h4: {
-    fontSize: '1.125rem', // 18px
-    lineHeight: '1.688rem', // 27px
+    // fontSize: '1.125rem', // 18px
+    // lineHeight: '1.688rem', // 27px
+    fontSize: '18px',
+    lineHeight: '27px',
   },
   h3: {
-    fontSize: '1.25rem', // 20px
-    lineHeight: '2rem', // 32px
+    // fontSize: '1.25rem', // 20px
+    // lineHeight: '2rem', // 32px
+    fontSize: '20px',
+    lineHeight: '32px',
   },
   h2: {
-    fontSize: '1.625rem', // 26px
-    lineHeight: '2.375rem', // 38px
+    // fontSize: '1.625rem', // 26px
+    // lineHeight: '2.375rem', // 38px
+    fontSize: '26px',
+    lineHeight: '38px',
   },
   h1: {
-    fontSize: '2rem', // 32px
-    lineHeight: '2.625rem', // 42px
+    // fontSize: '2rem', // 32px
+    // lineHeight: '2.625rem', // 42px
+    fontSize: '32px',
+    lineHeight: '42px',
   },
   base: {
-    fontSize: '0.875rem', // 14px
-    lineHeight: '1.313rem', // 21px
+    // fontSize: '0.875rem', // 14px
+    // lineHeight: '1.313rem', // 21px
+    fontSize: '14px',
+    lineHeight: '21px',
   },
   sub: {
-    fontSize: '0.75rem', // 12px
-    lineHeight: '1.125rem', // 18px
+    // fontSize: '0.75rem', // 12px
+    // lineHeight: '1.125rem', // 18px
+    fontSize: '12px',
+    lineHeight: '18px',
   },
   label: {
-    fontSize: '0.625rem',
-    lineHeight: '0.75rem',
+    // fontSize: '0.625rem', ??
+    // lineHeight: '0.75rem', ??
+    fontSize: '11px',
+    lineHeight: '14px',
   },
 };
 
