@@ -4,7 +4,7 @@ import { StyleProp, TextStyle } from 'react-native';
 import {
   FontColorType,
   FontWeightType,
-  TypographyVariationType
+  TypographyVariationType,
 } from '@tecsinapse/react-core';
 
 export interface TextProps {

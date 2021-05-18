@@ -1,7 +1,6 @@
 import {
   BorderRadius,
   BorderWidth,
-  Color,
   FontColor,
   FontStack,
   FontWeight,
