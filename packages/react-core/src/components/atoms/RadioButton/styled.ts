@@ -9,13 +9,13 @@ export const ViewContainerStyled = styled(View)`
 export const ButtonContainerStyled = styled(TouchableWithoutFeedback)<
   Partial<StyleProps>
 >`
-  border-radius: ${({ theme }) => theme.borderRadius.circle};
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
 `;
 
 export const ViewRadioStyled = styled(View)<Partial<StyleProps>>`
   height: 20px;
   width: 20px;
-  border-radius: ${({ theme }) => theme.borderRadius.circle};
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
   margin: ${({ theme }) => theme.spacing.mili};
   border-color: ${({ theme }) => theme.color.primary.medium};
   border-width: 2px;
@@ -34,6 +34,6 @@ export const RadioContainer = styled(View)`
 export const RadioChecked = styled(View)<Partial<StyleProps>>`
   height: 10px;
   width: 10px;
-  border-radius: ${({ theme }) => theme.borderRadius.circle};
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
   background-color: ${({ theme }) => theme.color.primary.medium};
 `;

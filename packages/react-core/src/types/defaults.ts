@@ -50,7 +50,6 @@ export type BorderRadius = {
   nano: string;
   micro: string;
   mili: string;
-  circle: string;
   pill: string;
 };
 
