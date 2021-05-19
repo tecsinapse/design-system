@@ -1,8 +1,27 @@
-import styled from '@emotion/native';
-import { Paper } from '../Paper/index';
+import styled, { css } from '@emotion/native';
+import { Pressable } from 'react-native';
 import { CardProps, StyleProps } from '@tecsinapse/react-core';
 
-export const CardStyle = styled(Paper)<CardProps & Partial<StyleProps>>`
-  padding: ${({ theme }) => theme.spacing.mili};
-  border-radius: ${({ theme }) => theme.borderRadius.micro};
+const baseStyles = ({ theme }) => css`
+  padding: ${theme.spacing.centi};
+  border-radius: ${theme.borderRadius.micro};
 `;
+
+const elevatedStyles = ({ theme, elevated = false }) =>
+  elevated && [
+    css({
+      shadowColor: theme.miscellaneous.shadow,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.2,
+      shadowRadius: 1.4,
+      elevation: 2,
+      borderWidth: 1,
+      borderColor: theme.miscellaneous.bodyBg,
+    }),
+    baseStyles({ theme }),
+  ];
+
+export const StyledCard = styled(Pressable)<CardProps & Partial<StyleProps>>(
+  baseStyles,
+  elevatedStyles
+);

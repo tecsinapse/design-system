@@ -19,14 +19,16 @@ export const ViewRadioStyled = styled(View)<Partial<StyleProps>>`
   margin: ${({ theme }) => theme.spacing.mili};
   border-color: ${({ theme }) => theme.color.primary.medium};
   border-width: 2px;
+  cursor: pointer;
+  background-color: #fff;
 `;
 
 export const RadioContainer = styled(View)`
   position: absolute;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   align-items: center;
   justify-content: center;
 `;

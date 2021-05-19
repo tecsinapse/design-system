@@ -7,6 +7,7 @@ const baseStyles = ({ theme, color = 'primary' }) => css`
   border-color: ${theme.color[color].medium};
   border-radius: ${theme.borderRadius.micro};
   border-width: ${theme.borderWidth.pico};
+  background-color: #fff;
 `;
 
 const focusedStyles = ({
