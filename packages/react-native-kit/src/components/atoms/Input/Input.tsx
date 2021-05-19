@@ -1,4 +1,4 @@
-import { InputProps, Input as InputCore } from '@tecsinapse/react-core';
+import { Input as InputCore, InputProps } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 
 export interface InputPropsNative extends InputProps {

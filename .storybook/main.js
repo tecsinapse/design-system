@@ -1,6 +1,8 @@
 module.exports = {
   stories: [
-    '../packages/**/*.stories.@(tsx|jsx)',
+    '../packages/react-core/**/*.stories.@(tsx|jsx)',
+    '../packages/react-native-kit/**/*.stories.@(tsx|jsx)',
+    '../packages/react-web-kit/**/*.stories.@(tsx|jsx)',
     '../docs/**/*.stories.@(js|ts|tsx|mdx)',
   ],
   addons: [

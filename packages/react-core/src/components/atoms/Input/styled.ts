@@ -31,6 +31,7 @@ const webStyles = ({ theme, color = 'primary' }: StyleProps & InputProps) =>
   `;
 
 export const StyledInput = styled(TextInput)<InputProps & Partial<StyleProps>>(
+  baseStyles,
   focusedStyles,
   webStyles
 );

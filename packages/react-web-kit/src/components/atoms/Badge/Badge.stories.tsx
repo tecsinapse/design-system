@@ -1,7 +1,7 @@
-import React from 'react';
-import { Badge, BadgeProps } from './index';
 import { Story } from '@storybook/react';
-import { Text } from '../Text';
+import { BadgeProps, Text } from '@tecsinapse/react-core';
+import React from 'react';
+import { Badge } from '.';
 
 export default {
   title: 'Components/Badge',
