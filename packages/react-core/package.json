@@ -11,9 +11,8 @@
     "build:es": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
   "dependencies": {
-    "@emotion/core": "^11.0.0",
     "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.0.0"
+    "@emotion/react": "^11.4.0"
   },
   "repository": {
     "type": "git",
