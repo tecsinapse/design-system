@@ -36,7 +36,7 @@ export type Spacing = {
   giga: string;
   tera: string;
   peta: string;
-  hexa: string
+  hexa: string;
 };
 
 export type IconSize = {

@@ -2,7 +2,10 @@ import styled, { css } from '@emotion/native';
 import { InputProps, StyleProps } from '@tecsinapse/react-core';
 import { Platform, TextInput } from 'react-native';
 
-const baseStyles = ({ theme, color = 'primary' }: StyleProps & InputProps) => css`
+const baseStyles = ({
+  theme,
+  color = 'primary',
+}: StyleProps & InputProps) => css`
   background-color: ${theme.miscellaneous.surfaceColor};
   border-color: ${theme.color[color].medium};
   border-radius: ${theme.borderRadius.mili};

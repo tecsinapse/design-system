@@ -11,6 +11,6 @@ module.exports = {
     '@storybook/addon-backgrounds',
     '@storybook/addon-actions',
     '@storybook/addon-viewport',
-    '@storybook/addon-docs/',
+    '@storybook/addon-docs',
   ],
 };

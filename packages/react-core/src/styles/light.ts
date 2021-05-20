@@ -10,7 +10,7 @@ import {
   spacing,
   statusColor,
   typography,
-  zIndex
+  zIndex,
 } from './definitions';
 
 const primaryGradation = {

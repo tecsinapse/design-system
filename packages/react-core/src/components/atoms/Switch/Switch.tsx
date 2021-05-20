@@ -8,7 +8,12 @@ export interface SwitchProps {
   style?: StyleProp<ViewStyleRN>;
 }
 
-const Switch: FC<SwitchProps> = ({ onChange, active, style, children }): JSX.Element => {
+const Switch: FC<SwitchProps> = ({
+  onChange,
+  active,
+  style,
+  children,
+}): JSX.Element => {
   const handleChange = () => {
     onChange(!active);
   };
@@ -20,7 +25,7 @@ const Switch: FC<SwitchProps> = ({ onChange, active, style, children }): JSX.Ele
         value={active}
         accessibilityRole="switch"
       />
-      { children }
+      {children}
     </ViewStyle>
   );
 };
