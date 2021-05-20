@@ -11,9 +11,6 @@ import {
   ZIndex
 } from '../types/defaults';
 
-export const white = '#fff';
-export const black = '#000';
-
 export const statusColor = {
   error: {
     xlight: '#fdf3f2',
@@ -53,21 +50,22 @@ export const hex2rgba: (hex, alpha?: number) => string = (hex, alpha = 1) => {
 export const miscellaneous: Miscellaneous = {
   shadow: '#85807a', // rgba(133, 128, 122, 0.04)
   overlay: '#282625', // rgba(40, 38, 37, 0.5)
-  bodyBg: '#f8f7f7',
-  bodyColor: '#282625',
+  bodyColor: '#f8f7f7',
+  surfaceColor: '#fff', //input, group button, cards
 };
 
 export const spacing: Spacing = {
   nano: '2px',
   micro: '4px',
   mili: '8px',
-  centi: '16px',
-  deca: '24px',
-  kilo: '32px',
-  mega: '40px',
-  giga: '48px',
-  tera: '56px',
-  peta: '64px',
+  centi: '12px',
+  deca: '16px',
+  kilo: '24px',
+  mega: '32px',
+  giga: '40px',
+  tera: '48px',
+  peta: '56px',
+  hexa: '64px',
 };
 
 export const iconSize: IconSize = {
@@ -93,12 +91,12 @@ export const borderWidth: BorderWidth = {
 
 export const typography: TypographyVariation = {
   // TODO: H6 wasn't defined! It's the same of H5
-  h6: {
-    // fontSize: '1rem', // 16px
-    // lineHeight: '1.5rem', // 24px
-    fontSize: '16px',
-    lineHeight: '24px',
-  },
+  // h6: {
+  //   // fontSize: '1rem', // 16px
+  //   // lineHeight: '1.5rem', // 24px
+  //   fontSize: '16px',
+  //   lineHeight: '24px',
+  // },
   h5: {
     // fontSize: '1rem', // 16px
     // lineHeight: '1.5rem', // 24px
@@ -150,8 +148,7 @@ export const typography: TypographyVariation = {
 };
 
 export const fontStack: FontStack = {
-  default:
-    'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+  default: 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   mono: 'Consolas, monaco, monospace',
 };
 
@@ -162,7 +159,7 @@ export const fontWeight: FontWeight = {
 };
 
 export const fontColor: FontColor = {
-  light: white,
+  light: '#fff',
   medium: '#85807a',
   dark: '#353231', // default
   orange: '#f89907',

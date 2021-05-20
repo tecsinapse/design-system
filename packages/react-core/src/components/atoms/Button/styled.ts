@@ -5,13 +5,13 @@ import { StyleProps } from '../../../types/defaults';
 
 const baseStyles = ({ theme }: StyleProps) => css`
   padding: ${theme.spacing.mili};
-  border-radius: ${theme.borderRadius.micro};
+  border-radius: ${theme.borderRadius.mili};
 `;
 
 const textVariant = ({ variant, theme }: StyleProps & ButtonProps) =>
   variant === 'text' &&
   css`
-    background-color: unset;
+    background-color: transparent;
     ${baseStyles({ theme })}
   `;
 

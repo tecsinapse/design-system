@@ -1,5 +1,7 @@
 export { Button, ButtonProps } from './components/atoms/Button';
 export { Card, CardProps } from './components/atoms/Card';
+export { Header, HeaderProps } from './components/atoms/Card/Header';
+export { Footer, FooterProps } from './components/atoms/Card/Footer';
 export { Switch, SwitchProps } from './components/atoms/Switch';
 export { Text, TextProps } from './components/atoms/Text';
 export { RadioButton, RadioButtonProps } from './components/atoms/RadioButton';

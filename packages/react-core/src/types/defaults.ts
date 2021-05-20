@@ -13,7 +13,6 @@ export type TypographyVariation = {
   h3: Typography;
   h4: Typography;
   h5: Typography;
-  h6: Typography;
   base: Typography;
   sub: Typography;
   label: Typography;
@@ -22,8 +21,8 @@ export type TypographyVariation = {
 export type Miscellaneous = {
   shadow: string;
   overlay: string;
-  bodyBg: string;
   bodyColor: string;
+  surfaceColor: string;
 };
 
 export type Spacing = {
@@ -37,6 +36,7 @@ export type Spacing = {
   giga: string;
   tera: string;
   peta: string;
+  hexa: string
 };
 
 export type IconSize = {
