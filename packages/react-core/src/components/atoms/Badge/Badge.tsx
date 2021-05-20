@@ -6,7 +6,7 @@ import {
   ColorGradationType,
   ColorType,
 } from '@tecsinapse/react-core';
-
+// rename to Tag
 export interface BadgeProps {
   color: ColorType;
   tone?: ColorGradationType;

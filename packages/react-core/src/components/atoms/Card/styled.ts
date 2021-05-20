@@ -15,9 +15,7 @@ const elevatedStyles = ({ theme, elevated = false }) =>
       shadowOffset: { width: 0, height: 1 },
       shadowOpacity: 0.2,
       shadowRadius: 1.4,
-      elevation: 2,
-      borderWidth: 1,
-      borderColor: theme.miscellaneous.bodyBg,
+      elevation: 2
     }),
     baseStyles({ theme }),
   ];

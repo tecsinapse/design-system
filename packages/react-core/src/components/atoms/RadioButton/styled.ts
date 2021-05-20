@@ -19,7 +19,7 @@ export const ViewRadioStyled = styled(View)<Partial<StyleProps>>`
   margin: ${({ theme }) => theme.spacing.mili};
   border-color: ${({ theme }) => theme.color.primary.medium};
   border-width: 2px;
-  cursor: pointer;
+  /* cursor: pointer; */ /* Deve ser apenas para WEB */
   background-color: #fff;
 `;
 
