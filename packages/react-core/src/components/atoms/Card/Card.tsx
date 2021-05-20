@@ -1,16 +1,36 @@
 import React, { FC } from 'react';
-import { CardStyle } from './styled';
-import { StyleProp, ViewStyle } from 'react-native';
-import { PaperProps } from '@tecsinapse/react-core';
+import {
+  GestureResponderEvent,
+  PressableStateCallbackType,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import { StyledCard } from './styled';
 
-export interface CardProps extends PaperProps {
-  style?: StyleProp<ViewStyle>;
+export interface CardProps {
+  style?:
+    | StyleProp<ViewStyle>
+    | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
+  elevated?: boolean;
+  onClick?: null | ((event: GestureResponderEvent) => void);
 }
 
-const Card: FC<CardProps> = ({ children, style, ...rest }): JSX.Element => (
-  <CardStyle {...rest} style={style}>
+const Card: FC<CardProps> = ({
+  children,
+  style,
+  elevated = false,
+  onClick,
+  ...rest
+}): JSX.Element => (
+  <StyledCard
+    {...rest}
+    elevated={elevated}
+    onPress={onClick}
+    disabled={!onClick}
+    style={style}
+  >
     {children}
-  </CardStyle>
+  </StyledCard>
 );
 
 export default Card;

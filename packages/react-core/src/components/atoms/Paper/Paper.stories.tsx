@@ -2,15 +2,15 @@ import styled from '@emotion/native';
 import { Story } from '@storybook/react';
 import React from 'react';
 import { StyleProps } from '../../../../dist';
-import { Paper } from './index';
+import { Paper, PaperProps } from './index';
 
 export default {
   title: 'Components/Paper',
   component: Paper,
 };
 
-const Template: Story = () => {
-  return <StyledPaper/>;
+const Template: Story<PaperProps> = args => {
+  return <StyledPaper {...args} />;
 };
 
 export const Base = Template.bind({});
@@ -21,3 +21,7 @@ const StyledPaper = styled(Paper)<Partial<StyleProps>>`
   width: 250px;
   height: 100px;
 `
+
+Base.args = {
+  elevated: true,
+};
