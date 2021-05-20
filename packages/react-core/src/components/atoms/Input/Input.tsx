@@ -1,10 +1,9 @@
-import React, { FC } from 'react';
-import { StyledInput } from './styled';
-import { StyleProp, TextStyle } from 'react-native';
 import { ColorType } from '@tecsinapse/react-core';
+import React, { FC } from 'react';
+import { StyleProp, TextStyle } from 'react-native';
+import { StyledInput } from './styled';
 
 export interface InputProps {
-  onChange?: (value: string) => void;
   value?: string;
   placeholder?: string;
   type?:
@@ -16,7 +15,7 @@ export interface InputProps {
     | 'phone-pad';
   defaultValue?: string;
   disabled?: boolean;
-  focused?: boolean;
+  onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
   style?: StyleProp<TextStyle>;
@@ -31,12 +30,25 @@ const Input: FC<InputProps> = ({
   defaultValue,
   disabled = false,
   onFocus,
-  focused,
   onBlur,
   style,
-  color = 'primary',
   ...rest
 }): JSX.Element => {
+
+  const [ focused, setFocused ] = React.useState<boolean>(false);
+
+  const handleFocus = () => {
+    console.log("focus")
+    setFocused(true);
+    onFocus && onFocus()
+  }
+
+  const handleBlur = () => {
+    console.log("blur")
+    setFocused(false);
+    onBlur && onBlur()
+  }
+
   return (
     <StyledInput
       {...rest}
@@ -46,10 +58,9 @@ const Input: FC<InputProps> = ({
       keyboardType={type}
       defaultValue={defaultValue}
       editable={!disabled}
-      onFocus={onFocus}
-      onBlur={onBlur}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       focused={focused}
-      color={color}
       style={style}
     />
   );

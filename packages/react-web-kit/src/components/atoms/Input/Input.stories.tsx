@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Story } from '@storybook/react';
-import Input, { InputProps } from './Input';
 import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react';
+import { InputProps } from '@tecsinapse/react-core';
+import React, { useState } from 'react';
+import Input from './Input';
 
 export default {
   title: 'Components/Input',
