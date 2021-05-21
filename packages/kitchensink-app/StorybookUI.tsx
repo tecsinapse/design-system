@@ -27,7 +27,6 @@ export const StorybookUI: FC = () => {
 const Header = styled.View<Partial<StyleProps>>`
     background-color: ${({ theme }) =>theme.color.primary.medium};
     padding: ${({ theme }) =>theme.spacing.centi};
-    margin-bottom: ${({ theme }) =>theme.spacing.mili};
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

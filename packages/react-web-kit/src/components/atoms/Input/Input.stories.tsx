@@ -22,7 +22,9 @@ const Template: Story<InputWebProps> = args => {
   return (
     <Input
       {...args}
+      color="error"
       label="Login"
+      labelColor="orange"
       value={value}
       onChange={onChange}
       placeholder={args.placeholder}
