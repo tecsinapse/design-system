@@ -1,9 +1,9 @@
-import { ColorType } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
-import { StyledInput } from './styled';
+import { StyledInputElement } from '../styled';
 
-export interface InputProps {
+export interface InputElementProps {
+  style?: StyleProp<TextStyle>
   value?: string;
   placeholder?: string;
   type?:
@@ -18,39 +18,20 @@ export interface InputProps {
   onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
-  style?: StyleProp<TextStyle>;
-  color?: ColorType;
 }
 
-const Input: FC<InputProps> = ({
+const InputElement: FC<InputElementProps> = ({
   onChange,
   placeholder,
   type = 'default',
   value,
   defaultValue,
   disabled = false,
-  onFocus,
-  onBlur,
-  style,
   ...rest
 }): JSX.Element => {
 
-  const [ focused, setFocused ] = React.useState<boolean>(false);
-
-  const handleFocus = () => {
-    console.log("focus")
-    setFocused(true);
-    onFocus && onFocus()
-  }
-
-  const handleBlur = () => {
-    console.log("blur")
-    setFocused(false);
-    onBlur && onBlur()
-  }
-
   return (
-    <StyledInput
+    <StyledInputElement
       {...rest}
       onChangeText={onChange}
       value={value}
@@ -58,12 +39,8 @@ const Input: FC<InputProps> = ({
       keyboardType={type}
       defaultValue={defaultValue}
       editable={!disabled}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      focused={focused}
-      style={style}
     />
   );
 };
 
-export default Input;
+export default InputElement;

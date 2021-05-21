@@ -1,14 +1,16 @@
-import styled from '@emotion/native';
 import { storiesOf } from '@storybook/react-native';
-import { Input, StyleProps } from '@tecsinapse/react-web-kit/src';
+import { Input } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Input', module)
   .addDecorator((getStory) => <ArtBoard>{getStory()}</ArtBoard>)
-  .add('Input', () => <StyledInput />)
+  .add('Input', () => {
 
-
-const StyledInput = styled(Input)<Partial<StyleProps>>`
-  /* background-color: red; */
-`
+    return (
+      <Input 
+        label="Say something"
+        placeholder="Nop!"
+      />
+    )
+  })

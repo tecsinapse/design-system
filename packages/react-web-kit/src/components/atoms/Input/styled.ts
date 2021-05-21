@@ -1,9 +1,8 @@
-import styled from "@emotion/styled";
-import { Input } from "@tecsinapse/react-core";
+import styled from "@emotion/native";
+import { InputElement, StyleProps } from "@tecsinapse/react-core";
 
-export const StyledInput = styled(Input)`
-    &:focus {
-      outline-width: ${({ theme }) => theme.borderWidth.nano};
-      outline-color: ${({ theme, color = "secondary" }) => theme.color[color].medium};
-    }
+export const StyledWebTextInput = styled(InputElement)<Partial<StyleProps>>`
+  &:focus-visible {
+    outline-width: 0;
+  }
 `

@@ -1,10 +1,10 @@
 import { InputContainer, InputContainerProps, InputElementProps, useInputFocus } from "@tecsinapse/react-core";
 import React, { FC } from "react";
-import { StyledWebTextInput } from "./styled";
+import { StyledNativeInput } from "./styled";
 
-export interface InputWebProps extends Omit<InputElementProps, "style">, InputContainerProps {}
+export interface InputNativebProps extends Omit<InputElementProps, "style">, InputContainerProps {}
 
-export const Input: FC<InputWebProps> = ({
+export const Input: FC<InputNativebProps> = ({
     label,
     labelColor,
     labelTypografy,
@@ -37,7 +37,7 @@ export const Input: FC<InputWebProps> = ({
             style={style}
             color={color}
             focused={focused}>
-            <StyledWebTextInput 
+            <StyledNativeInput 
                 {...rest} 
                 onFocus={handleFocus}
                 onBlur={handleBlur}
