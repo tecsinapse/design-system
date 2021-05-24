@@ -11,11 +11,11 @@ export const StorybookUI: FC = () => {
                 <Text 
                     typography="h4"
                     fontWeight="bold"
-                    color="light">
+                    colorVariant="light">
                     TecSinapse KitchenSink
                 </Text>
                 <Text
-                    color="light">
+                    colorVariant="light">
                     version {pack.version}
                 </Text>
             </Header>

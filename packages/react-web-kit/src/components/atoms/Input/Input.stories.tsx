@@ -22,7 +22,6 @@ const Template: Story<InputWebProps> = args => {
   return (
     <Input
       {...args}
-      color="error"
       label="Login"
       value={value}
       onChange={onChange}
@@ -36,6 +35,6 @@ export const Base = Template.bind({});
 Base.args = {
   onChange: value => action('onChange')(value),
   placeholder: 'Type your e-mail',
-  defaultValue: '',
+  defaultValue: 'email@email.com',
   disabled: false,
 };

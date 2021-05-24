@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
-export const useInputFocus = (onFocus?: () => void, onBlur?: () => void) => {
+export const useInputFocus = (onFocus?: () => void, onBlur?: () => void, focusEnabled: boolean = true) => {
 
     const [ focused, setFocused ] = useState<boolean>(false);
 
-    const handleFocus = () => {
-        setFocused(true);
-        onFocus && onFocus()
-    }
+    const handleFocus = useCallback(() => {
+        if (focusEnabled) {
+            setFocused(true);
+            onFocus && onFocus()
+        }
+    }, [focusEnabled, setFocused, onFocus])
 
-    const handleBlur = () => {
-        setFocused(false);
-        onBlur && onBlur()
-    }
+    const handleBlur = useCallback(() => {
+        if (focusEnabled) {
+            setFocused(false);
+            onBlur && onBlur()
+        }
+    }, [focusEnabled, setFocused, onBlur])
 
     return {
         focused,

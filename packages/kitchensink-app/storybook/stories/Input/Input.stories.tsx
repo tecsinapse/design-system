@@ -11,6 +11,7 @@ storiesOf('Input', module)
       <Input
         label="Say something"
         placeholder="Nop!"
+        defaultValue="email@email.com"
       />
     )
   })

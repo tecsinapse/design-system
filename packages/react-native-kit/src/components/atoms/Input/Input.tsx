@@ -10,14 +10,16 @@ export interface InputNativebProps extends
 
 export const Input: FC<InputNativebProps> = ({
     label,
-    labelColor,
+    labelColorVariant,
     labelTypografy,
     labelStack,
     labelWeight,
     leftComponent,
     rightComponent,
+    disabled,
     style,
-    color,
+    borderColor,
+    borderColorGradation,
     onFocus,
     onBlur,
     ...rest
@@ -27,23 +29,26 @@ export const Input: FC<InputNativebProps> = ({
         focused, 
         handleBlur, 
         handleFocus 
-    } = useInputFocus(onFocus, onBlur)
+    } = useInputFocus(onFocus, onBlur, !disabled)
 
     return (
         <StyledBorderKeeper focused={focused}>
             <InputContainer
                 label={label}
-                labelColor={labelColor}
+                labelColorVariant={labelColorVariant}
                 labelTypografy={labelTypografy}
                 labelStack={labelStack}
                 labelWeight={labelWeight}
                 leftComponent={leftComponent}
                 rightComponent={rightComponent}
+                borderColor={borderColor}
+                borderColorGradation={borderColorGradation}
                 style={style}
-                color={color}
-                focused={focused}>
+                focused={focused}
+                disabled={disabled}>
                 <StyledNativeInput 
                     {...rest}
+                    disabled={disabled}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />

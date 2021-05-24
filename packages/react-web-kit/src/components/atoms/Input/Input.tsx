@@ -6,14 +6,16 @@ export interface InputWebProps extends Omit<InputElementProps, "style">, InputCo
 
 export const Input: FC<InputWebProps> = ({
     label,
-    labelColor,
+    labelColorVariant,
     labelTypografy,
     labelStack,
     labelWeight,
     leftComponent,
     rightComponent,
+    disabled,
     style,
-    color,
+    borderColor,
+    borderColorGradation,
     onFocus,
     onBlur,
     ...rest
@@ -23,23 +25,26 @@ export const Input: FC<InputWebProps> = ({
         focused, 
         handleBlur, 
         handleFocus 
-    } = useInputFocus(onFocus, onBlur)
+    } = useInputFocus(onFocus, onBlur, !disabled)
 
     return (
         <StyledBorderKeeper focused={focused}>
             <StyledWebInputContainer
                 label={label}
-                labelColor={labelColor}
+                labelColorVariant={labelColorVariant}
                 labelTypografy={labelTypografy}
                 labelStack={labelStack}
                 labelWeight={labelWeight}
                 leftComponent={leftComponent}
                 rightComponent={rightComponent}
+                borderColor={borderColor}
+                borderColorGradation={borderColorGradation}
                 style={style}
-                color={color}
-                focused={focused}>
+                focused={focused}
+                disabled={disabled}>
                 <StyledWebTextInput 
-                    {...rest} 
+                    {...rest}
+                    disabled={disabled}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />

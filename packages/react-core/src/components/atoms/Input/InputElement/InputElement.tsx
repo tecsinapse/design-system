@@ -29,6 +29,7 @@ const InputElement: FC<InputElementProps> = ({
       value={value}
       placeholder={placeholder}
       defaultValue={defaultValue}
+      disabled={disabled}
       editable={!disabled}
     />
   );
