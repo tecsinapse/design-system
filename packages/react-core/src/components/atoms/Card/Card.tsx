@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
+import { GestureResponderEvent } from 'react-native';
 import { Paper, PaperProps } from '../Paper';
+import { StyledCard } from './styled';
 
-export type CardProps = Omit<PaperProps, 'disabled'>;
+export interface CardProps extends PaperProps {
+  onClick?: null | ((event: GestureResponderEvent) => void);
+}
 
 const Card: FC<CardProps> = ({
   children,
@@ -9,16 +13,25 @@ const Card: FC<CardProps> = ({
   elevated = false,
   onClick,
   ...rest
-}): JSX.Element => (
-  <Paper
-    {...rest}
-    elevated={elevated}
-    onClick={onClick}
-    disabled={!onClick}
-    style={style}
-  >
-    {children}
-  </Paper>
-);
+}): JSX.Element => {
+  if (onClick) {
+    return (
+      <StyledCard
+        {...rest}
+        elevated={elevated}
+        onPress={onClick}
+        style={style}
+      >
+        {children}
+      </StyledCard>
+    );
+  }
+
+  return (
+    <Paper {...rest} elevated={elevated} style={style}>
+      {children}
+    </Paper>
+  );
+};
 
 export default Card;
