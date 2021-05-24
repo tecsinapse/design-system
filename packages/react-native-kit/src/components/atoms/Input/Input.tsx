@@ -1,8 +1,12 @@
 import { InputContainer, InputContainerProps, InputElementProps, StyledBorderKeeper, useInputFocus } from "@tecsinapse/react-core";
 import React, { FC } from "react";
+import { TextInputProps } from "react-native";
 import { StyledNativeInput } from "./styled";
 
-export interface InputNativebProps extends Omit<InputElementProps, "style">, InputContainerProps {}
+export interface InputNativebProps extends 
+    Omit<InputElementProps, "style">, 
+    InputContainerProps, 
+    Omit<TextInputProps, "style" | "onBlur" | "onChange" | "onFocus"> {}
 
 export const Input: FC<InputNativebProps> = ({
     label,
@@ -39,7 +43,7 @@ export const Input: FC<InputNativebProps> = ({
                 color={color}
                 focused={focused}>
                 <StyledNativeInput 
-                    {...rest} 
+                    {...rest}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />
