@@ -1,6 +1,6 @@
-import { InputContainer, InputContainerProps, InputElementProps, useInputFocus } from "@tecsinapse/react-core";
+import { InputContainerProps, InputElementProps, StyledBorderKeeper, useInputFocus } from "@tecsinapse/react-core";
 import React, { FC } from "react";
-import { StyledWebTextInput } from "./styled";
+import { StyledWebInputContainer, StyledWebTextInput } from "./styled";
 
 export interface InputWebProps extends Omit<InputElementProps, "style">, InputContainerProps {}
 
@@ -26,23 +26,25 @@ export const Input: FC<InputWebProps> = ({
     } = useInputFocus(onFocus, onBlur)
 
     return (
-        <InputContainer
-            label={label}
-            labelColor={labelColor}
-            labelTypografy={labelTypografy}
-            labelStack={labelStack}
-            labelWeight={labelWeight}
-            leftComponent={leftComponent}
-            rightComponent={rightComponent}
-            style={style}
-            color={color}
-            focused={focused}>
-            <StyledWebTextInput 
-                {...rest} 
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-            />
-        </InputContainer>
+        <StyledBorderKeeper focused={focused}>
+            <StyledWebInputContainer
+                label={label}
+                labelColor={labelColor}
+                labelTypografy={labelTypografy}
+                labelStack={labelStack}
+                labelWeight={labelWeight}
+                leftComponent={leftComponent}
+                rightComponent={rightComponent}
+                style={style}
+                color={color}
+                focused={focused}>
+                <StyledWebTextInput 
+                    {...rest} 
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                />
+            </StyledWebInputContainer>
+        </StyledBorderKeeper>
     )
 }
 

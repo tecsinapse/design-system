@@ -44,6 +44,12 @@ export const StyledLabelContainer = styled.View<Partial<StyleProps>>`
   flex: 1;
 `
 
+export const StyledBorderKeeper = styled.View<Partial<InputContainerProps> & Partial<StyleProps>>`
+    padding: ${({ theme, focused }) => focused ? 0 : theme.borderWidth.pico};
+    justify-content: center;
+    align-items: center;
+`
+
 export const StyledInputContainer = styled(StyledInputContainerBase)<Partial<StyleProps>>(props => css`
   ${focusedStyles(props)}
   ${leftIconStyles(props)}

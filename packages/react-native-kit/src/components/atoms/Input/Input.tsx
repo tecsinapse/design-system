@@ -1,6 +1,6 @@
-import { InputContainer, InputContainerProps, InputElementProps, useInputFocus } from "@tecsinapse/react-core";
+import { InputContainer, InputContainerProps, InputElementProps, StyledBorderKeeper, useInputFocus } from "@tecsinapse/react-core";
 import React, { FC } from "react";
-import { StyledBorderKeeper, StyledNativeInput } from "./styled";
+import { StyledNativeInput } from "./styled";
 
 export interface InputNativebProps extends Omit<InputElementProps, "style">, InputContainerProps {}
 

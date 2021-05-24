@@ -24,7 +24,6 @@ const Template: Story<InputWebProps> = args => {
       {...args}
       color="error"
       label="Login"
-      labelColor="orange"
       value={value}
       onChange={onChange}
       placeholder={args.placeholder}
