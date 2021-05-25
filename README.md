@@ -22,9 +22,11 @@ Here are a few helpful links for getting started with Circuit UI:
 
 ## Packages
 
-- **[@tecsinapse/react-core](./packages/react-core)** — the core hybrid React component library
-- **[@tecsinapse/react-web-kit](./packages/react-web-kit)** — the React component library focused on web
-- **[@tecsinapse/react-native-kit](./packages/react-native-kit)** — the React native component library focused on mobile
+| Package                                                         | Content                                              | Version                                     |
+| --------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------- |
+| **[@tecsinapse/react-core](./packages/react-core)**             | the core hybrid React component library              | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-core.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-core) |
+| **[@tecsinapse/react-web-kit](./packages/react-web-kit)**       | the React component library focused on web           | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-web-kit.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-web-kit) |
+| **[@tecsinapse/react-native-kit](./packages/react-native-kit)** | the React native component library focused on mobile | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-native-kit.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-native-kit) |
 
 ## Code of conduct
 
