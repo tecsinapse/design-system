@@ -1,4 +1,5 @@
-import { IconType } from '@tecsinapse/react-core';
+import { IconSizeType, IconType } from '@tecsinapse/react-core';
+import styled from '@emotion/native';
 
 /* eslint-disable */
 const customIcons: any = {};
@@ -7,43 +8,91 @@ export const registerCustomIconType = (id: string, customIcon: any) => {
   customIcons[id] = customIcon;
 };
 
-export const getIconType = (type: IconType): any => {
+const getStyledIcon = (Component, size) => styled(Component)`
+  font-size: ${({ theme }) => theme.iconSize[size]};
+`;
+
+export const getIconComponent = (type: IconType, size: IconSizeType): any => {
   switch (type) {
     case 'zocial':
-      return require('react-native-vector-icons/Zocial').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/Zocial').default,
+        size
+      );
     case 'octicon':
-      return require('react-native-vector-icons/Octicons').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/Octicons').default,
+        size
+      );
     case 'material':
-      return require('react-native-vector-icons/MaterialIcons').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/MaterialIcons').default,
+        size
+      );
     case 'material-community':
-      return require('react-native-vector-icons/MaterialCommunityIcons')
-        .default;
+      return getStyledIcon(
+        require('react-native-vector-icons/MaterialCommunityIcons').default,
+        size
+      );
     case 'ionicon':
-      return require('react-native-vector-icons/Ionicons').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/Ionicons').default,
+        size
+      );
     case 'foundation':
-      return require('react-native-vector-icons/Foundation').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/Foundation').default,
+        size
+      );
     case 'evilicon':
-      return require('react-native-vector-icons/EvilIcons').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/EvilIcons').default,
+        size
+      );
     case 'entypo':
-      return require('react-native-vector-icons/Entypo').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/Entypo').default,
+        size
+      );
     case 'font-awesome':
-      return require('react-native-vector-icons/FontAwesome').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/FontAwesome').default,
+        size
+      );
     case 'font-awesome-5':
-      return require('react-native-vector-icons/FontAwesome5').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/FontAwesome5').default,
+        size
+      );
     case 'simple-line-icon':
-      return require('react-native-vector-icons/SimpleLineIcons').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/SimpleLineIcons').default,
+        size
+      );
     case 'feather':
-      return require('react-native-vector-icons/Feather').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/Feather').default,
+        size
+      );
     case 'antdesign':
     case 'ant-design':
-      return require('react-native-vector-icons/AntDesign').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/AntDesign').default,
+        size
+      );
     case 'fontisto':
-      return require('react-native-vector-icons/Fontisto').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/Fontisto').default,
+        size
+      );
     default:
       if (Object.prototype.hasOwnProperty.call(customIcons, type)) {
-        return customIcons[type];
+        return getStyledIcon(customIcons[type], size);
       }
-      return require('react-native-vector-icons/MaterialIcons').default;
+      return getStyledIcon(
+        require('react-native-vector-icons/MaterialIcons').default,
+        size
+      );
   }
 };
 /* eslint-enable */

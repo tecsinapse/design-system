@@ -4,7 +4,7 @@ import Icon, { IconProps } from './Icon';
 
 export default {
   title: 'Components/Icon',
-  component: Text,
+  component: Icon,
 };
 
 const Template: Story<IconProps> = ({ name, type, size, color }) => (
@@ -16,6 +16,6 @@ export const Base = Template.bind({});
 Base.args = {
   name: 'rocket',
   type: 'font-awesome',
-  size: 'deca',
+  size: 'kilo',
   color: '#000',
 };

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import { IconSizeType, IconType } from '@tecsinapse/react-core';
-import { getIconType } from './helpers';
+import { getIconComponent } from './helpers';
 
 export interface IconProps {
   name: string;
@@ -13,17 +13,15 @@ export interface IconProps {
 
 const Icon: FC<IconProps> = ({
   name,
-  size = 'deca',
-  type = 'material',
+  size = 'centi',
+  type,
   style,
+  color = '#000',
   ...rest
 }) => {
-  // const color = colorProp || theme?.colors?.black;
-  // const reverseColor = reverseColorProp || theme?.colors?.white;
-  const RNVIcon = getIconType(type);
-  // const iconSpecificStyle = getIconStyle(type, { solid, brand });
+  const RNVIcon = getIconComponent(type, size);
 
-  return <RNVIcon size={30} name={name} color="#000" />;
+  return <RNVIcon {...rest} style={style} name={name} color={color} />;
 };
 
 export default Icon;
