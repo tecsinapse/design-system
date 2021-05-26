@@ -4,24 +4,20 @@ import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('RadioButton', module)
-  
-  .addDecorator((getStory) => <ArtBoard>{getStory()}</ArtBoard>)
-  
-  .add('RadioButton', () => (
-    <Component/>
-  ))
+  .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
 
+  .add('RadioButton', () => <Component />);
 
 const Component = () => {
-  const [ check, setCheck ] = useState(0)
+  const [check, setCheck] = useState(0);
   return (
     <>
-    <RadioButton checked={check === 0} onChange={() => setCheck(0)}>
-      <Text>I'm a radio button</Text>
-    </RadioButton>
-    <RadioButton checked={check === 1} onChange={() => setCheck(1)}>
-      <Text>I'm a radio button</Text>
-    </RadioButton>
+      <RadioButton checked={check === 0} onChange={() => setCheck(0)}>
+        <Text>I'm a radio button</Text>
+      </RadioButton>
+      <RadioButton checked={check === 1} onChange={() => setCheck(1)}>
+        <Text>I'm a radio button</Text>
+      </RadioButton>
     </>
-  )
-}
+  );
+};

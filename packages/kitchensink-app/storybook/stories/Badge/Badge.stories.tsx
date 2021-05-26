@@ -4,11 +4,10 @@ import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Badge', module)
-  
-  .addDecorator((getStory) => <ArtBoard>{getStory()}</ArtBoard>)
-  
+  .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
+
   .add('Badge', () => (
-      <Badge color="primary">
-        <Text>I'm a badge</Text>
-      </Badge>
-  ))
+    <Badge color="primary">
+      <Text>I'm a badge</Text>
+    </Badge>
+  ));

@@ -1,8 +1,13 @@
 import styled from '@emotion/native';
-import { lightTheme, StyleProps, Text, ThemeProvider } from '@tecsinapse/react-core/src';
+import {
+  lightTheme,
+  StyleProps,
+  Text,
+  ThemeProvider,
+} from '@tecsinapse/react-core/src';
 import React, { FC } from 'react';
 import pack from './package.json';
-import StorybookUIRoot from "./storybook";
+import StorybookUIRoot from './storybook';
 
 export const StorybookUI: FC = () => {
     return (

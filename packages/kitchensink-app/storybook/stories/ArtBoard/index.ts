@@ -1,1 +1,1 @@
-export * from './ArtBoard'
+export * from './ArtBoard';

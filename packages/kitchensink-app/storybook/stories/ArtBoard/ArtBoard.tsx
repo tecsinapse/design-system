@@ -1,10 +1,6 @@
-import React, { FC } from 'react'
-import { StyledBoard } from './style'
+import React, { FC } from 'react';
+import { StyledBoard } from './style';
 
 export const ArtBoard: FC = ({ children }) => {
-    return (
-        <StyledBoard>
-            { children }
-        </StyledBoard>
-    )
-}
+  return <StyledBoard>{children}</StyledBoard>;
+};

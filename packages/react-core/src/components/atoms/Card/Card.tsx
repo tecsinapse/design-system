@@ -1,19 +1,7 @@
 import React, { FC } from 'react';
-import {
-  GestureResponderEvent,
-  PressableStateCallbackType,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
-import { StyledCard } from './styled';
+import { Paper, PaperProps } from '../Paper';
 
-export interface CardProps {
-  style?:
-    | StyleProp<ViewStyle>
-    | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
-  elevated?: boolean;
-  onClick?: null | ((event: GestureResponderEvent) => void);
-}
+export type CardProps = Omit<PaperProps, 'disabled'>;
 
 const Card: FC<CardProps> = ({
   children,
@@ -22,15 +10,15 @@ const Card: FC<CardProps> = ({
   onClick,
   ...rest
 }): JSX.Element => (
-  <StyledCard
+  <Paper
     {...rest}
     elevated={elevated}
-    onPress={onClick}
+    onClick={onClick}
     disabled={!onClick}
     style={style}
   >
     {children}
-  </StyledCard>
+  </Paper>
 );
 
 export default Card;

@@ -4,9 +4,6 @@ import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Text', module)
-  
-  .addDecorator((getStory) => <ArtBoard>{getStory()}</ArtBoard>)
-  
-  .add('Text', () => (
-    <Text>I'm a text</Text>
-  ))
+  .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
+
+  .add('Text', () => <Text>I'm a text</Text>);

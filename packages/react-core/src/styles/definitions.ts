@@ -8,7 +8,7 @@ import {
   Miscellaneous,
   Spacing,
   TypographyVariation,
-  ZIndex
+  ZIndex,
 } from '../types/defaults';
 
 export const statusColor = {
@@ -74,7 +74,7 @@ export const iconSize: IconSize = {
   // kilo: '2rem', // 32px
   centi: '16px',
   deca: '24px',
-  kilo: '32px'
+  kilo: '32px',
 };
 
 export const borderRadius: BorderRadius = {
@@ -148,7 +148,8 @@ export const typography: TypographyVariation = {
 };
 
 export const fontStack: FontStack = {
-  default: 'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+  default:
+    'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   mono: 'Consolas, monaco, monospace',
 };
 
