@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react-native';
 import { Input } from '@tecsinapse/react-native-kit';
-import React from 'react';
+import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Input', module)
@@ -8,10 +8,18 @@ storiesOf('Input', module)
   .add('Input', () => {
 
     return (
-      <Input
-        label="Say something"
-        placeholder="Nop!"
-        defaultValue="email@email.com"
-      />
+      <Component/>
     )
   })
+
+const Component = () => {
+  const [ value, setValue ] = useState<string>("email@email.com")
+  return (
+    <Input
+      label="Say something"
+      placeholder="Nop!"
+      value={value}
+      onChange={setValue}
+    />
+  )
+}
