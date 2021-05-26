@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-interface MaskValue {
+export interface MaskValue {
     formatted?: string
     raw?: any
 }
@@ -33,9 +33,8 @@ const mergeMask = (value: string = "", mask: string) => {
  * @returns 
  */
 const getMask = (value: string = "", mask: ((raw: any) => string) | string): string => {
-    const onlyNumbers = value.replace(/\D/g,'')
     if (typeof mask === "function") {
-        return mask(onlyNumbers)
+        return mask(value)
     }
     return mask
 }
@@ -48,7 +47,7 @@ const getMask = (value: string = "", mask: ((raw: any) => string) | string): str
 export const useMask = (mask: ((raw: any) => string) | string, defaultValue?: string): [Mask, (text: string) => void] => {
 
     const applyMask = useCallback((value: string = ""): MaskValue => {
-        const onlyNumbers = value.replace(/\D/g,'')
+        const onlyNumbers = String(value).replace(/\D/g,'')
         const selectedMask = getMask(onlyNumbers, mask)
         const formattedValue = mergeMask(onlyNumbers, selectedMask)
 
@@ -66,11 +65,14 @@ export const useMask = (mask: ((raw: any) => string) | string, defaultValue?: st
 
     const handleChangeValue = useCallback((value: string) => {
         const { raw, formatted } = applyMask(value)
-        setValue(oldValue => ({ ...oldValue, maskValue: { 
-            raw, 
-            formatted 
-        }}))
-    }, [applyMask, setValue, mask])
+        setValue(oldValue => ({ 
+            ...oldValue, 
+            maskValue: { 
+                raw, 
+                formatted 
+            }
+        }))
+    }, [applyMask, setValue])
 
     return [ 
         value, 

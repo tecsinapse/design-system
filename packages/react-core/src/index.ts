@@ -7,7 +7,16 @@ export { Text, TextProps } from './components/atoms/Text';
 export { RadioButton, RadioButtonProps } from './components/atoms/RadioButton';
 export { Badge, BadgeProps } from './components/atoms/Badge';
 export { Paper, PaperProps } from './components/atoms/Paper';
-export { InputElement, InputElementProps, InputContainer, InputContainerProps, useInputFocus, useMask, StyledBorderKeeper } from './components/atoms/Input';
+export { 
+    InputElement, 
+    InputElementProps, 
+    InputContainer, 
+    InputContainerProps, 
+    useInputFocus, 
+    useMask,
+    useCurrencyMask,
+    StyledBorderKeeper 
+} from './components/atoms/Input';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './styles/definitions';
 export * from './styles/light';
