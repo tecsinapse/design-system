@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.4.0"
+    "@emotion/react": "^11.4.0",
+    "currency.js": "^2.0.4"
   },
   "repository": {
     "type": "git",

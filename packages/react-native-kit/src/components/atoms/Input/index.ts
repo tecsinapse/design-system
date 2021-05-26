@@ -1,1 +1,1 @@
-export { default as Input, InputPropsNative } from './Input';
+export { default as Input, InputNativebProps } from './Input';

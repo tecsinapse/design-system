@@ -142,4 +142,6 @@ export type FontColorType = keyof FontColor;
 
 export type BorderRadiusType = keyof BorderRadius;
 
+export type FontStackType = keyof FontStack;
+
 export type IconSizeType = keyof IconSize;

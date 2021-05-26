@@ -1,14 +1,10 @@
-import { InputContainer, InputContainerProps, InputElementProps, StyledBorderKeeper, useInputFocus } from "@tecsinapse/react-core";
+import { InputContainerProps, InputElementProps, StyledBorderKeeper, useInputFocus } from "@tecsinapse/react-core";
 import React, { FC } from "react";
-import { TextInputProps } from "react-native";
-import { StyledNativeInput } from "./styled";
+import { StyledWebInputContainer, StyledWebTextInput } from "./styled";
 
-export interface InputNativebProps extends 
-    Omit<InputElementProps, "style">, 
-    InputContainerProps, 
-    Omit<TextInputProps, "style" | "onBlur" | "onChange" | "onFocus"> {}
+export interface InputWebProps extends Omit<InputElementProps, "style">, InputContainerProps {}
 
-export const Input: FC<InputNativebProps> = ({
+export const Input: FC<InputWebProps> = ({
     label,
     labelColorVariant,
     labelTypografy,
@@ -33,7 +29,7 @@ export const Input: FC<InputNativebProps> = ({
 
     return (
         <StyledBorderKeeper focused={focused}>
-            <InputContainer
+            <StyledWebInputContainer
                 label={label}
                 labelColorVariant={labelColorVariant}
                 labelTypografy={labelTypografy}
@@ -46,13 +42,13 @@ export const Input: FC<InputNativebProps> = ({
                 style={style}
                 focused={focused}
                 disabled={disabled}>
-                <StyledNativeInput 
+                <StyledWebTextInput 
                     {...rest}
                     disabled={disabled}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />
-            </InputContainer>
+            </StyledWebInputContainer>
         </StyledBorderKeeper>
     )
 }

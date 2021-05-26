@@ -10,7 +10,7 @@ export default {
 
 const Template: Story<BadgeProps> = ({ color, variant, tone }) => (
   <Badge color={color} variant={variant} tone={tone}>
-    <Text color="dark">Badge</Text>
+    <Text colorVariant="dark">Badge</Text>
   </Badge>
 );
 
