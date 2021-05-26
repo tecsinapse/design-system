@@ -58,8 +58,8 @@
   "scripts": {
     "start": "lerna run start --stream",
     "build": "lerna run --parallel 'build:es'",
-    "storybook": "start-storybook -p 7007",
-    "build:storybook": "rimraf -rf sbdocs/ && build-storybook -o sbdocs/",
+    "storybook": "cross-env STORYBOOK_FONT_URL='' start-storybook -s .storybook/public -p 7007",
+    "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' build-storybook -s .storybook/public -o sbdocs/",
     "postbuild": "yarn build:declarations",
     "build:declarations": "lerna run --parallel 'build:declaration'",
     "prebuild": "rimraf -rf packages/*/dist/",

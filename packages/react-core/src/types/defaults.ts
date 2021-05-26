@@ -141,3 +141,5 @@ export type ColorGradationType = keyof ColorGradation;
 export type FontColorType = keyof FontColor;
 
 export type BorderRadiusType = keyof BorderRadius;
+
+export type IconSizeType = keyof IconSize;

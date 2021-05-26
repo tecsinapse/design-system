@@ -16,12 +16,7 @@ const Card: FC<CardProps> = ({
 }): JSX.Element => {
   if (onClick) {
     return (
-      <StyledCard
-        {...rest}
-        elevated={elevated}
-        onPress={onClick}
-        style={style}
-      >
+      <StyledCard {...rest} elevated={elevated} onPress={onClick} style={style}>
         {children}
       </StyledCard>
     );

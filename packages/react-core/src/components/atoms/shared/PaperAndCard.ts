@@ -1,16 +1,18 @@
 import { css } from '@emotion/native';
 import { StyleProps } from '@tecsinapse/react-core';
 
-export const baseStyles = ({ theme }) => css`
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const baseStyles = ({ theme }: StyleProps): any => css`
   padding: ${theme.spacing.deca};
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.miscellaneous.surfaceColor};
 `;
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const elevatedStyles = ({
   theme,
   elevated = false,
-}: { elevated?: boolean } & StyleProps) =>
+}: { elevated?: boolean } & StyleProps): any =>
   elevated && [
     css({
       shadowColor: theme.miscellaneous.shadow,
@@ -20,3 +22,4 @@ export const elevatedStyles = ({
       elevation: 2,
     }),
   ];
+/* eslint-enable @typescript-eslint/no-explicit-any */
