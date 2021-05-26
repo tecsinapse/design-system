@@ -1,1 +1,1 @@
-export const CPF = '999.999.999-99'
+export const CPF = '999.999.999-99';

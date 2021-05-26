@@ -1,1 +1,1 @@
-export { default as Input, InputWebProps } from './Input'
+export { default as Input, InputWebProps } from './Input';

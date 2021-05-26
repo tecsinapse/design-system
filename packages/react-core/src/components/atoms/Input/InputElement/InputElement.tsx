@@ -3,7 +3,7 @@ import { StyleProp, TextStyle } from 'react-native';
 import { Mask } from '../hooks/useMask';
 import { StyledInputElement } from '../styled';
 export interface InputElementProps {
-  style?: StyleProp<TextStyle>
+  style?: StyleProp<TextStyle>;
   /**
    * TODO:
    */
@@ -24,9 +24,12 @@ const InputElement: FC<InputElementProps> = ({
   disabled = false,
   ...rest
 }): JSX.Element => {
-
-  const _value = typeof value === 'string' ? value : value?.maskValue?.formatted
-  const _defaultValue = typeof value === 'string' ? defaultValue : value?.converter?.(defaultValue).formatted
+  const _value =
+    typeof value === 'string' ? value : value?.maskValue?.formatted;
+  const _defaultValue =
+    typeof value === 'string'
+      ? defaultValue
+      : value?.converter?.(defaultValue).formatted;
 
   return (
     <StyledInputElement

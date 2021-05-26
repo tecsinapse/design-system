@@ -1,19 +1,23 @@
 import {
-  ColorGradationType, ColorType, FontColorType, FontStackType, FontWeightType,
-  TypographyVariationType
+  ColorGradationType,
+  ColorType,
+  FontColorType,
+  FontStackType,
+  FontWeightType,
+  TypographyVariationType,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import { StyledColoredText } from './styled';
 
 export interface TextProps {
-  style?: StyleProp<TextStyle>
-  color?: ColorType
-  colorTone?: ColorGradationType
-  colorVariant?: FontColorType
-  fontWeight?: FontWeightType
-  typography?: TypographyVariationType
-  fontStack?: FontStackType
+  style?: StyleProp<TextStyle>;
+  color?: ColorType;
+  colorTone?: ColorGradationType;
+  colorVariant?: FontColorType;
+  fontWeight?: FontWeightType;
+  typography?: TypographyVariationType;
+  fontStack?: FontStackType;
 }
 
 const Text: FC<TextProps> = ({

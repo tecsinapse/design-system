@@ -8,14 +8,14 @@ export { RadioButton, RadioButtonProps } from './components/atoms/RadioButton';
 export { Badge, BadgeProps } from './components/atoms/Badge';
 export { Paper, PaperProps } from './components/atoms/Paper';
 export {
-    InputElement,
-    InputElementProps,
-    InputContainer,
-    InputContainerProps,
-    useInputFocus,
-    useMask,
-    useCurrencyMask,
-    StyledBorderKeeper
+  InputElement,
+  InputElementProps,
+  InputContainer,
+  InputContainerProps,
+  useInputFocus,
+  useMask,
+  useCurrencyMask,
+  StyledBorderKeeper,
 } from './components/atoms/Input';
 export { Icon, IconProps } from './components/atoms/Icon';
 export { default as ThemeProvider } from './styles/ThemeProvider';
