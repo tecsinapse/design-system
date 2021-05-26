@@ -7,8 +7,16 @@ export default {
   component: Text,
 };
 
-const Template: Story<TextProps> = ({ colorVariant, fontWeight, typography }) => (
-  <Text colorVariant={colorVariant} fontWeight={fontWeight} typography={typography}>
+const Template: Story<TextProps> = ({
+  colorVariant,
+  fontWeight,
+  typography,
+}) => (
+  <Text
+    colorVariant={colorVariant}
+    fontWeight={fontWeight}
+    typography={typography}
+  >
     Text
   </Text>
 );
