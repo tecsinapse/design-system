@@ -13,10 +13,10 @@ export const StorybookUI: FC = () => {
   return (
     <ThemeProvider theme={lightTheme}>
       <Header>
-        <Text typography="h4" fontWeight="bold" colorVariant="light">
+        <Text typography="h4" fontWeight="bold" fontColor="light">
           TecSinapse KitchenSink
         </Text>
-        <Text colorVariant="light">version {pack.version}</Text>
+        <Text fontColor="light">version {pack.version}</Text>
       </Header>
       <StorybookUIRoot />
     </ThemeProvider>

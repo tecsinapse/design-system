@@ -3,8 +3,7 @@ import { StyleProps, TextProps } from '@tecsinapse/react-core';
 import { Text as RNText } from 'react-native';
 
 export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
-  color: ${({ theme, colorVariant = 'dark' }) =>
-    theme.font.color[colorVariant]};
+  color: ${({ theme, fontColor = 'dark' }) => theme.font.color[fontColor]};
   font-weight: ${({ theme, fontWeight = 'regular' }) =>
     theme.font.weight[fontWeight]};
   font-size: ${({ theme, typography = 'base' }) =>
@@ -13,11 +12,15 @@ export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
     theme.typography[typography].lineHeight};
 `;
 
-const colorStyles = ({ color, colorTone, theme }: TextProps & StyleProps) =>
-  color &&
+const colorStyles = ({
+  colorVariant,
+  colorTone,
+  theme,
+}: TextProps & StyleProps) =>
+  colorVariant &&
   colorTone &&
   css`
-    color: ${theme.color[color][colorTone]};
+    color: ${theme.color[colorVariant][colorTone]};
   `;
 
 export const StyledColoredText = styled(StyledText)<

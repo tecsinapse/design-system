@@ -33,7 +33,6 @@ const rightIconStyles = ({
 
 const disabledContainerStyles = ({
   disabled,
-  theme,
 }: Partial<InputContainerProps> & StyleProps) =>
   disabled &&
   css`

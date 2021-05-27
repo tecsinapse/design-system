@@ -7,8 +7,8 @@ export default {
   component: Icon,
 };
 
-const Template: Story<IconProps> = ({ name, type, size, color }) => (
-  <Icon name={name} size={size} color={color} type={type} />
+const Template: Story<IconProps> = ({ name, type, size, ...args }) => (
+  <Icon {...args} name={name} size={size} type={type} />
 );
 
 export const Base = Template.bind({});
@@ -17,5 +17,5 @@ Base.args = {
   name: 'rocket',
   type: 'font-awesome',
   size: 'kilo',
-  color: '#000',
+  fontColor: 'dark',
 };

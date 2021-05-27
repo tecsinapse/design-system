@@ -16,7 +16,7 @@ interface ButtonPropsExtended extends ButtonProps {
 const Template: Story<ButtonPropsExtended> = args => (
   <div style={{ width: 200 }}>
     <Button {...args}>
-      <Text colorVariant="light">{args.label}</Text>
+      <Text fontColor="light">{args.label}</Text>
     </Button>
   </div>
 );

@@ -11,20 +11,22 @@ import { StyleProp, TextStyle } from 'react-native';
 import { StyledColoredText } from './styled';
 
 export interface TextProps {
-  style?: StyleProp<TextStyle>;
-  color?: ColorType;
-  colorTone?: ColorGradationType;
-  colorVariant?: FontColorType;
+  fontColor?: FontColorType;
   fontWeight?: FontWeightType;
   typography?: TypographyVariationType;
   fontStack?: FontStackType;
+  colorVariant?: ColorType;
+  colorTone?: ColorGradationType;
+  style?: StyleProp<TextStyle>;
 }
 
+/** NOTE: When using colors, be careful to not override fontColor by using colorVariant and colorTone, referent to theme colors and not text colors. */
 const Text: FC<TextProps> = ({
   children,
   style,
+  fontColor = 'dark',
   colorTone = 'medium',
-  colorVariant = 'dark',
+  colorVariant,
   fontWeight = 'regular',
   typography = 'base',
   ...rest
@@ -33,6 +35,7 @@ const Text: FC<TextProps> = ({
     <StyledColoredText
       {...rest}
       style={style}
+      fontColor={fontColor}
       colorTone={colorTone}
       colorVariant={colorVariant}
       fontWeight={fontWeight}

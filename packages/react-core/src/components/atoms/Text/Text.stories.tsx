@@ -8,12 +8,14 @@ export default {
 };
 
 const Template: Story<TextProps> = ({
-  colorVariant,
+  fontColor,
   fontWeight,
   typography,
+  ...args
 }) => (
   <Text
-    colorVariant={colorVariant}
+    {...args}
+    fontColor={fontColor}
     fontWeight={fontWeight}
     typography={typography}
   >
@@ -24,7 +26,7 @@ const Template: Story<TextProps> = ({
 export const Base = Template.bind({});
 
 Base.args = {
-  colorVariant: 'dark',
+  fontColor: 'dark',
   fontWeight: 'regular',
   typography: 'h3',
 };

@@ -1,4 +1,11 @@
-import { IconSizeType, IconType } from '@tecsinapse/react-core';
+import {
+  ColorGradationType,
+  ColorType,
+  FontColorType,
+  IconSizeType,
+  IconType,
+  ThemeProp,
+} from '@tecsinapse/react-core';
 import styled from '@emotion/native';
 
 /* eslint-disable */
@@ -96,3 +103,18 @@ export const getIconComponent = (type: IconType, size: IconSizeType): any => {
   }
 };
 /* eslint-enable */
+export const getIconColor = (
+  hexColor: string | undefined,
+  colorVariant: ColorType | undefined,
+  colorGradation: ColorGradationType | undefined,
+  fontColor: FontColorType,
+  theme: ThemeProp
+): string => {
+  if (colorVariant && colorGradation) {
+    return theme.color[colorVariant][colorGradation];
+  }
+  if (hexColor) {
+    return hexColor;
+  }
+  return theme.font.color[fontColor];
+};

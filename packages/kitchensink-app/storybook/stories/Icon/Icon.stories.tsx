@@ -6,6 +6,4 @@ import { ArtBoard } from '../ArtBoard';
 storiesOf('Icon', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
 
-  .add('Icon', () => (
-    <Icon name="rocket" type="font-awesome" size="kilo" color="#000" />
-  ));
+  .add('Icon', () => <Icon name="rocket" type="font-awesome" size="kilo" />);
