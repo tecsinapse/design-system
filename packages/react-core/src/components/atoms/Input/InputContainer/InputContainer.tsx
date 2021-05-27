@@ -17,7 +17,7 @@ export interface InputContainerProps {
   labelColor?: ColorType;
   labelColorTone?: ColorGradationType;
   labelColorVariant?: FontColorType;
-  labelTypografy?: TypographyVariationType;
+  labelTypography?: TypographyVariationType;
   labelStack?: FontStackType;
   labelWeight?: FontWeightType;
   leftComponent?: JSX.Element;
@@ -34,7 +34,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   labelColor,
   labelColorTone,
   labelColorVariant = 'medium',
-  labelTypografy = 'label',
+  labelTypography = 'label',
   labelStack = 'default',
   labelWeight = 'bold',
   leftComponent,
@@ -61,7 +61,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
             color={_labelColor}
             colorTone={_labelColorTone}
             colorVariant={labelColorVariant}
-            typography={labelTypografy}
+            typography={labelTypography}
             fontWeight={labelWeight}
             fontStack={labelStack}
           >

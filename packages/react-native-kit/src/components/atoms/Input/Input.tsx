@@ -17,7 +17,7 @@ export interface InputNativebProps
 export const Input: FC<InputNativebProps> = ({
   label,
   labelColorVariant,
-  labelTypografy,
+  labelTypography,
   labelStack,
   labelWeight,
   leftComponent,
@@ -41,7 +41,7 @@ export const Input: FC<InputNativebProps> = ({
       <InputContainer
         label={label}
         labelColorVariant={labelColorVariant}
-        labelTypografy={labelTypografy}
+        labelTypography={labelTypography}
         labelStack={labelStack}
         labelWeight={labelWeight}
         leftComponent={leftComponent}

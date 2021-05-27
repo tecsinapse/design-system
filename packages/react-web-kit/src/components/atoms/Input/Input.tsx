@@ -14,7 +14,7 @@ export interface InputWebProps
 export const Input: FC<InputWebProps> = ({
   label,
   labelColorVariant,
-  labelTypografy,
+  labelTypography,
   labelStack,
   labelWeight,
   leftComponent,
@@ -38,7 +38,7 @@ export const Input: FC<InputWebProps> = ({
       <StyledWebInputContainer
         label={label}
         labelColorVariant={labelColorVariant}
-        labelTypografy={labelTypografy}
+        labelTypography={labelTypography}
         labelStack={labelStack}
         labelWeight={labelWeight}
         leftComponent={leftComponent}
