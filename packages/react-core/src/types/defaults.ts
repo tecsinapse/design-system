@@ -122,9 +122,7 @@ export interface ThemeProviderProps {
   theme: ThemeProp;
 }
 
-export interface StyleProps {
-  theme: ThemeProp;
-}
+export interface StyleProps extends ThemeProviderProps {}
 
 export type ColorType = keyof Color;
 

@@ -2,7 +2,8 @@
 
 # TecSinapse Design System
 
-[![Stars](https://img.shields.io/github/stars/tecsinapse/design-system?style=social)](https://github.com/tecsinapse/design-system/) [![License](https://img.shields.io/github/license/tecsinapse/design-system)](./LICENSE.md) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![Stars](https://img.shields.io/github/stars/tecsinapse/design-system?style=social)](https://github.com/tecsinapse/design-system/) [![License](https://img.shields.io/github/license/tecsinapse/design-system)](./LICENSE.md) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)![build workflow](https://github.com/tecsinapse/design-system/actions/workflows/build-deploy.yml/badge.svg)
+
 
 [TecSinapse Design System](https://tecsinapse.github.io/design-system) is the hybrid implementation of the [TecSinapse](https://www.tecsinapse.com.br/) Design System. 
 Our primary goal is to create a system that can be used to build a wide variety of TecSinapase websites and apps, while providing a consistent and inclusive user experience to our end users.
