@@ -11,11 +11,17 @@ import { StyleProp, TextStyle } from 'react-native';
 import { StyledColoredText } from './styled';
 
 export interface TextProps {
+  /** Font theme text color */
   fontColor?: FontColorType;
+  /** Font theme weight */
   fontWeight?: FontWeightType;
+  /** Font theme sizes */
   typography?: TypographyVariationType;
+  /** Font theme stack */
   fontStack?: FontStackType;
+  /** Palette theme colors. You can specify this prop to override theme fontColor */
   colorVariant?: ColorType;
+  /** Palette theme colors gradation */
   colorTone?: ColorGradationType;
   style?: StyleProp<TextStyle>;
 }
