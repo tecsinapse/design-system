@@ -1,7 +1,7 @@
-import React from 'react';
-import { Badge, BadgeProps } from './index';
 import { Story } from '@storybook/react';
-import { Text } from '../Text';
+import { BadgeProps, Text } from '@tecsinapse/react-core';
+import React from 'react';
+import { Badge } from '.';
 
 export default {
   title: 'Components/Badge',
@@ -10,7 +10,7 @@ export default {
 
 const Template: Story<BadgeProps> = ({ color, variant, tone }) => (
   <Badge color={color} variant={variant} tone={tone}>
-    <Text color="dark">Badge</Text>
+    <Text fontColor="dark">Badge</Text>
   </Badge>
 );
 

@@ -14,7 +14,6 @@ const baseStyle = ({
     background-color: ${theme.color[color][tone]};
     align-items: center;
     padding: ${theme.spacing.micro};
-    display: inline-block;
   `;
 };
 

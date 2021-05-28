@@ -1,39 +1,65 @@
-import { InputProps, Input as InputCore } from '@tecsinapse/react-core';
+import {
+  InputContainer,
+  InputContainerProps,
+  InputElementProps,
+  StyledBorderKeeper,
+  useInputFocus,
+} from '@tecsinapse/react-core';
 import React, { FC } from 'react';
+import { TextInputProps } from 'react-native';
+import { StyledNativeInput } from './styled';
 
-export interface InputPropsNative extends InputProps {
-  onBlur?: () => void;
-  onFocus?: () => void;
-}
+export interface InputNativebProps
+  extends Omit<InputElementProps, 'style'>,
+    InputContainerProps,
+    Omit<TextInputProps, 'style' | 'onBlur' | 'onChange' | 'onFocus'> {}
 
-const Input: FC<InputPropsNative> = ({
-  onFocus: onFocusExternal,
-  onBlur: onBlurExternal,
+export const Input: FC<InputNativebProps> = ({
+  label,
+  labelColorVariant,
+  labelTypography,
+  labelStack,
+  labelWeight,
+  leftComponent,
+  rightComponent,
+  disabled,
+  style,
+  borderColor,
+  borderColorGradation,
+  onFocus,
+  onBlur,
   ...rest
-}): JSX.Element => {
-  const [onFocus, setOnFocus] = React.useState<boolean>(false);
-
-  const handleFocus = () => {
-    setOnFocus(true);
-    if (onFocusExternal) {
-      onFocusExternal();
-    }
-  };
-
-  const handleBlur = () => {
-    setOnFocus(false);
-    if (onBlurExternal) {
-      onBlurExternal();
-    }
-  };
+}) => {
+  const { focused, handleBlur, handleFocus } = useInputFocus(
+    onFocus,
+    onBlur,
+    !disabled
+  );
 
   return (
-    <InputCore
-      {...rest}
-      onBlur={handleBlur}
-      onFocus={handleFocus}
-      focused={onFocus}
-    />
+    <StyledBorderKeeper focused={focused}>
+      <InputContainer
+        label={label}
+        labelColorVariant={labelColorVariant}
+        labelTypography={labelTypography}
+        labelStack={labelStack}
+        labelWeight={labelWeight}
+        leftComponent={leftComponent}
+        rightComponent={rightComponent}
+        borderColor={borderColor}
+        borderColorGradation={borderColorGradation}
+        style={style}
+        focused={focused}
+        disabled={disabled}
+      >
+        <StyledNativeInput
+          {...rest}
+          disabled={disabled}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+      </InputContainer>
+    </StyledBorderKeeper>
   );
 };
 

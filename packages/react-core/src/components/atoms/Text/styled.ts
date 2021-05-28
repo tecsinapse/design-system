@@ -1,9 +1,9 @@
-import styled from '@emotion/native';
-import { Text as RNText } from 'react-native';
+import styled, { css } from '@emotion/native';
 import { StyleProps, TextProps } from '@tecsinapse/react-core';
+import { Text as RNText } from 'react-native';
 
 export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
-  color: ${({ theme, color = 'dark' }) => theme.font.color[color]};
+  color: ${({ theme, fontColor = 'dark' }) => theme.font.color[fontColor]};
   font-weight: ${({ theme, fontWeight = 'regular' }) =>
     theme.font.weight[fontWeight]};
   font-size: ${({ theme, typography = 'base' }) =>
@@ -11,3 +11,18 @@ export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
   line-height: ${({ theme, typography = 'base' }) =>
     theme.typography[typography].lineHeight};
 `;
+
+const colorStyles = ({
+  colorVariant,
+  colorTone,
+  theme,
+}: TextProps & StyleProps) =>
+  colorVariant &&
+  colorTone &&
+  css`
+    color: ${theme.color[colorVariant][colorTone]};
+  `;
+
+export const StyledColoredText = styled(StyledText)<
+  TextProps & Partial<StyleProps>
+>(colorStyles);

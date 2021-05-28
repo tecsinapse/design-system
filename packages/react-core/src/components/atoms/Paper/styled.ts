@@ -1,13 +1,12 @@
-import styled, { css } from '@emotion/native';
 import { View } from 'react-native';
-import { PaperProps, StyleProps } from '@tecsinapse/react-core';
+import styled, { css } from '@emotion/native';
+import { StyleProps } from '@tecsinapse/react-core';
+import { PaperProps } from './Paper';
+import { baseStyles, elevatedStyles } from '../shared/PaperAndCard';
 
-const baseStyles = ({ theme }) => css`
-  background: white;
-  padding: 30px;
-  box-shadow: -2px 2px 2px ${theme.miscellaneous.shadow};
-`;
-
-export const PaperStyled = styled(View)<PaperProps & Partial<StyleProps>>(
-  baseStyles
+export const StyledPaper = styled(View)<PaperProps & Partial<StyleProps>>(
+  props => css`
+    ${baseStyles(props)}
+    ${elevatedStyles(props)}
+  `
 );

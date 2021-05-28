@@ -1,12 +1,12 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  mode: "production",
-  entry: "./src/index.tsx",
+  mode: 'production',
+  entry: './src/index.tsx',
   output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "build"),
-    publicPath: "/",
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -14,15 +14,15 @@ module.exports = {
         test: /\.(tsx|ts|jsx|js)$/,
         exclude: /node_modules\/(?!()\/).*/,
         use: {
-          loader: "ts-loader",
+          loader: 'ts-loader',
         },
       },
       {
         test: /\.(gif|jpe?g|png|svg)$/,
         use: {
-          loader: "url-loader",
+          loader: 'url-loader',
           options: {
-            name: "[name].[ext]",
+            name: '[name].[ext]',
           },
         },
       },
@@ -30,17 +30,18 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "react-native$": "react-native-web",
+      'react-native$': 'react-native-web',
+      'react-native-vector-icons': 'react-native-vector-icons/dist',
     },
     extensions: [
-      ".web.tsx",
-      ".web.ts",
-      ".tsx",
-      ".ts",
-      ".web.jsx",
-      ".web.js",
-      ".jsx",
-      ".js",
+      '.web.tsx',
+      '.web.ts',
+      '.tsx',
+      '.ts',
+      '.web.jsx',
+      '.web.js',
+      '.jsx',
+      '.js',
     ],
   },
 };

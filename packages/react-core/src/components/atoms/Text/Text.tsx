@@ -1,37 +1,48 @@
-import React, { FC } from 'react';
-import { StyledText } from './styled';
-import { StyleProp, TextStyle } from 'react-native';
 import {
+  ColorGradationType,
+  ColorType,
   FontColorType,
+  FontStackType,
   FontWeightType,
-  TypographyVariationType
+  TypographyVariationType,
 } from '@tecsinapse/react-core';
+import React, { FC } from 'react';
+import { StyleProp, TextStyle } from 'react-native';
+import { StyledColoredText } from './styled';
 
 export interface TextProps {
-  style?: StyleProp<TextStyle>;
-  color?: FontColorType;
+  fontColor?: FontColorType;
   fontWeight?: FontWeightType;
   typography?: TypographyVariationType;
+  fontStack?: FontStackType;
+  colorVariant?: ColorType;
+  colorTone?: ColorGradationType;
+  style?: StyleProp<TextStyle>;
 }
 
+/** NOTE: When using colors, be careful to not override fontColor by using colorVariant and colorTone, referent to theme colors and not text colors. */
 const Text: FC<TextProps> = ({
   children,
   style,
-  color = 'dark',
+  fontColor = 'dark',
+  colorTone = 'medium',
+  colorVariant,
   fontWeight = 'regular',
   typography = 'base',
   ...rest
 }): JSX.Element => {
   return (
-    <StyledText
+    <StyledColoredText
       {...rest}
       style={style}
-      color={color}
+      fontColor={fontColor}
+      colorTone={colorTone}
+      colorVariant={colorVariant}
       fontWeight={fontWeight}
       typography={typography}
     >
       {children}
-    </StyledText>
+    </StyledColoredText>
   );
 };
 

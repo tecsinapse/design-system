@@ -1,5 +1,5 @@
-import React from 'react';
 import { Story } from '@storybook/react';
+import React from 'react';
 import { Text, TextProps } from './index';
 
 export default {
@@ -7,8 +7,18 @@ export default {
   component: Text,
 };
 
-const Template: Story<TextProps> = ({ color, fontWeight, typography }) => (
-  <Text color={color} fontWeight={fontWeight} typography={typography}>
+const Template: Story<TextProps> = ({
+  fontColor,
+  fontWeight,
+  typography,
+  ...args
+}) => (
+  <Text
+    {...args}
+    fontColor={fontColor}
+    fontWeight={fontWeight}
+    typography={typography}
+  >
     Text
   </Text>
 );
@@ -16,7 +26,7 @@ const Template: Story<TextProps> = ({ color, fontWeight, typography }) => (
 export const Base = Template.bind({});
 
 Base.args = {
-  color: 'dark',
+  fontColor: 'dark',
   fontWeight: 'regular',
   typography: 'h3',
 };

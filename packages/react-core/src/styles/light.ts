@@ -10,7 +10,7 @@ import {
   spacing,
   statusColor,
   typography,
-  zIndex
+  zIndex,
 } from './definitions';
 
 const primaryGradation = {
@@ -48,5 +48,5 @@ export const lightTheme: ThemeProp = {
     stack: fontStack,
     weight: fontWeight,
   },
-  zIndex
+  zIndex,
 };
