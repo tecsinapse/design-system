@@ -31,7 +31,7 @@ export interface InputContainerProps {
 
 const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   label,
-  labelColor,
+  labelColor = 'medium',
   labelColorTone,
   labelColorVariant,
   labelTypography = 'label',
