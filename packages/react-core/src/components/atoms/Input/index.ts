@@ -10,4 +10,4 @@ export { StyledBorderKeeper } from './styled';
 export * from './hooks/useInputFocus';
 export * from './hooks/useMask';
 export * from './hooks/useCurrencyMask';
-export * as Masks from './masks';
+export * from './masks';
