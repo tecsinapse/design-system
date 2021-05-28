@@ -1,2 +1,2 @@
-export { Checkbox, CheckboxProps } from './components/atoms/Checkbox';
+export * from '@tecsinapse/react-core';
 export { Input, InputNativebProps } from './components/atoms/Input';

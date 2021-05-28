@@ -1,6 +1,3 @@
 export * from '@tecsinapse/react-core';
-export { default as Badge } from './components/atoms/Badge/Badge';
-export {
-  CheckboxProps,
-  default as Checkbox,
-} from './components/atoms/Checkbox/Checkbox';
+export { Badge } from './components/atoms/Badge';
+export { Input, InputWebProps } from './components/atoms/Input';

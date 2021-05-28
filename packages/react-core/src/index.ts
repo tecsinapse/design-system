@@ -7,6 +7,7 @@ export { Text, TextProps } from './components/atoms/Text';
 export { RadioButton, RadioButtonProps } from './components/atoms/RadioButton';
 export { Badge, BadgeProps } from './components/atoms/Badge';
 export { Paper, PaperProps } from './components/atoms/Paper';
+export { Checkbox, CheckboxProps } from './components/atoms/Checkbox';
 export {
   InputElement,
   InputElementProps,

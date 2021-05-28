@@ -18,14 +18,12 @@ export interface IconProps {
   size?: IconSizeType;
   /**  Icon family. You must use the same icons from react-native-vector-icons */
   type: IconType;
-  /** Hexadecimal fill color */
-  hexColor?: string;
   /** Font theme fill color */
   fontColor?: FontColorType;
   /** Palette theme fill color */
   colorVariant?: ColorType;
   /** Palette theme gradation fill color */
-  colorGradation?: ColorGradationType;
+  colorTone?: ColorGradationType;
   style?: StyleProp<TextStyle>;
 }
 
@@ -35,20 +33,13 @@ const Icon: FC<IconProps> = ({
   size = 'centi',
   type,
   style,
-  hexColor,
   fontColor = 'dark',
   colorVariant,
-  colorGradation = 'medium',
+  colorTone = 'medium',
   ...rest
 }) => {
   const theme = useTheme() as ThemeProp;
-  const color = getIconColor(
-    hexColor,
-    colorVariant,
-    colorGradation,
-    fontColor,
-    theme
-  );
+  const color = getIconColor(colorVariant, colorTone, fontColor, theme);
   const RNVIcon = getIconComponent(type, size);
 
   return <RNVIcon {...rest} style={style} name={name} color={color} />;

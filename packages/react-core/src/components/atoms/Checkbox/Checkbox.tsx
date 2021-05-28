@@ -1,0 +1,73 @@
+import React, { FC } from 'react';
+import { Pressable, StyleProp, ViewStyle } from 'react-native';
+import {
+  IconUnckeckedStyled,
+  IconCheckedStyled,
+  ViewStyled,
+  IconViewStyled,
+} from './styled';
+import {
+  ColorGradationType,
+  ColorType,
+  IconSizeType,
+} from '@tecsinapse/react-core';
+
+export interface CheckboxProps {
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
+  labelPosition?: 'left' | 'right';
+  color?: ColorType;
+  colorTone?: ColorGradationType;
+  size?: IconSizeType;
+  style?: StyleProp<ViewStyle>;
+}
+
+const Checkbox: FC<CheckboxProps> = ({
+  children,
+  checked,
+  onChange,
+  size = 'centi',
+  color = 'primary',
+  colorTone = 'medium',
+  labelPosition = 'left',
+  ...rest
+}) => {
+  const handleChange = () => {
+    onChange && onChange(!checked);
+  };
+
+  return (
+    <Pressable {...rest} onPress={handleChange}>
+      <ViewStyled>
+        {labelPosition === 'left' && children}
+        {checked && (
+          <IconViewStyled>
+            <IconCheckedStyled
+              color={color}
+              colorTone={colorTone}
+              name="check"
+              fontColor="light"
+              type="material-community"
+              size={size}
+            />
+          </IconViewStyled>
+        )}
+        {!checked && (
+          <IconViewStyled>
+            <IconUnckeckedStyled
+              color={color}
+              colorTone={colorTone}
+              name="checkbox-blank"
+              fontColor="light"
+              type="material-community"
+              size={size}
+            />
+          </IconViewStyled>
+        )}
+        {labelPosition === 'right' && children}
+      </ViewStyled>
+    </Pressable>
+  );
+};
+
+export default Checkbox;
