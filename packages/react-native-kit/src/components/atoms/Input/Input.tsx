@@ -12,11 +12,16 @@ import { StyledNativeInput } from './styled';
 export interface InputNativebProps
   extends Omit<InputElementProps, 'style'>,
     InputContainerProps,
-    Omit<TextInputProps, 'style' | 'onBlur' | 'onChange' | 'onFocus'> {}
+    Omit<
+      TextInputProps,
+      'style' | 'onBlur' | 'onChange' | 'onFocus' | 'value'
+    > {}
 
 export const Input: FC<InputNativebProps> = ({
   label,
+  labelColor,
   labelColorVariant,
+  labelColorTone,
   labelTypography,
   labelStack,
   labelWeight,
@@ -40,7 +45,9 @@ export const Input: FC<InputNativebProps> = ({
     <StyledBorderKeeper focused={focused}>
       <InputContainer
         label={label}
+        labelColor={labelColor}
         labelColorVariant={labelColorVariant}
+        labelColorTone={labelColorTone}
         labelTypography={labelTypography}
         labelStack={labelStack}
         labelWeight={labelWeight}

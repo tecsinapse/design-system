@@ -14,9 +14,9 @@ import { StyledInputContainer, StyledLabelContainer } from '../styled';
 
 export interface InputContainerProps {
   label?: string;
-  labelColor?: ColorType;
+  labelColor?: FontColorType;
+  labelColorVariant?: ColorType;
   labelColorTone?: ColorGradationType;
-  labelColorVariant?: FontColorType;
   labelTypography?: TypographyVariationType;
   labelStack?: FontStackType;
   labelWeight?: FontWeightType;
@@ -33,7 +33,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   label,
   labelColor,
   labelColorTone,
-  labelColorVariant = 'medium',
+  labelColorVariant,
   labelTypography = 'label',
   labelStack = 'default',
   labelWeight = 'bold',
@@ -43,7 +43,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   children,
   ...rest
 }): JSX.Element => {
-  const _labelColor = disabled ? 'secondary' : labelColor;
+  const _labelColorVariant = disabled ? 'secondary' : labelColorVariant;
   const _labelColorTone = disabled ? 'light' : labelColorTone;
 
   return (
@@ -58,9 +58,9 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
       <StyledLabelContainer>
         {label && (
           <Text
-            color={_labelColor}
+            fontColor={labelColor}
             colorTone={_labelColorTone}
-            colorVariant={labelColorVariant}
+            colorVariant={_labelColorVariant}
             typography={labelTypography}
             fontWeight={labelWeight}
             fontStack={labelStack}
