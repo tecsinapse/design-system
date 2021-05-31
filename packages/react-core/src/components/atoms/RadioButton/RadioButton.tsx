@@ -1,46 +1,68 @@
+import { Pressable, StyleProp, ViewStyle } from 'react-native';
 import React, { FC } from 'react';
 import {
-  ButtonContainerStyled,
-  RadioContainer,
-  ViewContainerStyled,
-  ViewRadioStyled,
-  RadioChecked,
-} from './styled';
+  ColorGradationType,
+  ColorType,
+  Icon,
+  IconSizeType,
+} from '@tecsinapse/react-core';
+import { IconViewStyled, ViewStyled } from './styled';
 
 export interface RadioButtonProps {
-  onChange: (checked: boolean) => void;
-  checked: boolean;
-  labelPositon?: 'left' | 'right';
+  checked?: boolean;
+  onChange?: (checked: boolean) => void;
+  labelPosition?: 'left' | 'right';
+  disabled?: boolean;
+  color?: ColorType;
+  colorTone?: ColorGradationType;
+  size?: IconSizeType;
+  style?: StyleProp<ViewStyle>;
 }
 
 const RadioButton: FC<RadioButtonProps> = ({
+  children,
   onChange,
   checked,
-  children,
-  labelPositon = 'right',
+  labelPosition = 'right',
+  disabled = false,
+  color = 'primary',
+  colorTone = 'medium',
+  size = 'deca',
+  ...rest
 }): JSX.Element => {
   const handleChange = () => {
-    onChange(true);
+    onChange && onChange(!checked);
   };
 
   return (
-    <ViewContainerStyled>
-      {labelPositon === 'left' && children}
-      <ButtonContainerStyled
-        onPress={() => handleChange()}
-        accessibilityRole="radio"
-        accessibilityLiveRegion="polite"
-      >
-        <ViewRadioStyled>
-          {checked ? (
-            <RadioContainer>
-              <RadioChecked />
-            </RadioContainer>
-          ) : null}
-        </ViewRadioStyled>
-      </ButtonContainerStyled>
-      {labelPositon === 'right' && children}
-    </ViewContainerStyled>
+    <Pressable {...rest} disabled={disabled} onPress={handleChange}>
+      <ViewStyled>
+        {labelPosition === 'left' && children}
+        {checked && (
+          <IconViewStyled>
+            <Icon
+              name="radiobox-marked"
+              colorVariant={color}
+              colorTone={colorTone}
+              type="material-community"
+              size={size}
+            />
+          </IconViewStyled>
+        )}
+        {!checked && (
+          <IconViewStyled>
+            <Icon
+              name="radiobox-blank"
+              colorVariant={color}
+              colorTone={colorTone}
+              type="material-community"
+              size={size}
+            />
+          </IconViewStyled>
+        )}
+        {labelPosition === 'right' && children}
+      </ViewStyled>
+    </Pressable>
   );
 };
 

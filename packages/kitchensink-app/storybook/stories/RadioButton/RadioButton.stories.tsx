@@ -3,10 +3,10 @@ import { RadioButton, Text } from '@tecsinapse/react-core';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 
-storiesOf('RadioButton', module)
+storiesOf('Radio Button', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
 
-  .add('RadioButton', () => <Component />);
+  .add('Radio Button', () => <Component />);
 
 const Component = () => {
   const [check, setCheck] = useState(0);

@@ -20,6 +20,7 @@ export interface CheckboxProps {
   color?: ColorType;
   colorTone?: ColorGradationType;
   size?: IconSizeType;
+  disabled?: boolean;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -31,6 +32,7 @@ const Checkbox: FC<CheckboxProps> = ({
   color = 'primary',
   colorTone = 'medium',
   labelPosition = 'left',
+  disabled = false,
   ...rest
 }) => {
   const handleChange = () => {
@@ -38,7 +40,7 @@ const Checkbox: FC<CheckboxProps> = ({
   };
 
   return (
-    <Pressable {...rest} onPress={handleChange}>
+    <Pressable {...rest} disabled={disabled} onPress={handleChange}>
       <ViewStyled>
         {labelPosition === 'left' && children}
         {checked && (
