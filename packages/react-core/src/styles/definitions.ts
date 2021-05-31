@@ -148,8 +148,7 @@ export const typography: TypographyVariation = {
 };
 
 export const fontStack: FontStack = {
-  default:
-    'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+  default: 'Lato',
   mono: 'Consolas, monaco, monospace',
 };
 
@@ -157,6 +156,12 @@ export const fontWeight: FontWeight = {
   regular: '400',
   bold: '700',
   black: '900',
+};
+
+export const fontFiles: FontWeight = {
+  black: '{0}-Black',
+  bold: '{0}-Bold',
+  regular: '{0}-Regular',
 };
 
 export const fontColor: FontColor = {

@@ -3,6 +3,7 @@ import {
   borderRadius,
   borderWidth,
   fontColor,
+  fontFiles,
   fontStack,
   fontWeight,
   iconSize,
@@ -47,6 +48,7 @@ export const lightTheme: ThemeProp = {
     color: fontColor,
     stack: fontStack,
     weight: fontWeight,
+    files: fontFiles,
   },
   zIndex,
 };

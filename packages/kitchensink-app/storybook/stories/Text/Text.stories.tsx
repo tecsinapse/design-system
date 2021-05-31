@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react-native';
-import { Text } from '@tecsinapse/react-core/src';
+import { Text } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 
