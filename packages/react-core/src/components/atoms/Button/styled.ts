@@ -32,6 +32,16 @@ const filledVariant = ({
     background-color: ${theme.color[color][tone]};
   `;
 
+const disabledStyles = ({
+  theme,
+  color = 'primary',
+  disabled,
+}: StyleProps & ButtonProps) =>
+  disabled &&
+  css`
+    background-color: ${theme.color[color].light};
+  `;
+
 const StyledButtonBase = styled(PressableSurface)<
   ButtonProps & Partial<StyleProps>
 >`
@@ -47,6 +57,7 @@ export const StyledButton = styled(StyledButtonBase)<
   props => css`
     ${filledVariant(props)}
     ${outlineVariant(props)}
-  ${textVariant(props)}
+    ${textVariant(props)}
+    ${disabledStyles(props)}
   `
 );
