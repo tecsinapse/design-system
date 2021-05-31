@@ -1,15 +1,15 @@
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
+import { Text } from '@tecsinapse/react-core';
 import React from 'react';
-import Text from '../Text/Text';
-import Button, { ButtonProps } from './Button';
+import Button, { WebButtonProps } from './Button';
 
 export default {
   title: 'Components/Button',
   component: Button,
 };
 
-interface ButtonPropsExtended extends ButtonProps {
+interface ButtonPropsExtended extends WebButtonProps {
   label: string;
 }
 
