@@ -17,6 +17,7 @@ export const registerCustomIconType = (id: string, customIcon: any) => {
 
 const getStyledIcon = (Component, size) => styled(Component)`
   font-size: ${({ theme }) => theme.iconSize[size]};
+  text-align: center;
 `;
 
 export const getIconComponent = (type: IconType, size: IconSizeType): any => {

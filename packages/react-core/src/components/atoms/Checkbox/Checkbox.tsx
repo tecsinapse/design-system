@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
 import { Pressable, StyleProp, ViewStyle } from 'react-native';
 import {
-  IconUnckeckedStyled,
-  IconCheckedStyled,
-  ViewStyled,
-  IconViewStyled,
-} from './styled';
-import {
   ColorGradationType,
   ColorType,
   IconSizeType,
 } from '@tecsinapse/react-core';
+import {
+  IconUncheckedStyled,
+  IconCheckedStyled,
+  ViewStyled,
+  IconViewStyled,
+} from './styled';
+import { Icon } from '../Icon';
 
 export interface CheckboxProps {
   checked?: boolean;
@@ -42,26 +43,26 @@ const Checkbox: FC<CheckboxProps> = ({
         {labelPosition === 'left' && children}
         {checked && (
           <IconViewStyled>
-            <IconCheckedStyled
-              color={color}
-              colorTone={colorTone}
-              name="check"
-              fontColor="light"
-              type="material-community"
-              size={size}
-            />
+            <IconCheckedStyled color={color} colorTone={colorTone}>
+              <Icon
+                name="check"
+                fontColor="light"
+                type="material-community"
+                size={size}
+              />
+            </IconCheckedStyled>
           </IconViewStyled>
         )}
         {!checked && (
           <IconViewStyled>
-            <IconUnckeckedStyled
-              color={color}
-              colorTone={colorTone}
-              name="checkbox-blank"
-              fontColor="light"
-              type="material-community"
-              size={size}
-            />
+            <IconUncheckedStyled color={color} colorTone={colorTone}>
+              <Icon
+                name="checkbox-blank"
+                fontColor="light"
+                type="material-community"
+                size={size}
+              />
+            </IconUncheckedStyled>
           </IconViewStyled>
         )}
         {labelPosition === 'right' && children}

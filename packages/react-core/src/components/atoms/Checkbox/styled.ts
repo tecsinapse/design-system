@@ -2,9 +2,8 @@ import styled from '@emotion/native';
 import { View } from 'react-native';
 import { StyleProps } from '@tecsinapse/react-core';
 import { CheckboxProps } from './Checkbox';
-import { Icon } from '../Icon';
 
-export const IconUnckeckedStyled = styled(Icon)<
+export const IconUncheckedStyled = styled(View)<
   Partial<CheckboxProps & StyleProps>
 >`
   border-radius: ${({ theme }: StyleProps) => theme.borderRadius.micro};
@@ -17,7 +16,7 @@ export const IconUnckeckedStyled = styled(Icon)<
   background-color: #fff;
 `;
 
-export const IconCheckedStyled = styled(Icon)<
+export const IconCheckedStyled = styled(View)<
   Partial<CheckboxProps & StyleProps>
 >`
   border-radius: ${({ theme }: StyleProps) => theme.borderRadius.micro};
@@ -32,18 +31,10 @@ export const IconCheckedStyled = styled(Icon)<
     color = 'primary',
     colorTone = 'medium',
   }: StyleProps & CheckboxProps) => theme.color[color][colorTone]};
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
 `;
 
 export const IconViewStyled = styled(View)<Partial<StyleProps>>`
   padding: ${({ theme }: StyleProps) => theme.spacing.mili};
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
 `;
 
 export const ViewStyled = styled(View)`
