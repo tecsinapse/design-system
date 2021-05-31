@@ -1,6 +1,6 @@
 import styled, { css } from '@emotion/native';
-import { TouchableHighlight } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
+import { PressableSurface } from '../PressableSurface';
 import { ButtonProps } from './Button';
 
 const textVariant = ({ variant }: StyleProps & ButtonProps) =>
@@ -32,7 +32,7 @@ const filledVariant = ({
     background-color: ${theme.color[color][tone]};
   `;
 
-const StyledButtonBase = styled(TouchableHighlight)<
+const StyledButtonBase = styled(PressableSurface)<
   ButtonProps & Partial<StyleProps>
 >`
   padding: ${({ theme }) => theme.spacing.mili};

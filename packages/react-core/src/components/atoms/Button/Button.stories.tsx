@@ -1,8 +1,8 @@
-import React from 'react';
-import { Story } from '@storybook/react';
-import Button, { ButtonProps } from './Button';
-import Text from '../Text/Text';
 import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react';
+import React from 'react';
+import Text from '../Text/Text';
+import Button, { ButtonProps } from './Button';
 
 export default {
   title: 'Components/Button',
@@ -24,7 +24,7 @@ const Template: Story<ButtonPropsExtended> = args => (
 export const Base = Template.bind({});
 
 Base.args = {
-  onClick: action('onClick'),
+  onPress: action('onPress'),
   label: 'Button',
   color: 'primary',
   variant: 'filled',

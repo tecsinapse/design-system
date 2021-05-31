@@ -10,7 +10,7 @@ storiesOf('Button', module)
   .add('Button', () => (
     <Button
       variant={select('variant', ['filled', 'outlined', 'text'], 'filled')}
-      onClick={() => console.log('Wow!')}
+      onPress={() => console.log('Wow!')}
     >
       <Text>I'm a button</Text>
     </Button>
