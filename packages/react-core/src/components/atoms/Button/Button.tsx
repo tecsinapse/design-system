@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { StyledButton } from './styled';
 import {
+  BorderRadiusType,
   ColorGradationType,
   ColorType,
   VariantType,
@@ -14,6 +15,7 @@ export interface ButtonProps {
   variant?: VariantType;
   tone?: ColorGradationType;
   disabled?: boolean;
+  borderRadius?: BorderRadiusType;
 }
 
 const Button: FC<ButtonProps> = ({
