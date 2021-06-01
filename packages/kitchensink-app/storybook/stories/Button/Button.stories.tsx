@@ -12,6 +12,8 @@ storiesOf('Button', module)
       variant={select('variant', ['filled', 'outlined', 'text'], 'filled')}
       onPress={() => console.log('Wow!')}
     >
-      <Text fontColor="light">I'm a button</Text>
+      <Text fontWeight="bold" fontColor="light">
+        I'm a button
+      </Text>
     </Button>
   ));

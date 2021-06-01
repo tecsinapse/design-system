@@ -16,6 +16,7 @@ export interface ButtonProps extends PressableSurfaceProps {
   tone?: ColorGradationType;
   disabled?: boolean;
   borderRadius?: BorderRadiusType;
+  size?: 'small' | 'default';
 }
 
 const Button: FC<ButtonProps> = ({

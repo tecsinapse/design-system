@@ -42,12 +42,26 @@ const disabledStyles = ({
     background-color: ${theme.color[color].light};
   `;
 
+const sizeStyles = ({ theme, size = 'default' }: StyleProps & ButtonProps) => {
+  switch (size) {
+    case 'small':
+      return css`
+        padding: ${theme.spacing.mili} ${theme.spacing.deca};
+      `;
+    default:
+      return css`
+        padding: ${theme.spacing.centi} ${theme.spacing.kilo};
+      `;
+  }
+};
+
 const StyledButtonBase = styled(PressableSurface)<
   ButtonProps & Partial<StyleProps>
 >`
-  padding: ${({ theme }) => theme.spacing.mili};
   border-radius: ${({ theme, borderRadius = 'mili' }) =>
     theme.borderRadius[borderRadius]};
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -59,5 +73,6 @@ export const StyledButton = styled(StyledButtonBase)<
     ${outlineVariant(props)}
     ${textVariant(props)}
     ${disabledStyles(props)}
+    ${sizeStyles(props)}
   `
 );
