@@ -25,5 +25,5 @@ export const Base = Template.bind({});
 
 Base.args = {
   elevated: true,
-  onClick: e => action('onClick')(e),
+  onPress: e => action('onClick')(e),
 };
