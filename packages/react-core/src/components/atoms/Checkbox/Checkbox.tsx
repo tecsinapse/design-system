@@ -40,7 +40,12 @@ const Checkbox: FC<CheckboxProps> = ({
   };
 
   return (
-    <Pressable {...rest} disabled={disabled} onPress={handleChange}>
+    <Pressable
+      {...rest}
+      disabled={disabled}
+      onPress={handleChange}
+      accessibilityRole="checkbox"
+    >
       <ViewStyled>
         {labelPosition === 'left' && children}
         {checked && (

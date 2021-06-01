@@ -35,7 +35,12 @@ const RadioButton: FC<RadioButtonProps> = ({
   };
 
   return (
-    <Pressable {...rest} disabled={disabled} onPress={handleChange}>
+    <Pressable
+      {...rest}
+      disabled={disabled}
+      onPress={handleChange}
+      accessibilityRole="radio"
+    >
       <ViewStyled>
         {labelPosition === 'left' && children}
         {checked && (
