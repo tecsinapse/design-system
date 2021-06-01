@@ -114,6 +114,7 @@ export type ThemeProp = {
     color: FontColor;
     stack: FontStack;
     weight: FontWeight;
+    files: FontWeight;
   };
   zIndex: ZIndex;
 };

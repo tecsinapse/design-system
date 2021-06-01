@@ -1,24 +1,26 @@
 import React, { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { StyledButton } from './styled';
+import { PressableSurfaceProps } from '../PressableSurface';
 import {
+  BorderRadiusType,
   ColorGradationType,
   ColorType,
   VariantType,
 } from '@tecsinapse/react-core';
 
-export interface ButtonProps {
-  onClick?: () => void;
+export interface ButtonProps extends PressableSurfaceProps {
   style?: StyleProp<ViewStyle>;
   color?: ColorType;
   variant?: VariantType;
   tone?: ColorGradationType;
   disabled?: boolean;
+  borderRadius?: BorderRadiusType;
+  size?: 'small' | 'default';
 }
 
 const Button: FC<ButtonProps> = ({
   children,
-  onClick,
   style,
   color = 'primary',
   variant = 'filled',
@@ -29,7 +31,6 @@ const Button: FC<ButtonProps> = ({
     <StyledButton
       {...rest}
       accessibilityRole="button"
-      onPress={onClick}
       style={style}
       color={color}
       variant={variant}

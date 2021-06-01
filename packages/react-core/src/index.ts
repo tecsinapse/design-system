@@ -17,6 +17,7 @@ export {
   useMask,
   useCurrencyMask,
   StyledBorderKeeper,
+  Masks,
 } from './components/atoms/Input';
 export { Icon, IconProps } from './components/atoms/Icon';
 export { default as ThemeProvider } from './styles/ThemeProvider';

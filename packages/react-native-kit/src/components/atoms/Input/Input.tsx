@@ -1,4 +1,6 @@
 import {
+  FontStackType,
+  FontWeightType,
   InputContainer,
   InputContainerProps,
   InputElementProps,
@@ -12,11 +14,19 @@ import { StyledNativeInput } from './styled';
 export interface InputNativebProps
   extends Omit<InputElementProps, 'style'>,
     InputContainerProps,
-    Omit<TextInputProps, 'style' | 'onBlur' | 'onChange' | 'onFocus'> {}
+    Omit<
+      TextInputProps,
+      'style' | 'onBlur' | 'onChange' | 'onFocus' | 'value'
+    > {
+  inputFontStack?: FontStackType;
+  inputFontWeight?: FontWeightType;
+}
 
 export const Input: FC<InputNativebProps> = ({
   label,
+  labelColor,
   labelColorVariant,
+  labelColorTone,
   labelTypography,
   labelStack,
   labelWeight,
@@ -26,6 +36,8 @@ export const Input: FC<InputNativebProps> = ({
   style,
   borderColor,
   borderColorGradation,
+  inputFontStack = 'default',
+  inputFontWeight = 'bold',
   onFocus,
   onBlur,
   ...rest
@@ -40,7 +52,9 @@ export const Input: FC<InputNativebProps> = ({
     <StyledBorderKeeper focused={focused}>
       <InputContainer
         label={label}
+        labelColor={labelColor}
         labelColorVariant={labelColorVariant}
+        labelColorTone={labelColorTone}
         labelTypography={labelTypography}
         labelStack={labelStack}
         labelWeight={labelWeight}
@@ -54,6 +68,8 @@ export const Input: FC<InputNativebProps> = ({
       >
         <StyledNativeInput
           {...rest}
+          fontStack={inputFontStack}
+          fontWeight={inputFontWeight}
           disabled={disabled}
           onFocus={handleFocus}
           onBlur={handleBlur}

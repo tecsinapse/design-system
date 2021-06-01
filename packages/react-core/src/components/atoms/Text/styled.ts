@@ -10,6 +10,8 @@ export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`
     theme.typography[typography].fontSize};
   line-height: ${({ theme, typography = 'base' }) =>
     theme.typography[typography].lineHeight};
+  font-family: ${({ theme, fontStack = 'default' }) =>
+    `'${theme.font.stack[fontStack]}'`};
 `;
 
 const colorStyles = ({

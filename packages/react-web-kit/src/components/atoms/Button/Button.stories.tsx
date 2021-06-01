@@ -1,22 +1,24 @@
-import React from 'react';
-import { Story } from '@storybook/react';
-import Button, { ButtonProps } from './Button';
-import Text from '../Text/Text';
 import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react';
+import { Text } from '@tecsinapse/react-core';
+import React from 'react';
+import Button, { WebButtonProps } from './Button';
 
 export default {
   title: 'Components/Button',
   component: Button,
 };
 
-interface ButtonPropsExtended extends ButtonProps {
+interface ButtonPropsExtended extends WebButtonProps {
   label: string;
 }
 
 const Template: Story<ButtonPropsExtended> = args => (
   <div style={{ width: 200 }}>
     <Button {...args}>
-      <Text fontColor="light">{args.label}</Text>
+      <Text fontWeight="bold" fontColor="light">
+        {args.label}
+      </Text>
     </Button>
   </div>
 );
@@ -24,7 +26,7 @@ const Template: Story<ButtonPropsExtended> = args => (
 export const Base = Template.bind({});
 
 Base.args = {
-  onClick: action('onClick'),
+  onPress: action('onPress'),
   label: 'Button',
   color: 'primary',
   variant: 'filled',

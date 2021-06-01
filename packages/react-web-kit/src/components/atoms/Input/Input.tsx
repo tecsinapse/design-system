@@ -13,7 +13,9 @@ export interface InputWebProps
 
 export const Input: FC<InputWebProps> = ({
   label,
+  labelColor,
   labelColorVariant,
+  labelColorTone,
   labelTypography,
   labelStack,
   labelWeight,
@@ -37,7 +39,9 @@ export const Input: FC<InputWebProps> = ({
     <StyledBorderKeeper focused={focused}>
       <StyledWebInputContainer
         label={label}
+        labelColor={labelColor}
         labelColorVariant={labelColorVariant}
+        labelColorTone={labelColorTone}
         labelTypography={labelTypography}
         labelStack={labelStack}
         labelWeight={labelWeight}

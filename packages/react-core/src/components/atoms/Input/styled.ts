@@ -69,6 +69,7 @@ const StyledInputContainerBase = styled.View<
 export const StyledInputElementBase = styled(TextInput)<
   InputElementProps & Partial<StyleProps>
 >`
+  font-family: ${({ theme }) => `'${theme.font.stack.default}'`};
   font-size: ${({ theme }) => theme.typography.base.fontSize};
   font-weight: ${({ theme }) => theme.font.weight.bold};
   color: ${({ theme }) => theme.font.color.dark};
