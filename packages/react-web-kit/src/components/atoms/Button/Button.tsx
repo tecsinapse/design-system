@@ -8,11 +8,19 @@ export interface WebButtonProps extends ButtonProps {
   onMouseOut?: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ children, ...rest }): JSX.Element => {
-  const { mouseOver, handleMouseOut, handleMouseOver } = useMouseHover();
+const Button: FC<ButtonProps> = ({
+  children,
+  disabled,
+  ...rest
+}): JSX.Element => {
+  const { mouseOver, handleMouseOut, handleMouseOver } = useMouseHover(
+    !disabled
+  );
+
   return (
     <StyledWebButton
       {...rest}
+      disabled={disabled}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       mouseOver={mouseOver}
