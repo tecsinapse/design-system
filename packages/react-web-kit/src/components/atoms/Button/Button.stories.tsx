@@ -26,9 +26,10 @@ const Template: Story<ButtonPropsExtended> = args => (
 export const Base = Template.bind({});
 
 Base.args = {
-  onPress: action('onPress'),
+  onPress: e => action('onPress')(e),
   label: 'Button',
   color: 'primary',
   variant: 'filled',
   tone: 'medium',
+  size: 'small',
 };
