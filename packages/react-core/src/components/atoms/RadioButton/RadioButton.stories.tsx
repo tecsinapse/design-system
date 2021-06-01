@@ -6,11 +6,6 @@ import { Story } from '@storybook/react';
 export default {
   title: 'Components/Radio Button',
   component: RadioButton,
-  parameters: {
-    backgrounds: {
-      default: 'white',
-    },
-  },
 };
 
 const Template: Story<RadioButtonProps> = ({

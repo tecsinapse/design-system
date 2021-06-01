@@ -1,26 +1,27 @@
 import React, { FC } from 'react';
 import { Pressable, StyleProp, ViewStyle } from 'react-native';
-import {
-  ColorGradationType,
-  ColorType,
-  IconSizeType,
-} from '@tecsinapse/react-core';
+import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
+import { Icon } from '../Icon';
 import {
   IconUncheckedStyled,
   IconCheckedStyled,
   ViewStyled,
   IconViewStyled,
 } from './styled';
-import { Icon } from '../Icon';
 
 export interface CheckboxProps {
+  /** Element is checked */
   checked?: boolean;
+  /** Change handler */
   onChange?: (checked: boolean) => void;
+  /** Position of children */
   labelPosition?: 'left' | 'right';
-  color?: ColorType;
-  colorTone?: ColorGradationType;
-  size?: IconSizeType;
+  /** Element is not clickable */
   disabled?: boolean;
+  /** Color definition from theme */
+  color?: ColorType;
+  /** Color gradation from theme */
+  colorTone?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -28,7 +29,6 @@ const Checkbox: FC<CheckboxProps> = ({
   children,
   checked,
   onChange,
-  size = 'centi',
   color = 'primary',
   colorTone = 'medium',
   labelPosition = 'left',
@@ -55,7 +55,7 @@ const Checkbox: FC<CheckboxProps> = ({
                 name="check"
                 fontColor="light"
                 type="material-community"
-                size={size}
+                size="centi"
               />
             </IconCheckedStyled>
           </IconViewStyled>
@@ -67,7 +67,7 @@ const Checkbox: FC<CheckboxProps> = ({
                 name="checkbox-blank"
                 fontColor="light"
                 type="material-community"
-                size={size}
+                size="centi"
               />
             </IconUncheckedStyled>
           </IconViewStyled>

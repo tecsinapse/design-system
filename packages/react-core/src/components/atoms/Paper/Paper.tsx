@@ -3,17 +3,17 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { StyledPaper } from './styled';
 
 export interface PaperProps {
-  style?: StyleProp<ViewStyle>;
+  /** Creates elevation shadow */
   elevated?: boolean;
+  style?: StyleProp<ViewStyle>;
 }
 
 const Paper: FC<PaperProps> = ({
   children,
-  style,
   elevated = false,
   ...rest
 }): JSX.Element => (
-  <StyledPaper {...rest} style={style} elevated={elevated}>
+  <StyledPaper {...rest} elevated={elevated}>
     {children}
   </StyledPaper>
 );
