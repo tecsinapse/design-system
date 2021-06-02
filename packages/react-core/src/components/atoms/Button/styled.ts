@@ -32,12 +32,12 @@ const filledVariant = ({
     background-color: ${theme.color[color][tone]};
   `;
 
-const disabledStyles = ({
+const frozenStyles = ({
   theme,
   color = 'primary',
-  disabled,
+  frozen,
 }: StyleProps & ButtonProps) =>
-  disabled &&
+  frozen &&
   css`
     background-color: ${theme.color[color].light};
   `;
@@ -47,10 +47,12 @@ const sizeStyles = ({ theme, size = 'default' }: StyleProps & ButtonProps) => {
     case 'small':
       return css`
         padding: ${theme.spacing.mili} ${theme.spacing.deca};
+        min-height: 34px;
       `;
     default:
       return css`
-        padding: ${theme.spacing.centi} ${theme.spacing.kilo};
+        padding: ${theme.spacing.mili} ${theme.spacing.kilo};
+        min-height: 44px;
       `;
   }
 };
@@ -72,7 +74,7 @@ export const StyledButton = styled(StyledButtonBase)<
     ${filledVariant(props)}
     ${outlineVariant(props)}
     ${textVariant(props)}
-    ${disabledStyles(props)}
+    ${frozenStyles(props)}
     ${sizeStyles(props)}
   `
 );

@@ -5,10 +5,12 @@ export const useMouseHover = (active: boolean) => {
 
   const handleMouseOver = useCallback(() => active && setMouseOver(true), [
     active,
+    setMouseOver,
   ]);
 
   const handleMouseOut = useCallback(() => active && setMouseOver(false), [
     active,
+    setMouseOver,
   ]);
 
   return {
