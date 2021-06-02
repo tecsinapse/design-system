@@ -9,6 +9,7 @@ import {
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { TextInputProps } from 'react-native';
+import { Text } from '../Text';
 import { StyledNativeInput } from './styled';
 
 export interface InputNativebProps
@@ -58,6 +59,7 @@ export const Input: FC<InputNativebProps> = ({
         labelTypography={labelTypography}
         labelStack={labelStack}
         labelWeight={labelWeight}
+        LabelComponent={Text}
         leftComponent={leftComponent}
         rightComponent={rightComponent}
         borderColor={borderColor}

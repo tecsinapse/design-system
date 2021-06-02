@@ -6,6 +6,7 @@ import {
   FontWeightType,
   InputElementProps,
   Text,
+  TextProps,
   TypographyVariationType,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
@@ -19,6 +20,7 @@ export interface InputContainerProps {
   labelColorTone?: ColorGradationType;
   labelTypography?: TypographyVariationType;
   labelStack?: FontStackType;
+  LabelComponent?: FC<TextProps>;
   labelWeight?: FontWeightType;
   leftComponent?: JSX.Element;
   rightComponent?: JSX.Element;
@@ -37,6 +39,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   labelTypography = 'label',
   labelStack = 'default',
   labelWeight = 'bold',
+  LabelComponent = Text,
   leftComponent,
   rightComponent,
   disabled,
@@ -57,7 +60,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
 
       <StyledLabelContainer>
         {label && (
-          <Text
+          <LabelComponent
             fontColor={labelColor}
             colorTone={_labelColorTone}
             colorVariant={_labelColorVariant}
@@ -66,7 +69,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
             fontStack={labelStack}
           >
             {label}
-          </Text>
+          </LabelComponent>
         )}
         {children}
       </StyledLabelContainer>
