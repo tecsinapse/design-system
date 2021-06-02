@@ -5,7 +5,7 @@ const FACTOR = 0.75;
 const SCALE = 0.96;
 
 export interface PressableSurfaceProps extends PressableProps {
-  effect?: 'opacity' | 'highlight';
+  effect?: 'opacity' | 'highlight' | 'none';
   effectStyle?: (pressed: boolean) => StyleProp<ViewStyle>;
 }
 
@@ -41,6 +41,9 @@ const prepareProps = ({
             : { transform: [{ scale: pressed ? SCALE : 1 }] },
         ],
       };
+
+    case 'none':
+      return others;
   }
 };
 

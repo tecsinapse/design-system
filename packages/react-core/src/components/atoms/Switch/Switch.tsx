@@ -1,32 +1,28 @@
-import React, { FC } from 'react';
-import { ViewStyle, SwitchStyle } from './styled';
-import { StyleProp, ViewStyle as ViewStyleRN } from 'react-native';
+import React, { FC, useCallback } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
+import { StyledSwitch, StyledSwitchContent } from './styled';
 
 export interface SwitchProps {
   onChange: (active: boolean) => void;
   active: boolean;
-  style?: StyleProp<ViewStyleRN>;
+  style?: StyleProp<ViewStyle>;
+  dotStyle?: StyleProp<ViewStyle>;
 }
 
 const Switch: FC<SwitchProps> = ({
   onChange,
   active,
-  style,
-  children,
+  dotStyle,
+  ...rest
 }): JSX.Element => {
-  const handleChange = () => {
+  const handleChange = useCallback(() => {
     onChange(!active);
-  };
+  }, [active]);
 
   return (
-    <ViewStyle style={style}>
-      <SwitchStyle
-        onValueChange={handleChange}
-        value={active}
-        accessibilityRole="switch"
-      />
-      {children}
-    </ViewStyle>
+    <StyledSwitchContent {...rest} active={active} onPress={handleChange}>
+      <StyledSwitch style={dotStyle} />
+    </StyledSwitchContent>
   );
 };
 
