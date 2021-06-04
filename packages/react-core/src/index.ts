@@ -29,6 +29,17 @@ export {
   Masks,
 } from './components/atoms/Input';
 export { Icon, IconProps } from './components/atoms/Icon';
+export {
+  PressableSurface,
+  PressableSurfaceProps,
+} from './components/atoms/PressableSurface';
+export {
+  GroupButton,
+  GroupButtonOption,
+  GroupButtonProps,
+  GroupButtonOptionProps,
+  GroupButtonValue,
+} from './components/atoms/GroupButton';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './styles/definitions';
 export * from './styles/light';

@@ -1,11 +1,11 @@
 import styled from '@emotion/native';
 import { StyleProps } from '@tecsinapse/react-core';
-import React from 'react';
+import { FC } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { TextProps } from '../../Text';
 import { ButtonStateProps } from '../Button';
 
-export const getStyledTextButton = (component: React.FC<TextProps>) => {
+export const getStyledTextButton = (component: FC<TextProps>) => {
   return styled(component)<Partial<ButtonStateProps> & Partial<StyleProps>>`
     margin-left: ${({ theme }) => theme.spacing.mili};
   `;

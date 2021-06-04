@@ -8,3 +8,4 @@ import './Paper/Paper.stories';
 import './RadioButton/RadioButton.stories';
 import './Switch/Switch.stories';
 import './Icon/Icon.stories';
+import './GroupButton/GroupButton.stories';
