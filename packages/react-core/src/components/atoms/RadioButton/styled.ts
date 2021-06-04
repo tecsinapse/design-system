@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { View } from 'react-native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
 import { RadioButtonProps } from './RadioButton';
 
 export const IconWrapper = styled(View)<Partial<RadioButtonProps & StyleProps>>`

@@ -1,7 +1,8 @@
-import { Pressable, StyleProp, ViewStyle } from 'react-native';
 import React, { FC } from 'react';
-import { ColorGradationType, ColorType, Icon } from '@tecsinapse/react-core';
-import { IconViewStyled, ViewStyled, IconWrapper, ScaledView } from './styled';
+import { Pressable, StyleProp, ViewStyle } from 'react-native';
+import { ColorGradationType, ColorType } from '../../../types/defaults';
+import { Icon } from '../Icon';
+import { IconViewStyled, IconWrapper, ScaledView, ViewStyled } from './styled';
 
 export interface RadioButtonProps {
   /** Element is checked */

@@ -1,16 +1,15 @@
+import React, { FC } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
+import { InputElementProps } from '..';
 import {
   ColorGradationType,
   ColorType,
   FontColorType,
   FontStackType,
   FontWeightType,
-  InputElementProps,
-  Text,
-  TextProps,
-  TypographyVariationType,
-} from '@tecsinapse/react-core';
-import React, { FC } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+  TypographyVariationType
+} from '../../../../types/defaults';
+import { Text, TextProps } from '../../Text';
 import { StyledInputContainer, StyledLabelContainer } from '../styled';
 
 export interface InputContainerProps {

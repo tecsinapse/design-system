@@ -1,10 +1,7 @@
-import {
-  Icon,
-  IconSizeType,
-  Text,
-  TypographyVariationType,
-} from '@tecsinapse/react-core';
 import React, { FC } from 'react';
+import { IconSizeType, TypographyVariationType } from '../../../../types/defaults';
+import { Icon } from '../../Icon';
+import { Text } from '../../Text';
 import { ButtonStateProps } from '../Button';
 import { getStyledTextButton } from './styled';
 

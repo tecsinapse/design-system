@@ -1,5 +1,5 @@
-import { Text, TextProps } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
+import { Text, TextProps } from '../Text';
 import { getStyledGroupItemText } from './styled';
 
 export interface GroupButtonOptionProps<T> {

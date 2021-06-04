@@ -1,10 +1,7 @@
 import { useTheme } from '@emotion/react';
-import {
-  Text,
-  ThemeProp,
-  TypographyVariationType,
-} from '@tecsinapse/react-core';
 import React, { FC } from 'react';
+import { ThemeProp, TypographyVariationType } from '../../../../types/defaults';
+import { Text } from '../../Text';
 import { ButtonStateProps } from '../Button';
 import { getStyledTextButton, StyledIndicator } from './styled';
 
