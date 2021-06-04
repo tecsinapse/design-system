@@ -3,7 +3,7 @@ import {
   GroupButtonOptionProps,
   PressableSurface,
   StyleProps,
-  TextProps,
+  TextProps
 } from '@tecsinapse/react-core';
 import { FC } from 'react';
 
@@ -68,13 +68,10 @@ const rightStyles = ({
     border-right-width: ${theme?.borderWidth.pico};
   `;
 
-const StyledPressableBase = styled(PressableSurface)<
-  PressableOption & Partial<StyleProps>
->`
+const StyledPressableBase = styled(PressableSurface)<PressableOption & Partial<StyleProps> >`
   border-top-width: ${({ theme }) => theme.borderWidth.pico};
   border-bottom-width: ${({ theme }) => theme.borderWidth.pico};
-  padding: ${({ theme }) => theme.spacing.mili}
-    ${({ theme }) => theme.spacing.deca};
+  padding: ${({ theme }) => `${theme.spacing.mili} ${theme.spacing.deca}`};
   align-items: center;
   flex: 1;
 `;
