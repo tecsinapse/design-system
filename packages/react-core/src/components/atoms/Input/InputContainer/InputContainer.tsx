@@ -7,7 +7,7 @@ import {
   FontColorType,
   FontStackType,
   FontWeightType,
-  TypographyVariationType
+  TypographyVariationType,
 } from '../../../../types/defaults';
 import { Text, TextProps } from '../../Text';
 import { StyledInputContainer, StyledLabelContainer } from '../styled';

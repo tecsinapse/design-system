@@ -40,6 +40,7 @@ export {
   GroupButtonOptionProps,
   GroupButtonValue,
 } from './components/atoms/GroupButton';
+export { BoxContent, BoxContentProps } from './components/atoms/BoxContent';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './styles/definitions';
 export * from './styles/light';

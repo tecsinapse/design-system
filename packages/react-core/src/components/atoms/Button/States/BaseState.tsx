@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
-import { IconSizeType, TypographyVariationType } from '../../../../types/defaults';
+import {
+  IconSizeType,
+  TypographyVariationType,
+} from '../../../../types/defaults';
 import { Icon } from '../../Icon';
 import { Text } from '../../Text';
 import { ButtonStateProps } from '../Button';

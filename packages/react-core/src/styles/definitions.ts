@@ -78,6 +78,8 @@ export const borderRadius: BorderRadius = {
   nano: '2px',
   micro: '4px',
   mili: '8px',
+  centi: '16px',
+  deca: '24px',
   pill: '999999px', // also circle
 };
 
