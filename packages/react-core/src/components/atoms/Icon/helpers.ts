@@ -17,6 +17,7 @@ export const registerCustomIconType = (id: string, customIcon: any) => {
 
 const getStyledIcon = (Component, size) => styled(Component)`
   font-size: ${({ theme }) => theme.iconSize[size]};
+  text-align: center;
 `;
 
 export const getIconComponent = (type: IconType, size: IconSizeType): any => {
@@ -104,7 +105,6 @@ export const getIconComponent = (type: IconType, size: IconSizeType): any => {
 };
 /* eslint-enable */
 export const getIconColor = (
-  hexColor: string | undefined,
   colorVariant: ColorType | undefined,
   colorGradation: ColorGradationType | undefined,
   fontColor: FontColorType,
@@ -112,9 +112,6 @@ export const getIconColor = (
 ): string => {
   if (colorVariant && colorGradation) {
     return theme.color[colorVariant][colorGradation];
-  }
-  if (hexColor) {
-    return hexColor;
   }
   return theme.font.color[fontColor];
 };

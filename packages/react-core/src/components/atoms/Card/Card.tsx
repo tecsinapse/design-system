@@ -4,26 +4,26 @@ import { Paper, PaperProps } from '../Paper';
 import { StyledCard } from './styled';
 
 export interface CardProps extends PaperProps {
-  onClick?: null | ((event: GestureResponderEvent) => void);
+  /** Click handler */
+  onPress?: null | ((event: GestureResponderEvent) => void);
 }
 
 const Card: FC<CardProps> = ({
   children,
-  style,
   elevated = false,
-  onClick,
+  onPress,
   ...rest
 }): JSX.Element => {
-  if (onClick) {
+  if (onPress) {
     return (
-      <StyledCard {...rest} elevated={elevated} onPress={onClick} style={style}>
+      <StyledCard {...rest} elevated={elevated} onPress={onPress}>
         {children}
       </StyledCard>
     );
   }
 
   return (
-    <Paper {...rest} elevated={elevated} style={style}>
+    <Paper {...rest} elevated={elevated}>
       {children}
     </Paper>
   );

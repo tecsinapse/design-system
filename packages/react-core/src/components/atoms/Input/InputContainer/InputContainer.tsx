@@ -1,24 +1,25 @@
+import React, { FC } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
+import { InputElementProps } from '..';
 import {
   ColorGradationType,
   ColorType,
   FontColorType,
   FontStackType,
   FontWeightType,
-  InputElementProps,
-  Text,
   TypographyVariationType,
-} from '@tecsinapse/react-core';
-import React, { FC } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+} from '../../../../types/defaults';
+import { Text, TextProps } from '../../Text';
 import { StyledInputContainer, StyledLabelContainer } from '../styled';
 
 export interface InputContainerProps {
   label?: string;
-  labelColor?: ColorType;
+  labelColor?: FontColorType;
+  labelColorVariant?: ColorType;
   labelColorTone?: ColorGradationType;
-  labelColorVariant?: FontColorType;
   labelTypography?: TypographyVariationType;
   labelStack?: FontStackType;
+  LabelComponent?: FC<TextProps>;
   labelWeight?: FontWeightType;
   leftComponent?: JSX.Element;
   rightComponent?: JSX.Element;
@@ -31,19 +32,20 @@ export interface InputContainerProps {
 
 const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   label,
-  labelColor,
+  labelColor = 'medium',
   labelColorTone,
-  labelColorVariant = 'medium',
+  labelColorVariant,
   labelTypography = 'label',
   labelStack = 'default',
   labelWeight = 'bold',
+  LabelComponent = Text,
   leftComponent,
   rightComponent,
   disabled,
   children,
   ...rest
 }): JSX.Element => {
-  const _labelColor = disabled ? 'secondary' : labelColor;
+  const _labelColorVariant = disabled ? 'secondary' : labelColorVariant;
   const _labelColorTone = disabled ? 'light' : labelColorTone;
 
   return (
@@ -57,16 +59,16 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
 
       <StyledLabelContainer>
         {label && (
-          <Text
-            color={_labelColor}
+          <LabelComponent
+            fontColor={labelColor}
             colorTone={_labelColorTone}
-            colorVariant={labelColorVariant}
+            colorVariant={_labelColorVariant}
             typography={labelTypography}
             fontWeight={labelWeight}
             fontStack={labelStack}
           >
             {label}
-          </Text>
+          </LabelComponent>
         )}
         {children}
       </StyledLabelContainer>

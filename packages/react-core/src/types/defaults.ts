@@ -49,6 +49,8 @@ export type BorderRadius = {
   nano: string;
   micro: string;
   mili: string;
+  centi: string;
+  deca: string;
   pill: string;
 };
 
@@ -114,6 +116,7 @@ export type ThemeProp = {
     color: FontColor;
     stack: FontStack;
     weight: FontWeight;
+    files: FontWeight;
   };
   zIndex: ZIndex;
 };
@@ -122,7 +125,7 @@ export interface ThemeProviderProps {
   theme: ThemeProp;
 }
 
-export interface StyleProps extends ThemeProviderProps {}
+export type StyleProps = ThemeProviderProps;
 
 export type ColorType = keyof Color;
 

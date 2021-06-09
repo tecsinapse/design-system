@@ -9,7 +9,6 @@ export interface InputElementProps {
    */
   value?: string | Mask;
   placeholder?: string;
-  defaultValue?: string;
   disabled?: boolean;
   onChange?: (value: string) => void;
   onFocus?: () => void;
@@ -20,16 +19,12 @@ const InputElement: FC<InputElementProps> = ({
   onChange,
   placeholder,
   value,
-  defaultValue,
+  // defaultValue,
   disabled = false,
   ...rest
 }): JSX.Element => {
   const _value =
     typeof value === 'string' ? value : value?.maskValue?.formatted;
-  const _defaultValue =
-    typeof value === 'string'
-      ? defaultValue
-      : value?.converter?.(defaultValue).formatted;
 
   return (
     <StyledInputElement
@@ -37,7 +32,6 @@ const InputElement: FC<InputElementProps> = ({
       onChangeText={onChange}
       value={_value}
       placeholder={placeholder}
-      defaultValue={_defaultValue}
       disabled={disabled}
       editable={!disabled}
     />

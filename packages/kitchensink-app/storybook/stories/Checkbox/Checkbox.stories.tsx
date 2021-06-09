@@ -1,7 +1,6 @@
-import { storiesOf } from '@storybook/react-native';
-import { Checkbox } from '@tecsinapse/react-native-kit/src';
-import { Text } from '@tecsinapse/react-web-kit/src';
 import React, { useState } from 'react';
+import { storiesOf } from '@storybook/react-native';
+import { Checkbox, Text } from '@tecsinapse/react-core';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Checkbox', module)

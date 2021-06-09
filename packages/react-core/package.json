@@ -26,6 +26,8 @@
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "react-native": ">=0.64.0",
+    "react-native-vector-icons": ">=8.1.0"
   }
 }

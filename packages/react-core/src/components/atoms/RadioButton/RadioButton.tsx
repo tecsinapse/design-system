@@ -1,46 +1,80 @@
 import React, { FC } from 'react';
-import {
-  ButtonContainerStyled,
-  RadioContainer,
-  ViewContainerStyled,
-  ViewRadioStyled,
-  RadioChecked,
-} from './styled';
+import { Pressable, StyleProp, ViewStyle } from 'react-native';
+import { ColorGradationType, ColorType } from '../../../types/defaults';
+import { Icon } from '../Icon';
+import { IconViewStyled, IconWrapper, ScaledView, ViewStyled } from './styled';
 
 export interface RadioButtonProps {
-  onChange: (checked: boolean) => void;
-  checked: boolean;
-  labelPositon?: 'left' | 'right';
+  /** Element is checked */
+  checked?: boolean;
+  /** Change handler */
+  onChange?: (checked: boolean) => void;
+  /** Position of children */
+  labelPosition?: 'left' | 'right';
+  /** Element is not clickable */
+  disabled?: boolean;
+  /** Color definition from theme */
+  color?: ColorType;
+  /** Color gradation from theme */
+  colorTone?: ColorGradationType;
+  style?: StyleProp<ViewStyle>;
 }
 
 const RadioButton: FC<RadioButtonProps> = ({
+  children,
   onChange,
   checked,
-  children,
-  labelPositon = 'right',
+  labelPosition = 'right',
+  disabled = false,
+  color = 'primary',
+  colorTone = 'medium',
+  ...rest
 }): JSX.Element => {
   const handleChange = () => {
-    onChange(true);
+    onChange && onChange(!checked);
   };
 
   return (
-    <ViewContainerStyled>
-      {labelPositon === 'left' && children}
-      <ButtonContainerStyled
-        onPress={() => handleChange()}
-        accessibilityRole="radio"
-        accessibilityLiveRegion="polite"
-      >
-        <ViewRadioStyled>
-          {checked ? (
-            <RadioContainer>
-              <RadioChecked />
-            </RadioContainer>
-          ) : null}
-        </ViewRadioStyled>
-      </ButtonContainerStyled>
-      {labelPositon === 'right' && children}
-    </ViewContainerStyled>
+    <Pressable
+      {...rest}
+      disabled={disabled}
+      onPress={handleChange}
+      accessibilityRole="radio"
+    >
+      <ViewStyled>
+        {labelPosition === 'left' && children}
+        {checked && (
+          <IconViewStyled>
+            <IconWrapper>
+              <ScaledView>
+                <Icon
+                  name="circle"
+                  colorVariant={color}
+                  colorTone={colorTone}
+                  type="material-community"
+                  size="centi"
+                />
+              </ScaledView>
+            </IconWrapper>
+          </IconViewStyled>
+        )}
+        {!checked && (
+          <IconViewStyled>
+            <IconWrapper>
+              <ScaledView>
+                <Icon
+                  name="circle"
+                  fontColor="light"
+                  type="material-community"
+                  size="centi"
+                />
+              </ScaledView>
+            </IconWrapper>
+          </IconViewStyled>
+        )}
+        {labelPosition === 'right' && children}
+      </ViewStyled>
+    </Pressable>
   );
 };
 

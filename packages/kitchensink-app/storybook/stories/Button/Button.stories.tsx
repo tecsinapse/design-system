@@ -1,6 +1,7 @@
 import { select } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react-native';
-import { Button, Text } from '@tecsinapse/react-core/src';
+import { Button } from '@tecsinapse/react-core';
+import { Text } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 
@@ -10,8 +11,10 @@ storiesOf('Button', module)
   .add('Button', () => (
     <Button
       variant={select('variant', ['filled', 'outlined', 'text'], 'filled')}
-      onClick={() => console.log('Wow!')}
+      onPress={() => console.log('Wow!')}
     >
-      <Text>I'm a button</Text>
+      <Text fontWeight="bold" fontColor="light">
+        I'm a button
+      </Text>
     </Button>
   ));

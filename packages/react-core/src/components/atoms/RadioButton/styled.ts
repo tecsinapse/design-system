@@ -1,41 +1,28 @@
 import styled from '@emotion/native';
-import { TouchableWithoutFeedback, View } from 'react-native';
-import { StyleProps } from '../../../index';
+import { View } from 'react-native';
+import { StyleProps } from '../../../types/defaults';
+import { RadioButtonProps } from './RadioButton';
 
-export const ViewContainerStyled = styled(View)`
-  flex-direction: row;
-`;
-
-export const ButtonContainerStyled = styled(TouchableWithoutFeedback)<
-  Partial<StyleProps>
->`
-  border-radius: ${({ theme }) => theme.borderRadius.pill};
-`;
-
-export const ViewRadioStyled = styled(View)<Partial<StyleProps>>`
-  height: 20px;
-  width: 20px;
-  border-radius: ${({ theme }) => theme.borderRadius.pill};
-  margin: ${({ theme }) => theme.spacing.mili};
-  border-color: ${({ theme }) => theme.color.primary.medium};
-  border-width: 2px;
-  /* cursor: pointer; */ /* Deve ser apenas para WEB */
+export const IconWrapper = styled(View)<Partial<RadioButtonProps & StyleProps>>`
+  border-radius: ${({ theme }: StyleProps) => theme.borderRadius.pill};
+  border-color: ${({
+    theme,
+    color = 'primary',
+    colorTone = 'medium',
+  }: StyleProps & RadioButtonProps) => theme.color[color][colorTone]};
+  border-width: ${({ theme }: StyleProps) => theme.borderWidth.nano};
   background-color: #fff;
 `;
 
-export const RadioContainer = styled(View)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  align-items: center;
-  justify-content: center;
+export const ScaledView = styled(View)`
+  transform: scale(0.8);
 `;
 
-export const RadioChecked = styled(View)<Partial<StyleProps>>`
-  height: 10px;
-  width: 10px;
-  border-radius: ${({ theme }) => theme.borderRadius.pill};
-  background-color: ${({ theme }) => theme.color.primary.medium};
+export const IconViewStyled = styled(View)<Partial<StyleProps>>`
+  padding: ${({ theme }: StyleProps) => theme.spacing.mili};
+`;
+
+export const ViewStyled = styled(View)`
+  align-items: center;
+  flex-direction: row;
 `;

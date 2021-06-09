@@ -9,8 +9,7 @@ export default {
 };
 
 const Template: Story<InputWebProps> = args => {
-  const { defaultValue = '' } = args;
-  const [value, setValue] = useState<string>(defaultValue);
+  const [value, setValue] = useState<string>();
 
   const onChange = text => {
     setValue(text);
@@ -35,6 +34,5 @@ export const Base = Template.bind({});
 Base.args = {
   onChange: value => action('onChange')(value),
   placeholder: 'Type your e-mail',
-  defaultValue: 'email@email.com',
   disabled: false,
 };
