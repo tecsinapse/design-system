@@ -15,8 +15,7 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@tecsinapse/react-core": "^0.4.0",
-    "react-native-vector-icons": "^8.1.0",
-    "react-native-web": "^0.15.0"
+    "react-native-vector-icons": "^8.1.0"
   },
   "repository": {
     "type": "git",
@@ -29,6 +28,7 @@
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "react-native-web": "^0.15.0"
   }
 }
