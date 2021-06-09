@@ -41,6 +41,7 @@ export {
   GroupButtonValue,
 } from './components/atoms/GroupButton';
 export { BoxContent, BoxContentProps } from './components/atoms/BoxContent';
+export { Divider, DividerProps } from './components/atoms/Divider';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './styles/definitions';
 export * from './styles/light';
