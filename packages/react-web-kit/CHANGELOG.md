@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@0.4.0...@tecsinapse/react-web-kit@0.5.0) (2021-06-09)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
 # [0.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@0.3.0...@tecsinapse/react-web-kit@0.4.0) (2021-05-28)
 
 

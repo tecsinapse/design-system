@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.4.0...@tecsinapse/react-core@0.5.0) (2021-06-09)
+
+
+### Bug Fixes
+
+* **acessibility:** radio and checkbox ([8e80f12](https://github.com/tecsinapse/design-system/commit/8e80f12d50c14d191b8b5a079d662b4203268628))
+* **checkbox:** pixel perfection ([4db9843](https://github.com/tecsinapse/design-system/commit/4db98430cd894802b22310282c2802f993e594ee))
+
+
+
+
+
 # [0.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.3.0...@tecsinapse/react-core@0.4.0) (2021-05-28)
 
 
