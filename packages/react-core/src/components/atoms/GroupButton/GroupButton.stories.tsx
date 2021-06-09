@@ -12,25 +12,37 @@ export default {
   component: GroupButton,
 };
 
-const options: GroupButtonValue[] = [
-  { id: 0, description: 'All' },
-  { id: 1, description: 'Today' },
-  { id: 2, description: 'Yesterday' },
-  { id: 3, description: 'Last week' },
+const options: GroupButtonValue<string>[] = [
+  {
+    value: 'Sim',
+    options: {
+      activeBackgroundColor: 'success',
+      activeBorderColor: 'success',
+    },
+  },
+  { value: 'Não' },
+  {
+    value: 'Inválido',
+    options: {
+      activeBackgroundColor: 'error',
+      activeBorderColor: 'error',
+    },
+  },
 ];
 
 const Template: Story<GroupButtonProps<any>> = ({ ...args }) => {
-  const [active, setActive] = React.useState<GroupButtonValue>(options[0]);
+  const [active, setActive] = React.useState<string>(options[0].value);
 
   return (
     <GroupButton
+      {...args}
       value={active}
       options={options}
-      renderKey={option => option.id}
-      renderOption={(option, active) => (
-        <GroupButtonOption active={active} description={option.description} />
-      )}
+      renderKey={option => option}
       onChange={setActive}
+      renderOption={(option, active) => (
+        <GroupButtonOption active={active} description={option} />
+      )}
     />
   );
 };
@@ -39,4 +51,5 @@ export const Base = Template.bind({});
 
 Base.args = {
   options,
+  buttonSize: 'small',
 };
