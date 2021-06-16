@@ -1,11 +1,13 @@
 import {
+  InputContainer,
   InputContainerProps,
   InputElementProps,
   StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { StyledWebInputContainer, StyledWebTextInput } from './styled';
+import { View } from 'react-native';
+import { StyledWebTextInput } from './styled';
 
 export interface InputWebProps
   extends Omit<InputElementProps, 'style'>,
@@ -36,8 +38,9 @@ export const Input: FC<InputWebProps> = ({
   );
 
   return (
-    <StyledBorderKeeper focused={focused}>
-      <StyledWebInputContainer
+    <View>
+      <StyledBorderKeeper focused={focused} disabled={disabled} />
+      <InputContainer
         label={label}
         labelColor={labelColor}
         labelColorVariant={labelColorVariant}
@@ -59,8 +62,8 @@ export const Input: FC<InputWebProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-      </StyledWebInputContainer>
-    </StyledBorderKeeper>
+      </InputContainer>
+    </View>
   );
 };
 

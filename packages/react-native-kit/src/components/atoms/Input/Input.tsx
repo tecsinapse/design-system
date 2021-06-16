@@ -1,16 +1,15 @@
 import {
   FontStackType,
   FontWeightType,
-  InputContainer,
   InputContainerProps,
   InputElementProps,
   StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { TextInputProps } from 'react-native';
+import { TextInputProps, View } from 'react-native';
 import { Text } from '../Text';
-import { StyledNativeInput } from './styled';
+import { StyledInputContainer, StyledNativeInput } from './styled';
 
 export interface InputNativebProps
   extends Omit<InputElementProps, 'style'>,
@@ -50,8 +49,9 @@ export const Input: FC<InputNativebProps> = ({
   );
 
   return (
-    <StyledBorderKeeper focused={focused}>
-      <InputContainer
+    <View>
+      <StyledBorderKeeper focused={focused} disabled={disabled} />
+      <StyledInputContainer
         label={label}
         labelColor={labelColor}
         labelColorVariant={labelColorVariant}
@@ -76,8 +76,8 @@ export const Input: FC<InputNativebProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-      </InputContainer>
-    </StyledBorderKeeper>
+      </StyledInputContainer>
+    </View>
   );
 };
 

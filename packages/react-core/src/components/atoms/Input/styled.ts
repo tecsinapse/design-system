@@ -3,16 +3,6 @@ import { InputElementProps, StyleProps } from '@tecsinapse/react-core';
 import { TextInput } from 'react-native';
 import { InputContainerProps } from './InputContainer/InputContainer';
 
-const focusedStyles = ({
-  focused,
-  theme,
-}: Partial<InputContainerProps> & StyleProps) =>
-  focused &&
-  css`
-    border-width: ${theme.borderWidth.nano};
-    border-color: ${theme.color.secondary.dark};
-  `;
-
 const leftIconStyles = ({
   leftComponent,
   theme,
@@ -48,19 +38,20 @@ const disabledInputStyles = ({
     color: ${theme.color.secondary.light};
   `;
 
+const focusedStyles = ({
+  focused,
+  theme,
+}: Partial<InputContainerProps> & StyleProps) =>
+  focused &&
+  css`
+    border-width: ${theme.borderWidth.nano};
+    border-color: ${theme.color.secondary.dark};
+  `;
+
 const StyledInputContainerBase = styled.View<
   Partial<InputContainerProps> & Partial<StyleProps>
 >`
-  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
-  border-color: ${({
-    theme,
-    borderColor = 'secondary',
-    borderColorGradation = 'light',
-  }) => theme.color[borderColor][borderColorGradation]};
-  border-radius: ${({ theme }) => theme.borderRadius.mili};
-  border-width: ${({ theme }) => theme.borderWidth.pico};
-  padding-top: ${({ theme }) => theme.spacing.micro};
-  padding-bottom: ${({ theme }) => theme.spacing.micro};
+  padding: ${({ theme }) => `${theme.spacing.micro} 0`};
   flex-direction: row;
   align-items: center;
   min-height: 44px;
@@ -79,22 +70,37 @@ export const StyledLabelContainer = styled.View<Partial<StyleProps>>`
   flex: 1;
 `;
 
-export const StyledBorderKeeper = styled.View<
+const StyledBorderKeeperBase = styled.View<
   Partial<InputContainerProps> & Partial<StyleProps>
 >`
-  padding: ${({ theme, focused }) => (focused ? 0 : theme.borderWidth.pico)};
-  justify-content: center;
-  align-items: center;
+  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+  border-color: ${({
+    theme,
+    borderColor = 'secondary',
+    borderColorGradation = 'light',
+  }) => theme.color[borderColor][borderColorGradation]};
+  border-radius: ${({ theme }) => theme.borderRadius.mili};
+  border-width: ${({ theme }) => theme.borderWidth.pico};
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `;
+
+export const StyledBorderKeeper = styled(StyledBorderKeeperBase)<
+  Partial<StyleProps>
+>(
+  props => css`
+    ${focusedStyles(props)}
+    ${disabledContainerStyles(props)}
+  `
+);
 
 export const StyledInputContainer = styled(StyledInputContainerBase)<
   Partial<StyleProps>
 >(
   props => css`
-    ${focusedStyles(props)}
     ${leftIconStyles(props)}
-  ${rightIconStyles(props)}
-  ${disabledContainerStyles(props)}
+    ${rightIconStyles(props)}
   `
 );
 

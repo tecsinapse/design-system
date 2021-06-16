@@ -19,7 +19,6 @@ const InputElement: FC<InputElementProps> = ({
   onChange,
   placeholder,
   value,
-  // defaultValue,
   disabled = false,
   ...rest
 }): JSX.Element => {

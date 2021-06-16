@@ -1,7 +1,15 @@
 import styled from '@emotion/native';
-import { InputElement, StyleProps } from '@tecsinapse/react-core';
+import {
+  InputContainer,
+  InputElement,
+  StyleProps,
+} from '@tecsinapse/react-core';
 import { Font, fontStyles } from '../Text/styled';
 import { InputNativebProps } from './Input';
+
+export const StyledInputContainer = styled(InputContainer)<Partial<StyleProps>>`
+  min-height: 50px;
+`;
 
 const StyledNativeInputBase = styled(InputElement)<
   Partial<InputNativebProps> & Partial<StyleProps>
