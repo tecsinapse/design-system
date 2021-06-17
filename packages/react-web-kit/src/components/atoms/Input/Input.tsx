@@ -1,8 +1,8 @@
 import {
+  Hint,
   InputContainer,
   InputContainerProps,
   InputElementProps,
-  StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
@@ -13,7 +13,7 @@ export interface InputWebProps
   extends Omit<InputElementProps, 'style'>,
     InputContainerProps {}
 
-export const Input: FC<InputWebProps> = ({
+const Input: FC<InputWebProps> = ({
   label,
   labelColor,
   labelColorVariant,
@@ -27,10 +27,15 @@ export const Input: FC<InputWebProps> = ({
   style,
   borderColor,
   borderColorGradation,
+  inputContainerStyle,
+  variant = 'default',
+  hintComponent,
+  hint,
   onFocus,
   onBlur,
   ...rest
 }) => {
+  const _hint = hintComponent || <Hint text={hint} variant={variant} />;
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -38,29 +43,33 @@ export const Input: FC<InputWebProps> = ({
   );
 
   return (
-    <InputContainer
-      label={label}
-      labelColor={labelColor}
-      labelColorVariant={labelColorVariant}
-      labelColorTone={labelColorTone}
-      labelTypography={labelTypography}
-      labelStack={labelStack}
-      labelWeight={labelWeight}
-      leftComponent={leftComponent}
-      rightComponent={rightComponent}
-      borderColor={borderColor}
-      borderColorGradation={borderColorGradation}
-      style={style}
-      focused={focused}
-      disabled={disabled}
-    >
-      <StyledWebTextInput
-        {...rest}
+    <View style={style}>
+      <InputContainer
+        label={label}
+        labelColor={labelColor}
+        labelColorVariant={labelColorVariant}
+        labelColorTone={labelColorTone}
+        labelTypography={labelTypography}
+        labelStack={labelStack}
+        labelWeight={labelWeight}
+        leftComponent={leftComponent}
+        rightComponent={rightComponent}
+        borderColor={borderColor}
+        borderColorGradation={borderColorGradation}
+        inputContainerStyle={inputContainerStyle}
+        focused={focused}
         disabled={disabled}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
-    </InputContainer>
+        variant={variant}
+      >
+        <StyledWebTextInput
+          {...rest}
+          disabled={disabled}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+      </InputContainer>
+      {hint && _hint}
+    </View>
   );
 };
 

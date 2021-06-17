@@ -1,6 +1,8 @@
 import styled, { css } from '@emotion/native';
-import { InputElementProps, StyleProps } from '@tecsinapse/react-core';
 import { TextInput } from 'react-native';
+import { InputElementProps } from '.';
+import { StyleProps } from '../../../types/defaults';
+import { Icon } from '../Icon';
 import { InputContainerProps } from './InputContainer/InputContainer';
 
 const leftIconStyles = ({
@@ -40,12 +42,13 @@ const disabledInputStyles = ({
 
 const focusedStyles = ({
   focused,
+  borderColor = 'secondary',
   theme,
 }: Partial<InputContainerProps> & StyleProps) =>
   focused &&
   css`
     border-width: ${theme.borderWidth.nano};
-    border-color: ${theme.color.secondary.dark};
+    border-color: ${theme.color[borderColor].dark};
   `;
 
 export const StyledIconContent = styled.View<Partial<StyleProps>>`
@@ -111,3 +114,13 @@ export const StyledInputElement = styled(StyledInputElementBase)<
     ${disabledInputStyles(props)}
   `
 );
+
+export const StyledHintContainer = styled.View<Partial<StyleProps>>`
+  margin-top: ${({ theme }) => theme.spacing.micro};
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const StyledHintIcon = styled(Icon)<Partial<StyleProps>>`
+  margin-right: ${({ theme }) => theme.spacing.micro};
+`;

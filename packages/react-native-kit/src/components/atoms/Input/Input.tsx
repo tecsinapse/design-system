@@ -1,12 +1,13 @@
 import {
   FontStackType,
   FontWeightType,
+  Hint,
   InputContainerProps,
   InputElementProps,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { TextInputProps } from 'react-native';
+import { TextInputProps, View } from 'react-native';
 import { Text } from '../Text';
 import { StyledInputContainer, StyledNativeInput } from './styled';
 
@@ -21,7 +22,7 @@ export interface InputNativebProps
   inputFontWeight?: FontWeightType;
 }
 
-export const Input: FC<InputNativebProps> = ({
+const Input: FC<InputNativebProps> = ({
   label,
   labelColor,
   labelColorVariant,
@@ -37,10 +38,17 @@ export const Input: FC<InputNativebProps> = ({
   borderColorGradation,
   inputFontStack = 'default',
   inputFontWeight = 'bold',
+  inputContainerStyle,
+  variant = 'default',
+  hintComponent,
+  hint,
   onFocus,
   onBlur,
   ...rest
 }) => {
+  const _hint = hintComponent || (
+    <Hint TextComponent={Text} text={hint} variant={variant} />
+  );
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -48,32 +56,36 @@ export const Input: FC<InputNativebProps> = ({
   );
 
   return (
-    <StyledInputContainer
-      label={label}
-      labelColor={labelColor}
-      labelColorVariant={labelColorVariant}
-      labelColorTone={labelColorTone}
-      labelTypography={labelTypography}
-      labelStack={labelStack}
-      labelWeight={labelWeight}
-      LabelComponent={Text}
-      leftComponent={leftComponent}
-      rightComponent={rightComponent}
-      borderColor={borderColor}
-      borderColorGradation={borderColorGradation}
-      style={style}
-      focused={focused}
-      disabled={disabled}
-    >
-      <StyledNativeInput
-        {...rest}
-        fontStack={inputFontStack}
-        fontWeight={inputFontWeight}
+    <View style={style}>
+      <StyledInputContainer
+        label={label}
+        labelColor={labelColor}
+        labelColorVariant={labelColorVariant}
+        labelColorTone={labelColorTone}
+        labelTypography={labelTypography}
+        labelStack={labelStack}
+        labelWeight={labelWeight}
+        LabelComponent={Text}
+        leftComponent={leftComponent}
+        rightComponent={rightComponent}
+        borderColor={borderColor}
+        borderColorGradation={borderColorGradation}
+        inputContainerStyle={inputContainerStyle}
+        focused={focused}
         disabled={disabled}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
-    </StyledInputContainer>
+        variant={variant}
+      >
+        <StyledNativeInput
+          {...rest}
+          fontStack={inputFontStack}
+          fontWeight={inputFontWeight}
+          disabled={disabled}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
+      </StyledInputContainer>
+      {hint && _hint}
+    </View>
   );
 };
 

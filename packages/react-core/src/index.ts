@@ -22,11 +22,13 @@ export {
   InputElementProps,
   InputContainer,
   InputContainerProps,
+  InputVariantType,
   useInputFocus,
   useMask,
   useCurrencyMask,
   StyledBorderKeeper,
   Masks,
+  Hint,
 } from './components/atoms/Input';
 export { Icon, IconProps } from './components/atoms/Icon';
 export {
