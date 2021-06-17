@@ -38,32 +38,29 @@ export const Input: FC<InputWebProps> = ({
   );
 
   return (
-    <View>
-      <StyledBorderKeeper focused={focused} disabled={disabled} />
-      <InputContainer
-        label={label}
-        labelColor={labelColor}
-        labelColorVariant={labelColorVariant}
-        labelColorTone={labelColorTone}
-        labelTypography={labelTypography}
-        labelStack={labelStack}
-        labelWeight={labelWeight}
-        leftComponent={leftComponent}
-        rightComponent={rightComponent}
-        borderColor={borderColor}
-        borderColorGradation={borderColorGradation}
-        style={style}
-        focused={focused}
+    <InputContainer
+      label={label}
+      labelColor={labelColor}
+      labelColorVariant={labelColorVariant}
+      labelColorTone={labelColorTone}
+      labelTypography={labelTypography}
+      labelStack={labelStack}
+      labelWeight={labelWeight}
+      leftComponent={leftComponent}
+      rightComponent={rightComponent}
+      borderColor={borderColor}
+      borderColorGradation={borderColorGradation}
+      style={style}
+      focused={focused}
+      disabled={disabled}
+    >
+      <StyledWebTextInput
+        {...rest}
         disabled={disabled}
-      >
-        <StyledWebTextInput
-          {...rest}
-          disabled={disabled}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
-      </InputContainer>
-    </View>
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+    </InputContainer>
   );
 };
 

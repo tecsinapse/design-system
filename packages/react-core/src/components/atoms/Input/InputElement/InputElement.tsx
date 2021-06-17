@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import { Mask } from '../hooks/useMask';
 import { StyledInputElement } from '../styled';
+
 export interface InputElementProps {
   style?: StyleProp<TextStyle>;
   /**

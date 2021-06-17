@@ -10,7 +10,14 @@ import {
   TypographyVariationType,
 } from '../../../../types/defaults';
 import { Text, TextProps } from '../../Text';
-import { StyledInputContainer, StyledLabelContainer } from '../styled';
+import {
+  StyledBorderKeeper,
+  StyledIconContent,
+  StyledInputContainer,
+  StyledLabelContainer,
+} from '../styled';
+
+export type InputVariantType = 'default' | 'error' | 'success';
 
 export interface InputContainerProps {
   label?: string;
@@ -28,6 +35,8 @@ export interface InputContainerProps {
   style?: StyleProp<ViewStyle>;
   focused?: boolean;
   disabled?: boolean;
+  variant?: InputVariantType;
+  hint?: string;
 }
 
 const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
@@ -42,6 +51,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   leftComponent,
   rightComponent,
   disabled,
+  focused,
   children,
   ...rest
 }): JSX.Element => {
@@ -49,15 +59,14 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   const _labelColorTone = disabled ? 'light' : labelColorTone;
 
   return (
-    <StyledInputContainer
-      {...rest}
-      disabled={disabled}
-      leftComponent={leftComponent}
-      rightComponent={rightComponent}
-    >
-      {leftComponent}
+    <StyledInputContainer {...rest} focused={focused} disabled={disabled}>
+      <StyledBorderKeeper focused={focused} disabled={disabled} />
+      {leftComponent && <StyledIconContent>{leftComponent}</StyledIconContent>}
 
-      <StyledLabelContainer>
+      <StyledLabelContainer
+        leftComponent={leftComponent}
+        rightComponent={rightComponent}
+      >
         {label && (
           <LabelComponent
             fontColor={labelColor}
@@ -73,7 +82,9 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
         {children}
       </StyledLabelContainer>
 
-      {rightComponent}
+      {rightComponent && (
+        <StyledIconContent>{rightComponent}</StyledIconContent>
+      )}
     </StyledInputContainer>
   );
 };

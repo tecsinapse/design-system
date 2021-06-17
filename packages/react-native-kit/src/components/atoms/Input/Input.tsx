@@ -3,11 +3,10 @@ import {
   FontWeightType,
   InputContainerProps,
   InputElementProps,
-  StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { TextInputProps, View } from 'react-native';
+import { TextInputProps } from 'react-native';
 import { Text } from '../Text';
 import { StyledInputContainer, StyledNativeInput } from './styled';
 
@@ -49,35 +48,32 @@ export const Input: FC<InputNativebProps> = ({
   );
 
   return (
-    <View>
-      <StyledBorderKeeper focused={focused} disabled={disabled} />
-      <StyledInputContainer
-        label={label}
-        labelColor={labelColor}
-        labelColorVariant={labelColorVariant}
-        labelColorTone={labelColorTone}
-        labelTypography={labelTypography}
-        labelStack={labelStack}
-        labelWeight={labelWeight}
-        LabelComponent={Text}
-        leftComponent={leftComponent}
-        rightComponent={rightComponent}
-        borderColor={borderColor}
-        borderColorGradation={borderColorGradation}
-        style={style}
-        focused={focused}
+    <StyledInputContainer
+      label={label}
+      labelColor={labelColor}
+      labelColorVariant={labelColorVariant}
+      labelColorTone={labelColorTone}
+      labelTypography={labelTypography}
+      labelStack={labelStack}
+      labelWeight={labelWeight}
+      LabelComponent={Text}
+      leftComponent={leftComponent}
+      rightComponent={rightComponent}
+      borderColor={borderColor}
+      borderColorGradation={borderColorGradation}
+      style={style}
+      focused={focused}
+      disabled={disabled}
+    >
+      <StyledNativeInput
+        {...rest}
+        fontStack={inputFontStack}
+        fontWeight={inputFontWeight}
         disabled={disabled}
-      >
-        <StyledNativeInput
-          {...rest}
-          fontStack={inputFontStack}
-          fontWeight={inputFontWeight}
-          disabled={disabled}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
-      </StyledInputContainer>
-    </View>
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+    </StyledInputContainer>
   );
 };
 
