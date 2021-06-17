@@ -1,16 +1,15 @@
 import {
   FontStackType,
   FontWeightType,
-  InputContainer,
+  Hint,
   InputContainerProps,
   InputElementProps,
-  StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { TextInputProps } from 'react-native';
+import { TextInputProps, View } from 'react-native';
 import { Text } from '../Text';
-import { StyledNativeInput } from './styled';
+import { StyledInputContainer, StyledNativeInput } from './styled';
 
 export interface InputNativebProps
   extends Omit<InputElementProps, 'style'>,
@@ -23,7 +22,7 @@ export interface InputNativebProps
   inputFontWeight?: FontWeightType;
 }
 
-export const Input: FC<InputNativebProps> = ({
+const Input: FC<InputNativebProps> = ({
   label,
   labelColor,
   labelColorVariant,
@@ -39,10 +38,17 @@ export const Input: FC<InputNativebProps> = ({
   borderColorGradation,
   inputFontStack = 'default',
   inputFontWeight = 'bold',
+  inputContainerStyle,
+  variant = 'default',
+  hintComponent,
+  hint,
   onFocus,
   onBlur,
   ...rest
 }) => {
+  const _hint = hintComponent || (
+    <Hint TextComponent={Text} text={hint} variant={variant} />
+  );
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -50,8 +56,8 @@ export const Input: FC<InputNativebProps> = ({
   );
 
   return (
-    <StyledBorderKeeper focused={focused}>
-      <InputContainer
+    <View style={style}>
+      <StyledInputContainer
         label={label}
         labelColor={labelColor}
         labelColorVariant={labelColorVariant}
@@ -64,9 +70,10 @@ export const Input: FC<InputNativebProps> = ({
         rightComponent={rightComponent}
         borderColor={borderColor}
         borderColorGradation={borderColorGradation}
-        style={style}
+        inputContainerStyle={inputContainerStyle}
         focused={focused}
         disabled={disabled}
+        variant={variant}
       >
         <StyledNativeInput
           {...rest}
@@ -76,8 +83,9 @@ export const Input: FC<InputNativebProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-      </InputContainer>
-    </StyledBorderKeeper>
+      </StyledInputContainer>
+      {hint && _hint}
+    </View>
   );
 };
 

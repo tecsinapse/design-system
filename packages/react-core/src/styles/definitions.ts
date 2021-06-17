@@ -125,8 +125,8 @@ export const typography: TypographyVariation = {
     lineHeight: '18px', // '1.125rem'
   },
   label: {
-    fontSize: '11px', // '0.625rem'
-    lineHeight: '14px', // '0.75rem'
+    fontSize: '10px',
+    lineHeight: '12px',
   },
 };
 

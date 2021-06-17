@@ -10,7 +10,14 @@ import {
   TypographyVariationType,
 } from '../../../../types/defaults';
 import { Text, TextProps } from '../../Text';
-import { StyledInputContainer, StyledLabelContainer } from '../styled';
+import {
+  StyledBorderKeeper,
+  StyledIconContent,
+  StyledInputContainer,
+  StyledLabelContainer,
+} from '../styled';
+
+export type InputVariantType = 'default' | 'error' | 'success';
 
 export interface InputContainerProps {
   label?: string;
@@ -26,8 +33,12 @@ export interface InputContainerProps {
   borderColor?: ColorType;
   borderColorGradation?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
+  inputContainerStyle?: StyleProp<ViewStyle>;
   focused?: boolean;
   disabled?: boolean;
+  variant?: InputVariantType;
+  hint?: string;
+  hintComponent?: JSX.Element;
 }
 
 const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
@@ -41,23 +52,38 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   LabelComponent = Text,
   leftComponent,
   rightComponent,
+  inputContainerStyle,
   disabled,
+  focused,
+  variant,
   children,
   ...rest
 }): JSX.Element => {
-  const _labelColorVariant = disabled ? 'secondary' : labelColorVariant;
+  let _defaultLabelColor = labelColorVariant;
+  if (variant === 'error') _defaultLabelColor = 'error';
+  if (variant === 'success') _defaultLabelColor = 'success';
+  const _labelColorVariant = disabled ? 'secondary' : _defaultLabelColor;
   const _labelColorTone = disabled ? 'light' : labelColorTone;
 
   return (
     <StyledInputContainer
       {...rest}
+      style={inputContainerStyle}
+      focused={focused}
       disabled={disabled}
-      leftComponent={leftComponent}
-      rightComponent={rightComponent}
     >
-      {leftComponent}
+      <StyledBorderKeeper
+        focused={focused}
+        disabled={disabled}
+        borderColor={_defaultLabelColor}
+      />
 
-      <StyledLabelContainer>
+      {leftComponent && <StyledIconContent>{leftComponent}</StyledIconContent>}
+
+      <StyledLabelContainer
+        leftComponent={leftComponent}
+        rightComponent={rightComponent}
+      >
         {label && (
           <LabelComponent
             fontColor={labelColor}
@@ -73,7 +99,9 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
         {children}
       </StyledLabelContainer>
 
-      {rightComponent}
+      {rightComponent && (
+        <StyledIconContent>{rightComponent}</StyledIconContent>
+      )}
     </StyledInputContainer>
   );
 };

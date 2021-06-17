@@ -1,17 +1,19 @@
 import {
+  Hint,
+  InputContainer,
   InputContainerProps,
   InputElementProps,
-  StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { StyledWebInputContainer, StyledWebTextInput } from './styled';
+import { View } from 'react-native';
+import { StyledWebTextInput } from './styled';
 
 export interface InputWebProps
   extends Omit<InputElementProps, 'style'>,
     InputContainerProps {}
 
-export const Input: FC<InputWebProps> = ({
+const Input: FC<InputWebProps> = ({
   label,
   labelColor,
   labelColorVariant,
@@ -25,10 +27,15 @@ export const Input: FC<InputWebProps> = ({
   style,
   borderColor,
   borderColorGradation,
+  inputContainerStyle,
+  variant = 'default',
+  hintComponent,
+  hint,
   onFocus,
   onBlur,
   ...rest
 }) => {
+  const _hint = hintComponent || <Hint text={hint} variant={variant} />;
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -36,8 +43,8 @@ export const Input: FC<InputWebProps> = ({
   );
 
   return (
-    <StyledBorderKeeper focused={focused}>
-      <StyledWebInputContainer
+    <View style={style}>
+      <InputContainer
         label={label}
         labelColor={labelColor}
         labelColorVariant={labelColorVariant}
@@ -49,9 +56,10 @@ export const Input: FC<InputWebProps> = ({
         rightComponent={rightComponent}
         borderColor={borderColor}
         borderColorGradation={borderColorGradation}
-        style={style}
+        inputContainerStyle={inputContainerStyle}
         focused={focused}
         disabled={disabled}
+        variant={variant}
       >
         <StyledWebTextInput
           {...rest}
@@ -59,8 +67,9 @@ export const Input: FC<InputWebProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-      </StyledWebInputContainer>
-    </StyledBorderKeeper>
+      </InputContainer>
+      {hint && _hint}
+    </View>
   );
 };
 
