@@ -4,14 +4,16 @@ import {
   Hint,
   InputContainerProps,
   InputElementProps,
-  useInputFocus
+  useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 import { Text } from '../Text';
 import { StyledInputContainer, StyledNativeInput } from './styled';
 
-export interface InputNativeProps extends Omit<InputElementProps, 'style'>, InputContainerProps {
+export interface InputNativeProps
+  extends Omit<InputElementProps, 'style'>,
+    InputContainerProps {
   inputFontStack?: FontStackType;
   inputFontWeight?: FontWeightType;
 }

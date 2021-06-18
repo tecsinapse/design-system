@@ -3,13 +3,15 @@ import {
   InputContainer,
   InputContainerProps,
   InputElementProps,
-  useInputFocus
+  useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { View } from 'react-native';
 import { StyledWebTextInput } from './styled';
 
-export interface InputWebProps extends Omit<InputElementProps, 'style'>, InputContainerProps {}
+export interface InputWebProps
+  extends Omit<InputElementProps, 'style'>,
+    InputContainerProps {}
 
 const Input: FC<InputWebProps> = ({
   label,

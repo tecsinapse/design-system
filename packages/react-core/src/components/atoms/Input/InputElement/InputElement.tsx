@@ -3,7 +3,8 @@ import { StyleProp, TextInputProps, TextStyle } from 'react-native';
 import { Mask } from '../hooks/useMask';
 import { StyledInputElement } from '../styled';
 
-export interface InputElementProps extends Omit<TextInputProps, 'onChange' | 'value'> {
+export interface InputElementProps
+  extends Omit<TextInputProps, 'onChange' | 'value'> {
   style?: StyleProp<TextStyle>;
   /**
    * TODO:

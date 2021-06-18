@@ -1,1 +1,4 @@
-export { default as InputPassword, InputPasswordNativeProps } from './InputPassword';
+export {
+  default as InputPassword,
+  InputPasswordNativeProps,
+} from './InputPassword';

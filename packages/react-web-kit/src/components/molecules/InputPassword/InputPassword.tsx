@@ -1,23 +1,26 @@
 import { InputPasswordIcon } from '@tecsinapse/react-core';
 import React, { FC, useState } from 'react';
-import { Input, InputWebProps } from "../../atoms/Input";
+import { Input, InputWebProps } from '../../atoms/Input';
 
 export interface InputPasswordWebProps extends InputWebProps {}
 
-const InputPassword: FC<InputPasswordWebProps> = ({ rightComponent, ...rest }) => {
-    const [ revealed, setRevealed ] = useState(false)
-    return (
-        <Input
-            {...rest}
-            secureTextEntry={!revealed}
-            rightComponent={
-              <>
-                <InputPasswordIcon onChangeState={setRevealed} revealed={revealed} />
-                { rightComponent }
-              </>
-            }
-        />
-    )
-}
+const InputPassword: FC<InputPasswordWebProps> = ({
+  rightComponent,
+  ...rest
+}) => {
+  const [revealed, setRevealed] = useState(false);
+  return (
+    <Input
+      {...rest}
+      secureTextEntry={!revealed}
+      rightComponent={
+        <>
+          <InputPasswordIcon onChangeState={setRevealed} revealed={revealed} />
+          {rightComponent}
+        </>
+      }
+    />
+  );
+};
 
-export default InputPassword
+export default InputPassword;

@@ -22,13 +22,13 @@ const Template: Story<InputPasswordWebProps> = args => {
 
   return (
     <>
-    <InputPassword
-      {...args}
-      label="Password"
-      value={value}
-      onChange={onChange}
-      placeholder={args.placeholder}
-    />
+      <InputPassword
+        {...args}
+        label="Password"
+        value={value}
+        onChange={onChange}
+        placeholder={args.placeholder}
+      />
     </>
   );
 };

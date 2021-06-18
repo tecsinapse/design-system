@@ -8,24 +8,23 @@ storiesOf('GroupButton', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
   .add('GroupButton', () => <Component />);
 
-  const options: GroupButtonValue<string>[] = [
-    {
-      value: 'Sim',
-      options: {
-        activeBackgroundColor: 'success',
-        activeBorderColor: 'success',
-      },
+const options: GroupButtonValue<string>[] = [
+  {
+    value: 'Sim',
+    options: {
+      activeBackgroundColor: 'success',
+      activeBorderColor: 'success',
     },
-    { value: 'Não' },
-    {
-      value: 'Inválido',
-      options: {
-        activeBackgroundColor: 'error',
-        activeBorderColor: 'error',
-      },
+  },
+  { value: 'Não' },
+  {
+    value: 'Inválido',
+    options: {
+      activeBackgroundColor: 'error',
+      activeBorderColor: 'error',
     },
-  ];
-  
+  },
+];
 
 const Component = () => {
   const [active, setActive] = useState<string>(options[0].value);
