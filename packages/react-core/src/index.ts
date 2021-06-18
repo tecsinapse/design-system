@@ -30,6 +30,7 @@ export {
   Masks,
   Hint,
 } from './components/atoms/Input';
+export { InputPasswordIcon } from './components/molecules/InputPassword'
 export { Icon, IconProps } from './components/atoms/Icon';
 export {
   PressableSurface,

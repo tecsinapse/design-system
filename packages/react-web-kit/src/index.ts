@@ -3,6 +3,7 @@ export { default as Badge } from './components/atoms/Badge/Badge';
 export {
   Button,
   useMouseHover,
-  WebButtonProps,
+  WebButtonProps
 } from './components/atoms/Button';
 export { Input, InputWebProps } from './components/atoms/Input';
+export { InputPassword, InputPasswordWebProps } from './components/molecules/InputPassword/';

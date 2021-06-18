@@ -53,6 +53,8 @@ const focusedStyles = ({
 
 export const StyledIconContent = styled.View<Partial<StyleProps>>`
   z-index: ${({ theme }) => theme.zIndex.default};
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const StyledInputContainer = styled.View<
