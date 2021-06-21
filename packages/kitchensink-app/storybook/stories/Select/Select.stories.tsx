@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
-import { Select } from '@tecsinapse/react-native-kit/src/components/atoms/Select';
+import { Select } from '@tecsinapse/react-native-kit';
 
 storiesOf('Input', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
