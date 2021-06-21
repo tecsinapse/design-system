@@ -46,4 +46,3 @@ export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './styles/definitions';
 export * from './styles/light';
 export * from './types/defaults';
-export { SelectProps } from './components/atoms/Select';
