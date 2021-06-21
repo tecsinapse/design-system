@@ -22,6 +22,9 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   placeholder?: string;
   onFocus?: () => void;
   onBlur?: () => void;
+  selectModalTitle?: string;
+  selectModalTitleComponent?: JSX.Element;
+  searchBarPlaceholder?: string;
 }
 
 function Select<Data, Type extends 'single' | 'multi'>({
@@ -51,6 +54,9 @@ function Select<Data, Type extends 'single' | 'multi'>({
   onFocus,
   onBlur,
   disabled,
+  selectModalTitle,
+  selectModalTitleComponent,
+  searchBarPlaceholder,
 
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
@@ -131,6 +137,10 @@ function Select<Data, Type extends 'single' | 'multi'>({
         onRequestClose={handleCloseModal}
         animated
         animationType={'slide'}
+
+        selectModalTitle={selectModalTitle}
+        selectModalTitleComponent={selectModalTitleComponent}
+        searchBarPlaceholder={searchBarPlaceholder}
       />
     </>
   );

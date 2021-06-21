@@ -29,6 +29,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   onSelect,
   value,
   onRequestClose,
+  selectModalTitle,
+  selectModalTitleComponent,
+  searchBarPlaceholder,
   ...modalProps
 }: Omit<SelectNativeProps<Data, Type>, 'options'> &
   Props<Data, Type> &
@@ -38,7 +41,11 @@ const Component = <Data, Type extends 'single' | 'multi'>({
       <StyledModal>
         <Header>
           <Dummy />
-          <Text>Selecione uma opção</Text>
+          {selectModalTitleComponent ? (
+            selectModalTitleComponent
+          ) : selectModalTitle ? (
+            <Text>{selectModalTitle}</Text>
+          ) : null}
           <CloseButton
             variant={'filled'}
             color={'primary'}
@@ -53,7 +60,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           </CloseButton>
         </Header>
         <SearchBarContainer>
-          <SearchBar placeholder={'Busque a opção desejada'} />
+          <SearchBar placeholder={searchBarPlaceholder} />
         </SearchBarContainer>
         <FlatList
           data={options}
