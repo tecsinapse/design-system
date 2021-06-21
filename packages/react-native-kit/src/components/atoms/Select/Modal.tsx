@@ -8,14 +8,10 @@ import {
   SearchBarContainer,
   StyledModal,
 } from './styled';
-import {
-  Checkbox,
-  Icon,
-  RadioButton,
-  Text,
-} from '@tecsinapse/react-native-kit';
 import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
 import { SelectNativeProps } from './Select';
+import { Text } from '../Text';
+import { Checkbox, Icon, RadioButton } from '@tecsinapse/react-core';
 
 interface Props<Data, Type extends 'single' | 'multi'> {
   options: (SelectNativeProps<Data, Type>['options'][0] & {

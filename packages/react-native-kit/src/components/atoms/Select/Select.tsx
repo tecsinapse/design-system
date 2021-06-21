@@ -1,16 +1,16 @@
 import * as React from 'react';
 import {
   InputContainer,
+  InputContainerProps,
   StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
-import { InputNativebProps } from '../Input';
 import { Text } from '../Text';
 import { StyledPressableSurface } from './styled';
 import { Modal } from './Modal';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
-  extends Omit<InputNativebProps, 'value' | 'onChange' | 'onChangeText'> {
+  extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
   options: Data[];
   keyExtractor: (t: Data, index: number) => string;
   labelExtractor: (t: Data) => string;
@@ -19,9 +19,12 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   groupKeyExtractor?: (t: Data) => string;
   onSearch?: (text: string) => never | void;
   type?: Type;
+  placeholder?: string;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
-export function Select<Data, Type extends 'single' | 'multi'>({
+function Select<Data, Type extends 'single' | 'multi'>({
   label,
   labelColor,
   labelColorVariant,
@@ -31,15 +34,9 @@ export function Select<Data, Type extends 'single' | 'multi'>({
   labelWeight,
   leftComponent,
   rightComponent,
-  disabled,
   style,
   borderColor,
   borderColorGradation,
-  inputFontStack = 'default',
-  inputFontWeight = 'bold',
-  onFocus,
-  onBlur,
-  placeholder,
 
   /** Select props */
   value,
@@ -50,6 +47,10 @@ export function Select<Data, Type extends 'single' | 'multi'>({
   onSelect,
   type,
   labelExtractor,
+  placeholder,
+  onFocus,
+  onBlur,
+  disabled,
 
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
@@ -94,7 +95,7 @@ export function Select<Data, Type extends 'single' | 'multi'>({
   return (
     <>
       <StyledBorderKeeper focused={focused}>
-        <StyledPressableSurface onPress={handlePressInput}>
+        <StyledPressableSurface onPress={handlePressInput} disabled={disabled}>
           <InputContainer
             label={label}
             labelColor={labelColor}
@@ -111,6 +112,7 @@ export function Select<Data, Type extends 'single' | 'multi'>({
             style={style}
             focused={focused}
             disabled={disabled}
+            {...rest}
           >
             <Text>{getDisplayValue()}</Text>
           </InputContainer>
