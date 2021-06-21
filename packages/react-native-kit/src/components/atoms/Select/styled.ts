@@ -1,11 +1,5 @@
 import styled from '@emotion/native';
-import {
-  ModalProps,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-  ViewProps,
-} from 'react-native';
+import { ModalProps, View, ViewProps } from 'react-native';
 import {
   Button,
   ButtonProps,
