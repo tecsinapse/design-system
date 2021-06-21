@@ -56,4 +56,5 @@ export const ListItem = styled(PressableSurface)<
   border-bottom-width: 1px;
   border-color: ${({ theme }) => theme.color.secondary.light};
   padding-vertical: ${({ theme }) => theme.spacing.mili};
+  padding-horizontal: ${({ theme }) => theme.spacing.deca};
 `;

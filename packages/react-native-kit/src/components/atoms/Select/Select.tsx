@@ -17,14 +17,13 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   onSelect: (key: string) => never | void;
   value?: Type extends 'single' ? string : string[];
   groupKeyExtractor?: (t: Data) => string;
-  onSearch?: (text: string) => never | void;
+  searchBar?: JSX.Element;
   type?: Type;
   placeholder?: string;
   onFocus?: () => void;
   onBlur?: () => void;
   selectModalTitle?: string;
   selectModalTitleComponent?: JSX.Element;
-  searchBarPlaceholder?: string;
 }
 
 function Select<Data, Type extends 'single' | 'multi'>({
@@ -46,7 +45,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   options,
   keyExtractor,
   groupKeyExtractor,
-  onSearch,
+  searchBar,
   onSelect,
   type,
   labelExtractor,
@@ -56,7 +55,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
   disabled,
   selectModalTitle,
   selectModalTitleComponent,
-  searchBarPlaceholder,
 
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
@@ -130,17 +128,15 @@ function Select<Data, Type extends 'single' | 'multi'>({
         keyExtractor={keyExtractor}
         labelExtractor={labelExtractor}
         groupKeyExtractor={groupKeyExtractor}
-        onSearch={onSearch}
+        searchBar={searchBar}
         type={type || 'single'}
         onSelect={onSelect}
         value={value}
         onRequestClose={handleCloseModal}
         animated
         animationType={'slide'}
-
         selectModalTitle={selectModalTitle}
         selectModalTitleComponent={selectModalTitleComponent}
-        searchBarPlaceholder={searchBarPlaceholder}
       />
     </>
   );

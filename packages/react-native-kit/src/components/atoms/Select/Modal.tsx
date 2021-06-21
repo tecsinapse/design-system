@@ -4,7 +4,6 @@ import {
   Dummy,
   Header,
   ListItem,
-  SearchBar,
   SearchBarContainer,
   StyledModal,
 } from './styled';
@@ -24,14 +23,12 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   keyExtractor,
   labelExtractor,
   groupKeyExtractor,
-  onSearch,
+  searchBar,
   type,
   onSelect,
-  value,
   onRequestClose,
   selectModalTitle,
   selectModalTitleComponent,
-  searchBarPlaceholder,
   ...modalProps
 }: Omit<SelectNativeProps<Data, Type>, 'options'> &
   Props<Data, Type> &
@@ -59,9 +56,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             />
           </CloseButton>
         </Header>
-        <SearchBarContainer>
-          <SearchBar placeholder={searchBarPlaceholder} />
-        </SearchBarContainer>
+        {searchBar && <SearchBarContainer>{searchBar}</SearchBarContainer>}
         <FlatList
           data={options}
           renderItem={item => (

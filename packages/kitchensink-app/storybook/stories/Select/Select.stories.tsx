@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
-import { Select, Text } from '@tecsinapse/react-native-kit';
+import { Input, Select, Text } from '@tecsinapse/react-native-kit';
 
 storiesOf('Input', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
@@ -13,6 +13,8 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
   key: index,
   label: `Option ${index}`,
 }));
+
+const searchBar = (<Input placeholder={"Busque a opção desejada"}/>)
 
 const Component = () => {
   const [multiValue, setMultiValue] = useState<string[]>([]);
@@ -42,8 +44,8 @@ const Component = () => {
         onSelect={handleSelectMultipleValues}
         labelExtractor={item => item.label}
         keyExtractor={item => String(item.key)}
+        searchBar={searchBar}
         selectModalTitle={'Selecione uma opção'}
-        searchBarPlaceholder={"Busque a opção desejada"}
         style={{
           marginBottom: 10
         }}
@@ -56,8 +58,8 @@ const Component = () => {
         type={'single'}
         onSelect={handleSelectSingleValue}
         selectModalTitle={'Selecione uma opção'}
-        searchBarPlaceholder={"Busque a opção desejada"}
         labelExtractor={item => item.label}
+        searchBar={searchBar}
         keyExtractor={item => String(item.key)}
       />
     </>
