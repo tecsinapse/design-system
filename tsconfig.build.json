@@ -6,9 +6,9 @@
     "emitDeclarationOnly": true,
     "declaration": true,
     "paths": {
-      "@tecsinapse/*": ["./node_modules/@tecsinapse/*/src"]
+      "@tecsinapse/*": ["packages/*/src"]
     }
   },
   "exclude": ["**/*.stories.*", "**/*.test.*", "dist", "node_modules"],
-  "include": []
+  "include": ["packages"]
 }

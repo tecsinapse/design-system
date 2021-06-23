@@ -56,7 +56,7 @@
     "url-loader": "^4.1.1"
   },
   "scripts": {
-    "start": "lerna run start --stream",
+    "start": "lerna run --parallel start --stream",
     "build": "lerna run --parallel 'build:es'",
     "storybook": "cross-env STORYBOOK_FONT_URL='' start-storybook -s .storybook/public -p 7007",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' build-storybook -s .storybook/public -o sbdocs/",

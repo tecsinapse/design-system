@@ -12,8 +12,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@tecsinapse/*": ["packages/*/src"],
-      "*": ["node_modules", "packages"]
+      "@tecsinapse/*": ["packages/*/src"]
     }
   },
   "awesomeTypescriptLoaderOptions": {
