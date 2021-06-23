@@ -2,7 +2,7 @@ import { InputPasswordIcon } from '@tecsinapse/react-core';
 import React, { FC, useState } from 'react';
 import { Input, InputWebProps } from '../../atoms/Input';
 
-export interface InputPasswordWebProps extends InputWebProps {}
+export type InputPasswordWebProps = InputWebProps;
 
 const InputPassword: FC<InputPasswordWebProps> = ({
   rightComponent,
