@@ -7,7 +7,7 @@ import {
   PressableSurfaceProps,
   StyleProps,
 } from '@tecsinapse/react-core';
-import { Input, InputNativebProps } from '../Input';
+import { Input, InputNativeProps } from '../Input';
 
 export const StyledModal = styled(View)<ModalProps & Partial<StyleProps>>`
   background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
@@ -46,7 +46,7 @@ export const SearchBarContainer = styled(View)<ViewProps & Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.deca};
 `;
 
-export const SearchBar = styled(Input)<InputNativebProps & Partial<StyleProps>>`
+export const SearchBar = styled(Input)<InputNativeProps & Partial<StyleProps>>`
   margin-bottom: ${({ theme }) => theme.spacing.deca};
 `;
 

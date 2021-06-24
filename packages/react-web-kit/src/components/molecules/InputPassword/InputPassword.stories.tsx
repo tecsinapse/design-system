@@ -1,14 +1,16 @@
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
 import React, { useState } from 'react';
-import Input, { InputWebProps } from './Input';
+import { TextInput } from 'react-native';
+import { InputPassword } from '.';
+import Input, { InputPasswordWebProps } from './InputPassword';
 
 export default {
-  title: 'Components/Input',
+  title: 'Components/InputPassword',
   component: Input,
 };
 
-const Template: Story<InputWebProps> = args => {
+const Template: Story<InputPasswordWebProps> = args => {
   const [value, setValue] = useState<string>();
 
   const onChange = text => {
@@ -19,13 +21,15 @@ const Template: Story<InputWebProps> = args => {
   };
 
   return (
-    <Input
-      {...args}
-      label="Login"
-      value={value}
-      onChange={onChange}
-      placeholder={args.placeholder}
-    />
+    <>
+      <InputPassword
+        {...args}
+        label="Password"
+        value={value}
+        onChange={onChange}
+        placeholder={args.placeholder}
+      />
+    </>
   );
 };
 
@@ -33,6 +37,6 @@ export const Base = Template.bind({});
 
 Base.args = {
   onChange: value => action('onChange')(value),
-  placeholder: 'Type your e-mail',
+  placeholder: 'Type your password',
   disabled: false,
 };

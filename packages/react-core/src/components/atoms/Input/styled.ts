@@ -1,17 +1,9 @@
 import styled, { css } from '@emotion/native';
-import { InputElementProps, StyleProps } from '@tecsinapse/react-core';
 import { TextInput } from 'react-native';
+import { InputElementProps } from '.';
+import { StyleProps } from '../../../types/defaults';
+import { Icon } from '../Icon';
 import { InputContainerProps } from './InputContainer/InputContainer';
-
-const focusedStyles = ({
-  focused,
-  theme,
-}: Partial<InputContainerProps> & StyleProps) =>
-  focused &&
-  css`
-    border-width: ${theme.borderWidth.nano};
-    border-color: ${theme.color.secondary.dark};
-  `;
 
 const leftIconStyles = ({
   leftComponent,
@@ -48,19 +40,26 @@ const disabledInputStyles = ({
     color: ${theme.color.secondary.light};
   `;
 
-const StyledInputContainerBase = styled.View<
+const focusedStyles = ({
+  focused,
+  borderColor = 'secondary',
+  theme,
+}: Partial<InputContainerProps> & StyleProps) =>
+  focused &&
+  css`
+    border-width: ${theme.borderWidth.nano};
+    border-color: ${theme.color[borderColor].dark};
+  `;
+
+export const StyledIconContent = styled.View<Partial<StyleProps>>`
+  z-index: ${({ theme }) => theme.zIndex.default};
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const StyledInputContainer = styled.View<
   Partial<InputContainerProps> & Partial<StyleProps>
 >`
-  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
-  border-color: ${({
-    theme,
-    borderColor = 'secondary',
-    borderColorGradation = 'light',
-  }) => theme.color[borderColor][borderColorGradation]};
-  border-radius: ${({ theme }) => theme.borderRadius.mili};
-  border-width: ${({ theme }) => theme.borderWidth.pico};
-  padding-top: ${({ theme }) => theme.spacing.micro};
-  padding-bottom: ${({ theme }) => theme.spacing.micro};
   flex-direction: row;
   align-items: center;
   min-height: 44px;
@@ -75,26 +74,38 @@ export const StyledInputElementBase = styled(TextInput)<
   color: ${({ theme }) => theme.font.color.dark};
 `;
 
-export const StyledLabelContainer = styled.View<Partial<StyleProps>>`
-  flex: 1;
-`;
+export const StyledLabelContainer = styled.View<
+  Partial<InputContainerProps> & Partial<StyleProps>
+>(
+  props => css`
+    flex: 1;
+    ${leftIconStyles(props)}
+    ${rightIconStyles(props)}
+  `
+);
 
-export const StyledBorderKeeper = styled.View<
+const StyledBorderKeeperBase = styled.View<
   Partial<InputContainerProps> & Partial<StyleProps>
 >`
-  padding: ${({ theme, focused }) => (focused ? 0 : theme.borderWidth.pico)};
-  justify-content: center;
-  align-items: center;
+  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+  border-color: ${({
+    theme,
+    borderColor = 'secondary',
+    borderColorGradation = 'light',
+  }) => theme.color[borderColor][borderColorGradation]};
+  border-radius: ${({ theme }) => theme.borderRadius.mili};
+  border-width: ${({ theme }) => theme.borderWidth.pico};
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `;
 
-export const StyledInputContainer = styled(StyledInputContainerBase)<
+export const StyledBorderKeeper = styled(StyledBorderKeeperBase)<
   Partial<StyleProps>
 >(
   props => css`
     ${focusedStyles(props)}
-    ${leftIconStyles(props)}
-  ${rightIconStyles(props)}
-  ${disabledContainerStyles(props)}
+    ${disabledContainerStyles(props)}
   `
 );
 
@@ -105,3 +116,13 @@ export const StyledInputElement = styled(StyledInputElementBase)<
     ${disabledInputStyles(props)}
   `
 );
+
+export const StyledHintContainer = styled.View<Partial<StyleProps>>`
+  margin-top: ${({ theme }) => theme.spacing.micro};
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const StyledHintIcon = styled(Icon)<Partial<StyleProps>>`
+  margin-right: ${({ theme }) => theme.spacing.micro};
+`;

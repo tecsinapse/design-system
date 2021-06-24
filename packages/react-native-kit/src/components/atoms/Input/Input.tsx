@@ -1,29 +1,24 @@
 import {
   FontStackType,
   FontWeightType,
-  InputContainer,
+  Hint,
   InputContainerProps,
   InputElementProps,
-  StyledBorderKeeper,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { TextInputProps } from 'react-native';
+import { View } from 'react-native';
 import { Text } from '../Text';
-import { StyledNativeInput } from './styled';
+import { StyledInputContainer, StyledNativeInput } from './styled';
 
-export interface InputNativebProps
+export interface InputNativeProps
   extends Omit<InputElementProps, 'style'>,
-    InputContainerProps,
-    Omit<
-      TextInputProps,
-      'style' | 'onBlur' | 'onChange' | 'onFocus' | 'value'
-    > {
+    InputContainerProps {
   inputFontStack?: FontStackType;
   inputFontWeight?: FontWeightType;
 }
 
-export const Input: FC<InputNativebProps> = ({
+const Input: FC<InputNativeProps> = ({
   label,
   labelColor,
   labelColorVariant,
@@ -39,10 +34,17 @@ export const Input: FC<InputNativebProps> = ({
   borderColorGradation,
   inputFontStack = 'default',
   inputFontWeight = 'bold',
+  inputContainerStyle,
+  variant = 'default',
+  hintComponent,
+  hint,
   onFocus,
   onBlur,
   ...rest
 }) => {
+  const _hint = hintComponent || (
+    <Hint TextComponent={Text} text={hint} variant={variant} />
+  );
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -50,8 +52,8 @@ export const Input: FC<InputNativebProps> = ({
   );
 
   return (
-    <StyledBorderKeeper focused={focused}>
-      <InputContainer
+    <View style={style}>
+      <StyledInputContainer
         label={label}
         labelColor={labelColor}
         labelColorVariant={labelColorVariant}
@@ -64,9 +66,10 @@ export const Input: FC<InputNativebProps> = ({
         rightComponent={rightComponent}
         borderColor={borderColor}
         borderColorGradation={borderColorGradation}
-        style={style}
+        inputContainerStyle={inputContainerStyle}
         focused={focused}
         disabled={disabled}
+        variant={variant}
       >
         <StyledNativeInput
           {...rest}
@@ -76,8 +79,9 @@ export const Input: FC<InputNativebProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-      </InputContainer>
-    </StyledBorderKeeper>
+      </StyledInputContainer>
+      {hint && _hint}
+    </View>
   );
 };
 

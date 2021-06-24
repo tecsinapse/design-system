@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
-import { StyleProp, TextStyle } from 'react-native';
+import { StyleProp, TextInputProps, TextStyle } from 'react-native';
 import { Mask } from '../hooks/useMask';
 import { StyledInputElement } from '../styled';
-export interface InputElementProps {
+
+export interface InputElementProps
+  extends Omit<TextInputProps, 'onChange' | 'value'> {
   style?: StyleProp<TextStyle>;
   /**
    * TODO:
@@ -19,7 +21,6 @@ const InputElement: FC<InputElementProps> = ({
   onChange,
   placeholder,
   value,
-  // defaultValue,
   disabled = false,
   ...rest
 }): JSX.Element => {

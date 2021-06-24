@@ -6,6 +6,7 @@ import './Checkbox/Checkbox.stories';
 import './GroupButton/GroupButton.stories';
 import './Icon/Icon.stories';
 import './Input/Input.stories';
+import './InputPassword/InputPassword.stories';
 import './Paper/Paper.stories';
 import './RadioButton/RadioButton.stories';
 import './Switch/Switch.stories';

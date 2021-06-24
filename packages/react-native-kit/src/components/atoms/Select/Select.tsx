@@ -2,9 +2,8 @@ import * as React from 'react';
 import {
   InputContainer,
   InputContainerProps,
-  StyledBorderKeeper,
   useInputFocus,
-} from '@tecsinapse/react-core';
+} from '@tecsinapse/react-native-kit';
 import { Text } from '../Text';
 import { StyledPressableSurface } from './styled';
 import { Modal } from './Modal';
@@ -68,12 +67,12 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   const handlePressInput = () => {
     setModalVisible(true);
-    handleBlur();
+    handleFocus();
   };
 
   const handleCloseModal = () => {
     setModalVisible(false);
-    handleFocus();
+    handleBlur();
   };
 
   const mergedOptions = options.map((option, index) => ({
@@ -98,30 +97,31 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   return (
     <>
-      <StyledBorderKeeper focused={focused}>
-        <StyledPressableSurface onPress={handlePressInput} disabled={disabled}>
-          <InputContainer
-            label={label}
-            labelColor={labelColor}
-            labelColorVariant={labelColorVariant}
-            labelColorTone={labelColorTone}
-            labelTypography={labelTypography}
-            labelStack={labelStack}
-            labelWeight={labelWeight}
-            LabelComponent={Text}
-            leftComponent={leftComponent}
-            rightComponent={rightComponent}
-            borderColor={borderColor}
-            borderColorGradation={borderColorGradation}
-            style={style}
-            focused={focused}
-            disabled={disabled}
-            {...rest}
-          >
-            <Text>{getDisplayValue()}</Text>
-          </InputContainer>
-        </StyledPressableSurface>
-      </StyledBorderKeeper>
+      <StyledPressableSurface
+        onPress={handlePressInput}
+        disabled={disabled}
+        style={style}
+      >
+        <InputContainer
+          label={label}
+          labelColor={labelColor}
+          labelColorVariant={labelColorVariant}
+          labelColorTone={labelColorTone}
+          labelTypography={labelTypography}
+          labelStack={labelStack}
+          labelWeight={labelWeight}
+          LabelComponent={Text}
+          leftComponent={leftComponent}
+          rightComponent={rightComponent}
+          borderColor={borderColor}
+          borderColorGradation={borderColorGradation}
+          focused={focused}
+          disabled={disabled}
+          {...rest}
+        >
+          <Text>{getDisplayValue()}</Text>
+        </InputContainer>
+      </StyledPressableSurface>
       <Modal
         visible={modalVisible}
         options={mergedOptions}

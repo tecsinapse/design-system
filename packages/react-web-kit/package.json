@@ -1,12 +1,12 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "TecSinapse React components",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "start": "tsc --watch",
+    "start": "yarn build:es --watch",
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
@@ -14,7 +14,7 @@
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@tecsinapse/react-core": "^0.5.0",
+    "@tecsinapse/react-core": "^0.5.2",
     "react-native-vector-icons": "^8.1.0"
   },
   "repository": {

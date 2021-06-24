@@ -1,12 +1,12 @@
 {
   "name": "@tecsinapse/react-core",
   "description": "TecSinapse hybrid React components",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "tsc --watch",
+    "start": "yarn build:es --watch",
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
