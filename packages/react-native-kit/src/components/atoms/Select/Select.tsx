@@ -11,13 +11,17 @@ import { Modal } from './Modal';
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
   options: Data[];
+  onSelect: (
+    key: Type extends 'single' ? string | undefined : string[]
+  ) => never | void;
+  value: Type extends 'single' ? string | undefined : string[];
+  type: Type;
+
   keyExtractor: (t: Data, index: number) => string;
   labelExtractor: (t: Data) => string;
-  onSelect: (key: string) => never | void;
-  value?: Type extends 'single' ? string : string[];
   groupKeyExtractor?: (t: Data) => string;
+
   searchBar?: JSX.Element;
-  type?: Type;
   placeholder?: string;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -75,24 +79,27 @@ function Select<Data, Type extends 'single' | 'multi'>({
     handleBlur();
   };
 
-  const mergedOptions = options.map((option, index) => ({
-    ...option,
-    _checked: Array.isArray(value)
-      ? !!value.find(key => key === keyExtractor(option, index))
-      : value === keyExtractor(option, index),
-  }));
-
   const getDisplayValue = () => {
-    if (Array.isArray(value) && value.length == 0) return placeholder;
-    else if (value === undefined) return placeholder;
-    else
-      return mergedOptions
-        .reduce(
-          (acc, option) =>
-            option._checked ? acc + labelExtractor(option) + ', ' : acc,
-          ''
-        )
-        .slice(0, -2);
+    if (Array.isArray(value)) {
+      if (value.length === 0) return placeholder;
+      else {
+        return options
+          .reduce(
+            (acc, option, index) =>
+              value.find(key => keyExtractor(option, index) == key)
+                ? acc + labelExtractor(option) + ', '
+                : acc,
+            ''
+          )
+          .slice(0, -2);
+      }
+    } else {
+      if (value === undefined) return placeholder;
+      const selectedOption = options.find(
+        (option, index) => keyExtractor(option, index) === value
+      );
+      return selectedOption ? labelExtractor(selectedOption) : placeholder;
+    }
   };
 
   return (
@@ -124,12 +131,13 @@ function Select<Data, Type extends 'single' | 'multi'>({
       </StyledPressableSurface>
       <Modal
         visible={modalVisible}
-        options={mergedOptions}
+        options={options}
+        focused={modalVisible}
         keyExtractor={keyExtractor}
         labelExtractor={labelExtractor}
         groupKeyExtractor={groupKeyExtractor}
         searchBar={searchBar}
-        type={type || 'single'}
+        type={type}
         onSelect={onSelect}
         value={value}
         onRequestClose={handleCloseModal}

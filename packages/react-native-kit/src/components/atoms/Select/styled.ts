@@ -10,6 +10,7 @@ import {
 import { Input, InputNativeProps } from '../Input';
 
 export const StyledModal = styled(View)<ModalProps & Partial<StyleProps>>`
+  position: relative;
   background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
   height: 100%;
   width: 100%;
@@ -57,4 +58,17 @@ export const ListItem = styled(PressableSurface)<
   border-color: ${({ theme }) => theme.color.secondary.light};
   padding-vertical: ${({ theme }) => theme.spacing.mili};
   padding-horizontal: ${({ theme }) => theme.spacing.deca};
+`;
+
+export const ListFooter = styled.View<Partial<StyleProps>>`
+  width: 100%;
+  min-height: 44px;
+  margin-vertical: ${({ theme }) => theme.spacing.deca};
+`;
+
+export const FloatingButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
+  position: absolute;
+  bottom: ${({ theme }) => theme.spacing.deca};
+  left: ${({ theme }) => theme.spacing.deca};
+  right: ${({ theme }) => theme.spacing.deca};
 `;
