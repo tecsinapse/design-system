@@ -14,24 +14,23 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
   label: `Option ${index}`,
 }));
 
-const searchBar = (<Input placeholder={"Busque a opção desejada"}/>)
+const searchBar = <Input placeholder={'Busque a opção desejada'} />;
 
 const Component = () => {
   const [multiValue, setMultiValue] = useState<string[]>([]);
   const [singleValue, setSingleValue] = useState<string | undefined>();
 
-  function handleSelectMultipleValues(key: string) {
-    setMultiValue(value => {
-      if (value.includes(key))
-        return value.filter(value => value !== key);
-      else
-        return value.concat([key]);
-    });
+  function handleSelectMultipleValues(keys: string[]) {
+    setMultiValue(keys);
   }
 
-  function handleSelectSingleValue(key: string) {
-    setSingleValue(value => value === key ? undefined : key)
+  function handleSelectSingleValue(key: string | undefined) {
+    setSingleValue(key);
   }
+
+  const handleSearch = React.useCallback((searchArg: string) => {
+    console.log(searchArg)
+  }, [])
 
   return (
     <>
@@ -44,10 +43,11 @@ const Component = () => {
         onSelect={handleSelectMultipleValues}
         labelExtractor={item => item.label}
         keyExtractor={item => String(item.key)}
-        searchBar={searchBar}
+        searchBarPlaceholder={'Busque uma opção'}
         selectModalTitle={'Selecione uma opção'}
+        onSearch={handleSearch}
         style={{
-          marginBottom: 10
+          marginBottom: 10,
         }}
       />
       <Select
@@ -59,7 +59,8 @@ const Component = () => {
         onSelect={handleSelectSingleValue}
         selectModalTitle={'Selecione uma opção'}
         labelExtractor={item => item.label}
-        searchBar={searchBar}
+        searchBarPlaceholder={'Busque uma opção'}
+        onSearch={handleSearch}
         keyExtractor={item => String(item.key)}
       />
     </>

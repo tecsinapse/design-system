@@ -2,34 +2,42 @@ import * as React from 'react';
 import {
   CloseButton,
   Dummy,
+  FloatingButton,
   Header,
+  ListFooter,
   ListItem,
   SearchBarContainer,
   StyledModal,
-  ListFooter,
-  FloatingButton,
 } from './styled';
 import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
 import { SelectNativeProps } from './Select';
 import { Text } from '../Text';
-import { Checkbox, Icon, RadioButton } from '@tecsinapse/react-core';
+import {
+  Checkbox,
+  Icon,
+  RadioButton,
+  useDebouncedState,
+} from '@tecsinapse/react-core';
+import { Input } from '@tecsinapse/react-native-kit';
 
 const Component = <Data, Type extends 'single' | 'multi'>({
   options,
   keyExtractor,
   labelExtractor,
   groupKeyExtractor,
-  searchBar,
+  searchBarPlaceholder,
   focused,
   type,
   value,
   onSelect,
+  onSearch,
   onRequestClose,
   selectModalTitle,
   selectModalTitleComponent,
   ...modalProps
 }: SelectNativeProps<Data, Type> & ModalProps) => {
   const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+  const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
 
   // Resets the temporary state to the initial state whenever the
   // modal is reopened or the value changes
@@ -95,7 +103,13 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             />
           </CloseButton>
         </Header>
-        {searchBar && <SearchBarContainer>{searchBar}</SearchBarContainer>}
+        <SearchBarContainer>
+          <Input
+            placeholder={searchBarPlaceholder}
+            value={searchArg}
+            onChange={text => setSearchArg(text)}
+          />
+        </SearchBarContainer>
         <FlatList
           data={data}
           keyExtractor={keyExtractor}
