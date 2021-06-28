@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {
-  CloseButton,
-  Dummy,
   FloatingButton,
-  Header,
   ListFooter,
   ListItem,
   SearchBarContainer,
@@ -14,11 +11,11 @@ import { SelectNativeProps } from './Select';
 import { Text } from '../Text';
 import {
   Checkbox,
-  Icon,
   RadioButton,
   useDebouncedState,
 } from '@tecsinapse/react-core';
 import { Input } from '@tecsinapse/react-native-kit';
+import { Header } from '../Header';
 
 const Component = <Data, Type extends 'single' | 'multi'>({
   options,
@@ -80,28 +77,26 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     onRequestClose && onRequestClose();
   };
 
+  const headerContent = selectModalTitleComponent ? (
+    selectModalTitleComponent
+  ) : selectModalTitle ? (
+    <Text>{selectModalTitle}</Text>
+  ) : null;
+
   return (
     <RNModal {...modalProps} onRequestClose={onRequestClose}>
       <StyledModal>
-        <Header>
-          <Dummy />
-          {selectModalTitleComponent ? (
-            selectModalTitleComponent
-          ) : selectModalTitle ? (
-            <Text>{selectModalTitle}</Text>
-          ) : null}
-          <CloseButton
-            variant={'filled'}
-            color={'primary'}
-            size={'small'}
-            onPress={onRequestClose}
-          >
-            <Icon
-              name={'close'}
-              type={'material-community'}
-              fontColor={'light'}
-            />
-          </CloseButton>
+        <Header
+          rightButton={{
+            onPress: onRequestClose,
+            icon: {
+              name: 'close',
+              type: 'material-community',
+              fontColor: 'light',
+            },
+          }}
+        >
+          {headerContent}
         </Header>
         <SearchBarContainer>
           <Input
