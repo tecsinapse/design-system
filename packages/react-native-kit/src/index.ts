@@ -7,3 +7,4 @@ export {
   InputPassword,
   InputPasswordNativeProps,
 } from './components/molecules/InputPassword';
+export { Tabs, TabsProps, Tab, TabProps } from './components/atoms/Tabs';
