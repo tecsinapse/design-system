@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
 import React, { useState } from 'react';
-import { TextInput } from 'react-native';
 import { InputPassword } from '.';
 import Input, { InputPasswordWebProps } from './InputPassword';
 
