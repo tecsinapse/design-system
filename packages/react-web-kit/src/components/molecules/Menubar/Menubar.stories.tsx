@@ -1,6 +1,7 @@
 import React from 'react';
 import Menubar, { MenubarProps } from './Menubar';
 import { Story } from '@storybook/react';
+import styled from '@emotion/styled';
 
 export default {
   title: 'Components/Menubar',
@@ -10,16 +11,20 @@ export default {
   },
 };
 
+const StyledImage = styled('img')`
+  width: auto;
+  height: 35px;
+  margin-right: 35px;
+`;
+
 // Import type manually
 const Template: Story<MenubarProps> = args => {
   return (
     <Menubar
       leftComponents={
-        <img
+        <StyledImage
           src="https://www.tecsinapse.com.br/wp-content/themes/tecsinapse/img/logo.svg"
           alt="TecSinapse"
-          height={35}
-          style={{ marginRight: 35 }}
         />
       }
       {...args}

@@ -9,4 +9,5 @@ export { Input, InputWebProps } from './components/atoms/Input';
 export {
   InputPassword,
   InputPasswordWebProps,
-} from './components/molecules/InputPassword/';
+} from './components/molecules/InputPassword';
+export { Menubar, MenubarProps } from './components/molecules/Menubar';
