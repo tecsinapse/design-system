@@ -14,29 +14,22 @@ function Tab<T extends string | number | symbol>({
   icon,
   ...rest
 }: TabProps<T>): JSX.Element {
+  const styledButtonColor = _selected ? 'primary' : undefined;
+  const styledButtonTone = _selected ? 'xlight' : undefined;
+  const styledButtonStyle = _selected
+    ? undefined
+    : { backgroundColor: 'transparent' };
+
+  const iconColorVariant = _selected ? 'primary' : 'secondary';
+
   return (
     <StyledButton
-      {...(_selected
-        ? {
-            color: 'primary',
-            tone: 'xlight',
-          }
-        : {
-            style: { backgroundColor: 'transparent' },
-          })}
+      color={styledButtonColor}
+      tone={styledButtonTone}
+      style={styledButtonStyle}
       {...rest}
     >
-      <Icon
-        {...(_selected
-          ? {
-              colorVariant: 'primary'
-            }
-          : {
-              colorVariant: 'secondary',
-            })}
-        size={'centi'}
-        {...icon}
-      />
+      <Icon colorVariant={iconColorVariant} size={'centi'} {...icon} />
     </StyledButton>
   );
 }
