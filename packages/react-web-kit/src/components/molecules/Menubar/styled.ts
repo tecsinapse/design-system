@@ -25,15 +25,53 @@ export const StyledMenuButton = nativeStyled(Button)<Partial<StyleProps>>`
     padding-right: calc(${({ theme }) => theme.spacing.centi} + 2px);
     padding-bottom: calc(${({ theme }) => theme.spacing.centi} + 2px);
     padding-left: calc(${({ theme }) => theme.spacing.centi} + 2px);
-    margin-right: 24px;
+    margin-right: ${({ theme }) => theme.spacing.kilo};
 `;
 
 export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
     border-top: 1px solid rgba(133, 128, 122, 0.08);
-    min-height: 10vh;
+    min-height: 30vh;
     background-color: #fff;
+    box-shadow: 0px 2px 8px rgba(133, 128, 122, 0.08);
+
 `;
 
 export const StyledInput = nativeStyled(Input)<Partial<StyleProps>>`
  width: 100%;
+`;
+
+export const StyledGridContainer = webStyled('div')<Partial<StyleProps>>`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  align-content: stretch;
+  box-sizing: border-box;
+   padding-right: 8vw;
+   padding-left: 8vw;
+   padding-top:  ${({ theme }) => theme.spacing.kilo};
+   /* margin-bottom: ${({ theme }) => theme.spacing.kilo}; */
+`;
+
+export const StyledLeftComponent = webStyled('div')<Partial<StyleProps>>`
+   margin-right: ${({ theme }) => theme.spacing.mili};
+`;
+
+export const StyledContainerMenu = webStyled('div')<Partial<StyleProps>>`
+   flex-direction: row;
+   display: flex;
+   align-items: center;
+   border-bottom: 1px solid rgba(133, 128, 122, 0.08);
+   width: 100%;
+   padding-bottom: ${({ theme }) => theme.spacing.mili};
+   margin-bottom: ${({ theme }) => theme.spacing.mili};
+ 
+`;
+
+export const StyledContainerItems = webStyled('div')<Partial<StyleProps>>`
+   display: flex;
+   flex-direction: column;
+`;
+
+export const StyledContainerItemText = webStyled('div')<Partial<StyleProps>>`
+   margin-bottom: ${({ theme }) => theme.spacing.mili};
 `;
