@@ -1,24 +1,20 @@
-import React from 'react';
-import { ButtonProps, Icon, Text } from '@tecsinapse/react-core';
+import React, { ElementType } from 'react';
+import { ButtonProps, Card, Icon, Text } from '@tecsinapse/react-core';
 import {
   StyledIconInput,
   StyledMenuBar,
   StyledMenuButton,
   StyledContainerOpenMenu,
   StyledInput,
-  StyledGridContainer,
   StyledLeftComponent,
   StyledContainerMenu,
   StyledContainerItems,
   StyledContainerItemText,
+  StyledRightComponent,
+  StyledText,
+  StyledCardContainer,
 } from './styled';
-
-export interface MenubarProps {
-  leftComponents?: React.ReactNode;
-  inputPlaceholder?: string;
-  menuButtonProps?: ButtonProps;
-  options: OptionsType[];
-}
+import Masonry from '../Masonry/Masonry';
 
 type MostUsed = {
   title: string;
@@ -27,7 +23,7 @@ type MostUsed = {
 
 type ItemsOptions = {
   title: string;
-  Component: React.ReactNode;
+  Component: ElementType;
   props: any;
   rightComponents?: React.ReactNode;
   items?: ItemsOptions[];
@@ -39,12 +35,24 @@ type OptionsType = {
   leftComponents?: React.ReactNode;
 };
 
+export interface MenubarProps {
+  leftComponents?: React.ReactNode;
+  inputPlaceholder?: string;
+  menuButtonProps?: ButtonProps;
+  options: OptionsType[];
+  mostUsed?: MostUsed[];
+}
+
+// TODO: Add redirect click from most used cards, add hover on menu items, add search
 const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
   inputPlaceholder = 'O quê você deseja buscar?',
   options,
+  mostUsed,
 }) => {
-  const [menuExpanded, setMenuExpanded] = React.useState<boolean>(true);
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(true);
+
+  const noTextDecoration = { textDecoration: 'none' };
 
   return (
     <>
@@ -52,9 +60,9 @@ const Menubar: React.FC<MenubarProps> = ({
         <StyledMenuButton
           variant="filled"
           color="primary"
-          onPress={() => setMenuExpanded(!menuExpanded)}
+          onPress={() => setMenuOpen(!menuOpen)}
         >
-          {!menuExpanded ? (
+          {!menuOpen ? (
             <Icon
               size="deca"
               name="menu"
@@ -71,7 +79,7 @@ const Menubar: React.FC<MenubarProps> = ({
           )}
         </StyledMenuButton>
         {leftComponents}
-        {menuExpanded && (
+        {menuOpen && (
           <div style={{ display: 'flex', flex: 1 }}>
             <StyledInput
               placeholder={inputPlaceholder}
@@ -84,39 +92,61 @@ const Menubar: React.FC<MenubarProps> = ({
           </div>
         )}
       </StyledMenuBar>
-      {menuExpanded && (
+      {menuOpen && (
         <StyledContainerOpenMenu>
-          <>
-            <StyledGridContainer>
-              {options.map(item => (
-                <div
-                  style={{
-                    width: 'calc((84vw - 72px)/4)',
-                    minHeight: 0,
-                    alignItems: 'flex-start',
-                  }}
-                >
-                  <StyledContainerMenu>
-                    {item.leftComponents && (
-                      <StyledLeftComponent>
-                        {item.leftComponents}
-                      </StyledLeftComponent>
-                    )}
-                    <Text fontWeight="bold">{item.title}</Text>
-                  </StyledContainerMenu>
-                  <StyledContainerItems>
-                    {item.items.map(item => (
-                      <StyledContainerItemText>
-                        <Text colorVariant="secondary" colorTone="dark">
-                          {item.title}
-                        </Text>
+          {mostUsed && (
+            <>
+              <Text fontWeight="bold">Mais acessados</Text>
+              <StyledCardContainer>
+                {mostUsed.map(item => (
+                  <Card elevated key={`${item.title}-${item.category}`}>
+                    <Text fontWeight="bold" colorVariant="primary">
+                      {item.title}
+                    </Text>
+                    <Text
+                      fontWeight="bold"
+                      colorVariant="secondary"
+                      typography="label"
+                    >
+                      {item.category}
+                    </Text>
+                  </Card>
+                ))}
+              </StyledCardContainer>
+            </>
+          )}
+          <Masonry columns={4} spacingTop={'kilo'} spacingLeft={'mega'}>
+            {options.map(item => (
+              <div key={item.title}>
+                <StyledContainerMenu>
+                  {item.leftComponents && (
+                    <StyledLeftComponent>
+                      {item.leftComponents}
+                    </StyledLeftComponent>
+                  )}
+                  <Text fontWeight="bold">{item.title}</Text>
+                </StyledContainerMenu>
+                <StyledContainerItems>
+                  {item.items.map(
+                    ({ title, Component = 'a', props, rightComponents }) => (
+                      <StyledContainerItemText key={title}>
+                        <Component {...props} style={noTextDecoration}>
+                          <StyledText colorVariant="secondary" colorTone="dark">
+                            {title}
+                          </StyledText>
+                        </Component>
+                        {rightComponents && (
+                          <StyledRightComponent>
+                            {rightComponents}
+                          </StyledRightComponent>
+                        )}
                       </StyledContainerItemText>
-                    ))}
-                  </StyledContainerItems>
-                </div>
-              ))}
-            </StyledGridContainer>
-          </>
+                    )
+                  )}
+                </StyledContainerItems>
+              </div>
+            ))}
+          </Masonry>
         </StyledContainerOpenMenu>
       )}
     </>
