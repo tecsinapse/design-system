@@ -9,7 +9,7 @@ import {
 } from '@tecsinapse/react-core';
 
 export interface ProgressBarProps extends ViewProps {
-  /** Number of segments. Defaults to 1 */
+  /** Number of segments. Defaults to 1. Set to 1 when 0 or less */
   segments?: number;
   /** Minimum possible value (0% of the bar). Defaults to 0 */
   valueMin?: number;
@@ -24,7 +24,7 @@ export interface ProgressBarProps extends ViewProps {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
-  segments = 1,
+  segments: _segments = 1,
   valueMin = 0,
   valueNow,
   valueMax = 100,
@@ -34,7 +34,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   const theme = useTheme() as ThemeProp;
   const totalProgress = ((valueNow - valueMin) / (valueMax - valueMin)) * 100;
-  const segmentWidth = 100 / segments;
+  const segments = Math.max(1, _segments);
+  const segmentWidth = 100 / Math.max(segments);
 
   const segmentsRender = [...Array(segments).keys()].map(index => {
     const max = segmentWidth * (index + 1);
