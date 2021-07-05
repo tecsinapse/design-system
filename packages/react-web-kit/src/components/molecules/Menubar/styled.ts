@@ -1,6 +1,6 @@
 import { default as webStyled } from '@emotion/styled';
 import { default as nativeStyled } from '@emotion/native';
-import { hex2rgba, StyleProps, Text, TextProps } from '@tecsinapse/react-core';
+import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 import { Button } from '../../atoms/Button';
 import { Input } from '../../atoms/Input';
 
@@ -45,48 +45,4 @@ export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
 
 export const StyledInput = nativeStyled(Input)<Partial<StyleProps>>`
      width: 100%;
-`;
-
-export const StyledLeftComponent = webStyled('div')<Partial<StyleProps>>`
-    margin-right: ${({ theme }) => theme.spacing.mili};
-`;
-
-export const StyledRightComponent = webStyled('div')<Partial<StyleProps>>`
-    margin-left: ${({ theme }) => theme.spacing.mili};
-`;
-
-export const StyledContainerMenu = webStyled('div')<Partial<StyleProps>>`
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid ${({ theme }) =>
-      hex2rgba(theme.miscellaneous.shadow, 0.08)};
-    width: 100%;
-    padding-bottom: ${({ theme }) => theme.spacing.mili};
-    margin-bottom: ${({ theme }) => theme.spacing.mili};
-`;
-
-export const StyledContainerItems = webStyled('div')<Partial<StyleProps>>`
-    display: flex;
-    flex-direction: column;
-`;
-
-export const StyledContainerItemText = webStyled('div')<Partial<StyleProps>>`
-    margin-bottom: ${({ theme }) => theme.spacing.mili};
-    display: flex;
-    align-items: center;
-`;
-
-export const StyledText = nativeStyled(Text)<Partial<StyleProps> & TextProps>`
-    &:hover {
-        color: ${({ theme }) => theme.font.color.orange}
-    }
-`;
-
-export const StyledCardContainer = webStyled('div')<Partial<StyleProps>>`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: ${({ theme }) => theme.spacing.mega};
-    margin-bottom: ${({ theme }) => theme.spacing.kilo};
-    margin-top: ${({ theme }) => theme.spacing.centi};
 `;

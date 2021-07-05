@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { Icon, Text } from '@tecsinapse/react-core';
 
 export default {
-  title: 'Components/Menubar',
+  title: 'Components/Menu Bar',
   component: Menubar,
   parameters: {
     layout: 'fullscreen',
@@ -20,31 +20,31 @@ const EXAMPLE_MENU = [
       {
         title: 'Item de menu 1',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item de menu 2',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item de menu 3',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item de menu 4',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item de menu 5',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
     ],
@@ -55,14 +55,42 @@ const EXAMPLE_MENU = [
       {
         title: 'Item menu 1',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
+        items: [
+          {
+            title: 'Item menu 1.1',
+            Component: 'a' as ElementType,
+            props: { href: '#' },
+            rightComponents: undefined,
+          },
+          {
+            title: 'Item menu 1.2',
+            Component: 'a' as ElementType,
+            props: { href: '#' },
+            rightComponents: undefined,
+          },
+        ],
       },
       {
         title: 'Item menu 2',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
+        items: [
+          {
+            title: 'Item menu 2.1',
+            Component: 'a' as ElementType,
+            props: { href: '#' },
+            rightComponents: undefined,
+          },
+          {
+            title: 'Item menu 2.2',
+            Component: 'a' as ElementType,
+            props: { href: '#' },
+            rightComponents: undefined,
+          },
+        ],
       },
     ],
   },
@@ -72,19 +100,19 @@ const EXAMPLE_MENU = [
       {
         title: 'Item menu 1',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 2',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 3',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
     ],
@@ -95,19 +123,19 @@ const EXAMPLE_MENU = [
       {
         title: 'Item menu 1',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 2',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 3',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
     ],
@@ -118,19 +146,19 @@ const EXAMPLE_MENU = [
       {
         title: 'Item menu 1',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 2',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 3',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
     ],
@@ -141,25 +169,25 @@ const EXAMPLE_MENU = [
       {
         title: 'Item menu 1',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 2',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 3',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: undefined,
       },
       {
         title: 'Item menu 4',
         Component: 'a' as ElementType,
-        props: { href: '/' },
+        props: { href: '#' },
         rightComponents: (
           <div
             style={{
@@ -183,18 +211,26 @@ const MOST_USED = [
   {
     title: 'Item de menu 1',
     category: 'Categoria de menu 1',
+    Component: 'a' as ElementType,
+    props: { href: '#' },
   },
   {
     title: 'Item de menu 2',
     category: 'Categoria de menu 2',
+    Component: 'a' as ElementType,
+    props: { href: '#' },
   },
   {
     title: 'Item de menu 3',
     category: 'Categoria de menu 3',
+    Component: 'a' as ElementType,
+    props: { href: '#' },
   },
   {
     title: 'Item de menu 4',
     category: 'Categoria de menu 4',
+    Component: 'a' as ElementType,
+    props: { href: '#' },
   },
 ];
 

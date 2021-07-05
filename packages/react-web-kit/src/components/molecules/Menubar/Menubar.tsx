@@ -1,58 +1,35 @@
-import React, { ElementType } from 'react';
-import { ButtonProps, Card, Icon, Text } from '@tecsinapse/react-core';
+import React from 'react';
+import { Icon } from '@tecsinapse/react-core';
 import {
   StyledIconInput,
   StyledMenuBar,
   StyledMenuButton,
   StyledContainerOpenMenu,
   StyledInput,
-  StyledLeftComponent,
-  StyledContainerMenu,
-  StyledContainerItems,
-  StyledContainerItemText,
-  StyledRightComponent,
-  StyledText,
-  StyledCardContainer,
 } from './styled';
-import Masonry from '../Masonry/Masonry';
-
-type MostUsed = {
-  title: string;
-  category: string;
-};
-
-type ItemsOptions = {
-  title: string;
-  Component: ElementType;
-  props: any;
-  rightComponents?: React.ReactNode;
-  items?: ItemsOptions[];
-};
-
-type OptionsType = {
-  title: string;
-  items: ItemsOptions[];
-  leftComponents?: React.ReactNode;
-};
+import { Masonry } from '../Masonry';
+import { MostUsedType, OptionsType } from './types';
+import { MostUsed } from './MostUsed';
+import { MenuBlock } from './MenuBlock';
 
 export interface MenubarProps {
   leftComponents?: React.ReactNode;
   inputPlaceholder?: string;
-  menuButtonProps?: ButtonProps;
   options: OptionsType[];
-  mostUsed?: MostUsed[];
+  /** Limited to first 4 elements */
+  mostUsed?: MostUsedType[];
+  mostUsedLabel?: string;
 }
 
-// TODO: Add redirect click from most used cards, add hover on menu items, add search
+// TODO: add search, finish sub menus
 const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
   inputPlaceholder = 'O quê você deseja buscar?',
   options,
   mostUsed,
+  mostUsedLabel = 'Mais acessados',
 }) => {
   const [menuOpen, setMenuOpen] = React.useState<boolean>(true);
-
-  const noTextDecoration = { textDecoration: 'none' };
 
   return (
     <>
@@ -94,57 +71,10 @@ const Menubar: React.FC<MenubarProps> = ({
       </StyledMenuBar>
       {menuOpen && (
         <StyledContainerOpenMenu>
-          {mostUsed && (
-            <>
-              <Text fontWeight="bold">Mais acessados</Text>
-              <StyledCardContainer>
-                {mostUsed.map(item => (
-                  <Card elevated key={`${item.title}-${item.category}`}>
-                    <Text fontWeight="bold" colorVariant="primary">
-                      {item.title}
-                    </Text>
-                    <Text
-                      fontWeight="bold"
-                      colorVariant="secondary"
-                      typography="label"
-                    >
-                      {item.category}
-                    </Text>
-                  </Card>
-                ))}
-              </StyledCardContainer>
-            </>
-          )}
-          <Masonry columns={4} spacingTop={'kilo'} spacingLeft={'mega'}>
-            {options.map(item => (
-              <div key={item.title}>
-                <StyledContainerMenu>
-                  {item.leftComponents && (
-                    <StyledLeftComponent>
-                      {item.leftComponents}
-                    </StyledLeftComponent>
-                  )}
-                  <Text fontWeight="bold">{item.title}</Text>
-                </StyledContainerMenu>
-                <StyledContainerItems>
-                  {item.items.map(
-                    ({ title, Component = 'a', props, rightComponents }) => (
-                      <StyledContainerItemText key={title}>
-                        <Component {...props} style={noTextDecoration}>
-                          <StyledText colorVariant="secondary" colorTone="dark">
-                            {title}
-                          </StyledText>
-                        </Component>
-                        {rightComponents && (
-                          <StyledRightComponent>
-                            {rightComponents}
-                          </StyledRightComponent>
-                        )}
-                      </StyledContainerItemText>
-                    )
-                  )}
-                </StyledContainerItems>
-              </div>
+          {mostUsed && <MostUsed label={mostUsedLabel} data={mostUsed} />}
+          <Masonry columns={4} spacingTop="kilo" spacingLeft="mega">
+            {options.map(option => (
+              <MenuBlock data={option} key={option.title} />
             ))}
           </Masonry>
         </StyledContainerOpenMenu>
