@@ -29,6 +29,10 @@ storiesOf('Progress', module)
         <Text>50%</Text>
         <ProgressBar segments={4} valueMin={-255} valueNow={372.5} valueMax={1000} color={'success'}/>
       </View>
+      <View>
+        <Text>50%</Text>
+        <ProgressBar segments={4} valueNow={'1%'} color={'success'}/>
+      </View>
     </Container>
   ));
 

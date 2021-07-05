@@ -16,7 +16,7 @@ export interface ProgressBarProps extends ViewProps {
   /** Maximum possible value (100% of the bar). Defaults to 100 */
   valueMax?: number;
   /** Current value */
-  valueNow: number;
+  valueNow: number | string;
   /** Filled partition color. Defaults to 'primary' */
   color?: ColorType;
   /** Filled partition color tone. Defaults to 'medium' */
@@ -26,13 +26,19 @@ export interface ProgressBarProps extends ViewProps {
 const ProgressBar: React.FC<ProgressBarProps> = ({
   segments: _segments = 1,
   valueMin = 0,
-  valueNow,
+  valueNow: _valueNow,
   valueMax = 100,
   color = 'primary',
   colorTone = 'medium',
   ...rest
 }) => {
   const theme = useTheme() as ThemeProp;
+
+  const valueNow =
+    typeof _valueNow === 'string'
+      ? parseInt(_valueNow.replace(/\D/g, ''))
+      : _valueNow;
+
   const totalProgress = ((valueNow - valueMin) / (valueMax - valueMin)) * 100;
   const segments = Math.max(1, _segments);
   const segmentWidth = 100 / Math.max(segments);
