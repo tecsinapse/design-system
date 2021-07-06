@@ -7,7 +7,7 @@ export const StyledView = styled.View<ViewProps & Partial<StyleProps>>`
   justify-content: space-between;
   padding-horizontal: ${({ theme }) => theme.spacing.deca};
   padding-bottom: ${({ theme }) => theme.spacing.kilo};
-  background-color: white;
+  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
 `;
 
 export const TabContainer = styled.View<
