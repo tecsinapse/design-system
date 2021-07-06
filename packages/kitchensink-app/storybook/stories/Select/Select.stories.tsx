@@ -14,8 +14,6 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
   label: `Option ${index}`,
 }));
 
-const searchBar = <Input placeholder={'Busque a opção desejada'} />;
-
 const Component = () => {
   const [multiValue, setMultiValue] = useState<string[]>([]);
   const [singleValue, setSingleValue] = useState<string | undefined>();
