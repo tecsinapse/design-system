@@ -17,6 +17,7 @@ export { RadioButton, RadioButtonProps } from './components/atoms/RadioButton';
 export { Badge, BadgeProps } from './components/atoms/Badge';
 export { Paper, PaperProps } from './components/atoms/Paper';
 export { Checkbox, CheckboxProps } from './components/atoms/Checkbox';
+export { ProgressBar, ProgressBarProps } from './components/atoms/ProgressBar';
 export {
   InputElement,
   InputElementProps,
