@@ -2,6 +2,9 @@ import React, { FC } from 'react';
 import { StyledAvatar, StyledBackground, StyledContainerText } from './styled';
 import { View, TouchableWithoutFeedback, ImageBackground } from 'react-native';
 import { Text } from '@tecsinapse/react-core';
+
+import { getIniciais } from './helpers';
+
 export interface AvatarProps {
   srcImage?: string;
   name: string;
@@ -15,15 +18,10 @@ const Avatar: FC<AvatarProps> = ({ srcImage, name, onPress }) => {
         {srcImage ? (
           <StyledAvatar source={{ uri: srcImage }} />
         ) : (
-          <StyledBackground
-            source={{
-              uri:
-                'https://cdn.awsli.com.br/600x450/549/549871/produto/29108392/60cdfb3799.jpg',
-            }}
-          >
+          <StyledBackground>
             <StyledContainerText>
               <Text fontWeight="bold" fontColor="light">
-                {name.toUpperCase()[0]}
+                {getIniciais(name)}
               </Text>
             </StyledContainerText>
           </StyledBackground>

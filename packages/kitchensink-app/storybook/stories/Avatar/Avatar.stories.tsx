@@ -1,21 +1,23 @@
 import { storiesOf } from '@storybook/react-native';
-import { Avatar, Text } from '@tecsinapse/react-core';
+import { Avatar, BoxContent, Text } from '@tecsinapse/react-core';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 import { View } from 'react-native';
+import styled from '@emotion/native';
 
 storiesOf('Avatar', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
   .add('Avatar', () => <AvatarStories />);
 
 const AvatarStories = () => (
-  <View style={{ flexDirection: 'row' }}>
+  <StyledContainer>
     <Avatar
-      name="Ryan"
-      // srcImage="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
+      name="João"
+      srcImage="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
     />
-    <Text typography="h5" style={{ marginLeft: 10 }}>
-      Olá Denner{' '}
-    </Text>
-  </View>
+  </StyledContainer>
 );
+
+const StyledContainer = styled(View)`
+  align-items: center;
+`;
