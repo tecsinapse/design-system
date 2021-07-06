@@ -24,7 +24,7 @@ export const StyledBackground = styled(View)<Partial<StyleProps>>`
 
 export const StyledText = styled(Text)<Partial<StyleProps>>`
   text-align: center;
-  align-selfi: center;
+  align-self: center;
   flex: 1;
   text-transform: uppercase;
 `;
