@@ -1,5 +1,6 @@
 import styled from '@emotion/native';
 import { Image, View } from 'react-native';
+import { Text } from '@tecsinapse/react-core';
 import { StyleProps } from '@tecsinapse/react-core';
 
 export const StyledAvatar = styled(Image)<Partial<StyleProps>>`
@@ -15,14 +16,15 @@ export const StyledBackground = styled(View)<Partial<StyleProps>>`
   background-color: ${({ theme }) => theme.color.secondary.dark};
   width: ${({ theme }) => theme.iconSize.mega};
   height: ${({ theme }) => theme.iconSize.mega};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 `;
 
-export const StyledContainerText = styled(View)<Partial<StyleProps>>`
-  width: ${({ theme }) => theme.iconSize.mega};
-  height: ${({ theme }) => theme.iconSize.mega};
-  display: flex;
-  justify-content: center;
+export const StyledText = styled(Text)<Partial<StyleProps>>`
   text-align: center;
+  align-selfi: center;
+  flex: 1;
   text-transform: uppercase;
-  align-items: center;
 `;

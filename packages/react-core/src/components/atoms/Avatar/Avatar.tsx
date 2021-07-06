@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { StyledAvatar, StyledBackground, StyledContainerText } from './styled';
-import { View, TouchableWithoutFeedback, ImageBackground } from 'react-native';
-import { Text } from '@tecsinapse/react-core';
+import { StyledAvatar, StyledBackground, StyledText } from './styled';
+import { PressableSurface } from '@tecsinapse/react-core';
 
 import { getIniciais } from './helpers';
 
@@ -13,21 +12,17 @@ export interface AvatarProps {
 
 const Avatar: FC<AvatarProps> = ({ srcImage, name, onPress }) => {
   return (
-    <View>
-      <TouchableWithoutFeedback onPress={onPress}>
-        {srcImage ? (
-          <StyledAvatar source={{ uri: srcImage }} />
-        ) : (
-          <StyledBackground>
-            <StyledContainerText>
-              <Text fontWeight="bold" fontColor="light">
-                {getIniciais(name)}
-              </Text>
-            </StyledContainerText>
-          </StyledBackground>
-        )}
-      </TouchableWithoutFeedback>
-    </View>
+    <PressableSurface onPress={onPress}>
+      {srcImage ? (
+        <StyledAvatar source={{ uri: srcImage }} />
+      ) : (
+        <StyledBackground>
+          <StyledText fontWeight="bold" fontColor="light">
+            {getIniciais(name)}
+          </StyledText>
+        </StyledBackground>
+      )}
+    </PressableSurface>
   );
 };
 
