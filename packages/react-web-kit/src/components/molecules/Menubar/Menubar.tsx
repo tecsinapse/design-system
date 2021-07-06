@@ -6,6 +6,7 @@ import {
   StyledMenuButton,
   StyledContainerOpenMenu,
   StyledInput,
+  StyledInputContainer,
 } from './styled';
 import { Masonry } from '../Masonry';
 import { MostUsedType, OptionsType } from './types';
@@ -14,6 +15,7 @@ import { MenuBlock } from './MenuBlock';
 
 export interface MenubarProps {
   leftComponents?: React.ReactNode;
+  rightComponents?: React.ReactNode;
   inputPlaceholder?: string;
   options: OptionsType[];
   /** Limited to first 4 elements */
@@ -21,9 +23,10 @@ export interface MenubarProps {
   mostUsedLabel?: string;
 }
 
-// TODO: add search, finish sub menus
+// TODO: add search
 const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
+  rightComponents,
   inputPlaceholder = 'O quê você deseja buscar?',
   options,
   mostUsed,
@@ -57,7 +60,7 @@ const Menubar: React.FC<MenubarProps> = ({
         </StyledMenuButton>
         {leftComponents}
         {menuOpen && (
-          <div style={{ display: 'flex', flex: 1 }}>
+          <StyledInputContainer>
             <StyledInput
               placeholder={inputPlaceholder}
               leftComponent={
@@ -66,8 +69,9 @@ const Menubar: React.FC<MenubarProps> = ({
                 </StyledIconInput>
               }
             />
-          </div>
+          </StyledInputContainer>
         )}
+        {rightComponents}
       </StyledMenuBar>
       {menuOpen && (
         <StyledContainerOpenMenu>

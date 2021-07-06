@@ -82,7 +82,20 @@ const EXAMPLE_MENU = [
             title: 'Item menu 2.1',
             Component: 'a' as ElementType,
             props: { href: '#' },
-            rightComponents: undefined,
+            rightComponents: (
+              <div
+                style={{
+                  display: 'flex',
+                  backgroundColor: '#2db783',
+                  borderRadius: '4px',
+                  padding: '3px',
+                }}
+              >
+                <Text fontColor="light" typography="label">
+                  Novo
+                </Text>
+              </div>
+            ),
           },
           {
             title: 'Item menu 2.2',

@@ -11,7 +11,7 @@ export const IconWrapper = styled(View)<Partial<RadioButtonProps & StyleProps>>`
     colorTone = 'medium',
   }: StyleProps & RadioButtonProps) => theme.color[color][colorTone]};
   border-width: ${({ theme }: StyleProps) => theme.borderWidth.nano};
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
 `;
 
 export const ScaledView = styled(View)`

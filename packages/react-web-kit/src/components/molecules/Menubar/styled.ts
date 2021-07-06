@@ -12,7 +12,7 @@ export const StyledIconInput = webStyled('div')<Partial<StyleProps>>`
 `;
 
 export const StyledMenuBar = webStyled('div')<Partial<StyleProps>>`
-    background-color: white;
+    background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,19 +30,29 @@ export const StyledMenuButton = nativeStyled(Button)<Partial<StyleProps>>`
 `;
 
 export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
-    border-top: 1px solid ${({ theme }) =>
-      hex2rgba(theme.miscellaneous.shadow, 0.08)};
+    border-top: ${({ theme }) =>
+      `${theme.borderWidth.pico} solid ${hex2rgba(
+        theme.miscellaneous.shadow,
+        0.08
+      )}`};
     min-height: 30vh;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     box-shadow: 0px 2px 8px ${({ theme }) =>
       hex2rgba(theme.miscellaneous.shadow, 0.08)};
     padding-right: 8vw;
     padding-left: 8vw;
     padding-top: ${({ theme }) => theme.spacing.kilo};
     padding-bottom: ${({ theme }) => theme.spacing.mega};
-
+    position: absolute;
+    width: -webkit-fill-available;
+    width: -moz-available;
 `;
 
 export const StyledInput = nativeStyled(Input)<Partial<StyleProps>>`
      width: 100%;
+`;
+
+export const StyledInputContainer = webStyled('div')`
+    display: flex;
+    flex: 1
 `;
