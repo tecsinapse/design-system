@@ -43,6 +43,7 @@ const Component = () => {
         keyExtractor={item => String(item.key)}
         searchBarPlaceholder={'Busque uma opção'}
         selectModalTitle={'Selecione uma opção'}
+        confirmButtonText={'Confirmar'}
         onSearch={handleSearch}
         style={{
           marginBottom: 10,
@@ -54,10 +55,12 @@ const Component = () => {
         placeholder="Select one value"
         value={singleValue}
         type={'single'}
+        hideSearchBar
         onSelect={handleSelectSingleValue}
         selectModalTitle={'Selecione uma opção'}
         labelExtractor={item => item.label}
         searchBarPlaceholder={'Busque uma opção'}
+        confirmButtonText={'Confirmar'}
         onSearch={handleSearch}
         keyExtractor={item => String(item.key)}
       />

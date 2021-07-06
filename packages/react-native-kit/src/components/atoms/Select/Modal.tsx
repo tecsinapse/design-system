@@ -22,6 +22,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   keyExtractor,
   labelExtractor,
   groupKeyExtractor,
+  hideSearchBar,
   searchBarPlaceholder,
   focused,
   type,
@@ -31,6 +32,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   onRequestClose,
   selectModalTitle,
   selectModalTitleComponent,
+  confirmButtonText,
   ...modalProps
 }: SelectNativeProps<Data, Type> & ModalProps) => {
   const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
@@ -98,13 +100,15 @@ const Component = <Data, Type extends 'single' | 'multi'>({
         >
           {headerContent}
         </Header>
-        <SearchBarContainer>
-          <Input
-            placeholder={searchBarPlaceholder}
-            value={searchArg}
-            onChange={text => setSearchArg(text)}
-          />
-        </SearchBarContainer>
+        {!hideSearchBar && (
+          <SearchBarContainer>
+            <Input
+              placeholder={searchBarPlaceholder}
+              value={searchArg}
+              onChange={text => setSearchArg(text)}
+            />
+          </SearchBarContainer>
+        )}
         <FlatList
           data={data}
           keyExtractor={keyExtractor}
@@ -138,7 +142,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           color={'primary'}
           onPress={handleConfirm}
         >
-          <Text fontColor={'light'}>Confirmar</Text>
+          <Text fontColor={'light'}>{confirmButtonText}</Text>
         </FloatingButton>
       </StyledModal>
     </RNModal>

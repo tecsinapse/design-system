@@ -21,11 +21,13 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   labelExtractor: (t: Data) => string;
   groupKeyExtractor?: (t: Data) => string;
 
+  hideSearchBar?: boolean;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
   onSearch?: (searchArg: string) => void | never;
   searchBarPlaceholder?: string;
+  confirmButtonText?: string;
   selectModalTitle?: string;
   selectModalTitleComponent?: JSX.Element;
 }
@@ -60,7 +62,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
   selectModalTitle,
   selectModalTitleComponent,
   searchBarPlaceholder,
-
+  hideSearchBar,
+  confirmButtonText,
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -142,12 +145,14 @@ function Select<Data, Type extends 'single' | 'multi'>({
         type={type}
         onSelect={onSelect}
         value={value}
+        hideSearchBar={hideSearchBar}
         onRequestClose={handleCloseModal}
         animated
         animationType={'slide'}
         onSearch={onSearch}
         selectModalTitle={selectModalTitle}
         selectModalTitleComponent={selectModalTitleComponent}
+        confirmButtonText={confirmButtonText}
       />
     </>
   );
