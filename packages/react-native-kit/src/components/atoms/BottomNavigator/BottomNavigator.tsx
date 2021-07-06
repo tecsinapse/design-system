@@ -1,25 +1,29 @@
 import * as React from 'react';
 import { ViewProps } from 'react-native';
 import { StyledView, TabContainer } from './styled';
-import { TabProps } from './Tab';
+import Item, { BottomTabNavigatorItemProps } from './Item';
 
-export interface TabsProps<T extends string | number | symbol>
+export interface BottomNavigatorProps<T extends string | number | symbol>
   extends ViewProps {
   selected: T;
   onSelect: (value: T) => void | never;
-  children: React.ReactElement<TabProps<T>> | React.ReactElement<TabProps<T>>[];
+  children:
+    | React.ReactElement<BottomTabNavigatorItemProps<T>>
+    | React.ReactElement<BottomTabNavigatorItemProps<T>>[];
 }
 
-function Tabs<T extends string | number | symbol>({
+function BottomNavigator<T extends string | number | symbol>({
   selected,
   onSelect,
   children,
   ...rest
-}: TabsProps<T>): JSX.Element {
+}: BottomNavigatorProps<T>): JSX.Element {
   return (
     <StyledView {...rest}>
       {React.Children.map(children, child => {
-        const value = (child as React.ReactElement<TabProps<T>>).props.value;
+        const value = (child as React.ReactElement<
+          BottomTabNavigatorItemProps<T>
+        >).props.value;
         const isSelected = value == selected;
 
         return (
@@ -35,4 +39,6 @@ function Tabs<T extends string | number | symbol>({
   );
 }
 
-export default Tabs;
+BottomNavigator.Item = Item;
+
+export default BottomNavigator;

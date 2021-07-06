@@ -11,4 +11,4 @@ import './Paper/Paper.stories';
 import './RadioButton/RadioButton.stories';
 import './Switch/Switch.stories';
 import './Text/Text.stories';
-import './Tabs/Tabs.stories';
+import './BottomNavigator/BottomNavigator.stories';

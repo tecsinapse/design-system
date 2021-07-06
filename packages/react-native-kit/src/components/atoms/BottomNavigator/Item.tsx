@@ -2,18 +2,18 @@ import * as React from 'react';
 import { ButtonProps, Icon, IconProps } from '@tecsinapse/react-core';
 import { StyledButton } from './styled';
 
-export interface TabProps<T extends string | number | symbol>
+export interface BottomTabNavigatorItemProps<T extends string | number | symbol>
   extends Omit<ButtonProps, 'children'> {
   _selected?: boolean;
   value: T;
   icon: IconProps;
 }
 
-function Tab<T extends string | number | symbol>({
+function Item<T extends string | number | symbol>({
   _selected,
   icon,
   ...rest
-}: TabProps<T>): JSX.Element {
+}: BottomTabNavigatorItemProps<T>): JSX.Element {
   const styledButtonColor = _selected ? 'primary' : undefined;
   const styledButtonTone = _selected ? 'xlight' : undefined;
   const styledButtonStyle = _selected
@@ -34,4 +34,4 @@ function Tab<T extends string | number | symbol>({
   );
 }
 
-export default Tab;
+export default Item;
