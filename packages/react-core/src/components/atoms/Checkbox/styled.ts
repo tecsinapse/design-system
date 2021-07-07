@@ -13,7 +13,8 @@ export const IconUncheckedStyled = styled(View)<
     colorTone = 'medium',
   }: StyleProps & CheckboxProps) => theme.color[color][colorTone]};
   border-width: ${({ theme }: StyleProps) => theme.borderWidth.nano};
-  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+  background-color: ${({ theme }: StyleProps) =>
+    theme.miscellaneous.surfaceColor};
 `;
 
 export const IconCheckedStyled = styled(View)<
