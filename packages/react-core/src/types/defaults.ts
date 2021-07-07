@@ -43,6 +43,7 @@ export type IconSize = {
   centi: string;
   deca: string;
   kilo: string;
+  mega: string;
 };
 
 export type BorderRadius = {
