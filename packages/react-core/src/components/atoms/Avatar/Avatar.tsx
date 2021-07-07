@@ -1,18 +1,31 @@
 import React, { FC } from 'react';
-import { StyledAvatar, StyledBackground, StyledText } from './styled';
-import { PressableSurface } from '@tecsinapse/react-core';
+import {
+  ContainerButtonAvatar,
+  StyledAvatar,
+  StyledBackground,
+  StyledText,
+} from './styled';
+import { IconSize } from '@tecsinapse/react-core';
 
 import { getIniciais } from './helpers';
+
+export type SizeAvatar = Omit<IconSize, 'centi' | 'deca'>;
 
 export interface AvatarProps {
   srcImage?: string;
   name: string;
   onPress?: () => void;
+  size?: keyof SizeAvatar;
 }
 
-const Avatar: FC<AvatarProps> = ({ srcImage, name, onPress }) => {
+const Avatar: FC<AvatarProps> = ({
+  srcImage,
+  name,
+  onPress,
+  size = 'mega',
+}) => {
   return (
-    <PressableSurface onPress={onPress}>
+    <ContainerButtonAvatar onPress={onPress} size={size}>
       {srcImage ? (
         <StyledAvatar source={{ uri: srcImage }} />
       ) : (
@@ -22,7 +35,7 @@ const Avatar: FC<AvatarProps> = ({ srcImage, name, onPress }) => {
           </StyledText>
         </StyledBackground>
       )}
-    </PressableSurface>
+    </ContainerButtonAvatar>
   );
 };
 
