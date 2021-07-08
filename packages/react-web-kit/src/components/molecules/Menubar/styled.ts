@@ -35,7 +35,6 @@ export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
         theme.miscellaneous.shadow,
         0.08
       )}`};
-    min-height: 30vh;
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     box-shadow: 0px 2px 8px ${({ theme }) =>
       hex2rgba(theme.miscellaneous.shadow, 0.08)};
@@ -55,4 +54,13 @@ export const StyledInput = nativeStyled(Input)<Partial<StyleProps>>`
 export const StyledInputContainer = webStyled('div')`
     display: flex;
     flex: 1
+`;
+
+export const StyledSearchResultsContainer = webStyled('div')`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const StyledSearchTextContainer = webStyled('div')<Partial<StyleProps>>`
+    margin-bottom: ${({ theme }) => theme.spacing.mili};
 `;
