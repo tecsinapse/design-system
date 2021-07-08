@@ -13,7 +13,8 @@
   "dependencies": {
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.4.0",
-    "@tecsinapse/react-core": "^0.5.2"
+    "@tecsinapse/react-core": "^0.5.2",
+    "date-fns": "^2.22.1"
   },
   "repository": {
     "type": "git",

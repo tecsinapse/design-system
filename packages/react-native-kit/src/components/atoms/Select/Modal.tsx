@@ -33,6 +33,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   selectModalTitle,
   selectModalTitleComponent,
   confirmButtonText,
+  flatListProps,
   ...modalProps
 }: SelectNativeProps<Data, Type> & ModalProps) => {
   const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
@@ -136,6 +137,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
               </View>
             </ListItem>
           )}
+          {...(flatListProps as never)}
         />
         <FloatingButton
           variant={'filled'}

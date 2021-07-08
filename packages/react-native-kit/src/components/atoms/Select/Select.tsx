@@ -7,6 +7,7 @@ import {
 import { Text } from '../Text';
 import { StyledPressableSurface } from './styled';
 import { Modal } from './Modal';
+import { FlatListProps } from 'react-native';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
@@ -30,6 +31,11 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   confirmButtonText?: string;
   selectModalTitle?: string;
   selectModalTitleComponent?: JSX.Element;
+
+  flatListProps?: Omit<
+    FlatListProps<Data>,
+    'data' | 'keyExtractor' | 'renderItem' | 'ListFooterComponent'
+  >;
 }
 
 function Select<Data, Type extends 'single' | 'multi'>({
@@ -64,6 +70,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   searchBarPlaceholder,
   hideSearchBar,
   confirmButtonText,
+  flatListProps,
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -153,6 +160,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         selectModalTitle={selectModalTitle}
         selectModalTitleComponent={selectModalTitleComponent}
         confirmButtonText={confirmButtonText}
+        flatListProps={flatListProps}
       />
     </>
   );
