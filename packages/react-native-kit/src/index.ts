@@ -1,4 +1,6 @@
 export * from '@tecsinapse/react-core';
+export { Header, HeaderProps } from './components/atoms/Header';
+export { Select, SelectNativeProps } from './components/atoms/Select';
 export { Input, InputNativeProps } from './components/atoms/Input';
 export { TextArea, TextAreaProps } from './components/atoms/TextArea';
 export { Text, TextNativeProps } from './components/atoms/Text';
