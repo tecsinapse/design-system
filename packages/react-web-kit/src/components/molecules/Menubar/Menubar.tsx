@@ -1,24 +1,51 @@
 import React from 'react';
-import { ButtonProps, Icon } from '@tecsinapse/react-core';
+import { Icon, Text, useDebouncedState } from '@tecsinapse/react-core';
 import {
   StyledIconInput,
   StyledMenuBar,
   StyledMenuButton,
   StyledContainerOpenMenu,
   StyledInput,
+  StyledInputContainer,
+  StyledSearchResultsContainer,
+  StyledSearchTextContainer,
 } from './styled';
+import { Masonry } from '../Masonry';
+import { MostUsedType, OptionsType } from './types';
+import { MostUsed } from './MostUsed';
+import { MenuBlock } from './MenuBlock';
+import { SearchResultItem } from './SearchResultItem';
+import { filterAndTransform } from './utils';
 
 export interface MenubarProps {
   leftComponents?: React.ReactNode;
+  rightComponents?: React.ReactNode;
   inputPlaceholder?: string;
-  menuButtonProps?: ButtonProps;
+  options: OptionsType[];
+  /** Limited to first 4 elements */
+  mostUsed?: MostUsedType[];
+  mostUsedLabel?: string;
+  searchResultsLabel?: string;
 }
 
 const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
+  rightComponents,
   inputPlaceholder = 'O quê você deseja buscar?',
+  options,
+  mostUsed,
+  mostUsedLabel = 'Mais acessados',
+  searchResultsLabel = 'Resultados da busca',
 }) => {
-  const [menuExpanded, setMenuExpanded] = React.useState<boolean>(true);
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(true);
+  const [search, setSearch] = React.useState<string>('');
+  const [results, setResults] = React.useState<MostUsedType[]>([]);
+  const [input, setInput] = useDebouncedState('', state => setSearch(state));
+
+  React.useEffect(() => {
+    if (search === '') return;
+    setResults(filterAndTransform(options, search));
+  }, [search]);
 
   return (
     <>
@@ -26,9 +53,9 @@ const Menubar: React.FC<MenubarProps> = ({
         <StyledMenuButton
           variant="filled"
           color="primary"
-          onPress={() => setMenuExpanded(!menuExpanded)}
+          onPress={() => setMenuOpen(!menuOpen)}
         >
-          {!menuExpanded ? (
+          {!menuOpen ? (
             <Icon
               size="deca"
               name="menu"
@@ -45,8 +72,8 @@ const Menubar: React.FC<MenubarProps> = ({
           )}
         </StyledMenuButton>
         {leftComponents}
-        {menuExpanded && (
-          <div style={{ display: 'flex', flex: 1 }}>
+        {menuOpen && (
+          <StyledInputContainer>
             <StyledInput
               placeholder={inputPlaceholder}
               leftComponent={
@@ -54,11 +81,40 @@ const Menubar: React.FC<MenubarProps> = ({
                   <Icon name="magnify" type="material-community" />
                 </StyledIconInput>
               }
+              value={input}
+              onChange={setInput}
             />
-          </div>
+          </StyledInputContainer>
         )}
+        {rightComponents}
       </StyledMenuBar>
-      {menuExpanded && <StyledContainerOpenMenu />}
+      {menuOpen && (
+        <StyledContainerOpenMenu>
+          {!search ? (
+            <>
+              {mostUsed && <MostUsed label={mostUsedLabel} data={mostUsed} />}
+              <Masonry columns={4} spacingTop="kilo" spacingLeft="mega">
+                {options.map(option => (
+                  <MenuBlock data={option} key={option.title} />
+                ))}
+              </Masonry>
+            </>
+          ) : (
+            <StyledSearchResultsContainer>
+              <StyledSearchTextContainer>
+                <Text fontWeight="bold">{searchResultsLabel}</Text>
+              </StyledSearchTextContainer>
+              {results.map(result => (
+                <SearchResultItem
+                  key={`${result.title}-${result.category}`}
+                  data={result}
+                  searchTerm={search}
+                />
+              ))}
+            </StyledSearchResultsContainer>
+          )}
+        </StyledContainerOpenMenu>
+      )}
     </>
   );
 };
