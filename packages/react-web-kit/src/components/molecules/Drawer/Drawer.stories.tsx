@@ -2,9 +2,8 @@ import { Story } from '@storybook/react';
 import React from 'react';
 import styled from '@emotion/native';
 
-import { Button, Card, Icon, StyleProps, Text } from '@tecsinapse/react-core';
-import { View } from 'react-native';
-import { Drawer, DrawerProps } from '@tecsinapse/react-web-kit';
+import { Button, Icon, StyleProps, Text } from '@tecsinapse/react-core';
+import { default as Drawer, DrawerProps } from './Drawer';
 
 export default {
   title: 'Components/Drawer',
@@ -22,7 +21,7 @@ const Template: Story<DrawerProps> = ({ anchorPosition, open }) => {
   };
 
   return (
-    <StyledContainerStory anchorPosition={anchorPosition}>
+    <StyledContainerStory>
       <Drawer open={isOpen} onClose={onClose} anchorPosition={anchorPosition}>
         <StyledHeaderDrawerStory>
           <Text typography="h4">Design System</Text>
@@ -51,14 +50,14 @@ Base.args = {
   open: false,
 };
 
-const StyledContainerStory = styled(View)<Partial<DrawerProps & StyleProps>>`
+const StyledContainerStory = styled('div')`
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
 `;
 
-const StyledContainerButtonStory = styled(View)<Partial<DrawerProps>>`
+const StyledContainerButtonStory = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;

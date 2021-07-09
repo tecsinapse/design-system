@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
 import { StyledContainerDrawer, StyledOverlay } from './styled';
 
-export type Position = 'left' | 'right';
-
 export interface DrawerProps {
   open: boolean;
   onClose: () => void;
