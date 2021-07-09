@@ -1,8 +1,8 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import styled from '@emotion/native';
+import styled from '@emotion/styled';
 
-import { Button, Icon, StyleProps, Text } from '@tecsinapse/react-core';
+import { Button, Icon, Text } from '@tecsinapse/react-core';
 import { default as Drawer, DrawerProps } from './Drawer';
 
 export default {
@@ -21,25 +21,23 @@ const Template: Story<DrawerProps> = ({ anchorPosition, open }) => {
   };
 
   return (
-    <StyledContainerStory>
+    <>
       <Drawer open={isOpen} onClose={onClose} anchorPosition={anchorPosition}>
         <StyledHeaderDrawerStory>
           <Text typography="h4">Design System</Text>
-          <StyledHButtonHeaderStory
-            size="small"
-            onPress={onClose}
-            variant="text"
-          >
-            <Icon name="close" type="material-community" />
+          <StyledHButtonHeaderStory>
+            <Button size="small" onPress={onClose} variant="text">
+              <Icon name="close" type="material-community" />
+            </Button>
           </StyledHButtonHeaderStory>
         </StyledHeaderDrawerStory>
       </Drawer>
       <StyledContainerButtonStory>
         <Button onPress={onClose}>
-          <Text>Open Drawer</Text>
+          <Text fontColor="light">Open Drawer</Text>
         </Button>
       </StyledContainerButtonStory>
-    </StyledContainerStory>
+    </>
   );
 };
 
@@ -50,28 +48,23 @@ Base.args = {
   open: false,
 };
 
-const StyledContainerStory = styled('div')`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: center;
-`;
-
 const StyledContainerButtonStory = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
 `;
 
-const StyledHeaderDrawerStory = styled(Card)`
+const StyledHeaderDrawerStory = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 16px;
 `;
 
-const StyledHButtonHeaderStory = styled(Button)<Partial<StyleProps>>`
-  margin-left: ${({ theme }) => theme.spacing.mega};
+const StyledHButtonHeaderStory = styled('div')`
+  margin-left: 10px;
 `;
