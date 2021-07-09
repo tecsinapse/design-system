@@ -9,6 +9,7 @@ export const StyledOverlay = styled('div')<Partial<StyleProps>>`
   height: 100vh;
   z-index: ${({ theme }: StyleProps) => theme.zIndex.drawer};
   cursor: pointer;
+  position: absolute;
 `;
 
 const anchorLeft = ({ theme }: StyleProps) => {
