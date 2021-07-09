@@ -8,7 +8,7 @@ import {
   Miscellaneous,
   Spacing,
   TypographyVariation,
-  ZIndex,
+  ZIndex
 } from '../types/defaults';
 
 export const statusColor = {
@@ -70,8 +70,9 @@ export const spacing: Spacing = {
 
 export const iconSize: IconSize = {
   centi: '16px', // '1rem'
-  deca: '24px', // '1.5rem'
-  kilo: '32px', // '2rem'
+  deca: '18px', // '1.5rem'
+  kilo: '24px', // '1.6rem'
+  mega: '32px', // '2rem'
 };
 
 export const borderRadius: BorderRadius = {
