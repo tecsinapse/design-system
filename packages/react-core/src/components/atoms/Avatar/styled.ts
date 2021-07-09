@@ -12,14 +12,13 @@ export const ContainerButtonAvatar = styled(PressableSurface)<
 
 export const StyledAvatar = styled(Image)<Partial<StyleProps>>`
   border-radius: ${({ theme }) => theme.borderRadius.pill};
-  resize-mode: contain;
   overflow: hidden;
   width: 100%;
   height: 100%;
 `;
 
 export const StyledBackground = styled(View)<Partial<StyleProps>>`
-  border-radius: 16px;
+  border-radius: ${({ theme }) => theme.borderRadius.pill};
   background-color: ${({ theme }) => theme.color.secondary.dark};
   width: 100%;
   height: 100%;

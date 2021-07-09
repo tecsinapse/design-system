@@ -16,4 +16,5 @@ Base.args = {
     'https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png',
   name: 'João',
   onPress: () => console.log('click'),
+  size: 'mega',
 };
