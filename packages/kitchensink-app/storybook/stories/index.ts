@@ -12,4 +12,5 @@ import './Progress/ProgressBar.stories';
 import './RadioButton/RadioButton.stories';
 import './Switch/Switch.stories';
 import './Text/Text.stories';
+import './BottomNavigator/BottomNavigator.stories';
 import './Select/Select.stories';
