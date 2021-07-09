@@ -14,7 +14,7 @@ export const StyledContainerDrawer = styled('div')<
 >`
   height: 100vh;
   position: absolute;
-  background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
+  background-color: ${({ theme }: StyleProps) => theme.miscellaneous.bodyColor};
   z-index: 11;
   ${({ anchorPosition }) =>
     anchorPosition === 'left'
