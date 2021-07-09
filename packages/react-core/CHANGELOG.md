@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.5.3...@tecsinapse/react-core@0.6.0) (2021-07-09)
+
+
+### Bug Fixes
+
+* import ([ea19f9b](https://github.com/tecsinapse/design-system/commit/ea19f9b4f4b3e499c718c41617edac7310fe4ad9))
+* minor changes ([cff103a](https://github.com/tecsinapse/design-system/commit/cff103aa3fd01588962b864549cb79c646c55949))
+* **radio & checkbox:** fix build ([1623755](https://github.com/tecsinapse/design-system/commit/1623755fc00058b36c5ba90e1251a1a22b53f4f7))
+* name prop css ([e2caefe](https://github.com/tecsinapse/design-system/commit/e2caefe2b7909ee3fcbb3004117ea2f43d798213))
+
+
+### Features
+
+* add prop size in component Avatar ([e148ad3](https://github.com/tecsinapse/design-system/commit/e148ad31f6333d818d6d9410056c2f3229b05759))
+* added component Avatar ([7394237](https://github.com/tecsinapse/design-system/commit/739423786cbcefe42829ba8df17f8eae9eb9821d))
+
+
+
+
+
 ## [0.5.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.5.2...@tecsinapse/react-core@0.5.3) (2021-07-09)
 
 
