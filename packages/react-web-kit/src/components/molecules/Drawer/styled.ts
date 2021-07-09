@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
-import { DrawerProps } from '@tecsinapse/react-web-kit';
+import { DrawerProps } from './Drawer';
 
 export const StyledOverlay = styled('div')<Partial<StyleProps>>`
-  background: ${({ theme }) => hex2rgba(theme.miscellaneous.overlay, 0.5)};
+  background: ${({ theme }: StyleProps) =>
+    hex2rgba(theme.miscellaneous.overlay, 0.5)};
   width: 100vw;
   height: 100vh;
   z-index: ${({ theme }: StyleProps) => theme.zIndex.drawer};
