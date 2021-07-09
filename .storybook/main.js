@@ -1,4 +1,7 @@
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: [
     '../packages/react-core/**/*.stories.@(tsx|jsx)',
     '../packages/react-native-kit/**/*.stories.@(tsx|jsx)',
@@ -7,10 +10,10 @@ module.exports = {
   ],
   addons: [
     '@storybook/addon-storysource',
+    '@storybook/addon-docs',
     '@storybook/addon-controls',
     '@storybook/addon-backgrounds',
     '@storybook/addon-actions',
     '@storybook/addon-viewport',
-    '@storybook/addon-docs',
   ],
 };

@@ -2,7 +2,7 @@ import { InputPasswordIcon } from '@tecsinapse/react-core';
 import React, { FC, useState } from 'react';
 import { Input, InputNativeProps } from '../../atoms/Input';
 
-export interface InputPasswordNativeProps extends InputNativeProps {}
+export type InputPasswordNativeProps = InputNativeProps;
 
 const InputPassword: FC<InputPasswordNativeProps> = ({
   rightComponent,
