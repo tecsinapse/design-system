@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
+import { IconSize } from '@tecsinapse/react-core';
 import {
   ContainerButtonAvatar,
   StyledAvatar,
   StyledBackground,
   StyledText,
 } from './styled';
-import { IconSize } from '@tecsinapse/react-core';
 
 import { getIniciais } from './helpers';
 
@@ -24,10 +24,15 @@ const Avatar: FC<AvatarProps> = ({
   onPress,
   size = 'mega',
 }) => {
+  const [hasError, setHasError] = React.useState<boolean>(false);
+
   return (
     <ContainerButtonAvatar onPress={onPress} size={size}>
-      {srcImage ? (
-        <StyledAvatar source={{ uri: srcImage }} />
+      {srcImage && !hasError ? (
+        <StyledAvatar
+          source={{ uri: srcImage }}
+          onError={() => setHasError(true)}
+        />
       ) : (
         <StyledBackground>
           <StyledText fontWeight="bold" fontColor="light">

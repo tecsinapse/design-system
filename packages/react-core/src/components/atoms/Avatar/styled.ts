@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import { Image, View } from 'react-native';
-import { AvatarProps, PressableSurface, Text } from '@tecsinapse/react-core';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps, PressableSurface, Text } from '@tecsinapse/react-core';
+import { AvatarProps } from './Avatar';
 
 export const ContainerButtonAvatar = styled(PressableSurface)<
   Partial<StyleProps & AvatarProps>
