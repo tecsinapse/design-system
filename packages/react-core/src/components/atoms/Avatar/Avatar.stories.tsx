@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, AvatarProps } from '@tecsinapse/react-core';
+import { default as Avatar, AvatarProps } from './Avatar';
 import { Story } from '@storybook/react';
 
 export default {
