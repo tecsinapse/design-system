@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@0.5.2...@tecsinapse/react-web-kit@0.5.3) (2021-07-09)
+
+
+### Bug Fixes
+
+* add start command to watch changes using babel (packages not refreshing) ([b038df0](https://github.com/tecsinapse/design-system/commit/b038df008a56f2299e3bbc321f662cad19c1b33d))
+
+
+
+
+
 ## [0.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@0.5.1...@tecsinapse/react-web-kit@0.5.2) (2021-06-18)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

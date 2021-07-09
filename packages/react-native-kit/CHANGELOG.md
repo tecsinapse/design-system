@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@0.5.2...@tecsinapse/react-native-kit@0.5.3) (2021-07-09)
+
+
+### Bug Fixes
+
+* add start command to watch changes using babel (packages not refreshing) ([b038df0](https://github.com/tecsinapse/design-system/commit/b038df008a56f2299e3bbc321f662cad19c1b33d))
+* SelectNativeProps inheriting from the wrong interface ([f88ba15](https://github.com/tecsinapse/design-system/commit/f88ba1589d294e1192817eef713718cbd3e4ca1a))
+
+
+### Features
+
+* bottom navbar menu ([9303901](https://github.com/tecsinapse/design-system/commit/93039010dd213af2eb351a66f63aa859de47c420))
+
+
+
+
+
 ## [0.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@0.5.1...@tecsinapse/react-native-kit@0.5.2) (2021-06-18)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
