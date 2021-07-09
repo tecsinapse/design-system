@@ -19,8 +19,8 @@ const Drawer: FC<DrawerProps> = ({
     <>
       {open && (
         <>
-          <StyledOverlay onPress={onClose} />
-          <StyledContainerDrawer variant={anchorPosition}>
+          <StyledOverlay onClick={onClose} />
+          <StyledContainerDrawer anchorPosition={anchorPosition} open={open}>
             {children}
           </StyledContainerDrawer>
         </>

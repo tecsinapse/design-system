@@ -11,4 +11,4 @@ export {
   InputPasswordWebProps,
 } from './components/molecules/InputPassword/';
 
-export { Drawer } from './components/molecules/Drawer';
+export { Drawer, DrawerProps } from './components/molecules/Drawer';
