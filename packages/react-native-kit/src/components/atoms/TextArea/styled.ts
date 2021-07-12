@@ -18,7 +18,6 @@ const StyledNativeInputBase = styled(InputElement)<
 >`
   max-height: ${({ theme, numberOfLines }) =>
     `${
-      //TODO: utility for transforming points into numeric values
       parseInt(theme.typography.h5.lineHeight.replace(/\D/g, '')) *
       (numberOfLines || 1)
     }px`};
