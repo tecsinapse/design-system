@@ -2,16 +2,23 @@ import * as React from 'react';
 import { SelectNativeProps } from '@tecsinapse/react-native-kit';
 import { Select } from '../../atoms/Select';
 import {
-  format as formatDate,
-  parse,
   add,
   differenceInDays,
   differenceInMonths,
-  differenceInYears,
+  format as formatDate,
+  parse,
   set,
 } from 'date-fns';
+import {
+  Dimensions,
+  FlatList,
+  LayoutChangeEvent,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+} from 'react-native';
 
 type DateOption = {
+  key: string;
   offset: number;
   formatted: string;
 };
@@ -29,14 +36,15 @@ export interface SelectDateProps
     | 'labelExtractor'
     | 'flatListProps'
   > {
-  value?: string;
-  onSelect?: (value?: string) => void | never;
+  value?: Date;
+  onSelect?: (value?: Date) => void | never;
   lowerDateThreshold?: string;
   upperDateThreshold?: string;
   lowerOffsetThreshold?: number;
   upperOffsetThreshold?: number;
   offsetThreshold?: number;
   granularity?: Granularity;
+  windowSize?: number;
 
   /** The Date format. Defaults to MM/YYYY */
   format?: string;
@@ -46,9 +54,13 @@ function getDiffFromToday(date: Date, granularity: Granularity) {
   const now = new Date();
   const midnight = { hours: 0, minutes: 0, milliseconds: 0 };
   if (granularity === 'days') {
-    return differenceInDays(date, set(now, midnight));
+    return differenceInDays(set(date, midnight), set(now, midnight));
   } else if (granularity === 'months') {
-    return date.getMonth() - now.getMonth();
+    return (
+      date.getMonth() -
+      now.getMonth() +
+      12 * (date.getFullYear() - now.getFullYear())
+    );
   } else {
     return date.getFullYear() - now.getFullYear();
   }
@@ -74,6 +86,7 @@ function getOptionsFromOffset(
       (!upperOffsetThreshold || currentOffset <= upperOffsetThreshold)
     ) {
       acc.push({
+        key: String(offset + unit),
         offset: offset + unit,
         formatted: formatDate(
           add(new Date(), {
@@ -88,7 +101,7 @@ function getOptionsFromOffset(
 }
 
 const SelectDate: React.FC<SelectDateProps> = ({
-  value: _value,
+  value,
   onSelect,
   offsetThreshold,
   lowerDateThreshold,
@@ -97,14 +110,17 @@ const SelectDate: React.FC<SelectDateProps> = ({
   upperOffsetThreshold: _upperOffsetThreshold,
   granularity = 'months',
   format = 'MMM/yyyy',
+  windowSize = 50,
   ...rest
 }) => {
-  const value = _value ? parse(_value, format, new Date()) : undefined;
+  const flatListRef = React.useRef<FlatList>();
+
   const valueOffset = value ? getDiffFromToday(value, granularity) : undefined;
 
   const [options, setOptions] = React.useState<DateOption[]>([]);
+  const [windowOffset, setWindowOffset] = React.useState(valueOffset || 0);
 
-  React.useEffect(() => {
+  const calculateOptions = React.useCallback(() => {
     const upperOffsetThreshold =
       (upperDateThreshold &&
         getDiffFromToday(
@@ -112,7 +128,8 @@ const SelectDate: React.FC<SelectDateProps> = ({
           granularity
         )) ||
       _upperOffsetThreshold ||
-      offsetThreshold;
+      offsetThreshold ||
+      undefined;
 
     const lowerOffsetThreshold =
       (lowerDateThreshold &&
@@ -124,19 +141,24 @@ const SelectDate: React.FC<SelectDateProps> = ({
       offsetThreshold ||
       undefined;
 
-    const initialOffset = valueOffset || 0;
-
-    setOptions(
-      getOptionsFromOffset(
-        format,
-        initialOffset,
-        30,
-        granularity,
-        upperOffsetThreshold,
-        lowerOffsetThreshold
-      )
+    const options = getOptionsFromOffset(
+      format,
+      windowOffset,
+      windowSize,
+      granularity,
+      upperOffsetThreshold,
+      lowerOffsetThreshold
     );
+
+    setOptions(options);
+
+    flatListRef?.current?.scrollToIndex({
+      index: options.length / 2,
+      animated: false,
+    });
   }, [
+    windowOffset,
+    value,
     valueOffset,
     granularity,
     format,
@@ -147,13 +169,37 @@ const SelectDate: React.FC<SelectDateProps> = ({
     upperDateThreshold,
   ]);
 
+  React.useEffect(() => {
+    calculateOptions();
+  }, [calculateOptions]);
+
   const handleSelect = (offset?: string) => {
-    if (offset) {
-      onSelect &&
-        onSelect(
-          formatDate(offsetToDate(parseInt(offset), granularity), format)
-        );
-    } else onSelect && onSelect(undefined);
+    onSelect?.(
+      offset ? offsetToDate(parseInt(offset), granularity) : undefined
+    );
+    setWindowOffset(offset ? parseInt(offset) : 0);
+  };
+
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const y = event.nativeEvent.contentOffset.y;
+    if (y === 0) setWindowOffset(offset => offset - windowSize / 2);
+  };
+
+  const handleEndReached = () => {
+    setWindowOffset(offset => offset + windowSize / 2);
+  };
+
+  const handleFlatListLayout = () => {
+    const index = options.findIndex(({ offset }) => offset === valueOffset);
+    flatListRef?.current?.scrollToIndex({
+      index: index === -1 ? options.length / 2 : index,
+      viewOffset: Dimensions.get('window').height / 2,
+      animated: false,
+    });
+  };
+
+  const handleBlurUnconfirmed = () => {
+    setWindowOffset(valueOffset || 0);
   };
 
   return (
@@ -163,9 +209,26 @@ const SelectDate: React.FC<SelectDateProps> = ({
       onSelect={handleSelect}
       value={valueOffset?.toString()}
       type={'single'}
-      keyExtractor={option => option.offset.toString()}
+      keyExtractor={option => option.key}
+      onBlurUnconfirmed={handleBlurUnconfirmed}
+      hideSearchBar
+      customDisplayValue={value ? formatDate(value, format) : undefined}
       labelExtractor={option => option.formatted}
-      flatListProps={{}}
+      flatListProps={{
+        ref: flatListRef,
+        onScroll: handleScroll,
+        onLayout: handleFlatListLayout,
+        onEndReachedThreshold: 0,
+        onEndReached: handleEndReached,
+        maxToRenderPerBatch: 100,
+        windowSize: 100,
+        getItemLayout: (item, index) => ({
+          //TODO: find out a way to parameterize list item's height
+          index: index,
+          length: 54.66,
+          offset: index * 54.66,
+        }),
+      }}
     />
   );
 };
