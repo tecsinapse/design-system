@@ -14,6 +14,11 @@ const Template: Story<RadioButtonProps> = ({
   ...args
 }) => {
   const [active, setActive] = useState(checked);
+
+  React.useEffect(() => {
+    setActive(checked);
+  }, [checked]);
+
   return (
     <RadioButton
       {...args}

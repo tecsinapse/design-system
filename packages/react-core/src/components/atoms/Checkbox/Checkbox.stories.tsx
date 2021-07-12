@@ -10,6 +10,11 @@ export default {
 
 const Template: Story<CheckboxProps> = ({ checked, ...args }) => {
   const [active, setActive] = React.useState(checked);
+
+  React.useEffect(() => {
+    setActive(checked);
+  }, [checked]);
+
   return (
     <Checkbox {...args} checked={active} onChange={setActive}>
       <Text>Checkbox</Text>

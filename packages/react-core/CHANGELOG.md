@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.5.3...@tecsinapse/react-core@0.6.0) (2021-07-09)
+
+
+### Bug Fixes
+
+* import ([ea19f9b](https://github.com/tecsinapse/design-system/commit/ea19f9b4f4b3e499c718c41617edac7310fe4ad9))
+* minor changes ([cff103a](https://github.com/tecsinapse/design-system/commit/cff103aa3fd01588962b864549cb79c646c55949))
+* **radio & checkbox:** fix build ([1623755](https://github.com/tecsinapse/design-system/commit/1623755fc00058b36c5ba90e1251a1a22b53f4f7))
+* name prop css ([e2caefe](https://github.com/tecsinapse/design-system/commit/e2caefe2b7909ee3fcbb3004117ea2f43d798213))
+
+
+### Features
+
+* add prop size in component Avatar ([e148ad3](https://github.com/tecsinapse/design-system/commit/e148ad31f6333d818d6d9410056c2f3229b05759))
+* added component Avatar ([7394237](https://github.com/tecsinapse/design-system/commit/739423786cbcefe42829ba8df17f8eae9eb9821d))
+
+
+
+
+
+## [0.5.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.5.2...@tecsinapse/react-core@0.5.3) (2021-07-09)
+
+
+### Bug Fixes
+
+* add start command to watch changes using babel (packages not refreshing) ([b038df0](https://github.com/tecsinapse/design-system/commit/b038df008a56f2299e3bbc321f662cad19c1b33d))
+* set segments to 1 when 0 or less to avoid RangeError or division by 0 ([21654ab](https://github.com/tecsinapse/design-system/commit/21654abfb7ab94b5bfb5951ce2d1c670d349d382))
+
+
+### Features
+
+* progress bar component ([4af3415](https://github.com/tecsinapse/design-system/commit/4af341572444f7ff1fe04bd39db80d2fc40bde4e))
+
+
+
+
+
 ## [0.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.5.1...@tecsinapse/react-core@0.5.2) (2021-06-18)
 
 **Note:** Version bump only for package @tecsinapse/react-core

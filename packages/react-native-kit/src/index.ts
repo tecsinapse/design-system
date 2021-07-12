@@ -11,3 +11,7 @@ export {
   InputPassword,
   InputPasswordNativeProps,
 } from './components/molecules/InputPassword';
+export {
+  BottomNavigator,
+  BottomNavigatorProps,
+} from './components/atoms/BottomNavigator';
