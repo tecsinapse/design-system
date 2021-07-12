@@ -120,27 +120,27 @@ const SelectDate: React.FC<SelectDateProps> = ({
   const [options, setOptions] = React.useState<DateOption[]>([]);
   const [windowOffset, setWindowOffset] = React.useState(valueOffset || 0);
 
+  const upperOffsetThreshold =
+    (upperDateThreshold &&
+      getDiffFromToday(
+        parse(upperDateThreshold, format, new Date()),
+        granularity
+      )) ||
+    _upperOffsetThreshold ||
+    offsetThreshold ||
+    undefined;
+
+  const lowerOffsetThreshold =
+    (lowerDateThreshold &&
+      getDiffFromToday(
+        parse(lowerDateThreshold, format, new Date()),
+        granularity
+      )) ||
+    _lowerOffsetThreshold ||
+    offsetThreshold ||
+    undefined;
+
   const calculateOptions = React.useCallback(() => {
-    const upperOffsetThreshold =
-      (upperDateThreshold &&
-        getDiffFromToday(
-          parse(upperDateThreshold, format, new Date()),
-          granularity
-        )) ||
-      _upperOffsetThreshold ||
-      offsetThreshold ||
-      undefined;
-
-    const lowerOffsetThreshold =
-      (lowerDateThreshold &&
-        getDiffFromToday(
-          parse(lowerDateThreshold, format, new Date()),
-          granularity
-        )) ||
-      _lowerOffsetThreshold ||
-      offsetThreshold ||
-      undefined;
-
     const options = getOptionsFromOffset(
       format,
       windowOffset,
@@ -151,11 +151,6 @@ const SelectDate: React.FC<SelectDateProps> = ({
     );
 
     setOptions(options);
-
-    flatListRef?.current?.scrollToIndex({
-      index: options.length / 2,
-      animated: false,
-    });
   }, [
     windowOffset,
     value,
@@ -163,10 +158,8 @@ const SelectDate: React.FC<SelectDateProps> = ({
     granularity,
     format,
     setOptions,
-    _lowerOffsetThreshold,
-    _upperOffsetThreshold,
-    lowerDateThreshold,
-    upperDateThreshold,
+    lowerOffsetThreshold,
+    upperOffsetThreshold,
   ]);
 
   React.useEffect(() => {
@@ -181,19 +174,45 @@ const SelectDate: React.FC<SelectDateProps> = ({
   };
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const layoutHeight = event.nativeEvent.layoutMeasurement.height;
     const y = event.nativeEvent.contentOffset.y;
-    if (y === 0) setWindowOffset(offset => offset - windowSize / 2);
-  };
+    const contentSize = event.nativeEvent.contentSize.height;
 
-  const handleEndReached = () => {
-    setWindowOffset(offset => offset + windowSize / 2);
+    if (y === 0) {
+      setWindowOffset(offset => {
+        const newOffset = offset - windowSize / 2;
+        if (lowerOffsetThreshold && newOffset < lowerOffsetThreshold) {
+          return offset;
+        } else {
+          flatListRef?.current?.scrollToIndex({
+            index: options.length / 2,
+            animated: false,
+          });
+          return newOffset;
+        }
+      });
+    } else if (y + layoutHeight >= contentSize) {
+      setWindowOffset(offset => {
+        const newOffset = offset + windowSize / 2;
+        if (upperOffsetThreshold && newOffset > upperOffsetThreshold) {
+          return offset;
+        } else {
+          flatListRef?.current?.scrollToIndex({
+            index: options.length / 2,
+            viewOffset: Dimensions.get('window').height - 150,
+            animated: false,
+          });
+          return newOffset;
+        }
+      });
+    }
   };
 
   const handleFlatListLayout = () => {
     const index = options.findIndex(({ offset }) => offset === valueOffset);
     flatListRef?.current?.scrollToIndex({
       index: index === -1 ? options.length / 2 : index,
-      viewOffset: Dimensions.get('window').height / 2,
+      viewOffset: Dimensions.get('window').height / 2 - 44,
       animated: false,
     });
   };
@@ -218,8 +237,6 @@ const SelectDate: React.FC<SelectDateProps> = ({
         ref: flatListRef,
         onScroll: handleScroll,
         onLayout: handleFlatListLayout,
-        onEndReachedThreshold: 0,
-        onEndReached: handleEndReached,
         maxToRenderPerBatch: 100,
         windowSize: 100,
         getItemLayout: (item, index) => ({
