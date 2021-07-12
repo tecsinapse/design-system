@@ -79,7 +79,6 @@ export const StyledLabelContainer = styled.View<
 >(
   props => css`
     flex: 1;
-    padding: ${props.theme.spacing.micro} 0;
     ${leftIconStyles(props)}
     ${rightIconStyles(props)}
   `
