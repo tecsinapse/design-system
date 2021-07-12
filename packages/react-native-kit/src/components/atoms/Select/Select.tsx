@@ -7,7 +7,7 @@ import {
 import { Text } from '../Text';
 import { StyledPressableSurface } from './styled';
 import { Modal } from './Modal';
-import { FlatListProps } from 'react-native';
+import { FlatList, FlatListProps } from 'react-native';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
@@ -26,14 +26,15 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
+  onBlurUnconfirmed?: () => void | never;
   onSearch?: (searchArg: string) => void | never;
   searchBarPlaceholder?: string;
   confirmButtonText?: string;
   selectModalTitle?: string;
   selectModalTitleComponent?: JSX.Element;
-
+  customDisplayValue?: string;
   flatListProps?: Omit<
-    FlatListProps<Data>,
+    FlatListProps<Data> & { ref?: React.ForwardedRef<FlatList | undefined> },
     'data' | 'keyExtractor' | 'renderItem' | 'ListFooterComponent'
   >;
 }
@@ -63,6 +64,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   placeholder,
   onFocus,
   onBlur,
+  onBlurUnconfirmed,
   disabled,
   onSearch,
   selectModalTitle,
@@ -71,6 +73,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   hideSearchBar,
   confirmButtonText,
   flatListProps,
+  customDisplayValue,
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -138,13 +141,14 @@ function Select<Data, Type extends 'single' | 'multi'>({
           disabled={disabled}
           {...rest}
         >
-          <Text>{getDisplayValue()}</Text>
+          <Text>{customDisplayValue || getDisplayValue()}</Text>
         </InputContainer>
       </StyledPressableSurface>
       <Modal
         visible={modalVisible}
         options={options}
         focused={modalVisible}
+        onBlurUnconfirmed={onBlurUnconfirmed}
         keyExtractor={keyExtractor}
         labelExtractor={labelExtractor}
         groupKeyExtractor={groupKeyExtractor}

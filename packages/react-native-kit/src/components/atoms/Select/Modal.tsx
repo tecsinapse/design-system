@@ -6,7 +6,13 @@ import {
   SearchBarContainer,
   StyledModal,
 } from './styled';
-import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  Modal as RNModal,
+  ModalProps,
+  View,
+} from 'react-native';
 import { SelectNativeProps } from './Select';
 import { Text } from '../Text';
 import {
@@ -23,6 +29,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   groupKeyExtractor,
   hideSearchBar,
+  onBlurUnconfirmed,
   searchBarPlaceholder,
   focused,
   type,
@@ -86,12 +93,44 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     <Text>{selectModalTitle}</Text>
   ) : null;
 
+  const handlePressClose = () => {
+    onRequestClose?.();
+    onBlurUnconfirmed?.();
+  };
+
+  const renderItem = ({
+    item,
+    index,
+  }: ListRenderItemInfo<Data & { _checked: boolean }>) => (
+    <ListItem onPress={handlePressItem(keyExtractor(item, index))}>
+      <View pointerEvents={'none'}>
+        {type === 'multi' ? (
+          <Checkbox
+            color={'primary'}
+            labelPosition={'right'}
+            checked={item._checked}
+          >
+            <Text>{labelExtractor(item)}</Text>
+          </Checkbox>
+        ) : (
+          <RadioButton
+            color={'primary'}
+            labelPosition={'right'}
+            checked={item._checked}
+          >
+            <Text>{labelExtractor(item)}</Text>
+          </RadioButton>
+        )}
+      </View>
+    </ListItem>
+  );
+
   return (
     <RNModal {...modalProps} onRequestClose={onRequestClose}>
       <StyledModal>
         <Header
           rightButton={{
-            onPress: onRequestClose,
+            onPress: handlePressClose,
             icon: {
               name: 'close',
               type: 'material-community',
@@ -114,29 +153,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           data={data}
           keyExtractor={keyExtractor}
           ListFooterComponent={<ListFooter />}
-          renderItem={({ item, index }) => (
-            <ListItem onPress={handlePressItem(keyExtractor(item, index))}>
-              <View pointerEvents={'none'}>
-                {type === 'multi' ? (
-                  <Checkbox
-                    color={'primary'}
-                    labelPosition={'right'}
-                    checked={item._checked}
-                  >
-                    <Text>{labelExtractor(item)}</Text>
-                  </Checkbox>
-                ) : (
-                  <RadioButton
-                    color={'primary'}
-                    labelPosition={'right'}
-                    checked={item._checked}
-                  >
-                    <Text>{labelExtractor(item)}</Text>
-                  </RadioButton>
-                )}
-              </View>
-            </ListItem>
-          )}
+          renderItem={renderItem}
           {...(flatListProps as never)}
         />
         <FloatingButton
