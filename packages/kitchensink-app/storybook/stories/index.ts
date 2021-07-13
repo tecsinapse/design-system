@@ -15,3 +15,4 @@ import './Text/Text.stories';
 import './BottomNavigator/BottomNavigator.stories';
 import './Avatar/Avatar.stories';
 import './Select/Select.stories';
+import './SnappingSlider/SnappingSlider.stories';
