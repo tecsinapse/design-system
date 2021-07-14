@@ -1,20 +1,38 @@
 import * as React from 'react';
 import { Dimensions, ScrollView, ScrollViewProps, View } from 'react-native';
-import { Slide, SlideProps } from './styled';
 import { SpacingType, ThemeProp } from '@tecsinapse/react-core';
 import { useTheme } from '@emotion/react';
 
 export interface SnappingSliderProps
-  extends Omit<ScrollViewProps, 'horizontal'> {
+  extends Omit<ScrollViewProps, 'horizontal' | 'snapToOffsets'> {
+  /**
+   * Amount in screen elements.
+   * Should never be lower than scrollAmount, otherwise some elements will be skipped.
+   */
   showAmount: number;
+
+  /**
+   * Amount of items to scroll within a single swipe.
+   * Should never be greater than showAmount, otherwise some elements will be skipped.
+   */
   scrollAmount: number;
+
+  /**
+   * Spacing between elements.
+   * Must be one of [nano, micro, mili, centi, deca, kilo, mega, giga, tera, peta, hexa]
+   */
   spacing?: SpacingType;
 }
 
-const SnappingSlider: React.FC<SnappingSliderProps> & {
-  Slide: React.FC<SlideProps>;
-} = ({ children, showAmount, scrollAmount, spacing, ...rest }) => {
+const SnappingSlider: React.FC<SnappingSliderProps> = ({
+  children,
+  showAmount,
+  scrollAmount,
+  spacing,
+  ...rest
+}) => {
   const theme = useTheme() as ThemeProp;
+
   const childCount = React.Children.count(children);
   const screenWidth = Dimensions.get('window').width;
   const totalSlideWidth = Math.round(screenWidth / showAmount);
@@ -25,25 +43,18 @@ const SnappingSlider: React.FC<SnappingSliderProps> & {
   const snapToOffsets = [
     ...Array(Math.ceil(childCount / scrollAmount)).keys(),
   ].map(index => {
-    const offset = (totalSlideWidth * scrollAmount) * index;
-    const padCompensation = horizontalPadding * 2 * Math.sign(index);
+    const offset = totalSlideWidth * scrollAmount * index;
+    const padCompensation = horizontalPadding * Math.sign(index);
     return offset + padCompensation;
   });
 
-  if (scrollAmount > showAmount)
-    console.warn(
-      'scrollAmount should never be greater than showAmount. Otherwise, elements will be skipped.'
-    );
-
-  console.log(snapToOffsets);
-
   return (
     <ScrollView
-      style={{ backgroundColor: 'black' }}
       horizontal
       snapToOffsets={snapToOffsets}
       snapToStart
       snapToEnd
+      showsHorizontalScrollIndicator={false}
       {...rest}
     >
       {React.Children.map(children, (child, index) => {
@@ -66,7 +77,5 @@ const SnappingSlider: React.FC<SnappingSliderProps> & {
     </ScrollView>
   );
 };
-
-SnappingSlider.Slide = Slide;
 
 export default SnappingSlider;
