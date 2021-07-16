@@ -1,1 +1,6 @@
-export { default as Calendar, CalendarProps, SelectionType, DateRange } from './Calendar';
+export {
+  default as Calendar,
+  CalendarProps,
+  SelectionType,
+  DateRange,
+} from './Calendar';
