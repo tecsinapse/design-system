@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Capitalized, Cell, Content, TitleContainer, Week, Control } from './styled';
+import {
+  Capitalized,
+  Cell,
+  Content,
+  TitleContainer,
+  Week,
+  Control,
+} from './styled';
 import { Pressable, View, ViewProps } from 'react-native';
 import {
   add,
@@ -8,6 +15,7 @@ import {
   getWeeksInMonth,
   isSameDay,
   set,
+  differenceInDays,
 } from 'date-fns';
 import { Icon } from '../../atoms/Icon';
 import { Text } from '../../atoms/Text';
@@ -114,7 +122,12 @@ function Calendar<T extends SelectionType>({
           newValue = { lowest: highest, highest: undefined };
         } else {
           if (compare(date, highest) === -1) {
-            newValue = { lowest: lowest, highest: date };
+            const lowestDiff = Math.abs(differenceInDays(date, lowest));
+            const highestDiff = Math.abs(differenceInDays(date, highest));
+            newValue = {
+              lowest: lowestDiff < highestDiff ? date : lowest,
+              highest: highestDiff <= lowestDiff ? date : highest,
+            };
           } else if (compare(date, highest) === 0) {
             newValue = { lowest: lowest, highest: undefined };
           } else {
