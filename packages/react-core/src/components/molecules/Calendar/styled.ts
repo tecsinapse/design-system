@@ -1,29 +1,27 @@
 import styled, { css } from '@emotion/native';
-import { Text, TextProps } from '../../atoms/Text';
-import { StyleProps } from '@tecsinapse/react-core';
+import { Text } from '../../atoms/Text';
+import { StyleProps } from '../../../types/defaults';
 import { PressableProps, ViewProps } from 'react-native';
 
-export const Root = styled.View``;
-
-export const Button = styled.Pressable``;
-
-export const TitleContainer = styled.View``;
-
-export const Title = styled(Text)``;
-
-export const Content = styled.View``;
-
-export const Week = styled.View`
+export const TitleContainer = styled.View<Partial<StyleProps>>`
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: ${({ theme }) => theme.color.secondary.xlight};
+  padding: ${({ theme }) => theme.spacing.deca};
 `;
 
-export const DayOfWeek = styled(Text)``;
+export const Capitalized = styled(Text)`
+  text-transform: capitalize;
+`;
 
-export const DayOfMonth = styled(Text)<
-  TextProps & Partial<StyleProps> & { selected: boolean }
->`
-  color: ${({ theme, selected }) =>
-    selected ? theme.miscellaneous.surfaceColor : theme.miscellaneous.overlay};
+export const Content = styled.View<ViewProps & Partial<StyleProps>>`
+  padding: ${({ theme }) => theme.spacing.deca};
+  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+`;
+
+export const Week = styled.View<Partial<StyleProps>>`
+  flex-direction: row;
 `;
 
 export const Cell = styled.Pressable<
@@ -66,7 +64,7 @@ export const Cell = styled.Pressable<
       justify-content: center;
       align-items: center;
       aspect-ratio: 1;
-      width: ${theme.spacing.mega};
+      flex: 1;
       border-top-left-radius: ${leftBorderRadius};
       border-bottom-left-radius: ${leftBorderRadius};
       border-top-right-radius: ${rightBorderRadius};

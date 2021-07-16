@@ -1,39 +1,30 @@
 import * as React from 'react';
+import { Capitalized, Cell, Content, TitleContainer, Week } from './styled';
+import { Pressable, View, ViewProps } from 'react-native';
 import {
-  Root,
-  Cell,
-  Week,
-  Title,
-  Button,
-  Content,
-  DayOfWeek,
-  DayOfMonth,
-  TitleContainer,
-} from './styled';
-import { ViewProps } from 'react-native';
-import {
-  startOfMonth,
-  getDaysInMonth,
-  getWeeksInMonth,
   add,
-  isFuture,
-  isPast,
+  compareAsc as compare,
+  format,
+  getWeeksInMonth,
   isSameDay,
   set,
-  compareAsc,
-  min,
 } from 'date-fns';
+import { Icon } from '../../atoms/Icon';
+import { Text } from '../../atoms/Text';
 
 type SelectionType = 'range' | 'day';
+
+export type DateRange = { lowest: Date; highest?: Date };
+
+type Value<T extends SelectionType> = T extends 'range' ? DateRange : Date;
 
 export interface CalendarProps<T extends SelectionType> extends ViewProps {
   year?: number;
   month?: number;
-  onChange?: (
-    date: T extends 'range' ? (Date | undefined)[] : Date
-  ) => void | never;
+  onChange?: (value?: Value<T>) => void | never;
   type?: T;
-  value?: T extends 'range' ? (Date | undefined)[] : Date;
+  value?: Value<T>;
+  locale?: Locale;
 }
 
 const now = set(new Date(), {
@@ -51,83 +42,169 @@ function dayOfWeekFromMonday(dayOfWeek: number) {
 function Calendar<T extends SelectionType>({
   year: _year,
   month: _month,
-  value: _value,
+  value,
   type,
   onChange,
+  locale,
   ...rest
 }: CalendarProps<T>): JSX.Element {
-  const value = _value
-    ? type === 'day'
-      ? [_value as Date | undefined]
-      : (_value as (Date | undefined)[])
-    : undefined;
-
-  const date =
+  const _referenceDate =
     _year && _month
       ? new Date(_year, _month, 1, 0, 0, 0, 0)
       : _month
       ? new Date(now.getFullYear(), _month, 1, 0, 0, 0, 0)
       : now;
 
-  const startingWeekDay = dayOfWeekFromMonday(date.getDay());
-  const weeksInMonth = getWeeksInMonth(date, { weekStartsOn: 1 });
+  const [referenceDate, setReferenceDate] = React.useState(_referenceDate);
+
+  const startingWeekDay = dayOfWeekFromMonday(referenceDate.getDay());
+
+  const weeksInMonth = getWeeksInMonth(referenceDate, { weekStartsOn: 1 });
 
   const calendar = [...Array(weeksInMonth).keys()].map(week =>
     [...Array(7).keys()].map(weekDayIndex =>
-      add(date, {
+      add(referenceDate, {
         days: 6 * week + week + weekDayIndex - startingWeekDay,
       })
     )
   );
 
-  const checkIfIsBetween = (date: Date) =>
-    type !== 'range' || !value
-      ? false
-      : (value[0] &&
-          compareAsc(value[0], date) <= 0 &&
-          value[1] &&
-          compareAsc(value[1], date) >= 0) ||
-        false;
+  const checkIfIsBetween = (date: Date) => {
+    if (type !== 'range' || !value) return false;
+    else {
+      const { lowest, highest } = value as DateRange;
+      if (!highest) return false;
+      return compare(lowest, date) <= 0 && compare(highest, date) >= 0;
+    }
+  };
+
+  const checkIfIsSelected = (date: Date) => {
+    if (!value) return false;
+    else if (type === 'range' && value) {
+      const { lowest, highest } = value as DateRange;
+      return (
+        isSameDay(lowest, date) || (highest ? isSameDay(highest, date) : false)
+      );
+    } else {
+      return isSameDay(value as Date, date);
+    }
+  };
 
   const handlePressCell = (date: Date) => () => {
     if (type === 'day') {
       onChange?.(date as never);
+    } else if (!value) {
+      onChange?.({ lowest: date } as never);
     } else {
-      const c1 = value?.[0] && compareAsc(date, value[0]);
-      const c2 = value?.[1] && compareAsc(date, value[1]);
-      const newValue = [...(value as (Date | undefined)[])];
+      let newValue;
+      const { lowest, highest } = value as DateRange;
 
-      if (!c1 || c1 === -1 || (c1 === 1 && c2 && c2 === -1)) {
-        newValue[0] = date;
-      } else if (c1 === 0) {
-        newValue[0] = undefined;
-      } else if (!c2 || c2 === 1 || (c2 === -1 && c1 && c1 === 1)) {
-        newValue[1] = date;
-      } else if (c2 === 0) {
-        newValue[1] = undefined;
+      if (!highest) {
+        if (compare(date, lowest) === -1) {
+          newValue = { lowest: date, highest: lowest };
+        } else if (compare(date, lowest) === 0) {
+          newValue = undefined;
+        } else {
+          newValue = { lowest: lowest, highest: date };
+        }
+      } else {
+        if (compare(date, lowest) === -1) {
+          newValue = { lowest: date, highest: highest };
+        } else if (compare(date, lowest) === 0) {
+          newValue = { lowest: highest, highest: undefined };
+        } else {
+          if (compare(date, highest) === -1) {
+            newValue = { lowest: lowest, highest: date };
+          } else if (compare(date, highest) === 0) {
+            newValue = { lowest: lowest, highest: undefined };
+          } else {
+            newValue = { lowest: lowest, highest: date };
+          }
+        }
       }
 
       onChange?.(newValue as never);
     }
   };
 
+  const handlePressNext = () => {
+    setReferenceDate(add(referenceDate, { months: 1 }));
+  };
+
+  const handlePressPrev = () => {
+    setReferenceDate(add(referenceDate, { months: -1 }));
+  };
+
   return (
-    <Root {...rest}>
+    <View {...rest}>
       <TitleContainer>
-        <Button></Button>
-        <Title></Title>
-        <Button></Button>
+        <Pressable onPress={handlePressPrev}>
+          <Icon
+            name={'chevron-left'}
+            type={'material-community'}
+            size={'kilo'}
+            colorVariant={'secondary'}
+            colorTone={'medium'}
+          />
+        </Pressable>
+        <Capitalized
+          colorVariant={'secondary'}
+          colorTone={'xdark'}
+          fontWeight={'bold'}
+        >
+          {format(referenceDate, 'MMMM yyyy', { locale })}
+        </Capitalized>
+        <Pressable onPress={handlePressNext}>
+          <Icon
+            name={'chevron-right'}
+            type={'material-community'}
+            size={'kilo'}
+            colorVariant={'secondary'}
+            colorTone={'medium'}
+          />
+        </Pressable>
       </TitleContainer>
       <Content>
+        <Week>
+          {calendar[0].map(date => (
+            <Cell
+              key={date.getDate()}
+              selected={false}
+              highlighted={false}
+              isLineEnd={false}
+              isLineStart={false}
+              isRangeStart={false}
+              isRangeEnd={false}
+              pointerEvents={'none'}
+            >
+              <Capitalized colorVariant={'secondary'} colorTone={'medium'}>
+                {format(date, 'EEE', { locale }).slice(0, 3)}
+              </Capitalized>
+            </Cell>
+          ))}
+        </Week>
         {calendar.map((week, index) => (
           <Week key={`week-${index}`}>
             {week.map((date, index) => {
-              const rangeIndex =
-                value?.findIndex(value => value && isSameDay(value, date)) ||
-                -1;
-
-              const isSelected = rangeIndex !== -1;
+              const isSelected = checkIfIsSelected(date);
               const isBetween = checkIfIsBetween(date);
+
+              let isRangeStart, isRangeEnd;
+
+              if (type === 'range' && value) {
+                const { lowest, highest } = value as DateRange;
+                isRangeStart = highest && isSameDay(lowest, date);
+                isRangeEnd = !!highest && isSameDay(highest, date);
+              } else {
+                isRangeStart = false;
+                isRangeEnd = false;
+              }
+
+              const colorTone = isSelected
+                ? 'xlight'
+                : date.getMonth() === referenceDate.getMonth()
+                ? 'xdark'
+                : 'light';
 
               return (
                 <Cell
@@ -136,20 +213,20 @@ function Calendar<T extends SelectionType>({
                   highlighted={isBetween}
                   isLineEnd={index === 6}
                   isLineStart={index === 0}
-                  isRangeStart={(value?.length || 0) > 1 && rangeIndex === 0}
-                  isRangeEnd={(value?.length || 0) > 1 && rangeIndex === 1}
+                  isRangeStart={isRangeStart}
+                  isRangeEnd={isRangeEnd}
                   onPress={handlePressCell(date)}
                 >
-                  <DayOfMonth selected={isSelected}>
+                  <Text colorVariant={'secondary'} colorTone={colorTone}>
                     {date.getDate()}
-                  </DayOfMonth>
+                  </Text>
                 </Cell>
               );
             })}
           </Week>
         ))}
       </Content>
-    </Root>
+    </View>
   );
 }
 
