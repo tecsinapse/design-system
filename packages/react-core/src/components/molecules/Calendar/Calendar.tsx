@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Capitalized, Cell, Content, TitleContainer, Week } from './styled';
+import { Capitalized, Cell, Content, TitleContainer, Week, Control } from './styled';
 import { Pressable, View, ViewProps } from 'react-native';
 import {
   add,
@@ -138,7 +138,7 @@ function Calendar<T extends SelectionType>({
   return (
     <View {...rest}>
       <TitleContainer>
-        <Pressable onPress={handlePressPrev}>
+        <Control onPress={handlePressPrev} align={'start'}>
           <Icon
             name={'chevron-left'}
             type={'material-community'}
@@ -146,7 +146,7 @@ function Calendar<T extends SelectionType>({
             colorVariant={'secondary'}
             colorTone={'medium'}
           />
-        </Pressable>
+        </Control>
         <Capitalized
           colorVariant={'secondary'}
           colorTone={'xdark'}
@@ -154,7 +154,7 @@ function Calendar<T extends SelectionType>({
         >
           {format(referenceDate, 'MMMM yyyy', { locale })}
         </Capitalized>
-        <Pressable onPress={handlePressNext}>
+        <Control onPress={handlePressNext} align={'end'}>
           <Icon
             name={'chevron-right'}
             type={'material-community'}
@@ -162,7 +162,7 @@ function Calendar<T extends SelectionType>({
             colorVariant={'secondary'}
             colorTone={'medium'}
           />
-        </Pressable>
+        </Control>
       </TitleContainer>
       <Content>
         <Week>

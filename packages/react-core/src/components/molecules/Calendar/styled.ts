@@ -8,6 +8,13 @@ export const TitleContainer = styled.View<Partial<StyleProps>>`
   align-items: center;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.color.secondary.xlight};
+`;
+
+export const Control = styled.Pressable<
+  Partial<StyleProps> & { align: 'start' | 'end' }
+>`
+  flex-grow: 1;
+  align-items: flex-${({ align }) => align};
   padding: ${({ theme }) => theme.spacing.deca};
 `;
 
