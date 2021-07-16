@@ -5,6 +5,7 @@ export { Input, InputNativeProps } from './components/atoms/Input';
 export { Text, TextNativeProps } from './components/atoms/Text';
 export { Error, Loading, Success } from './components/atoms/Button';
 export { GroupButtonOption } from './components/atoms/GroupButton';
+export { DatePicker, DatePickerProps } from './components/molecules/DatePicker';
 export {
   InputPassword,
   InputPasswordNativeProps,

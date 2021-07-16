@@ -1,9 +1,8 @@
 import { storiesOf } from '@storybook/react-native';
-import { Calendar } from '@tecsinapse/react-core';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 import { DateRange } from '@tecsinapse/react-core/src/components/molecules/Calendar/Calendar';
-import { ptBR } from 'date-fns/locale';
+import { DatePicker } from '@tecsinapse/react-native-kit';
 
 storiesOf('Input', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
@@ -13,7 +12,5 @@ storiesOf('Input', module)
 const Component = () => {
   const [value, setValue] = React.useState<DateRange>();
 
-  return (
-    <Calendar type={'range'} value={value} onChange={setValue} locale={ptBR} />
-  );
+  return <DatePicker value={value} type={'range'} onChange={setValue}/>;
 };
