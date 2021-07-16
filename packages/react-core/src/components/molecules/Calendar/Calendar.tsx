@@ -12,7 +12,7 @@ import {
 import { Icon } from '../../atoms/Icon';
 import { Text } from '../../atoms/Text';
 
-type SelectionType = 'range' | 'day';
+export type SelectionType = 'range' | 'day';
 
 export type DateRange = { lowest: Date; highest?: Date };
 
