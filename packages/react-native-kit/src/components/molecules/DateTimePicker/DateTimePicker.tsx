@@ -6,14 +6,11 @@ import {
 import { Text } from '../../atoms/Text';
 import { format as formatDate } from 'date-fns';
 import { Modal } from './Modal';
-import { useInputFocus } from '@tecsinapse/react-core';
+import { DateTimeSelectorProps, useInputFocus } from '@tecsinapse/react-core';
 
-export interface DateTimePickerProps extends PressableInputContainerProps {
-  onChange?: (value: Date) => void | never;
-  value?: Date;
-  mode?: 'date' | 'time' | 'datetime';
-  format?: string;
-  locale?: Locale;
+export interface DateTimePickerProps
+  extends PressableInputContainerProps,
+    Omit<DateTimeSelectorProps, 'style'> {
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -25,6 +22,16 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   mode = 'date',
   format = 'yyyy-MM-dd hh:mm:ss',
   locale,
+  dateModalTitle,
+  timeModalTitle,
+  dateConfirmButtonText,
+  timeConfirmButtonText,
+  dayLabel,
+  monthLabel,
+  yearLabel,
+  hourLabel,
+  minuteLabel,
+
   placeholder,
   onFocus,
   onBlur,
@@ -66,6 +73,18 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         animationType={'slide'}
         onChange={onChange}
         value={value}
+        mode={mode}
+        format={format}
+        locale={locale}
+        dateModalTitle={dateModalTitle}
+        timeModalTitle={timeModalTitle}
+        dateConfirmButtonText={dateConfirmButtonText}
+        timeConfirmButtonText={timeConfirmButtonText}
+        dayLabel={dayLabel}
+        monthLabel={monthLabel}
+        yearLabel={yearLabel}
+        hourLabel={hourLabel}
+        minuteLabel={minuteLabel}
       />
     </>
   );

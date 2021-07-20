@@ -1,5 +1,6 @@
 import styled, { css } from '@emotion/native';
 import {
+  DateTimeSelector,
   PressableSurface,
   PressableSurfaceProps,
   StyleProps,
@@ -24,4 +25,10 @@ export const ModalContent = styled.View<Partial<StyleProps>>`
     border-top-right-radius: ${borderRadius.deca};
   `}
   overflow: hidden;
+`;
+
+export const StyledDateTimeSelector = styled(DateTimeSelector)<
+  Partial<StyleProps>
+>`
+  padding: ${({ theme }) => theme.spacing.deca};
 `;

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { SelectorRoot, Control, SelectorValue } from './styled';
-import { View, ViewProps } from 'react-native';
+import { Control, SelectorRoot, SelectorValue } from './styled';
+import { ViewProps } from 'react-native';
 import { Icon } from '../../atoms/Icon';
 import { Text } from '../../atoms/Text';
-import { getDaysInMonth, format } from 'date-fns';
+import { getDaysInMonth } from 'date-fns';
 
 export type Granularity = 'date' | 'month' | 'year' | 'hours' | 'minutes';
 
@@ -34,13 +34,10 @@ function getPrevAndNext(
   } else if (granularity === 'month') {
     next = next > 11 ? 0 : next;
     prev = prev < 0 ? 11 : prev;
-  } else if (granularity === 'year') {
-    next = next + multiplier;
-    prev = prev - multiplier;
   } else if (granularity === 'hours') {
     next = next > 23 ? 0 : next;
     prev = prev < 0 ? 23 : prev;
-  } else {
+  } else if (granularity === 'minutes') {
     next = next > 59 ? 0 : next;
     prev = prev < 0 ? 59 : prev;
   }
@@ -58,17 +55,10 @@ export const Selector: React.FC<SelectorProps> = ({
 }) => {
   const pressInTimeoutRef = React.useRef<number>();
 
-  // const handlePressPrev = () => {
-  //   onChange(prev);
-  // };
-  //
-  // const handlePressNext = () => {
-  //   onChange(next);
-  // };
-
   const handlePressInNext = (_next?: number) => {
     const daysInMonth = getDaysInMonth(referenceDate);
     const next = _next || getPrevAndNext(value, granularity, daysInMonth)[1];
+    clearTimeout(pressInTimeoutRef.current);
     pressInTimeoutRef.current = setTimeout(() => {
       handlePressInNext(getPrevAndNext(next, granularity, daysInMonth, 3)[1]);
     }, 500);
@@ -79,10 +69,10 @@ export const Selector: React.FC<SelectorProps> = ({
     const daysInMonth = getDaysInMonth(referenceDate);
     const prev = _prev || getPrevAndNext(value, granularity, daysInMonth)[0];
     clearTimeout(pressInTimeoutRef.current);
-    onChange(prev);
     pressInTimeoutRef.current = setTimeout(() => {
       handlePressInPrev(getPrevAndNext(prev, granularity, daysInMonth, 3)[0]);
     }, 500);
+    onChange(prev);
   };
 
   const handlePressOut = () => {
@@ -92,21 +82,34 @@ export const Selector: React.FC<SelectorProps> = ({
   return (
     <SelectorRoot {...rest}>
       <Control
-        // onPress={handlePressNext}
         onPressIn={() => handlePressInNext()}
         onPressOut={handlePressOut}
       >
-        <Icon name={'chevron-up'} type={'material-community'} size={'mega'} />
+        <Icon
+          name={'chevron-up'}
+          type={'material-community'}
+          size={'mega'}
+          colorVariant={'primary'}
+        />
       </Control>
       <SelectorValue>
-        <Text>{label}</Text>
-        <Text>{getDisplayValue(value)}</Text>
+        <Text colorVariant={'secondary'} typography={'sub'}>
+          {label}
+        </Text>
+        <Text fontWeight={'bold'} typography={'h5'}>
+          {getDisplayValue(value)}
+        </Text>
       </SelectorValue>
       <Control
         onPressIn={() => handlePressInPrev()}
         onPressOut={handlePressOut}
       >
-        <Icon name={'chevron-down'} type={'material-community'} size={'mega'} />
+        <Icon
+          name={'chevron-down'}
+          type={'material-community'}
+          size={'mega'}
+          colorVariant={'primary'}
+        />
       </Control>
     </SelectorRoot>
   );
