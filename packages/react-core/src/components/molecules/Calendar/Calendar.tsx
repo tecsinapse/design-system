@@ -19,7 +19,7 @@ import {
   differenceInDays,
 } from 'date-fns';
 import { Icon } from '../../atoms/Icon';
-import { Text } from '@tecsinapse/react-core';
+import { Text } from '../../atoms/Text';
 
 export type SelectionType = 'range' | 'day';
 

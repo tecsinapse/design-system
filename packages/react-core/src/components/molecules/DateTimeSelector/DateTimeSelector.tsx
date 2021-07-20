@@ -3,14 +3,13 @@ import { View, ViewProps } from 'react-native';
 import {
   Title,
   Content,
-  StyledSelector,
+  SelectorContainer,
   Root,
   Control,
   BackButton,
   Header,
-  Dummy,
 } from './styled';
-import { Granularity } from './Selector';
+import { Selector, Granularity } from './Selector';
 import { getDaysInMonth, set, format as formatDate } from 'date-fns';
 import { Button } from '../../atoms/Button';
 import { Text } from '../../atoms/Text';
@@ -120,53 +119,59 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
 
       {isDate ? (
         <Content>
-          <StyledSelector
-            isFirst
-            onChange={handleChange('date')}
-            referenceDate={date}
-            value={date.getDate()}
-            label={dayLabel || 'Day'}
-            granularity={'date'}
-            getDisplayValue={getDisplayedValue('date')}
-          />
-          <StyledSelector
-            onChange={handleChange('month')}
-            referenceDate={date}
-            value={date.getMonth()}
-            label={monthLabel || 'Month'}
-            granularity={'month'}
-            getDisplayValue={getDisplayedValue('month')}
-          />
-          <StyledSelector
-            isLast
-            onChange={handleChange('year')}
-            referenceDate={date}
-            value={date.getFullYear()}
-            label={yearLabel || 'Year'}
-            granularity={'year'}
-            getDisplayValue={getDisplayedValue('year')}
-          />
+          <SelectorContainer isFirst>
+            <Selector
+              onChange={handleChange('date')}
+              referenceDate={date}
+              value={date.getDate()}
+              label={dayLabel || 'Day'}
+              granularity={'date'}
+              getDisplayValue={getDisplayedValue('date')}
+            />
+          </SelectorContainer>
+          <SelectorContainer>
+            <Selector
+              onChange={handleChange('month')}
+              referenceDate={date}
+              value={date.getMonth()}
+              label={monthLabel || 'Month'}
+              granularity={'month'}
+              getDisplayValue={getDisplayedValue('month')}
+            />
+          </SelectorContainer>
+          <SelectorContainer isLast>
+            <Selector
+              onChange={handleChange('year')}
+              referenceDate={date}
+              value={date.getFullYear()}
+              label={yearLabel || 'Year'}
+              granularity={'year'}
+              getDisplayValue={getDisplayedValue('year')}
+            />
+          </SelectorContainer>
         </Content>
       ) : (
         <Content>
-          <StyledSelector
-            isFirst
-            onChange={handleChange('hours')}
-            referenceDate={date}
-            value={date.getHours()}
-            label={hourLabel || 'Hour'}
-            granularity={'hours'}
-            getDisplayValue={getDisplayedValue('hours')}
-          />
-          <StyledSelector
-            isLast
-            onChange={handleChange('minutes')}
-            referenceDate={date}
-            value={date.getMinutes()}
-            label={minuteLabel || 'Minute'}
-            granularity={'minutes'}
-            getDisplayValue={getDisplayedValue('minutes')}
-          />
+          <SelectorContainer isFirst>
+            <Selector
+              onChange={handleChange('hours')}
+              referenceDate={date}
+              value={date.getHours()}
+              label={hourLabel || 'Hour'}
+              granularity={'hours'}
+              getDisplayValue={getDisplayedValue('hours')}
+            />
+          </SelectorContainer>
+          <SelectorContainer isLast>
+            <Selector
+              onChange={handleChange('minutes')}
+              referenceDate={date}
+              value={date.getMinutes()}
+              label={minuteLabel || 'Minute'}
+              granularity={'minutes'}
+              getDisplayValue={getDisplayedValue('minutes')}
+            />
+          </SelectorContainer>
         </Content>
       )}
       <Button color={'primary'} onPress={handlePressConfirm}>

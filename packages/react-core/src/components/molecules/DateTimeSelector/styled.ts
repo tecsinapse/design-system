@@ -1,7 +1,6 @@
 import styled from '@emotion/native';
 import { Text } from '../../atoms/Text';
 import { StyleProps } from '../../../types/defaults';
-import { Selector } from './Selector';
 
 export const Root = styled.View<Partial<StyleProps>>`
   position: relative;
@@ -28,7 +27,7 @@ export const SelectorValue = styled.View`
   align-items: center;
 `;
 
-export const StyledSelector = styled(Selector)<
+export const SelectorContainer = styled.View<
   Partial<StyleProps> & { isFirst?: boolean; isLast?: boolean }
 >`
   margin-right: ${({ theme, isFirst }) => (isFirst ? theme.spacing.deca : 0)};
