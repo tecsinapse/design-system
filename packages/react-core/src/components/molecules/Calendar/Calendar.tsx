@@ -6,8 +6,9 @@ import {
   TitleContainer,
   Week,
   Control,
+  Selected,
 } from './styled';
-import { Pressable, View, ViewProps } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import {
   add,
   compareAsc as compare,
@@ -18,7 +19,7 @@ import {
   differenceInDays,
 } from 'date-fns';
 import { Icon } from '../../atoms/Icon';
-import { Text } from '../../atoms/Text';
+import { Text } from '@tecsinapse/react-core';
 
 export type SelectionType = 'range' | 'day';
 
@@ -230,9 +231,11 @@ function Calendar<T extends SelectionType>({
                   isRangeEnd={isRangeEnd}
                   onPress={handlePressCell(date)}
                 >
-                  <Text colorVariant={'secondary'} colorTone={colorTone}>
-                    {date.getDate()}
-                  </Text>
+                  <Selected selected={isSelected} pointerEvents={'none'}>
+                    <Text colorVariant={'secondary'} colorTone={colorTone}>
+                      {date.getDate()}
+                    </Text>
+                  </Selected>
                 </Cell>
               );
             })}

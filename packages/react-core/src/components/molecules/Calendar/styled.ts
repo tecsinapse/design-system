@@ -31,6 +31,19 @@ export const Week = styled.View<Partial<StyleProps>>`
   flex-direction: row;
 `;
 
+export const Selected = styled.View<
+  Partial<StyleProps> & { selected: boolean }
+>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${({ theme, selected }) =>
+    selected ? theme.color.primary.medium : 'transparent'};
+  border-radius: ${({ theme }) => theme.borderRadius.mili};
+  width: 100%;
+  height: 100%;
+`;
+
 export const Cell = styled.Pressable<
   PressableProps &
     Partial<StyleProps> & {
@@ -60,9 +73,7 @@ export const Cell = styled.Pressable<
         (selected && !isRangeEnd) || isLineStart ? borderRadiusSize : 0,
     };
 
-    const backgroundColor = selected
-      ? theme.color.primary.medium
-      : highlighted
+    const backgroundColor = highlighted
       ? theme.color.primary.light
       : 'transparent';
 
