@@ -13,7 +13,7 @@ const Template: Story<CalendarProps<'range'>> = ({ ...args }) => {
   const [value, setValue] = React.useState<DateRange>();
 
   return (
-    <Calendar style={{ width: 500, height: 500 }} type={'range'} value={value} onChange={setValue} locale={ptBR} />
+    <Calendar type={'range'} value={value} onChange={setValue} locale={ptBR} />
   );
 };
 

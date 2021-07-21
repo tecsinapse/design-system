@@ -1,7 +1,9 @@
 import styled, { css } from '@emotion/native';
 import { Text } from '../../atoms/Text';
 import { StyleProps } from '../../../types/defaults';
-import { PressableProps, ViewProps } from 'react-native';
+import { PressableProps, ViewProps, Platform } from 'react-native';
+
+const isWeb = Platform.OS === 'web';
 
 export const TitleContainer = styled.View<Partial<StyleProps>>`
   flex-direction: row;
@@ -78,11 +80,18 @@ export const Cell = styled.Pressable<
       : 'transparent';
 
     return css`
+      ${isWeb
+        ? css`
+            width: 32px;
+            height: 32px;
+          `
+        : css`
+            aspect-ratio: 1;
+            flex: 1;
+          `}
       display: flex;
       justify-content: center;
       align-items: center;
-      aspect-ratio: 1;
-      flex: 1;
       border-top-left-radius: ${leftBorderRadius};
       border-bottom-left-radius: ${leftBorderRadius};
       border-top-right-radius: ${rightBorderRadius};
