@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Modal as RNModal, ModalProps } from 'react-native';
-import { Calendar, CalendarProps, SelectionType } from '@tecsinapse/react-core';
+import { Calendar, CalendarProps, SelectionType } from '../Calendar';
 import { Backdrop, ModalContent } from './styled';
 
 const Component = <T extends SelectionType>({

@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { Text } from '../../atoms/Text';
+import { format as formatDate } from 'date-fns';
+import { Modal } from './Modal';
 import {
   PressableInputContainer,
   PressableInputContainerProps,
 } from '../../atoms/PressableInputContainer';
-import { Text } from '../../atoms/Text';
-import { format as formatDate } from 'date-fns';
-import { Modal } from './Modal';
-import { DateTimeSelectorProps, useInputFocus } from '@tecsinapse/react-core';
+import { DateTimeSelectorProps } from '../DateTimeSelector';
+import { useInputFocus } from '../../atoms/Input';
 
 export interface DateTimePickerProps
   extends PressableInputContainerProps,

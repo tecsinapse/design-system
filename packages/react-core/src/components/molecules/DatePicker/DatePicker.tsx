@@ -1,20 +1,17 @@
 import * as React from 'react';
-import {
-  CalendarProps,
-  DateRange,
-  InputContainer,
-  InputContainerProps,
-  SelectionType,
-  useInputFocus,
-} from '@tecsinapse/react-core';
+import { useInputFocus } from '../../atoms/Input';
+import { CalendarProps, DateRange, SelectionType } from '../Calendar';
 import { Text } from '../../atoms/Text';
 import { Modal } from './Modal';
 import { format as formatDate } from 'date-fns';
-import { StyledPressableSurface } from './styled';
+import {
+  PressableInputContainer,
+  PressableInputContainerProps,
+} from '../../atoms/PressableInputContainer';
 
 export interface DatePickerProps<T extends SelectionType>
-  extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'>,
-    CalendarProps<T> {
+  extends PressableInputContainerProps,
+    Omit<CalendarProps<T>, 'style'> {
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -22,30 +19,18 @@ export interface DatePickerProps<T extends SelectionType>
 }
 
 function DatePicker<T extends SelectionType>({
-  label,
-  labelColor,
-  labelColorVariant,
-  labelColorTone,
-  labelTypography,
-  labelStack,
-  labelWeight,
-  leftComponent,
-  rightComponent,
-  style,
-  borderColor,
-  borderColorGradation,
-
   /** DatePicker props */
   month,
   year,
   onChange,
-  onFocus,
-  onBlur,
-  placeholder,
   value,
   type,
-  disabled,
   format = 'yyyy-MM-dd',
+
+  placeholder,
+  onFocus,
+  onBlur,
+  disabled,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -80,31 +65,14 @@ function DatePicker<T extends SelectionType>({
 
   return (
     <>
-      <StyledPressableSurface
+      <PressableInputContainer
         onPress={handlePressInput}
+        focused={focused}
         disabled={disabled}
-        style={style}
+        {...rest}
       >
-        <InputContainer
-          label={label}
-          labelColor={labelColor}
-          labelColorVariant={labelColorVariant}
-          labelColorTone={labelColorTone}
-          labelTypography={labelTypography}
-          labelStack={labelStack}
-          labelWeight={labelWeight}
-          LabelComponent={Text}
-          leftComponent={leftComponent}
-          rightComponent={rightComponent}
-          borderColor={borderColor}
-          borderColorGradation={borderColorGradation}
-          focused={focused}
-          disabled={disabled}
-          {...rest}
-        >
-          <Text>{getDisplayValue()}</Text>
-        </InputContainer>
-      </StyledPressableSurface>
+        <Text>{getDisplayValue()}</Text>
+      </PressableInputContainer>
       <Modal
         visible={modalVisible}
         onRequestClose={handleCloseModal}

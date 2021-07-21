@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Modal as RNModal, ModalProps } from 'react-native';
-import {
-  DateTimeSelector,
-  DateTimeSelectorProps,
-} from '@tecsinapse/react-core';
+import { DateTimeSelectorProps } from '../DateTimeSelector';
 import { Backdrop, ModalContent, StyledDateTimeSelector } from './styled';
 
 const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
