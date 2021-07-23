@@ -10,19 +10,74 @@ import {
   Header,
 } from './styled';
 import { Selector, Granularity } from './Selector';
-import { getDaysInMonth, set, format as formatDate } from 'date-fns';
+import {
+  getDaysInMonth,
+  set,
+  add,
+  sub,
+  format as formatDate,
+  compareAsc,
+  isSameDay,
+  isSameMonth,
+  isSameYear,
+} from 'date-fns';
 import { Button } from '../../atoms/Button';
 import { Text } from '../../atoms/Text';
 import { Icon } from '../../atoms/Icon';
 
-export type DateTimeSelectorMode = 'date' | 'time' | 'datetime';
+export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
 export interface DateTimeSelectorProps extends ViewProps {
   value?: Date;
   onChange?: (value: Date) => void | never;
+
+  /**
+   * Defines the Picker behavior
+   * Must be one of ['date', 'time', 'datetime', 'month']
+   */
   mode?: DateTimeSelectorMode;
   format?: string;
   locale?: Locale;
+
+  /**
+   * Maximum date from today
+   */
+  upperDateThreshold?: Date;
+
+  /**
+   * Minimum date from today
+   */
+  lowerDateThreshold?: Date;
+
+  /**
+   * Minimum and maximum date in distance units from today.
+   * The distance unit used depends on the picker mode
+   * If mode is date, the unit is day
+   * If mode is time, the unit is hour
+   * If mode is datetime, the unit is day
+   * If mode is month, the unit is month
+   */
+  offsetThreshold?: number;
+
+  /**
+   * Maximum date in distance units from today.
+   * The distance unit used depends on the picker mode
+   * If mode is date, the unit is day
+   * If mode is time, the unit is hour
+   * If mode is datetime, the unit is day
+   * If mode is month, the unit is month
+   */
+  upperOffsetThreshold?: number;
+
+  /**
+   * Minimum date in distance units from today.
+   * The distance unit used depends on the picker mode
+   * If mode is date, the unit is day
+   * If mode is time, the unit is hour
+   * If mode is datetime, the unit is day
+   * If mode is month, the unit is month
+   */
+  lowerOffsetThreshold?: number;
 
   dateModalTitle?: string;
   timeModalTitle?: string;
@@ -35,12 +90,28 @@ export interface DateTimeSelectorProps extends ViewProps {
   minuteLabel?: string;
 }
 
+function getThresholdUnit(mode: DateTimeSelectorMode, threshold?: number) {
+  if (!threshold) return {};
+  if (mode === 'month') {
+    return { months: threshold };
+  } else if (['date', 'datetime'].includes(mode)) {
+    return { days: threshold };
+  } else {
+    return { hours: threshold };
+  }
+}
+
 const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
   value,
   onChange,
   mode = 'date',
   format,
   locale,
+  upperDateThreshold: _upperDateThreshold,
+  lowerDateThreshold: _lowerDateThreshold,
+  offsetThreshold,
+  upperOffsetThreshold,
+  lowerOffsetThreshold,
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
@@ -52,9 +123,28 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
   minuteLabel,
   ...rest
 }) => {
+  const lowerDateThreshold =
+    _lowerDateThreshold ||
+    ((offsetThreshold || lowerOffsetThreshold) &&
+      sub(
+        new Date(),
+        getThresholdUnit(mode, offsetThreshold || lowerOffsetThreshold)
+      ));
+
+  const upperDateThreshold =
+    _upperDateThreshold ||
+    ((offsetThreshold || upperOffsetThreshold) &&
+      add(
+        new Date(),
+        getThresholdUnit(mode, offsetThreshold || upperOffsetThreshold)
+      ));
+
   const [date, setDate] = React.useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
-  const isDate = mode === 'date' || (mode === 'datetime' && currentMode === 0);
+
+  const isDate =
+    ['date', 'month'].includes(mode) ||
+    (mode === 'datetime' && currentMode === 0);
 
   const modalTitle = isDate ? dateModalTitle : timeModalTitle;
   const confirmButtonText = isDate
@@ -63,6 +153,7 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
 
   const handleChange = (granularity: Granularity) => (newValue: number) => {
     setDate(date => {
+      let newState: Date;
       // Months and years must have a different handling for being
       // the only date units that may interfere another unit.
       if (['month', 'year'].includes(granularity)) {
@@ -70,13 +161,25 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
         const daysInMonth = getDaysInMonth(newDate);
         if (granularity === 'year' && date.getMonth() != newDate.getMonth()) {
           newDate = set(newDate, { month: date.getMonth() });
-          return set(newDate, { date: getDaysInMonth(newDate) });
+          newState = set(newDate, { date: getDaysInMonth(newDate) });
         }
-        return daysInMonth < date.getDate()
-          ? set(newDate, { date: daysInMonth })
-          : newDate;
+        newState =
+          daysInMonth < date.getDate()
+            ? set(newDate, { date: daysInMonth })
+            : newDate;
       } else {
-        return set(date, { [granularity]: newValue });
+        newState = set(date, { [granularity]: newValue });
+      }
+
+      if (upperDateThreshold && compareAsc(newState, upperDateThreshold) > 0) {
+        return upperDateThreshold;
+      } else if (
+        lowerDateThreshold &&
+        compareAsc(newState, lowerDateThreshold) < 0
+      ) {
+        return lowerDateThreshold;
+      } else {
+        return newState;
       }
     });
   };
@@ -119,16 +222,28 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
 
       {isDate ? (
         <Content>
-          <SelectorContainer isFirst>
-            <Selector
-              onChange={handleChange('date')}
-              referenceDate={date}
-              value={date.getDate()}
-              label={dayLabel || 'Day'}
-              granularity={'date'}
-              getDisplayValue={getDisplayedValue('date')}
-            />
-          </SelectorContainer>
+          {mode !== 'month' && (
+            <SelectorContainer isFirst>
+              <Selector
+                onChange={handleChange('date')}
+                referenceDate={date}
+                value={date.getDate()}
+                label={dayLabel || 'Day'}
+                granularity={'date'}
+                getDisplayValue={getDisplayedValue('date')}
+                preventUpper={
+                  upperDateThreshold
+                    ? isSameDay(upperDateThreshold, date)
+                    : false
+                }
+                preventLower={
+                  lowerDateThreshold
+                    ? isSameDay(lowerDateThreshold, date)
+                    : false
+                }
+              />
+            </SelectorContainer>
+          )}
           <SelectorContainer>
             <Selector
               onChange={handleChange('month')}
@@ -137,6 +252,16 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
               label={monthLabel || 'Month'}
               granularity={'month'}
               getDisplayValue={getDisplayedValue('month')}
+              preventUpper={
+                upperDateThreshold
+                  ? isSameMonth(upperDateThreshold, date)
+                  : false
+              }
+              preventLower={
+                lowerDateThreshold
+                  ? isSameMonth(lowerDateThreshold, date)
+                  : false
+              }
             />
           </SelectorContainer>
           <SelectorContainer isLast>
@@ -147,6 +272,16 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
               label={yearLabel || 'Year'}
               granularity={'year'}
               getDisplayValue={getDisplayedValue('year')}
+              preventUpper={
+                upperDateThreshold
+                  ? isSameYear(upperDateThreshold, date)
+                  : false
+              }
+              preventLower={
+                lowerDateThreshold
+                  ? isSameYear(lowerDateThreshold, date)
+                  : false
+              }
             />
           </SelectorContainer>
         </Content>

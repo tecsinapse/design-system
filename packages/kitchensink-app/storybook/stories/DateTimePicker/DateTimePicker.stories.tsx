@@ -22,6 +22,7 @@ const commons = {
 
 const Component = () => {
   const [date, setDate] = React.useState<Date>();
+  const [month, setMonth] = React.useState<Date>();
   const [time, setTime] = React.useState<Date>();
   const [dateTime, setDateTime] = React.useState<Date>();
 
@@ -35,6 +36,16 @@ const Component = () => {
         label={'Select date'}
         style={{ marginBottom: 15 }}
         {...commons}
+      />
+      <DateTimePicker
+        {...commons}
+        value={month}
+        onChange={setMonth}
+        mode={'month'}
+        format={'MM/yyyy'}
+        label={'Select month'}
+        style={{ marginBottom: 15 }}
+        offsetThreshold={15}
       />
       <DateTimePicker
         value={time}

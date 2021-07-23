@@ -23,6 +23,12 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   mode = 'date',
   format = 'yyyy-MM-dd hh:mm:ss',
   locale,
+  upperDateThreshold,
+  lowerDateThreshold,
+  offsetThreshold,
+  upperOffsetThreshold,
+  lowerOffsetThreshold,
+
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
@@ -77,6 +83,11 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         mode={mode}
         format={format}
         locale={locale}
+        upperDateThreshold={upperDateThreshold}
+        lowerDateThreshold={lowerDateThreshold}
+        offsetThreshold={offsetThreshold}
+        upperOffsetThreshold={upperOffsetThreshold}
+        lowerOffsetThreshold={lowerOffsetThreshold}
         dateModalTitle={dateModalTitle}
         timeModalTitle={timeModalTitle}
         dateConfirmButtonText={dateConfirmButtonText}

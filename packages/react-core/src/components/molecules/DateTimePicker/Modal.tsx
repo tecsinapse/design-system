@@ -10,6 +10,11 @@ const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
   mode,
   format,
   locale,
+  upperDateThreshold,
+  lowerDateThreshold,
+  offsetThreshold,
+  upperOffsetThreshold,
+  lowerOffsetThreshold,
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
@@ -39,6 +44,11 @@ const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
             mode={mode}
             format={format}
             locale={locale}
+            upperDateThreshold={upperDateThreshold}
+            lowerDateThreshold={lowerDateThreshold}
+            offsetThreshold={offsetThreshold}
+            upperOffsetThreshold={upperOffsetThreshold}
+            lowerOffsetThreshold={lowerOffsetThreshold}
             dateModalTitle={dateModalTitle}
             timeModalTitle={timeModalTitle}
             dateConfirmButtonText={dateConfirmButtonText}

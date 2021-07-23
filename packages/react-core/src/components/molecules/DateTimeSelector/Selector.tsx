@@ -51,6 +51,8 @@ export const Selector: React.FC<SelectorProps> = ({
   onChange,
   getDisplayValue,
   referenceDate,
+  preventUpper,
+  preventLower,
   ...rest
 }) => {
   const pressInTimeoutRef = React.useRef<number>();
@@ -84,6 +86,8 @@ export const Selector: React.FC<SelectorProps> = ({
       <Control
         onPressIn={() => handlePressInNext()}
         onPressOut={handlePressOut}
+        disabled={preventUpper}
+        style={{ opacity: preventUpper ? 0 : 1 }}
       >
         <Icon
           name={'chevron-up'}
@@ -103,6 +107,8 @@ export const Selector: React.FC<SelectorProps> = ({
       <Control
         onPressIn={() => handlePressInPrev()}
         onPressOut={handlePressOut}
+        disabled={preventLower}
+        style={{ opacity: preventLower ? 0 : 1 }}
       >
         <Icon
           name={'chevron-down'}
