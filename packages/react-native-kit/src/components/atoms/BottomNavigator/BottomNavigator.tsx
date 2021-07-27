@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ViewProps } from 'react-native';
 import { StyledView, TabContainer } from './styled';
 import Item, { BottomNavigatorItemProps } from './Item';
-import { Text } from '@tecsinapse/react-native-kit';
+import { Text } from '../Text';
 
 export interface BottomNavigatorProps<T extends string | number | symbol>
   extends ViewProps {

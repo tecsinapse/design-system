@@ -17,3 +17,4 @@ import './Avatar/Avatar.stories';
 import './Select/Select.stories';
 import './DatePicker/DatePicker.stories';
 import './DateTimePicker/DateTimePicker.stories';
+import './SnappingSlider/SnappingSlider.stories';
