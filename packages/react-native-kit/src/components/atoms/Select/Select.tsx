@@ -3,7 +3,7 @@ import {
   InputContainer,
   InputContainerProps,
   useInputFocus,
-} from '@tecsinapse/react-native-kit';
+} from '@tecsinapse/react-core';
 import { Text } from '../Text';
 import { StyledPressableSurface } from './styled';
 import { Modal } from './Modal';

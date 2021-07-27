@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon, IconProps } from '@tecsinapse/react-core';
 import { TabContent, CustomTabContent } from './styled';
 import { View, ViewProps } from 'react-native';
-import { TextNativeProps } from '@tecsinapse/react-native-kit';
+import { TextNativeProps } from '../Text';
 
 type ValueType = string | number | symbol;
 
