@@ -1,11 +1,11 @@
+import { lightenDarkenColor } from '@tecsinapse/react-native-kit';
 import React, { FC } from 'react';
 import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
 
-const FACTOR = 0.75;
-const SCALE = 0.96;
+const COLOR_VARIATION_FACTOR = 13;
 
 export interface PressableSurfaceProps extends PressableProps {
-  effect?: 'opacity' | 'highlight' | 'none';
+  effect?: 'darken' | 'lighten' | 'none';
   effectStyle?: (pressed: boolean) => StyleProp<ViewStyle>;
 }
 
@@ -14,31 +14,43 @@ const PressableSurface: FC<PressableSurfaceProps> = ({ children, ...rest }) => {
   return <Pressable {...allProps}>{children}</Pressable>;
 };
 
+const findBackgoundColor = (styles: any) => {
+  const colors = styles
+    .flat()
+    .map((individualStyle: ViewStyle) => individualStyle?.backgroundColor)
+    .filter(style => !!style);
+  return colors.slice(-1)[0] || '#ffffff';
+};
+
 const prepareProps = ({
-  effect = 'opacity',
+  effect = 'darken',
   effectStyle,
   ...others
 }: PressableSurfaceProps): PressableSurfaceProps => {
+  const color = findBackgoundColor(others.style);
+  const lighten = lightenDarkenColor(color, COLOR_VARIATION_FACTOR);
+  const darken = lightenDarkenColor(color, -COLOR_VARIATION_FACTOR);
+
   switch (effect) {
-    case 'opacity':
+    case 'darken':
       return {
         ...others,
         style: ({ pressed }) => [
           others.style as any,
           effectStyle
             ? effectStyle(pressed)
-            : { opacity: pressed ? 1 * FACTOR : 1 },
+            : pressed && { backgroundColor: darken },
         ],
       };
 
-    case 'highlight':
+    case 'lighten':
       return {
         ...others,
         style: ({ pressed }) => [
           others.style as any,
           effectStyle
             ? effectStyle(pressed)
-            : { transform: [{ scale: pressed ? SCALE : 1 }] },
+            : pressed && { backgroundColor: lighten },
         ],
       };
 
