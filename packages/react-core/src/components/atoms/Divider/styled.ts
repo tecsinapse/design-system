@@ -3,13 +3,19 @@ import { StyleProps } from '@tecsinapse/react-core';
 import { DividerProps } from './Divider';
 
 const topLine = ({ theme, linePosition, noLine }: DividerProps & StyleProps) =>
-  !noLine && linePosition === 'top' &&
+  !noLine &&
+  linePosition === 'top' &&
   css`
     border-top-width: ${theme.borderWidth.pico};
   `;
 
-const bottomLine = ({ theme, linePosition, noLine }: DividerProps & StyleProps) =>
-  !noLine && linePosition === 'bottom' &&
+const bottomLine = ({
+  theme,
+  linePosition,
+  noLine,
+}: DividerProps & StyleProps) =>
+  !noLine &&
+  linePosition === 'bottom' &&
   css`
     border-bottom-width: ${theme.borderWidth.pico};
   `;

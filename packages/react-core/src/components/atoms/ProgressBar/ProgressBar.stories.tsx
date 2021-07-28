@@ -9,7 +9,7 @@ export default {
 };
 
 const Template: Story<ProgressBarProps> = ({ ...args }) => (
-  <Card style={{width: 400}}>
+  <Card style={{ width: 400 }}>
     <ProgressBar {...args} />
   </Card>
 );
@@ -17,5 +17,5 @@ const Template: Story<ProgressBarProps> = ({ ...args }) => (
 export const Base = Template.bind({});
 
 Base.args = {
-  valueNow: 50
+  valueNow: 50,
 };
