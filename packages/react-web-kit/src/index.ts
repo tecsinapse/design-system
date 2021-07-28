@@ -6,6 +6,7 @@ export {
   WebButtonProps,
 } from './components/atoms/Button';
 export { Input, InputWebProps } from './components/atoms/Input';
+export { Tag, TagProps } from './components/atoms/Tag';
 export {
   InputPassword,
   InputPasswordWebProps,
