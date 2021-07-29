@@ -16,4 +16,6 @@ import './Text/Text.stories';
 import './BottomNavigator/BottomNavigator.stories';
 import './Avatar/Avatar.stories';
 import './Select/Select.stories';
+import './DatePicker/DatePicker.stories';
+import './DateTimePicker/DateTimePicker.stories';
 import './SnappingSlider/SnappingSlider.stories';
