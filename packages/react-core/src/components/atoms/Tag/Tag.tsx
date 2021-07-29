@@ -18,7 +18,7 @@ const Tag: React.FC<TagProps> = ({ value, icon, variant = 'small', dismiss: canD
     const handleDismiss = useCallback(() => {
         setDismiss(true);
         onDismiss();
-    }, []);
+    }, [onDismiss]);
 
     return <>
         {!dismiss &&

@@ -8,14 +8,14 @@ const smallVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
   variant === 'small' &&
   css`
     border-radius: ${theme.borderRadius.micro};
-    padding: ${theme.spacing.nano + ' ' + theme.spacing.mili};
+    padding: ${theme.spacing.nano} ${theme.spacing.mili};
   `;
 
 const defaultVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
   variant === 'default' &&
   css`
     border-radius: ${theme.borderRadius.mili};
-    padding: ${theme.spacing.micro + ' ' + theme.spacing.centi};
+    padding: ${theme.spacing.micro} ${theme.spacing.centi};
   `;
 
 const StyledTagContainerBase = styled(View) < Partial<TagProps> & Partial<StyleProps> & ViewProps>`
