@@ -4,11 +4,11 @@ import {
   ColorType,
   FontColorType,
   TextProps,
-  VariantType,
+  VariantType
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { PressableSurfaceProps } from '../PressableSurface';
+import { PressableSurfaceProps, SurfaceColor } from '../PressableSurface';
 import { StyledButton } from './styled';
 
 export type ButtonSizeType = 'small' | 'default';
@@ -27,11 +27,7 @@ export interface ButtonProps extends PressableSurfaceProps {
   color?: ColorType;
   variant?: VariantType;
   tone?: ColorGradationType;
-  disabled?: boolean;
-  /**
-   * TODO:
-   */
-  frozen?: boolean;
+  frozen?: boolean | null;
   borderRadius?: BorderRadiusType;
   size?: ButtonSizeType;
   state?: ButtonStateType;
@@ -71,14 +67,30 @@ const Button: FC<ButtonProps> = ({
       break;
   }
 
+  let _surfaceColor: SurfaceColor | undefined = undefined
+  if (variant === 'filled') {
+    _surfaceColor = {
+      color: _color,
+      tone: tone
+    }
+  }
+
+  if (disabled) {
+    _surfaceColor = {
+      color: _color,
+      tone: 'light'
+    }
+  }
+
   return (
     <StyledButton
       {...rest}
       accessibilityRole="button"
       style={style}
       color={_color}
-      variant={variant}
       tone={tone}
+      surfaceColor={_surfaceColor}
+      variant={variant}
       size={size}
       disabled={_frozen || disabled}
       frozen={disabled}
