@@ -14,7 +14,7 @@ import {
   RadioButton,
   useDebouncedState,
 } from '@tecsinapse/react-core';
-import { Input } from '@tecsinapse/react-native-kit';
+import { Input } from '../Input';
 import { Header } from '../Header';
 
 const Component = <Data, Type extends 'single' | 'multi'>({

@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 import { StyledBoard } from './style';
 
-export const ArtBoard: FC = ({ children }) => {
-  return <StyledBoard>{children}</StyledBoard>;
+export interface ArtBoardProps {
+  backgroundColor?: string
+}
+
+export const ArtBoard: FC<ArtBoardProps> = ({ children, backgroundColor }) => {
+  return <StyledBoard backgroundColor={backgroundColor}>{children}</StyledBoard>;
 };

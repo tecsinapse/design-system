@@ -69,6 +69,8 @@ export const spacing: Spacing = {
 };
 
 export const iconSize: IconSize = {
+  micro: '12px',
+  mili: '14px',
   centi: '16px', // '1rem'
   deca: '18px', // '1.5rem'
   kilo: '24px', // '1.6rem'

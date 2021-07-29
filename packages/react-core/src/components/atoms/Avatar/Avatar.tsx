@@ -26,6 +26,11 @@ const Avatar: FC<AvatarProps> = ({
 }) => {
   const [hasError, setHasError] = React.useState<boolean>(false);
 
+  // If the srcImage changes in runtime, this prevents error from being true always (fallback)
+  React.useEffect(() => {
+    setHasError(false);
+  }, [srcImage]);
+
   return (
     <ContainerButtonAvatar onPress={onPress} size={size}>
       {srcImage && !hasError ? (

@@ -2,6 +2,7 @@ export * from '@tecsinapse/react-core';
 export { Header, HeaderProps } from './components/atoms/Header';
 export { Select, SelectNativeProps } from './components/atoms/Select';
 export { Input, InputNativeProps } from './components/atoms/Input';
+export { TextArea, TextAreaProps } from './components/atoms/TextArea';
 export { Text, TextNativeProps } from './components/atoms/Text';
 export { Error, Loading, Success } from './components/atoms/Button';
 export { GroupButtonOption } from './components/atoms/GroupButton';
@@ -13,3 +14,5 @@ export {
   BottomNavigator,
   BottomNavigatorProps,
 } from './components/atoms/BottomNavigator';
+export {SnappingSlider, SnappingSliderProps} from './components/atoms/SnappingSlider';
+export { Tag, TagProps } from './components/atoms/Tag';
