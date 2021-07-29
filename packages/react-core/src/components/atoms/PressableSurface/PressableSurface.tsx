@@ -1,19 +1,14 @@
 import { useTheme } from '@emotion/react';
 import React, { FC } from 'react';
 import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
-import { ColorGradationType, ColorType, ThemeProp } from '../../../types/defaults';
+import { ThemeProp } from '../../../types/defaults';
 import { lightenDarkenColor } from '../../../utils';
 
 const COLOR_VARIATION_FACTOR = 13;
 
-export type SurfaceColor = {
-  color: ColorType 
-  tone: ColorGradationType 
-}
-
 export interface PressableSurfaceProps extends PressableProps {
   effect?: 'darken' | 'lighten' | 'none';
-  surfaceColor?: SurfaceColor
+  surfaceColor?: string
   effectIntensity?: number
   effectStyle?: (pressed: boolean) => StyleProp<ViewStyle>;
 }
@@ -33,8 +28,7 @@ const PressableSurface: FC<PressableSurfaceProps> = ({
   let bgColor = 'transparent'
 
   if (surfaceColor) {
-    const { color, tone } = surfaceColor
-    effectBaseColor = theme.color[color][tone]
+    effectBaseColor = surfaceColor
     bgColor = effectBaseColor
   }
 

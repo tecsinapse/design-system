@@ -1,5 +1,4 @@
 export {
   default as PressableSurface,
-  PressableSurfaceProps,
-  SurfaceColor
+  PressableSurfaceProps
 } from './PressableSurface';

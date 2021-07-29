@@ -1,14 +1,14 @@
+import { useTheme } from '@emotion/react';
+import React, { FC } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
 import {
   BorderRadiusType,
   ColorGradationType,
   ColorType,
-  FontColorType,
-  TextProps,
-  VariantType
-} from '@tecsinapse/react-core';
-import React, { FC } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import { PressableSurfaceProps, SurfaceColor } from '../PressableSurface';
+  FontColorType, ThemeProp, VariantType
+} from '../../../types/defaults';
+import { PressableSurfaceProps } from '../PressableSurface';
+import { TextProps } from '../Text';
 import { StyledButton } from './styled';
 
 export type ButtonSizeType = 'small' | 'default';
@@ -51,6 +51,8 @@ const Button: FC<ButtonProps> = ({
   disabled,
   ...rest
 }): JSX.Element => {
+
+  const theme = useTheme() as ThemeProp
   const _frozen = frozen || state === 'loading';
   let _color: ColorType;
   switch (state) {
@@ -67,19 +69,13 @@ const Button: FC<ButtonProps> = ({
       break;
   }
 
-  let _surfaceColor: SurfaceColor | undefined = undefined
+  let _surfaceColor
   if (variant === 'filled') {
-    _surfaceColor = {
-      color: _color,
-      tone: tone
-    }
+    _surfaceColor = theme.color[_color][tone]
   }
 
   if (disabled) {
-    _surfaceColor = {
-      color: _color,
-      tone: 'light'
-    }
+    _surfaceColor = theme.color[_color].light
   }
 
   return (

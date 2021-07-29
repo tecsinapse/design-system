@@ -30,16 +30,11 @@ export const getStyledGroupItemText = (component: FC<TextProps>) => {
 const activeStyles = ({
   theme,
   isActive,
-  activeBackgroundColor = 'secondary',
-  activeBackgroundColorTone = 'medium',
   activeBorderColor = 'secondary',
   activeBorderColorTone = 'medium',
 }: PressableOptions & Partial<StyleProps>) =>
   isActive &&
   css`
-    background-color: ${theme?.color[activeBackgroundColor][
-      activeBackgroundColorTone
-    ]};
     border-color: ${theme?.color[activeBorderColor][activeBorderColorTone]};
   `;
 
@@ -53,21 +48,13 @@ const inactiveStyles = ({
 }: PressableOptions & Partial<StyleProps>) => {
   if (!isActive && inactiveBackgroundColor && inactiveBackgroundColorTone) {
     return css`
-      background-color: ${theme?.color[inactiveBackgroundColor][
-        inactiveBackgroundColorTone
-      ]};
-      border-color: ${theme?.color[inactiveBorderColor][
-        inactiveBorderColorTone
-      ]};
+      border-color: ${theme?.color[inactiveBorderColor][inactiveBorderColorTone]};
     `;
   }
 
   if (!isActive) {
     return css`
-      background-color: ${theme?.miscellaneous.surfaceColor};
-      border-color: ${theme?.color[inactiveBorderColor][
-        inactiveBorderColorTone
-      ]};
+      border-color: ${theme?.color[inactiveBorderColor][inactiveBorderColorTone]};
     `;
   }
 };
@@ -112,9 +99,7 @@ const sizeStyles = ({
   }
 };
 
-const StyledPressableBase = styled(PressableSurface)<
-  PressableOptions & Partial<StyleProps>
->`
+const StyledPressableBase = styled(PressableSurface)<PressableOptions & Partial<StyleProps>>`
   border-top-width: ${({ theme }) => theme.borderWidth.pico};
   border-bottom-width: ${({ theme }) => theme.borderWidth.pico};
   justify-content: center;

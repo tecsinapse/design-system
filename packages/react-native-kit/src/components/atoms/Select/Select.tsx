@@ -1,11 +1,10 @@
-import * as React from 'react';
 import {
-  InputContainer,
   InputContainerProps,
-  useInputFocus,
+  PressableInputContainer,
+  useInputFocus
 } from '@tecsinapse/react-core';
+import * as React from 'react';
 import { Text } from '../Text';
-import { StyledPressableSurface } from './styled';
 import { Modal } from './Modal';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
@@ -33,19 +32,6 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
 }
 
 function Select<Data, Type extends 'single' | 'multi'>({
-  label,
-  labelColor,
-  labelColorVariant,
-  labelColorTone,
-  labelTypography,
-  labelStack,
-  labelWeight,
-  leftComponent,
-  rightComponent,
-  style,
-  borderColor,
-  borderColorGradation,
-
   /** Select props */
   value,
   options,
@@ -109,31 +95,15 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   return (
     <>
-      <StyledPressableSurface
+      
+      <PressableInputContainer
         onPress={handlePressInput}
+        focused={focused}
         disabled={disabled}
-        style={style}
+        {...rest}
       >
-        <InputContainer
-          label={label}
-          labelColor={labelColor}
-          labelColorVariant={labelColorVariant}
-          labelColorTone={labelColorTone}
-          labelTypography={labelTypography}
-          labelStack={labelStack}
-          labelWeight={labelWeight}
-          LabelComponent={Text}
-          leftComponent={leftComponent}
-          rightComponent={rightComponent}
-          borderColor={borderColor}
-          borderColorGradation={borderColorGradation}
-          focused={focused}
-          disabled={disabled}
-          {...rest}
-        >
-          <Text>{getDisplayValue()}</Text>
-        </InputContainer>
-      </StyledPressableSurface>
+        <Text>{getDisplayValue()}</Text>
+      </PressableInputContainer>
       <Modal
         visible={modalVisible}
         options={options}

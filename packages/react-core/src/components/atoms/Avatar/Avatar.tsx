@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
 import { IconSize } from '@tecsinapse/react-core';
+import React, { FC } from 'react';
+import { getIniciais } from './helpers';
 import {
   ContainerButtonAvatar,
   StyledAvatar,
   StyledBackground,
-  StyledText,
+  StyledText
 } from './styled';
 
-import { getIniciais } from './helpers';
 
 export type SizeAvatar = Omit<IconSize, 'centi' | 'deca'>;
 
@@ -32,7 +32,7 @@ const Avatar: FC<AvatarProps> = ({
   }, [srcImage]);
 
   return (
-    <ContainerButtonAvatar onPress={onPress} size={size}>
+    <ContainerButtonAvatar effect='none' onPress={onPress} size={size}>
       {srcImage && !hasError ? (
         <StyledAvatar
           source={{ uri: srcImage }}

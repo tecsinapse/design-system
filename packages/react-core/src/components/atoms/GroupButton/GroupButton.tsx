@@ -1,12 +1,13 @@
+import { useTheme } from '@emotion/react';
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { ColorGradationType, ColorType } from '../../../types/defaults';
+import { ColorGradationType, ColorType, ThemeProp } from '../../../types/defaults';
 import { ButtonSizeType } from '../Button';
 import {
   StyledDivider,
   StyledGroupButton,
   StyledOption,
-  StyledPressable,
+  StyledPressable
 } from './styled';
 
 export interface GroupButtonOptions {
@@ -54,24 +55,47 @@ const groupOptions = <T extends any>({
   value,
   ...rest
 }: Partial<GroupButtonProps<T>>) => {
+  
+  const theme = useTheme() as ThemeProp
   return options?.map((option, idx) => {
+    
     const {
       value: optionValue,
-      options: { activeStyle, inactiveStyle } = {},
+      options: { 
+        activeStyle, 
+        inactiveStyle,
+        activeBackgroundColor,
+        activeBackgroundColorTone,
+        inactiveBackgroundColor,
+        inactiveBackgroundColorTone
+      } = {},
     } = option;
+    
     const key = renderKey?.(optionValue);
     const active = key === renderKey?.(value);
     const isFirst = idx === 0;
     const isLast = idx === options.length - 1;
+
+    let colors = theme.miscellaneous.surfaceColor
+    if (active) {
+      colors = theme.color[activeBackgroundColor || 'secondary'][activeBackgroundColorTone || 'medium']
+    }
+
+    if (!active && (inactiveBackgroundColor || inactiveBackgroundColorTone)) {
+      colors = theme.color[inactiveBackgroundColor || 'secondary'][inactiveBackgroundColorTone || 'medium']
+    }
+    
     return (
       <StyledOption key={key}>
         <StyledPressable
           {...rest}
           {...option.options}
+          disabled={active}
           isActive={active}
           isFirstOption={isFirst}
           isLastOption={isLast}
           onPress={() => onChange?.(optionValue)}
+          surfaceColor={colors}
           style={active ? activeStyle : inactiveStyle}
         >
           {renderOption?.(option.value, active)}
