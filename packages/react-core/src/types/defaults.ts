@@ -40,6 +40,8 @@ export type Spacing = {
 };
 
 export type IconSize = {
+  micro: string;
+  mili: string;
   centi: string;
   deca: string;
   kilo: string;
