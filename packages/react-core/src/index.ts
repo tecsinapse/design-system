@@ -71,4 +71,5 @@ export * from './styles/definitions';
 export * from './styles/light';
 export * from './types/defaults';
 export { Avatar, AvatarProps } from './components/atoms/Avatar';
+export { Tag, TagProps } from './components/atoms/Tag';
 export * from './utils';

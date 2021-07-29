@@ -12,6 +12,7 @@ import './Paper/Paper.stories';
 import './Progress/ProgressBar.stories';
 import './RadioButton/RadioButton.stories';
 import './Switch/Switch.stories';
+import './Tag/Tag.stories';
 import './Text/Text.stories';
 import './BottomNavigator/BottomNavigator.stories';
 import './Avatar/Avatar.stories';
