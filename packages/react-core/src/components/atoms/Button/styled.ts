@@ -30,14 +30,19 @@ const sizeStyles = ({ theme, size = 'default' }: StyleProps & ButtonProps) => {
   }
 };
 
-const StyledButtonBase = styled(PressableSurface)<ButtonProps & Partial<StyleProps>>`
-  border-radius: ${({ theme, borderRadius = 'mili' }) => theme.borderRadius[borderRadius]};
+const StyledButtonBase = styled(PressableSurface)<
+  ButtonProps & Partial<StyleProps>
+>`
+  border-radius: ${({ theme, borderRadius = 'mili' }) =>
+    theme.borderRadius[borderRadius]};
   flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
 
-export const StyledButton = styled(StyledButtonBase)<ButtonProps & Partial<StyleProps>>(
+export const StyledButton = styled(StyledButtonBase)<
+  ButtonProps & Partial<StyleProps>
+>(
   props => css`
     ${outlineVariant(props)}
     ${sizeStyles(props)}

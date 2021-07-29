@@ -2,9 +2,7 @@ import styled, { css } from '@emotion/native';
 import { StyleProps, SwitchProps } from '@tecsinapse/react-core';
 import { PressableSurface } from '../PressableSurface';
 
-const activeStyles = ({
-  active,
-}: Partial<SwitchProps> & Partial<StyleProps>) =>
+const activeStyles = ({ active }: Partial<SwitchProps> & Partial<StyleProps>) =>
   active &&
   css`
     align-items: flex-end;

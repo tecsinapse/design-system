@@ -4,7 +4,7 @@ import { useMouseHover } from './hooks/useMouseHover';
 import { StyledWebButton } from './styled';
 
 /**
- * TODO: Add a property 'defaultElement' to render a default 
+ * TODO: Add a property 'defaultElement' to render a default
  * component and provide some button's state to it.
  */
 export interface WebButtonProps extends ButtonProps {

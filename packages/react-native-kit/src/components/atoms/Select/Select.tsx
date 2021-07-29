@@ -1,7 +1,7 @@
 import {
   InputContainerProps,
   PressableInputContainer,
-  useInputFocus
+  useInputFocus,
 } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { Text } from '../Text';
@@ -95,7 +95,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   return (
     <>
-      
       <PressableInputContainer
         onPress={handlePressInput}
         focused={focused}

@@ -48,13 +48,17 @@ const inactiveStyles = ({
 }: PressableOptions & Partial<StyleProps>) => {
   if (!isActive && inactiveBackgroundColor && inactiveBackgroundColorTone) {
     return css`
-      border-color: ${theme?.color[inactiveBorderColor][inactiveBorderColorTone]};
+      border-color: ${theme?.color[inactiveBorderColor][
+        inactiveBorderColorTone
+      ]};
     `;
   }
 
   if (!isActive) {
     return css`
-      border-color: ${theme?.color[inactiveBorderColor][inactiveBorderColorTone]};
+      border-color: ${theme?.color[inactiveBorderColor][
+        inactiveBorderColorTone
+      ]};
     `;
   }
 };
@@ -99,7 +103,9 @@ const sizeStyles = ({
   }
 };
 
-const StyledPressableBase = styled(PressableSurface)<PressableOptions & Partial<StyleProps>>`
+const StyledPressableBase = styled(PressableSurface)<
+  PressableOptions & Partial<StyleProps>
+>`
   border-top-width: ${({ theme }) => theme.borderWidth.pico};
   border-bottom-width: ${({ theme }) => theme.borderWidth.pico};
   justify-content: center;

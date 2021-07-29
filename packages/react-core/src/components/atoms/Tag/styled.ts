@@ -18,7 +18,9 @@ const defaultVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
     padding: ${theme.spacing.micro} ${theme.spacing.centi};
   `;
 
-const StyledTagContainerBase = styled(View) < Partial<TagProps> & Partial<StyleProps> & ViewProps>`
+const StyledTagContainerBase = styled(View)<
+  Partial<TagProps> & Partial<StyleProps> & ViewProps
+>`
   background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
   flex-direction: row;
   justify-content: center;
@@ -33,10 +35,10 @@ export const StyledTagContainer = styled(StyledTagContainerBase)(
   `
 );
 
-export const StyledLeftIcon = styled(Icon) <Partial<StyleProps> & IconProps>`
-  margin-right: ${({ theme }) => theme.spacing.micro};  
+export const StyledLeftIcon = styled(Icon)<Partial<StyleProps> & IconProps>`
+  margin-right: ${({ theme }) => theme.spacing.micro};
 `;
 
-export const StyledCloseIcon = styled(Icon) <Partial<StyleProps> & IconProps>`
-  margin-left: ${({ theme }) => theme.spacing.nano};  
+export const StyledCloseIcon = styled(Icon)<Partial<StyleProps> & IconProps>`
+  margin-left: ${({ theme }) => theme.spacing.nano};
 `;

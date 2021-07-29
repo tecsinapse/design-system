@@ -5,7 +5,9 @@ import {
   BorderRadiusType,
   ColorGradationType,
   ColorType,
-  FontColorType, ThemeProp, VariantType
+  FontColorType,
+  ThemeProp,
+  VariantType,
 } from '../../../types/defaults';
 import { PressableSurfaceProps } from '../PressableSurface';
 import { TextProps } from '../Text';
@@ -51,8 +53,7 @@ const Button: FC<ButtonProps> = ({
   disabled,
   ...rest
 }): JSX.Element => {
-
-  const theme = useTheme() as ThemeProp
+  const theme = useTheme() as ThemeProp;
   const _frozen = frozen || state === 'loading';
   let _color: ColorType;
   switch (state) {
@@ -69,13 +70,13 @@ const Button: FC<ButtonProps> = ({
       break;
   }
 
-  let _surfaceColor
+  let _surfaceColor;
   if (variant === 'filled') {
-    _surfaceColor = theme.color[_color][tone]
+    _surfaceColor = theme.color[_color][tone];
   }
 
   if (disabled) {
-    _surfaceColor = theme.color[_color].light
+    _surfaceColor = theme.color[_color].light;
   }
 
   return (

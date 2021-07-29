@@ -5,9 +5,8 @@ import {
   ContainerButtonAvatar,
   StyledAvatar,
   StyledBackground,
-  StyledText
+  StyledText,
 } from './styled';
-
 
 export type SizeAvatar = Omit<IconSize, 'centi' | 'deca'>;
 
@@ -32,7 +31,7 @@ const Avatar: FC<AvatarProps> = ({
   }, [srcImage]);
 
   return (
-    <ContainerButtonAvatar effect='none' onPress={onPress} size={size}>
+    <ContainerButtonAvatar effect="none" onPress={onPress} size={size}>
       {srcImage && !hasError ? (
         <StyledAvatar
           source={{ uri: srcImage }}
