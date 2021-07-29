@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.6.0...@tecsinapse/react-core@1.0.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* require cycles ([f30e014](https://github.com/tecsinapse/design-system/commit/f30e014120364b97caa748f95e2d43d5e7c80a1c))
+* **Calendar:** selected days rounded borders ([aefec7b](https://github.com/tecsinapse/design-system/commit/aefec7bae2a41251fb74def2a53b7d69d30e723e))
+* avatar fallback ([0eca218](https://github.com/tecsinapse/design-system/commit/0eca218ad3e30ccecd38ae97859dd4a4a4977323))
+* checkbox and radio story ([d28fdd6](https://github.com/tecsinapse/design-system/commit/d28fdd69aa44547c4d8dfc47e440fa9158c6a53e))
+* missing export statement for SelectionType ([7d3a974](https://github.com/tecsinapse/design-system/commit/7d3a974cf9d4bc817616d1ddfc67b0335349bb1f))
+* missing some TS exports ([9ef6469](https://github.com/tecsinapse/design-system/commit/9ef6469e1be93b7c5ce138b0fc069cc5f4747a6f))
+
+
+### Features
+
+* Calendar Component ([c89b10b](https://github.com/tecsinapse/design-system/commit/c89b10bbf5f5c172a8084b595c92eec39fe0da29))
+* date and time picker component ([4b21952](https://github.com/tecsinapse/design-system/commit/4b219523d3074863713087e0f093273b8bb4ca00))
+
+
+
+
+
 # [0.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.5.3...@tecsinapse/react-core@0.6.0) (2021-07-09)
 
 
