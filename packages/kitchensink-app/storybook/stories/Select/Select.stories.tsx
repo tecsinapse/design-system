@@ -27,8 +27,8 @@ const Component = () => {
   }
 
   const handleSearch = React.useCallback((searchArg: string) => {
-    console.log(searchArg)
-  }, [])
+    console.log(searchArg);
+  }, []);
 
   return (
     <>

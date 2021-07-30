@@ -4,7 +4,7 @@ import { StyledDivider } from './styled';
 
 export interface DividerProps extends ViewProps {
   linePosition: 'top' | 'bottom';
-  noLine?: boolean
+  noLine?: boolean;
 }
 
 const Divider: FC<DividerProps> = ({ children, ...rest }) => {

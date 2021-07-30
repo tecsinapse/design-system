@@ -15,7 +15,7 @@ storiesOf('Card', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
 
   .add('Plain', () => (
-    <StyledCard>
+    <Card onPress={() => console.log('Wow!')}>
       <Header>
         <Text>I'm a header card</Text>
       </Header>
@@ -23,11 +23,11 @@ storiesOf('Card', module)
       <Footer>
         <Text>I'm a footer card</Text>
       </Footer>
-    </StyledCard>
+    </Card>
   ))
 
   .add('Elevated', () => (
-    <StyledCard elevated>
+    <Card elevated onPress={() => console.log('Wow!')}>
       <Header>
         <Text>I'm a header card</Text>
       </Header>
@@ -35,9 +35,5 @@ storiesOf('Card', module)
       <Footer>
         <Text>I'm a footer card</Text>
       </Footer>
-    </StyledCard>
+    </Card>
   ));
-
-const StyledCard = styled(Card)<CardProps & Partial<StyleProps>>`
-  background-color: white;
-`;
