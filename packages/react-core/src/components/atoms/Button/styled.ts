@@ -3,12 +3,6 @@ import { StyleProps } from '../../../types/defaults';
 import { PressableSurface } from '../PressableSurface';
 import { ButtonProps } from './Button';
 
-const textVariant = ({ variant }: StyleProps & ButtonProps) =>
-  variant === 'text' &&
-  css`
-    background-color: transparent;
-  `;
-
 const outlineVariant = ({
   theme,
   color = 'primary',
@@ -19,27 +13,6 @@ const outlineVariant = ({
   css`
     border-color: ${theme.color[color][tone]};
     border-width: ${theme.borderWidth.pico};
-  `;
-
-const filledVariant = ({
-  theme,
-  color = 'primary',
-  variant,
-  tone = 'medium',
-}: StyleProps & ButtonProps) =>
-  variant === 'filled' &&
-  css`
-    background-color: ${theme.color[color][tone]};
-  `;
-
-const frozenStyles = ({
-  theme,
-  color = 'primary',
-  frozen,
-}: StyleProps & ButtonProps) =>
-  frozen &&
-  css`
-    background-color: ${theme.color[color].light};
   `;
 
 const sizeStyles = ({ theme, size = 'default' }: StyleProps & ButtonProps) => {
@@ -71,10 +44,7 @@ export const StyledButton = styled(StyledButtonBase)<
   ButtonProps & Partial<StyleProps>
 >(
   props => css`
-    ${filledVariant(props)}
     ${outlineVariant(props)}
-    ${textVariant(props)}
-    ${frozenStyles(props)}
     ${sizeStyles(props)}
   `
 );

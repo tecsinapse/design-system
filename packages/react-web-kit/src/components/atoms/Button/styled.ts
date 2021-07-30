@@ -11,6 +11,7 @@ const hoverStyles = ({
     mouseOver &&
     css`
       background-color: ${theme?.color[color].dark};
+      border-color: ${theme?.color[color].dark};
     `
   );
 };

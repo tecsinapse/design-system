@@ -1,50 +1,82 @@
+import { useTheme } from '@emotion/react';
 import React, { FC } from 'react';
 import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
+import { ThemeProp } from '../../../types/defaults';
+import { lightenDarkenColor } from '../../../utils';
 
-const FACTOR = 0.75;
-const SCALE = 0.96;
+const COLOR_VARIATION_FACTOR = 13;
 
 export interface PressableSurfaceProps extends PressableProps {
-  effect?: 'opacity' | 'highlight' | 'none';
+  effect?: 'darken' | 'lighten' | 'none';
+  surfaceColor?: string;
+  effectIntensity?: number;
   effectStyle?: (pressed: boolean) => StyleProp<ViewStyle>;
 }
 
-const PressableSurface: FC<PressableSurfaceProps> = ({ children, ...rest }) => {
-  const allProps = prepareProps(rest);
-  return <Pressable {...allProps}>{children}</Pressable>;
+const PressableSurface: FC<PressableSurfaceProps> = ({
+  children,
+  surfaceColor,
+  effect,
+  effectIntensity,
+  effectStyle,
+  style,
+  ...rest
+}) => {
+  const theme = useTheme() as ThemeProp;
+  let effectBaseColor = theme.miscellaneous.surfaceColor;
+  let bgColor = 'transparent';
+
+  if (surfaceColor) {
+    effectBaseColor = surfaceColor;
+    bgColor = effectBaseColor;
+  }
+
+  const readyStyle = prepareStyle(
+    { effect, effectIntensity, style, effectStyle },
+    effectBaseColor,
+    bgColor
+  );
+  return (
+    <Pressable {...rest} style={readyStyle}>
+      {children}
+    </Pressable>
+  );
 };
 
-const prepareProps = ({
-  effect = 'opacity',
-  effectStyle,
-  ...others
-}: PressableSurfaceProps): PressableSurfaceProps => {
-  switch (effect) {
-    case 'opacity':
-      return {
-        ...others,
-        style: ({ pressed }) => [
-          others.style as any,
-          effectStyle
-            ? effectStyle(pressed)
-            : { opacity: pressed ? 1 * FACTOR : 1 },
-        ],
-      };
+const prepareStyle = (
+  props: PressableSurfaceProps,
+  effectColor: string,
+  bgColor: string
+): any => {
+  const {
+    effect = 'darken',
+    effectIntensity = COLOR_VARIATION_FACTOR,
+    style,
+    effectStyle,
+  } = props;
 
-    case 'highlight':
-      return {
-        ...others,
-        style: ({ pressed }) => [
-          others.style as any,
-          effectStyle
-            ? effectStyle(pressed)
-            : { transform: [{ scale: pressed ? SCALE : 1 }] },
-        ],
-      };
+  const lighten = lightenDarkenColor(effectColor, effectIntensity);
+  const darken = lightenDarkenColor(effectColor, -effectIntensity);
+  const composedStyle = [{ backgroundColor: bgColor }, style];
+
+  if (effectStyle) {
+    return ({ pressed }) => [composedStyle, effectStyle(pressed)];
+  }
+
+  switch (effect) {
+    case 'darken':
+      return applyEffectStyle(composedStyle, darken);
+
+    case 'lighten':
+      return applyEffectStyle(composedStyle, lighten);
 
     case 'none':
-      return others;
+      return composedStyle;
   }
+};
+
+const applyEffectStyle = (style: any, variation: string) => {
+  return ({ pressed }) => [style, pressed && { backgroundColor: variation }];
 };
 
 export default PressableSurface;

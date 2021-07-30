@@ -1,9 +1,12 @@
+import { PressableSurfaceProps } from '@tecsinapse/react-native-kit';
 import React, { FC } from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { Paper, PaperProps } from '../Paper';
 import { StyledCard } from './styled';
 
-export interface CardProps extends PaperProps {
+export interface CardProps
+  extends PaperProps,
+    Omit<PressableSurfaceProps, 'style'> {
   /** Click handler */
   onPress?: null | ((event: GestureResponderEvent) => void);
 }

@@ -2,11 +2,7 @@ import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 import { Button } from '@tecsinapse/react-core';
-import {
-  BottomNavigator,
-  Icon,
-  Text,
-} from '@tecsinapse/react-native-kit';
+import { BottomNavigator, Icon, Text } from '@tecsinapse/react-native-kit';
 import styled from '@emotion/native';
 import { Pressable } from 'react-native';
 
@@ -35,7 +31,6 @@ const Component = () => {
         <BottomNavigator.Item
           value={1}
           label={'Home'}
-
           icon={{
             type: 'font-awesome-5',
             name: 'home',
@@ -44,7 +39,6 @@ const Component = () => {
         <BottomNavigator.Item
           value={2}
           label={'Agenda'}
-
           icon={{
             type: 'font-awesome-5',
             name: 'calendar-alt',
@@ -53,7 +47,6 @@ const Component = () => {
         <BottomNavigator.Item
           value={3}
           label={'User'}
-
           icon={{
             type: 'font-awesome-5',
             name: 'user',
@@ -62,7 +55,6 @@ const Component = () => {
         <BottomNavigator.Item
           value={4}
           label={'???'}
-
           icon={{
             type: 'font-awesome-5',
             name: 'tachometer-alt',
@@ -71,7 +63,6 @@ const Component = () => {
         <BottomNavigator.Item
           value={5}
           label={'Menu'}
-
           icon={{
             type: 'font-awesome-5',
             name: 'bars',
@@ -153,12 +144,16 @@ const Component = () => {
       >
         <BottomNavigator.Item value={1}>
           <Pressable onPress={() => setSelected(1)}>
-            <Text colorVariant={selected === 1 ? 'primary' : 'secondary'}>1</Text>
+            <Text colorVariant={selected === 1 ? 'primary' : 'secondary'}>
+              1
+            </Text>
           </Pressable>
         </BottomNavigator.Item>
         <BottomNavigator.Item value={2}>
           <Pressable onPress={() => setSelected(2)}>
-            <Text colorVariant={selected === 2 ? 'primary' : 'secondary'}>2</Text>
+            <Text colorVariant={selected === 2 ? 'primary' : 'secondary'}>
+              2
+            </Text>
           </Pressable>
         </BottomNavigator.Item>
       </BottomNavigator>
