@@ -16,3 +16,4 @@ export {
 } from './components/atoms/BottomNavigator';
 export {SnappingSlider, SnappingSliderProps} from './components/atoms/SnappingSlider';
 export { Tag, TagProps } from './components/atoms/Tag';
+export { Badge, BadgeNativeProps } from './components/atoms/Badge';
