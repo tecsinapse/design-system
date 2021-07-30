@@ -2,23 +2,17 @@ import styled, { css } from '@emotion/native';
 import { StyleProps, SwitchProps } from '@tecsinapse/react-core';
 import { PressableSurface } from '../PressableSurface';
 
-const activeStyles = ({
-  active,
-  theme,
-}: Partial<SwitchProps> & Partial<StyleProps>) =>
+const activeStyles = ({ active }: Partial<SwitchProps> & Partial<StyleProps>) =>
   active &&
   css`
-    background-color: ${theme?.color.primary.medium};
     align-items: flex-end;
   `;
 
 const inactiveStyles = ({
   active,
-  theme,
 }: Partial<SwitchProps> & Partial<StyleProps>) =>
   !active &&
   css`
-    background-color: ${theme?.color.secondary.light};
     align-items: flex-start;
   `;
 

@@ -8,14 +8,18 @@ export default {
   component: Tag,
   parameters: {
     backgrounds: {
-      default: 'white'
-    }
-  }
+      default: 'white',
+    },
+  },
 };
 
-const Template: Story<TagProps> = (
-  { value, icon, variant, dismiss, onDismiss }
-) => (
+const Template: Story<TagProps> = ({
+  value,
+  icon,
+  variant,
+  dismiss,
+  onDismiss,
+}) => (
   <Tag
     value={value}
     icon={icon}
@@ -32,5 +36,5 @@ Base.args = {
   icon: { name: 'stopwatch', type: 'fontisto' } as IconProps,
   variant: 'small',
   dismiss: true,
-  onDismiss: () => alert('Dismiss')
+  onDismiss: () => alert('Dismiss'),
 } as TagProps;

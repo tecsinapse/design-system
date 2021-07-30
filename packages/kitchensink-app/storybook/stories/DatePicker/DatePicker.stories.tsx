@@ -12,5 +12,5 @@ storiesOf('Input', module)
 const Component = () => {
   const [value, setValue] = React.useState<DateRange>();
 
-  return <DatePicker value={value} type={'range'} onChange={setValue}/>;
+  return <DatePicker value={value} type={'range'} onChange={setValue} />;
 };

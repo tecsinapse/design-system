@@ -8,7 +8,7 @@ import {
   Miscellaneous,
   Spacing,
   TypographyVariation,
-  ZIndex
+  ZIndex,
 } from '../types/defaults';
 
 export const statusColor = {
@@ -51,7 +51,7 @@ export const miscellaneous: Miscellaneous = {
   shadow: '#85807a', // rgba(133, 128, 122, 0.08)
   overlay: '#282625', // rgba(40, 38, 37, 0.5)
   bodyColor: '#f8f7f7',
-  surfaceColor: '#fff', //input, group button, cards
+  surfaceColor: '#ffffff', //input, group button, cards
 };
 
 export const spacing: Spacing = {

@@ -14,5 +14,8 @@ export {
   BottomNavigator,
   BottomNavigatorProps,
 } from './components/atoms/BottomNavigator';
-export {SnappingSlider, SnappingSliderProps} from './components/atoms/SnappingSlider';
 export { Tag, TagProps } from './components/atoms/Tag';
+export {
+  SnappingSlider,
+  SnappingSliderProps,
+} from './components/atoms/SnappingSlider';
