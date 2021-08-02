@@ -20,10 +20,8 @@ const Drawer: FC<DrawerProps> = ({
           <StyledOverlay onClick={onClose} />
           <StyledContainerDrawer
             anchorPosition={anchorPosition}
-            onClose={() => {
-              console.log('close menu');
-            }}
-            open={false}
+            onClose={onClose}
+            open={open}
           >
             {children}
           </StyledContainerDrawer>
