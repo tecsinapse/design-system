@@ -8,3 +8,7 @@ export const getIniciais = (name: string) => {
   }
   return name[0];
 };
+
+export const getImage = (path: string, isAsset: boolean) => {
+  return isAsset ? require(`${path}`) : { uri: path };
+};
