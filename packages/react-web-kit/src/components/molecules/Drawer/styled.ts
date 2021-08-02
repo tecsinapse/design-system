@@ -72,12 +72,14 @@ const baseStyles = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
   `;
 };
 
-export const StyledContainerDrawer = styled('div')<DrawerProps & StyleProps>(
+export const StyledContainerDrawer = styled('div')<
+  DrawerProps & Partial<StyleProps>
+>(
   props => css`
     ${baseStyles(props)}
     ${anchorBottom(props)}
-  ${anchorTop(props)}
-  ${anchorLeft(props)}
-  ${anchorRight(props)}
+    ${anchorTop(props)}
+    ${anchorLeft(props)}
+    ${anchorRight(props)}
   `
 );
