@@ -1,13 +1,13 @@
-import styled, { css } from '@emotion/native';
 import { View } from 'react-native';
-import { BadgeProps } from './Badge';
+import styled, { css } from '@emotion/native';
 import { StyleProps } from '@tecsinapse/react-core';
+import { BadgeProps } from './Badge';
 
 const baseStyle = ({
-     theme,
-     color = 'primary',
-     tone = 'medium'
-   }: StyleProps & Partial<BadgeProps>) => {
+  theme,
+  color = 'primary',
+  tone = 'medium',
+}: StyleProps & Partial<BadgeProps>) => {
   return css`
     border-radius: ${theme.borderRadius.pill};
     background-color: ${theme.color[color][tone]};
@@ -15,15 +15,15 @@ const baseStyle = ({
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 16px;
-    width: 16px;
+    height: ${theme.iconSize.centi};
+    width: ${theme.iconSize.centi};
     top: -4px;
     right: -4px;
   `;
 };
 
 export const BadgeStyle = styled(View)<Partial<StyleProps & BadgeProps>>(
-    baseStyle
+  baseStyle
 );
 
 export const ViewStyled = styled(View)<Partial<StyleProps & BadgeProps>>`

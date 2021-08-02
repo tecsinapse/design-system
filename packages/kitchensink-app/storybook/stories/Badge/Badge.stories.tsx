@@ -1,6 +1,6 @@
-import { storiesOf } from '@storybook/react-native';
-import {Badge, Icon} from '@tecsinapse/react-native-kit';
 import React from 'react';
+import { storiesOf } from '@storybook/react-native';
+import { Badge, Icon } from '@tecsinapse/react-native-kit';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Badge', module)
@@ -8,6 +8,6 @@ storiesOf('Badge', module)
 
   .add('Badge', () => (
     <Badge color="primary" value={5}>
-        <Icon name="user-circle" type="font-awesome" size="mega" />
+      <Icon name="user-circle" type="font-awesome" size="mega" />
     </Badge>
   ));

@@ -1,10 +1,7 @@
 import React, { FC } from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
+import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
 import { BadgeStyle, ViewStyled } from './styled';
-import {StyleProp, ViewStyle} from 'react-native';
-import {
-  ColorGradationType,
-  ColorType,
-} from '@tecsinapse/react-core';
 
 export interface BadgeProps {
   color: ColorType;
@@ -14,19 +11,19 @@ export interface BadgeProps {
 }
 
 const Badge: FC<BadgeProps> = ({
-     children,
-     style,
-     color = 'primary',
-     tone = 'medium',
-     value,
-   }): JSX.Element => {
+  children,
+  style,
+  color = 'primary',
+  tone = 'medium',
+  value,
+}): JSX.Element => {
   return (
-      <ViewStyled>
-        {children}
-        <BadgeStyle style={style} color={color} tone={tone}>
-          {value}
-        </BadgeStyle>
-      </ViewStyled>
+    <ViewStyled>
+      {children}
+      <BadgeStyle style={style} color={color} tone={tone}>
+        {value}
+      </BadgeStyle>
+    </ViewStyled>
   );
 };
 

@@ -11,10 +11,24 @@ export interface BadgeWebProps extends Omit<BadgeProps, 'value'> {
   value: string | number;
 }
 
-const Badge: FC<BadgeWebProps> = ({children, fontColor = 'light', value, ...props}) => {
-  return <BadgeCore {...props} value={<Text fontColor={fontColor} fontWeight={'bold'} typography={'label'}>{value}</Text>}>
-    {children}
-  </BadgeCore>;
+const Badge: FC<BadgeWebProps> = ({
+  children,
+  fontColor = 'light',
+  value,
+  ...props
+}) => {
+  return (
+    <BadgeCore
+      {...props}
+      value={
+        <Text fontColor={fontColor} fontWeight={'bold'} typography={'label'}>
+          {value}
+        </Text>
+      }
+    >
+      {children}
+    </BadgeCore>
+  );
 };
 
 export default Badge;

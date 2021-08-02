@@ -10,9 +10,9 @@ export default {
 };
 
 const Template: Story<BadgeWebProps> = ({ color, fontColor, tone }) => (
-    <Badge color={color} tone={tone} value={5} fontColor={fontColor}>
-      <Icon name={'user-circle'} type={'font-awesome'} size={'mega'}/>
-    </Badge>
+  <Badge color={color} tone={tone} value={5} fontColor={fontColor}>
+    <Icon name={'user-circle'} type={'font-awesome'} size={'mega'} />
+  </Badge>
 );
 
 export const Base = Template.bind({});
