@@ -1,0 +1,28 @@
+import React from 'react';
+import {
+  SnackbarProps as SnackPropsCore,
+  Snackbar as SnackbarCore,
+  Text,
+  TextProps,
+} from '@tecsinapse/react-core';
+
+export interface SnackbarWebProps extends Omit<SnackPropsCore, 'children'> {
+  value: string;
+  textProps?: TextProps;
+}
+
+export const Snackbar: React.FC<SnackbarWebProps> = ({
+  value,
+  textProps = { colorVariant: 'primary', colorTone: 'medium' },
+  ...rest
+}) => {
+  return (
+    <SnackbarCore {...rest}>
+      <Text {...textProps} fontWeight="bold" typography="base">
+        {value}
+      </Text>
+    </SnackbarCore>
+  );
+};
+
+export default Snackbar;
