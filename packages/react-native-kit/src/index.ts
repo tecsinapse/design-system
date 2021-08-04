@@ -19,3 +19,4 @@ export {
   SnappingSlider,
   SnappingSliderProps,
 } from './components/atoms/SnappingSlider';
+export { Badge, BadgeNativeProps } from './components/atoms/Badge';

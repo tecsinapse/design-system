@@ -1,17 +1,13 @@
 import React, { FC } from 'react';
-import { BadgeStyle } from './styled';
 import { StyleProp, ViewStyle } from 'react-native';
-import {
-  BorderRadiusType,
-  ColorGradationType,
-  ColorType,
-} from '@tecsinapse/react-core';
-// rename to Tag
+import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
+import { BadgeStyle, ViewStyled } from './styled';
+
 export interface BadgeProps {
   color: ColorType;
   tone?: ColorGradationType;
-  variant?: BorderRadiusType;
   style?: StyleProp<ViewStyle>;
+  value: React.ReactNode;
 }
 
 const Badge: FC<BadgeProps> = ({
@@ -19,12 +15,15 @@ const Badge: FC<BadgeProps> = ({
   style,
   color = 'primary',
   tone = 'medium',
-  variant = 'pill',
+  value,
 }): JSX.Element => {
   return (
-    <BadgeStyle style={style} color={color} tone={tone} variant={variant}>
+    <ViewStyled>
       {children}
-    </BadgeStyle>
+      <BadgeStyle style={style} color={color} tone={tone}>
+        {value}
+      </BadgeStyle>
+    </ViewStyled>
   );
 };
 

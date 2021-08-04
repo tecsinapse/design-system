@@ -4,7 +4,7 @@ import { StyledContainerDrawer, StyledOverlay } from './styled';
 export interface DrawerProps {
   open: boolean;
   onClose: () => void;
-  anchorPosition: 'left' | 'right';
+  anchorPosition: 'left' | 'right' | 'top' | 'bottom';
 }
 
 const Drawer: FC<DrawerProps> = ({
@@ -18,7 +18,11 @@ const Drawer: FC<DrawerProps> = ({
       {open && (
         <>
           <StyledOverlay onClick={onClose} />
-          <StyledContainerDrawer anchorPosition={anchorPosition}>
+          <StyledContainerDrawer
+            anchorPosition={anchorPosition}
+            onClose={onClose}
+            open={open}
+          >
             {children}
           </StyledContainerDrawer>
         </>

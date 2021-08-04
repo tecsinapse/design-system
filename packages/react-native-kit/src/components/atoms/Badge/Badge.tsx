@@ -1,17 +1,17 @@
+import React, { FC } from 'react';
 import {
   BadgeProps,
   Badge as BadgeCore,
-  Text,
   FontColorType,
 } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
+import { Text } from '../Text';
 
-export interface BadgeWebProps extends Omit<BadgeProps, 'value'> {
+export interface BadgeNativeProps extends Omit<BadgeProps, 'value'> {
   fontColor?: FontColorType;
   value: string | number;
 }
 
-const Badge: FC<BadgeWebProps> = ({
+const Badge: FC<BadgeNativeProps> = ({
   children,
   fontColor = 'light',
   value,
