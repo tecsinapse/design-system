@@ -1,17 +1,14 @@
 import React from 'react';
-import {
-  SnackbarProps as SnackPropsCore,
-  Text,
-  TextProps,
-} from '@tecsinapse/react-core';
+import { SnackbarProps as SnackPropsCore } from '@tecsinapse/react-core';
+import { Text, TextNativeProps } from '../../atoms/Text';
 import { SnackbarStyled } from './styled';
 
-export interface SnackbarWebProps extends Omit<SnackPropsCore, 'children'> {
+export interface SnackbarNativeProps extends Omit<SnackPropsCore, 'children'> {
   value: string;
-  textProps?: TextProps;
+  textProps?: TextNativeProps;
 }
 
-export const Snackbar: React.FC<SnackbarWebProps> = ({
+export const Snackbar: React.FC<SnackbarNativeProps> = ({
   value,
   textProps = { colorVariant: 'primary', colorTone: 'medium' },
   ...rest

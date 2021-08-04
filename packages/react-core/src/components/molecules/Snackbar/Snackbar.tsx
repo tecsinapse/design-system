@@ -4,9 +4,14 @@ import {
   ColorType,
   Icon,
   IconProps,
-  PressableSurface,
 } from '@tecsinapse/react-core';
-import { SnackbarContainer, ContentContainer, IconContainer } from './styled';
+import {
+  SnackbarContainer,
+  ContentContainer,
+  IconContainer,
+  DismissContainer,
+} from './styled';
+import { StyleProp, View, ViewStyle } from 'react-native';
 
 export interface SnackbarProps {
   colorVariant?: ColorType;
@@ -21,6 +26,10 @@ export interface SnackbarProps {
   leftIcon?: IconProps;
   /** Properties for close icon */
   rightIcon?: Omit<IconProps, 'name' | 'type'>;
+  anchor?: 'top' | 'bottom';
+  /** Distance from anchorage (results in px) */
+  anchorDistance?: number;
+  style?: StyleProp<ViewStyle>;
 }
 
 export const Snackbar: React.FC<SnackbarProps> = ({
@@ -33,6 +42,9 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   colorTone = 'xlight',
   colorVariant = 'primary',
   rightIcon = { colorTone: 'medium', colorVariant: 'primary' },
+  anchor = 'bottom',
+  anchorDistance,
+  ...rest
 }) => {
   React.useEffect(() => {
     if (open && timeout) {
@@ -44,9 +56,12 @@ export const Snackbar: React.FC<SnackbarProps> = ({
     <>
       {open && (
         <SnackbarContainer
+          {...rest}
           colorVariant={colorVariant}
           colorTone={colorTone}
           elevated
+          anchor={anchor}
+          anchorDistance={anchorDistance}
         >
           <ContentContainer>
             {leftIcon && (
@@ -57,14 +72,14 @@ export const Snackbar: React.FC<SnackbarProps> = ({
             {children}
           </ContentContainer>
           {dismissable && (
-            <PressableSurface effect="none" onPress={onClose}>
+            <DismissContainer effect="none" onPress={onClose}>
               <Icon
                 {...rightIcon}
                 size="centi"
                 name="close"
                 type="material-community"
               />
-            </PressableSurface>
+            </DismissContainer>
           )}
         </SnackbarContainer>
       )}
