@@ -1,19 +1,26 @@
 import styled from '@emotion/styled';
 import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
-import { DrawerProps } from './Drawer';
+import { DrawerProps, OverlayProps } from './Drawer';
 import { css } from '@emotion/react';
 
-export const StyledOverlay = styled('div')<Partial<StyleProps>>`
+export const StyledOverlay = styled('div')<Partial<StyleProps> & OverlayProps>`
   background: ${({ theme }: StyleProps) =>
     hex2rgba(theme.miscellaneous.overlay, 0.5)};
   width: 100vw;
   height: 100vh;
-  z-index: ${({ theme }: StyleProps) => theme.zIndex.drawer};
-  cursor: pointer;
+  z-index: ${({ theme, active }: StyleProps & OverlayProps) =>
+    active ? theme.zIndex.drawer : theme.zIndex.default};
+  cursor: ${({ active }: OverlayProps) => (active ? 'pointer' : 'default')};
   position: absolute;
+  transition: opacity 300ms ease-in-out;
+  opacity: ${({ active }: OverlayProps) => (active ? 1 : 0)};
 `;
 
-const anchorLeft = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
+const anchorLeft = ({
+  theme,
+  anchorPosition,
+  open,
+}: StyleProps & DrawerProps) => {
   return (
     anchorPosition === 'left' &&
     css`
@@ -21,10 +28,16 @@ const anchorLeft = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
       top: 0;
       border-top-right-radius: ${theme.borderRadius.centi};
       border-bottom-right-radius: ${theme.borderRadius.centi};
+      transform: ${open ? 'translateX(0%)' : 'translateX(-100%)'};
+      height: 100vh;
     `
   );
 };
-const anchorRight = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
+const anchorRight = ({
+  theme,
+  anchorPosition,
+  open,
+}: StyleProps & DrawerProps) => {
   return (
     anchorPosition === 'right' &&
     css`
@@ -32,11 +45,17 @@ const anchorRight = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
       top: 0;
       border-top-left-radius: ${theme.borderRadius.centi};
       border-bottom-left-radius: ${theme.borderRadius.centi};
+      transform: ${open ? 'translateX(0)' : 'translateX(100%)'};
+      height: 100vh;
     `
   );
 };
 
-const anchorTop = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
+const anchorTop = ({
+  theme,
+  anchorPosition,
+  open,
+}: StyleProps & DrawerProps) => {
   return (
     anchorPosition === 'top' &&
     css`
@@ -45,11 +64,17 @@ const anchorTop = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
       top: 0;
       border-bottom-right-radius: ${theme.borderRadius.centi};
       border-bottom-left-radius: ${theme.borderRadius.centi};
+      transform: ${open ? 'translateY(0%)' : 'translateY(-100%)'};
+      width: 100vw;
     `
   );
 };
 
-const anchorBottom = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
+const anchorBottom = ({
+  theme,
+  anchorPosition,
+  open,
+}: StyleProps & DrawerProps) => {
   return (
     anchorPosition === 'bottom' &&
     css`
@@ -58,15 +83,16 @@ const anchorBottom = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
       bottom: 0;
       border-top-right-radius: ${theme.borderRadius.centi};
       border-top-left-radius: ${theme.borderRadius.centi};
+      transform: ${open ? 'translateY(0%)' : 'translateY(100%)'};
+      width: 100vw;
     `
   );
 };
 
-const baseStyles = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
+const baseStyles = ({ theme }: StyleProps & DrawerProps) => {
   return css`
-    height: ${['left', 'right'].includes(anchorPosition) && '100vh'};
-    width: ${['top', 'bottom'].includes(anchorPosition) && '100wh'};
-    position: absolute;
+    transition: transform 300ms ease-in-out;
+    position: fixed;
     background-color: ${theme.miscellaneous.bodyColor};
     z-index: ${`calc(${theme.zIndex.drawer} + 1)`};
   `;
