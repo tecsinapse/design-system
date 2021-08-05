@@ -94,7 +94,7 @@ const Drawer: FC<DrawerProps> = ({
           </div>
         )}
       </Transition>
-      <Transition in={open} timeout={500} unmountOnExit>
+      <Transition in={open} timeout={300} unmountOnExit>
         {state => (
           <>
             {open && (
