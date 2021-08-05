@@ -67,6 +67,7 @@ const baseStyles = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
     height: ${['left', 'right'].includes(anchorPosition) && '100vh'};
     width: ${['top', 'bottom'].includes(anchorPosition) && '100wh'};
     position: fixed;
+    overflow: hidden;
     background-color: ${theme.miscellaneous.bodyColor};
     z-index: ${theme.zIndex.drawer + 1};
   `;

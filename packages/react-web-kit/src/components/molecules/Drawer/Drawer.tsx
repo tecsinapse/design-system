@@ -56,7 +56,7 @@ const Drawer: FC<DrawerProps> = ({
   };
 
   const defaultStyle = {
-    transition: `opacity 300ms ease-in-out`,
+    transition: `opacity 1s ease-in-out`,
     opacity: 0,
   };
   const transitionStyles = {
@@ -82,7 +82,7 @@ const Drawer: FC<DrawerProps> = ({
 
   return (
     <>
-      <Transition in={open} timeout={300} unmountOnExit>
+      <Transition in={open} timeout={300}>
         {state => (
           <div
             style={{
@@ -90,24 +90,20 @@ const Drawer: FC<DrawerProps> = ({
               ...transitionStyles[state],
             }}
           >
-            {open && <StyledOverlay onClick={onClose} />}
+            <StyledOverlay onClick={onClose} />
           </div>
         )}
       </Transition>
-      <Transition in={open} timeout={300} unmountOnExit>
+      <Transition in={open} timeout={300}>
         {state => (
-          <>
-            {open && (
-              <StyledContainerDrawer
-                style={getStyles(anchorPosition, state)}
-                anchorPosition={anchorPosition}
-                onClose={onClose}
-                open={open}
-              >
-                {children}
-              </StyledContainerDrawer>
-            )}
-          </>
+          <StyledContainerDrawer
+            style={getStyles(anchorPosition, state)}
+            anchorPosition={anchorPosition}
+            onClose={onClose}
+            open={open}
+          >
+            {children}
+          </StyledContainerDrawer>
         )}
       </Transition>
     </>
