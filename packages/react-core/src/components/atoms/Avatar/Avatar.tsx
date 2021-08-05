@@ -1,6 +1,7 @@
+import React from 'react';
 import { IconSize } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
-import { getImage, getIniciais } from './helpers';
+
+import { getIniciais } from './helpers';
 import {
   ContainerButtonAvatar,
   StyledAvatar,
@@ -21,7 +22,7 @@ export interface AvatarProps {
   isAsset?: boolean;
 }
 
-const Avatar: FC<AvatarProps> = ({
+export const Avatar: React.FC<AvatarProps> = ({
   srcImage,
   name,
   onPress,
@@ -39,7 +40,7 @@ const Avatar: FC<AvatarProps> = ({
     <ContainerButtonAvatar effect="none" onPress={onPress} size={size}>
       {srcImage && !hasError ? (
         <StyledAvatar
-          source={getImage(srcImage, isAsset)}
+          source={isAsset ? require(srcImage) : { uri: srcImage }}
           onError={() => setHasError(true)}
         />
       ) : (
