@@ -94,7 +94,7 @@ const baseStyles = ({ theme }: StyleProps & DrawerProps) => {
     transition: transform 300ms ease-in-out;
     position: fixed;
     background-color: ${theme.miscellaneous.bodyColor};
-    z-index: ${`calc(${theme.zIndex.drawer} + 1)`};
+    z-index: ${theme.zIndex.drawer + 1};
   `;
 };
 

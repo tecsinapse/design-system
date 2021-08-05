@@ -1,5 +1,8 @@
 export * from '@tecsinapse/react-core';
-export { default as Badge } from './components/atoms/Badge/Badge';
+export {
+  default as Badge,
+  BadgeWebProps,
+} from './components/atoms/Badge/Badge';
 export {
   Button,
   useMouseHover,
