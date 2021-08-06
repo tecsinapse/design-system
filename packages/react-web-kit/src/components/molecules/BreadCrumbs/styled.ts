@@ -1,22 +1,13 @@
 import styled from '@emotion/styled';
+import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 
-export const StyledContainerBreadCrumbs = styled('div')`
-  background-color: white;
-  width: 90%;
-  height: 37px;
+export const StyledContainerBreadCrumbs = styled('div')<Partial<StyleProps>>`
+  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 8px 16px 8px 16px;
-  border-radius: ${({ theme }) => theme.borderRadius.mili};
-`;
-
-export const StyledText = styled('a')`
-  text-decoration: none;
-`;
-
-export const StyledContainerItem = styled('div')`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: ${({ theme }) => `${theme.spacing.mili} ${theme.spacing.deca}`};
+  border-radius: ${({ theme }: StyleProps) => theme.borderRadius.mili};
+  box-shadow: 0px 2px 8px
+    ${({ theme }) => hex2rgba(theme.miscellaneous.shadow, 0.08)};
 `;

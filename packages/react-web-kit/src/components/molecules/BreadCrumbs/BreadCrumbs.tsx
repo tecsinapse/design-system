@@ -1,17 +1,11 @@
-import React, { FC } from 'react';
-import {
-  StyledContainerBreadCrumbs,
-  StyledContainerItem,
-  StyledText,
-} from './styled';
-import { Icon, Text } from '@tecsinapse/react-core';
+import React, { ElementType, FC } from 'react';
+import { StyledContainerBreadCrumbs } from './styled';
+import { BreadCrumbItem } from './BreadCrumbItem';
 
 type BreadCrumb = {
   title: string;
-  component: any;
-  componentProps: {
-    href: string;
-  };
+  Component: ElementType;
+  componentProps?: any;
 };
 
 interface BreadCrumbsProps {
@@ -21,16 +15,19 @@ interface BreadCrumbsProps {
 const BreadCrumbs: FC<BreadCrumbsProps> = ({ breadcrumbs }) => {
   return (
     <StyledContainerBreadCrumbs>
-      {breadcrumbs.map(item => (
-        <StyledContainerItem key={item.title}>
-          <StyledText href="/">
-            <Text colorVariant="secondary" colorTone="xdark">
-              {item.title}
-            </Text>
-            <Icon name="circle" type="material-community" size="centi" />
-          </StyledText>
-        </StyledContainerItem>
-      ))}
+      {breadcrumbs.map((item, index) => {
+        const { componentProps, Component, title } = item;
+        return (
+          <BreadCrumbItem
+            key={index}
+            Component={Component}
+            props={componentProps}
+            index={index}
+            breadcrumbsLength={breadcrumbs.length}
+            title={title}
+          />
+        );
+      })}
     </StyledContainerBreadCrumbs>
   );
 };
