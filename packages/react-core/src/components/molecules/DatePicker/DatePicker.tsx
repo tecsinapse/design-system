@@ -1,17 +1,19 @@
+import { format as formatDate } from 'date-fns';
 import * as React from 'react';
 import { useInputFocus } from '../../atoms/Input';
-import { CalendarProps, DateRange, SelectionType } from '../Calendar';
-import { Text } from '../../atoms/Text';
-import { Modal } from './Modal';
-import { format as formatDate } from 'date-fns';
 import {
   PressableInputContainer,
   PressableInputContainerProps,
 } from '../../atoms/PressableInputContainer';
+import { PressableSurfaceProps } from '../../atoms/PressableSurface';
+import { Text } from '../../atoms/Text';
+import { CalendarProps, DateRange, SelectionType } from '../Calendar';
+import { Modal } from './Modal';
 
 export interface DatePickerProps<T extends SelectionType>
   extends PressableInputContainerProps,
     Omit<CalendarProps<T>, 'style'> {
+  PressableElement?: React.FC<PressableSurfaceProps>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -31,6 +33,7 @@ function DatePicker<T extends SelectionType>({
   onFocus,
   onBlur,
   disabled,
+  PressableElement,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -65,14 +68,18 @@ function DatePicker<T extends SelectionType>({
 
   return (
     <>
-      <PressableInputContainer
-        onPress={handlePressInput}
-        focused={focused}
-        disabled={disabled}
-        {...rest}
-      >
-        <Text>{getDisplayValue()}</Text>
-      </PressableInputContainer>
+      {PressableElement ? (
+        <PressableElement onPress={handlePressInput} />
+      ) : (
+        <PressableInputContainer
+          onPress={handlePressInput}
+          focused={focused}
+          disabled={disabled}
+          {...rest}
+        >
+          <Text>{getDisplayValue()}</Text>
+        </PressableInputContainer>
+      )}
       <Modal
         visible={modalVisible}
         onRequestClose={handleCloseModal}
