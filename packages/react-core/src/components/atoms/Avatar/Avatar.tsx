@@ -1,5 +1,6 @@
+import React from 'react';
 import { IconSize } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
+
 import { getIniciais } from './helpers';
 import {
   ContainerButtonAvatar,
@@ -11,17 +12,22 @@ import {
 export type SizeAvatar = Omit<IconSize, 'centi' | 'deca'>;
 
 export interface AvatarProps {
+  /** if your asset is remote, just provide http or https scheme, otherwise for
+   *  local asset, provide relative or absolute path */
   srcImage?: string;
   name: string;
   onPress?: () => void;
   size?: keyof SizeAvatar;
+  /** isAsset is a property for setting local assets with require under the hood */
+  isAsset?: boolean;
 }
 
-const Avatar: FC<AvatarProps> = ({
+export const Avatar: React.FC<AvatarProps> = ({
   srcImage,
   name,
   onPress,
   size = 'mega',
+  isAsset = false,
 }) => {
   const [hasError, setHasError] = React.useState<boolean>(false);
 
@@ -34,7 +40,7 @@ const Avatar: FC<AvatarProps> = ({
     <ContainerButtonAvatar effect="none" onPress={onPress} size={size}>
       {srcImage && !hasError ? (
         <StyledAvatar
-          source={{ uri: srcImage }}
+          source={isAsset ? require(srcImage) : { uri: srcImage }}
           onError={() => setHasError(true)}
         />
       ) : (

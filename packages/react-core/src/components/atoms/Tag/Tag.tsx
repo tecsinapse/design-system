@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
-
-import { StyledTagContainer, StyledLeftIcon, StyledCloseIcon } from './styled';
+import React, { useCallback, useState } from 'react';
+import { ViewProps } from 'react-native';
 import { IconProps } from '../Icon';
 import { PressableSurface } from '../PressableSurface';
+import { StyledCloseIcon, StyledLeftIcon, StyledTagContainer } from './styled';
 
-export interface TagProps {
+export interface TagProps extends ViewProps {
   value: React.ReactNode;
   icon?: IconProps;
   dismiss?: boolean;
@@ -18,6 +18,7 @@ const Tag: React.FC<TagProps> = ({
   variant = 'small',
   dismiss: canDismiss = false,
   onDismiss = () => {},
+  ...rest
 }): JSX.Element => {
   const [dismiss, setDismiss] = useState(false);
 
@@ -29,7 +30,7 @@ const Tag: React.FC<TagProps> = ({
   return (
     <>
       {!dismiss && (
-        <StyledTagContainer variant={variant}>
+        <StyledTagContainer {...rest} variant={variant}>
           {icon && (
             <StyledLeftIcon
               size={icon.size || 'micro'}
