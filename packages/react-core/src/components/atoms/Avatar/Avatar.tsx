@@ -40,7 +40,7 @@ export const Avatar: React.FC<AvatarProps> = ({
     <ContainerButtonAvatar effect="none" onPress={onPress} size={size}>
       {srcImage && !hasError ? (
         <StyledAvatar
-          source={isAsset ? { uri: srcImage } : { uri: srcImage }}
+          source={isAsset ? require(srcImage) : { uri: srcImage }}
           onError={() => setHasError(true)}
         />
       ) : (
