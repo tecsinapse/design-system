@@ -10,16 +10,24 @@ export default {
 };
 
 const OPTIONS_EXAMPLE: Option[] = [
-  { label: 'Ryan', value: 'ryan', fontColor: 'dark' },
-  { label: 'Carlos', value: 'ryan', fontColor: 'orange' },
-  { label: 'Arruda', value: 'ryan', fontColor: 'medium' },
-  { label: 'Correa', value: 'ryan', fontColor: 'dark' },
+  { label: 'Ryan', value: 'ryan' },
+  { label: 'Carlos', value: 'carlos' },
+  { label: 'Arruda', value: 'arruda' },
+  { label: 'Correa', value: 'correa' },
 ];
 
 const Template: Story = () => {
+  const handleSearch = React.useCallback((searchArg: string) => {
+    console.log(searchArg);
+  }, []);
+
   return (
     <Container>
-      <Select options={OPTIONS_EXAMPLE} />
+      <Select
+        options={OPTIONS_EXAMPLE}
+        label="Label do select"
+        onSearch={handleSearch}
+      />
     </Container>
   );
 };

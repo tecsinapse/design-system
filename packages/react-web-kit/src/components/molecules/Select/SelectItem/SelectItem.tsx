@@ -1,16 +1,19 @@
 import React, { FC } from 'react';
 import { Option } from '../Select';
 import { Text } from '@tecsinapse/react-core';
-import { ContainerItemSelect } from './styled';
+import { ContainerItemSelect, StyledSpan } from './styled';
 
 interface SelectItemProps {
   option: Option;
+  onClick: (value: any) => void;
 }
-const SelectItem: FC<SelectItemProps> = ({ option }) => {
+
+const SelectItem: FC<SelectItemProps> = ({ option, onClick }) => {
   return (
-    <ContainerItemSelect>
-      {/*@ts-ignore*/}
-      <Text fontColor={option.fontColor}>{option.label}</Text>
+    <ContainerItemSelect onClick={onClick}>
+      <Text fontWeight="bold">
+        <StyledSpan>{option.label}</StyledSpan>
+      </Text>
     </ContainerItemSelect>
   );
 };
