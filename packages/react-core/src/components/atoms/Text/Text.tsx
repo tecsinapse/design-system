@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import {
   ColorGradationType,
   ColorType,
@@ -6,7 +7,6 @@ import {
   FontWeightType,
   TypographyVariationType,
 } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 import { StyledColoredText } from './styled';
 
@@ -23,6 +23,8 @@ export interface TextProps {
   colorVariant?: ColorType;
   /** Palette theme colors gradation */
   colorTone?: ColorGradationType;
+  numberOfLines?: number;
+  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip';
   style?: StyleProp<TextStyle>;
 }
 
@@ -35,6 +37,8 @@ const Text: FC<TextProps> = ({
   colorVariant,
   fontWeight = 'regular',
   typography = 'base',
+  numberOfLines,
+  ellipsizeMode,
   ...rest
 }): JSX.Element => {
   return (
@@ -46,6 +50,8 @@ const Text: FC<TextProps> = ({
       colorVariant={colorVariant}
       fontWeight={fontWeight}
       typography={typography}
+      numberOfLines={numberOfLines}
+      ellipsizeMode={ellipsizeMode}
     >
       {children}
     </StyledColoredText>

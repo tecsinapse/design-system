@@ -1,5 +1,8 @@
 export * from '@tecsinapse/react-core';
-export { default as Badge } from './components/atoms/Badge/Badge';
+export {
+  default as Badge,
+  BadgeWebProps,
+} from './components/atoms/Badge/Badge';
 export {
   Button,
   useMouseHover,
@@ -13,3 +16,4 @@ export {
 } from './components/molecules/InputPassword';
 export { Menubar, MenubarProps } from './components/molecules/Menubar';
 export { Drawer, DrawerProps } from './components/molecules/Drawer';
+export { Snackbar, SnackbarWebProps } from './components/molecules/Snackbar';
