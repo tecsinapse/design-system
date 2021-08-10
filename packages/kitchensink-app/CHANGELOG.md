@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.1.0...@tecsinapse/kitchensink-app@1.2.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* **avatar:** fix local assets ([bf44e88](https://github.com/tecsinapse/design-system/commit/bf44e8887d880a9333dc4631b7913863128cbfa1))
+* code style ([4f5d29a](https://github.com/tecsinapse/design-system/commit/4f5d29a4e71cbf0147d095bab49793d9bbc17d18))
+
+
+### Features
+
+* Modify Badge to final version ([df9691c](https://github.com/tecsinapse/design-system/commit/df9691c996ac658bc9669456679e514ca8a74421))
+
+
+
+
+
 # [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.0.0...@tecsinapse/kitchensink-app@1.1.0) (2021-07-30)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app

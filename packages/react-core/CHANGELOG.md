@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.1.0...@tecsinapse/react-core@1.2.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* **avatar:** build ([f760e79](https://github.com/tecsinapse/design-system/commit/f760e7936cb1757cbcc8ef2570dbf23599d1ad38))
+* **avatar:** fix local assets ([bf44e88](https://github.com/tecsinapse/design-system/commit/bf44e8887d880a9333dc4631b7913863128cbfa1))
+* **text:** improve interface ([d53f892](https://github.com/tecsinapse/design-system/commit/d53f8923308cf67af58765b503f14dacdb078b6e))
+* code style ([4f5d29a](https://github.com/tecsinapse/design-system/commit/4f5d29a4e71cbf0147d095bab49793d9bbc17d18))
+* type of return function getImage ([230e8c8](https://github.com/tecsinapse/design-system/commit/230e8c8234e40b9185580d764c11416cf334f833))
+
+
+### Features
+
+* add return type functions ([a6c1e21](https://github.com/tecsinapse/design-system/commit/a6c1e2140688d64191b63a08d32f6d3d9e0fa1b2))
+* add srcImage by require ([dcf9fdb](https://github.com/tecsinapse/design-system/commit/dcf9fdb4fd47c02a8c80b6de952b24187f14b136))
+* Modify Badge to final version ([df9691c](https://github.com/tecsinapse/design-system/commit/df9691c996ac658bc9669456679e514ca8a74421))
+
+
+
+
+
 # [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.0.0...@tecsinapse/react-core@1.1.0) (2021-07-30)
 
 **Note:** Version bump only for package @tecsinapse/react-core
