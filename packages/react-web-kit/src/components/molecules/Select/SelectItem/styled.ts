@@ -7,13 +7,16 @@ export const ContainerItemSelect = styled('div')<Partial<StyleProps>>`
   &:hover {
     background-color: ${({ theme }) => theme.color.primary.xlight};
   }
-`;
-
-export const StyledSpan = styled('div')<Partial<StyleProps>>`
-  color: ${({ theme }) => theme.color.secondary.xdark};
-  &:hover {
+  &:hover span {
     color: ${({ theme }) => theme.color.primary.medium};
   }
-  width: 100%;
-  height: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const StyledSpan = styled('span')<Partial<StyleProps>>`
+  color: ${({ theme }) => theme.color.secondary.xdark};
+  padding: ${({ theme }) => `${theme.spacing.mili} 0px`};
 `;

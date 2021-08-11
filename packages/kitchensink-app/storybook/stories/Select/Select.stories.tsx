@@ -39,8 +39,8 @@ const Component = () => {
         value={multiValue}
         type={'multi'}
         onSelect={handleSelectMultipleValues}
-        labelExtractor={item => item.label}
-        keyExtractor={item => String(item.key)}
+        labelExtractor={item => item.label} /// o q é renderizado
+        keyExtractor={item => String(item.key)} /// o valor computado
         searchBarPlaceholder={'Busque uma opção'}
         selectModalTitle={'Selecione uma opção'}
         confirmButtonText={'Confirmar'}

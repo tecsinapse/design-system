@@ -1,12 +1,17 @@
 import { Story } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 
-import { default as Select, Option } from './Select';
+import { default as Select, SelectProps } from './Select';
 import styled from '@emotion/styled';
 
 export default {
   title: 'Components/Select',
   component: Select,
+};
+
+type Option = {
+  label: string;
+  value: string;
 };
 
 const OPTIONS_EXAMPLE: Option[] = [
@@ -16,7 +21,12 @@ const OPTIONS_EXAMPLE: Option[] = [
   { label: 'Correa', value: 'correa' },
 ];
 
-const Template: Story = () => {
+const Template: Story<SelectProps<any, any>> = args => {
+  const [value, setValues] = useState<string[]>([]);
+  function handleSelectMultipleValues(keys: string[]) {
+    setValues(keys);
+  }
+
   const handleSearch = React.useCallback((searchArg: string) => {
     console.log(searchArg);
   }, []);
@@ -24,8 +34,12 @@ const Template: Story = () => {
   return (
     <Container>
       <Select
-        options={OPTIONS_EXAMPLE}
-        label="Label do select"
+        {...args}
+        value={value}
+        //@ts-ignore
+        onSelect={handleSelectMultipleValues}
+        labelExtractor={item => item.label}
+        keyExtractor={item => String(item.value)}
         onSearch={handleSearch}
       />
     </Container>
@@ -33,6 +47,13 @@ const Template: Story = () => {
 };
 
 export const Base = Template.bind({});
+
+Base.args = {
+  placeholder: 'Placeholder do select',
+  type: 'multi',
+  options: OPTIONS_EXAMPLE,
+  hideSearchBar: false,
+};
 
 const Container = styled('div')`
   width: 100%;
