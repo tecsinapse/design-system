@@ -6,7 +6,7 @@ interface SelectItemProps<Data, Type extends 'single' | 'multi'> {
   item: Data;
   type: Type;
   value: string[];
-  onClick: (value: string[]) => void;
+  onClick: (value: string[] | string) => void;
   keyExtractor: (t: Data, index: number) => string;
   index: number;
 }
@@ -39,7 +39,7 @@ const SelectItem: FC<SelectItemProps<any, any>> = ({
         onClick([...auxArray]);
       }
     } else {
-      onClick([key]);
+      onClick(key);
     }
   };
 

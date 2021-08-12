@@ -22,7 +22,7 @@ export const getDisplayValue = (
   } else {
     if (value === undefined) return placeholder;
     const selectedOption = options.find(
-      (option, index) => keyExtractor(option, index) === value[0]
+      (option, index) => keyExtractor(option, index) === value
     );
     return selectedOption ? labelExtractor(selectedOption) : placeholder;
   }

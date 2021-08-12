@@ -22,22 +22,21 @@ const OPTIONS_EXAMPLE: Option[] = [
 ];
 
 const Template: Story<SelectProps<any, any>> = args => {
-  const [value, setValues] = useState<string[]>([]);
-  function handleSelectMultipleValues(keys: string[]) {
-    setValues(keys);
-  }
+  const [value, setValues] = useState<string[] | string>(
+    args.type === 'multi' ? [] : ''
+  );
+
+  const handleValues = (key: string[] | string) => setValues(key);
 
   const handleSearch = React.useCallback((searchArg: string) => {
     console.log(searchArg);
   }, []);
-
   return (
     <Container>
       <Select
         {...args}
         value={value}
-        //@ts-ignore
-        onSelect={handleSelectMultipleValues}
+        onSelect={handleValues}
         labelExtractor={item => item.label}
         keyExtractor={item => String(item.value)}
         onSearch={handleSearch}
