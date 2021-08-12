@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 
-export const StyledContainerBreadCrumbs = styled('div')<Partial<StyleProps>>`
+export const StyledContainerBreadcrumbs = styled('div')<Partial<StyleProps>>`
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
   display: flex;
   align-items: center;

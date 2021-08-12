@@ -2,12 +2,12 @@ import { Story } from '@storybook/react';
 import React, { ElementType } from 'react';
 import { StyleProps } from '@tecsinapse/react-core';
 
-import BreadCrumbs from './BreadCrumbs';
+import { default as Breadcrumbs } from './Breadcrumbs';
 import styled from '@emotion/styled';
 
 export default {
-  title: 'Components/BreadCrumbs',
-  component: BreadCrumbs,
+  title: 'Components/Breadcrumbs',
+  component: Breadcrumbs,
   parameters: {
     layout: 'fullscreen',
   },
@@ -36,9 +36,9 @@ const breadcrumbs = [
 const Template: Story = () => {
   return (
     <Container>
-      <ContainerBreadCrumb>
-        <BreadCrumbs breadcrumbs={breadcrumbs} />
-      </ContainerBreadCrumb>
+      <ContainerBreadcrumb>
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+      </ContainerBreadcrumb>
     </Container>
   );
 };
@@ -52,7 +52,7 @@ const Container = styled('div')<Partial<StyleProps>>`
   align-items: center;
 `;
 
-const ContainerBreadCrumb = styled('div')`
+const ContainerBreadcrumb = styled('div')`
   width: 90%;
 `;
 

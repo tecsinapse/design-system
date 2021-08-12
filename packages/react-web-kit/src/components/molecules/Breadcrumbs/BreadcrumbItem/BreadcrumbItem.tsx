@@ -2,33 +2,28 @@ import React, { ElementType, FC } from 'react';
 import { Icon, Text } from '@tecsinapse/react-core';
 import { StyledContainerItem, StyledContainerIcon } from './styled';
 
-export interface BreadCrumbItemProps {
+export interface BreadcrumbItemProps {
   Component: ElementType;
   props: any;
-  index: number;
-  breadcrumbsLength: number;
+  isLast: boolean;
   title: string;
 }
 
-const BreadCrumbItem: FC<BreadCrumbItemProps> = ({
+const BreadcrumbItem: FC<BreadcrumbItemProps> = ({
   props,
   Component,
-  index,
-  breadcrumbsLength,
+  isLast,
   title,
 }) => {
   const noTextDecoration = { textDecoration: 'none' };
   return (
     <StyledContainerItem>
       <Component {...props} style={noTextDecoration}>
-        <Text
-          colorVariant="secondary"
-          colorTone={index === breadcrumbsLength - 1 ? 'medium' : 'xdark'}
-        >
+        <Text colorVariant="secondary" colorTone={isLast ? 'medium' : 'xdark'}>
           {title}
         </Text>
       </Component>
-      {index !== breadcrumbsLength - 1 && (
+      {isLast && (
         <StyledContainerIcon>
           <Icon
             name="chevron-double-right"
@@ -42,4 +37,4 @@ const BreadCrumbItem: FC<BreadCrumbItemProps> = ({
   );
 };
 
-export default BreadCrumbItem;
+export default BreadcrumbItem;
