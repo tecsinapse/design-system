@@ -22,34 +22,18 @@ const OPTIONS_EXAMPLE: Option[] = [
 ];
 
 const Template: Story<SelectProps<any, any>> = args => {
-  const [multiValue, setMultiValue] = useState<string[]>([]);
-  const [singleValue, setSingleValue] = useState<string | undefined>('');
-
-  const handleSelectMultipleValues = (keys: string[]) => {
-    setMultiValue(keys);
-  };
-
-  const handleSelectSingleValue = (key: string | undefined) =>
-    setSingleValue(key);
-
-  const handleSearch = React.useCallback((searchArg: string) => {
-    console.log(searchArg);
-  }, []);
-
-  const isMulti = args.type === 'multi';
   return (
     <Container>
       <ContainerSelect>
         <Select
           {...args}
-          value={isMulti ? multiValue : singleValue}
+          type="single"
+          value=""
           //@ts-ignore
-          onSelect={
-            isMulti ? handleSelectMultipleValues : handleSelectSingleValue
-          }
+          onSelect={() => {}}
           labelExtractor={item => item.label}
           keyExtractor={item => String(item.value)}
-          onSearch={handleSearch}
+          onSearch={() => {}}
         />
       </ContainerSelect>
     </Container>
@@ -60,7 +44,77 @@ export const Base = Template.bind({});
 
 Base.args = {
   placeholder: 'Placeholder do select',
-  type: 'multi',
+  options: OPTIONS_EXAMPLE,
+  hideSearchBar: false,
+};
+
+const TemplateSingle: Story<SelectProps<any, any>> = args => {
+  const [singleValue, setSingleValue] = useState<string | undefined>('');
+
+  const handleSelectSingleValue = (key: string | undefined) =>
+    setSingleValue(key);
+
+  const handleSearch = React.useCallback((searchArg: string) => {
+    console.log(searchArg);
+  }, []);
+
+  return (
+    <Container>
+      <ContainerSelect>
+        <Select
+          {...args}
+          value={singleValue}
+          type="single"
+          //@ts-ignore
+          onSelect={handleSelectSingleValue}
+          labelExtractor={item => item.label}
+          keyExtractor={item => String(item.value)}
+          onSearch={handleSearch}
+        />
+      </ContainerSelect>
+    </Container>
+  );
+};
+
+export const Single = TemplateSingle.bind({});
+
+Single.args = {
+  placeholder: 'Placeholder do select',
+  options: OPTIONS_EXAMPLE,
+  hideSearchBar: false,
+};
+
+const TemplateMulti: Story<SelectProps<any, any>> = args => {
+  const [multiValue, setMultiValue] = useState<string[]>([]);
+
+  const handleSelectMultipleValues = (keys: string[]) => setMultiValue(keys);
+
+  const handleSearch = React.useCallback((searchArg: string) => {
+    console.log(searchArg);
+  }, []);
+
+  return (
+    <Container>
+      <ContainerSelect>
+        <Select
+          {...args}
+          value={multiValue}
+          type="multi"
+          //@ts-ignore
+          onSelect={handleSelectMultipleValues}
+          labelExtractor={item => item.label}
+          keyExtractor={item => String(item.value)}
+          onSearch={handleSearch}
+        />
+      </ContainerSelect>
+    </Container>
+  );
+};
+
+export const Multi = TemplateMulti.bind({});
+
+Multi.args = {
+  placeholder: 'Placeholder do select',
   options: OPTIONS_EXAMPLE,
   hideSearchBar: false,
 };

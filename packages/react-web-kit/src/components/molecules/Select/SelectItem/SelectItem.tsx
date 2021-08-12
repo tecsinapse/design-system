@@ -26,9 +26,10 @@ const SelectItem: FC<SelectItemProps<any, any>> = ({
 
   const clickItem = (item, index) => {
     const key = keyExtractor(item, index);
-    const auxChecked = !checked;
-    setChecked(!checked);
+
     if (Array.isArray(value)) {
+      const auxChecked = !checked;
+      setChecked(!checked);
       if (auxChecked) {
         onClick([...value, key]);
       } else {
@@ -38,6 +39,7 @@ const SelectItem: FC<SelectItemProps<any, any>> = ({
         onClick([...auxArray]);
       }
     } else {
+      setChecked(false);
       onClick(key);
     }
   };
