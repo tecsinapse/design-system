@@ -6,7 +6,7 @@ export const StyledContainer = styled('div')<Partial<StyleProps>>`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-width: 400px;
+  width: 100%;
   position: relative;
 `;
 

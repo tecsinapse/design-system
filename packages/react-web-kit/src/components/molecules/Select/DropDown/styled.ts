@@ -7,11 +7,6 @@ import {
 } from '@tecsinapse/react-core';
 import { SelectProps } from '../Select';
 
-type TypeAux = {
-  theme: ThemeProviderProps;
-  hideSearchBar: boolean;
-};
-
 export const StyledContainerDropdown = styled('div')<
   Partial<StyleProps & SelectProps<any, any>>
 >`

@@ -19,6 +19,9 @@ const OPTIONS_EXAMPLE: Option[] = [
   { label: 'Carlos', value: 'carlos' },
   { label: 'Arruda', value: 'arruda' },
   { label: 'Correa', value: 'correa' },
+  { label: 'Correa', value: '12' },
+  { label: 'Correa', value: 'cor23rea' },
+  { label: 'Correa', value: 'cor55rea' },
 ];
 
 const Template: Story<SelectProps<any, any>> = args => {
@@ -33,14 +36,16 @@ const Template: Story<SelectProps<any, any>> = args => {
   }, []);
   return (
     <Container>
-      <Select
-        {...args}
-        value={value}
-        onSelect={handleValues}
-        labelExtractor={item => item.label}
-        keyExtractor={item => String(item.value)}
-        onSearch={handleSearch}
-      />
+      <ContainerSelect>
+        <Select
+          {...args}
+          value={value}
+          onSelect={handleValues}
+          labelExtractor={item => item.label}
+          keyExtractor={item => String(item.value)}
+          onSearch={handleSearch}
+        />
+      </ContainerSelect>
     </Container>
   );
 };
@@ -61,4 +66,8 @@ const Container = styled('div')`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+
+const ContainerSelect = styled('div')`
+  min-width: 400px;
 `;
