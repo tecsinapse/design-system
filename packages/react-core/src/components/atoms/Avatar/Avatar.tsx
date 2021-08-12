@@ -1,6 +1,7 @@
 import React from 'react';
 import { IconSize } from '@tecsinapse/react-core';
 
+import { ImageSourcePropType } from 'react-native';
 import { getIniciais } from './helpers';
 import {
   ContainerButtonAvatar,
@@ -12,37 +13,31 @@ import {
 export type SizeAvatar = Omit<IconSize, 'centi' | 'deca'>;
 
 export interface AvatarProps {
-  /** if your asset is remote, just provide http or https scheme, otherwise for
-   *  local asset, provide relative or absolute path */
-  srcImage?: string;
+  /** This property should follow react-native spec. If the asset is remote, use `{ uri: 'https://example.com/logo.png' }`.
+   * For local assets, you shold use `require('./logo.png')`. */
+  source?: ImageSourcePropType;
   name: string;
   onPress?: () => void;
   size?: keyof SizeAvatar;
-  /** isAsset is a property for setting local assets with require under the hood */
-  isAsset?: boolean;
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
-  srcImage,
+  source,
   name,
   onPress,
   size = 'mega',
-  isAsset = false,
 }) => {
   const [hasError, setHasError] = React.useState<boolean>(false);
 
-  // If the srcImage changes in runtime, this prevents error from being true always (fallback)
+  // If the source changes in runtime, this prevents error from being true always (fallback)
   React.useEffect(() => {
     setHasError(false);
-  }, [srcImage]);
+  }, [source]);
 
   return (
     <ContainerButtonAvatar effect="none" onPress={onPress} size={size}>
-      {srcImage && !hasError ? (
-        <StyledAvatar
-          source={isAsset ? require(srcImage) : { uri: srcImage }}
-          onError={() => setHasError(true)}
-        />
+      {source && !hasError ? (
+        <StyledAvatar source={source} onError={() => setHasError(true)} />
       ) : (
         <StyledBackground>
           <StyledText fontWeight="bold" fontColor="light">
