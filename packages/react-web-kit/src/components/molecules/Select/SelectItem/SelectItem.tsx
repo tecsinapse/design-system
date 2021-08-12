@@ -5,7 +5,7 @@ import { ContainerItemSelect, StyledSpan } from './styled';
 interface SelectItemProps<Data, Type extends 'single' | 'multi'> {
   item: Data;
   type: Type;
-  value: string[];
+  value: string[] | string;
   onClick: (value: string[] | string) => void;
   keyExtractor: (t: Data, index: number) => string;
   index: number;
@@ -29,7 +29,7 @@ const SelectItem: FC<SelectItemProps<any, any>> = ({
     const key = keyExtractor(item, index);
     const auxChecked = !checked;
     setChecked(!checked);
-    if (isMulti) {
+    if (Array.isArray(value)) {
       if (auxChecked) {
         onClick([...value, key]);
       } else {
