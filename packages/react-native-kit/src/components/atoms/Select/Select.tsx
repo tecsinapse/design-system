@@ -14,12 +14,12 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
   options: Data[];
   onSelect: (
-    key: Type extends 'single' ? string | undefined : string[]
+    option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
-  value: Type extends 'single' ? string | undefined : string[];
+  value: Type extends 'single' ? Data | undefined : Data[];
   type: Type;
 
-  keyExtractor: (t: Data, index: number) => string;
+  keyExtractor: (t: Data, index?: number) => string;
   labelExtractor: (t: Data) => string;
   groupKeyExtractor?: (t: Data) => string;
 
@@ -89,7 +89,9 @@ function Select<Data, Type extends 'single' | 'multi'>({
         return options
           .reduce(
             (acc, option, index) =>
-              value.find(key => keyExtractor(option, index) == key)
+              value.find(
+                key => keyExtractor(option, index) == keyExtractor(key, index)
+              )
                 ? acc + labelExtractor(option) + ', '
                 : acc,
             ''
@@ -99,7 +101,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
     } else {
       if (value === undefined) return placeholder;
       const selectedOption = options.find(
-        (option, index) => keyExtractor(option, index) === value
+        (option, index) =>
+          keyExtractor(option, index) == keyExtractor(value as Data, index)
       );
       return selectedOption ? labelExtractor(selectedOption) : placeholder;
     }
