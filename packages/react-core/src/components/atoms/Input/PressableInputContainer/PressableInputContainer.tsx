@@ -1,4 +1,4 @@
-import { InputContainer, InputContainerProps } from '../Input';
+import { InputContainer, InputContainerProps } from '..';
 import { StyledPressableSurface } from './styled';
 import * as React from 'react';
 import { PressableStateCallbackType, StyleProp, ViewStyle } from 'react-native';

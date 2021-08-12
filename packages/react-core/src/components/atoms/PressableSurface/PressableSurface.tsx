@@ -4,7 +4,7 @@ import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
 import { ThemeProp } from '../../../types/defaults';
 import { lightenDarkenColor } from '../../../utils';
 
-const COLOR_VARIATION_FACTOR = 13;
+const COLOR_VARIATION_FACTOR = 25;
 
 export interface PressableSurfaceProps extends PressableProps {
   effect?: 'darken' | 'lighten' | 'none';

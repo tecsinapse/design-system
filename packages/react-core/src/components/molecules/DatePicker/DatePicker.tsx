@@ -1,10 +1,10 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { useInputFocus } from '../../atoms/Input';
 import {
   PressableInputContainer,
   PressableInputContainerProps,
-} from '../../atoms/PressableInputContainer';
+  useInputFocus,
+} from '../../atoms/Input';
 import { PressableSurfaceProps } from '../../atoms/PressableSurface';
 import { Text } from '../../atoms/Text';
 import { CalendarProps, DateRange, SelectionType } from '../Calendar';

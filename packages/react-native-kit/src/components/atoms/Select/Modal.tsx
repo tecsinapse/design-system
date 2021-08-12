@@ -4,6 +4,7 @@ import {
   ListFooter,
   ListItem,
   SearchBarContainer,
+  SelectIcon,
   StyledModal,
 } from './styled';
 import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
@@ -82,7 +83,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   const headerContent = selectModalTitleComponent ? (
     selectModalTitleComponent
   ) : selectModalTitle ? (
-    <Text>{selectModalTitle}</Text>
+    <Text typography="h4" fontWeight="bold">
+      {selectModalTitle}
+    </Text>
   ) : null;
 
   return (
@@ -106,6 +109,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
               placeholder={searchBarPlaceholder}
               value={searchArg}
               onChange={text => setSearchArg(text)}
+              leftComponent={
+                <SelectIcon name="search" type="ionicon" size="centi" />
+              }
             />
           </SearchBarContainer>
         )}
@@ -122,7 +128,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
                     labelPosition={'right'}
                     checked={item._checked}
                   >
-                    <Text>{labelExtractor(item)}</Text>
+                    <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                      {labelExtractor(item)}
+                    </Text>
                   </Checkbox>
                 ) : (
                   <RadioButton
@@ -130,7 +138,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
                     labelPosition={'right'}
                     checked={item._checked}
                   >
-                    <Text>{labelExtractor(item)}</Text>
+                    <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                      {labelExtractor(item)}
+                    </Text>
                   </RadioButton>
                 )}
               </View>
@@ -142,7 +152,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           color={'primary'}
           onPress={handleConfirm}
         >
-          <Text fontColor={'light'}>{confirmButtonText}</Text>
+          <Text fontColor={'light'} fontWeight="bold">
+            {confirmButtonText}
+          </Text>
         </FloatingButton>
       </StyledModal>
     </RNModal>
