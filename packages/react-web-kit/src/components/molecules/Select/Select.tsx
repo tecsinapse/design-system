@@ -17,6 +17,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   onSearch?: (searchArg: string) => void | never;
   searchBarPlaceholder?: string;
   hideSearchBar?: boolean;
+  label?: string;
 }
 
 export const Select: FC<SelectProps<any, any>> = ({
@@ -29,6 +30,7 @@ export const Select: FC<SelectProps<any, any>> = ({
   placeholder,
   onSearch,
   hideSearchBar = true,
+  label,
   ...rest
 }) => {
   const [dropDownVisible, setDropDownVisible] = React.useState(false);
@@ -45,7 +47,7 @@ export const Select: FC<SelectProps<any, any>> = ({
     <StyledContainer>
       <StyledInputContainer>
         <PressableInputContainer
-          label={placeholder}
+          label={label}
           {...rest}
           onPress={() => setDropDownVisible(!dropDownVisible)}
           rightComponent={
@@ -57,7 +59,9 @@ export const Select: FC<SelectProps<any, any>> = ({
             />
           }
         >
-          <Text>{displayValue}</Text>
+          <Text ellipsizeMode="tail" numberOfLines={1}>
+            {displayValue}
+          </Text>
         </PressableInputContainer>
       </StyledInputContainer>
       {dropDownVisible && (

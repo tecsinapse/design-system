@@ -15,10 +15,10 @@ type Option = {
 };
 
 const OPTIONS_EXAMPLE: Option[] = [
-  { label: 'Ryan', value: 'ryan' },
-  { label: 'Carlos', value: 'carlos' },
-  { label: 'Arruda', value: 'arruda' },
-  { label: 'Correa', value: 'correa' },
+  { label: 'Label 1', value: 'value1' },
+  { label: 'Label 2', value: 'value2' },
+  { label: 'Label 3', value: 'value3' },
+  { label: 'Label 4', value: 'value4' },
 ];
 
 const Template: Story<SelectProps<any, any>> = args => {
@@ -44,6 +44,7 @@ export const Base = Template.bind({});
 
 Base.args = {
   placeholder: 'Placeholder do select',
+  label: 'Label',
   options: OPTIONS_EXAMPLE,
   hideSearchBar: false,
 };
@@ -80,6 +81,7 @@ export const Single = TemplateSingle.bind({});
 
 Single.args = {
   placeholder: 'Placeholder do select',
+  label: 'Label',
   options: OPTIONS_EXAMPLE,
   hideSearchBar: false,
 };
@@ -115,6 +117,7 @@ export const Multi = TemplateMulti.bind({});
 
 Multi.args = {
   placeholder: 'Placeholder do select',
+  label: 'Label',
   options: OPTIONS_EXAMPLE,
   hideSearchBar: false,
 };
@@ -129,5 +132,6 @@ const Container = styled('div')`
 `;
 
 const ContainerSelect = styled('div')`
-  min-width: 400px;
+  display: flex;
+  width: 400px;
 `;
