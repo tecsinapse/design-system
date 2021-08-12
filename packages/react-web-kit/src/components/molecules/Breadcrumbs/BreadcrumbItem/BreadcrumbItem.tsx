@@ -23,7 +23,7 @@ const BreadcrumbItem: FC<BreadcrumbItemProps> = ({
           {title}
         </Text>
       </Component>
-      {isLast && (
+      {!isLast && (
         <StyledContainerIcon>
           <Icon
             name="chevron-double-right"
