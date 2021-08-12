@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.1.0...@tecsinapse/kitchensink-app@1.2.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* **avatar:** fix local assets ([bf44e88](https://github.com/tecsinapse/design-system/commit/bf44e8887d880a9333dc4631b7913863128cbfa1))
+* code style ([4f5d29a](https://github.com/tecsinapse/design-system/commit/4f5d29a4e71cbf0147d095bab49793d9bbc17d18))
+
+
+### Features
+
+* Modify Badge to final version ([df9691c](https://github.com/tecsinapse/design-system/commit/df9691c996ac658bc9669456679e514ca8a74421))
+
+
+
+
+
+# [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.0.0...@tecsinapse/kitchensink-app@1.1.0) (2021-07-30)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
+# [1.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@0.6.0...@tecsinapse/kitchensink-app@1.0.0) (2021-07-29)
+
+
+### Features
+
+* Calendar Component ([c89b10b](https://github.com/tecsinapse/design-system/commit/c89b10bbf5f5c172a8084b595c92eec39fe0da29))
+* date and time picker component ([4b21952](https://github.com/tecsinapse/design-system/commit/4b219523d3074863713087e0f093273b8bb4ca00))
+* DatePicker component ([681bcf0](https://github.com/tecsinapse/design-system/commit/681bcf0de4c8e5df2eff0e02cf599f88802b63a1))
+* SnappingSlider component ([5ac6b64](https://github.com/tecsinapse/design-system/commit/5ac6b64fe82005c06b6b3444906b56e944e91130))
+* TextArea component ([a9026ce](https://github.com/tecsinapse/design-system/commit/a9026ceb9d7b9562776218ebed245f816de09292))
+
+
+
+
+
 # [0.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@0.5.3...@tecsinapse/kitchensink-app@0.6.0) (2021-07-09)
 
 

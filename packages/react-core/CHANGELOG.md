@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.1.0...@tecsinapse/react-core@1.2.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* **avatar:** build ([f760e79](https://github.com/tecsinapse/design-system/commit/f760e7936cb1757cbcc8ef2570dbf23599d1ad38))
+* **avatar:** fix local assets ([bf44e88](https://github.com/tecsinapse/design-system/commit/bf44e8887d880a9333dc4631b7913863128cbfa1))
+* **text:** improve interface ([d53f892](https://github.com/tecsinapse/design-system/commit/d53f8923308cf67af58765b503f14dacdb078b6e))
+* code style ([4f5d29a](https://github.com/tecsinapse/design-system/commit/4f5d29a4e71cbf0147d095bab49793d9bbc17d18))
+* type of return function getImage ([230e8c8](https://github.com/tecsinapse/design-system/commit/230e8c8234e40b9185580d764c11416cf334f833))
+
+
+### Features
+
+* add return type functions ([a6c1e21](https://github.com/tecsinapse/design-system/commit/a6c1e2140688d64191b63a08d32f6d3d9e0fa1b2))
+* add srcImage by require ([dcf9fdb](https://github.com/tecsinapse/design-system/commit/dcf9fdb4fd47c02a8c80b6de952b24187f14b136))
+* Modify Badge to final version ([df9691c](https://github.com/tecsinapse/design-system/commit/df9691c996ac658bc9669456679e514ca8a74421))
+
+
+
+
+
+# [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.0.0...@tecsinapse/react-core@1.1.0) (2021-07-30)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+# [1.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.6.0...@tecsinapse/react-core@1.0.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* require cycles ([f30e014](https://github.com/tecsinapse/design-system/commit/f30e014120364b97caa748f95e2d43d5e7c80a1c))
+* **Calendar:** selected days rounded borders ([aefec7b](https://github.com/tecsinapse/design-system/commit/aefec7bae2a41251fb74def2a53b7d69d30e723e))
+* avatar fallback ([0eca218](https://github.com/tecsinapse/design-system/commit/0eca218ad3e30ccecd38ae97859dd4a4a4977323))
+* checkbox and radio story ([d28fdd6](https://github.com/tecsinapse/design-system/commit/d28fdd69aa44547c4d8dfc47e440fa9158c6a53e))
+* missing export statement for SelectionType ([7d3a974](https://github.com/tecsinapse/design-system/commit/7d3a974cf9d4bc817616d1ddfc67b0335349bb1f))
+* missing some TS exports ([9ef6469](https://github.com/tecsinapse/design-system/commit/9ef6469e1be93b7c5ce138b0fc069cc5f4747a6f))
+
+
+### Features
+
+* Calendar Component ([c89b10b](https://github.com/tecsinapse/design-system/commit/c89b10bbf5f5c172a8084b595c92eec39fe0da29))
+* date and time picker component ([4b21952](https://github.com/tecsinapse/design-system/commit/4b219523d3074863713087e0f093273b8bb4ca00))
+
+
+
+
+
 # [0.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@0.5.3...@tecsinapse/react-core@0.6.0) (2021-07-09)
 
 

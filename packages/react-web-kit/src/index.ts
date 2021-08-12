@@ -17,3 +17,4 @@ export {
 export { Menubar, MenubarProps } from './components/molecules/Menubar';
 export { Drawer, DrawerProps } from './components/molecules/Drawer';
 export { Select, SelectProps } from './components/molecules/Select';
+export { Snackbar, SnackbarWebProps } from './components/molecules/Snackbar';
