@@ -95,7 +95,12 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   ) : null;
 
   return (
-    <RNModal {...modalProps} onRequestClose={onRequestClose}>
+    <RNModal
+      transparent
+      hardwareAccelerated
+      {...modalProps}
+      onRequestClose={onRequestClose}
+    >
       <StyledModal>
         <Header
           rightButton={{

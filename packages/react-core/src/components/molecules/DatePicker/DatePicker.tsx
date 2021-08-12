@@ -1,19 +1,23 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
+import { View } from 'react-native';
 import {
+  Hint,
+  InputContainerProps,
   PressableInputContainer,
-  PressableInputContainerProps,
   useInputFocus,
 } from '../../atoms/Input';
 import { PressableSurfaceProps } from '../../atoms/PressableSurface';
-import { Text } from '../../atoms/Text';
+import { Text, TextProps } from '../../atoms/Text';
 import { CalendarProps, DateRange, SelectionType } from '../Calendar';
 import { Modal } from './Modal';
+import { CalendarIcon, getStyledTextElement } from './styled';
 
 export interface DatePickerProps<T extends SelectionType>
-  extends PressableInputContainerProps,
+  extends InputContainerProps,
     Omit<CalendarProps<T>, 'style'> {
   PressableElement?: React.FC<PressableSurfaceProps>;
+  TextElement?: React.FC<TextProps>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -34,8 +38,18 @@ function DatePicker<T extends SelectionType>({
   onBlur,
   disabled,
   PressableElement,
+  hintComponent,
+  hint,
+  variant = 'default',
+  TextElement = Text,
+  rightComponent,
+  style,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
+  const _hint = hintComponent || (
+    <Hint TextComponent={Text} text={hint} variant={variant} />
+  );
+
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -66,19 +80,38 @@ function DatePicker<T extends SelectionType>({
     }
   };
 
+  const StyledText = getStyledTextElement(TextElement);
+
   return (
     <>
       {PressableElement ? (
         <PressableElement onPress={handlePressInput} />
       ) : (
-        <PressableInputContainer
-          onPress={handlePressInput}
-          focused={focused}
-          disabled={disabled}
-          {...rest}
-        >
-          <Text>{getDisplayValue()}</Text>
-        </PressableInputContainer>
+        <View style={style}>
+          <PressableInputContainer
+            onPress={handlePressInput}
+            focused={focused}
+            disabled={disabled}
+            LabelComponent={TextElement}
+            variant={variant}
+            rightComponent={
+              <>
+                <CalendarIcon
+                  name="calendar-sharp"
+                  type="ionicon"
+                  size="centi"
+                />
+                {rightComponent}
+              </>
+            }
+            {...rest}
+          >
+            <StyledText fontWeight="bold" disabled={disabled}>
+              {getDisplayValue() || ' '}
+            </StyledText>
+          </PressableInputContainer>
+          {hint && _hint}
+        </View>
       )}
       <Modal
         visible={modalVisible}

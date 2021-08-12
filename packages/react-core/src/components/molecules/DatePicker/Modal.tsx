@@ -14,9 +14,10 @@ const Component = <T extends SelectionType>({
 }: CalendarProps<T> & ModalProps) => {
   return (
     <RNModal
-      {...modalProps}
-      animationType={'fade'}
       transparent
+      hardwareAccelerated
+      animationType={'slide'}
+      {...modalProps}
       onRequestClose={onRequestClose}
     >
       <Backdrop onPress={onRequestClose}>

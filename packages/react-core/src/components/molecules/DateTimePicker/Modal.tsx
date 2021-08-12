@@ -32,9 +32,10 @@ const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
   };
   return (
     <RNModal
-      {...modalProps}
-      animationType={'fade'}
       transparent
+      hardwareAccelerated
+      animationType={'slide'}
+      {...modalProps}
       onRequestClose={onRequestClose}
     >
       <Backdrop onPress={onRequestClose}>
