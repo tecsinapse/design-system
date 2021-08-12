@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import { StyledContainerContainer, StyledInputContainer } from './styled';
+import { StyledContainer, StyledInputContainer } from './styled';
 import { Icon, PressableInputContainer, Text } from '@tecsinapse/react-core';
-import { DropDown } from './SelectItem/DropDown.';
+import { DropDown } from './DropDown';
+import { getDisplayValue } from './functions';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   options: Data[];
@@ -18,7 +19,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   hideSearchBar?: boolean;
 }
 
-const Select: FC<SelectProps<any, any>> = ({
+export const Select: FC<SelectProps<any, any>> = ({
   value,
   options,
   keyExtractor,
@@ -32,31 +33,17 @@ const Select: FC<SelectProps<any, any>> = ({
 }) => {
   const [dropDownVisible, setDropDownVisible] = React.useState(false);
 
-  const getDisplayValue = () => {
-    // console.log(value, 'displayvalue');
-    if (type === 'multi') {
-      if (value.length === 0) return placeholder;
-      else {
-        return options
-          .reduce(
-            (acc, option, index) =>
-              value.find(key => keyExtractor(option, index) === key)
-                ? acc + labelExtractor(option) + ', '
-                : acc,
-            ''
-          )
-          .slice(0, -2);
-      }
-    } else {
-      if (value === undefined) return placeholder;
-      const selectedOption = options.find(
-        (option, index) => keyExtractor(option, index) === value[0]
-      );
-      return selectedOption ? labelExtractor(selectedOption) : placeholder;
-    }
-  };
+  const displayValue = getDisplayValue(
+    type,
+    value,
+    options,
+    placeholder,
+    keyExtractor,
+    labelExtractor
+  );
+
   return (
-    <StyledContainerContainer>
+    <StyledContainer>
       <StyledInputContainer>
         <PressableInputContainer
           label={placeholder}
@@ -71,7 +58,7 @@ const Select: FC<SelectProps<any, any>> = ({
             />
           }
         >
-          <Text>{getDisplayValue()}</Text>
+          <Text>{displayValue}</Text>
         </PressableInputContainer>
       </StyledInputContainer>
       {dropDownVisible && (
@@ -85,7 +72,7 @@ const Select: FC<SelectProps<any, any>> = ({
           hideSearchBar={hideSearchBar}
         />
       )}
-    </StyledContainerContainer>
+    </StyledContainer>
   );
 };
 

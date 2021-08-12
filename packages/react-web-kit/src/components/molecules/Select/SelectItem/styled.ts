@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { StyleProps } from '@tecsinapse/react-core';
 
 export const ContainerItemSelect = styled('div')<Partial<StyleProps>>`
-  padding: 8px 16px;
+  padding: ${({ theme }) => `${theme.spacing.mili} ${theme.spacing.deca}`};
   cursor: pointer;
   &:hover {
     background-color: ${({ theme }) => theme.color.primary.xlight};

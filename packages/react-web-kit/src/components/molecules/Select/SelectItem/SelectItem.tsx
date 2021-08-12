@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Checkbox, Text } from '@tecsinapse/react-core';
-import { ContainerItemSelect, ContainerText, StyledSpan } from './styled';
+import { ContainerItemSelect, StyledSpan } from './styled';
 
 interface SelectItemProps<Data, Type extends 'single' | 'multi'> {
   item: Data;

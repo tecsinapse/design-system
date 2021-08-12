@@ -1,10 +1,11 @@
-import { SearchBarContainer, StyledContainerDropdown } from '../styled';
-import { Icon, Input, useDebouncedState } from '@tecsinapse/react-native-kit';
-import { ItemSelect } from './index';
+import { SearchBarContainer, StyledContainerDropdown } from './styled';
+import { Icon, useDebouncedState } from '@tecsinapse/react-native-kit';
+import { Input } from '@tecsinapse/react-web-kit';
+import { ItemSelect } from '../SelectItem';
 import React, { FC } from 'react';
 import { SelectProps } from '../Select';
 
-export const DropDown: FC<SelectProps<any, any>> = ({
+const DropDown: FC<SelectProps<any, any>> = ({
   options,
   onSearch,
   type,
@@ -48,3 +49,5 @@ export const DropDown: FC<SelectProps<any, any>> = ({
     </StyledContainerDropdown>
   );
 };
+
+export default DropDown;

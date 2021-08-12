@@ -1,17 +1,18 @@
 export const getDisplayValue = (
+  type,
   value,
   options,
   placeholder,
   keyExtractor,
   labelExtractor
 ) => {
-  if (Array.isArray(value)) {
+  if (type === 'multi') {
     if (value.length === 0) return placeholder;
     else {
       return options
         .reduce(
           (acc, option, index) =>
-            value.find(key => keyExtractor(option, index) == key)
+            value.find(key => keyExtractor(option, index) === key)
               ? acc + labelExtractor(option) + ', '
               : acc,
           ''
@@ -21,7 +22,7 @@ export const getDisplayValue = (
   } else {
     if (value === undefined) return placeholder;
     const selectedOption = options.find(
-      (option, index) => keyExtractor(option, index) === value
+      (option, index) => keyExtractor(option, index) === value[0]
     );
     return selectedOption ? labelExtractor(selectedOption) : placeholder;
   }
