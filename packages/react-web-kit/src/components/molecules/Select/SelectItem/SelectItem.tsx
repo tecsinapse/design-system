@@ -46,12 +46,12 @@ const SelectItem: FC<SelectItemProps<any, any>> = ({
 
   return (
     <ContainerItemSelect onClick={() => clickItem(item, index)}>
-      <Text fontWeight="bold" style={{ paddingLeft: 8, width: '100%' }}>
-        <StyledSpan>{item.label}</StyledSpan>
-      </Text>
       {isMulti && (
         <Checkbox checked={checked} onChange={() => clickItem(item, index)} />
       )}
+      <Text fontWeight="bold" style={{ paddingLeft: 8, width: '100%' }}>
+        <StyledSpan>{item.label}</StyledSpan>
+      </Text>
     </ContainerItemSelect>
   );
 };

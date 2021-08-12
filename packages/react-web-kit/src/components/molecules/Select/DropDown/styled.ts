@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import {
   hex2rgba,
   StyleProps,
-  ThemeProp,
   ThemeProviderProps,
 } from '@tecsinapse/react-core';
 import { SelectProps } from '../Select';
@@ -26,6 +25,19 @@ export const StyledContainerDropdown = styled('div')<
   }: ThemeProviderProps & Partial<SelectProps<any, any>>) =>
     !hideSearchBar ? `${theme.spacing.deca}` : '0px'};
   padding-bottom: ${({ theme }: ThemeProviderProps) => theme.spacing.mili};
+  max-height: ${({ hideSearchBar }: Partial<SelectProps<any, any>>) =>
+    !hideSearchBar ? '250px' : '200px'};
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: ${({ theme }) => theme.borderRadius.centi};
+    background-color: ${({ theme }) => theme.color.secondary.medium};
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: ${({ theme }) => theme.color.primary.medium};
+  },
 `;
 
 export const SearchBarContainer = styled('div')<Partial<StyleProps>>`
