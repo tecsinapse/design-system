@@ -6,8 +6,10 @@ import { getDisplayValue } from './functions';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   options: Data[];
-  onSelect: (key: Type extends 'single' ? string : string[]) => never | void;
-  value: Type extends 'single' ? string : string[];
+  onSelect: (
+    key: Type extends 'single' ? string | undefined : string[]
+  ) => never | void;
+  value: Type extends 'single' ? string | undefined : string[];
   type: Type;
   keyExtractor: (t: Data, index: number) => string;
   labelExtractor: (t: Data) => string;

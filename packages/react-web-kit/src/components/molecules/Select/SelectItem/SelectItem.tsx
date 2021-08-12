@@ -5,8 +5,8 @@ import { ContainerItemSelect, StyledSpan } from './styled';
 interface SelectItemProps<Data, Type extends 'single' | 'multi'> {
   item: Data;
   type: Type;
-  value: string[] | string;
-  onClick: (value: string[] | string) => void;
+  value: string[] | string | undefined;
+  onClick: (value: string[] | string | undefined) => void;
   keyExtractor: (t: Data, index: number) => string;
   index: number;
 }
@@ -20,9 +20,8 @@ const SelectItem: FC<SelectItemProps<any, any>> = ({
   index,
 }) => {
   const isMulti = type === 'multi';
-
   const [checked, setChecked] = React.useState<boolean>(
-    value.includes(keyExtractor(item, index))
+    value !== undefined && value.includes(keyExtractor(item, index))
   );
 
   const clickItem = (item, index) => {

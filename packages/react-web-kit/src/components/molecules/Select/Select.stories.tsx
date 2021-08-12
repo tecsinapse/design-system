@@ -19,28 +19,34 @@ const OPTIONS_EXAMPLE: Option[] = [
   { label: 'Carlos', value: 'carlos' },
   { label: 'Arruda', value: 'arruda' },
   { label: 'Correa', value: 'correa' },
-  { label: 'Correa', value: '12' },
-  { label: 'Correa', value: 'cor23rea' },
-  { label: 'Correa', value: 'cor55rea' },
 ];
 
 const Template: Story<SelectProps<any, any>> = args => {
-  const [value, setValues] = useState<string[] | string>(
-    args.type === 'multi' ? [] : ''
-  );
+  const [multiValue, setMultiValue] = useState<string[]>([]);
+  const [singleValue, setSingleValue] = useState<string | undefined>('');
 
-  const handleValues = (key: string[] | string) => setValues(key);
+  const handleSelectMultipleValues = (keys: string[]) => {
+    setMultiValue(keys);
+  };
+
+  const handleSelectSingleValue = (key: string | undefined) =>
+    setSingleValue(key);
 
   const handleSearch = React.useCallback((searchArg: string) => {
     console.log(searchArg);
   }, []);
+
+  const isMulti = args.type === 'multi';
   return (
     <Container>
       <ContainerSelect>
         <Select
           {...args}
-          value={value}
-          onSelect={handleValues}
+          value={isMulti ? multiValue : singleValue}
+          //@ts-ignore
+          onSelect={
+            isMulti ? handleSelectMultipleValues : handleSelectSingleValue
+          }
           labelExtractor={item => item.label}
           keyExtractor={item => String(item.value)}
           onSearch={handleSearch}
