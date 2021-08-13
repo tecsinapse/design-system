@@ -37,7 +37,7 @@ const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
       transparent
       onRequestClose={onRequestClose}
     >
-      <Backdrop onPress={onRequestClose}>
+      <Backdrop onPress={onRequestClose} effect="none">
         <ModalContent>
           <StyledDateTimeSelector
             value={value}

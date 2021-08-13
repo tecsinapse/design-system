@@ -1,10 +1,14 @@
 import styled, { css } from '@emotion/native';
 import { Platform } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
+import {
+  PressableSurface,
+  PressableSurfaceProps,
+} from '../../atoms/PressableSurface';
 
 const isWeb = Platform.OS === 'web';
 
-export const Backdrop = styled.Pressable<Partial<StyleProps>>`
+export const Backdrop = styled(PressableSurface)`
   ${isWeb
     ? css`
         justify-content: center;
