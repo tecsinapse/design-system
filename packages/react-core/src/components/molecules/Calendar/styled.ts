@@ -29,7 +29,10 @@ const surfaceBorderRight = ({
     border-top-right-radius: ${theme?.borderRadius.deca};
   `;
 
-const surfaceBorderLeft = ({ isLeft, theme }: ButtonBorders & Partial<StyleProps>) =>
+const surfaceBorderLeft = ({
+  isLeft,
+  theme,
+}: ButtonBorders & Partial<StyleProps>) =>
   !isWeb &&
   isLeft &&
   css`
@@ -37,7 +40,9 @@ const surfaceBorderLeft = ({ isLeft, theme }: ButtonBorders & Partial<StyleProps
   `;
 
 export const Control = styled(PressableSurface)(
-  (props: Partial<StyleProps> & ButtonBorders & { align: 'start' | 'end' }) => css`
+  (
+    props: Partial<StyleProps> & ButtonBorders & { align: 'start' | 'end' }
+  ) => css`
     align-items: flex-${props.align};
     padding: ${props.theme?.spacing.centi};
     border-radius: ${props.theme?.borderRadius.mili};
