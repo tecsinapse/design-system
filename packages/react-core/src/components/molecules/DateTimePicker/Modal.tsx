@@ -35,6 +35,7 @@ const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
       transparent
       hardwareAccelerated
       animationType={'slide'}
+      statusBarTranslucent
       {...modalProps}
       onRequestClose={onRequestClose}
     >

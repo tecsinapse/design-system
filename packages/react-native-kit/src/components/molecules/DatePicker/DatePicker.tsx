@@ -9,5 +9,5 @@ import { Text } from '../../atoms/Text';
 export const DatePicker = <T extends SelectionType>(
   props: DatePickerProps<T>
 ): JSX.Element => {
-  return <DatePickerCore {...props} TextElement={Text} />;
+  return <DatePickerCore {...props} TextComponent={Text} />;
 };

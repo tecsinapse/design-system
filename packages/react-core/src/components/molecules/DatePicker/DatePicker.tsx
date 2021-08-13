@@ -11,13 +11,13 @@ import { PressableSurfaceProps } from '../../atoms/PressableSurface';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarProps, DateRange, SelectionType } from '../Calendar';
 import { Modal } from './Modal';
-import { CalendarIcon, getStyledTextElement } from './styled';
+import { CalendarIcon, getStyledTextComponent } from './styled';
 
 export interface DatePickerProps<T extends SelectionType>
   extends InputContainerProps,
     Omit<CalendarProps<T>, 'style'> {
   PressableElement?: React.FC<PressableSurfaceProps>;
-  TextElement?: React.FC<TextProps>;
+  TextComponent?: React.FC<TextProps>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -41,7 +41,7 @@ function DatePicker<T extends SelectionType>({
   hintComponent,
   hint,
   variant = 'default',
-  TextElement = Text,
+  TextComponent = Text,
   rightComponent,
   style,
   ...rest
@@ -80,7 +80,7 @@ function DatePicker<T extends SelectionType>({
     }
   };
 
-  const StyledText = getStyledTextElement(TextElement);
+  const StyledText = getStyledTextComponent(TextComponent);
 
   return (
     <>
@@ -92,7 +92,7 @@ function DatePicker<T extends SelectionType>({
             onPress={handlePressInput}
             focused={focused}
             disabled={disabled}
-            LabelComponent={TextElement}
+            LabelComponent={TextComponent}
             variant={variant}
             rightComponent={
               <>

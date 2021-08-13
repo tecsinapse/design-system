@@ -17,6 +17,7 @@ const Component = <T extends SelectionType>({
       transparent
       hardwareAccelerated
       animationType={'slide'}
+      statusBarTranslucent
       {...modalProps}
       onRequestClose={onRequestClose}
     >

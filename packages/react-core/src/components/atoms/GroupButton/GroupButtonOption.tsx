@@ -5,15 +5,15 @@ import { getStyledGroupItemText } from './styled';
 export interface GroupButtonOptionProps<T> {
   active: boolean;
   description: string;
-  TextElement?: FC<TextProps>;
+  TextComponent?: FC<TextProps>;
 }
 
 const GroupButtonOption = <T extends any>({
-  TextElement = Text,
+  TextComponent = Text,
   active,
   description,
 }: GroupButtonOptionProps<T>) => {
-  const StyledText = getStyledGroupItemText(TextElement);
+  const StyledText = getStyledGroupItemText(TextComponent);
   return (
     <StyledText fontWeight="bold" typography="sub" active={active}>
       {description}

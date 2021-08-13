@@ -38,7 +38,7 @@ export const ModalContent = styled.View<Partial<StyleProps>>`
   overflow: hidden;
 `;
 
-export const getStyledTextElement = (component: FC<TextProps>) => {
+export const getStyledTextComponent = (component: FC<TextProps>) => {
   return styled(component)(
     (props: Partial<InputContainerProps> & Partial<StyleProps>) => css`
       line-height: ${props.theme?.typography.h5.lineHeight};

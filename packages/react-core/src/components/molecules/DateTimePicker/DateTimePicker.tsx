@@ -9,7 +9,7 @@ import {
 } from '../../atoms/Input';
 import { PressableSurfaceProps } from '../../atoms/PressableSurface';
 import { Text, TextProps } from '../../atoms/Text';
-import { CalendarIcon, getStyledTextElement } from '../DatePicker/styled';
+import { CalendarIcon, getStyledTextComponent } from '../DatePicker/styled';
 import { DateTimeSelectorProps } from '../DateTimeSelector';
 import { Modal } from './Modal';
 
@@ -17,7 +17,7 @@ export interface DateTimePickerProps
   extends InputContainerProps,
     Omit<DateTimeSelectorProps, 'style'> {
   PressableElement?: React.FC<PressableSurfaceProps>;
-  TextElement?: React.FC<TextProps>;
+  TextComponent?: React.FC<TextProps>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -53,7 +53,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hintComponent,
   hint,
   variant = 'default',
-  TextElement = Text,
+  TextComponent = Text,
   rightComponent,
   style,
   ...rest
@@ -80,7 +80,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
     handleBlur();
   };
 
-  const StyledText = getStyledTextElement(TextElement);
+  const StyledText = getStyledTextComponent(TextComponent);
 
   return (
     <>
@@ -92,7 +92,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
             onPress={handlePressInput}
             focused={focused}
             disabled={disabled}
-            LabelComponent={TextElement}
+            LabelComponent={TextComponent}
             variant={variant}
             rightComponent={
               <>
