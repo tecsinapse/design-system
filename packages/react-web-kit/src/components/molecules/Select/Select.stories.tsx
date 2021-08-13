@@ -21,7 +21,7 @@ const OPTIONS_EXAMPLE: Option[] = [
   { label: 'Label 4', value: 'value4' },
 ];
 
-const Template: Story<SelectProps<any, any>> = args => {
+const Template: Story<SelectProps<Option, 'single'>> = args => {
   return (
     <Container>
       <ContainerSelect>
@@ -49,7 +49,7 @@ Base.args = {
   hideSearchBar: false,
 };
 
-const TemplateSingle: Story<SelectProps<any, any>> = args => {
+const TemplateSingle: Story<SelectProps<Option, 'single'>> = args => {
   const [singleValue, setSingleValue] = useState<string | undefined>('');
 
   const handleSelectSingleValue = (key: string | undefined) =>
@@ -86,7 +86,7 @@ Single.args = {
   hideSearchBar: false,
 };
 
-const TemplateMulti: Story<SelectProps<any, any>> = args => {
+const TemplateMulti: Story<SelectProps<Option, 'multi'>> = args => {
   const [multiValue, setMultiValue] = useState<string[]>([]);
 
   const handleSelectMultipleValues = (keys: string[]) => setMultiValue(keys);
