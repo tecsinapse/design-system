@@ -85,10 +85,9 @@ export const Selector: React.FC<SelectorProps> = ({
   return (
     <SelectorRoot {...rest}>
       <Control
-        onPressIn={() => handlePressInNext()}
+        onPressIn={() => requestAnimationFrame(() => handlePressInNext())}
         onPressOut={handlePressOut}
         disabled={preventUpper}
-        style={{ opacity: preventUpper ? 0 : 1 }}
       >
         <Icon
           name={'chevron-up'}
@@ -106,7 +105,7 @@ export const Selector: React.FC<SelectorProps> = ({
         </TextComponent>
       </SelectorValue>
       <Control
-        onPressIn={() => handlePressInPrev()}
+        onPressIn={() => requestAnimationFrame(() => handlePressInPrev())}
         onPressOut={handlePressOut}
         disabled={preventLower}
         style={{ opacity: preventLower ? 0 : 1 }}

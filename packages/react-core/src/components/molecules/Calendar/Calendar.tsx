@@ -156,7 +156,7 @@ function Calendar<T extends SelectionType>({
   return (
     <View {...rest}>
       <TitleContainer>
-        <Control onPress={handlePressPrev} align={'start'}>
+        <Control onPress={handlePressPrev} align={'start'} isLeft>
           <Icon
             name={'chevron-left'}
             type={'material-community'}
@@ -172,7 +172,7 @@ function Calendar<T extends SelectionType>({
         >
           {format(referenceDate, 'MMMM yyyy', { locale })}
         </Capitalized>
-        <Control onPress={handlePressNext} align={'end'}>
+        <Control onPress={handlePressNext} align={'end'} isRright>
           <Icon
             name={'chevron-right'}
             type={'material-community'}
