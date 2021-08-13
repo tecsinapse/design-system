@@ -1,25 +1,25 @@
-import * as React from 'react';
-import {
-  Capitalized,
-  Cell,
-  Content,
-  TitleContainer,
-  Week,
-  Control,
-  Selected,
-} from './styled';
-import { View, ViewProps } from 'react-native';
 import {
   add,
   compareAsc as compare,
+  differenceInDays,
   format,
   getWeeksInMonth,
   isSameDay,
   set,
-  differenceInDays,
 } from 'date-fns';
+import * as React from 'react';
+import { View, ViewProps } from 'react-native';
 import { Icon } from '../../atoms/Icon';
-import { Text } from '../../atoms/Text';
+import { Text, TextProps } from '../../atoms/Text';
+import {
+  Cell,
+  Content,
+  Control,
+  getCapitalizedTextComponent,
+  Selected,
+  TitleContainer,
+  Week,
+} from './styled';
 
 export type SelectionType = 'range' | 'day';
 
@@ -28,6 +28,7 @@ export type DateRange = { lowest: Date; highest?: Date };
 type Value<T extends SelectionType> = T extends 'range' ? DateRange : Date;
 
 export interface CalendarProps<T extends SelectionType> extends ViewProps {
+  TextComponent?: React.FC<TextProps>;
   year?: number;
   month?: number;
   onChange?: (value?: Value<T>) => void | never;
@@ -49,6 +50,7 @@ function dayOfWeekFromMonday(dayOfWeek: number) {
 }
 
 function Calendar<T extends SelectionType>({
+  TextComponent = Text,
   year: _year,
   month: _month,
   value,
@@ -69,6 +71,8 @@ function Calendar<T extends SelectionType>({
   const startingWeekDay = dayOfWeekFromMonday(referenceDate.getDay());
 
   const weeksInMonth = getWeeksInMonth(referenceDate, { weekStartsOn: 1 });
+
+  const Capitalized = getCapitalizedTextComponent(TextComponent);
 
   const calendar = [...Array(weeksInMonth).keys()].map(week =>
     [...Array(7).keys()].map(weekDayIndex =>
@@ -232,9 +236,12 @@ function Calendar<T extends SelectionType>({
                   onPress={handlePressCell(date)}
                 >
                   <Selected selected={isSelected} pointerEvents={'none'}>
-                    <Text colorVariant={'secondary'} colorTone={colorTone}>
+                    <TextComponent
+                      colorVariant={'secondary'}
+                      colorTone={colorTone}
+                    >
                       {date.getDate()}
-                    </Text>
+                    </TextComponent>
                   </Selected>
                 </Cell>
               );

@@ -1,13 +1,10 @@
 import styled from '@emotion/native';
-import { Text } from '../../atoms/Text';
 import { StyleProps } from '../../../types/defaults';
 
 export const Root = styled.View<Partial<StyleProps>>`
   position: relative;
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
 `;
-
-export const Title = styled(Text)``;
 
 export const Content = styled.View<Partial<StyleProps>>`
   flex-direction: row;

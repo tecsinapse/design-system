@@ -9,7 +9,7 @@ import {
 } from '../../atoms/Input';
 import { PressableSurfaceProps } from '../../atoms/PressableSurface';
 import { Text, TextProps } from '../../atoms/Text';
-import { CalendarProps, DateRange, SelectionType } from '../Calendar';
+import { Calendar, CalendarProps, DateRange, SelectionType } from '../Calendar';
 import { Modal } from './Modal';
 import { CalendarIcon, getStyledTextComponent } from './styled';
 
@@ -18,6 +18,7 @@ export interface DatePickerProps<T extends SelectionType>
     Omit<CalendarProps<T>, 'style'> {
   PressableElement?: React.FC<PressableSurfaceProps>;
   TextComponent?: React.FC<TextProps>;
+  CalendarComponent?: React.FC<CalendarProps<T>>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -42,6 +43,7 @@ function DatePicker<T extends SelectionType>({
   hint,
   variant = 'default',
   TextComponent = Text,
+  CalendarComponent = Calendar,
   rightComponent,
   style,
   ...rest
@@ -114,6 +116,7 @@ function DatePicker<T extends SelectionType>({
         </View>
       )}
       <Modal
+        CalendarComponent={CalendarComponent}
         visible={modalVisible}
         onRequestClose={handleCloseModal}
         animated

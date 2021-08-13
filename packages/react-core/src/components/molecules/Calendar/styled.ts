@@ -1,7 +1,8 @@
 import styled, { css } from '@emotion/native';
-import { Text } from '../../atoms/Text';
+import { Text, TextProps } from '../../atoms/Text';
 import { StyleProps } from '../../../types/defaults';
 import { PressableProps, ViewProps, Platform } from 'react-native';
+import { FC } from 'react';
 
 const isWeb = Platform.OS === 'web';
 
@@ -20,9 +21,11 @@ export const Control = styled.Pressable<
   padding: ${({ theme }) => theme.spacing.deca};
 `;
 
-export const Capitalized = styled(Text)`
-  text-transform: capitalize;
-`;
+export const getCapitalizedTextComponent = (component: FC<TextProps>) => {
+  return styled(component)`
+    text-transform: capitalize;
+  `;
+};
 
 export const Content = styled.View<ViewProps & Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.deca};

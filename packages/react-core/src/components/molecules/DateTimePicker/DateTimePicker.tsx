@@ -10,7 +10,7 @@ import {
 import { PressableSurfaceProps } from '../../atoms/PressableSurface';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarIcon, getStyledTextComponent } from '../DatePicker/styled';
-import { DateTimeSelectorProps } from '../DateTimeSelector';
+import { DateTimeSelector, DateTimeSelectorProps } from '../DateTimeSelector';
 import { Modal } from './Modal';
 
 export interface DateTimePickerProps
@@ -18,6 +18,7 @@ export interface DateTimePickerProps
     Omit<DateTimeSelectorProps, 'style'> {
   PressableElement?: React.FC<PressableSurfaceProps>;
   TextComponent?: React.FC<TextProps>;
+  DateTimeSelectorComponent?: React.FC<DateTimeSelectorProps>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -54,6 +55,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hint,
   variant = 'default',
   TextComponent = Text,
+  DateTimeSelectorComponent = DateTimeSelector,
   rightComponent,
   style,
   ...rest
@@ -114,6 +116,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         </View>
       )}
       <Modal
+        DateTimeSelectorComponent={DateTimeSelectorComponent}
         visible={modalVisible}
         onRequestClose={handleCloseModal}
         animated

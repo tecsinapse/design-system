@@ -1,14 +1,14 @@
+import { getDaysInMonth } from 'date-fns';
 import * as React from 'react';
-
-import { Control, SelectorRoot, SelectorValue } from './styled';
 import { ViewProps } from 'react-native';
 import { Icon } from '../../atoms/Icon';
-import { Text } from '../../atoms/Text';
-import { getDaysInMonth } from 'date-fns';
+import { TextProps } from '../../atoms/Text';
+import { Control, SelectorRoot, SelectorValue } from './styled';
 
 export type Granularity = 'date' | 'month' | 'year' | 'hours' | 'minutes';
 
 interface SelectorProps extends ViewProps {
+  TextComponent: React.FC<TextProps>;
   granularity: Granularity;
   referenceDate: Date;
   label: string;
@@ -53,6 +53,7 @@ export const Selector: React.FC<SelectorProps> = ({
   referenceDate,
   preventUpper,
   preventLower,
+  TextComponent,
   ...rest
 }) => {
   const pressInTimeoutRef = React.useRef<number>();
@@ -97,12 +98,12 @@ export const Selector: React.FC<SelectorProps> = ({
         />
       </Control>
       <SelectorValue>
-        <Text colorVariant={'secondary'} typography={'sub'}>
+        <TextComponent colorVariant={'secondary'} typography={'sub'}>
           {label}
-        </Text>
-        <Text fontWeight={'bold'} typography={'h5'}>
+        </TextComponent>
+        <TextComponent fontWeight={'bold'} typography={'h5'}>
           {getDisplayValue(value)}
-        </Text>
+        </TextComponent>
       </SelectorValue>
       <Control
         onPressIn={() => handlePressInPrev()}
