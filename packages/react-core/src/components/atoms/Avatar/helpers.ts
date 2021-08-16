@@ -1,4 +1,4 @@
-export const getIniciais = (name: string) => {
+export const getIniciais = (name: string): string => {
   const nameSplit = name.split(' ');
   if (nameSplit.length > 1) {
     return nameSplit

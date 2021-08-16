@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.1.0...@tecsinapse/react-native-kit@1.2.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* code style ([4f5d29a](https://github.com/tecsinapse/design-system/commit/4f5d29a4e71cbf0147d095bab49793d9bbc17d18))
+
+
+### Features
+
+* Modify Badge to final version ([df9691c](https://github.com/tecsinapse/design-system/commit/df9691c996ac658bc9669456679e514ca8a74421))
+
+
+
+
+
+# [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.0.0...@tecsinapse/react-native-kit@1.1.0) (2021-07-30)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+# [1.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@0.6.0...@tecsinapse/react-native-kit@1.0.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **BottomNavigator:** require cycles ([c1a87b0](https://github.com/tecsinapse/design-system/commit/c1a87b0b91c0b8573dc94ceb953bafb4c948f788))
+* **Select:** require cycles ([ee7c2f7](https://github.com/tecsinapse/design-system/commit/ee7c2f7dcd17ecb1c99de090066376ead1230a58))
+
+
+### Features
+
+* SnappingSlider component ([5ac6b64](https://github.com/tecsinapse/design-system/commit/5ac6b64fe82005c06b6b3444906b56e944e91130))
+* TextArea component ([a9026ce](https://github.com/tecsinapse/design-system/commit/a9026ceb9d7b9562776218ebed245f816de09292))
+
+
+
+
+
 # [0.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@0.5.3...@tecsinapse/react-native-kit@0.6.0) (2021-07-09)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit

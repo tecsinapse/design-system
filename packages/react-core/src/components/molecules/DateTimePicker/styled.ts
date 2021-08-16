@@ -16,7 +16,7 @@ export const StyledPressableSurface = styled(
   width: 100%;
 `;
 
-export const Backdrop = styled.Pressable<Partial<StyleProps>>`
+export const Backdrop = styled(PressableSurface)<Partial<StyleProps>>`
   ${isWeb
     ? css`
         justify-content: center;
