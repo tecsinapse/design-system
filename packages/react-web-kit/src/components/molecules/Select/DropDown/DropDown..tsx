@@ -2,10 +2,10 @@ import { SearchBarContainer, StyledContainerDropdown } from './styled';
 import { Icon, useDebouncedState } from '@tecsinapse/react-native-kit';
 import { Input } from '@tecsinapse/react-web-kit';
 import { ItemSelect } from '../SelectItem';
-import React, { FC } from 'react';
+import React from 'react';
 import { SelectProps } from '../Select';
 
-const DropDown: FC<SelectProps<any, any>> = ({
+const DropDown = <Data, Type extends 'single' | 'multi'>({
   options,
   onSearch,
   type,
@@ -13,7 +13,8 @@ const DropDown: FC<SelectProps<any, any>> = ({
   onSelect,
   value,
   keyExtractor,
-}) => {
+  labelExtractor,
+}: SelectProps<Data, Type>): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
 
   return (
@@ -38,12 +39,13 @@ const DropDown: FC<SelectProps<any, any>> = ({
       {options.map((item, index) => (
         <ItemSelect
           type={type}
-          key={item.value}
+          key={index}
           item={item}
-          onClick={onSelect}
+          onSelect={onSelect}
           value={value}
           keyExtractor={keyExtractor}
           index={index}
+          labelExtractor={labelExtractor}
         />
       ))}
     </StyledContainerDropdown>

@@ -20,7 +20,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   label?: string;
 }
 
-export const Select: FC<SelectProps<any, any>> = ({
+export const Select = <Data, Type extends 'single' | 'multi'>({
   value,
   options,
   keyExtractor,
@@ -32,8 +32,8 @@ export const Select: FC<SelectProps<any, any>> = ({
   hideSearchBar = true,
   label,
   ...rest
-}) => {
-  const [dropDownVisible, setDropDownVisible] = React.useState(false);
+}: SelectProps<Data, Type>): JSX.Element => {
+  const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
   const displayValue = getDisplayValue(
     type,
     value,
@@ -42,6 +42,12 @@ export const Select: FC<SelectProps<any, any>> = ({
     keyExtractor,
     labelExtractor
   );
+
+  React.useEffect(() => {
+    if (type === 'single' && value) {
+      setDropDownVisible(false);
+    }
+  }, [value]);
 
   return (
     <StyledContainer>
