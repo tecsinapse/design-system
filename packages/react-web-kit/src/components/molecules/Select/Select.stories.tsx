@@ -21,39 +21,10 @@ const OPTIONS_EXAMPLE: Option[] = [
   { label: 'Label 4', value: 'value4' },
 ];
 
-const Template: Story<SelectProps<Option, 'single'>> = args => {
-  return (
-    <Container>
-      <ContainerSelect>
-        <Select
-          {...args}
-          type="single"
-          value=""
-          //@ts-ignore
-          onSelect={() => {}}
-          labelExtractor={item => item.label}
-          keyExtractor={item => String(item.value)}
-          onSearch={() => {}}
-        />
-      </ContainerSelect>
-    </Container>
-  );
-};
-
-export const Base = Template.bind({});
-
-Base.args = {
-  placeholder: 'Placeholder do select',
-  label: 'Label',
-  options: OPTIONS_EXAMPLE,
-  hideSearchBar: false,
-};
-
 const TemplateSingle: Story<SelectProps<Option, 'single'>> = args => {
-  const [singleValue, setSingleValue] = useState<string | undefined>('');
+  const [singleValue, setSingleValue] = useState('');
 
-  const handleSelectSingleValue = (key: string | undefined) =>
-    setSingleValue(key);
+  const handleSelectSingleValue = key => setSingleValue(key);
 
   const handleSearch = React.useCallback((searchArg: string) => {
     console.log(searchArg);
@@ -66,7 +37,6 @@ const TemplateSingle: Story<SelectProps<Option, 'single'>> = args => {
           {...args}
           value={singleValue}
           type="single"
-          //@ts-ignore
           onSelect={handleSelectSingleValue}
           labelExtractor={item => item.label}
           keyExtractor={item => String(item.value)}
@@ -87,9 +57,9 @@ Single.args = {
 };
 
 const TemplateMulti: Story<SelectProps<Option, 'multi'>> = args => {
-  const [multiValue, setMultiValue] = useState<string[]>([]);
+  const [multiValue, setMultiValue] = useState([]);
 
-  const handleSelectMultipleValues = (keys: string[]) => setMultiValue(keys);
+  const handleSelectMultipleValues = keys => setMultiValue(keys);
 
   const handleSearch = React.useCallback((searchArg: string) => {
     console.log(searchArg);
@@ -102,7 +72,6 @@ const TemplateMulti: Story<SelectProps<Option, 'multi'>> = args => {
           {...args}
           value={multiValue}
           type="multi"
-          //@ts-ignore
           onSelect={handleSelectMultipleValues}
           labelExtractor={item => item.label}
           keyExtractor={item => String(item.value)}
