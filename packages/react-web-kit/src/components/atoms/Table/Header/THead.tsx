@@ -1,11 +1,21 @@
 import React from 'react';
-import { THeadStyled } from './styled';
+import { HeaderBackground, THeadStyled } from './styled';
+import Tr from '../Row/Tr';
 
 const THead: React.FC<React.HTMLAttributes<HTMLTableSectionElement>> = ({
   children,
   ...rest
 }) => {
-  return <THeadStyled {...rest}>{children}</THeadStyled>;
+  return (
+    <THeadStyled {...rest}>
+      {children}
+      <Tr>
+        <td colSpan={99}>
+          <HeaderBackground />
+        </td>
+      </Tr>
+    </THeadStyled>
+  );
 };
 
 export default THead;

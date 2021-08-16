@@ -37,18 +37,6 @@ const Template: Story = () => (
           <Th>Coluna 3</Th>
           <Th>Coluna 4</Th>
         </Tr>
-        <Tr>
-          <td colSpan={4}>
-            <hr
-              style={{
-                margin: '-51px -25px 0 -25px',
-                height: 42,
-                backgroundColor: 'rgba(0, 0, 0, 0.08)',
-                border: 0,
-              }}
-            />
-          </td>
-        </Tr>
       </THead>
 
       <TBody>
