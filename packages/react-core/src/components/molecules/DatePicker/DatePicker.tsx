@@ -1,6 +1,6 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { View } from 'react-native';
+import { ModalBaseProps, View } from 'react-native';
 import {
   Hint,
   InputContainerProps,
@@ -19,6 +19,7 @@ export interface DatePickerProps<T extends SelectionType>
   PressableElement?: React.FC<PressableSurfaceProps>;
   TextComponent?: React.FC<TextProps>;
   CalendarComponent?: React.FC<CalendarProps<T>>;
+  animationType?: ModalBaseProps['animationType'];
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -45,6 +46,7 @@ function DatePicker<T extends SelectionType>({
   TextComponent = Text,
   CalendarComponent = Calendar,
   rightComponent,
+  animationType = 'fade',
   style,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
@@ -120,7 +122,7 @@ function DatePicker<T extends SelectionType>({
         visible={modalVisible}
         onRequestClose={handleCloseModal}
         animated
-        animationType={'slide'}
+        animationType={animationType}
         month={month}
         year={year}
         onChange={onChange}

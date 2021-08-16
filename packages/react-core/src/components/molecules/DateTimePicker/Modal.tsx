@@ -43,7 +43,6 @@ const Component: React.FC<
     <RNModal
       transparent
       hardwareAccelerated
-      animationType={'slide'}
       statusBarTranslucent
       {...modalProps}
       onRequestClose={onRequestClose}

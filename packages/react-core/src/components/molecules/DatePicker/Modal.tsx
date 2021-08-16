@@ -18,7 +18,6 @@ const Component = <T extends SelectionType>({
     <RNModal
       transparent
       hardwareAccelerated
-      animationType={'slide'}
       statusBarTranslucent
       {...modalProps}
       onRequestClose={onRequestClose}

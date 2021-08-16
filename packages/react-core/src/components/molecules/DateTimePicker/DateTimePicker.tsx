@@ -1,6 +1,6 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { View } from 'react-native';
+import { ModalBaseProps, View } from 'react-native';
 import {
   Hint,
   InputContainerProps,
@@ -19,6 +19,7 @@ export interface DateTimePickerProps
   PressableElement?: React.FC<PressableSurfaceProps>;
   TextComponent?: React.FC<TextProps>;
   DateTimeSelectorComponent?: React.FC<DateTimeSelectorProps>;
+  animationType?: ModalBaseProps['animationType'];
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -57,6 +58,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   TextComponent = Text,
   DateTimeSelectorComponent = DateTimeSelector,
   rightComponent,
+  animationType = 'fade',
   style,
   ...rest
 }) => {
@@ -120,7 +122,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         visible={modalVisible}
         onRequestClose={handleCloseModal}
         animated
-        animationType={'slide'}
+        animationType={animationType}
         onChange={onChange}
         value={value}
         mode={mode}

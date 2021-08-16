@@ -12,6 +12,7 @@ export const DateTimePicker: FC<DateTimePickerProps> = props => {
       {...props}
       TextComponent={Text}
       DateTimeSelectorComponent={DateTimeSelector}
+      animationType="slide"
     />
   );
 };

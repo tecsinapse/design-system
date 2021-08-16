@@ -15,6 +15,7 @@ export const DatePicker = <T extends SelectionType>(
       {...props}
       TextComponent={Text}
       CalendarComponent={Calendar}
+      animationType="slide"
     />
   );
 };
