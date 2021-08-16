@@ -51,7 +51,7 @@ function DatePicker<T extends SelectionType>({
   ...rest
 }: DatePickerProps<T>): JSX.Element {
   const _hint = hintComponent || (
-    <Hint TextComponent={Text} text={hint} variant={variant} />
+    <Hint TextComponent={TextComponent} text={hint} variant={variant} />
   );
 
   const { focused, handleBlur, handleFocus } = useInputFocus(

@@ -63,7 +63,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   ...rest
 }) => {
   const _hint = hintComponent || (
-    <Hint TextComponent={Text} text={hint} variant={variant} />
+    <Hint TextComponent={TextComponent} text={hint} variant={variant} />
   );
 
   const { focused, handleBlur, handleFocus } = useInputFocus(
