@@ -20,3 +20,12 @@ export const StyledSpan = styled('span')<Partial<StyleProps>>`
   color: ${({ theme }) => theme.color.secondary.xdark};
   padding: ${({ theme }) => `${theme.spacing.mili} 0px`};
 `;
+
+export const StyledContainerTextLabel = styled('div')<Partial<StyleProps>>`
+  padding-left: ${({ theme }) => theme.spacing.mili};
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;

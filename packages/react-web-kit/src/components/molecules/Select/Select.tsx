@@ -43,12 +43,6 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     labelExtractor
   );
 
-  React.useEffect(() => {
-    if (type === 'single' && value) {
-      setDropDownVisible(false);
-    }
-  }, [value]);
-
   return (
     <StyledContainer>
       <StyledInputContainer>
@@ -79,6 +73,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
           keyExtractor={keyExtractor}
           labelExtractor={labelExtractor}
           hideSearchBar={hideSearchBar}
+          setDropDownVisible={setDropDownVisible}
         />
       )}
     </StyledContainer>

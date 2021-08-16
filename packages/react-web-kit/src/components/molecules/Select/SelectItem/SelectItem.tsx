@@ -1,6 +1,10 @@
 import React from 'react';
 import { Checkbox, Text } from '@tecsinapse/react-core';
-import { ContainerItemSelect, StyledSpan } from './styled';
+import {
+  ContainerItemSelect,
+  StyledContainerTextLabel,
+  StyledSpan,
+} from './styled';
 
 interface SelectItemProps<Data, Type extends 'single' | 'multi'> {
   item: Data;
@@ -22,7 +26,10 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   value,
   index,
   labelExtractor,
-}: SelectItemProps<Data, Type>): JSX.Element => {
+  setDropDownVisible,
+}: SelectItemProps<Data, Type> & {
+  setDropDownVisible: (t: boolean) => void;
+}): JSX.Element => {
   const isMulti = type === 'multi';
   const [checked, setChecked] = React.useState<boolean>(
     value !== undefined && value.includes(keyExtractor(item, index))
@@ -45,8 +52,8 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
         onSelect([...auxArray] as OnSelectArg);
       }
     } else {
-      setChecked(false);
       onSelect(key as OnSelectArg);
+      setDropDownVisible(false);
     }
   };
 
@@ -55,9 +62,11 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
       {isMulti && (
         <Checkbox checked={checked} onChange={() => clickItem(item, index)} />
       )}
-      <Text fontWeight="bold" style={{ paddingLeft: 8, width: '100%' }}>
-        <StyledSpan>{labelExtractor(item)}</StyledSpan>
-      </Text>
+      <StyledContainerTextLabel>
+        <Text fontWeight="bold" ellipsizeMode="tail" numberOfLines={1}>
+          <StyledSpan>{labelExtractor(item)}</StyledSpan>
+        </Text>
+      </StyledContainerTextLabel>
     </ContainerItemSelect>
   );
 };

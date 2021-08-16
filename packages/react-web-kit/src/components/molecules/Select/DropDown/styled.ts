@@ -3,7 +3,7 @@ import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 import { SelectProps } from '../Select';
 
 export const StyledContainerDropdown = styled('div')<
-  Partial<StyleProps & SelectProps<any, any>>
+  Partial<StyleProps & SelectProps<any, any> & { lengthOptions: number }>
 >`
   width: 100%;
   background-color: ${({ theme }: StyleProps) =>
@@ -20,11 +20,11 @@ export const StyledContainerDropdown = styled('div')<
   }: StyleProps & Partial<SelectProps<any, any>>) =>
     !hideSearchBar ? `${theme.spacing.deca}` : '0px'};
   padding-bottom: ${({ theme }: StyleProps) => theme.spacing.mili};
-  max-height: ${({
-    hideSearchBar = false,
-  }: Partial<SelectProps<any, any> & StyleProps>) =>
-    !hideSearchBar ? '250px' : '200px'};
-  overflow-y: scroll;
+  max-height: 250px;
+  overflow-y: ${({
+    lengthOptions = 0,
+  }: Partial<{ lengthOptions: number } & StyleProps>) =>
+    lengthOptions > 5 ? 'scroll' : 'hidden'};
   ::-webkit-scrollbar {
     width: 8px;
   }

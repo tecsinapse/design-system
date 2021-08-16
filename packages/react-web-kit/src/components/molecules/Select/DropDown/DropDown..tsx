@@ -14,11 +14,17 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
   value,
   keyExtractor,
   labelExtractor,
-}: SelectProps<Data, Type>): JSX.Element => {
+  setDropDownVisible,
+}: SelectProps<Data, Type> & {
+  setDropDownVisible: (t: boolean) => void;
+}): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
-
+  const lengthOptions = options.length;
   return (
-    <StyledContainerDropdown>
+    <StyledContainerDropdown
+      lengthOptions={lengthOptions}
+      onBlur={() => setDropDownVisible(false)}
+    >
       {!hideSearchBar && (
         <SearchBarContainer>
           <Input
@@ -46,6 +52,7 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
           keyExtractor={keyExtractor}
           index={index}
           labelExtractor={labelExtractor}
+          setDropDownVisible={setDropDownVisible}
         />
       ))}
     </StyledContainerDropdown>
