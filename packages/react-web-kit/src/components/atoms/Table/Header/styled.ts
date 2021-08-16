@@ -7,7 +7,7 @@ export const ThStyled = styled('th')<Partial<StyleProps>>`
 
 export const THeadStyled = styled('thead')<Partial<StyleProps>>`
   & > tr {
-    border-radius: 0;
+    border-radius: unset;
     box-shadow: none;
   }
 `;
