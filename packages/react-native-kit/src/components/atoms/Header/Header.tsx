@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <StyledView {...rest}>
-      {leftButton && (
+      {leftButton ? (
         <FloatingButton
           {...leftButton}
           variant={leftButton?.variant || 'filled'}
@@ -29,9 +29,11 @@ const Header: React.FC<HeaderProps> = ({
         >
           {leftButton?.icon && <Icon {...leftButton?.icon} />}
         </FloatingButton>
+      ) : (
+        <Dummy disabled />
       )}
       {children}
-      {rightButton && (
+      {rightButton ? (
         <FloatingButton
           {...rightButton}
           variant={rightButton?.variant || 'filled'}
@@ -40,6 +42,8 @@ const Header: React.FC<HeaderProps> = ({
         >
           {rightButton?.icon && <Icon {...rightButton?.icon} />}
         </FloatingButton>
+      ) : (
+        <Dummy disabled />
       )}
     </StyledView>
   );
