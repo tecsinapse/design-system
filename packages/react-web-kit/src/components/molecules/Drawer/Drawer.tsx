@@ -56,7 +56,7 @@ const Drawer: FC<DrawerProps> = ({
   };
 
   const defaultStyle = {
-    transition: `opacity 1s ease-in-out`,
+    transition: `opacity 700ms ease-in-out`,
     opacity: 0,
   };
   const transitionStyles = {
