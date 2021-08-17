@@ -39,9 +39,11 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
     >
       {!hideSearchBar && (
         <SearchBarContainer>
-          <Checkbox checked={checkedAll} onChange={onClickCheckAll} />
+          {type === 'multi' && (
+            <Checkbox checked={checkedAll} onChange={onClickCheckAll} />
+          )}
           <Input
-            style={{ width: '88%' }}
+            style={{ width: type === 'multi' ? '88%' : '100%' }}
             placeholder="Busque a opção desejada"
             value={searchArg}
             leftComponent={
