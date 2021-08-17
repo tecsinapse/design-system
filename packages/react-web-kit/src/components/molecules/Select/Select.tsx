@@ -20,6 +20,20 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   label?: string;
 }
 
+const useOutside = (ref, setDropDownVisible) => {
+  React.useEffect(() => {
+    const handleClickOutside = event => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setDropDownVisible(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref]);
+};
+
 export const Select = <Data, Type extends 'single' | 'multi'>({
   value,
   options,
@@ -34,6 +48,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   ...rest
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
+  const refDropDown = React.useRef(null);
   const displayValue = getDisplayValue(
     type,
     value,
@@ -42,9 +57,10 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     keyExtractor,
     labelExtractor
   );
+  useOutside(refDropDown, setDropDownVisible);
 
   return (
-    <StyledContainer>
+    <StyledContainer ref={refDropDown}>
       <StyledInputContainer>
         <PressableInputContainer
           label={label}
@@ -74,6 +90,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
           labelExtractor={labelExtractor}
           hideSearchBar={hideSearchBar}
           setDropDownVisible={setDropDownVisible}
+          ref={refDropDown}
         />
       )}
     </StyledContainer>
