@@ -1,12 +1,12 @@
 import styled, { css } from '@emotion/native';
-import { DateTimeSelector } from '../DateTimeSelector';
+import { FC } from 'react';
+import { Platform } from 'react-native';
+import { StyleProps } from '../../../types/defaults';
 import {
   PressableSurface,
   PressableSurfaceProps,
 } from '../../atoms/PressableSurface';
-
-import { StyleProps } from '../../../types/defaults';
-import { Platform } from 'react-native';
+import { DateTimeSelectorProps } from '../DateTimeSelector';
 
 const isWeb = Platform.OS === 'web';
 
@@ -16,7 +16,7 @@ export const StyledPressableSurface = styled(
   width: 100%;
 `;
 
-export const Backdrop = styled.Pressable<Partial<StyleProps>>`
+export const Backdrop = styled(PressableSurface)<Partial<StyleProps>>`
   ${isWeb
     ? css`
         justify-content: center;
@@ -47,8 +47,10 @@ export const ModalContent = styled.View<Partial<StyleProps>>`
   overflow: hidden;
 `;
 
-export const StyledDateTimeSelector = styled(DateTimeSelector)<
-  Partial<StyleProps>
->`
-  padding: ${({ theme }) => theme.spacing.deca};
-`;
+export const getStyledDateTimeSelector = (
+  component: FC<DateTimeSelectorProps>
+) => {
+  return styled(component)<Partial<StyleProps>>`
+    padding: ${({ theme }) => theme.spacing.deca};
+  `;
+};

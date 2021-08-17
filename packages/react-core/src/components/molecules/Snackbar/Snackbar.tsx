@@ -1,17 +1,13 @@
 import React from 'react';
+import { StyleProp, ViewStyle } from 'react-native';
+import { ColorGradationType, ColorType } from '../../../types/defaults';
+import { Icon, IconProps } from '../../atoms/Icon';
 import {
-  ColorGradationType,
-  ColorType,
-  Icon,
-  IconProps,
-} from '@tecsinapse/react-core';
-import {
-  SnackbarContainer,
   ContentContainer,
-  IconContainer,
   DismissContainer,
+  IconContainer,
+  SnackbarContainer,
 } from './styled';
-import { StyleProp, View, ViewStyle } from 'react-native';
 
 export interface SnackbarProps {
   colorVariant?: ColorType;

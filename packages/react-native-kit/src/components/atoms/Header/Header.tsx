@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
           {leftButton?.icon && <Icon {...leftButton?.icon} />}
         </FloatingButton>
       ) : (
-        <Dummy />
+        <Dummy disabled />
       )}
       {children}
       {rightButton ? (
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({
           {rightButton?.icon && <Icon {...rightButton?.icon} />}
         </FloatingButton>
       ) : (
-        <Dummy />
+        <Dummy disabled />
       )}
     </StyledView>
   );

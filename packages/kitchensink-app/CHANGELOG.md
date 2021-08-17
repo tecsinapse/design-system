@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.2.0...@tecsinapse/kitchensink-app@1.3.0) (2021-08-17)
+
+
+### Bug Fixes
+
+* Dummy disabled ([c2437f9](https://github.com/tecsinapse/design-system/commit/c2437f9134ccaa97134d4bd0b15c7875a86178c4))
+* Header dummy removed ([d4d5986](https://github.com/tecsinapse/design-system/commit/d4d59864988aee9371bb3391954401828f267e3c))
+
+
+
+
+
 # [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.1.0...@tecsinapse/kitchensink-app@1.2.0) (2021-08-10)
 
 
