@@ -23,18 +23,16 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
   const lengthOptions = options.length;
 
   const [checkedAll, setCheckedAll] = React.useState<boolean>(
-    // @ts-ignore
-    value?.length === lengthOptions
+    type === 'multi' && (value as Data[])?.length === lengthOptions
   );
 
   const onClickCheckAll = () => {
-    const items = options.map((option, index) => option);
+    const items = options.map(option => option);
     setCheckedAll(!checkedAll);
     const aux = !checkedAll;
     type OnSelectArg = Parameters<typeof onSelect>[0];
     const auxArray: Data[] = [];
-    //@ts-ignore
-    !aux ? onSelect(auxArray) : onSelect(items as OnSelectArg);
+    !aux ? onSelect(auxArray as OnSelectArg) : onSelect(items as OnSelectArg);
   };
   return (
     <StyledContainerDropdown lengthOptions={lengthOptions}>
