@@ -5,10 +5,14 @@ import { StyleProps } from '../../../types/defaults';
 import { Icon } from '../../atoms/Icon';
 import { disabledInputStyles, InputContainerProps } from '../../atoms/Input';
 import { TextProps } from '../../atoms/Text';
+import {
+  PressableSurface,
+  PressableSurfaceProps,
+} from '../../atoms/PressableSurface';
 
 const isWeb = Platform.OS === 'web';
 
-export const Backdrop = styled.Pressable<Partial<StyleProps>>`
+export const Backdrop = styled(PressableSurface)`
   ${isWeb
     ? css`
         justify-content: center;

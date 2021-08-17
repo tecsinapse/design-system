@@ -22,7 +22,7 @@ const Component = <T extends SelectionType>({
       {...modalProps}
       onRequestClose={onRequestClose}
     >
-      <Backdrop onPress={onRequestClose}>
+      <Backdrop onPress={onRequestClose} effect="none">
         <ModalContent>
           <CalendarComponent
             pointerEvents={'box-none'}
