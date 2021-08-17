@@ -19,6 +19,8 @@ const OPTIONS_EXAMPLE: Option[] = [
   { label: 'Label 2', value: 'value2' },
   { label: 'Label 3', value: 'value3' },
   { label: 'Label 4', value: 'value4' },
+  { label: 'Label 5', value: 'value5' },
+  { label: 'Label 6', value: 'value6' },
 ];
 
 const TemplateSingle: Story<SelectProps<Option, 'single'>> = args => {

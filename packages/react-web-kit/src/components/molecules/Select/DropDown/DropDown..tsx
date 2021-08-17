@@ -33,10 +33,7 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
     !aux ? onSelect('' as OnSelectArg) : onSelect(items as OnSelectArg);
   };
   return (
-    <StyledContainerDropdown
-      lengthOptions={lengthOptions}
-      onBlur={() => setDropDownVisible(false)}
-    >
+    <StyledContainerDropdown lengthOptions={lengthOptions}>
       {!hideSearchBar && (
         <SearchBarContainer>
           {type === 'multi' && (
@@ -71,6 +68,7 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
           setDropDownVisible={setDropDownVisible}
           checkedAll={checkedAll}
           setCheckedAll={setCheckedAll}
+          lenghtOptions={options.length}
         />
       ))}
     </StyledContainerDropdown>

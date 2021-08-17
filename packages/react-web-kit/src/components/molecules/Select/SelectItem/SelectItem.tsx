@@ -29,10 +29,12 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   setDropDownVisible,
   checkedAll,
   setCheckedAll,
+  lenghtOptions,
 }: SelectItemProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
   checkedAll: boolean;
   setCheckedAll: (t: boolean) => void;
+  lenghtOptions: number;
 }): JSX.Element => {
   const isMulti = type === 'multi';
   const [checked, setChecked] = React.useState<boolean>(
@@ -55,6 +57,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
       setChecked(!checked);
       if (auxChecked) {
         onSelect([...value, key] as OnSelectArg);
+        [...value, key].length === lenghtOptions && setCheckedAll(true);
       } else {
         const auxArray: string[] = value;
         const indexToExclude = auxArray.indexOf(key);
