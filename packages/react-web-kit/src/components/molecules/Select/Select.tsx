@@ -7,11 +7,11 @@ import { getDisplayValue } from './functions';
 export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   options: Data[];
   onSelect: (
-    key: Type extends 'single' ? string | undefined : string[]
+    option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
-  value: Type extends 'single' ? string | undefined : string[];
+  value: Type extends 'single' ? Data | undefined : Data[];
   type: Type;
-  keyExtractor: (t: Data, index: number) => string;
+  keyExtractor: (t: Data, index?: number) => string;
   labelExtractor: (t: Data) => string;
   placeholder?: string;
   onSearch?: (searchArg: string) => void | never;
@@ -49,7 +49,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
   const refDropDown = React.useRef(null);
-  const displayValue = getDisplayValue(
+  const displayValue = getDisplayValue<Data>(
     type,
     value,
     options,
@@ -58,7 +58,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     labelExtractor
   );
   useOutside(refDropDown, setDropDownVisible);
-
+  console.log(displayValue, 'valuee');
   return (
     <StyledContainer ref={refDropDown}>
       <StyledInputContainer>

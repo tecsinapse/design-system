@@ -21,16 +21,20 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
 }): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const lengthOptions = options.length;
+
   const [checkedAll, setCheckedAll] = React.useState<boolean>(
+    // @ts-ignore
     value?.length === lengthOptions
   );
 
   const onClickCheckAll = () => {
-    const items = options.map((option, index) => keyExtractor(option, index));
+    const items = options.map((option, index) => option);
     setCheckedAll(!checkedAll);
     const aux = !checkedAll;
     type OnSelectArg = Parameters<typeof onSelect>[0];
-    !aux ? onSelect('' as OnSelectArg) : onSelect(items as OnSelectArg);
+    const auxArray: Data[] = [];
+    //@ts-ignore
+    !aux ? onSelect(auxArray) : onSelect(items as OnSelectArg);
   };
   return (
     <StyledContainerDropdown lengthOptions={lengthOptions}>

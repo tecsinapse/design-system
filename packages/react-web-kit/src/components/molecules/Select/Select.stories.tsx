@@ -24,7 +24,7 @@ const OPTIONS_EXAMPLE: Option[] = [
 ];
 
 const TemplateSingle: Story<SelectProps<Option, 'single'>> = args => {
-  const [singleValue, setSingleValue] = useState('');
+  const [singleValue, setSingleValue] = useState(undefined);
 
   const handleSelectSingleValue = key => setSingleValue(key);
 

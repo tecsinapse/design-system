@@ -9,9 +9,9 @@ import {
 interface SelectItemProps<Data, Type extends 'single' | 'multi'> {
   item: Data;
   type: Type;
-  value: Type extends 'single' ? string | undefined : string[];
+  value: Type extends 'single' ? Data | undefined : Data[];
   onSelect: (
-    key: Type extends 'single' ? string | undefined : string[]
+    option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
   keyExtractor: (t: Data, index: number) => string;
   labelExtractor: (t: Data) => string;
@@ -22,9 +22,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   item,
   onSelect,
   type,
-  keyExtractor,
   value,
-  index,
   labelExtractor,
   setDropDownVisible,
   checkedAll,
@@ -38,20 +36,20 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
 }): JSX.Element => {
   const isMulti = type === 'multi';
   const [checked, setChecked] = React.useState<boolean>(
-    value !== undefined && value.includes(keyExtractor(item, index))
+    value !== undefined && type === 'multi' && (value as Data[]).includes(item)
   );
   React.useEffect(() => {
-    checkedAll
-      ? setChecked(true)
-      : setChecked(
-          value !== undefined && value.includes(keyExtractor(item, index))
-        );
+    if (type === 'multi') {
+      checkedAll
+        ? setChecked(true)
+        : setChecked((value as Data[]).includes(item));
+    }
   }, [checkedAll]);
 
-  const clickItem = (item, index) => {
+  const clickItem = item => {
     // TS Workaround since TS won't infer the ternary operator's result type correctly
     type OnSelectArg = Parameters<typeof onSelect>[0];
-    const key: string = keyExtractor(item, index);
+    const key: Data = item;
     if (Array.isArray(value)) {
       const auxChecked = !checked;
       setChecked(!checked);
@@ -59,7 +57,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
         onSelect([...value, key] as OnSelectArg);
         [...value, key].length === lenghtOptions && setCheckedAll(true);
       } else {
-        const auxArray: string[] = value;
+        const auxArray: Data[] = value;
         const indexToExclude = auxArray.indexOf(key);
         auxArray.splice(indexToExclude, 1);
         onSelect([...auxArray] as OnSelectArg);
@@ -72,9 +70,9 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   };
 
   return (
-    <ContainerItemSelect onClick={() => clickItem(item, index)}>
+    <ContainerItemSelect onClick={() => clickItem(item)}>
       {isMulti && (
-        <Checkbox checked={checked} onChange={() => clickItem(item, index)} />
+        <Checkbox checked={checked} onChange={() => clickItem(item)} />
       )}
       <StyledContainerTextLabel>
         <Text fontWeight="bold" ellipsizeMode="tail" numberOfLines={1}>
