@@ -8,12 +8,12 @@ import {
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { View } from 'react-native';
+import { Text } from '../Text';
 import {
+  CharCountText,
   StyledInputContainer,
   StyledNativeInput,
-  CharCountText,
 } from './styled';
-import { Text } from '../Text';
 
 export interface TextAreaProps
   extends Omit<InputElementProps, 'style' | 'multiline' | 'value'>,

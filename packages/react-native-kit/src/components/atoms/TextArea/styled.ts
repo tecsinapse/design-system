@@ -24,6 +24,7 @@ const StyledNativeInputBase = styled(InputElement)<
     }px`};
   width: 100%;
   padding: 0;
+  margin: 3px 0;
 `;
 
 export const StyledNativeInput = styled(StyledNativeInputBase)<

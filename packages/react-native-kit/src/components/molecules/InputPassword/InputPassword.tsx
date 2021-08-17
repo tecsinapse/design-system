@@ -15,7 +15,11 @@ const InputPassword: FC<InputPasswordNativeProps> = ({
       secureTextEntry={!revealed}
       rightComponent={
         <>
-          <InputPasswordIcon onChangeState={setRevealed} revealed={revealed} />
+          <InputPasswordIcon
+            onChangeState={setRevealed}
+            revealed={revealed}
+            effect="none"
+          />
           {rightComponent}
         </>
       }
