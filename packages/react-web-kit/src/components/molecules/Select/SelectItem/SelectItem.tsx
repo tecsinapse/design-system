@@ -27,19 +27,23 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   index,
   labelExtractor,
   setDropDownVisible,
+  checkedAll,
 }: SelectItemProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
+  checkedAll: boolean;
 }): JSX.Element => {
   const isMulti = type === 'multi';
   const [checked, setChecked] = React.useState<boolean>(
     value !== undefined && value.includes(keyExtractor(item, index))
   );
+  React.useEffect(() => {
+    checkedAll ? setChecked(true) : setChecked(false);
+  }, [checkedAll]);
 
   const clickItem = (item, index) => {
     // TS Workaround since TS won't infer the ternary operator's result type correctly
     type OnSelectArg = Parameters<typeof onSelect>[0];
     const key: string = keyExtractor(item, index);
-
     if (Array.isArray(value)) {
       const auxChecked = !checked;
       setChecked(!checked);

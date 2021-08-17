@@ -38,6 +38,8 @@ export const StyledContainerDropdown = styled('div')<
 `;
 
 export const SearchBarContainer = styled('div')<Partial<StyleProps>>`
-  padding: ${({ theme }: StyleProps) =>
-    `0px ${theme.spacing.deca} ${theme.spacing.deca} ${theme.spacing.deca}`};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${({ theme }) => `${theme.spacing.mili} ${theme.spacing.deca}`};
 `;

@@ -4,6 +4,7 @@ import { Input } from '@tecsinapse/react-web-kit';
 import { ItemSelect } from '../SelectItem';
 import React from 'react';
 import { SelectProps } from '../Select';
+import { Checkbox } from '@tecsinapse/react-core';
 
 const DropDown = <Data, Type extends 'single' | 'multi'>({
   options,
@@ -20,6 +21,17 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
 }): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const lengthOptions = options.length;
+  const [checkedAll, setCheckedAll] = React.useState<boolean>(
+    value?.length === lengthOptions
+  );
+
+  const onClickCheckAll = () => {
+    const items = options.map((option, index) => keyExtractor(option, index));
+    setCheckedAll(!checkedAll);
+    const aux = !checkedAll;
+    type OnSelectArg = Parameters<typeof onSelect>[0];
+    !aux ? onSelect('' as OnSelectArg) : onSelect(items as OnSelectArg);
+  };
   return (
     <StyledContainerDropdown
       lengthOptions={lengthOptions}
@@ -27,7 +39,9 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
     >
       {!hideSearchBar && (
         <SearchBarContainer>
+          <Checkbox checked={checkedAll} onChange={onClickCheckAll} />
           <Input
+            style={{ width: '88%' }}
             placeholder="Busque a opção desejada"
             value={searchArg}
             leftComponent={
@@ -53,6 +67,7 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
           index={index}
           labelExtractor={labelExtractor}
           setDropDownVisible={setDropDownVisible}
+          checkedAll={checkedAll}
         />
       ))}
     </StyledContainerDropdown>
