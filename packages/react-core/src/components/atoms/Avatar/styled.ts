@@ -1,9 +1,10 @@
 import styled from '@emotion/native';
+import { FC } from 'react';
 import { Image, View } from 'react-native';
-import { StyleProps } from '@tecsinapse/react-core';
-import { AvatarProps } from './Avatar';
+import { StyleProps } from '../../../types/defaults';
 import { PressableSurface } from '../PressableSurface';
-import { Text } from '../Text';
+import { TextProps } from '../Text';
+import { AvatarProps } from './Avatar';
 
 export const ContainerButtonAvatar = styled(PressableSurface)<
   Partial<StyleProps & AvatarProps>
@@ -32,9 +33,11 @@ export const StyledBackground = styled(View)<Partial<StyleProps>>`
   flex-direction: row;
 `;
 
-export const StyledText = styled(Text)<Partial<StyleProps>>`
-  text-align: center;
-  align-self: center;
-  flex: 1;
-  text-transform: uppercase;
-`;
+export const getStyledTextComponent = (component: FC<TextProps>) => {
+  return styled(component)`
+    text-transform: uppercase;
+    text-align: center;
+    align-self: center;
+    flex: 1;
+  `;
+};

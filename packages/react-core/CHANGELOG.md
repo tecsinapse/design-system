@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.2.0...@tecsinapse/react-core@1.3.0) (2021-08-17)
+
+
+### Bug Fixes
+
+* backdrop blink (re-render) ([00a1f87](https://github.com/tecsinapse/design-system/commit/00a1f8727b3df169fffae689b8c75a6a6594242c))
+
+
+
+
+
 # [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.1.0...@tecsinapse/react-core@1.2.0) (2021-08-10)
 
 

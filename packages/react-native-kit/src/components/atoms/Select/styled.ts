@@ -1,13 +1,17 @@
-import styled from '@emotion/native';
-import { ModalProps, View, ViewProps } from 'react-native';
+import styled, { css } from '@emotion/native';
 import {
   Button,
   ButtonProps,
+  disabledInputStyles,
+  Icon,
+  InputContainerProps,
   PressableSurface,
   PressableSurfaceProps,
   StyleProps,
 } from '@tecsinapse/react-core';
+import { ModalProps, View, ViewProps } from 'react-native';
 import { Input, InputNativeProps } from '../Input';
+import { Text } from '../Text';
 
 export const StyledModal = styled(View)<ModalProps & Partial<StyleProps>>`
   position: relative;
@@ -15,6 +19,13 @@ export const StyledModal = styled(View)<ModalProps & Partial<StyleProps>>`
   height: 100%;
   width: 100%;
 `;
+
+export const StyledSelectionText = styled(Text)(
+  (props: Partial<InputContainerProps> & Partial<StyleProps>) => css`
+    line-height: ${props.theme?.typography.h5.lineHeight};
+    ${disabledInputStyles(props)};
+  `
+);
 
 export const Dummy = styled(View)`
   aspect-ratio: 1;
@@ -71,4 +82,9 @@ export const FloatingButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
   bottom: ${({ theme }) => theme.spacing.deca};
   left: ${({ theme }) => theme.spacing.deca};
   right: ${({ theme }) => theme.spacing.deca};
+`;
+
+export const SelectIcon = styled(Icon)<Partial<StyleProps>>`
+  padding: ${({ theme }) => theme.spacing.centi};
+  color: ${({ theme }) => theme.color.secondary.medium};
 `;

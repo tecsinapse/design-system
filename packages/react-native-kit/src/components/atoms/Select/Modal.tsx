@@ -4,6 +4,7 @@ import {
   ListFooter,
   ListItem,
   SearchBarContainer,
+  SelectIcon,
   StyledModal,
 } from './styled';
 import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
@@ -35,14 +36,14 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   confirmButtonText,
   ...modalProps
 }: SelectNativeProps<Data, Type> & ModalProps) => {
-  const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+  const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
 
   // Resets the temporary state to the initial state whenever the
   // modal is reopened or the value changes
   React.useEffect(() => {
     setSelectedValues(
-      (value ? (type === 'multi' ? value : [value]) : []) as string[]
+      (value ? (type === 'multi' ? value : [value]) : []) as Data[]
     );
   }, [value, focused, setSelectedValues]);
 
@@ -50,23 +51,29 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     ...option,
     _checked:
       type === 'multi'
-        ? !!selectedValues.find(value => keyExtractor(option, index) == value)
-        : selectedValues[0] === keyExtractor(option, index),
+        ? !!selectedValues.find(
+            value => keyExtractor(option, index) == keyExtractor(value, index)
+          )
+        : keyExtractor((selectedValues[0] || {}) as Data, index) ==
+          keyExtractor(option, index),
   }));
 
-  const handlePressItem = (key: string) => () => {
+  const handlePressItem = (option: Data) => () => {
     setSelectedValues(selectedValues => {
       if (type === 'multi') {
-        const newArr: string[] = [];
+        const newArr: Data[] = [];
         let found = false;
         for (const value of selectedValues) {
-          if (value !== key) newArr.push(value);
+          if (keyExtractor(value) != keyExtractor(option)) newArr.push(value);
           else found = true;
         }
-        if (!found) newArr.push(key);
+        if (!found) newArr.push(option);
         return newArr;
       }
-      return selectedValues[0] === key ? [] : [key];
+      return keyExtractor((selectedValues[0] || {}) as Data) ===
+        keyExtractor(option)
+        ? []
+        : [option];
     });
   };
 
@@ -82,11 +89,18 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   const headerContent = selectModalTitleComponent ? (
     selectModalTitleComponent
   ) : selectModalTitle ? (
-    <Text>{selectModalTitle}</Text>
+    <Text typography="h4" fontWeight="bold">
+      {selectModalTitle}
+    </Text>
   ) : null;
 
   return (
-    <RNModal {...modalProps} onRequestClose={onRequestClose}>
+    <RNModal
+      transparent
+      hardwareAccelerated
+      {...modalProps}
+      onRequestClose={onRequestClose}
+    >
       <StyledModal>
         <Header
           rightButton={{
@@ -106,6 +120,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
               placeholder={searchBarPlaceholder}
               value={searchArg}
               onChange={text => setSearchArg(text)}
+              leftComponent={
+                <SelectIcon name="search" type="ionicon" size="centi" />
+              }
             />
           </SearchBarContainer>
         )}
@@ -113,8 +130,8 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           data={data}
           keyExtractor={keyExtractor}
           ListFooterComponent={<ListFooter />}
-          renderItem={({ item, index }) => (
-            <ListItem onPress={handlePressItem(keyExtractor(item, index))}>
+          renderItem={({ item }) => (
+            <ListItem onPress={handlePressItem(item)}>
               <View pointerEvents={'none'}>
                 {type === 'multi' ? (
                   <Checkbox
@@ -122,7 +139,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
                     labelPosition={'right'}
                     checked={item._checked}
                   >
-                    <Text>{labelExtractor(item)}</Text>
+                    <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                      {labelExtractor(item)}
+                    </Text>
                   </Checkbox>
                 ) : (
                   <RadioButton
@@ -130,7 +149,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
                     labelPosition={'right'}
                     checked={item._checked}
                   >
-                    <Text>{labelExtractor(item)}</Text>
+                    <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                      {labelExtractor(item)}
+                    </Text>
                   </RadioButton>
                 )}
               </View>
@@ -142,7 +163,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           color={'primary'}
           onPress={handleConfirm}
         >
-          <Text fontColor={'light'}>{confirmButtonText}</Text>
+          <Text fontColor={'light'} fontWeight="bold">
+            {confirmButtonText}
+          </Text>
         </FloatingButton>
       </StyledModal>
     </RNModal>
