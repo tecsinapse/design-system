@@ -68,6 +68,7 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
           labelExtractor={labelExtractor}
           setDropDownVisible={setDropDownVisible}
           checkedAll={checkedAll}
+          setCheckedAll={setCheckedAll}
         />
       ))}
     </StyledContainerDropdown>

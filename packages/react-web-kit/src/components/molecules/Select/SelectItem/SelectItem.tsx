@@ -28,16 +28,22 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   setDropDownVisible,
   checkedAll,
+  setCheckedAll,
 }: SelectItemProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
   checkedAll: boolean;
+  setCheckedAll: (t: boolean) => void;
 }): JSX.Element => {
   const isMulti = type === 'multi';
   const [checked, setChecked] = React.useState<boolean>(
     value !== undefined && value.includes(keyExtractor(item, index))
   );
   React.useEffect(() => {
-    checkedAll ? setChecked(true) : setChecked(false);
+    checkedAll
+      ? setChecked(true)
+      : setChecked(
+          value !== undefined && value.includes(keyExtractor(item, index))
+        );
   }, [checkedAll]);
 
   const clickItem = (item, index) => {
@@ -54,6 +60,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
         const indexToExclude = auxArray.indexOf(key);
         auxArray.splice(indexToExclude, 1);
         onSelect([...auxArray] as OnSelectArg);
+        setCheckedAll(false);
       }
     } else {
       onSelect(key as OnSelectArg);
