@@ -90,7 +90,6 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
           labelExtractor={labelExtractor}
           hideSearchBar={hideSearchBar}
           setDropDownVisible={setDropDownVisible}
-          ref={refDropDown}
         />
       )}
     </StyledContainer>
