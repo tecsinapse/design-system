@@ -1,9 +1,16 @@
 import styled, { css } from '@emotion/native';
-import { Text } from '../../atoms/Text';
+import { FC } from 'react';
+import { Platform, PressableProps, ViewProps } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
-import { PressableProps, ViewProps, Platform } from 'react-native';
+import { PressableSurface } from '../../atoms/PressableSurface';
+import { TextProps } from '../../atoms/Text';
 
 const isWeb = Platform.OS === 'web';
+
+interface ButtonBorders {
+  isLeft?: boolean;
+  isRright?: boolean;
+}
 
 export const TitleContainer = styled.View<Partial<StyleProps>>`
   flex-direction: row;
@@ -12,17 +19,44 @@ export const TitleContainer = styled.View<Partial<StyleProps>>`
   background-color: ${({ theme }) => theme.color.secondary.xlight};
 `;
 
-export const Control = styled.Pressable<
-  Partial<StyleProps> & { align: 'start' | 'end' }
->`
-  flex-grow: 1;
-  align-items: flex-${({ align }) => align};
-  padding: ${({ theme }) => theme.spacing.deca};
-`;
+const surfaceBorderRight = ({
+  isRright,
+  theme,
+}: ButtonBorders & Partial<StyleProps>) =>
+  !isWeb &&
+  isRright &&
+  css`
+    border-top-right-radius: ${theme?.borderRadius.deca};
+  `;
 
-export const Capitalized = styled(Text)`
-  text-transform: capitalize;
-`;
+const surfaceBorderLeft = ({
+  isLeft,
+  theme,
+}: ButtonBorders & Partial<StyleProps>) =>
+  !isWeb &&
+  isLeft &&
+  css`
+    border-top-left-radius: ${theme?.borderRadius.deca};
+  `;
+
+export const Control = styled(PressableSurface)(
+  (
+    props: Partial<StyleProps> & ButtonBorders & { align: 'start' | 'end' }
+  ) => css`
+    align-items: flex-${props.align};
+    padding: ${props.theme?.spacing.centi};
+    border-radius: ${props.theme?.borderRadius.mili};
+    margin: ${props.theme?.spacing.mili};
+    ${surfaceBorderRight(props)}
+    ${surfaceBorderLeft(props)}
+  `
+);
+
+export const getCapitalizedTextComponent = (component: FC<TextProps>) => {
+  return styled(component)`
+    text-transform: capitalize;
+  `;
+};
 
 export const Content = styled.View<ViewProps & Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.deca};
@@ -46,7 +80,7 @@ export const Selected = styled.View<
   height: 100%;
 `;
 
-export const Cell = styled.Pressable<
+export const Cell = styled(PressableSurface)<
   PressableProps &
     Partial<StyleProps> & {
       selected: boolean;
@@ -75,6 +109,8 @@ export const Cell = styled.Pressable<
         (selected && !isRangeEnd) || isLineStart ? borderRadiusSize : 0,
     };
 
+    const borderEffect = highlighted ? 0 : borderRadiusSize;
+
     const backgroundColor = highlighted
       ? theme.color.primary.light
       : 'transparent';
@@ -92,6 +128,7 @@ export const Cell = styled.Pressable<
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: ${borderEffect};
       border-top-left-radius: ${leftBorderRadius};
       border-bottom-left-radius: ${leftBorderRadius};
       border-top-right-radius: ${rightBorderRadius};

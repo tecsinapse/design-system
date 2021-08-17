@@ -6,7 +6,7 @@ import React from 'react';
 import { Text } from '../Text';
 
 const GroupButtonOption = <T extends any>(props: GroupButtonOptionProps<T>) => {
-  return <CoreGroupButtonOption {...props} TextElement={Text} />;
+  return <CoreGroupButtonOption {...props} TextComponent={Text} />;
 };
 
 export default GroupButtonOption;

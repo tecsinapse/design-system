@@ -1,13 +1,11 @@
 import styled from '@emotion/native';
-import { Text } from '../../atoms/Text';
 import { StyleProps } from '../../../types/defaults';
+import { PressableSurface } from '../../atoms/PressableSurface';
 
 export const Root = styled.View<Partial<StyleProps>>`
   position: relative;
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
 `;
-
-export const Title = styled(Text)``;
 
 export const Content = styled.View<Partial<StyleProps>>`
   flex-direction: row;
@@ -16,11 +14,9 @@ export const Content = styled.View<Partial<StyleProps>>`
 `;
 
 export const SelectorRoot = styled.View<Partial<StyleProps>>`
-  justify-content: space-between;
   border-width: 1px;
   border-color: ${({ theme }) => theme.color.secondary.xlight};
-  border-radius: ${({ theme }) => theme.borderRadius.micro};
-  padding-vertical: ${({ theme }) => theme.spacing.kilo};
+  border-radius: ${({ theme }) => theme.borderRadius.mili};
 `;
 
 export const SelectorValue = styled.View`
@@ -35,19 +31,23 @@ export const SelectorContainer = styled.View<
   flex: 1;
 `;
 
-export const Control = styled.Pressable`
-  width: 100%;
+export const Control = styled(PressableSurface)<Partial<StyleProps>>`
+  border-radius: ${({ theme }) => theme.borderRadius.mili};
+  padding: ${({ theme }) => theme.spacing.micro};
+  margin-vertical: ${({ theme }) => theme.spacing.mili};
+  margin-horizontal: ${({ theme }) => theme.spacing.mili};
 `;
 
 export const Header = styled.View`
-  position: relative;
   width: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
 
-export const BackButton = styled.Pressable<Partial<StyleProps>>`
+export const BackButton = styled(PressableSurface)<Partial<StyleProps>>`
+  border-radius: ${({ theme }) => theme.borderRadius.mili};
+  padding: ${({ theme }) => theme.spacing.micro};
   position: absolute;
   aspect-ratio: 1;
   left: 0;
