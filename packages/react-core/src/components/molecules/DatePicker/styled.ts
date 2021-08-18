@@ -4,11 +4,8 @@ import { Platform } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { Icon } from '../../atoms/Icon';
 import { disabledInputStyles, InputContainerProps } from '../../atoms/Input';
+import { PressableSurface } from '../../atoms/PressableSurface';
 import { TextProps } from '../../atoms/Text';
-import {
-  PressableSurface,
-  PressableSurfaceProps,
-} from '../../atoms/PressableSurface';
 
 const isWeb = Platform.OS === 'web';
 
@@ -27,8 +24,11 @@ export const Backdrop = styled(PressableSurface)`
       `}
 `;
 
-export const ModalContent = styled.View<Partial<StyleProps>>`
+export const ModalContent = styled.View<
+  { offset: number } & Partial<StyleProps>
+>`
   background-color: transparent;
+  padding-bottom: ${({ offset }) => `${offset}px`};
   ${({ theme: { borderRadius } }) => css`
     ${isWeb
       ? `
