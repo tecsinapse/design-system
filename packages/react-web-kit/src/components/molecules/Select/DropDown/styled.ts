@@ -38,8 +38,26 @@ export const StyledContainerDropdown = styled('div')<
 `;
 
 export const SearchBarContainer = styled('div')<Partial<StyleProps>>`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding-left: ${({ theme }) => theme.spacing.mili};
+  width: 100%;
+`;
+
+export const StyledContainerCheckAll = styled('div')<Partial<StyleProps>>`
   padding: ${({ theme }) => `${theme.spacing.mili} ${theme.spacing.deca}`};
+  flex-direction: row;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const StyledSpan = styled('span')<Partial<StyleProps>>`
+  color: ${({ theme }) => theme.color.primary.medium};
+  padding: ${({ theme }) => `${theme.spacing.mili} 0px`};
+`;
+
+export const StyledContainerTextLabel = styled('div')<Partial<StyleProps>>`
+  padding-left: ${({ theme }) => theme.spacing.mili};
+  width: 100%;
+  display: flex;
+  overflow: hidden;
 `;

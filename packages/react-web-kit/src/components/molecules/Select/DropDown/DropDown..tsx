@@ -1,10 +1,16 @@
-import { SearchBarContainer, StyledContainerDropdown } from './styled';
+import {
+  SearchBarContainer,
+  StyledContainerCheckAll,
+  StyledContainerDropdown,
+  StyledContainerTextLabel,
+  StyledSpan,
+} from './styled';
 import { Icon, useDebouncedState } from '@tecsinapse/react-native-kit';
 import { Input } from '@tecsinapse/react-web-kit';
 import { ItemSelect } from '../SelectItem';
 import React from 'react';
 import { SelectProps } from '../Select';
-import { Checkbox } from '@tecsinapse/react-core';
+import { Checkbox, Text } from '@tecsinapse/react-core';
 
 const DropDown = <Data, Type extends 'single' | 'multi'>({
   options,
@@ -36,26 +42,34 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
   };
   return (
     <StyledContainerDropdown lengthOptions={lengthOptions}>
-      {!hideSearchBar && (
-        <SearchBarContainer>
-          {type === 'multi' && (
-            <Checkbox checked={checkedAll} onChange={onClickCheckAll} />
-          )}
-          <Input
-            style={{ width: type === 'multi' ? '88%' : '100%' }}
-            placeholder="Busque a opção desejada"
-            value={searchArg}
-            leftComponent={
-              <Icon
-                name="magnify"
-                type="material-community"
-                size="centi"
-                style={{ marginHorizontal: 12 }}
+      {type === 'multi' && (
+        <StyledContainerCheckAll>
+          <Checkbox checked={checkedAll} onChange={onClickCheckAll} />
+          {!hideSearchBar ? (
+            <SearchBarContainer>
+              <Input
+                style={{ width: type === 'multi' ? '88%' : '100%' }}
+                placeholder="Busque a opção desejada"
+                value={searchArg}
+                leftComponent={
+                  <Icon
+                    name="magnify"
+                    type="material-community"
+                    size="centi"
+                    style={{ marginHorizontal: 12 }}
+                  />
+                }
+                onChange={text => setSearchArg(text)}
               />
-            }
-            onChange={text => setSearchArg(text)}
-          />
-        </SearchBarContainer>
+            </SearchBarContainer>
+          ) : (
+            <StyledContainerTextLabel onClick={onClickCheckAll}>
+              <Text fontWeight="bold">
+                <StyledSpan>Selecionar todos</StyledSpan>
+              </Text>
+            </StyledContainerTextLabel>
+          )}
+        </StyledContainerCheckAll>
       )}
       {options.map((item, index) => (
         <ItemSelect
