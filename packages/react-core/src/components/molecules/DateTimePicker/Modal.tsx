@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { Modal as RNModal, ModalProps } from 'react-native';
-import { DateTimeSelectorProps } from '../DateTimeSelector';
+import { DateTimeSelector, DateTimeSelectorProps } from '../DateTimeSelector';
 import { Backdrop, getStyledDateTimeSelector, ModalContent } from './styled';
 
+export interface DateTimePickerModalProps {
+  DateTimeSelectorComponent?: React.FC<DateTimeSelectorProps>;
+  bottomOffset?: number;
+}
+
 const Component: React.FC<
-  DateTimeSelectorProps &
-    ModalProps & { DateTimeSelectorComponent: React.FC<DateTimeSelectorProps> }
+  DateTimeSelectorProps & ModalProps & DateTimePickerModalProps
 > = ({
   onRequestClose,
   onChange,
@@ -27,7 +31,8 @@ const Component: React.FC<
   yearLabel,
   hourLabel,
   minuteLabel,
-  DateTimeSelectorComponent,
+  DateTimeSelectorComponent = DateTimeSelector,
+  bottomOffset = 0,
   ...modalProps
 }) => {
   const handleDateTimeSelectorChange = (date: Date) => {
@@ -48,7 +53,7 @@ const Component: React.FC<
       onRequestClose={onRequestClose}
     >
       <Backdrop onPress={onRequestClose} effect="none">
-        <ModalContent>
+        <ModalContent offset={bottomOffset}>
           <StyledDateTimeSelector
             value={value}
             mode={mode}

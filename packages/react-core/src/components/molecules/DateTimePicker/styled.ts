@@ -31,8 +31,11 @@ export const Backdrop = styled(PressableSurface)<Partial<StyleProps>>`
       `}
 `;
 
-export const ModalContent = styled.View<Partial<StyleProps>>`
+export const ModalContent = styled.View<
+  { offset: number } & Partial<StyleProps>
+>`
   background-color: transparent;
+  padding-bottom: ${({ offset }) => `${offset}px`};
   ${({ theme: { borderRadius } }) => css`
     ${isWeb
       ? `
