@@ -7,18 +7,20 @@ import {
   PressableInputContainer,
   useInputFocus,
 } from '../../atoms/Input';
-import { PressableSurfaceProps } from '../../atoms/PressableSurface';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarIcon, getStyledTextComponent } from '../DatePicker/styled';
-import { DateTimeSelector, DateTimeSelectorProps } from '../DateTimeSelector';
-import { Modal } from './Modal';
+import { DateTimeSelectorProps } from '../DateTimeSelector';
+import { DateTimePickerModalProps, Modal } from './Modal';
 
 export interface DateTimePickerProps
   extends InputContainerProps,
+    DateTimePickerModalProps,
     Omit<DateTimeSelectorProps, 'style'> {
-  PressableElement?: React.FC<PressableSurfaceProps>;
+  controlComponent?: (
+    onPress: () => void,
+    displayValue?: string
+  ) => JSX.Element;
   TextComponent?: React.FC<TextProps>;
-  DateTimeSelectorComponent?: React.FC<DateTimeSelectorProps>;
   animationType?: ModalBaseProps['animationType'];
   placeholder?: string;
   onFocus?: () => void | never;
@@ -51,12 +53,13 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   onFocus,
   onBlur,
   disabled,
-  PressableElement,
+  controlComponent,
   hintComponent,
   hint,
   variant = 'default',
   TextComponent = Text,
-  DateTimeSelectorComponent = DateTimeSelector,
+  DateTimeSelectorComponent,
+  bottomOffset,
   rightComponent,
   animationType = 'fade',
   style,
@@ -85,11 +88,12 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   };
 
   const StyledText = getStyledTextComponent(TextComponent);
+  const displayValue = (value ? formatDate(value, format) : placeholder) || ' ';
 
   return (
     <>
-      {PressableElement ? (
-        <PressableElement onPress={handlePressInput} />
+      {controlComponent ? (
+        controlComponent(handlePressInput, displayValue)
       ) : (
         <View style={style}>
           <PressableInputContainer
@@ -111,7 +115,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
             {...rest}
           >
             <StyledText fontWeight="bold" disabled={disabled}>
-              {(value ? formatDate(value, format) : placeholder) || ' '}
+              {displayValue}
             </StyledText>
           </PressableInputContainer>
           {hint && _hint}
@@ -119,6 +123,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
       )}
       <Modal
         DateTimeSelectorComponent={DateTimeSelectorComponent}
+        bottomOffset={bottomOffset}
         visible={modalVisible}
         onRequestClose={handleCloseModal}
         animated
