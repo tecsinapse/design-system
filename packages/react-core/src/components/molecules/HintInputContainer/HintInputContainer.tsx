@@ -1,5 +1,6 @@
 import {
   Hint,
+  InputVariantType,
   PressableInputContainer,
   PressableInputContainerProps,
   TextProps,
@@ -16,8 +17,8 @@ export interface HintInputContainerProps extends PressableInputContainerProps {
   disabled?: boolean;
   hint: string | undefined;
   hintComponent: JSX.Element | undefined;
-  variant: any;
-  rightComponent: any;
+  variant: InputVariantType;
+  rightComponent: JSX.Element;
 }
 
 const HintInputContainer: FC<HintInputContainerProps> = ({
