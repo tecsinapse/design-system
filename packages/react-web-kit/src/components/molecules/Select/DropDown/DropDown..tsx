@@ -4,6 +4,7 @@ import {
   StyledContainerDropdown,
   StyledContainerTextLabel,
   StyledSpan,
+  StyledTest,
 } from './styled';
 import { Icon, useDebouncedState } from '@tecsinapse/react-native-kit';
 import { Input } from '@tecsinapse/react-web-kit';
@@ -71,22 +72,24 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
           )}
         </StyledContainerCheckAll>
       )}
-      {options.map((item, index) => (
-        <ItemSelect
-          type={type}
-          key={index}
-          item={item}
-          onSelect={onSelect}
-          value={value}
-          keyExtractor={keyExtractor}
-          index={index}
-          labelExtractor={labelExtractor}
-          setDropDownVisible={setDropDownVisible}
-          checkedAll={checkedAll}
-          setCheckedAll={setCheckedAll}
-          lenghtOptions={options.length}
-        />
-      ))}
+      <StyledTest lenghtOptions={options.length}>
+        {options.map((item, index) => (
+          <ItemSelect
+            type={type}
+            key={index}
+            item={item}
+            onSelect={onSelect}
+            value={value}
+            keyExtractor={keyExtractor}
+            index={index}
+            labelExtractor={labelExtractor}
+            setDropDownVisible={setDropDownVisible}
+            checkedAll={checkedAll}
+            setCheckedAll={setCheckedAll}
+            lenghtOptions={options.length}
+          />
+        ))}
+      </StyledTest>
     </StyledContainerDropdown>
   );
 };

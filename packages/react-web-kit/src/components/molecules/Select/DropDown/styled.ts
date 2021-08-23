@@ -20,11 +20,17 @@ export const StyledContainerDropdown = styled('div')<
   }: StyleProps & Partial<SelectProps<any, any>>) =>
     !hideSearchBar ? `${theme.spacing.deca}` : '0px'};
   padding-bottom: ${({ theme }: StyleProps) => theme.spacing.mili};
+`;
+
+export const StyledTest = styled('div')<
+  Partial<StyleProps & SelectProps<any, any> & { lenghtOptions: number }>
+>`
   max-height: 250px;
+  top: 100%;
   overflow-y: ${({
-    lengthOptions = 0,
-  }: Partial<{ lengthOptions: number } & StyleProps>) =>
-    lengthOptions > 5 ? 'scroll' : 'hidden'};
+    lenghtOptions = 0,
+  }: Partial<{ lenghtOptions: number } & StyleProps>) =>
+    lenghtOptions > 5 ? 'scroll' : 'hidden'};
   ::-webkit-scrollbar {
     width: 8px;
   }
