@@ -1,16 +1,12 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { ModalBaseProps, View } from 'react-native';
-import {
-  Hint,
-  InputContainerProps,
-  PressableInputContainer,
-  useInputFocus,
-} from '../../atoms/Input';
+import { ModalBaseProps } from 'react-native';
+import { InputContainerProps, useInputFocus } from '../../atoms/Input';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarIcon, getStyledTextComponent } from '../DatePicker/styled';
 import { DateTimeSelectorProps } from '../DateTimeSelector';
 import { DateTimePickerModalProps, Modal } from './Modal';
+import { HintInputContainer } from '../HintInputContainer';
 
 export interface DateTimePickerProps
   extends InputContainerProps,
@@ -65,10 +61,6 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   style,
   ...rest
 }) => {
-  const _hint = hintComponent || (
-    <Hint TextComponent={TextComponent} text={hint} variant={variant} />
-  );
-
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -95,31 +87,27 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
       {controlComponent ? (
         controlComponent(handlePressInput, displayValue)
       ) : (
-        <View style={style}>
-          <PressableInputContainer
-            onPress={handlePressInput}
-            focused={focused}
-            disabled={disabled}
-            LabelComponent={TextComponent}
-            variant={variant}
-            rightComponent={
-              <>
-                <CalendarIcon
-                  name="calendar-sharp"
-                  type="ionicon"
-                  size="centi"
-                />
-                {rightComponent}
-              </>
-            }
-            {...rest}
-          >
-            <StyledText fontWeight="bold" disabled={disabled}>
-              {displayValue}
-            </StyledText>
-          </PressableInputContainer>
-          {hint && _hint}
-        </View>
+        <HintInputContainer
+          focused={focused}
+          viewStyle={style}
+          onPress={handlePressInput}
+          disabled={disabled}
+          LabelComponent={TextComponent}
+          variant={variant}
+          hint={hint}
+          hintComponent={hintComponent}
+          rightComponent={
+            <>
+              <CalendarIcon name="calendar-sharp" type="ionicon" size="centi" />
+              {rightComponent}
+            </>
+          }
+          {...rest}
+        >
+          <StyledText fontWeight="bold" disabled={disabled}>
+            {displayValue}
+          </StyledText>
+        </HintInputContainer>
       )}
       <Modal
         DateTimeSelectorComponent={DateTimeSelectorComponent}

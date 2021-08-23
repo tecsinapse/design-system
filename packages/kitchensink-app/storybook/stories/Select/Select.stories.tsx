@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
-import { Input, Select, Text } from '@tecsinapse/react-native-kit';
+import { Input, Select } from '@tecsinapse/react-native-kit';
 
 storiesOf('Input', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
@@ -15,8 +15,8 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
 }));
 
 const Component = () => {
-  const [multiValue, setMultiValue] = useState<string[]>([]);
-  const [singleValue, setSingleValue] = useState<string | undefined>();
+  const [multiValue, setMultiValue] = useState<any>([]);
+  const [singleValue, setSingleValue] = useState<any>();
 
   function handleSelectMultipleValues(keys: string[]) {
     setMultiValue(keys);
