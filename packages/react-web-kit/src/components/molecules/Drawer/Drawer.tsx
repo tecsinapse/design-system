@@ -1,6 +1,14 @@
 import React, { FC } from 'react';
 import { StyledContainerDrawer, StyledOverlay } from './styled';
 import { Transition } from 'react-transition-group';
+import {
+  transitionStylesTopBottom,
+  defaultStylesTopBottom,
+  defaultStylesLeftRight,
+  transitionStylesOverlay,
+  transitionStylesLeftRight,
+  defaultStyleOverlay,
+} from './animations';
 
 export interface DrawerProps {
   open: boolean;
@@ -14,68 +22,21 @@ const Drawer: FC<DrawerProps> = ({
   onClose,
   children,
 }) => {
-  const transformLeftRigthClose =
-    anchorPosition === 'right' ? 'translateX(100%)' : 'translateX(-100%)';
-  const transformLeftRigthOpen = 'translateX(0)';
-
-  const transformTopBottomClose =
-    anchorPosition === 'top' ? 'translateY(-100%)' : 'translateY(100%)';
-  const transformTopBottomOpen = 'translateY(0%)';
-
-  const defaultStyleDrawerLeftRight = {
-    transition: 'transform 300ms ease-in-out',
-    transform: transformLeftRigthClose,
-    overflow: 'hidden',
-  };
-
-  const transitionStylesLeftRight = {
-    entering: { transform: transformLeftRigthClose },
-    entered: {
-      transform: transformLeftRigthOpen,
-    },
-    exiting: {
-      transform: transformLeftRigthOpen,
-    },
-    exited: { transform: transformLeftRigthClose },
-  };
-
-  const defaultStyleDrawerTopBottom = {
-    transition: 'transform 300ms ease-in-out',
-    transform: transformTopBottomClose,
-    overflow: 'hidden',
-  };
-  const transitionStylesDrawerTopBottom = {
-    entering: { transform: transformTopBottomClose },
-    entered: {
-      transform: transformTopBottomOpen,
-    },
-    exiting: {
-      transform: transformTopBottomOpen,
-    },
-    exited: { transform: transformTopBottomClose },
-  };
-
-  const defaultStyle = {
-    transition: `opacity 700ms ease-in-out`,
-    opacity: 0,
-  };
-  const transitionStyles = {
-    entering: { opacity: 1 },
-    entered: { opacity: 1 },
-    exiting: { opacity: 0 },
-    exited: { opacity: 0 },
-  };
-
   const getStyles = (anchorPosition: string, state: any) => {
+    const stylesLeftRight = defaultStylesLeftRight(anchorPosition);
+    const transitionLeftRight = transitionStylesLeftRight(anchorPosition);
+    const stylesTopBottom = defaultStylesTopBottom(anchorPosition);
+    const transitionTopBottom = transitionStylesTopBottom(anchorPosition);
+
     if (['left', 'right'].includes(anchorPosition)) {
       return {
-        ...defaultStyleDrawerLeftRight,
-        ...transitionStylesLeftRight[state],
+        ...stylesLeftRight,
+        ...transitionLeftRight[state],
       };
     } else {
       return {
-        ...defaultStyleDrawerTopBottom,
-        ...transitionStylesDrawerTopBottom[state],
+        ...stylesTopBottom,
+        ...transitionTopBottom[state],
       };
     }
   };
@@ -86,11 +47,11 @@ const Drawer: FC<DrawerProps> = ({
         {state => (
           <div
             style={{
-              ...defaultStyle,
-              ...transitionStyles[state],
+              ...defaultStyleOverlay,
+              ...transitionStylesOverlay[state],
             }}
           >
-            <StyledOverlay onClick={onClose} />
+            <StyledOverlay onClick={open ? onClose : undefined} show={open} />
           </div>
         )}
       </Transition>
