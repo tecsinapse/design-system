@@ -16,8 +16,11 @@ export const ContainerItemSelect = styled('div')<Partial<StyleProps>>`
   align-items: center;
 `;
 
-export const StyledSpan = styled('span')<Partial<StyleProps>>`
-  color: ${({ theme }) => theme.color.secondary.xdark};
+export const StyledSpan = styled('span')<
+  Partial<StyleProps> & { singleHighligh: boolean }
+>`
+  color: ${({ theme, singleHighligh }) =>
+    singleHighligh ? theme.color.primary.medium : theme.color.secondary.xdark};
   padding: ${({ theme }) => `${theme.spacing.mili} 0px`};
 `;
 

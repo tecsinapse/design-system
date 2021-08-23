@@ -76,7 +76,9 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
       )}
       <StyledContainerTextLabel>
         <Text fontWeight="bold" ellipsizeMode="tail" numberOfLines={1}>
-          <StyledSpan>{labelExtractor(item)}</StyledSpan>
+          <StyledSpan singleHighligh={type === 'single' && value === item}>
+            {labelExtractor(item)}
+          </StyledSpan>
         </Text>
       </StyledContainerTextLabel>
     </ContainerItemSelect>
