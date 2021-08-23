@@ -6,9 +6,10 @@ export const ThStyled = styled('th')<Partial<StyleProps>>`
   color: ${({ theme }) => theme.font.color.medium};
   font-weight: ${({ theme }) => theme.font.weight.bold};
   font-size: ${({ theme }) => theme.typography.sub.fontSize};
-  line-height: ${({ theme }) => theme.typography.base.lineHeight};
+  line-height: ${({ theme }) => theme.typography.sub.lineHeight};
   font-family: ${({ theme }) => theme.font.stack.default};
 
+  text-align: start;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -22,8 +23,8 @@ export const THeadStyled = styled('thead')<Partial<StyleProps>>`
 `;
 
 export const HeaderBackground = styled('hr')<Partial<StyleProps>>`
-  margin: -54px -25px 4px -25px;
-  height: 45px;
+  margin: -51px -25px 4px -25px;
+  height: 42px;
   background-color: ${({ theme }) => theme.color.secondary.xlight};
   border: 0;
 `;
