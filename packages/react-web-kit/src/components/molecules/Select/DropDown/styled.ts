@@ -54,6 +54,13 @@ export const StyledContainerCheckAll = styled('div')<Partial<StyleProps>>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary.xlight};
+  }
+  &:hover span {
+    color: ${({ theme }) => theme.color.primary.medium};
+  }
 `;
 
 export const StyledSpan = styled('span')<Partial<StyleProps>>`
