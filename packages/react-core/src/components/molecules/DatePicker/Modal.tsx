@@ -3,6 +3,11 @@ import { Modal as RNModal, ModalProps } from 'react-native';
 import { Calendar, CalendarProps, SelectionType } from '../Calendar';
 import { Backdrop, ModalContent } from './styled';
 
+export interface DatePickerModalProps<T extends SelectionType> {
+  CalendarComponent?: React.FC<CalendarProps<T>>;
+  bottomOffset?: number;
+}
+
 const Component = <T extends SelectionType>({
   type,
   value,
@@ -10,18 +15,21 @@ const Component = <T extends SelectionType>({
   month,
   year,
   onChange,
+  CalendarComponent = Calendar,
+  bottomOffset = 0,
   ...modalProps
-}: CalendarProps<T> & ModalProps) => {
+}: CalendarProps<T> & ModalProps & DatePickerModalProps<T>) => {
   return (
     <RNModal
-      {...modalProps}
-      animationType={'fade'}
       transparent
+      hardwareAccelerated
+      statusBarTranslucent
+      {...modalProps}
       onRequestClose={onRequestClose}
     >
       <Backdrop onPress={onRequestClose} effect="none">
-        <ModalContent>
-          <Calendar
+        <ModalContent offset={bottomOffset}>
+          <CalendarComponent
             pointerEvents={'box-none'}
             type={type}
             value={value}

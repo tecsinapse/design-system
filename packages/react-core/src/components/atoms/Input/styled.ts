@@ -31,13 +31,13 @@ const disabledContainerStyles = ({
     background-color: transparent;
   `;
 
-const disabledInputStyles = ({
+export const disabledInputStyles = ({
   disabled,
   theme,
-}: Partial<InputContainerProps> & StyleProps) =>
+}: Partial<InputContainerProps> & Partial<StyleProps>) =>
   disabled &&
   css`
-    color: ${theme.color.secondary.light};
+    color: ${theme?.color.secondary.light};
   `;
 
 const focusedStyles = ({

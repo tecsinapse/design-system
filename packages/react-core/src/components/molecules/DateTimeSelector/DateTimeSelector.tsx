@@ -1,33 +1,26 @@
-import * as React from 'react';
-import { View, ViewProps } from 'react-native';
 import {
-  Title,
-  Content,
-  SelectorContainer,
-  Root,
-  Control,
-  BackButton,
-  Header,
-} from './styled';
-import { Selector, Granularity } from './Selector';
-import {
-  getDaysInMonth,
-  set,
   add,
-  sub,
-  format as formatDate,
   compareAsc,
+  format as formatDate,
+  getDaysInMonth,
   isSameDay,
   isSameMonth,
   isSameYear,
+  set,
+  sub,
 } from 'date-fns';
+import * as React from 'react';
+import { ViewProps } from 'react-native';
 import { Button } from '../../atoms/Button';
-import { Text } from '../../atoms/Text';
 import { Icon } from '../../atoms/Icon';
+import { Text, TextProps } from '../../atoms/Text';
+import { Granularity, Selector } from './Selector';
+import { BackButton, Content, Header, Root, SelectorContainer } from './styled';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
 export interface DateTimeSelectorProps extends ViewProps {
+  TextComponent?: React.FC<TextProps>;
   value?: Date;
   onChange?: (value: Date) => void | never;
 
@@ -102,6 +95,7 @@ function getThresholdUnit(mode: DateTimeSelectorMode, threshold?: number) {
 }
 
 const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
+  TextComponent = Text,
   value,
   onChange,
   mode = 'date',
@@ -215,9 +209,9 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
             />
           </BackButton>
         )}
-        <Title typography={'base'} colorVariant={'secondary'}>
+        <TextComponent typography={'base'} colorVariant={'secondary'}>
           {modalTitle}
-        </Title>
+        </TextComponent>
       </Header>
 
       {isDate ? (
@@ -225,6 +219,7 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
           {mode !== 'month' && (
             <SelectorContainer isFirst>
               <Selector
+                TextComponent={TextComponent}
                 onChange={handleChange('date')}
                 referenceDate={date}
                 value={date.getDate()}
@@ -246,6 +241,7 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
           )}
           <SelectorContainer>
             <Selector
+              TextComponent={TextComponent}
               onChange={handleChange('month')}
               referenceDate={date}
               value={date.getMonth()}
@@ -266,6 +262,7 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
           </SelectorContainer>
           <SelectorContainer isLast>
             <Selector
+              TextComponent={TextComponent}
               onChange={handleChange('year')}
               referenceDate={date}
               value={date.getFullYear()}
@@ -289,6 +286,7 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
         <Content>
           <SelectorContainer isFirst>
             <Selector
+              TextComponent={TextComponent}
               onChange={handleChange('hours')}
               referenceDate={date}
               value={date.getHours()}
@@ -299,6 +297,7 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
           </SelectorContainer>
           <SelectorContainer isLast>
             <Selector
+              TextComponent={TextComponent}
               onChange={handleChange('minutes')}
               referenceDate={date}
               value={date.getMinutes()}
@@ -310,9 +309,9 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
         </Content>
       )}
       <Button color={'primary'} onPress={handlePressConfirm}>
-        <Text colorVariant={'secondary'} colorTone={'xlight'}>
+        <TextComponent fontWeight="bold" fontColor="light">
           {confirmButtonText || 'OK'}
-        </Text>
+        </TextComponent>
       </Button>
     </Root>
   );

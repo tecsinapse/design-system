@@ -4,6 +4,7 @@ import './Button/Button.stories';
 import './Card/Card.stories';
 import './Checkbox/Checkbox.stories';
 import './GroupButton/GroupButton.stories';
+import './Header/Header.stories';
 import './Icon/Icon.stories';
 import './Input/Input.stories';
 import './TextArea/TextArea.stories';

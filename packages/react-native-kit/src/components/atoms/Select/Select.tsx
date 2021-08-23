@@ -1,22 +1,25 @@
 import {
+  Hint,
   InputContainerProps,
   PressableInputContainer,
   useInputFocus,
 } from '@tecsinapse/react-core';
 import * as React from 'react';
+import { View } from 'react-native';
 import { Text } from '../Text';
 import { Modal } from './Modal';
+import { SelectIcon, StyledSelectionText } from './styled';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
   options: Data[];
   onSelect: (
-    key: Type extends 'single' ? string | undefined : string[]
+    option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
-  value: Type extends 'single' ? string | undefined : string[];
+  value: Type extends 'single' ? Data | undefined : Data[];
   type: Type;
 
-  keyExtractor: (t: Data, index: number) => string;
+  keyExtractor: (t: Data, index?: number) => string;
   labelExtractor: (t: Data) => string;
   groupKeyExtractor?: (t: Data) => string;
 
@@ -50,8 +53,17 @@ function Select<Data, Type extends 'single' | 'multi'>({
   searchBarPlaceholder,
   hideSearchBar,
   confirmButtonText,
+  rightComponent,
+  variant = 'default',
+  hintComponent,
+  hint,
+  style,
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
+  const _hint = hintComponent || (
+    <Hint TextComponent={Text} text={hint} variant={variant} />
+  );
+
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -77,7 +89,9 @@ function Select<Data, Type extends 'single' | 'multi'>({
         return options
           .reduce(
             (acc, option, index) =>
-              value.find(key => keyExtractor(option, index) == key)
+              value.find(
+                key => keyExtractor(option, index) == keyExtractor(key, index)
+              )
                 ? acc + labelExtractor(option) + ', '
                 : acc,
             ''
@@ -87,7 +101,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
     } else {
       if (value === undefined) return placeholder;
       const selectedOption = options.find(
-        (option, index) => keyExtractor(option, index) === value
+        (option, index) =>
+          keyExtractor(option, index) == keyExtractor(value as Data, index)
       );
       return selectedOption ? labelExtractor(selectedOption) : placeholder;
     }
@@ -95,14 +110,27 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   return (
     <>
-      <PressableInputContainer
-        onPress={handlePressInput}
-        focused={focused}
-        disabled={disabled}
-        {...rest}
-      >
-        <Text>{getDisplayValue()}</Text>
-      </PressableInputContainer>
+      <View style={style}>
+        <PressableInputContainer
+          onPress={handlePressInput}
+          focused={focused}
+          disabled={disabled}
+          LabelComponent={Text}
+          variant={variant}
+          rightComponent={
+            <>
+              <SelectIcon name="chevron-down" type="ionicon" size="centi" />
+              {rightComponent}
+            </>
+          }
+          {...rest}
+        >
+          <StyledSelectionText fontWeight="bold" disabled={disabled}>
+            {getDisplayValue() || ' '}
+          </StyledSelectionText>
+        </PressableInputContainer>
+        {hint && _hint}
+      </View>
       <Modal
         visible={modalVisible}
         options={options}

@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.3.1...@tecsinapse/react-web-kit@1.3.2) (2021-08-18)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.3.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.3.0...@tecsinapse/react-web-kit@1.3.1) (2021-08-18)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+# [1.3.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.2.0...@tecsinapse/react-web-kit@1.3.0) (2021-08-17)
+
+
+### Bug Fixes
+
+* breadcrumbs icon ([10e18dd](https://github.com/tecsinapse/design-system/commit/10e18ddf825754ffa3c465c6f9cd79fc13416c33))
+
+
+### Features
+
+* add Component BreadCrumbItem ([a75ce57](https://github.com/tecsinapse/design-system/commit/a75ce57a86337aa1f729ece82a7bbc973b9109a8))
+* add component BreadCrumbs ([22d5048](https://github.com/tecsinapse/design-system/commit/22d5048f8c51bd29a8dc2888d0d59590e32108c3))
+
+
+
+
+
 # [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.1.0...@tecsinapse/react-web-kit@1.2.0) (2021-08-10)
 
 

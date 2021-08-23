@@ -1,13 +1,13 @@
-import React from 'react';
-import { IconSize } from '@tecsinapse/react-core';
-
+import React, { FC } from 'react';
 import { ImageSourcePropType } from 'react-native';
+import { IconSize } from '../../../types/defaults';
+import { Text, TextProps } from '../Text';
 import { getIniciais } from './helpers';
 import {
   ContainerButtonAvatar,
+  getStyledTextComponent,
   StyledAvatar,
   StyledBackground,
-  StyledText,
 } from './styled';
 
 export type SizeAvatar = Omit<IconSize, 'centi' | 'deca'>;
@@ -19,6 +19,7 @@ export interface AvatarProps {
   name: string;
   onPress?: () => void;
   size?: keyof SizeAvatar;
+  TextComponent?: FC<TextProps>;
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
@@ -26,6 +27,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   name,
   onPress,
   size = 'mega',
+  TextComponent = Text,
 }) => {
   const [hasError, setHasError] = React.useState<boolean>(false);
 
@@ -33,6 +35,8 @@ export const Avatar: React.FC<AvatarProps> = ({
   React.useEffect(() => {
     setHasError(false);
   }, [source]);
+
+  const StyledText = getStyledTextComponent(TextComponent);
 
   return (
     <ContainerButtonAvatar effect="none" onPress={onPress} size={size}>

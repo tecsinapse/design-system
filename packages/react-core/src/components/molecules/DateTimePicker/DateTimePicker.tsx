@@ -1,19 +1,27 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { useInputFocus } from '../../atoms/Input';
+import { ModalBaseProps, View } from 'react-native';
 import {
+  Hint,
+  InputContainerProps,
   PressableInputContainer,
-  PressableInputContainerProps,
-} from '../../atoms/PressableInputContainer';
-import { PressableSurfaceProps } from '../../atoms/PressableSurface';
-import { Text } from '../../atoms/Text';
+  useInputFocus,
+} from '../../atoms/Input';
+import { Text, TextProps } from '../../atoms/Text';
+import { CalendarIcon, getStyledTextComponent } from '../DatePicker/styled';
 import { DateTimeSelectorProps } from '../DateTimeSelector';
-import { Modal } from './Modal';
+import { DateTimePickerModalProps, Modal } from './Modal';
 
 export interface DateTimePickerProps
-  extends PressableInputContainerProps,
+  extends InputContainerProps,
+    DateTimePickerModalProps,
     Omit<DateTimeSelectorProps, 'style'> {
-  PressableElement?: React.FC<PressableSurfaceProps>;
+  controlComponent?: (
+    onPress: () => void,
+    displayValue?: string
+  ) => JSX.Element;
+  TextComponent?: React.FC<TextProps>;
+  animationType?: ModalBaseProps['animationType'];
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
@@ -45,9 +53,22 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   onFocus,
   onBlur,
   disabled,
-  PressableElement,
+  controlComponent,
+  hintComponent,
+  hint,
+  variant = 'default',
+  TextComponent = Text,
+  DateTimeSelectorComponent,
+  bottomOffset,
+  rightComponent,
+  animationType = 'fade',
+  style,
   ...rest
 }) => {
+  const _hint = hintComponent || (
+    <Hint TextComponent={TextComponent} text={hint} variant={variant} />
+  );
+
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -66,25 +87,47 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
     handleBlur();
   };
 
+  const StyledText = getStyledTextComponent(TextComponent);
+  const displayValue = (value ? formatDate(value, format) : placeholder) || ' ';
+
   return (
     <>
-      {PressableElement ? (
-        <PressableElement onPress={handlePressInput} />
+      {controlComponent ? (
+        controlComponent(handlePressInput, displayValue)
       ) : (
-        <PressableInputContainer
-          onPress={handlePressInput}
-          focused={focused}
-          disabled={disabled}
-          {...rest}
-        >
-          <Text>{value ? formatDate(value, format) : placeholder}</Text>
-        </PressableInputContainer>
+        <View style={style}>
+          <PressableInputContainer
+            onPress={handlePressInput}
+            focused={focused}
+            disabled={disabled}
+            LabelComponent={TextComponent}
+            variant={variant}
+            rightComponent={
+              <>
+                <CalendarIcon
+                  name="calendar-sharp"
+                  type="ionicon"
+                  size="centi"
+                />
+                {rightComponent}
+              </>
+            }
+            {...rest}
+          >
+            <StyledText fontWeight="bold" disabled={disabled}>
+              {displayValue}
+            </StyledText>
+          </PressableInputContainer>
+          {hint && _hint}
+        </View>
       )}
       <Modal
+        DateTimeSelectorComponent={DateTimeSelectorComponent}
+        bottomOffset={bottomOffset}
         visible={modalVisible}
         onRequestClose={handleCloseModal}
         animated
-        animationType={'slide'}
+        animationType={animationType}
         onChange={onChange}
         value={value}
         mode={mode}
