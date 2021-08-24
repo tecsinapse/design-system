@@ -27,6 +27,9 @@ export const StyledMenuButton = nativeStyled(Button)<Partial<StyleProps>>`
     padding-bottom: calc(${({ theme }) => theme.spacing.centi} + 2px);
     padding-left: calc(${({ theme }) => theme.spacing.centi} + 2px);
     margin-right: ${({ theme }) => theme.spacing.kilo};
+    & * {
+      user-select: none;
+    }
 `;
 
 export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`

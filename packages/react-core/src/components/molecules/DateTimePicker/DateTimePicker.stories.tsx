@@ -4,7 +4,7 @@ import { ptBR } from 'date-fns/locale';
 import { DateTimePicker, DateTimePickerProps } from './index';
 
 export default {
-  title: 'Components/DateTimePicker',
+  title: 'Components/Date Time Picker',
   component: DateTimePicker,
 };
 

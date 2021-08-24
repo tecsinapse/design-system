@@ -1,5 +1,8 @@
 import React from 'react';
 import { Story } from '@storybook/react';
+import { Icon, Text } from '@tecsinapse/react-core';
+import styled from '@emotion/styled';
+
 import TBody from './Body/TBody';
 import TableContainer from './Container/TableContainer';
 import Th from './Header/Th';
@@ -11,8 +14,6 @@ import TableToolbar from './Toolbar/TableToolbar';
 import { Input } from '../Input';
 import TFoot from './Footer/TFoot';
 import { Button } from '../Button';
-import { Text } from '@tecsinapse/react-core';
-import styled from '@emotion/styled';
 
 export default {
   title: 'Components/Table',
@@ -65,19 +66,23 @@ const Template: Story = () => (
               <div
                 style={{
                   display: 'flex',
-                  width: 125,
+                  width: 130,
                   justifyContent: 'space-between',
                 }}
               >
                 <Button>
-                  <Text fontColor="light" typography="h5">
-                    {'<'}
-                  </Text>
+                  <Icon
+                    name={'chevron-left'}
+                    type={'material-community'}
+                    fontColor={'light'}
+                  />
                 </Button>
                 <Button>
-                  <Text fontColor="light" typography="h5">
-                    {'>'}
-                  </Text>
+                  <Icon
+                    name={'chevron-right'}
+                    type={'material-community'}
+                    fontColor={'light'}
+                  />
                 </Button>
               </div>
             </div>

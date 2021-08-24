@@ -5,7 +5,7 @@ import DatePicker, { DatePickerProps } from './DatePicker';
 import { DateRange } from '../Calendar';
 
 export default {
-  title: 'Components/DatePicker',
+  title: 'Components/Date Picker',
   component: DatePicker,
 };
 

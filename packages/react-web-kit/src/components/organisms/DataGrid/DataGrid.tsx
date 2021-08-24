@@ -1,15 +1,23 @@
 import React from 'react';
-import TableToolbar from '../../atoms/Table/Toolbar/TableToolbar';
-import { Button, Text } from '@tecsinapse/react-web-kit';
-import Table from '../../atoms/Table/Table';
-import THead from '../../atoms/Table/Header/THead';
-import Tr from '../../atoms/Table/Row/Tr';
-import Th from '../../atoms/Table/Header/Th';
-import TBody from '../../atoms/Table/Body/TBody';
-import Td from '../../atoms/Table/Cell/Td';
-import TFoot from '../../atoms/Table/Footer/TFoot';
-import TableContainer from '../../atoms/Table/Container/TableContainer';
-import { FlexContainer, FooterContainer, TdFooterStyled } from './styled';
+import { Button, Checkbox, Icon, Text } from '../../../index';
+import {
+  Table,
+  TableToolbar,
+  TableContainer,
+  Th,
+  Tr,
+  Td,
+  THead,
+  TFoot,
+  TBody,
+} from '../../atoms/Table';
+import {
+  CheckboxCell,
+  CheckboxHeader,
+  FlexContainer,
+  FooterContainer,
+  TdFooterStyled,
+} from './styled';
 
 type HeadersType<Data> = {
   label: string;
@@ -23,6 +31,10 @@ export interface DataGridProps<Data> {
   toolbarRightIcons?: React.ReactNode;
   toolbarFooter?: React.ReactNode;
   toolbarTitle: string;
+  selectable?: boolean;
+  selected?: Data[];
+  setSelected?: (data: Data, checked: boolean) => void;
+  setSelectAll?: () => void;
 }
 
 const DataGrid = <Data extends unknown>({
@@ -32,6 +44,10 @@ const DataGrid = <Data extends unknown>({
   toolbarTitle,
   toolbarFooter,
   toolbarRightIcons,
+  selectable = false,
+  selected = [],
+  setSelected,
+  setSelectAll,
 }: DataGridProps<Data>): JSX.Element => {
   return (
     <TableContainer>
@@ -43,6 +59,14 @@ const DataGrid = <Data extends unknown>({
       <Table>
         <THead>
           <Tr>
+            {selectable && (
+              <CheckboxHeader>
+                <Checkbox
+                  checked={data.length === selected?.length}
+                  onChange={() => setSelectAll?.()}
+                />
+              </CheckboxHeader>
+            )}
             {headers.map(({ label }) => (
               <Th key={label}>{label}</Th>
             ))}
@@ -52,6 +76,16 @@ const DataGrid = <Data extends unknown>({
         <TBody>
           {data.map(item => (
             <Tr key={rowKeyExtractor(item)}>
+              {selectable && (
+                <CheckboxCell>
+                  <Checkbox
+                    checked={selected?.some(
+                      sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
+                    )}
+                    onChange={checked => setSelected?.(item, checked)}
+                  />
+                </CheckboxCell>
+              )}
               {headers.map(({ label, render }) => (
                 <Td key={`row-${rowKeyExtractor(item)}-column-${label}`}>
                   {render(item)}
@@ -72,14 +106,18 @@ const DataGrid = <Data extends unknown>({
                 </Button>
                 <FlexContainer>
                   <Button>
-                    <Text fontColor="light" typography="h5">
-                      {'<'}
-                    </Text>
+                    <Icon
+                      name={'chevron-left'}
+                      type={'material-community'}
+                      fontColor={'light'}
+                    />
                   </Button>
                   <Button>
-                    <Text fontColor="light" typography="h5">
-                      {'>'}
-                    </Text>
+                    <Icon
+                      name={'chevron-right'}
+                      type={'material-community'}
+                      fontColor={'light'}
+                    />
                   </Button>
                 </FlexContainer>
               </FooterContainer>
