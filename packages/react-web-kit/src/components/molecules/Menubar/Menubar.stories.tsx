@@ -255,9 +255,17 @@ const StyledImage = styled('img')`
 
 // Import type manually
 const Template: Story<MenubarProps> = args => {
+  const [isOpen, setOpen] = React.useState<boolean>(args.open);
+
+  const toggleOpenClose = () => {
+    setOpen(!isOpen);
+  };
+
   return (
     <Menubar
       {...args}
+      toggleOpenClose={toggleOpenClose}
+      open={isOpen}
       options={EXAMPLE_MENU}
       mostUsed={MOST_USED}
       leftComponents={
@@ -271,3 +279,4 @@ const Template: Story<MenubarProps> = args => {
 };
 
 export const Base = Template.bind({});
+Base.args = { open: false };

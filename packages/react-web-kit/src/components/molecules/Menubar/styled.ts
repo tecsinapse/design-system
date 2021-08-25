@@ -12,6 +12,8 @@ export const StyledIconInput = webStyled('div')<Partial<StyleProps>>`
 `;
 
 export const StyledMenuBar = webStyled('div')<Partial<StyleProps>>`
+    position: relative;
+    z-index: ${1};
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     display: flex;
     flex-direction: row;
@@ -36,6 +38,7 @@ export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
         0.08
       )}`};
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+    border-radius: 0 0 7px 7px;
     box-shadow: 0px 2px 8px ${({ theme }) =>
       hex2rgba(theme.miscellaneous.shadow, 0.08)};
     padding-right: 8vw;
