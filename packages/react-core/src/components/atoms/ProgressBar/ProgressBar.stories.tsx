@@ -17,5 +17,10 @@ const Template: Story<ProgressBarProps> = ({ ...args }) => (
 export const Base = Template.bind({});
 
 Base.args = {
-  valueNow: 50,
+  valueNow: 67,
+  animate: true,
+  animationParameters: {
+    direction: 'right',
+    duration: 6000,
+  },
 };
