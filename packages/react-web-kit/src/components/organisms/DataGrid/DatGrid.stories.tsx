@@ -72,7 +72,7 @@ type ExampleData = {
   email: string;
 };
 
-const data: ExampleData[] = [
+const EXAMPLE_DATA: ExampleData[] = [
   {
     id: 1,
     name: 'Leanne Graham',
@@ -108,8 +108,14 @@ const Template: Story = args => {
   const [selected, setSelected] = React.useState<ExampleData[]>([]);
 
   const headers = [
-    { label: 'ID', render: data => data.id, sort: () => {} }, // TODO: Add support for sorting on dev side
-    { label: 'Name', render: data => data.name },
+    { label: 'ID', render: data => data.id },
+    {
+      label: 'Name',
+      render: data => data.name,
+      sort: direction => {
+        alert(`sorting in: ${direction}`);
+      },
+    },
     { label: 'Username', render: data => data.username },
     { label: 'Email', render: data => data.email },
   ];
@@ -130,7 +136,7 @@ const Template: Story = args => {
   return (
     <DataGrid
       headers={headers}
-      data={data}
+      data={EXAMPLE_DATA}
       rowKeyExtractor={rowKeyExtractor}
       toolbarTitle="Data grid"
       toolbarRightIcons={<ToolbarRightComponent />}
@@ -138,7 +144,9 @@ const Template: Story = args => {
       selected={selected}
       setSelected={handleSelect}
       setSelectAll={() =>
-        selected.length === data.length ? setSelected([]) : setSelected(data)
+        selected.length === EXAMPLE_DATA.length
+          ? setSelected([])
+          : setSelected(EXAMPLE_DATA)
       }
       {...args}
     />

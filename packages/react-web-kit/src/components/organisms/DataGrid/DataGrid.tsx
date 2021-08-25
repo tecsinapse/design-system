@@ -4,42 +4,40 @@ import {
   Table,
   TableToolbar,
   TableContainer,
-  Th,
   Tr,
   Td,
-  THead,
   TFoot,
   TBody,
 } from '../../atoms/Table';
 import {
   CheckboxCell,
-  CheckboxHeader,
   FlexContainer,
   FooterContainer,
   TdFooterStyled,
 } from './styled';
-
-type HeadersType<Data> = {
-  label: string;
-  render: (data: Data) => React.ReactNode;
-};
+import { Header } from './Header';
+import { HeadersType } from './types';
 
 export interface DataGridProps<Data> {
   headers: HeadersType<Data>[];
   data: Data[];
+  /** Unique identifier for row data */
   rowKeyExtractor: (data: Data) => string;
   toolbarRightIcons?: React.ReactNode;
   toolbarFooter?: React.ReactNode;
   toolbarTitle: string;
   selectable?: boolean;
+  /** Selected items */
   selected?: Data[];
+  /** Selection handler */
   setSelected?: (data: Data, checked: boolean) => void;
+  /** Select all handler */
   setSelectAll?: () => void;
 }
 
 const DataGrid = <Data extends unknown>({
-  headers = [],
-  data = [],
+  headers,
+  data,
   rowKeyExtractor,
   toolbarTitle,
   toolbarFooter,
@@ -57,21 +55,13 @@ const DataGrid = <Data extends unknown>({
         footer={toolbarFooter}
       />
       <Table>
-        <THead>
-          <Tr>
-            {selectable && (
-              <CheckboxHeader>
-                <Checkbox
-                  checked={data.length === selected?.length}
-                  onChange={() => setSelectAll?.()}
-                />
-              </CheckboxHeader>
-            )}
-            {headers.map(({ label }) => (
-              <Th key={label}>{label}</Th>
-            ))}
-          </Tr>
-        </THead>
+        <Header
+          selectable={selectable}
+          setSelectAll={setSelectAll}
+          headers={headers}
+          dataLenght={data.length}
+          selectedLenght={selected?.length}
+        />
 
         <TBody>
           {data.map(item => (

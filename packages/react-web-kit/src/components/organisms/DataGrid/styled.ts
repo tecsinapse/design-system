@@ -14,13 +14,6 @@ export const FooterContainer = styled(FlexContainer)`
   justify-content: space-between;
 `;
 
-export const CheckboxHeader = styled(Th)<Partial<StyleProps>>`
-  padding: 0 0 0 ${({ theme }) => theme.spacing.mili};
-  & * {
-    user-select: none;
-  }
-`;
-
 export const CheckboxCell = styled(Td)<Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.mili};
   & * {
