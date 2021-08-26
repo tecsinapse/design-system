@@ -73,3 +73,4 @@ export * from './styles/light';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './types/defaults';
 export * from './utils';
+export * from './hooks';
