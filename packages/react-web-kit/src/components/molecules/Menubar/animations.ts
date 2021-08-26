@@ -7,56 +7,49 @@ const getDefaultInputContainerStyles = () => ({
   transitionDuration: '250ms',
   transitionProperty: 'opacity scale transform',
   transitionTimingFunction: 'ease-in-out',
+  zIndex: ({ theme }) => theme.zIndex('default'),
 });
 
 const getDefaultContainerOpenMenuStyles = () => ({
   transitionDuration: '250ms',
   transitionProperty: 'opacity scale transform',
   transitionTimingFunction: 'ease-in-out',
-  zIndex: 0,
+  zIndex: ({ theme }) => theme.zIndex('default'),
 });
 
 const getInputContainerTransform = () => ({
   entered: {
     transform: 'scale(1, 1) translateY(0px)',
-    zIndex: 0,
   },
   entering: {
     opacity: 0.5,
-    transform: 'scale(0.98, 0.98) translateY(-5px)',
-    zIndex: 0,
+    transform: 'scale(0.99, 0.99) translateY(-5px)',
   },
   exited: {
     opacity: 0,
-    transform: 'scale(0.98, 0.98) translateY(-50px)',
-    zIndex: 0,
+    transform: 'scale(0.99, 0.99) translateY(-50px)',
   },
   exiting: {
     opacity: 0.5,
-    transform: 'scale(0.98, 0.98) translateY(-5px)',
-    zIndex: 0,
+    transform: 'scale(0.99, 0.99) translateY(-5px)',
   },
 });
 
 const getContainerOpenMenuTransform = () => ({
   entered: {
     transform: 'scale(1, 1) translateY(0px) ',
-    zIndex: 0,
   },
   entering: {
-    opacity: 0.75,
-    transform: 'scale(0.98, 0.98) translateY(0px)',
-    zIndex: 0,
+    opacity: 0.95,
+    transform: 'scale(0.99, 0.99) translateY(0px)',
   },
   exited: {
     opacity: 0,
-    transform: 'scale(0.98, 0.98) translateY(-600px)',
-    zIndex: 0,
+    transform: 'scale(0.99, 0.99) translateY(-600px)',
   },
   exiting: {
-    opacity: 0.75,
-    transform: 'scale(0.98, 0.98) translateY(0px)',
-    zIndex: 0,
+    opacity: 0.95,
+    transform: 'scale(0.99, 0.99) translateY(0px)',
   },
 });
 

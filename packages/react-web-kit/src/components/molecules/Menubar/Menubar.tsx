@@ -26,8 +26,6 @@ export interface MenubarProps {
   leftComponents?: React.ReactNode;
   rightComponents?: React.ReactNode;
   inputPlaceholder?: string;
-  toggleOpenClose: () => void;
-  open: boolean;
   options: OptionsType[];
   /** Limited to first 4 elements */
   mostUsed?: MostUsedType[];
@@ -39,8 +37,6 @@ const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
   rightComponents,
   inputPlaceholder = 'O quê você deseja buscar?',
-  toggleOpenClose,
-  open,
   options,
   mostUsed,
   mostUsedLabel = 'Mais acessados',
@@ -49,6 +45,9 @@ const Menubar: React.FC<MenubarProps> = ({
   const [search, setSearch] = React.useState<string>('');
   const [results, setResults] = React.useState<MostUsedType[]>([]);
   const [input, setInput] = useDebouncedState('', state => setSearch(state));
+  const [isOpen, setOpen] = React.useState<boolean>(false);
+
+  const toggleOpenClose = () => setOpen(!isOpen);
 
   React.useEffect(() => {
     if (search === '') return;
@@ -63,7 +62,7 @@ const Menubar: React.FC<MenubarProps> = ({
           color="primary"
           onPress={toggleOpenClose}
         >
-          {!open ? (
+          {!isOpen ? (
             <Icon
               size="deca"
               name="menu"
@@ -80,7 +79,7 @@ const Menubar: React.FC<MenubarProps> = ({
           )}
         </StyledMenuButton>
         {leftComponents}
-        <Transition in={open} timeout={250}>
+        <Transition in={isOpen} timeout={250}>
           {state => (
             <div style={getInputContainerStyles(state)}>
               <StyledInputContainer>
@@ -100,7 +99,7 @@ const Menubar: React.FC<MenubarProps> = ({
           )}
         </Transition>
       </StyledMenuBar>
-      <Transition in={open} timeout={250}>
+      <Transition in={isOpen} timeout={250}>
         {state => (
           <div style={getContainerOpenMenuStyles(state)}>
             <StyledContainerOpenMenu>
