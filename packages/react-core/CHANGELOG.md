@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.3.2...@tecsinapse/react-core@1.4.0) (2021-08-26)
+
+
+### Bug Fixes
+
+* **select:** minor changes ([2fb3460](https://github.com/tecsinapse/design-system/commit/2fb34608b3bed4d5c70f77be093c8e6508c3e0a9))
+* revert change ([eb84f93](https://github.com/tecsinapse/design-system/commit/eb84f934ffda90db15303df2139179aa9cd0c918))
+
+
+### Features
+
+* select single item implemented. ([83e982f](https://github.com/tecsinapse/design-system/commit/83e982fa5c4d3e6a586b6f6a41e4a2fd9e57b2b1))
+
+
+
+
+
 ## [1.3.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.3.1...@tecsinapse/react-core@1.3.2) (2021-08-18)
 
 **Note:** Version bump only for package @tecsinapse/react-core
