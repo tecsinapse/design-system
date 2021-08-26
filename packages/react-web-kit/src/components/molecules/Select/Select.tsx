@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
-import { StyledContainer, StyledInputContainer } from './styled';
+import React from 'react';
 import { Icon, PressableInputContainer, Text } from '@tecsinapse/react-core';
-import { DropDown } from './DropDown';
+import { useClickAwayListener } from '../../../hooks';
+import { StyledContainer, StyledInputContainer } from './styled';
+import { Dropdown } from './Dropdown';
 import { getDisplayValue } from './functions';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'> {
@@ -20,20 +21,6 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   label?: string;
 }
 
-const useOutside = (ref, setDropDownVisible) => {
-  React.useEffect(() => {
-    const handleClickOutside = event => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setDropDownVisible(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref]);
-};
-
 export const Select = <Data, Type extends 'single' | 'multi'>({
   value,
   options,
@@ -49,6 +36,8 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
   const refDropDown = React.useRef(null);
+  useClickAwayListener(refDropDown, setDropDownVisible);
+
   const displayValue = getDisplayValue<Data>(
     type,
     value,
@@ -57,8 +46,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     keyExtractor,
     labelExtractor
   );
-  useOutside(refDropDown, setDropDownVisible);
-  console.log(displayValue, 'valuee');
+
   return (
     <StyledContainer ref={refDropDown}>
       <StyledInputContainer>
@@ -81,7 +69,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
         </PressableInputContainer>
       </StyledInputContainer>
       {dropDownVisible && (
-        <DropDown
+        <Dropdown
           options={options}
           onSelect={onSelect}
           value={value}

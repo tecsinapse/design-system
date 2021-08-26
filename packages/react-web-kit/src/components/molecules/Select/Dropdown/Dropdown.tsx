@@ -1,3 +1,13 @@
+import React from 'react';
+import {
+  Checkbox,
+  Text,
+  Icon,
+  useDebouncedState,
+} from '@tecsinapse/react-core';
+import { Input } from '../../../atoms/Input';
+import { ItemSelect } from '../SelectItem';
+import { SelectProps } from '../Select';
 import {
   SearchBarContainer,
   StyledContainerCheckAll,
@@ -6,14 +16,8 @@ import {
   StyledSpan,
   StyledTest,
 } from './styled';
-import { Icon, useDebouncedState } from '@tecsinapse/react-native-kit';
-import { Input } from '@tecsinapse/react-web-kit';
-import { ItemSelect } from '../SelectItem';
-import React from 'react';
-import { SelectProps } from '../Select';
-import { Checkbox, Text } from '@tecsinapse/react-core';
 
-const DropDown = <Data, Type extends 'single' | 'multi'>({
+const Dropdown = <Data, Type extends 'single' | 'multi'>({
   options,
   onSearch,
   type,
@@ -41,10 +45,13 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
     const auxArray: Data[] = [];
     !aux ? onSelect(auxArray as OnSelectArg) : onSelect(items as OnSelectArg);
   };
+
   return (
     <StyledContainerDropdown lengthOptions={lengthOptions}>
       {type === 'multi' && (
-        <StyledContainerCheckAll onClick={onClickCheckAll}>
+        <StyledContainerCheckAll
+          onClick={hideSearchBar ? onClickCheckAll : undefined}
+        >
           <Checkbox checked={checkedAll} onChange={onClickCheckAll} />
           {!hideSearchBar ? (
             <SearchBarContainer>
@@ -94,4 +101,4 @@ const DropDown = <Data, Type extends 'single' | 'multi'>({
   );
 };
 
-export default DropDown;
+export default Dropdown;
