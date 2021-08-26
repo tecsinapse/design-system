@@ -15,7 +15,8 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@tecsinapse/react-core": "^1.3.2",
-    "react-native-vector-icons": "^8.1.0"
+    "react-native-vector-icons": "^8.1.0",
+    "react-transition-group": "^4.4.2"
   },
   "repository": {
     "type": "git",
