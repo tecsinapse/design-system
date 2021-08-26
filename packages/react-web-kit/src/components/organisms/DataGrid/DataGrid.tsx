@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Checkbox, Icon, Text } from '../../../index';
+import { Button, Checkbox, Icon, Text } from '@tecsinapse/react-core';
 import {
   Table,
   TableToolbar,
