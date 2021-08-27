@@ -157,4 +157,5 @@ export const Base = Template.bind({});
 
 Base.args = {
   selectable: true,
+  exportFunction: () => alert('Export handler'),
 };
