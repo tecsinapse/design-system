@@ -40,12 +40,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   const theme = useTheme() as ThemeProp;
 
-  const decrement = items => {
-    const arrayInitalTransfmor = [];
-    arrayInitalTransfmor.push(500);
-    const percentageInit = items.length * 100;
-  };
-
   const valueNow =
     typeof _valueNow === 'string'
       ? parseInt(_valueNow.replace(/\D/g, ''))
@@ -63,36 +57,24 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     const max = segmentWidth * (index + 1);
     const min = segmentWidth * index;
     const minmax = (totalProgress - min) / (max - min);
-    console.log(minmax);
     const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
-
-    const delayAnimation =
-      animationParameters?.direction === 'left'
-        ? (items.length - index - 1) *
-          (animationParameters.duration / items.length)
-        : index * (animationParameters.duration / items.length);
 
     if (animate && animationParameters) {
       Animated.timing(animationValue, {
         toValue: 1,
         duration: animationParameters.duration / items.length,
-        useNativeDriver: true,
-        // delay: index * (animationParameters.duration / items.length), // funciona =>
-        delay: index * (animationParameters.duration / items.length),
+        useNativeDriver: false,
+        delay:
+          animationParameters.direction === 'left'
+            ? index * (animationParameters.duration / items.length)
+            : (items.length - index - 1) *
+              (animationParameters.duration / items.length),
       }).start();
     }
-
-    /**
-     *  ? [`-${400}%`, `-${valueMax - width}%`]
-     : [`-${valueMin}%`, `-${valueMax - width}%`];
-     */
-    const auxValue = index * 100;
-    console.log(auxValue, 'aux');
-    const initialValue = index + 1 === 0 ? -400 : index * 100 - 400;
     const rangeAnimation =
       animationParameters?.direction === 'left'
-        ? [`-${412}%`, `-${width === 0 ? width : width - 100}%`]
-        : [`-${valueMin}%`, `-${valueMax - width}%`];
+        ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
+        : [`${valueMax}%`, `${width}%`];
     const progressPercent = animationValue.interpolate?.({
       inputRange: [0, 1],
       outputRange: rangeAnimation,
@@ -103,17 +85,13 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         key={index}
         style={{
           borderRightWidth: index == segments - 1 ? 0 : 2,
-          borderRightColor: 'black',
-          zIndex: 20,
         }}
       >
         <Progress
           style={{
-            // width: animate ? progressPercent : `${width}%`,
+            width: animate ? progressPercent : `${width}%`,
             backgroundColor: theme.color[color][colorTone],
             borderRightWidth: width > 0 && width < 100 ? 2 : 0,
-            transform: [{ translateX: progressPercent }],
-            zIndex: 0,
           }}
         />
       </Segment>
