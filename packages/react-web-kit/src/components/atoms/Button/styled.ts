@@ -6,9 +6,11 @@ const hoverStyles = ({
   mouseOver,
   theme,
   color = 'primary',
+  disabled,
 }: { mouseOver: boolean } & WebButtonProps & Partial<StyleProps>) => {
   return (
     mouseOver &&
+    !disabled &&
     css`
       background-color: ${theme?.color[color].dark};
       border-color: ${theme?.color[color].dark};

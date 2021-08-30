@@ -14,40 +14,49 @@ import {
 } from './styled';
 
 interface DataGridFooterProps {
-  rowsPerPage?: number;
-  rowsPerPageOptions?: number[];
-  rowsPerPageLabel?: (value: number) => string;
+  rowsPerPage: number;
+  onRowsPerPageChange?: (value: number) => void;
+  rowsPerPageOptions: number[];
+  rowsPerPageLabel: (value: number) => string;
   exportLabel?: string;
   exportFunction?: () => void;
-  dataLenght: number;
   /** Total data elements */
-  count: number;
+  rowsCount: number;
+  page: number;
+  onPageChange?: (page: number) => void;
+  pagination: boolean;
 }
 
 const Footer: React.FC<DataGridFooterProps> = ({
-  rowsPerPageOptions = [1, 25, 50],
-  rowsPerPage: _rowsPerPage = 1,
-  rowsPerPageLabel = value => `Exibir por página: ${value} itens`,
+  rowsPerPage,
+  onRowsPerPageChange,
+  rowsPerPageOptions,
+  rowsPerPageLabel,
   exportFunction,
   exportLabel,
-  dataLenght,
-  count,
+  rowsCount,
+  page,
+  onPageChange,
+  pagination,
 }) => {
-  const [rowsPerPage, setRowsPerPage] = React.useState<number>(_rowsPerPage);
-  const [currentPage, setCurrentPage] = React.useState<number>(0);
+  if (pagination && (!onPageChange || !onRowsPerPageChange)) {
+    throw new Error(
+      '[DataGrid] You should specify pagination handlers (onPageChange, onRowsPerPageChange)'
+    );
+  }
 
   const getPaginationSlice = (): { start: number; end: number } => {
-    const totalPages = Math.ceil(dataLenght / rowsPerPage);
+    const totalPages = Math.ceil(rowsCount / rowsPerPage);
     if (totalPages < 4) {
       return { start: 0, end: totalPages };
     }
-    if (currentPage === 0) {
-      return { start: currentPage, end: currentPage + 3 };
+    if (page === 0) {
+      return { start: page, end: page + 3 };
     }
-    if (currentPage === totalPages - 1) {
-      return { start: currentPage - 2, end: currentPage + 1 };
+    if (page === totalPages - 1) {
+      return { start: page - 2, end: page + 1 };
     }
-    return { start: currentPage - 1, end: currentPage + 2 };
+    return { start: page - 1, end: page + 2 };
   };
 
   return (
@@ -56,16 +65,18 @@ const Footer: React.FC<DataGridFooterProps> = ({
         <TdFooterStyled colSpan={99}>
           <FooterContainer>
             <FooterContainerStart>
-              <SelectContainer>
-                <Select
-                  options={rowsPerPageOptions}
-                  onSelect={value => setRowsPerPage(value as number)}
-                  value={rowsPerPage}
-                  type={'single'}
-                  keyExtractor={value => String(value)}
-                  labelExtractor={rowsPerPageLabel}
-                />
-              </SelectContainer>
+              {pagination && (
+                <SelectContainer>
+                  <Select
+                    options={rowsPerPageOptions}
+                    onSelect={value => onRowsPerPageChange?.(value as number)}
+                    value={rowsPerPage}
+                    type={'single'}
+                    keyExtractor={value => String(value)}
+                    labelExtractor={rowsPerPageLabel}
+                  />
+                </SelectContainer>
+              )}
               {exportFunction && (
                 <HoveredText>
                   <Button variant="outlined" onPress={() => exportFunction()}>
@@ -76,47 +87,46 @@ const Footer: React.FC<DataGridFooterProps> = ({
                 </HoveredText>
               )}
             </FooterContainerStart>
-            <FooterContainerEnd>
-              <NavigationButton
-                onPress={() => setCurrentPage(currentPage - 1)}
-                disabled={currentPage === 0}
-              >
-                <Icon
-                  name={'chevron-left'}
-                  type={'material-community'}
-                  fontColor={'light'}
-                />
-              </NavigationButton>
-              <PagesContainer>
-                {[...Array(Math.ceil(dataLenght / rowsPerPage)).keys()]
-                  .slice(getPaginationSlice().start, getPaginationSlice().end)
-                  .map(value => (
-                    <HoveredText>
-                      <PageButton
-                        variant={currentPage === value ? 'outlined' : 'text'}
-                        key={`page-${value}`}
-                        onPress={() => setCurrentPage(value)}
-                      >
-                        <Text fontColor="medium" fontWeight="bold">
-                          {value + 1}
-                        </Text>
-                      </PageButton>
-                    </HoveredText>
-                  ))}
-              </PagesContainer>
-              <NavigationButton
-                onPress={() => setCurrentPage(currentPage + 1)}
-                disabled={
-                  currentPage === Math.ceil(dataLenght / rowsPerPage) - 1
-                }
-              >
-                <Icon
-                  name={'chevron-right'}
-                  type={'material-community'}
-                  fontColor={'light'}
-                />
-              </NavigationButton>
-            </FooterContainerEnd>
+            {pagination && (
+              <FooterContainerEnd>
+                <NavigationButton
+                  onPress={() => onPageChange?.(page - 1)}
+                  disabled={page === 0}
+                >
+                  <Icon
+                    name={'chevron-left'}
+                    type={'material-community'}
+                    fontColor={'light'}
+                  />
+                </NavigationButton>
+                <PagesContainer>
+                  {[...Array(Math.ceil(rowsCount / rowsPerPage)).keys()]
+                    .slice(getPaginationSlice().start, getPaginationSlice().end)
+                    .map(value => (
+                      <HoveredText key={`page-${value}`}>
+                        <PageButton
+                          variant={page === value ? 'outlined' : 'text'}
+                          onPress={() => onPageChange?.(value)}
+                        >
+                          <Text fontColor="medium" fontWeight="bold">
+                            {value + 1}
+                          </Text>
+                        </PageButton>
+                      </HoveredText>
+                    ))}
+                </PagesContainer>
+                <NavigationButton
+                  onPress={() => onPageChange?.(page + 1)}
+                  disabled={page === Math.ceil(rowsCount / rowsPerPage) - 1}
+                >
+                  <Icon
+                    name={'chevron-right'}
+                    type={'material-community'}
+                    fontColor={'light'}
+                  />
+                </NavigationButton>
+              </FooterContainerEnd>
+            )}
           </FooterContainer>
         </TdFooterStyled>
       </Tr>

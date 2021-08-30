@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { default as nativeStyled } from '@emotion/native';
 import { StyleProps } from '@tecsinapse/react-core';
 import { Td } from '../../../atoms/Table';
-import { Button } from '@tecsinapse/react-web-kit';
+import { Button } from '../../../atoms/Button';
 
 export const TdFooterStyled = styled(Td)<Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.centi} 0 0 0;
@@ -52,6 +52,7 @@ export const PagesContainer = styled('div')<Partial<StyleProps>>`
 `;
 
 export const HoveredText = styled('div')<Partial<StyleProps>>`
+  user-select: none;
   &:hover * {
     color: ${({ theme }) => theme.font.color.light};
   }

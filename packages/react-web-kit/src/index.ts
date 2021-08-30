@@ -22,4 +22,5 @@ export {
   Breadcrumbs,
   BreadcrumbsProps,
 } from './components/molecules/Breadcrumbs';
+export * from './components/organisms/DataGrid';
 export * from './hooks';

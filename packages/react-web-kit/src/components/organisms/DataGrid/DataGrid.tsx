@@ -21,18 +21,31 @@ export interface DataGridProps<Data> {
   toolbarRightIcons?: React.ReactNode;
   toolbarFooter?: React.ReactNode;
   toolbarTitle: string;
+  /** Enable rows selection */
   selectable?: boolean;
   /** Selected items */
   selected?: Data[];
   /** Selection handler */
-  setSelected?: (data: Data, checked: boolean) => void;
+  onSelected?: (data: Data, checked: boolean) => void;
   /** Select all handler */
-  setSelectAll?: () => void;
+  onSelectAll?: () => void;
+  /** Shows pagination controls */
+  pagination?: boolean;
+  /** Results per page */
   rowsPerPage?: number;
+  /** Results per page handler */
+  onRowsPerPageChange?: (value: number) => void;
   rowsPerPageOptions?: number[];
   rowsPerPageLabel?: (value: number) => string;
+  /** Export button label */
   exportLabel?: string;
   exportFunction?: () => void;
+  /** Total data elements */
+  rowsCount?: number;
+  /** Current page. Always start in 0 */
+  page?: number;
+  /** Current page handler */
+  onPageChange?: (page: number) => void;
 }
 
 const DataGrid = <Data extends unknown>({
@@ -44,13 +57,18 @@ const DataGrid = <Data extends unknown>({
   toolbarRightIcons,
   selectable = false,
   selected = [],
-  setSelected,
-  setSelectAll,
+  onSelected,
+  onSelectAll,
+  pagination = false,
   rowsPerPage = 10,
+  onRowsPerPageChange,
   rowsPerPageOptions = [10, 25, 50],
   rowsPerPageLabel = value => `Exibir por página: ${value} itens`,
   exportLabel = 'Exportar',
   exportFunction,
+  rowsCount,
+  page = 0,
+  onPageChange,
 }: DataGridProps<Data>): JSX.Element => {
   return (
     <TableContainer>
@@ -62,7 +80,7 @@ const DataGrid = <Data extends unknown>({
       <Table>
         <Header
           selectable={selectable}
-          setSelectAll={setSelectAll}
+          onSelectAll={onSelectAll}
           headers={headers}
           dataLenght={data.length}
           selectedLenght={selected?.length}
@@ -77,7 +95,7 @@ const DataGrid = <Data extends unknown>({
                     checked={selected?.some(
                       sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
                     )}
-                    onChange={checked => setSelected?.(item, checked)}
+                    onChange={checked => onSelected?.(item, checked)}
                   />
                 </CheckboxCell>
               )}
@@ -91,13 +109,16 @@ const DataGrid = <Data extends unknown>({
         </TBody>
 
         <Footer
-            // TODO: Add external controls for pagination
           exportFunction={exportFunction}
           exportLabel={exportLabel}
           rowsPerPageLabel={rowsPerPageLabel}
           rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={onRowsPerPageChange}
           rowsPerPageOptions={rowsPerPageOptions}
-          dataLenght={data.length}
+          rowsCount={rowsCount ?? data.length}
+          page={page}
+          onPageChange={onPageChange}
+          pagination={pagination}
         />
       </Table>
     </TableContainer>

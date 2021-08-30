@@ -10,14 +10,14 @@ export interface DataGridHeaderProps<Data> {
   dataLenght: number;
   selectable?: boolean;
   selectedLenght?: number;
-  setSelectAll?: () => void;
+  onSelectAll?: () => void;
 }
 
 const Header = <Data extends unknown>({
   selectable,
   dataLenght,
   selectedLenght,
-  setSelectAll,
+  onSelectAll,
   headers,
 }: DataGridHeaderProps<Data>): JSX.Element => {
   const [sortDirection, setSortDirection] = React.useState<string>(
@@ -36,7 +36,7 @@ const Header = <Data extends unknown>({
           <CheckboxHeader>
             <Checkbox
               checked={dataLenght === selectedLenght}
-              onChange={() => setSelectAll?.()}
+              onChange={() => onSelectAll?.()}
             />
           </CheckboxHeader>
         )}

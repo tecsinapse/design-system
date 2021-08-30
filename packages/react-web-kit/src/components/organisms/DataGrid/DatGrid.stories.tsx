@@ -106,6 +106,8 @@ function removeElement<T>(arr: T[], index: number): T[] {
 
 const Template: Story = args => {
   const [selected, setSelected] = React.useState<ExampleData[]>([]);
+  const [rowsPerPage, setRowsPerPage] = React.useState<number>(10);
+  const [currentPage, setCurrentPage] = React.useState<number>(0);
 
   const headers = [
     { label: 'ID', render: data => data.id },
@@ -142,12 +144,17 @@ const Template: Story = args => {
       toolbarRightIcons={<ToolbarRightComponent />}
       toolbarFooter={<ToolbarFooterComponent />}
       selected={selected}
-      setSelected={handleSelect}
-      setSelectAll={() =>
+      onSelected={handleSelect}
+      onSelectAll={() =>
         selected.length === EXAMPLE_DATA.length
           ? setSelected([])
           : setSelected(EXAMPLE_DATA)
       }
+      rowsPerPage={rowsPerPage}
+      rowsPerPageOptions={[10, 25, 50]}
+      onRowsPerPageChange={setRowsPerPage}
+      page={currentPage}
+      onPageChange={setCurrentPage}
       {...args}
     />
   );
@@ -158,4 +165,5 @@ export const Base = Template.bind({});
 Base.args = {
   selectable: true,
   exportFunction: () => alert('Export handler'),
+  pagination: true,
 };
