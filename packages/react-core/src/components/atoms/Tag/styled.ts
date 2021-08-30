@@ -1,5 +1,5 @@
 import styled, { css } from '@emotion/native';
-import { View, ViewProps } from 'react-native';
+import { Animated, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { Icon, IconProps } from '../Icon';
 import { TagProps } from './Tag';
@@ -18,7 +18,7 @@ const defaultVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
     padding: ${theme.spacing.micro} ${theme.spacing.centi};
   `;
 
-const StyledTagContainerBase = styled(View)<
+const StyledTagContainerBase = styled(Animated.View)<
   Partial<TagProps> & Partial<StyleProps> & ViewProps
 >`
   background-color: ${({ theme }) => theme.miscellaneous.bodyColor};

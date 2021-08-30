@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { ViewProps } from 'react-native';
+import { Animated, ViewProps, ViewStyle } from 'react-native';
 import { IconProps } from '../Icon';
 import { PressableSurface } from '../PressableSurface';
 import { StyledCloseIcon, StyledLeftIcon, StyledTagContainer } from './styled';
@@ -21,10 +21,20 @@ const Tag: React.FC<TagProps> = ({
   ...rest
 }): JSX.Element => {
   const [dismiss, setDismiss] = useState(false);
+  const fadeAnim = React.useRef(new Animated.Value(1)).current;
+
+  const fadeOut = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const handleDismiss = useCallback(() => {
     setDismiss(true);
     onDismiss();
+    fadeOut();
   }, [onDismiss]);
 
   return (
