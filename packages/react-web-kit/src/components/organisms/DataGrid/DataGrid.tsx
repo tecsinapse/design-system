@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Checkbox } from '@tecsinapse/react-core';
 import {
   Table,
@@ -12,6 +12,8 @@ import { CheckboxCell } from './styled';
 import { Header } from './Header';
 import { HeadersType } from './types';
 import { Footer } from './Footer';
+import { Skeleton } from '../../atoms/Skeleton';
+import { removeElement } from './utils';
 
 export interface DataGridProps<Data> {
   headers: HeadersType<Data>[];
@@ -24,11 +26,9 @@ export interface DataGridProps<Data> {
   /** Enable rows selection */
   selectable?: boolean;
   /** Selected items */
-  selected?: Data[];
+  selectedRows?: Data[];
   /** Selection handler */
-  onSelected?: (data: Data, checked: boolean) => void;
-  /** Select all handler */
-  onSelectAll?: () => void;
+  onSelectedRows?: (data: Data[]) => void;
   /** Shows pagination controls */
   pagination?: boolean;
   /** Results per page */
@@ -46,6 +46,12 @@ export interface DataGridProps<Data> {
   page?: number;
   /** Current page handler */
   onPageChange?: (page: number) => void;
+  /** Loading state. The amount of skeleton rows is based on current rowsPerPage */
+  loading?: boolean;
+  /** Custom skeleton component for better visual */
+  skeletonComponent?: React.ReactNode;
+  /** CSS style spread to TableContainer */
+  style?: CSSProperties;
 }
 
 const DataGrid = <Data extends unknown>({
@@ -56,9 +62,8 @@ const DataGrid = <Data extends unknown>({
   toolbarFooter,
   toolbarRightIcons,
   selectable = false,
-  selected = [],
-  onSelected,
-  onSelectAll,
+  selectedRows = [],
+  onSelectedRows,
   pagination = false,
   rowsPerPage = 10,
   onRowsPerPageChange,
@@ -69,9 +74,29 @@ const DataGrid = <Data extends unknown>({
   rowsCount,
   page = 0,
   onPageChange,
+  loading = false,
+  skeletonComponent,
+  style,
 }: DataGridProps<Data>): JSX.Element => {
+  if (selectable && !selectedRows && !onSelectedRows) {
+    throw new Error(
+      '[DataGrid] When enabling selection you must specify selectedRows and onSelectedRows'
+    );
+  }
+
+  const handleSelect = (current, checked) => {
+    if (checked) {
+      onSelectedRows?.([...selectedRows, current]);
+      return;
+    }
+    const idx = selectedRows.findIndex(
+      el => rowKeyExtractor(el) === rowKeyExtractor(current)
+    );
+    onSelectedRows?.([...removeElement(selectedRows, idx)]);
+  };
+
   return (
-    <TableContainer>
+    <TableContainer style={style}>
       <TableToolbar
         title={toolbarTitle}
         rightIcons={toolbarRightIcons}
@@ -80,33 +105,51 @@ const DataGrid = <Data extends unknown>({
       <Table>
         <Header
           selectable={selectable}
-          onSelectAll={onSelectAll}
           headers={headers}
-          dataLenght={data.length}
-          selectedLenght={selected?.length}
+          data={data}
+          rowsCount={rowsCount ?? data.length}
+          rowKeyExtractor={rowKeyExtractor}
+          selectedRows={selectedRows}
+          onSelected={onSelectedRows}
         />
 
-        <TBody>
-          {data.map(item => (
-            <Tr key={rowKeyExtractor(item)}>
-              {selectable && (
-                <CheckboxCell>
-                  <Checkbox
-                    checked={selected?.some(
-                      sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
-                    )}
-                    onChange={checked => onSelected?.(item, checked)}
-                  />
-                </CheckboxCell>
-              )}
-              {headers.map(({ label, render }) => (
-                <Td key={`row-${rowKeyExtractor(item)}-column-${label}`}>
-                  {render(item)}
+        {!loading ? (
+          <TBody>
+            {data.map(item => (
+              <Tr key={rowKeyExtractor(item)}>
+                {selectable && (
+                  <CheckboxCell>
+                    <Checkbox
+                      checked={selectedRows?.some(
+                        sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
+                      )}
+                      onChange={checked => handleSelect(item, checked)}
+                    />
+                  </CheckboxCell>
+                )}
+                {headers.map(({ label, render }) => (
+                  <Td key={`row-${rowKeyExtractor(item)}-column-${label}`}>
+                    {render(item)}
+                  </Td>
+                ))}
+              </Tr>
+            ))}
+          </TBody>
+        ) : (
+          <TBody>
+            {[...Array(rowsPerPage).keys()].map(idx => (
+              <Tr key={`skeleton-${idx}`}>
+                <Td colSpan={99} style={{ padding: 0 }}>
+                  {skeletonComponent ?? (
+                    <Skeleton height={55} radius="mili" animation="wave">
+                      <div style={{ width: '100%' }} />
+                    </Skeleton>
+                  )}
                 </Td>
-              ))}
-            </Tr>
-          ))}
-        </TBody>
+              </Tr>
+            ))}
+          </TBody>
+        )}
 
         <Footer
           exportFunction={exportFunction}

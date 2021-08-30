@@ -3,22 +3,32 @@ import { Checkbox, Icon, PressableSurface } from '@tecsinapse/react-core';
 import { Th, THead, Tr } from '../../../atoms/Table';
 import { CheckboxHeader } from './styled';
 import { HeadersType } from '../types';
-import { getIconColor, getIconSuffix, NEXT_STATE } from './utils';
+import {
+  findCurrentItemsOnData,
+  findUnselectedItemsOnData,
+  getIconColor,
+  getIconSuffix,
+  NEXT_STATE,
+} from './utils';
 
 export interface DataGridHeaderProps<Data> {
   headers: HeadersType<Data>[];
-  dataLenght: number;
+  data: Data[];
+  selectedRows: Data[];
+  onSelected?: (data: Data[]) => void;
+  rowKeyExtractor: (data: Data) => string;
+  rowsCount: number;
   selectable?: boolean;
-  selectedLenght?: number;
-  onSelectAll?: () => void;
 }
 
 const Header = <Data extends unknown>({
   selectable,
-  dataLenght,
-  selectedLenght,
-  onSelectAll,
+  rowsCount,
   headers,
+  data,
+  rowKeyExtractor,
+  selectedRows,
+  onSelected,
 }: DataGridHeaderProps<Data>): JSX.Element => {
   const [sortDirection, setSortDirection] = React.useState<string>(
     NEXT_STATE.initial
@@ -29,23 +39,56 @@ const Header = <Data extends unknown>({
     setSortDirection(NEXT_STATE[sortDirection]);
   };
 
+  const handleSelectAll = checked => {
+    if (!checked) {
+      onSelected?.([]);
+      return;
+    }
+
+    const currentItemsOnData = findCurrentItemsOnData(
+      selectedRows,
+      data,
+      rowKeyExtractor
+    );
+
+    const unselectedItemsOnData = findUnselectedItemsOnData(
+      selectedRows,
+      data,
+      rowKeyExtractor
+    );
+
+    if (checked && selectedRows.length < 1) {
+      onSelected?.(data);
+      return;
+    }
+    if (checked && currentItemsOnData.length < 1) {
+      onSelected?.(unselectedItemsOnData.concat(selectedRows));
+      return;
+    }
+    //if (checked && unselected.length > 0) {
+    onSelected?.(selectedRows.concat(unselectedItemsOnData));
+    //return;
+    //}
+  };
+
   return (
     <THead>
       <Tr>
         {selectable && (
           <CheckboxHeader>
             <Checkbox
-              checked={dataLenght === selectedLenght}
-              onChange={() => onSelectAll?.()}
+              checked={rowsCount === selectedRows?.length}
+              onChange={handleSelectAll}
             />
           </CheckboxHeader>
         )}
-        {headers.map(({ label, sort }) => (
+        {headers.map(({ label, sort, justifyContent = 'flex-start' }) => (
           <Th key={label}>
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent,
               }}
             >
               {label}

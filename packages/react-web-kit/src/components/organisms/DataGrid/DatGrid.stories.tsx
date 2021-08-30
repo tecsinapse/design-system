@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Story } from '@storybook/react';
-import DataGrid from './DataGrid';
-import { Input } from '../../atoms/Input';
 import {
   GroupButton,
   GroupButtonOption,
   GroupButtonValue,
   Icon,
 } from '@tecsinapse/react-core';
+import DataGrid from './DataGrid';
+import { Input } from '../../atoms/Input';
+import { Skeleton } from '../../atoms/Skeleton';
+import { HeadersType } from './types';
 
 export default {
   title: 'Components/Data Grid',
@@ -72,44 +74,44 @@ type ExampleData = {
   email: string;
 };
 
-const EXAMPLE_DATA: ExampleData[] = [
-  {
-    id: 1,
-    name: 'Leanne Graham',
-    username: 'Bret',
-    email: 'Sincere@april.biz',
-  },
-  {
-    id: 2,
-    name: 'Ervin Howell',
-    username: 'Antonette',
-    email: 'Shanna@melissa.tv',
-  },
-  {
-    id: 3,
-    name: 'Clementine Bauch',
-    username: 'Samantha',
-    email: 'Nathan@yesenia.net',
-  },
-  {
-    id: 4,
-    name: 'Patricia Lebsack',
-    username: 'Karianne',
-    email: 'Julianne.OConner@kory.org',
-  },
-];
-
-function removeElement<T>(arr: T[], index: number): T[] {
-  arr.splice(index, 1);
-  return arr;
-}
+const fetchUsers = async (page = 0, rowsPerPage = 5) => {
+  return await fetch(
+    `https://jsonplaceholder.typicode.com/users?_start=${
+      page * rowsPerPage
+    }&_limit=${rowsPerPage}`,
+    { method: 'GET' }
+  );
+};
 
 const Template: Story = args => {
   const [selected, setSelected] = React.useState<ExampleData[]>([]);
-  const [rowsPerPage, setRowsPerPage] = React.useState<number>(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
   const [currentPage, setCurrentPage] = React.useState<number>(0);
+  const [totalCount, setTotalCount] = React.useState<number>(0);
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [data, setData] = React.useState<ExampleData[]>([]);
 
-  const headers = [
+  React.useEffect(() => {
+    fetchUsers(currentPage, rowsPerPage)
+      .then(async data => {
+        setTotalCount(parseInt(data.headers.get('X-Total-Count') ?? '0'));
+        const json = await data.json();
+        setData(json);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  React.useEffect(() => {
+    setLoading(true);
+    fetchUsers(currentPage, rowsPerPage)
+      .then(async data => {
+        const json = await data.json();
+        setData(json);
+      })
+      .finally(() => setLoading(false));
+  }, [rowsPerPage, currentPage]);
+
+  const headers: HeadersType<ExampleData>[] = [
     { label: 'ID', render: data => data.id },
     {
       label: 'Name',
@@ -122,39 +124,28 @@ const Template: Story = args => {
     { label: 'Email', render: data => data.email },
   ];
 
-  const rowKeyExtractor = data => String(data.id);
-
-  const handleSelect = (current: ExampleData, checked: boolean) => {
-    if (checked) {
-      setSelected([...selected, current]);
-      return;
-    }
-    const idx = selected.findIndex(
-      el => rowKeyExtractor(el) === rowKeyExtractor(current)
-    );
-    setSelected([...removeElement(selected, idx)]);
-  };
-
   return (
     <DataGrid
       headers={headers}
-      data={EXAMPLE_DATA}
-      rowKeyExtractor={rowKeyExtractor}
+      data={data}
+      rowKeyExtractor={data => String(data.id)}
       toolbarTitle="Data grid"
       toolbarRightIcons={<ToolbarRightComponent />}
       toolbarFooter={<ToolbarFooterComponent />}
-      selected={selected}
-      onSelected={handleSelect}
-      onSelectAll={() =>
-        selected.length === EXAMPLE_DATA.length
-          ? setSelected([])
-          : setSelected(EXAMPLE_DATA)
-      }
+      selectedRows={selected}
+      onSelectedRows={setSelected}
       rowsPerPage={rowsPerPage}
-      rowsPerPageOptions={[10, 25, 50]}
+      rowsPerPageOptions={[5, 25, 50]}
       onRowsPerPageChange={setRowsPerPage}
       page={currentPage}
       onPageChange={setCurrentPage}
+      loading={loading}
+      rowsCount={totalCount}
+      skeletonComponent={
+        <Skeleton height={55} radius="mili" animation="wave">
+          <div style={{ width: '100%', minWidth: 650 }} />
+        </Skeleton>
+      }
       {...args}
     />
   );

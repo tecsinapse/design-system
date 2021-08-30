@@ -6,4 +6,6 @@ export type HeadersType<Data> = {
   /** Table cell renderer */
   render: (data: Data) => React.ReactNode;
   sort?: (direction: 'ascending' | 'descending' | 'unsorted') => void;
+  /** Header alignment */
+  justifyContent?: 'flex-start' | 'center' | 'flex-end';
 };
