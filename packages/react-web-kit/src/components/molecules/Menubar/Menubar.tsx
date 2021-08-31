@@ -1,5 +1,12 @@
 import React from 'react';
-import { Icon, Text, useDebouncedState } from '@tecsinapse/react-core';
+import {
+  Icon,
+  Text,
+  ThemeProp,
+  useDebouncedState,
+} from '@tecsinapse/react-core';
+import { Transition } from 'react-transition-group';
+import { useTheme } from '@emotion/react';
 import {
   StyledIconInput,
   StyledMenuBar,
@@ -16,7 +23,6 @@ import { MostUsed } from './MostUsed';
 import { MenuBlock } from './MenuBlock';
 import { SearchResultItem } from './SearchResultItem';
 import { filterAndTransform } from './utils';
-import { Transition } from 'react-transition-group';
 import {
   getContainerOpenMenuStyles,
   getInputContainerStyles,
@@ -46,6 +52,7 @@ const Menubar: React.FC<MenubarProps> = ({
   const [results, setResults] = React.useState<MostUsedType[]>([]);
   const [input, setInput] = useDebouncedState('', state => setSearch(state));
   const [isOpen, setOpen] = React.useState<boolean>(false);
+  const theme = useTheme() as ThemeProp;
 
   const toggleOpenClose = () => setOpen(!isOpen);
 
@@ -81,7 +88,7 @@ const Menubar: React.FC<MenubarProps> = ({
         {leftComponents}
         <Transition in={isOpen} timeout={250}>
           {state => (
-            <div style={getInputContainerStyles(state)}>
+            <div style={getInputContainerStyles(state, theme)}>
               <StyledInputContainer>
                 <StyledInput
                   placeholder={inputPlaceholder}
@@ -101,7 +108,7 @@ const Menubar: React.FC<MenubarProps> = ({
       </StyledMenuBar>
       <Transition in={isOpen} timeout={250}>
         {state => (
-          <div style={getContainerOpenMenuStyles(state)}>
+          <div style={getContainerOpenMenuStyles(state, theme)}>
             <StyledContainerOpenMenu>
               {!search ? (
                 <div>

@@ -1,20 +1,21 @@
-import { TransitionStatus } from 'react-transition-group';
 import { CSSProperties } from 'react';
+import { TransitionStatus } from 'react-transition-group';
+import { ThemeProp } from '@tecsinapse/react-core';
 
-const getDefaultInputContainerStyles = () => ({
+const getDefaultInputContainerStyles = (theme: ThemeProp) => ({
   display: 'flex',
   flex: 1,
   transitionDuration: '250ms',
   transitionProperty: 'opacity scale transform',
   transitionTimingFunction: 'ease-in-out',
-  zIndex: ({ theme }) => theme.zIndex('default'),
+  zIndex: theme.zIndex.default,
 });
 
-const getDefaultContainerOpenMenuStyles = () => ({
+const getDefaultContainerOpenMenuStyles = (theme: ThemeProp) => ({
   transitionDuration: '250ms',
   transitionProperty: 'opacity scale transform',
   transitionTimingFunction: 'ease-in-out',
-  zIndex: ({ theme }) => theme.zIndex('default'),
+  zIndex: theme.zIndex.default,
 });
 
 const getInputContainerTransform = () => ({
@@ -54,15 +55,17 @@ const getContainerOpenMenuTransform = () => ({
 });
 
 export const getInputContainerStyles = (
-  state: TransitionStatus
+  state: TransitionStatus,
+  theme: ThemeProp
 ): CSSProperties => ({
-  ...getDefaultInputContainerStyles(),
+  ...getDefaultInputContainerStyles(theme),
   ...getInputContainerTransform()[state],
 });
 
 export const getContainerOpenMenuStyles = (
-  state: TransitionStatus
+  state: TransitionStatus,
+  theme: ThemeProp
 ): CSSProperties => ({
-  ...getDefaultContainerOpenMenuStyles(),
+  ...getDefaultContainerOpenMenuStyles(theme),
   ...getContainerOpenMenuTransform()[state],
 });
