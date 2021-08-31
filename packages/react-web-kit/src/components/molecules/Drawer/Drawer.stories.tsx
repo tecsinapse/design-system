@@ -24,7 +24,7 @@ const Template: Story<DrawerProps> = ({ anchorPosition, open }) => {
     <>
       <Drawer open={isOpen} onClose={onClose} anchorPosition={anchorPosition}>
         <StyledHeaderDrawerStory>
-          <Text typography="h4">Design System</Text>
+          <StyledTextHeader typography="h4">Design System</StyledTextHeader>
           <StyledHButtonHeaderStory>
             <Button size="small" onPress={onClose} variant="text">
               <Icon name="close" type="material-community" />
@@ -34,7 +34,7 @@ const Template: Story<DrawerProps> = ({ anchorPosition, open }) => {
       </Drawer>
       <StyledContainerButtonStory>
         <Button onPress={onClose}>
-          <Text fontColor="light">Open Drawer</Text>
+          <StyledTextButton fontColor="light">Open Drawer</StyledTextButton>
         </Button>
       </StyledContainerButtonStory>
     </>
@@ -67,4 +67,12 @@ const StyledHeaderDrawerStory = styled('div')`
 
 const StyledHButtonHeaderStory = styled('div')`
   margin-left: 10px;
+`;
+
+const StyledTextButton = styled(Text)`
+  user-select: none;
+`;
+
+const StyledTextHeader = styled(Text)`
+  white-space: nowrap;
 `;

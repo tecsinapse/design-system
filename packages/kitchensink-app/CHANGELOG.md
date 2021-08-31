@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.3.2...@tecsinapse/kitchensink-app@1.4.0) (2021-08-26)
+
+
+### Bug Fixes
+
+* **select:** minor changes ([2fb3460](https://github.com/tecsinapse/design-system/commit/2fb34608b3bed4d5c70f77be093c8e6508c3e0a9))
+
+
+### Features
+
+* added component DropDown, multi select and single select implemented ([31f9cef](https://github.com/tecsinapse/design-system/commit/31f9cef059b081159543aac859785fdd14b03fe2))
+
+
+
+
+
 ## [1.3.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.3.1...@tecsinapse/kitchensink-app@1.3.2) (2021-08-18)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app

@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.3.2...@tecsinapse/react-web-kit@1.4.0) (2021-08-26)
+
+
+### Bug Fixes
+
+* **select:** minor changes ([2fb3460](https://github.com/tecsinapse/design-system/commit/2fb34608b3bed4d5c70f77be093c8e6508c3e0a9))
+* animation in close drawer ([13c7a99](https://github.com/tecsinapse/design-system/commit/13c7a9953fc5a40e5e1ec38efab60f06fb799075))
+* error build ([074cb31](https://github.com/tecsinapse/design-system/commit/074cb313c22dccba5166a4c6856e916772f2b3c0))
+* error build, types in styled ([e33cb26](https://github.com/tecsinapse/design-system/commit/e33cb2664ce772b4d25e7e4d35dbd67e0a4390d5))
+* fixed CheckBox all in SeletItem, removed onBlur of Dropdown ([5355698](https://github.com/tecsinapse/design-system/commit/535569881a510152eea2a83ac3baf520b5b59b2e))
+* fixed effect hover in container search bar, width and onClick ([fc46753](https://github.com/tecsinapse/design-system/commit/fc46753089914aef3cc72772ee59bd7469958d03))
+* fixing type single to return String, not array. ([cd4662f](https://github.com/tecsinapse/design-system/commit/cd4662f61a5f217cc33df3e9ea792c08237ef394))
+* minor changes ([f36cf8c](https://github.com/tecsinapse/design-system/commit/f36cf8c1694c710b23519a9994cbcbc21e9582da))
+* removed unused prop ([d1d8e18](https://github.com/tecsinapse/design-system/commit/d1d8e18296e50b9044e4ae249f4b3f667d7f473e))
+* renders storybook ([dc38aa8](https://github.com/tecsinapse/design-system/commit/dc38aa826d28b6a1e18a3f6a9a5a96ee55d903f1))
+* timeout Drawer ([fa6cc56](https://github.com/tecsinapse/design-system/commit/fa6cc5638da1e108e6a58ce65a8ec32732b1eb47))
+* types generics ([4fbee16](https://github.com/tecsinapse/design-system/commit/4fbee160d0724e879d94006e19b57170b2d03502))
+* useEffect in SelectItem ([b624c14](https://github.com/tecsinapse/design-system/commit/b624c142288a3d418b3f8bb7f9f4ec4db515a9b1))
+* widht search bar ([cca4f19](https://github.com/tecsinapse/design-system/commit/cca4f192ee6192455eab2a06dd51d9f60430a568))
+
+
+### Features
+
+* add Animation slide in Drawer using react group transition ([58c035f](https://github.com/tecsinapse/design-system/commit/58c035f1eb863389d62de671228656f113a3c781))
+* add checkbox to add all items ([7d30a14](https://github.com/tecsinapse/design-system/commit/7d30a146ca9b0d67f9a50efe039dd3a384a02b84))
+* add Component Select ([5e07a14](https://github.com/tecsinapse/design-system/commit/5e07a140b41f4e6b3209c39102d2257cf157cae0))
+* add highlight in single select ([3c33586](https://github.com/tecsinapse/design-system/commit/3c3358690378b02c9c0f12e3c6d96dc69944a917))
+* add prop Label in interface, add ellipsis in Text of display value ([8e2d83f](https://github.com/tecsinapse/design-system/commit/8e2d83fb7a91d6dd8729fe1c1847dcbc2e57bd00))
+* added click away listener ([7013709](https://github.com/tecsinapse/design-system/commit/7013709127413ceb4f09c2a85139184d8de2c4e4))
+* added component DropDown, multi select and single select implemented ([31f9cef](https://github.com/tecsinapse/design-system/commit/31f9cef059b081159543aac859785fdd14b03fe2))
+* select single item implemented. ([83e982f](https://github.com/tecsinapse/design-system/commit/83e982fa5c4d3e6a586b6f6a41e4a2fd9e57b2b1))
+
+
+
+
+
 ## [1.3.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.3.1...@tecsinapse/react-web-kit@1.3.2) (2021-08-18)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
