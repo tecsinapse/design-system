@@ -78,9 +78,9 @@ const DataGrid = <Data extends unknown>({
   skeletonComponent,
   style,
 }: DataGridProps<Data>): JSX.Element => {
-  if (selectable && !selectedRows && !onSelectedRows) {
+  if (selectable && (!selectedRows || !onSelectedRows)) {
     throw new Error(
-      '[DataGrid] When enabling selection you must specify selectedRows and onSelectedRows'
+      '[DataGrid] You should specify selection handlers (selectedRows, onSelectedRows)'
     );
   }
 

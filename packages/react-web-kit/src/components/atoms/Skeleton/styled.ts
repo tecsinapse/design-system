@@ -53,13 +53,16 @@ const pulseAnim = css`
 `;
 
 export const Wrapper = styled('div')<Partial<StyleProps & SkeletonProps>>`
-  background-color: ${({ theme, animation }) =>
+  background-color: ${({
+    theme,
+    animation,
+  }: StyleProps & Partial<SkeletonProps>) =>
     animation === 'pulse'
       ? theme.miscellaneous.bodyColor
       : theme.miscellaneous.surfaceColor};
   width: ${({ width }) => `${width}px` ?? '100%'};
   height: ${({ height }) => `${height}px` ?? 'auto'};
-  border-radius: ${({ theme, radius }) =>
+  border-radius: ${({ theme, radius }: StyleProps & Partial<SkeletonProps>) =>
     radius ? theme.borderRadius[radius] : 'unset'};
   ${({ animation }) => (animation === 'pulse' ? pulseAnim : waveAnim)};
 `;
