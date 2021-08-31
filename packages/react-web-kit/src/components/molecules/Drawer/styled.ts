@@ -3,13 +3,16 @@ import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 import { DrawerProps } from './Drawer';
 import { css } from '@emotion/react';
 
-export const StyledOverlay = styled('div')<Partial<StyleProps>>`
+export const StyledOverlay = styled('div')<
+  Partial<StyleProps> & { show: boolean }
+>`
   background: ${({ theme }: StyleProps) =>
     hex2rgba(theme.miscellaneous.overlay, 0.5)};
   width: 100vw;
   height: 100vh;
-  z-index: ${({ theme }: StyleProps) => theme.zIndex.drawer};
-  cursor: pointer;
+  z-index: ${({ theme, show }: StyleProps & { show: boolean }) =>
+    show ? theme.zIndex.drawer : theme.zIndex.default};
+  cursor: ${({ show }) => (show ? 'pointer' : 'default')};
   position: absolute;
 `;
 
@@ -66,7 +69,8 @@ const baseStyles = ({ theme, anchorPosition }: StyleProps & DrawerProps) => {
   return css`
     height: ${['left', 'right'].includes(anchorPosition) && '100vh'};
     width: ${['top', 'bottom'].includes(anchorPosition) && '100wh'};
-    position: absolute;
+    position: fixed;
+    overflow: hidden;
     background-color: ${theme.miscellaneous.bodyColor};
     z-index: ${theme.zIndex.drawer + 1};
   `;
