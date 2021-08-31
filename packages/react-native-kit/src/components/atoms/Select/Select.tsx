@@ -1,9 +1,12 @@
-import { InputContainerProps, useInputFocus } from '@tecsinapse/react-core';
 import * as React from 'react';
+import {
+  InputContainerProps,
+  useInputFocus,
+  HintInputContainer,
+} from '@tecsinapse/react-core';
 import { Text } from '../Text';
 import { Modal } from './Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
-import { HintInputContainer } from '@tecsinapse/react-core/src/components/molecules/HintInputContainer';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
