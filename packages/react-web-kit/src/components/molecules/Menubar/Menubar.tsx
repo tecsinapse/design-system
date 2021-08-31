@@ -1,5 +1,12 @@
 import React from 'react';
-import { Icon, Text, useDebouncedState } from '@tecsinapse/react-core';
+import {
+  Icon,
+  Text,
+  ThemeProp,
+  useDebouncedState,
+} from '@tecsinapse/react-core';
+import { Transition } from 'react-transition-group';
+import { useTheme } from '@emotion/react';
 import {
   StyledIconInput,
   StyledMenuBar,
@@ -16,6 +23,10 @@ import { MostUsed } from './MostUsed';
 import { MenuBlock } from './MenuBlock';
 import { SearchResultItem } from './SearchResultItem';
 import { filterAndTransform } from './utils';
+import {
+  getContainerOpenMenuStyles,
+  getInputContainerStyles,
+} from './animations';
 
 export interface MenubarProps {
   leftComponents?: React.ReactNode;
@@ -37,10 +48,13 @@ const Menubar: React.FC<MenubarProps> = ({
   mostUsedLabel = 'Mais acessados',
   searchResultsLabel = 'Resultados da busca',
 }) => {
-  const [menuOpen, setMenuOpen] = React.useState<boolean>(true);
   const [search, setSearch] = React.useState<string>('');
   const [results, setResults] = React.useState<MostUsedType[]>([]);
   const [input, setInput] = useDebouncedState('', state => setSearch(state));
+  const [isOpen, setOpen] = React.useState<boolean>(false);
+  const theme = useTheme() as ThemeProp;
+
+  const toggleOpenClose = () => setOpen(!isOpen);
 
   React.useEffect(() => {
     if (search === '') return;
@@ -53,9 +67,9 @@ const Menubar: React.FC<MenubarProps> = ({
         <StyledMenuButton
           variant="filled"
           color="primary"
-          onPress={() => setMenuOpen(!menuOpen)}
+          onPress={toggleOpenClose}
         >
-          {!menuOpen ? (
+          {!isOpen ? (
             <Icon
               size="deca"
               name="menu"
@@ -72,49 +86,59 @@ const Menubar: React.FC<MenubarProps> = ({
           )}
         </StyledMenuButton>
         {leftComponents}
-        {menuOpen && (
-          <StyledInputContainer>
-            <StyledInput
-              placeholder={inputPlaceholder}
-              leftComponent={
-                <StyledIconInput>
-                  <Icon name="magnify" type="material-community" />
-                </StyledIconInput>
-              }
-              value={input}
-              onChange={setInput}
-            />
-          </StyledInputContainer>
-        )}
-        {rightComponents}
-      </StyledMenuBar>
-      {menuOpen && (
-        <StyledContainerOpenMenu>
-          {!search ? (
-            <>
-              {mostUsed && <MostUsed label={mostUsedLabel} data={mostUsed} />}
-              <Masonry columns={4} spacingTop="kilo" spacingLeft="mega">
-                {options.map(option => (
-                  <MenuBlock data={option} key={option.title} />
-                ))}
-              </Masonry>
-            </>
-          ) : (
-            <StyledSearchResultsContainer>
-              <StyledSearchTextContainer>
-                <Text fontWeight="bold">{searchResultsLabel}</Text>
-              </StyledSearchTextContainer>
-              {results.map(result => (
-                <SearchResultItem
-                  key={`${result.title}-${result.category}`}
-                  data={result}
-                  searchTerm={search}
+        <Transition in={isOpen} timeout={250}>
+          {state => (
+            <div style={getInputContainerStyles(state, theme)}>
+              <StyledInputContainer>
+                <StyledInput
+                  placeholder={inputPlaceholder}
+                  leftComponent={
+                    <StyledIconInput>
+                      <Icon name="magnify" type="material-community" />
+                    </StyledIconInput>
+                  }
+                  value={input}
+                  onChange={setInput}
                 />
-              ))}
-            </StyledSearchResultsContainer>
+              </StyledInputContainer>
+              {rightComponents}
+            </div>
           )}
-        </StyledContainerOpenMenu>
-      )}
+        </Transition>
+      </StyledMenuBar>
+      <Transition in={isOpen} timeout={250}>
+        {state => (
+          <div style={getContainerOpenMenuStyles(state, theme)}>
+            <StyledContainerOpenMenu>
+              {!search ? (
+                <div>
+                  {mostUsed && (
+                    <MostUsed label={mostUsedLabel} data={mostUsed} />
+                  )}
+                  <Masonry columns={4} spacingTop="kilo" spacingLeft="mega">
+                    {options.map(option => (
+                      <MenuBlock data={option} key={option.title} />
+                    ))}
+                  </Masonry>
+                </div>
+              ) : (
+                <StyledSearchResultsContainer>
+                  <StyledSearchTextContainer>
+                    <Text fontWeight="bold">{searchResultsLabel}</Text>
+                  </StyledSearchTextContainer>
+                  {results.map(result => (
+                    <SearchResultItem
+                      key={`${result.title}-${result.category}`}
+                      data={result}
+                      searchTerm={search}
+                    />
+                  ))}
+                </StyledSearchResultsContainer>
+              )}
+            </StyledContainerOpenMenu>
+          </div>
+        )}
+      </Transition>
     </>
   );
 };
