@@ -19,13 +19,14 @@ const defaultVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
   `;
 
 const StyledTagContainerBase = styled(Animated.View)<
-  Partial<TagProps> & Partial<StyleProps> & ViewProps
+  Partial<TagProps> & Partial<StyleProps> & ViewProps & { visible: boolean }
 >`
   background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
   flex-direction: row;
   justify-content: center;
   align-items: center;
   align-self: center;
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
 `;
 
 export const StyledTagContainer = styled(StyledTagContainerBase)(

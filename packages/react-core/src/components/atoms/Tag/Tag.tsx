@@ -21,12 +21,14 @@ const Tag: React.FC<TagProps> = ({
   ...rest
 }): JSX.Element => {
   const [dismiss, setDismiss] = useState(false);
+  const [visible, setVisible] = useState(true);
   const fadeAnim = React.useRef(new Animated.Value(1)).current;
+  const duration = 300;
 
   const fadeOut = () => {
     Animated.timing(fadeAnim, {
       toValue: 0,
-      duration: 300,
+      duration,
       useNativeDriver: true,
     }).start();
   };
@@ -35,33 +37,35 @@ const Tag: React.FC<TagProps> = ({
     setDismiss(true);
     onDismiss();
     fadeOut();
+    setTimeout(() => setVisible(false), duration);
   }, [onDismiss]);
 
   return (
-    <>
-      {!dismiss && (
-        <StyledTagContainer {...rest} variant={variant}>
-          {icon && (
-            <StyledLeftIcon
-              size={icon.size || 'micro'}
-              colorVariant={icon.colorVariant || 'primary'}
-              {...icon}
-            />
-          )}
-          {value}
-          {canDismiss && (
-            <PressableSurface onPress={handleDismiss}>
-              <StyledCloseIcon
-                name="close-outline"
-                type="ionicon"
-                size="centi"
-                fontColor="medium"
-              />
-            </PressableSurface>
-          )}
-        </StyledTagContainer>
+    <StyledTagContainer
+      {...rest}
+      variant={variant}
+      style={{ opacity: (fadeAnim as unknown) as number }}
+      visible={visible}
+    >
+      {icon && (
+        <StyledLeftIcon
+          size={icon.size || 'micro'}
+          colorVariant={icon.colorVariant || 'primary'}
+          {...icon}
+        />
       )}
-    </>
+      {value}
+      {canDismiss && (
+        <PressableSurface onPress={handleDismiss}>
+          <StyledCloseIcon
+            name="close-outline"
+            type="ionicon"
+            size="centi"
+            fontColor="medium"
+          />
+        </PressableSurface>
+      )}
+    </StyledTagContainer>
   );
 };
 
