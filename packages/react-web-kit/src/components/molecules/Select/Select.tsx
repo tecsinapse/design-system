@@ -4,6 +4,8 @@ import { useClickAwayListener } from '../../../hooks';
 import { StyledContainer, StyledInputContainer } from './styled';
 import { Dropdown } from './Dropdown';
 import { getDisplayValue } from './functions';
+import { Transition } from 'react-transition-group';
+import { defaultStyles, transition } from './animations';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   options: Data[];
@@ -68,18 +70,21 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
-      {dropDownVisible && (
-        <Dropdown
-          options={options}
-          onSelect={onSelect}
-          value={value}
-          type={type}
-          keyExtractor={keyExtractor}
-          labelExtractor={labelExtractor}
-          hideSearchBar={hideSearchBar}
-          setDropDownVisible={setDropDownVisible}
-        />
-      )}
+      <Transition in={dropDownVisible} timeout={300}>
+        {state => (
+          <Dropdown
+            options={options}
+            onSelect={onSelect}
+            value={value}
+            type={type}
+            keyExtractor={keyExtractor}
+            labelExtractor={labelExtractor}
+            hideSearchBar={hideSearchBar}
+            style={{ ...defaultStyles, ...transition[state] }}
+            setDropDownVisible={setDropDownVisible}
+          />
+        )}
+      </Transition>
     </StyledContainer>
   );
 };
