@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { Animated, StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '../../../types/defaults';
 import { Icon, IconProps } from '../../atoms/Icon';
 import {
+  Container,
   ContentContainer,
   DismissContainer,
   IconContainer,
@@ -42,44 +43,72 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   anchorDistance,
   ...rest
 }) => {
+  const fadeAnim = React.useRef(new Animated.Value(0)).current;
+  const [visible, setVisible] = React.useState<boolean>(true);
+
+  const fadeIn = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      useNativeDriver: true,
+      duration: 500,
+    }).start();
+  };
+
+  const fadeOut = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      useNativeDriver: true,
+      duration: 500,
+    }).start();
+  };
   React.useEffect(() => {
+    fadeIn();
     if (open && timeout) {
       setTimeout(() => onClose?.(), timeout);
+      fadeOut();
     }
   }, [open, timeout]);
 
   return (
-    <>
-      {open && (
-        <SnackbarContainer
-          {...rest}
-          colorVariant={colorVariant}
-          colorTone={colorTone}
-          elevated
-          anchor={anchor}
-          anchorDistance={anchorDistance}
-        >
-          <ContentContainer>
-            {leftIcon && (
-              <IconContainer>
-                <Icon {...leftIcon} size="centi" />
-              </IconContainer>
-            )}
-            {children}
-          </ContentContainer>
-          {dismissable && (
-            <DismissContainer effect="none" onPress={onClose}>
-              <Icon
-                {...rightIcon}
-                size="centi"
-                name="close"
-                type="material-community"
-              />
-            </DismissContainer>
+    <SnackbarContainer
+      {...rest}
+      colorVariant={colorVariant}
+      colorTone={colorTone}
+      elevated
+      anchor={anchor}
+      anchorDistance={anchorDistance}
+      visible={visible}
+    >
+      <Container style={{ opacity: (fadeAnim as unknown) as number }}>
+        <ContentContainer>
+          {leftIcon && (
+            <IconContainer>
+              <Icon {...leftIcon} size="centi" />
+            </IconContainer>
           )}
-        </SnackbarContainer>
-      )}
-    </>
+          {children}
+        </ContentContainer>
+        {dismissable && (
+          <DismissContainer
+            effect="none"
+            onPress={() => {
+              fadeOut();
+              onClose?.();
+              // setTimeout(() => {
+              //   // setVisible(false);
+              // }, 2000);
+            }}
+          >
+            <Icon
+              {...rightIcon}
+              size="centi"
+              name="close"
+              type="material-community"
+            />
+          </DismissContainer>
+        )}
+      </Container>
+    </SnackbarContainer>
   );
 };
 

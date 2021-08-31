@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Animated, View } from 'react-native';
 import styled, { css } from '@emotion/native';
 import { StyleProps } from '@tecsinapse/react-core';
 import { SnackbarProps } from './Snackbar';
@@ -64,6 +64,10 @@ export const ContentContainer = styled(View)`
   flex-shrink: 1;
 `;
 
+export const Container = styled(Animated.View)`
+  width: 100%;
+  height: 100%;
+`;
 export const IconContainer = styled(View)<Partial<StyleProps>>`
   flex-direction: row;
   display: flex;
