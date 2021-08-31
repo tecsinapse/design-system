@@ -21,7 +21,7 @@ Base.args = {
   animate: true,
   segments: 5,
   animationParameters: {
-    direction: 'left',
+    direction: 'right',
     duration: 5000,
   },
 };

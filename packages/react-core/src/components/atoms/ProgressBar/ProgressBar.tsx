@@ -65,14 +65,14 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         duration: animationParameters.duration / items.length,
         useNativeDriver: false,
         delay:
-          animationParameters.direction === 'left'
+          animationParameters.direction === 'right'
             ? index * (animationParameters.duration / items.length)
             : (items.length - index - 1) *
               (animationParameters.duration / items.length),
       }).start();
     }
     const rangeAnimation =
-      animationParameters?.direction === 'left'
+      animationParameters?.direction === 'right'
         ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
         : [`${valueMax}%`, `${width}%`];
     const progressPercent = animationValue.interpolate?.({
