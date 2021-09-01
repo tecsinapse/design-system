@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Animated, ViewProps, ViewStyle } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { IconProps } from '../Icon';
 import { PressableSurface } from '../PressableSurface';
 import { StyledCloseIcon, StyledLeftIcon, StyledTagContainer } from './styled';
