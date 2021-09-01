@@ -1,5 +1,5 @@
 import styled, { css } from '@emotion/native';
-import { View, ViewProps } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { Icon, IconProps } from '../Icon';
 import { TagProps } from './Tag';
@@ -18,14 +18,15 @@ const defaultVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
     padding: ${theme.spacing.micro} ${theme.spacing.centi};
   `;
 
-const StyledTagContainerBase = styled(View)<
-  Partial<TagProps> & Partial<StyleProps> & ViewProps
+const StyledTagContainerBase = styled(Animated.View)<
+  Partial<TagProps> & Partial<StyleProps> & ViewProps & { visible: boolean }
 >`
   background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
   flex-direction: row;
   justify-content: center;
   align-items: center;
   align-self: center;
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
 `;
 
 export const StyledTagContainer = styled(StyledTagContainerBase)(

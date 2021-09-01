@@ -1,5 +1,6 @@
 import styled from '@emotion/native';
 import { StyleProps } from '@tecsinapse/react-core';
+import { Animated } from 'react-native';
 
 export const Container = styled.View<Partial<StyleProps>>`
   display: flex;
@@ -17,7 +18,7 @@ export const Segment = styled.View<Partial<StyleProps>>`
   border-color: ${({ theme }) => theme.color.secondary.xlight};
 `;
 
-export const Progress = styled.View<Partial<StyleProps>>`
+export const Progress = styled(Animated.View)<Partial<StyleProps>>`
   height: 100%;
   border-color: ${({ theme }) => theme.color.secondary.xlight};
 `;

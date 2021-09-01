@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { ViewProps } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { IconProps } from '../Icon';
 import { PressableSurface } from '../PressableSurface';
 import { StyledCloseIcon, StyledLeftIcon, StyledTagContainer } from './styled';
@@ -21,37 +21,49 @@ const Tag: React.FC<TagProps> = ({
   ...rest
 }): JSX.Element => {
   const [dismiss, setDismiss] = useState(false);
+  const fadeAnim = React.useRef(new Animated.Value(1)).current;
+  const duration = 300;
+
+  const fadeOut = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const handleDismiss = useCallback(() => {
-    setDismiss(true);
     onDismiss();
+    fadeOut();
+    setTimeout(() => setDismiss(true), duration);
   }, [onDismiss]);
 
   return (
-    <>
-      {!dismiss && (
-        <StyledTagContainer {...rest} variant={variant}>
-          {icon && (
-            <StyledLeftIcon
-              size={icon.size || 'micro'}
-              colorVariant={icon.colorVariant || 'primary'}
-              {...icon}
-            />
-          )}
-          {value}
-          {canDismiss && (
-            <PressableSurface onPress={handleDismiss}>
-              <StyledCloseIcon
-                name="close-outline"
-                type="ionicon"
-                size="centi"
-                fontColor="medium"
-              />
-            </PressableSurface>
-          )}
-        </StyledTagContainer>
+    <StyledTagContainer
+      {...rest}
+      variant={variant}
+      style={{ opacity: (fadeAnim as unknown) as number }}
+      visible={!dismiss}
+    >
+      {icon && (
+        <StyledLeftIcon
+          size={icon.size || 'micro'}
+          colorVariant={icon.colorVariant || 'primary'}
+          {...icon}
+        />
       )}
-    </>
+      {value}
+      {canDismiss && (
+        <PressableSurface onPress={handleDismiss}>
+          <StyledCloseIcon
+            name="close-outline"
+            type="ionicon"
+            size="centi"
+            fontColor="medium"
+          />
+        </PressableSurface>
+      )}
+    </StyledTagContainer>
   );
 };
 

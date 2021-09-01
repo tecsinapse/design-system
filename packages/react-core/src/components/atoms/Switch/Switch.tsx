@@ -1,12 +1,14 @@
 import { useTheme } from '@emotion/react';
 import React, { FC, useCallback } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { Animated, StyleProp, ViewStyle } from 'react-native';
 import {
   ColorGradationType,
   ColorType,
   ThemeProp,
 } from '../../../types/defaults';
-import { StyledSwitch, StyledSwitchContent } from './styled';
+import { PressableSurface } from '../PressableSurface';
+import { StyledSwitch } from './styled';
+import { transtionSwitch } from './animation';
 
 export interface SwitchProps {
   onChange: (active: boolean) => void;
@@ -19,6 +21,9 @@ export interface SwitchProps {
   dotStyle?: StyleProp<ViewStyle>;
 }
 
+const extractNumbers = (value: string): number =>
+  Number(value.replace(/[^0-9]/g, ''));
+
 const Switch: FC<SwitchProps> = ({
   onChange,
   activeColor = 'primary',
@@ -30,23 +35,47 @@ const Switch: FC<SwitchProps> = ({
   ...rest
 }): JSX.Element => {
   const theme = useTheme() as ThemeProp;
-  const color = active
-    ? theme.color[activeColor][activeColorTone]
-    : theme.color[inactiveColor][inactiveColorTone];
+
+  const transitionValue = React.useRef(new Animated.Value(active ? 16.5 : 0))
+    .current;
+
+  const animatedColor = React.useRef(new Animated.Value(active ? 1 : 0))
+    .current;
+
+  const interpolateColor = animatedColor.interpolate({
+    inputRange: [0, 1],
+    outputRange: [
+      theme.color[inactiveColor][inactiveColorTone],
+      theme.color[activeColor][activeColorTone],
+    ],
+  });
+
+  const animatedStyle = {
+    backgroundColor: interpolateColor,
+  };
 
   const handleChange = useCallback(() => {
     onChange(!active);
+    transtionSwitch(active, transitionValue, animatedColor);
   }, [active]);
 
+  const stylesDefaut: ViewStyle = {
+    borderRadius: extractNumbers(theme.borderRadius.pill),
+    paddingHorizontal: extractNumbers(theme.borderRadius.micro),
+    paddingVertical: 0,
+    justifyContent: 'center',
+    width: 40,
+    height: 22,
+  };
+
   return (
-    <StyledSwitchContent
-      {...rest}
-      surfaceColor={color}
-      active={active}
-      onPress={handleChange}
-    >
-      <StyledSwitch style={dotStyle} />
-    </StyledSwitchContent>
+    <PressableSurface {...rest} onPress={handleChange} effect="none">
+      <Animated.View style={{ ...animatedStyle, ...stylesDefaut }}>
+        <StyledSwitch
+          style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
+        />
+      </Animated.View>
+    </PressableSurface>
   );
 };
 
