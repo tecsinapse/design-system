@@ -53,7 +53,7 @@ const Switch: FC<SwitchProps> = ({
 
   const handleChange = useCallback(() => {
     onChange(!active);
-    transtionSwitch(active, transitionValue, interpolateColor);
+    transtionSwitch(active, transitionValue, animatedColor);
   }, [active]);
 
   const stylesDefaut: ViewStyle = {
