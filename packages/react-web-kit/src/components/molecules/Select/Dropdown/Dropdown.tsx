@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import {
   Checkbox,
   Text,
@@ -27,8 +27,10 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   keyExtractor,
   labelExtractor,
   setDropDownVisible,
+  style,
 }: SelectProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
+  style: CSSProperties;
 }): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const lengthOptions = options.length;
@@ -47,7 +49,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   };
 
   return (
-    <StyledContainerDropdown lengthOptions={lengthOptions}>
+    <StyledContainerDropdown lengthOptions={lengthOptions} style={style}>
       {type === 'multi' && (
         <StyledContainerCheckAll
           onClick={hideSearchBar ? onClickCheckAll : undefined}
