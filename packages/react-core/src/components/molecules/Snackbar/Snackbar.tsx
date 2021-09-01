@@ -44,13 +44,13 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   ...rest
 }) => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
-  const [visible, setVisible] = React.useState<boolean>(true);
+  const duration = 500;
 
   const fadeIn = () => {
     Animated.timing(fadeAnim, {
       toValue: 1,
       useNativeDriver: true,
-      duration: 500,
+      duration,
     }).start();
   };
 
@@ -58,14 +58,17 @@ export const Snackbar: React.FC<SnackbarProps> = ({
     Animated.timing(fadeAnim, {
       toValue: 0,
       useNativeDriver: true,
-      duration: 500,
+      duration,
+      delay: timeout ? timeout : 0,
     }).start();
   };
   React.useEffect(() => {
     fadeIn();
     if (open && timeout) {
-      setTimeout(() => onClose?.(), timeout);
       fadeOut();
+      setTimeout(() => {
+        onClose?.();
+      }, timeout + duration);
     }
   }, [open, timeout]);
 
@@ -77,37 +80,35 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       elevated
       anchor={anchor}
       anchorDistance={anchorDistance}
-      visible={visible}
+      visible={open}
+      style={{ opacity: (fadeAnim as unknown) as number }}
     >
-      <Container style={{ opacity: (fadeAnim as unknown) as number }}>
-        <ContentContainer>
-          {leftIcon && (
-            <IconContainer>
-              <Icon {...leftIcon} size="centi" />
-            </IconContainer>
-          )}
-          {children}
-        </ContentContainer>
-        {dismissable && (
-          <DismissContainer
-            effect="none"
-            onPress={() => {
-              fadeOut();
-              onClose?.();
-              // setTimeout(() => {
-              //   // setVisible(false);
-              // }, 2000);
-            }}
-          >
-            <Icon
-              {...rightIcon}
-              size="centi"
-              name="close"
-              type="material-community"
-            />
-          </DismissContainer>
+      <ContentContainer>
+        {leftIcon && (
+          <IconContainer>
+            <Icon {...leftIcon} size="centi" />
+          </IconContainer>
         )}
-      </Container>
+        {children}
+      </ContentContainer>
+      {dismissable && (
+        <DismissContainer
+          effect="none"
+          onPress={() => {
+            fadeOut();
+            setTimeout(() => {
+              onClose?.();
+            }, duration);
+          }}
+        >
+          <Icon
+            {...rightIcon}
+            size="centi"
+            name="close"
+            type="material-community"
+          />
+        </DismissContainer>
+      )}
     </SnackbarContainer>
   );
 };

@@ -9,13 +9,14 @@ const baseStyles = ({
   theme,
   colorTone = 'xlight',
   colorVariant = 'primary',
-}: StyleProps & Partial<SnackbarProps>) => css`
+  visible,
+}: StyleProps & Partial<SnackbarProps> & { visible: boolean }) => css`
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.color[colorVariant][colorTone]};
   padding: ${theme.spacing.mili};
   position: absolute;
   z-index: ${theme.zIndex.modal};
-  display: flex;
+  display: ${visible ? 'flex' : 'none'};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -48,7 +49,7 @@ const anchorBottom = ({
 };
 
 export const SnackbarContainer = styled(Paper)<
-  Partial<SnackbarProps & StyleProps>
+  Partial<SnackbarProps & StyleProps> & { visible: boolean }
 >(
   props => css`
     ${baseStyles(props)}
