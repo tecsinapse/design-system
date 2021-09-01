@@ -68,6 +68,10 @@ export {
 } from './components/molecules/DateTimeSelector';
 export { InputPasswordIcon } from './components/molecules/InputPassword';
 export { Snackbar, SnackbarProps } from './components/molecules/Snackbar';
+export {
+  HintInputContainer,
+  HintInputContainerProps,
+} from './components/molecules/HintInputContainer';
 export * from './styles/definitions';
 export * from './styles/light';
 export { default as ThemeProvider } from './styles/ThemeProvider';
