@@ -22,7 +22,7 @@ export const Base = Template.bind({});
 Base.args = {
   value: 'Enviado com sucesso!',
   dismissable: true,
-  // timeout: 500,
+  timeout: 5000,
   colorVariant: 'success',
   colorTone: 'xlight',
   textProps: {

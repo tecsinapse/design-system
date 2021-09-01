@@ -10,10 +10,11 @@ const baseStyles = ({
   colorTone = 'xlight',
   colorVariant = 'primary',
   visible,
+  timeout,
 }: StyleProps & Partial<SnackbarProps> & { visible: boolean }) => css`
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.color[colorVariant][colorTone]};
-  padding: ${theme.spacing.mili};
+  padding: ${timeout ? theme.spacing.deca : theme.spacing.mili};
   position: absolute;
   z-index: ${theme.zIndex.modal};
   display: ${visible ? 'flex' : 'none'};

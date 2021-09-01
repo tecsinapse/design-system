@@ -3,12 +3,12 @@ import { Animated, StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '../../../types/defaults';
 import { Icon, IconProps } from '../../atoms/Icon';
 import {
-  Container,
   ContentContainer,
   DismissContainer,
   IconContainer,
   SnackbarContainer,
 } from './styled';
+import { ProgressBar } from '@tecsinapse/react-core';
 
 export interface SnackbarProps {
   colorVariant?: ColorType;
@@ -65,7 +65,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   React.useEffect(() => {
     fadeIn();
     if (open && timeout) {
-      fadeOut();
+      // fadeOut(); verificar
       setTimeout(() => {
         onClose?.();
       }, timeout + duration);
@@ -82,6 +82,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       anchorDistance={anchorDistance}
       visible={open}
       style={{ opacity: (fadeAnim as unknown) as number }}
+      timeout={timeout}
     >
       <ContentContainer>
         {leftIcon && (
@@ -108,6 +109,18 @@ export const Snackbar: React.FC<SnackbarProps> = ({
             type="material-community"
           />
         </DismissContainer>
+      )}
+      {timeout && (
+        <ProgressBar
+          valueNow={0}
+          valueMax={100}
+          valueMin={0}
+          animate={true}
+          color={colorVariant}
+          colorTone="medium"
+          animationParameters={{ direction: 'left', duration: timeout }}
+          style={{ position: 'absolute', bottom: 0, left: 0 }}
+        />
       )}
     </SnackbarContainer>
   );
