@@ -93,7 +93,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       >
         <Progress
           style={{
-            width: animate ? progressPercent : `${width}%`,
+            width: progressPercent,
             backgroundColor: theme.color[color][colorTone],
             borderRightWidth: width > 0 && width < 100 ? 2 : 0,
           }}
