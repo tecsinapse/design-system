@@ -1,5 +1,5 @@
 import styled, { css } from '@emotion/native';
-import { Animated, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { Icon, IconProps } from '../Icon';
 import { TagProps } from './Tag';

@@ -21,7 +21,6 @@ const Tag: React.FC<TagProps> = ({
   ...rest
 }): JSX.Element => {
   const [dismiss, setDismiss] = useState(false);
-  const [visible, setVisible] = useState(true);
   const fadeAnim = React.useRef(new Animated.Value(1)).current;
   const duration = 300;
 
@@ -34,10 +33,9 @@ const Tag: React.FC<TagProps> = ({
   };
 
   const handleDismiss = useCallback(() => {
-    setDismiss(true);
     onDismiss();
     fadeOut();
-    setTimeout(() => setVisible(false), duration);
+    setTimeout(() => setDismiss(true), duration);
   }, [onDismiss]);
 
   return (
@@ -45,7 +43,7 @@ const Tag: React.FC<TagProps> = ({
       {...rest}
       variant={variant}
       style={{ opacity: (fadeAnim as unknown) as number }}
-      visible={visible}
+      visible={!dismiss}
     >
       {icon && (
         <StyledLeftIcon
