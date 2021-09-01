@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ViewProps } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { Container, Progress, Segment } from './styled';
 import { useTheme } from '@emotion/react';
 import {
@@ -21,6 +21,10 @@ export interface ProgressBarProps extends ViewProps {
   color?: ColorType;
   /** Filled partition color tone. Defaults to 'medium' */
   colorTone?: ColorGradationType;
+  /** Animation */
+  animate: boolean;
+  /** Parameters animation  */
+  animationParameters?: { direction: 'left' | 'right'; duration: number };
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -30,6 +34,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   valueMax = 100,
   color = 'primary',
   colorTone = 'medium',
+  animate,
+  animationParameters,
   ...rest
 }) => {
   const theme = useTheme() as ThemeProp;
@@ -43,11 +49,41 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const segments = Math.max(1, _segments);
   const segmentWidth = 100 / Math.max(segments);
 
-  const segmentsRender = [...Array(segments).keys()].map(index => {
+  const items = [...Array(segments).keys()];
+
+  const segmentsRender = items.map(index => {
+    const animationValue = React.useRef(new Animated.Value(0)).current;
+
     const max = segmentWidth * (index + 1);
     const min = segmentWidth * index;
     const minmax = (totalProgress - min) / (max - min);
     const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
+
+    let progressPercent: string | Animated.AnimatedInterpolation = `${width}%`;
+
+    if (animate && animationParameters) {
+      Animated.timing(animationValue, {
+        toValue: 1,
+        duration: animationParameters.duration / items.length,
+        useNativeDriver: false,
+        delay:
+          animationParameters.direction === 'right'
+            ? index * (animationParameters.duration / items.length)
+            : (items.length - index - 1) *
+              (animationParameters.duration / items.length),
+      }).start();
+
+      const rangeAnimation =
+        animationParameters?.direction === 'right'
+          ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
+          : [`${valueMax}%`, `${width}%`];
+
+      progressPercent = animationValue.interpolate?.({
+        inputRange: [0, 1],
+        outputRange: rangeAnimation,
+      });
+    }
+
     return (
       <Segment
         key={index}
@@ -57,7 +93,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       >
         <Progress
           style={{
-            width: `${width}%`,
+            width: progressPercent,
             backgroundColor: theme.color[color][colorTone],
             borderRightWidth: width > 0 && width < 100 ? 2 : 0,
           }}
