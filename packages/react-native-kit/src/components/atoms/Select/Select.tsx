@@ -1,11 +1,9 @@
-import {
-  Hint,
-  InputContainerProps,
-  PressableInputContainer,
-  useInputFocus,
-} from '@tecsinapse/react-core';
 import * as React from 'react';
-import { View } from 'react-native';
+import {
+  InputContainerProps,
+  useInputFocus,
+  HintInputContainer,
+} from '@tecsinapse/react-core';
 import { Text } from '../Text';
 import { Modal } from './Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
@@ -60,10 +58,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
   style,
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
-  const _hint = hintComponent || (
-    <Hint TextComponent={Text} text={hint} variant={variant} />
-  );
-
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -110,27 +104,27 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   return (
     <>
-      <View style={style}>
-        <PressableInputContainer
-          onPress={handlePressInput}
-          focused={focused}
-          disabled={disabled}
-          LabelComponent={Text}
-          variant={variant}
-          rightComponent={
-            <>
-              <SelectIcon name="chevron-down" type="ionicon" size="centi" />
-              {rightComponent}
-            </>
-          }
-          {...rest}
-        >
-          <StyledSelectionText fontWeight="bold" disabled={disabled}>
-            {getDisplayValue() || ' '}
-          </StyledSelectionText>
-        </PressableInputContainer>
-        {hint && _hint}
-      </View>
+      <HintInputContainer
+        viewStyle={style}
+        onPress={handlePressInput}
+        focused={focused}
+        disabled={disabled}
+        LabelComponent={Text}
+        variant={variant}
+        hint={hint}
+        hintComponent={hintComponent}
+        rightComponent={
+          <>
+            <SelectIcon name="chevron-down" type="ionicon" size="centi" />
+            {rightComponent}
+          </>
+        }
+        {...rest}
+      >
+        <StyledSelectionText fontWeight="bold" disabled={disabled}>
+          {getDisplayValue() || ' '}
+        </StyledSelectionText>
+      </HintInputContainer>
       <Modal
         visible={modalVisible}
         options={options}
