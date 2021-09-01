@@ -56,9 +56,12 @@ const Switch: FC<SwitchProps> = ({
     transtionSwitch(active, transitionValue, animatedColor);
   }, [active]);
 
+  const onlyNumbers = (value: string) => {
+    return Number(value.replace(/[^0-9]/g, ''));
+  };
   const stylesDefaut: ViewStyle = {
-    borderRadius: 999999,
-    paddingHorizontal: 4,
+    borderRadius: onlyNumbers(theme.borderRadius.pill),
+    paddingHorizontal: onlyNumbers(theme.borderRadius.micro),
     paddingVertical: 0,
     justifyContent: 'center',
     width: 40,
