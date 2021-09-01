@@ -21,6 +21,9 @@ export interface SwitchProps {
   dotStyle?: StyleProp<ViewStyle>;
 }
 
+const extractNumbers = (value: string): number =>
+  Number(value.replace(/[^0-9]/g, ''));
+
 const Switch: FC<SwitchProps> = ({
   onChange,
   activeColor = 'primary',
@@ -56,12 +59,9 @@ const Switch: FC<SwitchProps> = ({
     transtionSwitch(active, transitionValue, animatedColor);
   }, [active]);
 
-  const onlyNumbers = (value: string) => {
-    return Number(value.replace(/[^0-9]/g, ''));
-  };
   const stylesDefaut: ViewStyle = {
-    borderRadius: onlyNumbers(theme.borderRadius.pill),
-    paddingHorizontal: onlyNumbers(theme.borderRadius.micro),
+    borderRadius: extractNumbers(theme.borderRadius.pill),
+    paddingHorizontal: extractNumbers(theme.borderRadius.micro),
     paddingVertical: 0,
     justifyContent: 'center',
     width: 40,
