@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animated, ViewProps, Text } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { Container, Progress, Segment } from './styled';
 import { useTheme } from '@emotion/react';
 import {
@@ -59,6 +59,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     const minmax = (totalProgress - min) / (max - min);
     const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
 
+    let progressPercent: string | Animated.AnimatedInterpolation = `${width}%`;
+
     if (animate && animationParameters) {
       Animated.timing(animationValue, {
         toValue: 1,
@@ -70,15 +72,17 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
             : (items.length - index - 1) *
               (animationParameters.duration / items.length),
       }).start();
+
+      const rangeAnimation =
+        animationParameters?.direction === 'right'
+          ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
+          : [`${valueMax}%`, `${width}%`];
+
+      progressPercent = animationValue.interpolate?.({
+        inputRange: [0, 1],
+        outputRange: rangeAnimation,
+      });
     }
-    const rangeAnimation =
-      animationParameters?.direction === 'right'
-        ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
-        : [`${valueMax}%`, `${width}%`];
-    const progressPercent = animationValue.interpolate?.({
-      inputRange: [0, 1],
-      outputRange: rangeAnimation,
-    });
 
     return (
       <Segment
@@ -89,7 +93,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       >
         <Progress
           style={{
-            width: animate ? progressPercent : `${width}%`,
+            width: progressPercent,
             backgroundColor: theme.color[color][colorTone],
             borderRightWidth: width > 0 && width < 100 ? 2 : 0,
           }}
