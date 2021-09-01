@@ -1,20 +1,16 @@
 import { Animated } from 'react-native';
 
-
-
 export const transtionSwitch = (active, transitionValue, animatedColor) => {
-
   if (active) {
     Animated.timing(transitionValue, {
       toValue: 0,
       duration: 250,
       useNativeDriver: true,
-      isInteraction: true,
     }).start();
     Animated.timing(animatedColor, {
       toValue: 0,
       duration: 250,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   } else {
     Animated.timing(transitionValue, {
@@ -25,7 +21,7 @@ export const transtionSwitch = (active, transitionValue, animatedColor) => {
     Animated.timing(animatedColor, {
       toValue: 1,
       duration: 250,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
   }
 };
