@@ -83,6 +83,19 @@ const fetchUsers = async (page = 0, rowsPerPage = 5) => {
   );
 };
 
+const HEADERS: HeadersType<ExampleData>[] = [
+    { label: 'ID', render: data => data.id },
+    {
+        label: 'Name',
+        render: data => data.name,
+        sort: direction => {
+            alert(`sorting in: ${direction}`);
+        },
+    },
+    { label: 'Username', render: data => data.username },
+    { label: 'Email', render: data => data.email },
+];
+
 const Template: Story = args => {
   const [selected, setSelected] = React.useState<ExampleData[]>([]);
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
@@ -111,25 +124,12 @@ const Template: Story = args => {
       .finally(() => setLoading(false));
   }, [rowsPerPage, currentPage]);
 
-  const headers: HeadersType<ExampleData>[] = [
-    { label: 'ID', render: data => data.id },
-    {
-      label: 'Name',
-      render: data => data.name,
-      sort: direction => {
-        alert(`sorting in: ${direction}`);
-      },
-    },
-    { label: 'Username', render: data => data.username },
-    { label: 'Email', render: data => data.email },
-  ];
-
   return (
     <DataGrid
-      headers={headers}
+      headers={HEADERS}
       data={data}
       rowKeyExtractor={data => String(data.id)}
-      toolbarTitle="Data grid"
+      toolbarTitle="Server Side"
       toolbarRightIcons={<ToolbarRightComponent />}
       toolbarFooter={<ToolbarFooterComponent />}
       selectedRows={selected}
@@ -155,6 +155,58 @@ export const Base = Template.bind({});
 
 Base.args = {
   selectable: true,
+  exportFunction: () => alert('Export handler'),
+  pagination: true,
+};
+
+const fetchAllUsers = async () => {
+  return await fetch(`https://jsonplaceholder.typicode.com/users`, {
+    method: 'GET',
+  });
+};
+
+const TemplateClient: Story = args => {
+  const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
+  const [currentPage, setCurrentPage] = React.useState<number>(0);
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [data, setData] = React.useState<ExampleData[]>([]);
+
+  React.useEffect(() => {
+    fetchAllUsers()
+      .then(async data => {
+        const json = await data.json();
+        setData(json);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  return (
+    <DataGrid
+      headers={HEADERS}
+      data={data}
+      rowKeyExtractor={data => String(data.id)}
+      toolbarTitle="Client Side"
+      toolbarRightIcons={<ToolbarRightComponent />}
+      toolbarFooter={<ToolbarFooterComponent />}
+      rowsPerPage={rowsPerPage}
+      rowsPerPageOptions={[5, 25, 50]}
+      onRowsPerPageChange={setRowsPerPage}
+      page={currentPage}
+      onPageChange={setCurrentPage}
+      loading={loading}
+      skeletonComponent={
+        <Skeleton height={55} radius="mili" animation="wave">
+          <div style={{ width: '100%', minWidth: 650 }} />
+        </Skeleton>
+      }
+      {...args}
+    />
+  );
+};
+
+export const ClientSide = TemplateClient.bind({});
+
+ClientSide.args = {
   exportFunction: () => alert('Export handler'),
   pagination: true,
 };

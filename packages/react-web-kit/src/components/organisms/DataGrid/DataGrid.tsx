@@ -13,7 +13,7 @@ import { Header } from './Header';
 import { HeadersType } from './types';
 import { Footer } from './Footer';
 import { Skeleton } from '../../atoms/Skeleton';
-import { removeElement } from './utils';
+import { getData, removeElement } from './utils';
 
 export interface DataGridProps<Data> {
   headers: HeadersType<Data>[];
@@ -40,7 +40,7 @@ export interface DataGridProps<Data> {
   /** Export button label */
   exportLabel?: string;
   exportFunction?: () => void;
-  /** Total data elements */
+  /** Total data elements. Only specify this property if your data is server-side */
   rowsCount?: number;
   /** Current page. Always start in 0 */
   page?: number;
@@ -115,7 +115,7 @@ const DataGrid = <Data extends unknown>({
 
         {!loading ? (
           <TBody>
-            {data.map(item => (
+            {getData(data, rowsCount, page, rowsPerPage).map(item => (
               <Tr key={rowKeyExtractor(item)}>
                 {selectable && (
                   <CheckboxCell>
