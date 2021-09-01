@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animated, ViewProps, Text } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { Container, Progress, Segment } from './styled';
 import { useTheme } from '@emotion/react';
 import {
@@ -59,7 +59,19 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     const minmax = (totalProgress - min) / (max - min);
     const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
 
+    let progressPercent: string | Animated.AnimatedInterpolation = `${width}%`;
+
     if (animate && animationParameters) {
+      const rangeAnimation =
+        animationParameters?.direction === 'right'
+          ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
+          : [`${valueMax}%`, `${width}%`];
+
+      progressPercent = animationValue.interpolate?.({
+        inputRange: [0, 1],
+        outputRange: rangeAnimation,
+      });
+
       Animated.timing(animationValue, {
         toValue: 1,
         duration: animationParameters.duration / items.length,
@@ -71,14 +83,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
               (animationParameters.duration / items.length),
       }).start();
     }
-    const rangeAnimation =
-      animationParameters?.direction === 'right'
-        ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
-        : [`${valueMax}%`, `${width}%`];
-    const progressPercent = animationValue.interpolate?.({
-      inputRange: [0, 1],
-      outputRange: rangeAnimation,
-    });
 
     return (
       <Segment
