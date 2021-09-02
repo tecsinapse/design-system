@@ -21,7 +21,7 @@ const options: GroupButtonValue<string>[] = [
   { value: 'Filter 2' },
 ];
 
-const ToolbarFooterComponent = () => {
+const ToolbarFooterComponent = React.memo(() => {
   const [active, setActive] = useState<string>(options[0].value);
   return (
     <>
@@ -47,9 +47,9 @@ const ToolbarFooterComponent = () => {
       </div>
     </>
   );
-};
+});
 
-const ToolbarRightComponent = () => {
+const ToolbarRightComponent = React.memo(() => {
   return (
     <Input
       leftComponent={
@@ -65,7 +65,13 @@ const ToolbarRightComponent = () => {
       placeholderTextColor="#85807A"
     />
   );
-};
+});
+
+const SkeletonPlaceholder = React.memo(() => (
+  <Skeleton height={55} radius="mili" animation="wave">
+    <div style={{ width: '100%', minWidth: 650 }} />
+  </Skeleton>
+));
 
 type ExampleData = {
   id: number;
@@ -84,16 +90,16 @@ const fetchUsers = async (page = 0, rowsPerPage = 5) => {
 };
 
 const HEADERS: HeadersType<ExampleData>[] = [
-    { label: 'ID', render: data => data.id },
-    {
-        label: 'Name',
-        render: data => data.name,
-        sort: direction => {
-            alert(`sorting in: ${direction}`);
-        },
+  { label: 'ID', render: data => data.id },
+  {
+    label: 'Name',
+    render: data => data.name,
+    sort: direction => {
+      alert(`sorting in: ${direction}`);
     },
-    { label: 'Username', render: data => data.username },
-    { label: 'Email', render: data => data.email },
+  },
+  { label: 'Username', render: data => data.username },
+  { label: 'Email', render: data => data.email },
 ];
 
 const Template: Story = args => {
@@ -124,28 +130,27 @@ const Template: Story = args => {
       .finally(() => setLoading(false));
   }, [rowsPerPage, currentPage]);
 
+  const rowsPerPageOptions = React.useMemo(() => [5, 25, 50], []);
+  const rowKeyExtractor = React.useCallback(data => String(data.id), []);
+
   return (
     <DataGrid
       headers={HEADERS}
       data={data}
-      rowKeyExtractor={data => String(data.id)}
+      rowKeyExtractor={rowKeyExtractor}
       toolbarTitle="Server Side"
       toolbarRightIcons={<ToolbarRightComponent />}
       toolbarFooter={<ToolbarFooterComponent />}
       selectedRows={selected}
       onSelectedRows={setSelected}
       rowsPerPage={rowsPerPage}
-      rowsPerPageOptions={[5, 25, 50]}
+      rowsPerPageOptions={rowsPerPageOptions}
       onRowsPerPageChange={setRowsPerPage}
       page={currentPage}
       onPageChange={setCurrentPage}
       loading={loading}
       rowsCount={totalCount}
-      skeletonComponent={
-        <Skeleton height={55} radius="mili" animation="wave">
-          <div style={{ width: '100%', minWidth: 650 }} />
-        </Skeleton>
-      }
+      skeletonComponent={<SkeletonPlaceholder />}
       {...args}
     />
   );
@@ -180,25 +185,24 @@ const TemplateClient: Story = args => {
       .finally(() => setLoading(false));
   }, []);
 
+  const rowKeyExtractor = React.useCallback(data => String(data.id), []);
+  const rowsPerPageOptions = React.useMemo(() => [5, 25, 50], []);
+
   return (
     <DataGrid
       headers={HEADERS}
       data={data}
-      rowKeyExtractor={data => String(data.id)}
+      rowKeyExtractor={rowKeyExtractor}
       toolbarTitle="Client Side"
       toolbarRightIcons={<ToolbarRightComponent />}
       toolbarFooter={<ToolbarFooterComponent />}
       rowsPerPage={rowsPerPage}
-      rowsPerPageOptions={[5, 25, 50]}
+      rowsPerPageOptions={rowsPerPageOptions}
       onRowsPerPageChange={setRowsPerPage}
       page={currentPage}
       onPageChange={setCurrentPage}
       loading={loading}
-      skeletonComponent={
-        <Skeleton height={55} radius="mili" animation="wave">
-          <div style={{ width: '100%', minWidth: 650 }} />
-        </Skeleton>
-      }
+      skeletonComponent={<SkeletonPlaceholder />}
       {...args}
     />
   );

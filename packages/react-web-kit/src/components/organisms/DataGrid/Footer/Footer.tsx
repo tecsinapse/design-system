@@ -134,4 +134,4 @@ const Footer: React.FC<DataGridFooterProps> = ({
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

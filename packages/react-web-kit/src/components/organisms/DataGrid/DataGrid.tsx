@@ -54,6 +54,7 @@ export interface DataGridProps<Data> {
   style?: CSSProperties;
 }
 
+/** Note: Consider memoizing functions for a better performance */
 const DataGrid = <Data extends unknown>({
   headers,
   data,
@@ -67,8 +68,8 @@ const DataGrid = <Data extends unknown>({
   pagination = false,
   rowsPerPage = 10,
   onRowsPerPageChange,
-  rowsPerPageOptions = [10, 25, 50],
-  rowsPerPageLabel = value => `Exibir por página: ${value} itens`,
+  rowsPerPageOptions: _rowsPerPageOptions,
+  rowsPerPageLabel: _rowsPerPageLabel,
   exportLabel = 'Exportar',
   exportFunction,
   rowsCount,
@@ -83,6 +84,18 @@ const DataGrid = <Data extends unknown>({
       '[DataGrid] You should specify selection handlers (selectedRows, onSelectedRows)'
     );
   }
+
+  const rowsPerPageLabel = React.useCallback(
+    value =>
+      _rowsPerPageLabel
+        ? _rowsPerPageLabel(value)
+        : `Exibir por página: ${value} itens`,
+    [_rowsPerPageLabel]
+  );
+  const rowsPerPageOptions = React.useMemo(
+    () => _rowsPerPageOptions ?? [10, 25, 50],
+    [_rowsPerPageOptions]
+  );
 
   const handleSelect = (current, checked) => {
     if (checked) {

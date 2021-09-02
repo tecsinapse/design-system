@@ -2,6 +2,12 @@ import styled, { css } from '@emotion/native';
 import { Button, StyleProps } from '@tecsinapse/react-core';
 import { WebButtonProps } from './Button';
 
+const webStyles = () => {
+  return css`
+    user-select: none;
+  `;
+};
+
 const hoverStyles = ({
   mouseOver,
   theme,
@@ -20,4 +26,4 @@ const hoverStyles = ({
 
 export const StyledWebButton = styled(Button)<
   { mouseOver: boolean } & WebButtonProps & Partial<StyleProps>
->(hoverStyles);
+>(webStyles, hoverStyles);
