@@ -1,5 +1,4 @@
 import React, { CSSProperties } from 'react';
-import { Checkbox } from '@tecsinapse/react-core';
 import {
   Table,
   TableToolbar,
@@ -8,8 +7,8 @@ import {
   Td,
   TBody,
 } from '../../atoms/Table';
-import { CheckboxCell } from './styled';
 import { Header } from './Header';
+import { Row } from './Row';
 import { HeadersType } from './types';
 import { Footer } from './Footer';
 import { Skeleton } from '../../atoms/Skeleton';
@@ -28,7 +27,7 @@ export interface DataGridProps<Data> {
   /** Selected items */
   selectedRows?: Data[];
   /** Selection handler */
-  onSelectedRows?: (data: Data[]) => void;
+  onSelectedRows?: (data: Data[] | ((prevState: Data[]) => Data[])) => void;
   /** Shows pagination controls */
   pagination?: boolean;
   /** Results per page */
@@ -97,16 +96,22 @@ const DataGrid = <Data extends unknown>({
     [_rowsPerPageOptions]
   );
 
-  const handleSelect = (current, checked) => {
-    if (checked) {
-      onSelectedRows?.([...selectedRows, current]);
-      return;
-    }
-    const idx = selectedRows.findIndex(
-      el => rowKeyExtractor(el) === rowKeyExtractor(current)
-    );
-    onSelectedRows?.([...removeElement(selectedRows, idx)]);
-  };
+  const handleSelect = React.useCallback(
+    (current, checked) => {
+      if (checked) {
+        onSelectedRows?.(prevState => [...prevState, current]);
+        return;
+      }
+
+      onSelectedRows?.(prevState => {
+        const idx = prevState.findIndex(
+          el => rowKeyExtractor(el) === rowKeyExtractor(current)
+        );
+        return [...removeElement(prevState, idx)];
+      });
+    },
+    [onSelectedRows, rowKeyExtractor]
+  );
 
   return (
     <TableContainer style={style}>
@@ -129,23 +134,17 @@ const DataGrid = <Data extends unknown>({
         {!loading ? (
           <TBody>
             {getData(data, rowsCount, page, rowsPerPage).map(item => (
-              <Tr key={rowKeyExtractor(item)}>
-                {selectable && (
-                  <CheckboxCell>
-                    <Checkbox
-                      checked={selectedRows?.some(
-                        sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
-                      )}
-                      onChange={checked => handleSelect(item, checked)}
-                    />
-                  </CheckboxCell>
+              <Row
+                key={rowKeyExtractor(item)}
+                rowKeyExtractor={rowKeyExtractor}
+                handleSelect={handleSelect}
+                selectable={selectable}
+                headers={headers}
+                data={item}
+                checked={selectedRows?.some(
+                  sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
                 )}
-                {headers.map(({ label, render }) => (
-                  <Td key={`row-${rowKeyExtractor(item)}-column-${label}`}>
-                    {render(item)}
-                  </Td>
-                ))}
-              </Tr>
+              />
             ))}
           </TBody>
         ) : (

@@ -65,10 +65,7 @@ const Header = <Data extends unknown>({
       onSelected?.(unselectedItemsOnData.concat(selectedRows));
       return;
     }
-    //if (checked && unselected.length > 0) {
     onSelected?.(selectedRows.concat(unselectedItemsOnData));
-    //return;
-    //}
   };
 
   return (
