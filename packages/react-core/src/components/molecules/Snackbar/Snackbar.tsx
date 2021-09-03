@@ -7,8 +7,9 @@ import {
   DismissContainer,
   IconContainer,
   SnackbarContainer,
+  StyledContainerFlexRow,
+  StyledProgressBar,
 } from './styled';
-import { ProgressBar } from '@tecsinapse/react-core';
 
 export interface SnackbarProps {
   colorVariant?: ColorType;
@@ -51,7 +52,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       toValue: 1,
       useNativeDriver: true,
       duration,
-    }).start();
+    }).start(() => timeout && fadeOut());
   };
 
   const fadeOut = () => {
@@ -59,13 +60,15 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       toValue: 0,
       useNativeDriver: true,
       duration,
-      delay: timeout ? timeout : 0,
+      delay: timeout ? timeout - duration : 0,
     }).start();
   };
+
   React.useEffect(() => {
-    fadeIn();
+    if (open) {
+      fadeIn();
+    }
     if (open && timeout) {
-      // fadeOut(); verificar
       setTimeout(() => {
         onClose?.();
       }, timeout + duration);
@@ -84,34 +87,37 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       style={{ opacity: (fadeAnim as unknown) as number }}
       timeout={timeout}
     >
-      <ContentContainer>
-        {leftIcon && (
-          <IconContainer>
-            <Icon {...leftIcon} size="centi" />
-          </IconContainer>
+      <StyledContainerFlexRow>
+        <ContentContainer>
+          {leftIcon && (
+            <IconContainer>
+              <Icon {...leftIcon} size="centi" />
+            </IconContainer>
+          )}
+          {children}
+        </ContentContainer>
+        {dismissable && (
+          <DismissContainer
+            effect="none"
+            onPress={() => {
+              fadeOut();
+              setTimeout(() => {
+                fadeAnim.setValue(0);
+                onClose?.();
+              }, duration);
+            }}
+          >
+            <Icon
+              {...rightIcon}
+              size="centi"
+              name="close"
+              type="material-community"
+            />
+          </DismissContainer>
         )}
-        {children}
-      </ContentContainer>
-      {dismissable && (
-        <DismissContainer
-          effect="none"
-          onPress={() => {
-            fadeOut();
-            setTimeout(() => {
-              onClose?.();
-            }, duration);
-          }}
-        >
-          <Icon
-            {...rightIcon}
-            size="centi"
-            name="close"
-            type="material-community"
-          />
-        </DismissContainer>
-      )}
-      {timeout && (
-        <ProgressBar
+      </StyledContainerFlexRow>
+      {timeout && open && (
+        <StyledProgressBar
           valueNow={0}
           valueMax={100}
           valueMin={0}
@@ -119,7 +125,6 @@ export const Snackbar: React.FC<SnackbarProps> = ({
           color={colorVariant}
           colorTone="medium"
           animationParameters={{ direction: 'left', duration: timeout }}
-          style={{ position: 'absolute', bottom: 0, left: 0 }}
         />
       )}
     </SnackbarContainer>

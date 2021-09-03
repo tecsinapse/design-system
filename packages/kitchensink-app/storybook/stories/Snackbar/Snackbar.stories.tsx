@@ -18,6 +18,7 @@ const Component = () => {
       value="Enviado com sucesso!"
       colorVariant="success"
       colorTone="xlight"
+      timeout={5000}
       textProps={{
         colorVariant: 'success',
         colorTone: 'medium',
