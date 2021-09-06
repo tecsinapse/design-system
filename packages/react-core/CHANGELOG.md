@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.4.0...@tecsinapse/react-core@1.5.0) (2021-09-06)
+
+
+### Bug Fixes
+
+* added initial files ([9cd22a9](https://github.com/tecsinapse/design-system/commit/9cd22a9e35cd6d8b0491ec589f2f4a4ec2626a08))
+* added progress bar ([3fb41bc](https://github.com/tecsinapse/design-system/commit/3fb41bcd748fde51fa6d3e5cadfa511627638811))
+* back animated to widht and set useNativeDriver to false ([2ac3138](https://github.com/tecsinapse/design-system/commit/2ac3138331e7f1eca7c2b0ad996d885b4733f9f4))
+* change animation width to translateX ([813763f](https://github.com/tecsinapse/design-system/commit/813763f3e9e3713763576adc1539a052dc115dcc))
+* error in native ([6045de8](https://github.com/tecsinapse/design-system/commit/6045de883f2a95e3ae6f84f5a366edfc4d4b138b))
+* minor fixes ([5ba69e3](https://github.com/tecsinapse/design-system/commit/5ba69e3c130d99294172a511fdd3dd6c6fcdfe4b))
+* minor fixes ([66cabc9](https://github.com/tecsinapse/design-system/commit/66cabc91d528e319616b576a818bbf245f34492c))
+* minor fixes ([9cb4124](https://github.com/tecsinapse/design-system/commit/9cb4124e826f6353dba6adc520466069884443c4))
+* name animation ([06f153c](https://github.com/tecsinapse/design-system/commit/06f153cb2c4df595c8632b249663408a29c2ab8e))
+* named direction ([a1349c4](https://github.com/tecsinapse/design-system/commit/a1349c4ae2ef9c43c2106138f3db80520d750e7d))
+* onBlur when has timeout ([e3376c6](https://github.com/tecsinapse/design-system/commit/e3376c68a772347c7b1c88aef82993ccc5afdab0))
+* resolving imports ([117c244](https://github.com/tecsinapse/design-system/commit/117c2443f2493363289ee13c99a2e08d2fc54987))
+* snackbar styles ([718f84a](https://github.com/tecsinapse/design-system/commit/718f84a5e0c71e7b42fe88b97fc1e792a02c85f7))
+* **hint input container:** named import from core ([dfaf653](https://github.com/tecsinapse/design-system/commit/dfaf6534cf4147084fb4f83678be33f219201b91))
+* types RightComponent and variant ([d802c48](https://github.com/tecsinapse/design-system/commit/d802c482bec81078be5e2e05d3f37d07c99a6ce3))
+
+
+### Features
+
+* add animation in ProgressBar ([8fc7ffd](https://github.com/tecsinapse/design-system/commit/8fc7ffd8b2572f31917b21971410fccef2e6aaa4))
+* add animation in Switch ([060e121](https://github.com/tecsinapse/design-system/commit/060e12121c230dec7eec83aea4c8f8afe6f2e664))
+* added animation fade in/out ([f9188c2](https://github.com/tecsinapse/design-system/commit/f9188c200e5694fcf32040a6d40818908e57166c))
+* datagrid selection ([c054103](https://github.com/tecsinapse/design-system/commit/c0541033db07b724a411779cafcc4371dbb2987d))
+* display none when close tag ([590f5e0](https://github.com/tecsinapse/design-system/commit/590f5e0864c8ff0886789bfb59c21a890b87c980))
+* unificar InputContainer ([21183f6](https://github.com/tecsinapse/design-system/commit/21183f6147810bf89be562787da277e49dde3ed4))
+
+
+
+
+
 # [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.3.2...@tecsinapse/react-core@1.4.0) (2021-08-26)
 
 

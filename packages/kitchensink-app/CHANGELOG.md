@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.4.0...@tecsinapse/kitchensink-app@1.5.0) (2021-09-06)
+
+
+### Bug Fixes
+
+* change animation width to translateX ([813763f](https://github.com/tecsinapse/design-system/commit/813763f3e9e3713763576adc1539a052dc115dcc))
+* onBlur when has timeout ([e3376c6](https://github.com/tecsinapse/design-system/commit/e3376c68a772347c7b1c88aef82993ccc5afdab0))
+* snackbar styles ([718f84a](https://github.com/tecsinapse/design-system/commit/718f84a5e0c71e7b42fe88b97fc1e792a02c85f7))
+
+
+
+
+
 # [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.3.2...@tecsinapse/kitchensink-app@1.4.0) (2021-08-26)
 
 

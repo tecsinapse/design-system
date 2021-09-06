@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.4.0...@tecsinapse/react-web-kit@1.5.0) (2021-09-06)
+
+
+### Bug Fixes
+
+* added progress bar ([3fb41bc](https://github.com/tecsinapse/design-system/commit/3fb41bcd748fde51fa6d3e5cadfa511627638811))
+* build ([6142a23](https://github.com/tecsinapse/design-system/commit/6142a234615c688c583a8e4c0617b6b9382b01b0))
+* improve performance (a little bit :)) ([5014830](https://github.com/tecsinapse/design-system/commit/5014830260da4d1a871d0fe142f3d0cf2a77f953))
+* improve performance for row (a little bit :)) ([89ab86c](https://github.com/tecsinapse/design-system/commit/89ab86cdf13f74dabe7180b2f1b42aed80a31865))
+* onBlur when has timeout ([e3376c6](https://github.com/tecsinapse/design-system/commit/e3376c68a772347c7b1c88aef82993ccc5afdab0))
+* snackbar styles ([718f84a](https://github.com/tecsinapse/design-system/commit/718f84a5e0c71e7b42fe88b97fc1e792a02c85f7))
+* **build:** data grid types ([48e4a6d](https://github.com/tecsinapse/design-system/commit/48e4a6d99df1d5e050ce747466156c08a2aebd92))
+* **menubar:** zindex prop ([4c576a2](https://github.com/tecsinapse/design-system/commit/4c576a276e775228de96e08475c1d8d25b91d4fe))
+
+
+### Features
+
+* added animation fade in/out ([f9188c2](https://github.com/tecsinapse/design-system/commit/f9188c200e5694fcf32040a6d40818908e57166c))
+* **skeleton:** adding skeleton ([1c572fe](https://github.com/tecsinapse/design-system/commit/1c572fe9f1ea76f079b5506a822b34cffde504e7))
+* added animation in dropdown ([c3cd047](https://github.com/tecsinapse/design-system/commit/c3cd0478cc84daf55f45ecaf1fb2a5e416169b86))
+* **data grid:** add pagination ([5235eb4](https://github.com/tecsinapse/design-system/commit/5235eb4fa50c63fadabdb1e8691d430cea43240e))
+* **data grid:** finishing pagination ([304f33b](https://github.com/tecsinapse/design-system/commit/304f33b69d42910c157777f6b8810635b628b88c))
+* animações menubar ([c179638](https://github.com/tecsinapse/design-system/commit/c1796386d1ca6c5ff423e169783aec02948ac1db))
+* animações menubar - ajustes código ([28b26e6](https://github.com/tecsinapse/design-system/commit/28b26e640e55b3510de2131744cff262503b98a8))
+* datagrid header sorting ([dbcf1c8](https://github.com/tecsinapse/design-system/commit/dbcf1c8add2b93053902ed61f6d2edfdc2ae82d8))
+* datagrid selection ([c054103](https://github.com/tecsinapse/design-system/commit/c0541033db07b724a411779cafcc4371dbb2987d))
+
+
+
+
+
 # [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.3.2...@tecsinapse/react-web-kit@1.4.0) (2021-08-26)
 
 

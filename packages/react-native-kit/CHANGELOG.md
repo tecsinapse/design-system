@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.4.0...@tecsinapse/react-native-kit@1.5.0) (2021-09-06)
+
+
+### Bug Fixes
+
+* **hint input container:** named import from core ([dfaf653](https://github.com/tecsinapse/design-system/commit/dfaf6534cf4147084fb4f83678be33f219201b91))
+
+
+### Features
+
+* unificar InputContainer ([21183f6](https://github.com/tecsinapse/design-system/commit/21183f6147810bf89be562787da277e49dde3ed4))
+
+
+
+
+
 # [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.3.2...@tecsinapse/react-native-kit@1.4.0) (2021-08-26)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
