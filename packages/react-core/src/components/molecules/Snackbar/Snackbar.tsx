@@ -9,6 +9,7 @@ import {
   SnackbarContainer,
   StyledContainerFlexRow,
   StyledProgressBar,
+  TextContainer,
 } from './styled';
 
 export interface SnackbarProps {
@@ -42,7 +43,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   rightIcon = { colorTone: 'medium', colorVariant: 'primary' },
   anchor = 'bottom',
   anchorDistance,
-  ...rest
+  style,
 }) => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const duration = 500;
@@ -77,14 +78,13 @@ export const Snackbar: React.FC<SnackbarProps> = ({
 
   return (
     <SnackbarContainer
-      {...rest}
       colorVariant={colorVariant}
       colorTone={colorTone}
       elevated
       anchor={anchor}
       anchorDistance={anchorDistance}
       visible={open}
-      style={{ opacity: (fadeAnim as unknown) as number }}
+      style={[{ opacity: (fadeAnim as unknown) as number }, style]}
       timeout={timeout}
     >
       <StyledContainerFlexRow>
@@ -94,7 +94,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
               <Icon {...leftIcon} size="centi" />
             </IconContainer>
           )}
-          {children}
+          <TextContainer>{children}</TextContainer>
         </ContentContainer>
         {dismissable && (
           <DismissContainer

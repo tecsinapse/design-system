@@ -1,4 +1,4 @@
-import { Animated, View } from 'react-native';
+import { View } from 'react-native';
 import styled, { css } from '@emotion/native';
 import { ProgressBar, StyleProps } from '@tecsinapse/react-core';
 import { SnackbarProps } from './Snackbar';
@@ -11,6 +11,7 @@ const baseStyles = ({
   colorVariant = 'primary',
   visible,
 }: StyleProps & Partial<SnackbarProps> & { visible: boolean }) => css`
+  padding: 0;
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.color[colorVariant][colorTone]};
   position: absolute;
@@ -18,7 +19,7 @@ const baseStyles = ({
   display: ${visible ? 'flex' : 'none'};
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 `;
 
 const anchorTop = ({
@@ -64,10 +65,6 @@ export const ContentContainer = styled(View)`
   flex-shrink: 1;
 `;
 
-export const Container = styled(Animated.View)`
-  width: 100%;
-  height: 100%;
-`;
 export const IconContainer = styled(View)<Partial<StyleProps>>`
   flex-direction: row;
   display: flex;
@@ -83,12 +80,18 @@ export const DismissContainer = styled(PressableSurface)<Partial<StyleProps>>`
 `;
 
 export const StyledProgressBar = styled(ProgressBar)<Partial<StyleProps>>`
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 `;
 
 export const StyledContainerFlexRow = styled(View)<Partial<StyleProps>>`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   padding: ${({ theme }) => theme.spacing.mili};
+`;
+
+export const TextContainer = styled(View)`
+  display: flex;
+  flex-shrink: 1;
 `;
