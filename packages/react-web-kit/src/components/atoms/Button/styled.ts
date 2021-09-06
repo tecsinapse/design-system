@@ -4,7 +4,9 @@ import { WebButtonProps } from './Button';
 
 const webStyles = () => {
   return css`
-    user-select: none;
+    & * {
+      user-select: none;
+    }
   `;
 };
 
