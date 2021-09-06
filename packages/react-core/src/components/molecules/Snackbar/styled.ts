@@ -1,7 +1,8 @@
 import { View } from 'react-native';
 import styled, { css } from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
 import { SnackbarProps } from './Snackbar';
+import { StyleProps } from '../../../types/defaults';
+import { ProgressBar } from '../../atoms/ProgressBar';
 import { Paper } from '../../atoms/Paper';
 import { PressableSurface } from '../../atoms/PressableSurface';
 
@@ -9,16 +10,17 @@ const baseStyles = ({
   theme,
   colorTone = 'xlight',
   colorVariant = 'primary',
-}: StyleProps & Partial<SnackbarProps>) => css`
+  visible,
+}: StyleProps & Partial<SnackbarProps> & { visible: boolean }) => css`
+  padding: 0;
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.color[colorVariant][colorTone]};
-  padding: ${theme.spacing.mili};
   position: absolute;
   z-index: ${theme.zIndex.modal};
-  display: flex;
-  flex-direction: row;
+  display: ${visible ? 'flex' : 'none'};
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 `;
 
 const anchorTop = ({
@@ -48,7 +50,7 @@ const anchorBottom = ({
 };
 
 export const SnackbarContainer = styled(Paper)<
-  Partial<SnackbarProps & StyleProps>
+  Partial<SnackbarProps & StyleProps> & { visible: boolean }
 >(
   props => css`
     ${baseStyles(props)}
@@ -76,4 +78,21 @@ export const DismissContainer = styled(PressableSurface)<Partial<StyleProps>>`
   display: flex;
   align-items: center;
   margin-left: ${({ theme }) => theme.spacing.mili};
+`;
+
+export const StyledProgressBar = styled(ProgressBar)<Partial<StyleProps>>`
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+`;
+
+export const StyledContainerFlexRow = styled(View)<Partial<StyleProps>>`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: ${({ theme }) => theme.spacing.mili};
+`;
+
+export const TextContainer = styled(View)`
+  display: flex;
+  flex-shrink: 1;
 `;

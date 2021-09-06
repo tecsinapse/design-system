@@ -12,6 +12,8 @@ export const StyledIconInput = webStyled('div')<Partial<StyleProps>>`
 `;
 
 export const StyledMenuBar = webStyled('div')<Partial<StyleProps>>`
+    position: relative;
+    z-index: ${({ theme }) => theme.zIndex.absolute};
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     display: flex;
     flex-direction: row;
@@ -27,6 +29,9 @@ export const StyledMenuButton = nativeStyled(Button)<Partial<StyleProps>>`
     padding-bottom: calc(${({ theme }) => theme.spacing.centi} + 2px);
     padding-left: calc(${({ theme }) => theme.spacing.centi} + 2px);
     margin-right: ${({ theme }) => theme.spacing.kilo};
+    & * {
+      user-select: none;
+    }
 `;
 
 export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
@@ -35,7 +40,9 @@ export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
         theme.miscellaneous.shadow,
         0.08
       )}`};
-    background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+    background-color: ${({ theme }) => theme.miscellaneous.surfaceColor}; 
+    border-bottom-left-radius: ${({ theme }) => theme.borderRadius.mili}; 
+    border-bottom-right-radius: ${({ theme }) => theme.borderRadius.mili};
     box-shadow: 0px 2px 8px ${({ theme }) =>
       hex2rgba(theme.miscellaneous.shadow, 0.08)};
     padding-right: 8vw;

@@ -6,31 +6,41 @@ import { ArtBoard } from '../ArtBoard';
 storiesOf('Snackbar', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
 
-  .add('Snackbar', () => <Component />);
+  .add('Snackbar', () => (
+    <Component
+      timeout={undefined}
+      value={'Enviado com sucesso!'}
+      color={'success'}
+    />
+  ))
+  .add('Timeout', () => (
+    <Component timeout={5000} value={'Falha no envio'} color={'error'} />
+  ));
 
-const Component = () => {
+const Component = ({ timeout, value, color }) => {
   const [open, setOpen] = React.useState(true);
 
   return (
     <Snackbar
       open={open}
       dismissable
-      value="Enviado com sucesso!"
-      colorVariant="success"
+      value={value}
+      timeout={timeout}
+      colorVariant={color}
       colorTone="xlight"
       textProps={{
-        colorVariant: 'success',
+        colorVariant: color,
         colorTone: 'medium',
       }}
       leftIcon={{
         name: 'alert-circle-outline',
         type: 'material-community',
-        colorVariant: 'success',
+        colorVariant: color,
         colorTone: 'medium',
       }}
       rightIcon={{
         colorTone: 'medium',
-        colorVariant: 'success',
+        colorVariant: color,
       }}
       onClose={() => {
         alert('Close callback');

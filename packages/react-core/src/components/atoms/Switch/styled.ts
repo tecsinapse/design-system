@@ -1,22 +1,8 @@
-import styled, { css } from '@emotion/native';
+import styled from '@emotion/native';
 import { StyleProps, SwitchProps } from '@tecsinapse/react-core';
-import { PressableSurface } from '../PressableSurface';
+import { Animated } from 'react-native';
 
-const activeStyles = ({ active }: Partial<SwitchProps> & Partial<StyleProps>) =>
-  active &&
-  css`
-    align-items: flex-end;
-  `;
-
-const inactiveStyles = ({
-  active,
-}: Partial<SwitchProps> & Partial<StyleProps>) =>
-  !active &&
-  css`
-    align-items: flex-start;
-  `;
-
-const StyledSwitchContentBase = styled(PressableSurface)<
+export const StyledSwitchContent = styled(Animated.View)<
   Partial<SwitchProps> & Partial<StyleProps>
 >`
   border-radius: ${({ theme }) => theme.borderRadius.pill};
@@ -26,16 +12,9 @@ const StyledSwitchContentBase = styled(PressableSurface)<
   height: 22px;
 `;
 
-export const StyledSwitch = styled.View<Partial<StyleProps>>`
+export const StyledSwitch = styled(Animated.View)<Partial<StyleProps>>`
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
   width: 16px;
   height: 16px;
 `;
-
-export const StyledSwitchContent = styled(StyledSwitchContentBase)(
-  props => css`
-    ${activeStyles(props)}
-    ${inactiveStyles(props)}
-  `
-);

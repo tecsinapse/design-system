@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { Animated, StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '../../../types/defaults';
 import { Icon, IconProps } from '../../atoms/Icon';
 import {
@@ -7,6 +7,9 @@ import {
   DismissContainer,
   IconContainer,
   SnackbarContainer,
+  StyledContainerFlexRow,
+  StyledProgressBar,
+  TextContainer,
 } from './styled';
 
 export interface SnackbarProps {
@@ -40,46 +43,91 @@ export const Snackbar: React.FC<SnackbarProps> = ({
   rightIcon = { colorTone: 'medium', colorVariant: 'primary' },
   anchor = 'bottom',
   anchorDistance,
-  ...rest
+  style,
 }) => {
+  const fadeAnim = React.useRef(new Animated.Value(0)).current;
+  const duration = 500;
+
+  const fadeIn = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      useNativeDriver: true,
+      duration,
+    }).start(() => timeout && fadeOut());
+  };
+
+  const fadeOut = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      useNativeDriver: true,
+      duration,
+      delay: timeout ? timeout - duration : 0,
+    }).start();
+  };
+
   React.useEffect(() => {
+    if (open) {
+      fadeIn();
+    }
     if (open && timeout) {
-      setTimeout(() => onClose?.(), timeout);
+      setTimeout(() => {
+        onClose?.();
+      }, timeout + duration);
     }
   }, [open, timeout]);
 
   return (
-    <>
-      {open && (
-        <SnackbarContainer
-          {...rest}
-          colorVariant={colorVariant}
-          colorTone={colorTone}
-          elevated
-          anchor={anchor}
-          anchorDistance={anchorDistance}
-        >
-          <ContentContainer>
-            {leftIcon && (
-              <IconContainer>
-                <Icon {...leftIcon} size="centi" />
-              </IconContainer>
-            )}
-            {children}
-          </ContentContainer>
-          {dismissable && (
-            <DismissContainer effect="none" onPress={onClose}>
-              <Icon
-                {...rightIcon}
-                size="centi"
-                name="close"
-                type="material-community"
-              />
-            </DismissContainer>
+    <SnackbarContainer
+      colorVariant={colorVariant}
+      colorTone={colorTone}
+      elevated
+      anchor={anchor}
+      anchorDistance={anchorDistance}
+      visible={open}
+      style={[{ opacity: (fadeAnim as unknown) as number }, style]}
+      timeout={timeout}
+    >
+      <StyledContainerFlexRow>
+        <ContentContainer>
+          {leftIcon && (
+            <IconContainer>
+              <Icon {...leftIcon} size="centi" />
+            </IconContainer>
           )}
-        </SnackbarContainer>
+          <TextContainer>{children}</TextContainer>
+        </ContentContainer>
+        {dismissable && (
+          <DismissContainer
+            effect="none"
+            onPress={() => {
+              fadeOut();
+              setTimeout(() => {
+                fadeAnim.setValue(0);
+                onClose?.();
+              }, duration);
+            }}
+          >
+            <Icon
+              {...rightIcon}
+              size="centi"
+              name="close"
+              type="material-community"
+            />
+          </DismissContainer>
+        )}
+      </StyledContainerFlexRow>
+      {timeout && open && (
+        <StyledProgressBar
+          valueNow={0}
+          valueMax={100}
+          valueMin={0}
+          animate={true}
+          color={colorVariant}
+          colorTone="medium"
+          animationParameters={{ direction: 'left', duration: timeout }}
+        />
       )}
-    </>
+    </SnackbarContainer>
   );
 };
 

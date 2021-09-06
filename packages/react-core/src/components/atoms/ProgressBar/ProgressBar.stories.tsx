@@ -4,7 +4,7 @@ import { ProgressBar, ProgressBarProps } from './index';
 import { Card } from '../Card';
 
 export default {
-  title: 'Components/ProgressBar',
+  title: 'Components/Progress Bar',
   component: ProgressBar,
 };
 
@@ -17,5 +17,11 @@ const Template: Story<ProgressBarProps> = ({ ...args }) => (
 export const Base = Template.bind({});
 
 Base.args = {
-  valueNow: 50,
+  valueNow: 80,
+  animate: true,
+  segments: 5,
+  animationParameters: {
+    direction: 'right',
+    duration: 5000,
+  },
 };
