@@ -1,7 +1,8 @@
 import { View } from 'react-native';
 import styled, { css } from '@emotion/native';
-import { ProgressBar, StyleProps } from '@tecsinapse/react-core';
 import { SnackbarProps } from './Snackbar';
+import { StyleProps } from '../../../types/defaults';
+import { ProgressBar } from '../../atoms/ProgressBar';
 import { Paper } from '../../atoms/Paper';
 import { PressableSurface } from '../../atoms/PressableSurface';
 
