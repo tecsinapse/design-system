@@ -2,7 +2,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import { Text } from '@tecsinapse/react-core';
 import Modal, { ModalProps } from './Modal';
-import { Button } from '../../atoms/Button';
+import { Button } from '../Button';
 
 export default {
   title: 'Components/Modal',

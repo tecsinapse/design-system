@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { Transition } from 'react-transition-group';
-import { Overlay } from '../../atoms/Overlay';
+import { Overlay } from '../Overlay';
 import { ModalContainer } from './styled';
 import { defaultStyleOverlay, transitionStylesOverlay } from './animations';
 

@@ -22,6 +22,6 @@ export {
   Breadcrumbs,
   BreadcrumbsProps,
 } from './components/molecules/Breadcrumbs';
-export { Modal, ModalProps } from './components/molecules/Modal';
+export { Modal, ModalProps } from './components/atoms/Modal';
 export * from './components/organisms/DataGrid';
 export * from './hooks';
