@@ -1,13 +1,12 @@
 import React, { FC } from 'react';
-import { StyledContainerDrawer, StyledOverlay } from './styled';
+import { StyledContainerDrawer } from './styled';
 import { Transition } from 'react-transition-group';
+import { Overlay } from '../../atoms/Overlay';
 import {
   transitionStylesTopBottom,
   defaultStylesTopBottom,
   defaultStylesLeftRight,
-  transitionStylesOverlay,
   transitionStylesLeftRight,
-  defaultStyleOverlay,
 } from './animations';
 
 export interface DrawerProps {
@@ -43,18 +42,7 @@ const Drawer: FC<DrawerProps> = ({
 
   return (
     <>
-      <Transition in={open} timeout={300}>
-        {state => (
-          <div
-            style={{
-              ...defaultStyleOverlay,
-              ...transitionStylesOverlay[state],
-            }}
-          >
-            <StyledOverlay onClick={open ? onClose : undefined} show={open} />
-          </div>
-        )}
-      </Transition>
+      <Overlay timeout={300} open={open} onClose={onClose} zIndex="drawer" />
       <Transition in={open} timeout={300}>
         {state => (
           <StyledContainerDrawer
