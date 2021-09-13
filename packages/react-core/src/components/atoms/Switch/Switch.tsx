@@ -8,7 +8,8 @@ import {
 } from '../../../types/defaults';
 import { PressableSurface } from '../PressableSurface';
 import { StyledSwitch } from './styled';
-import { transtionSwitch } from './animation';
+import { transitionSwitch } from './animation';
+import { extractNumbersFromString } from '../../../utils';
 
 export interface SwitchProps {
   onChange: (active: boolean) => void;
@@ -20,9 +21,6 @@ export interface SwitchProps {
   style?: StyleProp<ViewStyle>;
   dotStyle?: StyleProp<ViewStyle>;
 }
-
-const extractNumbers = (value: string): number =>
-  Number(value.replace(/[^0-9]/g, ''));
 
 const Switch: FC<SwitchProps> = ({
   onChange,
@@ -56,12 +54,12 @@ const Switch: FC<SwitchProps> = ({
 
   const handleChange = useCallback(() => {
     onChange(!active);
-    transtionSwitch(active, transitionValue, animatedColor);
+    transitionSwitch(active, transitionValue, animatedColor);
   }, [active]);
 
   const stylesDefaut: ViewStyle = {
-    borderRadius: extractNumbers(theme.borderRadius.pill),
-    paddingHorizontal: extractNumbers(theme.borderRadius.micro),
+    borderRadius: extractNumbersFromString(theme.borderRadius.pill),
+    paddingHorizontal: extractNumbersFromString(theme.borderRadius.micro),
     paddingVertical: 0,
     justifyContent: 'center',
     width: 40,

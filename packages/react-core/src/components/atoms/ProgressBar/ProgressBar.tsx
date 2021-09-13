@@ -5,6 +5,7 @@ import { useTheme } from '@emotion/react';
 import {
   ColorGradationType,
   ColorType,
+  extractNumbersFromString,
   ThemeProp,
 } from '@tecsinapse/react-core';
 
@@ -42,7 +43,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
 
   const valueNow =
     typeof _valueNow === 'string'
-      ? parseInt(_valueNow.replace(/\D/g, ''))
+      ? extractNumbersFromString(_valueNow)
       : _valueNow;
 
   const totalProgress = ((valueNow - valueMin) / (valueMax - valueMin)) * 100;
