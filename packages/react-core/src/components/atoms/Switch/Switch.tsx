@@ -59,7 +59,7 @@ const Switch: FC<SwitchProps> = ({
 
   const stylesDefaut: ViewStyle = {
     borderRadius: extractNumbersFromString(theme.borderRadius.pill),
-    paddingHorizontal: extractNumbersFromString(theme.borderRadius.micro),
+    paddingHorizontal: extractNumbersFromString(theme.spacing.micro),
     paddingVertical: 0,
     justifyContent: 'center',
     width: 40,
