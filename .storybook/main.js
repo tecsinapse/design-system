@@ -16,4 +16,8 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-viewport',
   ],
+  plugins: [
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-private-methods',
+  ],
 };
