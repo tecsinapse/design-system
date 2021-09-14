@@ -22,5 +22,12 @@ export {
   Breadcrumbs,
   BreadcrumbsProps,
 } from './components/molecules/Breadcrumbs';
-export * from './components/organisms/DataGrid';
+export { Skeleton, SkeletonProps } from './components/atoms/Skeleton';
+export { Accordion, AccordionProps } from './components/atoms/Accordion';
+export {
+  DataGrid,
+  DataGridProps,
+  HeadersType,
+} from './components/organisms/DataGrid';
+export { Modal, ModalProps } from './components/atoms/Modal';
 export * from './hooks';

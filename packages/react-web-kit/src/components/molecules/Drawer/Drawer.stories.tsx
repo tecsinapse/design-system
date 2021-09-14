@@ -8,35 +8,34 @@ import { default as Drawer, DrawerProps } from './Drawer';
 export default {
   title: 'Components/Drawer',
   component: Drawer,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 const Template: Story<DrawerProps> = ({ anchorPosition, open }) => {
   const [isOpen, setOpen] = React.useState<boolean>(open);
 
-  const onClose = () => {
+  const toggleOpen = () => {
     setOpen(!isOpen);
   };
 
   return (
     <>
-      <Drawer open={isOpen} onClose={onClose} anchorPosition={anchorPosition}>
+      <Drawer
+        open={isOpen}
+        onClose={toggleOpen}
+        anchorPosition={anchorPosition}
+      >
         <StyledHeaderDrawerStory>
           <StyledTextHeader typography="h4">Design System</StyledTextHeader>
           <StyledHButtonHeaderStory>
-            <Button size="small" onPress={onClose} variant="text">
+            <Button size="small" onPress={toggleOpen} variant="text">
               <Icon name="close" type="material-community" />
             </Button>
           </StyledHButtonHeaderStory>
         </StyledHeaderDrawerStory>
       </Drawer>
-      <StyledContainerButtonStory>
-        <Button onPress={onClose}>
-          <StyledTextButton fontColor="light">Open Drawer</StyledTextButton>
-        </Button>
-      </StyledContainerButtonStory>
+      <Button onPress={toggleOpen}>
+        <StyledTextButton fontColor="light">Open Drawer</StyledTextButton>
+      </Button>
     </>
   );
 };
@@ -47,15 +46,6 @@ Base.args = {
   anchorPosition: 'right',
   open: false,
 };
-
-const StyledContainerButtonStory = styled('div')`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-`;
 
 const StyledHeaderDrawerStory = styled('div')`
   display: flex;

@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.4.0",
+    "@emotion/react": "^11.4.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
@@ -26,8 +26,8 @@
     "react-native-vector-icons": "^8.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
+    "@babel/core": "^7.15.5",
+    "@babel/runtime": "^7.15.4",
     "@react-native-community/eslint-config": "^1.1.0",
     "@storybook/addon-actions": "^5.3",
     "@storybook/addon-knobs": "^5.3",
