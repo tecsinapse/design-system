@@ -1,9 +1,9 @@
 name: Create release
 
 on:
-  push:
+  push: 
     tags:
-      - '@tecsinapse/react-*@*'
+      - '*'
 
 jobs:
   run:
