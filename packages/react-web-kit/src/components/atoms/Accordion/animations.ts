@@ -6,9 +6,9 @@ export const contentStyle = (
   value: number,
   theme: ThemeProp
 ) => ({
-  transition: `padding-bottom ${transition * 2}ms linear, height ${
+  transition: `padding-bottom ${transition * 2}ms ease-in-out, height ${
     transition * 2
-  }ms linear`,
+  }ms ease-in-out`,
   paddingBottom: open ? extractNumbersFromString(theme.spacing.kilo) : 0,
   height: open ? value : 0,
 });
@@ -33,7 +33,7 @@ export const contentTransition = (value: number, theme: ThemeProp) => {
 };
 
 export const titleStyle = (transition: number, theme: ThemeProp) => ({
-  transition: `color ${transition * 2}ms linear`,
+  transition: `color ${transition * 2}ms ease-in-out`,
   color: theme.font.color.dark,
 });
 
