@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.4.0",
+    "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@tecsinapse/react-core": "^1.5.0",
     "react-native-vector-icons": "^8.1.0",
@@ -30,6 +30,6 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
-    "react-native-web": "^0.15.0"
+    "react-native-web": "^0.17.1"
   }
 }
