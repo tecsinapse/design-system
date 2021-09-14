@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.5.0...@tecsinapse/react-native-kit@1.6.0) (2021-09-14)
+
+
+### Features
+
+* add accordion ([f7089c0](https://github.com/tecsinapse/design-system/commit/f7089c0d98568fd3ee0aa64f2150063f67e4fe66))
+
+
+
+
+
 # [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.4.0...@tecsinapse/react-native-kit@1.5.0) (2021-09-06)
 
 

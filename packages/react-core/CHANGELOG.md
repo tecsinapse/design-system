@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.5.0...@tecsinapse/react-core@1.6.0) (2021-09-14)
+
+
+### Bug Fixes
+
+* **switch:** padding theme variable ([becd6b0](https://github.com/tecsinapse/design-system/commit/becd6b0b2f9d86c46c4fa5602f296b1ddde4725a))
+
+
+### Features
+
+* add accordion ([f7089c0](https://github.com/tecsinapse/design-system/commit/f7089c0d98568fd3ee0aa64f2150063f67e4fe66))
+
+
+
+
+
 # [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.4.0...@tecsinapse/react-core@1.5.0) (2021-09-06)
 
 

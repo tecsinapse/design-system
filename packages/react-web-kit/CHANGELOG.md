@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.5.0...@tecsinapse/react-web-kit@1.6.0) (2021-09-14)
+
+
+### Bug Fixes
+
+* **exports:** exporting components ([83a0500](https://github.com/tecsinapse/design-system/commit/83a0500e5666568029dbe6cb90a9c594c90c0af1))
+* **transition:** changing animation from linear to ease-in-out ([d6570aa](https://github.com/tecsinapse/design-system/commit/d6570aa1d952ba18db122955b6f1e54a1f223b14))
+* button user-select style ([f1145b4](https://github.com/tecsinapse/design-system/commit/f1145b400847dd8ab526a48f25958fdc407c9afb))
+
+
+### Features
+
+* add accordion ([f7089c0](https://github.com/tecsinapse/design-system/commit/f7089c0d98568fd3ee0aa64f2150063f67e4fe66))
+* add modal ([eff7597](https://github.com/tecsinapse/design-system/commit/eff7597f779c9e10b078153ed0eb23acc143760b))
+* move to atoms ([5085e28](https://github.com/tecsinapse/design-system/commit/5085e28a96eafd85731cf3f564ae9de21635aea8))
+
+
+
+
+
 # [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.4.0...@tecsinapse/react-web-kit@1.5.0) (2021-09-06)
 
 
