@@ -2,6 +2,7 @@ import currency from 'currency.js';
 import { useCallback, useState } from 'react';
 import { Mask } from '..';
 import { MaskValue } from './useMask';
+import { extractNumbersFromString } from '@tecsinapse/react-core';
 
 type CurrencyOptions = currency.Options;
 
@@ -31,7 +32,7 @@ export const useCurrencyMask = (
     (value = ''): MaskValue => {
       const mergedOptions = { ...DEFAULT_OPTIONS, ...options };
       const { precision = -1 } = mergedOptions;
-      const onlyNumbers = String(value).replace(/\D/g, '');
+      const onlyNumbers = String(extractNumbersFromString(value));
       const padZeros = String(onlyNumbers).padStart(precision + 1, '0');
       let internalNumber = Number(padZeros.replace(getRegex(precision), '.'));
 

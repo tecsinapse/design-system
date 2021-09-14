@@ -92,13 +92,6 @@ export const borderWidth: BorderWidth = {
 };
 
 export const typography: TypographyVariation = {
-  // TODO: H6 wasn't defined! It's the same of H5
-  // h6: {
-  //   // fontSize: '1rem', // 16px
-  //   // lineHeight: '1.5rem', // 24px
-  //   fontSize: '16px',
-  //   lineHeight: '24px',
-  // },
   h5: {
     fontSize: '16px', // '1rem'
     lineHeight: '24px', // '1.5rem'

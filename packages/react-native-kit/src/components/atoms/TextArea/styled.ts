@@ -1,9 +1,9 @@
 import styled from '@emotion/native';
 import {
+  extractNumbersFromString,
   InputContainer,
   InputElement,
   StyleProps,
-  TextProps,
 } from '@tecsinapse/react-core';
 import { Font, fontStyles } from '../Text/styled';
 import { TextAreaProps } from './TextArea';
@@ -18,8 +18,7 @@ const StyledNativeInputBase = styled(InputElement)<
 >`
   max-height: ${({ theme, numberOfLines }) =>
     `${
-      //TODO: utility for transforming points into numeric values
-      parseInt(theme.typography.h5.lineHeight.replace(/\D/g, '')) *
+      extractNumbersFromString(theme.typography.h5.lineHeight) *
       (numberOfLines || 1)
     }px`};
   width: 100%;
