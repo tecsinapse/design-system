@@ -29,4 +29,5 @@ export {
   DataGridProps,
   HeadersType,
 } from './components/organisms/DataGrid';
+export { Modal, ModalProps } from './components/atoms/Modal';
 export * from './hooks';
