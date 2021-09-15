@@ -2,26 +2,26 @@ import React, { ElementType, FC } from 'react';
 import { StyledContainerBreadcrumbs } from './styled';
 import { BreadcrumbItem } from './BreadcrumbItem';
 
-type Breadcrumb = {
+export type BreadcrumbType = {
   title: string;
   Component: ElementType;
-  componentProps?: any;
+  props?: any;
 };
 
 export interface BreadcrumbsProps {
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs: BreadcrumbType[];
 }
 
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
   return (
     <StyledContainerBreadcrumbs>
       {breadcrumbs.map((item, index) => {
-        const { componentProps, Component, title } = item;
+        const { props, Component = 'a', title } = item;
         return (
           <BreadcrumbItem
             key={index}
             Component={Component}
-            props={componentProps}
+            props={props}
             isLast={breadcrumbs.length - 1 === index}
             title={title}
           />

@@ -14,13 +14,20 @@ export {
   InputPassword,
   InputPasswordWebProps,
 } from './components/molecules/InputPassword';
-export { Menubar, MenubarProps } from './components/molecules/Menubar';
+export {
+  Menubar,
+  MenubarProps,
+  MenubarOptionsType,
+  MenubarItemsOptions,
+  MenubarMostUsedType,
+} from './components/molecules/Menubar';
 export { Drawer, DrawerProps } from './components/molecules/Drawer';
 export { Select, SelectProps } from './components/molecules/Select';
 export { Snackbar, SnackbarWebProps } from './components/molecules/Snackbar';
 export {
   Breadcrumbs,
   BreadcrumbsProps,
+  BreadcrumbType,
 } from './components/molecules/Breadcrumbs';
 export { Skeleton, SkeletonProps } from './components/atoms/Skeleton';
 export { Accordion, AccordionProps } from './components/atoms/Accordion';
