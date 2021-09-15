@@ -13,7 +13,7 @@ export const StyledIconInput = webStyled('div')<Partial<StyleProps>>`
 
 export const StyledMenuBar = webStyled('div')<Partial<StyleProps>>`
     position: relative;
-    z-index: ${({ theme }) => theme.zIndex.absolute};
+    z-index: ${({ theme }) => theme.zIndex.header};
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     display: flex;
     flex-direction: row;
@@ -50,6 +50,7 @@ export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
     padding-top: ${({ theme }) => theme.spacing.kilo};
     padding-bottom: ${({ theme }) => theme.spacing.mega};
     position: absolute;
+    z-index: ${({ theme }) => theme.zIndex.header - 1};
     width: -webkit-fill-available;
     width: -moz-available;
 `;
@@ -60,7 +61,7 @@ export const StyledInput = nativeStyled(Input)<Partial<StyleProps>>`
 
 export const StyledInputContainer = webStyled('div')`
     display: flex;
-    flex: 1
+    flex: 1;
 `;
 
 export const StyledSearchResultsContainer = webStyled('div')`
