@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  Icon,
-  Text,
-  ThemeProp,
-  useDebouncedState,
-} from '@tecsinapse/react-core';
+import { Icon, Text, useDebouncedState } from '@tecsinapse/react-core';
 import { Transition } from 'react-transition-group';
-import { useTheme } from '@emotion/react';
 import {
   StyledIconInput,
   StyledMenuBar,
@@ -17,7 +11,6 @@ import {
   StyledSearchResultsContainer,
   StyledSearchTextContainer,
 } from './styled';
-import { Masonry } from '../Masonry';
 import { MostUsedType, OptionsType } from './types';
 import { MostUsed } from './MostUsed';
 import { MenuBlock } from './MenuBlock';
@@ -29,32 +22,35 @@ import {
 } from './animations';
 
 export interface MenubarProps {
+  options: OptionsType[];
   leftComponents?: React.ReactNode;
   rightComponents?: React.ReactNode;
-  inputPlaceholder?: string;
-  options: OptionsType[];
   /** Limited to first 4 elements */
   mostUsed?: MostUsedType[];
   mostUsedLabel?: string;
+  searchable?: boolean;
+  searchPlaceholder?: string;
   searchResultsLabel?: string;
 }
 
 const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
   rightComponents,
-  inputPlaceholder = 'O quê você deseja buscar?',
+  searchPlaceholder = 'O quê você deseja buscar?',
   options,
   mostUsed,
   mostUsedLabel = 'Mais acessados',
   searchResultsLabel = 'Resultados da busca',
+  searchable = true,
 }) => {
   const [search, setSearch] = React.useState<string>('');
   const [results, setResults] = React.useState<MostUsedType[]>([]);
   const [input, setInput] = useDebouncedState('', state => setSearch(state));
-  const [isOpen, setOpen] = React.useState<boolean>(false);
-  const theme = useTheme() as ThemeProp;
+  const [open, setOpen] = React.useState<boolean>(false);
 
-  const toggleOpenClose = () => setOpen(!isOpen);
+  const toggleOpen = React.useCallback(() => setOpen(state => !state), [
+    setOpen,
+  ]);
 
   React.useEffect(() => {
     if (search === '') return;
@@ -64,12 +60,8 @@ const Menubar: React.FC<MenubarProps> = ({
   return (
     <>
       <StyledMenuBar>
-        <StyledMenuButton
-          variant="filled"
-          color="primary"
-          onPress={toggleOpenClose}
-        >
-          {!isOpen ? (
+        <StyledMenuButton variant="filled" color="primary" onPress={toggleOpen}>
+          {!open ? (
             <Icon
               size="deca"
               name="menu"
@@ -86,12 +78,12 @@ const Menubar: React.FC<MenubarProps> = ({
           )}
         </StyledMenuButton>
         {leftComponents}
-        <Transition in={isOpen} timeout={250}>
+        <Transition in={open} timeout={250}>
           {state => (
-            <div style={getInputContainerStyles(state, theme)}>
-              <StyledInputContainer>
+            <StyledInputContainer style={getInputContainerStyles(state)}>
+              {searchable && (
                 <StyledInput
-                  placeholder={inputPlaceholder}
+                  placeholder={searchPlaceholder}
                   leftComponent={
                     <StyledIconInput>
                       <Icon name="magnify" type="material-community" />
@@ -100,43 +92,41 @@ const Menubar: React.FC<MenubarProps> = ({
                   value={input}
                   onChange={setInput}
                 />
-              </StyledInputContainer>
-              {rightComponents}
-            </div>
+              )}
+            </StyledInputContainer>
           )}
         </Transition>
+        {rightComponents}
       </StyledMenuBar>
-      <Transition in={isOpen} timeout={250}>
+      <Transition in={open} timeout={250}>
         {state => (
-          <div style={getContainerOpenMenuStyles(state, theme)}>
-            <StyledContainerOpenMenu>
-              {!search ? (
-                <div>
-                  {mostUsed && (
-                    <MostUsed label={mostUsedLabel} data={mostUsed} />
-                  )}
-                  <Masonry columns={4} spacingTop="kilo" spacingLeft="mega">
-                    {options.map(option => (
-                      <MenuBlock data={option} key={option.title} />
-                    ))}
-                  </Masonry>
-                </div>
-              ) : (
-                <StyledSearchResultsContainer>
-                  <StyledSearchTextContainer>
-                    <Text fontWeight="bold">{searchResultsLabel}</Text>
-                  </StyledSearchTextContainer>
-                  {results.map(result => (
-                    <SearchResultItem
-                      key={`${result.title}-${result.category}`}
-                      data={result}
-                      searchTerm={search}
-                    />
-                  ))}
-                </StyledSearchResultsContainer>
-              )}
-            </StyledContainerOpenMenu>
-          </div>
+          <StyledContainerOpenMenu style={getContainerOpenMenuStyles(state)}>
+            {!search ? (
+              <>
+                {mostUsed && (
+                  <MostUsed
+                    label={mostUsedLabel}
+                    data={mostUsed}
+                    toggle={toggleOpen}
+                  />
+                )}
+                <MenuBlock options={options} toggle={toggleOpen} />
+              </>
+            ) : (
+              <StyledSearchResultsContainer>
+                <StyledSearchTextContainer>
+                  <Text fontWeight="bold">{searchResultsLabel}</Text>
+                </StyledSearchTextContainer>
+                {results.map(result => (
+                  <SearchResultItem
+                    key={`${result.title}-${result.category}`}
+                    data={result}
+                    searchTerm={search}
+                  />
+                ))}
+              </StyledSearchResultsContainer>
+            )}
+          </StyledContainerOpenMenu>
         )}
       </Transition>
     </>
