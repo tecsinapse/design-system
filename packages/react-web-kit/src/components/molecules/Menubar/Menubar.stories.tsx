@@ -2,7 +2,7 @@ import React, { ElementType } from 'react';
 import Menubar, { MenubarProps } from './Menubar';
 import { Story } from '@storybook/react';
 import styled from '@emotion/styled';
-import { Icon, Text } from '@tecsinapse/react-core';
+import { Avatar, Icon, Text } from '@tecsinapse/react-core';
 
 export default {
   title: 'Components/Menu Bar',
@@ -253,20 +253,27 @@ const StyledImage = styled('img')`
   margin-right: 35px;
 `;
 
-// Import type manually
 const Template: Story<MenubarProps> = args => {
   return (
-    <Menubar
-      {...args}
-      options={EXAMPLE_MENU}
-      mostUsed={MOST_USED}
-      leftComponents={
-        <StyledImage
-          src="https://www.tecsinapse.com.br/wp-content/themes/tecsinapse/img/logo.svg"
-          alt="TecSinapse"
-        />
-      }
-    />
+    <>
+      <Menubar
+        {...args}
+        options={EXAMPLE_MENU}
+        mostUsed={MOST_USED}
+        leftComponents={
+          <StyledImage
+            src="https://www.tecsinapse.com.br/wp-content/themes/tecsinapse/img/logo.svg"
+            alt="TecSinapse"
+          />
+        }
+        rightComponents={
+          <div style={{ marginLeft: 24 }}>
+            <Avatar name="Design System" />
+          </div>
+        }
+      />
+      Content
+    </>
   );
 };
 

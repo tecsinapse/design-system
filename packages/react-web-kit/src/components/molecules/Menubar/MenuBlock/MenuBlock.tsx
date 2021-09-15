@@ -7,42 +7,49 @@ import {
   StyledLeftComponent,
 } from './styled';
 import { ItemsOptions, OptionsType } from '../types';
+import { Masonry } from '../../Masonry';
 
 interface MenuBlockProps {
-  data: OptionsType;
+  toggle: () => void;
+  options: OptionsType[];
 }
 
-const MenuBlock: React.FC<MenuBlockProps> = ({ data }) => {
+const MenuBlock: React.FC<MenuBlockProps> = ({ options, toggle }) => {
   return (
-    <>
-      <StyledContainerMenu>
-        {data.leftComponents && (
-          <StyledLeftComponent>{data.leftComponents}</StyledLeftComponent>
-        )}
-        <Text fontWeight="bold">{data.title}</Text>
-      </StyledContainerMenu>
-      <StyledContainerItems>
-        {data.items.map(
-          ({
-            title,
-            Component,
-            props,
-            rightComponents,
-            items,
-          }: ItemsOptions) => (
-            <MenuItem
-              items={items}
-              key={title}
-              title={title}
-              Component={Component}
-              rightComponents={rightComponents}
-              props={props}
-            />
-          )
-        )}
-      </StyledContainerItems>
-    </>
+    <Masonry columns={4} spacingTop="kilo" spacingLeft="mega">
+      {options.map(data => (
+        <>
+          <StyledContainerMenu>
+            {data.leftComponents && (
+              <StyledLeftComponent>{data.leftComponents}</StyledLeftComponent>
+            )}
+            <Text fontWeight="bold">{data.title}</Text>
+          </StyledContainerMenu>
+          <StyledContainerItems>
+            {data.items.map(
+              ({
+                title,
+                Component,
+                props,
+                rightComponents,
+                items,
+              }: ItemsOptions) => (
+                <MenuItem
+                  items={items}
+                  key={title}
+                  title={title}
+                  Component={Component}
+                  rightComponents={rightComponents}
+                  props={props}
+                  toggle={toggle}
+                />
+              )
+            )}
+          </StyledContainerItems>
+        </>
+      ))}
+    </Masonry>
   );
 };
 
-export default MenuBlock;
+export default React.memo(MenuBlock);
