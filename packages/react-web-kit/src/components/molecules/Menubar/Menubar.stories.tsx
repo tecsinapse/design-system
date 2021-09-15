@@ -272,7 +272,6 @@ const Template: Story<MenubarProps> = args => {
           </div>
         }
       />
-      Content
     </>
   );
 };
