@@ -6,6 +6,7 @@ export const baseStyles = ({ theme }: StyleProps): any => css`
   padding: ${theme.spacing.deca};
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.miscellaneous.surfaceColor};
+  overflow: hidden;
 `;
 
 /* eslint-disable @typescript-eslint/no-explicit-any */

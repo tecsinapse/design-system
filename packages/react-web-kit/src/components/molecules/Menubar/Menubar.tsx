@@ -122,6 +122,7 @@ const Menubar: React.FC<MenubarProps> = ({
                     key={`${result.title}-${result.category}`}
                     data={result}
                     searchTerm={search}
+                    toggle={toggleOpen}
                   />
                 ))}
               </StyledSearchResultsContainer>
