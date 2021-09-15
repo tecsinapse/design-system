@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.0...@tecsinapse/react-core@1.6.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* **menubar:** fixing right components ([efc933d](https://github.com/tecsinapse/design-system/commit/efc933d5a716be0c8f07b4c06a86c52db2f85077))
+
+
+
+
+
 # [1.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.5.0...@tecsinapse/react-core@1.6.0) (2021-09-14)
 
 
