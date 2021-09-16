@@ -18,7 +18,7 @@ const MenuBlock: React.FC<MenuBlockProps> = ({ options, toggle }) => {
   return (
     <Masonry columns={4} spacingTop="kilo" spacingLeft="mega">
       {options.map(data => (
-        <>
+        <React.Fragment key={`${data.title}`}>
           <StyledContainerMenu>
             {data.leftComponents && (
               <StyledLeftComponent>{data.leftComponents}</StyledLeftComponent>
@@ -46,7 +46,7 @@ const MenuBlock: React.FC<MenuBlockProps> = ({ options, toggle }) => {
               )
             )}
           </StyledContainerItems>
-        </>
+        </React.Fragment>
       ))}
     </Masonry>
   );
