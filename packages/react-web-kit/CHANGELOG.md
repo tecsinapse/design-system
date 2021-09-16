@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.3...@tecsinapse/react-web-kit@1.6.4) (2021-09-16)
+
+
+### Bug Fixes
+
+* **menubar:** key on menu block ([a977862](https://github.com/tecsinapse/design-system/commit/a9778624bfb19544d1fccb4ec058306e406fff5f))
+
+
+
+
+
 ## [1.6.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.2...@tecsinapse/react-web-kit@1.6.3) (2021-09-16)
 
 
