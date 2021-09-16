@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.2...@tecsinapse/react-core@1.6.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* **menubar:** fixing toggle for search items ([330e6b8](https://github.com/tecsinapse/design-system/commit/330e6b8467945c55bbcbaa4876cd160224ef509d))
+* **menubar:** fixing toggle for search items ([3aefce8](https://github.com/tecsinapse/design-system/commit/3aefce867cab7a12bafdef181148fc48654044ff))
+
+
+
+
+
 ## [1.6.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.1...@tecsinapse/react-core@1.6.2) (2021-09-15)
 
 
