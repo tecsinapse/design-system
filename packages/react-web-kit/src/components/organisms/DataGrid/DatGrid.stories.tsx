@@ -12,7 +12,7 @@ import { Skeleton } from '../../atoms/Skeleton';
 import { HeadersType } from './types';
 
 export default {
-  title: 'Components/Data Grid',
+  title: 'Web/Data Grid',
   component: DataGrid,
 };
 

@@ -6,7 +6,7 @@ import { Button, Icon, Text } from '@tecsinapse/react-core';
 import { default as Drawer, DrawerProps } from './Drawer';
 
 export default {
-  title: 'Components/Drawer',
+  title: 'Web/Drawer',
   component: Drawer,
 };
 

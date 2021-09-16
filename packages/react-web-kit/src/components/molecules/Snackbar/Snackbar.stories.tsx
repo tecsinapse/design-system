@@ -3,7 +3,7 @@ import { Story } from '@storybook/react';
 import { Snackbar, SnackbarWebProps } from './Snackbar';
 
 export default {
-  title: 'Components/Snackbar',
+  title: 'Hybrid/Snackbar',
   component: Snackbar,
 };
 

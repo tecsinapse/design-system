@@ -16,7 +16,7 @@ import TFoot from './Footer/TFoot';
 import { Button } from '../Button';
 
 export default {
-  title: 'Components/Table',
+  title: 'Web/Table',
   component: Table,
 };
 

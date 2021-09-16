@@ -4,7 +4,7 @@ import Accordion, { AccordionProps } from './Accordion';
 import { Text } from '@tecsinapse/react-core';
 
 export default {
-  title: 'Components/Accordion',
+  title: 'Web/Accordion',
   component: Accordion,
   parameters: {
     backgrounds: {

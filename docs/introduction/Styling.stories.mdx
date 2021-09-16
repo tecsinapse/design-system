@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Introduction/Styling" />
+
+# Styling components
+
+In TecSinapse Design System, we believe in a hybrid approach for many components, to simplify the development of beautiful UI's on web or mobile platforms (native).
+To achieve this, the team has opted to use [*@emotion*](https://github.com/emotion-js/emotion) as main styling system, enjoying maximum as possible the reuse of code for styled components.
+
+**Make sure to read [important considerations](#important-considerations).**
+
+## Installation
+
+`yarn add @emotion/react` Required for *emotion* system. <br/>
+`yarn add @emotion/styled` Required for styling components in web. <br/>
+`yarn add @emotion/native` Required for styling hybrid and native components. <br/>
+
+### **Use**
+
+Import components you want into your UI
+
+```js
+import {
+  ThemeProvider,
+  Button,
+  lightTheme,
+} from '@tecsinapse/react-native-kit';
+import styled from '@emotion/native';
+```
+
+and use them like so
+
+```jsx
+const StyledButton = styled(Button)`
+  background-color: red;
+`;
+
+const App = () => (
+  <ThemeProvider theme={lightTheme}>
+    <StyledButton onClick={() => console.log('Button clicked')}>
+      Button
+    </StyledButton>
+  </ThemeProvider>
+);
+```
+
+### Accessing theme
+
+You can access all theme properties as follows
+
+```jsx
+import {
+  useTheme,
+  ThemeProvider,
+  Button,
+  lightTheme,
+} from '@tecsinapse/react-web-kit';
+
+const App = () => {
+  const theme = useTheme();
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <div style={{ backgroundColor: theme.color.primary.medium }}>
+        Theme background color
+      </div>
+    </ThemeProvider>
+  );
+};
+```
+
+## Important considerations
+
+Because of the nature of each platform and *emotion* system doesn't have a solution to this, to extend hybrid components in web, you must inject `@emotion/native` styled function.
+This happens because style property doesn't operate between platforms, so is probable that your hybrid components will not receive the correct style treatment.
+Even with *react-native-web*, the styles are spread in component level, and the *emotion* system convert it to *react-native* stylesheet.

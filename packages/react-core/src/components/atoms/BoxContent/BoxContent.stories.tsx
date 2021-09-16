@@ -5,7 +5,7 @@ import { BoxContent, BoxContentProps } from '.';
 import { Text } from '../Text';
 
 export default {
-  title: 'Components/Box Content',
+  title: 'Hybrid/Box Content',
   component: BoxContent,
 };
 

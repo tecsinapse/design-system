@@ -4,7 +4,7 @@ import { ProgressBar, ProgressBarProps } from './index';
 import { Card } from '../Card';
 
 export default {
-  title: 'Components/Progress Bar',
+  title: 'Hybrid/Progress Bar',
   component: ProgressBar,
 };
 

@@ -13,7 +13,7 @@ const StyledCard = styled(Card)<Partial<StyleProps>>`
 `;
 
 export default {
-  title: 'Components/Card',
+  title: 'Hybrid/Card',
   component: Card,
 };
 

@@ -4,7 +4,7 @@ import { SwitchProps, default as Switch } from './Switch';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Components/Switch',
+  title: 'Hybrid/Switch',
   component: Switch,
 };
 

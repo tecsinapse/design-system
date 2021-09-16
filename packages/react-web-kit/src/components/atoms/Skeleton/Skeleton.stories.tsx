@@ -4,7 +4,7 @@ import Skeleton from './Skeleton';
 import { SkeletonProps } from './Skeleton';
 
 export default {
-  title: 'Components/Skeleton',
+  title: 'Web/Skeleton',
   component: Skeleton,
 };
 

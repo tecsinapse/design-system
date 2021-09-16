@@ -4,7 +4,7 @@ import { Tag, TagProps } from './index';
 import { IconProps } from '@tecsinapse/react-core';
 
 export default {
-  title: 'Components/Tag',
+  title: 'Hybrid/Tag',
   component: Tag,
   parameters: {
     backgrounds: {

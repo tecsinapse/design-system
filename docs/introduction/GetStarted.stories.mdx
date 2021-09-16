@@ -15,21 +15,19 @@ Below contains instructions on how to use the design-system in web and native ap
 
 Import components you want into your UI
 
-`import { ThemeProvider, Button, lightTheme } from ‘@tecsinapse/react-core’;`
+`import { ThemeProvider, Button, lightTheme } from ‘@tecsinapse/react-native-kit’;`
 
 and use them like so
 
 ```jsx
-
 const App = () => (
-
   <ThemeProvider theme={lightTheme}>
     <Button onClick={() => console.log('Button clicked')}>Button</Button>
   </ThemeProvider>
-
 );
-
 ```
+
+**NOTE: All core components are exported from platform specific packages. Prefer using only one dependency, in case of any significant change for platform specific code.**
 
 ### Install react-native-vector-icons
 

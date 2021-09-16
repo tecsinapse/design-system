@@ -3,7 +3,7 @@ import { Story } from '@storybook/react';
 import Icon, { IconProps } from './Icon';
 
 export default {
-  title: 'Components/Icon',
+  title: 'Hybrid/Icon',
   component: Icon,
 };
 

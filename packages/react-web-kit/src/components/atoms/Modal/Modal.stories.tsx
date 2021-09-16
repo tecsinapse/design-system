@@ -5,7 +5,7 @@ import Modal, { ModalProps } from './Modal';
 import { Button } from '../Button';
 
 export default {
-  title: 'Components/Modal',
+  title: 'Web/Modal',
   component: Modal,
 };
 

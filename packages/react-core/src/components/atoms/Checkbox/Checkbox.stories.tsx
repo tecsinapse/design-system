@@ -4,7 +4,7 @@ import { default as Checkbox, CheckboxProps } from './Checkbox';
 import { Text } from '../Text';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Hybrid/Checkbox',
   component: Checkbox,
 };
 
