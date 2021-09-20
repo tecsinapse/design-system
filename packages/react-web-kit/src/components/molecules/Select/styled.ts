@@ -12,5 +12,4 @@ export const StyledContainer = styled('div')<Partial<StyleProps>>`
 
 export const StyledInputContainer = styled('div')<Partial<StyleProps>>`
   width: 100%;
-  z-index: ${({ theme }) => theme.zIndex.input};
 `;
