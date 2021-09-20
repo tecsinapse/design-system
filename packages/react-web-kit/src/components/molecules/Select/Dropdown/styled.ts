@@ -20,7 +20,7 @@ export const StyledContainerDropdown = styled('div')<
   }: StyleProps & Partial<SelectProps<any, any>>) =>
     !hideSearchBar ? `${theme.spacing.deca}` : '0px'};
   padding-bottom: ${({ theme }: StyleProps) => theme.spacing.mili};
-  z-index: ${({ theme }: StyleProps) => theme.zIndex.default};
+  z-index: ${({ theme }: StyleProps) => theme.zIndex.select};
 `;
 
 export const StyledTest = styled('div')<

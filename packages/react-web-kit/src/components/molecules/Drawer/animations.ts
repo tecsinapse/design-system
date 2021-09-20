@@ -12,7 +12,8 @@ export const defaultStylesLeftRight = (anchorPosition: string) => {
   return {
     transition: 'transform 300ms ease-in-out',
     transform: () => transformLeftRigthClose(anchorPosition),
-    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'auto',
   };
 };
 
@@ -33,7 +34,8 @@ export const defaultStylesTopBottom = (anchorPosition: string) => {
   return {
     transition: 'transform 300ms ease-in-out',
     transform: transformTopBottomClose(anchorPosition),
-    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'auto',
   };
 };
 export const transitionStylesTopBottom = (anchorPosition: string) => {
