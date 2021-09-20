@@ -55,7 +55,7 @@ const Switch: FC<SwitchProps> = ({
   const handleChange = useCallback(() => {
     onChange(!active);
     transitionSwitch(active, transitionValue, animatedColor);
-  }, [active]);
+  }, [active, onChange]);
 
   const stylesDefaut: ViewStyle = {
     borderRadius: extractNumbersFromString(theme.borderRadius.pill),
