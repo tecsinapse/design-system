@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.6...@tecsinapse/react-web-kit@1.6.7) (2021-09-20)
+
+
+### Bug Fixes
+
+* select z-index ([72b9d80](https://github.com/tecsinapse/design-system/commit/72b9d80a88d652417ff8bc46082761a459d27fa3))
+
+
+
+
+
 ## [1.6.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.5...@tecsinapse/react-web-kit@1.6.6) (2021-09-20)
 
 
