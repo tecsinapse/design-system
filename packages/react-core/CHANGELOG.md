@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.4...@tecsinapse/react-core@1.6.5) (2021-09-20)
+
+
+### Bug Fixes
+
+* **switch:** add onChange to switch callback dependency array ([6e46d20](https://github.com/tecsinapse/design-system/commit/6e46d2033b66f9bc351b38647f3097317d3e15d8))
+
+
+
+
+
 ## [1.6.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.3...@tecsinapse/react-core@1.6.4) (2021-09-16)
 
 **Note:** Version bump only for package @tecsinapse/react-core
