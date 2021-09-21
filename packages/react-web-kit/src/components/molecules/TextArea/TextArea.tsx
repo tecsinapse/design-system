@@ -3,9 +3,9 @@ import {
   useInputFocus,
   TextAreaProps as ITACore,
   TextArea as TACore,
+  Text,
 } from '@tecsinapse/react-core';
-import { Text } from '../Text';
-import { StyledNativeInput } from './styled';
+import { StyledWebInput } from './styled';
 
 export interface TextAreaProps
   extends Omit<ITACore, 'TextComponent' | 'focused'> {}
@@ -67,7 +67,7 @@ const TextArea: FC<TextAreaProps> = ({
       TextComponent={Text}
       maxLength={maxLength}
     >
-      <StyledNativeInput
+      <StyledWebInput
         {...rest}
         fontStack={inputFontStack}
         fontWeight={inputFontWeight}

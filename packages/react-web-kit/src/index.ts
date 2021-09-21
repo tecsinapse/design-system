@@ -37,4 +37,5 @@ export {
   HeadersType,
 } from './components/organisms/DataGrid';
 export { Modal, ModalProps } from './components/atoms/Modal';
+export { TextArea, TextAreaProps } from './components/molecules/TextArea';
 export * from './hooks';
