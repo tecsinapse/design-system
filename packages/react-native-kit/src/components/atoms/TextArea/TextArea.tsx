@@ -1,28 +1,14 @@
-import {
-  FontStackType,
-  FontWeightType,
-  Hint,
-  InputContainerProps,
-  InputElementProps,
-  useInputFocus,
-} from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { View } from 'react-native';
-import { Text } from '../Text';
 import {
-  CharCountText,
-  StyledInputContainer,
-  StyledNativeInput,
-} from './styled';
+  useInputFocus,
+  TextAreaProps as ITACore,
+  TextArea as TACore,
+} from '@tecsinapse/react-core';
+import { Text } from '../Text';
+import { StyledNativeInput } from './styled';
 
 export interface TextAreaProps
-  extends Omit<InputElementProps, 'style' | 'multiline' | 'value'>,
-    InputContainerProps {
-  inputFontStack?: FontStackType;
-  inputFontWeight?: FontWeightType;
-  maxCharCount?: number;
-  value: string;
-}
+  extends Omit<ITACore, 'TextComponent' | 'focused'> {}
 
 const TextArea: FC<TextAreaProps> = ({
   label,
@@ -46,18 +32,10 @@ const TextArea: FC<TextAreaProps> = ({
   hint,
   onFocus,
   onBlur,
+  value,
+  maxLength,
   ...rest
 }) => {
-  let length = rest.value.length;
-  const maxLength = rest.maxLength;
-  if (maxLength && length > maxLength) {
-    length = maxLength;
-  }
-
-  const _hint = hintComponent || (
-    <Hint TextComponent={Text} text={hint} variant={variant} />
-  );
-
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -65,49 +43,41 @@ const TextArea: FC<TextAreaProps> = ({
   );
 
   return (
-    <View style={style}>
-      <StyledInputContainer
-        label={label}
-        labelColor={labelColor}
-        labelColorVariant={labelColorVariant}
-        labelColorTone={labelColorTone}
-        labelTypography={labelTypography}
-        labelStack={labelStack}
-        labelWeight={labelWeight}
-        LabelComponent={Text}
-        leftComponent={leftComponent}
-        rightComponent={rightComponent}
-        borderColor={borderColor}
-        borderColorGradation={borderColorGradation}
-        inputContainerStyle={inputContainerStyle}
-        focused={focused}
+    <TACore
+      label={label}
+      labelColor={labelColor}
+      labelColorVariant={labelColorVariant}
+      labelColorTone={labelColorTone}
+      labelTypography={labelTypography}
+      labelStack={labelStack}
+      labelWeight={labelWeight}
+      LabelComponent={Text}
+      leftComponent={leftComponent}
+      rightComponent={rightComponent}
+      borderColor={borderColor}
+      borderColorGradation={borderColorGradation}
+      inputContainerStyle={inputContainerStyle}
+      focused={focused}
+      disabled={disabled}
+      variant={variant}
+      value={value}
+      hintComponent={hintComponent}
+      hint={hint}
+      style={style}
+      TextComponent={Text}
+      maxLength={maxLength}
+    >
+      <StyledNativeInput
+        {...rest}
+        fontStack={inputFontStack}
+        fontWeight={inputFontWeight}
         disabled={disabled}
-        variant={variant}
-      >
-        <StyledNativeInput
-          {...rest}
-          fontStack={inputFontStack}
-          fontWeight={inputFontWeight}
-          disabled={disabled}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          textAlignVertical={'top'}
-          multiline
-        />
-        {maxLength && (
-          <CharCountText
-            colorVariant={'secondary'}
-            colorTone={'medium'}
-            typography={'label'}
-            fontStack={'default'}
-            fontWeight={'bold'}
-          >
-            {`${length}/${maxLength}`}
-          </CharCountText>
-        )}
-      </StyledInputContainer>
-      {hint && _hint}
-    </View>
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        textAlignVertical={'top'}
+        multiline
+      />
+    </TACore>
   );
 };
 

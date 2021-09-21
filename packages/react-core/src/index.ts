@@ -72,6 +72,11 @@ export {
   HintInputContainer,
   HintInputContainerProps,
 } from './components/molecules/HintInputContainer';
+export {
+  TextArea,
+  TextAreaProps,
+  TextAreaInputBase,
+} from './components/molecules/TextArea';
 export * from './styles/definitions';
 export * from './styles/light';
 export { default as ThemeProvider } from './styles/ThemeProvider';
