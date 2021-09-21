@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.8...@tecsinapse/react-web-kit@1.7.0) (2021-09-21)
+
+
+### Features
+
+* text area ([35ce0ba](https://github.com/tecsinapse/design-system/commit/35ce0ba36aeb9c3d90db19d077e0741e417c65e0))
+
+
+
+
+
 ## [1.6.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.7...@tecsinapse/react-web-kit@1.6.8) (2021-09-21)
 
 

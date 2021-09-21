@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.6.5...@tecsinapse/react-native-kit@1.7.0) (2021-09-21)
+
+
+### Features
+
+* text area ([35ce0ba](https://github.com/tecsinapse/design-system/commit/35ce0ba36aeb9c3d90db19d077e0741e417c65e0))
+* text area hybrid ([f16d074](https://github.com/tecsinapse/design-system/commit/f16d074a71bbea3b1bbc4c4e3933a124b0f1e064))
+
+
+
+
+
 ## [1.6.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.6.4...@tecsinapse/react-native-kit@1.6.5) (2021-09-20)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
