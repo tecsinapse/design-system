@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.0...@tecsinapse/react-web-kit@1.7.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* data grid paginating when pagination is disabled ([d7a676e](https://github.com/tecsinapse/design-system/commit/d7a676e6d622cfbdbd09a3e354a557a00fee16c3))
+
+
+
+
+
 # [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.8...@tecsinapse/react-web-kit@1.7.0) (2021-09-21)
 
 
