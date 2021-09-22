@@ -8,8 +8,9 @@ export const getData = <Data>(
   data: Data[],
   rowsCount: number | undefined,
   page: number,
-  rowsPerPage: number
+  rowsPerPage: number,
+  pagination: boolean
 ): Data[] =>
-  rowsCount
+  rowsCount || !pagination
     ? data
     : data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);

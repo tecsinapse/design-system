@@ -5,11 +5,13 @@ import {
   GroupButtonOption,
   GroupButtonValue,
   Icon,
+  Text,
 } from '@tecsinapse/react-core';
 import DataGrid from './DataGrid';
 import { Input } from '../../atoms/Input';
 import { Skeleton } from '../../atoms/Skeleton';
 import { HeadersType } from './types';
+import styled from '@emotion/styled';
 
 export default {
   title: 'Web/Data Grid',
@@ -214,3 +216,34 @@ ClientSide.args = {
   exportFunction: () => alert('Export handler'),
   pagination: true,
 };
+
+const EmptyContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const EmptyState = React.memo(() => (
+  <EmptyContainer>
+    <Icon name="eye-off-outline" type={'material-community'} size={'mega'} />
+    <Text typography="h2" fontWeight="bold">
+      There is nothing to see
+    </Text>
+    <Text typography="h5">You may have to take another action first</Text>
+  </EmptyContainer>
+));
+
+const TemplateEmpty: Story = args => {
+  return (
+    <DataGrid
+      headers={HEADERS}
+      data={[]}
+      rowKeyExtractor={() => ''}
+      toolbarTitle="Empty Grid"
+      emptyPlaceholder={<EmptyState />}
+      {...args}
+    />
+  );
+};
+
+export const EmptyGrid = TemplateEmpty.bind({});

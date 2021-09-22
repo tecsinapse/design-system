@@ -51,6 +51,8 @@ export interface DataGridProps<Data> {
   skeletonComponent?: React.ReactNode;
   /** CSS style spread to TableContainer */
   style?: CSSProperties;
+  /** Empty state placeholder */
+  emptyPlaceholder?: React.ReactNode;
 }
 
 /** Note: Consider memoizing functions for a better performance */
@@ -77,6 +79,7 @@ const DataGrid = <Data extends unknown>({
   loading = false,
   skeletonComponent,
   style,
+  emptyPlaceholder,
 }: DataGridProps<Data>): JSX.Element => {
   if (selectable && (!selectedRows || !onSelectedRows)) {
     throw new Error(
@@ -133,19 +136,31 @@ const DataGrid = <Data extends unknown>({
 
         {!loading ? (
           <TBody>
-            {getData(data, rowsCount, page, rowsPerPage).map(item => (
-              <Row
-                key={rowKeyExtractor(item)}
-                rowKeyExtractor={rowKeyExtractor}
-                handleSelect={handleSelect}
-                selectable={selectable}
-                headers={headers}
-                data={item}
-                checked={selectedRows?.some(
-                  sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
-                )}
-              />
-            ))}
+            {data.length > 0 ? (
+              getData(
+                data,
+                rowsCount,
+                page,
+                rowsPerPage,
+                pagination
+              ).map(item => (
+                <Row
+                  key={rowKeyExtractor(item)}
+                  rowKeyExtractor={rowKeyExtractor}
+                  handleSelect={handleSelect}
+                  selectable={selectable}
+                  headers={headers}
+                  data={item}
+                  checked={selectedRows?.some(
+                    sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
+                  )}
+                />
+              ))
+            ) : (
+              <tr>
+                <td colSpan={99}>{emptyPlaceholder}</td>
+              </tr>
+            )}
           </TBody>
         ) : (
           <TBody>
