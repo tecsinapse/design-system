@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.1...@tecsinapse/react-web-kit@1.7.2) (2021-09-22)
+
+
+### Bug Fixes
+
+* reset page on rows per page ([95ef8d1](https://github.com/tecsinapse/design-system/commit/95ef8d19ee2b50952f7aaeed4ec47c4cacff2b46))
+
+
+
+
+
 ## [1.7.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.0...@tecsinapse/react-web-kit@1.7.1) (2021-09-22)
 
 
