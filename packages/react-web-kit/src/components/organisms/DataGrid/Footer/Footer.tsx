@@ -59,6 +59,14 @@ const Footer: React.FC<DataGridFooterProps> = ({
     return { start: page - 1, end: page + 2 };
   };
 
+  const handleRowsPerPage = React.useCallback(
+    value => {
+      onRowsPerPageChange?.(value as number);
+      onPageChange?.(0);
+    },
+    [onPageChange, onRowsPerPageChange]
+  );
+
   return (
     <TFoot>
       <Tr>
@@ -69,7 +77,7 @@ const Footer: React.FC<DataGridFooterProps> = ({
                 <SelectContainer>
                   <Select
                     options={rowsPerPageOptions}
-                    onSelect={value => onRowsPerPageChange?.(value as number)}
+                    onSelect={handleRowsPerPage}
                     value={rowsPerPage}
                     type={'single'}
                     keyExtractor={value => String(value)}
