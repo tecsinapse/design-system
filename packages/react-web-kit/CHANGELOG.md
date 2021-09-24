@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.3...@tecsinapse/react-web-kit@1.7.4) (2021-09-24)
+
+
+### Bug Fixes
+
+* menubar search debouncing ([182c220](https://github.com/tecsinapse/design-system/commit/182c220b14826f0ca38e2c97f499d6207806dd40))
+
+
+### Features
+
+* menubar clickaway detection ([bb909b5](https://github.com/tecsinapse/design-system/commit/bb909b507f592fd385f5db32e34a01d5efcd3471))
+
+
+
+
+
 ## [1.7.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.2...@tecsinapse/react-web-kit@1.7.3) (2021-09-24)
 
 
