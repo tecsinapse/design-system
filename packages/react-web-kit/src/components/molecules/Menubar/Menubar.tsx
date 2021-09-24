@@ -46,7 +46,7 @@ const Menubar: React.FC<MenubarProps> = ({
 }) => {
   const [search, setSearch] = React.useState<string>('');
   const [results, setResults] = React.useState<MostUsedType[]>([]);
-  const [input, setInput] = useDebouncedState('', state => setSearch(state));
+  const [input, setInput] = useDebouncedState<string>('', setSearch);
   const [open, setOpen] = React.useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   useClickAwayListener(menuRef, setOpen);
