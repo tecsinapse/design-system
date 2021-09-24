@@ -18,6 +18,7 @@ const Tag: React.FC<TagProps> = ({
   variant = 'small',
   dismiss: canDismiss = false,
   onDismiss = () => {},
+  style,
   ...rest
 }): JSX.Element => {
   const [dismiss, setDismiss] = useState(false);
@@ -42,7 +43,7 @@ const Tag: React.FC<TagProps> = ({
     <StyledTagContainer
       {...rest}
       variant={variant}
-      style={{ opacity: (fadeAnim as unknown) as number }}
+      style={[{ opacity: (fadeAnim as unknown) as number }, style]}
       visible={!dismiss}
     >
       {icon && (
