@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.4...@tecsinapse/react-web-kit@1.7.5) (2021-09-24)
+
+
+### Bug Fixes
+
+* snackbar web styles ([1a5079e](https://github.com/tecsinapse/design-system/commit/1a5079e41fa2aa614435d794c59307631c939601))
+
+
+
+
+
 ## [1.7.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.3...@tecsinapse/react-web-kit@1.7.4) (2021-09-24)
 
 

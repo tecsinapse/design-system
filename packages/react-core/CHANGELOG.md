@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.2...@tecsinapse/react-core@1.7.3) (2021-09-24)
+
+
+### Bug Fixes
+
+* snackbar web styles ([1a5079e](https://github.com/tecsinapse/design-system/commit/1a5079e41fa2aa614435d794c59307631c939601))
+
+
+
+
+
 ## [1.7.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.1...@tecsinapse/react-core@1.7.2) (2021-09-24)
 
 
