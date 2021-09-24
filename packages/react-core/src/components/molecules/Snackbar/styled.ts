@@ -15,7 +15,7 @@ const baseStyles = ({
   padding: 0;
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.color[colorVariant][colorTone]};
-  position: fixed;
+  position: absolute;
   z-index: ${theme.zIndex.modal};
   display: ${visible ? 'flex' : 'none'};
   flex-direction: column;
