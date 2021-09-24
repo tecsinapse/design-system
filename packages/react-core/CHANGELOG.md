@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.0...@tecsinapse/react-core@1.7.1) (2021-09-24)
+
+
+### Bug Fixes
+
+* spread tag styles ([2b67359](https://github.com/tecsinapse/design-system/commit/2b6735955893587a243a7b25b6e1db48793bb6fa))
+
+
+
+
+
 # [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.5...@tecsinapse/react-core@1.7.0) (2021-09-21)
 
 
