@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Icon, Text, useDebouncedState } from '@tecsinapse/react-core';
 import { Transition } from 'react-transition-group';
 import {
@@ -20,6 +20,7 @@ import {
   getContainerOpenMenuStyles,
   getInputContainerStyles,
 } from './animations';
+import { useClickAwayListener } from '../../../hooks';
 
 export interface MenubarProps {
   options: OptionsType[];
@@ -47,6 +48,8 @@ const Menubar: React.FC<MenubarProps> = ({
   const [results, setResults] = React.useState<MostUsedType[]>([]);
   const [input, setInput] = useDebouncedState('', state => setSearch(state));
   const [open, setOpen] = React.useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  useClickAwayListener(menuRef, setOpen);
 
   const toggleOpen = React.useCallback(() => setOpen(state => !state), [
     setOpen,
@@ -100,7 +103,10 @@ const Menubar: React.FC<MenubarProps> = ({
       </StyledMenuBar>
       <Transition in={open} timeout={250}>
         {state => (
-          <StyledContainerOpenMenu style={getContainerOpenMenuStyles(state)}>
+          <StyledContainerOpenMenu
+            ref={ref => (menuRef.current = ref)}
+            style={getContainerOpenMenuStyles(state)}
+          >
             {!search ? (
               <>
                 {mostUsed && (
