@@ -47,6 +47,7 @@ function DatePicker<T extends SelectionType>({
   rightComponent,
   animationType = 'fade',
   style,
+  locale,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -120,6 +121,7 @@ function DatePicker<T extends SelectionType>({
         onChange={onChange}
         value={value}
         type={type}
+        locale={locale}
       />
     </>
   );

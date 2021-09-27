@@ -17,6 +17,7 @@ const Component = <T extends SelectionType>({
   onChange,
   CalendarComponent = Calendar,
   bottomOffset = 0,
+  locale,
   ...modalProps
 }: CalendarProps<T> & ModalProps & DatePickerModalProps<T>) => {
   return (
@@ -36,6 +37,7 @@ const Component = <T extends SelectionType>({
             month={month}
             year={year}
             onChange={onChange}
+            locale={locale}
           />
         </ModalContent>
       </Backdrop>
