@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.5...@tecsinapse/react-core@1.7.6) (2021-09-27)
+
+
+### Bug Fixes
+
+* date picker locale ([f1278a8](https://github.com/tecsinapse/design-system/commit/f1278a82c4386fe3417fb8d215521813eda22794))
+
+
+
+
+
 ## [1.7.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.4...@tecsinapse/react-core@1.7.5) (2021-09-27)
 
 **Note:** Version bump only for package @tecsinapse/react-core
