@@ -15,10 +15,10 @@ export interface HintInputContainerProps extends PressableInputContainerProps {
   LabelComponent?: React.FC<TextProps>;
   onPress?: () => void | never;
   disabled?: boolean;
-  hint: string | undefined;
-  hintComponent: JSX.Element | undefined;
-  variant: InputVariantType;
-  rightComponent: JSX.Element;
+  hint?: string;
+  hintComponent?: JSX.Element;
+  variant?: InputVariantType;
+  rightComponent?: JSX.Element;
 }
 
 const HintInputContainer: FC<HintInputContainerProps> = ({

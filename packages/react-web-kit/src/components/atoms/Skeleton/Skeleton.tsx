@@ -2,7 +2,7 @@ import React from 'react';
 import { Wrapper } from './styled';
 import { BorderRadiusType } from '@tecsinapse/react-core';
 
-export interface SkeletonProps {
+export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: number;
   height?: number;
   animation?: 'pulse' | 'wave';
