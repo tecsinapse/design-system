@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.6...@tecsinapse/react-web-kit@1.7.7) (2021-09-27)
+
+
+### Bug Fixes
+
+* skeleton ([2662c78](https://github.com/tecsinapse/design-system/commit/2662c784a8f4507af8fc0c05a19ec6e8ef010e19))
+
+
+
+
+
 ## [1.7.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.5...@tecsinapse/react-web-kit@1.7.6) (2021-09-27)
 
 
