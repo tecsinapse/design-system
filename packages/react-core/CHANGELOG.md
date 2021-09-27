@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.3...@tecsinapse/react-core@1.7.4) (2021-09-27)
+
+
+### Bug Fixes
+
+* hint input ([54301ce](https://github.com/tecsinapse/design-system/commit/54301ce0fd2c942b2a902b7dd9d1f02f792be14f))
+
+
+
+
+
 ## [1.7.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.2...@tecsinapse/react-core@1.7.3) (2021-09-24)
 
 
