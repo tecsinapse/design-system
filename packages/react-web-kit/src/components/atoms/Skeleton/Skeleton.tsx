@@ -15,6 +15,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
   height,
   animation = 'wave',
   radius,
+  ...rest
 }) => {
   if (!width && !height && !children) {
     throw new Error(
@@ -28,6 +29,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
       height={height}
       animation={animation}
       radius={radius}
+      {...rest}
     >
       {children}
     </Wrapper>
