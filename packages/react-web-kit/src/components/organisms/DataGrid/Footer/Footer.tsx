@@ -82,6 +82,7 @@ const Footer: React.FC<DataGridFooterProps> = ({
                     type={'single'}
                     keyExtractor={value => String(value)}
                     labelExtractor={rowsPerPageLabel}
+                    anchor="top"
                   />
                 </SelectContainer>
               )}
