@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.8...@tecsinapse/react-web-kit@1.8.0) (2021-09-28)
+
+
+### Features
+
+* extend web components from html div element ([ebc700a](https://github.com/tecsinapse/design-system/commit/ebc700aad0068b34eb31ebbb705b2485d410c72e))
+
+
+
+
+
 ## [1.7.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.7...@tecsinapse/react-web-kit@1.7.8) (2021-09-27)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
