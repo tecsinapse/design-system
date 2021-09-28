@@ -8,13 +8,13 @@ export type BreadcrumbType = {
   props?: any;
 };
 
-export interface BreadcrumbsProps {
+export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLDivElement> {
   breadcrumbs: BreadcrumbType[];
 }
 
-const Breadcrumbs: FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
+const Breadcrumbs: FC<BreadcrumbsProps> = ({ breadcrumbs, ...rest }) => {
   return (
-    <StyledContainerBreadcrumbs>
+    <StyledContainerBreadcrumbs {...rest}>
       {breadcrumbs.map((item, index) => {
         const { props, Component = 'a', title } = item;
         return (

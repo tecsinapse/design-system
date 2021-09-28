@@ -22,7 +22,7 @@ import {
 } from './animations';
 import { useClickAwayListener } from '../../../hooks';
 
-export interface MenubarProps {
+export interface MenubarProps extends React.HTMLAttributes<HTMLDivElement> {
   options: OptionsType[];
   leftComponents?: React.ReactNode;
   rightComponents?: React.ReactNode;
@@ -43,6 +43,7 @@ const Menubar: React.FC<MenubarProps> = ({
   mostUsedLabel = 'Mais acessados',
   searchResultsLabel = 'Resultados da busca',
   searchable = true,
+  ...rest
 }) => {
   const [search, setSearch] = React.useState<string>('');
   const [results, setResults] = React.useState<MostUsedType[]>([]);
@@ -61,7 +62,7 @@ const Menubar: React.FC<MenubarProps> = ({
   }, [search]);
 
   return (
-    <>
+    <div ref={ref => (menuRef.current = ref)} {...rest}>
       <StyledMenuBar>
         <StyledMenuButton variant="filled" color="primary" onPress={toggleOpen}>
           {!open ? (
@@ -103,10 +104,7 @@ const Menubar: React.FC<MenubarProps> = ({
       </StyledMenuBar>
       <Transition in={open} timeout={250}>
         {state => (
-          <StyledContainerOpenMenu
-            ref={ref => (menuRef.current = ref)}
-            style={getContainerOpenMenuStyles(state)}
-          >
+          <StyledContainerOpenMenu style={getContainerOpenMenuStyles(state)}>
             {!search ? (
               <>
                 {mostUsed && (
@@ -136,7 +134,7 @@ const Menubar: React.FC<MenubarProps> = ({
           </StyledContainerOpenMenu>
         )}
       </Transition>
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import {
   Checkbox,
   Text,
@@ -14,7 +14,7 @@ import {
   StyledContainerDropdown,
   StyledContainerTextLabel,
   StyledSpan,
-  StyledTest,
+  OptionsContainer,
 } from './styled';
 
 const Dropdown = <Data, Type extends 'single' | 'multi'>({
@@ -28,9 +28,9 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   setDropDownVisible,
   style,
+  anchor,
 }: SelectProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
-  style: CSSProperties;
 }): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const lengthOptions = options.length;
@@ -49,7 +49,11 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   };
 
   return (
-    <StyledContainerDropdown lengthOptions={lengthOptions} style={style}>
+    <StyledContainerDropdown
+      lengthOptions={lengthOptions}
+      style={style}
+      anchor={anchor}
+    >
       {type === 'multi' && (
         <StyledContainerCheckAll
           onClick={hideSearchBar ? onClickCheckAll : undefined}
@@ -81,7 +85,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
           )}
         </StyledContainerCheckAll>
       )}
-      <StyledTest lenghtOptions={options.length}>
+      <OptionsContainer lengthOptions={options.length}>
         {options.map((item, index) => (
           <ItemSelect
             type={type}
@@ -98,7 +102,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
             lenghtOptions={options.length}
           />
         ))}
-      </StyledTest>
+      </OptionsContainer>
     </StyledContainerDropdown>
   );
 };

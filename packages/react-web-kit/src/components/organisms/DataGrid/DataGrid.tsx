@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import {
   Table,
   TableToolbar,
@@ -14,7 +14,8 @@ import { Footer } from './Footer';
 import { Skeleton } from '../../atoms/Skeleton';
 import { getData, removeElement } from './utils';
 
-export interface DataGridProps<Data> {
+export interface DataGridProps<Data>
+  extends React.HTMLAttributes<HTMLDivElement> {
   headers: HeadersType<Data>[];
   data: Data[];
   /** Unique identifier for row data */
@@ -49,8 +50,6 @@ export interface DataGridProps<Data> {
   loading?: boolean;
   /** Custom skeleton component for better visual */
   skeletonComponent?: React.ReactNode;
-  /** CSS style spread to TableContainer */
-  style?: CSSProperties;
   /** Empty state placeholder */
   emptyPlaceholder?: React.ReactNode;
 }
@@ -78,8 +77,8 @@ const DataGrid = <Data extends unknown>({
   onPageChange,
   loading = false,
   skeletonComponent,
-  style,
   emptyPlaceholder,
+  ...rest
 }: DataGridProps<Data>): JSX.Element => {
   if (selectable && (!selectedRows || !onSelectedRows)) {
     throw new Error(
@@ -117,7 +116,7 @@ const DataGrid = <Data extends unknown>({
   );
 
   return (
-    <TableContainer style={style}>
+    <TableContainer {...rest}>
       <TableToolbar
         title={toolbarTitle}
         rightIcons={toolbarRightIcons}

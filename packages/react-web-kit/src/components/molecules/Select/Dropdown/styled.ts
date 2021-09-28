@@ -1,18 +1,39 @@
 import styled from '@emotion/styled';
 import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 import { SelectProps } from '../Select';
+import { css } from '@emotion/react';
 
-export const StyledContainerDropdown = styled('div')<
-  Partial<StyleProps & SelectProps<any, any> & { lengthOptions: number }>
->`
+type InjectedProps = Partial<
+  StyleProps & SelectProps<any, any> & { lengthOptions: number }
+>;
+
+const anchorBottom = ({
+  theme,
+  anchor,
+}: StyleProps & Omit<InjectedProps, 'theme'>) =>
+  anchor === 'bottom' &&
+  css`
+    margin-top: ${theme.spacing.centi};
+    top: 100%;
+  `;
+
+const anchorTop = ({
+  theme,
+  anchor,
+}: StyleProps & Omit<InjectedProps, 'theme'>) =>
+  anchor === 'top' &&
+  css`
+    margin-bottom: ${theme.spacing.centi};
+    bottom: 100%;
+  `;
+
+export const StyledContainerDropdown = styled('div')<InjectedProps>`
   width: 100%;
   background-color: ${({ theme }: StyleProps) =>
     theme.miscellaneous.surfaceColor};
   border-radius: ${({ theme }: StyleProps) => theme.borderRadius.mili};
-  box-shadow: 0px 2px 8px
+  box-shadow: 0 2px 8px
     ${({ theme }: StyleProps) => hex2rgba(theme.miscellaneous.shadow, 0.08)};
-  margin-top: ${({ theme }: StyleProps) => theme.spacing.centi};
-  top: 100%;
   position: absolute;
   padding-top: ${({
     theme,
@@ -21,17 +42,15 @@ export const StyledContainerDropdown = styled('div')<
     !hideSearchBar ? `${theme.spacing.deca}` : '0px'};
   padding-bottom: ${({ theme }: StyleProps) => theme.spacing.mili};
   z-index: ${({ theme }: StyleProps) => theme.zIndex.select};
+  ${anchorTop}
+  ${anchorBottom}
 `;
 
-export const StyledTest = styled('div')<
-  Partial<StyleProps & SelectProps<any, any> & { lenghtOptions: number }>
->`
+export const OptionsContainer = styled('div')<InjectedProps>`
   max-height: 250px;
   top: 100%;
-  overflow-y: ${({
-    lenghtOptions = 0,
-  }: Partial<{ lenghtOptions: number } & StyleProps>) =>
-    lenghtOptions > 5 ? 'scroll' : 'hidden'};
+  overflow-y: ${({ lengthOptions = 0 }: InjectedProps) =>
+    lengthOptions > 5 ? 'scroll' : 'hidden'};
   ::-webkit-scrollbar {
     width: 8px;
   }

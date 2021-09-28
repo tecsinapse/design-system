@@ -1,16 +1,21 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { Transition } from 'react-transition-group';
 import { Overlay } from '../Overlay';
 import { ModalContainer } from './styled';
 import { defaultStyleOverlay, transitionStylesOverlay } from './animations';
 
-export interface ModalProps {
+export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   open: boolean;
   onClose: () => void;
-  style?: CSSProperties;
 }
 
-const Modal: React.FC<ModalProps> = ({ children, open, onClose, style }) => {
+const Modal: React.FC<ModalProps> = ({
+  children,
+  open,
+  onClose,
+  style,
+  ...rest
+}) => {
   return (
     <>
       <Overlay open={open} onClose={onClose} zIndex="modal" />
@@ -22,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({ children, open, onClose, style }) => {
               ...defaultStyleOverlay,
               ...transitionStylesOverlay[state],
             }}
+            {...rest}
           >
             {children}
           </ModalContainer>

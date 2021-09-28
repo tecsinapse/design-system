@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StyledContainerDrawer } from './styled';
-import { Transition } from 'react-transition-group';
+import { Transition, TransitionStatus } from 'react-transition-group';
 import { Overlay } from '../../atoms/Overlay';
 import {
   transitionStylesTopBottom,
@@ -9,10 +9,12 @@ import {
   transitionStylesLeftRight,
 } from './animations';
 
-export interface DrawerProps {
+type AnchorPosition = 'left' | 'right' | 'top' | 'bottom';
+
+export interface DrawerProps extends React.HTMLAttributes<HTMLDivElement> {
   open: boolean;
   onClose: () => void;
-  anchorPosition: 'left' | 'right' | 'top' | 'bottom';
+  anchorPosition: AnchorPosition;
 }
 
 const Drawer: FC<DrawerProps> = ({
@@ -20,8 +22,13 @@ const Drawer: FC<DrawerProps> = ({
   anchorPosition = 'right',
   onClose,
   children,
+  style,
+  ...rest
 }) => {
-  const getStyles = (anchorPosition: string, state: any) => {
+  const getStyles = (
+    anchorPosition: AnchorPosition,
+    state: TransitionStatus
+  ) => {
     const stylesLeftRight = defaultStylesLeftRight(anchorPosition);
     const transitionLeftRight = transitionStylesLeftRight(anchorPosition);
     const stylesTopBottom = defaultStylesTopBottom(anchorPosition);
@@ -46,10 +53,11 @@ const Drawer: FC<DrawerProps> = ({
       <Transition in={open} timeout={300}>
         {state => (
           <StyledContainerDrawer
-            style={getStyles(anchorPosition, state)}
+            style={{ ...style, ...getStyles(anchorPosition, state) }}
             anchorPosition={anchorPosition}
             onClose={onClose}
             open={open}
+            {...rest}
           >
             {children}
           </StyledContainerDrawer>

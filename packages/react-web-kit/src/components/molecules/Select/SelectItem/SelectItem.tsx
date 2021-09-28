@@ -57,7 +57,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
         onSelect([...value, key] as OnSelectArg);
         [...value, key].length === lenghtOptions && setCheckedAll(true);
       } else {
-        const auxArray: Data[] = value;
+        const auxArray: Data[] = [...value];
         const indexToExclude = auxArray.indexOf(key);
         auxArray.splice(indexToExclude, 1);
         onSelect([...auxArray] as OnSelectArg);

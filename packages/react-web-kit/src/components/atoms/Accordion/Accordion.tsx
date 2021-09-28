@@ -15,7 +15,7 @@ import {
 } from './animations';
 import { useTheme } from '@emotion/react';
 
-export interface AccordionProps {
+export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   onChange?: () => void;
   title: string;
@@ -29,6 +29,7 @@ const Accordion: React.FC<AccordionProps> = ({
   onChange,
   transition = 200,
   children,
+  ...rest
 }) => {
   const [open, setOpen] = React.useState(_open);
   const [contentHeight, setContentHeight] = React.useState(0);
@@ -54,7 +55,7 @@ const Accordion: React.FC<AccordionProps> = ({
   }, [onChange]);
 
   return (
-    <AccordionContainer>
+    <AccordionContainer {...rest}>
       <TitleContainer onClick={handleClick}>
         <Transition in={open} timeout={transition}>
           {state => (

@@ -1,5 +1,10 @@
 import React from 'react';
-import { Icon, PressableInputContainer, Text } from '@tecsinapse/react-core';
+import {
+  Icon,
+  PressableInputContainer,
+  Text,
+  TextProps,
+} from '@tecsinapse/react-core';
 import { useClickAwayListener } from '../../../hooks';
 import { StyledContainer, StyledInputContainer } from './styled';
 import { Dropdown } from './Dropdown';
@@ -7,7 +12,8 @@ import { getDisplayValue } from './functions';
 import { Transition } from 'react-transition-group';
 import { defaultStyles, transition } from './animations';
 
-export interface SelectProps<Data, Type extends 'single' | 'multi'> {
+export interface SelectProps<Data, Type extends 'single' | 'multi'>
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   options: Data[];
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
@@ -20,7 +26,10 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   onSearch?: (searchArg: string) => void | never;
   searchBarPlaceholder?: string;
   hideSearchBar?: boolean;
+  disabled?: boolean;
   label?: string;
+  anchor?: 'top' | 'bottom';
+  displayTextProps?: TextProps;
 }
 
 export const Select = <Data, Type extends 'single' | 'multi'>({
@@ -32,8 +41,12 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   placeholder,
   onSearch,
+  searchBarPlaceholder,
   hideSearchBar = true,
   label,
+  disabled = false,
+  anchor = 'bottom',
+  displayTextProps,
   ...rest
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
@@ -50,12 +63,12 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   );
 
   return (
-    <StyledContainer ref={refDropDown}>
+    <StyledContainer ref={refDropDown} {...rest}>
       <StyledInputContainer>
         <PressableInputContainer
           label={label}
-          {...rest}
           onPress={() => setDropDownVisible(!dropDownVisible)}
+          disabled={disabled}
           rightComponent={
             <Icon
               name="chevron-down"
@@ -65,7 +78,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
             />
           }
         >
-          <Text ellipsizeMode="tail" numberOfLines={1}>
+          <Text {...displayTextProps} ellipsizeMode="tail" numberOfLines={1}>
             {displayValue}
           </Text>
         </PressableInputContainer>
@@ -80,8 +93,11 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
             keyExtractor={keyExtractor}
             labelExtractor={labelExtractor}
             hideSearchBar={hideSearchBar}
-            style={{ ...defaultStyles, ...transition[state] }}
+            searchBarPlaceholder={searchBarPlaceholder}
+            onSearch={onSearch}
+            style={{ ...defaultStyles, ...transition[anchor][state] }}
             setDropDownVisible={setDropDownVisible}
+            anchor={anchor}
           />
         )}
       </Transition>
