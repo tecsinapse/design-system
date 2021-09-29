@@ -45,8 +45,8 @@ const now = set(new Date(), {
   milliseconds: 0,
 });
 
-function dayOfWeekFromMonday(dayOfWeek: number) {
-  return dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+function dayOfWeekFromWeekStart(dayOfWeek: number, weekStartsOn: number) {
+  return dayOfWeek === 0 ? 0 : dayOfWeek - weekStartsOn;
 }
 
 function Calendar<T extends SelectionType>({
@@ -68,9 +68,14 @@ function Calendar<T extends SelectionType>({
 
   const [referenceDate, setReferenceDate] = React.useState(_referenceDate);
 
-  const startingWeekDay = dayOfWeekFromMonday(referenceDate.getDay());
+  const startingWeekDay = dayOfWeekFromWeekStart(
+    referenceDate.getDay(),
+    locale?.options?.weekStartsOn ?? 0
+  );
 
-  const weeksInMonth = getWeeksInMonth(referenceDate, { weekStartsOn: 1 });
+  const weeksInMonth = getWeeksInMonth(referenceDate, {
+    weekStartsOn: locale?.options?.weekStartsOn ?? 0,
+  });
 
   const Capitalized = getCapitalizedTextComponent(TextComponent);
 
