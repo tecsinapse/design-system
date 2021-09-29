@@ -15,7 +15,11 @@ import {
   StyledContainerTextLabel,
   StyledSpan,
   OptionsContainer,
+  PaddedContainer,
 } from './styled';
+import { SearchInput } from './components';
+
+const fullWidth = { width: '100%' };
 
 const Dropdown = <Data, Type extends 'single' | 'multi'>({
   options,
@@ -29,6 +33,8 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   setDropDownVisible,
   style,
   anchor,
+  selectAllLabel,
+  searchBarPlaceholder,
 }: SelectProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
 }): JSX.Element => {
@@ -51,6 +57,10 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
     !aux ? onSelect(auxArray as OnSelectArg) : onSelect(items as OnSelectArg);
   }, [options, setCheckedAll, onSelect]);
 
+  const onChange = React.useCallback(text => setSearchArg(text), [
+    setSearchArg,
+  ]);
+
   return (
     <StyledContainerDropdown
       lengthOptions={lengthOptions}
@@ -64,29 +74,31 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
           <Checkbox checked={checkedAll} onChange={onClickCheckAll} />
           {!hideSearchBar ? (
             <SearchBarContainer>
-              <Input
-                style={{ width: '100%' }}
-                placeholder="Busque a opção desejada"
-                value={searchArg}
-                leftComponent={
-                  <Icon
-                    name="magnify"
-                    type="material-community"
-                    size="centi"
-                    style={{ marginHorizontal: 12 }}
-                  />
-                }
-                onChange={text => setSearchArg(text)}
+              <SearchInput
+                searchArg={searchArg}
+                onChange={onChange}
+                fullWidth={fullWidth}
+                placeholder={searchBarPlaceholder}
               />
             </SearchBarContainer>
           ) : (
             <StyledContainerTextLabel>
               <Text fontWeight="bold">
-                <StyledSpan>Selecionar todos</StyledSpan>
+                <StyledSpan>{selectAllLabel}</StyledSpan>
               </Text>
             </StyledContainerTextLabel>
           )}
         </StyledContainerCheckAll>
+      )}
+      {type === 'single' && !hideSearchBar && (
+        <PaddedContainer>
+          <SearchInput
+            searchArg={searchArg}
+            onChange={onChange}
+            fullWidth={fullWidth}
+            placeholder={searchBarPlaceholder}
+          />
+        </PaddedContainer>
       )}
       <OptionsContainer lengthOptions={options.length}>
         {options.map((item, index) => (
@@ -102,7 +114,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
             setDropDownVisible={setDropDownVisible}
             checkedAll={checkedAll}
             setCheckedAll={setCheckedAll}
-            lenghtOptions={options.length}
+            lenghtOptions={lengthOptions}
           />
         ))}
       </OptionsContainer>

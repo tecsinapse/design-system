@@ -6,7 +6,11 @@ import {
   TextProps,
 } from '@tecsinapse/react-core';
 import { useClickAwayListener } from '../../../hooks';
-import { StyledContainer, StyledInputContainer } from './styled';
+import {
+  RightComponent,
+  StyledContainer,
+  StyledInputContainer,
+} from './styled';
 import { Dropdown } from './Dropdown';
 import { getDisplayValue } from './functions';
 import { Transition } from 'react-transition-group';
@@ -26,6 +30,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
   onSearch?: (searchArg: string) => void | never;
   searchBarPlaceholder?: string;
   hideSearchBar?: boolean;
+  selectAllLabel?: string;
   disabled?: boolean;
   label?: string;
   anchor?: 'top' | 'bottom';
@@ -42,12 +47,13 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   placeholder,
   onSearch,
-  searchBarPlaceholder,
+  searchBarPlaceholder = 'Busque a opção desejada',
   hideSearchBar = true,
   label,
   disabled = false,
   anchor = 'bottom',
   displayTextProps,
+  selectAllLabel = 'Selecionar todos',
   ...rest
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
@@ -63,21 +69,18 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     labelExtractor
   );
 
+  const onPress = React.useCallback(() => setDropDownVisible(prev => !prev), [
+    setDropDownVisible,
+  ]);
+
   return (
     <StyledContainer ref={refDropDown} {...rest}>
       <StyledInputContainer>
         <PressableInputContainer
           label={label}
-          onPress={() => setDropDownVisible(!dropDownVisible)}
+          onPress={onPress}
           disabled={disabled}
-          rightComponent={
-            <Icon
-              name="chevron-down"
-              type="material-community"
-              size="centi"
-              style={{ marginRight: 12 }}
-            />
-          }
+          rightComponent={RightComponent}
         >
           <Text {...displayTextProps} ellipsizeMode="tail" numberOfLines={1}>
             {displayValue}
@@ -99,6 +102,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
             style={{ ...defaultStyles, ...transition[anchor][state] }}
             setDropDownVisible={setDropDownVisible}
             anchor={anchor}
+            selectAllLabel={selectAllLabel}
           />
         )}
       </Transition>

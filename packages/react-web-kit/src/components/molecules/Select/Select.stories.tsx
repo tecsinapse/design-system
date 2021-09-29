@@ -15,21 +15,33 @@ type Option = {
 };
 
 const OPTIONS_EXAMPLE: Option[] = [
-  { label: 'Label 1', value: 'value1' },
-  { label: 'Label 2', value: 'value2' },
-  { label: 'Label 3', value: 'value3' },
-  { label: 'Label 4', value: 'value4' },
-  { label: 'Label 5', value: 'value5' },
-  { label: 'Label 6', value: 'value6' },
+  { label: 'New York', value: 'value1' },
+  { label: 'São Paulo', value: 'value2' },
+  { label: 'Lisbon', value: 'value3' },
+  { label: 'Moscow', value: 'value4' },
+  { label: 'Sidney', value: 'value5' },
+  { label: 'Rio de Janeiro', value: 'value6' },
 ];
 
-const TemplateSingle: Story<SelectProps<Option, 'single'>> = args => {
+const TemplateSingle: Story<SelectProps<Option, 'single'>> = ({
+  options: _options,
+  ...args
+}) => {
   const [singleValue, setSingleValue] = useState(undefined);
+  const [options, setOptions] = useState(_options);
 
-  const handleSelectSingleValue = key => setSingleValue(key);
+  const handleSelectSingleValue = React.useCallback(
+    key => setSingleValue(key),
+    [setSingleValue]
+  );
+
+  const labelExtractor = React.useCallback(item => item.label, []);
+  const keyExtractor = React.useCallback(item => String(item.value), []);
 
   const handleSearch = React.useCallback((searchArg: string) => {
-    console.log(searchArg);
+    setOptions(
+      _options.filter(item => new RegExp(searchArg, 'ig').test(item.label))
+    );
   }, []);
 
   return (
@@ -37,11 +49,12 @@ const TemplateSingle: Story<SelectProps<Option, 'single'>> = args => {
       <ContainerSelect>
         <Select
           {...args}
+          options={options}
           value={singleValue}
           type="single"
           onSelect={handleSelectSingleValue}
-          labelExtractor={item => item.label}
-          keyExtractor={item => String(item.value)}
+          labelExtractor={labelExtractor}
+          keyExtractor={keyExtractor}
           onSearch={handleSearch}
         />
       </ContainerSelect>
@@ -61,11 +74,13 @@ Single.args = {
 const TemplateMulti: Story<SelectProps<Option, 'multi'>> = args => {
   const [multiValue, setMultiValue] = useState([]);
 
-  const handleSelectMultipleValues = keys => setMultiValue(keys);
+  const handleSelectMultipleValues = React.useCallback(
+    keys => setMultiValue(keys),
+    [setMultiValue]
+  );
 
-  const handleSearch = React.useCallback((searchArg: string) => {
-    console.log(searchArg);
-  }, []);
+  const labelExtractor = React.useCallback(item => item.label, []);
+  const keyExtractor = React.useCallback(item => String(item.value), []);
 
   return (
     <Container>
@@ -75,9 +90,8 @@ const TemplateMulti: Story<SelectProps<Option, 'multi'>> = args => {
           value={multiValue}
           type="multi"
           onSelect={handleSelectMultipleValues}
-          labelExtractor={item => item.label}
-          keyExtractor={item => String(item.value)}
-          onSearch={handleSearch}
+          labelExtractor={labelExtractor}
+          keyExtractor={keyExtractor}
         />
       </ContainerSelect>
     </Container>
@@ -90,7 +104,6 @@ Multi.args = {
   placeholder: 'Placeholder do select',
   label: 'Label',
   options: OPTIONS_EXAMPLE,
-  hideSearchBar: false,
 };
 
 const Container = styled('div')`
