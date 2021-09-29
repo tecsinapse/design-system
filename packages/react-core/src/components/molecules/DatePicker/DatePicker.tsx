@@ -7,6 +7,7 @@ import { CalendarProps, DateRange, SelectionType } from '../Calendar';
 import { DatePickerModalProps, Modal } from './Modal';
 import { CalendarIcon, getStyledTextComponent } from './styled';
 import { HintInputContainer } from '../HintInputContainer';
+import { useEffect } from 'react';
 
 export interface DatePickerProps<T extends SelectionType>
   extends InputContainerProps,
@@ -22,6 +23,7 @@ export interface DatePickerProps<T extends SelectionType>
   onFocus?: () => void | never;
   onBlur?: () => void | never;
   format?: string;
+  closeOnPick?: boolean;
 }
 
 function DatePicker<T extends SelectionType>({
@@ -48,6 +50,7 @@ function DatePicker<T extends SelectionType>({
   animationType = 'fade',
   style,
   locale,
+  closeOnPick = false,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -58,15 +61,15 @@ function DatePicker<T extends SelectionType>({
 
   const [modalVisible, setModalVisible] = React.useState(false);
 
-  const handlePressInput = () => {
+  const handlePressInput = React.useCallback(() => {
     setModalVisible(true);
     handleFocus();
-  };
+  }, [handleFocus, setModalVisible]);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = React.useCallback(() => {
     setModalVisible(false);
     handleBlur();
-  };
+  }, [handleBlur, setModalVisible]);
 
   const getDisplayValue = () => {
     if (!value) return placeholder;
@@ -81,6 +84,16 @@ function DatePicker<T extends SelectionType>({
   };
 
   const StyledText = getStyledTextComponent(TextComponent);
+
+  useEffect(() => {
+    if (closeOnPick && value && type === 'day') {
+      setTimeout(handleCloseModal, 200);
+    }
+    if (closeOnPick && value && type === 'range') {
+      const { lowest, highest } = value as DateRange;
+      lowest && highest && setTimeout(handleCloseModal, 200);
+    }
+  }, [value, closeOnPick, type, handleCloseModal]);
 
   return (
     <>

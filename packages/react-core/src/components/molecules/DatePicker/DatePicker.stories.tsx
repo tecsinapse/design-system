@@ -9,19 +9,36 @@ export default {
   component: DatePicker,
 };
 
-const Template: Story<DatePickerProps<'range'>> = ({ ...args }) => {
+const Template: Story<DatePickerProps<'range'>> = args => {
   const [value, setValue] = React.useState<DateRange>();
 
   return (
-    <DatePicker
-      label={'Select date'}
-      placeholder={'Select date'}
-      type={'range'}
-      value={value}
-      onChange={setValue}
-      locale={ptBR}
-    />
+    <DatePicker {...args} value={value} onChange={setValue} locale={ptBR} />
   );
 };
 
-export const Base = Template.bind({});
+export const Range = Template.bind({});
+
+Range.args = {
+  label: 'Select date',
+  placeholder: 'Select date',
+  type: 'range',
+  closeOnPick: true,
+};
+
+const TemplateDay: Story<DatePickerProps<'day'>> = args => {
+  const [value, setValue] = React.useState<Date>();
+
+  return (
+    <DatePicker {...args} value={value} onChange={setValue} locale={ptBR} />
+  );
+};
+
+export const Day = TemplateDay.bind({});
+
+Day.args = {
+  label: 'Select date',
+  placeholder: 'Select date',
+  type: 'day',
+  closeOnPick: true,
+};

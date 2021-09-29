@@ -2,7 +2,8 @@ import React from 'react';
 
 export const useClickAwayListener = (
   ref: React.MutableRefObject<any>,
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>,
+  event: 'mouseup' | 'mousedown' | undefined = 'mousedown'
 ) => {
   React.useEffect(() => {
     const handleClickOutside = event => {
@@ -10,9 +11,9 @@ export const useClickAwayListener = (
         setVisible(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener(event, handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener(event, handleClickOutside);
     };
   }, [ref]);
 };
