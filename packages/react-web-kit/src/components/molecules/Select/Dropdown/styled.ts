@@ -68,8 +68,13 @@ export const SearchBarContainer = styled('div')<Partial<StyleProps>>`
   width: 100%;
 `;
 
-export const StyledContainerCheckAll = styled('div')<Partial<StyleProps>>`
+export const PaddedContainer = styled('div')<Partial<StyleProps>>`
   padding: ${({ theme }) => `${theme.spacing.mili} ${theme.spacing.deca}`};
+`;
+
+export const StyledContainerCheckAll = styled(PaddedContainer)<
+  Partial<StyleProps>
+>`
   flex-direction: row;
   display: flex;
   justify-content: flex-start;
@@ -84,7 +89,7 @@ export const StyledContainerCheckAll = styled('div')<Partial<StyleProps>>`
 `;
 
 export const StyledSpan = styled('span')<Partial<StyleProps>>`
-  color: ${({ theme }) => theme.color.primary.medium};
+  color: ${({ theme }) => theme.font.color.dark};
   padding: ${({ theme }) => `${theme.spacing.mili} 0px`};
 `;
 
