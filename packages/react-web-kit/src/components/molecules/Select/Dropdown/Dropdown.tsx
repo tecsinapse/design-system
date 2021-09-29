@@ -33,20 +33,23 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   setDropDownVisible: (t: boolean) => void;
 }): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
-  const lengthOptions = options.length;
+  const lengthOptions = React.useMemo(() => options.length, [options]);
 
   const [checkedAll, setCheckedAll] = React.useState<boolean>(
     type === 'multi' && (value as Data[])?.length === lengthOptions
   );
 
-  const onClickCheckAll = () => {
+  const onClickCheckAll = React.useCallback(() => {
     const items = options.map(option => option);
-    setCheckedAll(!checkedAll);
-    const aux = !checkedAll;
+    let aux;
+    setCheckedAll(prev => {
+      aux = !prev;
+      return !prev;
+    });
     type OnSelectArg = Parameters<typeof onSelect>[0];
     const auxArray: Data[] = [];
     !aux ? onSelect(auxArray as OnSelectArg) : onSelect(items as OnSelectArg);
-  };
+  }, [options, setCheckedAll, onSelect]);
 
   return (
     <StyledContainerDropdown
@@ -89,7 +92,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
         {options.map((item, index) => (
           <ItemSelect
             type={type}
-            key={index}
+            key={keyExtractor(item)}
             item={item}
             onSelect={onSelect}
             value={value}
