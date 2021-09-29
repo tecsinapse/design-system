@@ -6,22 +6,24 @@ import { Icon } from '../../atoms/Icon';
 import { disabledInputStyles, InputContainerProps } from '../../atoms/Input';
 import { PressableSurface } from '../../atoms/PressableSurface';
 import { TextProps } from '../../atoms/Text';
+import { hex2rgba } from '@tecsinapse/react-core';
 
 const isWeb = Platform.OS === 'web';
 
-export const Backdrop = styled(PressableSurface)`
-  ${isWeb
-    ? css`
-        justify-content: center;
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        height: 100vh;
-      `
-    : css`
-        justify-content: flex-end;
-        background-color: rgba(0, 0, 0, 0.5);
-        height: 100%;
-      `}
+export const Backdrop = styled(PressableSurface)<Partial<StyleProps>>`
+  ${({ theme }) =>
+    isWeb
+      ? css`
+          justify-content: center;
+          align-items: center;
+          background-color: ${hex2rgba(theme.miscellaneous.overlay, 0.5)};
+          height: 100vh;
+        `
+      : css`
+          justify-content: flex-end;
+          background-color: ${hex2rgba(theme.miscellaneous.overlay, 0.5)};
+          height: 100%;
+        `}
 `;
 
 export const ModalContent = styled.View<

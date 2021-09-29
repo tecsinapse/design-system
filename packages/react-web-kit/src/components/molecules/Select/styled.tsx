@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { StyleProps } from '@tecsinapse/react-core';
+import { Icon, StyleProps } from '@tecsinapse/react-core';
+import React from 'react';
 
 export const StyledContainer = styled('div')<Partial<StyleProps>>`
   display: flex;
@@ -13,3 +14,12 @@ export const StyledContainer = styled('div')<Partial<StyleProps>>`
 export const StyledInputContainer = styled('div')<Partial<StyleProps>>`
   width: 100%;
 `;
+
+export const RightComponent = (
+  <Icon
+    name="chevron-down"
+    type="material-community"
+    size="centi"
+    style={{ marginRight: 12 }}
+  />
+);

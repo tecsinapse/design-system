@@ -13,7 +13,7 @@ interface SelectItemProps<Data, Type extends 'single' | 'multi'> {
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
-  keyExtractor: (t: Data, index: number) => string;
+  keyExtractor: (t: Data, index?: number) => string;
   labelExtractor: (t: Data) => string;
   index: number;
 }
@@ -46,33 +46,39 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
     }
   }, [checkedAll]);
 
-  const clickItem = item => {
-    // TS Workaround since TS won't infer the ternary operator's result type correctly
-    type OnSelectArg = Parameters<typeof onSelect>[0];
-    const key: Data = item;
-    if (Array.isArray(value)) {
-      const auxChecked = !checked;
-      setChecked(!checked);
-      if (auxChecked) {
-        onSelect([...value, key] as OnSelectArg);
-        [...value, key].length === lenghtOptions && setCheckedAll(true);
+  const clickItem = React.useCallback(
+    (item, _value) => {
+      // TS Workaround since TS won't infer the ternary operator's result type correctly
+      type OnSelectArg = Parameters<typeof onSelect>[0];
+      const key: Data = item;
+      if (Array.isArray(_value)) {
+        let auxChecked;
+        setChecked(prev => {
+          auxChecked = !prev;
+          return !prev;
+        });
+        if (auxChecked) {
+          onSelect([..._value, key] as OnSelectArg);
+          [..._value, key].length === lenghtOptions && setCheckedAll(true);
+        } else {
+          const auxArray: Data[] = [..._value];
+          const indexToExclude = auxArray.indexOf(key);
+          auxArray.splice(indexToExclude, 1);
+          onSelect([...auxArray] as OnSelectArg);
+          setCheckedAll(false);
+        }
       } else {
-        const auxArray: Data[] = [...value];
-        const indexToExclude = auxArray.indexOf(key);
-        auxArray.splice(indexToExclude, 1);
-        onSelect([...auxArray] as OnSelectArg);
-        setCheckedAll(false);
+        onSelect(key as OnSelectArg);
+        setDropDownVisible(false);
       }
-    } else {
-      onSelect(key as OnSelectArg);
-      setDropDownVisible(false);
-    }
-  };
+    },
+    [onSelect, setDropDownVisible, setCheckedAll, setChecked]
+  );
 
   return (
-    <ContainerItemSelect onClick={() => clickItem(item)}>
+    <ContainerItemSelect onClick={() => clickItem(item, value)}>
       {isMulti && (
-        <Checkbox checked={checked} onChange={() => clickItem(item)} />
+        <Checkbox checked={checked} onChange={() => clickItem(item, value)} />
       )}
       <StyledContainerTextLabel>
         <Text fontWeight="bold" ellipsizeMode="tail" numberOfLines={1}>
@@ -85,4 +91,4 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   );
 };
 
-export default SelectItem;
+export default React.memo(SelectItem) as typeof SelectItem;

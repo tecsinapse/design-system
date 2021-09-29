@@ -50,7 +50,7 @@ const Menubar: React.FC<MenubarProps> = ({
   const [input, setInput] = useDebouncedState<string>('', setSearch);
   const [open, setOpen] = React.useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  useClickAwayListener(menuRef, setOpen);
+  useClickAwayListener(menuRef, setOpen, 'mouseup');
 
   const toggleOpen = React.useCallback(() => setOpen(state => !state), [
     setOpen,
