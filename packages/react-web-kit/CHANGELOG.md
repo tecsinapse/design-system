@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.8.0...@tecsinapse/react-web-kit@1.9.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* **select/web:** searchbar on single mode ([aad7801](https://github.com/tecsinapse/design-system/commit/aad780124899ba8d87e36ece54ee5aff6b5c92f9))
+* calendar starts on sunday ([d49ef09](https://github.com/tecsinapse/design-system/commit/d49ef09a2af208be888730524495e363a195b091))
+
+
+### Features
+
+* change select anchor on datagrid ([f3b11d9](https://github.com/tecsinapse/design-system/commit/f3b11d9731e1bf0ddea13c92c2247501c6120255))
+
+
+### Performance Improvements
+
+* select memo options ([740e8ef](https://github.com/tecsinapse/design-system/commit/740e8eff397e8b5ac7a423b6e76579b42ac6c4b4))
+
+
+
+
+
 # [1.8.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.8...@tecsinapse/react-web-kit@1.8.0) (2021-09-28)
 
 

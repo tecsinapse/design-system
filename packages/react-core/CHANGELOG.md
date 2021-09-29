@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.8.0...@tecsinapse/react-core@1.9.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* calendar starts on sunday ([d49ef09](https://github.com/tecsinapse/design-system/commit/d49ef09a2af208be888730524495e363a195b091))
+
+
+
+
+
 # [1.8.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.6...@tecsinapse/react-core@1.8.0) (2021-09-28)
 
 **Note:** Version bump only for package @tecsinapse/react-core
