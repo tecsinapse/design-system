@@ -12,7 +12,7 @@ export interface WebButtonProps extends ButtonProps {
   onMouseOut?: () => void;
 }
 
-const Button: FC<ButtonProps> = ({
+const Button: FC<WebButtonProps> = ({
   children,
   disabled,
   frozen,
