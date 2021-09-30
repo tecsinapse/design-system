@@ -7,10 +7,10 @@ import { StyledWebButton } from './styled';
  * TODO: Add a property 'defaultElement' to render a default
  * component and provide some button's state to it.
  */
-export interface WebButtonProps extends ButtonProps {
+export type WebButtonProps = ButtonProps & {
   onMouseOver?: () => void;
   onMouseOut?: () => void;
-}
+};
 
 const Button: FC<WebButtonProps> = ({
   children,
