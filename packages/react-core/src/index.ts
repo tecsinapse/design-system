@@ -39,6 +39,8 @@ export {
   useInputFocus,
   useMask,
   disabledInputStyles,
+  IMask,
+  IMaskValue,
 } from './components/atoms/Input';
 export { Paper, PaperProps } from './components/atoms/Paper';
 export {

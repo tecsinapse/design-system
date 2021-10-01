@@ -1,12 +1,11 @@
 import styled, { css } from '@emotion/native';
 import { FC } from 'react';
 import { Platform } from 'react-native';
-import { StyleProps } from '../../../types/defaults';
 import { Icon } from '../../atoms/Icon';
 import { disabledInputStyles, InputContainerProps } from '../../atoms/Input';
 import { PressableSurface } from '../../atoms/PressableSurface';
 import { TextProps } from '../../atoms/Text';
-import { hex2rgba } from '@tecsinapse/react-core';
+import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 
 const isWeb = Platform.OS === 'web';
 

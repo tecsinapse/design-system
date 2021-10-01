@@ -1,7 +1,6 @@
 import currency from 'currency.js';
 import { useCallback, useState } from 'react';
-import { Mask } from '..';
-import { MaskValue } from './useMask';
+import { IMaskValue, IMask } from './useMask';
 import { extractNumbersFromString } from '@tecsinapse/react-core';
 
 type CurrencyOptions = currency.Options;
@@ -22,14 +21,14 @@ const DEFAULT_OPTIONS: CurrencyOptions = {
 export const useCurrencyMask = (
   options?: CurrencyOptions,
   defaultValue?: string
-): [Mask, (value: string) => void] => {
+): [IMask, (value: string) => void] => {
   const getRegex = useCallback(
     (precision: number) => new RegExp(`\\B(?=(\\d{${precision}})(?!\\d))`, 'g'),
     [options]
   );
 
   const applyMask = useCallback(
-    (value = ''): MaskValue => {
+    (value = ''): IMaskValue => {
       const mergedOptions = { ...DEFAULT_OPTIONS, ...options };
       const { precision = -1 } = mergedOptions;
       const onlyNumbers = String(extractNumbersFromString(value));
@@ -52,7 +51,7 @@ export const useCurrencyMask = (
     [options, getRegex]
   );
 
-  const [value, setValue] = useState<Mask>({
+  const [value, setValue] = useState<IMask>({
     converter: applyMask,
     maskValue: applyMask(defaultValue),
   });
