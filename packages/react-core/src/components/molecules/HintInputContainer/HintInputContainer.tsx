@@ -7,7 +7,6 @@ import {
 } from '@tecsinapse/react-core';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import * as React from 'react';
-import { FC } from 'react';
 
 export interface HintInputContainerProps extends PressableInputContainerProps {
   viewStyle?: StyleProp<ViewStyle>;
@@ -21,7 +20,7 @@ export interface HintInputContainerProps extends PressableInputContainerProps {
   rightComponent?: JSX.Element;
 }
 
-const HintInputContainer: FC<HintInputContainerProps> = ({
+const HintInputContainer: React.FC<HintInputContainerProps> = ({
   viewStyle,
   onPress,
   focused,

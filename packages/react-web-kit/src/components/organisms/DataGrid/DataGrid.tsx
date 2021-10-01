@@ -177,18 +177,20 @@ const DataGrid = <Data extends unknown>({
           </TBody>
         )}
 
-        <Footer
-          exportFunction={exportFunction}
-          exportLabel={exportLabel}
-          rowsPerPageLabel={rowsPerPageLabel}
-          rowsPerPage={rowsPerPage}
-          onRowsPerPageChange={onRowsPerPageChange}
-          rowsPerPageOptions={rowsPerPageOptions}
-          rowsCount={rowsCount ?? data.length}
-          page={page}
-          onPageChange={onPageChange}
-          pagination={pagination}
-        />
+        {(Number(rowsCount) > 0 || data.length > 0) && (
+          <Footer
+            exportFunction={exportFunction}
+            exportLabel={exportLabel}
+            rowsPerPageLabel={rowsPerPageLabel}
+            rowsPerPage={rowsPerPage}
+            onRowsPerPageChange={onRowsPerPageChange}
+            rowsPerPageOptions={rowsPerPageOptions}
+            rowsCount={rowsCount ?? data.length}
+            page={page}
+            onPageChange={onPageChange}
+            pagination={pagination}
+          />
+        )}
       </Table>
     </TableContainer>
   );

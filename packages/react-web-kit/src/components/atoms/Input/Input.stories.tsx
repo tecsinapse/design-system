@@ -9,7 +9,7 @@ export default {
 };
 
 const Template: Story<InputWebProps> = args => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
 
   const onChange = text => {
     setValue(text);
