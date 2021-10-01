@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.9.0...@tecsinapse/react-native-kit@1.10.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* Rename mask interface to avoid mismatch ([589ce1e](https://github.com/tecsinapse/design-system/commit/589ce1e3a63dff4334b48f218d3918dfb2837026))
+
+
+
+
+
 # [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.8.0...@tecsinapse/react-native-kit@1.9.0) (2021-09-29)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit

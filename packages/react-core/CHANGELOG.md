@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.9.0...@tecsinapse/react-core@1.10.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* Rename mask interface to avoid mismatch ([589ce1e](https://github.com/tecsinapse/design-system/commit/589ce1e3a63dff4334b48f218d3918dfb2837026))
+
+
+### Performance Improvements
+
+* **calendar:** refactoring components for memo ([95d2245](https://github.com/tecsinapse/design-system/commit/95d2245a47c6abd221e673e1dd145f948b83a8e4))
+
+
+
+
+
 # [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.8.0...@tecsinapse/react-core@1.9.0) (2021-09-29)
 
 

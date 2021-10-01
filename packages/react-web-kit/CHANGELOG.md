@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.9.0...@tecsinapse/react-web-kit@1.10.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* **data grid:** hide footer on no data ([dc4eb41](https://github.com/tecsinapse/design-system/commit/dc4eb41689addd41c12c5d22e3c528b3f9f169de))
+* button interface build ([d919620](https://github.com/tecsinapse/design-system/commit/d9196201d158745bd895ded084252cf4fe425265))
+* Rename mask interface to avoid mismatch ([589ce1e](https://github.com/tecsinapse/design-system/commit/589ce1e3a63dff4334b48f218d3918dfb2837026))
+
+
+### Features
+
+* **tooltip:** add tooltip ([3b581fa](https://github.com/tecsinapse/design-system/commit/3b581fa3a611afaf07107a51ac908bef288a51a4))
+
+
+
+
+
 # [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.8.0...@tecsinapse/react-web-kit@1.9.0) (2021-09-29)
 
 
