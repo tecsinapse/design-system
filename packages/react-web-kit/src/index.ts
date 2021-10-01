@@ -38,4 +38,5 @@ export {
 } from './components/organisms/DataGrid';
 export { Modal, ModalProps } from './components/atoms/Modal';
 export { TextArea, TextAreaProps } from './components/molecules/TextArea';
+export { Tooltip, ITooltip } from './components/atoms/Tooltip';
 export * from './hooks';
