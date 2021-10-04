@@ -45,6 +45,12 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
     type === 'multi' && (value as Data[])?.length === lengthOptions
   );
 
+  React.useEffect(() => {
+    if (type === 'multi' && lengthOptions === (value as Data[])?.length) {
+      setCheckedAll(true);
+    }
+  }, [value, type, lengthOptions]);
+
   const onClickCheckAll = React.useCallback(() => {
     const items = options.map(option => option);
     let aux;
