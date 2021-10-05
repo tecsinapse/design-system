@@ -35,14 +35,14 @@ export interface GroupButtonValue<T> {
 export interface GroupButtonProps<T> {
   value: T;
   options: GroupButtonValue<T>[];
-  renderKey: (option?: T) => any;
+  renderKey: (option?: T) => string | number | undefined;
   renderOption: (option: T, active: boolean) => JSX.Element;
   onChange: (option: T) => void;
   buttonSize?: ButtonSizeType;
   style?: StyleProp<ViewStyle>;
 }
 
-const GroupButton = <T extends any>({
+const GroupButton = <T extends unknown>({
   style,
   ...rest
 }: GroupButtonProps<T>) => {
@@ -51,7 +51,7 @@ const GroupButton = <T extends any>({
   );
 };
 
-const groupOptions = <T extends any>({
+const groupOptions = <T extends unknown>({
   options,
   renderOption,
   renderKey,

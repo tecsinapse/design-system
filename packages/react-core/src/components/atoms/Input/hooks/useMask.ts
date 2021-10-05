@@ -48,6 +48,7 @@ const getMask = (value = '', mask: ((raw: any) => string) | string): string => {
 /**
  * TODO:
  * @param mask
+ * @param defaultValue
  * @returns
  */
 export const useMask = (

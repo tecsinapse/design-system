@@ -27,4 +27,6 @@ const InputPassword: FC<InputPasswordNativeProps> = React.forwardRef(
   }
 );
 
+InputPassword.displayName = 'InputPassword';
+
 export default InputPassword;

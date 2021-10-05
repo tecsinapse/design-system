@@ -27,4 +27,6 @@ const InputPassword: FC<InputPasswordWebProps> = React.forwardRef(
   }
 );
 
+InputPassword.displayName = 'InputPassword';
+
 export default InputPassword;

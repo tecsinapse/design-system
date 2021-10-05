@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Icon,
   PressableInputContainer,
   Text,
   TextProps,

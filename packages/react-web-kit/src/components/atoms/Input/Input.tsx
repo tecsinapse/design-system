@@ -79,4 +79,6 @@ const Input: FC<InputWebProps> = React.forwardRef(
   }
 );
 
+Input.displayName = 'Input';
+
 export default Input;

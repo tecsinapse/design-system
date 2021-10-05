@@ -35,7 +35,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   selectModalTitleComponent,
   confirmButtonText,
   ...modalProps
-}: SelectNativeProps<Data, Type> & ModalProps) => {
+}: SelectNativeProps<Data, Type> & ModalProps): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
 

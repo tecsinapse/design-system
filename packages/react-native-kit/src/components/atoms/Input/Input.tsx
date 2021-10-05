@@ -91,4 +91,6 @@ const Input: FC<InputNativeProps> = React.forwardRef(
   }
 );
 
+Input.displayName = 'Input';
+
 export default Input;

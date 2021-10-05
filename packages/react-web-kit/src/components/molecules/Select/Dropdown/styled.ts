@@ -4,7 +4,8 @@ import { SelectProps } from '../Select';
 import { css } from '@emotion/react';
 
 type InjectedProps = Partial<
-  StyleProps & SelectProps<any, any> & { lengthOptions: number }
+  StyleProps &
+    SelectProps<unknown, 'single' | 'multi'> & { lengthOptions: number }
 >;
 
 const anchorBottom = ({
@@ -38,7 +39,7 @@ export const StyledContainerDropdown = styled('div')<InjectedProps>`
   padding-top: ${({
     theme,
     hideSearchBar,
-  }: StyleProps & Partial<SelectProps<any, any>>) =>
+  }: StyleProps & Partial<SelectProps<unknown, 'single' | 'multi'>>) =>
     !hideSearchBar ? `${theme.spacing.deca}` : '0px'};
   padding-bottom: ${({ theme }: StyleProps) => theme.spacing.mili};
   z-index: ${({ theme }: StyleProps) => theme.zIndex.select};

@@ -7,8 +7,7 @@ import {
 } from '@tecsinapse/react-core';
 import { StyledWebInput } from './styled';
 
-export interface TextAreaProps
-  extends Omit<ITACore, 'TextComponent' | 'focused'> {}
+export type TextAreaProps = Omit<ITACore, 'TextComponent' | 'focused'>;
 
 const TextArea: FC<TextAreaProps> = ({
   label,

@@ -1,6 +1,10 @@
 import { Animated } from 'react-native';
 
-export const transitionSwitch = (active, transitionValue, animatedColor) => {
+export const transitionSwitch = (
+  active: boolean,
+  transitionValue: Animated.Value,
+  animatedColor: Animated.Value
+): void => {
   if (active) {
     Animated.timing(transitionValue, {
       toValue: 0,

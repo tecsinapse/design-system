@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { Button, ButtonProps, StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '@tecsinapse/react-core';
 import { PressableProps, ViewProps } from 'react-native';
 
 export const StyledView = styled.View<ViewProps & Partial<StyleProps>>`

@@ -20,7 +20,7 @@ export const StyledGroupButton = styled.View<Partial<StyleProps>>`
 
 export const getStyledGroupItemText = (component: FC<TextProps>) => {
   return styled(component)<
-    Partial<GroupButtonOptionProps<any>> & Partial<StyleProps>
+    Partial<GroupButtonOptionProps> & Partial<StyleProps>
   >`
     color: ${({ active, theme }) =>
       active ? theme.miscellaneous.surfaceColor : theme.color.secondary.medium};

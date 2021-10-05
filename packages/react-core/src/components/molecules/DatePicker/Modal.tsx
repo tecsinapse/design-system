@@ -19,7 +19,7 @@ const Component = <T extends SelectionType>({
   bottomOffset = 0,
   locale,
   ...modalProps
-}: CalendarProps<T> & ModalProps & DatePickerModalProps<T>) => {
+}: CalendarProps<T> & ModalProps & DatePickerModalProps<T>): JSX.Element => {
   return (
     <RNModal
       transparent

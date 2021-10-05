@@ -52,4 +52,6 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
   }
 );
 
+InputElement.displayName = 'InputElement';
+
 export default InputElement;

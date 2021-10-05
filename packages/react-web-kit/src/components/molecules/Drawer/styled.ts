@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '@tecsinapse/react-core';
 import { DrawerProps } from './Drawer';
 import { css } from '@emotion/react';
 

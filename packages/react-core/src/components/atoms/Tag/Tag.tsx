@@ -17,7 +17,7 @@ const Tag: React.FC<TagProps> = ({
   icon,
   variant = 'small',
   dismiss: canDismiss = false,
-  onDismiss = () => {},
+  onDismiss,
   style,
   ...rest
 }): JSX.Element => {
@@ -34,7 +34,7 @@ const Tag: React.FC<TagProps> = ({
   };
 
   const handleDismiss = useCallback(() => {
-    onDismiss();
+    onDismiss?.();
     fadeOut();
     setTimeout(() => setDismiss(true), duration);
   }, [onDismiss]);

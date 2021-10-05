@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Checkbox,
-  Text,
-  Icon,
-  useDebouncedState,
-} from '@tecsinapse/react-core';
-import { Input } from '../../../atoms/Input';
+import { Checkbox, Text, useDebouncedState } from '@tecsinapse/react-core';
 import { ItemSelect } from '../SelectItem';
 import { SelectProps } from '../Select';
 import {

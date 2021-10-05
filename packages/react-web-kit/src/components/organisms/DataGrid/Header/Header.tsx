@@ -2,7 +2,7 @@ import React from 'react';
 import { Checkbox, Icon, PressableSurface } from '@tecsinapse/react-core';
 import { Th, THead, Tr } from '../../../atoms/Table';
 import { CheckboxHeader } from './styled';
-import { HeadersType } from '../types';
+import { HeadersType, SortState } from '../types';
 import {
   findCurrentItemsOnData,
   findUnselectedItemsOnData,
@@ -30,7 +30,7 @@ const Header = <Data extends unknown>({
   selectedRows,
   onSelected,
 }: DataGridHeaderProps<Data>): JSX.Element => {
-  const [sortDirection, setSortDirection] = React.useState<string>(
+  const [sortDirection, setSortDirection] = React.useState<SortState>(
     NEXT_STATE.initial
   );
 

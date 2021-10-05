@@ -6,6 +6,8 @@ import {
 import React from 'react';
 import { Text } from '../../atoms/Text';
 
-export const Calendar = <T extends SelectionType>(props: CalendarProps<T>) => {
+export const Calendar = <T extends SelectionType>(
+  props: CalendarProps<T>
+): JSX.Element => {
   return <CalendarCore {...props} TextComponent={Text} />;
 };

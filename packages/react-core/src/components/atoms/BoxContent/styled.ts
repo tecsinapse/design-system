@@ -3,7 +3,7 @@ import { StyleProps } from '@tecsinapse/react-core';
 import { View } from 'react-native';
 import { BoxContentProps } from './BoxContent';
 
-export const elevatedStyles = ({ theme }: Partial<StyleProps>): any => [
+export const elevatedStyles = ({ theme }: Partial<StyleProps>) => [
   css({
     shadowColor: theme?.miscellaneous.shadow,
     shadowOffset: { width: 0, height: 2 },
