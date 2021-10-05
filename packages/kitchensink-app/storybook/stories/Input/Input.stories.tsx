@@ -10,11 +10,11 @@ storiesOf('Input', module)
   });
 
 const Component = () => {
-  const [value, setValue] = useState<string>('email@email.com');
+  const [value, setValue] = useState<string>();
   return (
     <Input
       label="Say something"
-      placeholder="Nop!"
+      placeholder="blabla"
       value={value}
       onChange={setValue}
     />

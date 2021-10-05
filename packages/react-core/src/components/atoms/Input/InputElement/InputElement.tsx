@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react';
 import { ThemeProp } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { StyleProp, TextInputProps, TextStyle } from 'react-native';
+import { Animated, StyleProp, TextInputProps, TextStyle } from 'react-native';
 import { Mask } from '../hooks/useMask';
 import { StyledInputElement } from '../styled';
 
@@ -17,6 +17,7 @@ export interface InputElementProps
   onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  inputElementStyles?: any;
 }
 
 const InputElement: FC<InputElementProps> = ({
@@ -25,6 +26,7 @@ const InputElement: FC<InputElementProps> = ({
   value,
   disabled = false,
   placeholderTextColor,
+  inputElementStyles,
   ...rest
 }): JSX.Element => {
   const theme = useTheme() as ThemeProp;
@@ -33,15 +35,18 @@ const InputElement: FC<InputElementProps> = ({
   const _placeholderColor = placeholderTextColor || theme.font.color.dark;
 
   return (
-    <StyledInputElement
-      {...rest}
-      onChangeText={onChange}
-      value={_value}
-      placeholder={placeholder}
-      placeholderTextColor={_placeholderColor}
-      disabled={disabled}
-      editable={!disabled}
-    />
+    <Animated.View>
+      <StyledInputElement
+        style={inputElementStyles}
+        {...rest}
+        onChangeText={onChange}
+        value={_value}
+        placeholder={placeholder}
+        placeholderTextColor={_placeholderColor}
+        disabled={disabled}
+        editable={!disabled}
+      />
+    </Animated.View>
   );
 };
 

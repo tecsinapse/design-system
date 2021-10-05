@@ -63,6 +63,7 @@ export const StyledInputContainer = styled.View<
   flex-direction: row;
   align-items: center;
   min-height: 44px;
+  position: relative;
 `;
 
 export const StyledInputElementBase = styled(TextInput)<

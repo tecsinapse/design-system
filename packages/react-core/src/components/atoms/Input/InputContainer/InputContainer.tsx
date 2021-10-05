@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { Animated, StyleProp, ViewStyle } from 'react-native';
 import { InputElementProps } from '..';
 import {
   ColorGradationType,
@@ -39,6 +39,7 @@ export interface InputContainerProps {
   variant?: InputVariantType;
   hint?: string;
   hintComponent?: JSX.Element;
+  labelComponentStyles?: any;
 }
 
 const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
@@ -49,7 +50,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   labelTypography = 'label',
   labelStack = 'default',
   labelWeight = 'bold',
-  LabelComponent = Text,
+  LabelComponent = Animated.Text,
   leftComponent,
   rightComponent,
   inputContainerStyle,
@@ -57,6 +58,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   focused,
   variant,
   children,
+  labelComponentStyles,
   ...rest
 }): JSX.Element => {
   let _defaultLabelColor = labelColorVariant;
@@ -80,24 +82,27 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
 
       {leftComponent && <StyledIconContent>{leftComponent}</StyledIconContent>}
 
-      <StyledLabelContainer
-        leftComponent={leftComponent}
-        rightComponent={rightComponent}
-      >
-        {label && (
-          <LabelComponent
-            fontColor={labelColor}
-            colorTone={_labelColorTone}
-            colorVariant={_labelColorVariant}
-            typography={labelTypography}
-            fontWeight={labelWeight}
-            fontStack={labelStack}
-          >
-            {label}
-          </LabelComponent>
-        )}
-        {children}
-      </StyledLabelContainer>
+      <Animated.View>
+        <StyledLabelContainer
+          leftComponent={leftComponent}
+          rightComponent={rightComponent}
+        >
+          {label && (
+            <LabelComponent
+              style={labelComponentStyles}
+              fontColor={labelColor}
+              colorTone={_labelColorTone}
+              colorVariant={_labelColorVariant}
+              typography={labelTypography}
+              fontWeight={labelWeight}
+              fontStack={labelStack}
+            >
+              {label}
+            </LabelComponent>
+          )}
+          {children}
+        </StyledLabelContainer>
+      </Animated.View>
 
       {rightComponent && (
         <StyledIconContent>{rightComponent}</StyledIconContent>
