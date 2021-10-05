@@ -10,7 +10,7 @@ export default {
 };
 
 const Template: Story<InputPasswordWebProps> = args => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
 
   const onChange = text => {
     setValue(text);
