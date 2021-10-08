@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.0...@tecsinapse/react-web-kit@1.10.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* individual selection not working after select all elements ([ea0f64a](https://github.com/tecsinapse/design-system/commit/ea0f64ab940fb7e5797682b55e8f4f8d696c1961))
+* individual selection not working after select all elements ([b82641f](https://github.com/tecsinapse/design-system/commit/b82641f57c9fae4abf523ba07aef4bd06210b1ae))
+* **select:** check for value changes for select all ([37146c1](https://github.com/tecsinapse/design-system/commit/37146c1d449229292bdabe0138570e812c247ddd))
+
+
+
+
+
 # [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.9.0...@tecsinapse/react-web-kit@1.10.0) (2021-10-01)
 
 
