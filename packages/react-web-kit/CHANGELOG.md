@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.1...@tecsinapse/react-web-kit@1.10.2) (2021-10-08)
+
+
+### Bug Fixes
+
+* all elements selected when applying search ([3ca5293](https://github.com/tecsinapse/design-system/commit/3ca5293fb6623fe87d3e92d7032040804946737b))
+
+
+
+
+
 ## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.0...@tecsinapse/react-web-kit@1.10.1) (2021-10-08)
 
 
