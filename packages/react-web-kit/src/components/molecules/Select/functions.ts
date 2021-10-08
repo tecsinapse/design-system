@@ -9,16 +9,8 @@ export const getDisplayValue = <Data>(
   if (type === 'multi') {
     if ((value as Data[]).length === 0) return placeholder;
     else {
-      return options
-        .reduce(
-          (acc, option, index) =>
-            (value as Data[]).find(
-              key => keyExtractor(option, index) == keyExtractor(key, index)
-            )
-              ? acc + labelExtractor(option) + ', '
-              : acc,
-          ''
-        )
+      return (value as Data[])
+        .reduce((acc, option) => acc + labelExtractor(option) + ', ', '')
         .slice(0, -2);
     }
   } else {

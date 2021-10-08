@@ -40,8 +40,10 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   );
 
   React.useEffect(() => {
-    if (type === 'multi' && lengthOptions === (value as Data[])?.length) {
-      setCheckedAll(true);
+    if (type === 'multi') {
+      lengthOptions === (value as Data[])?.length
+        ? setCheckedAll(true)
+        : setCheckedAll(false);
     }
   }, [value, type, lengthOptions]);
 

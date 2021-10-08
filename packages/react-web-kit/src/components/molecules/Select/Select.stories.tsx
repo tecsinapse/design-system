@@ -71,8 +71,12 @@ Single.args = {
   hideSearchBar: false,
 };
 
-const TemplateMulti: Story<SelectProps<Option, 'multi'>> = args => {
+const TemplateMulti: Story<SelectProps<Option, 'multi'>> = ({
+  options: _options,
+  ...args
+}) => {
   const [multiValue, setMultiValue] = useState([]);
+  const [options, setOptions] = useState(_options);
 
   const handleSelectMultipleValues = React.useCallback(
     keys => setMultiValue(keys),
@@ -82,16 +86,24 @@ const TemplateMulti: Story<SelectProps<Option, 'multi'>> = args => {
   const labelExtractor = React.useCallback(item => item.label, []);
   const keyExtractor = React.useCallback(item => String(item.value), []);
 
+  const handleSearch = React.useCallback((searchArg: string) => {
+    setOptions(
+      _options.filter(item => new RegExp(searchArg, 'ig').test(item.label))
+    );
+  }, []);
+
   return (
     <Container>
       <ContainerSelect>
         <Select
           {...args}
+          options={options}
           value={multiValue}
           type="multi"
           onSelect={handleSelectMultipleValues}
           labelExtractor={labelExtractor}
           keyExtractor={keyExtractor}
+          onSearch={handleSearch}
         />
       </ContainerSelect>
     </Container>
@@ -104,6 +116,7 @@ Multi.args = {
   placeholder: 'Placeholder do select',
   label: 'Label',
   options: OPTIONS_EXAMPLE,
+  hideSearchBar: false,
 };
 
 const Container = styled('div')`
