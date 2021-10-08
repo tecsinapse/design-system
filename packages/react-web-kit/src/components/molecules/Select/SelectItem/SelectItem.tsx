@@ -46,39 +46,33 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
     }
   }, [checkedAll]);
 
-  const clickItem = React.useCallback(
-    (item, _value) => {
-      // TS Workaround since TS won't infer the ternary operator's result type correctly
-      type OnSelectArg = Parameters<typeof onSelect>[0];
-      const key: Data = item;
-      if (Array.isArray(_value)) {
-        let auxChecked;
-        setChecked(prev => {
-          auxChecked = !prev;
-          return !prev;
-        });
-        if (auxChecked) {
-          onSelect([..._value, key] as OnSelectArg);
-          [..._value, key].length === lenghtOptions && setCheckedAll(true);
-        } else {
-          const auxArray: Data[] = [..._value];
-          const indexToExclude = auxArray.indexOf(key);
-          auxArray.splice(indexToExclude, 1);
-          onSelect([...auxArray] as OnSelectArg);
-          setCheckedAll(false);
-        }
+  const clickItem = item => {
+    // TS Workaround since TS won't infer the ternary operator's result type correctly
+    type OnSelectArg = Parameters<typeof onSelect>[0];
+    const key: Data = item;
+    if (Array.isArray(value)) {
+      const auxChecked = !checked;
+      setChecked(!checked);
+      if (auxChecked) {
+        onSelect([...value, key] as OnSelectArg);
+        [...value, key].length === lenghtOptions && setCheckedAll(true);
       } else {
-        onSelect(key as OnSelectArg);
-        setDropDownVisible(false);
+        const auxArray: Data[] = [...value];
+        const indexToExclude = auxArray.indexOf(key);
+        auxArray.splice(indexToExclude, 1);
+        onSelect([...auxArray] as OnSelectArg);
+        setCheckedAll(false);
       }
-    },
-    [onSelect, setDropDownVisible, setCheckedAll, setChecked]
-  );
+    } else {
+      onSelect(key as OnSelectArg);
+      setDropDownVisible(false);
+    }
+  };
 
   return (
-    <ContainerItemSelect onClick={() => clickItem(item, value)}>
+    <ContainerItemSelect onClick={() => clickItem(item)}>
       {isMulti && (
-        <Checkbox checked={checked} onChange={() => clickItem(item, value)} />
+        <Checkbox checked={checked} onChange={() => clickItem(item)} />
       )}
       <StyledContainerTextLabel>
         <Text fontWeight="bold" ellipsizeMode="tail" numberOfLines={1}>
