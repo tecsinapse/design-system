@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.1...@tecsinapse/react-core@1.10.2) (2021-11-16)
+
+
+### Features
+
+* added property disabled in groupButton. ([e6eaf19](https://github.com/tecsinapse/design-system/commit/e6eaf193a0ef75fd1468fb030e8b6e64595d2722))
+
+
+
+
+
 ## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.0...@tecsinapse/react-core@1.10.1) (2021-10-08)
 
 **Note:** Version bump only for package @tecsinapse/react-core
