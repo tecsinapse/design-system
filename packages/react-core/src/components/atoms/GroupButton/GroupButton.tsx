@@ -71,6 +71,7 @@ const groupOptions = <T extends unknown>({
         activeBackgroundColorTone,
         inactiveBackgroundColor,
         inactiveBackgroundColorTone,
+        disabled,
       } = {},
     } = option;
 
@@ -99,7 +100,7 @@ const groupOptions = <T extends unknown>({
         <StyledPressable
           {...rest}
           {...option.options}
-          disabled={active}
+          disabled={disabled}
           isActive={active}
           isFirstOption={isFirst}
           isLastOption={isLast}
