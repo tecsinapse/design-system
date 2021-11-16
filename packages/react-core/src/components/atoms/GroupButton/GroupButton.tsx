@@ -25,6 +25,7 @@ export interface GroupButtonOptions {
   inactiveBorderColorTone?: ColorGradationType;
   activeStyle?: StyleProp<ViewStyle>;
   inactiveStyle?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }
 
 export interface GroupButtonValue<T> {

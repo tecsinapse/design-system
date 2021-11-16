@@ -18,6 +18,16 @@ export const StyledGroupButton = styled.View<Partial<StyleProps>>`
   flex-direction: row;
 `;
 
+const disabledStyles = ({
+  disabled,
+  isActive,
+}: PressableOptions & Partial<StyleProps>) =>
+  disabled &&
+  !isActive &&
+  css`
+    background-color: #dcdcdc;
+  `;
+
 export const getStyledGroupItemText = (component: FC<TextProps>) => {
   return styled(component)<
     Partial<GroupButtonOptionProps> & Partial<StyleProps>
@@ -130,5 +140,6 @@ export const StyledPressable = styled(StyledPressableBase)(
     ${leftStyles(props)}
     ${rightStyles(props)}
     ${sizeStyles(props)}
+    ${disabledStyles(props)}
   `
 );

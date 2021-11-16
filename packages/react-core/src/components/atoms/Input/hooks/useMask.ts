@@ -57,7 +57,9 @@ export const useMask = (
 ): [IMask, (text: string) => void] => {
   const applyMask = useCallback(
     (value = ''): IMaskValue => {
-      const onlyNumbers = String(extractNumbersFromString(value));
+      const onlyNumbers = value
+        ? String(extractNumbersFromString(value))
+        : value;
       const selectedMask = getMask(onlyNumbers, mask);
       const formattedValue = mergeMask(onlyNumbers, selectedMask);
 
