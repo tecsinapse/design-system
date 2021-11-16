@@ -18,6 +18,7 @@ export const StyledGroupButton = styled.View<Partial<StyleProps>>`
   flex-direction: row;
 `;
 
+// TO FIXED: hexa color to theme definitions
 const disabledStyles = ({
   disabled,
   isActive,
