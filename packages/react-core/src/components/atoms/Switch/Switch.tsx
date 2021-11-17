@@ -20,6 +20,7 @@ export interface SwitchProps {
   inactiveColorTone?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
   dotStyle?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }
 
 const Switch: FC<SwitchProps> = ({
@@ -30,6 +31,7 @@ const Switch: FC<SwitchProps> = ({
   inactiveColorTone = 'light',
   active,
   dotStyle,
+  disabled = false,
   ...rest
 }): JSX.Element => {
   const theme = useTheme() as ThemeProp;
@@ -49,7 +51,9 @@ const Switch: FC<SwitchProps> = ({
   });
 
   const animatedStyle = {
-    backgroundColor: interpolateColor,
+    backgroundColor: disabled
+      ? theme.color[inactiveColor][inactiveColorTone]
+      : interpolateColor,
   };
 
   const handleChange = useCallback(() => {
@@ -57,7 +61,7 @@ const Switch: FC<SwitchProps> = ({
     transitionSwitch(active, transitionValue, animatedColor);
   }, [active, onChange]);
 
-  const stylesDefaut: ViewStyle = {
+  const stylesDefault: ViewStyle = {
     borderRadius: extractNumbersFromString(theme.borderRadius.pill),
     paddingHorizontal: extractNumbersFromString(theme.spacing.micro),
     paddingVertical: 0,
@@ -67,8 +71,13 @@ const Switch: FC<SwitchProps> = ({
   };
 
   return (
-    <PressableSurface {...rest} onPress={handleChange} effect="none">
-      <Animated.View style={{ ...animatedStyle, ...stylesDefaut }}>
+    <PressableSurface
+      {...rest}
+      onPress={handleChange}
+      effect="none"
+      disabled={disabled}
+    >
+      <Animated.View style={{ ...animatedStyle, ...stylesDefault }}>
         <StyledSwitch
           style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
         />
