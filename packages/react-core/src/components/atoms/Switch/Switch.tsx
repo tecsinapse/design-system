@@ -9,7 +9,7 @@ import {
 import { PressableSurface } from '../PressableSurface';
 import { StyledSwitch } from './styled';
 import { transitionSwitch } from './animation';
-import { extractNumbersFromString } from '../../../utils';
+import { extractNumbersFromString, lightenDarkenColor } from '../../../utils';
 
 export interface SwitchProps {
   onChange: (active: boolean) => void;
@@ -42,18 +42,20 @@ const Switch: FC<SwitchProps> = ({
   const animatedColor = React.useRef(new Animated.Value(active ? 1 : 0))
     .current;
 
+  const getBackgroundColor = (color: string, variation: number) => {
+    return disabled ? lightenDarkenColor(color, variation) : color;
+  };
+
   const interpolateColor = animatedColor.interpolate({
     inputRange: [0, 1],
     outputRange: [
-      theme.color[inactiveColor][inactiveColorTone],
-      theme.color[activeColor][activeColorTone],
+      getBackgroundColor(theme.color[inactiveColor][inactiveColorTone], 25),
+      getBackgroundColor(theme.color[activeColor][activeColorTone], 50),
     ],
   });
 
   const animatedStyle = {
-    backgroundColor: disabled
-      ? theme.color[inactiveColor][inactiveColorTone]
-      : interpolateColor,
+    backgroundColor: interpolateColor,
   };
 
   const handleChange = useCallback(() => {
