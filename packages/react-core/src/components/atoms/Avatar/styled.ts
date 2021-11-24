@@ -13,7 +13,6 @@ export const ContainerButtonAvatar = styled(PressableSurface)<
     theme.iconSize[size]};
   height: ${({ theme, size = 'mega' }: StyleProps & Partial<AvatarProps>) =>
     theme.iconSize[size]};
-  cursor: ${({ onPress }) => (onPress ? 'pointer' : 'default')};
 `;
 
 export const StyledAvatar = styled(Image)<Partial<StyleProps>>`
