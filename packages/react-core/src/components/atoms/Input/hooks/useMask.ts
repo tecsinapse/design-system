@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { extractNumbersFromString } from '@tecsinapse/react-core';
+import { extractDigitsFromString } from '@tecsinapse/react-core';
 
 export interface IMaskValue {
   formatted?: string;
@@ -57,9 +57,7 @@ export const useMask = (
 ): [IMask, (text: string) => void] => {
   const applyMask = useCallback(
     (value = ''): IMaskValue => {
-      const onlyNumbers = value
-        ? String(extractNumbersFromString(value))
-        : value;
+      const onlyNumbers = value ? extractDigitsFromString(value) : value;
       const selectedMask = getMask(onlyNumbers, mask);
       const formattedValue = mergeMask(onlyNumbers, selectedMask);
 

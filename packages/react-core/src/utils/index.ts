@@ -1,2 +1,5 @@
 export { lightenDarkenColor } from './lightenDarkenColor';
-export { extractNumbersFromString } from './extractNumbersFromString';
+export {
+  extractNumbersFromString,
+  extractDigitsFromString,
+} from './extractNumbersFromString';
