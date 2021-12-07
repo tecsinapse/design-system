@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.2...@tecsinapse/react-core@1.10.3) (2021-11-29)
+
+
+### Bug Fixes
+
+* added method extractDigitsFromString ([76daa94](https://github.com/tecsinapse/design-system/commit/76daa943cc1be981b587830d0024c4a01c4df6e2))
+* remove cursor css prop from avatar ([2f9ed15](https://github.com/tecsinapse/design-system/commit/2f9ed15bafb6697e2aee883b417574b4ee3275d5))
+
+
+
+
+
 ## [1.10.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.1...@tecsinapse/react-core@1.10.2) (2021-11-16)
 
 
