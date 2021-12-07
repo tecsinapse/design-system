@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.4...@tecsinapse/react-web-kit@1.10.5) (2021-12-07)
+
+
+### Bug Fixes
+
+* zindex on overlay and menubar ([b778cc5](https://github.com/tecsinapse/design-system/commit/b778cc5144ba16c5553adb00759437a5136e8a08))
+
+
+
+
+
 ## [1.10.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.3...@tecsinapse/react-web-kit@1.10.4) (2021-11-29)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
