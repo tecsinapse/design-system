@@ -12,7 +12,7 @@ export const StyledOverlay = styled('div')<Partial<StyleProps> & InjectedProps>`
   bottom: 0;
   display: flex;
   z-index: ${({ theme, zIndex }: StyleProps & InjectedProps) =>
-    theme.zIndex[zIndex] - 1};
+    theme.zIndex[zIndex]};
   cursor: ${({ show }) => (show ? 'pointer' : 'default')};
   position: fixed;
   align-items: center;
