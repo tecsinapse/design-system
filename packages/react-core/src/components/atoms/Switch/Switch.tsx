@@ -9,7 +9,7 @@ import {
 import { PressableSurface } from '../PressableSurface';
 import { StyledSwitch } from './styled';
 import { transitionSwitch } from './animation';
-import { extractNumbersFromString } from '../../../utils';
+import { extractNumbersFromString, lightenDarkenColor } from '../../../utils';
 
 export interface SwitchProps {
   onChange: (active: boolean) => void;
@@ -20,6 +20,7 @@ export interface SwitchProps {
   inactiveColorTone?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
   dotStyle?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }
 
 const Switch: FC<SwitchProps> = ({
@@ -30,6 +31,7 @@ const Switch: FC<SwitchProps> = ({
   inactiveColorTone = 'light',
   active,
   dotStyle,
+  disabled = false,
   ...rest
 }): JSX.Element => {
   const theme = useTheme() as ThemeProp;
@@ -40,11 +42,15 @@ const Switch: FC<SwitchProps> = ({
   const animatedColor = React.useRef(new Animated.Value(active ? 1 : 0))
     .current;
 
+  const getBackgroundColor = (color: string, variation: number) => {
+    return disabled ? lightenDarkenColor(color, variation) : color;
+  };
+
   const interpolateColor = animatedColor.interpolate({
     inputRange: [0, 1],
     outputRange: [
-      theme.color[inactiveColor][inactiveColorTone],
-      theme.color[activeColor][activeColorTone],
+      getBackgroundColor(theme.color[inactiveColor][inactiveColorTone], 25),
+      getBackgroundColor(theme.color[activeColor][activeColorTone], 50),
     ],
   });
 
@@ -57,7 +63,7 @@ const Switch: FC<SwitchProps> = ({
     transitionSwitch(active, transitionValue, animatedColor);
   }, [active, onChange]);
 
-  const stylesDefaut: ViewStyle = {
+  const stylesDefault: ViewStyle = {
     borderRadius: extractNumbersFromString(theme.borderRadius.pill),
     paddingHorizontal: extractNumbersFromString(theme.spacing.micro),
     paddingVertical: 0,
@@ -67,8 +73,13 @@ const Switch: FC<SwitchProps> = ({
   };
 
   return (
-    <PressableSurface {...rest} onPress={handleChange} effect="none">
-      <Animated.View style={{ ...animatedStyle, ...stylesDefaut }}>
+    <PressableSurface
+      {...rest}
+      onPress={handleChange}
+      effect="none"
+      disabled={disabled}
+    >
+      <Animated.View style={{ ...animatedStyle, ...stylesDefault }}>
         <StyledSwitch
           style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
         />

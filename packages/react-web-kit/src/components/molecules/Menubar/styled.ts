@@ -50,7 +50,7 @@ export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
     padding-top: ${({ theme }) => theme.spacing.kilo};
     padding-bottom: ${({ theme }) => theme.spacing.mega};
     position: absolute;
-    z-index: ${({ theme }) => theme.zIndex.header - 1};
+    z-index: ${({ theme }) => theme.zIndex.header + 1};
     width: -webkit-fill-available;
     width: -moz-available;
 `;

@@ -15,7 +15,7 @@ const Template: Story<SwitchProps> = args => {
     args.onChange(arg);
   };
 
-  return <Switch active={active} onChange={onChange} />;
+  return <Switch active={active} onChange={onChange} disabled={args.disabled}/>;
 };
 
 export const Base = Template.bind({});
@@ -23,4 +23,5 @@ export const Base = Template.bind({});
 Base.args = {
   active: true,
   onChange: value => action('Cicked')(value),
+  disabled: false,
 };
