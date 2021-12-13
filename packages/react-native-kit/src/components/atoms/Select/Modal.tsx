@@ -47,16 +47,20 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     );
   }, [value, focused, setSelectedValues]);
 
-  const data = options.map((option, index) => ({
-    ...option,
-    _checked:
-      type === 'multi'
-        ? !!selectedValues.find(
-            value => keyExtractor(option, index) == keyExtractor(value, index)
-          )
-        : keyExtractor((selectedValues[0] || {}) as Data, index) ==
-          keyExtractor(option, index),
-  }));
+  const data =
+    (typeof options !== 'function' &&
+      options?.map((option, index) => ({
+        ...option,
+        _checked:
+          type === 'multi'
+            ? !!selectedValues.find(
+                value =>
+                  keyExtractor(option, index) == keyExtractor(value, index)
+              )
+            : keyExtractor((selectedValues[0] || {}) as Data, index) ==
+              keyExtractor(option, index),
+      }))) ||
+    [];
 
   const handlePressItem = (option: Data) => () => {
     setSelectedValues(selectedValues => {
