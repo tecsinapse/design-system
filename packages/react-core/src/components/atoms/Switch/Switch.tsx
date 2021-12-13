@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
-import React, { FC, useCallback } from 'react';
-import { Animated, StyleProp, ViewStyle } from 'react-native';
+import React, { FC, useCallback, useEffect } from 'react';
+import { Animated, StyleProp, ViewStyle, Text } from 'react-native';
 import {
   ColorGradationType,
   ColorType,
@@ -58,9 +58,12 @@ const Switch: FC<SwitchProps> = ({
     backgroundColor: interpolateColor,
   };
 
+  useEffect(() => {
+    transitionSwitch(active, transitionValue, animatedColor);
+  }, [active]);
+
   const handleChange = useCallback(() => {
     onChange(!active);
-    transitionSwitch(active, transitionValue, animatedColor);
   }, [active, onChange]);
 
   const stylesDefault: ViewStyle = {
@@ -73,18 +76,18 @@ const Switch: FC<SwitchProps> = ({
   };
 
   return (
-    <PressableSurface
-      {...rest}
-      onPress={handleChange}
-      effect="none"
-      disabled={disabled}
-    >
-      <Animated.View style={{ ...animatedStyle, ...stylesDefault }}>
-        <StyledSwitch
-          style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
-        />
-      </Animated.View>
-    </PressableSurface>
+      <PressableSurface
+        {...rest}
+        onPress={handleChange}
+        effect="none"
+        disabled={disabled}
+      >
+        <Animated.View style={{ ...animatedStyle, ...stylesDefault }}>
+          <StyledSwitch
+            style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
+          />
+        </Animated.View>
+      </PressableSurface>
   );
 };
 
