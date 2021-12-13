@@ -41,6 +41,7 @@ export interface GroupButtonProps<T> {
   onChange: (option: T) => void;
   buttonSize?: ButtonSizeType;
   style?: StyleProp<ViewStyle>;
+  disableAllOptions?: boolean;
 }
 
 const GroupButton = <T extends unknown>({
@@ -58,6 +59,7 @@ const groupOptions = <T extends unknown>({
   renderKey,
   onChange,
   value,
+  disableAllOptions,
   ...rest
 }: Partial<GroupButtonProps<T>>) => {
   const theme = useTheme() as ThemeProp;
@@ -71,7 +73,7 @@ const groupOptions = <T extends unknown>({
         activeBackgroundColorTone,
         inactiveBackgroundColor,
         inactiveBackgroundColorTone,
-        disabled,
+        disabled = disableAllOptions || option.options?.disabled,
       } = {},
     } = option;
 
