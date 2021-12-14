@@ -27,7 +27,16 @@ const Component = () => {
   }
 
   const handleSearch = React.useCallback((searchArg: string) => {
-    console.log(searchArg);
+    return options.filter(value => {if(searchArg) return value.label.includes(searchArg); else return true})
+  }, []);
+
+  const optionsPromise = React.useCallback(async (searchInput: string | undefined) => {
+    const options = new Array(20).fill(undefined).map((_, index) => ({
+        key: index,
+        label: `Option ${index}`,}
+    )).filter(value => {if(searchInput) return value.label.includes(searchInput); else return true})
+
+    return options
   }, []);
 
   return (
@@ -63,6 +72,23 @@ const Component = () => {
         confirmButtonText={'Confirmar'}
         onSearch={handleSearch}
         keyExtractor={item => String(item.key)}
+      />
+      <Select
+        options={optionsPromise}
+        onSearch={optionsPromise}
+        label="Single value"
+        placeholder="Select one value"
+        value={singleValue}
+        type={'single'}
+        onSelect={handleSelectSingleValue}
+        selectModalTitle={'Selecione uma opção'}
+        labelExtractor={item => item?.label}
+        searchBarPlaceholder={'Busque uma opção'}
+        confirmButtonText={'Confirmar'}
+        keyExtractor={item => String(item?.key)}
+        style={{
+          marginBottom: 10,
+        }}
       />
     </>
   );

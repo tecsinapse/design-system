@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  FetchIndicator,
   FloatingButton,
   ListFooter,
   ListItem,
@@ -18,6 +19,10 @@ import {
 import { Input } from '../Input';
 import { Header } from '../Header';
 
+interface LoadingProps {
+  loading?: boolean;
+}
+
 const Component = <Data, Type extends 'single' | 'multi'>({
   options,
   keyExtractor,
@@ -34,8 +39,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   selectModalTitle,
   selectModalTitleComponent,
   confirmButtonText,
+  loading,
   ...modalProps
-}: SelectNativeProps<Data, Type> & ModalProps): JSX.Element => {
+}: SelectNativeProps<Data, Type> & ModalProps & LoadingProps): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
 
@@ -130,6 +136,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             />
           </SearchBarContainer>
         )}
+        {loading && (
+          <FetchIndicator animating={true} color={'grey'} size={'large'} />
+        )}
         <FlatList
           data={data}
           keyExtractor={keyExtractor}
@@ -166,6 +175,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           variant={'filled'}
           color={'primary'}
           onPress={handleConfirm}
+          disabled={loading}
         >
           <Text fontColor={'light'} fontWeight="bold">
             {confirmButtonText}

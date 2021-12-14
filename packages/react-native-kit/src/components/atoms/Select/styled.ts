@@ -9,7 +9,7 @@ import {
   PressableSurfaceProps,
   StyleProps,
 } from '@tecsinapse/react-core';
-import { ModalProps, View, ViewProps } from 'react-native';
+import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
 import { Input, InputNativeProps } from '../Input';
 import { Text } from '../Text';
 
@@ -56,6 +56,7 @@ export const CloseButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
 
 export const SearchBarContainer = styled(View)<ViewProps & Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.deca};
+  position: relative;
 `;
 
 export const SearchBar = styled(Input)<InputNativeProps & Partial<StyleProps>>`
@@ -87,4 +88,8 @@ export const FloatingButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
 export const SelectIcon = styled(Icon)<Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.centi};
   color: ${({ theme }) => theme.color.secondary.medium};
+`;
+
+export const FetchIndicator = styled(ActivityIndicator)`
+  align-self: center;
 `;
