@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {
   FetchIndicator,
-  FloatingButton,
-  ListFooter,
+  ModalFooter,
   ListItem,
   SearchBarContainer,
   SelectIcon,
@@ -12,6 +11,7 @@ import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
 import { SelectNativeProps } from './Select';
 import { Text } from '../Text';
 import {
+  Button,
   Checkbox,
   RadioButton,
   useDebouncedState,
@@ -142,7 +142,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
         <FlatList
           data={data}
           keyExtractor={keyExtractor}
-          ListFooterComponent={<ListFooter />}
+          fadingEdgeLength={200}
           renderItem={({ item }) => (
             <ListItem onPress={handlePressItem(item)}>
               <View pointerEvents={'none'}>
@@ -171,16 +171,18 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             </ListItem>
           )}
         />
-        <FloatingButton
-          variant={'filled'}
-          color={'primary'}
-          onPress={handleConfirm}
-          disabled={loading}
-        >
-          <Text fontColor={'light'} fontWeight="bold">
-            {confirmButtonText}
-          </Text>
-        </FloatingButton>
+        <ModalFooter>
+          <Button
+            variant={'filled'}
+            color={'primary'}
+            onPress={handleConfirm}
+            disabled={loading}
+          >
+            <Text fontColor={'light'} fontWeight="bold">
+              {confirmButtonText}
+            </Text>
+          </Button>
+        </ModalFooter>
       </StyledModal>
     </RNModal>
   );

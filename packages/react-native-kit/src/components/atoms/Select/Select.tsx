@@ -75,14 +75,17 @@ function Select<Data, Type extends 'single' | 'multi'>({
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (typeof options !== 'function') setSelectOptions(options);
+    if (typeof options !== 'function') {
+      setSelectOptions(options);
+    }
   }, [options]);
 
-  // TODO: When using multi selection, you should fix value assignment as Data generic
   useEffect(() => {
     if (typeof options === 'function') {
-      if (value) setSelectOptions([value as Data]);
-      else setSelectOptions([]);
+      if (value) {
+        if (type === 'single') setSelectOptions([value as Data]);
+        else setSelectOptions([...(value as Data[])]);
+      } else setSelectOptions([]);
     }
   }, [value]);
 
@@ -114,12 +117,30 @@ function Select<Data, Type extends 'single' | 'multi'>({
           setLoading(true);
           const result = await onSearch(searchInput);
           if (result) {
-            if (
-              value &&
-              !result.find(v => keyExtractor(value as Data) === keyExtractor(v))
-            ) {
-              setSelectOptions([value as Data, ...result]);
-            } else setSelectOptions(result);
+            if (type === 'single') {
+              if (
+                value &&
+                !result.find(
+                  v => keyExtractor(value as Data) === keyExtractor(v)
+                )
+              ) {
+                setSelectOptions([value as Data, ...result]);
+              } else setSelectOptions(result);
+            } else {
+              if ((value as Data[]).length > 0) {
+                const selectedValues =
+                  (value as Data[]).filter(
+                    v =>
+                      !result.find(
+                        current =>
+                          keyExtractor(v as Data) === keyExtractor(current)
+                      )
+                  ) || [];
+                setSelectOptions([...selectedValues, ...result]);
+              } else {
+                setSelectOptions(result);
+              }
+            }
           }
         } catch (e) {
           // TODO: Catch error
@@ -146,7 +167,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
       if (value.length === 0) return placeholder;
       else {
         return selectOptions
-          .reduce(
+          ?.reduce(
             (acc, option, index) =>
               value.find(
                 key => keyExtractor(option, index) == keyExtractor(key, index)
@@ -192,7 +213,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
       </HintInputContainer>
       <Modal
         visible={modalVisible}
-        options={selectOptions}
+        options={selectOptions || []}
         focused={modalVisible}
         keyExtractor={keyExtractor}
         labelExtractor={labelExtractor}

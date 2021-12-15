@@ -72,17 +72,12 @@ export const ListItem = styled(PressableSurface)<
   padding-horizontal: ${({ theme }) => theme.spacing.deca};
 `;
 
-export const ListFooter = styled.View<Partial<StyleProps>>`
+export const ModalFooter = styled(View)<Partial<StyleProps>>`
   width: 100%;
-  min-height: 44px;
-  margin-vertical: ${({ theme }) => theme.spacing.deca};
-`;
-
-export const FloatingButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
-  position: absolute;
-  bottom: ${({ theme }) => theme.spacing.deca};
-  left: ${({ theme }) => theme.spacing.deca};
-  right: ${({ theme }) => theme.spacing.deca};
+  height: auto;
+  bottom: 0;
+  background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
+  padding: ${({ theme }) => theme.spacing.deca};
 `;
 
 export const SelectIcon = styled(Icon)<Partial<StyleProps>>`
