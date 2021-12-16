@@ -14,7 +14,7 @@ export const DateTimePicker: FC<DateTimePickerProps> = props => {
       TextComponent={Text}
       DateTimeSelectorComponent={DateTimeSelector}
       animationType="slide"
-      locale={props.locale || getLocale()}
+      locale={props.locale ?? getLocale()}
     />
   );
 };

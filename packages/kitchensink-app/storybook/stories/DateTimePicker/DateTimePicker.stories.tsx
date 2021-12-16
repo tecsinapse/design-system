@@ -2,7 +2,6 @@ import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 import { DateTimePicker } from '@tecsinapse/react-native-kit';
-import * as dateFnsLocales from 'date-fns/locale'
 
 storiesOf('Input', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
@@ -26,7 +25,6 @@ const Component = () => {
   const [month, setMonth] = React.useState<Date>();
   const [time, setTime] = React.useState<Date>();
   const [dateTime, setDateTime] = React.useState<Date>();
-
 
   return (
     <>
@@ -64,7 +62,6 @@ const Component = () => {
         mode={'datetime'}
         label={'Select date and time'}
         format={'dd/MM/yyyy HH:mm'}
-        locale={dateFnsLocales['ptBR']}
         {...commons}
       />
     </>

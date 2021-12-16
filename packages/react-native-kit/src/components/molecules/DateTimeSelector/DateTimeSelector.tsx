@@ -11,7 +11,7 @@ export const DateTimeSelector: FC<DateTimeSelectorProps> = props => {
     <DateTimeSelectorCore
       {...props}
       TextComponent={Text}
-      locale={props.locale || getLocale()}
+      locale={props.locale ?? getLocale()}
     />
   );
 };

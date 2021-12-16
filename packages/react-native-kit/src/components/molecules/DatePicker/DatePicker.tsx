@@ -17,7 +17,7 @@ export const DatePicker = <T extends SelectionType>(
       TextComponent={Text}
       CalendarComponent={Calendar}
       animationType="slide"
-      locale={props.locale || getLocale()}
+      locale={props.locale ?? getLocale()}
     />
   );
 };

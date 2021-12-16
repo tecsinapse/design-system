@@ -14,7 +14,7 @@ export const Calendar = <T extends SelectionType>(
     <CalendarCore
       {...props}
       TextComponent={Text}
-      locale={props.locale || getLocale()}
+      locale={props.locale ?? getLocale()}
     />
   );
 };
