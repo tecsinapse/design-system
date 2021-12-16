@@ -12,6 +12,7 @@ import {
   PaddedContainer,
 } from './styled';
 import { SearchInput } from './components';
+import { Skeleton } from '@tecsinapse/react-web-kit';
 
 const fullWidth = { width: '100%' };
 
@@ -29,8 +30,10 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   anchor,
   selectAllLabel,
   searchBarPlaceholder,
+  loading,
 }: SelectProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
+  loading?: boolean;
 }): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const lengthOptions = React.useMemo(() => options.length, [options]);
@@ -102,6 +105,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
           />
         </PaddedContainer>
       )}
+      {/*TODO: Add Skeleton when loading is true*/}
       <OptionsContainer lengthOptions={options.length}>
         {options.map((item, index) => (
           <ItemSelect

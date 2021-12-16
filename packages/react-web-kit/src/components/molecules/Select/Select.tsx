@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   PressableInputContainer,
   Text,
@@ -17,7 +17,7 @@ import { defaultStyles, transition } from './animations';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'>
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
-  options: Data[];
+  options: ((searchInput?: string) => Promise<Data[]>) | Data[];
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
@@ -26,7 +26,10 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
   keyExtractor: (t: Data, index?: number) => string;
   labelExtractor: (t: Data) => string;
   placeholder?: string;
-  onSearch?: (searchArg: string) => void | never;
+  onSearch?:
+    | ((searchArg: string) => void)
+    | ((searchInput?: string) => Promise<Data[]>)
+    | never;
   searchBarPlaceholder?: string;
   hideSearchBar?: boolean;
   selectAllLabel?: string;
@@ -59,18 +62,98 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   const refDropDown = React.useRef(null);
   useClickAwayListener(refDropDown, setDropDownVisible);
 
+  const [selectOptions, setSelectOptions] = useState<Data[]>([]);
+
+  // TODO: Add Skeleton to modal height when loading is true
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (typeof options !== 'function') {
+      setSelectOptions(options);
+    }
+  }, [options]);
+
+  useEffect(() => {
+    if (typeof options === 'function') {
+      if (value) {
+        if (type === 'single') setSelectOptions([value as Data]);
+        else setSelectOptions([...(value as Data[])]);
+      } else setSelectOptions([]);
+    }
+  }, [value]);
+
   const displayValue = getDisplayValue<Data>(
     type,
     value,
-    options,
+    selectOptions,
     placeholder,
     keyExtractor,
     labelExtractor
   );
 
-  const onPress = React.useCallback(() => setDropDownVisible(prev => !prev), [
-    setDropDownVisible,
-  ]);
+  const onPress = React.useCallback(async () => {
+    if (typeof options === 'function') {
+      try {
+        setLoading(true);
+        const result = await options();
+        if (result) {
+          if (
+            value &&
+            !result.find(v => keyExtractor(value as Data) === keyExtractor(v))
+          ) {
+            setSelectOptions([value as Data, ...result]);
+          } else setSelectOptions(result);
+        }
+      } catch (e) {
+        // TODO: Catch error
+      } finally {
+        setLoading(false);
+      }
+    }
+    setDropDownVisible(prev => !prev);
+  }, [setDropDownVisible]);
+
+  const handleOnSearch = React.useCallback(
+    async (searchInput: string | undefined) => {
+      if (searchInput !== undefined && onSearch) {
+        try {
+          setLoading(true);
+          const result = await onSearch(searchInput);
+          if (result) {
+            if (type === 'single') {
+              if (
+                value &&
+                !result.find(
+                  v => keyExtractor(value as Data) === keyExtractor(v)
+                )
+              ) {
+                setSelectOptions([value as Data, ...result]);
+              } else setSelectOptions(result);
+            } else {
+              if ((value as Data[]).length > 0) {
+                const selectedValues =
+                  (value as Data[]).filter(
+                    v =>
+                      !result.find(
+                        current =>
+                          keyExtractor(v as Data) === keyExtractor(current)
+                      )
+                  ) || [];
+                setSelectOptions([...selectedValues, ...result]);
+              } else {
+                setSelectOptions(result);
+              }
+            }
+          }
+        } catch (e) {
+          // TODO: Catch error
+        } finally {
+          setLoading(false);
+        }
+      }
+    },
+    [options, value, keyExtractor]
+  );
 
   return (
     <StyledContainer ref={refDropDown} {...rest}>
@@ -89,7 +172,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
       <Transition in={dropDownVisible} timeout={300}>
         {state => (
           <Dropdown
-            options={options}
+            options={selectOptions}
             onSelect={onSelect}
             value={value}
             type={type}
@@ -97,11 +180,12 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
             labelExtractor={labelExtractor}
             hideSearchBar={hideSearchBar}
             searchBarPlaceholder={searchBarPlaceholder}
-            onSearch={onSearch}
+            onSearch={handleOnSearch}
             style={{ ...defaultStyles, ...transition[anchor][state] }}
             setDropDownVisible={setDropDownVisible}
             anchor={anchor}
             selectAllLabel={selectAllLabel}
+            loading={loading}
           />
         )}
       </Transition>
