@@ -91,8 +91,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   const handleOnFocus = async () => {
     if (typeof options === 'function') {
+      setLoading(true);
       try {
-        setLoading(true);
         const result = await options();
         if (result) {
           if (
@@ -113,8 +113,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
   const handleOnSearch = React.useCallback(
     async (searchInput: string | undefined) => {
       if (searchInput !== undefined && onSearch) {
+        setLoading(true);
         try {
-          setLoading(true);
           const result = await onSearch(searchInput);
           if (result) {
             if (type === 'single') {
