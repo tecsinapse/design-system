@@ -17,6 +17,7 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
 const Component = () => {
   const [multiValue, setMultiValue] = useState([]);
   const [singleValue, setSingleValue] = useState();
+  const [fetchSingleValue, setFetchSingleValue] = useState();
 
   function handleSelectMultipleValues(keys) {
     setMultiValue(keys);
@@ -26,8 +27,21 @@ const Component = () => {
     setSingleValue(key);
   }
 
+  function handleSelectFetchSingleValue(key) {
+    setFetchSingleValue(key);
+  }
+
   const handleSearch = React.useCallback((searchArg: string) => {
-    console.log(searchArg);
+    return options.filter(value => {if(searchArg) return value.label.includes(searchArg); else return true})
+  }, []);
+
+  const optionsPromise = React.useCallback(async (searchInput: string | undefined) => {
+    const options = new Array(20).fill(undefined).map((_, index) => ({
+        key: index,
+        label: `Option ${index}`,}
+    )).filter(value => {if(searchInput) return value.label.includes(searchInput); else return true})
+
+    return options
   }, []);
 
   return (
@@ -63,6 +77,26 @@ const Component = () => {
         confirmButtonText={'Confirmar'}
         onSearch={handleSearch}
         keyExtractor={item => String(item.key)}
+        style={{
+          marginBottom: 10,
+        }}
+      />
+      <Select
+        options={optionsPromise}
+        onSearch={optionsPromise}
+        label="Single value (Fetch)"
+        placeholder="Select one value"
+        value={fetchSingleValue}
+        type={'single'}
+        onSelect={handleSelectFetchSingleValue}
+        selectModalTitle={'Selecione uma opção'}
+        labelExtractor={item => item?.label}
+        searchBarPlaceholder={'Busque uma opção'}
+        confirmButtonText={'Confirmar'}
+        keyExtractor={item => String(item?.key)}
+        style={{
+          marginBottom: 10,
+        }}
       />
     </>
   );

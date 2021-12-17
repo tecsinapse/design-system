@@ -5,9 +5,17 @@ import {
 } from '@tecsinapse/react-core';
 import React from 'react';
 import { Text } from '../../atoms/Text';
+import { getLocale } from '../../../utils/date';
 
-export const Calendar = <T extends SelectionType>(
-  props: CalendarProps<T>
-): JSX.Element => {
-  return <CalendarCore {...props} TextComponent={Text} />;
+export const Calendar = <T extends SelectionType>({
+  locale,
+  ...rest
+}): JSX.Element => {
+  return (
+    <CalendarCore
+      {...rest}
+      TextComponent={Text}
+      locale={locale ?? getLocale()}
+    />
+  );
 };
