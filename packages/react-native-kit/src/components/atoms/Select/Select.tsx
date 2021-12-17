@@ -89,7 +89,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
     }
   }, [value]);
 
-  const handleOnFocus = async () => {
+  const handleLazyFocus = async () => {
     if (typeof options === 'function') {
       setLoading(true);
       try {
@@ -152,9 +152,10 @@ function Select<Data, Type extends 'single' | 'multi'>({
     [options, value, keyExtractor]
   );
 
-  const handlePressInput = () => {
+  const handlePressInput = async () => {
     setModalVisible(true);
     handleFocus();
+    await handleLazyFocus();
   };
 
   const handleCloseModal = () => {
@@ -230,7 +231,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
         selectModalTitle={selectModalTitle}
         selectModalTitleComponent={selectModalTitleComponent}
         confirmButtonText={confirmButtonText}
-        onFocus={typeof options === 'function' ? handleOnFocus : undefined}
         loading={loading}
       />
     </>
