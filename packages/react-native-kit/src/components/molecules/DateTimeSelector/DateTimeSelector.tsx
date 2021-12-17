@@ -4,14 +4,14 @@ import {
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { Text } from '../../atoms/Text';
-import { getLocale } from '../../../utils/dateUtils';
+import { getLocale } from '../../../utils/date';
 
-export const DateTimeSelector: FC<DateTimeSelectorProps> = props => {
+export const DateTimeSelector: FC<DateTimeSelectorProps> = ({locale, ...rest}) => {
   return (
     <DateTimeSelectorCore
-      {...props}
+      {...rest}
       TextComponent={Text}
-      locale={props.locale ?? getLocale()}
+      locale={locale ?? getLocale()}
     />
   );
 };
