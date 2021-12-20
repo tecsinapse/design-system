@@ -80,7 +80,9 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   };
 
   const StyledText = getStyledTextComponent(TextComponent);
-  const displayValue = (value ? formatDate(value, format) : placeholder) || ' ';
+  const displayValue =
+    (value ? formatDate(value, format, { locale: locale }) : placeholder) ||
+    ' ';
 
   return (
     <>
