@@ -8,23 +8,23 @@ export const transitionSwitch = (
   if (active) {
     Animated.timing(transitionValue, {
       toValue: 0,
-      duration: 250,
+      duration: 150,
       useNativeDriver: true,
     }).start();
     Animated.timing(animatedColor, {
       toValue: 0,
-      duration: 250,
+      duration: 150,
       useNativeDriver: false,
     }).start();
   } else {
     Animated.timing(transitionValue, {
       toValue: 16.5,
-      duration: 250,
+      duration: 150,
       useNativeDriver: true,
     }).start();
     Animated.timing(animatedColor, {
       toValue: 1,
-      duration: 250,
+      duration: 150,
       useNativeDriver: false,
     }).start();
   }

@@ -14653,9 +14653,9 @@ react-native-web@^0.17.1:
     prop-types "^15.6.0"
 
 react-native@^0.64.0:
-  version "0.64.0"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.64.0.tgz#c3bde5b638bf8bcf12bae6e094930d39cb942ab7"
-  integrity sha512-8dhSHBthgGwAjU+OjqUEA49229ThPMQH7URH0u8L0xoQFCnZO2sZ9Wc6KcbxI0x9KSmjCMFFZqRe3w3QsRv64g==
+  version "0.64.1"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.64.1.tgz#cd38f5b47b085549686f34eb0c9dcd466f307635"
+  integrity sha512-jvSj+hNAfwvhaSmxd5KHJ5HidtG0pDXzoH6DaqNpU74g3CmAiA8vuk58B5yx/DYuffGq6PeMniAcwuh3Xp4biQ==
   dependencies:
     "@jest/create-cache-key-function" "^26.5.0"
     "@react-native-community/cli" "^5.0.1-alpha.0"
@@ -16053,9 +16053,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 ssri@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
-  integrity sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA==
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.2.tgz#157939134f20464e7301ddba3e90ffa8f7728ac5"
+  integrity sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==
   dependencies:
     figgy-pudding "^3.5.1"
 

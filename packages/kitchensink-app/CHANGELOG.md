@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.11.0...@tecsinapse/kitchensink-app@1.11.1) (2021-12-17)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
+# [1.11.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.10.5...@tecsinapse/kitchensink-app@1.11.0) (2021-12-17)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
+## [1.10.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.10.4...@tecsinapse/kitchensink-app@1.10.5) (2021-12-07)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
 ## [1.10.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.10.3...@tecsinapse/kitchensink-app@1.10.4) (2021-12-06)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app
