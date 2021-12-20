@@ -1,5 +1,5 @@
 import React from 'react';
-import { SpacingType, useTheme } from '@tecsinapse/react-core';
+import { extractNumbersFromString, SpacingType, useTheme } from '@tecsinapse/react-core';
 
 type FlexPositioning = 'flex-start' | 'flex-end' | 'center';
 type FlexAlignBase = FlexPositioning | 'stretch';
@@ -52,7 +52,9 @@ const GridItem = ({
       ...rest,
       boxSizing: 'border-box',
       flexBasis: `${100 / (columns / span)}%`,
-      padding: _spacing ? spacing[_spacing] : undefined,
+      padding: _spacing
+        ? extractNumbersFromString(spacing[_spacing])
+        : undefined,
     },
   });
 };
