@@ -6,16 +6,19 @@ import {
 import React from 'react';
 import { Text } from '../../atoms/Text';
 import { Calendar } from '../Calendar';
+import { getLocale } from '../../../utils/date';
 
-export const DatePicker = <T extends SelectionType>(
-  props: DatePickerProps<T>
-): JSX.Element => {
+export const DatePicker = <T extends SelectionType>({
+  locale,
+  ...rest
+}): JSX.Element => {
   return (
     <DatePickerCore
-      {...props}
+      {...rest}
       TextComponent={Text}
       CalendarComponent={Calendar}
       animationType="slide"
+      locale={locale ?? getLocale()}
     />
   );
 };

@@ -9,7 +9,7 @@ import {
   PressableSurfaceProps,
   StyleProps,
 } from '@tecsinapse/react-core';
-import { ModalProps, View, ViewProps } from 'react-native';
+import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
 import { Input, InputNativeProps } from '../Input';
 import { Text } from '../Text';
 
@@ -56,6 +56,7 @@ export const CloseButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
 
 export const SearchBarContainer = styled(View)<ViewProps & Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.deca};
+  position: relative;
 `;
 
 export const SearchBar = styled(Input)<InputNativeProps & Partial<StyleProps>>`
@@ -71,20 +72,19 @@ export const ListItem = styled(PressableSurface)<
   padding-horizontal: ${({ theme }) => theme.spacing.deca};
 `;
 
-export const ListFooter = styled.View<Partial<StyleProps>>`
+export const ModalFooter = styled(View)<Partial<StyleProps>>`
   width: 100%;
-  min-height: 44px;
-  margin-vertical: ${({ theme }) => theme.spacing.deca};
-`;
-
-export const FloatingButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
-  position: absolute;
-  bottom: ${({ theme }) => theme.spacing.deca};
-  left: ${({ theme }) => theme.spacing.deca};
-  right: ${({ theme }) => theme.spacing.deca};
+  height: auto;
+  bottom: 0;
+  background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
+  padding: ${({ theme }) => theme.spacing.deca};
 `;
 
 export const SelectIcon = styled(Icon)<Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.centi};
   color: ${({ theme }) => theme.color.secondary.medium};
+`;
+
+export const FetchIndicator = styled(ActivityIndicator)`
+  align-self: center;
 `;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  FloatingButton,
-  ListFooter,
+  FetchIndicator,
+  ModalFooter,
   ListItem,
   SearchBarContainer,
   SelectIcon,
@@ -11,12 +11,17 @@ import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
 import { SelectNativeProps } from './Select';
 import { Text } from '../Text';
 import {
+  Button,
   Checkbox,
   RadioButton,
   useDebouncedState,
 } from '@tecsinapse/react-core';
 import { Input } from '../Input';
 import { Header } from '../Header';
+
+interface LoadingProps {
+  loading?: boolean;
+}
 
 const Component = <Data, Type extends 'single' | 'multi'>({
   options,
@@ -34,8 +39,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   selectModalTitle,
   selectModalTitleComponent,
   confirmButtonText,
+  loading,
   ...modalProps
-}: SelectNativeProps<Data, Type> & ModalProps): JSX.Element => {
+}: SelectNativeProps<Data, Type> & ModalProps & LoadingProps): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
 
@@ -47,16 +53,20 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     );
   }, [value, focused, setSelectedValues]);
 
-  const data = options.map((option, index) => ({
-    ...option,
-    _checked:
-      type === 'multi'
-        ? !!selectedValues.find(
-            value => keyExtractor(option, index) == keyExtractor(value, index)
-          )
-        : keyExtractor((selectedValues[0] || {}) as Data, index) ==
-          keyExtractor(option, index),
-  }));
+  const getData = (options: Data[]) => {
+    return options?.map((option, index) => ({
+      ...option,
+      _checked:
+        type === 'multi'
+          ? !!selectedValues.find(
+              value => keyExtractor(option, index) == keyExtractor(value, index)
+            )
+          : keyExtractor((selectedValues[0] || {}) as Data, index) ==
+            keyExtractor(option, index),
+    }));
+  };
+
+  const data = typeof options !== 'function' ? getData(options) : [];
 
   const handlePressItem = (option: Data) => () => {
     setSelectedValues(selectedValues => {
@@ -126,10 +136,13 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             />
           </SearchBarContainer>
         )}
+        {loading && (
+          <FetchIndicator animating={true} color={'grey'} size={'large'} />
+        )}
         <FlatList
           data={data}
           keyExtractor={keyExtractor}
-          ListFooterComponent={<ListFooter />}
+          fadingEdgeLength={200}
           renderItem={({ item }) => (
             <ListItem onPress={handlePressItem(item)}>
               <View pointerEvents={'none'}>
@@ -158,15 +171,18 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             </ListItem>
           )}
         />
-        <FloatingButton
-          variant={'filled'}
-          color={'primary'}
-          onPress={handleConfirm}
-        >
-          <Text fontColor={'light'} fontWeight="bold">
-            {confirmButtonText}
-          </Text>
-        </FloatingButton>
+        <ModalFooter>
+          <Button
+            variant={'filled'}
+            color={'primary'}
+            onPress={handleConfirm}
+            disabled={loading}
+          >
+            <Text fontColor={'light'} fontWeight="bold">
+              {confirmButtonText}
+            </Text>
+          </Button>
+        </ModalFooter>
       </StyledModal>
     </RNModal>
   );

@@ -7,10 +7,11 @@ import {
 import { Text } from '../Text';
 import { Modal } from './Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
+import { useEffect, useState } from 'react';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
-  options: Data[];
+  options: ((searchInput?: string) => Promise<Data[]>) | Data[];
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
@@ -25,7 +26,10 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
-  onSearch?: (searchArg: string) => void | never;
+  onSearch?:
+    | ((searchArg: string) => void)
+    | ((searchInput?: string) => Promise<Data[]>)
+    | never;
   searchBarPlaceholder?: string;
   confirmButtonText?: string;
   selectModalTitle?: string;
@@ -65,10 +69,93 @@ function Select<Data, Type extends 'single' | 'multi'>({
   );
 
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [selectOptions, setSelectOptions] = useState<Data[]>([]);
 
-  const handlePressInput = () => {
+  // TODO: Add Skeleton to modal height when loading is true
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (typeof options !== 'function') {
+      setSelectOptions(options);
+    }
+  }, [options]);
+
+  useEffect(() => {
+    if (typeof options === 'function') {
+      if (value) {
+        if (type === 'single') setSelectOptions([value as Data]);
+        else setSelectOptions([...(value as Data[])]);
+      } else setSelectOptions([]);
+    }
+  }, [value]);
+
+  const handleLazyFocus = async () => {
+    if (typeof options === 'function') {
+      setLoading(true);
+      try {
+        const result = await options();
+        if (result) {
+          if (
+            value &&
+            !result.find(v => keyExtractor(value as Data) === keyExtractor(v))
+          ) {
+            setSelectOptions([value as Data, ...result]);
+          } else setSelectOptions(result);
+        }
+      } catch (e) {
+        // TODO: Catch error
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  const handleOnSearch = React.useCallback(
+    async (searchInput: string | undefined) => {
+      if (searchInput !== undefined && onSearch) {
+        setLoading(true);
+        try {
+          const result = await onSearch(searchInput);
+          if (result) {
+            if (type === 'single') {
+              if (
+                value &&
+                !result.find(
+                  v => keyExtractor(value as Data) === keyExtractor(v)
+                )
+              ) {
+                setSelectOptions([value as Data, ...result]);
+              } else setSelectOptions(result);
+            } else {
+              if ((value as Data[]).length > 0) {
+                const selectedValues =
+                  (value as Data[]).filter(
+                    v =>
+                      !result.find(
+                        current =>
+                          keyExtractor(v as Data) === keyExtractor(current)
+                      )
+                  ) || [];
+                setSelectOptions([...selectedValues, ...result]);
+              } else {
+                setSelectOptions(result);
+              }
+            }
+          }
+        } catch (e) {
+          // TODO: Catch error
+        } finally {
+          setLoading(false);
+        }
+      }
+    },
+    [options, value, keyExtractor]
+  );
+
+  const handlePressInput = async () => {
     setModalVisible(true);
     handleFocus();
+    await handleLazyFocus();
   };
 
   const handleCloseModal = () => {
@@ -80,8 +167,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
     if (Array.isArray(value)) {
       if (value.length === 0) return placeholder;
       else {
-        return options
-          .reduce(
+        return selectOptions
+          ?.reduce(
             (acc, option, index) =>
               value.find(
                 key => keyExtractor(option, index) == keyExtractor(key, index)
@@ -94,7 +181,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
       }
     } else {
       if (value === undefined) return placeholder;
-      const selectedOption = options.find(
+      const selectedOption = selectOptions?.find(
         (option, index) =>
           keyExtractor(option, index) == keyExtractor(value as Data, index)
       );
@@ -127,7 +214,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
       </HintInputContainer>
       <Modal
         visible={modalVisible}
-        options={options}
+        options={selectOptions || []}
         focused={modalVisible}
         keyExtractor={keyExtractor}
         labelExtractor={labelExtractor}
@@ -140,10 +227,11 @@ function Select<Data, Type extends 'single' | 'multi'>({
         onRequestClose={handleCloseModal}
         animated
         animationType={'slide'}
-        onSearch={onSearch}
+        onSearch={handleOnSearch}
         selectModalTitle={selectModalTitle}
         selectModalTitleComponent={selectModalTitleComponent}
         confirmButtonText={confirmButtonText}
+        loading={loading}
       />
     </>
   );

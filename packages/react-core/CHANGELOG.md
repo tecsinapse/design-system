@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.4...@tecsinapse/react-core@1.11.0) (2021-12-17)
+
+
+### Bug Fixes
+
+* [163127] Modais de picker do DS estão em inglês ([a95b0b2](https://github.com/tecsinapse/design-system/commit/a95b0b283f3535af20a23ac6a9a5e5633127d5b0))
+
+
+
+
+
+## [1.10.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.3...@tecsinapse/react-core@1.10.4) (2021-12-07)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
 ## [1.10.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.2...@tecsinapse/react-core@1.10.3) (2021-11-29)
 
 

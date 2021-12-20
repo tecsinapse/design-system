@@ -74,12 +74,14 @@ function DatePicker<T extends SelectionType>({
   const getDisplayValue = () => {
     if (!value) return placeholder;
     if (type === 'day') {
-      return formatDate(value as Date, format);
+      return formatDate(value as Date, format, { locale: locale });
     } else {
       const { lowest, highest } = value as DateRange;
       if (highest)
-        return `${formatDate(lowest, format)} - ${formatDate(highest, format)}`;
-      else return formatDate(lowest, format);
+        return `${formatDate(lowest, format, {
+          locale: locale,
+        })} - ${formatDate(highest, format, { locale: locale })}`;
+      else return formatDate(lowest, format, { locale: locale });
     }
   };
 
