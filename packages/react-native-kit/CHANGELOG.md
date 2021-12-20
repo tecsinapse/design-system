@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.11.0...@tecsinapse/react-native-kit@1.11.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* handleLazySelect ([1102499](https://github.com/tecsinapse/design-system/commit/11024996571866d542d4d112baf7b183b8b146e1))
+
+
+
+
+
 # [1.11.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.10.5...@tecsinapse/react-native-kit@1.11.0) (2021-12-17)
 
 
