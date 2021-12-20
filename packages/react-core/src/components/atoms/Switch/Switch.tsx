@@ -59,7 +59,7 @@ const Switch: FC<SwitchProps> = ({
   };
 
   useEffect(() => {
-    transitionSwitch(active, transitionValue, animatedColor);
+    transitionSwitch(!active, transitionValue, animatedColor);
   }, [active]);
 
   const handleChange = useCallback(() => {
@@ -76,18 +76,18 @@ const Switch: FC<SwitchProps> = ({
   };
 
   return (
-      <PressableSurface
-        {...rest}
-        onPress={handleChange}
-        effect="none"
-        disabled={disabled}
-      >
-        <Animated.View style={{ ...animatedStyle, ...stylesDefault }}>
-          <StyledSwitch
-            style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
-          />
-        </Animated.View>
-      </PressableSurface>
+    <PressableSurface
+      {...rest}
+      onPress={handleChange}
+      effect="none"
+      disabled={disabled}
+    >
+      <Animated.View style={{ ...animatedStyle, ...stylesDefault }}>
+        <StyledSwitch
+          style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
+        />
+      </Animated.View>
+    </PressableSurface>
   );
 };
 
