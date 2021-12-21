@@ -26,3 +26,4 @@ export { DateTimePicker } from './components/molecules/DateTimePicker';
 export { Avatar } from './components/atoms/Avatar';
 export { Calendar } from './components/molecules/Calendar';
 export { DateTimeSelector } from './components/molecules/DateTimeSelector';
+export { Modal, ModalView } from './components/atoms/Modal';

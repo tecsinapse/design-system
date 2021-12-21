@@ -22,3 +22,4 @@ import './DatePicker/DatePicker.stories';
 import './DateTimePicker/DateTimePicker.stories';
 import './SnappingSlider/SnappingSlider.stories';
 import './Snackbar/Snackbar.stories';
+import './Modal/Modal.stories';
