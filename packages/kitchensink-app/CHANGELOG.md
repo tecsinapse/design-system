@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.12.0...@tecsinapse/kitchensink-app@1.12.1) (2021-12-21)
+
+
+### Bug Fixes
+
+* wrapper on gridItem. ([db99917](https://github.com/tecsinapse/design-system/commit/db999176d1440ed12b91a041fbfb850f76b3b867))
+
+
+
+
+
 # [1.12.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.11.2...@tecsinapse/kitchensink-app@1.12.0) (2021-12-21)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app
