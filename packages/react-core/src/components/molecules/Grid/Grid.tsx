@@ -70,7 +70,7 @@ const Grid = ({
         return React.cloneElement(child, {
           ...child?.props,
           columns,
-          spacing,
+          spacing: child?.props.spacing ?? spacing,
         });
       })}
     </View>
