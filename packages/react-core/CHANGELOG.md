@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.3...@tecsinapse/react-core@1.12.4) (2021-12-23)
+
+
+### Bug Fixes
+
+* remove padding from paper and card ([e88fad7](https://github.com/tecsinapse/design-system/commit/e88fad77adc5aaa21ffe093e6f79b76c60613cc9))
+
+
+
+
+
 ## [1.12.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.2...@tecsinapse/react-core@1.12.3) (2021-12-23)
 
 **Note:** Version bump only for package @tecsinapse/react-core
