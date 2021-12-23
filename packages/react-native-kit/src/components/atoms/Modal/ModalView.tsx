@@ -13,7 +13,6 @@ export interface ModalProps {
 }
 
 export const ModalView: FC<ModalProps> = ({ 
-    key,
     children,
     BoxComponent = BoxContent,
     visible,

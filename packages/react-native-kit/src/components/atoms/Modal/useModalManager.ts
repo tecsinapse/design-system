@@ -14,7 +14,10 @@ export const useModalManager = (id: string, el: () => any) => {
     }, [id])
     
     useEffect(() => {
-        return () => opa.destroy(id)
+        return () => {
+            console.log("Destroy ", id)
+            opa.destroy(id)
+        }
     }, [])
 
     return {

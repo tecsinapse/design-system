@@ -23,19 +23,17 @@ class Handler {
     }
 
     public update = () => {
+        console.log(">", Array.from(this.nodeMap.values()).map(e => e.lastVisualization))
         const nodes = Array.from(this.nodeMap.values())
-            .filter(e => e.visible)
-            // .sort((a, b) => {
-            //     // FIXME 
-            //     return 1
-            // })
+            .filter(e => e.visible || !!e.lastVisualization)
+            .sort((a, b) => (a.lastVisualization?.getTime() || 0) - (b.lastVisualization?.getTime() || 0))
             .map(e => {
                 let nod = e.node()
                 let { props } = nod as any
                 // console.log("UPDATE---", e.id)
                 return React.cloneElement(nod as any, {
                     key: e.id,
-                    visible: !!e.lastVisualization,
+                    visible: e.visible,
                     close: () => {
                         // console.log("close....")
                         this.close(e.id)
@@ -43,7 +41,7 @@ class Handler {
                     onClose: () => {
                         this.hide(e.id)
                         props.onClose?.()
-                        console.log("onclose....")
+                        console.log("onclose....", e.id)
                     }
                 })
             })
@@ -69,28 +67,28 @@ class Handler {
 
     public destroy = (id: string) => {
         this.nodeMap.delete(id)
-        // this.update()
+        this.update()
     }
 
     private hide = (id: string) => {
         const n = this.nodeMap.get(id)
-        n && this.nodeMap.set(id, { ...n, visible: false })
+        n && this.nodeMap.set(id, { ...n, lastVisualization: undefined })
         this.update()
     }
 
     public show = (id: string) => {
         const n = this.nodeMap.get(id)
         n && this.nodeMap.set(id, { ...n, visible: true, lastVisualization: new Date() })
-        console.log("------------------", n)
-        console.log("SHOW", this.nodeMap)
+        // console.log("------------------", n)
+        // console.log("SHOW", this.nodeMap)
         this.update()
     }
 
     public close = (id: string) => {
         const n = this.nodeMap.get(id)
-        n && this.nodeMap.set(id, { ...n, lastVisualization: undefined })
-        console.log("------------------", n)
-        console.log("CLOSE", this.nodeMap)
+        n && this.nodeMap.set(id, { ...n, visible: false })
+        // console.log("------------------", n)
+        // console.log("CLOSE", this.nodeMap)
         this.update()
     }
 }
