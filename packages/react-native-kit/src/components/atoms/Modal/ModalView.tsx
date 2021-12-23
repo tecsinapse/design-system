@@ -1,21 +1,40 @@
 import { BoxContent } from "@tecsinapse/react-core";
-import React, { FC } from "react";
-import { Pressable } from "react-native";
+import React, { FC, useEffect, useRef } from "react";
+import { Animated, Easing, Pressable } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BackDropView, CloseBar } from "./styled";
 
 
-interface ModalProps {
+export interface ModalProps {
+    visible?: boolean
     BoxComponent?: React.FC
-    onBackDropPress?: () => void
+    close?: () => void // injected by hook
+    onClose?: () => void
 }
 
 export const ModalView: FC<ModalProps> = ({ 
+    key,
     children,
-    BoxComponent = BoxContent
+    BoxComponent = BoxContent,
+    visible,
+    close,
+    onClose
 }) => {
+    
+    const rowTranslation = useRef(new Animated.Value(0)).current
+
+    useEffect(() => {
+        Animated.timing(rowTranslation, {
+            toValue: 0,
+            duration: 1000,
+            easing: Easing.out(Easing.ease),
+            isInteraction: true,
+            useNativeDriver: true
+        }).start(() => { !visible && onClose?.() })
+    }, [visible])
+
     return (
-        <BackDropView onPress={() => console.log("há")}>
+        <BackDropView onPress={close}>
             <Pressable>
                 <BoxComponent variant="bottom">
                     <SafeAreaView edges={['bottom']}>
