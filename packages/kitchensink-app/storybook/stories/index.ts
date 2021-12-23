@@ -3,6 +3,7 @@ import './BoxContent/BoxContent.stories';
 import './Button/Button.stories';
 import './Card/Card.stories';
 import './Checkbox/Checkbox.stories';
+import './Grid/Grid.stories';
 import './GroupButton/GroupButton.stories';
 import './Header/Header.stories';
 import './Icon/Icon.stories';

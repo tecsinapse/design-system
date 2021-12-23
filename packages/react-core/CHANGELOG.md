@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.1...@tecsinapse/react-core@1.12.2) (2021-12-22)
+
+
+### Bug Fixes
+
+* spacing grid ([4929fd8](https://github.com/tecsinapse/design-system/commit/4929fd83cb91484959e19aeee2dfc8cfcce6f009))
+
+
+
+
+
+## [1.12.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.0...@tecsinapse/react-core@1.12.1) (2021-12-21)
+
+
+### Bug Fixes
+
+* wrapper on gridItem. ([db99917](https://github.com/tecsinapse/design-system/commit/db999176d1440ed12b91a041fbfb850f76b3b867))
+
+
+
+
+
 # [1.12.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.11.1...@tecsinapse/react-core@1.12.0) (2021-12-21)
 
 

@@ -1,5 +1,10 @@
 import React from 'react';
-import { extractNumbersFromString, SpacingType, useTheme } from '@tecsinapse/react-core';
+import {
+  extractNumbersFromString,
+  SpacingType,
+  useTheme,
+} from '@tecsinapse/react-core';
+import { View } from 'react-native';
 
 type FlexPositioning = 'flex-start' | 'flex-end' | 'center';
 type FlexAlignBase = FlexPositioning | 'stretch';
@@ -26,6 +31,8 @@ export interface IGridItem {
   justifyContent?: FlexPositioning | FlexSpacing | 'space-evenly';
   /** You don't have to give this property since is inherited from Grid */
   spacing?: SpacingType;
+  /** Used to wrap children in a View when its style extrapolates the dimensions*/
+  wrapper?: boolean;
 }
 
 const GridItem = ({
@@ -35,6 +42,7 @@ const GridItem = ({
   loadingComponent,
   loading = false,
   spacing: _spacing,
+  wrapper = false,
   ...rest
 }: IGridItem) => {
   const { spacing } = useTheme();
@@ -45,18 +53,21 @@ const GridItem = ({
     return loadingComponent;
   }
 
-  return React.cloneElement(children, {
+  const style = {
+    ...rest,
+    boxSizing: 'border-box',
+    flexBasis: `${100 / (columns / span)}%`,
+    padding: _spacing ? extractNumbersFromString(spacing[_spacing]) : undefined,
+  };
+
+  const clone = React.cloneElement(children, {
     ...children?.props,
-    style: {
-      ...children?.props.style,
-      ...rest,
-      boxSizing: 'border-box',
-      flexBasis: `${100 / (columns / span)}%`,
-      padding: _spacing
-        ? extractNumbersFromString(spacing[_spacing])
-        : undefined,
-    },
+    style: wrapper
+      ? children?.props.style
+      : { ...style, ...children?.props.style },
   });
+
+  return wrapper ? <View style={style}>{clone}</View> : clone;
 };
 
 export default GridItem;
