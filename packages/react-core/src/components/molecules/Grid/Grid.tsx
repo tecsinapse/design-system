@@ -16,7 +16,14 @@ export interface IGrid extends ViewProps {
   layout?: number[][];
   /** Number of grid columns to be considered (not the number of elements per row) */
   columns?: number;
-  spacing?: SpacingType;
+  spacing?:
+    | SpacingType
+    | {
+        top?: SpacingType;
+        right?: SpacingType;
+        bottom?: SpacingType;
+        left?: SpacingType;
+      };
 }
 
 const Grid = ({

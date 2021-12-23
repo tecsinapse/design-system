@@ -24,10 +24,26 @@ storiesOf('Grid', module)
     return (
       <>
         <Grid spacing={'mili'}>
-          <GridItem span={6}>
+          <GridItem
+            span={6}
+            spacing={{
+              top: 'giga',
+              bottom: 'giga',
+              left: 'nano',
+              right: 'nano',
+            }}
+          >
             <Input value={''} onChange={() => {}} />
           </GridItem>
-          <GridItem span={6}>
+          <GridItem
+            span={6}
+            spacing={{
+              top: 'giga',
+              bottom: 'giga',
+              left: 'nano',
+              right: 'nano',
+            }}
+          >
             <Input value={''} onChange={() => {}} />
           </GridItem>
           <GridItem span={12}>
@@ -51,7 +67,15 @@ storiesOf('Grid', module)
             </Button>
           </GridItem>
 
-          <GridItem span={12} wrapper>
+          <GridItem
+            span={12}
+            wrapper
+            spacing={{
+              top: 'mili',
+              left: 'giga',
+              right: 'giga',
+            }}
+          >
             <PressableSurface style={{ backgroundColor: 'cyan' }}>
               <Text>Pressable</Text>
             </PressableSurface>
