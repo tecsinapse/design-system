@@ -11,6 +11,8 @@ type FlexAlignBase = FlexPositioning | 'stretch';
 type FlexAlignType = FlexAlignBase | 'baseline';
 type FlexSpacing = 'space-between' | 'space-around';
 
+type PaddingPosition = 'top' | 'right' | 'bottom' | 'left';
+
 export interface IGridItem {
   children: React.ReactElement;
   /** Number of columns to fill */
@@ -30,7 +32,14 @@ export interface IGridItem {
   flexShrink?: number;
   justifyContent?: FlexPositioning | FlexSpacing | 'space-evenly';
   /** You don't have to give this property since is inherited from Grid */
-  spacing?: SpacingType;
+  spacing?:
+    | SpacingType
+    | {
+        top?: SpacingType;
+        right?: SpacingType;
+        bottom?: SpacingType;
+        left?: SpacingType;
+      };
   /** Used to wrap children in a View when its style extrapolates the dimensions*/
   wrapper?: boolean;
 }
@@ -53,11 +62,24 @@ const GridItem = ({
     return loadingComponent;
   }
 
+  const getPadding = (pos: PaddingPosition) => {
+    if (_spacing) {
+      if (typeof _spacing === 'string')
+        return extractNumbersFromString(spacing[_spacing]);
+      else if (typeof _spacing === 'object' && _spacing[pos]) {
+        return extractNumbersFromString(spacing[_spacing[pos]!]);
+      } else return undefined;
+    } else return undefined;
+  };
+
   const style = {
     ...rest,
     boxSizing: 'border-box',
     flexBasis: `${100 / (columns / span)}%`,
-    padding: _spacing ? extractNumbersFromString(spacing[_spacing]) : undefined,
+    paddingTop: getPadding('top'),
+    paddingBottom: getPadding('bottom'),
+    paddingRight: getPadding('right'),
+    paddingLeft: getPadding('left'),
   };
 
   const clone = React.cloneElement(children, {
