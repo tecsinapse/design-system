@@ -3,7 +3,6 @@ import { StyleProps } from '@tecsinapse/react-core';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const baseStyles = ({ theme }: StyleProps): any => css`
-  padding: ${theme.spacing.deca};
   border-radius: ${theme.borderRadius.mili};
   background-color: ${theme.miscellaneous.surfaceColor};
   overflow: hidden;
