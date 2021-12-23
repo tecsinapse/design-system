@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/react-native';
-import { Button, ModalManager, ModalProps, ModalView, Text, useModalManager } from '@tecsinapse/react-native-kit';
+import { Button, ModalManager, ModalView, Text, useModalManager } from '@tecsinapse/react-native-kit';
+import { IBaseModal } from 'packages/react-native-kit/src/components/atoms/Modal/ui/types';
 import React, { FC, useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 
@@ -32,7 +33,7 @@ storiesOf('Modal', module)
 
 
 
-interface Opa extends ModalProps { 
+interface Opa extends IBaseModal { 
   pass?: number
 }
 

@@ -1,23 +1,27 @@
-import { useCallback, useEffect } from "react"
-import { opa } from "."
+import { ReactElement, useCallback, useEffect } from "react"
+import { modalLifecycle } from "./ModalGroupManager"
+import { IBaseModal } from "./ui/types"
 
-export const useModalManager = (id: string, el: () => any) => {
+/**
+ * TODO:
+ * @param id 
+ * @param modal 
+ * @returns 
+ */
+export const useModalManager = (id: string, modal: () => ReactElement<IBaseModal>) => {
 
-    opa.sync(id, el)
+    modalLifecycle.sync(id, modal)
 
     const show = useCallback(() => {
-        opa.show(id)
+        modalLifecycle.show(id)
     }, [id])
 
     const close = useCallback(() => {
-        opa.close(id)
+        modalLifecycle.close(id)
     }, [id])
     
     useEffect(() => {
-        return () => {
-            console.log("Destroy ", id)
-            opa.destroy(id)
-        }
+        return () => modalLifecycle.destroy(id)
     }, [])
 
     return {
