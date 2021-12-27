@@ -2,7 +2,7 @@ import React, { Dispatch, ReactElement } from "react"
 import { IBaseModal } from "./ui/types"
 
 /**
- * TODO:
+ * It Represents a node (usually a modal component) in the modal's lifecycle handler.
  */
 interface ModalNode {
     id: string
@@ -12,9 +12,9 @@ interface ModalNode {
 }
 
 /**
- * TODO:
+ * Manage all modal's lifecycle.
  */
-class ModalLifecycleHandler {
+export class ModalLifecycleHandler {
     
     nodeGroup: Map<string, ModalNode>
     state: [ReactElement<IBaseModal>[], Dispatch<ReactElement<IBaseModal>[]>] | undefined
@@ -25,7 +25,8 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Holds the ModalGroupManager state.
+     * 
      * @param state 
      */
     public attach = (state: [ReactElement<IBaseModal>[], Dispatch<ReactElement<IBaseModal>[]>]) => {
@@ -33,7 +34,7 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Updates all the modal components.
      */
     public update = () => {
         const nodes = Array.from(this.nodeGroup.values())
@@ -58,7 +59,8 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Renders all selected modals.
+     * 
      * @returns 
      */
     public render = (): ReactElement<IBaseModal>[] => {
@@ -67,7 +69,8 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Tells to the lifecycle handler that a modal component needs to be handled.
+     * 
      * @param id 
      * @param modal 
      * @returns 
@@ -82,7 +85,8 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Destroy a modal from the lifecycle handler.
+     * 
      * @param id 
      */
     public destroy = (id: string) => {
@@ -91,7 +95,9 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Removes a modal from the rendering stack. It tells to the lifecycle handler that a modal 
+     * component is no longer used by the application.
+     * 
      * @param id 
      */
     private remove = (id: string) => {
@@ -101,7 +107,8 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Makes a modal appears.
+     * 
      * @param id 
      */
     public show = (id: string) => {
@@ -111,7 +118,8 @@ class ModalLifecycleHandler {
     }
 
     /**
-     * TODO:
+     * Makes a modal disappears.
+     * 
      * @param id 
      */
     public close = (id: string) => {
@@ -121,6 +129,11 @@ class ModalLifecycleHandler {
     }
 }
 
+/**
+ * Creates a new ModalLifecycleHandlere instance.
+ * 
+ * @returns 
+ */
 export const createModalLifecycleHandler = () => {
     return new ModalLifecycleHandler()
 }

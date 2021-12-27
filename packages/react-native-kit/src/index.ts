@@ -26,4 +26,4 @@ export { DateTimePicker } from './components/molecules/DateTimePicker';
 export { Avatar } from './components/atoms/Avatar';
 export { Calendar } from './components/molecules/Calendar';
 export { DateTimeSelector } from './components/molecules/DateTimeSelector';
-export { ModalGroupManager as ModalManager, ModalView, modalLifecycle, useModalManager, IBaseModal } from './components/atoms/Modal';
+export { ModalGroupManager, ModalView, modalLifecycle, ModalLifecycleHandler, createModalLifecycleHandler, useModalManager, IBaseModal } from './components/atoms/Modal';

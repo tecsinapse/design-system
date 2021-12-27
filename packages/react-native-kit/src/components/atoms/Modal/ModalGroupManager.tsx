@@ -6,7 +6,8 @@ import { IBaseModal } from './ui/types';
 export const modalLifecycle = createModalLifecycleHandler()
 
 /**
- * TODO:
+ * It's responsable for rendering all the modal components.
+ * 
  * @param param0 
  * @returns 
  */

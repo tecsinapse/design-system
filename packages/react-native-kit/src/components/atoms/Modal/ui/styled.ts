@@ -1,25 +1,16 @@
-import styled, { css } from "@emotion/native";
+import styled from "@emotion/native";
 import { StyleProps } from "@tecsinapse/react-core";
 import { Animated } from "react-native";
 
 export const StyledPressableBackDrop = styled.Pressable<Partial<StyleProps>>`
+    flex: 1;
     position: absolute;
     width: 100%;
     height: 100%;
-    flex: 1;
 `
 
-export const BackDropView = styled(Animated.View)<Partial<StyleProps>>`
-    justify-content: flex-end;
-    position: absolute;
-    width: 100%;
+export const BackDropView = styled(Animated.View)<{ height: number } & Partial<StyleProps>>`
     height: 100%;
-    flex: 1;
-`
-
-export const Test = styled(Animated.View)<Partial<StyleProps>>`
-    /* transform: translateY(100px); */
-    /* margin-bottom: -50%; */
 `
 
 export const CloseBar = styled.View<Partial<StyleProps>>`
