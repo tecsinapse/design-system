@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/kitchensink-app",
   "description": "TecSinapse React Native kitchensink app for design system",
-  "version": "1.12.5",
+  "version": "1.12.6",
   "private": true,
   "scripts": {
     "android": "react-native run-android --no-packager && react-native start",
@@ -16,7 +16,7 @@
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
     "@tecsinapse/react-core": "^1.12.4",
-    "@tecsinapse/react-native-kit": "^1.12.5",
+    "@tecsinapse/react-native-kit": "^1.12.6",
     "react": "^17.0.2",
     "react-native": "^0.64.0",
     "react-native-gesture-handler": "^1.10.3",
