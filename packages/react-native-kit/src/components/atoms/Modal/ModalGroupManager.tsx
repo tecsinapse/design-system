@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { Modal as RNModal } from 'react-native';
+import { Modal as RNModal, ModalProps } from 'react-native';
 import { createModalLifecycleHandler } from './ModalLifecycleHandler';
 import { IBaseModal } from './ui/types';
 
@@ -11,7 +11,7 @@ export const modalLifecycle = createModalLifecycleHandler()
  * @param param0 
  * @returns 
  */
-export const ModalGroupManager: FC = ({ children }) => {
+export const ModalGroupManager: FC<ModalProps> = ({ children, ...others }) => {
 
     modalLifecycle.attach(useState<ReactElement<IBaseModal>[]>([]))
     const _render = modalLifecycle.render()
@@ -20,7 +20,7 @@ export const ModalGroupManager: FC = ({ children }) => {
     return (
         <>
             {children}
-            <RNModal visible={hasModals} transparent animationType='none'>
+            <RNModal transparent statusBarTranslucent animationType='none' visible={hasModals} {...others}>
                 {_render}
             </RNModal>
         </>

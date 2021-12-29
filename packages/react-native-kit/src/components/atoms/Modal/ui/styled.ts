@@ -9,7 +9,7 @@ export const StyledPressableBackDrop = styled.Pressable<Partial<StyleProps>>`
     height: 100%;
 `
 
-export const BackDropView = styled(Animated.View)<{ height: number } & Partial<StyleProps>>`
+export const BackDropView = styled(Animated.View)<Partial<StyleProps>>`
     height: 100%;
 `
 
