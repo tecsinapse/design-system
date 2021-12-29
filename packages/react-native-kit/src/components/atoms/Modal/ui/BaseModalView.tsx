@@ -75,7 +75,7 @@ export const ModalView: FC<IBaseModal> = ({
     return (
         <StyledPressableBackDrop onPress={close}>
             <BackDropView height={height} style={{ backgroundColor: backgroundInterpolation }}/>
-            <Animated.View style={{ transform: [{ translateY: translationCarrier }]}}>
+                <Animated.View style={{ transform: [{ translateY: translationCarrier }]}}>
                     <Pressable>
                         <BoxComponent onLayout={handleBoxLayoutChanges} style={{ paddingBottom: bottom }} variant="bottom">
                             <CloseBar/>
