@@ -44,6 +44,7 @@ export class ModalLifecycleHandler {
                 let modalElement = node.modal()
                 let { props } = modalElement
                 return React.cloneElement(modalElement, {
+                    ...props,
                     key: node.id,
                     visible: node.visible,
                     close: () => this.close(node.id),

@@ -14,6 +14,7 @@ export const ModalView: FC<IBaseModal> = ({
     children,
     visible,
     BoxComponent = BoxContent,
+    frozen,
     close,
     onClose
 }) => {
@@ -84,7 +85,7 @@ export const ModalView: FC<IBaseModal> = ({
     }, [visible])
 
     return (
-        <StyledPressableBackDrop onPress={close}>
+        <StyledPressableBackDrop onPress={!frozen ? close : undefined}>
             <BackDropView style={{ backgroundColor: backgroundInterpolation }}/>
             <Animated.View style={{ opacity: opacityCarrier, transform: [{ translateY: translationCarrier }]}}>
                 <Pressable>
