@@ -10,11 +10,12 @@ const INTERPOLATION_STEPS = 10
 const INTERPOLATION_DURATION = 195 //ms
 const OPACITY_DURATION = 25 //ms
 
-export const ModalView: FC<IBaseModal> = ({ 
+export const ModalView: FC<IBaseModal> = ({
     children,
     visible,
     BoxComponent = BoxContent,
     frozen,
+    isLastShown,
     close,
     onClose
 }) => {
@@ -26,7 +27,7 @@ export const ModalView: FC<IBaseModal> = ({
     const backgroundCarrier = useRef(new Animated.Value(0)).current
     const translationCarrier = useRef(new Animated.Value(0)).current
     const opacityCarrier = useRef(new Animated.Value(0)).current
-    const offset = keyboardOpened ? 0 : bottom
+    const offset = isLastShown && keyboardOpened ? 0 : bottom
 
     const show = useCallback(() => {
         Animated.sequence([
@@ -52,22 +53,24 @@ export const ModalView: FC<IBaseModal> = ({
 
     const hide = useCallback((to: number) => {
         Animated.sequence([
-            Animated.timing(translationCarrier, {
-                toValue: to,
-                duration: INTERPOLATION_DURATION,
-                easing: Easing.out(Easing.circle),
-                useNativeDriver: true
-            }),
+            Animated.parallel([
+                Animated.timing(translationCarrier, {
+                    toValue: to,
+                    duration: INTERPOLATION_DURATION,
+                    easing: Easing.out(Easing.circle),
+                    useNativeDriver: true
+                }),
+                Animated.timing(opacityCarrier, {
+                    toValue: 0,
+                    duration: INTERPOLATION_DURATION,
+                    useNativeDriver: true
+                })    
+            ]),
             Animated.timing(backgroundCarrier, {
                 toValue: 0,
                 duration: INTERPOLATION_DURATION,
                 easing: Easing.out(Easing.circle),
                 useNativeDriver: false
-            }),
-            Animated.timing(opacityCarrier, {
-                toValue: 0,
-                duration: OPACITY_DURATION,
-                useNativeDriver: true
             }),
         ]).start(onClose)
     }, [onClose])
@@ -89,7 +92,10 @@ export const ModalView: FC<IBaseModal> = ({
 
     useEffect(() => {
         if (visible && ready) requestAnimationFrame(() => show())
-        if (!visible && !ready) requestAnimationFrame(() => hide(boxHeight))
+        if (!visible && !ready) {
+            Keyboard.dismiss()
+            requestAnimationFrame(() => hide(boxHeight))
+        }
         if (!visible && ready) setReady(false)
     }, [ready, visible])
 
@@ -105,7 +111,7 @@ export const ModalView: FC<IBaseModal> = ({
     return (
         <StyledPressableBackDrop onPress={!frozen ? close : undefined}>
             <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
-                <KeyboardAvoidingView behavior="padding">
+                <KeyboardAvoidingView enabled={isLastShown} behavior="padding">
                     <Animated.View style={{ opacity: opacityCarrier, transform: [{ translateY: translationCarrier }]}}>
                         <Pressable>
                             <BoxComponent onLayout={handleBoxLayoutChanges} style={{ paddingBottom: offset }} variant="bottom">

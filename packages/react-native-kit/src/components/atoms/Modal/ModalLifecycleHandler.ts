@@ -40,13 +40,14 @@ export class ModalLifecycleHandler {
         const nodes = Array.from(this.nodeGroup.values())
             .filter(node => node.visible || !!node.lastVisualization)
             .sort((nodeA, nodeB) => (nodeA.lastVisualization?.getTime() || 0) - (nodeB.lastVisualization?.getTime() || 0))
-            .map(node => {
+            .map((node, index, filteredNodes) => {
                 let modalElement = node.modal()
                 let { props } = modalElement
                 return React.cloneElement(modalElement, {
                     ...props,
                     key: node.id,
                     visible: node.visible,
+                    isLastShown: filteredNodes.length - 1 === index,
                     close: () => this.close(node.id),
                     onClose: () => {
                         this.remove(node.id)
