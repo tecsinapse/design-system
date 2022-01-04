@@ -1,8 +1,8 @@
 import { BoxContent } from "@tecsinapse/react-core";
-import React, { FC, useCallback, useEffect, useRef } from "react";
-import { Animated, Easing, LayoutChangeEvent, Pressable } from "react-native";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import { Animated, Easing, Keyboard, LayoutChangeEvent, Pressable } from "react-native";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BackDropView, CloseBar, StyledPressableBackDrop } from "./styled";
+import { BackDropView, CloseBar, KeyboardView, StyledPressableBackDrop } from "./styled";
 import { IBaseModal } from "./types";
 
 const BACKDROP_ALPHA = .65
@@ -20,11 +20,15 @@ export const ModalView: FC<IBaseModal> = ({
 }) => {
     
     const { bottom } = useSafeAreaInsets()
+    const [ ready, setReady ] = useState(false)
+    const [ keyboardOpened, setKeyboardOpened ] = useState(false)
+    const [ boxHeight, setBoxHeight ] = useState(0)
     const backgroundCarrier = useRef(new Animated.Value(0)).current
     const translationCarrier = useRef(new Animated.Value(0)).current
     const opacityCarrier = useRef(new Animated.Value(0)).current
+    const offset = keyboardOpened ? 0 : bottom
 
-    const show = useCallback((to: number) => {
+    const show = useCallback(() => {
         Animated.sequence([
             Animated.timing(backgroundCarrier, {
                 toValue: INTERPOLATION_STEPS,
@@ -38,7 +42,7 @@ export const ModalView: FC<IBaseModal> = ({
                 useNativeDriver: true
             }),
             Animated.timing(translationCarrier, {
-                toValue: to,
+                toValue: 0,
                 duration: INTERPOLATION_DURATION,
                 easing: Easing.out(Easing.circle),
                 useNativeDriver: true
@@ -46,10 +50,10 @@ export const ModalView: FC<IBaseModal> = ({
         ]).start()
     }, [])
 
-    const hide = useCallback(() => {
+    const hide = useCallback((to: number) => {
         Animated.sequence([
             Animated.timing(translationCarrier, {
-                toValue: 0,
+                toValue: to,
                 duration: INTERPOLATION_DURATION,
                 easing: Easing.out(Easing.circle),
                 useNativeDriver: true
@@ -74,27 +78,44 @@ export const ModalView: FC<IBaseModal> = ({
     })
 
     const handleBoxLayoutChanges = useCallback((lce: LayoutChangeEvent) => {
-        let boxHeight = lce.nativeEvent.layout.height
-        boxHeight > 0 && requestAnimationFrame(() => show(-boxHeight))
-    }, [show])
+        let boxHeightEvent = lce.nativeEvent.layout.height
+        setBoxHeight(boxHeightEvent)
+        
+        if (visible && !ready) {
+            translationCarrier.setValue(boxHeightEvent)
+            setReady(true)
+        }
+    }, [show, ready, visible, setReady])
 
     useEffect(() => {
-        if (!visible) {
-            hide()
+        if (visible && ready) requestAnimationFrame(() => show())
+        if (!visible && !ready) requestAnimationFrame(() => hide(boxHeight))
+        if (!visible && ready) setReady(false)
+    }, [ready, visible])
+
+    useEffect(() => {
+        const showEvent = Keyboard.addListener('keyboardDidShow', () => setKeyboardOpened(true))
+        const hideEvent = Keyboard.addListener('keyboardDidHide', () => setKeyboardOpened(false))
+        return () => {
+            showEvent.remove()
+            hideEvent.remove()
         }
-    }, [visible])
+    }, [])
 
     return (
         <StyledPressableBackDrop onPress={!frozen ? close : undefined}>
-            <BackDropView style={{ backgroundColor: backgroundInterpolation }}/>
-            <Animated.View style={{ opacity: opacityCarrier, transform: [{ translateY: translationCarrier }]}}>
-                <Pressable>
-                    <BoxComponent onLayout={handleBoxLayoutChanges} style={{ paddingBottom: bottom }} variant="bottom">
-                        <CloseBar/>
-                        {children}
-                    </BoxComponent>
-                </Pressable>
-            </Animated.View>
+            <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
+                <KeyboardView behavior="padding">
+                    <Animated.View style={{ opacity: opacityCarrier, transform: [{ translateY: translationCarrier }]}}>
+                        <Pressable>
+                            <BoxComponent onLayout={handleBoxLayoutChanges} style={{ paddingBottom: offset }} variant="bottom">
+                                <CloseBar/>
+                                {children}
+                            </BoxComponent>
+                        </Pressable>
+                    </Animated.View>
+                </KeyboardView>
+            </BackDropView>
         </StyledPressableBackDrop>
     )
 }

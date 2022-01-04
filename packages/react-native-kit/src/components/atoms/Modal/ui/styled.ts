@@ -10,7 +10,8 @@ export const StyledPressableBackDrop = styled.Pressable<Partial<StyleProps>>`
 `
 
 export const BackDropView = styled(Animated.View)<Partial<StyleProps>>`
-    height: 100%;
+    justify-content: flex-end;
+    flex: 1;
 `
 
 export const CloseBar = styled.View<Partial<StyleProps>>`
