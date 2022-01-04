@@ -5,6 +5,8 @@
 export interface IBaseModal {
     visible?: boolean
     BoxComponent?: React.FC<any>
+    frozen?: boolean
+    isLastShown?: boolean
     close?: () => void
     onClose?: () => void
 }
