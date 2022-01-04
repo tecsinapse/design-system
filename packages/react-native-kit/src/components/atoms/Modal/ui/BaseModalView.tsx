@@ -1,8 +1,8 @@
 import { BoxContent } from "@tecsinapse/react-core";
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
-import { Animated, Easing, Keyboard, LayoutChangeEvent, Pressable } from "react-native";
+import { Animated, Easing, Keyboard, KeyboardAvoidingView, LayoutChangeEvent, Pressable } from "react-native";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BackDropView, CloseBar, KeyboardView, StyledPressableBackDrop } from "./styled";
+import { BackDropView, CloseBar, StyledPressableBackDrop } from "./styled";
 import { IBaseModal } from "./types";
 
 const BACKDROP_ALPHA = .65
@@ -105,7 +105,7 @@ export const ModalView: FC<IBaseModal> = ({
     return (
         <StyledPressableBackDrop onPress={!frozen ? close : undefined}>
             <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
-                <KeyboardView behavior="padding">
+                <KeyboardAvoidingView behavior="padding">
                     <Animated.View style={{ opacity: opacityCarrier, transform: [{ translateY: translationCarrier }]}}>
                         <Pressable>
                             <BoxComponent onLayout={handleBoxLayoutChanges} style={{ paddingBottom: offset }} variant="bottom">
@@ -114,7 +114,7 @@ export const ModalView: FC<IBaseModal> = ({
                             </BoxComponent>
                         </Pressable>
                     </Animated.View>
-                </KeyboardView>
+                </KeyboardAvoidingView>
             </BackDropView>
         </StyledPressableBackDrop>
     )
