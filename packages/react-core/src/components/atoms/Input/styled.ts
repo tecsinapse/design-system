@@ -2,6 +2,7 @@ import styled, { css } from '@emotion/native';
 import { TextInput } from 'react-native';
 import { InputElementProps } from '.';
 import { StyleProps } from '../../../types/defaults';
+import { RFValueStr } from '../../../utils';
 import { Icon } from '../Icon';
 import { InputContainerProps } from './InputContainer/InputContainer';
 
@@ -62,7 +63,7 @@ export const StyledInputContainer = styled.View<
 >`
   flex-direction: row;
   align-items: center;
-  min-height: 44px;
+  min-height: ${RFValueStr('44px')};
 `;
 
 export const StyledInputElementBase = styled(TextInput)<

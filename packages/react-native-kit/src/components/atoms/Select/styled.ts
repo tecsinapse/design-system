@@ -7,7 +7,8 @@ import {
   InputContainerProps,
   PressableSurface,
   PressableSurfaceProps,
-  StyleProps,
+  RFValueStr,
+  StyleProps
 } from '@tecsinapse/react-core';
 import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
 import { Input, InputNativeProps } from '../Input';
@@ -46,7 +47,7 @@ export const Header = styled(View)<ViewProps & Partial<StyleProps>>`
   align-items: center;
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing.deca};
-  height: 75px;
+  height: ${RFValueStr('75px')};
 `;
 
 export const CloseButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
@@ -66,7 +67,7 @@ export const SearchBar = styled(Input)<InputNativeProps & Partial<StyleProps>>`
 export const ListItem = styled(PressableSurface)<
   PressableSurfaceProps & Partial<StyleProps>
 >`
-  border-bottom-width: 1px;
+  border-bottom-width: ${RFValueStr('1px')};
   border-color: ${({ theme }) => theme.color.secondary.light};
   padding-vertical: ${({ theme }) => theme.spacing.mili};
   padding-horizontal: ${({ theme }) => theme.spacing.deca};

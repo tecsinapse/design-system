@@ -2,9 +2,10 @@ import styled, { css } from '@emotion/native';
 import { FC } from 'react';
 import { Platform } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
+import { RFValue, RFValueStr } from '../../../utils';
 import {
   PressableSurface,
-  PressableSurfaceProps,
+  PressableSurfaceProps
 } from '../../atoms/PressableSurface';
 import { DateTimeSelectorProps } from '../DateTimeSelector';
 
@@ -35,11 +36,11 @@ export const ModalContent = styled.View<
   { offset: number } & Partial<StyleProps>
 >`
   background-color: transparent;
-  padding-bottom: ${({ offset }) => `${offset}px`};
+  padding-bottom: ${({ offset }) => `${RFValue(offset)}px`};
   ${({ theme: { borderRadius } }) => css`
     ${isWeb
       ? `
-      width: 375px;
+      width: ${RFValueStr('375px')};
       border-radius: ${borderRadius.micro};
     `
       : `

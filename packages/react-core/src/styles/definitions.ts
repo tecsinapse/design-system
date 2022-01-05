@@ -8,8 +8,9 @@ import {
   Miscellaneous,
   Spacing,
   TypographyVariation,
-  ZIndex,
+  ZIndex
 } from '../types/defaults';
+import { RFValueStr } from '../utils';
 
 export const statusColor = {
   error: {
@@ -55,74 +56,74 @@ export const miscellaneous: Miscellaneous = {
 };
 
 export const spacing: Spacing = {
-  nano: '2px',
-  micro: '4px',
-  mili: '8px',
-  centi: '12px',
-  deca: '16px',
-  kilo: '24px',
-  mega: '32px',
-  giga: '40px',
-  tera: '48px',
-  peta: '56px',
-  hexa: '64px',
+  nano: RFValueStr('2px'),
+  micro: RFValueStr('4px'),
+  mili: RFValueStr('8px'),
+  centi: RFValueStr('12px'),
+  deca: RFValueStr('16px'),
+  kilo: RFValueStr('24px'),
+  mega: RFValueStr('32px'),
+  giga: RFValueStr('40px'),
+  tera: RFValueStr('48px'),
+  peta: RFValueStr('56px'),
+  hexa: RFValueStr('64px'),
 };
 
 export const iconSize: IconSize = {
-  micro: '12px',
-  mili: '14px',
-  centi: '16px', // '1rem'
-  deca: '18px', // '1.5rem'
-  kilo: '24px', // '1.6rem'
-  mega: '32px', // '2rem'
+  micro: RFValueStr('12px'),
+  mili: RFValueStr('14px'),
+  centi: RFValueStr('16px'), // '1rem'
+  deca: RFValueStr('18px'), // '1.5rem'
+  kilo: RFValueStr('24px'), // '1.6rem'
+  mega: RFValueStr('32px'), // '2rem'
 };
 
 export const borderRadius: BorderRadius = {
-  nano: '2px',
-  micro: '4px',
-  mili: '8px',
-  centi: '16px',
-  deca: '24px',
-  pill: '999999px', // also circle
+  nano: RFValueStr('2px'),
+  micro: RFValueStr('4px'),
+  mili: RFValueStr('8px'),
+  centi: RFValueStr('16px'),
+  deca: RFValueStr('24px'),
+  pill: RFValueStr('999999px'), // also circle
 };
 
 export const borderWidth: BorderWidth = {
-  pico: '1px',
-  nano: '2px',
+  pico: RFValueStr('1px'),
+  nano: RFValueStr('2px'),
 };
 
 export const typography: TypographyVariation = {
   h5: {
-    fontSize: '16px', // '1rem'
-    lineHeight: '24px', // '1.5rem'
+    fontSize: RFValueStr('16px'), // '1rem'
+    lineHeight: RFValueStr('24px'), // '1.5rem'
   },
   h4: {
-    fontSize: '18px', // '1.125rem'
-    lineHeight: '27px', // '1.688rem'
+    fontSize: RFValueStr('18px'), // '1.125rem'
+    lineHeight: RFValueStr('27px'), // '1.688rem'
   },
   h3: {
-    fontSize: '20px', // '1.25rem'
-    lineHeight: '32px', // '2rem'
+    fontSize: RFValueStr('20px'), // '1.25rem'
+    lineHeight: RFValueStr('32px'), // '2rem'
   },
   h2: {
-    fontSize: '26px', // '1.625rem'
-    lineHeight: '38px', // '2.375rem'
+    fontSize: RFValueStr('26px'), // '1.625rem'
+    lineHeight: RFValueStr('38px'), // '2.375rem'
   },
   h1: {
-    fontSize: '32px', // '2rem'
-    lineHeight: '42px', // '2.625rem'
+    fontSize: RFValueStr('32px'), // '2rem'
+    lineHeight: RFValueStr('42px'), // '2.625rem'
   },
   base: {
-    fontSize: '14px', // '0.875rem'
-    lineHeight: '21px', // '1.313rem'
+    fontSize: RFValueStr('14px'), // '0.875rem'
+    lineHeight: RFValueStr('21px'), // '1.313rem'
   },
   sub: {
-    fontSize: '12px', // '0.75rem'
-    lineHeight: '18px', // '1.125rem'
+    fontSize: RFValueStr('12px'), // '0.75rem'
+    lineHeight: RFValueStr('18px'), // '1.125rem'
   },
   label: {
-    fontSize: '10px',
-    lineHeight: '12px',
+    fontSize: RFValueStr('10px'),
+    lineHeight: RFValueStr('12px'),
   },
 };
 
