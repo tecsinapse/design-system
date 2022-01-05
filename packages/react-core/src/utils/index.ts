@@ -3,5 +3,5 @@ export {
   extractNumbersFromString,
   extractDigitsFromString,
 } from './extractNumbersFromString';
-export * from './reactNativeIphoneXHelper'
-export * from './reactNativeResponsiveFontSize'
+export * from './IPhoneXHelper'
+export * from './ResponsiveFontSize'

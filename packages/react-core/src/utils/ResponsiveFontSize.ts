@@ -1,9 +1,16 @@
 import { Dimensions, Platform, StatusBar } from "react-native";
 import { extractNumbersFromString } from "./extractNumbersFromString";
-import { isIphoneX } from "./reactNativeIphoneXHelper";
+import { isIphoneX } from "./IPhoneXHelper";
 
 const STANDARD_SCREEN_HEIGHT = 640
 
+/**
+ * Use this function when you want to scale a percentage number
+ * to a reasonable value that will fit better on most of devices.
+ * 
+ * @param percent 
+ * @returns 
+ */
 export const RFPercentage = (percent: number) => {
     if (Platform.OS === 'web') return percent
     const { height, width } = Dimensions.get("window");
@@ -14,6 +21,14 @@ export const RFPercentage = (percent: number) => {
     return Math.round(heightPercent);
 }
 
+/**
+ * Use this function when you want to scale a font size based on pixel unit 
+ * to a reasonable value that will fit better on most of devices.
+ * 
+ * @param fontSize 
+ * @param standardScreenHeight 
+ * @returns 
+ */
 export const RFValue = (fontSize: number, standardScreenHeight: number = STANDARD_SCREEN_HEIGHT) => {
     if (Platform.OS === 'web') return fontSize
     const { height, width } = Dimensions.get("window");
@@ -24,9 +39,14 @@ export const RFValue = (fontSize: number, standardScreenHeight: number = STANDAR
     return Math.round(heightPercent);
 }
 
+/**
+ * Same of RFValue, however you can provide string values. E.g: '10px', '-5px'.
+ * 
+ * @param fontSize 
+ * @param standardScreenHeight 
+ * @returns 
+ */
 export const RFValueStr = (fontSize: string, standardScreenHeight?: number) => {
     const _fontSize = extractNumbersFromString(fontSize)
-    const out = `${RFValue(_fontSize, standardScreenHeight)}px`
-    console.log("in/out:", fontSize, out)
-    return out
+    return `${RFValue(_fontSize, standardScreenHeight)}px`
 }
