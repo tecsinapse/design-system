@@ -1,5 +1,6 @@
 import styled from '@emotion/native';
 import { StyleProps } from '../../../types/defaults';
+import { RFValueStr } from '../../../utils';
 import { PressableSurface } from '../../atoms/PressableSurface';
 
 export const Root = styled.View<Partial<StyleProps>>`
@@ -14,7 +15,7 @@ export const Content = styled.View<Partial<StyleProps>>`
 `;
 
 export const SelectorRoot = styled.View<Partial<StyleProps>>`
-  border-width: 1px;
+  border-width: ${RFValueStr('1px')};
   border-color: ${({ theme }) => theme.color.secondary.xlight};
   border-radius: ${({ theme }) => theme.borderRadius.mili};
 `;

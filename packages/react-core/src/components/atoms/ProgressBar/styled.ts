@@ -1,6 +1,7 @@
 import styled from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
 import { Animated } from 'react-native';
+import { StyleProps } from '../../../types/defaults';
+import { RFValueStr } from '../../../utils';
 
 export const Container = styled.View<Partial<StyleProps>>`
   display: flex;
@@ -14,7 +15,7 @@ export const Container = styled.View<Partial<StyleProps>>`
 export const Segment = styled.View<Partial<StyleProps>>`
   flex: 1;
   background-color: ${({ theme }) => theme.color.secondary.light};
-  border-right-width: 2px;
+  border-right-width: ${RFValueStr('2px')};
   border-color: ${({ theme }) => theme.color.secondary.xlight};
 `;
 

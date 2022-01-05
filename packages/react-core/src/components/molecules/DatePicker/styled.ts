@@ -1,11 +1,13 @@
 import styled, { css } from '@emotion/native';
 import { FC } from 'react';
 import { Platform } from 'react-native';
+import { hex2rgba } from '../../../styles/definitions';
+import { StyleProps } from '../../../types/defaults';
+import { RFValue } from '../../../utils';
 import { Icon } from '../../atoms/Icon';
 import { disabledInputStyles, InputContainerProps } from '../../atoms/Input';
 import { PressableSurface } from '../../atoms/PressableSurface';
 import { TextProps } from '../../atoms/Text';
-import { hex2rgba, StyleProps } from '@tecsinapse/react-core';
 
 const isWeb = Platform.OS === 'web';
 
@@ -29,7 +31,7 @@ export const ModalContent = styled.View<
   { offset: number } & Partial<StyleProps>
 >`
   background-color: transparent;
-  padding-bottom: ${({ offset }) => `${offset}px`};
+  padding-bottom: ${({ offset }) => `${RFValue(offset)}px`};
   ${({ theme: { borderRadius } }) => css`
     ${isWeb
       ? `

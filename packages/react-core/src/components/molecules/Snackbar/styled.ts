@@ -1,10 +1,11 @@
-import { View } from 'react-native';
 import styled, { css } from '@emotion/native';
-import { SnackbarProps } from './Snackbar';
+import { View } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
-import { ProgressBar } from '../../atoms/ProgressBar';
+import { RFValue } from '../../../utils';
 import { Paper } from '../../atoms/Paper';
 import { PressableSurface } from '../../atoms/PressableSurface';
+import { ProgressBar } from '../../atoms/ProgressBar';
+import { SnackbarProps } from './Snackbar';
 
 const baseStyles = ({
   theme,
@@ -31,7 +32,7 @@ const anchorTop = ({
   return (
     anchor === 'top' &&
     css`
-      top: ${anchorDistance ? `${anchorDistance}px` : theme.spacing.deca};
+      top: ${anchorDistance ? `${RFValue(anchorDistance)}px` : theme.spacing.deca};
     `
   );
 };
@@ -44,7 +45,7 @@ const anchorBottom = ({
   return (
     anchor === 'bottom' &&
     css`
-      bottom: ${anchorDistance ? `${anchorDistance}px` : theme.spacing.deca};
+      bottom: ${anchorDistance ? `${RFValue(anchorDistance)}px` : theme.spacing.deca};
     `
   );
 };

@@ -1,6 +1,7 @@
 import styled, { css } from '@emotion/native';
 import { FC } from 'react';
 import { StyleProps } from '../../../types/defaults';
+import { RFValueStr } from '../../../utils';
 import { ButtonSizeType } from '../Button';
 import { PressableSurface } from '../PressableSurface';
 import { TextProps } from '../Text';
@@ -104,12 +105,12 @@ const sizeStyles = ({
     case 'small':
       return css`
         padding: ${theme?.spacing.mili} ${theme?.spacing.deca};
-        min-height: 34px;
+        min-height: ${RFValueStr('34px')};
       `;
     default:
       return css`
         padding: ${theme?.spacing.mili} ${theme?.spacing.kilo};
-        min-height: 44px;
+        min-height: ${RFValueStr('44px')};
       `;
   }
 };

@@ -3,7 +3,7 @@ import {
   lightTheme,
   StyleProps,
   Text,
-  ThemeProvider,
+  ThemeProvider
 } from '@tecsinapse/react-core/src';
 import { ModalGroupManager } from '@tecsinapse/react-native-kit';
 import React, { FC } from 'react';
@@ -21,9 +21,8 @@ export const StorybookUI: FC = () => {
         <Text fontColor="light">version {pack.version}</Text>
       </Header>
       <SafeAreaProvider>
-        <ModalGroupManager>
-          <StorybookUIRoot />
-        </ModalGroupManager>
+        <StorybookUIRoot/>
+        <ModalGroupManager/>
       </SafeAreaProvider>
     </ThemeProvider>
   );

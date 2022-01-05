@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { RFValueStr, StyleProps } from '@tecsinapse/react-core';
 import { PressableProps, ViewProps } from 'react-native';
 
 export const StyledView = styled.View<ViewProps & Partial<StyleProps>>`
@@ -16,7 +16,7 @@ export const TabContainer = styled.Pressable<
   flex: 1;
   margin-horizontal: ${({ theme }) => theme.spacing.mili};
   padding-top: ${({ theme }) => theme.spacing.deca};
-  border-top-width: ${({ selected }) => (selected ? '2px' : 0)};
+  border-top-width: ${({ selected }) => (selected ? RFValueStr('2px') : 0)};
   border-color: ${({ theme }) => theme.color.primary.medium};
   align-items: center;
   justify-content: flex-end;
@@ -26,7 +26,7 @@ export const TabContent = styled.View<ViewProps & Partial<StyleProps>>`
   aspect-ratio: 1;
   justify-content: center;
   align-items: center;
-  min-height: 48px;
+  min-height: ${RFValueStr('48px')};
   background-color: ${({ theme }) => theme.color.primary.xlight};
   border-radius: ${({ theme }) => theme.borderRadius['mili']};
 `;

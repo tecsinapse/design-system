@@ -1,5 +1,5 @@
 import styled from "@emotion/native";
-import { StyleProps } from "@tecsinapse/react-core";
+import { RFValueStr, StyleProps } from "@tecsinapse/react-core";
 import { Animated } from "react-native";
 
 export const StyledPressableBackDrop = styled.Pressable<Partial<StyleProps>>`
@@ -16,8 +16,8 @@ export const BackDropView = styled(Animated.View)<Partial<StyleProps>>`
 
 export const CloseBar = styled.View<Partial<StyleProps>>`
     background-color: ${({ theme }) => theme.color.secondary.light};
-    border-radius: 10px;
-    margin: 5px auto;
-    width: 42px;
-    height: 5px;
+    border-radius: ${RFValueStr('10px')};
+    margin: ${`${RFValueStr('5px')} auto`};
+    width: ${RFValueStr('42px')};
+    height: ${RFValueStr('5px')};
 `
