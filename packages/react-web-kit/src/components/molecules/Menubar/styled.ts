@@ -20,7 +20,7 @@ export const StyledMenuBar = webStyled('div')<Partial<StyleProps>>`
     align-items: center;
     padding: ${({ theme }) => `${theme.spacing.deca} ${theme.spacing.kilo}`};
     box-shadow: 0px 2px 8px ${({ theme }) =>
-      hex2rgba(theme.miscellaneous.shadow, 0.08)};
+      hex2rgba(theme.miscellaneous.shadow, 0.05)};
 `;
 
 export const StyledMenuButton = nativeStyled(Button)<Partial<StyleProps>>`
@@ -38,13 +38,13 @@ export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
     border-top: ${({ theme }) =>
       `${theme.borderWidth.pico} solid ${hex2rgba(
         theme.miscellaneous.shadow,
-        0.08
+        0.05
       )}`};
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor}; 
     border-bottom-left-radius: ${({ theme }) => theme.borderRadius.mili}; 
     border-bottom-right-radius: ${({ theme }) => theme.borderRadius.mili};
     box-shadow: 0px 2px 8px ${({ theme }) =>
-      hex2rgba(theme.miscellaneous.shadow, 0.08)};
+      hex2rgba(theme.miscellaneous.shadow, 0.05)};
     padding-right: 8vw;
     padding-left: 8vw;
     padding-top: ${({ theme }) => theme.spacing.kilo};

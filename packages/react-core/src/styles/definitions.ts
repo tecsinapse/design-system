@@ -49,7 +49,7 @@ export const hex2rgba: (hex, alpha?: number) => string = (hex, alpha = 1) => {
 };
 
 export const miscellaneous: Miscellaneous = {
-  shadow: '#85807a', // rgba(133, 128, 122, 0.08)
+  shadow: '#000000', // black
   overlay: '#282625', // rgba(40, 38, 37, 0.5)
   bodyColor: '#f8f7f7',
   surfaceColor: '#ffffff', //input, group button, cards

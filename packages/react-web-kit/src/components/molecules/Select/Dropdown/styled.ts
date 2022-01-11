@@ -34,7 +34,7 @@ export const StyledContainerDropdown = styled('div')<InjectedProps>`
     theme.miscellaneous.surfaceColor};
   border-radius: ${({ theme }: StyleProps) => theme.borderRadius.mili};
   box-shadow: 0 2px 8px
-    ${({ theme }: StyleProps) => hex2rgba(theme.miscellaneous.shadow, 0.08)};
+    ${({ theme }: StyleProps) => hex2rgba(theme.miscellaneous.shadow, 0.05)};
   position: absolute;
   padding-top: ${({
     theme,
