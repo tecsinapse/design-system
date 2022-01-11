@@ -13,5 +13,5 @@ export const ModalContainer = styled('div')<Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.kilo};
   display: flex;
   box-shadow: 0 2px 8px
-    ${({ theme }) => hex2rgba(theme.miscellaneous.shadow, 0.08)};
+    ${({ theme }) => hex2rgba(theme.miscellaneous.shadow, 0.05)};
 `;

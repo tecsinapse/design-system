@@ -9,7 +9,7 @@ export const StyledSearchItemContainer = styled('div')<Partial<StyleProps>>`
   border-top: ${({ theme }) =>
     `${theme.borderWidth.pico} solid ${hex2rgba(
       theme.miscellaneous.shadow,
-      0.08
+      0.05
     )}`};
 `;
 

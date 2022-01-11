@@ -5,6 +5,6 @@ export const TContainer = styled('div')<Partial<StyleProps>>`
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
   border-radius: ${({ theme }) => theme.borderRadius.mili};
   box-shadow: 0 2px 8px
-    ${({ theme }) => hex2rgba(theme.miscellaneous.shadow, 0.08)};
+    ${({ theme }) => hex2rgba(theme.miscellaneous.shadow, 0.05)};
   padding: ${({ theme }) => `${theme.spacing.deca} 0`};
 `;
