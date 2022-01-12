@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.12.9...@tecsinapse/react-native-kit@1.12.10) (2022-01-11)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.12.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.12.8...@tecsinapse/react-native-kit@1.12.9) (2022-01-06)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.12.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.12.7...@tecsinapse/react-native-kit@1.12.8) (2022-01-05)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.12.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.12.6...@tecsinapse/react-native-kit@1.12.7) (2022-01-04)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.12.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.12.5...@tecsinapse/react-native-kit@1.12.6) (2021-12-29)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
 ## [1.12.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.12.4...@tecsinapse/react-native-kit@1.12.5) (2021-12-29)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
