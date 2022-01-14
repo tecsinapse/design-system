@@ -1,8 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
-import { Button, IBaseModal, ModalGroupManager, ModalView, Text, useModalManager } from '@tecsinapse/react-native-kit';
+import { Button, IBaseModal, Input, ModalView, Text, useModalManager } from '@tecsinapse/react-native-kit';
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Modal', module)
@@ -11,30 +10,35 @@ storiesOf('Modal', module)
     return <Component />;
   });
 
-const MyModal: FC<IBaseModal> = ({ close, ...others }) => {
+const MyModal2: FC<IBaseModal> = ({ close, ...others }) => {
   return (
     <ModalView {...others } close={close}>
       <View style={{ padding: 20 }}>
         <Text typography='h2'>Hey, I'm a modal!</Text>
+        <Input></Input>
         <Button onPress={close}><Text>Close me!</Text></Button>
       </View>
     </ModalView>
   )
 }
 
-const App = () => {
+const MyModal: FC<IBaseModal> = ({ close, ...others }) => {
+  const modal = useModalManager(() => <MyModal2/>)
+  return (
+    <ModalView {...others } close={close}>
+      <View style={{ padding: 20 }}>
+        <Text typography='h2'>Hey, I'm a modal!</Text>
+        <Input></Input>
+        <Button onPress={close}><Text>Close me!</Text></Button>
+        <Button onPress={() => modal.show()}><Text>New modal</Text></Button>
+      </View>
+    </ModalView>
+  )
+}
+
+const Component = () => {
   const myModal = useModalManager(() => <MyModal/>)
   return (
     <Button onPress={() => myModal.show() }><Text>Open a little modal</Text></Button>
   )
 }
-
-const Component = () => {
-  return (
-    <SafeAreaProvider>
-      <ModalGroupManager>
-        <App/>
-      </ModalGroupManager>
-    </SafeAreaProvider>
-  );
-};

@@ -1,26 +1,25 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { ModalBaseProps } from 'react-native';
 import { InputContainerProps, useInputFocus } from '../../atoms/Input';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarIcon, getStyledTextComponent } from '../DatePicker/styled';
 import { DateTimeSelectorProps } from '../DateTimeSelector';
-import { DateTimePickerModalProps, Modal } from './Modal';
 import { HintInputContainer } from '../HintInputContainer';
+import { getStyledDateTimeSelector } from './styled';
 
-export interface DateTimePickerProps
-  extends InputContainerProps,
-    DateTimePickerModalProps,
-    Omit<DateTimeSelectorProps, 'style'> {
+export interface DateTimePickerProps extends InputContainerProps, Omit<DateTimeSelectorProps, 'style'> {
   controlComponent?: (
     onPress: () => void,
     displayValue?: string
   ) => JSX.Element;
   TextComponent?: React.FC<TextProps>;
-  animationType?: ModalBaseProps['animationType'];
+  DateTimeSelectorComponent: React.FC<DateTimeSelectorProps>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
+  renderSelector: (selector: React.ReactElement, blur?: () => void) => JSX.Element|null
+  requestShowSelector: () => void
+  requestCloseSelector: () => void
 }
 
 const DateTimePicker: React.FC<DateTimePickerProps> = ({
@@ -34,7 +33,6 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   offsetThreshold,
   upperOffsetThreshold,
   lowerOffsetThreshold,
-
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
@@ -44,7 +42,6 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   yearLabel,
   hourLabel,
   minuteLabel,
-
   placeholder,
   onFocus,
   onBlur,
@@ -55,44 +52,67 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   variant = 'default',
   TextComponent = Text,
   DateTimeSelectorComponent,
-  bottomOffset,
   rightComponent,
-  animationType = 'fade',
   style,
+  renderSelector,
+  requestShowSelector,
+  requestCloseSelector,
   ...rest
 }) => {
+  
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
     !disabled
   );
 
-  const [modalVisible, setModalVisible] = React.useState(false);
-
-  const handlePressInput = () => {
-    setModalVisible(true);
+  const handleShowSelector = () => {
+    requestShowSelector()
     handleFocus();
   };
 
-  const handleCloseModal = () => {
-    setModalVisible(false);
-    handleBlur();
+  const handleChoosing = (value: Date) => {
+    onChange?.(value)
+    requestCloseSelector()
   };
 
   const StyledText = getStyledTextComponent(TextComponent);
-  const displayValue =
-    (value ? formatDate(value, format, { locale: locale }) : placeholder) ||
-    ' ';
+  const displayValue = (value ? formatDate(value, format, { locale: locale }) : placeholder) || ' ';
+  const StyledDateTimeSelector = getStyledDateTimeSelector(DateTimeSelectorComponent)
+
+  const dateTimeSelector = (
+    <StyledDateTimeSelector
+      value={value}
+      mode={mode}
+      format={format}
+      locale={locale}
+      upperDateThreshold={upperDateThreshold}
+      lowerDateThreshold={lowerDateThreshold}
+      offsetThreshold={offsetThreshold}
+      upperOffsetThreshold={upperOffsetThreshold}
+      lowerOffsetThreshold={lowerOffsetThreshold}
+      dateModalTitle={dateModalTitle}
+      timeModalTitle={timeModalTitle}
+      dateConfirmButtonText={dateConfirmButtonText}
+      timeConfirmButtonText={timeConfirmButtonText}
+      dayLabel={dayLabel}
+      monthLabel={monthLabel}
+      yearLabel={yearLabel}
+      hourLabel={hourLabel}
+      minuteLabel={minuteLabel}
+      onChange={handleChoosing}
+    />
+  )
 
   return (
     <>
       {controlComponent ? (
-        controlComponent(handlePressInput, displayValue)
+        controlComponent(handleShowSelector, displayValue)
       ) : (
         <HintInputContainer
           focused={focused}
           viewStyle={style}
-          onPress={handlePressInput}
+          onPress={handleShowSelector}
           disabled={disabled}
           LabelComponent={TextComponent}
           variant={variant}
@@ -111,7 +131,9 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
           </StyledText>
         </HintInputContainer>
       )}
-      <Modal
+      {renderSelector(dateTimeSelector, handleBlur)}
+
+      {/* <Modal
         DateTimeSelectorComponent={DateTimeSelectorComponent}
         bottomOffset={bottomOffset}
         visible={modalVisible}
@@ -137,7 +159,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         yearLabel={yearLabel}
         hourLabel={hourLabel}
         minuteLabel={minuteLabel}
-      />
+      /> */}
     </>
   );
 };

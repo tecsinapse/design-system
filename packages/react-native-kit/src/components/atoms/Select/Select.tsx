@@ -1,13 +1,13 @@
-import * as React from 'react';
 import {
-  InputContainerProps,
-  useInputFocus,
-  HintInputContainer,
+  HintInputContainer, InputContainerProps,
+  useInputFocus
 } from '@tecsinapse/react-core';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
+import { useModalManager } from '../Modal';
 import { Text } from '../Text';
 import { Modal } from './Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
-import { useEffect, useState } from 'react';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
@@ -68,7 +68,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
     !disabled
   );
 
-  const [modalVisible, setModalVisible] = React.useState(false);
   const [selectOptions, setSelectOptions] = useState<Data[]>([]);
 
   // TODO: Add Skeleton to modal height when loading is true
@@ -152,17 +151,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
     [options, value, keyExtractor]
   );
 
-  const handlePressInput = async () => {
-    setModalVisible(true);
-    handleFocus();
-    await handleLazyFocus();
-  };
-
-  const handleCloseModal = () => {
-    setModalVisible(false);
-    handleBlur();
-  };
-
   const getDisplayValue = () => {
     if (Array.isArray(value)) {
       if (value.length === 0) return placeholder;
@@ -189,6 +177,33 @@ function Select<Data, Type extends 'single' | 'multi'>({
     }
   };
 
+  const modal = useModalManager(() => (
+    <Modal
+      options={selectOptions || []}
+      focused={true}
+      keyExtractor={keyExtractor}
+      labelExtractor={labelExtractor}
+      groupKeyExtractor={groupKeyExtractor}
+      searchBarPlaceholder={searchBarPlaceholder}
+      type={type}
+      onSelect={onSelect}
+      value={value}
+      hideSearchBar={hideSearchBar}
+      onSearch={handleOnSearch}
+      selectModalTitle={selectModalTitle}
+      selectModalTitleComponent={selectModalTitleComponent}
+      confirmButtonText={confirmButtonText}
+      loading={loading}
+      onClose={handleBlur}
+    />
+  ))
+
+  const handlePressInput = async () => {
+    modal.show()
+    handleFocus();
+    await handleLazyFocus();
+  };
+
   return (
     <>
       <HintInputContainer
@@ -212,7 +227,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
           {getDisplayValue() || ' '}
         </StyledSelectionText>
       </HintInputContainer>
-      <Modal
+
+      {/* <Modal
         visible={modalVisible}
         options={selectOptions || []}
         focused={modalVisible}
@@ -232,7 +248,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         selectModalTitleComponent={selectModalTitleComponent}
         confirmButtonText={confirmButtonText}
         loading={loading}
-      />
+      /> */}
     </>
   );
 }

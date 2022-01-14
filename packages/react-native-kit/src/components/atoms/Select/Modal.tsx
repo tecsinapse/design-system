@@ -1,23 +1,16 @@
+import { Checkbox, RadioButton, useDebouncedState } from '@tecsinapse/react-core';
 import * as React from 'react';
-import {
-  FetchIndicator,
-  ModalFooter,
-  ListItem,
-  SearchBarContainer,
-  SelectIcon,
-  StyledModal,
-} from './styled';
-import { FlatList, Modal as RNModal, ModalProps, View } from 'react-native';
-import { SelectNativeProps } from './Select';
-import { Text } from '../Text';
-import {
-  Button,
-  Checkbox,
-  RadioButton,
-  useDebouncedState,
-} from '@tecsinapse/react-core';
-import { Input } from '../Input';
+import { FlatList, StatusBar, View } from 'react-native';
+import { Button } from '../Button';
 import { Header } from '../Header';
+import { Input } from '../Input';
+import { IBaseModal, ModalView } from '../Modal';
+import { Text } from '../Text';
+import { SelectNativeProps } from './Select';
+import {
+  FetchIndicator, getStyledModal, ListItem, ModalFooter, SearchBarContainer,
+  SelectIcon
+} from './styled';
 
 interface LoadingProps {
   loading?: boolean;
@@ -35,15 +28,16 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   value,
   onSelect,
   onSearch,
-  onRequestClose,
   selectModalTitle,
   selectModalTitleComponent,
   confirmButtonText,
   loading,
-  ...modalProps
-}: SelectNativeProps<Data, Type> & ModalProps & LoadingProps): JSX.Element => {
+  close,
+  ...others
+}: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
+  const ModalComponent = React.useMemo(() => getStyledModal(StatusBar.currentHeight), [])
 
   // Resets the temporary state to the initial state whenever the
   // modal is reopened or the value changes
@@ -93,7 +87,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     onSelect(
       (type === 'single' ? selectedValues[0] : selectedValues) as OnSelectArg
     );
-    onRequestClose && onRequestClose();
+    close?.()
   };
 
   const headerContent = selectModalTitleComponent ? (
@@ -105,16 +99,10 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   ) : null;
 
   return (
-    <RNModal
-      transparent
-      hardwareAccelerated
-      {...modalProps}
-      onRequestClose={onRequestClose}
-    >
-      <StyledModal>
+    <ModalView {...others} BoxComponent={ModalComponent} showCloseBar={false}>
         <Header
           rightButton={{
-            onPress: onRequestClose,
+            onPress: close,
             icon: {
               name: 'close',
               type: 'material-community',
@@ -124,6 +112,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
         >
           {headerContent}
         </Header>
+
         {!hideSearchBar && (
           <SearchBarContainer>
             <Input
@@ -136,9 +125,11 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             />
           </SearchBarContainer>
         )}
+
         {loading && (
           <FetchIndicator animating={true} color={'grey'} size={'large'} />
         )}
+
         <FlatList
           data={data}
           keyExtractor={keyExtractor}
@@ -171,6 +162,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             </ListItem>
           )}
         />
+        
         <ModalFooter>
           <Button
             variant={'filled'}
@@ -183,8 +175,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
             </Text>
           </Button>
         </ModalFooter>
-      </StyledModal>
-    </RNModal>
+    </ModalView>
   );
 };
 

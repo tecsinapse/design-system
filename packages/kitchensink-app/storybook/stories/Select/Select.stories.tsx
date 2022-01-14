@@ -32,7 +32,9 @@ const Component = () => {
   }
 
   const handleSearch = React.useCallback((searchArg: string) => {
-    return options.filter(value => {if(searchArg) return value.label.includes(searchArg); else return true})
+    let ha = options.filter(value => {if(searchArg) return value.label.includes(searchArg); else return true})
+    console.log(">", searchArg, ha);
+    return ha
   }, []);
 
   const optionsPromise = React.useCallback(async (searchInput: string | undefined) => {

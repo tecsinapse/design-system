@@ -14,12 +14,13 @@ import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
 import { Input, InputNativeProps } from '../Input';
 import { Text } from '../Text';
 
-export const StyledModal = styled(View)<ModalProps & Partial<StyleProps>>`
-  position: relative;
-  background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
-  height: 100%;
-  width: 100%;
-`;
+export const getStyledModal = (safeTop: number = 0) => {
+  return styled(View)<ModalProps & Partial<StyleProps>>`
+    padding-top: ${`${safeTop}px`};
+    background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
+    height: 100%;
+  `
+}
 
 export const StyledSelectionText = styled(Text)(
   (props: Partial<InputContainerProps> & Partial<StyleProps>) => css`
