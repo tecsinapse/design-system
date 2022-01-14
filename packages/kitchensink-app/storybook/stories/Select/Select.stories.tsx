@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { Input, Select } from '@tecsinapse/react-native-kit';
+import { Select } from '@tecsinapse/react-native-kit';
+import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Input', module)
@@ -32,9 +32,7 @@ const Component = () => {
   }
 
   const handleSearch = React.useCallback((searchArg: string) => {
-    let ha = options.filter(value => {if(searchArg) return value.label.includes(searchArg); else return true})
-    console.log(">", searchArg, ha);
-    return ha
+    return options.filter(value => {if(searchArg) return value.label.includes(searchArg); else return true})
   }, []);
 
   const optionsPromise = React.useCallback(async (searchInput: string | undefined) => {

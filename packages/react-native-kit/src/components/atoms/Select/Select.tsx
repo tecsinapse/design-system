@@ -4,7 +4,7 @@ import {
 } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { useModalManager } from '../Modal';
+import { useLazyModalManager } from '../Modal';
 import { Text } from '../Text';
 import { Modal } from './Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
@@ -69,6 +69,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   );
 
   const [selectOptions, setSelectOptions] = useState<Data[]>([]);
+  const modal = useLazyModalManager()
 
   // TODO: Add Skeleton to modal height when loading is true
   const [loading, setLoading] = useState<boolean>(false);
@@ -144,6 +145,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         } catch (e) {
           // TODO: Catch error
         } finally {
+          modal.requestUpdate()
           setLoading(false);
         }
       }
@@ -177,7 +179,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
     }
   };
 
-  const modal = useModalManager(() => (
+  modal.sync(
     <Modal
       options={selectOptions || []}
       focused={true}
@@ -196,7 +198,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
       loading={loading}
       onClose={handleBlur}
     />
-  ))
+  )
 
   const handlePressInput = async () => {
     modal.show()
