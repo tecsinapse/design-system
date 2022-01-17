@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.7...@tecsinapse/react-core@1.12.8) (2022-01-17)
+
+
+### Bug Fixes
+
+* regex method extractDigitsFromString ([99eb01a](https://github.com/tecsinapse/design-system/commit/99eb01a694d013129e4c08b633af003791bc6e9b))
+
+
+
+
+
 ## [1.12.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.6...@tecsinapse/react-core@1.12.7) (2022-01-11)
 
 **Note:** Version bump only for package @tecsinapse/react-core
