@@ -129,21 +129,6 @@ function DatePicker<T extends SelectionType>({
         </HintInputContainer>
       )}
       {renderCalendar(calendar, handleBlur)}
-{/*       
-      <Modal
-        CalendarComponent={CalendarComponent}
-        bottomOffset={bottomOffset}
-        visible={modalVisible}
-        onRequestClose={handleCloseModal}
-        animated
-        animationType={animationType}
-        month={month}
-        year={year}
-        onChange={onChange}
-        value={value}
-        type={type}
-        locale={locale}
-      /> */}
     </>
   );
 }

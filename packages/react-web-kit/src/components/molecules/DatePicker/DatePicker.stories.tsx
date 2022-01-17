@@ -1,11 +1,11 @@
 import { Story } from '@storybook/react';
-import React from 'react';
+import { DatePickerProps, DateRange } from '@tecsinapse/react-core';
 import { ptBR } from 'date-fns/locale';
-import DatePicker, { DatePickerProps } from './DatePicker';
-import { DateRange } from '../Calendar';
+import React from 'react';
+import { DatePicker } from './DatePicker';
 
 export default {
-  title: 'Hybrid/Date Picker',
+  title: 'Web/Date Picker',
   component: DatePicker,
 };
 

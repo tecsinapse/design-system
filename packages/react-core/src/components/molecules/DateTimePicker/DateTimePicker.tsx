@@ -3,7 +3,7 @@ import * as React from 'react';
 import { InputContainerProps, useInputFocus } from '../../atoms/Input';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarIcon, getStyledTextComponent } from '../DatePicker/styled';
-import { DateTimeSelectorProps } from '../DateTimeSelector';
+import { DateTimeSelector, DateTimeSelectorProps } from '../DateTimeSelector';
 import { HintInputContainer } from '../HintInputContainer';
 import { getStyledDateTimeSelector } from './styled';
 
@@ -51,7 +51,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hint,
   variant = 'default',
   TextComponent = Text,
-  DateTimeSelectorComponent,
+  DateTimeSelectorComponent = DateTimeSelector,
   rightComponent,
   style,
   renderSelector,
@@ -132,34 +132,6 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         </HintInputContainer>
       )}
       {renderSelector(dateTimeSelector, handleBlur)}
-
-      {/* <Modal
-        DateTimeSelectorComponent={DateTimeSelectorComponent}
-        bottomOffset={bottomOffset}
-        visible={modalVisible}
-        onRequestClose={handleCloseModal}
-        animated
-        animationType={animationType}
-        onChange={onChange}
-        value={value}
-        mode={mode}
-        format={format}
-        locale={locale}
-        upperDateThreshold={upperDateThreshold}
-        lowerDateThreshold={lowerDateThreshold}
-        offsetThreshold={offsetThreshold}
-        upperOffsetThreshold={upperOffsetThreshold}
-        lowerOffsetThreshold={lowerOffsetThreshold}
-        dateModalTitle={dateModalTitle}
-        timeModalTitle={timeModalTitle}
-        dateConfirmButtonText={dateConfirmButtonText}
-        timeConfirmButtonText={timeConfirmButtonText}
-        dayLabel={dayLabel}
-        monthLabel={monthLabel}
-        yearLabel={yearLabel}
-        hourLabel={hourLabel}
-        minuteLabel={minuteLabel}
-      /> */}
     </>
   );
 };

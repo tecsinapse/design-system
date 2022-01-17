@@ -1,49 +1,9 @@
 import styled, { css } from '@emotion/native';
 import { FC } from 'react';
-import { Platform } from 'react-native';
-import { hex2rgba } from '../../../styles/definitions';
 import { StyleProps } from '../../../types/defaults';
-import { RFValue } from '../../../utils';
 import { Icon } from '../../atoms/Icon';
 import { disabledInputStyles, InputContainerProps } from '../../atoms/Input';
-import { PressableSurface } from '../../atoms/PressableSurface';
 import { TextProps } from '../../atoms/Text';
-
-const isWeb = Platform.OS === 'web';
-
-export const Backdrop = styled(PressableSurface)<Partial<StyleProps>>`
-  ${({ theme }) =>
-    isWeb
-      ? css`
-          justify-content: center;
-          align-items: center;
-          background-color: ${hex2rgba(theme.miscellaneous.overlay, 0.5)};
-          height: 100vh;
-        `
-      : css`
-          justify-content: flex-end;
-          background-color: ${hex2rgba(theme.miscellaneous.overlay, 0.5)};
-          height: 100%;
-        `}
-`;
-
-export const ModalContent = styled.View<
-  { offset: number } & Partial<StyleProps>
->`
-  background-color: transparent;
-  padding-bottom: ${({ offset }) => `${RFValue(offset)}px`};
-  ${({ theme: { borderRadius } }) => css`
-    ${isWeb
-      ? `
-      border-radius: ${borderRadius.micro};
-    `
-      : `
-      border-top-left-radius: ${borderRadius.deca};
-      border-top-right-radius: ${borderRadius.deca};
-    `}
-  `}
-  overflow: hidden;
-`;
 
 export const getStyledTextComponent = (component: FC<TextProps>) => {
   return styled(component)(
