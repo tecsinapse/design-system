@@ -34,6 +34,7 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   confirmButtonText?: string;
   selectModalTitle?: string;
   selectModalTitleComponent?: JSX.Element;
+  closeOnPick?: boolean;
 }
 
 function Select<Data, Type extends 'single' | 'multi'>({
@@ -60,6 +61,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   hintComponent,
   hint,
   style,
+  closeOnPick = type === 'single',
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -197,9 +199,10 @@ function Select<Data, Type extends 'single' | 'multi'>({
       confirmButtonText={confirmButtonText}
       loading={loading}
       onClose={handleBlur}
+      closeOnPick={closeOnPick}
     />
   )
-
+  
   const handlePressInput = async () => {
     modal.show()
     handleFocus();

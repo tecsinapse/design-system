@@ -33,11 +33,13 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   confirmButtonText,
   loading,
   close,
+  closeOnPick,
   ...others
 }: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const ModalComponent = React.useMemo(() => getStyledModal(StatusBar.currentHeight), [])
+  const _closeOnPick = closeOnPick && type === 'single'
 
   // Resets the temporary state to the initial state whenever the
   // modal is reopened or the value changes
@@ -80,6 +82,12 @@ const Component = <Data, Type extends 'single' | 'multi'>({
         : [option];
     });
   };
+
+  React.useEffect(() => {
+    if (_closeOnPick && selectedValues[0] && (selectedValues[0] !== value)) {
+      handleConfirm()
+    }
+  }, [selectedValues[0], value, closeOnPick])
 
   const handleConfirm = () => {
     // TS Workaround since TS won't infer the ternary operator's result type correctly
@@ -163,7 +171,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           )}
         />
         
-        <ModalFooter>
+        { !_closeOnPick && <ModalFooter>
           <Button
             variant={'filled'}
             color={'primary'}
@@ -174,7 +182,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
               {confirmButtonText}
             </Text>
           </Button>
-        </ModalFooter>
+        </ModalFooter>}
     </ModalView>
   );
 };
