@@ -1,7 +1,7 @@
 import currency from 'currency.js';
 import { useCallback, useState } from 'react';
-import { IMaskValue, IMask } from './useMask';
-import { extractNumbersFromString } from '@tecsinapse/react-core';
+import { extractNumbersFromString } from '../../../../utils';
+import { IMask, IMaskValue } from './useMask';
 
 type CurrencyOptions = currency.Options;
 

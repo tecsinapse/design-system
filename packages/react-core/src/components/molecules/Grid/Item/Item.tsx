@@ -1,10 +1,8 @@
 import React from 'react';
-import {
-  extractNumbersFromString,
-  SpacingType,
-  useTheme,
-} from '@tecsinapse/react-core';
 import { View } from 'react-native';
+import { useTheme } from '../../../../hooks';
+import { SpacingType } from '../../../../types/defaults';
+import { extractNumbersFromString } from '../../../../utils';
 
 type FlexPositioning = 'flex-start' | 'flex-end' | 'center';
 type FlexAlignBase = FlexPositioning | 'stretch';

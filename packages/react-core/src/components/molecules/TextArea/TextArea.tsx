@@ -1,15 +1,9 @@
 import React, { FC } from 'react';
-import {
-  FontStackType,
-  FontWeightType,
-  Hint,
-  InputContainerProps,
-  InputElementProps,
-  TextProps,
-} from '@tecsinapse/react-core';
 import { View } from 'react-native';
+import { FontStackType, FontWeightType } from '../../../types/defaults';
+import { Hint, InputContainerProps, InputElementProps } from '../../atoms/Input';
+import { Text, TextProps } from '../../atoms/Text';
 import { StyledInputContainer } from './styled';
-import { Text } from '../../atoms/Text';
 
 export interface TextAreaProps
   extends Omit<InputElementProps, 'style' | 'multiline' | 'value'>,
