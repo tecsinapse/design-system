@@ -7,6 +7,7 @@ import {
   InputContainerProps,
   PressableSurface,
   PressableSurfaceProps,
+  RFValue,
   RFValueStr,
   StyleProps
 } from '@tecsinapse/react-core';
@@ -16,7 +17,7 @@ import { Text } from '../../atoms/Text';
 
 export const getStyledModal = (safeTop: number = 0) => {
   return styled(View)<ModalProps & Partial<StyleProps>>`
-    padding-top: ${`${safeTop}px`};
+    padding-top: ${`${RFValue(safeTop)}px`};
     background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
     height: 100%;
   `

@@ -1,4 +1,4 @@
-import { Checkbox, RadioButton, useDebouncedState } from '@tecsinapse/react-core';
+import { Checkbox, getStatusBarHeight, RadioButton, useDebouncedState } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { FlatList, StatusBar, View } from 'react-native';
 import { Button } from '../../atoms/Button';
@@ -38,7 +38,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
 }: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
-  const ModalComponent = React.useMemo(() => getStyledModal(StatusBar.currentHeight), [])
+  const ModalComponent = React.useMemo(() => getStyledModal(getStatusBarHeight(true)), [])
   const _closeOnPick = closeOnPick && type === 'single'
 
   // Resets the temporary state to the initial state whenever the
