@@ -13,7 +13,6 @@ export const StyledIconInput = webStyled('div')<Partial<StyleProps>>`
 
 export const StyledMenuBar = webStyled('div')<Partial<StyleProps>>`
     position: relative;
-    z-index: ${({ theme }) => theme.zIndex.header};
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     display: flex;
     flex-direction: row;
