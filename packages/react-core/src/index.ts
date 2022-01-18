@@ -57,6 +57,7 @@ export {
   CalendarProps,
   DateRange,
   SelectionType,
+  Value
 } from './components/molecules/Calendar';
 export { DatePicker, DatePickerProps } from './components/molecules/DatePicker';
 export {

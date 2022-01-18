@@ -1,29 +1,27 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { ModalBaseProps } from 'react-native';
+import { useEffect } from 'react';
 import { InputContainerProps, useInputFocus } from '../../atoms/Input';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarProps, DateRange, SelectionType } from '../Calendar';
-import { DatePickerModalProps, Modal } from './Modal';
-import { CalendarIcon, getStyledTextComponent } from './styled';
 import { HintInputContainer } from '../HintInputContainer';
-import { useEffect } from 'react';
+import { CalendarIcon, getStyledTextComponent } from './styled';
 
-export interface DatePickerProps<T extends SelectionType>
-  extends InputContainerProps,
-    DatePickerModalProps<T>,
-    Omit<CalendarProps<T>, 'style'> {
+export interface DatePickerProps<T extends SelectionType> extends InputContainerProps, Omit<CalendarProps<T>, 'style'> {
   controlComponent?: (
     onPress: () => void,
     displayValue?: string
   ) => JSX.Element;
   TextComponent?: React.FC<TextProps>;
-  animationType?: ModalBaseProps['animationType'];
+  CalendarComponent: React.FC<CalendarProps<T>>
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
   format?: string;
   closeOnPick?: boolean;
+  renderCalendar: (calendar: React.ReactElement, blur?: () => void) => JSX.Element|null
+  requestShowCalendar: () => void
+  requestCloseCalendar: () => void
 }
 
 function DatePicker<T extends SelectionType>({
@@ -34,7 +32,6 @@ function DatePicker<T extends SelectionType>({
   value,
   type,
   format = 'yyyy-MM-dd',
-
   placeholder,
   onFocus,
   onBlur,
@@ -45,31 +42,26 @@ function DatePicker<T extends SelectionType>({
   variant,
   TextComponent = Text,
   CalendarComponent,
-  bottomOffset,
   rightComponent,
-  animationType = 'fade',
   style,
   locale,
   closeOnPick = false,
+  renderCalendar,
+  requestShowCalendar,
+  requestCloseCalendar,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
+  
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
     !disabled
   );
 
-  const [modalVisible, setModalVisible] = React.useState(false);
-
-  const handlePressInput = React.useCallback(() => {
-    setModalVisible(true);
+  const handleShowCalendar = React.useCallback(() => {
+    requestShowCalendar()
     handleFocus();
-  }, [handleFocus, setModalVisible]);
-
-  const handleCloseModal = React.useCallback(() => {
-    setModalVisible(false);
-    handleBlur();
-  }, [handleBlur, setModalVisible]);
+  }, [handleFocus, requestShowCalendar]);
 
   const getDisplayValue = () => {
     if (!value) return placeholder;
@@ -89,23 +81,35 @@ function DatePicker<T extends SelectionType>({
 
   useEffect(() => {
     if (closeOnPick && value && type === 'day') {
-      setTimeout(handleCloseModal, 200);
+      setTimeout(requestCloseCalendar, 200);
     }
     if (closeOnPick && value && type === 'range') {
       const { lowest, highest } = value as DateRange;
-      lowest && highest && setTimeout(handleCloseModal, 200);
+      lowest && highest && setTimeout(requestCloseCalendar, 200);
     }
-  }, [value, closeOnPick, type, handleCloseModal]);
+  }, [value, closeOnPick, type, requestCloseCalendar]);
+
+  const calendar = (
+    <CalendarComponent
+      pointerEvents={'box-none'}
+      type={type}
+      value={value}
+      month={month}
+      year={year}
+      onChange={onChange}
+      locale={locale}
+    />
+  )
 
   return (
     <>
       {controlComponent ? (
-        controlComponent(handlePressInput, getDisplayValue())
+        controlComponent(handleShowCalendar, getDisplayValue())
       ) : (
         <HintInputContainer
           focused={focused}
           viewStyle={style}
-          onPress={handlePressInput}
+          onPress={handleShowCalendar}
           disabled={disabled}
           hintComponent={hintComponent}
           LabelComponent={TextComponent}
@@ -124,20 +128,7 @@ function DatePicker<T extends SelectionType>({
           </StyledText>
         </HintInputContainer>
       )}
-      <Modal
-        CalendarComponent={CalendarComponent}
-        bottomOffset={bottomOffset}
-        visible={modalVisible}
-        onRequestClose={handleCloseModal}
-        animated
-        animationType={animationType}
-        month={month}
-        year={year}
-        onChange={onChange}
-        value={value}
-        type={type}
-        locale={locale}
-      />
+      {renderCalendar(calendar, handleBlur)}
     </>
   );
 }

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { Input, Select } from '@tecsinapse/react-native-kit';
+import { Select } from '@tecsinapse/react-native-kit';
+import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Input', module)

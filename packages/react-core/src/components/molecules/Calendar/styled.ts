@@ -19,26 +19,6 @@ export const TitleContainer = styled.View<Partial<StyleProps>>`
   background-color: ${({ theme }) => theme.color.secondary.xlight};
 `;
 
-const surfaceBorderRight = ({
-  isRright,
-  theme,
-}: ButtonBorders & Partial<StyleProps>) =>
-  !isWeb &&
-  isRright &&
-  css`
-    border-top-right-radius: ${theme?.borderRadius.deca};
-  `;
-
-const surfaceBorderLeft = ({
-  isLeft,
-  theme,
-}: ButtonBorders & Partial<StyleProps>) =>
-  !isWeb &&
-  isLeft &&
-  css`
-    border-top-left-radius: ${theme?.borderRadius.deca};
-  `;
-
 export const Control = styled(PressableSurface)(
   (
     props: Partial<StyleProps> & ButtonBorders & { align: 'start' | 'end' }
@@ -47,8 +27,6 @@ export const Control = styled(PressableSurface)(
     padding: ${props.theme?.spacing.centi};
     border-radius: ${props.theme?.borderRadius.mili};
     margin: ${props.theme?.spacing.mili};
-    ${surfaceBorderRight(props)}
-    ${surfaceBorderLeft(props)}
   `
 );
 

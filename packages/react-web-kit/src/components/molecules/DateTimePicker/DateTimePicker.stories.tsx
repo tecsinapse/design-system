@@ -1,10 +1,11 @@
 import { Story } from '@storybook/react';
-import React from 'react';
+import { DateTimePickerProps } from '@tecsinapse/react-core';
 import { ptBR } from 'date-fns/locale';
-import { DateTimePicker, DateTimePickerProps } from './index';
+import React from 'react';
+import { DateTimePicker } from './DateTimePicker';
 
 export default {
-  title: 'Hybrid/Date Time Picker',
+  title: 'Web/Date Time Picker',
   component: DateTimePicker,
 };
 

@@ -1,13 +1,13 @@
+import { useTheme } from '@emotion/react';
 import * as React from 'react';
 import { Animated, ViewProps } from 'react-native';
-import { Container, Progress, Segment } from './styled';
-import { useTheme } from '@emotion/react';
 import {
   ColorGradationType,
   ColorType,
-  extractNumbersFromString,
-  ThemeProp,
-} from '@tecsinapse/react-core';
+  ThemeProp
+} from '../../../types/defaults';
+import { extractNumbersFromString } from '../../../utils';
+import { Container, Progress, Segment } from './styled';
 
 export interface ProgressBarProps extends ViewProps {
   /** Number of segments. Defaults to 1. Set to 1 when 0 or less */

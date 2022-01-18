@@ -1,6 +1,6 @@
 export * from '@tecsinapse/react-core';
 export { Header, HeaderProps } from './components/atoms/Header';
-export { Select, SelectNativeProps } from './components/atoms/Select';
+export { Select, SelectNativeProps } from './components/molecules/Select';
 export { Input, InputNativeProps } from './components/atoms/Input';
 export { TextArea, TextAreaProps } from './components/atoms/TextArea';
 export { Text, TextNativeProps } from './components/atoms/Text';
@@ -26,4 +26,4 @@ export { DateTimePicker } from './components/molecules/DateTimePicker';
 export { Avatar } from './components/atoms/Avatar';
 export { Calendar } from './components/molecules/Calendar';
 export { DateTimeSelector } from './components/molecules/DateTimeSelector';
-export { ModalGroupManager, ModalView, ModalLifecycleHandler, useModalManager, IBaseModal } from './components/atoms/Modal';
+export { ModalGroupManager, ModalView, ModalLifecycleHandler, useLazyModalManager, useModalManager, IBaseModal } from './components/atoms/Modal';

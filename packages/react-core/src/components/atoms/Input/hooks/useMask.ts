@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { extractDigitsFromString } from '@tecsinapse/react-core';
+import { extractDigitsFromString } from '../../../../utils';
 
 export interface IMaskValue {
   formatted?: string;

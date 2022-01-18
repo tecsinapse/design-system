@@ -1,6 +1,6 @@
 import { BoxContent } from "@tecsinapse/react-core";
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
-import { Animated, Easing, Keyboard, KeyboardAvoidingView, LayoutChangeEvent, Pressable } from "react-native";
+import { Animated, Dimensions, Easing, Keyboard, LayoutChangeEvent, Pressable, StatusBar } from "react-native";
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackDropView, CloseBar, StyledPressableBackDrop } from "./styled";
 import { IBaseModal } from "./types";
@@ -16,18 +16,30 @@ export const ModalView: FC<IBaseModal> = ({
     BoxComponent = BoxContent,
     frozen,
     isLastShown,
+    showCloseBar = true,
     close,
     onClose
 }) => {
     
     const { bottom } = useSafeAreaInsets()
     const [ ready, setReady ] = useState(false)
-    const [ keyboardOpened, setKeyboardOpened ] = useState(false)
+    const [ keyboardOpened, setKeyboardOpened ] = useState(0)
     const [ boxHeight, setBoxHeight ] = useState(0)
     const backgroundCarrier = useRef(new Animated.Value(0)).current
     const translationCarrier = useRef(new Animated.Value(0)).current
     const opacityCarrier = useRef(new Animated.Value(0)).current
-    const offset = isLastShown && keyboardOpened ? 0 : bottom
+    const offset = isLastShown && keyboardOpened > 0 ? 0 : bottom
+
+    const getKeyboardHeight = (keyboard: number) => {
+        if (keyboard === 0) return 0
+        
+        let wHeight = Math.ceil(Dimensions.get('window').height)
+        let sHeight = Math.ceil(Dimensions.get('screen').height)
+        if (wHeight !== sHeight) {
+            return keyboard + (sHeight - wHeight - (StatusBar.currentHeight || 0))
+        }
+        return keyboard
+    }
 
     const show = useCallback(() => {
         Animated.sequence([
@@ -100,8 +112,8 @@ export const ModalView: FC<IBaseModal> = ({
     }, [ready, visible])
 
     useEffect(() => {
-        const showEvent = Keyboard.addListener('keyboardDidShow', () => setKeyboardOpened(true))
-        const hideEvent = Keyboard.addListener('keyboardDidHide', () => setKeyboardOpened(false))
+        const showEvent = Keyboard.addListener('keyboardDidShow', (e) => setKeyboardOpened(e.endCoordinates.height))
+        const hideEvent = Keyboard.addListener('keyboardDidHide', () => setKeyboardOpened(0))
         return () => {
             showEvent.remove()
             hideEvent.remove()
@@ -111,16 +123,18 @@ export const ModalView: FC<IBaseModal> = ({
     return (
         <StyledPressableBackDrop onPress={!frozen ? close : undefined}>
             <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
-                <KeyboardAvoidingView enabled={isLastShown} behavior="padding">
-                    <Animated.View style={{ opacity: opacityCarrier, transform: [{ translateY: translationCarrier }]}}>
-                        <Pressable>
-                            <BoxComponent onLayout={handleBoxLayoutChanges} style={{ paddingBottom: offset }} variant="bottom">
-                                <CloseBar/>
-                                {children}
-                            </BoxComponent>
-                        </Pressable>
-                    </Animated.View>
-                </KeyboardAvoidingView>
+                <Animated.View style={{ 
+                        paddingBottom: isLastShown ? getKeyboardHeight(keyboardOpened) : 0, 
+                        opacity: opacityCarrier, 
+                        transform: [{ translateY: translationCarrier }]
+                    }}>
+                    <Pressable>
+                        <BoxComponent onLayout={handleBoxLayoutChanges} style={{ paddingBottom: offset }} variant="bottom">
+                            {showCloseBar && <CloseBar/>}
+                            {children}
+                        </BoxComponent>
+                    </Pressable>
+                </Animated.View>
             </BackDropView>
         </StyledPressableBackDrop>
     )
