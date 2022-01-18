@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.9...@tecsinapse/react-web-kit@1.12.10) (2022-01-18)
+
+
+### Bug Fixes
+
+* remove StyledMenuBar zIndex ([2b7941f](https://github.com/tecsinapse/design-system/commit/2b7941fe6aec2fbc91495e909bb448e98f1cd8ac))
+
+
+
+
+
 ## [1.12.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.8...@tecsinapse/react-web-kit@1.12.9) (2022-01-18)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
