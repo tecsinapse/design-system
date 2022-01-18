@@ -1,11 +1,11 @@
 import { Checkbox, RadioButton, useDebouncedState } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { FlatList, StatusBar, View } from 'react-native';
-import { Button } from '../Button';
-import { Header } from '../Header';
-import { Input } from '../Input';
-import { IBaseModal, ModalView } from '../Modal';
-import { Text } from '../Text';
+import { Button } from '../../atoms/Button';
+import { Header } from '../../atoms/Header';
+import { Input } from '../../atoms/Input';
+import { IBaseModal, ModalView } from '../../atoms/Modal';
+import { Text } from '../../atoms/Text';
 import { SelectNativeProps } from './Select';
 import {
   FetchIndicator, getStyledModal, ListItem, ModalFooter, SearchBarContainer,

@@ -11,8 +11,8 @@ import {
   StyleProps
 } from '@tecsinapse/react-core';
 import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
-import { Input, InputNativeProps } from '../Input';
-import { Text } from '../Text';
+import { Input, InputNativeProps } from '../../atoms/Input';
+import { Text } from '../../atoms/Text';
 
 export const getStyledModal = (safeTop: number = 0) => {
   return styled(View)<ModalProps & Partial<StyleProps>>`

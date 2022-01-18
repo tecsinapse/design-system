@@ -4,8 +4,8 @@ import {
 } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { useLazyModalManager } from '../Modal';
-import { Text } from '../Text';
+import { useLazyModalManager } from '../../atoms/Modal';
+import { Text } from '../../atoms/Text';
 import { Modal } from './Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
 
@@ -229,28 +229,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
           {getDisplayValue() || ' '}
         </StyledSelectionText>
       </HintInputContainer>
-
-      {/* <Modal
-        visible={modalVisible}
-        options={selectOptions || []}
-        focused={modalVisible}
-        keyExtractor={keyExtractor}
-        labelExtractor={labelExtractor}
-        groupKeyExtractor={groupKeyExtractor}
-        searchBarPlaceholder={searchBarPlaceholder}
-        type={type}
-        onSelect={onSelect}
-        value={value}
-        hideSearchBar={hideSearchBar}
-        onRequestClose={handleCloseModal}
-        animated
-        animationType={'slide'}
-        onSearch={handleOnSearch}
-        selectModalTitle={selectModalTitle}
-        selectModalTitleComponent={selectModalTitleComponent}
-        confirmButtonText={confirmButtonText}
-        loading={loading}
-      /> */}
     </>
   );
 }
