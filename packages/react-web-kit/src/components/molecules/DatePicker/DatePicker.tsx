@@ -5,7 +5,9 @@ import {
 import React, { useCallback, useState } from 'react';
 import { Modal } from './Modal';
 
-export const DatePicker = <T extends SelectionType>({ ...rest }: Omit<DatePickerProps<T>, 'CalendarComponent' | 'renderCalendar' | 'requestCloseCalendar' | 'requestShowCalendar'>): JSX.Element => {
+export type WebDatePickerProps<T extends SelectionType> = Omit<DatePickerProps<T>, 'CalendarComponent' | 'renderCalendar' | 'requestCloseCalendar' | 'requestShowCalendar'>
+
+export const DatePicker = <T extends SelectionType>({ ...rest }: WebDatePickerProps<T>): JSX.Element => {
 
   const [ visible, setVisible ] = useState(false)
   const show = useCallback(() => setVisible(true), [])

@@ -1,1 +1,1 @@
-export * from './DatePicker'
+export { DatePicker, WebDatePickerProps } from './DatePicker';

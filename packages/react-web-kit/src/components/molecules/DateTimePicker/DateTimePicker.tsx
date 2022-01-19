@@ -5,7 +5,10 @@ import {
 import React, { FC, useCallback, useState } from 'react';
 import { Modal } from './Modal';
 
-export const DateTimePicker: FC<DateTimePickerProps> = ({ ...rest }) => {
+
+export type WebDateTimePickerProps = Omit<DateTimePickerProps, 'renderSelector' | 'requestShowSelector' | 'requestCloseSelector'>
+
+export const DateTimePicker: FC<WebDateTimePickerProps> = ({ ...rest }) => {
 
     const [ visible, setVisible ] = useState(false)
     const show = useCallback(() => setVisible(true), [])

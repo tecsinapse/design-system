@@ -2,7 +2,7 @@ import { Dimensions, Platform, StatusBar } from "react-native";
 import { extractNumbersFromString } from "./extractNumbersFromString";
 import { isIphoneX } from "./IPhoneXHelper";
 
-const STANDARD_SCREEN_HEIGHT = 640
+const STANDARD_SCREEN_HEIGHT = 680
 
 /**
  * Use this function when you want to scale a percentage number
@@ -40,7 +40,7 @@ export const RFValue = (fontSize: number, standardScreenHeight: number = STANDAR
 }
 
 /**
- * Same of RFValue, however you can provide string values. E.g: '10px', '-5px'.
+ * Same as RFValue, however you can provide string values. E.g: '10px', '-5px'.
  * 
  * @param fontSize 
  * @param standardScreenHeight 
