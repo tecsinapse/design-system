@@ -40,7 +40,7 @@ export const RFValue = (fontSize: number, standardScreenHeight: number = STANDAR
 }
 
 /**
- * Same of RFValue, however you can provide string values. E.g: '10px', '-5px'.
+ * Same as RFValue, however you can provide string values. E.g: '10px', '-5px'.
  * 
  * @param fontSize 
  * @param standardScreenHeight 
