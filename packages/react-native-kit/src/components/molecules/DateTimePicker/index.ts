@@ -1,1 +1,1 @@
-export { DateTimePicker } from './DateTimePicker';
+export { DateTimePicker, NativeDateTimePickerProps } from './DateTimePicker';

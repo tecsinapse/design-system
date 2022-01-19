@@ -40,5 +40,5 @@ export { Modal, ModalProps } from './components/atoms/Modal';
 export { TextArea, TextAreaProps } from './components/molecules/TextArea';
 export { Tooltip, ITooltip } from './components/atoms/Tooltip';
 export * from './hooks';
-export { DatePicker } from './components/molecules/DatePicker'
-export { DateTimePicker } from './components/molecules/DateTimePicker'
+export { DatePicker, WebDatePickerProps } from './components/molecules/DatePicker'
+export { DateTimePicker, WebDateTimePickerProps } from './components/molecules/DateTimePicker'

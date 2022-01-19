@@ -8,7 +8,9 @@ import { IBaseModal, ModalView, useLazyModalManager } from '../../atoms/Modal';
 import { Text } from '../../atoms/Text';
 import { DateTimeSelector } from '../DateTimeSelector';
 
-export const DateTimePicker: FC<Omit<DateTimePickerProps, 'DateTimeSelectorComponent' | 'renderSelector' | 'requestCloseSelector' | 'requestShowSelector'>> = ({ locale, ...rest }) => {
+export type NativeDateTimePickerProps = Omit<DateTimePickerProps, 'DateTimeSelectorComponent' | 'renderSelector' | 'requestCloseSelector' | 'requestShowSelector'>
+
+export const DateTimePicker: FC<NativeDateTimePickerProps> = ({ locale, ...rest }) => {
 
   const modal = useLazyModalManager()
 

@@ -2,7 +2,7 @@ import { Dimensions, Platform, StatusBar } from "react-native";
 import { extractNumbersFromString } from "./extractNumbersFromString";
 import { isIphoneX } from "./IPhoneXHelper";
 
-const STANDARD_SCREEN_HEIGHT = 640
+const STANDARD_SCREEN_HEIGHT = 680
 
 /**
  * Use this function when you want to scale a percentage number

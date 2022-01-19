@@ -8,7 +8,9 @@ import { Text } from '../../atoms/Text';
 import { Calendar } from '../Calendar';
 import { CalendarBoxContent } from './styled';
 
-export const DatePicker = <T extends SelectionType>({ locale, onChange, ...rest }: Omit<DatePickerProps<T>, 'CalendarComponent' | 'renderCalendar' | 'requestCloseCalendar' | 'requestShowCalendar'>): JSX.Element => {
+export type NativeDatePickerProps<T extends SelectionType> = Omit<DatePickerProps<T>, 'CalendarComponent' | 'renderCalendar' | 'requestCloseCalendar' | 'requestShowCalendar'>
+
+export const DatePicker = <T extends SelectionType>({ locale, onChange, ...rest }: NativeDatePickerProps<T>): JSX.Element => {
 
   const modal = useLazyModalManager()
   
