@@ -30,10 +30,12 @@ export const SelectContainer = styled('div')<Partial<StyleProps>>`
   margin-right: ${({ theme }) => theme.spacing.deca};
 `;
 
-export const NavigationButton = nativeStyled(Button)<Partial<StyleProps>>`
-    padding: ${({ theme }) => theme.spacing.centi};
+export const NavigationButton = nativeStyled(Button)<Partial<StyleProps>>`    
     border-radius: ${({ theme }) => theme.borderRadius.mili};
+    height: 44px;
     justify-content: center;
+    padding: ${({ theme }) => theme.spacing.centi};
+    width: 44px;  
 `;
 
 // Se o botão estiver ativo, renderizar outlined, caso contrario o botão é text
