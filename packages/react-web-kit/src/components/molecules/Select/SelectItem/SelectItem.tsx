@@ -28,6 +28,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   checkedAll,
   setCheckedAll,
   lenghtOptions,
+  keyExtractor,
 }: SelectItemProps<Data, Type> & {
   setDropDownVisible: (t: boolean) => void;
   checkedAll: boolean;
@@ -36,13 +37,36 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
 }): JSX.Element => {
   const isMulti = type === 'multi';
   const [checked, setChecked] = React.useState<boolean>(
-    value !== undefined && type === 'multi' && (value as Data[]).includes(item)
+    value !== undefined &&
+      type === 'multi' &&
+      (value as Data[]).find(
+        data => keyExtractor(data) === keyExtractor(item)
+      ) !== undefined
   );
+
+  React.useEffect(() => {
+    if (
+      !checked &&
+      value !== undefined &&
+      ((type === 'multi' &&
+        (value as Data[]).find(
+          data => keyExtractor(data) === keyExtractor(item)
+        )) ||
+        (type === 'single' &&
+          keyExtractor(value as Data) === keyExtractor(item)))
+    )
+      setChecked(true);
+  }, [value, keyExtractor, type]);
+
   React.useEffect(() => {
     if (type === 'multi') {
       checkedAll
         ? setChecked(true)
-        : setChecked((value as Data[]).includes(item));
+        : setChecked(
+            (value as Data[]).find(
+              data => keyExtractor(data) === keyExtractor(item)
+            ) !== undefined
+          );
     }
   }, [checkedAll]);
 
@@ -59,7 +83,9 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
           [..._value, key].length === lenghtOptions && setCheckedAll(true);
         } else {
           const auxArray: Data[] = [..._value];
-          const indexToExclude = auxArray.indexOf(key);
+          const indexToExclude = auxArray.findIndex(
+            data => keyExtractor(data) === keyExtractor(key)
+          );
           auxArray.splice(indexToExclude, 1);
           onSelect([...auxArray] as OnSelectArg);
           setCheckedAll(false);
