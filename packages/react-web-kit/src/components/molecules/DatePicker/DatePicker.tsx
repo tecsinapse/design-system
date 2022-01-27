@@ -1,28 +1,38 @@
 import {
   Calendar,
-  DatePicker as DatePickerCore, DatePickerProps, SelectionType
+  DatePicker as DatePickerCore,
+  DatePickerProps,
+  SelectionType,
 } from '@tecsinapse/react-core';
 import React, { useCallback, useState } from 'react';
-import { Modal } from './Modal';
+import { Dropdown } from '../../atoms/Dropdown';
 
-export type WebDatePickerProps<T extends SelectionType> = Omit<DatePickerProps<T>, 'CalendarComponent' | 'renderCalendar' | 'requestCloseCalendar' | 'requestShowCalendar'>
+export type WebDatePickerProps<T extends SelectionType> = Omit<
+  DatePickerProps<T>,
+  | 'CalendarComponent'
+  | 'renderCalendar'
+  | 'requestCloseCalendar'
+  | 'requestShowCalendar'
+>;
 
-export const DatePicker = <T extends SelectionType>({ ...rest }: WebDatePickerProps<T>): JSX.Element => {
+export const DatePicker = <T extends SelectionType>({
+  ...rest
+}: WebDatePickerProps<T>): JSX.Element => {
+  const [visible, setVisible] = useState<boolean>(false);
 
-  const [ visible, setVisible ] = useState(false)
-  const show = useCallback(() => setVisible(true), [])
-  const close = useCallback(() => setVisible(false), [])
-  
+  const show = useCallback(() => setVisible(true), []);
+  const close = useCallback(() => setVisible(false), []);
+
   return (
     <DatePickerCore
       {...rest}
       CalendarComponent={Calendar}
       requestShowCalendar={show}
       requestCloseCalendar={close}
-      renderCalendar={(calendar) => (
-        <Modal animationType='fade' visible={visible} onRequestClose={close}>
+      renderCalendar={calendar => (
+        <Dropdown visible={visible} setVisible={setVisible}>
           {calendar}
-        </Modal>
+        </Dropdown>
       )}
     />
   );
