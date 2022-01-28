@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.13](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.12...@tecsinapse/react-web-kit@1.12.13) (2022-01-28)
+
+
+### Bug Fixes
+
+* using keyExtractor instead of Data to do check validations in Select type multi ([268a4f6](https://github.com/tecsinapse/design-system/commit/268a4f6cf33d0d27d86da74c57f4ce42e485bd5f))
+
+
+
+
+
 ## [1.12.12](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.11...@tecsinapse/react-web-kit@1.12.12) (2022-01-19)
 
 

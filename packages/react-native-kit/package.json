@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "TecSinapse React Native components",
-  "version": "1.12.15",
+  "version": "1.12.16",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
