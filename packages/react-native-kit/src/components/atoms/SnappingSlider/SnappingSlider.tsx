@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Dimensions, ScrollView, ScrollViewProps, View } from 'react-native';
-import { SpacingType, ThemeProp } from '@tecsinapse/react-core';
+import {
+  extractNumbersFromString,
+  SpacingType,
+  ThemeProp,
+} from '@tecsinapse/react-core';
 import { useTheme } from '@emotion/react';
 
 export interface SnappingSliderProps
@@ -37,7 +41,7 @@ const SnappingSlider: React.FC<SnappingSliderProps> = ({
   const screenWidth = Dimensions.get('window').width;
   const totalSlideWidth = Math.round(screenWidth / showAmount);
   const horizontalPadding = spacing
-    ? parseInt(theme.spacing[spacing].replace(/\D/g, '')) / 2
+    ? extractNumbersFromString(theme.spacing[spacing]) / 2
     : 0;
 
   const snapToOffsets = [

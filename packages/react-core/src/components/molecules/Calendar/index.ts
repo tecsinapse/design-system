@@ -3,4 +3,5 @@ export {
   CalendarProps,
   SelectionType,
   DateRange,
+  Value
 } from './Calendar';

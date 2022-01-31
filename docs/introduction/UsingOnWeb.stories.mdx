@@ -12,7 +12,7 @@ We're going to use react-native-web under **create-react-app** to use on the web
 After CRA setup, run:
 
 ```
-yarn add -D @babel/plugin-proposal-class-properties customize-cra react-app-rewired react-native-web
+yarn add -D @babel/plugin-proposal-class-properties customize-cra react-app-rewired react-native-web @babel/plugin-transform-modules-commonjs
 ```
 
 ### Configure
@@ -23,7 +23,7 @@ const path = require('path');
 const { override, addBabelPlugins, babelInclude } = require('customize-cra');
 
 module.exports = override(
-  ...addBabelPlugins('@babel/plugin-proposal-class-properties'),
+  ...addBabelPlugins('@babel/plugin-proposal-class-properties', '@babel/plugin-transform-modules-commonjs'),
   babelInclude([
     path.resolve(__dirname, 'node_modules/@tecsinapse/react-core'),
     path.resolve(__dirname, 'node_modules/@tecsinapse/react-web-kit'),

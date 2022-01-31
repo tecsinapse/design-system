@@ -8,5 +8,5 @@ export const Masks = {
   PHONE: '(99) 9999-9999',
   PHONE_EXTENDED: '(99) 99999-9999',
   COMBINED_PHONE: (value: string) =>
-    value.length <= 10 ? Masks.PHONE : Masks.PHONE_EXTENDED,
+    value?.length <= 10 ? Masks.PHONE : Masks.PHONE_EXTENDED,
 };

@@ -25,6 +25,7 @@ export interface GroupButtonOptions {
   inactiveBorderColorTone?: ColorGradationType;
   activeStyle?: StyleProp<ViewStyle>;
   inactiveStyle?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }
 
 export interface GroupButtonValue<T> {
@@ -35,14 +36,15 @@ export interface GroupButtonValue<T> {
 export interface GroupButtonProps<T> {
   value: T;
   options: GroupButtonValue<T>[];
-  renderKey: (option?: T) => any;
+  renderKey: (option?: T) => string | number | undefined;
   renderOption: (option: T, active: boolean) => JSX.Element;
   onChange: (option: T) => void;
   buttonSize?: ButtonSizeType;
   style?: StyleProp<ViewStyle>;
+  disableAllOptions?: boolean;
 }
 
-const GroupButton = <T extends any>({
+const GroupButton = <T extends unknown>({
   style,
   ...rest
 }: GroupButtonProps<T>) => {
@@ -51,12 +53,13 @@ const GroupButton = <T extends any>({
   );
 };
 
-const groupOptions = <T extends any>({
+const groupOptions = <T extends unknown>({
   options,
   renderOption,
   renderKey,
   onChange,
   value,
+  disableAllOptions,
   ...rest
 }: Partial<GroupButtonProps<T>>) => {
   const theme = useTheme() as ThemeProp;
@@ -70,6 +73,7 @@ const groupOptions = <T extends any>({
         activeBackgroundColorTone,
         inactiveBackgroundColor,
         inactiveBackgroundColorTone,
+        disabled = disableAllOptions || option.options?.disabled,
       } = {},
     } = option;
 
@@ -98,7 +102,7 @@ const groupOptions = <T extends any>({
         <StyledPressable
           {...rest}
           {...option.options}
-          disabled={active}
+          disabled={disabled}
           isActive={active}
           isFirstOption={isFirst}
           isLastOption={isLast}

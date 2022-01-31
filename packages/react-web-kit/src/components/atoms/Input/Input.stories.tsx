@@ -4,12 +4,12 @@ import React, { useState } from 'react';
 import Input, { InputWebProps } from './Input';
 
 export default {
-  title: 'Components/Input',
+  title: 'Hybrid/Input',
   component: Input,
 };
 
 const Template: Story<InputWebProps> = args => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
 
   const onChange = text => {
     setValue(text);

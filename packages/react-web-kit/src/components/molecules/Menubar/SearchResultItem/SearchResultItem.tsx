@@ -7,16 +7,21 @@ import { highlight } from './utils';
 interface SearchResultItem {
   data: MostUsedType;
   searchTerm: string;
+  toggle: () => void;
 }
 
-const SearchResultItem: React.FC<SearchResultItem> = ({ data, searchTerm }) => {
+const SearchResultItem: React.FC<SearchResultItem> = ({
+  data,
+  searchTerm,
+  toggle,
+}) => {
   const { title, category, Component, props } = data;
   const noTextDecoration = { textDecoration: 'none' };
 
   const textProps: TextProps = { fontColor: 'orange', fontWeight: 'bold' };
 
   return (
-    <Component {...props} style={noTextDecoration}>
+    <Component {...props} style={noTextDecoration} onClick={toggle}>
       <StyledSearchItemContainer>
         <Text typography="base" colorVariant="secondary" colorTone="dark">
           {highlight(searchTerm, title, HighlightText, textProps)}

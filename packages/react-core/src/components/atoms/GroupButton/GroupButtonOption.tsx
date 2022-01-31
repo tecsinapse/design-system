@@ -2,17 +2,17 @@ import React, { FC } from 'react';
 import { Text, TextProps } from '../Text';
 import { getStyledGroupItemText } from './styled';
 
-export interface GroupButtonOptionProps<T> {
+export interface GroupButtonOptionProps {
   active: boolean;
   description: string;
   TextComponent?: FC<TextProps>;
 }
 
-const GroupButtonOption = <T extends any>({
+const GroupButtonOption = ({
   TextComponent = Text,
   active,
   description,
-}: GroupButtonOptionProps<T>) => {
+}: GroupButtonOptionProps): JSX.Element => {
   const StyledText = getStyledGroupItemText(TextComponent);
   return (
     <StyledText fontWeight="bold" typography="sub" active={active}>

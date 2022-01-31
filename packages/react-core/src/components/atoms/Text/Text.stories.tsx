@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, TextProps } from './index';
 
 export default {
-  title: 'Components/Text',
+  title: 'Hybrid/Text',
   component: Text,
 };
 

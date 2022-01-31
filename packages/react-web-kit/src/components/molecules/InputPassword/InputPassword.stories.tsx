@@ -5,12 +5,12 @@ import { InputPassword } from '.';
 import Input, { InputPasswordWebProps } from './InputPassword';
 
 export default {
-  title: 'Components/InputPassword',
+  title: 'Hybrid/Input Password',
   component: Input,
 };
 
 const Template: Story<InputPasswordWebProps> = args => {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>('');
 
   const onChange = text => {
     setValue(text);

@@ -5,6 +5,7 @@ import {
   StyleProps,
   Text,
 } from '@tecsinapse/react-core';
+import { Platform } from 'react-native';
 import { TextNativeProps } from './Text';
 
 export interface Font {
@@ -20,7 +21,7 @@ export const fontStyles = ({
   const fontFamily = theme?.font.stack[fontStack] || '';
   const fontStyle = theme?.font.files[fontWeight];
   return css`
-    font-weight: normal;
+    ${Platform.OS === 'android' ? 'font-weight: normal;' : undefined}
     font-family: ${fontStyle?.replace('{0}', fontFamily)};
   `;
 };

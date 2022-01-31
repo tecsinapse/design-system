@@ -1,24 +1,16 @@
 export const getDisplayValue = <Data>(
-  type,
-  value,
-  options,
-  placeholder,
-  keyExtractor,
-  labelExtractor
-): Data | Data[] => {
+  type: 'multi' | 'single',
+  value: Data | Data[] | undefined,
+  options: Data[],
+  placeholder: string | undefined,
+  keyExtractor: (option: Data, idx?: number) => string,
+  labelExtractor: (option: Data) => string
+): Data | Data[] | string | undefined => {
   if (type === 'multi') {
-    if (value.length === 0) return placeholder;
+    if ((value as Data[]).length === 0) return placeholder;
     else {
-      return options
-        .reduce(
-          (acc, option, index) =>
-            value.find(
-              key => keyExtractor(option, index) == keyExtractor(key, index)
-            )
-              ? acc + labelExtractor(option) + ', '
-              : acc,
-          ''
-        )
+      return (value as Data[])
+        .reduce((acc, option) => acc + labelExtractor(option) + ', ', '')
         .slice(0, -2);
     }
   } else {

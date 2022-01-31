@@ -3,7 +3,7 @@ import { Avatar, AvatarProps } from './Avatar';
 import { Story } from '@storybook/react';
 
 export default {
-  title: 'Components/Avatar',
+  title: 'Hybrid/Avatar',
   component: Avatar,
 };
 

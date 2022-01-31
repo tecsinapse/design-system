@@ -5,7 +5,7 @@ import { DateRange } from './Calendar';
 import { ptBR } from 'date-fns/locale';
 
 export default {
-  title: 'Components/Calendar',
+  title: 'Hybrid/Calendar',
   component: Calendar,
 };
 

@@ -1,13 +1,11 @@
-import styled from '@emotion/native';
 import { Story } from '@storybook/react';
 import React from 'react';
-import { StyleProps } from '../../../../dist';
 import { Card } from '../Card';
 import { Text } from '../Text';
 import Divider, { DividerProps } from './Divider';
 
 export default {
-  title: 'Components/Divider',
+  title: 'Hybrid/Divider',
   component: Divider,
 };
 

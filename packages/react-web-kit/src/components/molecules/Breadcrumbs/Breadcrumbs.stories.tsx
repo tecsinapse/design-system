@@ -6,7 +6,7 @@ import { default as Breadcrumbs } from './Breadcrumbs';
 import styled from '@emotion/styled';
 
 export default {
-  title: 'Components/Breadcrumbs',
+  title: 'Web/Breadcrumbs',
   component: Breadcrumbs,
   parameters: {
     layout: 'fullscreen',

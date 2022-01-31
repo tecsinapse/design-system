@@ -16,7 +16,7 @@ export const StyledContainerMenu = styled('div')<Partial<StyleProps>>`
   border-bottom: ${({ theme }) =>
     `${theme.borderWidth.pico} solid ${hex2rgba(
       theme.miscellaneous.shadow,
-      0.08
+      0.05
     )}`};
   width: 100%;
   padding-bottom: ${({ theme }) => theme.spacing.mili};

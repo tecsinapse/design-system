@@ -12,13 +12,14 @@ export const StyledIconInput = webStyled('div')<Partial<StyleProps>>`
 `;
 
 export const StyledMenuBar = webStyled('div')<Partial<StyleProps>>`
+    position: relative;
     background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: ${({ theme }) => `${theme.spacing.deca} ${theme.spacing.kilo}`};
     box-shadow: 0px 2px 8px ${({ theme }) =>
-      hex2rgba(theme.miscellaneous.shadow, 0.08)};
+      hex2rgba(theme.miscellaneous.shadow, 0.05)};
 `;
 
 export const StyledMenuButton = nativeStyled(Button)<Partial<StyleProps>>`
@@ -27,22 +28,28 @@ export const StyledMenuButton = nativeStyled(Button)<Partial<StyleProps>>`
     padding-bottom: calc(${({ theme }) => theme.spacing.centi} + 2px);
     padding-left: calc(${({ theme }) => theme.spacing.centi} + 2px);
     margin-right: ${({ theme }) => theme.spacing.kilo};
+    & * {
+      user-select: none;
+    }
 `;
 
 export const StyledContainerOpenMenu = webStyled('div')<Partial<StyleProps>>`
     border-top: ${({ theme }) =>
       `${theme.borderWidth.pico} solid ${hex2rgba(
         theme.miscellaneous.shadow,
-        0.08
+        0.05
       )}`};
-    background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+    background-color: ${({ theme }) => theme.miscellaneous.surfaceColor}; 
+    border-bottom-left-radius: ${({ theme }) => theme.borderRadius.mili}; 
+    border-bottom-right-radius: ${({ theme }) => theme.borderRadius.mili};
     box-shadow: 0px 2px 8px ${({ theme }) =>
-      hex2rgba(theme.miscellaneous.shadow, 0.08)};
+      hex2rgba(theme.miscellaneous.shadow, 0.05)};
     padding-right: 8vw;
     padding-left: 8vw;
     padding-top: ${({ theme }) => theme.spacing.kilo};
     padding-bottom: ${({ theme }) => theme.spacing.mega};
     position: absolute;
+    z-index: ${({ theme }) => theme.zIndex.header + 1};
     width: -webkit-fill-available;
     width: -moz-available;
 `;
@@ -53,7 +60,7 @@ export const StyledInput = nativeStyled(Input)<Partial<StyleProps>>`
 
 export const StyledInputContainer = webStyled('div')`
     display: flex;
-    flex: 1
+    flex: 1;
 `;
 
 export const StyledSearchResultsContainer = webStyled('div')`

@@ -6,9 +6,10 @@ import { MostUsedType } from '../types';
 interface MostUsedProps {
   data: MostUsedType[];
   label: string;
+  toggle: () => void;
 }
 
-const MostUsed: React.FC<MostUsedProps> = ({ data, label }) => {
+const MostUsed: React.FC<MostUsedProps> = ({ data, label, toggle }) => {
   const noTextDecoration = { textDecoration: 'none' };
 
   return (
@@ -28,6 +29,7 @@ const MostUsed: React.FC<MostUsedProps> = ({ data, label }) => {
                 {...props}
                 style={noTextDecoration}
                 key={`${title}-${category}`}
+                onClick={toggle}
               >
                 <StyledCard elevated key={`${title}-${category}`}>
                   <Text fontWeight="bold" colorVariant="primary">
@@ -49,4 +51,4 @@ const MostUsed: React.FC<MostUsedProps> = ({ data, label }) => {
   );
 };
 
-export default MostUsed;
+export default React.memo(MostUsed);

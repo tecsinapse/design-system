@@ -1,7 +1,7 @@
 import currency from 'currency.js';
 import { useCallback, useState } from 'react';
-import { Mask } from '..';
-import { MaskValue } from './useMask';
+import { extractNumbersFromString } from '../../../../utils';
+import { IMask, IMaskValue } from './useMask';
 
 type CurrencyOptions = currency.Options;
 
@@ -21,17 +21,17 @@ const DEFAULT_OPTIONS: CurrencyOptions = {
 export const useCurrencyMask = (
   options?: CurrencyOptions,
   defaultValue?: string
-): [Mask, (value: string) => void] => {
+): [IMask, (value: string) => void] => {
   const getRegex = useCallback(
     (precision: number) => new RegExp(`\\B(?=(\\d{${precision}})(?!\\d))`, 'g'),
     [options]
   );
 
   const applyMask = useCallback(
-    (value = ''): MaskValue => {
+    (value = ''): IMaskValue => {
       const mergedOptions = { ...DEFAULT_OPTIONS, ...options };
       const { precision = -1 } = mergedOptions;
-      const onlyNumbers = String(value).replace(/\D/g, '');
+      const onlyNumbers = String(extractNumbersFromString(value));
       const padZeros = String(onlyNumbers).padStart(precision + 1, '0');
       let internalNumber = Number(padZeros.replace(getRegex(precision), '.'));
 
@@ -51,7 +51,7 @@ export const useCurrencyMask = (
     [options, getRegex]
   );
 
-  const [value, setValue] = useState<Mask>({
+  const [value, setValue] = useState<IMask>({
     converter: applyMask,
     maskValue: applyMask(defaultValue),
   });

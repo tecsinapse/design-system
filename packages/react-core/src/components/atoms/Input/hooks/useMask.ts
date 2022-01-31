@@ -1,13 +1,14 @@
 import { useCallback, useState } from 'react';
+import { extractDigitsFromString } from '../../../../utils';
 
-export interface MaskValue {
+export interface IMaskValue {
   formatted?: string;
   raw?: any;
 }
 
-export interface Mask {
-  converter?: (raw?: string) => MaskValue;
-  maskValue?: MaskValue;
+export interface IMask {
+  converter?: (raw?: string) => IMaskValue;
+  maskValue?: IMaskValue;
 }
 
 /**
@@ -47,15 +48,16 @@ const getMask = (value = '', mask: ((raw: any) => string) | string): string => {
 /**
  * TODO:
  * @param mask
+ * @param defaultValue
  * @returns
  */
 export const useMask = (
   mask: ((raw: any) => string) | string,
   defaultValue?: string
-): [Mask, (text: string) => void] => {
+): [IMask, (text: string) => void] => {
   const applyMask = useCallback(
-    (value = ''): MaskValue => {
-      const onlyNumbers = String(value).replace(/\D/g, '');
+    (value = ''): IMaskValue => {
+      const onlyNumbers = value ? extractDigitsFromString(value) : value;
       const selectedMask = getMask(onlyNumbers, mask);
       const formattedValue = mergeMask(onlyNumbers, selectedMask);
 
@@ -67,7 +69,7 @@ export const useMask = (
     [mask]
   );
 
-  const [value, setValue] = useState<Mask>({
+  const [value, setValue] = useState<IMask>({
     converter: applyMask,
     maskValue: applyMask(defaultValue),
   });

@@ -2,8 +2,15 @@ import { lightTheme, ThemeProvider } from '@tecsinapse/react-core/src';
 import { sortStories } from './utils/helpers';
 
 const SORT_ORDER = {
-  Introduction: ['Welcome', 'Get started', 'Using on web', 'Contributing'],
-  Components: [],
+  Introduction: [
+    'Welcome',
+    'Get started',
+    'Using on web',
+    'Styling',
+    'Contributing',
+  ],
+  Hybrid: [],
+  Web: [],
 };
 
 export const parameters = {

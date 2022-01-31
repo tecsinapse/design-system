@@ -1,13 +1,4 @@
-export const defaultStyleOverlay = {
-  transition: `opacity 700ms ease-in-out`,
-  opacity: 0,
-};
-export const transitionStylesOverlay = {
-  entering: { opacity: 1 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 },
-  exited: { opacity: 0 },
-};
+import { CSSProperties } from 'react';
 
 export const transformLeftRigthClose = (anchorPosition: string) =>
   anchorPosition === 'right' ? 'translateX(100%)' : 'translateX(-100%)';
@@ -19,11 +10,14 @@ export const transformTopBottomClose = (anchorPosition: string) =>
 
 export const transformTopBottomOpen = 'translateY(0%)';
 
-export const defaultStylesLeftRight = (anchorPosition: string) => {
+export const defaultStylesLeftRight = (
+  anchorPosition: string
+): CSSProperties => {
   return {
     transition: 'transform 300ms ease-in-out',
-    transform: () => transformLeftRigthClose(anchorPosition),
-    overflow: 'hidden',
+    transform: transformLeftRigthClose(anchorPosition),
+    overflowX: 'hidden',
+    overflowY: 'auto',
   };
 };
 
@@ -40,11 +34,14 @@ export const transitionStylesLeftRight = (anchorPosition: string) => {
   };
 };
 
-export const defaultStylesTopBottom = (anchorPosition: string) => {
+export const defaultStylesTopBottom = (
+  anchorPosition: string
+): CSSProperties => {
   return {
     transition: 'transform 300ms ease-in-out',
     transform: transformTopBottomClose(anchorPosition),
-    overflow: 'hidden',
+    overflowX: 'hidden',
+    overflowY: 'auto',
   };
 };
 export const transitionStylesTopBottom = (anchorPosition: string) => {

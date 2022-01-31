@@ -1,19 +1,20 @@
 import React, { FC } from 'react';
-import { StyledContainerDrawer, StyledOverlay } from './styled';
-import { Transition } from 'react-transition-group';
+import { StyledContainerDrawer } from './styled';
+import { Transition, TransitionStatus } from 'react-transition-group';
+import { Overlay } from '../../atoms/Overlay';
 import {
   transitionStylesTopBottom,
   defaultStylesTopBottom,
   defaultStylesLeftRight,
-  transitionStylesOverlay,
   transitionStylesLeftRight,
-  defaultStyleOverlay,
 } from './animations';
 
-export interface DrawerProps {
+type AnchorPosition = 'left' | 'right' | 'top' | 'bottom';
+
+export interface DrawerProps extends React.HTMLAttributes<HTMLDivElement> {
   open: boolean;
   onClose: () => void;
-  anchorPosition: 'left' | 'right' | 'top' | 'bottom';
+  anchorPosition: AnchorPosition;
 }
 
 const Drawer: FC<DrawerProps> = ({
@@ -21,8 +22,13 @@ const Drawer: FC<DrawerProps> = ({
   anchorPosition = 'right',
   onClose,
   children,
+  style,
+  ...rest
 }) => {
-  const getStyles = (anchorPosition: string, state: any) => {
+  const getStyles = (
+    anchorPosition: AnchorPosition,
+    state: TransitionStatus
+  ) => {
     const stylesLeftRight = defaultStylesLeftRight(anchorPosition);
     const transitionLeftRight = transitionStylesLeftRight(anchorPosition);
     const stylesTopBottom = defaultStylesTopBottom(anchorPosition);
@@ -43,25 +49,15 @@ const Drawer: FC<DrawerProps> = ({
 
   return (
     <>
-      <Transition in={open} timeout={300}>
-        {state => (
-          <div
-            style={{
-              ...defaultStyleOverlay,
-              ...transitionStylesOverlay[state],
-            }}
-          >
-            <StyledOverlay onClick={open ? onClose : undefined} show={open} />
-          </div>
-        )}
-      </Transition>
+      <Overlay timeout={300} open={open} onClose={onClose} zIndex="drawer" />
       <Transition in={open} timeout={300}>
         {state => (
           <StyledContainerDrawer
-            style={getStyles(anchorPosition, state)}
+            style={{ ...style, ...getStyles(anchorPosition, state) }}
             anchorPosition={anchorPosition}
             onClose={onClose}
             open={open}
+            {...rest}
           >
             {children}
           </StyledContainerDrawer>

@@ -1,11 +1,22 @@
 import React from 'react';
-import { Icon, PressableInputContainer, Text } from '@tecsinapse/react-core';
+import {
+  PressableInputContainer,
+  Text,
+  TextProps,
+} from '@tecsinapse/react-core';
 import { useClickAwayListener } from '../../../hooks';
-import { StyledContainer, StyledInputContainer } from './styled';
+import {
+  RightComponent,
+  StyledContainer,
+  StyledInputContainer,
+} from './styled';
 import { Dropdown } from './Dropdown';
 import { getDisplayValue } from './functions';
+import { Transition } from 'react-transition-group';
+import { defaultStyles, transition } from './animations';
 
-export interface SelectProps<Data, Type extends 'single' | 'multi'> {
+export interface SelectProps<Data, Type extends 'single' | 'multi'>
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
   options: Data[];
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
@@ -18,9 +29,14 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'> {
   onSearch?: (searchArg: string) => void | never;
   searchBarPlaceholder?: string;
   hideSearchBar?: boolean;
+  selectAllLabel?: string;
+  disabled?: boolean;
   label?: string;
+  anchor?: 'top' | 'bottom';
+  displayTextProps?: TextProps;
 }
 
+/** NOTE: For better performance, you should memoize options and handlers */
 export const Select = <Data, Type extends 'single' | 'multi'>({
   value,
   options,
@@ -30,8 +46,13 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   placeholder,
   onSearch,
+  searchBarPlaceholder = 'Busque a opção desejada',
   hideSearchBar = true,
   label,
+  disabled = false,
+  anchor = 'bottom',
+  displayTextProps,
+  selectAllLabel = 'Selecionar todos',
   ...rest
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
@@ -47,39 +68,43 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     labelExtractor
   );
 
+  const onPress = React.useCallback(() => setDropDownVisible(prev => !prev), [
+    setDropDownVisible,
+  ]);
+
   return (
-    <StyledContainer ref={refDropDown}>
+    <StyledContainer ref={refDropDown} {...rest}>
       <StyledInputContainer>
         <PressableInputContainer
           label={label}
-          {...rest}
-          onPress={() => setDropDownVisible(!dropDownVisible)}
-          rightComponent={
-            <Icon
-              name="chevron-down"
-              type="material-community"
-              size="centi"
-              style={{ marginRight: 12 }}
-            />
-          }
+          onPress={onPress}
+          disabled={disabled}
+          rightComponent={RightComponent}
         >
-          <Text ellipsizeMode="tail" numberOfLines={1}>
+          <Text {...displayTextProps} ellipsizeMode="tail" numberOfLines={1}>
             {displayValue}
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
-      {dropDownVisible && (
-        <Dropdown
-          options={options}
-          onSelect={onSelect}
-          value={value}
-          type={type}
-          keyExtractor={keyExtractor}
-          labelExtractor={labelExtractor}
-          hideSearchBar={hideSearchBar}
-          setDropDownVisible={setDropDownVisible}
-        />
-      )}
+      <Transition in={dropDownVisible} timeout={300}>
+        {state => (
+          <Dropdown
+            options={options}
+            onSelect={onSelect}
+            value={value}
+            type={type}
+            keyExtractor={keyExtractor}
+            labelExtractor={labelExtractor}
+            hideSearchBar={hideSearchBar}
+            searchBarPlaceholder={searchBarPlaceholder}
+            onSearch={onSearch}
+            style={{ ...defaultStyles, ...transition[anchor][state] }}
+            setDropDownVisible={setDropDownVisible}
+            anchor={anchor}
+            selectAllLabel={selectAllLabel}
+          />
+        )}
+      </Transition>
     </StyledContainer>
   );
 };

@@ -180,7 +180,7 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
 
   const getDisplayedValue = (granularity: Granularity) => (value: number) => {
     return granularity === 'month'
-      ? formatDate(date, 'MMM').slice(0, 3)
+      ? formatDate(date, 'MMM', { locale: locale }).slice(0, 3)
       : value.toString().padStart(2, '0');
   };
 

@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-core",
   "description": "TecSinapse hybrid React components",
-  "version": "1.4.0",
+  "version": "1.12.10",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.4.0",
+    "@emotion/react": "^11.4.1",
     "currency.js": "^2.0.4",
     "date-fns": "^2.22.1"
   },

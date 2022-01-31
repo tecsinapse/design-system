@@ -3,6 +3,390 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.9...@tecsinapse/react-core@1.12.10) (2022-01-19)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.12.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.8...@tecsinapse/react-core@1.12.9) (2022-01-18)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.12.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.7...@tecsinapse/react-core@1.12.8) (2022-01-17)
+
+
+### Bug Fixes
+
+* regex method extractDigitsFromString ([99eb01a](https://github.com/tecsinapse/design-system/commit/99eb01a694d013129e4c08b633af003791bc6e9b))
+
+
+
+
+
+## [1.12.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.6...@tecsinapse/react-core@1.12.7) (2022-01-11)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.12.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.5...@tecsinapse/react-core@1.12.6) (2022-01-06)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.12.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.4...@tecsinapse/react-core@1.12.5) (2022-01-05)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.12.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.3...@tecsinapse/react-core@1.12.4) (2021-12-23)
+
+
+### Bug Fixes
+
+* remove padding from paper and card ([e88fad7](https://github.com/tecsinapse/design-system/commit/e88fad77adc5aaa21ffe093e6f79b76c60613cc9))
+
+
+
+
+
+## [1.12.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.2...@tecsinapse/react-core@1.12.3) (2021-12-23)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.12.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.1...@tecsinapse/react-core@1.12.2) (2021-12-22)
+
+
+### Bug Fixes
+
+* spacing grid ([4929fd8](https://github.com/tecsinapse/design-system/commit/4929fd83cb91484959e19aeee2dfc8cfcce6f009))
+
+
+
+
+
+## [1.12.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.0...@tecsinapse/react-core@1.12.1) (2021-12-21)
+
+
+### Bug Fixes
+
+* wrapper on gridItem. ([db99917](https://github.com/tecsinapse/design-system/commit/db999176d1440ed12b91a041fbfb850f76b3b867))
+
+
+
+
+
+# [1.12.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.11.1...@tecsinapse/react-core@1.12.0) (2021-12-21)
+
+
+### Bug Fixes
+
+* extractNumbersFromString spacing GridItem ([65a88e6](https://github.com/tecsinapse/design-system/commit/65a88e660418d8a7903faa249e6e322b21d6791a))
+
+
+### Features
+
+* add grid element based on flex layout ([732f6c4](https://github.com/tecsinapse/design-system/commit/732f6c455c270325cb71c487ae01f2eee1869e0f))
+
+
+
+
+
+## [1.11.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.11.0...@tecsinapse/react-core@1.11.1) (2021-12-20)
+
+
+### Bug Fixes
+
+* complement active on transitionSwitch ([969a047](https://github.com/tecsinapse/design-system/commit/969a04748dc74107e22be6bc103e12c813ee232d))
+* missing some locales on datetime formats ([97ca962](https://github.com/tecsinapse/design-system/commit/97ca9621dd67daf4b4d1f9e58783b3ba721a2e31))
+
+
+
+
+
+# [1.11.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.4...@tecsinapse/react-core@1.11.0) (2021-12-17)
+
+
+### Bug Fixes
+
+* [163127] Modais de picker do DS estão em inglês ([a95b0b2](https://github.com/tecsinapse/design-system/commit/a95b0b283f3535af20a23ac6a9a5e5633127d5b0))
+
+
+
+
+
+## [1.10.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.3...@tecsinapse/react-core@1.10.4) (2021-12-07)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.10.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.2...@tecsinapse/react-core@1.10.3) (2021-11-29)
+
+
+### Bug Fixes
+
+* added method extractDigitsFromString ([76daa94](https://github.com/tecsinapse/design-system/commit/76daa943cc1be981b587830d0024c4a01c4df6e2))
+* remove cursor css prop from avatar ([2f9ed15](https://github.com/tecsinapse/design-system/commit/2f9ed15bafb6697e2aee883b417574b4ee3275d5))
+
+
+
+
+
+## [1.10.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.1...@tecsinapse/react-core@1.10.2) (2021-11-16)
+
+
+### Features
+
+* added property disabled in groupButton. ([e6eaf19](https://github.com/tecsinapse/design-system/commit/e6eaf193a0ef75fd1468fb030e8b6e64595d2722))
+
+
+
+
+
+## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.10.0...@tecsinapse/react-core@1.10.1) (2021-10-08)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+# [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.9.0...@tecsinapse/react-core@1.10.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* Rename mask interface to avoid mismatch ([589ce1e](https://github.com/tecsinapse/design-system/commit/589ce1e3a63dff4334b48f218d3918dfb2837026))
+
+
+### Performance Improvements
+
+* **calendar:** refactoring components for memo ([95d2245](https://github.com/tecsinapse/design-system/commit/95d2245a47c6abd221e673e1dd145f948b83a8e4))
+
+
+
+
+
+# [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.8.0...@tecsinapse/react-core@1.9.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* calendar starts on sunday ([d49ef09](https://github.com/tecsinapse/design-system/commit/d49ef09a2af208be888730524495e363a195b091))
+
+
+
+
+
+# [1.8.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.6...@tecsinapse/react-core@1.8.0) (2021-09-28)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.7.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.5...@tecsinapse/react-core@1.7.6) (2021-09-27)
+
+
+### Bug Fixes
+
+* date picker locale ([f1278a8](https://github.com/tecsinapse/design-system/commit/f1278a82c4386fe3417fb8d215521813eda22794))
+
+
+
+
+
+## [1.7.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.4...@tecsinapse/react-core@1.7.5) (2021-09-27)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.7.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.3...@tecsinapse/react-core@1.7.4) (2021-09-27)
+
+
+### Bug Fixes
+
+* hint input ([54301ce](https://github.com/tecsinapse/design-system/commit/54301ce0fd2c942b2a902b7dd9d1f02f792be14f))
+
+
+
+
+
+## [1.7.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.2...@tecsinapse/react-core@1.7.3) (2021-09-24)
+
+
+### Bug Fixes
+
+* snackbar web styles ([1a5079e](https://github.com/tecsinapse/design-system/commit/1a5079e41fa2aa614435d794c59307631c939601))
+
+
+
+
+
+## [1.7.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.1...@tecsinapse/react-core@1.7.2) (2021-09-24)
+
+
+### Bug Fixes
+
+* snackbar position ([e29b38f](https://github.com/tecsinapse/design-system/commit/e29b38f2e165e203131d7e0288bc2d7b2d93b6ce))
+
+
+
+
+
+## [1.7.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.7.0...@tecsinapse/react-core@1.7.1) (2021-09-24)
+
+
+### Bug Fixes
+
+* spread tag styles ([2b67359](https://github.com/tecsinapse/design-system/commit/2b6735955893587a243a7b25b6e1db48793bb6fa))
+
+
+
+
+
+# [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.5...@tecsinapse/react-core@1.7.0) (2021-09-21)
+
+
+### Features
+
+* text area ([35ce0ba](https://github.com/tecsinapse/design-system/commit/35ce0ba36aeb9c3d90db19d077e0741e417c65e0))
+* text area hybrid ([f16d074](https://github.com/tecsinapse/design-system/commit/f16d074a71bbea3b1bbc4c4e3933a124b0f1e064))
+
+
+
+
+
+## [1.6.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.4...@tecsinapse/react-core@1.6.5) (2021-09-20)
+
+
+### Bug Fixes
+
+* **switch:** add onChange to switch callback dependency array ([6e46d20](https://github.com/tecsinapse/design-system/commit/6e46d2033b66f9bc351b38647f3097317d3e15d8))
+
+
+
+
+
+## [1.6.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.3...@tecsinapse/react-core@1.6.4) (2021-09-16)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
+## [1.6.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.2...@tecsinapse/react-core@1.6.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* **menubar:** fixing toggle for search items ([330e6b8](https://github.com/tecsinapse/design-system/commit/330e6b8467945c55bbcbaa4876cd160224ef509d))
+* **menubar:** fixing toggle for search items ([3aefce8](https://github.com/tecsinapse/design-system/commit/3aefce867cab7a12bafdef181148fc48654044ff))
+
+
+
+
+
+## [1.6.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.1...@tecsinapse/react-core@1.6.2) (2021-09-15)
+
+
+### Bug Fixes
+
+* **menubar:** fixing z-index ([7f8396f](https://github.com/tecsinapse/design-system/commit/7f8396f77b41d32e21eb0cfef9b0c706c13ef454))
+
+
+
+
+
+## [1.6.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.6.0...@tecsinapse/react-core@1.6.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* **menubar:** fixing right components ([efc933d](https://github.com/tecsinapse/design-system/commit/efc933d5a716be0c8f07b4c06a86c52db2f85077))
+
+
+
+
+
+# [1.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.5.0...@tecsinapse/react-core@1.6.0) (2021-09-14)
+
+
+### Bug Fixes
+
+* **switch:** padding theme variable ([becd6b0](https://github.com/tecsinapse/design-system/commit/becd6b0b2f9d86c46c4fa5602f296b1ddde4725a))
+
+
+### Features
+
+* add accordion ([f7089c0](https://github.com/tecsinapse/design-system/commit/f7089c0d98568fd3ee0aa64f2150063f67e4fe66))
+
+
+
+
+
+# [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.4.0...@tecsinapse/react-core@1.5.0) (2021-09-06)
+
+
+### Bug Fixes
+
+* added initial files ([9cd22a9](https://github.com/tecsinapse/design-system/commit/9cd22a9e35cd6d8b0491ec589f2f4a4ec2626a08))
+* added progress bar ([3fb41bc](https://github.com/tecsinapse/design-system/commit/3fb41bcd748fde51fa6d3e5cadfa511627638811))
+* back animated to widht and set useNativeDriver to false ([2ac3138](https://github.com/tecsinapse/design-system/commit/2ac3138331e7f1eca7c2b0ad996d885b4733f9f4))
+* change animation width to translateX ([813763f](https://github.com/tecsinapse/design-system/commit/813763f3e9e3713763576adc1539a052dc115dcc))
+* error in native ([6045de8](https://github.com/tecsinapse/design-system/commit/6045de883f2a95e3ae6f84f5a366edfc4d4b138b))
+* minor fixes ([5ba69e3](https://github.com/tecsinapse/design-system/commit/5ba69e3c130d99294172a511fdd3dd6c6fcdfe4b))
+* minor fixes ([66cabc9](https://github.com/tecsinapse/design-system/commit/66cabc91d528e319616b576a818bbf245f34492c))
+* minor fixes ([9cb4124](https://github.com/tecsinapse/design-system/commit/9cb4124e826f6353dba6adc520466069884443c4))
+* name animation ([06f153c](https://github.com/tecsinapse/design-system/commit/06f153cb2c4df595c8632b249663408a29c2ab8e))
+* named direction ([a1349c4](https://github.com/tecsinapse/design-system/commit/a1349c4ae2ef9c43c2106138f3db80520d750e7d))
+* onBlur when has timeout ([e3376c6](https://github.com/tecsinapse/design-system/commit/e3376c68a772347c7b1c88aef82993ccc5afdab0))
+* resolving imports ([117c244](https://github.com/tecsinapse/design-system/commit/117c2443f2493363289ee13c99a2e08d2fc54987))
+* snackbar styles ([718f84a](https://github.com/tecsinapse/design-system/commit/718f84a5e0c71e7b42fe88b97fc1e792a02c85f7))
+* **hint input container:** named import from core ([dfaf653](https://github.com/tecsinapse/design-system/commit/dfaf6534cf4147084fb4f83678be33f219201b91))
+* types RightComponent and variant ([d802c48](https://github.com/tecsinapse/design-system/commit/d802c482bec81078be5e2e05d3f37d07c99a6ce3))
+
+
+### Features
+
+* add animation in ProgressBar ([8fc7ffd](https://github.com/tecsinapse/design-system/commit/8fc7ffd8b2572f31917b21971410fccef2e6aaa4))
+* add animation in Switch ([060e121](https://github.com/tecsinapse/design-system/commit/060e12121c230dec7eec83aea4c8f8afe6f2e664))
+* added animation fade in/out ([f9188c2](https://github.com/tecsinapse/design-system/commit/f9188c200e5694fcf32040a6d40818908e57166c))
+* datagrid selection ([c054103](https://github.com/tecsinapse/design-system/commit/c0541033db07b724a411779cafcc4371dbb2987d))
+* display none when close tag ([590f5e0](https://github.com/tecsinapse/design-system/commit/590f5e0864c8ff0886789bfb59c21a890b87c980))
+* unificar InputContainer ([21183f6](https://github.com/tecsinapse/design-system/commit/21183f6147810bf89be562787da277e49dde3ed4))
+
+
+
+
+
 # [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.3.2...@tecsinapse/react-core@1.4.0) (2021-08-26)
 
 

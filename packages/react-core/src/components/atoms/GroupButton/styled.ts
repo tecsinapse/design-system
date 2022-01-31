@@ -1,6 +1,7 @@
 import styled, { css } from '@emotion/native';
 import { FC } from 'react';
 import { StyleProps } from '../../../types/defaults';
+import { RFValueStr } from '../../../utils';
 import { ButtonSizeType } from '../Button';
 import { PressableSurface } from '../PressableSurface';
 import { TextProps } from '../Text';
@@ -18,9 +19,20 @@ export const StyledGroupButton = styled.View<Partial<StyleProps>>`
   flex-direction: row;
 `;
 
+// TO FIXED: hexa color to theme definitions
+const disabledStyles = ({
+  disabled,
+  isActive,
+}: PressableOptions & Partial<StyleProps>) =>
+  disabled &&
+  !isActive &&
+  css`
+    background-color: #dcdcdc;
+  `;
+
 export const getStyledGroupItemText = (component: FC<TextProps>) => {
   return styled(component)<
-    Partial<GroupButtonOptionProps<any>> & Partial<StyleProps>
+    Partial<GroupButtonOptionProps> & Partial<StyleProps>
   >`
     color: ${({ active, theme }) =>
       active ? theme.miscellaneous.surfaceColor : theme.color.secondary.medium};
@@ -93,12 +105,12 @@ const sizeStyles = ({
     case 'small':
       return css`
         padding: ${theme?.spacing.mili} ${theme?.spacing.deca};
-        min-height: 34px;
+        min-height: ${RFValueStr('34px')};
       `;
     default:
       return css`
         padding: ${theme?.spacing.mili} ${theme?.spacing.kilo};
-        min-height: 44px;
+        min-height: ${RFValueStr('44px')};
       `;
   }
 };
@@ -130,5 +142,6 @@ export const StyledPressable = styled(StyledPressableBase)(
     ${leftStyles(props)}
     ${rightStyles(props)}
     ${sizeStyles(props)}
+    ${disabledStyles(props)}
   `
 );

@@ -3,6 +3,472 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.12](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.11...@tecsinapse/react-web-kit@1.12.12) (2022-01-19)
+
+
+### Bug Fixes
+
+* fix DataGrid pagination buttons ([c9d40cf](https://github.com/tecsinapse/design-system/commit/c9d40cf9a0655338a6d35d42dbc399768d8cf58d))
+
+
+
+
+
+## [1.12.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.10...@tecsinapse/react-web-kit@1.12.11) (2022-01-19)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.9...@tecsinapse/react-web-kit@1.12.10) (2022-01-18)
+
+
+### Bug Fixes
+
+* remove StyledMenuBar zIndex ([2b7941f](https://github.com/tecsinapse/design-system/commit/2b7941fe6aec2fbc91495e909bb448e98f1cd8ac))
+
+
+
+
+
+## [1.12.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.8...@tecsinapse/react-web-kit@1.12.9) (2022-01-18)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.7...@tecsinapse/react-web-kit@1.12.8) (2022-01-17)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.6...@tecsinapse/react-web-kit@1.12.7) (2022-01-11)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.5...@tecsinapse/react-web-kit@1.12.6) (2022-01-06)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.4...@tecsinapse/react-web-kit@1.12.5) (2022-01-05)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.3...@tecsinapse/react-web-kit@1.12.4) (2021-12-23)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.2...@tecsinapse/react-web-kit@1.12.3) (2021-12-23)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.1...@tecsinapse/react-web-kit@1.12.2) (2021-12-22)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.12.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.0...@tecsinapse/react-web-kit@1.12.1) (2021-12-21)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+# [1.12.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.11.1...@tecsinapse/react-web-kit@1.12.0) (2021-12-21)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.11.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.11.0...@tecsinapse/react-web-kit@1.11.1) (2021-12-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+# [1.11.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.5...@tecsinapse/react-web-kit@1.11.0) (2021-12-17)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.10.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.4...@tecsinapse/react-web-kit@1.10.5) (2021-12-07)
+
+
+### Bug Fixes
+
+* zindex on overlay and menubar ([b778cc5](https://github.com/tecsinapse/design-system/commit/b778cc5144ba16c5553adb00759437a5136e8a08))
+
+
+
+
+
+## [1.10.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.3...@tecsinapse/react-web-kit@1.10.4) (2021-11-29)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.10.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.2...@tecsinapse/react-web-kit@1.10.3) (2021-11-16)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.10.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.1...@tecsinapse/react-web-kit@1.10.2) (2021-10-08)
+
+
+### Bug Fixes
+
+* all elements selected when applying search ([3ca5293](https://github.com/tecsinapse/design-system/commit/3ca5293fb6623fe87d3e92d7032040804946737b))
+
+
+
+
+
+## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.10.0...@tecsinapse/react-web-kit@1.10.1) (2021-10-08)
+
+
+### Bug Fixes
+
+* individual selection not working after select all elements ([ea0f64a](https://github.com/tecsinapse/design-system/commit/ea0f64ab940fb7e5797682b55e8f4f8d696c1961))
+* individual selection not working after select all elements ([b82641f](https://github.com/tecsinapse/design-system/commit/b82641f57c9fae4abf523ba07aef4bd06210b1ae))
+* **select:** check for value changes for select all ([37146c1](https://github.com/tecsinapse/design-system/commit/37146c1d449229292bdabe0138570e812c247ddd))
+
+
+
+
+
+# [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.9.0...@tecsinapse/react-web-kit@1.10.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* **data grid:** hide footer on no data ([dc4eb41](https://github.com/tecsinapse/design-system/commit/dc4eb41689addd41c12c5d22e3c528b3f9f169de))
+* button interface build ([d919620](https://github.com/tecsinapse/design-system/commit/d9196201d158745bd895ded084252cf4fe425265))
+* Rename mask interface to avoid mismatch ([589ce1e](https://github.com/tecsinapse/design-system/commit/589ce1e3a63dff4334b48f218d3918dfb2837026))
+
+
+### Features
+
+* **tooltip:** add tooltip ([3b581fa](https://github.com/tecsinapse/design-system/commit/3b581fa3a611afaf07107a51ac908bef288a51a4))
+
+
+
+
+
+# [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.8.0...@tecsinapse/react-web-kit@1.9.0) (2021-09-29)
+
+
+### Bug Fixes
+
+* **select/web:** searchbar on single mode ([aad7801](https://github.com/tecsinapse/design-system/commit/aad780124899ba8d87e36ece54ee5aff6b5c92f9))
+* calendar starts on sunday ([d49ef09](https://github.com/tecsinapse/design-system/commit/d49ef09a2af208be888730524495e363a195b091))
+
+
+### Features
+
+* change select anchor on datagrid ([f3b11d9](https://github.com/tecsinapse/design-system/commit/f3b11d9731e1bf0ddea13c92c2247501c6120255))
+
+
+### Performance Improvements
+
+* select memo options ([740e8ef](https://github.com/tecsinapse/design-system/commit/740e8eff397e8b5ac7a423b6e76579b42ac6c4b4))
+
+
+
+
+
+# [1.8.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.8...@tecsinapse/react-web-kit@1.8.0) (2021-09-28)
+
+
+### Features
+
+* extend web components from html div element ([ebc700a](https://github.com/tecsinapse/design-system/commit/ebc700aad0068b34eb31ebbb705b2485d410c72e))
+
+
+
+
+
+## [1.7.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.7...@tecsinapse/react-web-kit@1.7.8) (2021-09-27)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.7.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.6...@tecsinapse/react-web-kit@1.7.7) (2021-09-27)
+
+
+### Bug Fixes
+
+* skeleton ([2662c78](https://github.com/tecsinapse/design-system/commit/2662c784a8f4507af8fc0c05a19ec6e8ef010e19))
+
+
+
+
+
+## [1.7.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.5...@tecsinapse/react-web-kit@1.7.6) (2021-09-27)
+
+
+### Bug Fixes
+
+* hint input ([54301ce](https://github.com/tecsinapse/design-system/commit/54301ce0fd2c942b2a902b7dd9d1f02f792be14f))
+
+
+
+
+
+## [1.7.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.4...@tecsinapse/react-web-kit@1.7.5) (2021-09-24)
+
+
+### Bug Fixes
+
+* snackbar web styles ([1a5079e](https://github.com/tecsinapse/design-system/commit/1a5079e41fa2aa614435d794c59307631c939601))
+
+
+
+
+
+## [1.7.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.3...@tecsinapse/react-web-kit@1.7.4) (2021-09-24)
+
+
+### Bug Fixes
+
+* menubar search debouncing ([182c220](https://github.com/tecsinapse/design-system/commit/182c220b14826f0ca38e2c97f499d6207806dd40))
+
+
+### Features
+
+* menubar clickaway detection ([bb909b5](https://github.com/tecsinapse/design-system/commit/bb909b507f592fd385f5db32e34a01d5efcd3471))
+
+
+
+
+
+## [1.7.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.2...@tecsinapse/react-web-kit@1.7.3) (2021-09-24)
+
+
+### Bug Fixes
+
+* spread tag styles ([2b67359](https://github.com/tecsinapse/design-system/commit/2b6735955893587a243a7b25b6e1db48793bb6fa))
+
+
+
+
+
+## [1.7.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.1...@tecsinapse/react-web-kit@1.7.2) (2021-09-22)
+
+
+### Bug Fixes
+
+* reset page on rows per page ([95ef8d1](https://github.com/tecsinapse/design-system/commit/95ef8d19ee2b50952f7aaeed4ec47c4cacff2b46))
+
+
+
+
+
+## [1.7.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.7.0...@tecsinapse/react-web-kit@1.7.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* data grid paginating when pagination is disabled ([d7a676e](https://github.com/tecsinapse/design-system/commit/d7a676e6d622cfbdbd09a3e354a557a00fee16c3))
+
+
+
+
+
+# [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.8...@tecsinapse/react-web-kit@1.7.0) (2021-09-21)
+
+
+### Features
+
+* text area ([35ce0ba](https://github.com/tecsinapse/design-system/commit/35ce0ba36aeb9c3d90db19d077e0741e417c65e0))
+
+
+
+
+
+## [1.6.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.7...@tecsinapse/react-web-kit@1.6.8) (2021-09-21)
+
+
+### Bug Fixes
+
+* overlay z-index ([9367ffb](https://github.com/tecsinapse/design-system/commit/9367ffb4e0fce9a9bcb10b528578e9d3d83d7c58))
+
+
+
+
+
+## [1.6.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.6...@tecsinapse/react-web-kit@1.6.7) (2021-09-20)
+
+
+### Bug Fixes
+
+* select z-index ([72b9d80](https://github.com/tecsinapse/design-system/commit/72b9d80a88d652417ff8bc46082761a459d27fa3))
+
+
+
+
+
+## [1.6.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.5...@tecsinapse/react-web-kit@1.6.6) (2021-09-20)
+
+
+### Bug Fixes
+
+* select z-index ([d3ed08b](https://github.com/tecsinapse/design-system/commit/d3ed08b0cb6021560510b745cc43f941b9aa8481))
+
+
+
+
+
+## [1.6.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.4...@tecsinapse/react-web-kit@1.6.5) (2021-09-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.6.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.3...@tecsinapse/react-web-kit@1.6.4) (2021-09-16)
+
+
+### Bug Fixes
+
+* **menubar:** key on menu block ([a977862](https://github.com/tecsinapse/design-system/commit/a9778624bfb19544d1fccb4ec058306e406fff5f))
+
+
+
+
+
+## [1.6.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.2...@tecsinapse/react-web-kit@1.6.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* **menubar:** fixing toggle for search items ([330e6b8](https://github.com/tecsinapse/design-system/commit/330e6b8467945c55bbcbaa4876cd160224ef509d))
+* **menubar:** fixing toggle for search items ([3aefce8](https://github.com/tecsinapse/design-system/commit/3aefce867cab7a12bafdef181148fc48654044ff))
+
+
+
+
+
+## [1.6.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.1...@tecsinapse/react-web-kit@1.6.2) (2021-09-15)
+
+
+### Bug Fixes
+
+* **menubar:** fixing z-index ([7f8396f](https://github.com/tecsinapse/design-system/commit/7f8396f77b41d32e21eb0cfef9b0c706c13ef454))
+
+
+
+
+
+## [1.6.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.6.0...@tecsinapse/react-web-kit@1.6.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* **menubar:** fixing right components ([efc933d](https://github.com/tecsinapse/design-system/commit/efc933d5a716be0c8f07b4c06a86c52db2f85077))
+
+
+
+
+
+# [1.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.5.0...@tecsinapse/react-web-kit@1.6.0) (2021-09-14)
+
+
+### Bug Fixes
+
+* **exports:** exporting components ([83a0500](https://github.com/tecsinapse/design-system/commit/83a0500e5666568029dbe6cb90a9c594c90c0af1))
+* **transition:** changing animation from linear to ease-in-out ([d6570aa](https://github.com/tecsinapse/design-system/commit/d6570aa1d952ba18db122955b6f1e54a1f223b14))
+* button user-select style ([f1145b4](https://github.com/tecsinapse/design-system/commit/f1145b400847dd8ab526a48f25958fdc407c9afb))
+
+
+### Features
+
+* add accordion ([f7089c0](https://github.com/tecsinapse/design-system/commit/f7089c0d98568fd3ee0aa64f2150063f67e4fe66))
+* add modal ([eff7597](https://github.com/tecsinapse/design-system/commit/eff7597f779c9e10b078153ed0eb23acc143760b))
+* move to atoms ([5085e28](https://github.com/tecsinapse/design-system/commit/5085e28a96eafd85731cf3f564ae9de21635aea8))
+
+
+
+
+
+# [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.4.0...@tecsinapse/react-web-kit@1.5.0) (2021-09-06)
+
+
+### Bug Fixes
+
+* added progress bar ([3fb41bc](https://github.com/tecsinapse/design-system/commit/3fb41bcd748fde51fa6d3e5cadfa511627638811))
+* build ([6142a23](https://github.com/tecsinapse/design-system/commit/6142a234615c688c583a8e4c0617b6b9382b01b0))
+* improve performance (a little bit :)) ([5014830](https://github.com/tecsinapse/design-system/commit/5014830260da4d1a871d0fe142f3d0cf2a77f953))
+* improve performance for row (a little bit :)) ([89ab86c](https://github.com/tecsinapse/design-system/commit/89ab86cdf13f74dabe7180b2f1b42aed80a31865))
+* onBlur when has timeout ([e3376c6](https://github.com/tecsinapse/design-system/commit/e3376c68a772347c7b1c88aef82993ccc5afdab0))
+* snackbar styles ([718f84a](https://github.com/tecsinapse/design-system/commit/718f84a5e0c71e7b42fe88b97fc1e792a02c85f7))
+* **build:** data grid types ([48e4a6d](https://github.com/tecsinapse/design-system/commit/48e4a6d99df1d5e050ce747466156c08a2aebd92))
+* **menubar:** zindex prop ([4c576a2](https://github.com/tecsinapse/design-system/commit/4c576a276e775228de96e08475c1d8d25b91d4fe))
+
+
+### Features
+
+* added animation fade in/out ([f9188c2](https://github.com/tecsinapse/design-system/commit/f9188c200e5694fcf32040a6d40818908e57166c))
+* **skeleton:** adding skeleton ([1c572fe](https://github.com/tecsinapse/design-system/commit/1c572fe9f1ea76f079b5506a822b34cffde504e7))
+* added animation in dropdown ([c3cd047](https://github.com/tecsinapse/design-system/commit/c3cd0478cc84daf55f45ecaf1fb2a5e416169b86))
+* **data grid:** add pagination ([5235eb4](https://github.com/tecsinapse/design-system/commit/5235eb4fa50c63fadabdb1e8691d430cea43240e))
+* **data grid:** finishing pagination ([304f33b](https://github.com/tecsinapse/design-system/commit/304f33b69d42910c157777f6b8810635b628b88c))
+* animações menubar ([c179638](https://github.com/tecsinapse/design-system/commit/c1796386d1ca6c5ff423e169783aec02948ac1db))
+* animações menubar - ajustes código ([28b26e6](https://github.com/tecsinapse/design-system/commit/28b26e640e55b3510de2131744cff262503b98a8))
+* datagrid header sorting ([dbcf1c8](https://github.com/tecsinapse/design-system/commit/dbcf1c8add2b93053902ed61f6d2edfdc2ae82d8))
+* datagrid selection ([c054103](https://github.com/tecsinapse/design-system/commit/c0541033db07b724a411779cafcc4371dbb2987d))
+
+
+
+
+
 # [1.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.3.2...@tecsinapse/react-web-kit@1.4.0) (2021-08-26)
 
 

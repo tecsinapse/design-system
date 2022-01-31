@@ -6,9 +6,10 @@ import { DummyBorder, StyledContainerItem } from './styled';
 
 interface SubMenuBlockProps {
   data: ItemsOptions;
+  toggle: () => void;
 }
 
-const SubMenuBlock: React.FC<SubMenuBlockProps> = ({ data }) => {
+const SubMenuBlock: React.FC<SubMenuBlockProps> = ({ data, toggle }) => {
   const { Component, props, rightComponents, title } = data;
 
   const noTextDecoration = { textDecoration: 'none' };
@@ -16,7 +17,7 @@ const SubMenuBlock: React.FC<SubMenuBlockProps> = ({ data }) => {
   return (
     <StyledContainerItem>
       <DummyBorder />
-      <Component {...props} style={noTextDecoration}>
+      <Component {...props} style={noTextDecoration} onClick={toggle}>
         <Text colorVariant="secondary" colorTone="medium" typography="sub">
           <StyledText>{title}</StyledText>
         </Text>

@@ -1,41 +1,24 @@
-import styled, { css } from '@emotion/native';
-import { StyleProps, SwitchProps } from '@tecsinapse/react-core';
-import { PressableSurface } from '../PressableSurface';
+import styled from '@emotion/native';
+import { Animated } from 'react-native';
+import { StyleProps } from '../../../types/defaults';
+import { RFValueStr } from '../../../utils';
 
-const activeStyles = ({ active }: Partial<SwitchProps> & Partial<StyleProps>) =>
-  active &&
-  css`
-    align-items: flex-end;
-  `;
+export const SWITCH_BODY_WIDTH = '40px'
+export const SWITCH_PIN_WIDTH = '16px'
 
-const inactiveStyles = ({
-  active,
-}: Partial<SwitchProps> & Partial<StyleProps>) =>
-  !active &&
-  css`
-    align-items: flex-start;
-  `;
-
-const StyledSwitchContentBase = styled(PressableSurface)<
-  Partial<SwitchProps> & Partial<StyleProps>
+export const StyledSwitchContent = styled(Animated.View)<
+  Partial<StyleProps>
 >`
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: 0 ${({ theme }) => theme.spacing.micro};
   justify-content: center;
-  width: 40px;
-  height: 22px;
+  width: ${RFValueStr(SWITCH_BODY_WIDTH)};
+  height: ${RFValueStr('22px')};
 `;
 
-export const StyledSwitch = styled.View<Partial<StyleProps>>`
+export const StyledSwitch = styled(Animated.View)<Partial<StyleProps>>`
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
-  width: 16px;
-  height: 16px;
+  width: ${RFValueStr(SWITCH_PIN_WIDTH)};
+  height: ${RFValueStr('16px')};
 `;
-
-export const StyledSwitchContent = styled(StyledSwitchContentBase)(
-  props => css`
-    ${activeStyles(props)}
-    ${inactiveStyles(props)}
-  `
-);

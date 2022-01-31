@@ -11,6 +11,7 @@ interface MenuItemProps {
   Component: ElementType;
   /** Properties spread to wrapping Component */
   props: any;
+  toggle: () => void;
   rightComponents?: React.ReactNode;
   items?: ItemsOptions[];
 }
@@ -21,6 +22,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   props = {},
   rightComponents,
   items,
+  toggle,
 }) => {
   const [open, setOpen] = React.useState<boolean>(false);
 
@@ -34,7 +36,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <>
       <StyledContainerItemText key={title}>
-        <Component {...props} style={noTextDecoration}>
+        <Component {...props} style={noTextDecoration} onClick={toggle}>
           <Text
             colorVariant={open ? 'primary' : 'secondary'}
             colorTone={open ? 'medium' : 'dark'}
@@ -57,7 +59,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       </StyledContainerItemText>
       {open &&
         items?.map(subItem => (
-          <SubMenuBlock key={subItem.title} data={subItem} />
+          <SubMenuBlock key={subItem.title} data={subItem} toggle={toggle} />
         ))}
     </>
   );

@@ -8,7 +8,7 @@ import {
 } from '../GroupButton';
 
 export default {
-  title: 'Components/GroupButton',
+  title: 'Hybrid/Group Button',
   component: GroupButton,
 };
 
