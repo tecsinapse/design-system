@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { BorderRadiusType } from '@tecsinapse/react-core';
 import { Animated, LayoutChangeEvent, View, ViewProps } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Wrapper } from './styled';
-import { pulseAnimation, waveAnimation } from './animation';
+import { Wave } from './Wave';
+import { Pulse } from './Pulse';
 
 export interface SkeletonProps extends ViewProps {
   width?: number;
@@ -44,74 +45,27 @@ const Skeleton: React.FC<SkeletonProps> = ({
     );
   }
 
-  const animatedValue = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    if (animation === 'wave') waveAnimation(active, animatedValue);
-    else pulseAnimation(active, animatedValue);
-  }, [active]);
-
-  const range = width ?? childrenLayout.width;
-
-  const translateX = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: [-range, range],
-  });
-
   const getChildrenLayout = (event: LayoutChangeEvent) => {
     setChildrenLayout(event.nativeEvent.layout);
   };
 
-  const WaveComponent = () => {
-    return (
-      <AnimatedLinearGradient
-        colors={[
-          'transparent',
-          'rgba(0,0,0,0.05)',
-          'rgba(0,0,0,0.1)',
-          'transparent',
-        ]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={{
-          width: width ?? childrenLayout.width,
-          height: height ?? childrenLayout.height,
-          position: 'absolute',
-          top: childrenLayout.y ?? 0,
-          left: childrenLayout.x ?? 0,
-          zIndex: 2,
-          overflow: 'hidden',
-          transform: [
-            {
-              translateX: translateX,
-            },
-          ],
-        }}
-      />
-    );
-  };
-
-  const PulseComponent = () => {
-    return (
-      <Animated.View
-        style={{
-          width: width ?? childrenLayout.width,
-          height: height ?? childrenLayout.height,
-          backgroundColor: 'rgba(0,0,0,0.05)',
-          position: 'absolute',
-          top: childrenLayout.x ?? 0,
-          left: childrenLayout.y ?? 0,
-          zIndex: 2,
-          overflow: 'hidden',
-          opacity: animatedValue,
-        }}
-      />
-    );
-  };
-
   return (
     <Wrapper width={width} height={height} radius={radius} {...rest}>
-      {active && animation === 'wave' ? <WaveComponent /> : <PulseComponent />}
+      {active && animation === 'wave' ? (
+        <Wave
+          active={active}
+          width={width}
+          height={height}
+          childrenLayout={childrenLayout}
+        />
+      ) : (
+        <Pulse
+          active={active}
+          width={width}
+          height={height}
+          childrenLayout={childrenLayout}
+        />
+      )}
       <View
         onLayout={event => getChildrenLayout(event)}
         style={{ opacity: active ? 0 : 1 }}

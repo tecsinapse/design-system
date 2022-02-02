@@ -16,14 +16,14 @@ storiesOf('Skeleton', module)
   .addDecorator(getStory => (
     <ArtBoard backgroundColor="#FFF">{getStory()}</ArtBoard>
   ))
-  .add('Skeleton', () => <Component />);
+  .add('Skeleton', () => <Component animation={'wave'} />);
 
 const options = new Array(20).fill(undefined).map((_, index) => ({
   key: index,
   label: `Option ${index}`,
 }));
 
-const Component = () => {
+const Component = ({ animation }: { animation: 'pulse' | 'wave' }) => {
   const [seconds, setSeconds] = useState(0);
   const [active, setActive] = useState(false);
 
@@ -49,29 +49,29 @@ const Component = () => {
       </Button>
 
       <Grid spacing={'mili'} layout={[[12], [6, 6], [12], [2, 10], [6, 6]]}>
-        <Skeleton active={active}>
+        <Skeleton animation={animation} active={active}>
           <Input style={{ width: '100%' }} />
         </Skeleton>
 
-        <Skeleton active={active}>
+        <Skeleton animation={animation} active={active}>
           <Text>Teste text</Text>
         </Skeleton>
 
-        <Skeleton active={active}>
+        <Skeleton animation={animation} active={active}>
           <TextArea value={'Teste text'} />
         </Skeleton>
 
-        <Skeleton active={active}>
+        <Skeleton animation={animation} active={active}>
           <Button>
             <Text>Button</Text>
           </Button>
         </Skeleton>
 
-        <Skeleton active={active} radius={'pill'}>
+        <Skeleton animation={animation} active={active} radius={'pill'}>
           <Avatar name={'Usuario Teste'} />
         </Skeleton>
 
-        <Skeleton active={active}>
+        <Skeleton animation={animation} active={active}>
           <Select
             options={options}
             label="Single value"
@@ -88,14 +88,20 @@ const Component = () => {
           />
         </Skeleton>
 
-        <Skeleton width={150} height={150} active={active} radius={'pill'} />
-
         <Skeleton
+          animation={animation}
           width={150}
           height={150}
           active={active}
           radius={'pill'}
-          animation={'pulse'}
+        />
+
+        <Skeleton
+          animation={animation}
+          width={150}
+          height={150}
+          active={active}
+          radius={'pill'}
         />
       </Grid>
     </>
