@@ -62,7 +62,6 @@ const MonthWeek = <T extends SelectionType>({
 
         if (!highest) {
           if (compare(date, lowest) === -1) {
-            // newValue = { lowest: date, highest: lowest };
             newValue = { lowest: date, highest: undefined };
           } else if (compare(date, lowest) === 0) {
             newValue = undefined;
@@ -71,19 +70,11 @@ const MonthWeek = <T extends SelectionType>({
           }
         } else {
           if (compare(date, lowest) === -1) {
-            // newValue = { lowest: date, highest: highest };
             newValue = { lowest: date, highest: undefined };
           } else if (compare(date, lowest) === 0) {
-            // newValue = { lowest: highest, highest: undefined };
             newValue = undefined;
           } else {
             if (compare(date, highest) === -1) {
-              // const lowestDiff = Math.abs(differenceInDays(date, lowest));
-              // const highestDiff = Math.abs(differenceInDays(date, highest));
-              // newValue = {
-              //   lowest: lowestDiff < highestDiff ? date : lowest,
-              //   highest: highestDiff <= lowestDiff ? date : highest,
-              // };
               newValue = { lowest: lowest, highest: date };
             } else if (compare(date, highest) === 0) {
               newValue = { lowest: lowest, highest: undefined };
