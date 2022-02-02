@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { BorderRadiusType } from '@tecsinapse/react-core';
-import { Animated, LayoutChangeEvent, View, ViewProps } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import { LayoutChangeEvent, View, ViewProps } from 'react-native';
 import { Wrapper } from './styled';
 import { Wave } from './Wave';
 import { Pulse } from './Pulse';
+import { ChildrenLayout } from './types';
 
 export interface SkeletonProps extends ViewProps {
   width?: number;
@@ -13,15 +13,6 @@ export interface SkeletonProps extends ViewProps {
   active?: boolean;
   animation?: 'wave' | 'pulse';
 }
-
-export type ChildrenLayout = {
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-};
-
-const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 const Skeleton: React.FC<SkeletonProps> = ({
   children,

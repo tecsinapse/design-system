@@ -2,10 +2,16 @@ import React, { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { waveAnimation } from './animation';
+import { IAnimationComponent } from './types';
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
-export const Wave = ({ active, width, height, childrenLayout }) => {
+export const Wave = ({
+  active = true,
+  width,
+  height,
+  childrenLayout,
+}: IAnimationComponent) => {
   const range = width ?? childrenLayout.width;
   const animatedValue = useRef(new Animated.Value(0)).current;
 

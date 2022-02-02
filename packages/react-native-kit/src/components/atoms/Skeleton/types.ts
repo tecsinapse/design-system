@@ -4,3 +4,10 @@ export type ChildrenLayout = {
   x: number;
   y: number;
 };
+
+export interface IAnimationComponent {
+  width?: number;
+  height?: number;
+  active?: boolean;
+  childrenLayout: ChildrenLayout;
+}
