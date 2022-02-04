@@ -23,7 +23,7 @@ Range.args = {
   label: 'Select date',
   placeholder: 'Select date',
   type: 'range',
-  closeOnPick: true,
+  closeOnPick: false,
 };
 
 const TemplateDay: Story<DatePickerProps<'day'>> = args => {
