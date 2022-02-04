@@ -1,13 +1,8 @@
 import { useCallback, useState } from 'react';
 
-export interface IMaskValue {
+export interface MaskValue {
   formatted?: string;
   raw?: any;
-}
-
-export interface IMask {
-  converter?: (raw?: string) => IMaskValue;
-  maskValue?: IMaskValue;
 }
 
 export type MaskType = string | RegExp | Array<RegExp>;
@@ -18,53 +13,43 @@ export type MaskType = string | RegExp | Array<RegExp>;
  * @param mask
  * @returns
  */
-const mergeMask = (value = '', mask: Array<MaskType>) => {
-  let masked = '';
-  let unmasked = '';
+const mergeMask = (value = '', mask: MaskType[]) => {
+  let formatted = '';
+  let raw = '';
+  let iMask = 0;
+  let iChars = 0;
 
-  let maskCharIndex = 0;
-  let valueCharIndex = 0;
+  while (!(iMask === mask.length || iChars === value.length)) {
+    const maskChar = mask[iMask];
+    const valueChar = value[iChars];
 
-  // eslint-disable-next-line no-constant-condition
-  while (!(maskCharIndex === mask.length || valueCharIndex === value.length)) {
-    const maskChar = mask[maskCharIndex];
-    const valueChar = value[valueCharIndex];
-
-    // value equals mask
     if (maskChar === valueChar) {
-      masked += maskChar;
-
-      valueCharIndex += 1;
-      maskCharIndex += 1;
+      formatted += maskChar;
+      iChars++;
+      iMask++;
       continue;
     }
 
-    const unmaskedValueChar = value[valueCharIndex];
+    const rawValueChar = value[iChars];
 
-    // Regex maskChar
     if (typeof maskChar === 'object') {
-      valueCharIndex += 1;
+      iChars++;
 
-      // Validate regex
       const maskCharRegex = Array.isArray(maskChar) ? maskChar[0] : maskChar;
       const matchRegex = RegExp(maskCharRegex).test(valueChar);
 
-      // Match regex: add to masked and unmasked
       if (matchRegex) {
-        masked += valueChar;
-        unmasked += unmaskedValueChar;
-
-        maskCharIndex += 1;
+        formatted += valueChar;
+        raw += rawValueChar;
+        iMask++;
       }
     } else {
-      // Fixed maskChar: add to masked
-      masked += maskChar;
-
-      maskCharIndex += 1;
+      formatted += maskChar;
+      iMask++;
     }
   }
 
-  return { unmasked, masked };
+  return { raw, formatted };
 };
 
 /**
@@ -74,61 +59,68 @@ const mergeMask = (value = '', mask: Array<MaskType>) => {
  * @returns
  */
 export const useStringMask = (
-  mask: MaskType,
+  mask: MaskType[] | ((value: string) => MaskType[]),
   defaultValue?: string
-): [IMask, (text: string) => void] => {
+): [MaskValue, (text: string) => void] => {
   const getMask = useCallback(
-    (mask: MaskType): Array<MaskType> => {
-      if (typeof mask !== 'string') {
-        if (Array.isArray(mask)) return mask;
-        else return [mask];
-      } else {
-        const regexArray: Array<MaskType> = [];
+    (
+      mask: MaskType[] | ((value: string) => MaskType[]),
+      newValue: string
+    ): MaskType[] => {
+      let maskArray: MaskType[];
+      const regexArray: MaskType[] = [];
 
-        for (let i = 0; i < mask.length; i++) {
-          if (mask[i] === '\\') {
-            regexArray.push(mask[i + 1]);
-            i++;
-          } else {
-            if (mask[i] === '9') regexArray.push(/\d/);
-            else if (mask[i] === 'a') regexArray.push(/[a-zA-Z]/);
-            else regexArray.push(mask[i]);
+      if (typeof mask === 'function') {
+        maskArray = mask(newValue);
+      } else {
+        maskArray = mask;
+      }
+
+      maskArray.forEach(exp => {
+        if (typeof exp !== 'string') {
+          if (Array.isArray(exp)) regexArray.push(exp);
+          else regexArray.push(exp);
+        } else {
+          for (let i = 0; i < exp.length; i++) {
+            if (exp[i] === '\\') {
+              regexArray.push(exp[i + 1]);
+              i++;
+            } else {
+              if (exp[i] === '9') regexArray.push(/\d/);
+              else if (exp[i] === 'a') regexArray.push(/[a-zA-Z]/);
+              else regexArray.push(exp[i]);
+            }
           }
         }
-        return regexArray;
-      }
+      });
+
+      return regexArray;
     },
     [mask]
   );
 
   const applyMask = useCallback(
-    (value = ''): IMaskValue => {
-      const selectedMask = getMask(mask);
-      const { masked, unmasked } = mergeMask(value, selectedMask);
+    (value = ''): MaskValue => {
+      const selectedMask = getMask(mask, value);
+      const { formatted, raw } = mergeMask(value, selectedMask);
 
       return {
-        raw: unmasked,
-        formatted: masked,
+        raw,
+        formatted,
       };
     },
     [mask]
   );
 
-  const [value, setValue] = useState<IMask>({
-    converter: applyMask,
-    maskValue: applyMask(defaultValue),
-  });
+  const [value, setValue] = useState<MaskValue>(applyMask(defaultValue));
 
   const handleChangeValue = useCallback(
     (value: string) => {
       const { raw, formatted } = applyMask(value);
-      setValue(oldValue => ({
-        ...oldValue,
-        maskValue: {
-          raw,
-          formatted,
-        },
-      }));
+      setValue({
+        raw,
+        formatted,
+      });
     },
     [applyMask, setValue]
   );

@@ -3,6 +3,7 @@ import { Story } from '@storybook/react';
 import React, { useState } from 'react';
 import Input, { InputWebProps } from './Input';
 import { Masks } from '@tecsinapse/react-core/src';
+import { CurrencyOptions } from '@tecsinapse/react-core/src/components/atoms/Input/hooks/useNumberMask';
 
 export default {
   title: 'Hybrid/Input',
@@ -11,6 +12,8 @@ export default {
 
 const Template: Story<InputWebProps> = args => {
   const [value, setValue] = useState<string>('');
+
+  console.log(value);
 
   const onChange = text => {
     setValue(text);
@@ -56,7 +59,7 @@ const TemplateStringMask: Story<InputWebProps> = args => {
       value={value}
       onChange={onChange}
       placeholder={args.placeholder}
-      mask={Masks.CPF}
+      mask={Masks.COMBINED_PHONE}
     />
   );
 };
@@ -65,9 +68,9 @@ export const StringMask = TemplateStringMask.bind({});
 
 StringMask.args = {
   onChange: value => action('onChange')(value),
-  placeholder: 'Type your cpf',
+  placeholder: 'Type your phone',
   disabled: false,
-  label: 'CPF',
+  label: 'Phone',
 };
 
 const TemplateNumberMask: Story<InputWebProps> = args => {
@@ -80,6 +83,13 @@ const TemplateNumberMask: Story<InputWebProps> = args => {
     }
   };
 
+  const numberMaskExample: CurrencyOptions = {
+    symbol: 'R$ ',
+    separator: ',',
+    decimal: '.',
+    precision: 2,
+  };
+
   return (
     <Input
       {...args}
@@ -87,7 +97,7 @@ const TemplateNumberMask: Story<InputWebProps> = args => {
       value={value}
       onChange={onChange}
       placeholder={args.placeholder}
-      mask={Masks.CPF}
+      mask={numberMaskExample}
     />
   );
 };
