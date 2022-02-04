@@ -74,7 +74,7 @@ StringMask.args = {
 };
 
 const TemplateNumberMask: Story<InputWebProps> = args => {
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState<number>(1200.2);
 
   const onChange = text => {
     setValue(text);
@@ -85,8 +85,8 @@ const TemplateNumberMask: Story<InputWebProps> = args => {
 
   const numberMaskExample: CurrencyOptions = {
     symbol: 'R$ ',
-    separator: ',',
-    decimal: '.',
+    separator: '.',
+    decimal: ',',
     precision: 2,
   };
 

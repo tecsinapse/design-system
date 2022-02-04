@@ -115,8 +115,8 @@ export const useStringMask = (
   const [value, setValue] = useState<MaskValue>(applyMask(defaultValue));
 
   const handleChangeValue = useCallback(
-    (value: string) => {
-      const { raw, formatted } = applyMask(value);
+    (formattedValue: string) => {
+      const { raw, formatted } = applyMask(formattedValue);
       setValue({
         raw,
         formatted,

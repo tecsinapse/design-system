@@ -9,13 +9,10 @@ import { CurrencyOptions, useNumberMask } from '../hooks/useNumberMask';
 export interface InputElementProps
   extends Omit<TextInputProps, 'onChange' | 'value' | 'ref'> {
   style?: StyleProp<TextStyle>;
-  /**
-   * TODO:
-   */
-  value: string;
+  value: string | number;
   placeholder?: string;
   disabled?: boolean;
-  onChange?: (raw: string, formatted?: string) => void;
+  onChange?: (value: any) => void;
   mask?: (MaskType[] | ((value: string) => MaskType[])) | CurrencyOptions;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -40,15 +37,15 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
 
     const [maskValue, setMaskValue] =
       mask === undefined
-        ? useState<string>(value)
+        ? useState<string>(String(value))
         : Array.isArray(mask) || typeof mask === 'function'
-        ? useStringMask(mask, value)
-        : useNumberMask(mask);
+        ? useStringMask(mask, String(value))
+        : useNumberMask(mask, value);
 
     useEffect(() => {
       if (onChange) {
         if (typeof maskValue === 'string') onChange(maskValue);
-        else onChange(maskValue?.raw, maskValue?.formatted ?? '');
+        else onChange(maskValue?.raw);
       }
     }, [maskValue]);
 
