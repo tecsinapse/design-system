@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react-native';
-import { Input, Masks, formatWithMask } from '@tecsinapse/react-native-kit';
+import { Input, Masks } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 import { Grid } from '@tecsinapse/react-core';
