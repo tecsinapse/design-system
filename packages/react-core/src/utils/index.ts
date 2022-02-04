@@ -3,5 +3,7 @@ export {
   extractNumbersFromString,
   extractDigitsFromString,
 } from './extractNumbersFromString';
-export * from './IPhoneXHelper'
-export * from './ResponsiveFontSize'
+export * from './IPhoneXHelper';
+export * from './ResponsiveFontSize';
+export * from './masks';
+export * from './formatWithMask';

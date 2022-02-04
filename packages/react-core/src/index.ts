@@ -31,16 +31,13 @@ export {
   InputElement,
   InputElementProps,
   InputVariantType,
-  Masks,
   PressableInputContainer,
   PressableInputContainerProps,
   StyledBorderKeeper,
-  useCurrencyMask,
   useInputFocus,
-  useMask,
+  useNumberMask,
+  useStringMask,
   disabledInputStyles,
-  IMask,
-  IMaskValue,
 } from './components/atoms/Input';
 export { Paper, PaperProps } from './components/atoms/Paper';
 export {
@@ -57,7 +54,7 @@ export {
   CalendarProps,
   DateRange,
   SelectionType,
-  Value
+  Value,
 } from './components/molecules/Calendar';
 export { DatePicker, DatePickerProps } from './components/molecules/DatePicker';
 export {

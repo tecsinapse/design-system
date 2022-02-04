@@ -1,4 +1,4 @@
-// NOTE: Add here all individually masks, then you can use it on input components everywhere.
+// NOTE: Add here all individually utils, then you can use it on input components everywhere.
 export const Masks = {
   CPF: ['999.999.999-99'],
   CNPJ: ['99.999.999/9999-99'],

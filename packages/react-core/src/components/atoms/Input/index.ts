@@ -1,7 +1,7 @@
 export { default as Hint } from './Hint';
-export * from './hooks/useCurrencyMask';
 export * from './hooks/useInputFocus';
-export * from './hooks/useMask';
+export * from './hooks/useNumberMask';
+export * from './hooks/useStringMask';
 export {
   default as InputContainer,
   InputContainerProps,
@@ -11,7 +11,6 @@ export {
   default as InputElement,
   InputElementProps,
 } from './InputElement/InputElement';
-export * from './masks';
 export {
   PressableInputContainer,
   PressableInputContainerProps,
