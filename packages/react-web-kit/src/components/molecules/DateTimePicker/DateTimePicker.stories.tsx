@@ -14,14 +14,19 @@ const Template: Story<DateTimePickerProps> = ({ ...args }) => {
 
   return (
     <DateTimePicker
-      label={'Select date and time'}
-      placeholder={'Select date and time'}
-      mode={'datetime'}
       value={value}
       onChange={setValue}
       locale={ptBR}
+      {...args}
     />
   );
 };
 
 export const Base = Template.bind({});
+
+Base.args = {
+  mode: 'datetime',
+  format: 'dd/MM/yyyy HH:mm',
+  label: 'Select date and time',
+  placeholder: 'Select date and time'
+};
