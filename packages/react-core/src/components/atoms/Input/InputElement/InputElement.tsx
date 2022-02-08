@@ -13,6 +13,9 @@ export interface InputElementProps
   placeholder?: string;
   disabled?: boolean;
   onChange?: (value: any) => void;
+  /*
+
+   */
   mask?: (MaskType[] | ((value: string) => MaskType[])) | CurrencyOptions;
   onFocus?: () => void;
   onBlur?: () => void;
