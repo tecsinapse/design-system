@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "TecSinapse React Native components",
-  "version": "1.12.14",
+  "version": "1.13.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -13,7 +13,8 @@
   "dependencies": {
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.4.1",
-    "@tecsinapse/react-core": "^1.12.10"
+    "@tecsinapse/react-core": "^1.12.10",
+    "react-native-linear-gradient": "^2.5.6"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-native": ">=0.64.0",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-vector-icons": ">=8.1.0",
     "uuid": "^8.3.2"
