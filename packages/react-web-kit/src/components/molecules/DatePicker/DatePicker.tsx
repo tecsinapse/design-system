@@ -2,11 +2,11 @@ import {
   Calendar,
   DatePicker as DatePickerCore,
   DatePickerProps,
-  DateRange,
+ DateRange,
   SelectionType,
 } from '@tecsinapse/react-core';
 import React, { useCallback, useMemo, useState } from 'react';
-import { Modal } from './Modal';
+import { Dropdown } from '../../atoms/Dropdown';
 
 export type WebDatePickerProps<T extends SelectionType> = Omit<
   DatePickerProps<T>,
@@ -60,9 +60,9 @@ export const DatePicker = <T extends SelectionType>({
       requestShowCalendar={show}
       requestCloseCalendar={close}
       renderCalendar={calendar => (
-        <Modal animationType="fade" visible={visible} onRequestClose={close}>
+        <Dropdown visible={visible} setVisible={setVisible}>
           {calendar}
-        </Modal>
+        </Dropdown>
       )}
     />
   );
