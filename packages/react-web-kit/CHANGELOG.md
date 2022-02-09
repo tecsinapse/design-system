@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.13.0...@tecsinapse/react-web-kit@1.14.0) (2022-02-09)
+
+
+### Bug Fixes
+
+* DateTimePicker stories ([e6cf5c1](https://github.com/tecsinapse/design-system/commit/e6cf5c1a4c11eb4113daa77fc4e5beb89c775793))
+
+
+
+
+
 # [1.13.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.12.13...@tecsinapse/react-web-kit@1.13.0) (2022-02-02)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
