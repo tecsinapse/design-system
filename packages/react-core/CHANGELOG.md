@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.13.0...@tecsinapse/react-core@1.14.0) (2022-02-14)
+
+
+### Bug Fixes
+
+* formatWithMask util. Refactoring on useNumberMask and useStringMask hooks. ([76920f6](https://github.com/tecsinapse/design-system/commit/76920f62fb8cf9070b9b2e477dc720e9b7b24077))
+
+
+
+
+
 # [1.13.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.12.10...@tecsinapse/react-core@1.13.0) (2022-02-09)
 
 **Note:** Version bump only for package @tecsinapse/react-core
