@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { ThemeProp } from '@tecsinapse/react-core';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import { StyleProp, TextInputProps, TextStyle } from 'react-native';
 import { StyledInputElement } from '../styled';
 import { MaskType, useStringMask } from '../hooks/useStringMask';
@@ -41,34 +41,82 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
     ref: React.Ref<any>
   ): JSX.Element => {
     const theme = useTheme() as ThemeProp;
+
+    /** Check if value was reinitialized, without this state we can't total "erase" a value that was already reinitialized  **/
+    const [valueReinitialized, setValueReinitialized] = useState<boolean>(
+      false
+    );
+
     const _placeholderColor = placeholderTextColor || theme.font.color.dark;
 
-    const [maskValue, setMaskValue] =
-      mask === undefined
-        ? useState<string>(String(value))
-        : Array.isArray(mask) || typeof mask === 'function'
-        ? useStringMask(mask, String(value))
-        : useNumberMask(mask, value);
+    const getInputHook = () => {
+      if (mask !== undefined) {
+        if (Array.isArray(mask) || typeof mask === 'function')
+          return useStringMask(mask, value);
+        else {
+          return useNumberMask(mask, value);
+        }
+      } else {
+        return useState<string | number>(value);
+      }
+    };
+
+    const [maskValue, setMaskValue] = getInputHook();
+
+    const _value =
+      typeof maskValue === 'object'
+        ? maskValue?.formatted ?? ''
+        : maskValue?.toString();
 
     useEffect(() => {
       if (onChange) {
-        if (typeof maskValue === 'string') onChange(maskValue);
-        else onChange(maskValue?.raw);
+        if (typeof maskValue === 'object') onChange(maskValue?.raw);
+        else onChange(maskValue);
       }
     }, [maskValue]);
 
-    const onChangeValue = (value: string) => {
-      setMaskValue(value);
-    };
+    const onChangeValue = useCallback(
+      (value: string | number) => {
+        setMaskValue(value);
+      },
+      [value]
+    );
+
+    useEffect(() => {
+      if (!valueReinitialized) {
+        /** Used to reinitialize maskValue with a value that was loaded after Input was rendered **/
+        if (maskValue === undefined && value !== undefined) {
+          /** Case there is not a mask **/
+          setMaskValue(value);
+          setValueReinitialized(true);
+        } else if (
+          maskValue !== undefined &&
+          value !== undefined &&
+          typeof maskValue === 'object'
+        ) {
+          /** Case there is a mask **/
+          if (maskValue.raw !== value) {
+            if (
+              (Array.isArray(mask) || typeof mask === 'function') &&
+              maskValue.raw === undefined
+            ) {
+              setMaskValue(value);
+              setValueReinitialized(true);
+            } else if (typeof mask === 'object' && maskValue.raw === 0) {
+              setMaskValue(value);
+              setValueReinitialized(true);
+            }
+          }
+        }
+      }
+    }, [value, maskValue, setMaskValue, valueReinitialized]);
 
     return (
       <StyledInputElement
         {...rest}
         ref={ref}
         onChangeText={onChangeValue}
-        value={
-          typeof maskValue === 'string' ? maskValue : maskValue?.formatted ?? ''
-        }
+        value={_value}
         placeholder={placeholder}
         placeholderTextColor={_placeholderColor}
         disabled={disabled}
