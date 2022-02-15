@@ -13,19 +13,24 @@ storiesOf('Input', module)
   });
 
 const Component = () => {
-  const [phone, setPhone] = useState<string>('67996268684');
-
-  const form = useForm<{ email: string; price: number }>({
+  const form = useForm<{
+    email: string;
+    price: number;
+    phone: string;
+    cpfCnpj: string;
+  }>({
     mode: 'onChange',
   });
 
   useEffect(() => {
     form.setValue('email', 'email@email.com');
     form.setValue('price', 1135.6);
+    form.setValue('cpfCnpj', '458.473.111-39');
+    form.setValue('phone', '(67)99626-8684');
   }, []);
 
   return (
-    <Grid spacing={'mili'} layout={[[12], [12], [12]]}>
+    <Grid spacing={'mili'} layout={[[12], [12], [12], [12]]}>
       <View>
         <Controller
           name={'email'}
@@ -42,13 +47,40 @@ const Component = () => {
           }}
         />
       </View>
-      <Input
-        label={'Phone'}
-        value={phone}
-        onChange={value => setPhone(value)}
-        placeholder={'Type your phone'}
-        mask={Masks.COMBINED_PHONE}
-      />
+      <View>
+        <Controller
+          name={'phone'}
+          control={form.control}
+          render={({ field: { value, onChange } }) => {
+            return (
+              <Input
+                label={'Phone'}
+                value={value}
+                onChange={onChange}
+                placeholder={'Type your phone'}
+                mask={Masks.COMBINED_PHONE}
+              />
+            );
+          }}
+        />
+      </View>
+      <View>
+        <Controller
+          name={'cpfCnpj'}
+          control={form.control}
+          render={({ field: { value, onChange } }) => {
+            return (
+              <Input
+                label={'Cpf/Cnpj'}
+                value={value}
+                onChange={onChange}
+                placeholder={'Type your cpf/cnpj'}
+                mask={Masks.COMBINED_CPF_CNPJ}
+              />
+            );
+          }}
+        />
+      </View>
       <View>
         <Controller
           name={'price'}

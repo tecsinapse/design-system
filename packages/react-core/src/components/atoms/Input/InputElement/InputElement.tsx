@@ -52,12 +52,12 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
     const getInputHook = () => {
       if (mask !== undefined) {
         if (Array.isArray(mask) || typeof mask === 'function')
-          return useStringMask(mask, value);
+          return useStringMask(mask, value ?? '');
         else {
-          return useNumberMask(mask, value);
+          return useNumberMask(mask, value ?? '');
         }
       } else {
-        return useState<string | number>(value);
+        return useState<string | number>(value ?? '');
       }
     };
 
@@ -85,7 +85,10 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
     useEffect(() => {
       if (!valueReinitialized) {
         /** Used to reinitialize maskValue with a value that was loaded after Input was rendered **/
-        if (maskValue === undefined && value !== undefined) {
+        if (
+          (maskValue === undefined || maskValue === '') &&
+          value !== undefined
+        ) {
           /** Case there is not a mask **/
           setMaskValue(value);
           setValueReinitialized(true);
@@ -98,13 +101,13 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
           if (maskValue.raw !== value) {
             if (
               (Array.isArray(mask) || typeof mask === 'function') &&
-              maskValue.raw === undefined
+              (maskValue.raw === undefined || maskValue.raw === '')
             ) {
-              setMaskValue(value);
               setValueReinitialized(true);
+              setMaskValue(value);
             } else if (typeof mask === 'object' && maskValue.raw === 0) {
-              setMaskValue(value);
               setValueReinitialized(true);
+              setMaskValue(value);
             }
           }
         }
