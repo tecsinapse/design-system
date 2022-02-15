@@ -10,4 +10,6 @@ export const Masks = {
   COMBINED_PHONE: (value: string) =>
     // Value in formatted mode
     value?.length <= 14 ? Masks.PHONE : Masks.PHONE_EXTENDED,
+  COMBINED_CPF_CNPJ: (value: string) =>
+    value?.length <= 14 ? Masks.CPF : Masks.CNPJ,
 };

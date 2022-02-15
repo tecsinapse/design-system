@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 export interface MaskValue {
   formatted?: string;
-  raw?: any;
+  raw?: string | number;
 }
 
 export type MaskType = string | RegExp | Array<RegExp>;
@@ -94,8 +94,8 @@ export const getMask = (
  */
 export const useStringMask = (
   mask: MaskType[] | ((value: string) => MaskType[]),
-  defaultValue?: string
-): [MaskValue, (text: string) => void] => {
+  defaultValue?: string | number
+): [MaskValue, (text: string | number) => void] => {
   const applyMask = useCallback(
     (value = ''): MaskValue => {
       const selectedMask = getMask(mask, value);
@@ -109,10 +109,12 @@ export const useStringMask = (
     [mask]
   );
 
-  const [value, setValue] = useState<MaskValue>(applyMask(defaultValue));
+  const [value, setValue] = useState<MaskValue>(
+    applyMask(String(defaultValue))
+  );
 
   const handleChangeValue = useCallback(
-    (formattedValue: string) => {
+    (formattedValue: string | number) => {
       const { raw, formatted } = applyMask(formattedValue);
       setValue({
         raw,
