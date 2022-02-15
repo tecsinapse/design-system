@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.14.1...@tecsinapse/react-core@1.14.2) (2022-02-15)
+
+
+### Bug Fixes
+
+* Input initializan for string and no mask. ([78353ef](https://github.com/tecsinapse/design-system/commit/78353ef7b4d24216a1b99eab800f8d448ff21a34))
+
+
+
+
+
 ## [1.14.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.14.0...@tecsinapse/react-core@1.14.1) (2022-02-15)
 
 
