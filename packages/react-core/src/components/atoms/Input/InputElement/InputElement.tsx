@@ -87,7 +87,8 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
         /** Used to reinitialize maskValue with a value that was loaded after Input was rendered **/
         if (
           (maskValue === undefined || maskValue === '') &&
-          value !== undefined
+          value !== undefined &&
+          value !== ''
         ) {
           /** Case there is not a mask **/
           setMaskValue(value);
