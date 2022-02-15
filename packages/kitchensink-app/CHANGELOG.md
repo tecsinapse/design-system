@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.15.0...@tecsinapse/kitchensink-app@1.15.1) (2022-02-15)
+
+
+### Bug Fixes
+
+* Input initialization. ([a48c2d6](https://github.com/tecsinapse/design-system/commit/a48c2d6d8d1ee8d1282fa5082af40c6a1bce3e4b))
+* Input initialization. ([b0be51f](https://github.com/tecsinapse/design-system/commit/b0be51f7699a3936b7d3d193437a2636bad7abc7))
+
+
+
+
+
 # [1.15.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.14.0...@tecsinapse/kitchensink-app@1.15.0) (2022-02-14)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app
