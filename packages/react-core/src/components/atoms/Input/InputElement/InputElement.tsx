@@ -54,7 +54,7 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
         if (Array.isArray(mask) || typeof mask === 'function') {
           return useStringMask(mask, value ?? '');
         } else {
-          return useNumberMask(mask, value ?? '');
+          return useNumberMask(mask, value ?? 0);
         }
       } else {
         return [undefined, undefined];
@@ -68,17 +68,16 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
         ? maskValue?.formatted ?? ''
         : value?.toString() ?? '';
 
-    const onChangeMaskValue = useCallback(() => {
+    useEffect(() => {
       if (onChange) {
         onChange(maskValue?.raw);
       }
     }, [maskValue]);
 
     const onChangeValue = useCallback(
-      async (value: string | number) => {
+      (value: string | number) => {
         if (maskValue !== undefined && setMaskValue !== undefined) {
-          await setMaskValue(value);
-          onChangeMaskValue();
+          setMaskValue(value);
         } else onChange && onChange(value);
       },
       [value]
