@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.15.6...@tecsinapse/kitchensink-app@1.15.7) (2022-02-16)
+
+
+### Bug Fixes
+
+* removing null check in InputElement value since it needs to be passed as parameter. ([b1af9ce](https://github.com/tecsinapse/design-system/commit/b1af9ceb2f0ef13efe0895db467bdbf61eda5f2a))
+
+
+
+
+
 ## [1.15.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.15.5...@tecsinapse/kitchensink-app@1.15.6) (2022-02-16)
 
 
