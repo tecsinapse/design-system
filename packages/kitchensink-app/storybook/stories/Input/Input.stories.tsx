@@ -97,7 +97,7 @@ const Component = () => {
               return (
                 <Input
                   label={'Value'}
-                  value={value}
+                  value={value ?? 0}
                   onChange={value => {
                     onChange(value);
                     calculatePercentage(value);
@@ -140,7 +140,7 @@ const Component = () => {
                 <Input
                   label="Say something"
                   placeholder="Nop!"
-                  value={value}
+                  value={value ?? ''}
                   onChange={onChange}
                 />
               );
@@ -155,7 +155,7 @@ const Component = () => {
               return (
                 <Input
                   label={'Phone'}
-                  value={value}
+                  value={value ?? ''}
                   onChange={onChange}
                   placeholder={'Type your phone'}
                   mask={Masks.COMBINED_PHONE}
@@ -172,7 +172,7 @@ const Component = () => {
               return (
                 <Input
                   label={'Cpf/Cnpj'}
-                  value={value}
+                  value={value ?? ''}
                   onChange={onChange}
                   placeholder={'Type your cpf/cnpj'}
                   mask={Masks.COMBINED_CPF_CNPJ}
@@ -189,7 +189,7 @@ const Component = () => {
               return (
                 <Input
                   label={'Price'}
-                  value={value}
+                  value={value ?? 0}
                   onChange={onChange}
                   placeholder={'Type the price'}
                   mask={BRLMask}
@@ -206,7 +206,7 @@ const Component = () => {
               return (
                 <Input
                   label={'Quantity'}
-                  value={value}
+                  value={value ?? 1}
                   placeholder={'Select quantity'}
                   focusable={false}
                   showSoftInputOnFocus={false}
