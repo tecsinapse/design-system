@@ -93,7 +93,7 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
           typeof maskValue === 'object'
         ) {
           /** Case there is a mask **/
-          if (maskValue.raw !== value.toString()) {
+          if (maskValue.raw !== value?.toString()) {
             setValueReinitialized(true);
             setMaskValue(value);
           }
