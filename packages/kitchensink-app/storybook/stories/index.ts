@@ -1,3 +1,4 @@
+import './Input/Input.stories';
 import './Badge/Badge.stories';
 import './BoxContent/BoxContent.stories';
 import './Button/Button.stories';
@@ -7,7 +8,6 @@ import './Grid/Grid.stories';
 import './GroupButton/GroupButton.stories';
 import './Header/Header.stories';
 import './Icon/Icon.stories';
-import './Input/Input.stories';
 import './TextArea/TextArea.stories';
 import './InputPassword/InputPassword.stories';
 import './Paper/Paper.stories';
