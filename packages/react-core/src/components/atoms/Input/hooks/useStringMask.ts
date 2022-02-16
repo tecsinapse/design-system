@@ -115,7 +115,7 @@ export const useStringMask = (
 
   const handleChangeValue = useCallback(
     (formattedValue: string | number) => {
-      const { raw, formatted } = applyMask(formattedValue.toString());
+      const { raw, formatted } = applyMask(formattedValue?.toString());
       setValue({
         raw,
         formatted,
