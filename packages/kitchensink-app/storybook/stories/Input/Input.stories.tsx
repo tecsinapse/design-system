@@ -6,6 +6,27 @@ import { Grid } from '@tecsinapse/react-core';
 import { Controller, useForm } from 'react-hook-form';
 import { View } from 'react-native';
 
+const BRLMask = {
+  symbol: 'R$ ',
+  separator: '.',
+  decimal: ',',
+  precision: 2,
+};
+
+const USMask = {
+  symbol: '$ ',
+  separator: ',',
+  decimal: '.',
+  precision: 2,
+};
+
+export const PercentageMask = {
+  symbol: '%',
+  separator: '.',
+  decimal: ',',
+  pattern: '#!',
+};
+
 storiesOf('Input', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
   .add('Input', () => {
@@ -22,6 +43,8 @@ const Component = () => {
     phone: string;
     cpfCnpj: string;
     quantity: number;
+    value: number;
+    percentage: number;
   }>({
     mode: 'onChange',
     defaultValues: {
@@ -34,7 +57,17 @@ const Component = () => {
     form.setValue('price', 1135.6);
     form.setValue('cpfCnpj', '458.473.111-39');
     form.setValue('phone', '(67)99626-8684');
+    form.setValue('value', 1000);
+    form.setValue('percentage', 100);
   }, []);
+
+  const calculateValue = (percent: number) => {
+    form.setValue('value', (percent / 100) * 1000);
+  };
+
+  const calculatePercentage = (value: number) => {
+    form.setValue('percentage', (value * 100) / 1000);
+  };
 
   return (
     <>
@@ -50,16 +83,53 @@ const Component = () => {
           label="Say a dollar price"
           placeholder="$ 1,500.00"
           value={dollarPrice}
-          mask={{
-            symbol: '$ ',
-            separator: ',',
-            decimal: '.',
-            precision: 2,
-          }}
+          mask={USMask}
           onChange={setDollarPrice}
         />
       </Grid>
       <Text>Inside controller</Text>
+      <Grid spacing={'mili'} layout={[[6, 6]]}>
+        <View>
+          <Controller
+            control={form.control}
+            name="value"
+            render={({ field: { onChange, value } }) => {
+              return (
+                <Input
+                  label={'Value'}
+                  value={value}
+                  onChange={value => {
+                    onChange(value);
+                    calculatePercentage(value);
+                  }}
+                  mask={BRLMask}
+                  keyboardType="numeric"
+                />
+              );
+            }}
+          />
+        </View>
+        <View>
+          <Controller
+            control={form.control}
+            name="percentage"
+            render={({ field: { onChange, value } }) => {
+              return (
+                <Input
+                  label={'Percentage'}
+                  value={value ?? 0}
+                  onChange={value => {
+                    onChange(value);
+                    calculateValue(value);
+                  }}
+                  mask={PercentageMask}
+                  keyboardType="numeric"
+                />
+              );
+            }}
+          />
+        </View>
+      </Grid>
       <Grid spacing={'mili'} layout={[[12], [12], [12], [12], [12]]}>
         <View>
           <Controller
@@ -122,12 +192,7 @@ const Component = () => {
                   value={value}
                   onChange={onChange}
                   placeholder={'Type the price'}
-                  mask={{
-                    symbol: 'R$ ',
-                    separator: '.',
-                    decimal: ',',
-                    precision: 2,
-                  }}
+                  mask={BRLMask}
                 />
               );
             }}
