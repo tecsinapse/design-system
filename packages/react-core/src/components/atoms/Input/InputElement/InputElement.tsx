@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 import { ThemeProp } from '@tecsinapse/react-core';
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import { StyleProp, TextInputProps, TextStyle } from 'react-native';
 import { StyledInputElement } from '../styled';
 import { MaskType, useStringMask } from '../hooks/useStringMask';
@@ -42,14 +42,9 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
   ): JSX.Element => {
     const theme = useTheme() as ThemeProp;
 
-    /** Check if value was reinitialized, without this state we can't total "erase" a value that was already reinitialized  **/
-    const [valueReinitialized, setValueReinitialized] = useState<boolean>(
-      false
-    );
-
     const _placeholderColor = placeholderTextColor || theme.font.color.dark;
 
-    const getInputHook = () => {
+    const getInputHook = (value: string | number) => {
       if (mask !== undefined) {
         if (Array.isArray(mask) || typeof mask === 'function') {
           return useStringMask(mask, value ?? '');
@@ -61,7 +56,7 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
       }
     };
 
-    const [maskValue, setMaskValue] = getInputHook();
+    const [maskValue, setMaskValue] = getInputHook(value);
 
     const _value =
       maskValue !== undefined
@@ -84,22 +79,22 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
     );
 
     useEffect(() => {
-      if (!valueReinitialized) {
-        /** Used to reinitialize maskValue with a value that was loaded after Input was rendered **/
+      /** Used to reinitialize maskValue when the value is updated in the parent component **/
+      if (
+        maskValue !== undefined &&
+        setMaskValue !== undefined &&
+        value !== undefined &&
+        typeof maskValue === 'object'
+      ) {
+        /** Case there is a mask **/
         if (
-          maskValue !== undefined &&
-          setMaskValue !== undefined &&
-          value !== undefined &&
-          typeof maskValue === 'object'
+          maskValue?.raw !== undefined &&
+          maskValue?.raw.toString() !== value?.toString()
         ) {
-          /** Case there is a mask **/
-          if (maskValue.raw !== value?.toString()) {
-            setValueReinitialized(true);
-            setMaskValue(value);
-          }
+          onChangeValue(value);
         }
       }
-    }, [value, maskValue, valueReinitialized]);
+    }, [value]);
 
     return (
       <StyledInputElement
