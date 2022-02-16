@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.15.5...@tecsinapse/kitchensink-app@1.15.6) (2022-02-16)
+
+
+### Bug Fixes
+
+* infinite loop caused by the useEffect. Updating values correctly when they change in the parent component. ([0355ed1](https://github.com/tecsinapse/design-system/commit/0355ed19cdd9e237d277df8c431f78602cfc214e))
+
+
+
+
+
 ## [1.15.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.15.4...@tecsinapse/kitchensink-app@1.15.5) (2022-02-16)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app
