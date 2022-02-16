@@ -51,33 +51,35 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
 
     const getInputHook = () => {
       if (mask !== undefined) {
-        if (Array.isArray(mask) || typeof mask === 'function')
+        if (Array.isArray(mask) || typeof mask === 'function') {
           return useStringMask(mask, value ?? '');
-        else {
+        } else {
           return useNumberMask(mask, value ?? '');
         }
       } else {
-        return useState<string | number>(value ?? '');
+        return [undefined, undefined];
       }
     };
 
     const [maskValue, setMaskValue] = getInputHook();
 
     const _value =
-      typeof maskValue === 'object'
+      maskValue !== undefined
         ? maskValue?.formatted ?? ''
-        : maskValue?.toString();
+        : value?.toString() ?? '';
 
-    useEffect(() => {
+    const onChangeMaskValue = useCallback(() => {
       if (onChange) {
-        if (typeof maskValue === 'object') onChange(maskValue?.raw);
-        else onChange(maskValue);
+        onChange(maskValue?.raw);
       }
     }, [maskValue]);
 
     const onChangeValue = useCallback(
-      (value: string | number) => {
-        setMaskValue(value);
+      async (value: string | number) => {
+        if (maskValue !== undefined && setMaskValue !== undefined) {
+          await setMaskValue(value);
+          onChangeMaskValue();
+        } else onChange && onChange(value);
       },
       [value]
     );
@@ -86,34 +88,19 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
       if (!valueReinitialized) {
         /** Used to reinitialize maskValue with a value that was loaded after Input was rendered **/
         if (
-          (maskValue === undefined || maskValue === '') &&
-          value !== undefined &&
-          value !== ''
-        ) {
-          /** Case there is not a mask **/
-          setMaskValue(value);
-          setValueReinitialized(true);
-        } else if (
           maskValue !== undefined &&
+          setMaskValue !== undefined &&
           value !== undefined &&
           typeof maskValue === 'object'
         ) {
           /** Case there is a mask **/
-          if (maskValue.raw !== value) {
-            if (
-              (Array.isArray(mask) || typeof mask === 'function') &&
-              (maskValue.raw === undefined || maskValue.raw === '')
-            ) {
-              setValueReinitialized(true);
-              setMaskValue(value);
-            } else if (typeof mask === 'object' && maskValue.raw === 0) {
-              setValueReinitialized(true);
-              setMaskValue(value);
-            }
+          if (maskValue.raw !== value.toString()) {
+            setValueReinitialized(true);
+            setMaskValue(value);
           }
         }
       }
-    }, [value, maskValue, setMaskValue, valueReinitialized]);
+    }, [value, maskValue, valueReinitialized]);
 
     return (
       <StyledInputElement
