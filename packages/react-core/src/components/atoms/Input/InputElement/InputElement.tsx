@@ -47,9 +47,9 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
     const getInputHook = (value: string | number) => {
       if (mask !== undefined) {
         if (Array.isArray(mask) || typeof mask === 'function') {
-          return useStringMask(mask, value ?? '');
+          return useStringMask(mask, value);
         } else {
-          return useNumberMask(mask, value ?? 0);
+          return useNumberMask(mask, value);
         }
       } else {
         return [undefined, undefined];
@@ -59,9 +59,11 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
     const [maskValue, setMaskValue] = getInputHook(value);
 
     const _value =
-      maskValue !== undefined
-        ? maskValue?.formatted ?? ''
-        : value?.toString() ?? '';
+      maskValue === undefined
+        ? value.toString()
+        : maskValue.formatted
+        ? maskValue.formatted
+        : '';
 
     useEffect(() => {
       if (onChange) {
@@ -88,11 +90,13 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
       ) {
         /** Case there is a mask **/
         if (
-          maskValue?.raw !== undefined &&
-          maskValue?.raw.toString() !== value?.toString()
+          maskValue.raw !== undefined &&
+          maskValue.raw.toString() !== value.toString()
         ) {
           onChangeValue(value);
         }
+      } else if (maskValue === undefined && value !== undefined) {
+        onChangeValue(value);
       }
     }, [value]);
 
