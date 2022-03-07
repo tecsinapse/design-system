@@ -1,6 +1,7 @@
 import {
-  HintInputContainer, InputContainerProps,
-  useInputFocus
+  HintInputContainer,
+  InputContainerProps,
+  useInputFocus,
 } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
@@ -35,6 +36,10 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   selectModalTitle?: string;
   selectModalTitleComponent?: JSX.Element;
   closeOnPick?: boolean;
+  controlComponent?: (
+    onPress: () => void,
+    displayValue?: string
+  ) => JSX.Element;
 }
 
 function Select<Data, Type extends 'single' | 'multi'>({
@@ -61,6 +66,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   hintComponent,
   hint,
   style,
+  controlComponent,
   closeOnPick = type === 'single',
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
@@ -71,7 +77,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   );
 
   const [selectOptions, setSelectOptions] = useState<Data[]>([]);
-  const modal = useLazyModalManager()
+  const modal = useLazyModalManager();
 
   // TODO: Add Skeleton to modal height when loading is true
   const [loading, setLoading] = useState<boolean>(false);
@@ -147,7 +153,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         } catch (e) {
           // TODO: Catch error
         } finally {
-          modal.requestUpdate()
+          modal.requestUpdate();
           setLoading(false);
         }
       }
@@ -201,37 +207,41 @@ function Select<Data, Type extends 'single' | 'multi'>({
       onClose={handleBlur}
       closeOnPick={closeOnPick}
     />
-  )
-  
+  );
+
   const handlePressInput = async () => {
-    modal.show()
+    modal.show();
     handleFocus();
     await handleLazyFocus();
   };
 
   return (
     <>
-      <HintInputContainer
-        viewStyle={style}
-        onPress={handlePressInput}
-        focused={focused}
-        disabled={disabled}
-        LabelComponent={Text}
-        variant={variant}
-        hint={hint}
-        hintComponent={hintComponent}
-        rightComponent={
-          <>
-            <SelectIcon name="chevron-down" type="ionicon" size="centi" />
-            {rightComponent}
-          </>
-        }
-        {...rest}
-      >
-        <StyledSelectionText fontWeight="bold" disabled={disabled}>
-          {getDisplayValue() || ' '}
-        </StyledSelectionText>
-      </HintInputContainer>
+      {controlComponent ? (
+        controlComponent(handlePressInput, getDisplayValue() || '')
+      ) : (
+        <HintInputContainer
+          viewStyle={style}
+          onPress={handlePressInput}
+          focused={focused}
+          disabled={disabled}
+          LabelComponent={Text}
+          variant={variant}
+          hint={hint}
+          hintComponent={hintComponent}
+          rightComponent={
+            <>
+              <SelectIcon name="chevron-down" type="ionicon" size="centi" />
+              {rightComponent}
+            </>
+          }
+          {...rest}
+        >
+          <StyledSelectionText fontWeight="bold" disabled={disabled}>
+            {getDisplayValue() || ' '}
+          </StyledSelectionText>
+        </HintInputContainer>
+      )}
     </>
   );
 }
