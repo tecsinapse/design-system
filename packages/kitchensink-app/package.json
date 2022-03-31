@@ -3,6 +3,9 @@
   "description": "TecSinapse React Native kitchensink app for design system",
   "version": "1.15.7",
   "private": true,
+  "workspaces": {
+    "nohoist": ["@storybook/**"]
+  },
   "scripts": {
     "android": "react-native run-android --no-packager && react-native start",
     "ios": "react-native run-ios --no-packager && react-native start",
