@@ -1,6 +1,9 @@
 import { storiesOf } from '@storybook/react-native';
-import { GroupButton, GroupButtonValue } from '@tecsinapse/react-core';
-import { GroupButtonOption } from '@tecsinapse/react-native-kit';
+import {
+  GroupButtonOption,
+  GroupButton,
+  GroupButtonValue,
+} from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 

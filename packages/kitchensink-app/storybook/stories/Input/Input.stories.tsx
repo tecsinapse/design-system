@@ -1,8 +1,7 @@
 import { storiesOf } from '@storybook/react-native';
-import { Button, Input, Masks, Text } from '@tecsinapse/react-native-kit';
+import { Button, Input, Masks, Text, Grid } from '@tecsinapse/react-native-kit';
 import React, { useEffect, useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
-import { Grid } from '@tecsinapse/react-core';
 import { Controller, useForm } from 'react-hook-form';
 import { View } from 'react-native';
 

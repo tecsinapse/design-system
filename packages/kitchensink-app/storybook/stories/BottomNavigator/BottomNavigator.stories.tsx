@@ -1,8 +1,12 @@
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
-import { Button } from '@tecsinapse/react-core';
-import { BottomNavigator, Icon, Text } from '@tecsinapse/react-native-kit';
+import {
+  BottomNavigator,
+  Icon,
+  Text,
+  Button,
+} from '@tecsinapse/react-native-kit';
 import styled from '@emotion/native';
 import { Pressable } from 'react-native';
 

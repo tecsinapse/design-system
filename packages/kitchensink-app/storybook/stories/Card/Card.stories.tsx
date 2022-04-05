@@ -7,7 +7,7 @@ import {
   Header,
   StyleProps,
   Text,
-} from '@tecsinapse/react-core';
+} from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 

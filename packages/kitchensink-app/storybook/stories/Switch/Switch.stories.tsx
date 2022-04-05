@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react-native';
-import { Switch, Text } from '@tecsinapse/react-core';
+import { Switch, Text } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 

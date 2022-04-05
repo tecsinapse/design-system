@@ -1,7 +1,6 @@
 import styled from '@emotion/native';
 import { storiesOf } from '@storybook/react-native';
-import { BoxContent } from '@tecsinapse/react-core';
-import { Text } from '@tecsinapse/react-native-kit';
+import { Text, BoxContent } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 

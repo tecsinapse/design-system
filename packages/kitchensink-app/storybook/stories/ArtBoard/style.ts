@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core/src';
+import { StyleProps } from '@tecsinapse/react-native-kit';
 import { ArtBoardProps } from './ArtBoard';
 
 export const StyledBoard = styled.View<ArtBoardProps & Partial<StyleProps>>`

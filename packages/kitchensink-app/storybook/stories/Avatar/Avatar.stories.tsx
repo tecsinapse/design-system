@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react-native';
-import { Avatar } from '@tecsinapse/react-core';
+import { Avatar } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 import { View } from 'react-native';

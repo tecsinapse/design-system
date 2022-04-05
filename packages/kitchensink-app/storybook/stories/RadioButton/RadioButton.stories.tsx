@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react-native';
-import { RadioButton, Text } from '@tecsinapse/react-core';
+import { RadioButton, Text } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
 import { ArtBoard } from '../ArtBoard';
 

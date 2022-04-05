@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { storiesOf } from '@storybook/react-native';
-import { Paper, Text } from '@tecsinapse/react-core';
+import { Paper, Text } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { ArtBoard } from '../ArtBoard';
 
