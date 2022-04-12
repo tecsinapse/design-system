@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.16.1...@tecsinapse/kitchensink-app@1.16.2) (2022-04-12)
+
+
+### Bug Fixes
+
+* storybook not working on kitchensink ([9e0a1ec](https://github.com/tecsinapse/design-system/commit/9e0a1ec62cb08f7a8cbd7d9803f014eacbcf64e9))
+
+
+
+
+
 ## [1.16.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.16.0...@tecsinapse/kitchensink-app@1.16.1) (2022-04-01)
 
 
