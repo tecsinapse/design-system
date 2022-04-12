@@ -1,4 +1,4 @@
-name: CI/CD
+name: Build
 
 on: push
 
@@ -7,65 +7,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Use Node 14
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-
       - name: Checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
+      - name: Use Node 16
+        uses: actions/setup-node@v3
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: '16'
+          cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn --pure-lockfile --prefer-offline
+        run: yarn
 
       - name: Build packages
         run: yarn build
 
       - name: Build storybook
         run: yarn build:storybook
-      
-      - name: Cache build
-        uses: actions/cache@v2
-        id: ci-build-cache
-        with:
-          path: ./*
-          key: ${{ github.sha }}
-        
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    if: ${{ github.ref == 'refs/heads/master' }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: Restore build cache
-        uses: actions/cache@v2
-        id: ci-build-cache
-        with:
-          path: ./*
-          key: ${{ github.sha }}
-          
-      - name: Build storybook
-        run: yarn build:storybook
-          
-      - name: Deploy docs
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./sbdocs
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Deploy to GitHub pages:'
