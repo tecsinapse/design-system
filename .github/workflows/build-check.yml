@@ -1,9 +1,10 @@
-name: Build check
+name: build check
 
 on: push
 
 jobs:
   build:
+    name: check project build
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
