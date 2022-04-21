@@ -81,7 +81,7 @@ export class ModalLifecycleHandler {
      */
     public sync = (id: string, modal: () => ReactElement<IBaseModal>) => {
         if (this.nodeGroup.has(id)) {
-            const savedNode = this.nodeGroup.get(id)
+            const savedNode = this.findNode(id)
             savedNode && this.nodeGroup.set(id, { ...savedNode, modal })
             return
         }
@@ -105,9 +105,20 @@ export class ModalLifecycleHandler {
      * @param id 
      */
     private remove = (id: string) => {
-        const savedNode = this.nodeGroup.get(id)
+        const savedNode = this.findNode(id)
         savedNode && this.nodeGroup.set(id, { ...savedNode, lastVisualization: undefined })
         this.update()
+    }
+
+    /**
+     * Find a modal node by id.
+     * 
+     * @param id 
+     */
+    private findNode = (id: string) => {
+        const node = this.nodeGroup.get(id)
+        !node && console.warn(`No modal was found with the id "${id}"`)
+        return node
     }
 
     /**
@@ -116,7 +127,7 @@ export class ModalLifecycleHandler {
      * @param id 
      */
     public show = (id: string) => {
-        const savedNode = this.nodeGroup.get(id)
+        const savedNode = this.findNode(id)
         savedNode && this.nodeGroup.set(id, { ...savedNode, visible: true, lastVisualization: new Date() })
         this.update()
     }
@@ -127,7 +138,7 @@ export class ModalLifecycleHandler {
      * @param id 
      */
     public close = (id: string) => {
-        const savedNode = this.nodeGroup.get(id)
+        const savedNode = this.findNode(id)
         savedNode && this.nodeGroup.set(id, { ...savedNode, visible: false })
         this.update()
     }

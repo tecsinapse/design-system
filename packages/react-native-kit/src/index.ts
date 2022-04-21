@@ -44,6 +44,7 @@ export {
   ModalLifecycleHandler,
   useLazyModalManager,
   useModalManager,
+  useModalRemoteControl,
   IBaseModal,
 } from './components/atoms/Modal';
 export { Skeleton, SkeletonProps } from './components/atoms/Skeleton';

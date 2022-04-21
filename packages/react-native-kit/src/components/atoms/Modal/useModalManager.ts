@@ -11,9 +11,9 @@ import { IBaseModal } from "./ui/types"
  * @param modal 
  * @returns
  */
-export const useModalManager = (modal: () => ReactElement<IBaseModal>) => {
+export const useModalManager = (modal: () => ReactElement<IBaseModal>, modalId?: string) => {
 
-    const [id] = useState(uuidv4())
+    const [id] = useState(modalId ?? uuidv4())
     modalLifecycle.sync(id, modal)
 
     const show = useCallback(() => {

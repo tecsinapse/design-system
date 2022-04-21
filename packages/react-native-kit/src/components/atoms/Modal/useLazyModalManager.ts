@@ -11,9 +11,9 @@ import { IBaseModal } from "./ui/types"
  * @param modal 
  * @returns
  */
-export const useLazyModalManager = () => {
+export const useLazyModalManager = (modalId?: string) => {
 
-    const [id] = useState(uuidv4())
+    const [id] = useState(modalId ?? uuidv4())
 
     const requestUpdate = useCallback(() => modalLifecycle.update(), [])
 
