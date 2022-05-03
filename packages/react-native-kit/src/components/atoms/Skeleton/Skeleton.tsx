@@ -50,12 +50,18 @@ const Skeleton: React.FC<SkeletonProps> = ({
           childrenLayout={childrenLayout}
         />
       ) : (
+        <></>
+      )}
+
+      {active && animation === 'pulse' ? (
         <Pulse
           active={active}
           width={width}
           height={height}
           childrenLayout={childrenLayout}
         />
+      ) : (
+        <></>
       )}
       <View
         onLayout={event => getChildrenLayout(event)}

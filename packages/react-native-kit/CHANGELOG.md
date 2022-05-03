@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.16.1...@tecsinapse/react-native-kit@1.16.2) (2022-04-21)
+
+
+### Bug Fixes
+
+* conditional render Skeleton ([4aed331](https://github.com/tecsinapse/design-system/commit/4aed3314591235f669e9253fbee37eff53791c9d))
+
+
+
+
+
 ## [1.16.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.16.0...@tecsinapse/react-native-kit@1.16.1) (2022-04-01)
 
 
