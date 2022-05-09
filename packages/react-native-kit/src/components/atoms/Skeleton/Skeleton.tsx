@@ -42,15 +42,16 @@ const Skeleton: React.FC<SkeletonProps> = ({
 
   return (
     <Wrapper width={width} height={height} radius={radius} {...rest}>
-      {active && animation === 'wave' && (
+      {active && animation === 'wave' ? (
         <Wave
           active={active}
           width={width}
           height={height}
           childrenLayout={childrenLayout}
         />
+      ) : (
+        <></>
       )}
-      {active && animation === 'pulse' && <></>}
 
       {active && animation === 'pulse' ? (
         <Pulse
