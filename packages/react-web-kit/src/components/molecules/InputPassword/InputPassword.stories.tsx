@@ -5,7 +5,7 @@ import { InputPassword } from '.';
 import Input, { InputPasswordWebProps } from './InputPassword';
 
 export default {
-  title: 'Hybrid/Input Password',
+  title: 'Hybrid/InputMask Password',
   component: Input,
 };
 

@@ -12,6 +12,10 @@ export {
   InputElementProps,
 } from './InputElement/InputElement';
 export {
+  default as InputMaskElement,
+  InputMaskElementProps,
+} from './InputMaskElement/InputMaskElement';
+export {
   PressableInputContainer,
   PressableInputContainerProps,
 } from './PressableInputContainer';

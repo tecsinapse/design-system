@@ -1,4 +1,5 @@
 import './Input/Input.stories';
+import './InputMask/InputMask.stories';
 import './Badge/Badge.stories';
 import './BoxContent/BoxContent.stories';
 import './Button/Button.stories';

@@ -30,6 +30,8 @@ export {
   InputContainerProps,
   InputElement,
   InputElementProps,
+  InputMaskElement,
+  InputMaskElementProps,
   InputVariantType,
   PressableInputContainer,
   PressableInputContainerProps,
