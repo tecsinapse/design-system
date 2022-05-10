@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "TecSinapse React Native components",
-  "version": "1.16.2",
+  "version": "1.17.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -13,7 +13,7 @@
   "dependencies": {
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.4.1",
-    "@tecsinapse/react-core": "^1.15.1",
+    "@tecsinapse/react-core": "^1.16.0",
     "react-native-linear-gradient": "^2.5.6"
   },
   "repository": {

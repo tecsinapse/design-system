@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.15.1...@tecsinapse/react-core@1.16.0) (2022-05-10)
+
+
+### Bug Fixes
+
+* inputMask accepting undefined. ([6037162](https://github.com/tecsinapse/design-system/commit/6037162a564c118c8faed8359418ff7eda6d1645))
+
+
+
+
+
 ## [1.15.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.15.0...@tecsinapse/react-core@1.15.1) (2022-04-01)
 
 

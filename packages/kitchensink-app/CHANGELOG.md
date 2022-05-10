@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.16.3...@tecsinapse/kitchensink-app@1.17.0) (2022-05-10)
+
+
+### Bug Fixes
+
+* inputMask accepting undefined. ([6037162](https://github.com/tecsinapse/design-system/commit/6037162a564c118c8faed8359418ff7eda6d1645))
+
+
+
+
+
 ## [1.16.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.16.2...@tecsinapse/kitchensink-app@1.16.3) (2022-04-21)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app
