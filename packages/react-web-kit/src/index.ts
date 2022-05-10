@@ -14,6 +14,7 @@ export {
   InputPassword,
   InputPasswordWebProps,
 } from './components/molecules/InputPassword';
+export { InputMask, InputMaskWebProps } from './components/atoms/InputMask';
 export {
   Menubar,
   MenubarProps,
@@ -40,5 +41,11 @@ export { Modal, ModalProps } from './components/atoms/Modal';
 export { TextArea, TextAreaProps } from './components/molecules/TextArea';
 export { Tooltip, ITooltip } from './components/atoms/Tooltip';
 export * from './hooks';
-export { DatePicker, WebDatePickerProps } from './components/molecules/DatePicker'
-export { DateTimePicker, WebDateTimePickerProps } from './components/molecules/DateTimePicker'
+export {
+  DatePicker,
+  WebDatePickerProps,
+} from './components/molecules/DatePicker';
+export {
+  DateTimePicker,
+  WebDateTimePickerProps,
+} from './components/molecules/DateTimePicker';

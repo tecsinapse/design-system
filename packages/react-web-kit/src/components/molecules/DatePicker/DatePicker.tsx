@@ -2,7 +2,7 @@ import {
   Calendar,
   DatePicker as DatePickerCore,
   DatePickerProps,
- DateRange,
+  DateRange,
   SelectionType,
 } from '@tecsinapse/react-core';
 import React, { useCallback, useMemo, useState } from 'react';
