@@ -1,11 +1,13 @@
 import React from 'react';
 import { Wrapper } from './styled';
 import { BorderRadiusType } from '@tecsinapse/react-core';
+import { View } from 'react-native';
 
 export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: number;
   height?: number;
   animation?: 'pulse' | 'wave';
+  active?: boolean;
   radius?: BorderRadiusType;
 }
 
@@ -14,6 +16,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
   width,
   height,
   animation = 'wave',
+  active = true,
   radius,
   ...rest
 }) => {
@@ -28,10 +31,16 @@ const Skeleton: React.FC<SkeletonProps> = ({
       width={width}
       height={height}
       animation={animation}
+      active={active}
       radius={radius}
       {...rest}
     >
-      {children}
+      <View
+        style={{ opacity: active ? 0 : 1 }}
+        pointerEvents={active ? 'none' : 'auto'}
+      >
+        {children}
+      </View>
     </Wrapper>
   );
 };
