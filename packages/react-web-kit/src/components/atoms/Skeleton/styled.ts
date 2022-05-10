@@ -8,7 +8,7 @@ const pulseKf = keyframes`
     opacity: 1;
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.1;
   }
   100% {
     opacity: 1;
@@ -56,13 +56,17 @@ export const Wrapper = styled('div')<Partial<StyleProps & SkeletonProps>>`
   background-color: ${({
     theme,
     animation,
+    active,
   }: StyleProps & Partial<SkeletonProps>) =>
-    animation === 'pulse'
+    !active
+      ? undefined
+      : animation === 'pulse'
       ? theme.miscellaneous.bodyColor
       : theme.miscellaneous.surfaceColor};
   width: ${({ width }) => `${width}px` ?? '100%'};
   height: ${({ height }) => `${height}px` ?? 'auto'};
   border-radius: ${({ theme, radius }: StyleProps & Partial<SkeletonProps>) =>
     radius ? theme.borderRadius[radius] : 'unset'};
-  ${({ animation }) => (animation === 'pulse' ? pulseAnim : waveAnim)};
+  ${({ animation, active }) =>
+    !active ? undefined : animation === 'pulse' ? pulseAnim : waveAnim};
 `;
