@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.0...@tecsinapse/react-native-kit@1.17.1) (2022-05-13)
+
+
+### Features
+
+* standardizing input label and placeholder ([#163902](https://github.com/tecsinapse/design-system/issues/163902)) ([225a57b](https://github.com/tecsinapse/design-system/commit/225a57b8c5f8b6a7ae1058a56590a3f0dd294d55))
+
+
+
+
+
 # [1.17.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.16.2...@tecsinapse/react-native-kit@1.17.0) (2022-05-10)
 
 
