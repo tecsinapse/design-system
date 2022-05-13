@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.1...@tecsinapse/react-native-kit@1.17.2) (2022-05-13)
+
+
+### Bug Fixes
+
+* error render, added ternary  ([#163902](https://github.com/tecsinapse/design-system/issues/163902)) ([fd52d5c](https://github.com/tecsinapse/design-system/commit/fd52d5cfe7ca7f56c0b721ad17d8bac589295bf5))
+
+
+
+
+
 ## [1.17.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.0...@tecsinapse/react-native-kit@1.17.1) (2022-05-13)
 
 
