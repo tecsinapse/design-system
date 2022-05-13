@@ -35,6 +35,8 @@ const Input: FC<InputWebProps> = React.forwardRef(
       hint,
       onFocus,
       onBlur,
+      placeholder,
+      value,
       ...rest
     },
     ref
@@ -46,10 +48,12 @@ const Input: FC<InputWebProps> = React.forwardRef(
       !disabled
     );
 
+    const onlyLabel = label && !placeholder;
+
     return (
       <View style={style}>
         <InputContainer
-          label={label}
+          label={value && label}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}
@@ -67,6 +71,8 @@ const Input: FC<InputWebProps> = React.forwardRef(
         >
           <StyledWebTextInput
             {...rest}
+            placeholder={onlyLabel ? label : placeholder}
+            value={value}
             ref={ref}
             disabled={disabled}
             onFocus={handleFocus}

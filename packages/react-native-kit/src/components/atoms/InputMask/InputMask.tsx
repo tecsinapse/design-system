@@ -42,6 +42,8 @@ const InputMask: FC<InputMaskNativeProps> = React.forwardRef(
       hint,
       onFocus,
       onBlur,
+      value,
+      placeholder,
       ...rest
     },
     ref
@@ -55,10 +57,12 @@ const InputMask: FC<InputMaskNativeProps> = React.forwardRef(
       !disabled
     );
 
+    const onlyLabel = label && !placeholder;
+
     return (
       <View style={style}>
         <StyledInputContainer
-          label={label}
+          label={String(value) && label}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}
@@ -77,6 +81,8 @@ const InputMask: FC<InputMaskNativeProps> = React.forwardRef(
         >
           <StyledNativeInputMask
             {...rest}
+            placeholder={onlyLabel ? label : placeholder}
+            value={value}
             ref={ref}
             fontStack={inputFontStack}
             fontWeight={inputFontWeight}

@@ -35,6 +35,8 @@ const InputMask: FC<InputMaskWebProps> = React.forwardRef(
       hint,
       onFocus,
       onBlur,
+      value,
+      placeholder,
       ...rest
     },
     ref
@@ -46,10 +48,12 @@ const InputMask: FC<InputMaskWebProps> = React.forwardRef(
       !disabled
     );
 
+    const onlyLabel = label && !placeholder;
+
     return (
       <View style={style}>
         <InputContainer
-          label={label}
+          label={String(value) && label}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}
@@ -67,6 +71,8 @@ const InputMask: FC<InputMaskWebProps> = React.forwardRef(
         >
           <StyledWebTextInputMask
             {...rest}
+            placeholder={onlyLabel ? label : placeholder}
+            value={value}
             ref={ref}
             disabled={disabled}
             onFocus={handleFocus}

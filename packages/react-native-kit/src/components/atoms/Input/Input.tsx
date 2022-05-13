@@ -42,6 +42,8 @@ const Input: FC<InputNativeProps> = React.forwardRef(
       hint,
       onFocus,
       onBlur,
+      value,
+      placeholder,
       ...rest
     },
     ref
@@ -55,10 +57,12 @@ const Input: FC<InputNativeProps> = React.forwardRef(
       !disabled
     );
 
+    const onlyLabel = label && !placeholder;
+
     return (
       <View style={style}>
         <StyledInputContainer
-          label={label}
+          label={value && label}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}
@@ -77,6 +81,8 @@ const Input: FC<InputNativeProps> = React.forwardRef(
         >
           <StyledNativeInput
             {...rest}
+            placeholder={onlyLabel ? label : placeholder}
+            value={value}
             ref={ref}
             fontStack={inputFontStack}
             fontWeight={inputFontWeight}
