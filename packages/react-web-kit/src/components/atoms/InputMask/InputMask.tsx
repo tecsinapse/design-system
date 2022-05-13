@@ -53,7 +53,7 @@ const InputMask: FC<InputMaskWebProps> = React.forwardRef(
     return (
       <View style={style}>
         <InputContainer
-          label={String(value) && label}
+          label={String(value) ? label : undefined}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}

@@ -62,7 +62,7 @@ const InputMask: FC<InputMaskNativeProps> = React.forwardRef(
     return (
       <View style={style}>
         <StyledInputContainer
-          label={String(value) && label}
+          label={String(value) ? label : undefined}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}

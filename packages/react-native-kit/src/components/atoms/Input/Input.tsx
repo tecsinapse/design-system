@@ -62,7 +62,7 @@ const Input: FC<InputNativeProps> = React.forwardRef(
     return (
       <View style={style}>
         <StyledInputContainer
-          label={value && label}
+          label={value ? label : undefined}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}

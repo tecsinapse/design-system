@@ -53,7 +53,7 @@ const Input: FC<InputWebProps> = React.forwardRef(
     return (
       <View style={style}>
         <InputContainer
-          label={value && label}
+          label={value ? label : undefined}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
           labelColorTone={labelColorTone}
