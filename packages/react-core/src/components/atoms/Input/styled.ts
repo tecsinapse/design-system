@@ -2,7 +2,7 @@ import styled, { css } from '@emotion/native';
 import { TextInput } from 'react-native';
 import { InputElementProps } from '.';
 import { StyleProps } from '../../../types/defaults';
-import { RFValueStr } from '../../../utils';
+import { RFValueStr } from '../../../utils/ResponsiveFontSize';
 import { Icon } from '../Icon';
 import { InputContainerProps } from './InputContainer/InputContainer';
 

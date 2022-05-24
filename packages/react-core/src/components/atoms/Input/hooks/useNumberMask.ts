@@ -1,6 +1,6 @@
 import currency from 'currency.js';
 import { useCallback, useState } from 'react';
-import { extractNumbersFromString } from '../../../../utils';
+import { extractNumbersFromString } from '../../../../utils/extractNumbersFromString';
 import { MaskValue } from './useStringMask';
 
 export type CurrencyOptions = currency.Options;
