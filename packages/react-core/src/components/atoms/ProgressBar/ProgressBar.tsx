@@ -40,6 +40,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   ...rest
 }) => {
   const theme = useTheme() as ThemeProp;
+  const animationValue = React.useRef(new Animated.Value(0)).current;
 
   const valueNow =
     typeof _valueNow === 'string'
@@ -53,7 +54,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const items = [...Array(segments).keys()];
 
   const segmentsRender = items.map(index => {
-    const animationValue = React.useRef(new Animated.Value(0)).current;
+    
 
     const max = segmentWidth * (index + 1);
     const min = segmentWidth * index;
