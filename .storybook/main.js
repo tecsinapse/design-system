@@ -1,6 +1,15 @@
 module.exports = {
+  features: {
+    storyStoreV7: true,
+  },
   core: {
-    builder: 'webpack5',
+    builder: {
+      name: 'webpack5',
+      options: {
+        lazyCompilation: true,
+        fsCache: true,
+      },
+    },
   },
   stories: [
     '../packages/react-core/**/*.stories.@(tsx|jsx)',
