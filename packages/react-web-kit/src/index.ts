@@ -49,3 +49,4 @@ export {
   DateTimePicker,
   WebDateTimePickerProps,
 } from './components/molecules/DateTimePicker';
+export { Grid, GridItem, IGrid, IGridItem } from './components/molecules/Grid';
