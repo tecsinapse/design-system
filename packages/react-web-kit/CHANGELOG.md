@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.3...@tecsinapse/react-web-kit@1.17.4) (2022-06-08)
+
+
+### Features
+
+* add grid for web based on div ([f44bc76](https://github.com/tecsinapse/design-system/commit/f44bc76f8e34ac7f918c21478002f04b3ff52ff8))
+
+
+
+
+
 ## [1.17.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.2...@tecsinapse/react-web-kit@1.17.3) (2022-05-24)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
