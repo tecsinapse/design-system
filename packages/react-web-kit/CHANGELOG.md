@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.4...@tecsinapse/react-web-kit@1.17.5) (2022-06-13)
+
+
+### Bug Fixes
+
+* shallow copy on remove datagrid index ([3c4d087](https://github.com/tecsinapse/design-system/commit/3c4d087f04e57f4c0d20d2cfd93c776c0a217052))
+
+
+
+
+
 ## [1.17.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.3...@tecsinapse/react-web-kit@1.17.4) (2022-06-08)
 
 
