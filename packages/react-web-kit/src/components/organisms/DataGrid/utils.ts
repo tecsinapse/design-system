@@ -1,5 +1,5 @@
 export function removeElement<T>(arr: T[], index: number): T[] {
-  const data = arr; // Sometimes looks like the data is removed from table, check if this is a bug. I'm copying the arr to a new variable for security reasons
+  const data = [...arr]; // Sometimes looks like the data is removed from table, check if this is a bug. I'm copying the arr to a new variable for security reasons
   data.splice(index, 1);
   return data;
 }
