@@ -4,14 +4,14 @@
   "version": "1.17.3",
   "private": true,
   "scripts": {
-    "start": "react-native start",
+    "dev": "react-native start",
     "start:reset": "react-native start --reset-cache",
     "android:dev": "react-native run-android --no-packager",
     "ios:dev": "react-native run-ios --no-packager",
     "android:reset": "run-p android:dev start:reset",
     "ios:reset": "run-p ios:dev start:reset",
-    "android": "run-p start android:dev",
-    "ios": "run-p start ios:dev"
+    "android": "run-p dev android:dev",
+    "ios": "run-p dev ios:dev"
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",

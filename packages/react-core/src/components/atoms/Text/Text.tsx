@@ -9,6 +9,7 @@ import {
 } from '@tecsinapse/react-core';
 import { StyleProp, TextStyle } from 'react-native';
 import { StyledColoredText } from './styled';
+import { getLabel } from './functions';
 
 export interface TextProps {
   /** Font theme text color */
@@ -25,6 +26,8 @@ export interface TextProps {
   colorTone?: ColorGradationType;
   numberOfLines?: number;
   ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip';
+  textTransform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
+  capitalFirst?: boolean;
   style?: StyleProp<TextStyle>;
 }
 
@@ -39,6 +42,8 @@ const Text: FC<TextProps> = ({
   typography = 'base',
   numberOfLines,
   ellipsizeMode,
+  textTransform = 'none',
+  capitalFirst = false,
   ...rest
 }): JSX.Element => {
   return (
@@ -52,8 +57,9 @@ const Text: FC<TextProps> = ({
       typography={typography}
       numberOfLines={numberOfLines}
       ellipsizeMode={ellipsizeMode}
+      textTransform={textTransform}
     >
-      {children}
+      {getLabel(children, capitalFirst)}
     </StyledColoredText>
   );
 };
