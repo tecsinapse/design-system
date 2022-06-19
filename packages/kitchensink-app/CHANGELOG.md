@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.17.3...@tecsinapse/kitchensink-app@1.17.4) (2022-06-19)
+
+
+### Features
+
+* add capital option to text component ([56821ee](https://github.com/tecsinapse/design-system/commit/56821ee96eefc13a0b93d9b8b2d61af1be65e705))
+
+
+
+
+
 ## [1.17.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.17.2...@tecsinapse/kitchensink-app@1.17.3) (2022-05-24)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app
