@@ -7,8 +7,11 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn build:es --watch",
+    "build:es": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
     "build:declaration": "tsc --project tsconfig.build.json",
-    "build:es": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
+    "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
+    "yalc:push": "yalc push --changed",
+    "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
     "@emotion/native": "^11.0.0",
