@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.17.4...@tecsinapse/kitchensink-app@1.17.5) (2022-06-22)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
 ## [1.17.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.17.3...@tecsinapse/kitchensink-app@1.17.4) (2022-06-19)
 
 

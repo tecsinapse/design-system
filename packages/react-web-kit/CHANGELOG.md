@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.6...@tecsinapse/react-web-kit@1.17.7) (2022-06-22)
+
+
+### Features
+
+* automation yalc for develop local ([9c6f1bb](https://github.com/tecsinapse/design-system/commit/9c6f1bbf0ea4bbacd194e4cf5c338405b94a9686))
+
+
+
+
+
 ## [1.17.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.5...@tecsinapse/react-web-kit@1.17.6) (2022-06-19)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
