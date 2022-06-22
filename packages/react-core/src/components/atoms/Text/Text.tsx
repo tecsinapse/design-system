@@ -29,6 +29,7 @@ export interface TextProps {
   textTransform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
   capitalFirst?: boolean;
   style?: StyleProp<TextStyle>;
+  children?: React.ReactNode;
 }
 
 /** NOTE: When using colors, be careful to not override fontColor by using colorVariant and colorTone, referent to theme colors and not text colors. */
