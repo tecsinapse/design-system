@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.16.3...@tecsinapse/react-core@1.16.4) (2022-06-24)
+
+
+### Bug Fixes
+
+* added verification number extended without mask ([#177465](https://github.com/tecsinapse/design-system/issues/177465)) ([27ef33c](https://github.com/tecsinapse/design-system/commit/27ef33cb5fe25bd0a6ef00370650e81f71188f06))
+
+
+
+
+
 ## [1.16.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.16.2...@tecsinapse/react-core@1.16.3) (2022-06-22)
 
 
