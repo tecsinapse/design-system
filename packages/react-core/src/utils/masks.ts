@@ -1,4 +1,6 @@
 // NOTE: Add here all individually utils, then you can use it on input components everywhere.
+import { extractDigitsFromString } from '@tecsinapse/react-core';
+
 export const Masks = {
   CPF: ['999.999.999-99'],
   CNPJ: ['99.999.999/9999-99'],
@@ -7,9 +9,16 @@ export const Masks = {
   CEP: ['99999-999'],
   PHONE: ['(99) 9999-9999'],
   PHONE_EXTENDED: ['(99) 99999-9999'],
-  COMBINED_PHONE: (value: string) =>
+  COMBINED_PHONE: (value: string) => {
+    const onlyNumbers = extractDigitsFromString(value);
+    // Value is number extended, but without mask.
+    const isCellPhoneExtended = onlyNumbers.length === 11;
+
     // Value in formatted mode
-    value?.length <= 14 ? Masks.PHONE : Masks.PHONE_EXTENDED,
+    return value?.length <= 14 && !isCellPhoneExtended
+      ? Masks.PHONE
+      : Masks.PHONE_EXTENDED;
+  },
   COMBINED_CPF_CNPJ: (value: string) =>
     value?.length <= 14 ? Masks.CPF : Masks.CNPJ,
 };
