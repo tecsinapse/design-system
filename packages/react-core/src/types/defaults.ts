@@ -125,6 +125,7 @@ export type ThemeProp = {
 };
 
 export interface ThemeProviderProps {
+  children?: React.ReactNode;
   theme: ThemeProp;
 }
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.16.2...@tecsinapse/react-core@1.16.3) (2022-06-22)
+
+
+### Features
+
+* automation yalc for develop local ([9c6f1bb](https://github.com/tecsinapse/design-system/commit/9c6f1bbf0ea4bbacd194e4cf5c338405b94a9686))
+
+
+
+
+
+## [1.16.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.16.1...@tecsinapse/react-core@1.16.2) (2022-06-19)
+
+
+### Features
+
+* add capital option to text component ([56821ee](https://github.com/tecsinapse/design-system/commit/56821ee96eefc13a0b93d9b8b2d61af1be65e705))
+
+
+
+
+
 ## [1.16.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.16.0...@tecsinapse/react-core@1.16.1) (2022-05-24)
 
 **Note:** Version bump only for package @tecsinapse/react-core
