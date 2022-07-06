@@ -111,15 +111,15 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     close?.();
   };
 
-  const selectModalTitleText = selectModalTitleComponent
-    ? selectModalTitleComponent
-    : selectModalTitle;
-
-  const headerContent = selectModalTitleText ? (
-    <TextTitleModal typography="h4" fontWeight="bold" numberOfLines={3}>
+  const titleTextModal = selectModalTitle ? (
+    <TextTitleModal typography="h4" fontWeight="bold">
       {selectModalTitle}
     </TextTitleModal>
   ) : null;
+
+  const headerContent = selectModalTitleComponent
+    ? selectModalTitleComponent
+    : titleTextModal;
 
   return (
     <ModalView {...others} BoxComponent={ModalComponent} showCloseBar={false}>
