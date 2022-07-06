@@ -9,19 +9,19 @@ import {
   PressableSurfaceProps,
   RFValue,
   RFValueStr,
-  StyleProps
+  StyleProps,
 } from '@tecsinapse/react-core';
 import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
 import { Input, InputNativeProps } from '../../atoms/Input';
 import { Text } from '../../atoms/Text';
 
-export const getStyledModal = (safeTop: number = 0) => {
+export const getStyledModal = (safeTop = 0) => {
   return styled(View)<ModalProps & Partial<StyleProps>>`
     padding-top: ${`${RFValue(safeTop)}px`};
     background-color: ${({ theme }) => theme.miscellaneous.bodyColor};
     height: 100%;
-  `
-}
+  `;
+};
 
 export const StyledSelectionText = styled(Text)(
   (props: Partial<InputContainerProps> & Partial<StyleProps>) => css`
@@ -90,4 +90,9 @@ export const SelectIcon = styled(Icon)<Partial<StyleProps>>`
 
 export const FetchIndicator = styled(ActivityIndicator)`
   align-self: center;
+`;
+
+export const TextTitleModal = styled(Text)<Partial<StyleProps>>`
+  max-width: ${RFValue(250)};
+  text-align: center;
 `;

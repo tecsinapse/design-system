@@ -1,6 +1,11 @@
-import { Checkbox, getStatusBarHeight, RadioButton, useDebouncedState } from '@tecsinapse/react-core';
+import {
+  Checkbox,
+  getStatusBarHeight,
+  RadioButton,
+  useDebouncedState,
+} from '@tecsinapse/react-core';
 import * as React from 'react';
-import { FlatList, StatusBar, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Button } from '../../atoms/Button';
 import { Header } from '../../atoms/Header';
 import { Input } from '../../atoms/Input';
@@ -8,8 +13,13 @@ import { IBaseModal, ModalView } from '../../atoms/Modal';
 import { Text } from '../../atoms/Text';
 import { SelectNativeProps } from './Select';
 import {
-  FetchIndicator, getStyledModal, ListItem, ModalFooter, SearchBarContainer,
-  SelectIcon
+  FetchIndicator,
+  getStyledModal,
+  ListItem,
+  ModalFooter,
+  SearchBarContainer,
+  SelectIcon,
+  TextTitleModal,
 } from './styled';
 
 interface LoadingProps {
@@ -38,8 +48,11 @@ const Component = <Data, Type extends 'single' | 'multi'>({
 }: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
-  const ModalComponent = React.useMemo(() => getStyledModal(getStatusBarHeight(true)), [])
-  const _closeOnPick = closeOnPick && type === 'single'
+  const ModalComponent = React.useMemo(
+    () => getStyledModal(getStatusBarHeight(true)),
+    []
+  );
+  const _closeOnPick = closeOnPick && type === 'single';
 
   // Resets the temporary state to the initial state whenever the
   // modal is reopened or the value changes
@@ -84,10 +97,10 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   };
 
   React.useEffect(() => {
-    if (_closeOnPick && selectedValues[0] && (selectedValues[0] !== value)) {
-      handleConfirm()
+    if (_closeOnPick && selectedValues[0] && selectedValues[0] !== value) {
+      handleConfirm();
     }
-  }, [selectedValues[0], value, closeOnPick])
+  }, [selectedValues[0], value, closeOnPick]);
 
   const handleConfirm = () => {
     // TS Workaround since TS won't infer the ternary operator's result type correctly
@@ -95,83 +108,86 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     onSelect(
       (type === 'single' ? selectedValues[0] : selectedValues) as OnSelectArg
     );
-    close?.()
+    close?.();
   };
 
-  const headerContent = selectModalTitleComponent ? (
-    selectModalTitleComponent
-  ) : selectModalTitle ? (
-    <Text typography="h4" fontWeight="bold">
+  const selectModalTitleText = selectModalTitleComponent
+    ? selectModalTitleComponent
+    : selectModalTitle;
+
+  const headerContent = selectModalTitleText ? (
+    <TextTitleModal typography="h4" fontWeight="bold" numberOfLines={3}>
       {selectModalTitle}
-    </Text>
+    </TextTitleModal>
   ) : null;
 
   return (
     <ModalView {...others} BoxComponent={ModalComponent} showCloseBar={false}>
-        <Header
-          rightButton={{
-            onPress: close,
-            icon: {
-              name: 'close',
-              type: 'material-community',
-              fontColor: 'light',
-            },
-          }}
-        >
-          {headerContent}
-        </Header>
+      <Header
+        rightButton={{
+          onPress: close,
+          icon: {
+            name: 'close',
+            type: 'material-community',
+            fontColor: 'light',
+          },
+        }}
+      >
+        {headerContent}
+      </Header>
 
-        {!hideSearchBar && (
-          <SearchBarContainer>
-            <Input
-              placeholder={searchBarPlaceholder}
-              value={searchArg}
-              onChange={text => setSearchArg(text)}
-              leftComponent={
-                <SelectIcon name="search" type="ionicon" size="centi" />
-              }
-            />
-          </SearchBarContainer>
+      {!hideSearchBar && (
+        <SearchBarContainer>
+          <Input
+            placeholder={searchBarPlaceholder}
+            value={searchArg}
+            onChange={text => setSearchArg(text)}
+            leftComponent={
+              <SelectIcon name="search" type="ionicon" size="centi" />
+            }
+          />
+        </SearchBarContainer>
+      )}
+
+      {loading && (
+        <FetchIndicator animating={true} color={'grey'} size={'large'} />
+      )}
+
+      <FlatList
+        data={data}
+        keyExtractor={keyExtractor}
+        fadingEdgeLength={200}
+        renderItem={({ item }) => (
+          <ListItem onPress={handlePressItem(item)}>
+            <View pointerEvents={'none'}>
+              {type === 'multi' ? (
+                <Checkbox
+                  color={'primary'}
+                  labelPosition={'right'}
+                  checked={item._checked}
+                >
+                  <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                    {labelExtractor(item)}
+                  </Text>
+                </Checkbox>
+              ) : (
+                <RadioButton
+                  color={'primary'}
+                  labelPosition={'right'}
+                  checked={item._checked}
+                >
+                  <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                    {labelExtractor(item)}
+                  </Text>
+                </RadioButton>
+              )}
+            </View>
+          </ListItem>
         )}
+      />
 
-        {loading && (
-          <FetchIndicator animating={true} color={'grey'} size={'large'} />
-        )}
-
-        <FlatList
-          data={data}
-          keyExtractor={keyExtractor}
-          fadingEdgeLength={200}
-          renderItem={({ item }) => (
-            <ListItem onPress={handlePressItem(item)}>
-              <View pointerEvents={'none'}>
-                {type === 'multi' ? (
-                  <Checkbox
-                    color={'primary'}
-                    labelPosition={'right'}
-                    checked={item._checked}
-                  >
-                    <Text fontWeight={item._checked ? 'bold' : 'regular'}>
-                      {labelExtractor(item)}
-                    </Text>
-                  </Checkbox>
-                ) : (
-                  <RadioButton
-                    color={'primary'}
-                    labelPosition={'right'}
-                    checked={item._checked}
-                  >
-                    <Text fontWeight={item._checked ? 'bold' : 'regular'}>
-                      {labelExtractor(item)}
-                    </Text>
-                  </RadioButton>
-                )}
-              </View>
-            </ListItem>
-          )}
-        />
-        
-        { !_closeOnPick && <ModalFooter>
+      {!_closeOnPick && (
+        <ModalFooter>
           <Button
             variant={'filled'}
             color={'primary'}
@@ -182,7 +198,8 @@ const Component = <Data, Type extends 'single' | 'multi'>({
               {confirmButtonText}
             </Text>
           </Button>
-        </ModalFooter>}
+        </ModalFooter>
+      )}
     </ModalView>
   );
 };
