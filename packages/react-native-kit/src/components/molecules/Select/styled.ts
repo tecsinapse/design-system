@@ -93,6 +93,5 @@ export const FetchIndicator = styled(ActivityIndicator)`
 `;
 
 export const TextTitleModal = styled(Text)<Partial<StyleProps>>`
-  max-width: ${RFValue(250)};
   text-align: center;
 `;

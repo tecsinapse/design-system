@@ -2,6 +2,7 @@ import {
   Checkbox,
   getStatusBarHeight,
   RadioButton,
+  RFValue,
   useDebouncedState,
 } from '@tecsinapse/react-core';
 import * as React from 'react';
@@ -112,7 +113,12 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   };
 
   const titleTextModal = selectModalTitle ? (
-    <TextTitleModal typography="h4" fontWeight="bold">
+    <TextTitleModal
+      typography="h4"
+      fontWeight="bold"
+      numberOfLines={3}
+      style={{ maxWidth: RFValue(250) }}
+    >
       {selectModalTitle}
     </TextTitleModal>
   ) : null;
