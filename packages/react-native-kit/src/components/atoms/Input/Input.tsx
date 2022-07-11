@@ -2,14 +2,16 @@ import {
   FontStackType,
   FontWeightType,
   Hint,
+  InputContainer,
   InputContainerProps,
   InputElementProps,
-  useInputFocus,
+  RFValue,
+  useInputFocus
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { StyleProp, View, ViewStyle } from 'react-native';
 import { Text } from '../Text';
-import { StyledInputContainer, StyledNativeInput } from './styled';
+import { StyledNativeInput } from './styled';
 
 export interface InputNativeProps
   extends Omit<InputElementProps, 'style'>,
@@ -57,11 +59,12 @@ const Input: FC<InputNativeProps> = React.forwardRef(
       !disabled
     );
 
+    const internalStyle: StyleProp<ViewStyle> = { minHeight: RFValue(50), ...{ inputContainerStyle }}
     const onlyLabel = label && !placeholder;
 
     return (
-      <View style={style}>
-        <StyledInputContainer
+      <View>
+        <InputContainer
           label={value ? label : undefined}
           labelColor={labelColor}
           labelColorVariant={labelColorVariant}
@@ -74,7 +77,7 @@ const Input: FC<InputNativeProps> = React.forwardRef(
           rightComponent={rightComponent}
           borderColor={borderColor}
           borderColorGradation={borderColorGradation}
-          inputContainerStyle={inputContainerStyle}
+          inputContainerStyle={internalStyle}
           focused={focused}
           disabled={disabled}
           variant={variant}
@@ -90,7 +93,7 @@ const Input: FC<InputNativeProps> = React.forwardRef(
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
-        </StyledInputContainer>
+        </InputContainer>
         {hint && _hint}
       </View>
     );

@@ -6,7 +6,7 @@ import {
   useDebouncedState,
 } from '@tecsinapse/react-core';
 import * as React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, ListRenderItemInfo, View } from 'react-native';
 import { Button } from '../../atoms/Button';
 import { Header } from '../../atoms/Header';
 import { Input } from '../../atoms/Input';
@@ -63,7 +63,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     );
   }, [value, focused, setSelectedValues]);
 
-  const getData = (options: Data[]) => {
+  const getData = React.useCallback((options: Data[]) => {
     return options?.map((option, index) => ({
       ...option,
       _checked:
@@ -74,11 +74,11 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           : keyExtractor((selectedValues[0] || {}) as Data, index) ==
             keyExtractor(option, index),
     }));
-  };
+  }, [keyExtractor, selectedValues, type])
 
-  const data = typeof options !== 'function' ? getData(options) : [];
+  const data = React.useMemo(() => typeof options !== 'function' ? getData(options) : [], [options, getData]);
 
-  const handlePressItem = (option: Data) => () => {
+  const handlePressItem = React.useCallback((option: Data) => {
     setSelectedValues(selectedValues => {
       if (type === 'multi') {
         const newArr: Data[] = [];
@@ -95,7 +95,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
         ? []
         : [option];
     });
-  };
+  }, [selectedValues, setSelectedValues, keyExtractor, type])
 
   React.useEffect(() => {
     if (_closeOnPick && selectedValues[0] && selectedValues[0] !== value) {
@@ -103,14 +103,35 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     }
   }, [selectedValues[0], value, closeOnPick]);
 
-  const handleConfirm = () => {
+  const handleConfirm = React.useCallback(() => {
     // TS Workaround since TS won't infer the ternary operator's result type correctly
     type OnSelectArg = Parameters<typeof onSelect>[0];
     onSelect(
       (type === 'single' ? selectedValues[0] : selectedValues) as OnSelectArg
     );
-    close?.();
-  };
+    close?.()
+  }, [selectedValues]);
+
+  const optionBuilder = React.useCallback(({ item }: ListRenderItemInfo<Data & { _checked: boolean }>) => (
+    <MemoizedOption
+      item={item}
+      type={type}
+      handlePressItem={handlePressItem}
+      labelExtractor={labelExtractor}
+    />
+  ), [])
+
+  const anyChecked = data.filter(item => item._checked).length
+  const dataLengthChanged = data.length
+
+  const memoizedFlatlist = React.useMemo(() => (
+    <FlatList
+      data={data}
+      keyExtractor={keyExtractor}
+      fadingEdgeLength={200}
+      renderItem={optionBuilder}
+    />
+  ), [selectedValues, anyChecked, dataLengthChanged])
 
   const titleTextModal = selectModalTitle ? (
     <TextTitleModal
@@ -159,41 +180,9 @@ const Component = <Data, Type extends 'single' | 'multi'>({
         <FetchIndicator animating={true} color={'grey'} size={'large'} />
       )}
 
-      <FlatList
-        data={data}
-        keyExtractor={keyExtractor}
-        fadingEdgeLength={200}
-        renderItem={({ item }) => (
-          <ListItem onPress={handlePressItem(item)}>
-            <View pointerEvents={'none'}>
-              {type === 'multi' ? (
-                <Checkbox
-                  color={'primary'}
-                  labelPosition={'right'}
-                  checked={item._checked}
-                >
-                  <Text fontWeight={item._checked ? 'bold' : 'regular'}>
-                    {labelExtractor(item)}
-                  </Text>
-                </Checkbox>
-              ) : (
-                <RadioButton
-                  color={'primary'}
-                  labelPosition={'right'}
-                  checked={item._checked}
-                >
-                  <Text fontWeight={item._checked ? 'bold' : 'regular'}>
-                    {labelExtractor(item)}
-                  </Text>
-                </RadioButton>
-              )}
-            </View>
-          </ListItem>
-        )}
-      />
+        {memoizedFlatlist}
 
-      {!_closeOnPick && (
-        <ModalFooter>
+        { !_closeOnPick && <ModalFooter>
           <Button
             variant={'filled'}
             color={'primary'}
@@ -204,10 +193,49 @@ const Component = <Data, Type extends 'single' | 'multi'>({
               {confirmButtonText}
             </Text>
           </Button>
-        </ModalFooter>
-      )}
+        </ModalFooter>}
     </ModalView>
   );
 };
+
+interface IOption<T> {
+  item: T & { _checked: boolean }
+  type: 'single' | 'multi'
+  labelExtractor: (option: T) => string
+  handlePressItem: (option: T) => void
+}
+
+const MemoizedOption: React.FC<IOption<any>> = ({ handlePressItem, labelExtractor, item, type }) => {
+  return React.useMemo(() => {
+    const label = labelExtractor(item)
+    return (
+      <ListItem onPress={() => handlePressItem(item)}>
+        <View pointerEvents={'none'}>
+          {type === 'multi' ? (
+            <Checkbox
+              color={'primary'}
+              labelPosition={'right'}
+              checked={item._checked}
+            >
+              <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                {label}
+              </Text>
+            </Checkbox>
+          ) : (
+            <RadioButton
+              color={'primary'}
+              labelPosition={'right'}
+              checked={item._checked}
+            >
+              <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+                {label}
+              </Text>
+            </RadioButton>
+          )}
+        </View>
+      </ListItem>
+    )
+  }, [item._checked])
+}
 
 export const Modal = Component;

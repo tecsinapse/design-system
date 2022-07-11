@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react-native';
 import { Button, Grid, Select, Text } from '@tecsinapse/react-native-kit';
-import React, { useState } from 'react';
-import { ArtBoard } from '../ArtBoard';
+import React, { useCallback, useState } from 'react';
 import { View } from 'react-native';
+import { ArtBoard } from '../ArtBoard';
 
 storiesOf('Input', module)
   .addDecorator(getStory => <ArtBoard>{getStory()}</ArtBoard>)
@@ -57,6 +57,9 @@ const Component = () => {
     []
   );
 
+  const labelExtractor = useCallback((item) => item.label, [])
+  const keyExtractor = useCallback((item) => String(item.key), [])
+
   return (
     <Grid spacing={'mili'} layout={[[12], [12], [12], [12]]}>
       <View>
@@ -66,8 +69,8 @@ const Component = () => {
           value={multiValue}
           type={'multi'}
           onSelect={handleSelectMultipleValues}
-          labelExtractor={item => item.label}
-          keyExtractor={item => String(item.key)}
+          labelExtractor={labelExtractor}
+          keyExtractor={keyExtractor}
           searchBarPlaceholder={'Busque uma opção'}
           selectModalTitle={'Selecione uma opção'}
           confirmButtonText={'Confirmar'}
@@ -94,8 +97,8 @@ const Component = () => {
           value={multiValue}
           type={'multi'}
           onSelect={handleSelectMultipleValues}
-          labelExtractor={item => item.label}
-          keyExtractor={item => String(item.key)}
+          labelExtractor={labelExtractor}
+          keyExtractor={keyExtractor}
           searchBarPlaceholder={'Busque uma opção'}
           selectModalTitle={'Selecione uma opção'}
           confirmButtonText={'Confirmar'}
@@ -112,11 +115,11 @@ const Component = () => {
           hideSearchBar
           onSelect={handleSelectSingleValue}
           selectModalTitle={'Selecione uma opção'}
-          labelExtractor={item => item.label}
+          labelExtractor={labelExtractor}
           searchBarPlaceholder={'Busque uma opção'}
           confirmButtonText={'Confirmar'}
           onSearch={handleSearch}
-          keyExtractor={item => String(item.key)}
+          keyExtractor={keyExtractor}
         />
       </View>
       <View>
@@ -129,10 +132,10 @@ const Component = () => {
           type={'single'}
           onSelect={handleSelectFetchSingleValue}
           selectModalTitle={'Selecione uma opção'}
-          labelExtractor={item => item?.label}
+          labelExtractor={labelExtractor}
           searchBarPlaceholder={'Busque uma opção'}
           confirmButtonText={'Confirmar'}
-          keyExtractor={item => String(item?.key)}
+          keyExtractor={keyExtractor}
         />
       </View>
     </Grid>
