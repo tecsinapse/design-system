@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.8...@tecsinapse/react-native-kit@1.17.9) (2022-07-11)
+
+
+### Bug Fixes
+
+* ternary verification in model text title ([813b68c](https://github.com/tecsinapse/design-system/commit/813b68c186b9b7e5c1793f90b171444f23007993))
+
+
+
+
+
 ## [1.17.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.7...@tecsinapse/react-native-kit@1.17.8) (2022-07-06)
 
 
