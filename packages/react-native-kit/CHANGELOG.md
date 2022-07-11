@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.7...@tecsinapse/react-native-kit@1.17.8) (2022-07-06)
+
+
+### Bug Fixes
+
+* ternary verification in model text title ([40c0126](https://github.com/tecsinapse/design-system/commit/40c01260684421cde54bffc70ca1663ac4856e65))
+
+
+
+
+
+## [1.17.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.6...@tecsinapse/react-native-kit@1.17.7) (2022-07-06)
+
+
+### Bug Fixes
+
+* select modal text overflow and prettier files ([11dff1e](https://github.com/tecsinapse/design-system/commit/11dff1ecdc117f3e08191dd1c488f6e8ed7459c6))
+
+
+
+
+
+## [1.17.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.5...@tecsinapse/react-native-kit@1.17.6) (2022-06-24)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
 ## [1.17.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.17.4...@tecsinapse/react-native-kit@1.17.5) (2022-06-22)
 
 

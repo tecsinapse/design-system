@@ -1,4 +1,10 @@
-import { Checkbox, getStatusBarHeight, RadioButton, useDebouncedState } from '@tecsinapse/react-core';
+import {
+  Checkbox,
+  getStatusBarHeight,
+  RadioButton,
+  RFValue,
+  useDebouncedState,
+} from '@tecsinapse/react-core';
 import * as React from 'react';
 import { FlatList, ListRenderItemInfo, View } from 'react-native';
 import { Button } from '../../atoms/Button';
@@ -8,8 +14,13 @@ import { IBaseModal, ModalView } from '../../atoms/Modal';
 import { Text } from '../../atoms/Text';
 import { SelectNativeProps } from './Select';
 import {
-  FetchIndicator, getStyledModal, ListItem, ModalFooter, SearchBarContainer,
-  SelectIcon
+  FetchIndicator,
+  getStyledModal,
+  ListItem,
+  ModalFooter,
+  SearchBarContainer,
+  SelectIcon,
+  TextTitleModal,
 } from './styled';
 
 interface LoadingProps {
@@ -38,9 +49,12 @@ const Component = <Data, Type extends 'single' | 'multi'>({
 }: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal): JSX.Element => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
-  const ModalComponent = React.useMemo(() => getStyledModal(getStatusBarHeight(true)), [])
-  const _closeOnPick = closeOnPick && type === 'single'
-  
+  const ModalComponent = React.useMemo(
+    () => getStyledModal(getStatusBarHeight(true)),
+    []
+  );
+  const _closeOnPick = closeOnPick && type === 'single';
+
   // Resets the temporary state to the initial state whenever the
   // modal is reopened or the value changes
   React.useEffect(() => {
@@ -84,10 +98,10 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   }, [selectedValues, setSelectedValues, keyExtractor, type])
 
   React.useEffect(() => {
-    if (_closeOnPick && selectedValues[0] && (selectedValues[0] !== value)) {
-      handleConfirm()
+    if (_closeOnPick && selectedValues[0] && selectedValues[0] !== value) {
+      handleConfirm();
     }
-  }, [selectedValues[0], value, closeOnPick])
+  }, [selectedValues[0], value, closeOnPick]);
 
   const handleConfirm = React.useCallback(() => {
     // TS Workaround since TS won't infer the ternary operator's result type correctly
@@ -99,7 +113,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   }, [selectedValues]);
 
   const optionBuilder = React.useCallback(({ item }: ListRenderItemInfo<Data & { _checked: boolean }>) => (
-    <MemoizedOption 
+    <MemoizedOption
       item={item}
       type={type}
       handlePressItem={handlePressItem}
@@ -118,49 +132,56 @@ const Component = <Data, Type extends 'single' | 'multi'>({
       renderItem={optionBuilder}
     />
   ), [selectedValues, anyChecked, dataLengthChanged])
-  
-  const headerContent = selectModalTitleComponent ? (
-    selectModalTitleComponent
-  ) : selectModalTitle ? (
-    <Text typography="h4" fontWeight="bold">
+
+  const titleTextModal = selectModalTitle ? (
+    <TextTitleModal
+      typography="h4"
+      fontWeight="bold"
+      numberOfLines={3}
+      style={{ maxWidth: RFValue(250) }}
+    >
       {selectModalTitle}
-    </Text>
+    </TextTitleModal>
   ) : null;
+
+  const headerContent = selectModalTitleComponent
+    ? selectModalTitleComponent
+    : titleTextModal;
 
   return (
     <ModalView {...others} BoxComponent={ModalComponent} showCloseBar={false}>
-        <Header
-          rightButton={{
-            onPress: close,
-            icon: {
-              name: 'close',
-              type: 'material-community',
-              fontColor: 'light',
-            },
-          }}
-        >
-          {headerContent}
-        </Header>
+      <Header
+        rightButton={{
+          onPress: close,
+          icon: {
+            name: 'close',
+            type: 'material-community',
+            fontColor: 'light',
+          },
+        }}
+      >
+        {headerContent}
+      </Header>
 
-        {!hideSearchBar && (
-          <SearchBarContainer>
-            <Input
-              placeholder={searchBarPlaceholder}
-              value={searchArg}
-              onChange={text => setSearchArg(text)}
-              leftComponent={
-                <SelectIcon name="search" type="ionicon" size="centi" />
-              }
-            />
-          </SearchBarContainer>
-        )}
+      {!hideSearchBar && (
+        <SearchBarContainer>
+          <Input
+            placeholder={searchBarPlaceholder}
+            value={searchArg}
+            onChange={text => setSearchArg(text)}
+            leftComponent={
+              <SelectIcon name="search" type="ionicon" size="centi" />
+            }
+          />
+        </SearchBarContainer>
+      )}
 
-        {loading && (
-          <FetchIndicator animating={true} color={'grey'} size={'large'} />
-        )}
+      {loading && (
+        <FetchIndicator animating={true} color={'grey'} size={'large'} />
+      )}
 
         {memoizedFlatlist}
-        
+
         { !_closeOnPick && <ModalFooter>
           <Button
             variant={'filled'}
