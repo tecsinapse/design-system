@@ -1,7 +1,7 @@
 import {
   HintInputContainer,
   InputContainerProps,
-  useInputFocus,
+  useInputFocus
 } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
-  value: Type extends 'single' ? Data | undefined : Data[];
+  value: Type extends 'single' ? Data | null | undefined : Data[];
   type: Type;
 
   keyExtractor: (t: Data, index?: number) => string;
@@ -88,16 +88,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
     }
   }, [options]);
 
-  useEffect(() => {
-    if (typeof options === 'function') {
-      if (value) {
-        if (type === 'single') setSelectOptions([value as Data]);
-        else setSelectOptions([...(value as Data[])]);
-      } else setSelectOptions([]);
-    }
-  }, [value]);
-
-  const handleLazyFocus = async () => {
+  const handleLazyFocus = React.useCallback(async () => {
     if (typeof options === 'function') {
       setLoading(true);
       try {
@@ -116,7 +107,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         setLoading(false);
       }
     }
-  };
+  }, [options, value, setSelectOptions])
 
   const handleOnSearch = React.useCallback(
     async (searchInput: string | undefined) => {
@@ -161,7 +152,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
     [options, value, keyExtractor]
   );
 
-  const getDisplayValue = () => {
+  const getDisplayValue = React.useCallback(() => {
     if (Array.isArray(value)) {
       if (value.length === 0) return placeholder;
       else {
@@ -185,7 +176,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
       );
       return selectedOption ? labelExtractor(selectedOption) : placeholder;
     }
-  };
+  }, [placeholder, value, selectOptions]);
 
   modal.sync(
     <Modal
