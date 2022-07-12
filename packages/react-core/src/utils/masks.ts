@@ -1,5 +1,5 @@
 // NOTE: Add here all individually utils, then you can use it on input components everywhere.
-import { extractDigitsFromString } from '@tecsinapse/react-core';
+import { extractDigitsFromString } from './extractNumbersFromString';
 
 export const Masks = {
   CPF: ['999.999.999-99'],
