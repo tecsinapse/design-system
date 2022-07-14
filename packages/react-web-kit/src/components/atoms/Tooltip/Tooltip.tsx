@@ -8,6 +8,7 @@ export type Position = 'top' | 'bottom' | 'right' | 'left';
 export interface ITooltip {
   title: string;
   position?: Position;
+  children?: React.ReactNode;
 }
 
 const Tooltip: React.FC<ITooltip> = ({
