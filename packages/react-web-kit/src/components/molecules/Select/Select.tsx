@@ -1,19 +1,19 @@
-import React from 'react';
 import {
   PressableInputContainer,
   Text,
-  TextProps,
+  TextProps
 } from '@tecsinapse/react-core';
+import React from 'react';
+import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
+import { defaultStyles, transition } from './animations';
+import { Dropdown } from './Dropdown';
+import { getDisplayValue } from './functions';
 import {
   RightComponent,
   StyledContainer,
-  StyledInputContainer,
+  StyledInputContainer
 } from './styled';
-import { Dropdown } from './Dropdown';
-import { getDisplayValue } from './functions';
-import { Transition } from 'react-transition-group';
-import { defaultStyles, transition } from './animations';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'>
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
@@ -59,11 +59,16 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   const refDropDown = React.useRef(null);
   useClickAwayListener(refDropDown, setDropDownVisible);
 
+  const onlyLabel = label && !placeholder;
+  const hasValue = type === 'single' ? !!value : ((value || []) as []).length > 0
+  const _placeholder = onlyLabel ? label : placeholder
+  const _label = hasValue ? label : undefined
+
   const displayValue = getDisplayValue<Data>(
     type,
     value,
     options,
-    placeholder,
+    _placeholder,
     keyExtractor,
     labelExtractor
   );
@@ -76,7 +81,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     <StyledContainer ref={refDropDown} {...rest}>
       <StyledInputContainer>
         <PressableInputContainer
-          label={label}
+          label={_label}
           onPress={onPress}
           disabled={disabled}
           rightComponent={RightComponent}

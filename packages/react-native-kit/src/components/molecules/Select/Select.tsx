@@ -68,6 +68,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   style,
   controlComponent,
   closeOnPick = type === 'single',
+  label,
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -81,6 +82,11 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   // TODO: Add Skeleton to modal height when loading is true
   const [loading, setLoading] = useState<boolean>(false);
+  
+  const onlyLabel = label && !placeholder;
+  const hasValue = type === 'single' ? !!value : ((value || []) as []).length > 0
+  const _placeholder = onlyLabel ? label : placeholder
+  const _label = hasValue ? label : undefined
 
   useEffect(() => {
     if (typeof options !== 'function') {
@@ -154,7 +160,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   const getDisplayValue = React.useCallback(() => {
     if (Array.isArray(value)) {
-      if (value.length === 0) return placeholder;
+      if (value.length === 0) return _placeholder;
       else {
         return selectOptions
           ?.reduce(
@@ -169,14 +175,14 @@ function Select<Data, Type extends 'single' | 'multi'>({
           .slice(0, -2);
       }
     } else {
-      if (value === undefined) return placeholder;
+      if (value === undefined) return _placeholder;
       const selectedOption = selectOptions?.find(
         (option, index) =>
           keyExtractor(option, index) == keyExtractor(value as Data, index)
       );
-      return selectedOption ? labelExtractor(selectedOption) : placeholder;
+      return selectedOption ? labelExtractor(selectedOption) : _placeholder;
     }
-  }, [placeholder, value, selectOptions]);
+  }, [_placeholder, value, selectOptions]);
 
   modal.sync(
     <Modal
@@ -220,6 +226,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
           variant={variant}
           hint={hint}
           hintComponent={hintComponent}
+          label={_label}
           rightComponent={
             <>
               <SelectIcon name="chevron-down" type="ionicon" size="centi" />
