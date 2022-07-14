@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.9...@tecsinapse/react-web-kit@1.17.10) (2022-07-14)
+
+
+### Features
+
+* fixing props tootip to react 18 ([76f9ec7](https://github.com/tecsinapse/design-system/commit/76f9ec7d974311ef7480a4b9ef2c207caab5bd9d))
+
+
+
+
+
 ## [1.17.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.8...@tecsinapse/react-web-kit@1.17.9) (2022-07-11)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
