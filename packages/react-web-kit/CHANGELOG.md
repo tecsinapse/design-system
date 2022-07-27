@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.11...@tecsinapse/react-web-kit@1.18.0) (2022-07-27)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
 ## [1.17.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.17.10...@tecsinapse/react-web-kit@1.17.11) (2022-07-14)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
