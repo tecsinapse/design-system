@@ -19,7 +19,7 @@
     "@emotion/styled": "^11.3.0",
     "@tecsinapse/react-core": "^1.16.6",
     "@types/react-native": "^0.64.4",
-    "react-native-vector-icons": "^9.1.0",
+    "react-native-vector-icons": "^9.2.0",
     "react-transition-group": "^4.4.2"
   },
   "repository": {
@@ -32,8 +32,8 @@
   },
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0",
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-native-web": "^0.17.1"
   }
 }
