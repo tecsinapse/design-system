@@ -162,7 +162,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
     if (Array.isArray(value)) {
       if (value.length === 0) return _placeholder;
       else {
-        return selectOptions
+        let options = selectOptions.length > 0 ? selectOptions : value as Data[]
+        return options
           ?.reduce(
             (acc, option, index) =>
               value.find(
@@ -180,7 +181,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         (option, index) =>
           keyExtractor(option, index) == keyExtractor(value as Data, index)
       );
-      return selectedOption ? labelExtractor(selectedOption) : _placeholder;
+      return labelExtractor(selectedOption ?? value as Data)
     }
   }, [_placeholder, value, selectOptions]);
 
