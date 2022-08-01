@@ -1,7 +1,7 @@
 import styled, { css } from '@emotion/native';
 import { View } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
-import { RFValueStr } from '../../../utils';
+import { RFValue } from '../../../utils';
 import { BadgeProps } from './Badge';
 
 const baseStyle = ({
@@ -18,8 +18,8 @@ const baseStyle = ({
     justify-content: center;
     height: ${theme.iconSize.centi};
     width: ${theme.iconSize.centi};
-    top: ${RFValueStr('-4px')};
-    right: ${RFValueStr('-4px')};
+    top: ${`${RFValue(-4)}px`};
+    right: ${`${RFValue(-4)}px`};
   `;
 };
 
