@@ -108,6 +108,7 @@ export const TooltipSpan = styled('span')<Partial<StyleProps> & InjectedProps>(
     const { width = 0, height = 0 } = computed || {};
     return css`
       position: absolute;
+      width: max-content;
       padding: ${theme.spacing.micro} ${theme.spacing.centi};
       border-radius: ${theme.borderRadius.mili};
       opacity: 0;
@@ -148,7 +149,7 @@ export const Container = styled('div')<{ position?: Position }>`
     & > span {
       opacity: 1;
       visibility: visible;
-
+      display: flex;
       transform: ${({ position }) =>
         position === 'left' || position === 'right'
           ? 'translateX(0%)'
