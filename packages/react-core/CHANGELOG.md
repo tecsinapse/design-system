@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.17.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.17.1...@tecsinapse/react-core@1.17.2) (2022-08-02)
+
+
+### Bug Fixes
+
+* require vector-icons direct from /dist ([f42a734](https://github.com/tecsinapse/design-system/commit/f42a7340e668b5cfba6a82d133a88a7669f0fe52))
+
+
+
+
+
 ## [1.17.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.17.0...@tecsinapse/react-core@1.17.1) (2022-08-01)
 
 **Note:** Version bump only for package @tecsinapse/react-core
