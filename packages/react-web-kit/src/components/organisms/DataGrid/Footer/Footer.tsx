@@ -25,6 +25,7 @@ interface DataGridFooterProps {
   page: number;
   onPageChange?: (page: number) => void;
   pagination: boolean;
+  exportComponent?: React.ReactNode;
 }
 
 const Footer: React.FC<DataGridFooterProps> = ({
@@ -38,6 +39,7 @@ const Footer: React.FC<DataGridFooterProps> = ({
   page,
   onPageChange,
   pagination,
+  exportComponent,
 }) => {
   if (pagination && (!onPageChange || !onRowsPerPageChange)) {
     throw new Error(
@@ -86,6 +88,7 @@ const Footer: React.FC<DataGridFooterProps> = ({
                   />
                 </SelectContainer>
               )}
+              {exportComponent && !exportFunction && <>{exportComponent}</>}
               {exportFunction && (
                 <HoveredText>
                   <Button variant="outlined" onPress={() => exportFunction()}>

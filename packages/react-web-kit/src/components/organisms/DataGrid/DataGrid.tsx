@@ -52,6 +52,8 @@ export interface DataGridProps<Data>
   skeletonComponent?: React.ReactNode;
   /** Empty state placeholder */
   emptyPlaceholder?: React.ReactNode;
+  /** Export component, use if default button with label is not ideal. This prop, not receive "exportLabel" and "exportFunction" */
+  exportComponent?: React.ReactNode;
 }
 
 /** Note: Consider memoizing functions for a better performance */
@@ -78,6 +80,7 @@ const DataGrid = <Data extends unknown>({
   loading = false,
   skeletonComponent,
   emptyPlaceholder,
+  exportComponent,
   ...rest
 }: DataGridProps<Data>): JSX.Element => {
   if (selectable && (!selectedRows || !onSelectedRows)) {
@@ -189,6 +192,7 @@ const DataGrid = <Data extends unknown>({
             page={page}
             onPageChange={onPageChange}
             pagination={pagination}
+            exportComponent={exportComponent}
           />
         )}
       </Table>
