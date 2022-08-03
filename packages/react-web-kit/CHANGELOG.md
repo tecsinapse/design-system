@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.2...@tecsinapse/react-web-kit@1.18.3) (2022-08-03)
+
+
+### Features
+
+* added prop exportComponent in Footer Data Grid. ([c4b63de](https://github.com/tecsinapse/design-system/commit/c4b63deeb5853e538c55a035f2312eef06efef48))
+
+
+
+
+
 ## [1.18.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.1...@tecsinapse/react-web-kit@1.18.2) (2022-08-02)
 
 
