@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.3...@tecsinapse/react-web-kit@1.18.4) (2022-08-08)
+
+
+### Features
+
+* added text in Footer DataGrid inform quantity items rendered of total items. ([#179497](https://github.com/tecsinapse/design-system/issues/179497)) ([0ba47c6](https://github.com/tecsinapse/design-system/commit/0ba47c66da0173418e56fcdcfa1ee5e5e9d966e3))
+
+
+
+
+
 ## [1.18.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.2...@tecsinapse/react-web-kit@1.18.3) (2022-08-03)
 
 
