@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { default as nativeStyled } from '@emotion/native';
 import { StyleProps } from '@tecsinapse/react-core';
+import { Text } from '@tecsinapse/react-web-kit';
 import { Td } from '../../../atoms/Table';
 import { Button } from '../../../atoms/Button';
 
@@ -58,4 +59,10 @@ export const HoveredText = styled('div')<Partial<StyleProps>>`
   &:hover * {
     color: ${({ theme }) => theme.font.color.light};
   }
+`;
+
+export const TextPagination = nativeStyled(Text)<Partial<StyleProps>>`
+  padding-right: ${({ theme }) => theme.spacing.deca};
+  padding-left: ${({ theme }) => theme.spacing.deca};
+
 `;

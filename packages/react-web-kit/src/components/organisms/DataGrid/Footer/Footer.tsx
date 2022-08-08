@@ -11,6 +11,7 @@ import {
   PagesContainer,
   SelectContainer,
   TdFooterStyled,
+  TextPagination,
 } from './styled';
 
 interface DataGridFooterProps {
@@ -69,6 +70,9 @@ const Footer: React.FC<DataGridFooterProps> = ({
     [onPageChange, onRowsPerPageChange]
   );
 
+  const quantityRowsRendered =
+    rowsPerPage > rowsCount ? rowsCount : rowsPerPage;
+
   return (
     <TFoot>
       <Tr>
@@ -100,44 +104,53 @@ const Footer: React.FC<DataGridFooterProps> = ({
               )}
             </FooterContainerStart>
             {pagination && (
-              <FooterContainerEnd>
-                <NavigationButton
-                  onPress={() => onPageChange?.(page - 1)}
-                  disabled={page === 0}
-                >
-                  <Icon
-                    name={'chevron-left'}
-                    type={'material-community'}
-                    fontColor={'light'}
-                  />
-                </NavigationButton>
-                <PagesContainer>
-                  {[...Array(Math.ceil(rowsCount / rowsPerPage)).keys()]
-                    .slice(getPaginationSlice().start, getPaginationSlice().end)
-                    .map(value => (
-                      <HoveredText key={`page-${value}`}>
-                        <PageButton
-                          variant={page === value ? 'outlined' : 'text'}
-                          onPress={() => onPageChange?.(value)}
-                        >
-                          <Text fontColor="medium" fontWeight="bold">
-                            {value + 1}
-                          </Text>
-                        </PageButton>
-                      </HoveredText>
-                    ))}
-                </PagesContainer>
-                <NavigationButton
-                  onPress={() => onPageChange?.(page + 1)}
-                  disabled={page === Math.ceil(rowsCount / rowsPerPage) - 1}
-                >
-                  <Icon
-                    name={'chevron-right'}
-                    type={'material-community'}
-                    fontColor={'light'}
-                  />
-                </NavigationButton>
-              </FooterContainerEnd>
+              <>
+                <TextPagination
+                  fontWeight={'bold'}
+                  fontColor={'medium'}
+                >{`Exibindo ${quantityRowsRendered} de ${rowsCount} registros`}</TextPagination>
+                <FooterContainerEnd>
+                  <NavigationButton
+                    onPress={() => onPageChange?.(page - 1)}
+                    disabled={page === 0}
+                  >
+                    <Icon
+                      name={'chevron-left'}
+                      type={'material-community'}
+                      fontColor={'light'}
+                    />
+                  </NavigationButton>
+                  <PagesContainer>
+                    {[...Array(Math.ceil(rowsCount / rowsPerPage)).keys()]
+                      .slice(
+                        getPaginationSlice().start,
+                        getPaginationSlice().end
+                      )
+                      .map(value => (
+                        <HoveredText key={`page-${value}`}>
+                          <PageButton
+                            variant={page === value ? 'outlined' : 'text'}
+                            onPress={() => onPageChange?.(value)}
+                          >
+                            <Text fontColor="medium" fontWeight="bold">
+                              {value + 1}
+                            </Text>
+                          </PageButton>
+                        </HoveredText>
+                      ))}
+                  </PagesContainer>
+                  <NavigationButton
+                    onPress={() => onPageChange?.(page + 1)}
+                    disabled={page === Math.ceil(rowsCount / rowsPerPage) - 1}
+                  >
+                    <Icon
+                      name={'chevron-right'}
+                      type={'material-community'}
+                      fontColor={'light'}
+                    />
+                  </NavigationButton>
+                </FooterContainerEnd>
+              </>
             )}
           </FooterContainer>
         </TdFooterStyled>
