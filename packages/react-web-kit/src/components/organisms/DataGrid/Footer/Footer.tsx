@@ -69,9 +69,9 @@ const Footer: React.FC<DataGridFooterProps> = ({
     },
     [onPageChange, onRowsPerPageChange]
   );
-
-  const quantityRowsRendered =
-    rowsPerPage > rowsCount ? rowsCount : rowsPerPage;
+  const currentInitItem = page * rowsPerPage + 1;
+  const currentFinalItem =
+    (page + 1) * rowsPerPage > rowsCount ? rowsCount : (page + 1) * rowsPerPage;
 
   return (
     <TFoot>
@@ -108,7 +108,7 @@ const Footer: React.FC<DataGridFooterProps> = ({
                 <TextPagination
                   fontWeight={'bold'}
                   fontColor={'medium'}
-                >{`Exibindo ${quantityRowsRendered} de ${rowsCount} registros`}</TextPagination>
+                >{`Exibindo ${currentInitItem} a ${currentFinalItem} de ${rowsCount} registros`}</TextPagination>
                 <FooterContainerEnd>
                   <NavigationButton
                     onPress={() => onPageChange?.(page - 1)}
