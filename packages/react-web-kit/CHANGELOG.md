@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.4...@tecsinapse/react-web-kit@1.18.5) (2022-08-08)
+
+
+### Bug Fixes
+
+* update peerdep ([cb4ec62](https://github.com/tecsinapse/design-system/commit/cb4ec62ab2532ad7d7e38328d23bdde2581a470e))
+
+
+
+
+
 ## [1.18.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.3...@tecsinapse/react-web-kit@1.18.4) (2022-08-08)
 
 
