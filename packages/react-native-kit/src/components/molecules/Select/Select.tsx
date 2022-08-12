@@ -1,7 +1,7 @@
 import {
   HintInputContainer,
   InputContainerProps,
-  useInputFocus
+  useInputFocus,
 } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
@@ -40,6 +40,7 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
     onPress: () => void,
     displayValue?: string
   ) => JSX.Element;
+  numberOfLines?: number;
 }
 
 function Select<Data, Type extends 'single' | 'multi'>({
@@ -69,6 +70,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   controlComponent,
   closeOnPick = type === 'single',
   label,
+  numberOfLines,
   ...rest
 }: SelectNativeProps<Data, Type>): JSX.Element {
   const { focused, handleBlur, handleFocus } = useInputFocus(
@@ -82,11 +84,12 @@ function Select<Data, Type extends 'single' | 'multi'>({
 
   // TODO: Add Skeleton to modal height when loading is true
   const [loading, setLoading] = useState<boolean>(false);
-  
+
   const onlyLabel = label && !placeholder;
-  const hasValue = type === 'single' ? !!value : ((value || []) as []).length > 0
-  const _placeholder = onlyLabel ? label : placeholder
-  const _label = hasValue ? label : undefined
+  const hasValue =
+    type === 'single' ? !!value : ((value || []) as []).length > 0;
+  const _placeholder = onlyLabel ? label : placeholder;
+  const _label = hasValue ? label : undefined;
 
   useEffect(() => {
     if (typeof options !== 'function') {
@@ -113,7 +116,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         setLoading(false);
       }
     }
-  }, [options, value, setSelectOptions])
+  }, [options, value, setSelectOptions]);
 
   const handleOnSearch = React.useCallback(
     async (searchInput: string | undefined) => {
@@ -162,7 +165,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
     if (Array.isArray(value)) {
       if (value.length === 0) return _placeholder;
       else {
-        let options = selectOptions.length > 0 ? selectOptions : value as Data[]
+        let options =
+          selectOptions.length > 0 ? selectOptions : (value as Data[]);
         return options
           ?.reduce(
             (acc, option, index) =>
@@ -181,7 +185,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         (option, index) =>
           keyExtractor(option, index) == keyExtractor(value as Data, index)
       );
-      return labelExtractor(selectedOption ?? value as Data)
+      return labelExtractor(selectedOption ?? (value as Data));
     }
   }, [_placeholder, value, selectOptions]);
 
@@ -236,7 +240,11 @@ function Select<Data, Type extends 'single' | 'multi'>({
           }
           {...rest}
         >
-          <StyledSelectionText fontWeight="bold" disabled={disabled}>
+          <StyledSelectionText
+            numberOfLines={numberOfLines}
+            fontWeight="bold"
+            disabled={disabled}
+          >
             {getDisplayValue() || ' '}
           </StyledSelectionText>
         </HintInputContainer>
