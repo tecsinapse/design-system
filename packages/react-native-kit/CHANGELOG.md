@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.18.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.18.3...@tecsinapse/react-native-kit@1.18.4) (2022-08-12)
+
+
+### Bug Fixes
+
+* add numberOfLines into react-native-kit Select component as an optional prop ([a9b7b85](https://github.com/tecsinapse/design-system/commit/a9b7b8575a60f73020b394f8afb03901fe62efb1))
+
+
+
+
+
 ## [1.18.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.18.2...@tecsinapse/react-native-kit@1.18.3) (2022-08-03)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
