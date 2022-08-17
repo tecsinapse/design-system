@@ -49,3 +49,4 @@ export {
   IBaseModal,
 } from './components/atoms/Modal';
 export { Skeleton, SkeletonProps } from './components/atoms/Skeleton';
+export { Grid, GridItem } from './components/molecules/Grid';

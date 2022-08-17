@@ -1,30 +1,9 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
 import { GridItem } from './Item';
-import { SpacingType } from '@tecsinapse/react-core';
+import { IGrid } from '@tecsinapse/react-core';
 
-export interface IGrid extends ViewProps {
-  children: JSX.Element[];
-  /** Layout should represent the multiplier of columns to fill the rows properly.
-   * Example:
-   * const layout = [
-   *   [6, 6], // Two elements on row
-   *   [4, 4, 4], // Three elements on row
-   *   [12], // One element on row
-   * ];
-   * */
-  layout?: number[][];
-  /** Number of grid columns to be considered (not the number of elements per row) */
-  columns?: number;
-  spacing?:
-    | SpacingType
-    | {
-        top?: SpacingType;
-        right?: SpacingType;
-        bottom?: SpacingType;
-        left?: SpacingType;
-      };
-}
+export type IGridNative = IGrid & ViewProps;
 
 const Grid = ({
   children,
@@ -33,7 +12,7 @@ const Grid = ({
   style,
   spacing,
   ...rest
-}: IGrid) => {
+}: IGridNative): JSX.Element => {
   if (layout) {
     const flatLayout = layout.flat();
     return (

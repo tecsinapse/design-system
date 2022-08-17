@@ -79,7 +79,7 @@ export {
   TextAreaProps,
   TextAreaInputBase,
 } from './components/molecules/TextArea';
-export { GridItem, Grid, IGridItem, IGrid } from './components/molecules/Grid';
+export * from './components/molecules/Grid';
 export * from './styles/definitions';
 export * from './styles/light';
 export { default as ThemeProvider } from './styles/ThemeProvider';
