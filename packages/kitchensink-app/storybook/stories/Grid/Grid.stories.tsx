@@ -32,6 +32,7 @@ storiesOf('Grid', module)
               left: 'nano',
               right: 'nano',
             }}
+            wrapper
           >
             <Input value={''} onChange={() => {}} />
           </GridItem>
@@ -43,10 +44,11 @@ storiesOf('Grid', module)
               left: 'nano',
               right: 'nano',
             }}
+            wrapper
           >
             <Input value={''} onChange={() => {}} />
           </GridItem>
-          <GridItem span={12}>
+          <GridItem span={12} wrapper>
             <Input value={''} onChange={() => {}} />
           </GridItem>
           <GridItem span={12} wrapper>

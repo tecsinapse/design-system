@@ -13,7 +13,7 @@ export default {
 
 const Container = styled('div')`
   background-color: orange;
-  padding: 2px;
+  padding: 8px;
   border-width: 1px;
   border-color: white;
   border-style: solid;
@@ -23,55 +23,56 @@ const Container = styled('div')`
 const TemplateGrid: Story<IGridWeb> = args => {
   return (
     <Grid {...args}>
-      <GridItem span={12}>
+      <GridItem wrapper span={12}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
 
-      <GridItem span={6}>
+      <GridItem wrapper span={6}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={6}>
-        <Container>
-          <Text>Box</Text>
-        </Container>
-      </GridItem>
-
-      <GridItem span={4} flexShrink={1}>
-        <Container>
-          <Text>Box</Text>
-        </Container>
-      </GridItem>
-      <GridItem span={4} flexGrow={1}>
-        <Container>
-          <Text>Box</Text>
-        </Container>
-      </GridItem>
-      <GridItem span={4} flexShrink={1}>
+      <GridItem wrapper span={6}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
 
-      <GridItem span={3}>
+      <GridItem wrapper span={4} flexShrink={1}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={3}>
+      <GridItem wrapper span={4} flexGrow={1}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={3}>
+      <GridItem wrapper span={4} flexShrink={1}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={3}>
+
+      <GridItem wrapper span={3} flexBasis={'content'} flex={1}>
+        {/** Width should consider component padding and grid spacing (8px left + 8px right + 2px grid for nano) */}
+        <Container style={{ width: 'calc(100% - 18px)' }}>
+          <Text>Box</Text>
+        </Container>
+      </GridItem>
+      <GridItem wrapper span={3} flexBasis={'content'}>
+        <Container>
+          <Text>Box</Text>
+        </Container>
+      </GridItem>
+      <GridItem wrapper span={3} flexBasis={'content'}>
+        <Container>
+          <Text>Box</Text>
+        </Container>
+      </GridItem>
+      <GridItem wrapper span={3} flexBasis={'content'}>
         <Container>
           <Text>Box</Text>
         </Container>
@@ -83,7 +84,7 @@ const TemplateGrid: Story<IGridWeb> = args => {
 export const WithGridItem = TemplateGrid.bind({});
 
 WithGridItem.args = {
-  spacing: 'mili',
+  spacing: 'nano',
 };
 
 const TemplateLayout: Story<IGridWeb> = args => {
@@ -133,55 +134,55 @@ WithLayout.args = {
 const TemplateResponsive: Story<IGridWeb> = args => {
   return (
     <Grid {...args}>
-      <GridItem span={{ sm: 12 }}>
+      <GridItem wrapper span={{ sm: 12 }}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
 
-      <GridItem span={{ sm: 6, md: 6 }}>
+      <GridItem wrapper span={{ sm: 6, md: 6 }}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={{ sm: 6, md: 6 }}>
-        <Container>
-          <Text>Box</Text>
-        </Container>
-      </GridItem>
-
-      <GridItem span={{ sm: 12, md: 4 }} flexShrink={1}>
-        <Container>
-          <Text>Box</Text>
-        </Container>
-      </GridItem>
-      <GridItem span={{ sm: 6, md: 4 }} flexGrow={1}>
-        <Container>
-          <Text>Box</Text>
-        </Container>
-      </GridItem>
-      <GridItem span={{ sm: 6, md: 4 }} flexShrink={1}>
+      <GridItem wrapper span={{ sm: 6, md: 6 }}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
 
-      <GridItem span={{ sm: 12, lg: 3 }}>
+      <GridItem wrapper span={{ sm: 12, md: 4 }} flexShrink={1}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={{ sm: 6, lg: 3 }}>
+      <GridItem wrapper span={{ sm: 6, md: 4 }} flexGrow={1}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={{ sm: 6, lg: 3 }}>
+      <GridItem wrapper span={{ sm: 6, md: 4 }} flexShrink={1}>
         <Container>
           <Text>Box</Text>
         </Container>
       </GridItem>
-      <GridItem span={{ sm: 12, lg: 3 }}>
+
+      <GridItem wrapper span={{ sm: 12, lg: 3 }}>
+        <Container>
+          <Text>Box</Text>
+        </Container>
+      </GridItem>
+      <GridItem wrapper span={{ sm: 6, lg: 3 }}>
+        <Container>
+          <Text>Box</Text>
+        </Container>
+      </GridItem>
+      <GridItem wrapper span={{ sm: 6, lg: 3 }}>
+        <Container>
+          <Text>Box</Text>
+        </Container>
+      </GridItem>
+      <GridItem wrapper span={{ sm: 12, lg: 3 }}>
         <Container>
           <Text>Box</Text>
         </Container>
@@ -193,5 +194,5 @@ const TemplateResponsive: Story<IGridWeb> = args => {
 export const WithGridItemResponsive = TemplateResponsive.bind({});
 
 WithGridItemResponsive.args = {
-  spacing: 'mili',
+  spacing: 'nano',
 };

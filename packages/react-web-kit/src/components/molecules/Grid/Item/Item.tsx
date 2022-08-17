@@ -10,6 +10,14 @@ export interface IGridItemWeb
     Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
   /** At least sm should exist */
   span: number | Span;
+  /** Only specify this property if the GridItem will be 'dynamic', adjusting itself to content. Use this with `wrapper` for better result. */
+  flexBasis?:
+    | string
+    | 'content'
+    | 'auto'
+    | 'max-content'
+    | 'min-content'
+    | 'fit-content';
 }
 
 const GridItem = ({
@@ -28,6 +36,7 @@ const GridItem = ({
   flexGrow,
   flexShrink,
   justifyContent,
+  flexBasis,
   style,
   ...rest
 }: IGridItemWeb): JSX.Element => {
@@ -53,7 +62,7 @@ const GridItem = ({
     justifyContent,
     flex,
     boxSizing: 'border-box',
-    flexBasis: `${100 / (columns / span)}%`,
+    flexBasis: flexBasis ?? `${100 / (columns / span)}%`,
     paddingTop: getPadding('top', _spacing, spacing),
     paddingBottom: getPadding('bottom', _spacing, spacing),
     paddingRight: getPadding('right', _spacing, spacing),
