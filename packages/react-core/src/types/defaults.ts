@@ -130,6 +130,7 @@ export type ThemeProp = {
     files: FontWeight;
   };
   zIndex: ZIndex;
+  /** Designed to web */
   breakpoints: Breakpoints;
 };
 

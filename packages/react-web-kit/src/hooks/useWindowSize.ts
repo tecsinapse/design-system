@@ -1,10 +1,12 @@
 import React from 'react';
 
-export const useWindowSize = () => {
-  const [windowSize, setWindowSize] = React.useState<{
-    width: number | undefined;
-    height: number | undefined;
-  }>({
+type WindowSize = {
+  width: number | undefined;
+  height: number | undefined;
+};
+
+export const useWindowSize = (): WindowSize => {
+  const [windowSize, setWindowSize] = React.useState<WindowSize>({
     width: undefined,
     height: undefined,
   });
