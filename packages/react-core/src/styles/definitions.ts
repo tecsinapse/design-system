@@ -8,7 +8,7 @@ import {
   Miscellaneous,
   Spacing,
   TypographyVariation,
-  ZIndex
+  ZIndex,
 } from '../types/defaults';
 import { RFValueStr } from '../utils';
 
