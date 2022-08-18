@@ -1,12 +1,9 @@
-import {
-  IconComponent,
-  IconTextButtonProps,
-  TextComponent,
-} from '@tecsinapse/react-core';
+import { IconComponent, IconTextButtonProps } from '@tecsinapse/react-core';
 import React from 'react';
 import { WebButtonProps } from '../../atoms/Button';
 import useIconTextButton from './hooks/useIconTextButton';
 import { StyledIconTextButton } from './styled';
+import TextComponent from './TextComponent';
 
 export type WebIconTextButtonProps = IconTextButtonProps &
   Omit<WebButtonProps, 'ButtonProps'>;
@@ -24,25 +21,6 @@ const IconTextButton: React.FC<WebIconTextButtonProps> = ({
     variant
   );
 
-  const iconComponent = (
-    <IconComponent
-      iconProps={iconProps}
-      size={size}
-      defaultFontColor={defaultFontColor}
-    />
-  );
-
-  const textComponent = (
-    <TextComponent
-      label={label}
-      defaultFontColor={defaultFontColor}
-      hasIcon={!!iconProps}
-      iconPosition={iconPosition}
-      textProps={textProps}
-      size={size}
-    />
-  );
-
   return (
     <StyledIconTextButton
       boxed={!label}
@@ -54,9 +32,32 @@ const IconTextButton: React.FC<WebIconTextButtonProps> = ({
       onPressOut={() => handlePressed(false)}
       {...rest}
     >
-      {iconPosition === 'left' ? iconComponent : <></>}
-      {textComponent}
-      {iconPosition === 'right' ? iconComponent : <></>}
+      {iconPosition === 'left' ? (
+        <IconComponent
+          iconProps={iconProps}
+          size={size}
+          defaultFontColor={defaultFontColor}
+        />
+      ) : (
+        <></>
+      )}
+      <TextComponent
+        label={label}
+        defaultFontColor={defaultFontColor}
+        hasIcon={!!iconProps}
+        iconPosition={iconPosition}
+        textProps={textProps}
+        size={size}
+      />
+      {iconPosition === 'right' ? (
+        <IconComponent
+          iconProps={iconProps}
+          size={size}
+          defaultFontColor={defaultFontColor}
+        />
+      ) : (
+        <></>
+      )}
     </StyledIconTextButton>
   );
 };

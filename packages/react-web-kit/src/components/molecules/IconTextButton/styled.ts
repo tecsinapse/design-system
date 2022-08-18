@@ -13,5 +13,6 @@ export const StyledIconTextButton = styled(Button)<
     boxed: boolean;
   }
 >`
+  gap: ${({ theme }) => theme?.spacing.mili};
   ${({ boxed, theme }) => boxed && boxedStyle({ theme })};
 `;
