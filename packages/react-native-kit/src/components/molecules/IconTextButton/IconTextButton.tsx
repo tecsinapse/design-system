@@ -1,7 +1,12 @@
-import { fontColorVC, Icon, IconTextButtonProps } from '@tecsinapse/react-core';
-import React, { useMemo } from 'react';
+import {
+  fontColorVC,
+  IconComponent,
+  IconTextButtonProps,
+  TextComponent,
+} from '@tecsinapse/react-core';
+import React from 'react';
 import { ButtonNativeProps } from '../../atoms/Button';
-import { StyledIconTextButton, StyledText } from './styled';
+import { StyledIconTextButton } from './styled';
 
 export type NativeIconTextButtonProps = IconTextButtonProps &
   Omit<ButtonNativeProps, 'ButtonProps'>;
@@ -15,39 +20,23 @@ const IconTextButton: React.FC<NativeIconTextButtonProps> = ({
   size = 'default',
   ...rest
 }) => {
-  const iconComponent = useMemo(
-    () =>
-      iconProps ? (
-        <Icon
-          size={iconProps.size ?? size === 'small' ? 'deca' : 'kilo'}
-          fontColor={iconProps.fontColor ?? fontColorVC[variant]}
-          {...iconProps}
-        />
-      ) : (
-        <></>
-      ),
-    [iconProps, variant, size]
+  const iconComponent = (
+    <IconComponent
+      iconProps={iconProps}
+      size={size}
+      defaultFontColor={fontColorVC[variant]}
+    />
   );
 
-  const textComponent = useMemo(
-    () =>
-      label ? (
-        <StyledText
-          typography={
-            textProps?.typography ?? size === 'small' ? 'sub' : 'base'
-          }
-          fontWeight={textProps?.fontWeight ?? 'bold'}
-          fontColor={textProps?.fontColor ?? fontColorVC[variant]}
-          iconPosition={iconPosition}
-          hasIcon={!!iconProps}
-          {...textProps}
-        >
-          {label}
-        </StyledText>
-      ) : (
-        <></>
-      ),
-    [label, textProps, variant, size, iconPosition]
+  const textComponent = (
+    <TextComponent
+      label={label}
+      defaultFontColor={fontColorVC[variant]}
+      hasIcon={!!iconProps}
+      iconPosition={iconPosition}
+      textProps={textProps}
+      size={size}
+    />
   );
 
   return (

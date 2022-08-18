@@ -73,8 +73,10 @@ export {
   HintInputContainerProps,
 } from './components/molecules/HintInputContainer';
 export {
+  IconComponent,
   IconPositionOptions,
   IconTextButtonProps,
+  TextComponent,
 } from './components/molecules/IconTextButton';
 export { InputPasswordIcon } from './components/molecules/InputPassword';
 export { Snackbar, SnackbarProps } from './components/molecules/Snackbar';

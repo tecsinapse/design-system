@@ -1,11 +1,11 @@
 import {
-  fontColorVC,
-  Icon,
+  IconComponent,
   IconTextButtonProps,
-  Text,
+  TextComponent,
 } from '@tecsinapse/react-core';
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import { WebButtonProps } from '../../atoms/Button';
+import useIconTextButton from './hooks/useIconTextButton';
 import { StyledIconTextButton } from './styled';
 
 export type WebIconTextButtonProps = IconTextButtonProps &
@@ -20,42 +20,27 @@ const IconTextButton: React.FC<WebIconTextButtonProps> = ({
   size = 'default',
   ...rest
 }): JSX.Element => {
-  const [hover, setHover] = useState<boolean>(false);
-  const [pressed, setPressed] = useState<boolean>(false);
-
-  const defaultFontColor = !pressed && hover ? 'light' : fontColorVC[variant];
-
-  const iconComponent = useMemo(
-    () =>
-      iconProps ? (
-        <Icon
-          size={iconProps.size ?? size === 'small' ? 'deca' : 'kilo'}
-          fontColor={iconProps.fontColor ?? defaultFontColor}
-          {...iconProps}
-        />
-      ) : (
-        <></>
-      ),
-    [iconProps, variant, size, defaultFontColor]
+  const { handleHover, handlePressed, defaultFontColor } = useIconTextButton(
+    variant
   );
 
-  const textComponent = useMemo(
-    () =>
-      label ? (
-        <Text
-          typography={
-            textProps?.typography ?? size === 'small' ? 'sub' : 'base'
-          }
-          fontWeight={textProps?.fontWeight ?? 'bold'}
-          fontColor={textProps?.fontColor ?? defaultFontColor}
-          {...textProps}
-        >
-          {label}
-        </Text>
-      ) : (
-        <></>
-      ),
-    [label, textProps, variant, size, defaultFontColor]
+  const iconComponent = (
+    <IconComponent
+      iconProps={iconProps}
+      size={size}
+      defaultFontColor={defaultFontColor}
+    />
+  );
+
+  const textComponent = (
+    <TextComponent
+      label={label}
+      defaultFontColor={defaultFontColor}
+      hasIcon={!!iconProps}
+      iconPosition={iconPosition}
+      textProps={textProps}
+      size={size}
+    />
   );
 
   return (
@@ -63,10 +48,10 @@ const IconTextButton: React.FC<WebIconTextButtonProps> = ({
       boxed={!label}
       variant={variant}
       size={size}
-      onMouseOut={() => setHover(true)}
-      onMouseOver={() => setHover(false)}
-      onPressIn={() => setPressed(true)}
-      onPressOut={() => setPressed(false)}
+      onMouseOut={() => handleHover(true)}
+      onMouseOver={() => handleHover(false)}
+      onPressIn={() => handlePressed(true)}
+      onPressOut={() => handlePressed(false)}
       {...rest}
     >
       {iconPosition === 'left' ? iconComponent : <></>}

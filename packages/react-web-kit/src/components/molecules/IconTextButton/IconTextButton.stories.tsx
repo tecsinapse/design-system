@@ -4,7 +4,7 @@ import React from 'react';
 import IconTextButton, { WebIconTextButtonProps } from './IconTextButton';
 
 export default {
-  title: 'Hybrid/IconTextButton',
+  title: 'Web/IconTextButton',
   component: IconTextButton,
 };
 
