@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import {
   extractNumbersFromString,
   IGridItem,
@@ -7,7 +7,11 @@ import {
   useTheme,
 } from '@tecsinapse/react-core';
 
-export type IGridItemNative = IGridItem;
+export type IGridItemNative = IGridItem &
+  ViewProps & {
+    /** Only specify this property if the GridItem will be 'dynamic', adjusting itself to content. Use this with `wrapper` for better result. */
+    flexBasis?: string | 'auto';
+  };
 
 const GridItem = ({
   children,
@@ -17,8 +21,18 @@ const GridItem = ({
   loading = false,
   spacing: _spacing,
   wrapper = false,
+  alignContent,
+  alignItems,
+  alignSelf,
+  flex,
+  flexDirection,
+  flexGrow,
+  flexShrink,
+  justifyContent,
+  flexBasis,
+  style,
   ...rest
-}: IGridItemNative) => {
+}: IGridItemNative): JSX.Element => {
   const { spacing } = useTheme();
   if (!React.Children.only(children)) {
     throw new Error('The number of children in GridItem should be one');
@@ -37,10 +51,17 @@ const GridItem = ({
     } else return undefined;
   };
 
-  const style = {
-    ...rest,
+  const _style = {
+    alignContent,
+    alignItems,
+    alignSelf,
+    flex,
+    flexDirection,
+    flexGrow,
+    flexShrink,
+    justifyContent,
     boxSizing: 'border-box',
-    flexBasis: `${100 / (columns / span)}%`,
+    flexBasis: flexBasis ?? `${100 / (columns / span)}%`,
     paddingTop: getPadding('top'),
     paddingBottom: getPadding('bottom'),
     paddingRight: getPadding('right'),
@@ -51,10 +72,16 @@ const GridItem = ({
     ...children?.props,
     style: wrapper
       ? children?.props.style
-      : { ...style, ...children?.props.style },
+      : { ..._style, ...children?.props.style },
   });
 
-  return wrapper ? <View style={style}>{clone}</View> : clone;
+  return wrapper ? (
+    <View {...rest} style={[style, _style]}>
+      {clone}
+    </View>
+  ) : (
+    clone
+  );
 };
 
 export default GridItem;
