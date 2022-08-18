@@ -1,24 +1,18 @@
 import styled from '@emotion/native';
-import { IconSizeType, StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '@tecsinapse/react-core';
 import { Button } from '../../atoms/Button';
 
-const boxedStyle = ({
-  theme,
-  iconSize,
-}: Partial<StyleProps> & {
-  iconSize?: IconSizeType;
-}) =>
+const boxedStyle = ({ theme }: Partial<StyleProps>) =>
   `
-    padding: ${iconSize ?? theme?.spacing.mili};
+    padding: ${theme?.spacing.centi};
     aspect-ratio: 1;
   `;
 
 export const StyledIconTextButton = styled(Button)<
   Partial<StyleProps> & {
     boxed: boolean;
-    iconSize?: IconSizeType;
   }
 >`
   gap: ${({ theme }) => theme?.spacing.mili};
-  ${({ boxed, theme, iconSize }) => boxed && boxedStyle({ theme, iconSize })};
+  ${({ boxed, theme }) => boxed && boxedStyle({ theme })};
 `;
