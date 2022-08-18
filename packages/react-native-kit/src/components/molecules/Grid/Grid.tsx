@@ -29,6 +29,7 @@ const Grid = ({
       >
         {React.Children.map(children, (child, index) => (
           <GridItem
+            key={`child-${index}`}
             columns={columns}
             span={flatLayout[index]}
             spacing={spacing}
@@ -52,11 +53,12 @@ const Grid = ({
       ]}
       {...rest}
     >
-      {React.Children.map(children, child => {
+      {React.Children.map(children, (child, index) => {
         return React.cloneElement(child, {
           ...child?.props,
           columns,
           spacing: child?.props.spacing ?? spacing,
+          key: `child-${index}`,
         });
       })}
     </View>
