@@ -180,7 +180,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
           .slice(0, -2);
       }
     } else {
-      if (value === undefined) return _placeholder;
+      if (!value) return _placeholder;
       const selectedOption = selectOptions?.find(
         (option, index) =>
           keyExtractor(option, index) == keyExtractor(value as Data, index)
