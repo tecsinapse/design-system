@@ -2,14 +2,13 @@ import {
   FontColor,
   FontWeight,
   LabelPositionOptions,
-  PressableSurface,
-  PressableSurfaceProps,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
+import { Pressable, PressableProps } from 'react-native';
 import { TextNativeProps } from '../../atoms/Text';
 import { StyledLabel } from './styled';
 
-export interface LabelComponentProps extends PressableSurfaceProps {
+export interface LabelComponentProps extends PressableProps {
   label: string;
   labelPosition: LabelPositionOptions;
   labelProps?: TextNativeProps;
@@ -31,7 +30,7 @@ const LabelComponent: FC<LabelComponentProps> = ({
     active && !switchDisabled ? 'bold' : 'regular';
 
   return (
-    <PressableSurface effect={'none'} {...rest}>
+    <Pressable {...rest}>
       <StyledLabel
         labelPosition={labelPosition}
         fontColor={labelProps?.fontColor ?? defaultFontColor}
@@ -40,7 +39,7 @@ const LabelComponent: FC<LabelComponentProps> = ({
       >
         {label}
       </StyledLabel>
-    </PressableSurface>
+    </Pressable>
   );
 };
 

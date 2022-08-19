@@ -165,7 +165,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
     if (Array.isArray(value)) {
       if (value.length === 0) return _placeholder;
       else {
-        let options =
+        const options =
           selectOptions.length > 0 ? selectOptions : (value as Data[]);
         return options
           ?.reduce(
