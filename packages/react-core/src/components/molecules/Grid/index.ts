@@ -62,3 +62,5 @@ export interface IGridItem {
   /** Used to wrap children in a View when its style extrapolates the dimensions*/
   wrapper?: boolean;
 }
+
+export * from './functions';

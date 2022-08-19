@@ -1,7 +1,13 @@
 import React from 'react';
-import { IGridItem, useTheme, Breakpoints } from '@tecsinapse/react-core';
+import {
+  IGridItem,
+  useTheme,
+  Breakpoints,
+  getGridItemColumSpan,
+  getGridItemPadding,
+} from '@tecsinapse/react-core';
 import { useBreakpoints } from '@tecsinapse/react-web-kit';
-import { getPadding, getSpan } from './functions';
+import { getSpan } from './functions';
 
 export type Span = Pick<Breakpoints, 'sm'> & Partial<Omit<Breakpoints, 'sm'>>;
 
@@ -62,11 +68,11 @@ const GridItem = ({
     justifyContent,
     flex,
     boxSizing: 'border-box',
-    flexBasis: flexBasis ?? `${100 / (columns / span)}%`,
-    paddingTop: getPadding('top', _spacing, spacing),
-    paddingBottom: getPadding('bottom', _spacing, spacing),
-    paddingRight: getPadding('right', _spacing, spacing),
-    paddingLeft: getPadding('left', _spacing, spacing),
+    flexBasis: flexBasis ?? `${getGridItemColumSpan(columns, span)}%`,
+    paddingTop: getGridItemPadding('top', _spacing, spacing),
+    paddingBottom: getGridItemPadding('bottom', _spacing, spacing),
+    paddingRight: getGridItemPadding('right', _spacing, spacing),
+    paddingLeft: getGridItemPadding('left', _spacing, spacing),
   };
 
   const clone = React.cloneElement(children, {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
 import {
-  extractNumbersFromString,
   IGridItem,
-  PaddingPosition,
   useTheme,
+  getGridItemColumSpan,
+  getGridItemPadding,
 } from '@tecsinapse/react-core';
 
 export type IGridItemNative = IGridItem &
@@ -41,16 +41,6 @@ const GridItem = ({
     return loadingComponent;
   }
 
-  const getPadding = (pos: PaddingPosition) => {
-    if (_spacing) {
-      if (typeof _spacing === 'string')
-        return extractNumbersFromString(spacing[_spacing]);
-      else if (typeof _spacing === 'object' && _spacing[pos]) {
-        return extractNumbersFromString(spacing[_spacing[pos]!]);
-      } else return undefined;
-    } else return undefined;
-  };
-
   const _style = {
     alignContent,
     alignItems,
@@ -61,11 +51,11 @@ const GridItem = ({
     flexShrink,
     justifyContent,
     boxSizing: 'border-box',
-    flexBasis: flexBasis ?? `${100 / (columns / span)}%`,
-    paddingTop: getPadding('top'),
-    paddingBottom: getPadding('bottom'),
-    paddingRight: getPadding('right'),
-    paddingLeft: getPadding('left'),
+    flexBasis: flexBasis ?? `${getGridItemColumSpan(columns, span)}%`,
+    paddingTop: getGridItemPadding('top', _spacing, spacing),
+    paddingBottom: getGridItemPadding('bottom', _spacing, spacing),
+    paddingRight: getGridItemPadding('right', _spacing, spacing),
+    paddingLeft: getGridItemPadding('left', _spacing, spacing),
   };
 
   const clone = React.cloneElement(children, {

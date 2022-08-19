@@ -1,24 +1,4 @@
-import {
-  extractNumbersFromString,
-  GridSpacing,
-  PaddingPosition,
-  Spacing,
-} from '@tecsinapse/react-core';
 import { Span } from './Item';
-
-export const getPadding = (
-  pos: PaddingPosition,
-  _spacing: GridSpacing | undefined,
-  themeSpacing: Spacing
-) => {
-  if (_spacing) {
-    if (typeof _spacing === 'string')
-      return extractNumbersFromString(themeSpacing[_spacing]);
-    else if (typeof _spacing === 'object' && _spacing[pos]) {
-      return extractNumbersFromString(themeSpacing[_spacing[pos] ?? '0']);
-    } else return undefined;
-  } else return undefined;
-};
 
 export const getSpan = (
   value: Span,
