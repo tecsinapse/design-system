@@ -5,6 +5,7 @@ import { LabelPositionOptions, StyleProps, Text } from '@tecsinapse/react-core';
 export const StyledDiv = webStyled('div')`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const StyledLabel = nativeStyled(Text)<

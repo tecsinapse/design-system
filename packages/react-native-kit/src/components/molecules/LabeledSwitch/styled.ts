@@ -6,6 +6,7 @@ import { Text } from '../../atoms/Text';
 export const StyledView = styled(View)`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const StyledLabel = styled(Text)<

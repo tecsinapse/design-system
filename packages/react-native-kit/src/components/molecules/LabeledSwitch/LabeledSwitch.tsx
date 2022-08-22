@@ -26,7 +26,7 @@ const LabeledSwitch: FC<LabeledSwitchNativeProps> = ({
           label={label}
           labelPosition={'left'}
           labelProps={labelProps}
-          disabled={!pressableLabel}
+          disabled={!pressableLabel || disabled}
           switchDisabled={disabled}
           onPress={() => onChange(!active)}
         />
@@ -45,7 +45,7 @@ const LabeledSwitch: FC<LabeledSwitchNativeProps> = ({
           label={label}
           labelPosition={'right'}
           labelProps={labelProps}
-          disabled={!pressableLabel}
+          disabled={!pressableLabel || disabled}
           switchDisabled={disabled}
           onPress={() => onChange(!active)}
         />

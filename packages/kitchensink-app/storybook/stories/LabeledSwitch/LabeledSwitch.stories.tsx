@@ -12,6 +12,7 @@ storiesOf('LabeledSwitch', module)
 const Component = () => {
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(true);
+
   return (
     <>
       <LabeledSwitch
@@ -27,6 +28,18 @@ const Component = () => {
         label={'Labeled switch with pressable label'}
         labelPosition={select('labelPosition', ['left', 'right'], 'right')}
         pressableLabel={true}
+      />
+      <Divider linePosition="bottom" style={{ margin: 16 }} />
+      <LabeledSwitch
+        active={true}
+        onChange={() => {}}
+        label={'Labeled switch with pressable label disabled and two lines'}
+        labelPosition={select('labelPosition', ['left', 'right'], 'right')}
+        pressableLabel={true}
+        disabled={true}
+        labelProps={{
+          numberOfLines: 2,
+        }}
       />
     </>
   );
