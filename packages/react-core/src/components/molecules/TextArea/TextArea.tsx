@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { FontStackType, FontWeightType } from '../../../types/defaults';
-import { Hint, InputContainerProps, InputElementProps } from '../../atoms/Input';
+import { FontStackType, FontWeightType } from '@tecsinapse/react-core';
+import {
+  Hint,
+  InputContainerProps,
+  InputElementProps,
+} from '../../atoms/Input';
 import { Text, TextProps } from '../../atoms/Text';
 import { StyledInputContainer } from './styled';
 

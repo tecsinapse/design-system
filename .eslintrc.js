@@ -10,7 +10,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     'plugin:prettier/recommended',
-    //'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
   ],

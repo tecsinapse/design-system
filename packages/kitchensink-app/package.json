@@ -31,8 +31,8 @@
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/runtime": "^7.15.4",
+    "@babel/core": "^7.18.13",
+    "@babel/runtime": "^7.18.9",
     "@react-native-community/eslint-config": "^1.1.0",
     "@storybook/addon-actions": "^5.3.21",
     "@storybook/addon-knobs": "^5.3.21",

@@ -21,7 +21,7 @@ export interface DataGridHeaderProps<Data> {
   selectable?: boolean;
 }
 
-const Header = <Data extends unknown>({
+const Header = <Data,>({
   selectable,
   rowsCount,
   headers,

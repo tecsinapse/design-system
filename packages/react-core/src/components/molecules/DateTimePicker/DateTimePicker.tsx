@@ -7,7 +7,9 @@ import { DateTimeSelector, DateTimeSelectorProps } from '../DateTimeSelector';
 import { HintInputContainer } from '../HintInputContainer';
 import { getStyledDateTimeSelector } from './styled';
 
-export interface DateTimePickerProps extends InputContainerProps, Omit<DateTimeSelectorProps, 'style'> {
+export interface DateTimePickerProps
+  extends InputContainerProps,
+    Omit<DateTimeSelectorProps, 'style'> {
   controlComponent?: (
     onPress: () => void,
     displayValue?: string
@@ -17,9 +19,12 @@ export interface DateTimePickerProps extends InputContainerProps, Omit<DateTimeS
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
-  renderSelector: (selector: React.ReactElement, blur?: () => void) => JSX.Element|null
-  requestShowSelector: () => void
-  requestCloseSelector: () => void
+  renderSelector: (
+    selector: React.ReactElement,
+    blur?: () => void
+  ) => JSX.Element | null;
+  requestShowSelector: () => void;
+  requestCloseSelector: () => void;
 }
 
 const DateTimePicker: React.FC<DateTimePickerProps> = ({
@@ -59,7 +64,6 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   requestCloseSelector,
   ...rest
 }) => {
-  
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -67,18 +71,22 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   );
 
   const handleShowSelector = () => {
-    requestShowSelector()
+    requestShowSelector();
     handleFocus();
   };
 
   const handleChoosing = (value: Date) => {
-    onChange?.(value)
-    requestCloseSelector()
+    onChange?.(value);
+    requestCloseSelector();
   };
 
   const StyledText = getStyledTextComponent(TextComponent);
-  const displayValue = (value ? formatDate(value, format, { locale: locale }) : placeholder) || ' ';
-  const StyledDateTimeSelector = getStyledDateTimeSelector(DateTimeSelectorComponent)
+  const displayValue =
+    (value ? formatDate(value, format, { locale: locale }) : placeholder) ||
+    ' ';
+  const StyledDateTimeSelector = getStyledDateTimeSelector(
+    DateTimeSelectorComponent
+  );
 
   const dateTimeSelector = (
     <StyledDateTimeSelector
@@ -102,7 +110,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
       minuteLabel={minuteLabel}
       onChange={handleChoosing}
     />
-  )
+  );
 
   return (
     <>

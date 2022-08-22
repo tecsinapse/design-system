@@ -18,7 +18,7 @@ export const elevatedStyles = ({
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.05,
       shadowRadius: 5,
-      elevation: 2
+      elevation: 2,
     }),
   ];
 /* eslint-enable @typescript-eslint/no-explicit-any */

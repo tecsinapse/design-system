@@ -57,7 +57,7 @@ export interface DataGridProps<Data>
 }
 
 /** Note: Consider memoizing functions for a better performance */
-const DataGrid = <Data extends unknown>({
+const DataGrid = <Data,>({
   headers,
   data,
   rowKeyExtractor,
@@ -139,25 +139,21 @@ const DataGrid = <Data extends unknown>({
         {!loading ? (
           <TBody>
             {data.length > 0 ? (
-              getData(
-                data,
-                rowsCount,
-                page,
-                rowsPerPage,
-                pagination
-              ).map(item => (
-                <Row
-                  key={rowKeyExtractor(item)}
-                  rowKeyExtractor={rowKeyExtractor}
-                  handleSelect={handleSelect}
-                  selectable={selectable}
-                  headers={headers}
-                  data={item}
-                  checked={selectedRows?.some(
-                    sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
-                  )}
-                />
-              ))
+              getData(data, rowsCount, page, rowsPerPage, pagination).map(
+                item => (
+                  <Row
+                    key={rowKeyExtractor(item)}
+                    rowKeyExtractor={rowKeyExtractor}
+                    handleSelect={handleSelect}
+                    selectable={selectable}
+                    headers={headers}
+                    data={item}
+                    checked={selectedRows?.some(
+                      sel => rowKeyExtractor(sel) === rowKeyExtractor(item)
+                    )}
+                  />
+                )
+              )
             ) : (
               <tr>
                 <td colSpan={99}>{emptyPlaceholder}</td>

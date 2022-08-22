@@ -1,6 +1,6 @@
 import { Animated, Easing } from 'react-native';
 
-const ANIMATION_SPEED = 140
+const ANIMATION_SPEED = 140;
 
 export const transitionSwitch = (
   active: boolean,
@@ -8,9 +8,8 @@ export const transitionSwitch = (
   transitionValue: Animated.Value,
   animatedColor: Animated.Value
 ): void => {
+  if (translate <= 0) return;
 
-  if (translate <= 0) return
-  
   if (active) {
     Animated.timing(transitionValue, {
       toValue: translate,
@@ -23,8 +22,8 @@ export const transitionSwitch = (
       duration: ANIMATION_SPEED,
       useNativeDriver: false,
     }).start();
-    return
-  } 
+    return;
+  }
 
   Animated.timing(transitionValue, {
     toValue: 0,
@@ -37,5 +36,4 @@ export const transitionSwitch = (
     duration: ANIMATION_SPEED,
     useNativeDriver: false,
   }).start();
-
 };

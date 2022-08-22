@@ -44,16 +44,13 @@ export interface GroupButtonProps<T> {
   disableAllOptions?: boolean;
 }
 
-const GroupButton = <T extends unknown>({
-  style,
-  ...rest
-}: GroupButtonProps<T>) => {
+const GroupButton = <T,>({ style, ...rest }: GroupButtonProps<T>) => {
   return (
     <StyledGroupButton style={style}>{groupOptions(rest)}</StyledGroupButton>
   );
 };
 
-const groupOptions = <T extends unknown>({
+const groupOptions = <T,>({
   options,
   renderOption,
   renderKey,

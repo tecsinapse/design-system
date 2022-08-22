@@ -4,8 +4,8 @@ import { Animated, ViewProps } from 'react-native';
 import {
   ColorGradationType,
   ColorType,
-  ThemeProp
-} from '../../../types/defaults';
+  ThemeProp,
+} from '@tecsinapse/react-core';
 import { extractNumbersFromString } from '../../../utils';
 import { Container, Progress, Segment } from './styled';
 
@@ -54,8 +54,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const items = [...Array(segments).keys()];
 
   const segmentsRender = items.map(index => {
-    
-
     const max = segmentWidth * (index + 1);
     const min = segmentWidth * index;
     const minmax = (totalProgress - min) / (max - min);

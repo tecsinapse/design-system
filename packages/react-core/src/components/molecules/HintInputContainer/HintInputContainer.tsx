@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { Hint, InputVariantType, PressableInputContainer, PressableInputContainerProps } from '../../atoms/Input';
+import {
+  Hint,
+  InputVariantType,
+  PressableInputContainer,
+  PressableInputContainerProps,
+} from '../../atoms/Input';
 import { TextProps } from '../../atoms/Text';
 
 export interface HintInputContainerProps extends PressableInputContainerProps {

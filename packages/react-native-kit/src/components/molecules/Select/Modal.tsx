@@ -31,7 +31,6 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   options,
   keyExtractor,
   labelExtractor,
-  groupKeyExtractor,
   hideSearchBar,
   searchBarPlaceholder,
   focused,
@@ -63,39 +62,49 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     );
   }, [value, focused, setSelectedValues]);
 
-  const getData = React.useCallback((options: Data[]) => {
-    return options?.map((option, index) => ({
-      ...option,
-      _checked:
-        type === 'multi'
-          ? !!selectedValues.find(
-              value => keyExtractor(option, index) == keyExtractor(value, index)
-            )
-          : keyExtractor((selectedValues[0] || {}) as Data, index) ==
-            keyExtractor(option, index),
-    }));
-  }, [keyExtractor, selectedValues, type])
+  const getData = React.useCallback(
+    (options: Data[]) => {
+      return options?.map((option, index) => ({
+        ...option,
+        _checked:
+          type === 'multi'
+            ? !!selectedValues.find(
+                value =>
+                  keyExtractor(option, index) == keyExtractor(value, index)
+              )
+            : keyExtractor((selectedValues[0] || {}) as Data, index) ==
+              keyExtractor(option, index),
+      }));
+    },
+    [keyExtractor, selectedValues, type]
+  );
 
-  const data = React.useMemo(() => typeof options !== 'function' ? getData(options) : [], [options, getData]);
+  const data = React.useMemo(
+    () => (typeof options !== 'function' ? getData(options) : []),
+    [options, getData]
+  );
 
-  const handlePressItem = React.useCallback((option: Data) => {
-    setSelectedValues(selectedValues => {
-      if (type === 'multi') {
-        const newArr: Data[] = [];
-        let found = false;
-        for (const value of selectedValues) {
-          if (keyExtractor(value) != keyExtractor(option)) newArr.push(value);
-          else found = true;
+  const handlePressItem = React.useCallback(
+    (option: Data) => {
+      setSelectedValues(selectedValues => {
+        if (type === 'multi') {
+          const newArr: Data[] = [];
+          let found = false;
+          for (const value of selectedValues) {
+            if (keyExtractor(value) != keyExtractor(option)) newArr.push(value);
+            else found = true;
+          }
+          if (!found) newArr.push(option);
+          return newArr;
         }
-        if (!found) newArr.push(option);
-        return newArr;
-      }
-      return keyExtractor((selectedValues[0] || {}) as Data) ===
-        keyExtractor(option)
-        ? []
-        : [option];
-    });
-  }, [selectedValues, setSelectedValues, keyExtractor, type])
+        return keyExtractor((selectedValues[0] || {}) as Data) ===
+          keyExtractor(option)
+          ? []
+          : [option];
+      });
+    },
+    [selectedValues, setSelectedValues, keyExtractor, type]
+  );
 
   React.useEffect(() => {
     if (_closeOnPick && selectedValues[0] && selectedValues[0] !== value) {
@@ -109,29 +118,35 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     onSelect(
       (type === 'single' ? selectedValues[0] : selectedValues) as OnSelectArg
     );
-    close?.()
+    close?.();
   }, [selectedValues]);
 
-  const optionBuilder = React.useCallback(({ item }: ListRenderItemInfo<Data & { _checked: boolean }>) => (
-    <MemoizedOption
-      item={item}
-      type={type}
-      handlePressItem={handlePressItem}
-      labelExtractor={labelExtractor}
-    />
-  ), [])
+  const optionBuilder = React.useCallback(
+    ({ item }: ListRenderItemInfo<Data & { _checked: boolean }>) => (
+      <MemoizedOption
+        item={item}
+        type={type}
+        handlePressItem={handlePressItem}
+        labelExtractor={labelExtractor}
+      />
+    ),
+    []
+  );
 
-  const anyChecked = data.filter(item => item._checked).length
-  const dataLengthChanged = data.length
+  const anyChecked = data.filter(item => item._checked).length;
+  const dataLengthChanged = data.length;
 
-  const memoizedFlatlist = React.useMemo(() => (
-    <FlatList
-      data={data}
-      keyExtractor={keyExtractor}
-      fadingEdgeLength={200}
-      renderItem={optionBuilder}
-    />
-  ), [selectedValues, anyChecked, dataLengthChanged])
+  const memoizedFlatlist = React.useMemo(
+    () => (
+      <FlatList
+        data={data}
+        keyExtractor={keyExtractor}
+        fadingEdgeLength={200}
+        renderItem={optionBuilder}
+      />
+    ),
+    [selectedValues, anyChecked, dataLengthChanged]
+  );
 
   const titleTextModal = selectModalTitle ? (
     <TextTitleModal
@@ -180,9 +195,10 @@ const Component = <Data, Type extends 'single' | 'multi'>({
         <FetchIndicator animating={true} color={'grey'} size={'large'} />
       )}
 
-        {memoizedFlatlist}
+      {memoizedFlatlist}
 
-        { !_closeOnPick && <ModalFooter>
+      {!_closeOnPick && (
+        <ModalFooter>
           <Button
             variant={'filled'}
             color={'primary'}
@@ -193,21 +209,27 @@ const Component = <Data, Type extends 'single' | 'multi'>({
               {confirmButtonText}
             </Text>
           </Button>
-        </ModalFooter>}
+        </ModalFooter>
+      )}
     </ModalView>
   );
 };
 
 interface IOption<T> {
-  item: T & { _checked: boolean }
-  type: 'single' | 'multi'
-  labelExtractor: (option: T) => string
-  handlePressItem: (option: T) => void
+  item: T & { _checked: boolean };
+  type: 'single' | 'multi';
+  labelExtractor: (option: T) => string;
+  handlePressItem: (option: T) => void;
 }
 
-const MemoizedOption: React.FC<IOption<any>> = ({ handlePressItem, labelExtractor, item, type }) => {
+const MemoizedOption = <T,>({
+  handlePressItem,
+  labelExtractor,
+  item,
+  type,
+}: IOption<T>): JSX.Element => {
   return React.useMemo(() => {
-    const label = labelExtractor(item)
+    const label = labelExtractor(item);
     return (
       <ListItem onPress={() => handlePressItem(item)}>
         <View pointerEvents={'none'}>
@@ -234,8 +256,8 @@ const MemoizedOption: React.FC<IOption<any>> = ({ handlePressItem, labelExtracto
           )}
         </View>
       </ListItem>
-    )
-  }, [item._checked])
-}
+    );
+  }, [item._checked]);
+};
 
 export const Modal = Component;

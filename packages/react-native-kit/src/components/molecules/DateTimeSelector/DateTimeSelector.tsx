@@ -6,7 +6,10 @@ import React, { FC } from 'react';
 import { Text } from '../../atoms/Text';
 import { getLocale } from '../../../utils/date';
 
-export const DateTimeSelector: FC<DateTimeSelectorProps> = ({locale, ...rest}) => {
+export const DateTimeSelector: FC<DateTimeSelectorProps> = ({
+  locale,
+  ...rest
+}) => {
   return (
     <DateTimeSelectorCore
       {...rest}

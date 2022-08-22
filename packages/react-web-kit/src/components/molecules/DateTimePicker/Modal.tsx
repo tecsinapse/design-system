@@ -5,11 +5,9 @@ import { Backdrop, ModalContent } from './styled';
 
 const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
   onRequestClose,
-  onChange,
   children,
   ...rest
 }) => {
-
   return (
     <RNModal
       transparent
@@ -19,9 +17,7 @@ const Component: React.FC<DateTimeSelectorProps & ModalProps> = ({
       onRequestClose={onRequestClose}
     >
       <Backdrop onPress={onRequestClose} effect="none">
-        <ModalContent>
-          {children}
-        </ModalContent>
+        <ModalContent>{children}</ModalContent>
       </Backdrop>
     </RNModal>
   );

@@ -23,9 +23,8 @@ const baseStyle = ({
   `;
 };
 
-export const BadgeStyle = styled(View)<Partial<StyleProps & BadgeProps>>(
-  baseStyle
-);
+export const BadgeStyle =
+  styled(View)<Partial<StyleProps & BadgeProps>>(baseStyle);
 
 export const ViewStyled = styled(View)<Partial<StyleProps & BadgeProps>>`
   align-items: center;

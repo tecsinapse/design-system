@@ -39,7 +39,7 @@ export const stringMatcher = (
   return Array.from(tx.matchAll(r));
 };
 
-const highlightReplacer = <T extends unknown>(
+const highlightReplacer = <T,>(
   searchTerm: string,
   textToReplace: string,
   Component: React.ElementType,
@@ -66,7 +66,7 @@ const highlightReplacer = <T extends unknown>(
   });
 };
 
-export const highlight = <T extends unknown>(
+export const highlight = <T,>(
   searchTerm: string,
   textToReplace: string,
   Component: React.ElementType,

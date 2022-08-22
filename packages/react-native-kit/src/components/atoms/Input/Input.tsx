@@ -6,10 +6,10 @@ import {
   InputContainerProps,
   InputElementProps,
   RFValue,
-  useInputFocus
+  useInputFocus,
 } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import React from 'react';
+import { StyleProp, TextInput, View, ViewStyle } from 'react-native';
 import { Text } from '../Text';
 import { StyledNativeInput } from './styled';
 
@@ -20,7 +20,7 @@ export interface InputNativeProps
   inputFontWeight?: FontWeightType;
 }
 
-const Input: FC<InputNativeProps> = React.forwardRef(
+const Input = React.forwardRef<TextInput, InputNativeProps>(
   (
     {
       label,
@@ -33,7 +33,6 @@ const Input: FC<InputNativeProps> = React.forwardRef(
       leftComponent,
       rightComponent,
       disabled,
-      style,
       borderColor,
       borderColorGradation,
       inputFontStack = 'default',
@@ -59,7 +58,10 @@ const Input: FC<InputNativeProps> = React.forwardRef(
       !disabled
     );
 
-    const internalStyle: StyleProp<ViewStyle> = { minHeight: RFValue(50), ...{ inputContainerStyle }}
+    const internalStyle: StyleProp<ViewStyle> = {
+      minHeight: RFValue(50),
+      ...{ inputContainerStyle },
+    };
     const onlyLabel = label && !placeholder;
 
     return (

@@ -1,6 +1,6 @@
-import styled, { css } from "@emotion/native";
-import { hex2rgba, PressableSurface, StyleProps } from "@tecsinapse/react-core";
-import { Platform } from "react-native";
+import styled, { css } from '@emotion/native';
+import { hex2rgba, PressableSurface, StyleProps } from '@tecsinapse/react-core';
+import { Platform } from 'react-native';
 
 const isWeb = Platform.OS === 'web';
 

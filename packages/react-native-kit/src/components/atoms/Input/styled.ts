@@ -1,7 +1,5 @@
 import styled from '@emotion/native';
-import {
-  InputElement, StyleProps
-} from '@tecsinapse/react-core';
+import { InputElement, StyleProps } from '@tecsinapse/react-core';
 import { Font, fontStyles } from '../Text/styled';
 import { InputNativeProps } from './Input';
 

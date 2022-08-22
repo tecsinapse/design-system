@@ -7,14 +7,14 @@ import {
   FontColorType,
   FontStackType,
   FontWeightType,
-  TypographyVariationType
-} from '../../../../types/defaults';
+  TypographyVariationType,
+} from '@tecsinapse/react-core';
 import { Text, TextProps } from '../../Text';
 import {
   StyledBorderKeeper,
   StyledIconContent,
   StyledInputContainer,
-  StyledLabelContainer
+  StyledLabelContainer,
 } from '../styled';
 
 export type InputVariantType = 'default' | 'error' | 'success';

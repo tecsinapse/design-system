@@ -84,7 +84,7 @@ export const Snackbar: React.FC<SnackbarProps> = ({
       anchor={anchor}
       anchorDistance={anchorDistance}
       visible={open}
-      style={[{ opacity: (fadeAnim as unknown) as number }, style]}
+      style={[{ opacity: fadeAnim as unknown as number }, style]}
       timeout={timeout}
     >
       <StyledContainerFlexRow>

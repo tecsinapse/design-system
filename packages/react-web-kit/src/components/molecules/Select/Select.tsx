@@ -1,7 +1,7 @@
 import {
   PressableInputContainer,
   Text,
-  TextProps
+  TextProps,
 } from '@tecsinapse/react-core';
 import React from 'react';
 import { Transition } from 'react-transition-group';
@@ -12,7 +12,7 @@ import { getDisplayValue } from './functions';
 import {
   RightComponent,
   StyledContainer,
-  StyledInputContainer
+  StyledInputContainer,
 } from './styled';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'>
@@ -60,9 +60,10 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
   useClickAwayListener(refDropDown, setDropDownVisible);
 
   const onlyLabel = label && !placeholder;
-  const hasValue = type === 'single' ? !!value : ((value || []) as []).length > 0
-  const _placeholder = onlyLabel ? label : placeholder
-  const _label = hasValue ? label : undefined
+  const hasValue =
+    type === 'single' ? !!value : ((value || []) as []).length > 0;
+  const _placeholder = onlyLabel ? label : placeholder;
+  const _label = hasValue ? label : undefined;
 
   const displayValue = getDisplayValue<Data>(
     type,
@@ -73,9 +74,10 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     labelExtractor
   );
 
-  const onPress = React.useCallback(() => setDropDownVisible(prev => !prev), [
-    setDropDownVisible,
-  ]);
+  const onPress = React.useCallback(
+    () => setDropDownVisible(prev => !prev),
+    [setDropDownVisible]
+  );
 
   return (
     <StyledContainer ref={refDropDown} {...rest}>

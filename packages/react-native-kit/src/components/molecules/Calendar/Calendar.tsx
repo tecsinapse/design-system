@@ -1,4 +1,8 @@
-import { Calendar as CalendarCore, CalendarProps, SelectionType } from '@tecsinapse/react-core';
+import {
+  Calendar as CalendarCore,
+  CalendarProps,
+  SelectionType,
+} from '@tecsinapse/react-core';
 import React from 'react';
 import { getLocale } from '../../../utils/date';
 import { Text } from '../../atoms/Text';

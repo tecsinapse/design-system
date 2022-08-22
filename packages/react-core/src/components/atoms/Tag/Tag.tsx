@@ -43,7 +43,7 @@ const Tag: React.FC<TagProps> = ({
     <StyledTagContainer
       {...rest}
       variant={variant}
-      style={[{ opacity: (fadeAnim as unknown) as number }, style]}
+      style={[{ opacity: fadeAnim as unknown as number }, style]}
       visible={!dismiss}
     >
       {icon && (

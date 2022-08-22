@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react';
 import { ThemeProp } from '@tecsinapse/react-core';
-import React, { FC, useCallback, useEffect } from 'react';
-import { StyleProp, TextInputProps, TextStyle } from 'react-native';
+import React, { useCallback, useEffect } from 'react';
+import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
 import { StyledInputElement } from '../styled';
 import { MaskType, useStringMask } from '../hooks/useStringMask';
 import { CurrencyOptions, useNumberMask } from '../hooks/useNumberMask';
@@ -24,10 +24,9 @@ export interface InputMaskElementProps
   mask?: (MaskType[] | ((value: string) => MaskType[])) | CurrencyOptions;
   onFocus?: () => void;
   onBlur?: () => void;
-  ref?: React.Ref<any>;
 }
 
-const InputMaskElement: FC<InputMaskElementProps> = React.forwardRef(
+const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
   (
     {
       onChange,
@@ -38,7 +37,7 @@ const InputMaskElement: FC<InputMaskElementProps> = React.forwardRef(
       mask,
       ...rest
     },
-    ref: React.Ref<any>
+    ref
   ): JSX.Element => {
     const theme = useTheme() as ThemeProp;
 

@@ -67,7 +67,18 @@ export {
   DateTimeSelectorMode,
   DateTimeSelectorProps,
 } from './components/molecules/DateTimeSelector';
-export * from './components/molecules/Grid';
+export {
+  GridSpacing,
+  IGridItem,
+  getGridItemPadding,
+  getGridItemColumSpan,
+  IGrid,
+  FlexAlignBase,
+  FlexAlignType,
+  FlexPositioning,
+  FlexSpacing,
+  PaddingPosition,
+} from './components/molecules/Grid';
 export {
   HintInputContainer,
   HintInputContainerProps,

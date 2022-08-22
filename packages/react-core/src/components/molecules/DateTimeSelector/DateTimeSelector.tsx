@@ -99,7 +99,6 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
   value,
   onChange,
   mode = 'date',
-  format,
   locale,
   upperDateThreshold: _upperDateThreshold,
   lowerDateThreshold: _lowerDateThreshold,

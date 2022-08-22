@@ -7,21 +7,26 @@ import { CalendarProps, DateRange, SelectionType } from '../Calendar';
 import { HintInputContainer } from '../HintInputContainer';
 import { CalendarIcon, getStyledTextComponent } from './styled';
 
-export interface DatePickerProps<T extends SelectionType> extends InputContainerProps, Omit<CalendarProps<T>, 'style'> {
+export interface DatePickerProps<T extends SelectionType>
+  extends InputContainerProps,
+    Omit<CalendarProps<T>, 'style'> {
   controlComponent?: (
     onPress: () => void,
     displayValue?: string
   ) => JSX.Element;
   TextComponent?: React.FC<TextProps>;
-  CalendarComponent: React.FC<CalendarProps<T>>
+  CalendarComponent: React.FC<CalendarProps<T>>;
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
   format?: string;
   closeOnPick?: boolean;
-  renderCalendar: (calendar: React.ReactElement, blur?: () => void) => JSX.Element|null
-  requestShowCalendar: () => void
-  requestCloseCalendar: () => void
+  renderCalendar: (
+    calendar: React.ReactElement,
+    blur?: () => void
+  ) => JSX.Element | null;
+  requestShowCalendar: () => void;
+  requestCloseCalendar: () => void;
 }
 
 function DatePicker<T extends SelectionType>({
@@ -51,7 +56,6 @@ function DatePicker<T extends SelectionType>({
   requestCloseCalendar,
   ...rest
 }: DatePickerProps<T>): JSX.Element {
-  
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,
@@ -59,7 +63,7 @@ function DatePicker<T extends SelectionType>({
   );
 
   const handleShowCalendar = React.useCallback(() => {
-    requestShowCalendar()
+    requestShowCalendar();
     handleFocus();
   }, [handleFocus, requestShowCalendar]);
 
@@ -99,7 +103,7 @@ function DatePicker<T extends SelectionType>({
       onChange={onChange}
       locale={locale}
     />
-  )
+  );
 
   return (
     <>

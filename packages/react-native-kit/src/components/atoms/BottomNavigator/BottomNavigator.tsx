@@ -22,12 +22,9 @@ function BottomNavigator<T extends string | number | symbol>({
   return (
     <StyledView {...rest}>
       {React.Children.map(children, child => {
-        const {
-          value,
-          label,
-          labelProps,
-          labelElement,
-        } = (child as React.ReactElement<BottomNavigatorItemProps<T>>).props;
+        const { value, label, labelProps, labelElement } = (
+          child as React.ReactElement<BottomNavigatorItemProps<T>>
+        ).props;
         const isSelected = value == selected;
 
         return (

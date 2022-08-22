@@ -59,9 +59,10 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
     !aux ? onSelect(auxArray as OnSelectArg) : onSelect(items as OnSelectArg);
   }, [options, setCheckedAll, onSelect]);
 
-  const onChange = React.useCallback(text => setSearchArg(text), [
-    setSearchArg,
-  ]);
+  const onChange = React.useCallback(
+    text => setSearchArg(text),
+    [setSearchArg]
+  );
 
   return (
     <StyledContainerDropdown

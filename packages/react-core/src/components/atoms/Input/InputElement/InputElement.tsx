@@ -1,7 +1,7 @@
 import { useTheme } from '@emotion/react';
 import { ThemeProp } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
-import { StyleProp, TextInputProps, TextStyle } from 'react-native';
+import React from 'react';
+import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
 import { StyledInputElement } from '../styled';
 
 export interface InputElementProps
@@ -13,10 +13,9 @@ export interface InputElementProps
   onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
-  ref?: React.Ref<any>;
 }
 
-const InputElement: FC<InputElementProps> = React.forwardRef(
+const InputElement = React.forwardRef<TextInput, InputElementProps>(
   (
     {
       onChange,
@@ -26,7 +25,7 @@ const InputElement: FC<InputElementProps> = React.forwardRef(
       placeholderTextColor,
       ...rest
     },
-    ref: React.Ref<any>
+    ref
   ): JSX.Element => {
     const theme = useTheme() as ThemeProp;
     const _placeholderColor = placeholderTextColor || theme.font.color.dark;

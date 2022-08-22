@@ -1,7 +1,10 @@
-import styled, { css } from "@emotion/native";
-import { DateTimeSelectorProps, PressableSurface, RFValueStr, StyleProps } from "@tecsinapse/react-core";
-import { FC } from "react";
-import { Platform } from "react-native";
+import styled, { css } from '@emotion/native';
+import {
+  PressableSurface,
+  RFValueStr,
+  StyleProps,
+} from '@tecsinapse/react-core';
+import { Platform } from 'react-native';
 
 const isWeb = Platform.OS === 'web';
 

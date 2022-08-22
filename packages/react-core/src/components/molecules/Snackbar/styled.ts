@@ -32,7 +32,9 @@ const anchorTop = ({
   return (
     anchor === 'top' &&
     css`
-      top: ${anchorDistance ? `${RFValue(anchorDistance)}px` : theme.spacing.deca};
+      top: ${anchorDistance
+        ? `${RFValue(anchorDistance)}px`
+        : theme.spacing.deca};
     `
   );
 };
@@ -45,7 +47,9 @@ const anchorBottom = ({
   return (
     anchor === 'bottom' &&
     css`
-      bottom: ${anchorDistance ? `${RFValue(anchorDistance)}px` : theme.spacing.deca};
+      bottom: ${anchorDistance
+        ? `${RFValue(anchorDistance)}px`
+        : theme.spacing.deca};
     `
   );
 };

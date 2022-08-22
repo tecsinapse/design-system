@@ -1,14 +1,12 @@
 import styled from '@emotion/native';
 import { Animated } from 'react-native';
-import { StyleProps } from '../../../types/defaults';
+import { StyleProps } from '@tecsinapse/react-core';
 import { RFValueStr } from '../../../utils';
 
-export const SWITCH_BODY_WIDTH = '40px'
-export const SWITCH_PIN_WIDTH = '16px'
+export const SWITCH_BODY_WIDTH = '40px';
+export const SWITCH_PIN_WIDTH = '16px';
 
-export const StyledSwitchContent = styled(Animated.View)<
-  Partial<StyleProps>
->`
+export const StyledSwitchContent = styled(Animated.View)<Partial<StyleProps>>`
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: 0 ${({ theme }) => theme.spacing.micro};
   justify-content: center;

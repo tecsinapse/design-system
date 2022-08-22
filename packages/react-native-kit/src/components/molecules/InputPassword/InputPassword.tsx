@@ -1,10 +1,11 @@
 import { InputPasswordIcon } from '@tecsinapse/react-core';
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Input, InputNativeProps } from '../../atoms/Input';
+import { TextInput } from 'react-native';
 
 export type InputPasswordNativeProps = InputNativeProps;
 
-const InputPassword: FC<InputPasswordNativeProps> = React.forwardRef(
+const InputPassword = React.forwardRef<TextInput, InputPasswordNativeProps>(
   ({ rightComponent, ...rest }, ref) => {
     const [revealed, setRevealed] = useState(false);
     return (

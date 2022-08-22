@@ -63,4 +63,4 @@ export interface IGridItem {
   wrapper?: boolean;
 }
 
-export * from './functions';
+export { getGridItemColumSpan, getGridItemPadding } from './functions';
