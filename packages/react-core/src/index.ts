@@ -39,7 +39,6 @@ export {
   useInputFocus,
   useNumberMask,
   useStringMask,
-  disabledInputStyles,
 } from './components/atoms/Input';
 export { Paper, PaperProps } from './components/atoms/Paper';
 export {
@@ -68,21 +67,26 @@ export {
   DateTimeSelectorMode,
   DateTimeSelectorProps,
 } from './components/molecules/DateTimeSelector';
-export { InputPasswordIcon } from './components/molecules/InputPassword';
-export { Snackbar, SnackbarProps } from './components/molecules/Snackbar';
+export { Grid, GridItem, IGrid, IGridItem } from './components/molecules/Grid';
 export {
   HintInputContainer,
   HintInputContainerProps,
 } from './components/molecules/HintInputContainer';
 export {
+  IconComponent,
+  IconPositionOptions,
+  IconTextButtonProps,
+} from './components/molecules/IconTextButton';
+export { InputPasswordIcon } from './components/molecules/InputPassword';
+export { Snackbar, SnackbarProps } from './components/molecules/Snackbar';
+export {
   TextArea,
-  TextAreaProps,
   TextAreaInputBase,
+  TextAreaProps,
 } from './components/molecules/TextArea';
-export * from './components/molecules/Grid';
+export * from './hooks';
 export * from './styles/definitions';
 export * from './styles/light';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './types/defaults';
 export * from './utils';
-export * from './hooks';
