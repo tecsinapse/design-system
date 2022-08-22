@@ -1,34 +1,21 @@
 import React from 'react';
+import { View, ViewProps } from 'react-native';
 import {
   IGridItem,
   useTheme,
-  Breakpoints,
   getGridItemColumSpan,
   getGridItemPadding,
 } from '@tecsinapse/react-core';
-import { useBreakpoints } from '@tecsinapse/react-web-kit';
-import { getSpan } from './functions';
 
-export type Span = Pick<Breakpoints, 'sm'> & Partial<Omit<Breakpoints, 'sm'>>;
-
-export interface IGridItemWeb
-  extends Omit<IGridItem, 'span'>,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
-  /** At least sm should exist */
-  span: number | Span;
-  /** Only specify this property if the GridItem will be 'dynamic', adjusting itself to content. Use this with `wrapper` for better result. */
-  flexBasis?:
-    | string
-    | 'content'
-    | 'auto'
-    | 'max-content'
-    | 'min-content'
-    | 'fit-content';
-}
+export type IGridItemNative = IGridItem &
+  ViewProps & {
+    /** Only specify this property if the GridItem will be 'dynamic', adjusting itself to content. Use this with `wrapper` for better result. */
+    flexBasis?: string | 'auto';
+  };
 
 const GridItem = ({
   children,
-  span: _span,
+  span,
   columns = 12,
   loadingComponent,
   loading = false,
@@ -45,9 +32,8 @@ const GridItem = ({
   flexBasis,
   style,
   ...rest
-}: IGridItemWeb): JSX.Element => {
+}: IGridItemNative): JSX.Element => {
   const { spacing } = useTheme();
-  const { sm, md, lg } = useBreakpoints();
   if (!React.Children.only(children)) {
     throw new Error('The number of children in GridItem should be one');
   }
@@ -55,18 +41,15 @@ const GridItem = ({
     return loadingComponent;
   }
 
-  const span = typeof _span === 'number' ? _span : getSpan(_span, sm, md, lg);
-
-  const _style: React.CSSProperties = {
-    ...style,
+  const _style = {
     alignContent,
     alignItems,
     alignSelf,
+    flex,
     flexDirection,
     flexGrow,
     flexShrink,
     justifyContent,
-    flex,
     boxSizing: 'border-box',
     flexBasis: flexBasis ?? `${getGridItemColumSpan(columns, span)}%`,
     paddingTop: getGridItemPadding('top', _spacing, spacing),
@@ -83,9 +66,9 @@ const GridItem = ({
   });
 
   return wrapper ? (
-    <div {...rest} style={_style}>
+    <View {...rest} style={[style, _style]}>
       {clone}
-    </div>
+    </View>
   ) : (
     clone
   );

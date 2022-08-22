@@ -53,3 +53,4 @@ export {
 } from './components/molecules/InputPassword';
 export { Select, SelectNativeProps } from './components/molecules/Select';
 export { Snackbar, SnackbarNativeProps } from './components/molecules/Snackbar';
+export { Grid, GridItem } from './components/molecules/Grid';

@@ -32,6 +32,7 @@ storiesOf('Grid', module)
               left: 'nano',
               right: 'nano',
             }}
+            wrapper
           >
             <Input value={''} onChange={() => {}} />
           </GridItem>
@@ -43,10 +44,11 @@ storiesOf('Grid', module)
               left: 'nano',
               right: 'nano',
             }}
+            wrapper
           >
             <Input value={''} onChange={() => {}} />
           </GridItem>
-          <GridItem span={12}>
+          <GridItem span={12} wrapper>
             <Input value={''} onChange={() => {}} />
           </GridItem>
           <GridItem span={12} wrapper>
@@ -96,6 +98,20 @@ storiesOf('Grid', module)
               confirmButtonText={'Confirmar'}
               keyExtractor={item => String(item.key)}
             />
+          </GridItem>
+          <GridItem span={6} wrapper flexGrow={2} flexBasis={'auto'}>
+            <View
+              style={{ backgroundColor: 'red', height: 50, width: '100%' }}
+            ></View>
+          </GridItem>
+          <GridItem
+            span={6}
+            wrapper
+            flexGrow={1}
+            flexShrink={1}
+            flexBasis={'auto'}
+          >
+            <View style={{ backgroundColor: 'red', height: 50 }}></View>
           </GridItem>
         </Grid>
       </>

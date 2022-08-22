@@ -1,6 +1,7 @@
 import {
   BorderRadius,
   BorderWidth,
+  Breakpoints,
   FontColor,
   FontStack,
   FontWeight,
@@ -179,3 +180,9 @@ export type IconType =
   | 'antdesign'
   | 'font-awesome-5'
   | string;
+
+export const breakpoints: Breakpoints = {
+  sm: 480,
+  md: 768,
+  lg: 1366,
+};
