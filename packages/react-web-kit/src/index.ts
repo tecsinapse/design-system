@@ -29,7 +29,7 @@ export {
   WebDateTimePickerProps,
 } from './components/molecules/DateTimePicker';
 export { Drawer, DrawerProps } from './components/molecules/Drawer';
-export { Grid, GridItem, IGrid, IGridItem } from './components/molecules/Grid';
+export { Grid, GridItem, IGridWeb, IGridItemWeb } from './components/molecules/Grid';
 export {
   InputPassword,
   InputPasswordWebProps,

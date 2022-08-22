@@ -2,6 +2,7 @@ import { ThemeProp } from '../types/defaults';
 import {
   borderRadius,
   borderWidth,
+  breakpoints,
   fontColor,
   fontFiles,
   fontStack,
@@ -51,4 +52,5 @@ export const lightTheme: ThemeProp = {
     files: fontFiles,
   },
   zIndex,
+  breakpoints,
 };

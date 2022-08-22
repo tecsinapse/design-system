@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type Color = {
   primary: ColorGradation;
   secondary: ColorGradation;
@@ -107,6 +109,12 @@ export type FontWeight = {
   black: string;
 };
 
+export type Breakpoints = {
+  sm: number;
+  md: number;
+  lg: number;
+};
+
 export type ThemeProp = {
   color: Color;
   miscellaneous: Miscellaneous;
@@ -122,10 +130,12 @@ export type ThemeProp = {
     files: FontWeight;
   };
   zIndex: ZIndex;
+  /** Designed to web */
+  breakpoints: Breakpoints;
 };
 
 export interface ThemeProviderProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   theme: ThemeProp;
 }
 

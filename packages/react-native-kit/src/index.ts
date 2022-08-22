@@ -57,3 +57,4 @@ export {
 } from './components/molecules/LabeledSwitch';
 export { Select, SelectNativeProps } from './components/molecules/Select';
 export { Snackbar, SnackbarNativeProps } from './components/molecules/Snackbar';
+export { Grid, GridItem } from './components/molecules/Grid';
