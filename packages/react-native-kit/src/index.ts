@@ -44,6 +44,10 @@ export {
 } from './components/molecules/DateTimePicker';
 export { DateTimeSelector } from './components/molecules/DateTimeSelector';
 export {
+  IconTextButton,
+  NativeIconTextButtonProps,
+} from './components/molecules/IconTextButton';
+export {
   InputPassword,
   InputPasswordNativeProps,
 } from './components/molecules/InputPassword';

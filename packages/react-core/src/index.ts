@@ -80,6 +80,13 @@ export {
 } from './components/molecules/LabeledSwitch';
 export { Snackbar, SnackbarProps } from './components/molecules/Snackbar';
 export {
+  IconComponent,
+  IconPositionOptions,
+  IconTextButtonProps,
+} from './components/molecules/IconTextButton';
+export { InputPasswordIcon } from './components/molecules/InputPassword';
+export { Snackbar, SnackbarProps } from './components/molecules/Snackbar';
+export {
   TextArea,
   TextAreaInputBase,
   TextAreaProps,

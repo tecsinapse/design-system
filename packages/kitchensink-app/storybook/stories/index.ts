@@ -11,6 +11,7 @@ import './Grid/Grid.stories';
 import './GroupButton/GroupButton.stories';
 import './Header/Header.stories';
 import './Icon/Icon.stories';
+import './IconTextButton/IconTextButton.stories';
 import './Input/Input.stories';
 import './InputMask/InputMask.stories';
 import './InputPassword/InputPassword.stories';
