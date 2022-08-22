@@ -15,6 +15,7 @@ import './IconTextButton/IconTextButton.stories';
 import './Input/Input.stories';
 import './InputMask/InputMask.stories';
 import './InputPassword/InputPassword.stories';
+import './LabeledSwitch/LabeledSwitch.stories';
 import './Modal/Modal.stories';
 import './Paper/Paper.stories';
 import './Progress/ProgressBar.stories';
@@ -27,4 +28,3 @@ import './Switch/Switch.stories';
 import './Tag/Tag.stories';
 import './Text/Text.stories';
 import './TextArea/TextArea.stories';
-

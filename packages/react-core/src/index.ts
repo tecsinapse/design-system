@@ -25,6 +25,7 @@ export {
 } from './components/atoms/GroupButton';
 export { Icon, IconProps } from './components/atoms/Icon';
 export {
+  disabledInputStyles,
   Hint,
   InputContainer,
   InputContainerProps,
@@ -78,6 +79,10 @@ export {
   IconTextButtonProps,
 } from './components/molecules/IconTextButton';
 export { InputPasswordIcon } from './components/molecules/InputPassword';
+export {
+  LabeledSwitchProps,
+  LabelPositionOptions,
+} from './components/molecules/LabeledSwitch';
 export { Snackbar, SnackbarProps } from './components/molecules/Snackbar';
 export {
   TextArea,
