@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.7...@tecsinapse/react-web-kit@1.19.0) (2022-08-24)
+
+
+### Bug Fixes
+
+* change PressableSurface with Pressable on LabeledSwitch label ([5029a74](https://github.com/tecsinapse/design-system/commit/5029a74bfc272f5aecb3bdae9152f0920a36c8bb))
+* LabeledSwitch disabled and react-core exports ([855f12f](https://github.com/tecsinapse/design-system/commit/855f12f0dff1ce4c5969eba723707340e60a3310))
+* merge ([b32e31d](https://github.com/tecsinapse/design-system/commit/b32e31d0a73a0ec3d20d65aa672e198fd874997a))
+
+
+### Features
+
+* grid web responsive support ([4111063](https://github.com/tecsinapse/design-system/commit/411106311d37d62bae4736c07f71038d5564319c))
+* grid web responsive support ([fd91539](https://github.com/tecsinapse/design-system/commit/fd91539dae6df151beeb48ce3749623e2bb4dedc))
+* LabeledSwitch implementation. ([519fe87](https://github.com/tecsinapse/design-system/commit/519fe8769d687f15af09c9fb77fe98a727f9078b))
+
+
+
+
+
 ## [1.18.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.18.6...@tecsinapse/react-web-kit@1.18.7) (2022-08-18)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.17.4...@tecsinapse/react-core@1.18.0) (2022-08-24)
+
+
+### Bug Fixes
+
+* change PressableSurface with Pressable on LabeledSwitch label ([5029a74](https://github.com/tecsinapse/design-system/commit/5029a74bfc272f5aecb3bdae9152f0920a36c8bb))
+* LabeledSwitch disabled and react-core exports ([855f12f](https://github.com/tecsinapse/design-system/commit/855f12f0dff1ce4c5969eba723707340e60a3310))
+* merge code ([d828e38](https://github.com/tecsinapse/design-system/commit/d828e388fbb17b6e561c3799043036aeee29c4ab))
+
+
+### Features
+
+* grid web responsive support ([4111063](https://github.com/tecsinapse/design-system/commit/411106311d37d62bae4736c07f71038d5564319c))
+* grid web responsive support ([fd91539](https://github.com/tecsinapse/design-system/commit/fd91539dae6df151beeb48ce3749623e2bb4dedc))
+* LabeledSwitch implementation. ([519fe87](https://github.com/tecsinapse/design-system/commit/519fe8769d687f15af09c9fb77fe98a727f9078b))
+
+
+
+
+
 ## [1.17.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.17.3...@tecsinapse/react-core@1.17.4) (2022-08-18)
 
 **Note:** Version bump only for package @tecsinapse/react-core
