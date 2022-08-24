@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.18.6...@tecsinapse/kitchensink-app@1.19.0) (2022-08-24)
+
+
+### Bug Fixes
+
+* LabeledSwitch disabled and react-core exports ([855f12f](https://github.com/tecsinapse/design-system/commit/855f12f0dff1ce4c5969eba723707340e60a3310))
+* native grid extends view props ([525d923](https://github.com/tecsinapse/design-system/commit/525d923137388996fa67b17b019abb6ad77ccf95))
+
+
+### Features
+
+* LabeledSwitch implementation. ([519fe87](https://github.com/tecsinapse/design-system/commit/519fe8769d687f15af09c9fb77fe98a727f9078b))
+
+
+
+
+
+## [1.18.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.18.5...@tecsinapse/kitchensink-app@1.18.6) (2022-08-19)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
+## [1.18.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.18.4...@tecsinapse/kitchensink-app@1.18.5) (2022-08-18)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
+## [1.18.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.18.3...@tecsinapse/kitchensink-app@1.18.4) (2022-08-12)
+
+**Note:** Version bump only for package @tecsinapse/kitchensink-app
+
+
+
+
+
 ## [1.18.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/kitchensink-app@1.18.2...@tecsinapse/kitchensink-app@1.18.3) (2022-08-03)
 
 **Note:** Version bump only for package @tecsinapse/kitchensink-app

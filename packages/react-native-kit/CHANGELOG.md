@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.18.6...@tecsinapse/react-native-kit@1.19.0) (2022-08-24)
+
+
+### Bug Fixes
+
+* add key to native grid children clone ([2f7d8db](https://github.com/tecsinapse/design-system/commit/2f7d8db616d79b7b48ed6192c909b53df13c759f))
+* change PressableSurface with Pressable on LabeledSwitch label ([5029a74](https://github.com/tecsinapse/design-system/commit/5029a74bfc272f5aecb3bdae9152f0920a36c8bb))
+* LabeledSwitch disabled and react-core exports ([855f12f](https://github.com/tecsinapse/design-system/commit/855f12f0dff1ce4c5969eba723707340e60a3310))
+* native grid extends view props ([525d923](https://github.com/tecsinapse/design-system/commit/525d923137388996fa67b17b019abb6ad77ccf95))
+
+
+### Features
+
+* grid web responsive support ([fd91539](https://github.com/tecsinapse/design-system/commit/fd91539dae6df151beeb48ce3749623e2bb4dedc))
+* LabeledSwitch implementation. ([519fe87](https://github.com/tecsinapse/design-system/commit/519fe8769d687f15af09c9fb77fe98a727f9078b))
+
+
+
+
+
+## [1.18.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.18.5...@tecsinapse/react-native-kit@1.18.6) (2022-08-19)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.18.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.18.4...@tecsinapse/react-native-kit@1.18.5) (2022-08-18)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.18.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.18.3...@tecsinapse/react-native-kit@1.18.4) (2022-08-12)
+
+
+### Bug Fixes
+
+* add numberOfLines into react-native-kit Select component as an optional prop ([a9b7b85](https://github.com/tecsinapse/design-system/commit/a9b7b8575a60f73020b394f8afb03901fe62efb1))
+
+
+
+
+
 ## [1.18.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.18.2...@tecsinapse/react-native-kit@1.18.3) (2022-08-03)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
