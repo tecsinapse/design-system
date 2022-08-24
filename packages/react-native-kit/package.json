@@ -14,8 +14,8 @@
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/native": "^11.0.0",
-    "@emotion/react": "^11.4.1",
+    "@emotion/native": "^11.10.0",
+    "@emotion/react": "^11.10.0",
     "@tecsinapse/react-core": "^1.17.4",
     "react-native-linear-gradient": "^2.5.6"
   },

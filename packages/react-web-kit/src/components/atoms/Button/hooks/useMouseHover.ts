@@ -1,17 +1,25 @@
 import { useCallback, useState } from 'react';
 
-export const useMouseHover = (active: boolean) => {
+export const useMouseHover = (
+  active: boolean,
+  onMouseOver?: () => void,
+  onMouseOut?: () => void
+) => {
   const [mouseOver, setMouseOver] = useState<boolean>(false);
 
-  const handleMouseOver = useCallback(() => active && setMouseOver(true), [
-    active,
-    setMouseOver,
-  ]);
+  const handleMouseOver = useCallback(() => {
+    if (active) {
+      setMouseOver(true);
+      onMouseOver?.();
+    }
+  }, [active, setMouseOver]);
 
-  const handleMouseOut = useCallback(() => active && setMouseOver(false), [
-    active,
-    setMouseOver,
-  ]);
+  const handleMouseOut = useCallback(() => {
+    if (active) {
+      setMouseOver(false);
+      onMouseOut?.();
+    }
+  }, [active, setMouseOver]);
 
   return {
     mouseOver,

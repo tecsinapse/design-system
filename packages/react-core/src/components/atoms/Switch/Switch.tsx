@@ -1,12 +1,21 @@
 import { useTheme } from '@emotion/react';
 import React, { FC, useCallback, useEffect } from 'react';
-import { Animated, LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native';
+import {
+  Animated,
+  LayoutChangeEvent,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import {
   ColorGradationType,
   ColorType,
-  ThemeProp
+  ThemeProp,
 } from '../../../types/defaults';
-import { extractNumbersFromString, lightenDarkenColor, RFValueStr } from '../../../utils';
+import {
+  extractNumbersFromString,
+  lightenDarkenColor,
+  RFValueStr,
+} from '../../../utils';
 import { PressableSurface } from '../PressableSurface';
 import { transitionSwitch } from './animation';
 import { StyledSwitch, StyledSwitchContent, SWITCH_PIN_WIDTH } from './styled';
@@ -36,19 +45,25 @@ const Switch: FC<SwitchProps> = ({
 }): JSX.Element => {
   const theme = useTheme() as ThemeProp;
 
-  const width = React.useRef(0)
-  const transitionValue = React.useRef(new Animated.Value(0)).current
-  const animatedColor = React.useRef(new Animated.Value(0)).current
-  
+  const width = React.useRef(0);
+  const transitionValue = React.useRef(new Animated.Value(0)).current;
+  const animatedColor = React.useRef(new Animated.Value(0)).current;
+
   const calculateTranslate = () => {
     if (width.current > 0) {
-      return width.current - (extractNumbersFromString(theme.spacing.micro) * 2) - (extractNumbersFromString(RFValueStr(SWITCH_PIN_WIDTH)))
+      return (
+        width.current -
+        extractNumbersFromString(theme.spacing.micro) * 2 -
+        extractNumbersFromString(RFValueStr(SWITCH_PIN_WIDTH))
+      );
     }
-    return 0
-  }
+    return 0;
+  };
 
   const getBackgroundColor = (color: string) => {
-    return disabled ? lightenDarkenColor(theme.color[inactiveColor][inactiveColorTone], 20) : color;
+    return disabled
+      ? lightenDarkenColor(theme.color[inactiveColor][inactiveColorTone], 20)
+      : color;
   };
 
   const interpolateColor = animatedColor.interpolate({
@@ -56,11 +71,11 @@ const Switch: FC<SwitchProps> = ({
     outputRange: [
       getBackgroundColor(theme.color[inactiveColor][inactiveColorTone]),
       getBackgroundColor(theme.color[activeColor][activeColorTone]),
-    ]
+    ],
   });
 
   useEffect(() => {
-    const translate = calculateTranslate()
+    const translate = calculateTranslate();
     transitionSwitch(active, translate, transitionValue, animatedColor);
   }, [active]);
 
@@ -69,10 +84,10 @@ const Switch: FC<SwitchProps> = ({
   }, [active, onChange]);
 
   const handleSwitchLayout = (lce: LayoutChangeEvent) => {
-    width.current = lce.nativeEvent.layout.width
-    const translate = calculateTranslate()
+    width.current = lce.nativeEvent.layout.width;
+    const translate = calculateTranslate();
     transitionSwitch(active, translate, transitionValue, animatedColor);
-  }
+  };
 
   return (
     <PressableSurface
@@ -81,8 +96,13 @@ const Switch: FC<SwitchProps> = ({
       effect="none"
       disabled={disabled}
     >
-      <StyledSwitchContent onLayout={handleSwitchLayout} style={{ backgroundColor: interpolateColor }}>
-        <StyledSwitch style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}/>
+      <StyledSwitchContent
+        onLayout={handleSwitchLayout}
+        style={{ backgroundColor: interpolateColor }}
+      >
+        <StyledSwitch
+          style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
+        />
       </StyledSwitchContent>
     </PressableSurface>
   );

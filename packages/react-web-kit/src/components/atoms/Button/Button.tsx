@@ -1,6 +1,7 @@
 import { ButtonProps } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import { useMouseHover } from './hooks/useMouseHover';
+import { useMousePressed } from './hooks/useMousePressed';
 import { StyledWebButton } from './styled';
 
 /**
@@ -10,6 +11,8 @@ import { StyledWebButton } from './styled';
 export type WebButtonProps = ButtonProps & {
   onMouseOver?: () => void;
   onMouseOut?: () => void;
+  onPressIn?: () => void;
+  onPressOut?: () => void;
 };
 
 const Button: FC<WebButtonProps> = ({
@@ -17,11 +20,23 @@ const Button: FC<WebButtonProps> = ({
   disabled,
   frozen,
   state,
+  variant,
+  onMouseOut,
+  onMouseOver,
+  onPressIn,
+  onPressOut,
   ...rest
 }): JSX.Element => {
   const _frozen = frozen || state === 'loading';
   const { mouseOver, handleMouseOut, handleMouseOver } = useMouseHover(
-    !disabled && !_frozen
+    !disabled && !_frozen,
+    onMouseOut,
+    onMouseOver
+  );
+  const { pressed, handlePressIn, handlePressOut } = useMousePressed(
+    !disabled && !_frozen,
+    onPressIn,
+    onPressOut
   );
 
   return (
@@ -33,6 +48,10 @@ const Button: FC<WebButtonProps> = ({
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       mouseOver={mouseOver}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+      pressed={pressed}
+      variant={variant}
     >
       {children}
     </StyledWebButton>

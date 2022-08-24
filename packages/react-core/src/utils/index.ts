@@ -1,9 +1,10 @@
-export { lightenDarkenColor } from './lightenDarkenColor';
 export {
-  extractNumbersFromString,
   extractDigitsFromString,
+  extractNumbersFromString,
 } from './extractNumbersFromString';
-export * from './IPhoneXHelper';
-export * from './ResponsiveFontSize';
-export * from './masks';
 export * from './formatWithMask';
+export * from './IPhoneXHelper';
+export { lightenDarkenColor } from './lightenDarkenColor';
+export * from './masks';
+export * from './ResponsiveFontSize';
+export * from './variantComplement';

@@ -1,33 +1,39 @@
 export * from '@tecsinapse/react-core';
-export { Header, HeaderProps } from './components/atoms/Header';
-export { Select, SelectNativeProps } from './components/molecules/Select';
-export { Input, InputNativeProps } from './components/atoms/Input';
-export { InputMask, InputMaskNativeProps } from './components/atoms/InputMask';
-export { TextArea, TextAreaProps } from './components/atoms/TextArea';
-export { Text, TextNativeProps } from './components/atoms/Text';
-export {
-  Error,
-  Loading,
-  Success,
-  Button,
-  ButtonNativeProps,
-} from './components/atoms/Button';
-export { GroupButtonOption } from './components/atoms/GroupButton';
-export {
-  InputPassword,
-  InputPasswordNativeProps,
-} from './components/molecules/InputPassword';
+export { Avatar } from './components/atoms/Avatar';
+export { Badge, BadgeNativeProps } from './components/atoms/Badge';
 export {
   BottomNavigator,
   BottomNavigatorProps,
 } from './components/atoms/BottomNavigator';
-export { Tag, TagProps } from './components/atoms/Tag';
+export {
+  Button,
+  ButtonNativeProps,
+  Error,
+  Loading,
+  Success,
+} from './components/atoms/Button';
+export { GroupButtonOption } from './components/atoms/GroupButton';
+export { Header, HeaderProps } from './components/atoms/Header';
+export { Input, InputNativeProps } from './components/atoms/Input';
+export { InputMask, InputMaskNativeProps } from './components/atoms/InputMask';
+export {
+  IBaseModal,
+  ModalGroupManager,
+  ModalLifecycleHandler,
+  ModalView,
+  useLazyModalManager,
+  useModalManager,
+  useModalRemoteControl,
+} from './components/atoms/Modal';
+export { Skeleton, SkeletonProps } from './components/atoms/Skeleton';
 export {
   SnappingSlider,
   SnappingSliderProps,
 } from './components/atoms/SnappingSlider';
-export { Badge, BadgeNativeProps } from './components/atoms/Badge';
-export { Snackbar, SnackbarNativeProps } from './components/molecules/Snackbar';
+export { Tag, TagProps } from './components/atoms/Tag';
+export { Text, TextNativeProps } from './components/atoms/Text';
+export { TextArea, TextAreaProps } from './components/atoms/TextArea';
+export { Calendar } from './components/molecules/Calendar';
 export {
   DatePicker,
   NativeDatePickerProps,
@@ -36,16 +42,19 @@ export {
   DateTimePicker,
   NativeDateTimePickerProps,
 } from './components/molecules/DateTimePicker';
-export { Avatar } from './components/atoms/Avatar';
-export { Calendar } from './components/molecules/Calendar';
 export { DateTimeSelector } from './components/molecules/DateTimeSelector';
 export {
-  ModalGroupManager,
-  ModalView,
-  ModalLifecycleHandler,
-  useLazyModalManager,
-  useModalManager,
-  useModalRemoteControl,
-  IBaseModal,
-} from './components/atoms/Modal';
-export { Skeleton, SkeletonProps } from './components/atoms/Skeleton';
+  IconTextButton,
+  NativeIconTextButtonProps,
+} from './components/molecules/IconTextButton';
+export {
+  InputPassword,
+  InputPasswordNativeProps,
+} from './components/molecules/InputPassword';
+export {
+  LabeledSwitch,
+  LabeledSwitchNativeProps,
+} from './components/molecules/LabeledSwitch';
+export { Select, SelectNativeProps } from './components/molecules/Select';
+export { Snackbar, SnackbarNativeProps } from './components/molecules/Snackbar';
+export { Grid, GridItem } from './components/molecules/Grid';
