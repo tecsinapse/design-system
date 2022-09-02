@@ -6,12 +6,11 @@ import {
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { StyledWebTextInput } from './styled';
 
-export interface InputWebProps
-  extends Omit<InputElementProps, 'style'>,
-    InputContainerProps {}
+export type InputWebProps = Omit<InputElementProps, 'style'> &
+  InputContainerProps & { ref?: React.Ref<HTMLInputElement | undefined> };
 
 const Input: FC<InputWebProps> = React.forwardRef(
   (
@@ -73,7 +72,7 @@ const Input: FC<InputWebProps> = React.forwardRef(
             {...rest}
             placeholder={onlyLabel ? label : placeholder}
             value={value}
-            ref={ref}
+            ref={ref as React.Ref<TextInput>}
             disabled={disabled}
             onFocus={handleFocus}
             onBlur={handleBlur}

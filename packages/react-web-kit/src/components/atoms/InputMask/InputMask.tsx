@@ -6,12 +6,11 @@ import {
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { StyledWebTextInputMask } from './styled';
 
-export interface InputMaskWebProps
-  extends Omit<InputMaskElementProps, 'style'>,
-    InputContainerProps {}
+export type InputMaskWebProps = Omit<InputMaskElementProps, 'style'> &
+  InputContainerProps & { ref?: React.Ref<HTMLInputElement | undefined> };
 
 const InputMask: FC<InputMaskWebProps> = React.forwardRef(
   (
@@ -73,7 +72,7 @@ const InputMask: FC<InputMaskWebProps> = React.forwardRef(
             {...rest}
             placeholder={onlyLabel ? label : placeholder}
             value={value}
-            ref={ref}
+            ref={ref as React.Ref<TextInput>}
             disabled={disabled}
             onFocus={handleFocus}
             onBlur={handleBlur}
