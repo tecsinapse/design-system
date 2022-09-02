@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.18.0...@tecsinapse/react-core@1.19.0) (2022-09-02)
+
+
+### Bug Fixes
+
+* eslint and prettier ([c897f19](https://github.com/tecsinapse/design-system/commit/c897f190c5a17cfc53721237d314fcb255f5e68e))
+
+
+
+
+
 # [1.18.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.17.4...@tecsinapse/react-core@1.18.0) (2022-08-24)
 
 
