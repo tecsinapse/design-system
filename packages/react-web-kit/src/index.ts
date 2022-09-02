@@ -1,4 +1,5 @@
 export * from '@tecsinapse/react-core';
+export { Icon, Text } from '@tecsinapse/react-core';
 export { Accordion, AccordionProps } from './components/atoms/Accordion';
 export {
   BadgeWebProps,
