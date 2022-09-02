@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.20.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.20.0...@tecsinapse/react-web-kit@1.20.1) (2022-09-02)
+
+
+### Features
+
+* web-kit also exports ESM ([68772e8](https://github.com/tecsinapse/design-system/commit/68772e857a8901e5b9302e3d8c8e5a2eb60c852f))
+
+
+
+
+
 # [1.20.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.19.0...@tecsinapse/react-web-kit@1.20.0) (2022-09-02)
 
 
