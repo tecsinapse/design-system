@@ -1,4 +1,2 @@
-export {
-  default as LabeledSwitch,
-  LabeledSwitchWebProps,
-} from './LabeledSwitch';
+export { default as LabeledSwitch } from './LabeledSwitch';
+export type { LabeledSwitchWebProps } from './LabeledSwitch';

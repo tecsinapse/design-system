@@ -1,5 +1,5 @@
 export { default as Menubar } from './Menubar';
-export {
+export type {
   OptionsType as MenubarOptionsType,
   MostUsedType as MenubarMostUsedType,
   ItemsOptions as MenubarItemsOptions,

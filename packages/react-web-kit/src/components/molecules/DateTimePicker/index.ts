@@ -1,1 +1,2 @@
-export { DateTimePicker, WebDateTimePickerProps } from './DateTimePicker';
+export { DateTimePicker } from './DateTimePicker';
+export type { WebDateTimePickerProps } from './DateTimePicker';

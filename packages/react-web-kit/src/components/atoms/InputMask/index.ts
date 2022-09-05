@@ -1,1 +1,2 @@
-export { default as InputMask, InputMaskWebProps } from './InputMask';
+export { default as InputMask } from './InputMask';
+export type { InputMaskWebProps } from './InputMask';

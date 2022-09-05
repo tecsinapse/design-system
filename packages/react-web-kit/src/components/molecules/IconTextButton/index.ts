@@ -1,4 +1,2 @@
-export {
-  default as IconTextButton,
-  WebIconTextButtonProps,
-} from './IconTextButton';
+export { default as IconTextButton } from './IconTextButton';
+export type { WebIconTextButtonProps } from './IconTextButton';

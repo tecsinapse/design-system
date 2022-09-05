@@ -1,4 +1,2 @@
-export {
-  default as InputPassword,
-  InputPasswordWebProps,
-} from './InputPassword';
+export { default as InputPassword } from './InputPassword';
+export type { InputPasswordWebProps } from './InputPassword';
