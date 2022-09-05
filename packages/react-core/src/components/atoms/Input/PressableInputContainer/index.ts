@@ -1,4 +1,2 @@
-export {
-  default as PressableInputContainer,
-  PressableInputContainerProps,
-} from './PressableInputContainer';
+export { default as PressableInputContainer } from './PressableInputContainer';
+export type { PressableInputContainerProps } from './PressableInputContainer';

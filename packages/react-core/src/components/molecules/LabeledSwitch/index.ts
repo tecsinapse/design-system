@@ -1,1 +1,1 @@
-export { LabeledSwitchProps, LabelPositionOptions } from './LabeledSwitch';
+export type { LabeledSwitchProps, LabelPositionOptions } from './LabeledSwitch';

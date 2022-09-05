@@ -1,1 +1,2 @@
-export { default as ProgressBar, ProgressBarProps } from './ProgressBar';
+export { default as ProgressBar } from './ProgressBar';
+export type { ProgressBarProps } from './ProgressBar';

@@ -16,7 +16,6 @@ module.exports = api => {
       [
         '@babel/env',
         {
-          loose: true,
           modules: false,
         },
       ],

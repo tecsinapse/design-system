@@ -1,4 +1,2 @@
-export {
-  default as PressableSurface,
-  PressableSurfaceProps,
-} from './PressableSurface';
+export { default as PressableSurface } from './PressableSurface';
+export type { PressableSurfaceProps } from './PressableSurface';

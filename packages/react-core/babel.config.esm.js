@@ -2,21 +2,11 @@ module.exports = api => {
   api.cache(true);
 
   return {
-    plugins: [
-      [
-        'module-resolver',
-        {
-          alias: {
-            '^react-native$': 'react-native-web',
-          },
-        },
-      ],
-    ],
     presets: [
       [
         '@babel/env',
         {
-          targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
+          modules: false,
         },
       ],
       [

@@ -1,5 +1,5 @@
-export {
-  default as Calendar,
+export { default as Calendar } from './Calendar';
+export type {
   CalendarProps,
   SelectionType,
   DateRange,
