@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.19.0...@tecsinapse/react-core@1.20.0) (2022-09-05)
+
+
+### Features
+
+* export core as esm ([d4879b3](https://github.com/tecsinapse/design-system/commit/d4879b3f4e2e6bc74d9eaea0ccb00adc0f39b1d7))
+
+
+
+
+
 # [1.19.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.18.0...@tecsinapse/react-core@1.19.0) (2022-09-02)
 
 
