@@ -6,6 +6,7 @@ export const getSpan = (
   md: boolean,
   lg: boolean
 ): number => {
+  if (!value) return 0;
   if (sm) return value.sm;
   if (md) return value?.md ?? value.sm;
   if (lg) return value?.lg ?? value?.md ?? value.sm;
