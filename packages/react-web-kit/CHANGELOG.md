@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.0...@tecsinapse/react-web-kit@1.21.1) (2022-09-05)
+
+
+### Bug Fixes
+
+* getSpan error when value is undefined ([5610413](https://github.com/tecsinapse/design-system/commit/56104136b17e8599b91ba0d09326e14c6db677d4))
+
+
+
+
+
 # [1.21.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.20.2...@tecsinapse/react-web-kit@1.21.0) (2022-09-05)
 
 
