@@ -183,7 +183,7 @@ const Component = <Data, Type extends 'single' | 'multi'>({
           <Input
             placeholder={searchBarPlaceholder}
             value={searchArg}
-            onChange={text => setSearchArg(text)}
+            onChange={setSearchArg}
             leftComponent={
               <SelectIcon name="search" type="ionicon" size="centi" />
             }
