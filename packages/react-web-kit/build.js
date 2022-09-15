@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 
 const esbuild = require('esbuild');
+const glob = require("glob");
 
-let jsFiles = [];
+let tsFiles = glob.sync("./src/**/*.ts");
+let tsxFiles = glob.sync("./src/**/*.tsx");
 
-var glob = require("glob");
+//console.log(tsxFiles);
 
-jsFiles = glob.sync("./src/**/*.js");
+tsxFiles.forEach(file => {
+  if(file.search('.stories.') == -1) {
+    tsFiles.push(file);
+  }
+});
 
-console.log(jsFiles);
+console.log(tsFiles);
 
 require('esbuild').build({
-    entryPoints: jsFiles,
+    entryPoints: tsFiles,
     bundle: false,
     outdir: 'esbuild/src',
   }).catch(() => process.exit(1));
