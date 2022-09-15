@@ -17,5 +17,13 @@ console.log(tsFiles);
 require('esbuild').build({
     entryPoints: tsFiles,
     bundle: false,
-    outdir: 'esbuild/src',
+    outdir: 'esbuild/cjs/src',
+    format: 'cjs',
+  }).catch(() => process.exit(1));
+
+require('esbuild').build({
+    entryPoints: tsFiles,
+    bundle: false,
+    outdir: 'esbuild/esm/src',
+    format: 'esm',
   }).catch(() => process.exit(1));
