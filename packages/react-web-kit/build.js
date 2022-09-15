@@ -6,8 +6,6 @@ const glob = require("glob");
 let tsFiles = glob.sync("./src/**/*.ts");
 let tsxFiles = glob.sync("./src/**/*.tsx");
 
-//console.log(tsxFiles);
-
 tsxFiles.forEach(file => {
   if(file.search('.stories.') == -1) {
     tsFiles.push(file);
