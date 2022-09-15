@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "date-fns": "^2.29.1",
+    "esbuild": "^0.15.7",
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
