@@ -9,10 +9,10 @@
   "scripts": {
     "start": "yarn build:es --watch",
     "build": "./build.js",
-    "build:es": "yarn build:cjs && yarn build:esm",
+    "build:es": "run-p build:cjs build:esm",
     "build:cjs": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
     "build:esm": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir esm --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments --config-file ./babel.config.esm.js",
-    "build:declaration": "yarn build:declaration:cjs && yarn build:declaration:esm",
+    "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
     "build:declaration:cjs": "tsc --project tsconfig.build.json",
     "build:declaration:esm": "tsc --project tsconfig.build.esm.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",

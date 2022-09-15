@@ -98,7 +98,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   }, [options]);
 
   const handleLazyFocus = React.useCallback(async () => {
-    if (typeof options === 'function') {
+    if (typeof options === 'function' && !onSearch) {
       setLoading(true);
       try {
         const result = await options();
