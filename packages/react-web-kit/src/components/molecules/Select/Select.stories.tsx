@@ -28,7 +28,7 @@ const TemplateSingle: Story<SelectProps<Option, 'single'>> = ({
   ...args
 }) => {
   const [singleValue, setSingleValue] = useState(undefined);
-  const [options, setOptions] = useState(_options);
+  const [options, setOptions] = useState(_options as Option[]);
 
   const handleSelectSingleValue = React.useCallback(
     key => setSingleValue(key),
@@ -40,7 +40,9 @@ const TemplateSingle: Story<SelectProps<Option, 'single'>> = ({
 
   const handleSearch = React.useCallback((searchArg: string) => {
     setOptions(
-      _options.filter(item => new RegExp(searchArg, 'ig').test(item.label))
+      (_options as Option[]).filter(item =>
+        new RegExp(searchArg, 'ig').test(item.label)
+      )
     );
   }, []);
 
@@ -76,7 +78,7 @@ const TemplateMulti: Story<SelectProps<Option, 'multi'>> = ({
   ...args
 }) => {
   const [multiValue, setMultiValue] = useState([]);
-  const [options, setOptions] = useState(_options);
+  const [options, setOptions] = useState(_options as Option[]);
 
   const handleSelectMultipleValues = React.useCallback(
     keys => setMultiValue(keys),
@@ -88,7 +90,9 @@ const TemplateMulti: Story<SelectProps<Option, 'multi'>> = ({
 
   const handleSearch = React.useCallback((searchArg: string) => {
     setOptions(
-      _options.filter(item => new RegExp(searchArg, 'ig').test(item.label))
+      (_options as Option[]).filter(item =>
+        new RegExp(searchArg, 'ig').test(item.label)
+      )
     );
   }, []);
 
@@ -116,6 +120,70 @@ Multi.args = {
   placeholder: 'Placeholder do select',
   label: 'Label',
   options: OPTIONS_EXAMPLE,
+  hideSearchBar: false,
+};
+
+const TemplateMultiLazy: Story<SelectProps<Option, 'multi'>> = ({
+  options: _options,
+  ...args
+}) => {
+  const fetchUsers = async () => {
+    return await fetch('https://jsonplaceholder.typicode.com/users', {
+      method: 'GET',
+    }).then(data => data.json());
+  };
+
+  const fetchPromise: (
+    searchInput: string | undefined
+  ) => Promise<{ value: string; label: string }[]> = React.useCallback(
+    async (searchInput: string | undefined) => {
+      const dataTest = await fetchUsers();
+      return (dataTest || [])
+        .map(item => ({
+          value: item.id,
+          label: item.name,
+        }))
+        .filter(value => {
+          if (searchInput) return value.label.includes(searchInput);
+          else return true;
+        });
+    },
+    []
+  );
+
+  const [multiValue, setMultiValue] = useState([]);
+
+  const handleSelectMultipleValues = React.useCallback(
+    keys => setMultiValue(keys),
+    [setMultiValue]
+  );
+
+  const labelExtractor = React.useCallback(item => item.label, []);
+  const keyExtractor = React.useCallback(item => String(item.value), []);
+
+  return (
+    <Container>
+      <ContainerSelect>
+        <Select
+          {...args}
+          options={fetchPromise}
+          value={multiValue}
+          type="multi"
+          onSelect={handleSelectMultipleValues}
+          labelExtractor={labelExtractor}
+          keyExtractor={keyExtractor}
+          onSearch={fetchPromise}
+        />
+      </ContainerSelect>
+    </Container>
+  );
+};
+
+export const Lazy = TemplateMultiLazy.bind({});
+
+Lazy.args = {
+  placeholder: 'Placeholder do select',
+  label: 'Label',
   hideSearchBar: false,
 };
 

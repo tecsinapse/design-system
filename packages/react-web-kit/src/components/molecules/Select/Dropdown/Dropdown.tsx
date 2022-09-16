@@ -48,7 +48,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
   }, [value, type, lengthOptions]);
 
   const onClickCheckAll = React.useCallback(() => {
-    const items = options.map(option => option);
+    const items = (options as Data[]).map(option => option);
     let aux;
     setCheckedAll(prev => {
       aux = !prev;
@@ -104,7 +104,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
         </PaddedContainer>
       )}
       <OptionsContainer lengthOptions={options.length}>
-        {options.map((item, index) => (
+        {(options as Data[]).map((item, index) => (
           <ItemSelect
             type={type}
             key={keyExtractor(item)}
