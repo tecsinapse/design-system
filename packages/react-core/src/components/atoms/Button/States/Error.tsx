@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { ButtonStateProps } from '../Button';
-import { BaseState } from './BaseState';
+import { default as BaseState } from './BaseState';
 
-export const Error: FC<ButtonStateProps> = props => {
+const Error: FC<ButtonStateProps> = props => {
   return <BaseState {...props} icon="close-circle-outline" />;
 };
 

@@ -31,7 +31,7 @@ export interface SnackbarProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export const Snackbar: React.FC<SnackbarProps> = ({
+const Snackbar: React.FC<SnackbarProps> = ({
   children,
   open = true,
   onClose,
