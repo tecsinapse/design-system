@@ -1,1 +1,2 @@
-export { default as Select, SelectNativeProps } from './Select';
+export { default as Select } from './Select';
+export type { SelectNativeProps } from './Select';

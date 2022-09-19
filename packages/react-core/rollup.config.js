@@ -11,21 +11,20 @@ export default [
     input: ['./src/index.ts'],
     output: [
       {
-        dir: 'rollup/esm',
+        dir: 'esm',
         format: 'esm',
         ...outputDefaultConfig,
       },
       {
-        dir: 'rollup/cjs',
+        dir: 'dist',
         format: 'cjs',
         exports: 'auto',
         ...outputDefaultConfig,
       },
     ],
-    plugins: [esbuild()],
+    plugins: [esbuild({ tsconfig: 'tsconfig.build.json' })],
     external: [
       'react',
-      'react-dom',
       'react-native',
       'react-native-vector-icons',
       '@emotion/native',

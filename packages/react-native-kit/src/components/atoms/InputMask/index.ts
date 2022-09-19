@@ -1,1 +1,2 @@
-export { default as InputMask, InputMaskNativeProps } from './InputMask';
+export { default as InputMask } from './InputMask';
+export type { InputMaskNativeProps } from './InputMask';

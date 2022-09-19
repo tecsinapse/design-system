@@ -8,7 +8,7 @@ export interface SnackbarNativeProps extends Omit<SnackPropsCore, 'children'> {
   textProps?: TextNativeProps;
 }
 
-export const Snackbar: React.FC<SnackbarNativeProps> = ({
+const Snackbar: React.FC<SnackbarNativeProps> = ({
   value,
   textProps = { colorVariant: 'primary', colorTone: 'medium' },
   ...rest

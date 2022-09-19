@@ -1,1 +1,2 @@
-export { default as Snackbar, SnackbarNativeProps } from './Snackbar';
+export { default as Snackbar } from './Snackbar';
+export type { SnackbarNativeProps } from './Snackbar';
