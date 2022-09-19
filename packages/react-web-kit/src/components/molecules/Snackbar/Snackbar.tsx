@@ -11,7 +11,7 @@ export interface SnackbarWebProps extends Omit<SnackPropsCore, 'children'> {
   textProps?: TextProps;
 }
 
-export const Snackbar: React.FC<SnackbarWebProps> = ({
+const Snackbar: React.FC<SnackbarWebProps> = ({
   value,
   textProps = { colorVariant: 'primary', colorTone: 'medium' },
   ...rest

@@ -1,4 +1,5 @@
 import esbuild from 'rollup-plugin-esbuild';
+import alias from '@rollup/plugin-alias';
 
 const outputDefaultConfig = {
   preserveModules: true,
@@ -22,16 +23,22 @@ export default [
         ...outputDefaultConfig,
       },
     ],
-    plugins: [esbuild()],
+    plugins: [
+      alias({
+        entries: [{ find: 'react-native', replacement: 'react-native-web' }],
+      }),
+      esbuild(),
+    ],
     external: [
       'react',
       'react-dom',
-      'react-native',
-      'react-native-vector-icons',
+      'react-native-web',
       '@emotion/native',
       '@emotion/react',
-      'currency.js',
-      'date-fns',
+      '@emotion/styled',
+      '@tecsinapse/react-core',
+      'react-native-vector-icons',
+      'react-transition-group',
     ],
   },
 ];

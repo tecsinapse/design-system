@@ -6,7 +6,7 @@ import {
   getGridItemColumSpan,
   getGridItemPadding,
 } from '@tecsinapse/react-core';
-import { useBreakpoints } from '@tecsinapse/react-web-kit';
+import { useBreakpoints } from '../../../../hooks';
 import { getSpan } from './functions';
 
 export type Span = Pick<Breakpoints, 'sm'> & Partial<Omit<Breakpoints, 'sm'>>;

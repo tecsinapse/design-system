@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const TBody: React.FC<React.HTMLAttributes<HTMLTableSectionElement>> = ({
+const TBody: React.FC<React.HTMLAttributes<HTMLTableSectionElement>> = ({
   children,
   ...rest
 }) => {
