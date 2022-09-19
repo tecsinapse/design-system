@@ -18,9 +18,11 @@ export default [
       {
         dir: 'rollup/cjs',
         format: 'cjs',
+        exports: 'auto',
         ...outputDefaultConfig,
       },
     ],
     plugins: [esbuild()],
+    external: ['react', 'react-dom', 'react-native', 'react-vector-icons'],
   },
 ];
