@@ -42,7 +42,11 @@ const Icon: FC<IconProps> = ({
   const color = getIconColor(colorVariant, colorTone, fontColor, theme);
   const RNVIcon = getIconComponent(type, size);
 
-  return <RNVIcon {...rest} style={style} name={name} color={color} />;
+  return (
+    <React.Suspense fallback={' '}>
+      <RNVIcon {...rest} style={style} name={name} color={color} />
+    </React.Suspense>
+  );
 };
 
 export default Icon;

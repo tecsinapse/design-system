@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { Snackbar, SnackbarWebProps } from './Snackbar';
+import { default as Snackbar, SnackbarWebProps } from './Snackbar';
 
 export default {
   title: 'Hybrid/Snackbar',
