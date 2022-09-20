@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { StyleProp, TextStyle } from 'react-native';
+import { StyleProp, TextStyle, Text } from 'react-native';
 import { useTheme } from '@emotion/react';
 import {
   ColorGradationType,
@@ -43,7 +43,7 @@ const Icon: FC<IconProps> = ({
   const RNVIcon = getIconComponent(type, size);
 
   return (
-    <React.Suspense fallback={' '}>
+    <React.Suspense fallback={<Text> </Text>}>
       <RNVIcon {...rest} style={style} name={name} color={color} />
     </React.Suspense>
   );
