@@ -8,7 +8,6 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "yarn build:es --watch",
-    "build:rollup": "yarn rollup --config --watch",
     "build:es": "yarn rollup --config",
     "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
     "build:declaration:cjs": "tsc --project tsconfig.build.json",

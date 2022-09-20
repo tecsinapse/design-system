@@ -8,9 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start": "yarn build:es --watch",
-    "build:rollup": "yarn rollup --config --watch",
     "build:es": "yarn rollup --config",
-    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
+    "build:declaration:cjs": "tsc --project tsconfig.build.json",
+    "build:declaration:esm": "tsc --project tsconfig.build.esm.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
     "yalc:push": "yalc push --changed",
     "yalc:show": "yalc installations show $npm_package_name"
