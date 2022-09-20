@@ -1,3 +1,4 @@
+import { lazy } from 'react';
 import {
   ColorGradationType,
   ColorType,
@@ -24,74 +25,75 @@ export const getIconComponent = (type: IconType, size: IconSizeType): any => {
   switch (type) {
     case 'zocial':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/Zocial').default,
+        lazy(() => import('react-native-vector-icons/dist/Zocial')),
         size
       );
     case 'octicon':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/Octicons').default,
+        lazy(() => import('react-native-vector-icons/dist/Octicons')),
         size
       );
     case 'material':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/MaterialIcons').default,
+        lazy(() => import('react-native-vector-icons/dist/MaterialIcons')),
         size
       );
     case 'material-community':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/MaterialCommunityIcons')
-          .default,
+        lazy(
+          () => import('react-native-vector-icons/dist/MaterialCommunityIcons')
+        ),
         size
       );
     case 'ionicon':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/Ionicons').default,
+        lazy(() => import('react-native-vector-icons/dist/Ionicons')),
         size
       );
     case 'foundation':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/Foundation').default,
+        lazy(() => import('react-native-vector-icons/dist/Foundation')),
         size
       );
     case 'evilicon':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/EvilIcons').default,
+        lazy(() => import('react-native-vector-icons/dist/EvilIcons')),
         size
       );
     case 'entypo':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/Entypo').default,
+        lazy(() => import('react-native-vector-icons/dist/Entypo')),
         size
       );
     case 'font-awesome':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/FontAwesome').default,
+        lazy(() => import('react-native-vector-icons/dist/FontAwesome')),
         size
       );
     case 'font-awesome-5':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/FontAwesome5').default,
+        lazy(() => import('react-native-vector-icons/dist/FontAwesome5')),
         size
       );
     case 'simple-line-icon':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/SimpleLineIcons').default,
+        lazy(() => import('react-native-vector-icons/dist/SimpleLineIcons')),
         size
       );
     case 'feather':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/Feather').default,
+        lazy(() => import('react-native-vector-icons/dist/Feather')),
         size
       );
     case 'antdesign':
     case 'ant-design':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/AntDesign').default,
+        lazy(() => import('react-native-vector-icons/dist/AntDesign')),
         size
       );
     case 'fontisto':
       return getStyledIcon(
-        require('react-native-vector-icons/dist/Fontisto').default,
+        lazy(() => import('react-native-vector-icons/dist/Fontisto')),
         size
       );
     default:
@@ -99,7 +101,7 @@ export const getIconComponent = (type: IconType, size: IconSizeType): any => {
         return getStyledIcon(customIcons[type], size);
       }
       return getStyledIcon(
-        require('react-native-vector-icons/dist/MaterialIcons').default,
+        lazy(() => import('react-native-vector-icons/dist/MaterialIcons')),
         size
       );
   }
