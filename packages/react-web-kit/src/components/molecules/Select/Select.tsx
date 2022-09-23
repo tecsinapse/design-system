@@ -86,28 +86,22 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
     labelExtractor
   );
 
-  useEffect(() => {
-    if (typeof options !== 'function') {
-      setSelectOptions(options);
-    }
-  }, [options]);
-
   const handleLazyFocus = React.useCallback(async () => {
     if (!dropDownVisible && typeof options === 'function') {
       try {
         const result = await options();
         if (result) {
-          setSelectOptions(result);
+          setSelectOptions(result ?? []);
         }
       } catch (e) {
         // TODO: Catch error
       }
     }
-  }, [options, value, setSelectOptions, dropDownVisible]);
+  }, [options, setSelectOptions, dropDownVisible]);
 
   const handleOnSearch = React.useCallback(
     async (searchInput: string | undefined) => {
-      if (searchInput !== undefined && onSearch) {
+      if (searchInput !== undefined && onSearch && dropDownVisible) {
         try {
           //TODO: Remove code duplicated below (Select in react-native-kit)
           const result = await onSearch(searchInput);
@@ -142,7 +136,7 @@ export const Select = <Data, Type extends 'single' | 'multi'>({
         }
       }
     },
-    [options, value, keyExtractor]
+    [onSearch, value, keyExtractor, dropDownVisible, setSelectOptions]
   );
 
   const handlePressInput = async () => {
