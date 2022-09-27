@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.2...@tecsinapse/react-web-kit@1.21.3) (2022-09-23)
+
+
+### Bug Fixes
+
+* dependencies and verification lazy select ([3cb68af](https://github.com/tecsinapse/design-system/commit/3cb68af91d8df6b487c6cab8f707b2604fb9e55e))
+
+
+
+
+
 ## [1.21.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.1...@tecsinapse/react-web-kit@1.21.2) (2022-09-16)
 
 
