@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableStyled } from './styled';
 
-export const Table: React.FC<React.TableHTMLAttributes<HTMLTableElement>> = ({
+const Table: React.FC<React.TableHTMLAttributes<HTMLTableElement>> = ({
   children,
   ...rest
 }) => {

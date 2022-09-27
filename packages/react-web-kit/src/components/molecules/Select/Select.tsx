@@ -40,7 +40,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
 }
 
 /** NOTE: For better performance, you should memoize options and handlers */
-export const Select = <Data, Type extends 'single' | 'multi'>({
+const Select = <Data, Type extends 'single' | 'multi'>({
   value,
   options,
   keyExtractor,

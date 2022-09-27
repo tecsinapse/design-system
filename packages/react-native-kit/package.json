@@ -3,12 +3,15 @@
   "description": "TecSinapse React Native components",
   "version": "1.21.0",
   "main": "dist/index.js",
+  "module": "esm/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "start": "yarn build:es --watch",
-    "build:es": "cross-env BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
-    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "yarn rollup --config",
+    "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
+    "build:declaration:cjs": "tsc --project tsconfig.build.json",
+    "build:declaration:esm": "tsc --project tsconfig.build.esm.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
     "yalc:push": "yalc push --changed",
     "yalc:show": "yalc installations show $npm_package_name"

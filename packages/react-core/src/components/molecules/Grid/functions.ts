@@ -1,9 +1,5 @@
-import {
-  extractNumbersFromString,
-  GridSpacing,
-  PaddingPosition,
-  Spacing,
-} from '@tecsinapse/react-core';
+import { GridSpacing, PaddingPosition, Spacing } from '@tecsinapse/react-core';
+import { extractNumbersFromString } from '../../../utils';
 
 export const getGridItemPadding = (
   pos: PaddingPosition,

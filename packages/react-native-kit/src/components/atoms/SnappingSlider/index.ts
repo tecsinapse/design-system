@@ -1,4 +1,2 @@
-export {
-  default as SnappingSlider,
-  SnappingSliderProps,
-} from './SnappingSlider';
+export { default as SnappingSlider } from './SnappingSlider';
+export type { SnappingSliderProps } from './SnappingSlider';

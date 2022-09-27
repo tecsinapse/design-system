@@ -1,7 +1,7 @@
 import React from 'react';
 import { TRow } from './styled';
 
-export const Tr: React.FC<React.HTMLAttributes<HTMLTableRowElement>> = ({
+const Tr: React.FC<React.HTMLAttributes<HTMLTableRowElement>> = ({
   children,
   ...rest
 }) => {

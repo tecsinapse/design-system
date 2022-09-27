@@ -2,10 +2,9 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "skipLibCheck": true,
-    "declarationDir": "./dist",
+    "declarationDir": "./esm",
     "rootDir": "./src",
     "baseUrl": "./"
   },
-  "include": ["./src"],
-  "exclude": ["node_modules", "dist", "esm"]
+  "include": ["./src"]
 }

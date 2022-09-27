@@ -12,7 +12,7 @@ export interface BaseStateProps extends ButtonStateProps {
   icon: string;
 }
 
-export const BaseState: FC<BaseStateProps> = ({
+const BaseState: FC<BaseStateProps> = ({
   textComponent = Text,
   buttonSize = 'default',
   fontColor = 'light',

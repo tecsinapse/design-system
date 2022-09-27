@@ -1,4 +1,2 @@
-export {
-  default as IconTextButton,
-  NativeIconTextButtonProps,
-} from './IconTextButton';
+export { default as IconTextButton } from './IconTextButton';
+export type { NativeIconTextButtonProps } from './IconTextButton';

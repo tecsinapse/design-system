@@ -1,1 +1,2 @@
-export { default as Input, InputNativeProps } from './Input';
+export { default as Input } from './Input';
+export type { InputNativeProps } from './Input';

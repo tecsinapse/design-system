@@ -1,9 +1,8 @@
-import * as React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { StyledContainerDropdown } from './styled';
 import { Transition } from 'react-transition-group';
 import { defaultStyles, transition } from '../../molecules/Select/animations';
-import { Dispatch, SetStateAction } from 'react';
-import { useClickAwayListener } from '@tecsinapse/react-web-kit';
+import { useClickAwayListener } from '../../../hooks';
 
 export interface DropdownProps {
   visible: boolean;

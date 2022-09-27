@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { default as nativeStyled } from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
-import { Text } from '@tecsinapse/react-web-kit';
+import { StyleProps, Text } from '@tecsinapse/react-core';
 import { Td } from '../../../atoms/Table';
 import { Button } from '../../../atoms/Button';
 

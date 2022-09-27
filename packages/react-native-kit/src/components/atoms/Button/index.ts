@@ -1,2 +1,3 @@
-export { Button, ButtonNativeProps } from './Button';
+export { Button } from './Button';
+export type { ButtonNativeProps } from './Button';
 export { Error, Loading, Success } from './States';
