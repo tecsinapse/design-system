@@ -76,7 +76,7 @@ jobs:
           path: ./sbdocs
           key: ${{ github.sha }}
 
-      - name: deploy
+      - name: deploy docs
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
