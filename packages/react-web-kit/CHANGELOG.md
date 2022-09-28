@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.3...@tecsinapse/react-web-kit@1.22.0) (2022-09-28)
+
+
+### Bug Fixes
+
+* add babel target ([88f3dd8](https://github.com/tecsinapse/design-system/commit/88f3dd8a7865ef507855d76ed4f420c6bd1c1a39))
+* project scripts ([cb2e0a1](https://github.com/tecsinapse/design-system/commit/cb2e0a1873cfc3f45e793b5443297fb6fffce1b5))
+* stories import ([8d0cc3f](https://github.com/tecsinapse/design-system/commit/8d0cc3fdc51fb2331f73ab3cd6c1ec3cfa37941c))
+* use run-p to parallelize scripts ([31ee9eb](https://github.com/tecsinapse/design-system/commit/31ee9eb0441f3b2f663e337c7f86549284108982))
+
+
+### Features
+
+* finish compiler config ([af9f2ae](https://github.com/tecsinapse/design-system/commit/af9f2ae2dd2b08e9842778d0159ecd3d44bef89a))
+* finish rollup config for core and web ([0ce9636](https://github.com/tecsinapse/design-system/commit/0ce9636d0b44bd2a80cf5614b8ed93f126dba8d2))
+
+
+
+
+
 ## [1.21.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.2...@tecsinapse/react-web-kit@1.21.3) (2022-09-23)
 
 
