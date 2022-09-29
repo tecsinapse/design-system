@@ -1,10 +1,11 @@
-import { lazy } from 'react';
+import { ComponentType, ElementType, lazy, ReactNode } from 'react';
 import {
   ColorGradationType,
   ColorType,
   FontColorType,
   IconSizeType,
   IconType,
+  StyleProps,
   ThemeProp,
 } from '@tecsinapse/react-core';
 import styled from '@emotion/native';
@@ -16,8 +17,10 @@ export const registerCustomIconType = (id: string, customIcon: any) => {
   customIcons[id] = customIcon;
 };
 
-const getStyledIcon = (Component, size) => styled(Component)`
-  font-size: ${({ theme }) => theme.iconSize[size]};
+const getStyledIcon = (Component: ComponentType, size: IconSizeType) => styled(
+  Component
+)`
+  font-size: ${({ theme }: StyleProps) => theme?.iconSize[size]};
   text-align: center;
 `;
 
@@ -68,6 +71,7 @@ export const getIconComponent = (type: IconType, size: IconSizeType): any => {
       const FontAwesome = lazy(
         async () => await import('react-native-vector-icons/dist/FontAwesome')
       );
+      console.log(FontAwesome);
       return getStyledIcon(FontAwesome, size);
     case 'font-awesome-5':
       const FontAwesome5 = lazy(
