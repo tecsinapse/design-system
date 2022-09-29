@@ -71,7 +71,7 @@
     "build:declarations:watch": "rimraf -rf packages/*/dist/*.d.ts && lerna run --parallel 'build:declaration:watch' --stream",
     "yalc:push": "lerna run --parallel 'yalc:push'",
     "yalc:show": "yalc installations show",
-    "prebuild": "rimraf -rf packages/*/dist/",
+    "prebuild": "rimraf -rf packages/*/dist/ && rimraf -rf packages/*/esm/",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",
     "lint": "yarn lint:fix:quiet",
     "lint:fix": "yarn lint:ts --fix-dry-run",

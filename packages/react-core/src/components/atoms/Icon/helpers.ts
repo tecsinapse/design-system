@@ -24,86 +24,86 @@ const getStyledIcon = (Component, size) => styled(Component)`
 export const getIconComponent = (type: IconType, size: IconSizeType): any => {
   switch (type) {
     case 'zocial':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/Zocial')),
-        size
+      const Zocial = lazy(
+        async () => await import('react-native-vector-icons/dist/Zocial')
       );
+      return getStyledIcon(Zocial, size);
     case 'octicon':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/Octicons')),
-        size
+      const Octicons = lazy(
+        async () => await import('react-native-vector-icons/dist/Octicons')
       );
+      return getStyledIcon(Octicons, size);
     case 'material':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/MaterialIcons')),
-        size
+      const Material = lazy(
+        async () => await import('react-native-vector-icons/dist/MaterialIcons')
       );
+      return getStyledIcon(Material, size);
     case 'material-community':
-      return getStyledIcon(
-        lazy(
-          () => import('react-native-vector-icons/dist/MaterialCommunityIcons')
-        ),
-        size
+      const MaterialCommunity = lazy(
+        async () =>
+          await import('react-native-vector-icons/dist/MaterialCommunityIcons')
       );
+      return getStyledIcon(MaterialCommunity, size);
     case 'ionicon':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/Ionicons')),
-        size
+      const Ionicons = lazy(
+        async () => await import('react-native-vector-icons/dist/Ionicons')
       );
+      return getStyledIcon(Ionicons, size);
     case 'foundation':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/Foundation')),
-        size
+      const Foundation = lazy(
+        async () => await import('react-native-vector-icons/dist/Foundation')
       );
+      return getStyledIcon(Foundation, size);
     case 'evilicon':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/EvilIcons')),
-        size
+      const EvilIcons = lazy(
+        async () => await import('react-native-vector-icons/dist/EvilIcons')
       );
+      return getStyledIcon(EvilIcons, size);
     case 'entypo':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/Entypo')),
-        size
+      const Entypo = lazy(
+        async () => await import('react-native-vector-icons/dist/Entypo')
       );
+      return getStyledIcon(Entypo, size);
     case 'font-awesome':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/FontAwesome')),
-        size
+      const FontAwesome = lazy(
+        async () => await import('react-native-vector-icons/dist/FontAwesome')
       );
+      return getStyledIcon(FontAwesome, size);
     case 'font-awesome-5':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/FontAwesome5')),
-        size
+      const FontAwesome5 = lazy(
+        async () => await import('react-native-vector-icons/dist/FontAwesome5')
       );
+      return getStyledIcon(FontAwesome5, size);
     case 'simple-line-icon':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/SimpleLineIcons')),
-        size
+      const SimpleLineIcons = lazy(
+        async () =>
+          await import('react-native-vector-icons/dist/SimpleLineIcons')
       );
+      return getStyledIcon(SimpleLineIcons, size);
     case 'feather':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/Feather')),
-        size
+      const Feather = lazy(
+        async () => await import('react-native-vector-icons/dist/Feather')
       );
+      return getStyledIcon(Feather, size);
     case 'antdesign':
     case 'ant-design':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/AntDesign')),
-        size
+      const AntDesign = lazy(
+        async () => await import('react-native-vector-icons/dist/AntDesign')
       );
+      return getStyledIcon(AntDesign, size);
     case 'fontisto':
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/Fontisto')),
-        size
+      const Fontisto = lazy(
+        async () => await import('react-native-vector-icons/dist/Fontisto')
       );
+      return getStyledIcon(Fontisto, size);
     default:
       if (Object.prototype.hasOwnProperty.call(customIcons, type)) {
         return getStyledIcon(customIcons[type], size);
       }
-      return getStyledIcon(
-        lazy(() => import('react-native-vector-icons/dist/MaterialIcons')),
-        size
+      const MaterialIcons = lazy(
+        async () => await import('react-native-vector-icons/dist/MaterialIcons')
       );
+      return getStyledIcon(MaterialIcons, size);
   }
 };
 /* eslint-enable */

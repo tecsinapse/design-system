@@ -17,13 +17,13 @@
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/native": "^11.10.0",
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
-    "@tecsinapse/react-core": "^1.21.0",
+    "@emotion/native": "~11.10.0",
+    "@emotion/react": "~11.10.0",
+    "@emotion/styled": "~11.10.0",
+    "@tecsinapse/react-core": "1.21.0",
     "@types/react-native": "^0.64.4",
-    "react-native-vector-icons": "^9.2.0",
-    "react-transition-group": "^4.4.2"
+    "react-native-vector-icons": "~9.2.0",
+    "react-transition-group": "~4.4.2"
   },
   "repository": {
     "type": "git",
