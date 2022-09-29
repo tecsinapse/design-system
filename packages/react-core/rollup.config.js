@@ -11,14 +11,16 @@ export default [
     input: ['./src/index.ts'],
     output: [
       {
-        dir: 'esm',
+        dir: 'dist',
         format: 'esm',
+        entryFileNames: '[name].mjs',
         ...outputDefaultConfig,
       },
       {
         dir: 'dist',
         format: 'cjs',
         exports: 'auto',
+        entryFileNames: '[name].cjs',
         ...outputDefaultConfig,
       },
     ],
