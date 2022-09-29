@@ -4,13 +4,12 @@
   "version": "1.21.0",
   "license": "MIT",
   "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "files": ["dist"],
   "exports": {
-    "import": "./dist/index.mjs",
-    "default": "./dist/index.js"
+    "import": "./dist/index.js",
+    "default": "./dist/index.cjs"
   },
   "scripts": {
     "start": "yarn build:es --watch",

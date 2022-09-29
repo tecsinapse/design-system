@@ -14,7 +14,7 @@ export default [
       {
         dir: 'dist',
         format: 'esm',
-        entryFileNames: '[name].mjs',
+        entryFileNames: '[name].js',
         ...outputDefaultConfig,
       },
       {
