@@ -40,11 +40,11 @@ const Icon: FC<IconProps> = ({
 }) => {
   const theme = useTheme() as ThemeProp;
   const color = getIconColor(colorVariant, colorTone, fontColor, theme);
-  const RNVIcon = getIconComponent(type, size);
+  const RNVIcon = getIconComponent(type);
 
   return (
     <React.Suspense fallback={<Text> </Text>}>
-      <RNVIcon {...rest} style={style} name={name} color={color} />
+      <RNVIcon {...rest} style={style} size={size} name={name} color={color} />
     </React.Suspense>
   );
 };
