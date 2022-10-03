@@ -7,10 +7,6 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "files": ["dist"],
-  "exports": {
-    "import": "./dist/esm/index.js",
-    "default": "./dist/cjs/index.js"
-  },
   "scripts": {
     "start": "yarn build:es --watch",
     "build:es": "yarn rollup --config",
