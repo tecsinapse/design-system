@@ -1,11 +1,9 @@
 import styled, { css } from '@emotion/native';
 import { TextInput } from 'react-native';
 import { InputElementProps } from '.';
-import {
-  RFValueStr,
-  StyleProps,
-  InputContainerProps,
-} from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
+import { RFValueStr } from '../../../utils/ResponsiveFontSize';
+import { InputContainerProps } from './InputContainer/InputContainer';
 import { Icon } from '../Icon';
 const leftIconStyles = ({
   leftComponent,
