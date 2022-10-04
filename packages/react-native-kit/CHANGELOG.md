@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.3...@tecsinapse/react-native-kit@1.22.4) (2022-10-04)
+
+
+### Bug Fixes
+
+* file imports ([16a542c](https://github.com/tecsinapse/design-system/commit/16a542cdf46dce651c876efe17aa684a0b8cd4c1))
+
+
+
+
+
 ## [1.22.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.2...@tecsinapse/react-native-kit@1.22.3) (2022-10-04)
 
 

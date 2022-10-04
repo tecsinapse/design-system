@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.3...@tecsinapse/react-web-kit@1.22.4) (2022-10-04)
+
+
+### Bug Fixes
+
+* console errors ([407181d](https://github.com/tecsinapse/design-system/commit/407181dcdb0636e448356cb07f97a84c39e73eaa))
+* file imports ([16a542c](https://github.com/tecsinapse/design-system/commit/16a542cdf46dce651c876efe17aa684a0b8cd4c1))
+* rollup warnings ([fcc378a](https://github.com/tecsinapse/design-system/commit/fcc378a868f3e2a47e269aa39f5e83e613019c9b))
+
+
+
+
+
 ## [1.22.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.2...@tecsinapse/react-web-kit@1.22.3) (2022-10-04)
 
 
