@@ -10,7 +10,7 @@ import {
 } from '@tecsinapse/react-core';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Dropdown } from '../../atoms/Dropdown';
-import { InputMask } from '@tecsinapse/react-web-kit';
+import { InputMask } from '../../atoms/InputMask';
 import { parse, isValid } from 'date-fns';
 
 export type WebDatePickerProps<T extends SelectionType> = Omit<

@@ -30,6 +30,7 @@ export default [
       esbuild({ tsconfig: 'tsconfig.build.json' }),
     ],
     external: [
+      'date-fns',
       'react',
       'react-dom',
       'react-native-web',

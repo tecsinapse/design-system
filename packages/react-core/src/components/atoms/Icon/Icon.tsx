@@ -5,10 +5,10 @@ import {
   ColorType,
   FontColorType,
   IconSizeType,
-  IconType,
-  useTheme,
-} from '@tecsinapse/react-core';
+} from '../../../types/defaults';
+import { useTheme } from '../../../hooks';
 import { getIconColor, getIconComponent } from './functions';
+import { IconType } from '../../../styles/definitions';
 
 export interface IconProps {
   /**  Name of the icon. You must use the same icons from react-native-vector-icons */
