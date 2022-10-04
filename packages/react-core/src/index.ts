@@ -69,7 +69,7 @@ export type {
   SelectionType,
   Value,
 } from './components/molecules/Calendar';
-export { DatePicker } from './components/molecules/DatePicker';
+export { DatePicker, CalendarIcon } from './components/molecules/DatePicker';
 export type { DatePickerProps } from './components/molecules/DatePicker';
 export { DateTimePicker } from './components/molecules/DateTimePicker';
 export type { DateTimePickerProps } from './components/molecules/DateTimePicker';

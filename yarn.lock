@@ -2548,7 +2548,7 @@
   dependencies:
     "@emotion/primitives-core" "10.0.27"
 
-"@emotion/native@~11.10.0":
+"@emotion/native@^11.10.0", "@emotion/native@~11.10.0":
   version "11.10.0"
   resolved "https://registry.yarnpkg.com/@emotion/native/-/native-11.10.0.tgz#914e95c3d568d854906cb83ae07247d913333f44"
   integrity sha512-jj8/OetX6aJQXmw8lWZJH1PH3KV4QFSMDgxKPzW8jxDLndk5BI+xld01SwcWAlDucolHqKWv0JyDcAzqWhAqJQ==
@@ -2569,7 +2569,7 @@
   dependencies:
     css-to-react-native "^3.0.0"
 
-"@emotion/react@~11.10.0":
+"@emotion/react@^11.10.0", "@emotion/react@~11.10.0":
   version "11.10.4"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.10.4.tgz#9dc6bccbda5d70ff68fdb204746c0e8b13a79199"
   integrity sha512-j0AkMpr6BL8gldJZ6XQsQ8DnS9TxEQu1R+OGmDZiWjBAJtCcbt0tS3I/YffoqHXxH6MjgI7KdMbYKw3MEiU9eA==
@@ -5265,6 +5265,16 @@
     qs "^6.10.0"
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
+
+"@tecsinapse/react-native-kit@1.22.2":
+  version "1.22.2"
+  resolved "https://registry.yarnpkg.com/@tecsinapse/react-native-kit/-/react-native-kit-1.22.2.tgz#7bd3de89a7fd4f023907b350ea7686c247a6b622"
+  integrity sha512-Y8iSMhoSftjT52gpFwJWTI2d/KMOAEs7aGJML3/JKcXVUonAwDpEYIqr9AzKhNpEhpuMeBGqRnRaRsA+VZzrEg==
+  dependencies:
+    "@emotion/native" "^11.10.0"
+    "@emotion/react" "^11.10.0"
+    "@tecsinapse/react-core" "^1.21.2"
+    react-native-linear-gradient "^2.5.6"
 
 "@tootallnate/once@2":
   version "2.0.0"

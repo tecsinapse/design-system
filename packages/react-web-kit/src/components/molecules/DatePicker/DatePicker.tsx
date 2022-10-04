@@ -6,10 +6,10 @@ import {
   DateRange,
   Masks,
   SelectionType,
+  CalendarIcon,
 } from '@tecsinapse/react-core';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Dropdown } from '../../atoms/Dropdown';
-import { CalendarIcon } from '@tecsinapse/react-core/src/components/molecules/DatePicker/styled';
 import { InputMask } from '@tecsinapse/react-web-kit';
 import { parse, isValid } from 'date-fns';
 

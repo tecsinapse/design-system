@@ -7,7 +7,7 @@ import {
   useInputFocus,
 } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { StyledInputContainer, StyledNativeInputMask } from './styled';
 import { Text } from '../Text';
 
@@ -83,7 +83,7 @@ const InputMask: FC<InputMaskNativeProps> = React.forwardRef(
             {...rest}
             placeholder={onlyLabel ? label : placeholder}
             value={value}
-            ref={ref}
+            ref={ref as React.Ref<TextInput>}
             fontStack={inputFontStack}
             fontWeight={inputFontWeight}
             disabled={disabled}
