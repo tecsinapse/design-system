@@ -39,11 +39,11 @@ const Icon: FC<IconProps> = ({
 }) => {
   const theme = useTheme();
   const color = getIconColor(colorVariant, colorTone, fontColor, theme);
-  const RNVIcon = getIconComponent(type, size);
+  const RNVIcon = getIconComponent(type);
 
   return (
     <React.Suspense fallback={<Text> </Text>}>
-      <RNVIcon {...rest} style={style} name={name} color={color} />
+      <RNVIcon {...rest} style={style} name={name} color={color} size={size} />
     </React.Suspense>
   );
 };
