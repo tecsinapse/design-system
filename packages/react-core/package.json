@@ -1,11 +1,14 @@
 {
   "name": "@tecsinapse/react-core",
   "description": "TecSinapse hybrid React components",
-  "version": "1.21.1",
+  "version": "1.21.3",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "yarn build:es --watch",
     "build:es": "yarn rollup --config",
@@ -17,10 +20,10 @@
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/native": "^11.10.0",
-    "@emotion/react": "^11.10.0",
-    "currency.js": "^2.0.4",
-    "date-fns": "^2.29.1"
+    "@emotion/native": "~11.10.0",
+    "@emotion/react": "~11.10.0",
+    "currency.js": "~2.0.4",
+    "date-fns": "~2.29.1"
   },
   "repository": {
     "type": "git",

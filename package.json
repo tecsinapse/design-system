@@ -8,11 +8,11 @@
     ]
   },
   "dependencies": {
-    "@emotion/native": "^11.10.0",
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
-    "date-fns": "^2.29.1",
-    "react-native-vector-icons": "^9.2.0"
+    "@emotion/native": "~11.10.0",
+    "@emotion/react": "~11.10.0",
+    "@emotion/styled": "~11.10.0",
+    "date-fns": "~2.29.1",
+    "react-native-vector-icons": "~9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",

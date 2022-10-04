@@ -1,11 +1,14 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "TecSinapse React components",
-  "version": "1.22.1",
-  "main": "dist/index.js",
-  "module": "esm/index.js",
-  "types": "dist/index.d.ts",
+  "version": "1.22.3",
   "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "yarn build:es --watch",
     "build:es": "yarn rollup --config",
@@ -17,13 +20,13 @@
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/native": "^11.10.0",
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
-    "@tecsinapse/react-core": "^1.21.1",
+    "@emotion/native": "~11.10.0",
+    "@emotion/react": "~11.10.0",
+    "@emotion/styled": "~11.10.0",
+    "@tecsinapse/react-core": "^1.21.3",
     "@types/react-native": "^0.64.4",
-    "react-native-vector-icons": "^9.2.0",
-    "react-transition-group": "^4.4.2"
+    "react-native-vector-icons": "~9.2.0",
+    "react-transition-group": "~4.4.2"
   },
   "repository": {
     "type": "git",

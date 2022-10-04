@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.2...@tecsinapse/react-core@1.21.3) (2022-10-04)
+
+
+### Bug Fixes
+
+* deps versioning ([c849198](https://github.com/tecsinapse/design-system/commit/c849198a1fa6671d4d7c9370ceae999fdab2a27c))
+* rollup config ([38a0af3](https://github.com/tecsinapse/design-system/commit/38a0af333d31201ceff839182b145d2536bc8e4c))
+
+
+### Features
+
+* handle icons as react components ([a9d52d0](https://github.com/tecsinapse/design-system/commit/a9d52d03d9921d2535ff174e94980cec245dd355))
+
+
+
+
+
+## [1.21.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.1...@tecsinapse/react-core@1.21.2) (2022-10-04)
+
+
+### Bug Fixes
+
+* imports inputs ([982fe67](https://github.com/tecsinapse/design-system/commit/982fe67e7c89c63f244dc83b4ad6dd18ddaaa693))
+
+
+
+
+
 ## [1.21.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.0...@tecsinapse/react-core@1.21.1) (2022-10-04)
 
 
