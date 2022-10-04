@@ -1,12 +1,14 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "TecSinapse React Native components",
-  "version": "1.22.2",
+  "version": "1.22.3",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "yarn build:es --watch",
     "build:es": "yarn rollup --config",
@@ -20,7 +22,7 @@
   "dependencies": {
     "@emotion/native": "~11.10.0",
     "@emotion/react": "~11.10.0",
-    "@tecsinapse/react-core": "1.21.2",
+    "@tecsinapse/react-core": "^1.21.3",
     "react-native-linear-gradient": "~2.5.6"
   },
   "repository": {

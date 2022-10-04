@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.2...@tecsinapse/react-web-kit@1.22.3) (2022-10-04)
+
+
+### Bug Fixes
+
+* package version ([c4e0ebe](https://github.com/tecsinapse/design-system/commit/c4e0ebef9b568f89d1c7a6ad8747d20c35590a5f))
+* rollup config ([38a0af3](https://github.com/tecsinapse/design-system/commit/38a0af333d31201ceff839182b145d2536bc8e4c))
+
+
+### Features
+
+* handle icons as react components ([a9d52d0](https://github.com/tecsinapse/design-system/commit/a9d52d03d9921d2535ff174e94980cec245dd355))
+
+
+
+
+
 ## [1.22.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.1...@tecsinapse/react-web-kit@1.22.2) (2022-10-04)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
