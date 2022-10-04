@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.0...@tecsinapse/react-core@1.21.1) (2022-10-04)
+
+
+### Features
+
+* added datepicker controller with keyboard. ([b3484a6](https://github.com/tecsinapse/design-system/commit/b3484a6aa702234166ca7c3d353f24b4926ced39))
+
+
+
+
+
 # [1.21.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.20.0...@tecsinapse/react-core@1.21.0) (2022-09-28)
 
 

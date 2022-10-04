@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.0...@tecsinapse/react-web-kit@1.22.1) (2022-10-04)
+
+
+### Features
+
+* added control date picker ([480efc3](https://github.com/tecsinapse/design-system/commit/480efc3fe258580bfd5b7a0533637a2a8134eaea))
+* added datepicker controller with keyboard. ([b3484a6](https://github.com/tecsinapse/design-system/commit/b3484a6aa702234166ca7c3d353f24b4926ced39))
+
+
+
+
+
 # [1.22.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.3...@tecsinapse/react-web-kit@1.22.0) (2022-09-28)
 
 
