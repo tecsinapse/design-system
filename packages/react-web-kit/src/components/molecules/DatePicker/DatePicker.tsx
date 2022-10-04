@@ -91,7 +91,7 @@ export const DatePicker = <T extends SelectionType>({
         }}
         mask={Masks.DATE}
         value={displayValue}
-        hint={error ? 'Data inválida' : ''}
+        hint={error ? 'Data inválida' : undefined}
         variant={error ? 'error' : 'default'}
         onChange={input => {
           setControlledInput(input);
