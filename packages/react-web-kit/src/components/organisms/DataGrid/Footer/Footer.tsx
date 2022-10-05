@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Icon, Select, Text } from '@tecsinapse/react-web-kit';
+import { Button } from '../../../atoms/Button';
+import { Icon, Text } from '@tecsinapse/react-core';
+import { Select } from '../../../molecules/Select';
 import { TFoot, Tr } from '../../../atoms/Table';
 import {
   FooterContainer,

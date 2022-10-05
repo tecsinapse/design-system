@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderBackground, THeadStyled } from './styled';
-import { Tr } from '../Row/Tr';
+import Tr from '../Row/Tr';
 
 const THead: React.FC<React.HTMLAttributes<HTMLTableSectionElement>> = ({
   children,

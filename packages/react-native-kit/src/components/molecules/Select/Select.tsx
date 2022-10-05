@@ -98,7 +98,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
   }, [options]);
 
   const handleLazyFocus = React.useCallback(async () => {
-    if (typeof options === 'function') {
+    if (typeof options === 'function' && !onSearch) {
       setLoading(true);
       try {
         const result = await options();
@@ -122,6 +122,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
     async (searchInput: string | undefined) => {
       if (searchInput !== undefined && onSearch) {
         setLoading(true);
+        modal.requestUpdate();
         try {
           const result = await onSearch(searchInput);
           if (result) {
@@ -135,7 +136,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
                 setSelectOptions([value as Data, ...result]);
               } else setSelectOptions(result);
             } else {
-              if ((value as Data[]).length > 0) {
+              if ((value as Data[])?.length) {
                 const selectedValues =
                   (value as Data[]).filter(
                     v =>

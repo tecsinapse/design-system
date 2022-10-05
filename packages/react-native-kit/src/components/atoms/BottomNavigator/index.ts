@@ -1,6 +1,4 @@
-export {
-  default as BottomNavigator,
-  BottomNavigatorProps,
-} from './BottomNavigator';
+export { default as BottomNavigator } from './BottomNavigator';
+export { BottomNavigatorProps } from './BottomNavigator';
 
-export { BottomNavigatorItemProps } from './Item';
+export type { BottomNavigatorItemProps } from './Item';

@@ -1,1 +1,2 @@
-export { DatePicker, NativeDatePickerProps } from './DatePicker';
+export { DatePicker } from './DatePicker';
+export type { NativeDatePickerProps } from './DatePicker';

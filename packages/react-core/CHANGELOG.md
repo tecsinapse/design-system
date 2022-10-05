@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.3...@tecsinapse/react-core@1.21.4) (2022-10-04)
+
+
+### Bug Fixes
+
+* file imports ([16a542c](https://github.com/tecsinapse/design-system/commit/16a542cdf46dce651c876efe17aa684a0b8cd4c1))
+* rollup warnings ([fcc378a](https://github.com/tecsinapse/design-system/commit/fcc378a868f3e2a47e269aa39f5e83e613019c9b))
+
+
+
+
+
+## [1.21.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.2...@tecsinapse/react-core@1.21.3) (2022-10-04)
+
+
+### Bug Fixes
+
+* deps versioning ([c849198](https://github.com/tecsinapse/design-system/commit/c849198a1fa6671d4d7c9370ceae999fdab2a27c))
+* rollup config ([38a0af3](https://github.com/tecsinapse/design-system/commit/38a0af333d31201ceff839182b145d2536bc8e4c))
+
+
+### Features
+
+* handle icons as react components ([a9d52d0](https://github.com/tecsinapse/design-system/commit/a9d52d03d9921d2535ff174e94980cec245dd355))
+
+
+
+
+
+## [1.21.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.1...@tecsinapse/react-core@1.21.2) (2022-10-04)
+
+
+### Bug Fixes
+
+* imports inputs ([982fe67](https://github.com/tecsinapse/design-system/commit/982fe67e7c89c63f244dc83b4ad6dd18ddaaa693))
+
+
+
+
+
+## [1.21.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.0...@tecsinapse/react-core@1.21.1) (2022-10-04)
+
+
+### Features
+
+* added datepicker controller with keyboard. ([b3484a6](https://github.com/tecsinapse/design-system/commit/b3484a6aa702234166ca7c3d353f24b4926ced39))
+
+
+
+
+
+# [1.21.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.20.0...@tecsinapse/react-core@1.21.0) (2022-09-28)
+
+
+### Bug Fixes
+
+* add babel target ([88f3dd8](https://github.com/tecsinapse/design-system/commit/88f3dd8a7865ef507855d76ed4f420c6bd1c1a39))
+* icon suspense fallback ([90e4b5d](https://github.com/tecsinapse/design-system/commit/90e4b5dbc4772c78a9b96e9c17b0383e678ad9bf))
+* project scripts ([cb2e0a1](https://github.com/tecsinapse/design-system/commit/cb2e0a1873cfc3f45e793b5443297fb6fffce1b5))
+* stories import ([8d0cc3f](https://github.com/tecsinapse/design-system/commit/8d0cc3fdc51fb2331f73ab3cd6c1ec3cfa37941c))
+* use run-p to parallelize scripts ([31ee9eb](https://github.com/tecsinapse/design-system/commit/31ee9eb0441f3b2f663e337c7f86549284108982))
+
+
+### Features
+
+* finish compiler config ([af9f2ae](https://github.com/tecsinapse/design-system/commit/af9f2ae2dd2b08e9842778d0159ecd3d44bef89a))
+* finish rollup config for core and web ([0ce9636](https://github.com/tecsinapse/design-system/commit/0ce9636d0b44bd2a80cf5614b8ed93f126dba8d2))
+* try rollup + esbuild ([a591643](https://github.com/tecsinapse/design-system/commit/a5916430c75e4d1707ae47286d675daddfc05a75))
+* try rollup + esbuild ([c6a7474](https://github.com/tecsinapse/design-system/commit/c6a747426c28a7d06212877ef4eb37fe4723b430))
+
+
+
+
+
 # [1.20.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.19.0...@tecsinapse/react-core@1.20.0) (2022-09-05)
 
 

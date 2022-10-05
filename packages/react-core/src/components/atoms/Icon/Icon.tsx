@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
-import { StyleProp, TextStyle } from 'react-native';
-import { useTheme } from '@emotion/react';
+import { StyleProp, TextStyle, Text } from 'react-native';
 import {
   ColorGradationType,
   ColorType,
   FontColorType,
   IconSizeType,
-  IconType,
-  ThemeProp,
-} from '@tecsinapse/react-core';
-import { getIconColor, getIconComponent } from './helpers';
+} from '../../../types/defaults';
+import { useTheme } from '../../../hooks';
+import { getIconColor, getIconComponent } from './functions';
+import { IconType } from '../../../styles/definitions';
 
 export interface IconProps {
   /**  Name of the icon. You must use the same icons from react-native-vector-icons */
@@ -38,11 +37,15 @@ const Icon: FC<IconProps> = ({
   colorTone = 'medium',
   ...rest
 }) => {
-  const theme = useTheme() as ThemeProp;
+  const theme = useTheme();
   const color = getIconColor(colorVariant, colorTone, fontColor, theme);
-  const RNVIcon = getIconComponent(type, size);
+  const RNVIcon = getIconComponent(type);
 
-  return <RNVIcon {...rest} style={style} name={name} color={color} />;
+  return (
+    <React.Suspense fallback={<Text> </Text>}>
+      <RNVIcon {...rest} style={style} name={name} color={color} size={size} />
+    </React.Suspense>
+  );
 };
 
 export default Icon;

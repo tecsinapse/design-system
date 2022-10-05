@@ -5,7 +5,7 @@ import { Text } from '../../Text';
 import { ButtonStateProps } from '../Button';
 import { getStyledTextButton, StyledIndicator } from './styled';
 
-export const Loading: FC<ButtonStateProps> = ({
+const Loading: FC<ButtonStateProps> = ({
   text,
   textComponent = Text,
   fontColor = 'light',

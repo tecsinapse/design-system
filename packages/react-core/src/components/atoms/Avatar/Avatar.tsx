@@ -22,7 +22,7 @@ export interface AvatarProps {
   TextComponent?: FC<TextProps>;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({
+const Avatar: React.FC<AvatarProps> = ({
   source,
   name,
   onPress,

@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.3...@tecsinapse/react-native-kit@1.22.4) (2022-10-04)
+
+
+### Bug Fixes
+
+* file imports ([16a542c](https://github.com/tecsinapse/design-system/commit/16a542cdf46dce651c876efe17aa684a0b8cd4c1))
+
+
+
+
+
+## [1.22.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.2...@tecsinapse/react-native-kit@1.22.3) (2022-10-04)
+
+
+### Bug Fixes
+
+* package version ([c4e0ebe](https://github.com/tecsinapse/design-system/commit/c4e0ebef9b568f89d1c7a6ad8747d20c35590a5f))
+* rollup config ([38a0af3](https://github.com/tecsinapse/design-system/commit/38a0af333d31201ceff839182b145d2536bc8e4c))
+
+
+### Features
+
+* handle icons as react components ([a9d52d0](https://github.com/tecsinapse/design-system/commit/a9d52d03d9921d2535ff174e94980cec245dd355))
+
+
+
+
+
+## [1.22.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.1...@tecsinapse/react-native-kit@1.22.2) (2022-10-04)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.22.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.0...@tecsinapse/react-native-kit@1.22.1) (2022-10-04)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+# [1.22.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.21.0...@tecsinapse/react-native-kit@1.22.0) (2022-09-28)
+
+
+### Bug Fixes
+
+* project scripts ([cb2e0a1](https://github.com/tecsinapse/design-system/commit/cb2e0a1873cfc3f45e793b5443297fb6fffce1b5))
+
+
+### Features
+
+* finish compiler config ([af9f2ae](https://github.com/tecsinapse/design-system/commit/af9f2ae2dd2b08e9842778d0159ecd3d44bef89a))
+
+
+
+
+
 # [1.21.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.20.0...@tecsinapse/react-native-kit@1.21.0) (2022-09-05)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit

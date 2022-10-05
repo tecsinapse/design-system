@@ -3,9 +3,8 @@ import { TextInput } from 'react-native';
 import { InputElementProps } from '.';
 import { StyleProps } from '../../../types/defaults';
 import { RFValueStr } from '../../../utils/ResponsiveFontSize';
-import { Icon } from '../Icon';
 import { InputContainerProps } from './InputContainer/InputContainer';
-
+import { Icon } from '../Icon';
 const leftIconStyles = ({
   leftComponent,
   theme,
@@ -115,6 +114,7 @@ export const StyledInputElement = styled(StyledInputElementBase)<
   InputElementProps & Partial<StyleProps>
 >(
   props => css`
+    width: 100%;
     ${disabledInputStyles(props)}
   `
 );

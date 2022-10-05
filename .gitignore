@@ -112,4 +112,5 @@ lerna-debug.log
 yarn-error.log
 packages/**/dist
 packages/**/esm
+packages/**/rollup
 sbdocs

@@ -3,6 +3,98 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.3...@tecsinapse/react-web-kit@1.22.4) (2022-10-04)
+
+
+### Bug Fixes
+
+* console errors ([407181d](https://github.com/tecsinapse/design-system/commit/407181dcdb0636e448356cb07f97a84c39e73eaa))
+* file imports ([16a542c](https://github.com/tecsinapse/design-system/commit/16a542cdf46dce651c876efe17aa684a0b8cd4c1))
+* rollup warnings ([fcc378a](https://github.com/tecsinapse/design-system/commit/fcc378a868f3e2a47e269aa39f5e83e613019c9b))
+
+
+
+
+
+## [1.22.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.2...@tecsinapse/react-web-kit@1.22.3) (2022-10-04)
+
+
+### Bug Fixes
+
+* package version ([c4e0ebe](https://github.com/tecsinapse/design-system/commit/c4e0ebef9b568f89d1c7a6ad8747d20c35590a5f))
+* rollup config ([38a0af3](https://github.com/tecsinapse/design-system/commit/38a0af333d31201ceff839182b145d2536bc8e4c))
+
+
+### Features
+
+* handle icons as react components ([a9d52d0](https://github.com/tecsinapse/design-system/commit/a9d52d03d9921d2535ff174e94980cec245dd355))
+
+
+
+
+
+## [1.22.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.1...@tecsinapse/react-web-kit@1.22.2) (2022-10-04)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+
+
+
+
+## [1.22.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.0...@tecsinapse/react-web-kit@1.22.1) (2022-10-04)
+
+
+### Features
+
+* added control date picker ([480efc3](https://github.com/tecsinapse/design-system/commit/480efc3fe258580bfd5b7a0533637a2a8134eaea))
+* added datepicker controller with keyboard. ([b3484a6](https://github.com/tecsinapse/design-system/commit/b3484a6aa702234166ca7c3d353f24b4926ced39))
+
+
+
+
+
+# [1.22.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.3...@tecsinapse/react-web-kit@1.22.0) (2022-09-28)
+
+
+### Bug Fixes
+
+* add babel target ([88f3dd8](https://github.com/tecsinapse/design-system/commit/88f3dd8a7865ef507855d76ed4f420c6bd1c1a39))
+* project scripts ([cb2e0a1](https://github.com/tecsinapse/design-system/commit/cb2e0a1873cfc3f45e793b5443297fb6fffce1b5))
+* stories import ([8d0cc3f](https://github.com/tecsinapse/design-system/commit/8d0cc3fdc51fb2331f73ab3cd6c1ec3cfa37941c))
+* use run-p to parallelize scripts ([31ee9eb](https://github.com/tecsinapse/design-system/commit/31ee9eb0441f3b2f663e337c7f86549284108982))
+
+
+### Features
+
+* finish compiler config ([af9f2ae](https://github.com/tecsinapse/design-system/commit/af9f2ae2dd2b08e9842778d0159ecd3d44bef89a))
+* finish rollup config for core and web ([0ce9636](https://github.com/tecsinapse/design-system/commit/0ce9636d0b44bd2a80cf5614b8ed93f126dba8d2))
+
+
+
+
+
+## [1.21.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.2...@tecsinapse/react-web-kit@1.21.3) (2022-09-23)
+
+
+### Bug Fixes
+
+* dependencies and verification lazy select ([3cb68af](https://github.com/tecsinapse/design-system/commit/3cb68af91d8df6b487c6cab8f707b2604fb9e55e))
+
+
+
+
+
+## [1.21.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.1...@tecsinapse/react-web-kit@1.21.2) (2022-09-16)
+
+
+### Features
+
+* added lazy select ([9d68ea9](https://github.com/tecsinapse/design-system/commit/9d68ea9137ab273255d1a899a7d3489c2842ea4d))
+
+
+
+
+
 ## [1.21.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.21.0...@tecsinapse/react-web-kit@1.21.1) (2022-09-05)
 
 
