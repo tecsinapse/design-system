@@ -35,6 +35,29 @@ We want to foster an inclusive and friendly community around our Open Source eff
 
 If you feel another member of the community violated our code or you are experiencing problems participating in our community because of another individual's behavior, please get in touch with our maintainers.
 
+## How to make local changes available for other projects?
+
+At times, it may be necessary to test changes directly in a product, and not in the design system, and for this to work in a less laborious way, we can follow the steps below:
+
+3 terminal tabs should open:
+- In one run the JS code watch:
+```
+yarn build:watch
+```
+- In another run the watch of the TS code watch
+```
+yarn build:declarations:watch
+```
+- On another run yalc push (this script updates linked local projects)
+```
+yarn yalc:push
+```
+
+With that, all changes will be in yalc locally.
+
+To access in your application, see this [example](https://github.com/tecsinapse/vendas-web-poc-playground#tools) in topic "**Yalc link Design System:**"
+
+
 ### Maintainers
 
 - [Denner Vidal](mailto:denner.vidal@tecsinapse.com.br)
