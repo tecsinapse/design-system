@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
-import { RFValueStr, StyleProps } from '@tecsinapse/react-core';
 import {
+  RFValueStr,
+  StyleProps,
   SWITCH_BODY_WIDTH,
   SWITCH_PIN_WIDTH,
-} from '@tecsinapse/react-core/src/components/atoms/Switch/styled';
+} from '@tecsinapse/react-core';
 
 export const StyledSwitchContent = styled.div<Partial<StyleProps>>`
   border-radius: ${({ theme }) => theme.borderRadius.pill};

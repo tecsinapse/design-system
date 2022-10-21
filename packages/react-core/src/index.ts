@@ -56,7 +56,11 @@ export { ProgressBar } from './components/atoms/ProgressBar';
 export type { ProgressBarProps } from './components/atoms/ProgressBar';
 export { RadioButton } from './components/atoms/RadioButton';
 export type { RadioButtonProps } from './components/atoms/RadioButton';
-export { Switch } from './components/atoms/Switch';
+export {
+  Switch,
+  SWITCH_PIN_WIDTH,
+  SWITCH_BODY_WIDTH,
+} from './components/atoms/Switch';
 export type { SwitchProps } from './components/atoms/Switch';
 export { Tag } from './components/atoms/Tag';
 export type { TagProps } from './components/atoms/Tag';
