@@ -1,0 +1,39 @@
+{
+  "name": "@tecsinapse/react-lab",
+  "version": "1.0.0",
+  "description": "TecSinapse components laboratory",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "yarn build:es --watch",
+    "build:es": "yarn rollup --config",
+    "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
+    "build:declaration:cjs": "tsc --project tsconfig.build.json",
+    "build:declaration:esm": "tsc --project tsconfig.build.esm.json",
+    "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
+    "yalc:push": "yalc push --changed",
+    "yalc:show": "yalc installations show $npm_package_name"
+  },
+  "dependencies": {
+    "@emotion/react": "~11.10.0",
+    "@emotion/styled": "~11.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/react-web-kit",
+    "url": "git+ssh://git@github.com/tecsinapse/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tecsinapse/design-system/issues"
+  },
+  "homepage": "https://tecsinapse.github.io/design-system/",
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  }
+}
