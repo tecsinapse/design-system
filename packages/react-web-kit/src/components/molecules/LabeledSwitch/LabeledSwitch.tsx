@@ -1,7 +1,8 @@
-import { LabeledSwitchProps, Switch, TextProps } from '@tecsinapse/react-core';
+import { LabeledSwitchProps, TextProps } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
 import LabelComponent from './LabelComponent';
 import { StyledDiv } from './styled';
+import Switch from '../../atoms/Switch/Switch';
 
 export type LabeledSwitchWebProps = LabeledSwitchProps & {
   labelProps?: TextProps;

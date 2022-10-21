@@ -21,7 +21,7 @@ export type { ITooltip } from './components/atoms/Tooltip';
 export { Breadcrumbs } from './components/molecules/Breadcrumbs';
 export type {
   BreadcrumbsProps,
-  BreadcrumbType
+  BreadcrumbType,
 } from './components/molecules/Breadcrumbs';
 export { DatePicker } from './components/molecules/DatePicker';
 export type { WebDatePickerProps } from './components/molecules/DatePicker';
@@ -34,6 +34,7 @@ export type { IGridItemWeb, IGridWeb } from './components/molecules/Grid';
 export { IconTextButton } from './components/molecules/IconTextButton';
 export { InputPassword } from './components/molecules/InputPassword';
 export type { InputPasswordWebProps } from './components/molecules/InputPassword';
+export { Switch } from './components/atoms/Switch';
 export { LabeledSwitch } from './components/molecules/LabeledSwitch';
 export type { LabeledSwitchWebProps } from './components/molecules/LabeledSwitch';
 export { Menubar } from './components/molecules/Menubar';
@@ -41,7 +42,7 @@ export type {
   MenubarItemsOptions,
   MenubarMostUsedType,
   MenubarOptionsType,
-  MenubarProps
+  MenubarProps,
 } from './components/molecules/Menubar';
 export { Select } from './components/molecules/Select';
 export type { SelectProps } from './components/molecules/Select';
@@ -52,7 +53,6 @@ export type { TextAreaProps } from './components/molecules/TextArea';
 export { DataGrid } from './components/organisms/DataGrid';
 export type {
   DataGridProps,
-  HeadersType
+  HeadersType,
 } from './components/organisms/DataGrid';
 export * from './hooks';
-
