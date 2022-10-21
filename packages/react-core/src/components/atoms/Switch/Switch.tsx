@@ -4,7 +4,6 @@ import {
   Animated,
   LayoutChangeEvent,
   StyleProp,
-  View,
   ViewStyle,
 } from 'react-native';
 import {
@@ -19,12 +18,7 @@ import {
 } from '../../../utils';
 import { PressableSurface } from '../PressableSurface';
 import { transitionSwitch } from './animation';
-import {
-  StyledSwitch2,
-  StyledSwitchContent2,
-  SWITCH_PIN_WIDTH,
-} from './styled';
-import Text from '../Text/Text';
+import { StyledSwitch, StyledSwitchContent, SWITCH_PIN_WIDTH } from './styled';
 
 export interface SwitchProps {
   onChange: (active: boolean) => void;
@@ -96,11 +90,21 @@ const Switch: FC<SwitchProps> = ({
   };
 
   return (
-    <div onClick={handleChange}>
-      <StyledSwitchContent2 active={active}>
-        <StyledSwitch2 />
-      </StyledSwitchContent2>
-    </div>
+    <PressableSurface
+      {...rest}
+      onPress={handleChange}
+      effect="none"
+      disabled={disabled}
+    >
+      <StyledSwitchContent
+        onLayout={handleSwitchLayout}
+        style={{ backgroundColor: interpolateColor }}
+      >
+        <StyledSwitch
+          style={[dotStyle, { transform: [{ translateX: transitionValue }] }]}
+        />
+      </StyledSwitchContent>
+    </PressableSurface>
   );
 };
 

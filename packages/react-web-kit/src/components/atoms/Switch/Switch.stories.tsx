@@ -1,8 +1,7 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { Text, Card } from '@tecsinapse/react-web-kit';
 import Switch from './Switch';
-import { set } from 'husky';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Web/Switch',
@@ -10,10 +9,20 @@ export default {
 };
 
 const Template: Story = args => {
-  const [active, setActive] = React.useState(false);
-  return <Switch onChange={setActive} active={active} />;
+  const [active, setActive] = React.useState(args.active);
+  const onChange = arg => {
+    setActive(!active);
+    args.onChange(arg);
+  };
+  return (
+    <Switch active={active} onChange={onChange} disabled={args.disabled} />
+  );
 };
 
 export const Base = Template.bind({});
 
-Base.args = {};
+Base.args = {
+  active: true,
+  onChange: value => action('Cicked')(value),
+  disabled: false,
+};
