@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.4...@tecsinapse/react-core@1.21.5) (2022-10-21)
+
+
+### Features
+
+* added switch with div ([b004d7d](https://github.com/tecsinapse/design-system/commit/b004d7d2e767e867a7e656d644d57726a3038f36))
+* addede animation switch ([c744b4e](https://github.com/tecsinapse/design-system/commit/c744b4e69bfa0121870062735cef2f442aa79f8c))
+
+
+
+
+
 ## [1.21.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.3...@tecsinapse/react-core@1.21.4) (2022-10-04)
 
 

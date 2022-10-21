@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.4...@tecsinapse/react-web-kit@1.22.5) (2022-10-21)
+
+
+### Features
+
+* addede animation switch ([c744b4e](https://github.com/tecsinapse/design-system/commit/c744b4e69bfa0121870062735cef2f442aa79f8c))
+
+
+
+
+
 ## [1.22.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.3...@tecsinapse/react-web-kit@1.22.4) (2022-10-04)
 
 
