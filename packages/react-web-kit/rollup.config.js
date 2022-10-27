@@ -27,7 +27,7 @@ export default [
       alias({
         entries: [{ find: 'react-native', replacement: 'react-native-web' }],
       }),
-      esbuild({ tsconfig: 'tsconfig.build.json' }),
+      esbuild({ tsconfig: 'tsconfig.build.json', target: 'esnext' }),
     ],
     external: [
       'date-fns',

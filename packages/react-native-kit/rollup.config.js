@@ -22,7 +22,7 @@ export default [
         ...outputDefaultConfig,
       },
     ],
-    plugins: [esbuild({ tsconfig: 'tsconfig.build.json' })],
+    plugins: [esbuild({ tsconfig: 'tsconfig.build.json', target: 'esnext' })],
     external: [
       'react',
       'react-native',
