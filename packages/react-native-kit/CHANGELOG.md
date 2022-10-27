@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.6...@tecsinapse/react-native-kit@1.22.7) (2022-10-27)
+
+
+### Features
+
+* added badge in Button Header react-native-kit ([b2664b8](https://github.com/tecsinapse/design-system/commit/b2664b8647650e0cc018320038a6b9bed3eed5b4))
+
+
+
+
+
 ## [1.22.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.5...@tecsinapse/react-native-kit@1.22.6) (2022-10-21)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
