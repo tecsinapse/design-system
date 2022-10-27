@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "TecSinapse React components",
-  "version": "1.22.5",
+  "version": "1.22.6",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -23,7 +23,7 @@
     "@emotion/native": "~11.10.0",
     "@emotion/react": "~11.10.0",
     "@emotion/styled": "~11.10.0",
-    "@tecsinapse/react-core": "1.21.5",
+    "@tecsinapse/react-core": "1.21.6",
     "@types/react-native": "^0.64.4",
     "date-fns": "~2.29.1",
     "react-native-vector-icons": "~9.2.0",
