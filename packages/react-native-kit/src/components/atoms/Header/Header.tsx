@@ -2,9 +2,12 @@ import { ViewProps } from 'react-native';
 import { StyledView, FloatingButton, Dummy } from './styled';
 import { ButtonProps, Icon, IconProps } from '@tecsinapse/react-core';
 import * as React from 'react';
+import Badge from '../Badge/Badge';
+import { FC } from 'react';
 
 type Attachable = ButtonProps & {
   icon: IconProps;
+  valueBagde?: number;
 };
 
 export interface HeaderProps extends ViewProps {
@@ -18,30 +21,43 @@ const Header: React.FC<HeaderProps> = ({
   children,
   ...rest
 }) => {
+  const ButtonBase: FC = () => (
+    <FloatingButton
+      {...rightButton}
+      variant={rightButton?.variant || 'filled'}
+      color={rightButton?.color || 'primary'}
+      size={rightButton?.size || 'small'}
+    >
+      {rightButton?.icon && <Icon {...rightButton?.icon} />}
+    </FloatingButton>
+  );
+
   return (
     <StyledView {...rest}>
       {leftButton ? (
-        <FloatingButton
-          {...leftButton}
-          variant={leftButton?.variant || 'filled'}
-          color={leftButton?.color || 'primary'}
-          size={leftButton?.size || 'small'}
-        >
-          {leftButton?.icon && <Icon {...leftButton?.icon} />}
-        </FloatingButton>
+        <>
+          {leftButton?.valueBagde ? (
+            <Badge value={leftButton.valueBagde} color={'error'}>
+              <ButtonBase />
+            </Badge>
+          ) : (
+            <ButtonBase />
+          )}
+        </>
       ) : (
         <Dummy disabled />
       )}
       {children}
       {rightButton ? (
-        <FloatingButton
-          {...rightButton}
-          variant={rightButton?.variant || 'filled'}
-          color={rightButton?.color || 'primary'}
-          size={rightButton?.size || 'small'}
-        >
-          {rightButton?.icon && <Icon {...rightButton?.icon} />}
-        </FloatingButton>
+        <>
+          {rightButton?.valueBagde ? (
+            <Badge value={rightButton.valueBagde} color={'error'}>
+              <ButtonBase />
+            </Badge>
+          ) : (
+            <ButtonBase />
+          )}
+        </>
       ) : (
         <Dummy disabled />
       )}
