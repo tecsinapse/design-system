@@ -15,20 +15,24 @@ export interface HeaderProps extends ViewProps {
   leftButton?: Attachable;
 }
 
+export interface ButtonBaseProps extends ViewProps {
+  button?: Attachable;
+}
+
 const Header: React.FC<HeaderProps> = ({
   rightButton,
   leftButton,
   children,
   ...rest
 }) => {
-  const ButtonBase: FC = () => (
+  const ButtonBase: FC<ButtonBaseProps> = ({ button }) => (
     <FloatingButton
-      {...rightButton}
-      variant={rightButton?.variant || 'filled'}
-      color={rightButton?.color || 'primary'}
-      size={rightButton?.size || 'small'}
+      {...button}
+      variant={button?.variant || 'filled'}
+      color={button?.color || 'primary'}
+      size={button?.size || 'small'}
     >
-      {rightButton?.icon && <Icon {...rightButton?.icon} />}
+      {button?.icon && <Icon {...button?.icon} />}
     </FloatingButton>
   );
 
