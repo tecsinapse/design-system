@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.8...@tecsinapse/react-web-kit@1.22.9) (2022-10-28)
+
+
+### Features
+
+* added exports ([db152e8](https://github.com/tecsinapse/design-system/commit/db152e883f7429a96b2aa9a856b499fa09463828))
+
+
+
+
+
 ## [1.22.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.7...@tecsinapse/react-web-kit@1.22.8) (2022-10-27)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "TecSinapse React components",
-  "version": "1.22.8",
+  "version": "1.22.9",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

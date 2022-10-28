@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.8...@tecsinapse/react-native-kit@1.22.9) (2022-10-28)
+
+
+### Bug Fixes
+
+* added prop button base ([d9b8948](https://github.com/tecsinapse/design-system/commit/d9b89489fc302c492f55a066ea4c9cce3859a1bf))
+* prop button ([dffe229](https://github.com/tecsinapse/design-system/commit/dffe2298c71fa88d3fc3a2ba99f70391844e1cfd))
+
+
+### Features
+
+* added exports ([db152e8](https://github.com/tecsinapse/design-system/commit/db152e883f7429a96b2aa9a856b499fa09463828))
+
+
+
+
+
 ## [1.22.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.22.7...@tecsinapse/react-native-kit@1.22.8) (2022-10-27)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
