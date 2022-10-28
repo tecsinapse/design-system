@@ -5,7 +5,7 @@ import * as React from 'react';
 import Badge from '../Badge/Badge';
 import { FC } from 'react';
 
-type Attachable = ButtonProps & {
+export type Attachable = ButtonProps & {
   icon: IconProps;
   valueBagde?: number;
 };

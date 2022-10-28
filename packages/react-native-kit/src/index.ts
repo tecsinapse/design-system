@@ -8,7 +8,7 @@ export { Button, Error, Loading, Success } from './components/atoms/Button';
 export type { ButtonNativeProps } from './components/atoms/Button';
 export { GroupButtonOption } from './components/atoms/GroupButton';
 export { Header } from './components/atoms/Header';
-export type { HeaderProps } from './components/atoms/Header';
+export type { HeaderProps, Attachable } from './components/atoms/Header';
 export { Input } from './components/atoms/Input';
 
 export type { InputNativeProps } from './components/atoms/Input';

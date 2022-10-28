@@ -54,5 +54,6 @@ export { DataGrid } from './components/organisms/DataGrid';
 export type {
   DataGridProps,
   HeadersType,
+  SortState,
 } from './components/organisms/DataGrid';
 export * from './hooks';
