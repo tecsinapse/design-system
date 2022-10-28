@@ -42,10 +42,10 @@ const Header: React.FC<HeaderProps> = ({
         <>
           {leftButton?.valueBagde ? (
             <Badge value={leftButton.valueBagde} color={'error'}>
-              <ButtonBase />
+              <ButtonBase button={leftButton} />
             </Badge>
           ) : (
-            <ButtonBase />
+            <ButtonBase button={leftButton} />
           )}
         </>
       ) : (
@@ -56,10 +56,10 @@ const Header: React.FC<HeaderProps> = ({
         <>
           {rightButton?.valueBagde ? (
             <Badge value={rightButton.valueBagde} color={'error'}>
-              <ButtonBase />
+              <ButtonBase button={rightButton} />
             </Badge>
           ) : (
-            <ButtonBase />
+            <ButtonBase button={rightButton} />
           )}
         </>
       ) : (
