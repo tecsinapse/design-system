@@ -7,7 +7,7 @@ import { FC } from 'react';
 
 export type Attachable = ButtonProps & {
   icon: IconProps;
-  valueBagde?: number;
+  valueBadge?: number;
 };
 
 export interface HeaderProps extends ViewProps {
@@ -40,8 +40,8 @@ const Header: React.FC<HeaderProps> = ({
     <StyledView {...rest}>
       {leftButton ? (
         <>
-          {leftButton?.valueBagde ? (
-            <Badge value={leftButton.valueBagde} color={'error'}>
+          {leftButton?.valueBadge ? (
+            <Badge value={leftButton.valueBadge} color={'error'}>
               <ButtonBase button={leftButton} />
             </Badge>
           ) : (
@@ -54,8 +54,8 @@ const Header: React.FC<HeaderProps> = ({
       {children}
       {rightButton ? (
         <>
-          {rightButton?.valueBagde ? (
-            <Badge value={rightButton.valueBagde} color={'error'}>
+          {rightButton?.valueBadge ? (
+            <Badge value={rightButton.valueBadge} color={'error'}>
               <ButtonBase button={rightButton} />
             </Badge>
           ) : (
