@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.9...@tecsinapse/react-web-kit@1.23.0) (2022-11-01)
+
+
+### Bug Fixes
+
+* rollback to static icons import ([9b00c08](https://github.com/tecsinapse/design-system/commit/9b00c08640082e5d764aaa341a22150dc62a64e3))
+
+
+
+
+
 ## [1.22.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.8...@tecsinapse/react-web-kit@1.22.9) (2022-10-28)
 
 
