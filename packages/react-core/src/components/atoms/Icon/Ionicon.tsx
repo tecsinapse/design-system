@@ -1,6 +1,6 @@
 import React from 'react';
 import IonRNVI from 'react-native-vector-icons/dist/Ionicons';
-import { getStyledIcon } from './functions';
+import { getStyledIcon } from './styled';
 import { IconInternalProps } from './types';
 
 const Ionicon = ({ size, color, name, ...rest }: IconInternalProps) => {

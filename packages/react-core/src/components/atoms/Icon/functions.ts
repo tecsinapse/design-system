@@ -1,15 +1,26 @@
-import { ComponentType, lazy } from 'react';
+import { ComponentType } from 'react';
 import {
   ColorGradationType,
   ColorType,
   FontColorType,
-  IconSizeType,
   IconType,
-  StyleProps,
   ThemeProp,
 } from '@tecsinapse/react-core';
-import styled from '@emotion/native';
-import { IconInternalProps, IconRNVIProps } from './types';
+import { IconInternalProps } from './types';
+import Material from './Material';
+import Fontisto from './Fontisto';
+import AntDesign from './AntDesign';
+import Feather from './Feather';
+import SimpleLine from './SimpleLine';
+import FontAwesomeFive from './FontAwesomeFive';
+import FontAwesome from './FontAwesome';
+import Entypo from './Entypo';
+import Evil from './Evil';
+import Foundation from './Foundation';
+import Ionicon from './Ionicon';
+import MaterialCommunity from './MaterialCommunity';
+import Octicon from './Octicon';
+import Zocial from './Zocial';
 
 /* eslint-disable */
 const customIcons: any = {};
@@ -18,52 +29,44 @@ export const registerCustomIconType = (id: string, customIcon: any) => {
   customIcons[id] = customIcon;
 };
 
-export const getStyledIcon = (
-  Component: ComponentType<IconRNVIProps>,
-  size: IconSizeType
-) => styled(Component)<Partial<StyleProps>>`
-  font-size: ${({ theme }: StyleProps) => theme?.iconSize[size]};
-  text-align: center;
-`;
-
 export const getIconComponent = (
   type: IconType
 ): ComponentType<IconInternalProps> => {
   switch (type) {
     case 'zocial':
-      return lazy(async () => await import('./Zocial'));
+      return Zocial;
     case 'octicon':
-      return lazy(async () => await import('./Octicon'));
+      return Octicon;
     case 'material':
-      return lazy(async () => await import('./Material'));
+      return Material;
     case 'material-community':
-      return lazy(async () => await import('./MaterialCommunity'));
+      return MaterialCommunity;
     case 'ionicon':
-      return lazy(async () => await import('./Ionicon'));
+      return Ionicon;
     case 'foundation':
-      return lazy(async () => await import('./Foundation'));
+      return Foundation;
     case 'evilicon':
-      return lazy(async () => await import('./Evil'));
+      return Evil;
     case 'entypo':
-      return lazy(async () => await import('./Entypo'));
+      return Entypo;
     case 'font-awesome':
-      return lazy(async () => await import('./FontAwesome'));
+      return FontAwesome;
     case 'font-awesome-5':
-      return lazy(async () => await import('./FontAwesomeFive'));
+      return FontAwesomeFive;
     case 'simple-line-icon':
-      return lazy(async () => await import('./SimpleLine'));
+      return SimpleLine;
     case 'feather':
-      return lazy(async () => await import('./Feather'));
+      return Feather;
     case 'antdesign':
     case 'ant-design':
-      return lazy(async () => await import('./AntDesign'));
+      return AntDesign;
     case 'fontisto':
-      return lazy(async () => await import('./Fontisto'));
+      return Fontisto;
     default:
       if (Object.prototype.hasOwnProperty.call(customIcons, type)) {
         return customIcons[type];
       }
-      return lazy(async () => await import('./Material'));
+      return Material;
   }
 };
 /* eslint-enable */

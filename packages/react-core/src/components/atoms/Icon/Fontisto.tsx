@@ -1,6 +1,6 @@
 import React from 'react';
 import FontistoRNVI from 'react-native-vector-icons/dist/Fontisto';
-import { getStyledIcon } from './functions';
+import { getStyledIcon } from './styled';
 import { IconInternalProps } from './types';
 
 const Fontisto = ({ size, color, name, ...rest }: IconInternalProps) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import EvilRNVI from 'react-native-vector-icons/dist/EvilIcons';
-import { getStyledIcon } from './functions';
+import { getStyledIcon } from './styled';
 import { IconInternalProps } from './types';
 
 const Evil = ({ size, color, name, ...rest }: IconInternalProps) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import MaterialRNVI from 'react-native-vector-icons/dist/MaterialIcons';
-import { getStyledIcon } from './functions';
+import { getStyledIcon } from './styled';
 import { IconInternalProps } from './types';
 
 const Material = ({ size, color, name, ...rest }: IconInternalProps) => {

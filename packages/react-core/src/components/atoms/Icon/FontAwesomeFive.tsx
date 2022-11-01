@@ -1,6 +1,6 @@
 import React from 'react';
 import FontAwesomeFiveRNVI from 'react-native-vector-icons/dist/FontAwesome5';
-import { getStyledIcon } from './functions';
+import { getStyledIcon } from './styled';
 import { IconInternalProps } from './types';
 
 const FontAwesomeFive = ({ size, color, name, ...rest }: IconInternalProps) => {

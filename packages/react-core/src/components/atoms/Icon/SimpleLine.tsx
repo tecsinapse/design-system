@@ -1,6 +1,6 @@
 import React from 'react';
 import MaterialCommunityRNVI from 'react-native-vector-icons/dist/SimpleLineIcons';
-import { getStyledIcon } from './functions';
+import { getStyledIcon } from './styled';
 import { IconInternalProps } from './types';
 
 const SimpleLine = ({ size, color, name, ...rest }: IconInternalProps) => {

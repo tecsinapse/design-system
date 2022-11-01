@@ -1,6 +1,6 @@
 import React from 'react';
 import EntypoRNVI from 'react-native-vector-icons/dist/Entypo';
-import { getStyledIcon } from './functions';
+import { getStyledIcon } from './styled';
 import { IconInternalProps } from './types';
 
 const Entypo = ({ size, color, name, ...rest }: IconInternalProps) => {

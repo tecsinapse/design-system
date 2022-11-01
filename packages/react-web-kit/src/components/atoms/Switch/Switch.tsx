@@ -3,7 +3,7 @@ import {
   lightenDarkenColor,
   SwitchProps,
   useTheme,
-} from '@tecsinapse/react-web-kit';
+} from '@tecsinapse/react-core';
 import { Transition } from 'react-transition-group';
 import { StyledSwitchContent, StyledSwitch } from './styled';
 
