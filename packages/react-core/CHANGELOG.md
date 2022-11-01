@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.8...@tecsinapse/react-core@1.22.0) (2022-11-01)
+
+
+### Bug Fixes
+
+* rollback to static icons import ([d84b2a9](https://github.com/tecsinapse/design-system/commit/d84b2a9e49c923b45fc05e4a27768b3769e34501))
+* rollback to static icons import ([9b00c08](https://github.com/tecsinapse/design-system/commit/9b00c08640082e5d764aaa341a22150dc62a64e3))
+
+
+
+
+
 ## [1.21.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.7...@tecsinapse/react-core@1.21.8) (2022-10-27)
 
 **Note:** Version bump only for package @tecsinapse/react-core
