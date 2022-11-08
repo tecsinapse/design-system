@@ -72,18 +72,6 @@ const Snackbar: React.FC<SnackbarProps> = ({
     onClose?.();
   };
 
-  React.useEffect(() => {
-    if (open) {
-      fadeIn();
-    }
-    if (open && timeout) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        handleClose();
-      }, timeout + FADE_DURATION);
-    }
-  }, [open, timeout]);
-
   const handleDismiss = () => {
     fadeOut();
     setTimeout(() => {
@@ -91,6 +79,18 @@ const Snackbar: React.FC<SnackbarProps> = ({
       handleClose();
     }, FADE_DURATION);
   };
+
+  React.useEffect(() => {
+    if (open) {
+      fadeIn();
+    }
+    if (open && timeout) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        handleDismiss();
+      }, timeout + FADE_DURATION);
+    }
+  }, [open, timeout]);
 
   return (
     <SnackbarContainer
