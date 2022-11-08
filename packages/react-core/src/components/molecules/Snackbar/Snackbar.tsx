@@ -31,6 +31,8 @@ export interface SnackbarProps {
   style?: StyleProp<ViewStyle>;
 }
 
+const FADE_DURATION = 500;
+
 const Snackbar: React.FC<SnackbarProps> = ({
   children,
   open = true,
@@ -46,13 +48,13 @@ const Snackbar: React.FC<SnackbarProps> = ({
   style,
 }) => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
-  const duration = 500;
+  const timeoutRef = React.useRef<number>();
 
   const fadeIn = () => {
     Animated.timing(fadeAnim, {
       toValue: 1,
       useNativeDriver: true,
-      duration,
+      duration: FADE_DURATION,
     }).start(() => timeout && fadeOut());
   };
 
@@ -60,9 +62,14 @@ const Snackbar: React.FC<SnackbarProps> = ({
     Animated.timing(fadeAnim, {
       toValue: 0,
       useNativeDriver: true,
-      duration,
-      delay: timeout ? timeout - duration : 0,
+      duration: FADE_DURATION,
+      delay: timeout ? timeout - FADE_DURATION : 0,
     }).start();
+  };
+
+  const handleClose = () => {
+    clearTimeout(timeoutRef.current);
+    onClose?.();
   };
 
   React.useEffect(() => {
@@ -70,11 +77,20 @@ const Snackbar: React.FC<SnackbarProps> = ({
       fadeIn();
     }
     if (open && timeout) {
-      setTimeout(() => {
-        onClose?.();
-      }, timeout + duration);
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => {
+        handleClose();
+      }, timeout + FADE_DURATION);
     }
   }, [open, timeout]);
+
+  const handleDismiss = () => {
+    fadeOut();
+    setTimeout(() => {
+      fadeAnim.setValue(0);
+      handleClose();
+    }, FADE_DURATION);
+  };
 
   return (
     <SnackbarContainer
@@ -97,16 +113,7 @@ const Snackbar: React.FC<SnackbarProps> = ({
           <TextContainer>{children}</TextContainer>
         </ContentContainer>
         {dismissable && (
-          <DismissContainer
-            effect="none"
-            onPress={() => {
-              fadeOut();
-              setTimeout(() => {
-                fadeAnim.setValue(0);
-                onClose?.();
-              }, duration);
-            }}
-          >
+          <DismissContainer effect="none" onPress={handleDismiss}>
             <Icon
               {...rightIcon}
               size="centi"
