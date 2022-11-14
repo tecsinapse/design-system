@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.22.0...@tecsinapse/react-core@1.22.1) (2022-11-08)
+
+
+### Bug Fixes
+
+* snackbar behavior ([54dd099](https://github.com/tecsinapse/design-system/commit/54dd09996a13eeb1ac6439096bccd76533627fdd))
+* snackbar reset timeout on props change ([65ddb0a](https://github.com/tecsinapse/design-system/commit/65ddb0a2bc73a9ee399ea1665eedb119c886e3d9))
+
+
+
+
+
 # [1.22.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.21.8...@tecsinapse/react-core@1.22.0) (2022-11-01)
 
 
