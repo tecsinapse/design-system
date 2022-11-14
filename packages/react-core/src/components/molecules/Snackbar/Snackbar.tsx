@@ -69,13 +69,13 @@ const Snackbar: React.FC<SnackbarProps> = ({
 
   const handleClose = () => {
     clearTimeout(timeoutRef.current);
+    fadeAnim.setValue(0);
     onClose?.();
   };
 
   const handleDismiss = () => {
     fadeOut();
     setTimeout(() => {
-      fadeAnim.setValue(0);
       handleClose();
     }, FADE_DURATION);
   };
