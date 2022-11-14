@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.22.1...@tecsinapse/react-core@1.22.2) (2022-11-14)
+
+
+### Bug Fixes
+
+* snackbar close callback ([92898f4](https://github.com/tecsinapse/design-system/commit/92898f4900c4be24a54583e81d0bcdeb7e34712b))
+
+
+
+
+
 ## [1.22.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.22.0...@tecsinapse/react-core@1.22.1) (2022-11-08)
 
 
