@@ -22,6 +22,8 @@ export interface SnackbarProps {
   dismissable?: boolean;
   /** Time in miliseconds for auto hide */
   timeout?: number;
+  /** Decides whether to show timeout progressbar*/
+  showProgressBar?: boolean;
   leftIcon?: IconProps;
   /** Properties for close icon */
   rightIcon?: Omit<IconProps, 'name' | 'type'>;
@@ -39,6 +41,7 @@ const Snackbar: React.FC<SnackbarProps> = ({
   onClose,
   dismissable = false,
   timeout = undefined,
+  showProgressBar = true,
   leftIcon,
   colorTone = 'xlight',
   colorVariant = 'primary',
@@ -123,7 +126,7 @@ const Snackbar: React.FC<SnackbarProps> = ({
           </DismissContainer>
         )}
       </StyledContainerFlexRow>
-      {timeout && open && (
+      {timeout && showProgressBar && open && (
         <StyledProgressBar
           valueNow={0}
           valueMax={100}
