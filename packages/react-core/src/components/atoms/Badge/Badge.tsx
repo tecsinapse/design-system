@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
 import { BadgeStyle, ViewStyled } from './styled';
@@ -8,15 +8,16 @@ export interface BadgeProps {
   tone?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
   value: React.ReactNode;
+  children?: ReactNode;
 }
 
-const Badge: FC<BadgeProps> = ({
+const Badge = ({
   children,
   style,
   color = 'primary',
   tone = 'medium',
   value,
-}): JSX.Element => {
+}: BadgeProps): JSX.Element => {
   return (
     <ViewStyled>
       {children}

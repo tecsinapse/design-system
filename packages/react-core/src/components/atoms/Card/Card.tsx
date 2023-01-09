@@ -1,5 +1,5 @@
 import { PressableSurfaceProps } from '@tecsinapse/react-native-kit';
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { Paper, PaperProps } from '../Paper';
 import { StyledCard } from './styled';
@@ -9,14 +9,15 @@ export interface CardProps
     Omit<PressableSurfaceProps, 'style'> {
   /** Click handler */
   onPress?: null | ((event: GestureResponderEvent) => void);
+  children?: ReactNode;
 }
 
-const Card: FC<CardProps> = ({
+const Card = ({
   children,
   elevated = false,
   onPress,
   ...rest
-}): JSX.Element => {
+}: CardProps): JSX.Element => {
   if (onPress) {
     return (
       <StyledCard {...rest} elevated={elevated} onPress={onPress}>

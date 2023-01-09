@@ -1,5 +1,5 @@
 import { useTheme } from '@emotion/react';
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
 import { ThemeProp } from '../../../types/defaults';
 import { lightenDarkenColor } from '../../../utils';
@@ -11,6 +11,7 @@ export interface PressableSurfaceProps extends PressableProps {
   surfaceColor?: string;
   effectIntensity?: number;
   effectStyle?: (pressed: boolean) => StyleProp<ViewStyle>;
+  children?: ReactNode;
 }
 
 const PressableSurface: FC<PressableSurfaceProps> = ({

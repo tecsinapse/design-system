@@ -1,11 +1,12 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 
 export interface HeaderProps {
   style?: StyleProp<ViewStyle>;
+  children?: ReactNode;
 }
 
-const Header: FC<HeaderProps> = ({ children, style }): JSX.Element => (
+const Header = ({ children, style }: HeaderProps): JSX.Element => (
   <View style={style}>{children}</View>
 );
 

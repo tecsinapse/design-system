@@ -17,7 +17,7 @@ const Snackbar: React.FC<SnackbarWebProps> = ({
   ...rest
 }) => {
   return (
-    <SnackbarStyled {...rest}>
+    <SnackbarStyled {...rest} showProgressBar={false}>
       <Text {...textProps} fontWeight="bold" typography="base">
         {value}
       </Text>

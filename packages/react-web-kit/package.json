@@ -24,10 +24,10 @@
     "@emotion/react": "~11.10.0",
     "@emotion/styled": "~11.10.0",
     "@tecsinapse/react-core": "1.22.3",
-    "@types/react-native": "^0.64.4",
-    "date-fns": "~2.29.1",
+    "@types/react-native": "^0.70.8",
+    "date-fns": "~2.29.3",
     "react-native-vector-icons": "~9.2.0",
-    "react-transition-group": "~4.4.2"
+    "react-transition-group": "~4.4.5"
   },
   "repository": {
     "type": "git",

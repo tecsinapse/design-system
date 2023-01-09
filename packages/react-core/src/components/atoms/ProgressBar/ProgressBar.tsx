@@ -59,7 +59,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     const minmax = (totalProgress - min) / (max - min);
     const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
 
-    let progressPercent: string | Animated.AnimatedInterpolation = `${width}%`;
+    let progressPercent:
+      | string
+      | Animated.AnimatedInterpolation<number | string> = `${width}%`;
 
     if (animate && animationParameters) {
       Animated.timing(animationValue, {
