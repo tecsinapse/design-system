@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
 import { BadgeStyle, ViewStyled } from './styled';

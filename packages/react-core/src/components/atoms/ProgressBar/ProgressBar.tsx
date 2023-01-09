@@ -1,5 +1,5 @@
+import React from 'react';
 import { useTheme } from '@emotion/react';
-import * as React from 'react';
 import { Animated, ViewProps } from 'react-native';
 import {
   ColorGradationType,
@@ -28,7 +28,7 @@ export interface ProgressBarProps extends ViewProps {
   animationParameters?: { direction: 'left' | 'right'; duration: number };
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
+const ProgressBar = ({
   segments: _segments = 1,
   valueMin = 0,
   valueNow: _valueNow,
@@ -38,7 +38,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   animate,
   animationParameters,
   ...rest
-}) => {
+}: ProgressBarProps): JSX.Element => {
   const theme = useTheme() as ThemeProp;
   const animationValue = React.useRef(new Animated.Value(0)).current;
 
