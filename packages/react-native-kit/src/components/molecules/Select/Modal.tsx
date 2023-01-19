@@ -239,7 +239,11 @@ const MemoizedOption = <T,>({
               labelPosition={'right'}
               checked={item._checked}
             >
-              <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+              <Text
+                fontWeight={item._checked ? 'bold' : 'regular'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+              >
                 {label}
               </Text>
             </Checkbox>
@@ -249,7 +253,11 @@ const MemoizedOption = <T,>({
               labelPosition={'right'}
               checked={item._checked}
             >
-              <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+              <Text
+                fontWeight={item._checked ? 'bold' : 'regular'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+              >
                 {label}
               </Text>
             </RadioButton>
