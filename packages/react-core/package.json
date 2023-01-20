@@ -3,9 +3,14 @@
   "description": "TecSinapse hybrid React components",
   "version": "1.22.3",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
+  "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "type": "module",
   "files": [
     "dist"
   ],
@@ -35,8 +40,8 @@
   },
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-native": "^0.64.4",
-    "react-native-vector-icons": "^8.1.0 || ^9.0.0"
+    "react": "^18.0.0",
+    "react-native": "^0.71.0",
+    "react-native-vector-icons": "^9.0.0"
   }
 }

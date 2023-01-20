@@ -3,9 +3,14 @@
   "description": "TecSinapse React components",
   "version": "1.23.3",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
+  "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "type": "module",
   "files": [
     "dist"
   ],
@@ -24,7 +29,7 @@
     "@emotion/react": "~11.10.0",
     "@emotion/styled": "~11.10.0",
     "@tecsinapse/react-core": "1.22.3",
-    "@types/react-native": "^0.70.8",
+    "@types/react-native": "^0.71.0",
     "date-fns": "~2.29.3",
     "react-native-vector-icons": "~9.2.0",
     "react-transition-group": "~4.4.5"
@@ -39,8 +44,8 @@
   },
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-native-web": "^0.17.1 || ^0.18.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-native-web": "^0.18.0"
   }
 }
