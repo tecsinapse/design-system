@@ -95,3 +95,6 @@ export const FetchIndicator = styled(ActivityIndicator)`
 export const TextTitleModal = styled(Text)<Partial<StyleProps>>`
   text-align: center;
 `;
+export const StyledTextItemSelect = styled(Text)`
+  width: 90%;
+`;
