@@ -21,6 +21,15 @@ export const Base = () => (
   </StyledPaper>
 );
 
+export const Elevated = () => (
+  <StyledPaper elevated>
+    <Text>I'm a paper</Text>
+    <Text>I'm a paper</Text>
+    <Text>I'm a paper</Text>
+    <Text>I'm a paper</Text>
+  </StyledPaper>
+);
+
 const StyledPaper = styled(Paper)`
   background-color: white;
 `;

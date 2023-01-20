@@ -1,9 +1,17 @@
+import React from 'react';
 import { getStorybookUI } from '@storybook/react-native';
 import './doctools';
 import './storybook.requires';
 import { useFonts } from 'expo-font';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import React from 'react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import {
+  ModalGroupManager,
+  ThemeProvider,
+  Text,
+  lightTheme,
+  StyleProps,
+} from '@tecsinapse/react-native-kit';
+import styled from '@emotion/native';
 
 const _StorybookUIRoot = getStorybookUI({});
 
@@ -28,8 +36,27 @@ const StorybookUIRoot = () => {
 
   return (
     <SafeAreaProvider>
-      <_StorybookUIRoot />
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f8f7f7' }}>
+        <ThemeProvider theme={lightTheme}>
+          <Header>
+            <Text typography="h4" fontWeight="bold" fontColor="light">
+              Design System Playground
+            </Text>
+          </Header>
+          <_StorybookUIRoot />
+          <ModalGroupManager />
+        </ThemeProvider>
+      </SafeAreaView>
     </SafeAreaProvider>
   );
 };
+
+const Header = styled.View<Partial<StyleProps>>`
+  background-color: ${({ theme }) => theme.color.primary.medium};
+  padding: ${({ theme }) => theme.spacing.centi};
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export default StorybookUIRoot;

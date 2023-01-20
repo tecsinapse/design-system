@@ -6,11 +6,12 @@ import {
   Input,
   Select,
   Skeleton,
+  SkeletonProps,
   Text,
   TextArea,
 } from '@tecsinapse/react-native-kit';
 
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { ComponentMeta } from '@storybook/react-native';
 
 const StoryMeta: ComponentMeta<typeof Skeleton> = {
   title: 'Skeleton',
@@ -22,19 +23,17 @@ const StoryMeta: ComponentMeta<typeof Skeleton> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof Skeleton>;
-
 const options = new Array(20).fill(undefined).map((_, index) => ({
   key: index,
   label: `Option ${index}`,
 }));
 
-export const Base = (args: IStory) => {
+export const Base = (args: SkeletonProps) => {
   const [seconds, setSeconds] = useState(0);
   const [active, setActive] = useState(false);
   const interval = useRef<NodeJS.Timer>();
 
-  const animation = args?.args?.animation;
+  const animation = args?.animation;
 
   useEffect(() => {
     if (active) {

@@ -1,7 +1,8 @@
 import styled from '@emotion/native';
 import { Text, BoxContent } from '@tecsinapse/react-native-kit';
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { ComponentMeta } from '@storybook/react-native';
+import { BoxContentProps } from '@tecsinapse/react-core';
 
 const StoryMeta: ComponentMeta<typeof BoxContent> = {
   title: 'BoxContent',
@@ -13,21 +14,15 @@ const StoryMeta: ComponentMeta<typeof BoxContent> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof BoxContent>;
-
-export const Base = (args: IStory) => {
-  const variant = args?.args?.variant ?? 'bottom';
-
-  return (
-    <StyledBoxContent variant={variant}>
-      <Text>Some text here!</Text>
-      <Text>Some text here!</Text>
-      <Text>Some text here!</Text>
-      <Text>Some text here!</Text>
-      <Text>Some text here!</Text>
-    </StyledBoxContent>
-  );
-};
+export const Base = (args: BoxContentProps) => (
+  <StyledBoxContent {...args}>
+    <Text>Some text here!</Text>
+    <Text>Some text here!</Text>
+    <Text>Some text here!</Text>
+    <Text>Some text here!</Text>
+    <Text>Some text here!</Text>
+  </StyledBoxContent>
+);
 
 const StyledBoxContent = styled(BoxContent)`
   align-items: center;

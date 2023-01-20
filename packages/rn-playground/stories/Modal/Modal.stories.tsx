@@ -19,15 +19,27 @@ const StoryMeta: ComponentMeta<typeof ModalView> = {
 export default StoryMeta;
 
 export const Base = () => {
+  const myModal = useModalManager(() => <MyModal />);
+
   return (
-    <>
-      <Component />
-      <Component2 />
-    </>
+    <Button onPress={() => myModal.show()}>
+      <Text>Open a little modal</Text>
+    </Button>
   );
 };
 
-const MyModal2: FC<IBaseModal> = ({ close, ...others }) => {
+export const Remote = () => {
+  useModalManager(() => <MyModal />, 'modalTest');
+  const remoteModal = useModalRemoteControl('modalTest');
+
+  return (
+    <Button onPress={() => remoteModal.show()}>
+      <Text>Open a remote modal</Text>
+    </Button>
+  );
+};
+
+const InnerModal: FC<IBaseModal> = ({ close, ...others }) => {
   return (
     <ModalView {...others} close={close}>
       <View style={{ padding: 20 }}>
@@ -42,7 +54,7 @@ const MyModal2: FC<IBaseModal> = ({ close, ...others }) => {
 };
 
 const MyModal: FC<IBaseModal> = ({ close, ...others }) => {
-  const modal = useModalManager(() => <MyModal2 />);
+  const modal = useModalManager(() => <InnerModal />);
   return (
     <ModalView {...others} close={close}>
       <View style={{ padding: 20 }}>
@@ -57,25 +69,4 @@ const MyModal: FC<IBaseModal> = ({ close, ...others }) => {
       </View>
     </ModalView>
   );
-};
-
-const Component = () => {
-  const myModal = useModalManager(() => <MyModal />);
-  const remoteModal = useModalRemoteControl('modalTest');
-
-  return (
-    <>
-      <Button onPress={() => myModal.show()}>
-        <Text>Open a little modal</Text>
-      </Button>
-      <Button onPress={() => remoteModal.show()}>
-        <Text>Open a remote modal</Text>
-      </Button>
-    </>
-  );
-};
-
-const Component2 = () => {
-  useModalManager(() => <MyModal />, 'modalTest');
-  return null;
 };

@@ -1,5 +1,5 @@
-import { Switch } from '@tecsinapse/react-native-kit';
-import React, { useState } from 'react';
+import { Switch, SwitchProps } from '@tecsinapse/react-native-kit';
+import React, { useEffect, useState } from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react-native';
 
 const StoryMeta: ComponentMeta<typeof Switch> = {
@@ -12,9 +12,7 @@ const StoryMeta: ComponentMeta<typeof Switch> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof Switch>;
-
-export const Base = (args: IStory) => {
-  const [check, setCheck] = useState(args?.args?.active ?? false);
+export const Base = (args: SwitchProps) => {
+  const [check, setCheck] = useState(args?.active);
   return <Switch active={check} onChange={setCheck} />;
 };

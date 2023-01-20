@@ -1,7 +1,7 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
-import { withThemeProvider } from './withProvider';
+import { withView } from './withView';
 
-export const decorators = [withBackgrounds, withThemeProvider];
+export const decorators = [withBackgrounds, withView];
 
 export const parameters = {
   backgrounds: {

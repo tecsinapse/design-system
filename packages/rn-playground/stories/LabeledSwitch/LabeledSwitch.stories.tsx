@@ -1,5 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
-import { LabeledSwitch } from '@tecsinapse/react-native-kit';
+import { ComponentMeta } from '@storybook/react-native';
+import {
+  LabeledSwitch,
+  LabeledSwitchNativeProps,
+} from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
 
 const StoryMeta: ComponentMeta<typeof LabeledSwitch> = {
@@ -13,18 +16,8 @@ const StoryMeta: ComponentMeta<typeof LabeledSwitch> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof LabeledSwitch>;
-
-export const Base = (args: IStory) => {
+export const Base = (args: LabeledSwitchNativeProps) => {
   const [check1, setCheck1] = useState(false);
-  const label = args?.args?.label ?? 'Labeled switch';
 
-  return (
-    <LabeledSwitch
-      {...args}
-      label={label}
-      active={check1}
-      onChange={setCheck1}
-    />
-  );
+  return <LabeledSwitch {...args} active={check1} onChange={setCheck1} />;
 };

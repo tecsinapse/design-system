@@ -1,7 +1,6 @@
 import React from 'react';
-import { Tag, IconProps } from '@tecsinapse/react-native-kit';
-
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Tag, IconProps, TagProps } from '@tecsinapse/react-native-kit';
+import { ComponentMeta } from '@storybook/react-native';
 
 const StoryMeta: ComponentMeta<typeof Tag> = {
   title: 'Tag',
@@ -18,12 +17,9 @@ const StoryMeta: ComponentMeta<typeof Tag> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof Tag>;
-
-export const Base = (args: IStory) => {
+export const Base = (args: TagProps) => {
   return (
     <Tag
-      value={args?.args?.value ?? 'Label'}
       {...args}
       icon={{ name: 'stopwatch', type: 'fontisto' } as IconProps}
     />
