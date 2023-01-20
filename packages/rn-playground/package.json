@@ -4,12 +4,14 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "start": "npx expo start",
-    "android": "npx expo start --android",
-    "ios": "npx expo start --ios",
-    "update-stories": "sb-rn-get-stories --config-path .ondevice",
-    "prestart": "yarn update-stories",
-    "storybook-watcher": "sb-rn-watcher --config-path .ondevice"
+    "dev": "run-p update:stories watch:stories run:dev",
+    "android": "run-p update:stories watch:stories run:android",
+    "ios": "run-p update:stories watch:stories run:ios",
+    "run:dev": "npx expo start",
+    "run:android": "npx expo start --android",
+    "run:ios": "npx expo start --ios",
+    "update:stories": "sb-rn-get-stories --config-path .ondevice",
+    "watch:stories": "sb-rn-watcher --config-path .ondevice"
   },
   "dependencies": {
     "@emotion/native": "~11.10.0",
