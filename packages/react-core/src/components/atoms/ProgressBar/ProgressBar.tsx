@@ -22,8 +22,8 @@ export interface ProgressBarProps extends ViewProps {
   color?: ColorType;
   /** Filled partition color tone. Defaults to 'medium' */
   colorTone?: ColorGradationType;
-  /** Animation */
-  animate: boolean;
+  /** Animation (temporarily disabled) */
+  animate?: boolean;
   /** Parameters animation  */
   animationParameters?: { direction: 'left' | 'right'; duration: number };
 }
@@ -35,12 +35,12 @@ const ProgressBar = ({
   valueMax = 100,
   color = 'primary',
   colorTone = 'medium',
-  animate,
   animationParameters,
   ...rest
 }: ProgressBarProps): JSX.Element => {
   const theme = useTheme() as ThemeProp;
   const animationValue = React.useRef(new Animated.Value(0)).current;
+  const animate = false;
 
   const valueNow =
     typeof _valueNow === 'string'

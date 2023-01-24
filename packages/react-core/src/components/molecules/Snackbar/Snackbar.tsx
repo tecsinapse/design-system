@@ -22,7 +22,7 @@ export interface SnackbarProps {
   dismissable?: boolean;
   /** Time in miliseconds for auto hide */
   timeout?: number;
-  /** Decides whether to show timeout progressbar*/
+  /** Decides whether to show timeout progressbar (temporarily disabled) */
   showProgressBar?: boolean;
   leftIcon?: IconProps;
   /** Properties for close icon */
@@ -42,7 +42,6 @@ const Snackbar = ({
   onClose,
   dismissable = false,
   timeout = undefined,
-  showProgressBar = true,
   leftIcon,
   colorTone = 'xlight',
   colorVariant = 'primary',
@@ -53,6 +52,7 @@ const Snackbar = ({
 }: SnackbarProps): JSX.Element => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const timeoutRef = React.useRef<NodeJS.Timeout>();
+  const showProgressBar = false;
 
   const fadeIn = () => {
     Animated.timing(fadeAnim, {
