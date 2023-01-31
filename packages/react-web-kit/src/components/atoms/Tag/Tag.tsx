@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   Text,
   Tag as TagCore,
@@ -7,13 +7,15 @@ import {
 } from '@tecsinapse/react-core';
 
 export interface TagProps extends Omit<TagCoreProps, 'value'> {
-  value: string;
+  value: string | ReactNode;
   textProps?: TextProps;
 }
 
 const Tag: React.FC<TagProps> = ({
   value,
   textProps,
+  backgroundColorVariant,
+  backgroundColorTone,
   ...rest
 }): JSX.Element => {
   const {
@@ -24,6 +26,8 @@ const Tag: React.FC<TagProps> = ({
   } = textProps || {};
   return (
     <TagCore
+      backgroundColorVariant={backgroundColorVariant}
+      backgroundColorTone={backgroundColorTone}
       value={
         <Text
           colorVariant={colorVariant}

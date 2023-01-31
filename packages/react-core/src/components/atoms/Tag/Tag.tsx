@@ -3,6 +3,7 @@ import { Animated, ViewProps } from 'react-native';
 import { IconProps } from '../Icon';
 import { PressableSurface } from '../PressableSurface';
 import { StyledCloseIcon, StyledLeftIcon, StyledTagContainer } from './styled';
+import { ColorType, ColorGradationType } from '@tecsinapse/react-core';
 
 export interface TagProps extends ViewProps {
   value: React.ReactNode;
@@ -10,6 +11,8 @@ export interface TagProps extends ViewProps {
   dismiss?: boolean;
   onDismiss?: () => void;
   variant?: 'small' | 'default';
+  backgroundColorTone?: ColorType;
+  backgroundColorVariant?: ColorGradationType;
 }
 
 const Tag: React.FC<TagProps> = ({
@@ -19,6 +22,8 @@ const Tag: React.FC<TagProps> = ({
   dismiss: canDismiss = false,
   onDismiss,
   style,
+  backgroundColorTone = 'secondary',
+  backgroundColorVariant = 'xlight',
   ...rest
 }): JSX.Element => {
   const [dismiss, setDismiss] = useState(false);
@@ -41,10 +46,12 @@ const Tag: React.FC<TagProps> = ({
 
   return (
     <StyledTagContainer
-      {...rest}
+      backgroundColorTone={backgroundColorTone}
+      backgroundColorVariant={backgroundColorVariant}
       variant={variant}
       style={[{ opacity: fadeAnim as unknown as number }, style]}
       visible={!dismiss}
+      {...rest}
     >
       {icon && (
         <StyledLeftIcon
