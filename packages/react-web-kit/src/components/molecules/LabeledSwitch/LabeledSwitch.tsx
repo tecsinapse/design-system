@@ -9,21 +9,21 @@ export type LabeledSwitchWebProps = LabeledSwitchProps & {
 };
 
 const LabeledSwitch: FC<LabeledSwitchWebProps> = ({
-  label,
-  labelPosition = 'right',
   labelProps,
   pressableLabel = false,
   disabled,
   active,
   onChange,
+  leftLabel,
+  rightLabel,
   ...rest
 }) => {
   return (
     <StyledDiv>
-      {labelPosition === 'left' ? (
+      {leftLabel ? (
         <LabelComponent
           active={active}
-          label={label}
+          label={leftLabel}
           labelPosition={'left'}
           labelProps={labelProps}
           disabled={!pressableLabel || disabled}
@@ -39,10 +39,10 @@ const LabeledSwitch: FC<LabeledSwitchWebProps> = ({
         onChange={onChange}
         {...rest}
       />
-      {labelPosition === 'right' ? (
+      {rightLabel ? (
         <LabelComponent
           active={active}
-          label={label}
+          label={rightLabel}
           labelPosition={'right'}
           labelProps={labelProps}
           disabled={!pressableLabel || disabled}

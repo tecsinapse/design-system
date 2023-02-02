@@ -12,34 +12,30 @@ storiesOf('LabeledSwitch', module)
 const Component = () => {
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(true);
+  const [check3, setCheck3] = useState(true);
 
   return (
     <>
       <LabeledSwitch
         active={check1}
         onChange={setCheck1}
-        label={'Labeled switch without pressable label'}
-        labelPosition={select('labelPosition', ['left', 'right'], 'right')}
+        rightLabel={'Labeled switch without pressable label'}
       />
       <Divider linePosition="bottom" style={{ margin: 16 }} />
       <LabeledSwitch
         active={check2}
         onChange={setCheck2}
-        label={'Labeled switch with pressable label'}
-        labelPosition={select('labelPosition', ['left', 'right'], 'right')}
+        rightLabel={'Labeled switch with pressable label'}
         pressableLabel={true}
       />
       <Divider linePosition="bottom" style={{ margin: 16 }} />
+
       <LabeledSwitch
-        active={true}
-        onChange={() => {}}
-        label={'Labeled switch with pressable label disabled and two lines'}
-        labelPosition={select('labelPosition', ['left', 'right'], 'right')}
+        active={check3}
+        onChange={setCheck3}
+        rightLabel={'right text'}
+        leftLabel={'left text'}
         pressableLabel={true}
-        disabled={true}
-        labelProps={{
-          numberOfLines: 2,
-        }}
       />
     </>
   );

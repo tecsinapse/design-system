@@ -22,9 +22,8 @@ const Template: Story<LabeledSwitchWebProps> = args => {
     <LabeledSwitch
       active={active}
       onChange={onChange}
+      leftLabel={'teste'}
       disabled={args.disabled}
-      label={'Labeled switch!'}
-      labelPosition={args.labelPosition}
       pressableLabel={args.pressableLabel}
     />
   );
@@ -36,6 +35,5 @@ Base.args = {
   active: true,
   onChange: value => action('Clicked')(value),
   disabled: false,
-  labelPosition: 'right',
   pressableLabel: true,
 };

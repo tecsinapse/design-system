@@ -9,8 +9,8 @@ export type LabeledSwitchNativeProps = LabeledSwitchProps & {
 };
 
 const LabeledSwitch: FC<LabeledSwitchNativeProps> = ({
-  label,
-  labelPosition = 'right',
+  rightLabel,
+  leftLabel,
   labelProps,
   pressableLabel = false,
   active,
@@ -20,10 +20,10 @@ const LabeledSwitch: FC<LabeledSwitchNativeProps> = ({
 }) => {
   return (
     <StyledView>
-      {labelPosition === 'left' ? (
+      {leftLabel ? (
         <LabelComponent
           active={active}
-          label={label}
+          label={leftLabel}
           labelPosition={'left'}
           labelProps={labelProps}
           disabled={!pressableLabel || disabled}
@@ -39,10 +39,10 @@ const LabeledSwitch: FC<LabeledSwitchNativeProps> = ({
         disabled={disabled}
         {...rest}
       />
-      {labelPosition === 'right' ? (
+      {rightLabel ? (
         <LabelComponent
           active={active}
-          label={label}
+          label={rightLabel}
           labelPosition={'right'}
           labelProps={labelProps}
           disabled={!pressableLabel || disabled}
