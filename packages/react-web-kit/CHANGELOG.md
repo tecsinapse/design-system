@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.23.6...@tecsinapse/react-web-kit@1.23.7) (2023-02-02)
+
+
+### Features
+
+* change interface LabeledSwitch, now accepted labelLabel and rightLabel simultaneously ([#185048](https://github.com/tecsinapse/design-system/issues/185048)) ([18046b0](https://github.com/tecsinapse/design-system/commit/18046b0bd1057da111bf6f94aef47a996279da9d))
+
+
+
+
+
 ## [1.23.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.23.5...@tecsinapse/react-web-kit@1.23.6) (2023-01-31)
 
 
