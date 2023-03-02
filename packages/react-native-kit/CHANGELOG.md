@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.8...@tecsinapse/react-native-kit@1.23.9) (2023-03-02)
+
+
+### Bug Fixes
+
+* lazy select not render new fetch list ([#186114](https://github.com/tecsinapse/design-system/issues/186114)) ([334862f](https://github.com/tecsinapse/design-system/commit/334862fd2d414b5ac44718f799deea8d6d2843af))
+
+
+
+
+
 ## [1.23.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.7...@tecsinapse/react-native-kit@1.23.8) (2023-02-02)
 
 
