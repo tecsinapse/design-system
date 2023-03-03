@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.9...@tecsinapse/react-native-kit@1.23.10) (2023-03-03)
+
+
+### Bug Fixes
+
+* lazy select cleaning list on close ([#186114](https://github.com/tecsinapse/design-system/issues/186114)) ([a5e3f0d](https://github.com/tecsinapse/design-system/commit/a5e3f0d2ace1fd295d3fb9e88296fa58162ff54d))
+
+
+
+
+
 ## [1.23.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.8...@tecsinapse/react-native-kit@1.23.9) (2023-03-02)
 
 
