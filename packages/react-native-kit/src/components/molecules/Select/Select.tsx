@@ -123,6 +123,9 @@ function Select<Data, Type extends 'single' | 'multi'>({
       if (searchInput !== undefined && onSearch) {
         setLoading(true);
         modal.requestUpdate();
+        if (selectOptions.length !== 0) {
+          setSelectOptions([]);
+        }
         try {
           const result = await onSearch(searchInput);
           if (result) {
@@ -207,7 +210,12 @@ function Select<Data, Type extends 'single' | 'multi'>({
       selectModalTitleComponent={selectModalTitleComponent}
       confirmButtonText={confirmButtonText}
       loading={loading}
-      onClose={handleBlur}
+      onClose={() => {
+        if (typeof options === 'function') {
+          setSelectOptions([]);
+        }
+        handleBlur();
+      }}
       closeOnPick={closeOnPick}
     />
   );
