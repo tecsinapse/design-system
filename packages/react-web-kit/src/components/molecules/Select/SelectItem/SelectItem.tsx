@@ -45,6 +45,9 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   );
 
   React.useEffect(() => {
+    if (type === 'multi' && (value as Data[]).length === 0 && checked) {
+      setChecked(false);
+    }
     if (
       !checked &&
       value !== undefined &&
