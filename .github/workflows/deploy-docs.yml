@@ -10,22 +10,22 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
     steps:
-      - name: Checkout repository
+      - name: checkout
         uses: actions/checkout@v3
 
-      - name: Use Node 16
+      - name: setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'yarn'
 
-      - name: Install dependencies
+      - name: install deps
         run: yarn
 
-      - name: Build storybook
+      - name: build docs
         run: yarn build:storybook
           
-      - name: Deploy
+      - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
