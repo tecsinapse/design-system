@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   Tag as TagCore,
   TagProps as TagCoreProps,
@@ -6,7 +6,7 @@ import {
 import { Text } from '../Text';
 
 export interface TagProps extends Omit<TagCoreProps, 'value'> {
-  value: string;
+  value: string | ReactNode;
 }
 
 const Tag: React.FC<TagProps> = ({ value, ...rest }): JSX.Element => {

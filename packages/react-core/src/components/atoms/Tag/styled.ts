@@ -1,6 +1,10 @@
 import styled, { css } from '@emotion/native';
 import { Animated, ViewProps } from 'react-native';
-import { StyleProps } from '../../../types/defaults';
+import {
+  ColorGradationType,
+  ColorType,
+  StyleProps,
+} from '../../../types/defaults';
 import { Icon, IconProps } from '../Icon';
 import { TagProps } from './Tag';
 
@@ -9,6 +13,20 @@ const smallVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
   css`
     border-radius: ${theme.borderRadius.micro};
     padding: ${theme.spacing.nano} ${theme.spacing.mili};
+  `;
+
+const backgroundColorTag = ({
+  theme,
+  backgroundColorTone,
+  backgroundColorVariant,
+}: Partial<StyleProps> & {
+  backgroundColorTone: ColorType;
+  backgroundColorVariant: ColorGradationType;
+}) =>
+  css`
+    background-color: ${theme?.color[backgroundColorTone][
+      backgroundColorVariant
+    ]};
   `;
 
 const defaultVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
@@ -29,10 +47,16 @@ const StyledTagContainerBase = styled(Animated.View)<
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
 `;
 
-export const StyledTagContainer = styled(StyledTagContainerBase)(
+export const StyledTagContainer = styled(StyledTagContainerBase)<
+  Partial<StyleProps> & {
+    backgroundColorTone: ColorType;
+    backgroundColorVariant: ColorGradationType;
+  }
+>(
   props => css`
     ${smallVariant(props)}
     ${defaultVariant(props)}
+    ${backgroundColorTag(props)}
   `
 );
 

@@ -207,7 +207,12 @@ function Select<Data, Type extends 'single' | 'multi'>({
       selectModalTitleComponent={selectModalTitleComponent}
       confirmButtonText={confirmButtonText}
       loading={loading}
-      onClose={handleBlur}
+      onClose={() => {
+        if (typeof options === 'function') {
+          setSelectOptions([]);
+        }
+        handleBlur();
+      }}
       closeOnPick={closeOnPick}
     />
   );

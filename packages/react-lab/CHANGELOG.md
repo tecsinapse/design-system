@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-lab@1.0.1...@tecsinapse/react-lab@1.0.2) (2023-01-20)
+
+**Note:** Version bump only for package @tecsinapse/react-lab
+
+
+
+
+
+## 1.0.1 (2023-01-19)
+
+
+### Features
+
+* add lab package ([60daf1c](https://github.com/tecsinapse/design-system/commit/60daf1c93af60a4b73fd9415525d1ca5562353f3))
+
+
+
+
+
 ## [1.22.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.22.5...@tecsinapse/react-web-kit@1.22.6) (2022-10-21)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

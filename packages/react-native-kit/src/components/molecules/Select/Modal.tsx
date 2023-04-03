@@ -21,6 +21,7 @@ import {
   SearchBarContainer,
   SelectIcon,
   TextTitleModal,
+  StyledTextItemSelect,
 } from './styled';
 
 interface LoadingProps {
@@ -239,9 +240,13 @@ const MemoizedOption = <T,>({
               labelPosition={'right'}
               checked={item._checked}
             >
-              <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+              <StyledTextItemSelect
+                fontWeight={item._checked ? 'bold' : 'regular'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+              >
                 {label}
-              </Text>
+              </StyledTextItemSelect>
             </Checkbox>
           ) : (
             <RadioButton
@@ -249,9 +254,13 @@ const MemoizedOption = <T,>({
               labelPosition={'right'}
               checked={item._checked}
             >
-              <Text fontWeight={item._checked ? 'bold' : 'regular'}>
+              <StyledTextItemSelect
+                fontWeight={item._checked ? 'bold' : 'regular'}
+                ellipsizeMode={'tail'}
+                numberOfLines={1}
+              >
                 {label}
-              </Text>
+              </StyledTextItemSelect>
             </RadioButton>
           )}
         </View>

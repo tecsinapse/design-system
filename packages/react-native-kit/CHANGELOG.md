@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.10...@tecsinapse/react-native-kit@1.23.11) (2023-03-06)
+
+
+### Bug Fixes
+
+* remove condidion lazy select ([#186114](https://github.com/tecsinapse/design-system/issues/186114)) ([ec1608e](https://github.com/tecsinapse/design-system/commit/ec1608ef58adce8d6a2d83d1dd632bda21ded0c0))
+
+
+
+
+
+## [1.23.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.9...@tecsinapse/react-native-kit@1.23.10) (2023-03-03)
+
+
+### Bug Fixes
+
+* lazy select cleaning list on close ([#186114](https://github.com/tecsinapse/design-system/issues/186114)) ([a5e3f0d](https://github.com/tecsinapse/design-system/commit/a5e3f0d2ace1fd295d3fb9e88296fa58162ff54d))
+
+
+
+
+
+## [1.23.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.8...@tecsinapse/react-native-kit@1.23.9) (2023-03-02)
+
+
+### Bug Fixes
+
+* lazy select not render new fetch list ([#186114](https://github.com/tecsinapse/design-system/issues/186114)) ([334862f](https://github.com/tecsinapse/design-system/commit/334862fd2d414b5ac44718f799deea8d6d2843af))
+
+
+
+
+
+## [1.23.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.7...@tecsinapse/react-native-kit@1.23.8) (2023-02-02)
+
+
+### Features
+
+* change interface LabeledSwitch, now accepted labelLabel and rightLabel simultaneously ([#185048](https://github.com/tecsinapse/design-system/issues/185048)) ([18046b0](https://github.com/tecsinapse/design-system/commit/18046b0bd1057da111bf6f94aef47a996279da9d))
+
+
+
+
+
+## [1.23.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.6...@tecsinapse/react-native-kit@1.23.7) (2023-01-31)
+
+
+### Features
+
+* change interface value Tag, now accepted ReactNode and backgroundColor ([#185009](https://github.com/tecsinapse/design-system/issues/185009) & [#185011](https://github.com/tecsinapse/design-system/issues/185011)) ([1d62668](https://github.com/tecsinapse/design-system/commit/1d626680ea66a794e448954b2f6f0d22c8c66fe0))
+
+
+
+
+
+## [1.23.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.5...@tecsinapse/react-native-kit@1.23.6) (2023-01-20)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.23.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.4...@tecsinapse/react-native-kit@1.23.5) (2023-01-20)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
+## [1.23.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.3...@tecsinapse/react-native-kit@1.23.4) (2023-01-19)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+
+
+
+
 ## [1.23.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@1.23.2...@tecsinapse/react-native-kit@1.23.3) (2022-12-01)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
