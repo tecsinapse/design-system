@@ -1,5 +1,5 @@
 import { useTheme } from '@emotion/react';
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
 import { ThemeProp } from '../../../types/defaults';
 import { lightenDarkenColor } from '../../../utils';
@@ -11,9 +11,10 @@ export interface PressableSurfaceProps extends PressableProps {
   surfaceColor?: string;
   effectIntensity?: number;
   effectStyle?: (pressed: boolean) => StyleProp<ViewStyle>;
+  children?: ReactNode;
 }
 
-const PressableSurface: FC<PressableSurfaceProps> = ({
+const PressableSurface = ({
   children,
   surfaceColor,
   effect,
@@ -21,7 +22,7 @@ const PressableSurface: FC<PressableSurfaceProps> = ({
   effectStyle,
   style,
   ...rest
-}) => {
+}: PressableSurfaceProps): JSX.Element => {
   const theme = useTheme() as ThemeProp;
   let effectBaseColor = theme.miscellaneous.surfaceColor;
   let bgColor = 'transparent';

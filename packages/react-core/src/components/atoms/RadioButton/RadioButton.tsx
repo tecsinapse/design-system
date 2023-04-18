@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { Pressable, StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '../../../types/defaults';
 import { Icon } from '../Icon';
@@ -18,9 +18,10 @@ export interface RadioButtonProps {
   /** Color gradation from theme */
   colorTone?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
+  children?: ReactNode;
 }
 
-const RadioButton: FC<RadioButtonProps> = ({
+const RadioButton = ({
   children,
   onChange,
   checked,
@@ -29,7 +30,7 @@ const RadioButton: FC<RadioButtonProps> = ({
   color = 'primary',
   colorTone = 'medium',
   ...rest
-}): JSX.Element => {
+}: RadioButtonProps): JSX.Element => {
   const handleChange = () => {
     onChange && onChange(!checked);
   };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { SpacingType } from '@tecsinapse/react-core';
 import { StyledColumnItem, StyledRowItem, StyledMasonry } from './styled';
 
@@ -8,14 +8,15 @@ export interface MasonryProps {
   spacingLeft: SpacingType;
   /** Spacing to the top of every block on index >= column */
   spacingTop: SpacingType;
+  children?: ReactNode;
 }
 
-const Masonry: React.FC<MasonryProps> = ({
+const Masonry = ({
   children,
   columns,
   spacingTop,
   spacingLeft,
-}) => {
+}: MasonryProps): JSX.Element => {
   const getColumns = () => {
     const columnsArray: React.ReactNode[][] = Array.from(
       { length: columns },

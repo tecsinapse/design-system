@@ -123,9 +123,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
       if (searchInput !== undefined && onSearch) {
         setLoading(true);
         modal.requestUpdate();
-        if (selectOptions.length !== 0) {
-          setSelectOptions([]);
-        }
         try {
           const result = await onSearch(searchInput);
           if (result) {

@@ -10,7 +10,7 @@ export function useDebouncedState<S>(
   timeoutCallback?: (state: S) => void,
   timeoutMs = 166
 ): [S, Dispatch<SetStateAction<S>>] {
-  const timeoutId = useRef<number>();
+  const timeoutId = useRef<NodeJS.Timeout>();
 
   const [state, setState] = useState<S>(initialState);
 

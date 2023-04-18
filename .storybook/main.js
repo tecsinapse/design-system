@@ -1,22 +1,16 @@
 module.exports = {
-  features: {
-    storyStoreV7: true,
+  framework: {
+    name: '@storybook/react-vite',
   },
   core: {
-    builder: {
-      name: 'webpack5',
-      options: {
-        lazyCompilation: true,
-        fsCache: true,
-      },
-    },
+    builder: '@storybook/builder-vite',
   },
   stories: [
     '../packages/react-core/**/*.stories.@(tsx|jsx)',
     '../packages/react-native-kit/**/*.stories.@(tsx|jsx)',
     '../packages/react-web-kit/**/*.stories.@(tsx|jsx)',
     '../packages/react-lab/**/*.stories.@(tsx|jsx)',
-    '../docs/**/*.stories.@(js|ts|tsx|mdx)',
+    '../docs/**/*.@(js|ts|tsx|mdx)',
   ],
   addons: [
     '@storybook/addon-storysource',
@@ -25,12 +19,6 @@ module.exports = {
     '@storybook/addon-backgrounds',
     '@storybook/addon-actions',
     '@storybook/addon-viewport',
-  ],
-  plugins: [
-    ['@babel/preset-env', { loose: true }],
-    ['@babel/plugin-proposal-class-properties', { loose: true }],
-    ['@babel/plugin-proposal-private-methods', { loose: true }],
-    ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
   ],
   staticDirs: ['public/'],
 };

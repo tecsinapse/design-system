@@ -1,5 +1,5 @@
+import React from 'react';
 import { useTheme } from '@emotion/react';
-import * as React from 'react';
 import { Animated, ViewProps } from 'react-native';
 import {
   ColorGradationType,
@@ -22,25 +22,25 @@ export interface ProgressBarProps extends ViewProps {
   color?: ColorType;
   /** Filled partition color tone. Defaults to 'medium' */
   colorTone?: ColorGradationType;
-  /** Animation */
-  animate: boolean;
+  /** Animation (temporarily disabled) */
+  animate?: boolean;
   /** Parameters animation  */
   animationParameters?: { direction: 'left' | 'right'; duration: number };
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
+const ProgressBar = ({
   segments: _segments = 1,
   valueMin = 0,
   valueNow: _valueNow,
   valueMax = 100,
   color = 'primary',
   colorTone = 'medium',
-  animate,
   animationParameters,
   ...rest
-}) => {
+}: ProgressBarProps): JSX.Element => {
   const theme = useTheme() as ThemeProp;
   const animationValue = React.useRef(new Animated.Value(0)).current;
+  const animate = false;
 
   const valueNow =
     typeof _valueNow === 'string'
@@ -59,7 +59,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     const minmax = (totalProgress - min) / (max - min);
     const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
 
-    let progressPercent: string | Animated.AnimatedInterpolation = `${width}%`;
+    let progressPercent:
+      | string
+      | Animated.AnimatedInterpolation<number | string> = `${width}%`;
 
     if (animate && animationParameters) {
       Animated.timing(animationValue, {

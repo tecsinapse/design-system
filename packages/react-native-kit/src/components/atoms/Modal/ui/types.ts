@@ -1,7 +1,7 @@
 /**
  * Defines a modal interface and allows you implement your own modal component.
  */
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export interface IBaseModal {
   visible?: boolean;
@@ -11,4 +11,5 @@ export interface IBaseModal {
   showCloseBar?: boolean;
   close?: () => void;
   onClose?: () => void;
+  children?: ReactNode;
 }

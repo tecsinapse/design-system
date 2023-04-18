@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { StyledPaper } from './styled';
 
@@ -6,13 +6,14 @@ export interface PaperProps {
   /** Creates elevation shadow */
   elevated?: boolean;
   style?: StyleProp<ViewStyle>;
+  children?: ReactNode;
 }
 
-const Paper: FC<PaperProps> = ({
+const Paper = ({
   children,
   elevated = false,
   ...rest
-}): JSX.Element => (
+}: PaperProps): JSX.Element => (
   <StyledPaper {...rest} elevated={elevated}>
     {children}
   </StyledPaper>

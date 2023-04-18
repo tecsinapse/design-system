@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Animated, StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '../../../types/defaults';
 import { Icon, IconProps } from '../../atoms/Icon';
@@ -22,7 +22,7 @@ export interface SnackbarProps {
   dismissable?: boolean;
   /** Time in miliseconds for auto hide */
   timeout?: number;
-  /** Decides whether to show timeout progressbar*/
+  /** Decides whether to show timeout progressbar (temporarily disabled) */
   showProgressBar?: boolean;
   leftIcon?: IconProps;
   /** Properties for close icon */
@@ -31,17 +31,17 @@ export interface SnackbarProps {
   /** Distance from anchorage (results in px) */
   anchorDistance?: number;
   style?: StyleProp<ViewStyle>;
+  children?: ReactNode;
 }
 
 const FADE_DURATION = 500;
 
-const Snackbar: React.FC<SnackbarProps> = ({
+const Snackbar = ({
   children,
   open = true,
   onClose,
   dismissable = false,
   timeout = undefined,
-  showProgressBar = true,
   leftIcon,
   colorTone = 'xlight',
   colorVariant = 'primary',
@@ -49,9 +49,10 @@ const Snackbar: React.FC<SnackbarProps> = ({
   anchor = 'bottom',
   anchorDistance,
   style,
-}) => {
+}: SnackbarProps): JSX.Element => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
-  const timeoutRef = React.useRef<number>();
+  const timeoutRef = React.useRef<NodeJS.Timeout>();
+  const showProgressBar = false;
 
   const fadeIn = () => {
     Animated.timing(fadeAnim, {

@@ -147,7 +147,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     () => setDropDownVisible(prev => !prev),
     [setDropDownVisible]
   );
-
+  //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
     <StyledContainer ref={refDropDown} {...rest}>
       <StyledInputContainer onFocus={handlePressInput}>
@@ -157,12 +157,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           disabled={disabled}
           rightComponent={RightComponent}
         >
-          <Text
-            {...displayTextProps}
-            ellipsizeMode="tail"
-            numberOfLines={1}
-            fontWeight={'bold'}
-          >
+          <Text {...displayTextProps} fontWeight={'bold'}>
             {displayValue}
           </Text>
         </PressableInputContainer>

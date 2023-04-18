@@ -4,6 +4,7 @@ import InputContainer, {
   InputContainerProps,
 } from '../InputContainer/InputContainer';
 import { StyledPressableSurface } from './styled';
+import { ReactNode } from 'react';
 
 export interface PressableInputContainerProps
   extends Omit<
@@ -15,15 +16,16 @@ export interface PressableInputContainerProps
   style?:
     | StyleProp<ViewStyle>
     | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
+  children?: ReactNode;
 }
 
-const PressableInputContainer: React.FC<PressableInputContainerProps> = ({
+const PressableInputContainer = ({
   onPress,
   disabled,
   style,
   children,
   ...rest
-}) => {
+}: PressableInputContainerProps): JSX.Element => {
   return (
     <StyledPressableSurface onPress={onPress} disabled={disabled} style={style}>
       <InputContainer disabled={disabled} {...rest}>

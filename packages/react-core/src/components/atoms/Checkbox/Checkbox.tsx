@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import { Pressable, StyleProp, ViewStyle } from 'react-native';
 import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
 import { Icon } from '../Icon';
@@ -23,9 +23,10 @@ export interface CheckboxProps {
   /** Color gradation from theme */
   colorTone?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
+  children?: ReactNode;
 }
 
-const Checkbox: FC<CheckboxProps> = ({
+const Checkbox = ({
   children,
   checked,
   onChange,
@@ -34,7 +35,7 @@ const Checkbox: FC<CheckboxProps> = ({
   labelPosition = 'left',
   disabled = false,
   ...rest
-}) => {
+}: CheckboxProps): JSX.Element => {
   const handleChange = () => {
     onChange && onChange(!checked);
   };
