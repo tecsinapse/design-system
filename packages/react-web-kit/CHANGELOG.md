@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.23.8...@tecsinapse/react-web-kit@1.23.9) (2023-05-03)
+
+
+### Bug Fixes
+
+* select increasing width based on options selecteds when wrapper is GridItem. palliative solution: when incresing heigth.  ([#186815](https://github.com/tecsinapse/design-system/issues/186815)) ([0f18d54](https://github.com/tecsinapse/design-system/commit/0f18d543f96b21790ec06c527bee07830ba1119e))
+
+
+
+
+
 ## [1.23.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.23.7...@tecsinapse/react-web-kit@1.23.8) (2023-03-02)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
