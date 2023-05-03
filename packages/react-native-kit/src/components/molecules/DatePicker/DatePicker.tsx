@@ -38,8 +38,8 @@ export const DatePicker = <T extends SelectionType>({
       CalendarComponent={Calendar}
       locale={locale ?? getLocale()}
       onChange={handleChange}
-      requestShowCalendar={() => modal.show()}
-      requestCloseCalendar={() => modal.close()}
+      requestShowCalendar={modal.show}
+      requestCloseCalendar={modal.close}
       renderCalendar={(calendar, blur) =>
         modal.sync(<NativeModal onClose={blur}>{calendar}</NativeModal>)
       }
