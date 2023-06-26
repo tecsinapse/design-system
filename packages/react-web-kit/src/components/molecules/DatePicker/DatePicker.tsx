@@ -61,6 +61,11 @@ export const DatePicker = <T extends SelectionType>({
     return undefined;
   }, [value]);
 
+  const checksFullRange = useCallback(() => {
+    if(type === 'range' && !value?.highest)
+      onChange?.(undefined)
+  }, [value])
+
   const controlComponent = (onPress, displayValue) => {
     return (
       <InputMask
@@ -151,11 +156,16 @@ export const DatePicker = <T extends SelectionType>({
         month={getMonth}
         requestShowCalendar={show}
         requestCloseCalendar={close}
-        renderCalendar={calendar => (
-          <Dropdown visible={visible} setVisible={setVisible}>
-            {calendar}
-          </Dropdown>
-        )}
+        renderCalendar={(calendar, handleBlur) =>
+                  <Dropdown visible={visible} setVisible={setVisible}
+                            onClickAway={() => {
+                                handleBlur?.()
+                                checksFullRange()
+                            }}
+                  >
+                    {calendar}
+                  </Dropdown>
+        }
       />
     );
   }

@@ -7,15 +7,17 @@ import { useClickAwayListener } from '../../../hooks';
 export interface DropdownProps {
   visible: boolean;
   setVisible: Dispatch<SetStateAction<boolean>>;
+  onClickAway?: () => void;
 }
 
 const Component: React.FC<DropdownProps & { children: JSX.Element }> = ({
   visible,
   setVisible,
+  onClickAway,
   children,
 }): JSX.Element => {
   const refDropDown = React.useRef(null);
-  useClickAwayListener(refDropDown, setVisible);
+  useClickAwayListener(refDropDown, setVisible, onClickAway);
 
   return (
     <Transition in={visible} timeout={300}>
