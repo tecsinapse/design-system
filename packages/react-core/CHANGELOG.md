@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.22.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.22.8...@tecsinapse/react-core@1.22.9) (2023-06-26)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+
+
+
+
 ## [1.22.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@1.22.7...@tecsinapse/react-core@1.22.8) (2023-03-02)
 
 **Note:** Version bump only for package @tecsinapse/react-core
