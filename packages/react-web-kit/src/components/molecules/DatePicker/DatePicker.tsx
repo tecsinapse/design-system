@@ -62,7 +62,7 @@ export const DatePicker = <T extends SelectionType>({
   }, [value]);
 
   const checksFullRange = useCallback(() => {
-    if(type === 'range' && !value?.highest)
+    if(type === 'range' && !(value as DateRange)?.highest)
       onChange?.(undefined)
   }, [value])
 

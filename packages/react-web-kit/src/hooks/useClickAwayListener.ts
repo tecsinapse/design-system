@@ -3,8 +3,8 @@ import React from 'react';
 export const useClickAwayListener = (
   ref: React.MutableRefObject<any>,
   setVisible: React.Dispatch<React.SetStateAction<boolean>>,
-  onClickAway?: () => void,
   event: 'mouseup' | 'mousedown' | undefined = 'mousedown',
+  onClickAway?: () => void
 ): void => {
   React.useEffect(() => {
     const handleClickOutside = event => {
