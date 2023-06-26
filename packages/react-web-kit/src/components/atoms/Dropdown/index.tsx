@@ -17,7 +17,7 @@ const Component: React.FC<DropdownProps & { children: JSX.Element }> = ({
   children,
 }): JSX.Element => {
   const refDropDown = React.useRef(null);
-  useClickAwayListener(refDropDown, setVisible, onClickAway);
+  useClickAwayListener(refDropDown, setVisible, 'mousedown', onClickAway);
 
   return (
     <Transition in={visible} timeout={300}>

@@ -83,15 +83,20 @@ function DatePicker<T extends SelectionType>({
 
   const StyledText = getStyledTextComponent(TextComponent);
 
+  const handleRequestCloseCalendar = useCallback(() => {
+    requestCloseCalendar()
+    handleBlur()
+  }, [requestCloseCalendar, handleBlur])
+
   useEffect(() => {
     if (closeOnPick && value && type === 'day') {
-      setTimeout(requestCloseCalendar, 200);
+      setTimeout(handleRequestCloseCalendar, 200);
     }
     if (closeOnPick && value && type === 'range') {
       const { lowest, highest } = value as DateRange;
-      lowest && highest && setTimeout(requestCloseCalendar, 200);
+      lowest && highest && setTimeout(handleRequestCloseCalendar, 200);
     }
-  }, [value, closeOnPick, type, requestCloseCalendar]);
+  }, [value, closeOnPick, type, handleRequestCloseCalendar]);
 
   const calendar = (
     <CalendarComponent
