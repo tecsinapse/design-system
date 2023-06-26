@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/react-lab",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "TecSinapse components laboratory",
   "license": "MIT",
   "main": "dist/cjs/index.js",
