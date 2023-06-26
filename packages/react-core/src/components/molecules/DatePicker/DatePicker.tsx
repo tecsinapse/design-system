@@ -1,6 +1,6 @@
 import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { InputContainerProps, useInputFocus } from '../../atoms/Input';
 import { Text, TextProps } from '../../atoms/Text';
 import { CalendarProps, DateRange, SelectionType } from '../Calendar';
@@ -77,7 +77,7 @@ function DatePicker<T extends SelectionType>({
         return `${formatDate(lowest, format, {
           locale: locale,
         })} - ${formatDate(highest, format, { locale: locale })}`;
-      else return formatDate(lowest, format, { locale: locale });
+      else return placeholder;
     }
   };
 
