@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-lab@2.0.0...@tecsinapse/react-lab@2.0.1) (2023-04-26)
+
+### Bug Fixes
+
+- update package json main ([eaebbba](https://github.com/tecsinapse/design-system/commit/eaebbbac26ed5a75d30d85e78d9e1060cbb1162e))
+
 # [2.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-lab@1.0.2...@tecsinapse/react-lab@2.0.0) (2023-04-04)
 
 ### Bug Fixes

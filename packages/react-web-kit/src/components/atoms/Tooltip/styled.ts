@@ -1,9 +1,13 @@
 import { css } from '@emotion/react';
 import { StyleProps, ThemeProp } from '@tecsinapse/react-core';
 import styled from '@emotion/styled';
-import { ComputedType, Position } from './Tooltip';
+import { ComputedType, MaxWidth, Position } from './Tooltip';
 
-type InjectedProps = { computed?: ComputedType; position?: Position };
+type InjectedProps = {
+  computed?: ComputedType;
+  position?: Position;
+  maxWidth?: MaxWidth;
+};
 
 /** Bottom/Top commons */
 const bottomOrTopStylesCommon = (width: number, position) =>
@@ -104,11 +108,13 @@ const rightArrow = (theme: ThemeProp, position?: Position) =>
   `;
 
 export const TooltipSpan = styled('span')<Partial<StyleProps> & InjectedProps>(
-  ({ theme, computed, position }) => {
+  ({ theme, computed, position, maxWidth }) => {
     const { width = 0, height = 0 } = computed || {};
     return css`
+      max-width: ${maxWidth ? `${maxWidth}px` : 'auto'};
       position: absolute;
       width: max-content;
+      line-break: anywhere;
       padding: ${theme.spacing.micro} ${theme.spacing.centi};
       border-radius: ${theme.borderRadius.mili};
       opacity: 0;
@@ -143,8 +149,11 @@ export const TooltipSpan = styled('span')<Partial<StyleProps> & InjectedProps>(
   }
 );
 
-export const Container = styled('div')<{ position?: Position }>`
+export const Container = styled('div')<{
+  position?: Position;
+}>`
   position: relative;
+  width: auto;
   &:hover {
     & > span {
       opacity: 1;
