@@ -111,7 +111,7 @@ export const TooltipSpan = styled('span')<Partial<StyleProps> & InjectedProps>(
   ({ theme, computed, position, maxWidth }) => {
     const { width = 0, height = 0 } = computed || {};
     return css`
-      max-width: ${maxWidth ? `${maxWidth}px` : `${width}px`};
+      max-width: ${maxWidth ? `${maxWidth}px` : 'auto'};
       position: absolute;
       width: max-content;
       line-break: anywhere;
