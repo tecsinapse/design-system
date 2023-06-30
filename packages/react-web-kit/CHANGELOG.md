@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.23.10...@tecsinapse/react-web-kit@1.23.11) (2023-06-30)
+
+
+### Bug Fixes
+
+* adding tooltip maxWidth to tooltipspan ([9f982a4](https://github.com/tecsinapse/design-system/commit/9f982a4a09c9deee06a9dcdb42e05b1100a4ef04))
+* adding tooltip maxWidth to tooltipspan ([706ede3](https://github.com/tecsinapse/design-system/commit/706ede3c97fe1d3dce623f2a64702541eccd771c))
+
+
+
+
+
 ## [1.23.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@1.23.9...@tecsinapse/react-web-kit@1.23.10) (2023-06-26)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
