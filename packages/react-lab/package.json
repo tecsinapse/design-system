@@ -10,8 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "yarn build:es --watch",
-    "build:es": "yarn rollup --config",
+    "start": "pnpm build:es --watch",
+    "build:es": "pnpm rollup --config",
     "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
     "build:declaration:cjs": "tsc --project tsconfig.build.json",
     "build:declaration:esm": "tsc --project tsconfig.build.esm.json",
