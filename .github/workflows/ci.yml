@@ -12,6 +12,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - uses: pnpm/action-setup@v2
         name: install pnpm
         id: pnpm-install
@@ -19,11 +24,19 @@ jobs:
           version: 8
           run_install: false
 
-      - name: setup node
-        uses: actions/setup-node@v3
+      - name: get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: setup pnpm cache
         with:
-          node-version: '18'
-          cache: 'pnpm'
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: install and prepare
         run: pnpm i
@@ -48,6 +61,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - uses: pnpm/action-setup@v2
         name: install pnpm
         id: pnpm-install
@@ -55,11 +73,19 @@ jobs:
           version: 8
           run_install: false
 
-      - name: setup node
-        uses: actions/setup-node@v3
+      - name: get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: setup pnpm cache
         with:
-          node-version: '18'
-          cache: 'pnpm'
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: restore
         uses: actions/cache@v3
