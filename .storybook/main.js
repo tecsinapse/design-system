@@ -1,3 +1,5 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 module.exports = {
   framework: {
     name: '@storybook/react-vite',
@@ -21,4 +23,12 @@ module.exports = {
     '@storybook/addon-viewport',
   ],
   staticDirs: ['public/'],
+  webpackFinal: async config => {
+    config.resolve.plugins = [
+      ...(config.resolve.plugins || []),
+      new TsconfigPathsPlugin(),
+    ];
+
+    return config;
+  },
 };
