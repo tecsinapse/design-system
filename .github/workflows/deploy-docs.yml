@@ -13,6 +13,13 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v2
+        name: install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
       - name: setup node
         uses: actions/setup-node@v3
         with:
@@ -20,10 +27,10 @@ jobs:
           cache: 'pnpm'
 
       - name: install deps
-        run: yarn
+        run: pnpm i
 
       - name: build docs
-        run: yarn build:storybook
+        run: pnpm build:storybook
           
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
