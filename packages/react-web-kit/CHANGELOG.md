@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.0...@tecsinapse/react-web-kit@2.1.1) (2023-07-24)
+
+### Bug Fixes
+
+- adding tooltip maxWidth to tooltipspan ([6269c0d](https://github.com/tecsinapse/design-system/commit/6269c0db0012ee9894d311e71c4a200544efb08c))
+- adding tooltip maxWidth to tooltipspan ([549c231](https://github.com/tecsinapse/design-system/commit/549c231610aa4cb7b81127e8d81e5938e14a903c))
+- react transition group findDOMRef warning ([2446ff6](https://github.com/tecsinapse/design-system/commit/2446ff6505ff4080dfb23c6a1138a575bdce03cc))
+
 # [2.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.0.1...@tecsinapse/react-web-kit@2.1.0) (2023-07-21)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
