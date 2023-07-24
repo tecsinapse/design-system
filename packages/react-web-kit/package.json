@@ -23,7 +23,7 @@
     "@emotion/native": "~11.10.0",
     "@emotion/react": "~11.10.0",
     "@emotion/styled": "~11.10.0",
-    "@tecsinapse/react-core": "2.0.1",
+    "@tecsinapse/react-core": "2.0.2",
     "@types/react-native": "^0.71.0",
     "date-fns": "~2.29.3",
     "react-native-vector-icons": "~9.2.0",
