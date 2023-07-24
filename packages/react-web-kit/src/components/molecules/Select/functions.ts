@@ -5,7 +5,7 @@ export const getDisplayValue = <Data>(
   placeholder: string | undefined,
   keyExtractor: (option: Data, idx?: number) => string,
   labelExtractor: (option: Data) => string
-): Data | Data[] | string | undefined => {
+): string | undefined => {
   if (type === 'multi') {
     if ((value as Data[]).length === 0) return placeholder;
     else {

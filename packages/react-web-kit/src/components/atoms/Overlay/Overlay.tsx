@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useRef } from 'react';
 import { Transition } from 'react-transition-group';
 import { ZIndex } from '@tecsinapse/react-core';
 import { defaultStyleOverlay, transitionStylesOverlay } from './animations';
@@ -19,8 +19,9 @@ const Overlay = ({
   zIndex = 'default',
   children,
 }: OverlayProps): JSX.Element => {
+  const transitionRef = useRef(null);
   return (
-    <Transition in={open} timeout={timeout}>
+    <Transition in={open} timeout={timeout} nodeRef={transitionRef}>
       {state => (
         <StyledOverlay
           style={{
@@ -30,6 +31,7 @@ const Overlay = ({
           onClick={open ? onClose : undefined}
           show={open}
           zIndex={zIndex}
+          ref={transitionRef}
         >
           {children}
         </StyledOverlay>

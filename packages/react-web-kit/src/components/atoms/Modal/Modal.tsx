@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Transition } from 'react-transition-group';
 import { Overlay } from '../Overlay';
 import { ModalContainer } from './styled';
@@ -16,12 +16,14 @@ const Modal: React.FC<ModalProps> = ({
   style,
   ...rest
 }) => {
+  const transitionRef = useRef(null);
   return (
     <>
       <Overlay open={open} onClose={onClose} zIndex="modal" />
-      <Transition in={open} timeout={400}>
+      <Transition in={open} timeout={400} nodeRef={transitionRef}>
         {state => (
           <ModalContainer
+            ref={transitionRef}
             style={{
               ...style,
               ...defaultStyleOverlay,

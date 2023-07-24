@@ -36,6 +36,7 @@ const Accordion: React.FC<AccordionProps> = ({
   const theme = useTheme() as ThemeProp;
 
   const ref = useRef<HTMLDivElement | null>(null);
+  const titleTransitionRef = useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => setOpen(_open), [_open]);
 
@@ -57,18 +58,20 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <AccordionContainer {...rest}>
       <TitleContainer onClick={handleClick}>
-        <Transition in={open} timeout={transition}>
+        <Transition in={open} timeout={transition} nodeRef={titleTransitionRef}>
           {state => (
-            <Text
-              typography="h4"
-              fontWeight="bold"
-              style={{
-                ...titleStyle(transition, theme),
-                ...titleTransition(theme)[state],
-              }}
-            >
-              {title}
-            </Text>
+            <div ref={titleTransitionRef}>
+              <Text
+                typography="h4"
+                fontWeight="bold"
+                style={{
+                  ...titleStyle(transition, theme),
+                  ...titleTransition(theme)[state],
+                }}
+              >
+                {title}
+              </Text>
+            </div>
           )}
         </Transition>
         <IconContainer>
@@ -80,7 +83,7 @@ const Accordion: React.FC<AccordionProps> = ({
           />
         </IconContainer>
       </TitleContainer>
-      <Transition in={open} timeout={transition}>
+      <Transition in={open} timeout={transition} nodeRef={ref}>
         {state => (
           <ContentContainer
             ref={htmlEl => (ref.current = htmlEl)}

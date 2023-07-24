@@ -15,23 +15,26 @@ import { SearchInput } from './components';
 
 const fullWidth = { width: '100%' };
 
-const Dropdown = <Data, Type extends 'single' | 'multi'>({
-  options,
-  onSearch,
-  type,
-  hideSearchBar,
-  onSelect,
-  value,
-  keyExtractor,
-  labelExtractor,
-  setDropDownVisible,
-  style,
-  anchor,
-  selectAllLabel,
-  searchBarPlaceholder,
-}: SelectProps<Data, Type> & {
-  setDropDownVisible: (t: boolean) => void;
-}): JSX.Element => {
+const Component = <Data, Type extends 'single' | 'multi'>(
+  {
+    options,
+    onSearch,
+    type,
+    hideSearchBar,
+    onSelect,
+    value,
+    keyExtractor,
+    labelExtractor,
+    setDropDownVisible,
+    style,
+    anchor,
+    selectAllLabel,
+    searchBarPlaceholder,
+  }: SelectProps<Data, Type> & {
+    setDropDownVisible: (t: boolean) => void;
+  },
+  ref: React.ForwardedRef<HTMLDivElement>
+): JSX.Element => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const lengthOptions = React.useMemo(() => options.length, [options]);
 
@@ -69,6 +72,7 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
       lengthOptions={lengthOptions}
       style={style}
       anchor={anchor}
+      ref={ref}
     >
       {type === 'multi' && (
         <StyledContainerCheckAll
@@ -124,5 +128,13 @@ const Dropdown = <Data, Type extends 'single' | 'multi'>({
     </StyledContainerDropdown>
   );
 };
+const Dropdown = React.forwardRef(Component) as <
+  Data,
+  Type extends 'single' | 'multi'
+>(
+  props: SelectProps<Data, Type> & {
+    setDropDownVisible: (t: boolean) => void;
+  } & { ref?: React.ForwardedRef<HTMLDivElement> }
+) => ReturnType<typeof Component>;
 
 export default Dropdown;

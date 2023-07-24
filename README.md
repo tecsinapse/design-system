@@ -60,9 +60,11 @@ To access in your application, see this [example](https://github.com/tecsinapse/
 
 ### Maintainers
 
+- [Beatriz Silva](mailto:beatriz.silva@tecsinapse.com.br)
 - [Denner Vidal](mailto:denner.vidal@tecsinapse.com.br)
-- [Nilson Altonio](mailto:nilson.antonio@tecsinapse.com.br)
-- [Agnaldo Citadin](mailto:agnaldo.citadin@tecsinapse.com.br)
+- [Gabriel Sanches](mailto:gabriel.sanches@tecsinapse.com.br)
+- [Lucas Ramos](mailto:lucas.ramos@tecsinapse.com.br)
+- [Nilson Antonio](mailto:nilson.antonio@tecsinapse.com.br)
 - [Ryan Correa](mailto:ryan.correa@tecsinapse.com.br)
 
 ## Contributing
