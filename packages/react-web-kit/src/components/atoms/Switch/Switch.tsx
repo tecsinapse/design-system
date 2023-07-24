@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useRef } from 'react';
 import {
   lightenDarkenColor,
   SwitchProps,
@@ -18,6 +18,7 @@ const Switch: FC<SwitchProps> = ({
   ...rest
 }) => {
   const theme = useTheme();
+  const transitionRef = useRef(null);
   const handleChange = useCallback(() => {
     if (!disabled) onChange(!active);
   }, [active, onChange]);
@@ -66,9 +67,9 @@ const Switch: FC<SwitchProps> = ({
   };
 
   return (
-    <Transition in={active} timeout={100}>
+    <Transition in={active} timeout={100} nodeRef={transitionRef}>
       {state => (
-        <div onClick={handleChange}>
+        <div onClick={handleChange} ref={transitionRef}>
           <StyledSwitchContent
             {...rest}
             style={{

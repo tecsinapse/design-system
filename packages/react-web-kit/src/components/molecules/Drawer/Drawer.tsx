@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import { StyledContainerDrawer } from './styled';
 import { Transition, TransitionStatus } from 'react-transition-group';
 import { Overlay } from '../../atoms/Overlay';
@@ -25,6 +25,7 @@ const Drawer: FC<DrawerProps> = ({
   style,
   ...rest
 }) => {
+  const transitionRef = useRef(null);
   const getStyles = (
     anchorPosition: AnchorPosition,
     state: TransitionStatus
@@ -50,9 +51,10 @@ const Drawer: FC<DrawerProps> = ({
   return (
     <>
       <Overlay timeout={300} open={open} onClose={onClose} zIndex="drawer" />
-      <Transition in={open} timeout={300}>
+      <Transition in={open} timeout={300} nodeRef={transitionRef}>
         {state => (
           <StyledContainerDrawer
+            ref={transitionRef}
             style={{ ...style, ...getStyles(anchorPosition, state) }}
             anchorPosition={anchorPosition}
             onClose={onClose}

@@ -18,7 +18,7 @@ const Component: React.FC<DropdownProps & { children: JSX.Element }> = ({
   useClickAwayListener(refDropDown, setVisible);
 
   return (
-    <Transition in={visible} timeout={300}>
+    <Transition in={visible} timeout={300} nodeRef={refDropDown}>
       {state => (
         <StyledContainerDropdown
           style={{ ...defaultStyles, ...transition['bottom'][state] }}

@@ -61,6 +61,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
   const [selectOptions, setSelectOptions] = useState<Data[]>([]);
   const refDropDown = React.useRef(null);
+  const transitionRef = React.useRef(null);
   useClickAwayListener(refDropDown, setDropDownVisible);
 
   useEffect(() => {
@@ -162,9 +163,10 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
-      <Transition in={dropDownVisible} timeout={300}>
+      <Transition in={dropDownVisible} timeout={300} nodeRef={transitionRef}>
         {state => (
           <Dropdown
+            ref={transitionRef}
             options={selectOptions ?? []}
             onSelect={onSelect}
             value={value}

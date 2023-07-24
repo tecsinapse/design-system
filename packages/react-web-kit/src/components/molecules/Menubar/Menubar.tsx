@@ -50,6 +50,8 @@ const Menubar: React.FC<MenubarProps> = ({
   const [input, setInput] = useDebouncedState<string>('', setSearch);
   const [open, setOpen] = React.useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const transitionInputRef = useRef<HTMLDivElement | null>(null);
+  const transitionMenuRef = useRef<HTMLDivElement | null>(null);
   useClickAwayListener(menuRef, setOpen, 'mouseup');
 
   const toggleOpen = React.useCallback(
@@ -83,9 +85,12 @@ const Menubar: React.FC<MenubarProps> = ({
           )}
         </StyledMenuButton>
         {leftComponents}
-        <Transition in={open} timeout={250}>
+        <Transition in={open} timeout={250} nodeRef={transitionInputRef}>
           {state => (
-            <StyledInputContainer style={getInputContainerStyles(state)}>
+            <StyledInputContainer
+              style={getInputContainerStyles(state)}
+              ref={transitionInputRef}
+            >
               {searchable && (
                 <StyledInput
                   placeholder={searchPlaceholder}
@@ -103,9 +108,12 @@ const Menubar: React.FC<MenubarProps> = ({
         </Transition>
         {rightComponents}
       </StyledMenuBar>
-      <Transition in={open} timeout={250}>
+      <Transition in={open} timeout={250} nodeRef={transitionMenuRef}>
         {state => (
-          <StyledContainerOpenMenu style={getContainerOpenMenuStyles(state)}>
+          <StyledContainerOpenMenu
+            style={getContainerOpenMenuStyles(state)}
+            ref={transitionMenuRef}
+          >
             {!search ? (
               <>
                 {mostUsed && (
