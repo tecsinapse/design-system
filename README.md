@@ -13,7 +13,7 @@ In addition, the design system and component library should be easy to use for d
 
 ## Quick start
 
-Here are a few helpful links for getting started with Circuit UI:
+Here are a few helpful links for getting started:
 
 - [Documentation](https://tecsinapse.github.io/design-system) - Learn how to use and view the components in Storybook.
 - [Getting started](https://tecsinapse.github.io/design-system/?path=/docs/introduction-getting-started--page) - Set up a new app with our DS or add it to an existing project.
