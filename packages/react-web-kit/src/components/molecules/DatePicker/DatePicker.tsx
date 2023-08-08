@@ -31,6 +31,7 @@ export const DatePicker = <T extends SelectionType>({
   onChange,
   callbackAfterValidated,
   placeholder,
+  disabled,
   label,
   invalidDateLabel = 'Invalid date',
   ...rest
@@ -98,6 +99,7 @@ export const DatePicker = <T extends SelectionType>({
             callbackAfterValidated?.(false, invalidDateLabel);
           }
         }}
+        disabled={disabled}
         mask={Masks.DATE}
         value={displayValue ?? ''}
         hint={error ? invalidDateLabel : undefined}
