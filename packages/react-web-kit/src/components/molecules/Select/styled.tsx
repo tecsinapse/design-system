@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Icon, StyleProps } from '@tecsinapse/react-core';
+import { Icon, StyleProps, Text } from '@tecsinapse/react-core';
 import React from 'react';
 
 export const StyledContainer = styled('div')<Partial<StyleProps>>`
@@ -23,3 +23,7 @@ export const RightComponent = (
     style={{ marginRight: 12 }}
   />
 );
+
+export const StyledSelectedValuesCount = styled(Text)<Partial<StyleProps>>`
+  color: ${({ theme }) => theme.color.primary.light};
+`;

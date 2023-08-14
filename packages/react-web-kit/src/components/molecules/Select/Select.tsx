@@ -13,6 +13,7 @@ import {
   RightComponent,
   StyledContainer,
   StyledInputContainer,
+  StyledSelectedValuesCount,
 } from './styled';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'>
@@ -148,6 +149,16 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     () => setDropDownVisible(prev => !prev),
     [setDropDownVisible]
   );
+
+  const multipleValueCount =
+    (value as Data[]).length === 1
+      ? '1 item foi selecionado'
+      : (value as Data[]).length > 0
+      ? (value as Data[]).length === options.length
+        ? 'Todos itens selecionados'
+        : `${(value as Data[]).length} itens foram selecionados`
+      : 'Nenhum item selecionado';
+
   //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
     <StyledContainer ref={refDropDown} {...rest}>
@@ -158,9 +169,15 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           disabled={disabled}
           rightComponent={RightComponent}
         >
-          <Text {...displayTextProps} fontWeight={'bold'}>
-            {displayValue}
-          </Text>
+          {type === 'single' ? (
+            <Text {...displayTextProps} fontWeight={'bold'}>
+              {displayValue}
+            </Text>
+          ) : (
+            <StyledSelectedValuesCount typography="base" fontWeight="bold">
+              {multipleValueCount}
+            </StyledSelectedValuesCount>
+          )}
         </PressableInputContainer>
       </StyledInputContainer>
       <Transition in={dropDownVisible} timeout={300} nodeRef={transitionRef}>

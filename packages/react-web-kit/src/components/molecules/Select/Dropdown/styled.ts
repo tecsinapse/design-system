@@ -61,7 +61,7 @@ export const OptionsContainer = styled('div')<InjectedProps>`
   }
   ::-webkit-scrollbar-thumb:hover {
     background-color: ${({ theme }: StyleProps) => theme.color.primary.light};
-  },
+  }
 `;
 
 export const SearchBarContainer = styled('div')<Partial<StyleProps>>`
