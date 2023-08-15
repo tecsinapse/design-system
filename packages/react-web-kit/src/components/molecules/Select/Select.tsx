@@ -150,14 +150,15 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     [setDropDownVisible]
   );
 
-  const multipleValueCount =
-    (value as Data[]).length === 1
-      ? '1 item foi selecionado'
-      : (value as Data[]).length > 0
-      ? (value as Data[]).length === options.length
-        ? 'Todos itens selecionados'
-        : `${(value as Data[]).length} itens foram selecionados`
-      : 'Nenhum item selecionado';
+  const getLabel = (value: Data[], options: Data[]) => {
+    if (value.length > 0 && value.length === options.length) {
+      return 'Todos itens selecionados';
+    }
+    if (value.length > 1) {
+      return `${value.length} itens selecionados`;
+    }
+    return displayValue;
+  };
 
   //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
@@ -169,15 +170,9 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           disabled={disabled}
           rightComponent={RightComponent}
         >
-          {type === 'single' ? (
-            <Text {...displayTextProps} fontWeight={'bold'}>
-              {displayValue}
-            </Text>
-          ) : (
-            <StyledSelectedValuesCount typography="base" fontWeight="bold">
-              {multipleValueCount}
-            </StyledSelectedValuesCount>
-          )}
+          <Text {...displayTextProps} fontWeight={'bold'}>
+            {getLabel(value as Data[], options as Data[])}
+          </Text>
         </PressableInputContainer>
       </StyledInputContainer>
       <Transition in={dropDownVisible} timeout={300} nodeRef={transitionRef}>
