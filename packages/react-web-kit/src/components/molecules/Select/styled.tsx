@@ -23,7 +23,3 @@ export const RightComponent = (
     style={{ marginRight: 12 }}
   />
 );
-
-export const StyledSelectedValuesCount = styled(Text)<Partial<StyleProps>>`
-  color: ${({ theme }) => theme.color.primary.light};
-`;

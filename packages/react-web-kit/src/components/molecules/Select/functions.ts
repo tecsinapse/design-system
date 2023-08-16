@@ -22,3 +22,13 @@ export const getDisplayValue = <Data>(
     return selectedOption ? labelExtractor(selectedOption) : placeholder;
   }
 };
+
+export const getLabel = (displayValue, value, options) => {
+  if (value.length > 0 && value.length === options.length) {
+    return 'Todos itens selecionados';
+  }
+  if (value.length > 1) {
+    return `${value.length} itens selecionados`;
+  }
+  return displayValue;
+};

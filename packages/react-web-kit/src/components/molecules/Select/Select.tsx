@@ -8,12 +8,11 @@ import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
 import { defaultStyles, transition } from './animations';
 import { Dropdown } from './Dropdown';
-import { getDisplayValue } from './functions';
+import { getDisplayValue, getLabel } from './functions';
 import {
   RightComponent,
   StyledContainer,
   StyledInputContainer,
-  StyledSelectedValuesCount,
 } from './styled';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'>
@@ -150,16 +149,6 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     [setDropDownVisible]
   );
 
-  const getLabel = (value: Data[], options: Data[]) => {
-    if (value.length > 0 && value.length === options.length) {
-      return 'Todos itens selecionados';
-    }
-    if (value.length > 1) {
-      return `${value.length} itens selecionados`;
-    }
-    return displayValue;
-  };
-
   //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
     <StyledContainer ref={refDropDown} {...rest}>
@@ -171,7 +160,9 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           rightComponent={RightComponent}
         >
           <Text {...displayTextProps} fontWeight={'bold'}>
-            {getLabel(value as Data[], options as Data[])}
+            {type === 'single'
+              ? displayValue
+              : getLabel(displayValue, value as Data[], options as Data[])}
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
