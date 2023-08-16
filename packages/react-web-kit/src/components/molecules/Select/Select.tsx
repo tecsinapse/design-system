@@ -8,7 +8,7 @@ import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
 import { defaultStyles, transition } from './animations';
 import { Dropdown } from './Dropdown';
-import { getDisplayValue } from './functions';
+import { getDisplayValue, getLabel } from './functions';
 import {
   RightComponent,
   StyledContainer,
@@ -148,6 +148,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     () => setDropDownVisible(prev => !prev),
     [setDropDownVisible]
   );
+
   //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
     <StyledContainer ref={refDropDown} {...rest}>
@@ -159,7 +160,9 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           rightComponent={RightComponent}
         >
           <Text {...displayTextProps} fontWeight={'bold'}>
-            {displayValue}
+            {type === 'single'
+              ? displayValue
+              : getLabel(displayValue, value as Data[], options as Data[])}
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>

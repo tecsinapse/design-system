@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.1...@tecsinapse/react-web-kit@2.1.2) (2023-08-02)
+
+### Bug Fixes
+
+- **TS-1113:** day picker wont update value ([d6ba934](https://github.com/tecsinapse/design-system/commit/d6ba934c3974ed12246c5f0b5b3219e62cd4d6d3))
+
 ## [2.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.0...@tecsinapse/react-web-kit@2.1.1) (2023-07-24)
 
 ### Bug Fixes
