@@ -8,12 +8,13 @@ import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
 import { defaultStyles, transition } from './animations';
 import { Dropdown } from './Dropdown';
-import { getDisplayValue, getLabel } from './functions';
+import { getDisplayValue } from './functions';
 import {
   RightComponent,
   StyledContainer,
   StyledInputContainer,
 } from './styled';
+import { MultiLabels } from './types';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'>
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
@@ -37,6 +38,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
   label?: string;
   anchor?: 'top' | 'bottom';
   displayTextProps?: TextProps;
+  multiLabels?: MultiLabels;
 }
 
 /** NOTE: For better performance, you should memoize options and handlers */
@@ -49,13 +51,14 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   placeholder,
   onSearch,
-  searchBarPlaceholder = 'Busque a opção desejada',
+  searchBarPlaceholder = 'Search for option',
   hideSearchBar = true,
   label,
   disabled = false,
   anchor = 'bottom',
   displayTextProps,
-  selectAllLabel = 'Selecionar todos',
+  selectAllLabel = 'Select all',
+  multiLabels,
   ...rest
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
@@ -84,7 +87,8 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     selectOptions,
     _placeholder,
     keyExtractor,
-    labelExtractor
+    labelExtractor,
+    multiLabels
   );
 
   const handleLazyFocus = React.useCallback(async () => {
@@ -160,9 +164,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           rightComponent={RightComponent}
         >
           <Text {...displayTextProps} fontWeight={'bold'}>
-            {type === 'single'
-              ? displayValue
-              : getLabel(displayValue, value as Data[], options as Data[])}
+            {displayValue}
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
