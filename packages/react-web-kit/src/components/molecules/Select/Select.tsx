@@ -3,7 +3,7 @@ import {
   Text,
   TextProps,
 } from '@tecsinapse/react-core';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
 import { defaultStyles, transition } from './animations';
@@ -66,6 +66,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   const refDropDown = React.useRef(null);
   const transitionRef = React.useRef(null);
   useClickAwayListener(refDropDown, setDropDownVisible);
+  const instanceid = useId();
 
   useEffect(() => {
     if (typeof options !== 'function') {
@@ -168,7 +169,12 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
-      <Transition in={dropDownVisible} timeout={300} nodeRef={transitionRef}>
+      <Transition
+        in={dropDownVisible}
+        timeout={300}
+        nodeRef={transitionRef}
+        key={instanceid}
+      >
         {state => (
           <Dropdown
             ref={transitionRef}
