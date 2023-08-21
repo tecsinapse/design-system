@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.2...@tecsinapse/react-web-kit@2.1.3) (2023-08-21)
+
+### Bug Fixes
+
+- datepicker disabled mode working ([244dd08](https://github.com/tecsinapse/design-system/commit/244dd08bb747293041d86a3abd3b95217de74c45))
+- datepicker range accept disable ([a80207b](https://github.com/tecsinapse/design-system/commit/a80207bb8d01fce989bc691b4b5932b2a85f6534))
+- refactor multi label selection feedback ([77a846c](https://github.com/tecsinapse/design-system/commit/77a846caff18532c24691c0f7fdf6393c792ab7b))
+
 ## [2.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.1...@tecsinapse/react-web-kit@2.1.2) (2023-08-02)
 
 ### Bug Fixes

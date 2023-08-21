@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-lab@2.0.4...@tecsinapse/react-lab@2.0.5) (2023-08-21)
+
+**Note:** Version bump only for package @tecsinapse/react-lab
+
 ## [2.0.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-lab@2.0.3...@tecsinapse/react-lab@2.0.4) (2023-08-02)
 
 **Note:** Version bump only for package @tecsinapse/react-lab
