@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.3...@tecsinapse/react-web-kit@2.1.4) (2023-08-22)
+
+### Bug Fixes
+
+- date picker disabled style and feedback ([063b0f9](https://github.com/tecsinapse/design-system/commit/063b0f9c03afedbd8f11f5107c6b6bdea4681ba1))
+
 ## [2.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.2...@tecsinapse/react-web-kit@2.1.3) (2023-08-21)
 
 ### Bug Fixes
