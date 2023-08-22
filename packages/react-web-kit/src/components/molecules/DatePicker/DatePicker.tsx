@@ -1,5 +1,4 @@
 import {
-  Button,
   Calendar,
   DatePicker as DatePickerCore,
   DatePickerProps,
@@ -7,6 +6,8 @@ import {
   Masks,
   SelectionType,
   CalendarIcon,
+  PressableSurface,
+  useTheme,
 } from '@tecsinapse/react-core';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Dropdown } from '../../atoms/Dropdown';
@@ -41,6 +42,7 @@ export const DatePicker = <T extends SelectionType>({
   const show = useCallback(() => setVisible(true), []);
   const close = useCallback(() => setVisible(false), []);
   const [error, setError] = useState<boolean>(false);
+  const theme = useTheme();
 
   const getYear = useMemo(() => {
     if (value) {
@@ -113,15 +115,18 @@ export const DatePicker = <T extends SelectionType>({
         }}
         placeholder={placeholder}
         label={label}
+        placeholderTextColor={
+          disabled ? theme.color.secondary.light : undefined
+        }
         rightComponent={
-          <Button
+          <PressableSurface
             effect={'none'}
-            variant={'text'}
             style={{ padding: 0 }}
             onPress={onPress}
+            disabled={disabled}
           >
             <CalendarIcon name="calendar-sharp" type="ionicon" size="centi" />
-          </Button>
+          </PressableSurface>
         }
       />
     );
