@@ -31,7 +31,7 @@ const anchorTop = ({
 export const StyledContainerDropdown = styled('div')<InjectedProps>`
   width: 100%;
   background-color: ${({ theme }: StyleProps) =>
-    theme.miscellaneous.surfaceColor};
+    theme.miscellaneous?.surfaceColor};
   border-radius: ${({ theme }: StyleProps) => theme.borderRadius.mili};
   box-shadow: 0 2px 8px
     ${({ theme }: StyleProps) => hex2rgba(theme.miscellaneous.shadow, 0.05)};

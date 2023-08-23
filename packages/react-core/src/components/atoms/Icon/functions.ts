@@ -79,5 +79,5 @@ export const getIconColor = (
   if (colorVariant && colorGradation) {
     return theme.color[colorVariant][colorGradation];
   }
-  return theme.font.color[fontColor];
+  return theme.font?.color[fontColor];
 };
