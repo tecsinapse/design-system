@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.4...@tecsinapse/react-web-kit@2.1.5) (2023-08-23)
+
+### Bug Fixes
+
+- optional chaining ([1cd12c3](https://github.com/tecsinapse/design-system/commit/1cd12c341127940f1baca4ae116d7001a90781eb))
+
 ## [2.1.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.3...@tecsinapse/react-web-kit@2.1.4) (2023-08-22)
 
 ### Bug Fixes
