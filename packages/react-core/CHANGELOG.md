@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.6...@tecsinapse/react-core@2.0.7) (2023-08-24)
+
+### Bug Fixes
+
+- optional chaining ([946c8ef](https://github.com/tecsinapse/design-system/commit/946c8ef7669e7afdefd9682f642a97e4732bb04c))
+- optional chaining ([e063bda](https://github.com/tecsinapse/design-system/commit/e063bda063ea5de12984ebf69210a4600b7d23e6))
+- optional chaining ([0b5bb7b](https://github.com/tecsinapse/design-system/commit/0b5bb7b6c90442e04fa7c4999ce1a183dab70ebd))
+
 ## [2.0.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.5...@tecsinapse/react-core@2.0.6) (2023-08-23)
 
 ### Bug Fixes
