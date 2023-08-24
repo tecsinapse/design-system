@@ -45,7 +45,9 @@ export const statusColor = {
 };
 
 export const hex2rgba: (hex, alpha?: number) => string = (hex, alpha = 1) => {
-  const [r, g, b] = (hex ?? '').match(/\w\w/g).map(x => parseInt(x, 16));
+  const rgb = ((hex ?? '').match(/\w\w/g) ?? []).map(x => parseInt(x, 16));
+  if (!rgb || (rgb ?? []).length === 0) return '';
+  const [r, g, b] = rgb;
   return `rgba(${r},${g},${b},${alpha})`;
 };
 
