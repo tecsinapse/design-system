@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Icon, StyleProps } from '@tecsinapse/react-core';
+import { Icon, StyleProps, Text } from '@tecsinapse/react-core';
 import React from 'react';
 
 export const StyledContainer = styled('div')<Partial<StyleProps>>`

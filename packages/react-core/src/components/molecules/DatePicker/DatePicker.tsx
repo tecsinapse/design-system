@@ -84,9 +84,9 @@ function DatePicker<T extends SelectionType>({
   const StyledText = getStyledTextComponent(TextComponent);
 
   const handleRequestCloseCalendar = useCallback(() => {
-    requestCloseCalendar()
-    handleBlur()
-  }, [requestCloseCalendar, handleBlur])
+    requestCloseCalendar();
+    handleBlur();
+  }, [requestCloseCalendar, handleBlur]);
 
   useEffect(() => {
     if (closeOnPick && value && type === 'day') {

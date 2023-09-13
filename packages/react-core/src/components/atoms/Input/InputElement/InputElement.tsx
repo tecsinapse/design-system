@@ -1,8 +1,7 @@
-import { useTheme } from '@emotion/react';
-import { ThemeProp } from '@tecsinapse/react-core';
 import React from 'react';
 import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
 import { StyledInputElement } from '../styled';
+import { useTheme } from '@tecsinapse/react-core';
 
 export interface InputElementProps
   extends Omit<TextInputProps, 'onChange' | 'value' | 'ref'> {
@@ -27,8 +26,8 @@ const InputElement = React.forwardRef<TextInput, InputElementProps>(
     },
     ref
   ): JSX.Element => {
-    const theme = useTheme() as ThemeProp;
-    const _placeholderColor = placeholderTextColor || theme.font.color.dark;
+    const theme = useTheme();
+    const _placeholderColor = placeholderTextColor || theme.font?.color?.dark;
 
     return (
       <StyledInputElement

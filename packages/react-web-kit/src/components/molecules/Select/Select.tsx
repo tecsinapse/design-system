@@ -3,7 +3,7 @@ import {
   Text,
   TextProps,
 } from '@tecsinapse/react-core';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
 import { defaultStyles, transition } from './animations';
@@ -14,6 +14,7 @@ import {
   StyledContainer,
   StyledInputContainer,
 } from './styled';
+import { MultiLabels } from './types';
 
 export interface SelectProps<Data, Type extends 'single' | 'multi'>
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'> {
@@ -37,6 +38,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
   label?: string;
   anchor?: 'top' | 'bottom';
   displayTextProps?: TextProps;
+  multiLabels?: MultiLabels;
 }
 
 /** NOTE: For better performance, you should memoize options and handlers */
@@ -49,13 +51,14 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   labelExtractor,
   placeholder,
   onSearch,
-  searchBarPlaceholder = 'Busque a opção desejada',
+  searchBarPlaceholder = 'Search for option',
   hideSearchBar = true,
   label,
   disabled = false,
   anchor = 'bottom',
   displayTextProps,
-  selectAllLabel = 'Selecionar todos',
+  selectAllLabel = 'Select all',
+  multiLabels,
   ...rest
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
@@ -63,6 +66,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   const refDropDown = React.useRef(null);
   const transitionRef = React.useRef(null);
   useClickAwayListener(refDropDown, setDropDownVisible);
+  const instanceid = useId();
 
   useEffect(() => {
     if (typeof options !== 'function') {
@@ -84,7 +88,8 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     selectOptions,
     _placeholder,
     keyExtractor,
-    labelExtractor
+    labelExtractor,
+    multiLabels
   );
 
   const handleLazyFocus = React.useCallback(async () => {
@@ -148,6 +153,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     () => setDropDownVisible(prev => !prev),
     [setDropDownVisible]
   );
+
   //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
     <StyledContainer ref={refDropDown} {...rest}>
@@ -163,7 +169,12 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
-      <Transition in={dropDownVisible} timeout={300} nodeRef={transitionRef}>
+      <Transition
+        in={dropDownVisible}
+        timeout={300}
+        nodeRef={transitionRef}
+        key={instanceid}
+      >
         {state => (
           <Dropdown
             ref={transitionRef}

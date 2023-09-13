@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.5...@tecsinapse/react-web-kit@2.1.6) (2023-08-24)
+
+### Bug Fixes
+
+- optional chaining ([0fb269c](https://github.com/tecsinapse/design-system/commit/0fb269cbcc4df5d001d38036d455b3073708d931))
+
+## [2.1.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.4...@tecsinapse/react-web-kit@2.1.5) (2023-08-23)
+
+### Bug Fixes
+
+- optional chaining ([1cd12c3](https://github.com/tecsinapse/design-system/commit/1cd12c341127940f1baca4ae116d7001a90781eb))
+
+## [2.1.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.3...@tecsinapse/react-web-kit@2.1.4) (2023-08-22)
+
+### Bug Fixes
+
+- date picker disabled style and feedback ([063b0f9](https://github.com/tecsinapse/design-system/commit/063b0f9c03afedbd8f11f5107c6b6bdea4681ba1))
+
+## [2.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.2...@tecsinapse/react-web-kit@2.1.3) (2023-08-21)
+
+### Bug Fixes
+
+- datepicker disabled mode working ([244dd08](https://github.com/tecsinapse/design-system/commit/244dd08bb747293041d86a3abd3b95217de74c45))
+- datepicker range accept disable ([a80207b](https://github.com/tecsinapse/design-system/commit/a80207bb8d01fce989bc691b4b5932b2a85f6534))
+- refactor multi label selection feedback ([77a846c](https://github.com/tecsinapse/design-system/commit/77a846caff18532c24691c0f7fdf6393c792ab7b))
+
+## [2.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.1...@tecsinapse/react-web-kit@2.1.2) (2023-08-02)
+
+### Bug Fixes
+
+- **TS-1113:** day picker wont update value ([d6ba934](https://github.com/tecsinapse/design-system/commit/d6ba934c3974ed12246c5f0b5b3219e62cd4d6d3))
+
+## [2.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.0...@tecsinapse/react-web-kit@2.1.1) (2023-07-24)
+
+### Bug Fixes
+
+- adding tooltip maxWidth to tooltipspan ([6269c0d](https://github.com/tecsinapse/design-system/commit/6269c0db0012ee9894d311e71c4a200544efb08c))
+- adding tooltip maxWidth to tooltipspan ([549c231](https://github.com/tecsinapse/design-system/commit/549c231610aa4cb7b81127e8d81e5938e14a903c))
+- react transition group findDOMRef warning ([2446ff6](https://github.com/tecsinapse/design-system/commit/2446ff6505ff4080dfb23c6a1138a575bdce03cc))
+
 # [2.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.0.1...@tecsinapse/react-web-kit@2.1.0) (2023-07-21)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

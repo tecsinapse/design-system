@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.6...@tecsinapse/react-core@2.0.7) (2023-08-24)
+
+### Bug Fixes
+
+- optional chaining ([946c8ef](https://github.com/tecsinapse/design-system/commit/946c8ef7669e7afdefd9682f642a97e4732bb04c))
+- optional chaining ([e063bda](https://github.com/tecsinapse/design-system/commit/e063bda063ea5de12984ebf69210a4600b7d23e6))
+- optional chaining ([0b5bb7b](https://github.com/tecsinapse/design-system/commit/0b5bb7b6c90442e04fa7c4999ce1a183dab70ebd))
+
+## [2.0.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.5...@tecsinapse/react-core@2.0.6) (2023-08-23)
+
+### Bug Fixes
+
+- optional chaining ([1cd12c3](https://github.com/tecsinapse/design-system/commit/1cd12c341127940f1baca4ae116d7001a90781eb))
+
+## [2.0.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.4...@tecsinapse/react-core@2.0.5) (2023-08-21)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+## [2.0.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.3...@tecsinapse/react-core@2.0.4) (2023-08-02)
+
+### Bug Fixes
+
+- **TS-1113:** day picker wont update value ([d6ba934](https://github.com/tecsinapse/design-system/commit/d6ba934c3974ed12246c5f0b5b3219e62cd4d6d3))
+
+## [2.0.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.2...@tecsinapse/react-core@2.0.3) (2023-07-24)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
 ## [2.0.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@2.0.1...@tecsinapse/react-core@2.0.2) (2023-06-26)
 
 **Note:** Version bump only for package @tecsinapse/react-core
