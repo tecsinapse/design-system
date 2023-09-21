@@ -3,7 +3,7 @@
   "description": "TecSinapse React components",
   "version": "2.1.6",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
+  "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "files": [
