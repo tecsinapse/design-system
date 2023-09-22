@@ -1,7 +1,6 @@
-import { ReactElement, useCallback, useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { modalLifecycle } from './ModalGroupManager';
-import { IBaseModal } from './ui/types';
+import { ReactElement, useCallback, useEffect, useId, useState } from "react";
+import { modalLifecycle } from "./ModalGroupManager";
+import { IBaseModal } from "./ui/types";
 
 /**
  * Use this hook to tell the modal lifecycle handler that you want to add
@@ -11,7 +10,8 @@ import { IBaseModal } from './ui/types';
  * @param modalId
  */
 export const useLazyModalManager = (modalId?: string) => {
-  const [id] = useState(modalId ?? uuidv4());
+  const uid = useId();
+  const [id] = useState(modalId ?? uid);
 
   const requestUpdate = useCallback(() => modalLifecycle.update(), []);
 

@@ -23,7 +23,7 @@
     "@emotion/native": "~11.10.0",
     "@emotion/react": "~11.10.0",
     "currency.js": "~2.0.4",
-    "date-fns": "~2.29.3"
+    "date-fns": "~2.30.0"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,6 @@
   "peerDependencies": {
     "react": "^18.0.0",
     "react-native": "^0.71.0",
-    "react-native-vector-icons": "^9.0.0"
+    "react-native-vector-icons": "^9.2.0"
   }
 }

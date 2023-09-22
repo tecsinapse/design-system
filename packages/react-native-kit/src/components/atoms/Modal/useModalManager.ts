@@ -1,5 +1,4 @@
-import { ReactElement, useCallback, useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { ReactElement, useCallback, useEffect, useId, useState } from 'react';
 import { modalLifecycle } from './ModalGroupManager';
 import { IBaseModal } from './ui/types';
 
@@ -7,7 +6,7 @@ import { IBaseModal } from './ui/types';
  * Use this hook to tell the modal lifecycle handler that you want to add
  * a new modal component.
  *
- * @param id
+ * @param modalId
  * @param modal
  * @returns
  */
@@ -15,7 +14,8 @@ export const useModalManager = (
   modal: () => ReactElement<IBaseModal>,
   modalId?: string
 ) => {
-  const [id] = useState(modalId ?? uuidv4());
+  const uid = useId();
+  const [id] = useState(modalId ?? uid);
   modalLifecycle.sync(id, modal);
 
   const show = useCallback(() => {
