@@ -5,16 +5,14 @@
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "start": "yarn build:es --watch",
     "build:es": "yarn rollup --config",
-    "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
-    "build:declaration:cjs": "tsc --project tsconfig.build.json",
-    "build:declaration:esm": "tsc --project tsconfig.build.esm.json",
+    "build:declaration": "tsc --project tsconfig.build.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
     "yalc:push": "yalc push --changed",
     "yalc:show": "yalc installations show $npm_package_name"
