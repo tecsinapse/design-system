@@ -42,7 +42,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "husky": "^8",
-    "lerna": "^5",
+    "lerna": "^7",
     "lint-staged": "^13.2.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
@@ -58,15 +58,15 @@
     "vite": "^4.4.9"
   },
   "scripts": {
-    "start": "lerna run --parallel start --stream",
+    "dev": "lerna run dev --stream",
     "build": "lerna run --stream 'build:es'",
     "build:watch": "yarn start",
     "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' storybook build -o sbdocs/",
     "postbuild": "yarn build:declarations",
-    "build:declarations": "lerna run --parallel 'build:declaration'",
-    "build:declarations:watch": "rimraf -rf packages/*/dist/*.d.ts && lerna run --parallel 'build:declaration:watch' --stream",
-    "yalc:push": "lerna run --parallel 'yalc:push'",
+    "build:declarations": "lerna run 'build:declaration'",
+    "build:declarations:watch": "rimraf -rf packages/*/dist/*.d.ts && lerna run 'build:declaration:watch' --stream",
+    "yalc:push": "lerna run 'yalc:push'",
     "yalc:show": "yalc installations show",
     "prebuild": "rimraf -rf packages/*/dist/",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",
@@ -83,8 +83,8 @@
   },
   "lint-staged": {
     ".{ts,tsx}": [
-      "yarn lint",
-      "yarn prettify"
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }

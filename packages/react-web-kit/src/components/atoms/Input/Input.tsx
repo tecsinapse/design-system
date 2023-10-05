@@ -72,6 +72,7 @@ const Input: FC<InputWebProps> = React.forwardRef(
             {...rest}
             placeholder={onlyLabel ? label : placeholder}
             value={value}
+            // @ts-expect-error Unavoidable error due to platform cross specific refs
             ref={ref as React.Ref<TextInput>}
             disabled={disabled}
             onFocus={handleFocus}

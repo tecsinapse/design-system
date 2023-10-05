@@ -3,9 +3,8 @@
   "compilerOptions": {
     "skipLibCheck": true,
     "declarationDir": "./dist/types",
-    "rootDir": "./src",
-    "baseUrl": "./"
+    "rootDir": "./src"
   },
   "include": ["./src"],
-  "exclude": ["node_modules", "dist", "esm"]
+  "exclude": ["node_modules", "dist"]
 }

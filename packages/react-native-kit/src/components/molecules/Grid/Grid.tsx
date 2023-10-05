@@ -3,7 +3,7 @@ import { View, ViewProps } from 'react-native';
 import { GridItem } from './Item';
 import { IGrid } from '@tecsinapse/react-core';
 
-export type IGridNative = IGrid & ViewProps;
+export type IGridNative = IGrid & Omit<ViewProps, 'children'>;
 
 const Grid = ({
   children,

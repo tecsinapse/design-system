@@ -10,8 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "start": "yarn build:es --watch",
-    "build:es": "yarn rollup --config",
+    "dev": "rollup --watch",
+    "build:es": "rollup --config",
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
     "yalc:push": "yalc push --changed",

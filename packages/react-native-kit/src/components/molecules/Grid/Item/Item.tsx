@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
 import {
-  IGridItem,
-  useTheme,
   getGridItemColumSpan,
   getGridItemPadding,
+  IGridItem,
+  useTheme,
 } from '@tecsinapse/react-core';
 
 export type IGridItemNative = IGridItem &
-  ViewProps & {
+  Omit<ViewProps, 'children'> & {
     /** Only specify this property if the GridItem will be 'dynamic', adjusting itself to content. Use this with `wrapper` for better result. */
     flexBasis?: string | 'auto';
   };
