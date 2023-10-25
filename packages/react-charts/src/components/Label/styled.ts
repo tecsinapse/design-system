@@ -6,14 +6,13 @@ const flexBasis = (columns: number) =>
   css({ flexBasis: `${100 / columns - 2}%` });
 
 export const Container = styled(View)<{ columns: number }>(
-  ({ columns }) =>
-    css`
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: ${spacing.centi};
-      ${flexBasis(columns)}
-    `
+  ({ columns }) => css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: ${spacing.centi};
+    ${flexBasis(columns)}
+  `
 );
 
 const expandStyles = (expand?: boolean) =>
