@@ -1,7 +1,7 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import { withView } from './withView';
 
-export const decorators = [withView, withBackgrounds];
+export const decorators = [withBackgrounds, withView];
 
 export const parameters = {
   backgrounds: {
@@ -25,11 +25,10 @@ export const parameters = {
       },
     ],
   },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  // controls: {
+  //   matchers: {
+  //     color: /(background|color)$/i,
+  //     date: /Date$/,
+  //   },
+  // },
 };
