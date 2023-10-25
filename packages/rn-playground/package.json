@@ -7,11 +7,11 @@
     "dev": "run-p update:stories watch:stories run:dev",
     "android": "run-p update:stories watch:stories run:android",
     "ios": "run-p update:stories watch:stories run:ios",
-    "run:dev": "npx expo start",
-    "run:android": "npx expo start --android",
-    "run:ios": "npx expo start --ios",
-    "update:stories": "sb-rn-get-stories --config-path .ondevice",
-    "watch:stories": "sb-rn-watcher --config-path .ondevice"
+    "run:dev": "expo start",
+    "run:android": "expo start --android",
+    "run:ios": "expo start --ios",
+    "update:stories": "sb-rn-get-stories --config-path .storybook",
+    "watch:stories": "sb-rn-watcher --config-path .storybook"
   },
   "dependencies": {
     "@emotion/native": "~11.11.0",
@@ -26,6 +26,7 @@
     "expo-linear-gradient": "~12.3.0",
     "react": "*",
     "react-native": "*",
+    "react-dom": "*",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-linear-gradient": "~2.8.3",
     "react-native-reanimated": "~3.3.0",
@@ -34,21 +35,22 @@
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.12",
+    "@babel/core": "^7.20.0",
+    "@storybook/addons": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-controls": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",
-    "@storybook/addon-ondevice-actions": "^6.5.4",
-    "@storybook/addon-ondevice-backgrounds": "^6.5.4",
-    "@storybook/addon-ondevice-controls": "^6.5.4",
+    "@storybook/addon-ondevice-actions": "^6.5.7",
+    "@storybook/addon-ondevice-backgrounds": "^6.5.7",
+    "@storybook/addon-ondevice-controls": "^6.5.7",
+    "@storybook/core-common": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/react-native": "^6.5.4",
     "@types/react": "*",
+    "babel-loader": "^9.1.2",
     "expo": "^49.0.0",
-    "deprecated-react-native-prop-types": "^2.3.0",
-    "metro-react-native-babel-preset": "^0.76.8",
-    "babel-loader": "^9.1.2"
+    "metro-react-native-babel-preset": "*"
   },
   "private": true
 }

@@ -1,10 +1,10 @@
 module.exports = {
-  stories: [
-    '../stories/**/*.stories.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
+  stories: ['../stories/**/*.stories.?(ts|tsx|js|jsx)'],
+  addons: [
+    '@storybook/addon-ondevice-controls',
+    '@storybook/addon-ondevice-backgrounds',
+    '@storybook/addon-ondevice-actions',
   ],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
-  framework: '@storybook/react',
   typescript: {
     reactDocgen: 'none',
   },
