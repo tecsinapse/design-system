@@ -8,7 +8,6 @@ import {
   IconContainer,
   SnackbarContainer,
   StyledContainerFlexRow,
-  StyledProgressBar,
   TextContainer,
 } from './styled';
 
@@ -52,7 +51,6 @@ const Snackbar = ({
 }: SnackbarProps): JSX.Element => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const timeoutRef = React.useRef<NodeJS.Timeout>();
-  const showProgressBar = false;
 
   const fadeIn = () => {
     Animated.timing(fadeAnim, {
@@ -127,17 +125,6 @@ const Snackbar = ({
           </DismissContainer>
         )}
       </StyledContainerFlexRow>
-      {timeout && showProgressBar && open && (
-        <StyledProgressBar
-          valueNow={0}
-          valueMax={100}
-          valueMin={0}
-          animate={true}
-          color={colorVariant}
-          colorTone="medium"
-          animationParameters={{ direction: 'left', duration: timeout }}
-        />
-      )}
     </SnackbarContainer>
   );
 };

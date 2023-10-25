@@ -1,7 +1,5 @@
-import React, { FC } from 'react';
-import { ImageSourcePropType } from 'react-native';
-import { IconSize } from '../../../types/defaults';
-import { Text, TextProps } from '../Text';
+import React from 'react';
+import { Text } from '../Text';
 import { getIniciais } from './helpers';
 import {
   ContainerButtonAvatar,
@@ -9,18 +7,7 @@ import {
   StyledAvatar,
   StyledBackground,
 } from './styled';
-
-export type SizeAvatar = Omit<IconSize, 'centi' | 'deca'>;
-
-export interface AvatarProps {
-  /** This property should follow react-native spec. If the asset is remote, use `{ uri: 'https://example.com/logo.png' }`.
-   * For local assets, you shold use `require('./logo.png')`. */
-  source?: ImageSourcePropType;
-  name: string;
-  onPress?: () => void;
-  size?: keyof SizeAvatar;
-  TextComponent?: FC<TextProps>;
-}
+import { AvatarProps } from './types';
 
 const Avatar: React.FC<AvatarProps> = ({
   source,

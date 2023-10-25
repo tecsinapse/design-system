@@ -1,32 +1,29 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "TecSinapse React components",
-  "version": "2.1.6",
+  "version": "3.0.0",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
+  "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "start": "pnpm build:es --watch",
-    "build:es": "pnpm rollup --config",
-    "build:declaration": "run-p build:declaration:cjs build:declaration:esm",
-    "build:declaration:cjs": "tsc --project tsconfig.build.json",
-    "build:declaration:esm": "tsc --project tsconfig.build.esm.json",
+    "dev": "rollup --watch",
+    "build:es": "rollup --config",
+    "build:declaration": "tsc --project tsconfig.build.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
     "yalc:push": "yalc push --changed",
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/native": "~11.10.0",
-    "@emotion/react": "~11.10.0",
-    "@emotion/styled": "~11.10.0",
-    "@tecsinapse/react-core": "2.0.7",
-    "@types/react-native": "^0.71.0",
-    "date-fns": "~2.29.3",
-    "react-native-vector-icons": "~9.2.0",
+    "@emotion/native": "~11.11.0",
+    "@emotion/react": "~11.11.0",
+    "@emotion/styled": "~11.11.0",
+    "@tecsinapse/react-core": "^3.0.0",
+    "date-fns": "~2.30.0",
+    "react-native-vector-icons": "^9.2.0",
     "react-transition-group": "~4.4.5"
   },
   "repository": {

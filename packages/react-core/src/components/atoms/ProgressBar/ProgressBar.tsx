@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@emotion/react';
-import { Animated, ViewProps } from 'react-native';
+import { DimensionValue, ViewProps } from 'react-native';
 import {
   ColorGradationType,
   ColorType,
@@ -22,10 +22,6 @@ export interface ProgressBarProps extends ViewProps {
   color?: ColorType;
   /** Filled partition color tone. Defaults to 'medium' */
   colorTone?: ColorGradationType;
-  /** Animation (temporarily disabled) */
-  animate?: boolean;
-  /** Parameters animation  */
-  animationParameters?: { direction: 'left' | 'right'; duration: number };
 }
 
 const ProgressBar = ({
@@ -35,12 +31,9 @@ const ProgressBar = ({
   valueMax = 100,
   color = 'primary',
   colorTone = 'medium',
-  animationParameters,
   ...rest
 }: ProgressBarProps): JSX.Element => {
   const theme = useTheme() as ThemeProp;
-  const animationValue = React.useRef(new Animated.Value(0)).current;
-  const animate = false;
 
   const valueNow =
     typeof _valueNow === 'string'
@@ -59,32 +52,7 @@ const ProgressBar = ({
     const minmax = (totalProgress - min) / (max - min);
     const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
 
-    let progressPercent:
-      | string
-      | Animated.AnimatedInterpolation<number | string> = `${width}%`;
-
-    if (animate && animationParameters) {
-      Animated.timing(animationValue, {
-        toValue: 1,
-        duration: animationParameters.duration / items.length,
-        useNativeDriver: false,
-        delay:
-          animationParameters.direction === 'right'
-            ? index * (animationParameters.duration / items.length)
-            : (items.length - index - 1) *
-              (animationParameters.duration / items.length),
-      }).start();
-
-      const rangeAnimation =
-        animationParameters?.direction === 'right'
-          ? [`${valueMin < 0 ? 0 : valueMin}%`, `${width}%`]
-          : [`${valueMax}%`, `${width}%`];
-
-      progressPercent = animationValue.interpolate?.({
-        inputRange: [0, 1],
-        outputRange: rangeAnimation,
-      });
-    }
+    const progressPercent = `${width}%`;
 
     return (
       <Segment

@@ -1,6 +1,6 @@
-import { ReactElement, useCallback, useEffect, useId, useState } from 'react';
-import { modalLifecycle } from './ModalGroupManager';
-import { IBaseModal } from './ui/types';
+import { ReactElement, useCallback, useEffect, useId, useState } from "react";
+import { modalLifecycle } from "./ModalGroupManager";
+import { IBaseModal } from "./ui/types";
 
 /**
  * Use this hook to tell the modal lifecycle handler that you want to add

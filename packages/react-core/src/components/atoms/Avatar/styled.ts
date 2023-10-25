@@ -4,7 +4,7 @@ import { Image, View } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { PressableSurface } from '../PressableSurface';
 import { TextProps } from '../Text';
-import { AvatarProps } from './Avatar';
+import { AvatarProps } from './types';
 
 export const ContainerButtonAvatar = styled(PressableSurface)<
   Partial<StyleProps & AvatarProps>

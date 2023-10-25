@@ -1,6 +1,7 @@
 import React from 'react';
-import { default as Avatar, AvatarProps } from './Avatar';
+import { default as Avatar } from './Avatar';
 import { Story } from '@storybook/react';
+import { AvatarProps } from './types';
 
 export default {
   title: 'Hybrid/Avatar',

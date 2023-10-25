@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
+import React, { PropsWithChildren, useRef } from 'react';
 import { Icon, Text, ThemeProp } from '@tecsinapse/react-core';
 import {
   AccordionContainer,
+  ContentContainer,
   IconContainer,
   TitleContainer,
-  ContentContainer,
 } from './styled';
 import { Transition } from 'react-transition-group';
 import {
@@ -23,14 +23,14 @@ export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   transition?: number;
 }
 
-const Accordion: React.FC<AccordionProps> = ({
+const Accordion = ({
   title,
   open: _open = false,
   onChange,
   transition = 200,
   children,
   ...rest
-}) => {
+}: PropsWithChildren<AccordionProps>) => {
   const [open, setOpen] = React.useState(_open);
   const [contentHeight, setContentHeight] = React.useState(0);
   const theme = useTheme() as ThemeProp;
