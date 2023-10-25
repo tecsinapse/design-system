@@ -9,8 +9,6 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "removeComments": true,
-    "rootDir": ".",
-    "baseUrl": ".",
     "paths": {
       "@tecsinapse/*": ["packages/*/src"]
     }

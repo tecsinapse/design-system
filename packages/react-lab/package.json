@@ -18,8 +18,8 @@
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/react": "~11.10.0",
-    "@emotion/styled": "~11.10.0"
+    "@emotion/react": "~11.11.0",
+    "@emotion/styled": "~11.11.0"
   },
   "repository": {
     "type": "git",

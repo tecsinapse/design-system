@@ -18,8 +18,8 @@
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/native": "~11.10.0",
-    "@emotion/react": "~11.10.0",
+    "@emotion/native": "~11.11.0",
+    "@emotion/react": "~11.11.0",
     "currency.js": "~2.0.4",
     "date-fns": "~2.30.0"
   },

@@ -18,11 +18,10 @@
     "yalc:show": "yalc installations show $npm_package_name"
   },
   "dependencies": {
-    "@emotion/native": "~11.10.0",
-    "@emotion/react": "~11.10.0",
-    "@emotion/styled": "~11.10.0",
+    "@emotion/native": "~11.11.0",
+    "@emotion/react": "~11.11.0",
+    "@emotion/styled": "~11.11.0",
     "@tecsinapse/react-core": "2.2.1",
-    "@types/react-native": "^0.71.0",
     "date-fns": "~2.30.0",
     "react-native-vector-icons": "^9.2.0",
     "react-transition-group": "~4.4.5"

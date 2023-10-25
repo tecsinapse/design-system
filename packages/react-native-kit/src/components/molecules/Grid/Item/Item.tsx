@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ViewProps } from 'react-native';
+import { DimensionValue, View, ViewProps } from 'react-native';
 import {
   getGridItemColumSpan,
   getGridItemPadding,
@@ -10,7 +10,7 @@ import {
 export type IGridItemNative = IGridItem &
   Omit<ViewProps, 'children'> & {
     /** Only specify this property if the GridItem will be 'dynamic', adjusting itself to content. Use this with `wrapper` for better result. */
-    flexBasis?: string | 'auto';
+    flexBasis?: DimensionValue;
   };
 
 const GridItem = ({
