@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/rn-playground",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "dev": "run-p update:stories watch:stories run:dev",
