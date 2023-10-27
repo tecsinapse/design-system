@@ -1,6 +1,6 @@
 import styled, { css } from '@emotion/native';
 import { FC } from 'react';
-import { Platform, PressableProps, ViewProps } from 'react-native';
+import { Platform, PressableProps, ScrollView, ViewProps } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { PressableSurface } from '../../atoms/PressableSurface';
 import { TextProps } from '../../atoms/Text';
@@ -9,7 +9,7 @@ const isWeb = Platform.OS === 'web';
 
 interface ButtonBorders {
   isLeft?: boolean;
-  isRright?: boolean;
+  isRight?: boolean;
 }
 
 export const TitleContainer = styled.View<Partial<StyleProps>>`
@@ -36,9 +36,12 @@ export const getCapitalizedTextComponent = (component: FC<TextProps>) => {
   `;
 };
 
-export const Content = styled.View<ViewProps & Partial<StyleProps>>`
+export const Content = styled.View<
+  ViewProps & Partial<StyleProps> & { height?: number }
+>`
   padding: ${({ theme }) => theme.spacing.deca};
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+  height: ${({ height }) => height ?? 'auto'};
 `;
 
 export const Week = styled.View<Partial<StyleProps>>`
@@ -114,4 +117,32 @@ export const Cell = styled(PressableSurface)<
       background-color: ${backgroundColor};
     `;
   }
+);
+
+export const YearCard = styled(PressableSurface)(
+  (
+    props: Partial<StyleProps> & ButtonBorders & { isSelected?: boolean }
+  ) => css`
+    background-color: ${props.isSelected
+      ? props.theme?.color.primary.light
+      : undefined};
+    padding: ${props.theme?.spacing.centi};
+    border-radius: ${props.theme?.borderRadius.mili};
+    margin: ${props.theme?.spacing.mili};
+    padding: ${props.theme?.spacing.mili} ${props.theme?.spacing.deca};
+  `
+);
+
+export const YearsContainer = styled(ScrollView)(
+  (
+    props: Partial<StyleProps> & ButtonBorders & { isSelected?: boolean }
+  ) => css`
+    background-color: ${props.isSelected
+      ? props.theme?.color.primary.xlight
+      : undefined};
+    padding: ${props.theme?.spacing.centi};
+    border-radius: ${props.theme?.borderRadius.mili};
+    margin: ${props.theme?.spacing.mili};
+    padding: ${props.theme?.spacing.mili};
+  `
 );
