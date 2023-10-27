@@ -31,7 +31,7 @@ export interface CalendarProps<T extends SelectionType> extends ViewProps {
   locale?: Locale;
   selectYearProps?: Omit<
     SelectYearProps,
-    'TextComponent & currentYear & onSelectYear'
+    'TextComponent' | 'currentYear' | 'onSelectYear'
   >;
 }
 

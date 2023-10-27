@@ -2,7 +2,8 @@ import React from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 import { YearCard } from '../styled';
 import { Text, TextProps } from '../../../atoms/Text';
-import { RFValue, useTheme } from '@tecsinapse/react-core';
+import { RFValue } from '../../../../utils';
+import { useTheme } from '../../../../hooks';
 
 export interface SelectYearProps {
   currentYear: number;
@@ -25,11 +26,11 @@ const SelectYear = ({
 
   const years = React.useMemo(
     () => Array.from({ length: yearsToShow }, (_, i) => i + firstYear),
-    []
+    [yearsToShow, firstYear]
   );
 
   const initialIndex = React.useMemo(() => {
-    const index = (currentYear % firstYear) / numColumns - 3;
+    const index = (currentYear % firstYear) / numColumns - 2;
     return index < 0 ? 0 : index;
   }, [currentYear, firstYear, numColumns]);
 
@@ -76,29 +77,27 @@ interface MemoizedYearCardProps {
   TextComponent: React.FC<TextProps>;
 }
 
-export const MemoizedYearCard = ({
-  year,
-  isSelected,
-  onPress,
-  TextComponent,
-}: MemoizedYearCardProps): JSX.Element =>
-  React.useMemo(
-    () => (
-      <YearCard
-        id={String(year)}
-        key={year}
-        isSelected={isSelected}
-        onPress={onPress}
+export const MemoizedYearCard = React.memo(
+  ({
+    year,
+    isSelected,
+    onPress,
+    TextComponent,
+  }: MemoizedYearCardProps): JSX.Element => (
+    <YearCard
+      id={String(year)}
+      key={year}
+      isSelected={isSelected}
+      onPress={onPress}
+    >
+      <TextComponent
+        colorVariant={isSelected ? 'primary' : 'secondary'}
+        colorTone={'xdark'}
       >
-        <TextComponent
-          colorVariant={isSelected ? 'primary' : 'secondary'}
-          colorTone={'xdark'}
-        >
-          {year}
-        </TextComponent>
-      </YearCard>
-    ),
-    [year, isSelected]
-  );
+        {year}
+      </TextComponent>
+    </YearCard>
+  )
+);
 
 export default React.memo(SelectYear);

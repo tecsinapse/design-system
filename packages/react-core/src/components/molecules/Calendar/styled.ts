@@ -41,7 +41,7 @@ export const Content = styled.View<
 >`
   padding: ${({ theme }) => theme.spacing.deca};
   background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
-  height: ${({ height }) => height ?? 'auto'};
+  height: ${({ height }) => (height ? `${height}px` : 'auto')};
 `;
 
 export const Week = styled.View<Partial<StyleProps>>`
@@ -71,53 +71,51 @@ export const Cell = styled(PressableSurface)<
       isRangeStart: boolean;
       isRangeEnd: boolean;
     }
->(
-  ({
-    theme,
-    selected,
-    highlighted,
-    isLineEnd,
-    isLineStart,
-    isRangeStart,
-    isRangeEnd,
-  }) => {
-    const borderRadiusSize = theme.borderRadius.mili;
+>(({
+  theme,
+  selected,
+  highlighted,
+  isLineEnd,
+  isLineStart,
+  isRangeStart,
+  isRangeEnd,
+}) => {
+  const borderRadiusSize = theme.borderRadius.mili;
 
-    const { rightBorderRadius, leftBorderRadius } = {
-      rightBorderRadius:
-        (selected && !isRangeStart) || isLineEnd ? borderRadiusSize : 0,
-      leftBorderRadius:
-        (selected && !isRangeEnd) || isLineStart ? borderRadiusSize : 0,
-    };
+  const { rightBorderRadius, leftBorderRadius } = {
+    rightBorderRadius:
+      (selected && !isRangeStart) || isLineEnd ? borderRadiusSize : 0,
+    leftBorderRadius:
+      (selected && !isRangeEnd) || isLineStart ? borderRadiusSize : 0,
+  };
 
-    const borderEffect = highlighted ? 0 : borderRadiusSize;
+  const borderEffect = highlighted ? 0 : borderRadiusSize;
 
-    const backgroundColor = highlighted
-      ? theme.color.primary.light
-      : 'transparent';
+  const backgroundColor = highlighted
+    ? theme.color.primary.light
+    : 'transparent';
 
-    return css`
-      ${isWeb
-        ? css`
-            width: 32px;
-            height: 32px;
-          `
-        : css`
-            aspect-ratio: 1;
-            flex: 1;
-          `}
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: ${borderEffect};
-      border-top-left-radius: ${leftBorderRadius};
-      border-bottom-left-radius: ${leftBorderRadius};
-      border-top-right-radius: ${rightBorderRadius};
-      border-bottom-right-radius: ${rightBorderRadius};
-      background-color: ${backgroundColor};
-    `;
-  }
-);
+  return css`
+    ${isWeb
+      ? css`
+          width: 32px;
+          height: 32px;
+        `
+      : css`
+          aspect-ratio: 1;
+          flex: 1;
+        `}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: ${borderEffect};
+    border-top-left-radius: ${leftBorderRadius};
+    border-bottom-left-radius: ${leftBorderRadius};
+    border-top-right-radius: ${rightBorderRadius};
+    border-bottom-right-radius: ${rightBorderRadius};
+    background-color: ${backgroundColor};
+  `;
+});
 
 export const YearCard = styled(PressableSurface)(
   (
