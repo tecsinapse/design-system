@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "skipLibCheck": true,
-    "declarationDir": "./dist/cjs",
+    "declarationDir": "./dist/types",
     "rootDir": "./src",
     "baseUrl": "./"
   },

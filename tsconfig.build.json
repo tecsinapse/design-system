@@ -9,6 +9,5 @@
       "@tecsinapse/*": ["packages/*/src"]
     }
   },
-  "exclude": ["**/*.stories.*", "**/*.test.*", "dist", "node_modules", "esm"],
-  "include": ["packages"]
+  "exclude": ["**/*.stories.*", "**/*.test.*", "dist", "node_modules"]
 }

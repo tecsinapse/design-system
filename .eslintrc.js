@@ -30,6 +30,7 @@ module.exports = {
     'react/display-name': 'off',
     'no-console': ['warn'],
     'import/no-extraneous-dependencies': ['off'],
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
   overrides: [
     {

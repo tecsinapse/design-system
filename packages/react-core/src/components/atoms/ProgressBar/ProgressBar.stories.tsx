@@ -18,10 +18,5 @@ export const Base = Template.bind({});
 
 Base.args = {
   valueNow: 80,
-  animate: true,
   segments: 5,
-  animationParameters: {
-    direction: 'right',
-    duration: 5000,
-  },
 };

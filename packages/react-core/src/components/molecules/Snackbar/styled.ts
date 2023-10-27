@@ -4,7 +4,6 @@ import { StyleProps } from '../../../types/defaults';
 import { RFValue } from '../../../utils';
 import { Paper } from '../../atoms/Paper';
 import { PressableSurface } from '../../atoms/PressableSurface';
-import { ProgressBar } from '../../atoms/ProgressBar';
 import { SnackbarProps } from './Snackbar';
 
 const baseStyles = ({
@@ -83,11 +82,6 @@ export const DismissContainer = styled(PressableSurface)<Partial<StyleProps>>`
   display: flex;
   align-items: center;
   margin-left: ${({ theme }) => theme.spacing.mili};
-`;
-
-export const StyledProgressBar = styled(ProgressBar)<Partial<StyleProps>>`
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 `;
 
 export const StyledContainerFlexRow = styled(View)<Partial<StyleProps>>`

@@ -1,0 +1,40 @@
+{
+  "name": "@tecsinapse/react-charts",
+  "version": "1.0.0",
+  "description": "Charts for React and React Native",
+  "homepage": "https://github.com/tecsinapse/design-system/",
+  "license": "MIT",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "directory": "packages/react-charts",
+    "url": "git+https://github.com/tecsinapse/design-system.git"
+  },
+  "dependencies": {
+    "@emotion/native": "~11.11.0",
+    "@emotion/react": "~11.11.0",
+    "react-native-svg-charts": "^5.4.0"
+  },
+  "devDependencies": {
+    "react-native-svg": "13.9.0"
+  },
+  "scripts": {
+    "dev": "rollup --watch",
+    "build:es": "rollup --config",
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:declaration:watch": "tsc --project tsconfig.build.json --watch"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.64.0",
+    "react-native-svg": ">=12.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/tecsinapse/design-system/issues"
+  }
+}

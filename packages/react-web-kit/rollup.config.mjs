@@ -1,10 +1,10 @@
-import esbuild from 'rollup-plugin-esbuild';
-import alias from '@rollup/plugin-alias';
+import esbuild from "rollup-plugin-esbuild";
+import alias from "@rollup/plugin-alias";
 
 const outputDefaultConfig = {
   preserveModules: true,
   preserveModulesRoot: 'src',
-  sourcemap: true,
+  sourcemap: false,
 };
 
 export default [
