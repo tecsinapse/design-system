@@ -1,6 +1,6 @@
 import styled, { css } from '@emotion/native';
 import { FC } from 'react';
-import { Platform, PressableProps, ScrollView, ViewProps } from 'react-native';
+import { Platform, PressableProps, ViewProps } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { PressableSurface } from '../../atoms/PressableSurface';
 import { TextProps } from '../../atoms/Text';
@@ -128,19 +128,5 @@ export const YearCard = styled(PressableSurface)(
     border-radius: ${props.theme?.borderRadius.mili};
     margin: ${props.theme?.spacing.mili};
     padding: ${props.theme?.spacing.mili} ${props.theme?.spacing.deca};
-  `
-);
-
-export const YearsContainer = styled(ScrollView)(
-  (
-    props: Partial<StyleProps> & ButtonBorders & { isSelected?: boolean }
-  ) => css`
-    background-color: ${props.isSelected
-      ? props.theme?.color.primary.xlight
-      : undefined};
-    padding: ${props.theme?.spacing.centi};
-    border-radius: ${props.theme?.borderRadius.mili};
-    margin: ${props.theme?.spacing.mili};
-    padding: ${props.theme?.spacing.mili};
   `
 );
