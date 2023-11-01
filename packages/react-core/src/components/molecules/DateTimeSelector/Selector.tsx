@@ -1,9 +1,10 @@
 import { getDaysInMonth } from 'date-fns';
 import * as React from 'react';
-import { ViewProps } from 'react-native';
+import { View, ViewProps, Text } from 'react-native';
 import { Icon } from '../../atoms/Icon';
 import { TextProps } from '../../atoms/Text';
-import { Control, SelectorRoot, SelectorValue } from './styled';
+import { Content, Control, SelectorRoot, SelectorValue } from './styled';
+import ScrollableSelector from '../ScrollableSelector/ScrollableSelector';
 
 export type Granularity = 'date' | 'month' | 'year' | 'hours' | 'minutes';
 
@@ -82,9 +83,12 @@ export const Selector: React.FC<SelectorProps> = ({
     pressInTimeoutRef.current && clearTimeout(pressInTimeoutRef.current);
   };
 
+  const [valueIndex, setValueIndex] = React.useState(0);
+  const [date, setDate] = React.useState(new Date());
+
   return (
     <SelectorRoot {...rest}>
-      <Control
+      {/* <Control
         onPressIn={() => requestAnimationFrame(() => handlePressInNext())}
         onPressOut={handlePressOut}
         disabled={preventUpper}
@@ -95,16 +99,40 @@ export const Selector: React.FC<SelectorProps> = ({
           size={'mega'}
           colorVariant={'primary'}
         />
-      </Control>
-      <SelectorValue>
-        <TextComponent colorVariant={'secondary'} typography={'sub'}>
+      </Control> */}
+
+      <Content>
+        <View>
+          <Text>{date ? date.toDateString() : 'Select date...'}</Text>
+          <ScrollableSelector
+            value={date}
+            onChange={value => setDate(value)}
+            format="yyyy-mm-dd"
+          />
+        </View>
+      </Content>
+      {/* <Content>
+        <ScrollableSelector
+          onValueChange={(value, index) => setValueIndex(index)}
+          wrapperHeight={180}
+          wrapperBackground="#FFFFFF"
+          itemHeight={30}
+          highlightColor="#d8d8d8"
+          highlightBorderWidth={2}
+          dataSource={hours}
+          selectedIndex={valueIndex}
+          renderItem={(data, index) => {
+            return <Text>{data}</Text>;
+          }}
+        />
+      </Content> */}
+      {/* <TextComponent colorVariant={'secondary'} typography={'sub'}>
           {label}
         </TextComponent>
         <TextComponent fontWeight={'bold'} typography={'h5'}>
           {getDisplayValue(value)}
-        </TextComponent>
-      </SelectorValue>
-      <Control
+        </TextComponent> */}
+      {/* <Control
         onPressIn={() => requestAnimationFrame(() => handlePressInPrev())}
         onPressOut={handlePressOut}
         disabled={preventLower}
@@ -116,7 +144,7 @@ export const Selector: React.FC<SelectorProps> = ({
           size={'mega'}
           colorVariant={'primary'}
         />
-      </Control>
+      </Control> */}
     </SelectorRoot>
   );
 };

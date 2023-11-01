@@ -1,21 +1,14 @@
-import {
-  add,
-  compareAsc,
-  format as formatDate,
-  getDaysInMonth,
-  isSameDay,
-  isSameMonth,
-  isSameYear,
-  set,
-  sub,
-} from 'date-fns';
+import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { ViewProps } from 'react-native';
+import { ptBR } from 'date-fns/locale';
+import { View, ViewProps } from 'react-native';
 import { Button } from '../../atoms/Button';
 import { Icon } from '../../atoms/Icon';
 import { Text, TextProps } from '../../atoms/Text';
 import { Granularity, Selector } from './Selector';
 import { BackButton, Content, Header, Root, SelectorContainer } from './styled';
+import { Calendar } from '../Calendar';
+import ScrollableSelector from '../ScrollableSelector/ScrollableSelector';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
@@ -83,28 +76,12 @@ export interface DateTimeSelectorProps extends ViewProps {
   minuteLabel?: string;
 }
 
-function getThresholdUnit(mode: DateTimeSelectorMode, threshold?: number) {
-  if (!threshold) return {};
-  if (mode === 'month') {
-    return { months: threshold };
-  } else if (['date', 'datetime'].includes(mode)) {
-    return { days: threshold };
-  } else {
-    return { hours: threshold };
-  }
-}
-
 const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
   TextComponent = Text,
   value,
   onChange,
-  mode = 'date',
+  mode = 'month',
   locale,
-  upperDateThreshold: _upperDateThreshold,
-  lowerDateThreshold: _lowerDateThreshold,
-  offsetThreshold,
-  upperOffsetThreshold,
-  lowerOffsetThreshold,
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
@@ -116,65 +93,27 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
   minuteLabel,
   ...rest
 }) => {
-  const lowerDateThreshold =
-    _lowerDateThreshold ||
-    ((offsetThreshold || lowerOffsetThreshold) &&
-      sub(
-        new Date(),
-        getThresholdUnit(mode, offsetThreshold || lowerOffsetThreshold)
-      ));
-
-  const upperDateThreshold =
-    _upperDateThreshold ||
-    ((offsetThreshold || upperOffsetThreshold) &&
-      add(
-        new Date(),
-        getThresholdUnit(mode, offsetThreshold || upperOffsetThreshold)
-      ));
-
   const [date, setDate] = React.useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
 
   const isDate =
-    ['date', 'month'].includes(mode) ||
-    (mode === 'datetime' && currentMode === 0);
+    ['date'].includes(mode) || (mode === 'datetime' && currentMode === 0);
 
-  const modalTitle = isDate ? dateModalTitle : timeModalTitle;
+  const isMonth = mode === 'month';
+
+  const modalTitle = isDate
+    ? dateModalTitle
+    : isMonth
+    ? dateModalTitle
+    : timeModalTitle;
   const confirmButtonText = isDate
     ? dateConfirmButtonText
     : timeConfirmButtonText;
 
-  const handleChange = (granularity: Granularity) => (newValue: number) => {
-    setDate(date => {
-      let newState: Date;
-      // Months and years must have a different handling for being
-      // the only date units that may interfere another unit.
-      if (['month', 'year'].includes(granularity)) {
-        let newDate = set(date, { [granularity]: newValue });
-        const daysInMonth = getDaysInMonth(newDate);
-        if (granularity === 'year' && date.getMonth() != newDate.getMonth()) {
-          newDate = set(newDate, { month: date.getMonth() });
-          newState = set(newDate, { date: getDaysInMonth(newDate) });
-        }
-        newState =
-          daysInMonth < date.getDate()
-            ? set(newDate, { date: daysInMonth })
-            : newDate;
-      } else {
-        newState = set(date, { [granularity]: newValue });
-      }
-
-      if (upperDateThreshold && compareAsc(newState, upperDateThreshold) > 0) {
-        return upperDateThreshold;
-      } else if (
-        lowerDateThreshold &&
-        compareAsc(newState, lowerDateThreshold) < 0
-      ) {
-        return lowerDateThreshold;
-      } else {
-        return newState;
-      }
-    });
+  const handleCalendarChange = (value: Date | undefined) => {
+    if (value !== undefined) {
+      setDate(value);
+    }
   };
 
   const getDisplayedValue = (granularity: Granularity) => (value: number) => {
@@ -214,97 +153,32 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
       </Header>
 
       {isDate ? (
+        <Calendar type={'day'} value={date} onChange={handleCalendarChange} />
+      ) : isMonth ? (
         <Content>
-          {mode !== 'month' && (
-            <SelectorContainer isFirst>
-              <Selector
-                TextComponent={TextComponent}
-                onChange={handleChange('date')}
-                referenceDate={date}
-                value={date.getDate()}
-                label={dayLabel || 'Day'}
-                granularity={'date'}
-                getDisplayValue={getDisplayedValue('date')}
-                preventUpper={
-                  upperDateThreshold
-                    ? isSameDay(upperDateThreshold, date)
-                    : false
-                }
-                preventLower={
-                  lowerDateThreshold
-                    ? isSameDay(lowerDateThreshold, date)
-                    : false
-                }
-              />
-            </SelectorContainer>
-          )}
-          <SelectorContainer>
-            <Selector
-              TextComponent={TextComponent}
-              onChange={handleChange('month')}
-              referenceDate={date}
-              value={date.getMonth()}
-              label={monthLabel || 'Month'}
-              granularity={'month'}
-              getDisplayValue={getDisplayedValue('month')}
-              preventUpper={
-                upperDateThreshold
-                  ? isSameMonth(upperDateThreshold, date)
-                  : false
-              }
-              preventLower={
-                lowerDateThreshold
-                  ? isSameMonth(lowerDateThreshold, date)
-                  : false
-              }
-            />
-          </SelectorContainer>
-          <SelectorContainer isLast>
-            <Selector
-              TextComponent={TextComponent}
-              onChange={handleChange('year')}
-              referenceDate={date}
-              value={date.getFullYear()}
-              label={yearLabel || 'Year'}
-              granularity={'year'}
-              getDisplayValue={getDisplayedValue('year')}
-              preventUpper={
-                upperDateThreshold
-                  ? isSameYear(upperDateThreshold, date)
-                  : false
-              }
-              preventLower={
-                lowerDateThreshold
-                  ? isSameYear(lowerDateThreshold, date)
-                  : false
-              }
-            />
-          </SelectorContainer>
+          <ScrollableSelector
+            locale={locale}
+            value={date}
+            onChange={value => setDate(value)}
+            format="MM-yyyy"
+            TextComponent={TextComponent}
+            markWidth={50}
+            markHeight={40}
+            markColor={'rgba(0, 0, 0, 0.05)'}
+          />
         </Content>
       ) : (
         <Content>
-          <SelectorContainer isFirst>
-            <Selector
-              TextComponent={TextComponent}
-              onChange={handleChange('hours')}
-              referenceDate={date}
-              value={date.getHours()}
-              label={hourLabel || 'Hour'}
-              granularity={'hours'}
-              getDisplayValue={getDisplayedValue('hours')}
-            />
-          </SelectorContainer>
-          <SelectorContainer isLast>
-            <Selector
-              TextComponent={TextComponent}
-              onChange={handleChange('minutes')}
-              referenceDate={date}
-              value={date.getMinutes()}
-              label={minuteLabel || 'Minute'}
-              granularity={'minutes'}
-              getDisplayValue={getDisplayedValue('minutes')}
-            />
-          </SelectorContainer>
+          <ScrollableSelector
+            locale={locale}
+            value={date}
+            onChange={value => setDate(value)}
+            format="HH-mm"
+            TextComponent={TextComponent}
+            markWidth={50}
+            markHeight={40}
+            markColor={'rgba(0, 0, 0, 0.05)'}
+          />
         </Content>
       )}
       <Button color={'primary'} onPress={handlePressConfirm}>
