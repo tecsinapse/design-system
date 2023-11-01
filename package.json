@@ -59,7 +59,7 @@
   "scripts": {
     "dev": "lerna run dev --stream",
     "build": "lerna run --stream 'build:es'",
-    "build:watch": "yarn start",
+    "build:watch": "yarn dev",
     "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' storybook build -o sbdocs/",
     "postbuild": "yarn build:declarations",

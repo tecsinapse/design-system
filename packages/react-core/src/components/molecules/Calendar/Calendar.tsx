@@ -1,6 +1,6 @@
 import { add, format, getWeeksInMonth, set } from 'date-fns';
 import * as React from 'react';
-import { View, ViewProps } from 'react-native';
+import { TouchableOpacity, View, ViewProps } from 'react-native';
 import { Icon } from '../../atoms/Icon';
 import { Text, TextProps } from '../../atoms/Text';
 import {
@@ -9,7 +9,9 @@ import {
   getCapitalizedTextComponent,
   TitleContainer,
 } from './styled';
-import { Weekdays, MonthWeek } from './components';
+import { Weekdays, MonthWeek, SelectYear } from './components';
+import { SelectYearProps } from './components/SelectYear';
+import { useRef } from 'react';
 
 export type SelectionType = 'range' | 'day';
 
@@ -27,6 +29,10 @@ export interface CalendarProps<T extends SelectionType> extends ViewProps {
   type?: T;
   value?: Value<T>;
   locale?: Locale;
+  selectYearProps?: Omit<
+    SelectYearProps,
+    'TextComponent' | 'currentYear' | 'onSelectYear'
+  >;
 }
 
 const now = set(new Date(), {
@@ -49,6 +55,7 @@ function Calendar<T extends SelectionType>({
   type,
   onChange,
   locale,
+  selectYearProps,
   ...rest
 }: CalendarProps<T>): JSX.Element {
   const _referenceDate = React.useMemo(
@@ -62,6 +69,8 @@ function Calendar<T extends SelectionType>({
   );
 
   const [referenceDate, setReferenceDate] = React.useState(_referenceDate);
+  const [showSelectYear, setShowSelectYear] = React.useState(false);
+  const calendarHeightRef = useRef(0);
 
   const startingWeekDay = React.useMemo(
     () =>
@@ -87,12 +96,14 @@ function Calendar<T extends SelectionType>({
 
   const calendar = React.useMemo(
     () =>
-      [...Array(weeksInMonth).keys()].map(week =>
-        [...Array(7).keys()].map(weekDayIndex =>
-          add(referenceDate, {
-            days: 6 * week + week + weekDayIndex - startingWeekDay,
-          })
-        )
+      [...Array(6).keys()].map(week =>
+        [...Array(7).keys()].map(weekDayIndex => {
+          let addDays = 6 * week + week + weekDayIndex - startingWeekDay;
+          if (weeksInMonth == 5 && startingWeekDay == 0) addDays -= 7;
+          return add(referenceDate, {
+            days: addDays,
+          });
+        })
       ),
     [weeksInMonth, startingWeekDay, referenceDate]
   );
@@ -105,10 +116,29 @@ function Calendar<T extends SelectionType>({
     setReferenceDate(add(referenceDate, { months: -1 }));
   }, [referenceDate, setReferenceDate]);
 
+  const handlePressSelectYear = React.useCallback(() => {
+    setShowSelectYear(prevState => !prevState);
+  }, [setShowSelectYear]);
+
+  const handleSelectYear = React.useCallback(
+    (year: number) => {
+      const referenceDateYear = referenceDate.getFullYear();
+      const addYears = year - referenceDateYear;
+      setReferenceDate(add(referenceDate, { years: addYears }));
+      setShowSelectYear(false);
+    },
+    [referenceDate]
+  );
+
   return (
     <View {...rest}>
       <TitleContainer>
-        <Control onPress={handlePressPrev} align={'start'} isLeft>
+        <Control
+          onPress={handlePressPrev}
+          align={'start'}
+          disabled={showSelectYear}
+          isLeft
+        >
           <Icon
             name={'chevron-left'}
             type={'material-community'}
@@ -117,14 +147,21 @@ function Calendar<T extends SelectionType>({
             colorTone={'medium'}
           />
         </Control>
-        <Capitalized
-          colorVariant={'secondary'}
-          colorTone={'xdark'}
-          fontWeight={'bold'}
+        <TouchableOpacity onPress={handlePressSelectYear}>
+          <Capitalized
+            colorVariant={'secondary'}
+            colorTone={'xdark'}
+            fontWeight={'bold'}
+          >
+            {format(referenceDate, 'MMMM yyyy', { locale })}
+          </Capitalized>
+        </TouchableOpacity>
+        <Control
+          onPress={handlePressNext}
+          align={'end'}
+          disabled={showSelectYear}
+          isRight
         >
-          {format(referenceDate, 'MMMM yyyy', { locale })}
-        </Capitalized>
-        <Control onPress={handlePressNext} align={'end'} isRright>
           <Icon
             name={'chevron-right'}
             type={'material-community'}
@@ -134,24 +171,39 @@ function Calendar<T extends SelectionType>({
           />
         </Control>
       </TitleContainer>
-      <Content>
-        <Weekdays
-          locale={locale}
-          calendar={calendar}
-          Capitalized={Capitalized}
-        />
-        {calendar.map((week, index) => (
-          <MonthWeek
-            week={week}
-            type={type}
-            value={value}
-            key={`week-${index}`}
-            onChange={onChange}
+      {showSelectYear ? (
+        <Content height={calendarHeightRef.current}>
+          <SelectYear
+            currentYear={referenceDate.getFullYear()}
+            onSelectYear={handleSelectYear}
             TextComponent={TextComponent}
-            referenceDate={referenceDate}
+            {...selectYearProps}
           />
-        ))}
-      </Content>
+        </Content>
+      ) : (
+        <Content
+          onLayout={e =>
+            (calendarHeightRef.current = e.nativeEvent.layout.height)
+          }
+        >
+          <Weekdays
+            locale={locale}
+            calendar={calendar}
+            Capitalized={Capitalized}
+          />
+          {calendar.map((week, index) => (
+            <MonthWeek
+              week={week}
+              type={type}
+              value={value}
+              key={`week-${index}`}
+              onChange={onChange}
+              TextComponent={TextComponent}
+              referenceDate={referenceDate}
+            />
+          ))}
+        </Content>
+      )}
     </View>
   );
 }
