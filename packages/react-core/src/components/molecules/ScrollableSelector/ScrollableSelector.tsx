@@ -9,7 +9,13 @@ import {
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { TextProps } from '../../atoms/Text';
-import { Block, BlockLabels, Mark, StyledScrollView } from './styled';
+import {
+  Block,
+  BlockLabels,
+  DigitText,
+  Mark,
+  StyledScrollView,
+} from './styled';
 
 const ScrollableSelector: React.FC<DatePickerProps> = ({
   value,
@@ -138,7 +144,7 @@ const ScrollableSelector: React.FC<DatePickerProps> = ({
               value={el.value}
               onChange={changeHandle}
               height={pickerHeight}
-              fontSize={fontSize}
+              fontSize={fontSize ?? 22}
               textColor={textColor}
               markColor={markColor}
               markHeight={markHeight}
@@ -240,24 +246,17 @@ const DateBlock: React.FC<DateBlockProps> = ({
                 snapScrollToIndex(index);
               }}
             >
-              <TextComponent
-                style={[
-                  styles.digit,
-                  {
-                    fontSize: fontSize || 22,
-                    color: textColor || '#000000',
-                    marginBottom:
-                      index === digits.length - 1
-                        ? height / 2 - dHeight / 2
-                        : 0,
-                    marginTop: index === 0 ? height / 2 - dHeight / 2 : 0,
-                    lineHeight: dHeight,
-                    height: dHeight,
-                  },
-                ]}
+              <DigitText
+                fontSize={fontSize || 22}
+                marginBottom={
+                  index === digits.length - 1 ? height / 2 - dHeight / 2 : 0
+                }
+                marginTop={index === 0 ? height / 2 - dHeight / 2 : 0}
+                lineHeight={dHeight}
+                height={dHeight}
               >
                 {getDisplayedValue(type)(value)}
-              </TextComponent>
+              </DigitText>
             </TouchableOpacity>
           );
         })}

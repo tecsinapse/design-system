@@ -151,9 +151,8 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
             value={date}
             onChange={value => setDate(value)}
             format="MM-yyyy"
+            height={180}
             TextComponent={TextComponent}
-            markWidth={50}
-            markHeight={40}
             markColor={'rgba(0, 0, 0, 0.05)'}
             monthLabel={monthLabel}
             yearLabel={yearLabel}
@@ -168,9 +167,8 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
             value={date}
             onChange={value => setDate(value)}
             format="HH-mm"
+            height={180}
             TextComponent={TextComponent}
-            markWidth={50}
-            markHeight={40}
             markColor={'rgba(0, 0, 0, 0.05)'}
             monthLabel={monthLabel}
             yearLabel={yearLabel}

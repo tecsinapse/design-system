@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import styled from '@emotion/native';
 import { ScrollView } from 'react-native';
-import { StyleProps } from '@tecsinapse/react-native-kit';
+import { RFValue, StyleProps } from '@tecsinapse/react-native-kit';
 
 interface MarkProps {
   markTop: number;
@@ -33,28 +33,28 @@ export const Scroll = styled.ScrollView`
 `;
 
 export const DigitText = styled.Text<{
-  fontSize?: number;
-  marginBottom?: number;
-  marginTop?: number;
+  fontSize: number;
+  marginBottom: number;
+  marginTop: number;
   lineHeight: number;
   height: number;
 }>`
-  font-size: ${({ fontSize }) => fontSize}px;
+  font-size: ${({ fontSize }) => `${RFValue(fontSize)}px`};
   text-align: center;
   color: #000000;
-  margin-bottom: ${({ marginBottom }) => marginBottom}px;
-  margin-top: ${({ marginTop }) => marginTop}px;
-  line-height: ${({ lineHeight }) => lineHeight}px;
-  height: ${({ height }) => height}px;
+  margin-bottom: ${({ marginBottom }) => `${RFValue(marginBottom)}px`};
+  margin-top: ${({ marginTop }) => `${RFValue(marginTop)}px`};
+  line-height: ${({ lineHeight }) => `${RFValue(lineHeight)}px`};
+  height: ${({ height }) => `${RFValue(height)}px`};
 `;
 
 export const Mark = styled.View<MarkProps & Partial<StyleProps>>`
   position: absolute;
   border-radius: 10px;
-  top: ${({ markTop }) => markTop};
+  top: ${({ markTop }) => `${RFValue(markTop)}px`};
   background-color: ${({ theme }) => theme.color.primary.light};
-  height: ${({ markHeight }) => markHeight};
-  width: ${({ markWidth }) => markWidth};
+  height: ${({ markHeight }) => `${RFValue(markHeight)}px`};
+  width: ${({ markWidth }) => `${RFValue(markWidth)}px`};
 `;
 
 export const Gradient = styled(LinearGradient)`
