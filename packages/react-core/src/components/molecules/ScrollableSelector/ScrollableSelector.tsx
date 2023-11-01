@@ -142,7 +142,7 @@ const ScrollableSelector: React.FC<DatePickerProps> = ({
               textColor={textColor}
               markColor={markColor}
               markHeight={markHeight}
-              markWidth={markWidth}
+              markWidth={markWidth ?? 70}
               fadeColor={fadeColor}
               type={el.name}
               key={index}
@@ -185,8 +185,8 @@ const DateBlock: React.FC<DateBlockProps> = ({
   ];
   const dHeight: number = Math.round(height / 4);
 
-  const mHeight: number = `${markHeight}px` || Math.min(dHeight, 65);
-  const mWidth: number | string = `${markWidth}px` || '70%';
+  const mHeight: number = markHeight ?? Math.min(dHeight, 65);
+  const mWidth: number = markWidth ?? 70;
 
   const offsets = digits.map((_: number, index: number) => index * dHeight);
 
@@ -322,7 +322,7 @@ export interface DatePickerProps {
   endYear?: number;
   markColor?: string;
   markHeight?: number;
-  markWidth?: number | string;
+  markWidth?: number;
   monthLabel?: string;
   yearLabel?: string;
   hourLabel?: string;
@@ -345,7 +345,7 @@ export interface DateBlockProps {
   textColor?: string;
   markColor?: string;
   markHeight?: number;
-  markWidth?: number | string;
+  markWidth?: number;
   fadeColor?: string;
   TextComponent?: React.FC<TextProps>;
 

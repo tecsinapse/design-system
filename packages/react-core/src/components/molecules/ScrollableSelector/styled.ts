@@ -1,13 +1,13 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import styled from '@emotion/native';
-import { StyleProps } from 'packages/react-core/src/types/defaults';
 import { ScrollView } from 'react-native';
+import { StyleProps } from '@tecsinapse/react-native-kit';
 
 interface MarkProps {
   markTop: number;
   markColor: string;
   markHeight: number;
-  markWidth: string | number;
+  markWidth: number;
 }
 
 export const PickerContainer = styled.View`

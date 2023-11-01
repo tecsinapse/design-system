@@ -124,21 +124,6 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
     setCurrentMode(0);
   };
 
-  <ScrollableSelector
-    locale={locale}
-    value={date}
-    onChange={value => setDate(value)}
-    format={'HH-mm'}
-    TextComponent={TextComponent}
-    markWidth={50}
-    markHeight={40}
-    markColor={'rgba(0, 0, 0, 0.05)'}
-    monthLabel={monthLabel}
-    yearLabel={yearLabel}
-    hourLabel={hourLabel}
-    minuteLabel={minuteLabel}
-  />;
-
   return (
     <Root {...rest}>
       <Header>
