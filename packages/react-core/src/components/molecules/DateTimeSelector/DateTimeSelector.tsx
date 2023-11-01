@@ -1,12 +1,9 @@
-import { format as formatDate } from 'date-fns';
 import * as React from 'react';
-import { ptBR } from 'date-fns/locale';
-import { View, ViewProps } from 'react-native';
+import { ViewProps } from 'react-native';
 import { Button } from '../../atoms/Button';
 import { Icon } from '../../atoms/Icon';
 import { Text, TextProps } from '../../atoms/Text';
-import { Granularity, Selector } from './Selector';
-import { BackButton, Content, Header, Root, SelectorContainer } from './styled';
+import { BackButton, Content, Header, Root } from './styled';
 import { Calendar } from '../Calendar';
 import ScrollableSelector from '../ScrollableSelector/ScrollableSelector';
 
@@ -86,7 +83,6 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
   timeModalTitle,
   dateConfirmButtonText,
   timeConfirmButtonText,
-  dayLabel,
   monthLabel,
   yearLabel,
   hourLabel,
@@ -116,12 +112,6 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
     }
   };
 
-  const getDisplayedValue = (granularity: Granularity) => (value: number) => {
-    return granularity === 'month'
-      ? formatDate(date, 'MMM', { locale: locale }).slice(0, 3)
-      : value.toString().padStart(2, '0');
-  };
-
   const handlePressConfirm = () => {
     if (mode === 'datetime' && currentMode === 0) {
       setCurrentMode(1);
@@ -133,6 +123,21 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
   const handlePressBack = () => {
     setCurrentMode(0);
   };
+
+  <ScrollableSelector
+    locale={locale}
+    value={date}
+    onChange={value => setDate(value)}
+    format={'HH-mm'}
+    TextComponent={TextComponent}
+    markWidth={50}
+    markHeight={40}
+    markColor={'rgba(0, 0, 0, 0.05)'}
+    monthLabel={monthLabel}
+    yearLabel={yearLabel}
+    hourLabel={hourLabel}
+    minuteLabel={minuteLabel}
+  />;
 
   return (
     <Root {...rest}>
@@ -165,6 +170,10 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
             markWidth={50}
             markHeight={40}
             markColor={'rgba(0, 0, 0, 0.05)'}
+            monthLabel={monthLabel}
+            yearLabel={yearLabel}
+            hourLabel={hourLabel}
+            minuteLabel={minuteLabel}
           />
         </Content>
       ) : (
@@ -178,6 +187,10 @@ const DateTimeSelector: React.FC<DateTimeSelectorProps> = ({
             markWidth={50}
             markHeight={40}
             markColor={'rgba(0, 0, 0, 0.05)'}
+            monthLabel={monthLabel}
+            yearLabel={yearLabel}
+            hourLabel={hourLabel}
+            minuteLabel={minuteLabel}
           />
         </Content>
       )}

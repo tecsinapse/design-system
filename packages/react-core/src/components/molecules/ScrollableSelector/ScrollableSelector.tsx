@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
-  ScrollView,
   StyleSheet,
   Dimensions,
   TouchableOpacity,
@@ -10,7 +9,7 @@ import {
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { TextProps } from '../../atoms/Text';
-import { Mark } from './styled';
+import { Block, BlockLabels, Mark, StyledScrollView } from './styled';
 
 const ScrollableSelector: React.FC<DatePickerProps> = ({
   value,
@@ -26,6 +25,10 @@ const ScrollableSelector: React.FC<DatePickerProps> = ({
   markWidth,
   fadeColor,
   format,
+  monthLabel,
+  yearLabel,
+  hourLabel,
+  minuteLabel,
   locale,
   TextComponent = Text,
 }) => {
@@ -94,9 +97,6 @@ const ScrollableSelector: React.FC<DatePickerProps> = ({
               value: date.getMinutes(),
             };
           default:
-            console.warn(
-              `Invalid date picker format prop: found "${type}" in ${format}. Please read documentation!`
-            );
             return {
               name: ['day', 'month', 'year', 'hour', 'minutes'][index],
               digits: [months, years, hour, minutes][index],
@@ -113,26 +113,43 @@ const ScrollableSelector: React.FC<DatePickerProps> = ({
   };
 
   return (
-    <View style={[styles.picker, { height: pickerHeight, width: pickerWidth }]}>
-      {getOrder().map((el, index) => {
-        return (
-          <DateBlock
-            date={date}
-            digits={el.digits}
-            value={el.value}
-            onChange={changeHandle}
-            height={pickerHeight}
-            fontSize={fontSize}
-            textColor={textColor}
-            markColor={markColor}
-            markHeight={markHeight}
-            markWidth={markWidth}
-            fadeColor={fadeColor}
-            type={el.name}
-            key={index}
-          />
-        );
-      })}
+    <View style={{ flexDirection: 'column', width: '100%' }}>
+      <BlockLabels>
+        {format === 'MM-yyyy' ? (
+          <>
+            <TextComponent>{monthLabel}</TextComponent>
+            <TextComponent>{yearLabel}</TextComponent>
+          </>
+        ) : (
+          <>
+            <TextComponent>{hourLabel}</TextComponent>
+            <TextComponent>{minuteLabel}</TextComponent>
+          </>
+        )}
+      </BlockLabels>
+      <View
+        style={[styles.picker, { height: pickerHeight, width: pickerWidth }]}
+      >
+        {getOrder().map((el, index) => {
+          return (
+            <DateBlock
+              date={date}
+              digits={el.digits}
+              value={el.value}
+              onChange={changeHandle}
+              height={pickerHeight}
+              fontSize={fontSize}
+              textColor={textColor}
+              markColor={markColor}
+              markHeight={markHeight}
+              markWidth={markWidth}
+              fadeColor={fadeColor}
+              type={el.name}
+              key={index}
+            />
+          );
+        })}
+      </View>
     </View>
   );
 };
@@ -150,7 +167,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
   markWidth,
   fadeColor,
   locale,
-  // TextComponent = Text,
+  TextComponent = Text,
 }) => {
   const months = [
     'January',
@@ -200,16 +217,15 @@ const DateBlock: React.FC<DateBlockProps> = ({
   };
 
   return (
-    <View style={styles.block}>
+    <Block>
       <Mark
         markTop={(height - mHeight) / 2}
         markColor={markColor ?? 'rgba(0, 0, 0, 0.05)'}
         markHeight={mHeight}
         markWidth={mWidth}
       />
-      <ScrollView
+      <StyledScrollView
         ref={scrollRef}
-        style={styles.scroll}
         snapToOffsets={offsets}
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={0}
@@ -224,7 +240,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
                 snapScrollToIndex(index);
               }}
             >
-              <Text
+              <TextComponent
                 style={[
                   styles.digit,
                   {
@@ -241,11 +257,11 @@ const DateBlock: React.FC<DateBlockProps> = ({
                 ]}
               >
                 {getDisplayedValue(type)(value)}
-              </Text>
+              </TextComponent>
             </TouchableOpacity>
           );
         })}
-      </ScrollView>
+      </StyledScrollView>
       <LinearGradient
         style={[styles.gradient, { bottom: 0, height: height / 4 }]}
         colors={[fadeTransparent, fadeFilled]}
@@ -256,7 +272,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
         colors={[fadeFilled, fadeTransparent]}
         pointerEvents={'none'}
       />
-    </View>
+    </Block>
   );
 };
 
@@ -284,23 +300,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
   },
-  block: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-  },
-  scroll: {
-    width: '100%',
-  },
   digit: {
     fontSize: 20,
     textAlign: 'center',
   },
-  mark: {
-    position: 'absolute',
-    borderRadius: 10,
-  },
+
   gradient: {
     position: 'absolute',
     width: '100%',
@@ -319,6 +323,10 @@ export interface DatePickerProps {
   markColor?: string;
   markHeight?: number;
   markWidth?: number | string;
+  monthLabel?: string;
+  yearLabel?: string;
+  hourLabel?: string;
+  minuteLabel?: string;
   fadeColor?: string;
   format?: string;
   TextComponent?: React.FC<TextProps>;

@@ -1,6 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import styled from '@emotion/native';
 import { StyleProps } from 'packages/react-core/src/types/defaults';
+import { ScrollView } from 'react-native';
 
 interface MarkProps {
   markTop: number;
@@ -21,7 +22,12 @@ export const Block = styled.View`
   flex-direction: row;
   height: 100%;
 `;
-
+export const BlockLabels = styled.View`
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 20px;
+`;
 export const Scroll = styled.ScrollView`
   width: 100%;
 `;
@@ -33,12 +39,13 @@ export const DigitText = styled.Text<{
   lineHeight: number;
   height: number;
 }>`
-  font-size: ${({ fontSize }) => fontSize || 20}px;
+  font-size: ${({ fontSize }) => fontSize}px;
   text-align: center;
-  margin-bottom: ${({ marginBottom }) => marginBottom || 0}px;
-  margin-top: ${({ marginTop }) => marginTop || 0}px;
-  line-height: ${({ lineHeight }) => lineHeight || 20}px;
-  height: ${({ lineHeight }) => lineHeight || 20}px;
+  color: #000000;
+  margin-bottom: ${({ marginBottom }) => marginBottom}px;
+  margin-top: ${({ marginTop }) => marginTop}px;
+  line-height: ${({ lineHeight }) => lineHeight}px;
+  height: ${({ height }) => height}px;
 `;
 
 export const Mark = styled.View<MarkProps & Partial<StyleProps>>`
@@ -52,5 +59,9 @@ export const Mark = styled.View<MarkProps & Partial<StyleProps>>`
 
 export const Gradient = styled(LinearGradient)`
   position: absolute;
+  width: 100%;
+`;
+
+export const StyledScrollView = styled(ScrollView)`
   width: 100%;
 `;
