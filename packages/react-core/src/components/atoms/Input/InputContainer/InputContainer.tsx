@@ -39,6 +39,7 @@ export interface InputContainerProps {
   variant?: InputVariantType;
   hint?: string;
   hintComponent?: JSX.Element;
+  testID?: string;
 }
 
 const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({

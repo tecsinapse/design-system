@@ -2,10 +2,10 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "skipLibCheck": true,
-    "declarationDir": "./dist/cjs",
+    "declarationDir": "./dist/types",
     "rootDir": "./src",
     "baseUrl": "./"
   },
   "include": ["./src"],
-  "exclude": ["node_modules", "dist", "esm"]
+  "exclude": ["node_modules", "dist"]
 }

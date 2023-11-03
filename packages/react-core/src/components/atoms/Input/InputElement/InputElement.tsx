@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
 import { StyledInputElement } from '../styled';
-import { useTheme } from '@tecsinapse/react-core';
+import { useTheme } from '../../../../hooks';
 
 export interface InputElementProps
   extends Omit<TextInputProps, 'onChange' | 'value' | 'ref'> {

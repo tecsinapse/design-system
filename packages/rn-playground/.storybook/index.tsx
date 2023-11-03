@@ -5,11 +5,11 @@ import './storybook.requires';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
-  ModalGroupManager,
-  ThemeProvider,
-  Text,
   lightTheme,
+  ModalGroupManager,
   StyleProps,
+  Text,
+  ThemeProvider,
 } from '@tecsinapse/react-native-kit';
 import styled from '@emotion/native';
 

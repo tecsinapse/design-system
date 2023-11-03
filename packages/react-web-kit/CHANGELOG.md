@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.3.1...@tecsinapse/react-web-kit@3.0.0) (2023-10-25)
+
+### Bug Fixes
+
+- improve display value logic ([8f0d474](https://github.com/tecsinapse/design-system/commit/8f0d474eec5f0859c16a7fd49f08ded0b7c3bd9f))
+
+## [2.3.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.3.0...@tecsinapse/react-web-kit@2.3.1) (2023-10-10)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+# [2.3.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.2.0...@tecsinapse/react-web-kit@2.3.0) (2023-09-22)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
 # [2.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.1.6...@tecsinapse/react-web-kit@2.2.0) (2023-09-21)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
