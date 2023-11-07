@@ -12,8 +12,7 @@
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
     "date-fns": "~2.30.0",
-    "react-native-vector-icons": "^9.2.0",
-    "react-native-wheel-scrollview-picker": "^2.0.4"
+    "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.0.0",

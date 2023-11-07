@@ -5,7 +5,7 @@ import { Icon } from '../../atoms/Icon';
 import { Text, TextProps } from '../../atoms/Text';
 import { BackButton, Content, Header, Root } from './styled';
 import { Calendar } from '../Calendar';
-import ScrollableSelector from '../ScrollableSelector/ScrollableSelector';
+import { ScrollableSelector } from '../ScrollableSelector';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 

@@ -1,7 +1,7 @@
-import { LinearGradient } from 'expo-linear-gradient';
 import styled from '@emotion/native';
 import { ScrollView } from 'react-native';
-import { RFValue, StyleProps } from '@tecsinapse/react-native-kit';
+import { StyleProps } from '../../../types/defaults';
+import { RFValue } from '../../../utils';
 
 interface MarkProps {
   markTop: number;
@@ -51,15 +51,9 @@ export const DigitText = styled.Text<{
 export const Mark = styled.View<MarkProps & Partial<StyleProps>>`
   position: absolute;
   border-radius: 10px;
-  top: ${({ markTop }) => `${RFValue(markTop)}px`};
   background-color: ${({ theme }) => theme.color.primary.light};
   height: ${({ markHeight }) => `${RFValue(markHeight)}px`};
   width: ${({ markWidth }) => `${RFValue(markWidth)}px`};
-`;
-
-export const Gradient = styled(LinearGradient)`
-  position: absolute;
-  width: 100%;
 `;
 
 export const StyledScrollView = styled(ScrollView)`
