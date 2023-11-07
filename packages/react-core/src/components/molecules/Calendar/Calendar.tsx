@@ -9,8 +9,7 @@ import {
   getCapitalizedTextComponent,
   TitleContainer,
 } from './styled';
-import { Weekdays, MonthWeek, SelectYear } from './components';
-import { SelectYearProps } from './components/SelectYear';
+import { Weekdays, MonthWeek, SelectYear, SelectYearProps } from './components';
 import { useRef } from 'react';
 
 export type SelectionType = 'range' | 'day';

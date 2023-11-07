@@ -1,9 +1,9 @@
 import React from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
-import { YearCard } from '../styled';
 import { Text, TextProps } from '../../../atoms/Text';
 import { RFValue } from '../../../../utils';
 import { useTheme } from '../../../../hooks';
+import MemoizedYearCard from './MemoizedYearCard';
 
 export interface SelectYearProps {
   currentYear: number;
@@ -69,35 +69,5 @@ const SelectYear = ({
     />
   );
 };
-
-interface MemoizedYearCardProps {
-  year: number;
-  isSelected: boolean;
-  onPress: () => void;
-  TextComponent: React.FC<TextProps>;
-}
-
-export const MemoizedYearCard = React.memo(
-  ({
-    year,
-    isSelected,
-    onPress,
-    TextComponent,
-  }: MemoizedYearCardProps): JSX.Element => (
-    <YearCard
-      id={String(year)}
-      key={year}
-      isSelected={isSelected}
-      onPress={onPress}
-    >
-      <TextComponent
-        colorVariant={isSelected ? 'primary' : 'secondary'}
-        colorTone={'xdark'}
-      >
-        {year}
-      </TextComponent>
-    </YearCard>
-  )
-);
 
 export default React.memo(SelectYear);
