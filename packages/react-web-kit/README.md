@@ -2,7 +2,7 @@
 
 # TecSinapse Design System
 
-[![Stars](https://img.shields.io/github/stars/tecsinapse/design-system?style=social)](https://github.com/tecsinapse/design-system/) [![License](https://img.shields.io/github/license/tecsinapse/design-system)](./LICENSE.md) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)![build workflow](https://github.com/tecsinapse/design-system/actions/workflows/build-deploy.yml/badge.svg)
+[![Stars](https://img.shields.io/github/stars/tecsinapse/design-system?style=social)](https://github.com/tecsinapse/design-system/) [![License](https://img.shields.io/github/license/tecsinapse/design-system)](./LICENSE.md) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)![build workflow](https://github.com/tecsinapse/design-system/actions/workflows/ci.yml/badge.svg)
 
 
 [TecSinapse Design System](https://tecsinapse.github.io/design-system) is the hybrid implementation of the [TecSinapse](https://www.tecsinapse.com.br/) Design System. 
@@ -23,11 +23,12 @@ Here are a few helpful links for getting started:
 
 ## Packages
 
-| Package                                                         | Content                                              | Version                                     |
-| --------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------- |
-| **[@tecsinapse/react-core](./packages/react-core)**             | the core hybrid React component library              | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-core.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-core) |
-| **[@tecsinapse/react-web-kit](./packages/react-web-kit)**       | the React component library focused on web           | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-web-kit.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-web-kit) |
+| Package                                                         | Content                                              | Version                                                                                                                                    |
+|-----------------------------------------------------------------|------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| **[@tecsinapse/react-core](./packages/react-core)**             | the core hybrid React component library              | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-core.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-core)             |
+| **[@tecsinapse/react-web-kit](./packages/react-web-kit)**       | the React component library focused on web           | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-web-kit.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-web-kit)       |
 | **[@tecsinapse/react-native-kit](./packages/react-native-kit)** | the React native component library focused on mobile | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-native-kit.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-native-kit) |
+| **[@tecsinapse/react-charts](./packages/react-charts)**         | Charts for React based on SVG                        | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-charts.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-charts)         |
 
 ## Code of conduct
 
@@ -35,11 +36,36 @@ We want to foster an inclusive and friendly community around our Open Source eff
 
 If you feel another member of the community violated our code or you are experiencing problems participating in our community because of another individual's behavior, please get in touch with our maintainers.
 
+## How to make local changes available for other projects?
+
+At times, it may be necessary to test changes directly in a product, and not in the design system, and for this to work in a less laborious way, we can follow the steps below:
+
+3 terminal tabs should open:
+- In one run the JS code watch:
+```
+yarn build:watch
+```
+- In another run the watch of the TS code watch
+```
+yarn build:declarations:watch
+```
+- On another run yalc push (this script updates linked local projects)
+```
+yarn yalc:push
+```
+
+With that, all changes will be in yalc locally.
+
+To access in your application, see this [example](https://github.com/tecsinapse/vendas-web-poc-playground#tools) in topic "**Yalc link Design System:**"
+
+
 ### Maintainers
 
+- [Beatriz Silva](mailto:beatriz.silva@tecsinapse.com.br)
 - [Denner Vidal](mailto:denner.vidal@tecsinapse.com.br)
-- [Nilson Altonio](mailto:nilson.antonio@tecsinapse.com.br)
-- [Agnaldo Citadin](mailto:agnaldo.citadin@tecsinapse.com.br)
+- [Gabriel Sanches](mailto:gabriel.sanches@tecsinapse.com.br)
+- [Lucas Ramos](mailto:lucas.ramos@tecsinapse.com.br)
+- [Nilson Antonio](mailto:nilson.antonio@tecsinapse.com.br)
 - [Ryan Correa](mailto:ryan.correa@tecsinapse.com.br)
 
 ## Contributing

@@ -39,27 +39,14 @@ export const getDisplayValue = <Data>(
   labelExtractor: (option: Data) => string,
   multiLabels?: MultiLabels
 ): string | undefined => {
-  if (type === 'multi') {
-    if (value === undefined || (value as Data[]).length === 0)
-      return placeholder;
-    if ((value as Data[]).length === 1) {
-      return getSingleLabel(
-        value?.[0],
-        options,
-        keyExtractor,
-        placeholder,
-        labelExtractor
-      );
-    }
+  if (value === undefined || (value as Data[]).length === 0) return placeholder;
+  if (type === 'multi' && (value as Data[]).length > 1)
     return getMultiLabel(value, options, multiLabels);
-  } else {
-    if (value === undefined) return placeholder;
-    return getSingleLabel(
-      value as Data,
-      options,
-      keyExtractor,
-      placeholder,
-      labelExtractor
-    );
-  }
+  return getSingleLabel(
+    value instanceof Array ? value?.[0] : value,
+    options,
+    keyExtractor,
+    placeholder,
+    labelExtractor
+  );
 };

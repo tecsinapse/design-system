@@ -1,9 +1,9 @@
-import esbuild from 'rollup-plugin-esbuild';
+import esbuild from "rollup-plugin-esbuild";
 
 const outputDefaultConfig = {
   preserveModules: true,
   preserveModulesRoot: 'src',
-  sourcemap: true,
+  sourcemap: false,
 };
 
 export default [

@@ -4,7 +4,7 @@ import { Snackbar as SnackbarCore, StyleProps } from '@tecsinapse/react-core';
 const baseStyles = () => [
   css({
     left: '50%',
-    maxWidth: '600px',
+    maxWidth: 600,
     transform: [{ translateX: '-50%' as any }],
   }),
 ];

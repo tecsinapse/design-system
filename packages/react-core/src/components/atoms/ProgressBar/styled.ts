@@ -1,5 +1,4 @@
 import styled from '@emotion/native';
-import { Animated } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 import { RFValueStr } from '../../../utils';
 
@@ -19,7 +18,7 @@ export const Segment = styled.View<Partial<StyleProps>>`
   border-color: ${({ theme }) => theme.color.secondary.xlight};
 `;
 
-export const Progress = styled(Animated.View)<Partial<StyleProps>>`
+export const Progress = styled.View<Partial<StyleProps>>`
   height: 100%;
   border-color: ${({ theme }) => theme.color.secondary.xlight};
 `;
