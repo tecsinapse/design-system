@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import { TextProps } from '../../atoms/Text';
+import { Dimensions, StyleSheet, Text, TextProps, View } from 'react-native';
 import { BlockLabels } from './styled';
 import { DateBlock } from './components';
 
@@ -39,13 +38,11 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   markColor,
   markHeight,
   markWidth,
-  fadeColor,
   format,
   monthLabel,
   yearLabel,
   hourLabel,
   minuteLabel,
-  locale,
   TextComponent = Text,
 }) => {
   const [months, setMonths] = useState<number[]>([]);

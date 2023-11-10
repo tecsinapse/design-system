@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { FlatList, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 
 interface MarkProps {
@@ -50,7 +50,7 @@ export const DigitText = styled.Text<{
 export const Mark = styled.View<MarkProps & Partial<StyleProps>>`
   position: absolute;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.color.primary.dark};
+  background-color: ${({ theme }) => theme.color.primary.light};
   height: ${({ markHeight }) => `${markHeight}px`};
   width: ${({ markWidth }) => `${markWidth}px`};
 `;

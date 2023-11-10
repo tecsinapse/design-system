@@ -39,13 +39,11 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   markColor,
   markHeight,
   markWidth,
-  fadeColor,
   format,
   monthLabel,
   yearLabel,
   hourLabel,
   minuteLabel,
-  locale,
   TextComponent = Text,
 }) => {
   const [months, setMonths] = useState<number[]>([]);

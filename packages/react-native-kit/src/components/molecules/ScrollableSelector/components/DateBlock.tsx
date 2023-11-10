@@ -31,7 +31,6 @@ const DateBlock: React.FC<DateBlockProps> = ({
   markColor,
   markHeight,
   markWidth,
-  locale,
   TextComponent = Text,
 }) => {
   const months = [

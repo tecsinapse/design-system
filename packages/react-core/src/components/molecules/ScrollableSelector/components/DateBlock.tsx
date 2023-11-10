@@ -57,7 +57,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
   const scrollRef = useRef<any>(null);
 
   const snapScrollToIndex = (index: number) => {
-    scrollRef?.current?.scrollTo(index);
+    scrollRef?.current?.scrollTo({ y: dHeight * index, animated: true });
   };
 
   useEffect(() => {

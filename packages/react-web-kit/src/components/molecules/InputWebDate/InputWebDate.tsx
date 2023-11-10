@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlatList, ListRenderItemInfo, ViewProps } from 'react-native';
+import { ViewProps } from 'react-native';
 import { Button } from '../../atoms/Button';
 import { TextProps } from '@tecsinapse/react-core/src/components/atoms/Text';
 import {
@@ -12,6 +12,7 @@ import { Calendar } from '@tecsinapse/react-core/src/components/molecules/Calend
 import { Text } from '../../../../../react-native-kit/src/components/atoms/Text';
 import TimeDigit from './components/TimeDigit.tsx';
 import MemoizedYearCard from '@tecsinapse/react-core/src/components/molecules/Calendar/components/MemoizedYearCard';
+import MemoizedTimeCard from './components/MemoizedTimeCard.tsx';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
@@ -19,55 +20,9 @@ export interface DateTimeSelectorProps extends ViewProps {
   TextComponent?: React.FC<TextProps>;
   value?: Date;
   onChange?: (value: Date) => void | never;
-
-  /**
-   * Defines the Picker behavior
-   * Must be one of ['date', 'time', 'datetime', 'month']
-   */
   mode?: DateTimeSelectorMode;
   format?: string;
   locale?: Locale;
-
-  /**
-   * Maximum date from today
-   */
-  upperDateThreshold?: Date;
-
-  /**
-   * Minimum date from today
-   */
-  lowerDateThreshold?: Date;
-
-  /**
-   * Minimum and maximum date in distance units from today.
-   * The distance unit used depends on the picker mode
-   * If mode is date, the unit is day
-   * If mode is time, the unit is hour
-   * If mode is datetime, the unit is day
-   * If mode is month, the unit is month
-   */
-  offsetThreshold?: number;
-
-  /**
-   * Maximum date in distance units from today.
-   * The distance unit used depends on the picker mode
-   * If mode is date, the unit is day
-   * If mode is time, the unit is hour
-   * If mode is datetime, the unit is day
-   * If mode is month, the unit is month
-   */
-  upperOffsetThreshold?: number;
-
-  /**
-   * Minimum date in distance units from today.
-   * The distance unit used depends on the picker mode
-   * If mode is date, the unit is day
-   * If mode is time, the unit is hour
-   * If mode is datetime, the unit is day
-   * If mode is month, the unit is month
-   */
-  lowerOffsetThreshold?: number;
-
   dateModalTitle?: string;
   timeModalTitle?: string;
   dateConfirmButtonText?: string;
@@ -77,6 +32,7 @@ export interface DateTimeSelectorProps extends ViewProps {
   yearLabel?: string;
   hourLabel?: string;
   minuteLabel?: string;
+  requestCloseSelector: () => void;
 }
 
 const InputWebDate: React.FC<DateTimeSelectorProps> = ({
@@ -84,35 +40,29 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
   value,
   onChange,
   mode = 'datetime',
-  locale,
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
   timeConfirmButtonText,
-  monthLabel,
-  yearLabel,
   hourLabel,
   minuteLabel,
-  minutesToShow = 60,
-  firstMinute = 0,
-  hoursToShow = 24,
-  firstHour = 0,
+  requestCloseSelector,
   ...rest
 }) => {
   const [date, setDate] = React.useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
+  const minutesToShow = 60;
+  const firstMinute = 0;
+  const hoursToShow = 24;
+  const firstHour = 0;
 
   const isDate =
     ['date'].includes(mode) || (mode === 'datetime' && currentMode === 0);
 
-  const isMonth = mode === 'month';
   const theme = useTheme();
 
-  const modalTitle = isDate
-    ? dateModalTitle
-    : isMonth
-    ? dateModalTitle
-    : timeModalTitle;
+  const modalTitle = isDate ? dateModalTitle : timeModalTitle;
+
   const confirmButtonText = isDate
     ? dateConfirmButtonText
     : timeConfirmButtonText;
@@ -126,8 +76,10 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
   const handlePressConfirm = () => {
     if (mode === 'datetime' && currentMode === 0) {
       setCurrentMode(1);
-    } else {
+    }
+    if (mode === 'datetime' && currentMode === 1) {
       onChange?.(date);
+      requestCloseSelector();
     }
   };
 
@@ -135,8 +87,6 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
     setCurrentMode(0);
   };
   const handleTimeChange = (newTime, updateType) => {
-    console.log(typeof newTime);
-
     const newDate = new Date(date);
 
     if (updateType === 'hours') {
@@ -145,7 +95,6 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
       newDate.setMinutes(Number(newTime));
     }
     setDate(newDate);
-    onChange?.(newDate);
   };
 
   const getCurrentTimeUnit = unit => {
@@ -154,27 +103,23 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
   };
 
   const minutes = React.useMemo(
-    () =>
-      Array.from({ length: (minutesToShow = 60) }, (_, i) => i + firstMinute),
+    () => Array.from({ length: minutesToShow }, (_, i) => i + firstMinute),
     [minutesToShow, firstMinute]
   );
 
   const hours = React.useMemo(
-    () => Array.from({ length: (hoursToShow = 23) }, (_, i) => i + firstHour),
+    () => Array.from({ length: hoursToShow }, (_, i) => i + firstHour),
     [hoursToShow, firstHour]
   );
 
-  console.log('hours', hours);
-  console.log('minutes', minutes);
+  const getDisplayedValue = (value: number) => {
+    return value.toString().padStart(2, '0');
+  };
 
-  const yearsCardsBuilder = React.useCallback(
-    (
-      item: ListRenderItemInfo<number>,
-      updateType: 'hours' | 'minutes',
-      currentTime: number
-    ) => (
-      <MemoizedYearCard
-        year={item}
+  const timeCardsBuilder = React.useCallback(
+    (item: number, updateType: 'hours' | 'minutes', currentTime: number) => (
+      <MemoizedTimeCard
+        time={getDisplayedValue(item)}
         isSelected={currentTime === item}
         onPress={() => {
           console.log('onPress:', item, updateType);
@@ -199,7 +144,7 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
     <Root {...rest}>
       <Header>
         {currentMode === 1 && (
-          <BackButton onPress={handlePressBack}>
+          <BackButton onPress={handlePressBack} style={{ top: -15, left: -10 }}>
             <Icon
               type={'material-community'}
               name={'chevron-left'}
@@ -217,26 +162,18 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
         <Calendar type={'day'} value={date} onChange={handleCalendarChange} />
       ) : (
         <Content style={{ width: 150, flexDirection: 'column' }}>
-          <TextComponent typography={'base'} colorVariant={'secondary'}>
-            {`Horas:Minutos`}
-          </TextComponent>
           <Content
             style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
           >
             <TimeDigit
-              style={{ overflowY: 'scroll', height: '100px', width: 10 }}
               data={hours}
               updateType={'hours'}
+              timeLabel={'Hour'}
               currentTime={getCurrentTimeUnit('hours')}
               renderItem={item =>
-                yearsCardsBuilder(
-                  item,
-                  'hours',
-                  getCurrentTimeUnit('hours'),
-                  onChange
-                )
+                timeCardsBuilder(item, 'hours', getCurrentTimeUnit('hours'))
               }
-              yearCardsBuilder={yearsCardsBuilder}
+              timeCardsBuilder={timeCardsBuilder}
               keyExtractor={item => String(item)}
               currentTimeUnit={getCurrentTimeUnit('hours')}
               contentContainerStyle={{
@@ -252,18 +189,13 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
               fadingEdgeLength={200}
             />
             <TimeDigit
-              style={{ overflowY: 'scroll', height: '100px', width: 10 }}
               data={minutes}
               updateType={'minutes'}
               currentTime={getCurrentTimeUnit('minutes')}
-              yearCardsBuilder={yearsCardsBuilder}
+              timeCardsBuilder={timeCardsBuilder}
+              timeLabel={'Minute'}
               renderItem={item =>
-                yearsCardsBuilder(
-                  item,
-                  'minutes',
-                  getCurrentTimeUnit('minutes'),
-                  onChange
-                )
+                timeCardsBuilder(item, 'minutes', getCurrentTimeUnit('minutes'))
               }
               keyExtractor={item => String(item)}
               contentContainerStyle={{

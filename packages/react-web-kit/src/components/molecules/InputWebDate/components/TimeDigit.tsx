@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlatList, FlatListProps } from 'react-native';
+import { FlatListProps, ListRenderItemInfo } from 'react-native';
 import {
   TextProps,
   Text,
@@ -8,34 +8,39 @@ import {
 import { useTheme } from '@tecsinapse/react-core';
 
 import { RFValue } from '@tecsinapse/react-core/src/utils/ResponsiveFontSize';
+import { TimeDigitContainer } from '../styled';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
 export interface TimeDigitProps extends FlatListProps<number> {
   TextComponent?: React.FC<TextProps>;
-  value?: Date;
-  onChange?: (value: Date) => void | never;
+  updateType: string;
+  data: Array<number>;
+  timeLabel: string;
   mode?: DateTimeSelectorMode;
   dateConfirmButtonText?: string;
   timeConfirmButtonText?: string;
   digitsToShow?: number;
   firstDigit?: number;
   currentTime: number;
+  initialScrollIndex: number;
+  timeCardsBuilder: React.RefCallback<
+    (
+      item: number,
+      updateType: 'hours' | 'minutes',
+      currentTime: number
+    ) => JSX.Element
+  >;
 }
 
 const TimeDigit: React.FC<TimeDigitProps> = ({
   TextComponent = Text,
-  value,
   updateType,
-  onChange,
   data,
+  timeLabel,
   currentTime,
-  mode = 'datetime',
-  dateConfirmButtonText,
-  timeConfirmButtonText,
-  yearCardsBuilder,
+  timeCardsBuilder,
   initialScrollIndex,
-  ...rest
 }) => {
   const theme = useTheme();
 
@@ -46,25 +51,38 @@ const TimeDigit: React.FC<TimeDigitProps> = ({
   console.log('current time', currentTime);
 
   return (
-    <FlatList
-      style={{ overflowY: 'scroll', height: '100px', width: 10 }}
-      data={data}
-      updateType={updateType}
-      currentTime={currentTime}
-      renderItem={({ item }) => yearCardsBuilder(item, updateType, currentTime)}
-      keyExtractor={item => String(item)}
-      contentContainerStyle={{
-        alignItems: 'center',
-      }}
-      numColumns={1}
-      initialScrollIndex={0}
-      getItemLayout={(_, index) => ({
-        length: digitCardHeight,
-        offset: digitCardHeight * index,
-        index,
-      })}
-      fadingEdgeLength={200}
-    />
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <TextComponent
+        style={{
+          textAlign: 'center',
+          fontSize: '12px',
+          fontWeight: 'bold',
+        }}
+      >
+        {timeLabel}
+      </TextComponent>
+      <TimeDigitContainer
+        showsHorizontalScrollIndicator={true}
+        data={data}
+        updateType={updateType}
+        currentTime={currentTime}
+        renderItem={({ item }: ListRenderItemInfo<unknown>) =>
+          timeCardsBuilder(item, updateType, currentTime)
+        }
+        keyExtractor={(item: unknown) => String(item)}
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}
+        numColumns={1}
+        initialScrollIndex={initialScrollIndex}
+        getItemLayout={(_, index) => ({
+          length: digitCardHeight,
+          offset: digitCardHeight * index,
+          index,
+        })}
+        fadingEdgeLength={200}
+      />
+    </div>
   );
 };
 
