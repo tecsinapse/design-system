@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { FlatList, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import { StyleProps } from '../../../types/defaults';
 
 interface MarkProps {

@@ -4,7 +4,7 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "run-p update:stories watch:stories run:dev",
+    "dev:android": "run-p update:stories watch:stories run:dev",
     "android": "run-p update:stories watch:stories run:android",
     "ios": "run-p update:stories watch:stories run:ios",
     "run:dev": "expo start",

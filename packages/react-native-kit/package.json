@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rollup --watch",
+    "dev": "yarn build:es --watch",
     "build:es": "rollup --config",
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",

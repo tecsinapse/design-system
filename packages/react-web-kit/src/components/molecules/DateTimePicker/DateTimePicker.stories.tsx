@@ -3,6 +3,7 @@ import { DateTimePickerProps } from '@tecsinapse/react-core';
 import { ptBR } from 'date-fns/locale';
 import React from 'react';
 import { DateTimePicker } from './DateTimePicker';
+import ScrollableSelector from '../ScrollableSelector/ScrollableSelector';
 
 export default {
   title: 'Web/Date Time Picker',

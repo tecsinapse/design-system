@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { Block, DigitText, Mark, Scroll, StyledScrollView } from '../styled';
+import { Block, DigitText, Mark, StyledScrollView } from '../styled';
 import { TextProps } from '../../../atoms/Text';
 
 export interface DateBlockProps {
@@ -57,7 +57,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
   const scrollRef = useRef<any>(null);
 
   const snapScrollToIndex = (index: number) => {
-    scrollRef?.current?.scrollTo(index);
+    scrollRef?.current?.scrollTo({ y: dHeight * index, animated: true });
   };
 
   useEffect(() => {
@@ -100,7 +100,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
               key={index}
               onPress={() => {
                 onChange(type, digits[index]);
-                snapScrollToIndex(index ?? 0);
+                snapScrollToIndex(index);
               }}
             >
               <TextComponent
