@@ -27,3 +27,18 @@ export const TimeCard = styled(PressableSurface)(
     padding: ${props.theme?.spacing.mili} ${props.theme?.spacing.deca};
   `
 );
+
+export const Container = styled('div')<Partial<StyleProps>>`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-vertical: ${({ theme }) => theme.spacing.deca};
+`;
+
+export const ContainerColumn = styled('div')<Partial<StyleProps>>`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-vertical: ${({ theme }) => theme.spacing.deca};
+`;

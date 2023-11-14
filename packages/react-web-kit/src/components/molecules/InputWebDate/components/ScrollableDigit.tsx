@@ -9,10 +9,11 @@ import { useTheme } from '@tecsinapse/react-core';
 
 import { RFValue } from '@tecsinapse/react-core/src/utils/ResponsiveFontSize';
 import { TimeDigitContainer } from '../styled';
+import MemoizedTimeCard from './MemoizedTimeCard';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
-export interface TimeDigitProps extends FlatListProps<number> {
+export interface ScrollableDigitProps extends FlatListProps<number> {
   TextComponent?: React.FC<TextProps>;
   updateType: string;
   data: Array<number>;
@@ -20,26 +21,21 @@ export interface TimeDigitProps extends FlatListProps<number> {
   mode?: DateTimeSelectorMode;
   dateConfirmButtonText?: string;
   timeConfirmButtonText?: string;
+  currentTimeUnit: (unit: string) => number;
   digitsToShow?: number;
   firstDigit?: number;
   currentTime: number;
   initialScrollIndex: number;
-  timeCardsBuilder: React.RefCallback<
-    (
-      item: number,
-      updateType: 'hours' | 'minutes',
-      currentTime: number
-    ) => JSX.Element
-  >;
+  handleTimeChange: (newTime: number, updateType: string) => void;
 }
 
-const TimeDigit: React.FC<TimeDigitProps> = ({
+const ScrollableDigit: React.FC<ScrollableDigitProps> = ({
   TextComponent = Text,
   updateType,
   data,
   timeLabel,
   currentTime,
-  timeCardsBuilder,
+  handleTimeChange,
   initialScrollIndex,
 }) => {
   const theme = useTheme();
@@ -48,8 +44,28 @@ const TimeDigit: React.FC<TimeDigitProps> = ({
     RFValue(Number(theme.typography.base.fontSize.slice(0, -2))) +
     2 * RFValue(Number(theme.spacing.deca.slice(0, -2)));
 
-  console.log('current time', currentTime);
+  const getDisplayedValue = (value: number) => {
+    return value.toString().padStart(2, '0');
+  };
 
+  const timeCardsBuilder = React.useCallback(
+    (
+      item: number,
+      updateType: 'hours' | 'minutes',
+      currentTime: number,
+      handleTimeChange: any
+    ) => (
+      <MemoizedTimeCard
+        time={getDisplayedValue(item)}
+        isSelected={currentTime === item}
+        onPress={() => {
+          handleTimeChange(item, updateType);
+        }}
+        TextComponent={TextComponent}
+      />
+    ),
+    [handleTimeChange, TextComponent]
+  );
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <TextComponent
@@ -67,7 +83,7 @@ const TimeDigit: React.FC<TimeDigitProps> = ({
         updateType={updateType}
         currentTime={currentTime}
         renderItem={({ item }: ListRenderItemInfo<unknown>) =>
-          timeCardsBuilder(item, updateType, currentTime)
+          timeCardsBuilder(item, updateType, currentTime, handleTimeChange)
         }
         keyExtractor={(item: unknown) => String(item)}
         contentContainerStyle={{
@@ -86,4 +102,4 @@ const TimeDigit: React.FC<TimeDigitProps> = ({
   );
 };
 
-export default TimeDigit;
+export default ScrollableDigit;
