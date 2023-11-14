@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
+import { StyleProps } from '@tecsinapse/react-core';
 import { ScrollView } from 'react-native';
-import { StyleProps } from '../../../types/defaults';
 
 interface MarkProps {
   markTop: number;

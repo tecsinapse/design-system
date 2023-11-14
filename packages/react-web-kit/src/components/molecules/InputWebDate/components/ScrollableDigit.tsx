@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlatListProps, ListRenderItemInfo } from 'react-native';
+import { ListRenderItemInfo } from 'react-native';
 import {
   TextProps,
   Text,
@@ -8,33 +8,27 @@ import {
 import { useTheme } from '@tecsinapse/react-core';
 
 import { RFValue } from '@tecsinapse/react-core/src/utils/ResponsiveFontSize';
-import { TimeDigitContainer } from '../styled';
-import MemoizedTimeCard from './MemoizedTimeCard';
+import { StyledTextLabel, TimeDigitContainer } from '../styled';
+import { MemoizedTimeCard } from '.';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
-export interface ScrollableDigitProps extends FlatListProps<number> {
+export interface ScrollableDigitProps {
   TextComponent?: React.FC<TextProps>;
-  updateType: string;
-  data: Array<number>;
+  updateType: 'hour' | 'minute' | 'year' | 'month';
+  currentTime: string;
+  data: string[];
   timeLabel: string;
-  mode?: DateTimeSelectorMode;
-  dateConfirmButtonText?: string;
-  timeConfirmButtonText?: string;
-  currentTimeUnit: (unit: string) => number;
-  digitsToShow?: number;
-  firstDigit?: number;
-  currentTime: number;
   initialScrollIndex: number;
-  handleTimeChange: (newTime: number, updateType: string) => void;
+  handleTimeChange: (newTime: string, updateType: string) => void;
 }
 
 const ScrollableDigit: React.FC<ScrollableDigitProps> = ({
   TextComponent = Text,
-  updateType,
   data,
-  timeLabel,
   currentTime,
+  updateType,
+  timeLabel,
   handleTimeChange,
   initialScrollIndex,
 }) => {
@@ -44,17 +38,17 @@ const ScrollableDigit: React.FC<ScrollableDigitProps> = ({
     RFValue(Number(theme.typography.base.fontSize.slice(0, -2))) +
     2 * RFValue(Number(theme.spacing.deca.slice(0, -2)));
 
-  const getDisplayedValue = (value: number) => {
-    return value.toString().padStart(2, '0');
+  const getDisplayedValue = (value: string) => {
+    const isNumericValue = parseInt(value, 10);
+    if (!isNaN(isNumericValue)) {
+      return value.padStart(2, '0');
+    } else {
+      return value;
+    }
   };
 
   const timeCardsBuilder = React.useCallback(
-    (
-      item: number,
-      updateType: 'hours' | 'minutes',
-      currentTime: number,
-      handleTimeChange: any
-    ) => (
+    ({ item }: ListRenderItemInfo<string>) => (
       <MemoizedTimeCard
         time={getDisplayedValue(item)}
         isSelected={currentTime === item}
@@ -66,26 +60,15 @@ const ScrollableDigit: React.FC<ScrollableDigitProps> = ({
     ),
     [handleTimeChange, TextComponent]
   );
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <TextComponent
-        style={{
-          textAlign: 'center',
-          fontSize: '12px',
-          fontWeight: 'bold',
-        }}
-      >
-        {timeLabel}
-      </TextComponent>
+      <StyledTextLabel>{timeLabel}</StyledTextLabel>
       <TimeDigitContainer
         showsHorizontalScrollIndicator={true}
         data={data}
-        updateType={updateType}
-        currentTime={currentTime}
-        renderItem={({ item }: ListRenderItemInfo<unknown>) =>
-          timeCardsBuilder(item, updateType, currentTime, handleTimeChange)
-        }
-        keyExtractor={(item: unknown) => String(item)}
+        renderItem={timeCardsBuilder}
+        keyExtractor={(item: string) => item}
         contentContainerStyle={{
           alignItems: 'center',
         }}

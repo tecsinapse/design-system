@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, StyleSheet, Text, TextProps, View } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import { Text, TextNativeProps } from '../../atoms/Text';
 import { BlockLabels } from './styled';
 import { DateBlock } from './components';
 
@@ -21,9 +22,8 @@ export interface ScrollableSelectorProps {
   minuteLabel?: string;
   fadeColor?: string;
   format?: string;
-  TextComponent?: React.FC<TextProps>;
-
-  onChange(value: Date): void;
+  TextComponent?: React.FC<TextNativeProps>;
+  onChange?: (value: Date) => void;
 }
 
 const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
@@ -55,7 +55,7 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
     const start = !startYear || startYear > end ? end - 100 : startYear;
     const _months = [...Array(12)].map((_, index) => index + 1);
     const _years = [...Array(end - start + 1)].map((_, index) => start + index);
-    const _hour = [...Array(24)].map((_, index) => index + 1);
+    const _hour = [...Array(23)].map((_, index) => index + 1);
     const _minutes = [...Array(59)].map((_, index) => index + 1);
     setMonths(_months);
     setYears(_years);
@@ -85,7 +85,7 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
       case 'minutes':
         date.setMinutes(digit);
     }
-    onChange(date);
+    onChange?.(date);
   };
 
   const getOrder = () => {
@@ -126,43 +126,45 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   };
 
   return (
-    <View style={{ flexDirection: 'column', width: '100%' }}>
-      <BlockLabels>
-        {format === 'MM-yyyy' ? (
-          <>
-            <TextComponent>{monthLabel}</TextComponent>
-            <TextComponent>{yearLabel}</TextComponent>
-          </>
-        ) : (
-          <>
-            <TextComponent>{hourLabel}</TextComponent>
-            <TextComponent>{minuteLabel}</TextComponent>
-          </>
-        )}
-      </BlockLabels>
-      <View
-        style={[styles.picker, { height: pickerHeight, width: pickerWidth }]}
-      >
-        {getOrder().map((el, index) => {
-          return (
-            <DateBlock
-              date={date}
-              digits={el.digits}
-              value={el.value}
-              onChange={changeHandle}
-              height={pickerHeight}
-              fontSize={fontSize ?? 22}
-              textColor={textColor}
-              markColor={markColor}
-              markHeight={markHeight}
-              markWidth={markWidth ?? 70}
-              type={el.name}
-              key={index}
-            />
-          );
-        })}
+    <>
+      <View style={{ flexDirection: 'column', width: '100%' }}>
+        <BlockLabels>
+          {format === 'MM-yyyy' ? (
+            <>
+              <TextComponent>{monthLabel}</TextComponent>
+              <TextComponent>{yearLabel}</TextComponent>
+            </>
+          ) : (
+            <>
+              <TextComponent>{hourLabel}</TextComponent>
+              <TextComponent>{minuteLabel}</TextComponent>
+            </>
+          )}
+        </BlockLabels>
+        <View
+          style={[styles.picker, { height: pickerHeight, width: pickerWidth }]}
+        >
+          {getOrder().map((el, index) => {
+            return (
+              <DateBlock
+                date={date}
+                digits={el.digits}
+                value={el.value}
+                onChange={changeHandle}
+                height={pickerHeight}
+                fontSize={fontSize ?? 22}
+                textColor={textColor}
+                markColor={markColor}
+                markHeight={markHeight}
+                markWidth={markWidth ?? 70}
+                type={el.name}
+                key={index}
+              />
+            );
+          })}
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 

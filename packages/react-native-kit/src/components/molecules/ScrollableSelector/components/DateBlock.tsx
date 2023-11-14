@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { Block, DigitText, Mark, StyledScrollView } from '../styled';
-import { TextProps } from '../../../atoms/Text';
+import { Block, Mark, StyledScrollView } from '../styled';
+import { TextProps } from '@tecsinapse/react-core';
 
 export interface DateBlockProps {
   digits: number[];

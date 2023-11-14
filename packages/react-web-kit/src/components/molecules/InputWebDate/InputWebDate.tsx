@@ -15,8 +15,8 @@ import {
 } from '@tecsinapse/react-core';
 //BACKBUTTON, CONTENT, ROOT PRA WEB - STYLED DIV
 
-import ScrollableTimePicker from '../ScrollableTimePicker/ScrollableTimePicker.tsx';
-import ScrollableMonthPicker from '../ScrollableMonthPicker/ScrollableMonthYearPicker.tsx';
+import { ScrollableTimePicker } from '../ScrollableTimePicker';
+import { ScrollableMonthYearPicker } from '../ScrollableMonthYearPicker';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
@@ -111,15 +111,7 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
           <Content
             style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
           >
-            <ScrollableMonthPicker
-              requestCloseSelector={requestCloseSelector}
-              onChange={onChange}
-              yearLabel={yearLabel}
-              monthLabel={monthLabel}
-              value={value}
-              setDate={setDate}
-              date={date}
-            />
+            <ScrollableMonthYearPicker setDate={setDate} date={date} />
           </Content>
         </Content>
       ) : (
@@ -127,15 +119,7 @@ const InputWebDate: React.FC<DateTimeSelectorProps> = ({
           <Content
             style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
           >
-            <ScrollableTimePicker
-              requestCloseSelector={requestCloseSelector}
-              onChange={onChange}
-              hourLabel={hourLabel}
-              value={value}
-              minuteLabel={minuteLabel}
-              setDate={setDate}
-              date={date}
-            />
+            <ScrollableTimePicker setDate={setDate} date={date} />
           </Content>
         </Content>
       )}

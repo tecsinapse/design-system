@@ -1,5 +1,5 @@
 import styled, { css } from '@emotion/native';
-import { PressableSurface, StyleProps } from '@tecsinapse/react-core';
+import { PressableSurface, StyleProps, Text } from '@tecsinapse/react-core';
 import { StyledInputElementBase } from '@tecsinapse/react-core/src/components/atoms/Input/styled';
 import { FlatList } from 'react-native';
 
@@ -9,15 +9,19 @@ export const StyledWebTextInput = styled(StyledInputElementBase)`
   }
 `;
 
-export const TimeDigitContainer = styled(FlatList)`
+export const StyledTextLabel = styled(Text)`
+  text-align: 'center';
+  font-size: 12px;
+  font-weight: bold;
+`;
+
+export const TimeDigitContainer = styled(FlatList<string>)`
   max-height: 100px;
   overflow-y: 'scroll';
 `;
 
 export const TimeCard = styled(PressableSurface)(
-  (
-    props: Partial<StyleProps> & ButtonBorders & { isSelected?: boolean }
-  ) => css`
+  (props: Partial<StyleProps> & { isSelected?: boolean }) => css`
     background-color: ${props.isSelected
       ? props.theme?.color.primary.light
       : undefined};
@@ -27,18 +31,3 @@ export const TimeCard = styled(PressableSurface)(
     padding: ${props.theme?.spacing.mili} ${props.theme?.spacing.deca};
   `
 );
-
-export const Container = styled('div')<Partial<StyleProps>>`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-vertical: ${({ theme }) => theme.spacing.deca};
-`;
-
-export const ContainerColumn = styled('div')<Partial<StyleProps>>`
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-vertical: ${({ theme }) => theme.spacing.deca};
-`;
