@@ -14,13 +14,7 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   TextComponent = Text,
   value,
   onChange,
-  mode = 'date',
-  locale,
-  upperDateThreshold: _upperDateThreshold,
-  lowerDateThreshold: _lowerDateThreshold,
-  offsetThreshold,
-  upperOffsetThreshold,
-  lowerOffsetThreshold,
+  mode,
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
@@ -35,9 +29,7 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   const [date, setDate] = React.useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
 
-  const isDate =
-    ['date', 'month'].includes(mode) ||
-    (mode === 'datetime' && currentMode === 0);
+  const isDate = mode === 'datetime' && currentMode === 0;
 
   const modalTitle = isDate ? dateModalTitle : timeModalTitle;
   const confirmButtonText = isDate
@@ -48,7 +40,6 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
     if (mode === 'datetime' && currentMode === 0) {
       setCurrentMode(1);
     } else {
-      console.log('onChange', date);
       onChange?.(date);
     }
   };
@@ -61,6 +52,8 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
     console.log(value);
     if (value) setDate(value);
   };
+
+  const isMonth = mode === 'month';
 
   return (
     <Root {...rest}>
@@ -79,9 +72,18 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
           {modalTitle}
         </TextComponent>
       </Header>
-      {/*TODO: mode month*/}
       {isDate ? (
         <Calendar type={'day'} value={date} onChange={handleChange} />
+      ) : isMonth ? (
+        <Content>
+          <ScrollableSelector
+            onChange={setDate}
+            value={date}
+            hourLabel={hourLabel}
+            minuteLabel={minuteLabel}
+            format={'MM-yyyy'}
+          />
+        </Content>
       ) : (
         <Content>
           <ScrollableSelector
