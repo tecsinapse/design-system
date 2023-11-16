@@ -29,7 +29,9 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   const [date, setDate] = React.useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
 
-  const isDate = mode === 'datetime' && currentMode === 0;
+  const isDate =
+    (mode === 'datetime' && currentMode === 0) ||
+    (mode === 'date' && currentMode === 0);
 
   const modalTitle = isDate ? dateModalTitle : timeModalTitle;
   const confirmButtonText = isDate
@@ -49,7 +51,6 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   };
 
   const handleChange = (value?: Date) => {
-    console.log(value);
     if (value) setDate(value);
   };
 
