@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import { getLocale } from '../../../utils/date';
 import { IBaseModal, ModalView, useLazyModalManager } from '../../atoms/Modal';
 import { Text } from '../../atoms/Text';
-import { NewDateTimeSelector } from '../NewDateTimeSelector';
+import { DateTimeSelector } from '../DateTimeSelector';
 
 export type NativeDateTimePickerProps = Omit<
   DateTimePickerProps,
@@ -18,33 +18,21 @@ export type NativeDateTimePickerProps = Omit<
 
 export const DateTimePicker: FC<NativeDateTimePickerProps> = ({
   locale,
-  onChange,
-  value,
-  hourLabel,
-  minuteLabel,
   ...rest
 }) => {
   const modal = useLazyModalManager();
 
   return (
     <DateTimePickerCore
+      {...rest}
       TextComponent={Text}
-      DateTimeSelectorComponent={props => (
-        <NewDateTimeSelector
-          {...props}
-          hourLabel={hourLabel}
-          minuteLabel={minuteLabel}
-        />
-      )}
+      DateTimeSelectorComponent={props => <DateTimeSelector {...props} />}
       locale={locale ?? getLocale()}
       requestShowSelector={() => modal.show()}
       requestCloseSelector={() => modal.close()}
       renderSelector={(selector, blur) =>
         modal.sync(<NativeModal onClose={blur}>{selector}</NativeModal>)
       }
-      onChange={onChange}
-      value={value}
-      {...rest}
     />
   );
 };

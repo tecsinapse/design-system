@@ -50,4 +50,3 @@ export type { SelectNativeProps } from './components/molecules/Select';
 export { Snackbar } from './components/molecules/Snackbar';
 export type { SnackbarNativeProps } from './components/molecules/Snackbar';
 export { Grid, GridItem } from './components/molecules/Grid';
-export { NewDateTimeSelector } from './components/molecules/NewDateTimeSelector';

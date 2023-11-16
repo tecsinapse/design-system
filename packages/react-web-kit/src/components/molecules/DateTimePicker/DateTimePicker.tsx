@@ -12,10 +12,7 @@ export type WebDateTimePickerProps = Omit<
 >;
 
 export const DateTimePicker: FC<WebDateTimePickerProps> = ({
-  value,
-  onChange,
-  hourLabel,
-  minuteLabel,
+  locale,
   ...rest
 }) => {
   const [visible, setVisible] = useState<boolean>(false);
@@ -26,15 +23,7 @@ export const DateTimePicker: FC<WebDateTimePickerProps> = ({
   return (
     <DateTimePickerCore
       {...rest}
-      value={value}
-      onChange={onChange}
-      DateTimeSelectorComponent={props => (
-        <InputWebDate
-          {...props}
-          hourLabel={hourLabel}
-          minuteLabel={minuteLabel}
-        />
-      )}
+      DateTimeSelectorComponent={props => <InputWebDate {...props} />}
       requestShowSelector={show}
       requestCloseSelector={close}
       renderSelector={selector => (

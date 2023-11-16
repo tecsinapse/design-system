@@ -1,1 +1,1 @@
-export { DateTimeSelector } from './DateTimeSelector';
+export { default as DateTimeSelector } from './DateTimeSelector';
