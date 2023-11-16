@@ -22,12 +22,11 @@ const backgroundColorTag = ({
 }: Partial<StyleProps> & {
   backgroundColorTone: ColorType;
   backgroundColorVariant: ColorGradationType;
-}) =>
-  css`
-    background-color: ${theme?.color[backgroundColorTone][
-      backgroundColorVariant
-    ]};
-  `;
+}) => css`
+  background-color: ${theme?.color[backgroundColorTone][
+    backgroundColorVariant
+  ]};
+`;
 
 const defaultVariant = ({ theme, variant }: Partial<TagProps> & StyleProps) =>
   variant === 'default' &&

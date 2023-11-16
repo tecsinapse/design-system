@@ -1,23 +1,21 @@
 import * as React from 'react';
-import { ViewProps } from 'react-native';
 import { ScrollableDigit } from '../InputWebDate/components';
 import { DivStyledColumn, DivStyledRow } from './styled';
 
-export interface DateTimeSelectorProps extends ViewProps {
+export interface DateTimeSelectorProps {
   setDate: React.Dispatch<React.SetStateAction<Date>>;
   date: Date;
   locale?: Locale;
+  minuteLabel?: string;
+  hourLabel?: string;
 }
 
 const ScrollableTimePicker: React.FC<DateTimeSelectorProps> = ({
   date,
   setDate,
+  minuteLabel,
+  hourLabel,
 }) => {
-  const minutesToShow = 60;
-  const firstMinute = 0;
-  const hoursToShow = 24;
-  const firstHour = 0;
-
   const handleTimeChange = (newTime, updateType) => {
     const newDate = new Date(date);
 
@@ -29,16 +27,9 @@ const ScrollableTimePicker: React.FC<DateTimeSelectorProps> = ({
     setDate(newDate);
   };
 
-  const minutes = React.useMemo(
-    () =>
-      Array.from({ length: minutesToShow }, (_, i) => String(i + firstMinute)),
-    [minutesToShow, firstMinute]
-  );
+  const minutes = Array.from({ length: 60 }, (_, i) => String(i));
 
-  const hours = React.useMemo(
-    () => Array.from({ length: hoursToShow }, (_, i) => String(i + firstHour)),
-    [hoursToShow, firstHour]
-  );
+  const hours = Array.from({ length: 24 }, (_, i) => String(i));
 
   const getInitialScrollIndex = (value, data) => {
     const selectedIndex = data.findIndex(item => item === value);
@@ -50,7 +41,7 @@ const ScrollableTimePicker: React.FC<DateTimeSelectorProps> = ({
       <DivStyledRow>
         <ScrollableDigit
           data={hours}
-          timeLabel={'Hour'}
+          timeLabel={hourLabel ?? 'Hour'}
           handleTimeChange={handleTimeChange}
           currentTime={date?.getHours().toString()}
           updateType={'hour'}
@@ -61,7 +52,7 @@ const ScrollableTimePicker: React.FC<DateTimeSelectorProps> = ({
         />
         <ScrollableDigit
           data={minutes}
-          timeLabel={'Minute'}
+          timeLabel={minuteLabel ?? 'Minute'}
           updateType={'minute'}
           currentTime={date?.getMinutes().toString()}
           handleTimeChange={handleTimeChange}

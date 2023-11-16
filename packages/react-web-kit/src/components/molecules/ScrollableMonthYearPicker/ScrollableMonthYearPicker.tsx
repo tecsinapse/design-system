@@ -7,6 +7,8 @@ import { format as formatDate } from 'date-fns';
 export interface ScrollableMonthYearProps {
   date: Date;
   setDate: React.Dispatch<React.SetStateAction<Date>>;
+  yearLabel?: string;
+  monthLabel?: string;
   locale?: Locale;
 }
 
@@ -14,6 +16,8 @@ const ScrollableMonthYearPicker: React.FC<ScrollableMonthYearProps> = ({
   setDate,
   date,
   locale,
+  monthLabel,
+  yearLabel,
 }) => {
   const handleMonthYearChange = (newTime, updateType) => {
     const newDate = new Date(date);
@@ -50,7 +54,7 @@ const ScrollableMonthYearPicker: React.FC<ScrollableMonthYearProps> = ({
       <DivStyledRow>
         <ScrollableDigit
           data={months}
-          timeLabel={'Month'}
+          timeLabel={monthLabel ?? 'Month'}
           handleTimeChange={handleMonthYearChange}
           initialScrollIndex={getInitialScrollIndex(
             months[date.getMonth()],
@@ -61,7 +65,7 @@ const ScrollableMonthYearPicker: React.FC<ScrollableMonthYearProps> = ({
         />
         <ScrollableDigit
           data={years}
-          timeLabel={'Year'}
+          timeLabel={yearLabel ?? 'Year'}
           handleTimeChange={handleMonthYearChange}
           initialScrollIndex={getInitialScrollIndex(date.getFullYear(), years)}
           updateType="year"

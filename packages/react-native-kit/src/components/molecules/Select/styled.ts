@@ -1,7 +1,5 @@
 import styled, { css } from '@emotion/native';
 import {
-  Button,
-  ButtonProps,
   disabledInputStyles,
   Icon,
   InputContainerProps,
@@ -12,7 +10,6 @@ import {
   StyleProps,
 } from '@tecsinapse/react-core';
 import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
-import { Input, InputNativeProps } from '../../atoms/Input';
 import { Text } from '../../atoms/Text';
 
 export const getStyledModal = (safeTop = 0) => {

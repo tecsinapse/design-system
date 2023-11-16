@@ -87,6 +87,8 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
               setDate={setDate}
               date={date}
               locale={locale}
+              yearLabel={yearLabel}
+              monthLabel={monthLabel}
             />
           </Content>
         </Content>
@@ -99,6 +101,8 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
               setDate={setDate}
               date={date}
               locale={locale}
+              hourLabel={hourLabel}
+              minuteLabel={minuteLabel}
             />
           </Content>
         </Content>

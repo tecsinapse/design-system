@@ -17,9 +17,6 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   timeModalTitle,
   dateConfirmButtonText,
   timeConfirmButtonText,
-  dayLabel,
-  monthLabel,
-  yearLabel,
   hourLabel,
   minuteLabel,
   ...rest
