@@ -33,8 +33,6 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   minuteLabel,
   ...rest
 }) => {
-  //     ));
-
   const [date, setDate] = React.useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
 
@@ -82,7 +80,7 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
           {modalTitle}
         </TextComponent>
       </Header>
-      // TODO: mode month
+      {/*TODO: mode month*/}
       {isDate ? (
         <Calendar type={'day'} value={date} onChange={handleChange} />
       ) : (
