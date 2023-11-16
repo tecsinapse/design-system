@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { Text, TextNativeProps } from '../../atoms/Text';
+import { Text } from '../../atoms/Text';
 import { BlockLabels } from './styled';
 import { DateBlock } from './components';
+import { DateTimeSelectorProps } from '@tecsinapse/react-core';
 
-export interface ScrollableSelectorProps {
-  value: Date | null | undefined;
-  locale?: Locale;
+export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
+
+export interface ScrollableSelectorProps extends DateTimeSelectorProps {
   height?: number;
   width?: number;
   fontSize?: number;
@@ -16,14 +17,6 @@ export interface ScrollableSelectorProps {
   markColor?: string;
   markHeight?: number;
   markWidth?: number;
-  monthLabel?: string;
-  yearLabel?: string;
-  hourLabel?: string;
-  minuteLabel?: string;
-  fadeColor?: string;
-  format?: string;
-  TextComponent?: React.FC<TextNativeProps>;
-  onChange?: (value: Date) => void;
 }
 
 const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({

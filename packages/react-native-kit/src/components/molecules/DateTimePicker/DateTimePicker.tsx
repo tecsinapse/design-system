@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import { getLocale } from '../../../utils/date';
 import { IBaseModal, ModalView, useLazyModalManager } from '../../atoms/Modal';
 import { Text } from '../../atoms/Text';
-import ScrollableSelector from '../ScrollableSelector/ScrollableSelector';
+import { NewDateTimeSelector } from '../NewDateTimeSelector';
 
 export type NativeDateTimePickerProps = Omit<
   DateTimePickerProps,
@@ -29,15 +29,15 @@ export const DateTimePicker: FC<NativeDateTimePickerProps> = ({
   return (
     <DateTimePickerCore
       TextComponent={Text}
-      //@ts-ignore
-      DateTimeSelectorComponent={
-        <ScrollableSelector
-          onChange={onChange}
+      DateTimeSelectorComponent={props => (
+        <NewDateTimeSelector
+          {...props}
           value={value}
+          onChange={onChange}
           hourLabel={hourLabel}
           minuteLabel={minuteLabel}
         />
-      }
+      )}
       locale={locale ?? getLocale()}
       requestShowSelector={() => modal.show()}
       requestCloseSelector={() => modal.close()}

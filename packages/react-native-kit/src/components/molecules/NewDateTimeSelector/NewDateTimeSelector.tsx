@@ -1,63 +1,58 @@
 import * as React from 'react';
 import { Button } from '../../atoms/Button';
-import {
-  Header,
-  Icon,
-  Text,
-  Calendar,
-  DateTimeSelectorProps,
-} from '@tecsinapse/react-core';
+import { Text } from '../../atoms/Text';
+import { ScrollableSelector } from '../ScrollableSelector';
+import { Header } from '../Select/styled';
+import { DateTimeSelectorProps, Icon } from '@tecsinapse/react-core';
+import { Calendar } from '../Calendar';
 import { BackButton, Content, Root } from './styled';
-
-import { ScrollableTimePicker } from '../ScrollableTimePicker';
-import { ScrollableMonthYearPicker } from '../ScrollableMonthYearPicker';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
-export interface InputWebDateProps extends DateTimeSelectorProps {
-  requestCloseSelector: () => void;
-}
+export interface NewDateTimeSelectorProps extends DateTimeSelectorProps {}
 
-const InputWebDate: React.FC<InputWebDateProps> = ({
+const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   TextComponent = Text,
   value,
   onChange,
-  mode,
+  mode = 'date',
+  locale,
+  upperDateThreshold: _upperDateThreshold,
+  lowerDateThreshold: _lowerDateThreshold,
+  offsetThreshold,
+  upperOffsetThreshold,
+  lowerOffsetThreshold,
   dateModalTitle,
   timeModalTitle,
   dateConfirmButtonText,
   timeConfirmButtonText,
-  yearLabel,
+  dayLabel,
   monthLabel,
+  yearLabel,
   hourLabel,
   minuteLabel,
-  requestCloseSelector,
   ...rest
 }) => {
+  //     ));
+
   const [date, setDate] = React.useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
 
-  const isDate = mode === 'date' || (mode === 'datetime' && currentMode === 0);
-  const isMonth = mode === 'month';
+  const isDate =
+    ['date', 'month'].includes(mode) ||
+    (mode === 'datetime' && currentMode === 0);
 
   const modalTitle = isDate ? dateModalTitle : timeModalTitle;
-
   const confirmButtonText = isDate
     ? dateConfirmButtonText
     : timeConfirmButtonText;
-
-  const handleCalendarChange = (value: Date | undefined) => {
-    if (value !== undefined) {
-      setDate(value);
-    }
-  };
 
   const handlePressConfirm = () => {
     if (mode === 'datetime' && currentMode === 0) {
       setCurrentMode(1);
     } else {
+      console.log('onChange', date);
       onChange?.(date);
-      requestCloseSelector();
     }
   };
 
@@ -65,11 +60,16 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
     setCurrentMode(0);
   };
 
+  const handleChange = (value?: Date) => {
+    console.log(value);
+    if (value) setDate(value);
+  };
+
   return (
     <Root {...rest}>
       <Header>
         {currentMode === 1 && (
-          <BackButton onPress={handlePressBack} style={{ top: -15, left: -10 }}>
+          <BackButton onPress={handlePressBack}>
             <Icon
               type={'material-community'}
               name={'chevron-left'}
@@ -82,24 +82,18 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
           {modalTitle}
         </TextComponent>
       </Header>
-
+      // TODO: mode month
       {isDate ? (
-        <Calendar type={'day'} value={date} onChange={handleCalendarChange} />
-      ) : isMonth ? (
-        <Content style={{ width: 150, flexDirection: 'column' }}>
-          <Content
-            style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
-          >
-            <ScrollableMonthYearPicker setDate={setDate} date={date} />
-          </Content>
-        </Content>
+        <Calendar type={'day'} value={date} onChange={handleChange} />
       ) : (
-        <Content style={{ width: 150, flexDirection: 'column' }}>
-          <Content
-            style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
-          >
-            <ScrollableTimePicker setDate={setDate} date={date} />
-          </Content>
+        <Content>
+          <ScrollableSelector
+            onChange={onChange}
+            value={value}
+            hourLabel={hourLabel}
+            minuteLabel={minuteLabel}
+            format={'HH-mm'}
+          />
         </Content>
       )}
       <Button color={'primary'} onPress={handlePressConfirm}>
@@ -111,4 +105,4 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
   );
 };
 
-export default InputWebDate;
+export default NewDateTimeSelector;

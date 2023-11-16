@@ -57,7 +57,7 @@
     "vite": "^4.4.9"
   },
   "scripts": {
-    "dev": "lerna run dev --stream",
+    "dev": "lerna run dev --stream --parallel",
     "build": "lerna run --stream 'build:es'",
     "build:watch": "yarn dev",
     "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",

@@ -1,23 +1,16 @@
 import styled, { css } from '@emotion/native';
 import { PressableSurface, StyleProps, Text } from '@tecsinapse/react-core';
-import { StyledInputElementBase } from '@tecsinapse/react-core/src/components/atoms/Input/styled';
 import { FlatList } from 'react-native';
 
-export const StyledWebTextInput = styled(StyledInputElementBase)`
-  &:focus-visible {
-    width: '100%';
-  }
-`;
-
 export const StyledTextLabel = styled(Text)`
-  text-align: 'center';
+  text-align: center;
   font-size: 12px;
   font-weight: bold;
 `;
 
 export const TimeDigitContainer = styled(FlatList<string>)`
   max-height: 100px;
-  overflow-y: 'scroll';
+  overflow-y: scroll;
 `;
 
 export const TimeCard = styled(PressableSurface)(
@@ -31,3 +24,22 @@ export const TimeCard = styled(PressableSurface)(
     padding: ${props.theme?.spacing.mili} ${props.theme?.spacing.deca};
   `
 );
+
+export const Root = styled.View<Partial<StyleProps>>`
+  position: relative;
+  background-color: ${({ theme }) => theme.miscellaneous.surfaceColor};
+`;
+export const Content = styled.View<Partial<StyleProps>>`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: ${({ theme }) => theme.spacing.deca};
+  margin-bottom: ${({ theme }) => theme.spacing.deca};
+`;
+
+export const BackButton = styled(PressableSurface)<Partial<StyleProps>>`
+  border-radius: ${({ theme }) => theme.borderRadius.mili};
+  padding: ${({ theme }) => theme.spacing.micro};
+  position: absolute;
+  aspect-ratio: 1;
+  left: 0;
+`;

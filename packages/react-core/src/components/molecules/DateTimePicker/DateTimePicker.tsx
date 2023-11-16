@@ -56,7 +56,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hint,
   variant = 'default',
   TextComponent = Text,
-  DateTimeSelectorComponent,
+  DateTimeSelectorComponent = DateTimeSelector,
   rightComponent,
   style,
   renderSelector,
