@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
 import { Text } from '../../atoms/Text';
 import { BlockLabels } from './styled';
 import { DateBlock } from './components';
 import { DateTimeSelectorProps } from '@tecsinapse/react-core';
-
-export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
 export interface ScrollableSelectorProps extends DateTimeSelectorProps {
   height?: number;
@@ -38,6 +36,7 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   minuteLabel,
   TextComponent = Text,
 }) => {
+  const date = useMemo(() => value ?? new Date(), [value]);
   const [months, setMonths] = useState<number[]>([]);
   const [years, setYears] = useState<number[]>([]);
   const [hour, setHour] = useState<number[]>([]);
@@ -61,27 +60,27 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   );
   const pickerWidth = width ?? '100%';
 
-  const unexpectedDate: Date = new Date(years[0], 0, 1);
-  const date = new Date(value ?? unexpectedDate);
+  const changeHandle = useCallback(
+    (type: string, digit: number): void => {
+      switch (type) {
+        case 'month':
+          date.setMonth(digit - 1);
+          break;
+        case 'year':
+          date.setFullYear(digit);
+          break;
+        case 'hour':
+          date.setHours(digit);
+          break;
+        case 'minutes':
+          date.setMinutes(digit);
+      }
+      onChange?.(date);
+    },
+    [date]
+  );
 
-  const changeHandle = (type: string, digit: number): void => {
-    switch (type) {
-      case 'month':
-        date.setMonth(digit - 1);
-        break;
-      case 'year':
-        date.setFullYear(digit);
-        break;
-      case 'hour':
-        date.setHours(digit);
-        break;
-      case 'minutes':
-        date.setMinutes(digit);
-    }
-    onChange?.(date);
-  };
-
-  const getOrder = () => {
+  const getOrder = useCallback(() => {
     return (format || 'dd-MM-yyyy' || 'HH-mm' || 'MM-yyyy')
       .split('-')
       .map((type, index) => {
@@ -116,7 +115,7 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
             };
         }
       });
-  };
+  }, [format, date, months, years, hour, minutes]);
 
   return (
     <View style={{ flexDirection: 'column', width: '100%' }}>
@@ -139,7 +138,7 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
         {getOrder().map((el, index) => {
           return (
             <DateBlock
-              date={date}
+              date={value ?? new Date()}
               digits={el.digits}
               value={el.value}
               onChange={changeHandle}

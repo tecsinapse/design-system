@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { Block, Mark, StyledScrollView } from '../styled';
 import { TextProps } from '@tecsinapse/react-core';
+import { format as formatDate } from 'date-fns';
 
 export interface DateBlockProps {
   digits: number[];
@@ -32,21 +33,15 @@ const DateBlock: React.FC<DateBlockProps> = ({
   markHeight,
   markWidth,
   TextComponent = Text,
+  locale,
 }) => {
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
+  const months = [...Array(12)].map((_, index) =>
+    formatDate(new Date().setMonth(index), 'MMM', { locale: locale }).slice(
+      0,
+      3
+    )
+  );
+
   const dHeight: number = Math.round(height / 4);
 
   const mHeight: number = markHeight ?? Math.min(dHeight, 65);
@@ -70,7 +65,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
 
   const getDisplayedValue = (granularity: string) => (value: number) => {
     if (granularity === 'month') {
-      return months[value - 1].slice(0, 3);
+      return months[value - 1];
     } else {
       return value.toString().padStart(2, '0');
     }

@@ -15,6 +15,7 @@ export const Content = styled.View<Partial<StyleProps>>`
 export const BackButton = styled(PressableSurface)<Partial<StyleProps>>`
   border-radius: ${({ theme }) => theme.borderRadius.mili};
   padding: ${({ theme }) => theme.spacing.micro};
+  margin-right: ${({ theme }) => theme.spacing.mili};
   aspect-ratio: 1;
 `;
 

@@ -1,15 +1,12 @@
 import * as React from 'react';
 import { ViewProps } from 'react-native';
-import { Content } from '@tecsinapse/react-core/src/components/molecules/DateTimeSelector/styled';
 import { ScrollableDigit } from '../InputWebDate/components';
-import { TextProps, Text } from '../../..';
 import { DivStyledColumn, DivStyledRow } from './styled';
-
-export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
 export interface DateTimeSelectorProps extends ViewProps {
   setDate: React.Dispatch<React.SetStateAction<Date>>;
   date: Date;
+  locale?: Locale;
 }
 
 const ScrollableTimePicker: React.FC<DateTimeSelectorProps> = ({

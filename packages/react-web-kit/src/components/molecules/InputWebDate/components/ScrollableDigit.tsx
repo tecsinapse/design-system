@@ -11,8 +11,6 @@ import { RFValue } from '@tecsinapse/react-core/src/utils/ResponsiveFontSize';
 import { StyledTextLabel, TimeDigitContainer } from '../styled';
 import { MemoizedTimeCard } from '.';
 
-export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
-
 export interface ScrollableDigitProps {
   TextComponent?: React.FC<TextProps>;
   updateType: 'hour' | 'minute' | 'year' | 'month';

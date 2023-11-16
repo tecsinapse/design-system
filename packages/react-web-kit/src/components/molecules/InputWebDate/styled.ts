@@ -39,7 +39,13 @@ export const Content = styled.View<Partial<StyleProps>>`
 export const BackButton = styled(PressableSurface)<Partial<StyleProps>>`
   border-radius: ${({ theme }) => theme.borderRadius.mili};
   padding: ${({ theme }) => theme.spacing.micro};
-  position: absolute;
+  margin-right: ${({ theme }) => theme.spacing.mili};
   aspect-ratio: 1;
-  left: 0;
+`;
+
+export const Header = styled.View<Partial<StyleProps>>`
+  flex-direction: row;
+  align-items: center;
+  margin-top: ${({ theme }) => theme.spacing.mili};
+  margin-bottom: ${({ theme }) => theme.spacing.mili};
 `;

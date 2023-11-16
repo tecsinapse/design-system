@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { Button } from '../../atoms/Button';
 import {
-  Header,
   Icon,
   Text,
   Calendar,
   DateTimeSelectorProps,
 } from '@tecsinapse/react-core';
-import { BackButton, Content, Root } from './styled';
-
+import { BackButton, Content, Root, Header } from './styled';
 import { ScrollableTimePicker } from '../ScrollableTimePicker';
 import { ScrollableMonthYearPicker } from '../ScrollableMonthYearPicker';
-
-export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
 export interface InputWebDateProps extends DateTimeSelectorProps {}
 
@@ -29,6 +25,7 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
   monthLabel,
   hourLabel,
   minuteLabel,
+  locale,
   ...rest
 }) => {
   const [date, setDate] = React.useState<Date>(value || new Date());
@@ -65,7 +62,7 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
     <Root {...rest}>
       <Header>
         {currentMode === 1 && (
-          <BackButton onPress={handlePressBack} style={{ top: -15, left: -10 }}>
+          <BackButton onPress={handlePressBack}>
             <Icon
               type={'material-community'}
               name={'chevron-left'}
@@ -86,7 +83,11 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
           <Content
             style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
           >
-            <ScrollableMonthYearPicker setDate={setDate} date={date} />
+            <ScrollableMonthYearPicker
+              setDate={setDate}
+              date={date}
+              locale={locale}
+            />
           </Content>
         </Content>
       ) : (
@@ -94,7 +95,11 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
           <Content
             style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
           >
-            <ScrollableTimePicker setDate={setDate} date={date} />
+            <ScrollableTimePicker
+              setDate={setDate}
+              date={date}
+              locale={locale}
+            />
           </Content>
         </Content>
       )}

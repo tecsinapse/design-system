@@ -1,59 +1,43 @@
 import * as React from 'react';
-import { ViewProps } from 'react-native';
 
 import { DivStyledColumn, DivStyledRow } from './styled';
 import { ScrollableDigit } from '../InputWebDate/components';
+import { format as formatDate } from 'date-fns';
 
-export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
-
-export interface ScrollableMonthYearProps extends ViewProps {
+export interface ScrollableMonthYearProps {
   date: Date;
   setDate: React.Dispatch<React.SetStateAction<Date>>;
+  locale?: Locale;
 }
 
 const ScrollableMonthYearPicker: React.FC<ScrollableMonthYearProps> = ({
   setDate,
   date,
+  locale,
 }) => {
   const handleMonthYearChange = (newTime, updateType) => {
     const newDate = new Date(date);
     if (updateType === 'year') {
       newDate.setFullYear(Number(newTime));
     } else if (updateType === 'month') {
-      newDate.setMonth(Number(newTime));
+      newDate.setMonth(months.indexOf(newTime));
     }
     setDate(newDate);
   };
 
   const yearsToShow = 20;
   const firstYear = new Date().getFullYear() - 10;
-  const monthsToShow = [
-    'JAN',
-    'FEV',
-    'MAR',
-    'ABR',
-    'MAI',
-    'JUN',
-    'JUL',
-    'AGO',
-    'SET',
-    'OUT',
-    'NOV',
-    'DEZ',
-  ];
-  const firstMonth = 1;
 
   const years = React.useMemo(
     () => Array.from({ length: yearsToShow }, (_, i) => String(i + firstYear)),
     [yearsToShow, firstYear]
   );
 
-  const months = React.useMemo(
-    () =>
-      Array.from({ length: monthsToShow.length }, (_, i) =>
-        String(i + firstMonth)
-      ),
-    [monthsToShow, firstMonth]
+  const months = [...Array(12)].map((_, index) =>
+    formatDate(new Date().setMonth(index), 'MMM', { locale: locale }).slice(
+      0,
+      3
+    )
   );
 
   const getInitialScrollIndex = (value, data) => {
@@ -68,9 +52,12 @@ const ScrollableMonthYearPicker: React.FC<ScrollableMonthYearProps> = ({
           data={months}
           timeLabel={'Month'}
           handleTimeChange={handleMonthYearChange}
-          initialScrollIndex={getInitialScrollIndex(date.getMonth(), months)}
+          initialScrollIndex={getInitialScrollIndex(
+            months[date.getMonth()],
+            months
+          )}
           updateType="month"
-          currentTime={date?.getMonth().toString()}
+          currentTime={months[date.getMonth()]}
         />
         <ScrollableDigit
           data={years}
