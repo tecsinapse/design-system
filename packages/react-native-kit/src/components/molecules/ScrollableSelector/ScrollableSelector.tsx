@@ -48,8 +48,8 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
     const start = !startYear || startYear > end ? end - 100 : startYear;
     const _months = [...Array(12)].map((_, index) => index + 1);
     const _years = [...Array(end - start + 1)].map((_, index) => start + index);
-    const _hour = [...Array(23)].map((_, index) => index + 1);
-    const _minutes = [...Array(59)].map((_, index) => index + 1);
+    const _hour = [...Array(24)].map((_, index) => index);
+    const _minutes = [...Array(60)].map((_, index) => index);
     setMonths(_months);
     setYears(_years);
     setHour(_hour);

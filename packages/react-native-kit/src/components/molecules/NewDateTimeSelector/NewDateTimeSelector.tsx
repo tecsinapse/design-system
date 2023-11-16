@@ -86,7 +86,7 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
         <Content>
           <ScrollableSelector
             onChange={setDate}
-            value={value}
+            value={date}
             hourLabel={hourLabel}
             minuteLabel={minuteLabel}
             format={'HH-mm'}
