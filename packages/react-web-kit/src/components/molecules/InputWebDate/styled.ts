@@ -9,7 +9,7 @@ export const StyledTextLabel = styled(Text)`
 `;
 
 export const TimeDigitContainer = styled(FlatList<string>)`
-  max-height: 100px;
+  max-height: 150px;
   overflow-y: scroll;
 `;
 

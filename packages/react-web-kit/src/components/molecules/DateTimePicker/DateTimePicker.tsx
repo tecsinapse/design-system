@@ -27,14 +27,12 @@ export const DateTimePicker: FC<WebDateTimePickerProps> = ({
     <DateTimePickerCore
       {...rest}
       value={value}
+      onChange={onChange}
       DateTimeSelectorComponent={props => (
         <InputWebDate
           {...props}
-          value={value}
-          onChange={onChange}
           hourLabel={hourLabel}
           minuteLabel={minuteLabel}
-          requestCloseSelector={close}
         />
       )}
       requestShowSelector={show}

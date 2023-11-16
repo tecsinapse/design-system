@@ -14,9 +14,7 @@ import { ScrollableMonthYearPicker } from '../ScrollableMonthYearPicker';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
-export interface InputWebDateProps extends DateTimeSelectorProps {
-  requestCloseSelector: () => void;
-}
+export interface InputWebDateProps extends DateTimeSelectorProps {}
 
 const InputWebDate: React.FC<InputWebDateProps> = ({
   TextComponent = Text,
@@ -31,7 +29,6 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
   monthLabel,
   hourLabel,
   minuteLabel,
-  requestCloseSelector,
   ...rest
 }) => {
   const [date, setDate] = React.useState<Date>(value || new Date());
@@ -57,7 +54,6 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
       setCurrentMode(1);
     } else {
       onChange?.(date);
-      requestCloseSelector();
     }
   };
 
@@ -86,7 +82,7 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
       {isDate ? (
         <Calendar type={'day'} value={date} onChange={handleCalendarChange} />
       ) : isMonth ? (
-        <Content style={{ width: 150, flexDirection: 'column' }}>
+        <Content style={{ flexDirection: 'column' }}>
           <Content
             style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
           >
@@ -94,7 +90,7 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
           </Content>
         </Content>
       ) : (
-        <Content style={{ width: 150, flexDirection: 'column' }}>
+        <Content style={{ flexDirection: 'column' }}>
           <Content
             style={{ width: '100%', flexDirection: 'row', display: 'flex' }}
           >
