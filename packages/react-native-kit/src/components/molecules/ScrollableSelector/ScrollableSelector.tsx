@@ -119,45 +119,43 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   };
 
   return (
-    <>
-      <View style={{ flexDirection: 'column', width: '100%' }}>
-        <BlockLabels>
-          {format === 'MM-yyyy' ? (
-            <>
-              <TextComponent>{monthLabel}</TextComponent>
-              <TextComponent>{yearLabel}</TextComponent>
-            </>
-          ) : (
-            <>
-              <TextComponent>{hourLabel}</TextComponent>
-              <TextComponent>{minuteLabel}</TextComponent>
-            </>
-          )}
-        </BlockLabels>
-        <View
-          style={[styles.picker, { height: pickerHeight, width: pickerWidth }]}
-        >
-          {getOrder().map((el, index) => {
-            return (
-              <DateBlock
-                date={date}
-                digits={el.digits}
-                value={el.value}
-                onChange={changeHandle}
-                height={pickerHeight}
-                fontSize={fontSize ?? 22}
-                textColor={textColor}
-                markColor={markColor}
-                markHeight={markHeight}
-                markWidth={markWidth ?? 70}
-                type={el.name}
-                key={index}
-              />
-            );
-          })}
-        </View>
+    <View style={{ flexDirection: 'column', width: '100%' }}>
+      <BlockLabels>
+        {format === 'MM-yyyy' ? (
+          <>
+            <TextComponent>{monthLabel}</TextComponent>
+            <TextComponent>{yearLabel}</TextComponent>
+          </>
+        ) : (
+          <>
+            <TextComponent>{hourLabel}</TextComponent>
+            <TextComponent>{minuteLabel}</TextComponent>
+          </>
+        )}
+      </BlockLabels>
+      <View
+        style={[styles.picker, { height: pickerHeight, width: pickerWidth }]}
+      >
+        {getOrder().map((el, index) => {
+          return (
+            <DateBlock
+              date={date}
+              digits={el.digits}
+              value={el.value}
+              onChange={changeHandle}
+              height={pickerHeight}
+              fontSize={fontSize ?? 22}
+              textColor={textColor}
+              markColor={markColor}
+              markHeight={markHeight}
+              markWidth={markWidth ?? 70}
+              type={el.name}
+              key={index}
+            />
+          );
+        })}
       </View>
-    </>
+    </View>
   );
 };
 

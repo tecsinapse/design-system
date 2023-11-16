@@ -2,10 +2,9 @@ import * as React from 'react';
 import { Button } from '../../atoms/Button';
 import { Text } from '../../atoms/Text';
 import { ScrollableSelector } from '../ScrollableSelector';
-import { Header } from '../Select/styled';
 import { DateTimeSelectorProps, Icon } from '@tecsinapse/react-core';
 import { Calendar } from '../Calendar';
-import { BackButton, Content, Root } from './styled';
+import { BackButton, Content, Header, Root } from './styled';
 
 export type DateTimeSelectorMode = 'date' | 'time' | 'datetime' | 'month';
 
@@ -86,7 +85,7 @@ const NewDateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
       ) : (
         <Content>
           <ScrollableSelector
-            onChange={onChange}
+            onChange={setDate}
             value={value}
             hourLabel={hourLabel}
             minuteLabel={minuteLabel}

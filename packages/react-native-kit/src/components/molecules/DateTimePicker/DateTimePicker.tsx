@@ -32,8 +32,6 @@ export const DateTimePicker: FC<NativeDateTimePickerProps> = ({
       DateTimeSelectorComponent={props => (
         <NewDateTimeSelector
           {...props}
-          value={value}
-          onChange={onChange}
           hourLabel={hourLabel}
           minuteLabel={minuteLabel}
         />
@@ -44,6 +42,8 @@ export const DateTimePicker: FC<NativeDateTimePickerProps> = ({
       renderSelector={(selector, blur) =>
         modal.sync(<NativeModal onClose={blur}>{selector}</NativeModal>)
       }
+      onChange={onChange}
+      value={value}
       {...rest}
     />
   );
