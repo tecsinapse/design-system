@@ -42,7 +42,9 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
 
   const handleCalendarChange = (value: Date | undefined) => {
     if (value !== undefined) {
-      setDate(value);
+      const referenceDate = value;
+      referenceDate.setHours(date.getHours(), date.getMinutes());
+      setDate(referenceDate);
     }
   };
 
@@ -77,7 +79,12 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
       </Header>
 
       {isDate ? (
-        <Calendar type={'day'} value={date} onChange={handleCalendarChange} />
+        <Calendar
+          type={'day'}
+          value={date}
+          onChange={handleCalendarChange}
+          locale={locale}
+        />
       ) : isMonth ? (
         <Content style={{ flexDirection: 'column' }}>
           <Content

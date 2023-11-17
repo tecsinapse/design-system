@@ -23,7 +23,7 @@ export const DateTimePicker: FC<WebDateTimePickerProps> = ({
   return (
     <DateTimePickerCore
       {...rest}
-      DateTimeSelectorComponent={props => <InputWebDate {...props} />}
+      DateTimeSelectorComponent={InputWebDate}
       requestShowSelector={show}
       requestCloseSelector={close}
       renderSelector={selector => (

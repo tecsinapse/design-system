@@ -26,10 +26,10 @@ export const DateTimePicker: FC<NativeDateTimePickerProps> = ({
     <DateTimePickerCore
       {...rest}
       TextComponent={Text}
-      DateTimeSelectorComponent={props => <DateTimeSelector {...props} />}
+      DateTimeSelectorComponent={DateTimeSelector}
       locale={locale ?? getLocale()}
-      requestShowSelector={() => modal.show()}
-      requestCloseSelector={() => modal.close()}
+      requestShowSelector={modal.show}
+      requestCloseSelector={modal.close}
       renderSelector={(selector, blur) =>
         modal.sync(<NativeModal onClose={blur}>{selector}</NativeModal>)
       }

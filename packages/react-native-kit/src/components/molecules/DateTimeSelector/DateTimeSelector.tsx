@@ -49,7 +49,11 @@ const DateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   };
 
   const handleChange = (value?: Date) => {
-    if (value) setDate(value);
+    if (value) {
+      const referenceDate = value;
+      referenceDate.setHours(date.getHours(), date.getMinutes());
+      setDate(referenceDate);
+    }
   };
 
   return (
@@ -70,7 +74,12 @@ const DateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
         </TextComponent>
       </Header>
       {isDate ? (
-        <Calendar type={'day'} value={date} onChange={handleChange} />
+        <Calendar
+          type={'day'}
+          value={date}
+          onChange={handleChange}
+          locale={locale}
+        />
       ) : isMonth ? (
         <Content>
           <ScrollableSelector
