@@ -11,10 +11,7 @@ export type WebDateTimePickerProps = Omit<
   'renderSelector' | 'requestShowSelector' | 'requestCloseSelector'
 >;
 
-export const DateTimePicker: FC<WebDateTimePickerProps> = ({
-  locale,
-  ...rest
-}) => {
+export const DateTimePicker: FC<WebDateTimePickerProps> = ({ ...rest }) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const show = useCallback(() => setVisible(true), []);
