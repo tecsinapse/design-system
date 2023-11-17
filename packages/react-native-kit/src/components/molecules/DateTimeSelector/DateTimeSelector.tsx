@@ -78,7 +78,8 @@ const DateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
           type={'day'}
           value={date}
           onChange={handleChange}
-          locale={locale}
+          year={date.getFullYear()}
+          month={date.getMonth()}
         />
       ) : isMonth ? (
         <Content>

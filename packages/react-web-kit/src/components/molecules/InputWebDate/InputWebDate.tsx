@@ -83,7 +83,8 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
           type={'day'}
           value={date}
           onChange={handleCalendarChange}
-          locale={locale}
+          year={date.getFullYear()}
+          month={date.getMonth()}
         />
       ) : isMonth ? (
         <Content style={{ flexDirection: 'column' }}>
