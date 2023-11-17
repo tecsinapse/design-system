@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DivStyledColumn, DivStyledRow } from './styled';
-import { ScrollableDigit } from '../InputWebDate/components';
+import { ScrollableDigit } from '../DateTimePickerSelector/components';
 import { format as formatDate } from 'date-fns';
 
 export interface ScrollableMonthYearProps {

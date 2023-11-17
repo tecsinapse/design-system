@@ -118,3 +118,8 @@ export * from './styles/light';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './types/defaults';
 export * from './utils';
+export { ControlledDateTimeSelector } from './components/molecules/ControlledDateTimeSelector';
+export type {
+  ControlledDateTimeSelectorProps,
+  ControlledSelectorComponentProps,
+} from './components/molecules/ControlledDateTimeSelector';

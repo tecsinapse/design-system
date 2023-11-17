@@ -4,62 +4,35 @@ import {
   Icon,
   Text,
   Calendar,
+  ControlledSelectorComponentProps,
   DateTimeSelectorProps,
 } from '@tecsinapse/react-core';
 import { BackButton, Content, Root, Header } from './styled';
 import { ScrollableTimePicker } from '../ScrollableTimePicker';
 import { ScrollableMonthYearPicker } from '../ScrollableMonthYearPicker';
 
-export interface InputWebDateProps extends DateTimeSelectorProps {}
+type DateTimePickerSelectorProps = ControlledSelectorComponentProps &
+  DateTimeSelectorProps;
 
-const InputWebDate: React.FC<InputWebDateProps> = ({
+const DateTimePickerSelector: React.FC<DateTimePickerSelectorProps> = ({
   TextComponent = Text,
-  value,
-  onChange,
-  mode,
-  dateModalTitle,
-  timeModalTitle,
-  dateConfirmButtonText,
-  timeConfirmButtonText,
+  currentMode,
+  handlePressBack,
+  modalTitle,
+  isDate,
+  date,
+  handleCalendarChange,
+  isMonth,
+  setDate,
+  handlePressConfirm,
+  confirmButtonText,
+  locale,
   yearLabel,
   monthLabel,
   hourLabel,
   minuteLabel,
-  locale,
   ...rest
 }) => {
-  const [date, setDate] = React.useState<Date>(value || new Date());
-  const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
-
-  const isDate = mode === 'date' || (mode === 'datetime' && currentMode === 0);
-  const isMonth = mode === 'month';
-
-  const modalTitle = isDate ? dateModalTitle : timeModalTitle;
-
-  const confirmButtonText = isDate
-    ? dateConfirmButtonText
-    : timeConfirmButtonText;
-
-  const handleCalendarChange = (value: Date | undefined) => {
-    if (value !== undefined) {
-      const referenceDate = value;
-      referenceDate.setHours(date.getHours(), date.getMinutes());
-      setDate(referenceDate);
-    }
-  };
-
-  const handlePressConfirm = () => {
-    if (mode === 'datetime' && currentMode === 0) {
-      setCurrentMode(1);
-    } else {
-      onChange?.(date);
-    }
-  };
-
-  const handlePressBack = () => {
-    setCurrentMode(0);
-  };
-
   return (
     <Root {...rest}>
       <Header>
@@ -124,4 +97,4 @@ const InputWebDate: React.FC<InputWebDateProps> = ({
   );
 };
 
-export default InputWebDate;
+export default DateTimePickerSelector;

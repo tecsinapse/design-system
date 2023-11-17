@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ScrollableDigit } from '../InputWebDate/components';
+import { ScrollableDigit } from '../DateTimePickerSelector/components';
 import { DivStyledColumn, DivStyledRow } from './styled';
 
 export interface DateTimeSelectorProps {

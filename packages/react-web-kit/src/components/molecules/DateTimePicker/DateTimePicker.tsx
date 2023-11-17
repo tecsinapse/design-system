@@ -1,10 +1,11 @@
 import {
+  ControlledDateTimeSelector,
   DateTimePicker as DateTimePickerCore,
   DateTimePickerProps,
 } from '@tecsinapse/react-core';
 import React, { FC, useCallback, useState } from 'react';
 import { Dropdown } from '../../atoms/Dropdown';
-import { InputWebDate } from '../InputWebDate';
+import { DateTimePickerSelector } from '../DateTimePickerSelector';
 
 export type WebDateTimePickerProps = Omit<
   DateTimePickerProps,
@@ -20,7 +21,12 @@ export const DateTimePicker: FC<WebDateTimePickerProps> = ({ ...rest }) => {
   return (
     <DateTimePickerCore
       {...rest}
-      DateTimeSelectorComponent={InputWebDate}
+      DateTimeSelectorComponent={props => (
+        <ControlledDateTimeSelector
+          SelectorComponent={DateTimePickerSelector}
+          {...props}
+        />
+      )}
       requestShowSelector={show}
       requestCloseSelector={close}
       renderSelector={selector => (

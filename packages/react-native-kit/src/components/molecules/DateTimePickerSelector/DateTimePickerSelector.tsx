@@ -2,60 +2,37 @@ import * as React from 'react';
 import { Button } from '../../atoms/Button';
 import { Text } from '../../atoms/Text';
 import { ScrollableSelector } from '../ScrollableSelector';
-import { DateTimeSelectorProps, Icon } from '@tecsinapse/react-core';
+import {
+  ControlledSelectorComponentProps,
+  DateTimeSelectorProps,
+  Icon,
+} from '@tecsinapse/react-core';
 import { Calendar } from '../Calendar';
 import { BackButton, Content, Header, Root } from './styled';
 import { getLocale } from '../../../utils/date';
 
-export interface NewDateTimeSelectorProps extends DateTimeSelectorProps {}
+type DateTimePickerSelectorProps = ControlledSelectorComponentProps &
+  DateTimeSelectorProps;
 
-const DateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
+const DateTimePickerSelector: React.FC<DateTimePickerSelectorProps> = ({
   TextComponent = Text,
-  value,
-  onChange,
-  mode,
-  dateModalTitle,
-  timeModalTitle,
-  dateConfirmButtonText,
-  timeConfirmButtonText,
+  currentMode,
+  handlePressBack,
+  modalTitle,
+  isDate,
+  date,
+  handleCalendarChange,
+  isMonth,
+  setDate,
+  handlePressConfirm,
+  confirmButtonText,
+  locale,
+  yearLabel,
+  monthLabel,
   hourLabel,
   minuteLabel,
-  locale,
   ...rest
 }) => {
-  const [date, setDate] = React.useState<Date>(value ?? new Date());
-  const [currentMode, setCurrentMode] = React.useState<0 | 1>(0);
-
-  const isDate =
-    (mode === 'datetime' && currentMode === 0) ||
-    (mode === 'date' && currentMode === 0);
-  const isMonth = mode === 'month';
-
-  const modalTitle = isDate ? dateModalTitle : timeModalTitle;
-  const confirmButtonText = isDate
-    ? dateConfirmButtonText
-    : timeConfirmButtonText;
-
-  const handlePressConfirm = () => {
-    if (mode === 'datetime' && currentMode === 0) {
-      setCurrentMode(1);
-    } else {
-      onChange?.(date);
-    }
-  };
-
-  const handlePressBack = () => {
-    setCurrentMode(0);
-  };
-
-  const handleChange = (value?: Date) => {
-    if (value) {
-      const referenceDate = value;
-      referenceDate.setHours(date.getHours(), date.getMinutes());
-      setDate(referenceDate);
-    }
-  };
-
   return (
     <Root {...rest}>
       <Header>
@@ -77,7 +54,7 @@ const DateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
         <Calendar
           type={'day'}
           value={date}
-          onChange={handleChange}
+          onChange={handleCalendarChange}
           year={date.getFullYear()}
           month={date.getMonth()}
         />
@@ -86,8 +63,8 @@ const DateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
           <ScrollableSelector
             onChange={setDate}
             value={date}
-            hourLabel={hourLabel}
-            minuteLabel={minuteLabel}
+            yearLabel={yearLabel}
+            monthLabel={monthLabel}
             format={'MM-yyyy'}
             locale={locale ?? getLocale()}
           />
@@ -113,4 +90,4 @@ const DateTimeSelector: React.FC<NewDateTimeSelectorProps> = ({
   );
 };
 
-export default DateTimeSelector;
+export default DateTimePickerSelector;

@@ -38,7 +38,7 @@ export { DatePicker } from './components/molecules/DatePicker';
 export type { NativeDatePickerProps } from './components/molecules/DatePicker';
 export { DateTimePicker } from './components/molecules/DateTimePicker';
 export type { NativeDateTimePickerProps } from './components/molecules/DateTimePicker';
-export { DateTimeSelector } from './components/molecules/DateTimeSelector';
+export { DateTimePickerSelector } from './components/molecules/DateTimePickerSelector';
 export { IconTextButton } from './components/molecules/IconTextButton';
 export type { NativeIconTextButtonProps } from './components/molecules/IconTextButton';
 export { InputPassword } from './components/molecules/InputPassword';
