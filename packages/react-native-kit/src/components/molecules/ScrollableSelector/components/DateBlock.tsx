@@ -3,7 +3,6 @@ import { Text, TouchableOpacity } from 'react-native';
 import { Block, Mark, StyledScrollView } from '../styled';
 import { TextProps } from '@tecsinapse/react-core';
 import { format as formatDate } from 'date-fns';
-import { getLocale } from '../../../../utils/date';
 
 export interface DateBlockProps {
   digits: number[];
