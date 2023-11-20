@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/react-lab",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "TecSinapse components laboratory",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -33,5 +33,6 @@
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
-  }
+  },
+  "gitHead": "594cf6d21e45d6a07902dacc00b9e818d5de5a70"
 }
