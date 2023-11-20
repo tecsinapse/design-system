@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.1.0...@tecsinapse/react-web-kit@3.2.0) (2023-11-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
 # [3.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.3.1...@tecsinapse/react-web-kit@3.0.0) (2023-10-25)
 
 ### Bug Fixes
