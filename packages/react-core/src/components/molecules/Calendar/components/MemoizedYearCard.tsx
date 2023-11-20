@@ -25,6 +25,7 @@ const MemoizedYearCard = React.memo(
       <TextComponent
         colorVariant={isSelected ? 'primary' : 'secondary'}
         colorTone={'xdark'}
+        typography={'sub'}
       >
         {year}
       </TextComponent>

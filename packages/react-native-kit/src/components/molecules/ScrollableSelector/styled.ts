@@ -25,7 +25,7 @@ export const BlockLabels = styled.View`
   flex-direction: row;
   width: 100%;
   justify-content: space-around;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 export const Scroll = styled.ScrollView`
   width: 100%;
