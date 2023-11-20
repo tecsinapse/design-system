@@ -82,6 +82,11 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   const _placeholder = onlyLabel ? label : placeholder;
   const _label = hasValue ? label : undefined;
 
+  const _valueColorVariant = disabled
+    ? 'secondary'
+    : displayTextProps?.colorVariant;
+  const _valueColorTone = disabled ? 'light' : displayTextProps?.colorTone;
+
   const displayValue = getDisplayValue<Data>(
     type,
     value,
@@ -164,7 +169,12 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           disabled={disabled}
           rightComponent={RightComponent}
         >
-          <Text {...displayTextProps} fontWeight={'bold'}>
+          <Text
+            {...displayTextProps}
+            colorTone={_valueColorTone}
+            colorVariant={_valueColorVariant}
+            fontWeight={'bold'}
+          >
             {displayValue}
           </Text>
         </PressableInputContainer>
