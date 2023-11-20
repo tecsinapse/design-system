@@ -6,6 +6,7 @@ export const StyledTextLabel = styled(Text)`
   text-align: center;
   font-size: 12px;
   font-weight: bold;
+  text-transform: capitalize;
 `;
 
 export const TimeDigitContainer = styled(FlatList<string>)`

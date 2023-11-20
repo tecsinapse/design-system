@@ -3,6 +3,7 @@ import { Text, TouchableOpacity } from 'react-native';
 import { Block, Mark, StyledScrollView } from '../styled';
 import { TextProps } from '@tecsinapse/react-core';
 import { format as formatDate } from 'date-fns';
+import { getLocale } from '../../../../utils/date';
 
 export interface DateBlockProps {
   digits: number[];
@@ -36,10 +37,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
   locale,
 }) => {
   const months = [...Array(12)].map((_, index) =>
-    formatDate(new Date().setMonth(index), 'MMM', { locale: locale }).slice(
-      0,
-      3
-    )
+    formatDate(new Date().setMonth(index), 'MMM', { locale })
   );
 
   const dHeight: number = Math.round(height / 4);
@@ -107,6 +105,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
                   marginTop: index === 0 ? height / 2 - dHeight / 2 : 0,
                   lineHeight: dHeight,
                   height: dHeight,
+                  textTransform: 'capitalize',
                 }}
               >
                 {getDisplayedValue(type)(value)}

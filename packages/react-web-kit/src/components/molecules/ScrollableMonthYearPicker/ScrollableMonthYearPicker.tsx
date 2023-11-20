@@ -38,10 +38,7 @@ const ScrollableMonthYearPicker: React.FC<ScrollableMonthYearProps> = ({
   );
 
   const months = [...Array(12)].map((_, index) =>
-    formatDate(new Date().setMonth(index), 'MMM', { locale: locale }).slice(
-      0,
-      3
-    )
+    formatDate(new Date().setMonth(index), 'MMM', { locale })
   );
 
   const getInitialScrollIndex = (value, data) => {

@@ -4,6 +4,7 @@ import { Text } from '../../atoms/Text';
 import { BlockLabels } from './styled';
 import { DateBlock } from './components';
 import { DateTimeSelectorProps } from '@tecsinapse/react-core';
+import { getLocale } from '../../../utils/date';
 
 export interface ScrollableSelectorProps extends DateTimeSelectorProps {
   height?: number;
@@ -35,6 +36,7 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   hourLabel,
   minuteLabel,
   TextComponent = Text,
+  locale = getLocale(),
 }) => {
   const date = useMemo(() => value ?? new Date(), [value]);
   const [months, setMonths] = useState<number[]>([]);
@@ -150,6 +152,7 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
               markWidth={markWidth ?? 70}
               type={el.name}
               key={index}
+              locale={locale}
             />
           );
         })}
