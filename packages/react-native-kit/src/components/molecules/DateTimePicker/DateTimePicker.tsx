@@ -1,4 +1,5 @@
 import {
+  ControlledDateTimeSelector,
   DateTimePicker as DateTimePickerCore,
   DateTimePickerProps,
 } from '@tecsinapse/react-core';
@@ -6,7 +7,7 @@ import React, { FC } from 'react';
 import { getLocale } from '../../../utils/date';
 import { IBaseModal, ModalView, useLazyModalManager } from '../../atoms/Modal';
 import { Text } from '../../atoms/Text';
-import { DateTimeSelector } from '../DateTimeSelector';
+import { DateTimePickerSelector } from '../DateTimePickerSelector';
 
 export type NativeDateTimePickerProps = Omit<
   DateTimePickerProps,
@@ -26,10 +27,15 @@ export const DateTimePicker: FC<NativeDateTimePickerProps> = ({
     <DateTimePickerCore
       {...rest}
       TextComponent={Text}
-      DateTimeSelectorComponent={DateTimeSelector}
+      DateTimeSelectorComponent={props => (
+        <ControlledDateTimeSelector
+          SelectorComponent={DateTimePickerSelector}
+          {...props}
+        />
+      )}
       locale={locale ?? getLocale()}
-      requestShowSelector={() => modal.show()}
-      requestCloseSelector={() => modal.close()}
+      requestShowSelector={modal.show}
+      requestCloseSelector={modal.close}
       renderSelector={(selector, blur) =>
         modal.sync(<NativeModal onClose={blur}>{selector}</NativeModal>)
       }

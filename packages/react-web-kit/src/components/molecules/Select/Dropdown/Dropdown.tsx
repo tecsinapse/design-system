@@ -130,7 +130,7 @@ const Component = <Data, Type extends 'single' | 'multi'>(
 };
 const Dropdown = React.forwardRef(Component) as <
   Data,
-  Type extends 'single' | 'multi'
+  Type extends 'single' | 'multi',
 >(
   props: SelectProps<Data, Type> & {
     setDropDownVisible: (t: boolean) => void;

@@ -1,7 +1,5 @@
 import styled, { css } from '@emotion/native';
 import {
-  Button,
-  ButtonProps,
   disabledInputStyles,
   Icon,
   InputContainerProps,
@@ -12,7 +10,6 @@ import {
   StyleProps,
 } from '@tecsinapse/react-core';
 import { ActivityIndicator, ModalProps, View, ViewProps } from 'react-native';
-import { Input, InputNativeProps } from '../../atoms/Input';
 import { Text } from '../../atoms/Text';
 
 export const getStyledModal = (safeTop = 0) => {
@@ -30,17 +27,6 @@ export const StyledSelectionText = styled(Text)(
   `
 );
 
-export const Dummy = styled(View)`
-  aspect-ratio: 1;
-  height: 100%;
-`;
-
-export const StyledPressableSurface = styled(
-  PressableSurface
-)<PressableSurfaceProps>`
-  width: 100%;
-`;
-
 export const Header = styled(View)<ViewProps & Partial<StyleProps>>`
   position: relative;
   width: 100%;
@@ -52,18 +38,9 @@ export const Header = styled(View)<ViewProps & Partial<StyleProps>>`
   height: ${RFValueStr('75px')};
 `;
 
-export const CloseButton = styled(Button)<ButtonProps & Partial<StyleProps>>`
-  aspect-ratio: 1;
-  height: 100%;
-`;
-
 export const SearchBarContainer = styled(View)<ViewProps & Partial<StyleProps>>`
   padding: ${({ theme }) => theme.spacing.deca};
   position: relative;
-`;
-
-export const SearchBar = styled(Input)<InputNativeProps & Partial<StyleProps>>`
-  margin-bottom: ${({ theme }) => theme.spacing.deca};
 `;
 
 export const ListItem = styled(PressableSurface)<
@@ -71,8 +48,10 @@ export const ListItem = styled(PressableSurface)<
 >`
   border-bottom-width: ${RFValueStr('1px')};
   border-color: ${({ theme }) => theme.color.secondary.light};
-  padding-vertical: ${({ theme }) => theme.spacing.mili};
-  padding-horizontal: ${({ theme }) => theme.spacing.deca};
+  padding-top: ${({ theme }) => theme.spacing.mili};
+  padding-bottom: ${({ theme }) => theme.spacing.mili};
+  padding-left: ${({ theme }) => theme.spacing.deca};
+  padding-right: ${({ theme }) => theme.spacing.deca};
 `;
 
 export const ModalFooter = styled(View)<Partial<StyleProps>>`

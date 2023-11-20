@@ -13,12 +13,7 @@ const Template: Story<DateTimePickerProps> = ({ ...args }) => {
   const [value, setValue] = React.useState<Date>();
 
   return (
-    <DateTimePicker
-      value={value}
-      onChange={setValue}
-      locale={ptBR}
-      {...args}
-    />
+    <DateTimePicker value={value} onChange={setValue} locale={ptBR} {...args} />
   );
 };
 
@@ -28,5 +23,5 @@ Base.args = {
   mode: 'datetime',
   format: 'dd/MM/yyyy HH:mm',
   label: 'Select date and time',
-  placeholder: 'Select date and time'
+  placeholder: 'Select date and time',
 };
