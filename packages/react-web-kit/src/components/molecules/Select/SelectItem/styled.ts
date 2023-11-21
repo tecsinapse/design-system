@@ -20,7 +20,7 @@ export const StyledSpan = styled('span')<
   Partial<StyleProps> & { singleHighligh: boolean }
 >`
   color: ${({ theme, singleHighligh }) =>
-    singleHighligh ? theme.color.primary.xlight : theme.color.secondary.xlight};
+    singleHighligh ? theme.color.primary.medium : theme.color.secondary.xdark};
   padding: ${({ theme }) => `${theme.spacing.mili} 0px`};
 `;
 
