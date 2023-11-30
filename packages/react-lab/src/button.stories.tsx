@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { button } from '@tecsinapse/cortex-core';
 
 export default {
@@ -7,7 +7,7 @@ export default {
   component: <button />,
 };
 
-const Template: Story = args => {
+const Template: StoryFn = () => {
   return (
     <button
       disabled={false}

@@ -1,16 +1,16 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { tag } from '@tecsinapse/cortex-core';
+import { hint } from '@tecsinapse/cortex-core';
 
 export default {
-  title: 'Lab/Tag',
+  title: 'Lab/Hint',
   component: <div />,
 };
 
 const Template: StoryFn = () => {
   return (
-    <div className={tag()}>
-      <p>Tag</p>
+    <div className={hint({ intent: 'error' })}>
+      <p>Error</p>
     </div>
   );
 };
