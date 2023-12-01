@@ -1,0 +1,56 @@
+import React, { useState } from 'react';
+import { StoryFn } from '@storybook/react';
+import {
+  buttonSelect,
+  dropDown,
+  optionSingle as styleOption,
+} from '@tecsinapse/cortex-core';
+export default {
+  title: 'Lab/Select',
+  component: <div />,
+};
+
+const Template: StoryFn = () => {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState<string>('');
+  const options = [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+    'Option 7',
+    'Option 8',
+    'Option 9',
+  ];
+  return (
+    <div className="w-full relative">
+      <button
+        className={buttonSelect()}
+        onClick={() => setOpen(prevState => !prevState)}
+      >
+        <p>{value ? value : 'Select one'}</p>
+        <div>\/</div>
+      </button>
+      <ul className={dropDown({ open, className: 'absolute' })}>
+        {options.map(option => (
+          <li
+            value={option}
+            onClick={() => {
+              setValue(option);
+              setOpen(false);
+            }}
+            className={styleOption()}
+          >
+            {option}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export const Base = Template.bind({});
+
+Base.args = {};
