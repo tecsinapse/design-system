@@ -5,7 +5,7 @@ export const buttonSelect = tv({
   extend: inputBase,
   base: 'w-full justify-between bg-white gap-[200px]',
 });
-export const optionSingle = tv({
+export const option = tv({
   base: 'text-base py-mili px-deca font-bold hover:bg-primary-xlight hover:text-primary-medium cursor-pointer active:text-primary-medium',
 });
 

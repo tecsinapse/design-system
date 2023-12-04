@@ -3,7 +3,7 @@ import { StoryFn } from '@storybook/react';
 import {
   buttonSelect,
   dropDown,
-  optionSingle as styleOption,
+  option as styleOption,
 } from '@tecsinapse/cortex-core';
 export default {
   title: 'Lab/Select',
