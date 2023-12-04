@@ -10,7 +10,7 @@ export const option = tv({
 });
 
 export const dropDown = tv({
-  base: 'text-base max-h-[200px] w-full bg-white mt-mili rounded-mili overflow-y-scroll py-mili transition-all duration-300',
+  base: 'text-base max-h-[200px] w-full bg-white mt-mili rounded-mili overflow-y-scroll py-mili transition-all duration-300 origin-top-left',
   variants: {
     open: {
       true: '-scale-y-1 opacity-1',

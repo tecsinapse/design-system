@@ -33,9 +33,10 @@ const Template: StoryFn = () => {
         <p>{value ? value : 'Select one'}</p>
         <div>\/</div>
       </button>
-      <ul className={dropDown({ open, className: 'absolute' })}>
+      <ul role={'select'} className={dropDown({ open, className: 'absolute' })}>
         {options.map(option => (
           <li
+            role={'option'}
             value={option}
             onClick={() => {
               setValue(option);
