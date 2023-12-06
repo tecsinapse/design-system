@@ -1,17 +1,15 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { checkbox } from '@tecsinapse/cortex-core';
+import { snackbar } from '../../cortex-core/src/components/tooltip/snackbar';
 
 export default {
-  title: 'Lab/Checkbox',
-  component: <input />,
+  title: 'Lab/Snackbar',
+  component: <div />,
 };
 
 const Template: StoryFn = () => {
   return (
-    <>
-      <input type={'checkbox'} className={checkbox()}></input>
-    </>
+    <div className={snackbar({ intent: 'success' })}>Mensagem Snackbar</div>
   );
 };
 
