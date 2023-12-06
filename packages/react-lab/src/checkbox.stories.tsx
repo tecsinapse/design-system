@@ -8,11 +8,7 @@ export default {
 };
 
 const Template: StoryFn = () => {
-  return (
-    <>
-      <input type={'checkbox'} className={checkbox()}></input>
-    </>
-  );
+  return <input type={'checkbox'} className={checkbox()}></input>;
 };
 
 export const Base = Template.bind({});

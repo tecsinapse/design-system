@@ -6,4 +6,5 @@ export * from './toggle/toggle';
 export * from './drawer/drawer';
 export * from './select/select';
 export * from './checkbox/checkbox';
+export * from './radio-button/radio-button';
 export * from './table/table';
