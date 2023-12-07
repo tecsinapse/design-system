@@ -9,3 +9,4 @@ export * from './checkbox/checkbox';
 export * from './badge/badge';
 export * from './radio-button/radio-button';
 export * from './table/table';
+export * from './tooltip/tooltip';
