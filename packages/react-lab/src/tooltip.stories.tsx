@@ -5,9 +5,19 @@ import { button, tooltip, tooltipContainer } from '@tecsinapse/cortex-core';
 export default {
   title: 'Lab/Tooltip',
   component: <div />,
+  argTypes: {
+    position: {
+      options: ['top', 'bottom'],
+      control: { type: 'radio' },
+    },
+  },
 };
 
-const Template: StoryFn = () => {
+type Position = 'bottom' | 'top';
+interface Test {
+  position: Position;
+}
+const Template: StoryFn<Test> = ({ position }) => {
   return (
     <>
       <div className={tooltipContainer()}>
@@ -15,7 +25,7 @@ const Template: StoryFn = () => {
         <span
           id={'spanTest'}
           className={tooltip({
-            position: 'top',
+            position,
             className: `w-[400px]`,
           })}
         >
@@ -29,4 +39,6 @@ const Template: StoryFn = () => {
 
 export const Base = Template.bind({});
 
-Base.args = {};
+Base.args = {
+  position: 'top',
+};

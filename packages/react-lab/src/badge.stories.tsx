@@ -5,9 +5,15 @@ import { badge, containerBadge } from '@tecsinapse/cortex-core';
 export default {
   title: 'Lab/Badge',
   component: <div />,
+  argTypes: {
+    intent: {
+      options: ['primary', 'secondary', 'success', 'info', 'warning', 'error'],
+      control: { type: 'select' },
+    },
+  },
 };
 
-const Template: StoryFn = () => {
+const Template: StoryFn = args => {
   return (
     <div className={containerBadge()}>
       <div
@@ -15,7 +21,7 @@ const Template: StoryFn = () => {
       ></div>
       <div
         className={badge({
-          intent: 'error',
+          intent: args.intent,
         })}
       >
         5

@@ -15,14 +15,17 @@ const arrowTooltip = tv({
   },
 });
 export const tooltip = tv({
-  base: [
-    arrowTooltip({ position: 'top' }),
-    'h-8 mt-deca w-max h-fit invisible group-hover:visible opacity-0 group-hover:opacity-100  bg-secondary-dark text-white px-centi py-nano rounded-mili absolute',
-  ],
+  base: 'h-8 mt-deca w-max h-fit invisible group-hover:visible opacity-0 group-hover:opacity-100  bg-secondary-dark text-white px-centi py-micro rounded-mili absolute',
   variants: {
     position: {
-      bottom: '-ml-[200px] left-[50%] top-[100%] mt-centi -translate-y-[10%]',
-      top: '-ml-[200px] left-[50%] bottom-[100%] mb-centi translate-y-[10%]',
+      bottom: [
+        arrowTooltip({ position: 'bottom' }),
+        '-ml-[200px] left-[50%] top-[100%] mt-centi -translate-y-[10%]',
+      ],
+      top: [
+        arrowTooltip({ position: 'top' }),
+        '-ml-[200px] left-[50%] bottom-[100%] mb-centi translate-y-[10%]',
+      ],
     },
   },
 });
