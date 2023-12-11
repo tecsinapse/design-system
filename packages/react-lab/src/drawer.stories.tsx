@@ -27,7 +27,6 @@ const Template: StoryFn = args => {
       </label>
       <label className={overlay()} htmlFor={'drawer-toggle'}></label>
       <div
-        id={'drawer-example'}
         className={drawer({
           position: args.position,
         })}

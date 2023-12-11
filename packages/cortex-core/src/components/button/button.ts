@@ -1,6 +1,6 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
-const baseTv = tv({
+export const button = tv({
   base: 'p-deca rounded-mili text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer',
   variants: {
     intent: {
@@ -104,10 +104,3 @@ const baseTv = tv({
     size: 'default',
   },
 });
-
-export interface Variants extends VariantProps<typeof baseTv> {
-  className?: string;
-}
-
-export const button = ({ className, ...variants }: Variants) =>
-  baseTv({ ...variants, className });
