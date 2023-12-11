@@ -10,3 +10,4 @@ export * from './badge/badge';
 export * from './radio-button/radio-button';
 export * from './table/table';
 export * from './tooltip/tooltip';
+export * from './card/card';

@@ -1,7 +1,7 @@
 import { tv, VariantProps } from 'tailwind-variants';
 
 const baseTv = tv({
-  base: 'p-deca rounded-mili text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white',
+  base: 'p-deca rounded-mili text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer',
   variants: {
     intent: {
       primary:

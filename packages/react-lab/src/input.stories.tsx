@@ -1,31 +1,37 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { input, inputBox, labelStyle } from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Lab/Input',
   component: <input />,
+  argTypes: {
+    intent: {
+      options: ['default', 'success', 'warning', 'error'],
+      control: { type: 'select' },
+    },
+  },
 };
 
-const Template: Story = () => {
+const Template: StoryFn = args => {
   return (
     <div
       className={input({
-        intent: 'error',
+        intent: args.intent,
       })}
     >
       <div className={'flex w-full flex-col'}>
         <input
-          className={inputBox('placeholder', 'label')}
-          placeholder={'placeholder'}
+          className={inputBox(args.placeholder, args.label)}
+          placeholder={args.placeholder}
         />
         <label
           className={labelStyle({
-            intent: 'error',
-            placeholder: 'placeholder',
+            intent: args.intent,
+            placeholder: args.placeholder,
           })}
         >
-          label
+          {args.label}
         </label>
       </div>
     </div>
@@ -34,4 +40,7 @@ const Template: Story = () => {
 
 export const Base = Template.bind({});
 
-Base.args = {};
+Base.args = {
+  label: 'Label',
+  placeholder: 'Placeholder',
+};

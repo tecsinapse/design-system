@@ -12,4 +12,7 @@ export const snackbar = tv({
       warning: 'bg-warning-xlight text-warning-medium',
     },
   },
+  defaultVariants: {
+    intent: 'primary',
+  },
 });

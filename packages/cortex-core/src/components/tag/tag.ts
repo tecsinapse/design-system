@@ -11,7 +11,7 @@ const myTV = createTV({
 });
 
 export const tag = myTV({
-  base: 'rounded-micro px-micro py-nano w-fit font-bold text-label',
+  base: 'rounded-micro px-micro py-nano w-fit font-bold text-label items-center flex',
   variants: {
     intent: {
       success: 'bg-success-medium text-white',
