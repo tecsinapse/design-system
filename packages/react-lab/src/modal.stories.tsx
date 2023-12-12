@@ -9,7 +9,7 @@ export default {
 
 const Template: StoryFn = () => {
   return (
-    <div className="">
+    <div>
       <input type="checkbox" id="modal-toggle" className="sr-only peer" />
       <label
         htmlFor={'modal-toggle'}
@@ -21,7 +21,12 @@ const Template: StoryFn = () => {
         <p>Open/close drawer</p>
       </label>
       <label className={overlay()} htmlFor={'modal-toggle'}></label>
-      <div className={modal({ className: 'gap-deca flex-col max-w-[400px]' })}>
+      <dialog
+        id="modal"
+        className={modal({
+          className: 'gap-deca flex-col max-w-[400px] bottom-[300px]',
+        })}
+      >
         <p className={'text-primary-medium text-h3'}>Title</p>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -32,7 +37,7 @@ const Template: StoryFn = () => {
         <label htmlFor={'modal-toggle'} className={button()}>
           Close modal
         </label>
-      </div>
+      </dialog>
     </div>
   );
 };
