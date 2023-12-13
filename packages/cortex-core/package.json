@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "class-variance-authority": "^0.7.0",
-    "tailwind-variants": "^0.1.18",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "tailwind-variants": "^0.1.18"
   }
 }
