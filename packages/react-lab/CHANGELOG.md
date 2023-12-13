@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.3.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-lab@3.3.0...@tecsinapse/react-lab@3.3.1) (2023-12-13)
+## [3.3.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-lab@3.3.0...@tecsinapse/react-lab@3.3.1) (2023-11-21)
 
 **Note:** Version bump only for package @tecsinapse/react-lab
 
