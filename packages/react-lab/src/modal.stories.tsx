@@ -1,7 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button, overlay } from '@tecsinapse/cortex-core';
-import { modal } from '../../cortex-core/src/components/modal/modal';
+import { button, overlay, modal } from '@tecsinapse/cortex-core';
 export default {
   title: 'Lab/Modal',
   component: <div />,
