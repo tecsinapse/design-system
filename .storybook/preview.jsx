@@ -1,5 +1,5 @@
 import { lightTheme, ThemeProvider } from '@tecsinapse/react-core';
-
+import './index.css';
 export const parameters = {
   layout: 'centered',
   options: {

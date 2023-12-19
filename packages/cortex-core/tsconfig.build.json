@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "declarationDir": "./dist/types",
+    "rootDir": "./src",
+    "baseUrl": "./"
+  },
+  "include": ["./src"]
+}

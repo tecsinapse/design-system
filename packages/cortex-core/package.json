@@ -1,0 +1,24 @@
+{
+  "name": "@tecsinapse/cortex-core",
+  "version": "0.0.2",
+  "description": "",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "yarn build:es --watch",
+    "build:es": "rollup --config",
+    "build:declaration": "tsc --project tsconfig.build.json"
+  },
+  "author": "ryancarloscorrea",
+  "license": "ISC",
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "tailwind-merge": "^2.0.0",
+    "tailwind-variants": "^0.1.18"
+  }
+}
