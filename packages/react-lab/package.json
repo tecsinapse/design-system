@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/react-lab",
-  "version": "3.3.2",
+  "version": "3.3.3",
   "description": "TecSinapse components laboratory",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
-    "@tecsinapse/cortex-core": "0.0.2"
+    "@tecsinapse/cortex-core": "0.0.3"
   },
   "repository": {
     "type": "git",
