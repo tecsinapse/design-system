@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.4...@tecsinapse/react-web-kit@3.3.6) (2023-12-19)
+
+### Bug Fixes
+
+- add optional chaining to select item ([7673ea5](https://github.com/tecsinapse/design-system/commit/7673ea52fa1d3985a745058088cf33eb89340c05))
+
 ## [3.3.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.4...@tecsinapse/react-web-kit@3.3.5) (2023-12-13)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
