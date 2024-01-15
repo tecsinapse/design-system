@@ -68,7 +68,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
             ) !== undefined
           );
     }
-  }, [checkedAll]);
+  }, [checkedAll, value]);
 
   const clickItem = React.useCallback(
     (item, _value) => {
