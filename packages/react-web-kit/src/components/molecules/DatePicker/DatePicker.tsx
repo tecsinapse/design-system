@@ -96,10 +96,6 @@ export const DatePicker = <T extends SelectionType>({
               onChange?.(auxData as typeof value);
             }
           }
-          if (controlledInput?.length === 0) {
-            setError(true);
-            callbackAfterValidated?.(false, invalidDateLabel);
-          }
         }}
         disabled={disabled}
         mask={Masks.DATE}
