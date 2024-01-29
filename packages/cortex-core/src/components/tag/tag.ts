@@ -1,4 +1,4 @@
-import { createTV } from 'tailwind-variants';
+import { ClassProp, createTV, VariantProps } from 'tailwind-variants';
 import { fontSize } from '@tecsinapse/cortex-core';
 
 const myTV = createTV({
@@ -10,7 +10,7 @@ const myTV = createTV({
   },
 });
 
-export const tag = myTV({
+const tagStyles = myTV({
   base: 'rounded-micro px-micro py-nano w-fit font-bold text-label items-center flex',
   variants: {
     intent: {
@@ -25,3 +25,6 @@ export const tag = myTV({
     intent: 'secondary',
   },
 });
+
+export type TagVariants = VariantProps<typeof tagStyles> & ClassProp;
+export const tag = (props: TagVariants) => tagStyles(props);

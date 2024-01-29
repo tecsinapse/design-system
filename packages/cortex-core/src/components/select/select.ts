@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { inputBase } from '../input';
 
 export const buttonSelect = tv({
@@ -9,7 +9,7 @@ export const option = tv({
   base: 'text-base py-mili px-deca font-bold hover:bg-primary-xlight hover:text-primary-medium cursor-pointer active:text-primary-medium',
 });
 
-export const dropDown = tv({
+const dropDownStyles = tv({
   base: 'text-base max-h-[200px] w-full bg-white mt-mili rounded-mili overflow-y-scroll py-mili transition-all duration-300 origin-top-left',
   variants: {
     open: {
@@ -18,3 +18,9 @@ export const dropDown = tv({
     },
   },
 });
+type DropDownVariants = VariantProps<typeof dropDownStyles>;
+export interface DropDownProps
+  extends Omit<DropDownVariants, 'open'>,
+    Required<Pick<DropDownVariants, 'open'>> {}
+
+export const dropdown = (props: DropDownProps) => dropDownStyles(props);

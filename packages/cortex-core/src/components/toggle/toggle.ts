@@ -1,6 +1,6 @@
-import { tv } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
-export const toggle = tv({
+const toggleStyles = tv({
   base: "peer h-[22px] w-[40px] rounded-full bg-secondary-light after:absolute after:left-micro after:top-[3px] after:h-deca after:w-deca after:rounded-full after:border after:border-white after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none",
   variants: {
     intent: {
@@ -24,3 +24,6 @@ export const styleLabelElement = tv({
 export const styleInputElement = tv({
   base: 'peer sr-only',
 });
+
+type ToggleVariants = VariantProps<typeof toggleStyles> & ClassProp;
+export const toggle = (props: ToggleVariants) => toggleStyles(props);
