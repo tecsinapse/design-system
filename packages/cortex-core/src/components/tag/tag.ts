@@ -1,5 +1,5 @@
 import { ClassProp, createTV, VariantProps } from 'tailwind-variants';
-import { fontSize } from '@tecsinapse/cortex-core';
+import { fontSize } from '../../tokens/definitions';
 
 const myTV = createTV({
   twMergeConfig: {
@@ -27,4 +27,12 @@ const tagStyles = myTV({
 });
 
 export type TagVariants = VariantProps<typeof tagStyles> & ClassProp;
+
+/**
+ * Represents the tag component with specified variants.
+ * @param {TagVariants} props - The properties for the tag component.
+ * @param {string=} [props.intent=secondary] -  The intent variant for the tag (e.g., success, primary, secondary, info, white).
+ * @param {string=} [props.className] - The additional CSS classes for the tag.
+ * @param {string=} [props.class] - The additional CSS classes for the tag.
+ */
 export const tag = (props: TagVariants) => tagStyles(props);

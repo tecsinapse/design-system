@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
 import {
   buttonSelect,
-  dropDown,
+  dropdown,
   option as styleOption,
 } from '@tecsinapse/cortex-core';
 export default {
@@ -33,7 +33,7 @@ const Template: StoryFn = () => {
         <p>{value ? value : 'Select one'}</p>
         <div>\/</div>
       </button>
-      <ul role={'select'} className={dropDown({ open, className: 'absolute' })}>
+      <ul role={'select'} className={dropdown({ open, className: 'absolute' })}>
         {options.map(option => (
           <li
             role={'option'}

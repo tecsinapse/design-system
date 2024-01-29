@@ -23,4 +23,11 @@ export interface DropDownProps
   extends Omit<DropDownVariants, 'open'>,
     Required<Pick<DropDownVariants, 'open'>> {}
 
+/**
+ * Represents the dropdown component with specified variants.
+ * @param {DropDownVariants} props - The properties for the dropdown component.
+ * @param {boolean} props.open -  The intent variant for the dropdown (e.g., true, false, secondary).
+ * @param {string=} [props.className] - The additional CSS classes for the dropdown.
+ * @param {string=} [props.class] - The additional CSS classes for the dropdown.
+ */
 export const dropdown = (props: DropDownProps) => dropDownStyles(props);

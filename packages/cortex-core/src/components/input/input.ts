@@ -83,7 +83,7 @@ export const inputBox = (
 
 export type InputBaseVariants = VariantProps<typeof inputBaseStyles> &
   ClassProp;
-export const inputBase = (props: InputBaseVariants) => inputBaseStyles(props);
+export const input = (props: InputBaseVariants) => inputBaseStyles(props);
 
 export type LabelBaseVariants = ClassProp &
   VariantProps<typeof labelBaseStyles> & {

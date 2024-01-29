@@ -26,4 +26,12 @@ export const styleInputElement = tv({
 });
 
 type ToggleVariants = VariantProps<typeof toggleStyles> & ClassProp;
+
+/**
+ * Represents the toggle component with specified variants.
+ * @param {ToggleVariants} props - The properties toggle the toggle component.
+ * @param {string=} [props.intent=secondary] -  The intent variant for the toggle (e.g., success, primary, secondary, info, white).
+ * @param {string=} [props.className] - The additional CSS classes for the toggle.
+ * @param {string=} [props.class] - The additional CSS classes for the toggle.
+ */
 export const toggle = (props: ToggleVariants) => toggleStyles(props);

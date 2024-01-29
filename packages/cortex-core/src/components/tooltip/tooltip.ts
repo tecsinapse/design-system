@@ -31,4 +31,12 @@ const tooltipStyles = tv({
 });
 
 type TooltipVariants = VariantProps<typeof tooltipStyles> & ClassProp;
+
+/**
+ * Represents the tooltip component with specified variants.
+ * @param {TooltipVariants} props - The properties for the tooltip component.
+ * @param {string=} [props.position=left] -  The position of arrow of tooltip(e.g.left,right).
+ * @param {string=} [props.className] - The additional CSS classes for the tooltip.
+ * @param {string=} [props.class] - The additional CSS classes for the tooltip.
+ */
 export const tooltip = (props: TooltipVariants) => tooltipStyles(props);
