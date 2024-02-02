@@ -1,6 +1,6 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 import { clsx } from 'clsx';
-const inputBaseStyles = tv({
+export const inputBaseStyles = tv({
   base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 focus-within:outline focus-within:outline-1 text-base font-bold items-center bg-transparent border rounded-mili',
   variants: {
     intent: {
@@ -83,12 +83,28 @@ export const inputBox = (
 
 export type InputBaseVariants = VariantProps<typeof inputBaseStyles> &
   ClassProp;
+
+/**
+ * Represents the input component  (container to click).
+ * @param {InputBaseVariants} props - The properties for the input component.
+ * @param {string=} [props.intent = default] -  The intent variant for the border color of input (default, success, warning, error).
+ * @param {string=} [props.className] - The additional CSS classes for the input.
+ * @param {string=} [props.class] - The additional CSS classes for the input.
+ */
 export const input = (props: InputBaseVariants) => inputBaseStyles(props);
 
 export type LabelBaseVariants = ClassProp &
   VariantProps<typeof labelBaseStyles> & {
     placeholder?: string;
   };
+
+/**
+ * Represents the label component  (container to click).
+ * @param {LabelBaseVariants} props - The properties for the input component.
+ * @param {string=} [props.intent = default] -  The intent variant for the border color of input (default, success, warning, error).
+ * @param {string=} [props.className] - The additional CSS classes for the input.
+ * @param {string=} [props.class] - The additional CSS classes for the input.
+ */
 export const label = (props: LabelBaseVariants) => {
   const { placeholder, intent } = props;
   return labelBaseStyles({

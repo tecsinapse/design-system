@@ -22,4 +22,4 @@ export const containerBadge = tv({
 });
 
 export type BadgeVariants = VariantProps<typeof badgeStyles>;
-export const badge = (props: BadgeVariants) => badge(props);
+export const badge = (props?: BadgeVariants) => badgeStyles(props);

@@ -1,8 +1,15 @@
-import { tv, type VariantProps } from 'tailwind-variants';
-import { inputBase } from '../input';
+import { ClassProp, tv, type VariantProps } from 'tailwind-variants';
+import { inputBaseStyles } from '../input/input';
 
+/**
+ * Represents the button select component  (container to click).
+ * @param {DropDownVariants} props - The properties for the button select component.
+ * @param {string} [props.intent = default] -  The intent variant for the border color of button select (default success  warning error).
+ * @param {string=} [props.className] - The additional CSS classes for the button select.
+ * @param {string=} [props.class] - The additional CSS classes for the button select.
+ */
 export const buttonSelect = tv({
-  extend: inputBase,
+  extend: inputBaseStyles,
   base: 'w-full justify-between bg-white gap-[200px]',
 });
 export const option = tv({
@@ -18,16 +25,16 @@ const dropDownStyles = tv({
     },
   },
 });
-type DropDownVariants = VariantProps<typeof dropDownStyles>;
+type DropDownVariants = VariantProps<typeof dropDownStyles> & ClassProp;
 export interface DropDownProps
   extends Omit<DropDownVariants, 'open'>,
     Required<Pick<DropDownVariants, 'open'>> {}
 
 /**
- * Represents the dropdown component with specified variants.
+ * Represents the dropdown component  (where options are showed) with specified variants.
  * @param {DropDownVariants} props - The properties for the dropdown component.
- * @param {boolean} props.open -  The intent variant for the dropdown (e.g., true, false, secondary).
+ * @param {boolean} props.open -  The prop that define if dropdown to be showed  (true, false).
  * @param {string=} [props.className] - The additional CSS classes for the dropdown.
  * @param {string=} [props.class] - The additional CSS classes for the dropdown.
  */
-export const dropdown = (props: DropDownProps) => dropDownStyles(props);
+export const dropdown = (props: DropDownVariants) => dropDownStyles(props);

@@ -34,4 +34,4 @@ type ToggleVariants = VariantProps<typeof toggleStyles> & ClassProp;
  * @param {string=} [props.className] - The additional CSS classes for the toggle.
  * @param {string=} [props.class] - The additional CSS classes for the toggle.
  */
-export const toggle = (props: ToggleVariants) => toggleStyles(props);
+export const toggle = (props?: ToggleVariants) => toggleStyles(props);

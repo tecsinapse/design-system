@@ -22,4 +22,4 @@ export type HintVariants = VariantProps<typeof hintStyles> & ClassProp;
  * @param {string=} [props.className] - The additional CSS classes hint the tag.
  * @param {string=} [props.class] - The additional CSS classes for the hint.
  */
-export const hint = (props: HintVariants) => hint(props);
+export const hint = (props?: HintVariants) => hintStyles(props);

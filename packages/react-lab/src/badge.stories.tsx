@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { badge, containerBadge } from '@tecsinapse/cortex-core';
+import { badge, containerBadge } from '@tecsinapse/cortex-core/src/components';
 
 export default {
   title: 'Lab/Badge',

@@ -4,7 +4,7 @@ import {
   buttonSelect,
   dropdown,
   option as styleOption,
-} from '@tecsinapse/cortex-core';
+} from '@tecsinapse/cortex-core/src/components';
 export default {
   title: 'Lab/Select',
   component: <div />,

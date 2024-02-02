@@ -1,6 +1,6 @@
 import { tv, VariantProps, ClassProp } from 'tailwind-variants';
 
-const buttonStyles = tv({
+export const buttonStyles = tv({
   base: 'p-deca rounded-mili text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer items-center flex justify-center',
   variants: {
     intent: {
@@ -115,4 +115,4 @@ export type ButtonVariants = VariantProps<typeof buttonStyles> & ClassProp;
  * @param {string=} [props.className] - The additional CSS classes for the button.
  * @param {string=} [props.class] - The additional CSS classes for the button.
  */
-export const button = (props: ButtonVariants) => buttonStyles(props);
+export const button = (props?: ButtonVariants) => buttonStyles(props);

@@ -26,4 +26,4 @@ type SnackbarVariants = VariantProps<typeof snackbarStyles> & ClassProp;
  * @param {string=} [props.className] - The additional CSS classes for the snackbar.
  * @param {string=} [props.class] - The additional CSS classes for the snackbar.
  */
-export const snackbar = (props: SnackbarVariants) => snackbar(props);
+export const snackbar = (props?: SnackbarVariants) => snackbarStyles(props);

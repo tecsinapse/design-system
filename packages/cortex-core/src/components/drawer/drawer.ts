@@ -26,4 +26,4 @@ export type DrawerVariants = VariantProps<typeof drawerStyles> & ClassProp;
  * @param {string=} [props.className] - The additional CSS classes for the drawer.
  * @param {string=} [props.class] - The additional CSS classes for the drawer.
  */
-export const drawer = (props: DrawerVariants) => drawer(props);
+export const drawer = (props: DrawerVariants) => drawerStyles(props);
