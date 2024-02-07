@@ -1,6 +1,6 @@
-import { tv } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
-export const toggle = tv({
+const toggleStyles = tv({
   base: "peer h-[22px] w-[40px] rounded-full bg-secondary-light after:absolute after:left-micro after:top-[3px] after:h-deca after:w-deca after:rounded-full after:border after:border-white after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none",
   variants: {
     intent: {
@@ -24,3 +24,14 @@ export const styleLabelElement = tv({
 export const styleInputElement = tv({
   base: 'peer sr-only',
 });
+
+type ToggleVariants = VariantProps<typeof toggleStyles> & ClassProp;
+
+/**
+ * Represents the toggle component with specified variants.
+ * @param {ToggleVariants} props - The properties toggle the toggle component.
+ * @param {string=} [props.intent=secondary] -  The intent variant for the toggle (e.g., success, primary, secondary, info, white).
+ * @param {string=} [props.className] - The additional CSS classes for the toggle.
+ * @param {string=} [props.class] - The additional CSS classes for the toggle.
+ */
+export const toggle = (props?: ToggleVariants) => toggleStyles(props);

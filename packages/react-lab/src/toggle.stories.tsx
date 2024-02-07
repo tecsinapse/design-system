@@ -4,7 +4,7 @@ import {
   styleInputElement,
   styleLabelElement,
   toggle,
-} from '@tecsinapse/cortex-core';
+} from '@tecsinapse/cortex-core/src/components';
 export default {
   title: 'Lab/Toggle',
   component: <div />,

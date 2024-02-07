@@ -1,6 +1,6 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 import { clsx } from 'clsx';
-export const inputBase = tv({
+export const inputBaseStyles = tv({
   base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 focus-within:outline focus-within:outline-1 text-base font-bold items-center bg-transparent border rounded-mili',
   variants: {
     intent: {
@@ -35,7 +35,7 @@ export const inputBase = tv({
   },
 });
 
-export const labelBase = tv({
+const labelBaseStyles = tv({
   base: 'absolute duration-300 -translate-y-2 scale-[0.72] top-2.5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-0 peer-focus:scale-[0.72] peer-focus:-translate-y-2 peer-focus:top-2.5 font-bold text-base peer-disabled:text-secondary-light select-none',
   variants: {
     intent: {
@@ -54,27 +54,17 @@ export const labelBase = tv({
   },
 });
 
-export interface LabelVariants extends VariantProps<typeof labelBase> {
+export interface LabelVariants extends VariantProps<typeof labelBaseStyles> {
   className?: string;
   placeholder?: string;
 }
 
 export const labelStyle = ({ intent, placeholder, className }: LabelVariants) =>
-  labelBase({
+  labelBaseStyles({
     intent,
     className: clsx(className, {
       'peer-placeholder-shown:hidden': !!placeholder,
     }),
-  });
-
-export interface InputVariants extends VariantProps<typeof inputBase> {
-  className?: string;
-}
-
-export const input = ({ className, ...variants }: InputVariants) =>
-  inputBase({
-    ...variants,
-    className,
   });
 
 export const inputBox = (
@@ -90,3 +80,37 @@ export const inputBox = (
       'top-1.5': !!label,
     }
   );
+
+export type InputBaseVariants = VariantProps<typeof inputBaseStyles> &
+  ClassProp;
+
+/**
+ * Represents the input component  (container to click).
+ * @param {InputBaseVariants} props - The properties for the input component.
+ * @param {string=} [props.intent = default] -  The intent variant for the border color of input (default, success, warning, error).
+ * @param {string=} [props.className] - The additional CSS classes for the input.
+ * @param {string=} [props.class] - The additional CSS classes for the input.
+ */
+export const input = (props: InputBaseVariants) => inputBaseStyles(props);
+
+export type LabelBaseVariants = ClassProp &
+  VariantProps<typeof labelBaseStyles> & {
+    placeholder?: string;
+  };
+
+/**
+ * Represents the label component  (container to click).
+ * @param {LabelBaseVariants} props - The properties for the input component.
+ * @param {string=} [props.intent = default] -  The intent variant for the border color of input (default, success, warning, error).
+ * @param {string=} [props.className] - The additional CSS classes for the input.
+ * @param {string=} [props.class] - The additional CSS classes for the input.
+ */
+export const label = (props: LabelBaseVariants) => {
+  const { placeholder, intent } = props;
+  return labelBaseStyles({
+    intent: intent,
+    className: clsx(props.className ?? props.class, {
+      'peer-placeholder-shown:hidden': !!placeholder,
+    }),
+  });
+};
