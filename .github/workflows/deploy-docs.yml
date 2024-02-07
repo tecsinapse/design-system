@@ -11,10 +11,10 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'yarn'
@@ -24,7 +24,7 @@ jobs:
 
       - name: build docs
         run: yarn build:storybook
-          
+
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

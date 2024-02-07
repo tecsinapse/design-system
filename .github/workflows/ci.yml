@@ -10,10 +10,10 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'yarn'
@@ -39,10 +39,10 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'yarn'
@@ -58,7 +58,7 @@ jobs:
         run: yarn build:storybook
 
       - name: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: ci-sb-cache
         with:
           path: ./sbdocs
@@ -73,10 +73,10 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: restore
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: ci-sb-cache
         with:
           path: ./sbdocs
