@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "TecSinapse React Native components",
-  "version": "3.3.5",
+  "version": "3.3.7",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
-    "@tecsinapse/react-core": "3.3.3",
+    "@tecsinapse/react-core": "3.3.5",
     "react-native-linear-gradient": "~2.8.3"
   },
   "repository": {

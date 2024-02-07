@@ -1,6 +1,6 @@
-import { tv } from 'tailwind-variants';
+import { tv, VariantProps, ClassProp } from 'tailwind-variants';
 
-export const button = tv({
+export const buttonStyles = tv({
   base: 'p-deca rounded-mili text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer items-center flex justify-center',
   variants: {
     intent: {
@@ -104,3 +104,15 @@ export const button = tv({
     size: 'default',
   },
 });
+export type ButtonVariants = VariantProps<typeof buttonStyles> & ClassProp;
+
+/**
+ * Represents the button component with specified variants.
+ * @param {ButtonVariants} props - The properties for the button component.
+ * @param {string=} [props.intent=primary] -  The intent variant for the button (e.g., success, primary, secondary, info, white).
+ * @param {string=} [props.size=default] -  The size of button (e.g., default, small, square,large).
+ * @param {string=} [props.variant] -  The type of button (e.g., outline, default, text).
+ * @param {string=} [props.className] - The additional CSS classes for the button.
+ * @param {string=} [props.class] - The additional CSS classes for the button.
+ */
+export const button = (props?: ButtonVariants) => buttonStyles(props);

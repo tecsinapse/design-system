@@ -1,6 +1,6 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
-export const hint = tv({
+const hintStyles = tv({
   base: 'text-label font-bold flex items-center',
   variants: {
     intent: {
@@ -13,6 +13,13 @@ export const hint = tv({
   defaultVariants: { intent: 'default' },
 });
 
-export interface HintVariants extends VariantProps<typeof hint> {
-  className?: string;
-}
+export type HintVariants = VariantProps<typeof hintStyles> & ClassProp;
+
+/**
+ * Represents the hint component with specified variants.
+ * @param {HintVariants} props - The properties for the hint component.
+ * @param {string=} [props.intent=default] -  The background color of hint (e.g. default, success, warning, error).
+ * @param {string=} [props.className] - The additional CSS classes hint the tag.
+ * @param {string=} [props.class] - The additional CSS classes for the hint.
+ */
+export const hint = (props?: HintVariants) => hintStyles(props);

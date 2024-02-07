@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button } from '@tecsinapse/cortex-core';
+import { button } from '@tecsinapse/cortex-core/src/components';
 
 export default {
   title: 'Lab/Button',
