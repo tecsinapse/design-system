@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Icon, StyleProps } from '@tecsinapse/react-core';
-import React from 'react';
+import { default as styledNative } from '@emotion/native';
 
 export const StyledContainer = styled('div')<Partial<StyleProps>>`
   display: flex;
@@ -15,11 +15,10 @@ export const StyledInputContainer = styled('div')<Partial<StyleProps>>`
   width: 100%;
 `;
 
-export const RightComponent = (
-  <Icon
-    name="chevron-down"
-    type="material-community"
-    size="centi"
-    style={{ marginRight: 12 }}
-  />
-);
+export const StyledIconComponent = styledNative(Icon)<
+  Partial<StyleProps & { disabled: boolean }>
+>`
+  margin-right: 12px;
+  color: ${({ disabled, theme }) =>
+    disabled ? theme.color.secondary.light : 'inherit'};
+`;
