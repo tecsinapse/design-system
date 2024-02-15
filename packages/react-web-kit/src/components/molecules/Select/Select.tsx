@@ -3,15 +3,15 @@ import {
   Text,
   TextProps,
 } from '@tecsinapse/react-core';
-import React, { useEffect, useId, useState } from 'react';
+import React, { useEffect, useId, useMemo, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
 import { defaultStyles, transition } from './animations';
 import { Dropdown } from './Dropdown';
 import { getDisplayValue } from './functions';
 import {
-  RightComponent,
   StyledContainer,
+  StyledIconComponent,
   StyledInputContainer,
 } from './styled';
 import { MultiLabels } from './types';
@@ -159,6 +159,17 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     [setDropDownVisible]
   );
 
+  const RightComponent = useMemo(
+    () => (
+      <StyledIconComponent
+        name="chevron-down"
+        type="material-community"
+        size="centi"
+        disabled={disabled}
+      />
+    ),
+    [disabled]
+  );
   //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
     <StyledContainer ref={refDropDown} {...rest}>
