@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.9-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.8...@tecsinapse/react-native-kit@3.3.9-beta.0) (2024-03-12)
+
+### Bug Fixes
+
+- update package json main ([a3cc4b1](https://github.com/tecsinapse/design-system/commit/a3cc4b1cefa192c56c87111f4e4a17fcb683f05f))
+
 ## [3.3.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.7...@tecsinapse/react-native-kit@3.3.8) (2024-02-20)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit

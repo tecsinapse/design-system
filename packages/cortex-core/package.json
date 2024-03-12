@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-core",
-  "version": "0.0.10",
+  "version": "0.0.11-beta.0",
   "description": "",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",

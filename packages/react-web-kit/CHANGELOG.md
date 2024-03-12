@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.10-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.9...@tecsinapse/react-web-kit@3.3.10-beta.0) (2024-03-12)
+
+### Bug Fixes
+
+- storybook build ([044cb32](https://github.com/tecsinapse/design-system/commit/044cb32243a9207f92a2b433447f349bf84467c1))
+- update package json main ([a3cc4b1](https://github.com/tecsinapse/design-system/commit/a3cc4b1cefa192c56c87111f4e4a17fcb683f05f))
+
 ## [3.3.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.8...@tecsinapse/react-web-kit@3.3.9) (2024-02-20)
 
 ### Features
