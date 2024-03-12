@@ -1,10 +1,11 @@
-name: deploy docs
+name: checks
 
-on: workflow_dispatch
+on:
+  pull_request:
+    types: [opened, synchronize]
 
 jobs:
-  deploy:
-    name: deploy storybook docs
+  checks:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
@@ -12,13 +13,15 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: install pnpm
         id: pnpm-install
         with:
@@ -29,26 +32,21 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: setup pnpm cache
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: install deps
+      - name: install and prepare
         run: pnpm i
+
+      - name: lint
+        run: pnpm lint:fix
 
       - name: build docs
         run: pnpm build:storybook
-      - name: deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./sbdocs
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Deploy to GitHub pages:'

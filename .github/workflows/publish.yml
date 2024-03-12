@@ -1,9 +1,15 @@
-name: ci
+name: publish
 
-on: push
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - develop
+      - master
 
 jobs:
-  lint:
+  publish:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
@@ -11,13 +17,15 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: install pnpm
         id: pnpm-install
         with:
@@ -28,12 +36,12 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: setup pnpm cache
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -41,25 +49,43 @@ jobs:
       - name: install and prepare
         run: pnpm i
 
-      - name: lint
-        run: pnpm lint:fix
+      - name: setup npm
+        run: |
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
 
-  build:
+      - name: version and publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          
+          if [ ${{ github.base_ref }} = develop ]; then
+            npx --yes lerna version --conventional-commits --create-release github --conventional-prerelease --preid beta --yes
+          else
+            npx --yes lerna version --conventional-commits --create-release github --conventional-graduate --yes
+          fi
+          
+          npx --yes lerna publish from-git --yes
+
+  docs:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    needs: lint
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
     steps:
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         name: install pnpm
         id: pnpm-install
         with:
@@ -70,12 +96,12 @@ jobs:
         id: pnpm-cache
         shell: bash
         run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         name: setup pnpm cache
         with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -86,36 +112,23 @@ jobs:
       - name: build docs
         run: pnpm build:storybook
 
-      - name: cache
-        uses: actions/cache@v4
-        id: ci-sb-cache
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: ./sbdocs
-          key: ${{ github.sha }}
+          path: './sbdocs'
 
   deploy:
-    if: ${{ github.ref_name == 'master' }}
+    needs: docs
     runs-on: ubuntu-latest
-    needs: build
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
-
-      - name: restore
-        uses: actions/cache@v4
-        id: ci-sb-cache
-        with:
-          path: ./sbdocs
-          key: ${{ github.sha }}
-
-      - name: deploy docs
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./sbdocs
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Deploy to GitHub pages:'
+      - name: deploy pages
+        uses: actions/deploy-pages@v4
