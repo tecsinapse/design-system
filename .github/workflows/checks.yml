@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  checks:
+  run:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}

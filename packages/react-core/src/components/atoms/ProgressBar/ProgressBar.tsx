@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@emotion/react';
-import { DimensionValue, ViewProps } from 'react-native';
+import { ViewProps } from 'react-native';
 import {
   ColorGradationType,
   ColorType,
