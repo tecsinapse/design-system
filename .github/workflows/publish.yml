@@ -61,12 +61,12 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           
           if [ ${{ github.base_ref }} = develop ]; then
-            npx --yes lerna version --conventional-commits --create-release github --conventional-prerelease --preid beta --yes
+            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --create-release github --conventional-prerelease --preid beta --yes
           else
-            npx --yes lerna version --conventional-commits --create-release github --conventional-graduate --yes
+            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --create-release github --conventional-graduate --yes
           fi
           
-          npx --yes lerna publish from-git --yes
+          npx --yes lerna publish from-git --ignore-scripts --yes
 
   docs:
     if: github.event.pull_request.merged == true

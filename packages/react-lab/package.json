@@ -11,9 +11,9 @@
   ],
   "scripts": {
     "dev": "yarn build:es --watch",
-    "build:es": "rollup --config",
-    "build:declaration": "tsc --project tsconfig.build.json",
-    "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
+    "unused:build:es": "rollup --config",
+    "unused:build:declaration": "tsc --project tsconfig.build.json",
+    "unused:build:declaration:watch": "tsc --project tsconfig.build.json --watch",
     "yalc:push": "yalc push --changed",
     "yalc:show": "yalc installations show $npm_package_name"
   },
@@ -35,5 +35,6 @@
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
+  "private": true,
   "gitHead": "594cf6d21e45d6a07902dacc00b9e818d5de5a70"
 }
