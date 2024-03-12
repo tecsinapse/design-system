@@ -3,15 +3,15 @@ import {
   Text,
   TextProps,
 } from '@tecsinapse/react-core';
-import React, { useEffect, useId, useState } from 'react';
+import React, { useEffect, useId, useMemo, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { useClickAwayListener } from '../../../hooks';
 import { defaultStyles, transition } from './animations';
 import { Dropdown } from './Dropdown';
 import { getDisplayValue } from './functions';
 import {
-  RightComponent,
   StyledContainer,
+  StyledIconComponent,
   StyledInputContainer,
 } from './styled';
 import { MultiLabels } from './types';
@@ -81,6 +81,11 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     type === 'single' ? !!value : ((value || []) as []).length > 0;
   const _placeholder = onlyLabel ? label : placeholder;
   const _label = hasValue ? label : undefined;
+
+  const _valueColorVariant = disabled
+    ? 'secondary'
+    : displayTextProps?.colorVariant;
+  const _valueColorTone = disabled ? 'light' : displayTextProps?.colorTone;
 
   const displayValue = getDisplayValue<Data>(
     type,
@@ -154,6 +159,17 @@ const Select = <Data, Type extends 'single' | 'multi'>({
     [setDropDownVisible]
   );
 
+  const RightComponent = useMemo(
+    () => (
+      <StyledIconComponent
+        name="chevron-down"
+        type="material-community"
+        size="centi"
+        disabled={disabled}
+      />
+    ),
+    [disabled]
+  );
   //TODO: when component is wrapper by GridITem and Text of label has prop "numberOfLines={1}", this component incresing witht based on options selects, breaking layout of Grid, we must fix this problem.
   return (
     <StyledContainer ref={refDropDown} {...rest}>
@@ -164,7 +180,12 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           disabled={disabled}
           rightComponent={RightComponent}
         >
-          <Text {...displayTextProps} fontWeight={'bold'}>
+          <Text
+            {...displayTextProps}
+            colorTone={_valueColorTone}
+            colorVariant={_valueColorVariant}
+            fontWeight={'bold'}
+          >
             {displayValue}
           </Text>
         </PressableInputContainer>

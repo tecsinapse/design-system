@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.8...@tecsinapse/react-web-kit@3.3.9) (2024-02-20)
+
+### Features
+
+- **TS-3887:** mudança na color do componente chevron quando o campo estiver disabled ([968c7f5](https://github.com/tecsinapse/design-system/commit/968c7f5012c05ea8f6aa9ce99779463705a4d34e))
+
+## [3.3.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.6...@tecsinapse/react-web-kit@3.3.8) (2024-02-07)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.5...@tecsinapse/react-web-kit@3.3.7) (2024-01-15)
+
+### Bug Fixes
+
+- add optional chaining to select item ([7673ea5](https://github.com/tecsinapse/design-system/commit/7673ea52fa1d3985a745058088cf33eb89340c05))
+
+## [3.3.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.4...@tecsinapse/react-web-kit@3.3.6) (2023-12-19)
+
+### Bug Fixes
+
+- add optional chaining to select item ([7673ea5](https://github.com/tecsinapse/design-system/commit/7673ea52fa1d3985a745058088cf33eb89340c05))
+
+## [3.3.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.4...@tecsinapse/react-web-kit@3.3.5) (2023-12-13)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.3...@tecsinapse/react-web-kit@3.3.4) (2023-11-21)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.2...@tecsinapse/react-web-kit@3.3.3) (2023-11-21)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.1...@tecsinapse/react-web-kit@3.3.2) (2023-11-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.0...@tecsinapse/react-web-kit@3.3.1) (2023-11-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+# [3.3.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.2.0...@tecsinapse/react-web-kit@3.3.0) (2023-11-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+# [3.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.1.0...@tecsinapse/react-web-kit@3.2.0) (2023-11-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
 # [3.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@2.3.1...@tecsinapse/react-web-kit@3.0.0) (2023-10-25)
 
 ### Bug Fixes

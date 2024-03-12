@@ -132,7 +132,7 @@ export const StyledOption = styled.View`
 
 export const StyledDivider = styled.View<Partial<StyleProps>>`
   width: ${({ theme }) => theme.borderWidth.pico};
-  background-color: ${({ theme }) => theme.color.secondary.light}; ;
+  background-color: ${({ theme }) => theme.color.secondary.light};
 `;
 
 export const StyledPressable = styled(StyledPressableBase)(

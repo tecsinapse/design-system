@@ -11,7 +11,10 @@
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
+    "autoprefixer": "^10.4.16",
     "date-fns": "~2.30.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
@@ -57,9 +60,9 @@
     "vite": "^4.4.9"
   },
   "scripts": {
-    "dev": "lerna run dev --stream",
+    "dev": "lerna run dev --stream --parallel",
     "build": "lerna run --stream 'build:es'",
-    "build:watch": "pnpm start",
+    "build:watch": "pnpm dev",
     "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' storybook build -o sbdocs/",
     "postbuild": "pnpm build:declarations",

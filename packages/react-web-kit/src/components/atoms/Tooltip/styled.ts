@@ -119,7 +119,10 @@ export const TooltipSpan = styled('span')<Partial<StyleProps> & InjectedProps>(
       border-radius: ${theme.borderRadius.mili};
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      transition:
+        opacity 0.3s,
+        visibility 0.3s,
+        transform 0.3s;
       background-color: ${theme.color.secondary.xdark};
       z-index: ${theme.zIndex.absolute};
 

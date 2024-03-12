@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "TecSinapse React components",
-  "version": "3.0.0",
+  "version": "3.3.9",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rollup --watch",
+    "dev": "yarn build:es --watch",
     "build:es": "rollup --config",
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:declaration:watch": "tsc --project tsconfig.build.json --watch",
@@ -21,7 +21,7 @@
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
-    "@tecsinapse/react-core": "^3.0.0",
+    "@tecsinapse/react-core": "3.3.6",
     "date-fns": "~2.30.0",
     "react-native-vector-icons": "^9.2.0",
     "react-transition-group": "~4.4.5"
@@ -39,5 +39,6 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-native-web": ">=0.18.0 <1"
-  }
+  },
+  "gitHead": "594cf6d21e45d6a07902dacc00b9e818d5de5a70"
 }

@@ -1,4 +1,4 @@
-export { Avatar } from './components/atoms/Avatar';
+export { Avatar } from './components/atoms/Avatar/';
 export type { AvatarProps } from './components/atoms/Avatar';
 export { Badge } from './components/atoms/Badge';
 export type { BadgeProps } from './components/atoms/Badge';
@@ -118,3 +118,8 @@ export * from './styles/light';
 export { default as ThemeProvider } from './styles/ThemeProvider';
 export * from './types/defaults';
 export * from './utils';
+export { ControlledDateTimeSelector } from './components/molecules/ControlledDateTimeSelector';
+export type {
+  ControlledDateTimeSelectorProps,
+  ControlledSelectorComponentProps,
+} from './components/molecules/ControlledDateTimeSelector';
