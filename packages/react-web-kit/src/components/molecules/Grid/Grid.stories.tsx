@@ -2,7 +2,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import Grid, { IGridWeb } from './Grid';
 import { GridItem } from './Item';
-import { Text } from '@tecsinapse/react-web-kit';
+import { Text } from '../../../';
 import styled from '@emotion/styled';
 
 export default {
@@ -55,9 +55,8 @@ const TemplateGrid: Story<IGridWeb> = args => {
           <Text>Box</Text>
         </Container>
       </GridItem>
-
+      {/** Width should consider component padding and grid spacing (8px left + 8px right + 2px grid for nano) */}
       <GridItem wrapper span={3} flexBasis={'content'} flex={1}>
-        {/** Width should consider component padding and grid spacing (8px left + 8px right + 2px grid for nano) */}
         <Container style={{ width: 'calc(100% - 18px)' }}>
           <Text>Box</Text>
         </Container>

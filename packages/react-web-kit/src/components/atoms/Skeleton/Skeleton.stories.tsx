@@ -2,7 +2,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import Skeleton from './Skeleton';
 import { SkeletonProps } from './Skeleton';
-import { Text, Card } from '@tecsinapse/react-web-kit';
+import { Text, Card } from '../../../';
 
 export default {
   title: 'Web/Skeleton',

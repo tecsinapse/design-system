@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.8...@tecsinapse/react-web-kit@3.3.9) (2024-02-20)
+
+### Features
+
+- **TS-3887:** mudança na color do componente chevron quando o campo estiver disabled ([968c7f5](https://github.com/tecsinapse/design-system/commit/968c7f5012c05ea8f6aa9ce99779463705a4d34e))
+
 ## [3.3.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.6...@tecsinapse/react-web-kit@3.3.8) (2024-02-07)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
