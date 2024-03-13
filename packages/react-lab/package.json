@@ -20,7 +20,7 @@
   "dependencies": {
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
-    "@tecsinapse/cortex-core": "0.0.10"
+    "@tecsinapse/cortex-core": "workspace:*"
   },
   "repository": {
     "type": "git",

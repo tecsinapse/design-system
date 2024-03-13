@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { tag } from '@tecsinapse/cortex-core/src/components';
+import { tag } from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Lab/Tag',
