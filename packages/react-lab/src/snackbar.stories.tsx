@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { snackbar } from '../../cortex-core/src/components/snackbar/snackbar';
+import { snackbar } from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Lab/Snackbar',

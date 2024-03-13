@@ -6,8 +6,8 @@ import { IBaseModal } from './ui/types';
  * Use this hook to tell the modal lifecycle handler that you want to add
  * a new modal component.
  *
- * @param modalId
  * @param modal
+ * @param modalId
  * @returns
  */
 export const useModalManager = (

@@ -13,7 +13,7 @@
     "@emotion/styled": "~11.11.0",
     "autoprefixer": "^10.4.16",
     "date-fns": "~2.30.0",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.35",
     "tailwindcss": "^3.3.5",
     "react-native-vector-icons": "^9.2.0"
   },
@@ -57,28 +57,28 @@
     "rollup-plugin-esbuild": "^5.0.0",
     "storybook": "^7.4.4",
     "typescript": "^5",
-    "vite": "^4.4.9"
+    "vite": "^4.5.2"
   },
   "scripts": {
     "dev": "lerna run dev --stream --parallel",
     "build": "lerna run --stream 'build:es'",
-    "build:watch": "yarn dev",
+    "build:watch": "pnpm dev",
     "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' storybook build -o sbdocs/",
-    "postbuild": "yarn build:declarations",
+    "postbuild": "pnpm build:declarations",
     "build:declarations": "lerna run 'build:declaration'",
     "build:declarations:watch": "rimraf -rf packages/*/dist/*.d.ts && lerna run 'build:declaration:watch' --stream",
     "yalc:push": "lerna run 'yalc:push'",
     "yalc:show": "yalc installations show",
     "prebuild": "rimraf -rf packages/*/dist/",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",
-    "lint": "yarn lint:fix:quiet",
-    "lint:fix": "yarn lint:ts --fix-dry-run",
-    "lint:fix:quiet": "yarn lint:ts --fix --quiet",
+    "lint": "pnpm lint:fix:quiet",
+    "lint:fix": "pnpm lint:ts --fix-dry-run",
+    "lint:fix:quiet": "pnpm lint:ts --fix --quiet",
     "prettify": "prettier --write ./**/*.{ts,tsx,json} && prettier --write *.{ts,tsx,json}",
-    "bootstrap": "yarn build",
+    "bootstrap": "pnpm build",
     "tsc": "tsc",
-    "prepare": "husky install && yarn bootstrap"
+    "prepare": "husky install && pnpm bootstrap"
   },
   "engines": {
     "node": ">=16"

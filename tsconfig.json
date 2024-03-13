@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": false,
+    "baseUrl": ".",
     "noEmit": true,
     "strict": true,
     "jsx": "react",

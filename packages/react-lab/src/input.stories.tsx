@@ -1,10 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import {
-  input,
-  inputBox,
-  labelStyle,
-} from '@tecsinapse/cortex-core/src/components';
+import { input, inputBox, labelStyle } from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Lab/Input',

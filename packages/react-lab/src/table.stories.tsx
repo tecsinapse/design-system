@@ -9,7 +9,7 @@ import {
   tHeadCell,
   tRoot,
   tRow,
-} from '@tecsinapse/cortex-core/src/components';
+} from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Lab/Table',
