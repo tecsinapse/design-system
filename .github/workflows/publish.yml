@@ -60,13 +60,19 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           
-          if [ ${{ github.base_ref }} = develop ]; then
-            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --create-release github --conventional-prerelease --preid beta --yes
+          VERSION_ARGS=""
+          PUBLISH_ARGS=""
+          
+          if [ ${{ github.base_ref }} = master ]; then
+            VERSION_ARGS="--conventional-graduate --yes"
+            PUBLISH_ARGS="--yes"
           else
-            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --create-release github --conventional-graduate --yes
+            VERSION_ARGS="--conventional-prerelease --preid beta --yes"
+            PUBLISH_ARGS="--dist-tag beta --yes"
           fi
           
-          npx --yes lerna publish from-git --ignore-scripts --yes
+          npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --create-release github "$VERSION_ARGS"
+          npx --yes lerna publish from-git --ignore-scripts "$PUBLISH_ARGS"
 
   docs:
     if: github.event.pull_request.merged == true
