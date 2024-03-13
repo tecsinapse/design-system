@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-core",
   "description": "TecSinapse hybrid React components",
-  "version": "3.3.7-beta.0",
+  "version": "3.3.7",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",

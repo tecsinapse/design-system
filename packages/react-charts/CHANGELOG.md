@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.3.7-beta.0...@tecsinapse/react-charts@1.3.7) (2024-03-13)
+
+**Note:** Version bump only for package @tecsinapse/react-charts
+
 ## [1.3.7-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.3.6...@tecsinapse/react-charts@1.3.7-beta.0) (2024-03-12)
 
 **Note:** Version bump only for package @tecsinapse/react-charts
