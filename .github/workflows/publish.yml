@@ -64,14 +64,14 @@ jobs:
           PUBLISH_ARGS=""
           
           if [ ${{ github.base_ref }} = master ]; then
-            VERSION_ARGS="--conventional-graduate --yes"
+            VERSION_ARGS="--conventional-graduate"
             PUBLISH_ARGS="--yes"
           else
-            VERSION_ARGS="--conventional-prerelease --preid beta --yes"
+            VERSION_ARGS="--conventional-prerelease --preid beta"
             PUBLISH_ARGS="--dist-tag beta --yes"
           fi
           
-          npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --create-release github "$VERSION_ARGS"
+          npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits "$VERSION_ARGS" --create-release github --yes
           npx --yes lerna publish from-git --ignore-scripts "$PUBLISH_ARGS"
 
   docs:
