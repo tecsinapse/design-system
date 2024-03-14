@@ -1,16 +1,16 @@
 import {
-  colors,
   borderColor,
   borderRadius,
   borderWidth,
   boxShadow,
+  colors,
+  fontFamily,
   fontSize,
   spacing,
-  fontFamily,
   textColor,
 } from '../tokens/definitions';
 
-module.exports = {
+export default {
   theme: {
     fontFamily,
     extend: {

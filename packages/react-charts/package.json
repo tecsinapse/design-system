@@ -24,10 +24,10 @@
     "react-native-svg": "13.9.0"
   },
   "scripts": {
-    "dev": "yarn build:es --watch",
+    "dev": "rollup --config --watch",
+    "dev:dts": "tsc --project tsconfig.build.json --watch",
     "build:es": "rollup --config",
-    "build:declaration": "tsc --project tsconfig.build.json",
-    "build:declaration:watch": "tsc --project tsconfig.build.json --watch"
+    "build:dts": "tsc --project tsconfig.build.json"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

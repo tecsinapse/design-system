@@ -1,6 +1,7 @@
-import { ButtonSizeType, FontColor, IconProps } from '@tecsinapse/react-core';
 import React, { FC } from 'react';
-import { Icon } from '../../atoms/Icon';
+import { Icon, IconProps } from '../../atoms/Icon';
+import { ButtonSizeType } from '../../atoms/Button';
+import { FontColor } from '../../../types/defaults';
 
 interface IconComponentProps {
   iconProps?: IconProps;

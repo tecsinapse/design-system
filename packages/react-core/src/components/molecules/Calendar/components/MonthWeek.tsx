@@ -1,8 +1,8 @@
 import React from 'react';
 import { compareAsc as compare, isSameDay } from 'date-fns';
 import { Cell, Selected, Week } from '../styled';
-import { Value, DateRange, SelectionType } from '../Calendar';
-import { TextProps } from '@tecsinapse/react-core';
+import { DateRange, SelectionType, Value } from '../Calendar';
+import { TextProps } from '../../../atoms/Text';
 
 interface IMonthWeek<T extends SelectionType> {
   TextComponent: React.FC<TextProps>;
@@ -110,8 +110,8 @@ const MonthWeek = <T extends SelectionType>({
         const colorTone = isSelected
           ? 'xlight'
           : date.getMonth() === referenceDate.getMonth()
-          ? 'xdark'
-          : 'light';
+            ? 'xdark'
+            : 'light';
 
         return (
           <Cell

@@ -1,5 +1,5 @@
 import styled, { css } from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
 import { DividerProps } from './Divider';
 
 const topLine = ({ theme, linePosition, noLine }: DividerProps & StyleProps) =>

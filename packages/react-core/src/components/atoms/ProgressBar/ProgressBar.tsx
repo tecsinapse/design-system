@@ -5,7 +5,7 @@ import {
   ColorGradationType,
   ColorType,
   ThemeProp,
-} from '@tecsinapse/react-core';
+} from '../../../types/defaults';
 import { extractNumbersFromString } from '../../../utils';
 import { Container, Progress, Segment } from './styled';
 

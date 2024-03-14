@@ -1,5 +1,6 @@
-import { GridSpacing, PaddingPosition, Spacing } from '@tecsinapse/react-core';
+import { Spacing } from '../../../types/defaults';
 import { extractNumbersFromString } from '../../../utils';
+import { GridSpacing, PaddingPosition } from './index';
 
 export const getGridItemPadding = (
   pos: PaddingPosition,

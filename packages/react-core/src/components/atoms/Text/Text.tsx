@@ -6,7 +6,7 @@ import {
   FontStackType,
   FontWeightType,
   TypographyVariationType,
-} from '@tecsinapse/react-core';
+} from '../../../types/defaults';
 import { StyleProp, TextStyle } from 'react-native';
 import { StyledColoredText } from './styled';
 import { getLabel } from './functions';

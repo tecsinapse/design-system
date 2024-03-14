@@ -1,5 +1,6 @@
 import styled, { css } from '@emotion/native';
-import { CardProps, StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
+import { CardProps } from './Card';
 import { baseStyles, elevatedStyles } from '../shared/PaperAndCard';
 import { PressableSurface } from '../PressableSurface';
 
