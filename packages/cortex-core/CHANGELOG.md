@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.0.11...@tecsinapse/cortex-core@0.1.0) (2024-03-14)
+
+### Bug Fixes
+
+- storybook not loading tailwind stories ([72d6374](https://github.com/tecsinapse/design-system/commit/72d63748e35bab077e7631db433292f2f4b25b53))
+
+### Features
+
+- add lerna caching ([3e2008a](https://github.com/tecsinapse/design-system/commit/3e2008a403749d14dd1c1ec6e4136d25bddb44ce))
+
 ## [0.0.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.0.11-beta.0...@tecsinapse/cortex-core@0.0.11) (2024-03-13)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core

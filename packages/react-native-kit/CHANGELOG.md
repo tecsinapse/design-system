@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.9...@tecsinapse/react-native-kit@3.4.0) (2024-03-14)
+
+### Features
+
+- add lerna caching ([3e2008a](https://github.com/tecsinapse/design-system/commit/3e2008a403749d14dd1c1ec6e4136d25bddb44ce))
+
 ## [3.3.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.9-beta.0...@tecsinapse/react-native-kit@3.3.9) (2024-03-13)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
