@@ -1,5 +1,5 @@
 import React from 'react';
-import { SpacingType } from '@tecsinapse/react-core';
+import { SpacingType } from '../../../types/defaults';
 
 export interface IGrid {
   children: JSX.Element[];

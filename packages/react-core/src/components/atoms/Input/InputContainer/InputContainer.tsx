@@ -8,7 +8,7 @@ import {
   FontStackType,
   FontWeightType,
   TypographyVariationType,
-} from '@tecsinapse/react-core';
+} from '../../../../types/defaults';
 import { Text, TextProps } from '../../Text';
 import {
   StyledBorderKeeper,

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { FontStackType, FontWeightType } from '@tecsinapse/react-core';
+import { FontStackType, FontWeightType } from '../../../types/defaults';
 import {
   Hint,
   InputContainerProps,

@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../../types/defaults';
 import { FC } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { TextProps } from '../../Text';

@@ -1,6 +1,6 @@
 import { ComponentType } from 'react';
 import { IconRNVIProps } from './types';
-import { IconSizeType, StyleProps } from '@tecsinapse/react-core';
+import { IconSizeType, StyleProps } from '../../../types/defaults';
 import styled from '@emotion/native';
 
 export const getStyledIcon = (

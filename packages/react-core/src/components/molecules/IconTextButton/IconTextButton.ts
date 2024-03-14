@@ -1,4 +1,6 @@
-import { ButtonProps, IconProps, TextProps } from '@tecsinapse/react-core';
+import { IconProps } from '../../atoms/Icon';
+import { TextProps } from '../../atoms/Text';
+import { ButtonProps } from '../../atoms/Button';
 
 export type IconPositionOptions = 'left' | 'right';
 

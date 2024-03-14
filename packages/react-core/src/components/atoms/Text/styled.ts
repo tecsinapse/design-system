@@ -1,5 +1,6 @@
 import styled, { css } from '@emotion/native';
-import { StyleProps, TextProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
+import { TextProps } from './Text';
 import { Text as RNText } from 'react-native';
 
 export const StyledText = styled(RNText)<TextProps & Partial<StyleProps>>`

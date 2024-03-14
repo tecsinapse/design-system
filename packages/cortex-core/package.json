@@ -9,10 +9,9 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "yarn build:es --watch",
+    "dev": "rollup --config --watch",
     "build:es": "rollup --config",
-    "build:declaration": "tsc --project tsconfig.build.json"
+    "build:dts": "tsc --project tsconfig.build.json"
   },
   "author": "ryancarloscorrea",
   "license": "ISC",

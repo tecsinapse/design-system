@@ -114,3 +114,5 @@ packages/**/dist
 packages/**/esm
 packages/**/rollup
 sbdocs
+
+.nx/cache

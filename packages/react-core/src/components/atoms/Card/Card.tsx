@@ -1,4 +1,4 @@
-import { PressableSurfaceProps } from '@tecsinapse/react-core';
+import { PressableSurfaceProps } from '../PressableSurface';
 import React, { ReactNode } from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { Paper, PaperProps } from '../Paper';

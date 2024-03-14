@@ -1,16 +1,16 @@
 import {
-  colors,
   borderColor,
   borderRadius,
   borderWidth,
   boxShadow,
+  colors,
+  fontFamily,
   fontSize,
   spacing,
-  fontFamily,
   textColor,
 } from '../tokens/definitions';
 
-module.exports = {
+const preset = {
   theme: {
     fontFamily,
     extend: {
@@ -34,3 +34,5 @@ module.exports = {
     },
   },
 };
+
+export default preset;

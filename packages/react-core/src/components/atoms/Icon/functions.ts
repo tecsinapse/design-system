@@ -3,9 +3,8 @@ import {
   ColorGradationType,
   ColorType,
   FontColorType,
-  IconType,
   ThemeProp,
-} from '@tecsinapse/react-core';
+} from '../../../types/defaults';
 import { IconInternalProps } from './types';
 import Material from './Material';
 import Fontisto from './Fontisto';
@@ -21,6 +20,7 @@ import Ionicon from './Ionicon';
 import MaterialCommunity from './MaterialCommunity';
 import Octicon from './Octicon';
 import Zocial from './Zocial';
+import { IconType } from '../../../styles/definitions';
 
 /* eslint-disable */
 const customIcons: any = {};

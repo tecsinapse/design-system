@@ -8,5 +8,5 @@ module.exports = {
     './packages/react-lab/src/*.{js,ts,jsx,tsx}',
     './packages/cortex-core/src/components/**/*.{js,ts,jsx,tsx}',
   ],
-  presets: [require('./packages/cortex-core/src/preset')],
+  presets: [require('./packages/cortex-core/dist/cjs/preset')],
 };

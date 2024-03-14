@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { View } from 'react-native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
 import { CheckboxProps } from './Checkbox';
 
 export const IconUncheckedStyled = styled(View)<

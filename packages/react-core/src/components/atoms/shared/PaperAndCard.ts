@@ -1,5 +1,5 @@
 import { css } from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const baseStyles = ({ theme }: StyleProps): any => css`
