@@ -10,7 +10,7 @@ import {
   textColor,
 } from '../tokens/definitions';
 
-export default {
+const preset = {
   theme: {
     fontFamily,
     extend: {
@@ -34,3 +34,5 @@ export default {
     },
   },
 };
+
+export default preset;
