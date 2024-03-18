@@ -1,5 +1,5 @@
 import { ColorValue, StyleProp, TextProps, TextStyle } from 'react-native';
-import { IconSizeType } from '@tecsinapse/react-core';
+import { IconSizeType } from '../../../types/defaults';
 
 export interface IconRNVIProps extends TextProps {
   /**

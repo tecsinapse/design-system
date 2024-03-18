@@ -1,5 +1,5 @@
 import { useTheme } from '@emotion/react';
-import { ThemeProp } from '@tecsinapse/react-core';
+import { ThemeProp } from '../../../../types/defaults';
 import React, { useCallback, useEffect } from 'react';
 import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
 import { StyledInputElement } from '../styled';
@@ -61,8 +61,8 @@ const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
       maskValue === undefined
         ? value?.toString()
         : maskValue.formatted
-        ? maskValue.formatted
-        : '';
+          ? maskValue.formatted
+          : '';
 
     useEffect(() => {
       if (onChange) {

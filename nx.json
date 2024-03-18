@@ -1,0 +1,92 @@
+{
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": []
+    },
+    "build:es": {
+      "cache": true,
+      "dependsOn": [
+        "^build:core",
+        "^build:es"
+      ],
+      "outputs": [
+        "{projectRoot}/dist/cjs",
+        "{projectRoot}/dist/esm"
+      ]
+    },
+    "build:dts": {
+      "cache": true,
+      "dependsOn": [
+        "^build:core:dts",
+        "^build:dts"
+      ],
+      "outputs": [
+        "{projectRoot}/dist/types"
+      ]
+    },
+    "dev:dts": {
+      "dependsOn": []
+    },
+    "build:core": {
+      "cache": true,
+      "dependsOn": [
+        "^build:core"
+      ],
+      "outputs": [
+        "{projectRoot}/dist/cjs",
+        "{projectRoot}/dist/esm"
+      ]
+    },
+    "build:core:dts": {
+      "cache": true,
+      "dependsOn": [
+        "^build:core:dts"
+      ],
+      "outputs": [
+        "{projectRoot}/dist/types"
+      ]
+    },
+    "yalc:push": {
+      "dependsOn": []
+    },
+    "yalc:show": {
+      "dependsOn": []
+    },
+    "unused:dev": {
+      "dependsOn": []
+    },
+    "unused:build:es": {
+      "dependsOn": []
+    },
+    "unused:build:declaration": {
+      "dependsOn": []
+    },
+    "unused:build:declaration:watch": {
+      "dependsOn": []
+    },
+    "dev:android": {
+      "dependsOn": []
+    },
+    "android": {
+      "dependsOn": []
+    },
+    "ios": {
+      "dependsOn": []
+    },
+    "run:dev": {
+      "dependsOn": []
+    },
+    "run:android": {
+      "dependsOn": []
+    },
+    "run:ios": {
+      "dependsOn": []
+    },
+    "update:stories": {
+      "dependsOn": []
+    },
+    "watch:stories": {
+      "dependsOn": []
+    }
+  }
+}

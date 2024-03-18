@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 import { Pressable, StyleProp, ViewStyle } from 'react-native';
-import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
+import { ColorGradationType, ColorType } from '../../../types/defaults';
 import { Icon } from '../Icon';
 import {
-  IconUncheckedStyled,
   IconCheckedStyled,
-  ViewStyled,
+  IconUncheckedStyled,
   IconViewStyled,
+  ViewStyled,
 } from './styled';
 
 export interface CheckboxProps {

@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import { Animated } from 'react-native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
 import { RFValueStr } from '../../../utils';
 
 export const SWITCH_BODY_WIDTH = '40px';

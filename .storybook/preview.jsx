@@ -1,5 +1,6 @@
-import { lightTheme, ThemeProvider } from '@tecsinapse/react-core';
-
+// TODO: fix this to use absolute import
+import { lightTheme, ThemeProvider } from '../packages/react-core';
+import './index.css';
 export const parameters = {
   layout: 'centered',
   options: {

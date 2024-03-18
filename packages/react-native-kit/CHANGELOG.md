@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.9...@tecsinapse/react-native-kit@3.4.0) (2024-03-14)
+
+### Features
+
+- add lerna caching ([3e2008a](https://github.com/tecsinapse/design-system/commit/3e2008a403749d14dd1c1ec6e4136d25bddb44ce))
+
+## [3.3.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.9-beta.0...@tecsinapse/react-native-kit@3.3.9) (2024-03-13)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.3.9-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.8...@tecsinapse/react-native-kit@3.3.9-beta.0) (2024-03-12)
+
+### Bug Fixes
+
+- update package json main ([a3cc4b1](https://github.com/tecsinapse/design-system/commit/a3cc4b1cefa192c56c87111f4e4a17fcb683f05f))
+
+## [3.3.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.7...@tecsinapse/react-native-kit@3.3.8) (2024-02-20)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.3.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.5...@tecsinapse/react-native-kit@3.3.7) (2024-02-07)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.3.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.4...@tecsinapse/react-native-kit@3.3.6) (2024-01-15)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.3.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.3...@tecsinapse/react-native-kit@3.3.5) (2023-12-19)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.3.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.3...@tecsinapse/react-native-kit@3.3.4) (2023-12-13)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.3.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.2...@tecsinapse/react-native-kit@3.3.3) (2023-11-21)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.3.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.1...@tecsinapse/react-native-kit@3.3.2) (2023-11-20)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
 ## [3.3.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.0...@tecsinapse/react-native-kit@3.3.1) (2023-11-20)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit

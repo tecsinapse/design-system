@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.10...@tecsinapse/react-web-kit@3.4.0) (2024-03-14)
+
+### Features
+
+- add lerna caching ([3e2008a](https://github.com/tecsinapse/design-system/commit/3e2008a403749d14dd1c1ec6e4136d25bddb44ce))
+
+## [3.3.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.10-beta.0...@tecsinapse/react-web-kit@3.3.10) (2024-03-13)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.10-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.9...@tecsinapse/react-web-kit@3.3.10-beta.0) (2024-03-12)
+
+### Bug Fixes
+
+- storybook build ([044cb32](https://github.com/tecsinapse/design-system/commit/044cb32243a9207f92a2b433447f349bf84467c1))
+- update package json main ([a3cc4b1](https://github.com/tecsinapse/design-system/commit/a3cc4b1cefa192c56c87111f4e4a17fcb683f05f))
+
+## [3.3.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.8...@tecsinapse/react-web-kit@3.3.9) (2024-02-20)
+
+### Features
+
+- **TS-3887:** mudança na color do componente chevron quando o campo estiver disabled ([968c7f5](https://github.com/tecsinapse/design-system/commit/968c7f5012c05ea8f6aa9ce99779463705a4d34e))
+
+## [3.3.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.6...@tecsinapse/react-web-kit@3.3.8) (2024-02-07)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.5...@tecsinapse/react-web-kit@3.3.7) (2024-01-15)
+
+### Bug Fixes
+
+- add optional chaining to select item ([7673ea5](https://github.com/tecsinapse/design-system/commit/7673ea52fa1d3985a745058088cf33eb89340c05))
+
+## [3.3.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.4...@tecsinapse/react-web-kit@3.3.6) (2023-12-19)
+
+### Bug Fixes
+
+- add optional chaining to select item ([7673ea5](https://github.com/tecsinapse/design-system/commit/7673ea52fa1d3985a745058088cf33eb89340c05))
+
+## [3.3.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.4...@tecsinapse/react-web-kit@3.3.5) (2023-12-13)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.3...@tecsinapse/react-web-kit@3.3.4) (2023-11-21)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.2...@tecsinapse/react-web-kit@3.3.3) (2023-11-21)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.3.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.1...@tecsinapse/react-web-kit@3.3.2) (2023-11-20)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
 ## [3.3.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.3.0...@tecsinapse/react-web-kit@3.3.1) (2023-11-20)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

@@ -1,4 +1,4 @@
-export { Avatar } from './components/atoms/Avatar';
+export { Avatar } from './components/atoms/Avatar/';
 export type { AvatarProps } from './components/atoms/Avatar';
 export { Badge } from './components/atoms/Badge';
 export type { BadgeProps } from './components/atoms/Badge';

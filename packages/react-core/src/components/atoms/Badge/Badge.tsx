@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { ColorGradationType, ColorType } from '@tecsinapse/react-core';
+import { ColorGradationType, ColorType } from '../../../types/defaults';
 import { BadgeStyle, ViewStyled } from './styled';
 
 export interface BadgeProps {

@@ -3,7 +3,7 @@ import { Animated, ViewProps } from 'react-native';
 import { IconProps } from '../Icon';
 import { PressableSurface } from '../PressableSurface';
 import { StyledCloseIcon, StyledLeftIcon, StyledTagContainer } from './styled';
-import { ColorType, ColorGradationType } from '@tecsinapse/react-core';
+import { ColorGradationType, ColorType } from '../../../types/defaults';
 
 export interface TagProps extends ViewProps {
   value: React.ReactNode;

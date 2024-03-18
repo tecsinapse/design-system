@@ -2,16 +2,14 @@
   "name": "@tecsinapse/design-system",
   "private": true,
   "license": "MIT",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
   "dependencies": {
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
+    "autoprefixer": "^10.4.16",
     "date-fns": "~2.30.0",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.3.5",
     "react-native-vector-icons": "^9.2.0"
   },
   "devDependencies": {
@@ -40,42 +38,41 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
-    "husky": "^8",
-    "lerna": "^7",
-    "lint-staged": "^13.2.3",
+    "husky": "^9",
+    "lerna": "^8",
+    "lint-staged": "^15",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.0.3",
+    "prettier": "^3.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.72.6",
     "react-native-web": "^0.19.9",
-    "rimraf": "^5.0.1",
+    "rimraf": "^5.0.5",
     "rollup": "^3.29.2",
     "rollup-plugin-esbuild": "^5.0.0",
     "storybook": "^7.4.4",
     "typescript": "^5",
-    "vite": "^4.4.9"
+    "vite": "^4.5.2"
   },
   "scripts": {
-    "dev": "lerna run dev --stream --parallel",
-    "build": "lerna run --stream 'build:es'",
-    "build:watch": "yarn dev",
+    "dev": "lerna run dev,dev:dts",
+    "build": "lerna run build:es,build:dts",
+    "build:core": "lerna run --scope @tecsinapse/react-core build:es,build:dts",
+    "build:platform": "lerna run --ignore @tecsinapse/react-core build:es,build:dts",
     "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' storybook build -o sbdocs/",
-    "postbuild": "yarn build:declarations",
-    "build:declarations": "lerna run 'build:declaration'",
-    "build:declarations:watch": "rimraf -rf packages/*/dist/*.d.ts && lerna run 'build:declaration:watch' --stream",
-    "yalc:push": "lerna run 'yalc:push'",
+    "yalc:push": "lerna run yalc:push",
     "yalc:show": "yalc installations show",
-    "prebuild": "rimraf -rf packages/*/dist/",
+    "rm:dts": "rimraf -rf packages/*/dist/*.d.ts",
+    "rm:dist": "rimraf -rf packages/*/dist/",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",
-    "lint": "yarn lint:fix:quiet",
-    "lint:fix": "yarn lint:ts --fix-dry-run",
-    "lint:fix:quiet": "yarn lint:ts --fix --quiet",
+    "lint": "pnpm lint:fix:quiet",
+    "lint:fix": "pnpm lint:ts --fix-dry-run",
+    "lint:fix:quiet": "pnpm lint:ts --fix --quiet",
     "prettify": "prettier --write ./**/*.{ts,tsx,json} && prettier --write *.{ts,tsx,json}",
-    "bootstrap": "yarn build",
+    "bootstrap": "pnpm build",
     "tsc": "tsc",
-    "prepare": "husky install && yarn bootstrap"
+    "prepare": "husky install && pnpm bootstrap"
   },
   "engines": {
     "node": ">=16"

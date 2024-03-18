@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { StyleProps } from '@tecsinapse/react-core';
+import { StyleProps } from '../../../types/defaults';
 import { extractNumbersFromString, RFValue, RFValueStr } from '../../../utils';
 import { InputContainer, InputElement } from '../../atoms/Input';
 import { TextAreaProps } from './TextArea';
