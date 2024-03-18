@@ -1,5 +1,5 @@
-import React from 'react';
 import { SnackbarProps as SnackPropsCore } from '@tecsinapse/react-core';
+import React from 'react';
 import { Text, TextNativeProps } from '../../atoms/Text';
 import { SnackbarStyled } from './styled';
 
@@ -15,7 +15,7 @@ const Snackbar: React.FC<SnackbarNativeProps> = ({
 }) => {
   return (
     <SnackbarStyled {...rest}>
-      <Text {...textProps} fontWeight="bold" typography="base">
+      <Text fontWeight="bold" typography="base" {...textProps}>
         {value}
       </Text>
     </SnackbarStyled>
