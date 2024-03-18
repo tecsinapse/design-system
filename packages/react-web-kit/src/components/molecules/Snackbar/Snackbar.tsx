@@ -1,9 +1,9 @@
-import React from 'react';
 import {
   SnackbarProps as SnackPropsCore,
   Text,
   TextProps,
 } from '@tecsinapse/react-core';
+import React from 'react';
 import { SnackbarStyled } from './styled';
 
 export interface SnackbarWebProps extends Omit<SnackPropsCore, 'children'> {
@@ -18,7 +18,7 @@ const Snackbar: React.FC<SnackbarWebProps> = ({
 }) => {
   return (
     <SnackbarStyled {...rest} showProgressBar={false}>
-      <Text {...textProps} fontWeight="bold" typography="base">
+      <Text fontWeight="bold" typography="base" {...textProps}>
         {value}
       </Text>
     </SnackbarStyled>
