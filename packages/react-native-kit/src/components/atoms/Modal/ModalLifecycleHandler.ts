@@ -155,6 +155,12 @@ export class ModalLifecycleHandler {
     savedNode && this.nodeGroup.set(id, { ...savedNode, visible: false });
     this.update();
   };
+
+  public closeLastOpenedModal = (): void => {
+    const [modals] = this.state || [];
+    const lastModal = modals?.pop();
+    lastModal?.props?.close?.();
+  };
 }
 
 /**

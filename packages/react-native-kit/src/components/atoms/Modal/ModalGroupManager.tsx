@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { Modal as RNModal, ModalProps } from 'react-native';
+import { ModalProps, Modal as RNModal } from 'react-native';
 import { createModalLifecycleHandler } from './ModalLifecycleHandler';
 import { IBaseModal } from './ui/types';
 
@@ -24,6 +24,7 @@ export const ModalGroupManager: FC<ModalProps> = ({ children, ...others }) => {
         statusBarTranslucent
         animationType="none"
         visible={hasModals}
+        onRequestClose={modalLifecycle.closeLastOpenedModal}
         {...others}
       >
         {_render}
