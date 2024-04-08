@@ -1,4 +1,6 @@
 import {
+  Hint,
+  InputVariantType,
   PressableInputContainer,
   Text,
   TextProps,
@@ -39,6 +41,9 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
   anchor?: 'top' | 'bottom';
   displayTextProps?: TextProps;
   multiLabels?: MultiLabels;
+  variant?: InputVariantType
+  hint?: string
+  hintComponent?: JSX.Element
 }
 
 /** NOTE: For better performance, you should memoize options and handlers */
@@ -59,6 +64,9 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   displayTextProps,
   selectAllLabel = 'Select all',
   multiLabels,
+  variant = 'default',
+  hint,
+  hintComponent,
   ...rest
 }: SelectProps<Data, Type>): JSX.Element => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
@@ -66,6 +74,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   const refDropDown = React.useRef(null);
   const transitionRef = React.useRef(null);
   useClickAwayListener(refDropDown, setDropDownVisible);
+  const _hint = hintComponent || <Hint text={hint} variant={variant} />;
   const instanceid = useId();
 
   useEffect(() => {
@@ -190,6 +199,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
+      {_hint}
       <Transition
         in={dropDownVisible}
         timeout={300}
