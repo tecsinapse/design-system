@@ -35,4 +35,4 @@ export type TagVariants = VariantProps<typeof tagStyles> & ClassProp;
  * @param {string=} [props.className] - The additional CSS classes for the tag.
  * @param {string=} [props.class] - The additional CSS classes for the tag.
  */
-export const tag = (props: TagVariants) => tagStyles(props);
+export const tag = (props?: TagVariants) => tagStyles(props);

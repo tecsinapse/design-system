@@ -91,7 +91,7 @@ export type InputBaseVariants = VariantProps<typeof inputBaseStyles> &
  * @param {string=} [props.className] - The additional CSS classes for the input.
  * @param {string=} [props.class] - The additional CSS classes for the input.
  */
-export const input = (props: InputBaseVariants) => inputBaseStyles(props);
+export const input = (props?: InputBaseVariants) => inputBaseStyles(props);
 
 export type LabelBaseVariants = ClassProp &
   VariantProps<typeof labelBaseStyles> & {

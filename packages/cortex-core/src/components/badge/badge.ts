@@ -1,4 +1,4 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { tv, VariantProps, ClassProp } from 'tailwind-variants';
 
 const badgeStyles = tv({
   base: 'text-sub text-white font-bold rounded-pill absolute items-center flex justify-center w-[1rem] h-[1rem] -top-1 -right-1 px-[5px] py-[2px]',
@@ -18,8 +18,8 @@ const badgeStyles = tv({
 });
 
 export const containerBadge = tv({
-  base: 'relative items-center justify-center self-center',
+  base: 'relative items-center justify-center self-center w-fit',
 });
 
-export type BadgeVariants = VariantProps<typeof badgeStyles>;
+export type BadgeVariants = VariantProps<typeof badgeStyles> & ClassProp;
 export const badge = (props?: BadgeVariants) => badgeStyles(props);
