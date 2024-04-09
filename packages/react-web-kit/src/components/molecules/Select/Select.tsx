@@ -13,6 +13,7 @@ import { Dropdown } from './Dropdown';
 import { getDisplayValue } from './functions';
 import {
   StyledContainer,
+  StyledHintContainer,
   StyledIconComponent,
   StyledInputContainer,
 } from './styled';
@@ -199,7 +200,9 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
-      {_hint}
+      <StyledHintContainer>
+        {_hint}
+      </StyledHintContainer>
       <Transition
         in={dropDownVisible}
         timeout={300}

@@ -15,6 +15,10 @@ export const StyledInputContainer = styled('div')<Partial<StyleProps>>`
   width: 100%;
 `;
 
+export const StyledHintContainer = styled('div')<Partial<StyleProps>>`
+  align-self: start;
+`;
+
 export const StyledIconComponent = styledNative(Icon)<
   Partial<StyleProps & { disabled: boolean }>
 >`
