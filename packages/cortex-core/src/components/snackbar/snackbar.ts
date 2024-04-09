@@ -17,7 +17,7 @@ const snackbarStyles = tv({
   },
 });
 
-type SnackbarVariants = VariantProps<typeof snackbarStyles> & ClassProp;
+export type SnackbarVariants = VariantProps<typeof snackbarStyles> & ClassProp;
 
 /**
  * Represents the snackbar component with specified variants.
