@@ -13,3 +13,4 @@ export * from './tooltip/tooltip';
 export * from './card/card';
 export * from './modal/modal';
 export * from './snackbar/snackbar';
+export * from './common/common';
