@@ -1,7 +1,7 @@
-import React from 'react';
 import { Story } from '@storybook/react';
-import { Tag, TagProps } from './index';
 import { IconProps } from '@tecsinapse/react-core';
+import React from 'react';
+import { Tag, TagProps } from './index';
 
 export default {
   title: 'Hybrid/Tag',
@@ -19,6 +19,8 @@ const Template: Story<TagProps> = ({
   variant,
   dismiss,
   onDismiss,
+  backgroundColorTone,
+  backgroundColorVariant
 }) => (
   <Tag
     value={value}
@@ -37,4 +39,6 @@ Base.args = {
   variant: 'small',
   dismiss: true,
   onDismiss: () => alert('Dismiss'),
+  backgroundColorTone: 'secondary',
+  backgroundColorVariant: 'xlight'
 } as TagProps;
