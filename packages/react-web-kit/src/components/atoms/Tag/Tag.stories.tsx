@@ -28,6 +28,8 @@ const Template: Story<TagProps> = ({
     variant={variant}
     dismiss={dismiss}
     onDismiss={onDismiss}
+    backgroundColorTone={backgroundColorTone}
+    backgroundColorVariant={backgroundColorVariant}
   />
 );
 
