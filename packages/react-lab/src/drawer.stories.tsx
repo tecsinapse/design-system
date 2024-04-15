@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
 import { button, drawer, overlay } from '@tecsinapse/cortex-core';
 
@@ -14,9 +14,15 @@ export default {
 };
 
 const Template: StoryFn = args => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex">
-      <input type="checkbox" id="drawer-toggle" className="sr-only peer" />
+      <input
+        type="checkbox"
+        id="drawer-toggle"
+        className="sr-only"
+        onChange={() => setOpen(!open)}
+      />
       <label
         htmlFor={'drawer-toggle'}
         className={button({
@@ -26,10 +32,14 @@ const Template: StoryFn = args => {
       >
         <p>Open/close drawer</p>
       </label>
-      <label className={overlay()} htmlFor={'drawer-toggle'}></label>
+      <div
+        className={overlay({ show: open })}
+        onClick={() => setOpen(false)}
+      ></div>
       <div
         className={drawer({
           position: args.position,
+          open: open,
         })}
       >
         <div className={'w-72'}>Content drawer</div>
