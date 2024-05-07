@@ -1,6 +1,7 @@
-// TODO: fix this to use absolute import
+import React from 'react';
 import { lightTheme, ThemeProvider } from '../packages/react-core';
 import './index.css';
+
 export const parameters = {
   layout: 'centered',
   options: {
