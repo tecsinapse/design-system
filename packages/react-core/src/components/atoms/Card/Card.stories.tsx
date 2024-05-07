@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import styled from '@emotion/native';
 import { action } from '@storybook/addon-actions';
 import Card, { CardProps } from './Card';
@@ -17,13 +17,15 @@ export default {
   component: Card,
 };
 
-const Template: Story<CardProps> = ({ elevated, ...rest }) => (
+const Template: StoryFn<CardProps> = ({ elevated, ...rest }) => (
   <StyledCard elevated={elevated} {...rest} />
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  elevated: true,
-  onPress: e => action('onClick')(e),
+  args: {
+    elevated: true,
+    onPress: e => action('onClick')(e),
+  },
 };

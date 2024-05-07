@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import {
-  buttonSelect,
-  dropdown,
-  option as styleOption,
-} from '@tecsinapse/cortex-core';
+import { buttonSelect, dropdown, option as styleOption } from '../src';
 
 export default {
-  title: 'Lab/Select',
+  title: 'Cortex/Select',
   component: <div />,
 };
 
@@ -53,6 +49,7 @@ const Template: StoryFn = () => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

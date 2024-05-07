@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { IconProps } from '@tecsinapse/react-core';
 import React from 'react';
 import { Tag, TagProps } from './index';
@@ -13,14 +13,14 @@ export default {
   },
 };
 
-const Template: Story<TagProps> = ({
+const Template: StoryFn<TagProps> = ({
   value,
   icon,
   variant,
   dismiss,
   onDismiss,
   backgroundColorTone,
-  backgroundColorVariant
+  backgroundColorVariant,
 }) => (
   <Tag
     value={value}
@@ -33,14 +33,16 @@ const Template: Story<TagProps> = ({
   />
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  value: 'Label',
-  icon: { name: 'stopwatch', type: 'fontisto' } as IconProps,
-  variant: 'small',
-  dismiss: true,
-  onDismiss: () => alert('Dismiss'),
-  backgroundColorTone: 'secondary',
-  backgroundColorVariant: 'xlight'
-} as TagProps;
+  args: {
+    value: 'Label',
+    icon: { name: 'stopwatch', type: 'fontisto' } as IconProps,
+    variant: 'small',
+    dismiss: true,
+    onDismiss: () => alert('Dismiss'),
+    backgroundColorTone: 'secondary',
+    backgroundColorVariant: 'xlight',
+  } as TagProps,
+};

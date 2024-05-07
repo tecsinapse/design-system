@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import Input, { InputWebProps } from './Input';
 
@@ -8,7 +8,7 @@ export default {
   component: Input,
 };
 
-const Template: Story<InputWebProps> = args => {
+const Template: StoryFn<InputWebProps> = args => {
   const [value, setValue] = useState<string>('');
 
   const onChange = text => {
@@ -29,11 +29,13 @@ const Template: Story<InputWebProps> = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  onChange: value => action('onChange')(value),
-  placeholder: 'Type your e-mail',
-  disabled: false,
-  label: 'Login',
+  args: {
+    onChange: value => action('onChange')(value),
+    placeholder: 'Type your e-mail',
+    disabled: false,
+    label: 'Login',
+  },
 };

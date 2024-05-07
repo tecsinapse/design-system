@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { Paper, Text } from '@tecsinapse/react-native-kit';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Paper> = {
+const StoryMeta: Meta<typeof Paper> = {
   title: 'Paper',
   component: Paper,
 };
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof Paper>;
+type IStory = StoryFn<typeof Paper>;
 
 export const Base = () => (
   <StyledPaper>

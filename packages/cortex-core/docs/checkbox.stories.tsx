@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { checkbox } from '@tecsinapse/cortex-core';
+import { checkbox } from '../src';
 
 export default {
-  title: 'Lab/Checkbox',
+  title: 'Cortex/Checkbox',
   component: <input />,
 };
 
@@ -11,6 +11,7 @@ const Template: StoryFn = () => {
   return <input type={'checkbox'} className={checkbox()}></input>;
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { RadioButtonProps, default as RadioButton } from './RadioButton';
+import { default as RadioButton, RadioButtonProps } from './RadioButton';
 import { Text } from '../Text';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 
 export default {
   title: 'Hybrid/Radio Button',
   component: RadioButton,
 };
 
-const Template: Story<RadioButtonProps> = ({
+const Template: StoryFn<RadioButtonProps> = ({
   labelPosition,
   checked,
   ...args
@@ -31,9 +31,11 @@ const Template: Story<RadioButtonProps> = ({
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  labelPosition: 'right',
-  checked: false,
+  args: {
+    labelPosition: 'right',
+    checked: false,
+  },
 };

@@ -9,10 +9,10 @@ import {
   tHeadCell,
   tRoot,
   tRow,
-} from '@tecsinapse/cortex-core';
+} from '../src';
 
 export default {
-  title: 'Lab/Table',
+  title: 'Cortex/Table',
   component: <table />,
 };
 
@@ -67,6 +67,7 @@ const Template: StoryFn = () => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

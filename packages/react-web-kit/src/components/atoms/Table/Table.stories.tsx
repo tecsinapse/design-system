@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { Icon, Text } from '@tecsinapse/react-core';
 import styled from '@emotion/styled';
 
@@ -24,7 +24,7 @@ const TdStyled = styled(Td)`
   padding: 12px 0 0 0;
 `;
 
-const Template: Story = () => (
+const Template: StoryFn = () => (
   <TableContainer>
     <TableToolbar
       title="Tabela"
@@ -93,4 +93,6 @@ const Template: Story = () => (
   </TableContainer>
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
+};

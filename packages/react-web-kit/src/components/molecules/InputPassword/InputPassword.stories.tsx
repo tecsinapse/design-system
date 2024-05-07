@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { InputPassword } from '.';
 import Input, { InputPasswordWebProps } from './InputPassword';
@@ -9,7 +9,7 @@ export default {
   component: Input,
 };
 
-const Template: Story<InputPasswordWebProps> = args => {
+const Template: StoryFn<InputPasswordWebProps> = args => {
   const [value, setValue] = useState<string>('');
 
   const onChange = text => {
@@ -32,10 +32,12 @@ const Template: Story<InputPasswordWebProps> = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  onChange: value => action('onChange')(value),
-  placeholder: 'Type your password',
-  disabled: false,
+  args: {
+    onChange: value => action('onChange')(value),
+    placeholder: 'Type your password',
+    disabled: false,
+  },
 };

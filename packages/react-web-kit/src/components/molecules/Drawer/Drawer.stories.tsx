@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import styled from '@emotion/styled';
 
@@ -10,7 +10,7 @@ export default {
   component: Drawer,
 };
 
-const Template: Story<DrawerProps> = ({ anchorPosition, open }) => {
+const Template: StoryFn<DrawerProps> = ({ anchorPosition, open }) => {
   const [isOpen, setOpen] = React.useState<boolean>(open);
 
   const toggleOpen = () => {
@@ -40,11 +40,13 @@ const Template: Story<DrawerProps> = ({ anchorPosition, open }) => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  anchorPosition: 'right',
-  open: false,
+  args: {
+    anchorPosition: 'right',
+    open: false,
+  },
 };
 
 const StyledHeaderDrawerStory = styled('div')`

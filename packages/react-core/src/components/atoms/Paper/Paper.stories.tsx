@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import Paper, { PaperProps } from './Paper';
 import { StyleProps } from '../../../types/defaults';
@@ -9,11 +9,17 @@ export default {
   component: Paper,
 };
 
-const Template: Story<PaperProps> = args => {
+const Template: StoryFn<PaperProps> = args => {
   return <StyledPaper {...args} />;
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
+
+  args: {
+    elevated: false,
+  },
+};
 
 const StyledPaper = styled(Paper)<Partial<StyleProps>>`
   border-color: ${({ theme }) => theme.color.secondary.light};
@@ -21,7 +27,3 @@ const StyledPaper = styled(Paper)<Partial<StyleProps>>`
   width: 250px;
   height: 100px;
 `;
-
-Base.args = {
-  elevated: false,
-};

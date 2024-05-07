@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text } from '@tecsinapse/react-native-kit';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const TextMeta: ComponentMeta<typeof Text> = {
+const TextMeta: Meta<typeof Text> = {
   title: 'Text',
   component: Text,
   args: {
@@ -19,7 +19,7 @@ const TextMeta: ComponentMeta<typeof Text> = {
 
 export default TextMeta;
 
-type TextStory = ComponentStory<typeof Text>;
+type TextStory = StoryFn<typeof Text>;
 
 export const Base: TextStory = args => <Text {...args}>Hello World</Text>;
 export const H1: TextStory = args => (

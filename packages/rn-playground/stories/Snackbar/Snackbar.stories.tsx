@@ -1,9 +1,9 @@
 import React from 'react';
 import { Snackbar, SnackbarNativeProps } from '@tecsinapse/react-native-kit';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-const StoryMeta: ComponentMeta<typeof Snackbar> = {
+const StoryMeta: Meta<typeof Snackbar> = {
   title: 'Snackbar',
   component: Snackbar,
   argTypes: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { Text } from '@tecsinapse/react-core';
 import Modal, { ModalProps } from './Modal';
 import { Button } from '../Button';
@@ -9,7 +9,7 @@ export default {
   component: Modal,
 };
 
-const Template: Story<ModalProps> = ({ open: _open, ...args }) => {
+const Template: StoryFn<ModalProps> = ({ open: _open, ...args }) => {
   const [open, setOpen] = React.useState(_open);
 
   React.useEffect(() => setOpen(_open), [_open]);
@@ -50,6 +50,7 @@ const Template: Story<ModalProps> = ({ open: _open, ...args }) => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = { open: true };
+export const Base = {
+  render: Template,
+  args: { open: true },
+};

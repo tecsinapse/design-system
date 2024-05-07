@@ -1,8 +1,8 @@
 import React from 'react';
 import { DateTimePicker } from '@tecsinapse/react-native-kit';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof DateTimePicker> = {
+const StoryMeta: Meta<typeof DateTimePicker> = {
   title: 'DateTimePicker',
   component: DateTimePicker,
   args: {
@@ -20,7 +20,7 @@ const StoryMeta: ComponentMeta<typeof DateTimePicker> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof DateTimePicker>;
+type IStory = StoryFn<typeof DateTimePicker>;
 
 export const Date = (args: IStory) => {
   const [date, setDate] = React.useState<Date>();

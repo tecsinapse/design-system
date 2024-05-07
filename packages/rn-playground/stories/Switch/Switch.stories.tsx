@@ -1,8 +1,8 @@
 import { Switch, SwitchProps } from '@tecsinapse/react-native-kit';
-import React, { useEffect, useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import React, { useState } from 'react';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Switch> = {
+const StoryMeta: Meta<typeof Switch> = {
   title: 'Switch',
   component: Switch,
   args: {

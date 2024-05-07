@@ -1,8 +1,8 @@
 import React from 'react';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 import { Avatar, AvatarProps } from '@tecsinapse/react-native-kit';
 
-const StoryMeta: ComponentMeta<typeof Avatar> = {
+const StoryMeta: Meta<typeof Avatar> = {
   title: 'Avatar',
   component: Avatar,
   args: {
@@ -21,4 +21,4 @@ export const Base = (args: AvatarProps) => (
   />
 );
 
-export const NoImage = (args: AvatarProps) => <Avatar {...args} />;
+export const NoImage = {};

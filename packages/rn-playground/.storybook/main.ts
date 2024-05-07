@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   stories: ['../stories/**/*.stories.?(ts|tsx|js|jsx)'],
   addons: [
     '@storybook/addon-ondevice-controls',

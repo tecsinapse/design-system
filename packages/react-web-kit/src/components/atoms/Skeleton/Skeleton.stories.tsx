@@ -1,21 +1,18 @@
 import React from 'react';
-import { Story } from '@storybook/react';
-import Skeleton from './Skeleton';
-import { SkeletonProps } from './Skeleton';
-import { Text, Card } from '../../../';
+import { StoryFn } from '@storybook/react';
+import Skeleton, { SkeletonProps } from './Skeleton';
+import { Card, Text } from '../../../';
 
 export default {
   title: 'Web/Skeleton',
   component: Skeleton,
 };
 
-const Template: Story<SkeletonProps> = args => <Skeleton {...args} />;
+export const Base = {
+  args: { width: 100, height: 50 },
+};
 
-export const Base = Template.bind({});
-
-Base.args = { width: 100, height: 50 };
-
-const ChildrenTemplate: Story<SkeletonProps> = args => {
+const ChildrenTemplate: StoryFn<SkeletonProps> = args => {
   return (
     <Skeleton {...args}>
       <Card
@@ -33,6 +30,7 @@ const ChildrenTemplate: Story<SkeletonProps> = args => {
   );
 };
 
-export const Children = ChildrenTemplate.bind({});
-
-Children.args = { animation: 'pulse' };
+export const Children = {
+  render: ChildrenTemplate,
+  args: { animation: 'pulse' },
+};

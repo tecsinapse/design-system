@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { input, inputBox, labelStyle } from '@tecsinapse/cortex-core';
+import { input, inputBox, labelStyle } from '../src';
 
 export default {
-  title: 'Lab/Input',
+  title: 'Cortex/Input',
   component: <input />,
   argTypes: {
     intent: {
@@ -38,9 +38,11 @@ const Template: StoryFn = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  label: 'Label',
-  placeholder: 'Placeholder',
+  args: {
+    label: 'Label',
+    placeholder: 'Placeholder',
+  },
 };

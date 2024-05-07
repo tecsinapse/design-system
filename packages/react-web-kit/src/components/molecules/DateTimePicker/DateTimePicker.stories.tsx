@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { DateTimePickerProps } from '@tecsinapse/react-core';
 import { ptBR } from 'date-fns/locale';
 import React from 'react';
@@ -9,7 +9,7 @@ export default {
   component: DateTimePicker,
 };
 
-const Template: Story<DateTimePickerProps> = ({ ...args }) => {
+const Template: StoryFn<DateTimePickerProps> = ({ ...args }) => {
   const [value, setValue] = React.useState<Date>();
 
   return (
@@ -17,11 +17,13 @@ const Template: Story<DateTimePickerProps> = ({ ...args }) => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  mode: 'datetime',
-  format: 'dd/MM/yyyy HH:mm',
-  label: 'Select date and time',
-  placeholder: 'Select date and time',
+  args: {
+    mode: 'datetime',
+    format: 'dd/MM/yyyy HH:mm',
+    label: 'Select date and time',
+    placeholder: 'Select date and time',
+  },
 };

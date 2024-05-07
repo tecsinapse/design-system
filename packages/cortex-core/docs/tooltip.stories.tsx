@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button, tooltip, tooltipContainer } from '@tecsinapse/cortex-core';
+import { button, tooltip, tooltipContainer } from '../src';
 
 export default {
-  title: 'Lab/Tooltip',
+  title: 'Cortex/Tooltip',
   component: <div />,
   argTypes: {
     position: {
@@ -37,8 +37,10 @@ const Template: StoryFn<Test> = ({ position }) => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  position: 'top',
+  args: {
+    position: 'top',
+  },
 };

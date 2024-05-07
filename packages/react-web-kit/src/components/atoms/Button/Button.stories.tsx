@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { Text } from '@tecsinapse/react-core';
 import React from 'react';
 import Button, { WebButtonProps } from './Button';
@@ -13,7 +13,7 @@ interface ButtonPropsExtended extends WebButtonProps {
   label: string;
 }
 
-const Template: Story<ButtonPropsExtended> = args => (
+const Template: StoryFn<ButtonPropsExtended> = args => (
   <div style={{ width: 200 }}>
     <Button {...args}>
       <Text fontWeight="bold" fontColor="light">
@@ -23,13 +23,15 @@ const Template: Story<ButtonPropsExtended> = args => (
   </div>
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  onPress: e => action('onPress')(e),
-  label: 'Button',
-  color: 'primary',
-  variant: 'filled',
-  tone: 'medium',
-  size: 'small',
+  args: {
+    onPress: e => action('onPress')(e),
+    label: 'Button',
+    color: 'primary',
+    variant: 'filled',
+    tone: 'medium',
+    size: 'small',
+  },
 };

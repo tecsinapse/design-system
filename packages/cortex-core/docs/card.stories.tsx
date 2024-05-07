@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button, card, tag } from '@tecsinapse/cortex-core';
+import { button, card, tag } from '../src';
 
 export default {
-  title: 'Lab/Card',
+  title: 'Cortex/Card',
   component: <div />,
 };
 
@@ -28,6 +28,7 @@ const Template: StoryFn = () => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

@@ -1,8 +1,8 @@
 import { RadioButton, Text } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof RadioButton> = {
+const StoryMeta: Meta<typeof RadioButton> = {
   title: 'RadioButton',
   component: RadioButton,
 };

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story } from '@storybook/react';
-import { SwitchProps, default as Switch } from './Switch';
+import { StoryFn } from '@storybook/react';
+import { default as Switch, SwitchProps } from './Switch';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -8,20 +8,24 @@ export default {
   component: Switch,
 };
 
-const Template: Story<SwitchProps> = args => {
+const Template: StoryFn<SwitchProps> = args => {
   const [active, setActive] = React.useState(args.active);
   const onChange = arg => {
     setActive(!active);
     args.onChange(arg);
   };
 
-  return <Switch active={active} onChange={onChange} disabled={args.disabled}/>;
+  return (
+    <Switch active={active} onChange={onChange} disabled={args.disabled} />
+  );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  active: true,
-  onChange: value => action('Cicked')(value),
-  disabled: false,
+  args: {
+    active: true,
+    onChange: value => action('Cicked')(value),
+    disabled: false,
+  },
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Badge, BadgeNativeProps, Icon } from '@tecsinapse/react-native-kit';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Badge> = {
+const StoryMeta: Meta<typeof Badge> = {
   title: 'Badge',
   component: Badge,
   args: {

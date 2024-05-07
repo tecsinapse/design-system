@@ -1,12 +1,12 @@
 import {
-  GroupButtonOption,
   GroupButton,
+  GroupButtonOption,
   GroupButtonValue,
 } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof GroupButton> = {
+const StoryMeta: Meta<typeof GroupButton> = {
   title: 'GroupButton',
   component: GroupButton,
 };

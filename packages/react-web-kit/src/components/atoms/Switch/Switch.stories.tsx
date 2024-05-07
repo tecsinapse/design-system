@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import Switch from './Switch';
 import { action } from '@storybook/addon-actions';
 
@@ -8,7 +8,7 @@ export default {
   component: Switch,
 };
 
-const Template: Story = args => {
+const Template: StoryFn = args => {
   const [active, setActive] = React.useState(args.active);
   const onChange = arg => {
     setActive(!active);
@@ -19,10 +19,12 @@ const Template: Story = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  active: true,
-  onChange: value => action('Cicked')(value),
-  disabled: false,
+  args: {
+    active: true,
+    onChange: value => action('Cicked')(value),
+    disabled: false,
+  },
 };

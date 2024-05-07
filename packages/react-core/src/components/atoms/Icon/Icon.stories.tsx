@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import Icon, { IconProps } from './Icon';
 
 export default {
@@ -7,15 +7,17 @@ export default {
   component: Icon,
 };
 
-const Template: Story<IconProps> = ({ name, type, size, ...args }) => (
+const Template: StoryFn<IconProps> = ({ name, type, size, ...args }) => (
   <Icon {...args} name={name} size={size} type={type} />
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  name: 'rocket',
-  type: 'font-awesome',
-  size: 'kilo',
-  fontColor: 'dark',
+  args: {
+    name: 'rocket',
+    type: 'font-awesome',
+    size: 'kilo',
+    fontColor: 'dark',
+  },
 };

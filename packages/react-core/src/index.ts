@@ -47,6 +47,7 @@ export type {
   InputMaskElementProps,
   InputVariantType,
   PressableInputContainerProps,
+  CurrencyOptions,
 } from './components/atoms/Input';
 export { Paper } from './components/atoms/Paper';
 export type { PaperProps } from './components/atoms/Paper';

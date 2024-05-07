@@ -1,8 +1,8 @@
 import { InputPassword } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof InputPassword> = {
+const StoryMeta: Meta<typeof InputPassword> = {
   title: 'InputPassword',
   component: InputPassword,
   args: {
@@ -13,7 +13,7 @@ const StoryMeta: ComponentMeta<typeof InputPassword> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof InputPassword>;
+type IStory = StoryFn<typeof InputPassword>;
 
 export const Base = (args: IStory) => {
   const [value, setValue] = useState<string>('password123');

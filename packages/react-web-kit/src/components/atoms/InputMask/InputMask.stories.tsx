@@ -1,16 +1,15 @@
 import { action } from '@storybook/addon-actions';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import InputMask, { InputMaskWebProps } from './InputMask';
-import { Masks } from '@tecsinapse/react-core/src';
-import { CurrencyOptions } from '@tecsinapse/react-core/dist/components/atoms/Input';
+import { CurrencyOptions, Masks } from '@tecsinapse/react-core';
 
 export default {
   title: 'Hybrid/InputMask',
   component: InputMask,
 };
 
-const TemplateStringMask: Story<InputMaskWebProps> = args => {
+const TemplateStringMask: StoryFn<InputMaskWebProps> = args => {
   const [value, setValue] = useState<string>();
 
   const onChange = text => {
@@ -32,16 +31,18 @@ const TemplateStringMask: Story<InputMaskWebProps> = args => {
   );
 };
 
-export const StringMask = TemplateStringMask.bind({});
+export const StringMask = {
+  render: TemplateStringMask,
 
-StringMask.args = {
-  onChange: value => action('onChange')(value),
-  placeholder: 'Type your phone',
-  disabled: false,
-  label: 'Phone',
+  args: {
+    onChange: value => action('onChange')(value),
+    placeholder: 'Type your phone',
+    disabled: false,
+    label: 'Phone',
+  },
 };
 
-const TemplateNumberMask: Story<InputMaskWebProps> = args => {
+const TemplateNumberMask: StoryFn<InputMaskWebProps> = args => {
   const [value, setValue] = useState<number>(1200.2);
 
   const onChange = text => {
@@ -70,11 +71,13 @@ const TemplateNumberMask: Story<InputMaskWebProps> = args => {
   );
 };
 
-export const NumberMask = TemplateNumberMask.bind({});
+export const NumberMask = {
+  render: TemplateNumberMask,
 
-NumberMask.args = {
-  onChange: value => action('onChange')(value),
-  placeholder: 'Type the price in R$',
-  disabled: false,
-  label: 'Price',
+  args: {
+    onChange: value => action('onChange')(value),
+    placeholder: 'Type the price in R$',
+    disabled: false,
+    label: 'Price',
+  },
 };

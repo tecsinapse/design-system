@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import { Card } from '../Card';
 import { Text } from '../Text';
@@ -9,7 +9,7 @@ export default {
   component: Divider,
 };
 
-const Template: Story<DividerProps> = ({ ...args }) => {
+const Template: StoryFn<DividerProps> = ({ ...args }) => {
   return (
     <Card>
       <Text>Some content here!</Text>
@@ -21,8 +21,10 @@ const Template: Story<DividerProps> = ({ ...args }) => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  linePosition: 'bottom',
+  args: {
+    linePosition: 'bottom',
+  },
 };
