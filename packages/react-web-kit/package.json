@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/react-web-kit",
-  "description": "TecSinapse React components",
+  "description": "React components library for web",
   "version": "3.4.3",
   "license": "MIT",
   "main": "dist/esm/index.js",
@@ -36,9 +36,8 @@
   },
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
     "react-native-web": ">=0.18.0 <1"
-  },
-  "gitHead": "594cf6d21e45d6a07902dacc00b9e818d5de5a70"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/react-core",
-  "description": "TecSinapse hybrid React components",
+  "description": "Core hybrid React components library",
   "version": "3.4.0",
   "license": "MIT",
   "main": "dist/esm/index.js",
@@ -33,9 +33,8 @@
   },
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-native": "^0.72.0",
+    "react": ">=18.0.0",
+    "react-native": ">=0.72.0",
     "react-native-vector-icons": "^9.2.0"
-  },
-  "gitHead": "594cf6d21e45d6a07902dacc00b9e818d5de5a70"
+  }
 }
