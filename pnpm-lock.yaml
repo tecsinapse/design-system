@@ -291,8 +291,8 @@ importers:
         specifier: 4.10.1
         version: 4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-svg:
-        specifier: 15.2.0-rc.0
-        version: 15.2.0-rc.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        specifier: 15.2.0
+        version: 15.2.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-vector-icons:
         specifier: ^9.2.0
         version: 9.2.0
@@ -337,7 +337,7 @@ importers:
         specifier: ^51.0.0
         version: 51.0.0(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(encoding@0.1.13)
       metro-react-native-babel-preset:
-        specifier: '*'
+        specifier: 0.77.0
         version: 0.77.0(@babel/core@7.24.5)
 
 packages:
@@ -7128,8 +7128,8 @@ packages:
       react: '*'
       react-native: '*'
 
-  react-native-svg@15.2.0-rc.0:
-    resolution: {integrity: sha512-rA2milxKXUW+VDzd2y/kWRCS8EJLUAAaU5PwQ/xB2TnzwoW1ivU8hkgwqbBhmGmr8LEa9HJoPUnxD7H7yAVPdA==}
+  react-native-svg@15.2.0:
+    resolution: {integrity: sha512-R0E6IhcJfVLsL0lRmnUSm72QO+mTqcAOM5Jb8FVGxJqX3NfJMlMP0YyvcajZiaRR8CqQUpEoqrY25eyZb006kw==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -17283,7 +17283,7 @@ snapshots:
       react: 18.3.1
       react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1)
 
-  react-native-svg@15.2.0-rc.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-svg@15.2.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       css-select: 5.1.0
       css-tree: 1.1.3
