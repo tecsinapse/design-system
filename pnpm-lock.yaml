@@ -48,9 +48,6 @@ importers:
       '@storybook/addon-docs':
         specifier: ^8.0.10
         version: 8.0.10(encoding@0.1.13)
-      '@storybook/addon-storysource':
-        specifier: ^8.0.10
-        version: 8.0.10
       '@storybook/addon-viewport':
         specifier: ^8.0.10
         version: 8.0.10
@@ -2620,9 +2617,6 @@ packages:
       react: '*'
       react-native: '*'
 
-  '@storybook/addon-storysource@8.0.10':
-    resolution: {integrity: sha512-LCNgp5pWyI9ZlJMFeN0nvt9gvgHMWneDjfUoAHTOP7Smi0xz4lUDYKB4P53kgE1peHn2+nxAauSBdA1IEFBIRA==}
-
   '@storybook/addon-viewport@8.0.10':
     resolution: {integrity: sha512-NJ88Nd/tXreHLyLeF3VP+b8Fu2KtUuJ0L4JYpEMmcdaejGARTrJJOU+pcZBiUqEHFeXQ8rDY8DKXhUJZQFQ1Wg==}
 
@@ -2842,9 +2836,6 @@ packages:
 
   '@storybook/router@8.0.10':
     resolution: {integrity: sha512-AZhgiet+EK0ZsPbaDgbbVTAHW2LAMCP1z/Un2uMBbdDeD0Ys29Af47AbEj/Ome5r1cqasLvzq2WXJlVXPNB0Zw==}
-
-  '@storybook/source-loader@8.0.10':
-    resolution: {integrity: sha512-bv9FRPzELjcoMJLWLDqkUNh1zY0DiCgcvM+9qsZva8pxAD4fzrX+mgCS2vZVJHRg8wMAhw/ymdXixDUodHAvsw==}
 
   '@storybook/telemetry@8.0.10':
     resolution: {integrity: sha512-s4Uc+KZQkdmD2d+64Qf8wYknhQZwmjf2CxjIjv9b4KLsU/nyfDheK7Fzd1jhBKb2UQUlLW5HhZkBgs1RsZcDHA==}
@@ -11386,12 +11377,6 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@storybook/addon-storysource@8.0.10':
-    dependencies:
-      '@storybook/source-loader': 8.0.10
-      estraverse: 5.3.0
-      tiny-invariant: 1.3.3
-
   '@storybook/addon-viewport@8.0.10':
     dependencies:
       memoizerific: 1.11.3
@@ -12097,14 +12082,6 @@ snapshots:
       '@storybook/client-logger': 8.0.10
       memoizerific: 1.11.3
       qs: 6.11.2
-
-  '@storybook/source-loader@8.0.10':
-    dependencies:
-      '@storybook/csf': 0.1.7
-      '@storybook/types': 8.0.10
-      estraverse: 5.3.0
-      lodash: 4.17.21
-      prettier: 3.2.5
 
   '@storybook/telemetry@8.0.10(encoding@0.1.13)':
     dependencies:

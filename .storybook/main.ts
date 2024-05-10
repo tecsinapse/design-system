@@ -13,7 +13,6 @@ export default {
     '../docs/**/*.@(js|ts|tsx|mdx)',
   ],
   addons: [
-    '@storybook/addon-storysource',
     '@storybook/addon-docs',
     '@storybook/addon-controls',
     '@storybook/addon-backgrounds',
@@ -21,4 +20,7 @@ export default {
     '@storybook/addon-viewport',
   ],
   staticDirs: ['public/'],
+  docs: {
+    autodocs: true,
+  },
 };
