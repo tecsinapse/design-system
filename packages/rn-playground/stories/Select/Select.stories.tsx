@@ -164,3 +164,48 @@ export const SingleFetch = (args: IStory) => {
     />
   );
 };
+
+const group1 = new Array(5).fill(undefined).map((_, index) => ({
+  key: index,
+  label: `Option ${index}`,
+}));
+const group2 = new Array(5).fill(undefined).map((_, index) => ({
+  key: index + 5,
+  label: `Option ${index + 5}`,
+}));
+const grouped = new Map().set('Group 1', group1).set('Group 2', group2);
+
+export const SingleGroup = {
+  render: (args: IStory) => {
+    const [singleValue, setSingleValue] = useState<Option | undefined>(
+      undefined
+    );
+
+    function handleSelectSingleValue(key: Option | undefined) {
+      setSingleValue(key);
+    }
+
+    const handleSearch = React.useCallback((searchArg: string) => {
+      return new Map(
+        [...grouped].filter(([key, value]) => {
+          if (searchArg) return value.label.includes(searchArg);
+          else return true;
+        })
+      );
+    }, []);
+
+    return (
+      <Select
+        {...args}
+        options={grouped}
+        value={singleValue}
+        type={'single'}
+        hideSearchBar
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        onSearch={handleSearch}
+        keyExtractor={keyExtractor}
+      />
+    );
+  },
+};

@@ -12,7 +12,10 @@ import { SelectIcon, StyledSelectionText } from './styled';
 
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
-  options: ((searchInput?: string) => Promise<Data[]>) | Data[];
+  options:
+    | ((searchInput?: string) => Promise<Data[] | Map<string, Data[]>>)
+    | Data[]
+    | Map<string, Data[]>;
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
@@ -78,8 +81,9 @@ function Select<Data, Type extends 'single' | 'multi'>({
     onBlur,
     !disabled
   );
-
-  const [selectOptions, setSelectOptions] = useState<Data[]>([]);
+  const [selectOptions, setSelectOptions] = useState<
+    Data[] | Map<string, Data[]>
+  >([]);
   const modal = useLazyModalManager();
 
   // TODO: Add Skeleton to modal height when loading is true
@@ -105,6 +109,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
         if (result) {
           if (
             value &&
+            !(result instanceof Map) &&
             !result.find(v => keyExtractor(value as Data) === keyExtractor(v))
           ) {
             setSelectOptions([value as Data, ...result]);
@@ -129,6 +134,7 @@ function Select<Data, Type extends 'single' | 'multi'>({
             if (type === 'single') {
               if (
                 value &&
+                !(result instanceof Map) &&
                 !result.find(
                   v => keyExtractor(value as Data) === keyExtractor(v)
                 )
@@ -163,7 +169,8 @@ function Select<Data, Type extends 'single' | 'multi'>({
   );
 
   const getDisplayValue = React.useCallback(() => {
-    if (Array.isArray(value)) {
+    // This handles multiselect, here I'm ignoring groups
+    if (Array.isArray(value) && !(selectOptions instanceof Map)) {
       if (value.length === 0) return _placeholder;
       else {
         const options =
@@ -180,8 +187,10 @@ function Select<Data, Type extends 'single' | 'multi'>({
           )
           .slice(0, -2);
       }
+      // This handles single select
     } else {
-      if (!value) return _placeholder;
+      // Handle placeholder for groups
+      if (!value || selectOptions instanceof Map) return _placeholder;
       const selectedOption = selectOptions?.find(
         (option, index) =>
           keyExtractor(option, index) == keyExtractor(value as Data, index)

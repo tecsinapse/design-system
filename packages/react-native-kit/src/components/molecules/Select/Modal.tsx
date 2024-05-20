@@ -6,7 +6,7 @@ import {
   useDebouncedState,
 } from '@tecsinapse/react-core';
 import * as React from 'react';
-import { FlatList, ListRenderItemInfo, View } from 'react-native';
+import { FlatList, ListRenderItemInfo, SectionList, View } from 'react-native';
 import { Button } from '../../atoms/Button';
 import { Header } from '../../atoms/Header';
 import { Input } from '../../atoms/Input';
@@ -14,19 +14,22 @@ import { IBaseModal, ModalView } from '../../atoms/Modal';
 import { Text } from '../../atoms/Text';
 import { SelectNativeProps } from './Select';
 import {
+  Divider,
   FetchIndicator,
   getStyledModal,
   ListItem,
   ModalFooter,
   SearchBarContainer,
+  SectionHeader,
   SelectIcon,
-  TextTitleModal,
   StyledTextItemSelect,
+  TextTitleModal,
 } from './styled';
 
 interface LoadingProps {
   loading?: boolean;
 }
+type OptionData<T> = T & { _checked: boolean };
 
 const Component = <Data, Type extends 'single' | 'multi'>({
   options,
@@ -64,8 +67,12 @@ const Component = <Data, Type extends 'single' | 'multi'>({
   }, [value, focused, setSelectedValues]);
 
   const getData = React.useCallback(
-    (options: Data[]) => {
-      return options?.map((option, index) => ({
+    (_options: Data[] | Map<string, Data[]>): OptionData<Data>[] => {
+      // Here we need to convert map to array
+      const options =
+        _options instanceof Map ? Object.values(_options) : _options;
+      // if (options instanceof Map) return options as Map<string, Data[]>;
+      return ((options as Data[]) ?? []).map((option, index) => ({
         ...option,
         _checked:
           type === 'multi'
@@ -134,19 +141,40 @@ const Component = <Data, Type extends 'single' | 'multi'>({
     []
   );
 
-  const anyChecked = data.filter(item => item._checked).length;
-  const dataLengthChanged = data.length;
+  const anyChecked = (data as OptionData<Data>[]).filter(
+    item => item._checked
+  ).length;
+  const dataLengthChanged = (data as OptionData<Data>[]).length;
+
+  const sectionList =
+    options instanceof Map
+      ? [...options].map(([key, value]) => ({
+          title: key,
+          data: getData(value),
+        }))
+      : [];
+
+  // console.log(Object.entries(options));
 
   const memoizedFlatlist = React.useMemo(
-    () => (
-      <FlatList
-        data={data}
-        keyExtractor={keyExtractor}
-        fadingEdgeLength={200}
-        renderItem={optionBuilder}
-      />
-    ),
-    [selectedValues, anyChecked, dataLengthChanged]
+    () =>
+      !(options instanceof Map) ? (
+        <FlatList
+          data={data}
+          keyExtractor={keyExtractor}
+          fadingEdgeLength={200}
+          ItemSeparatorComponent={Divider}
+          renderItem={optionBuilder}
+        />
+      ) : (
+        <SectionList
+          sections={sectionList}
+          renderItem={optionBuilder}
+          ItemSeparatorComponent={Divider}
+          renderSectionHeader={SectionHead}
+        />
+      ),
+    [selectedValues, anyChecked, dataLengthChanged, sectionList]
   );
 
   const titleTextModal = selectModalTitle ? (
@@ -222,6 +250,12 @@ interface IOption<T> {
   labelExtractor: (option: T) => string;
   handlePressItem: (option: T) => void;
 }
+
+const SectionHead = ({ section: { title } }) => (
+  <SectionHeader>
+    <Text fontWeight={'bold'}>{title}</Text>
+  </SectionHeader>
+);
 
 const MemoizedOption = <T,>({
   handlePressItem,
