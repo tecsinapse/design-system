@@ -6,12 +6,13 @@ export interface LoadingProps {
   loading?: boolean;
 }
 
+type SearchFn<Data> = (
+  searchInput?: string
+) => Promise<Data[] | Map<string, Data[]>>;
+
 export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
-  options:
-    | ((searchInput?: string) => Promise<Data[] | Map<string, Data[]>>)
-    | Data[]
-    | Map<string, Data[]>;
+  options: SearchFn<Data> | Data[] | Map<string, Data[]>;
   onSelect: (
     option: Type extends 'single' ? Data | undefined : Data[]
   ) => never | void;
@@ -26,10 +27,7 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   placeholder?: string;
   onFocus?: () => void | never;
   onBlur?: () => void | never;
-  onSearch?:
-    | ((searchArg: string) => void)
-    | ((searchInput?: string) => Promise<Data[]>)
-    | never;
+  onSearch?: ((searchArg: string) => void) | SearchFn<Data> | never;
   searchBarPlaceholder?: string;
   confirmButtonText?: string;
   selectModalTitle?: string;

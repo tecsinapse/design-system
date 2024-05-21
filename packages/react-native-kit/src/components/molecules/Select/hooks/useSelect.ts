@@ -83,7 +83,7 @@ const useSelect = <Data, Type extends 'single' | 'multi'>({
                 setSelectOptions([value as Data, ...result]);
               } else setSelectOptions(result);
             } else {
-              if ((value as Data[])?.length) {
+              if ((value as Data[])?.length && !(result instanceof Map)) {
                 const selectedValues =
                   (value as Data[]).filter(
                     v =>
@@ -110,7 +110,7 @@ const useSelect = <Data, Type extends 'single' | 'multi'>({
   );
 
   const getDisplayValue = React.useCallback(() => {
-    // This handles multiselect, here I'm ignoring groups
+    // Here we handle multi select
     if (Array.isArray(value)) {
       if (value.length === 0) return _placeholder;
       else {
@@ -133,7 +133,6 @@ const useSelect = <Data, Type extends 'single' | 'multi'>({
       }
       // This handles single select
     } else {
-      // Handle placeholder for groups
       if (!value) return _placeholder;
       const _selectedOption: Data[] =
         selectOptions instanceof Map

@@ -50,7 +50,7 @@ const useModal = <Data, Type extends 'single' | 'multi'>({
         };
       });
     },
-    [type, selectedValues, keyExtractor /* anyChecked, dataLengthChanged*/]
+    [type, selectedValues, keyExtractor]
   );
 
   const handlePressItem = React.useCallback(
