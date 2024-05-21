@@ -1,203 +1,48 @@
-import {
-  HintInputContainer,
-  InputContainerProps,
-  useInputFocus,
-} from '@tecsinapse/react-core';
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { useLazyModalManager } from '../../atoms/Modal';
+import { HintInputContainer } from '@tecsinapse/react-core';
+import React from 'react';
 import { Text } from '../../atoms/Text';
-import { Modal } from './Modal';
+import { Modal } from './components/Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
+import useSelect from './hooks/useSelect';
+import { SelectNativeProps } from './types';
 
-export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
-  extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
-  options:
-    | ((searchInput?: string) => Promise<Data[] | Map<string, Data[]>>)
-    | Data[]
-    | Map<string, Data[]>;
-  onSelect: (
-    option: Type extends 'single' ? Data | undefined : Data[]
-  ) => never | void;
-  value: Type extends 'single' ? Data | null | undefined : Data[];
-  type: Type;
-
-  keyExtractor: (t: Data, index?: number) => string;
-  labelExtractor: (t: Data) => string;
-  groupKeyExtractor?: (t: Data) => string;
-
-  hideSearchBar?: boolean;
-  placeholder?: string;
-  onFocus?: () => void | never;
-  onBlur?: () => void | never;
-  onSearch?:
-    | ((searchArg: string) => void)
-    | ((searchInput?: string) => Promise<Data[]>)
-    | never;
-  searchBarPlaceholder?: string;
-  confirmButtonText?: string;
-  selectModalTitle?: string;
-  selectModalTitleComponent?: JSX.Element;
-  closeOnPick?: boolean;
-  controlComponent?: (
-    onPress: () => void,
-    displayValue?: string
-  ) => JSX.Element;
-  numberOfLines?: number;
-}
-
-function Select<Data, Type extends 'single' | 'multi'>({
-  /** Select props */
-  value,
-  options,
-  keyExtractor,
-  groupKeyExtractor,
-  onSelect,
-  type,
-  labelExtractor,
-  placeholder,
-  onFocus,
-  onBlur,
-  disabled,
-  onSearch,
-  selectModalTitle,
-  selectModalTitleComponent,
-  searchBarPlaceholder,
-  hideSearchBar,
-  confirmButtonText,
-  rightComponent,
-  variant = 'default',
-  hintComponent,
-  hint,
-  style,
-  controlComponent,
-  closeOnPick = type === 'single',
-  label,
-  numberOfLines,
-  ...rest
-}: SelectNativeProps<Data, Type>): JSX.Element {
-  const { focused, handleBlur, handleFocus } = useInputFocus(
-    onFocus,
-    onBlur,
-    !disabled
-  );
-  const [selectOptions, setSelectOptions] = useState<
-    Data[] | Map<string, Data[]>
-  >([]);
-  const modal = useLazyModalManager();
-
-  // TODO: Add Skeleton to modal height when loading is true
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const onlyLabel = label && !placeholder;
-  const hasValue =
-    type === 'single' ? !!value : ((value || []) as []).length > 0;
-  const _placeholder = onlyLabel ? label : placeholder;
-  const _label = hasValue ? label : undefined;
-
-  useEffect(() => {
-    if (typeof options !== 'function') {
-      setSelectOptions(options);
-    }
-  }, [options]);
-
-  const handleLazyFocus = React.useCallback(async () => {
-    if (typeof options === 'function' && !onSearch) {
-      setLoading(true);
-      try {
-        const result = await options();
-        if (result) {
-          if (
-            value &&
-            !(result instanceof Map) &&
-            !result.find(v => keyExtractor(value as Data) === keyExtractor(v))
-          ) {
-            setSelectOptions([value as Data, ...result]);
-          } else setSelectOptions(result);
-        }
-      } catch (e) {
-        // TODO: Catch error
-      } finally {
-        setLoading(false);
-      }
-    }
-  }, [options, value, setSelectOptions]);
-
-  const handleOnSearch = React.useCallback(
-    async (searchInput: string | undefined) => {
-      if (searchInput !== undefined && onSearch) {
-        setLoading(true);
-        modal.requestUpdate();
-        try {
-          const result = await onSearch(searchInput);
-          if (result) {
-            if (type === 'single') {
-              if (
-                value &&
-                !(result instanceof Map) &&
-                !result.find(
-                  v => keyExtractor(value as Data) === keyExtractor(v)
-                )
-              ) {
-                setSelectOptions([value as Data, ...result]);
-              } else setSelectOptions(result);
-            } else {
-              if ((value as Data[])?.length) {
-                const selectedValues =
-                  (value as Data[]).filter(
-                    v =>
-                      !result.find(
-                        current =>
-                          keyExtractor(v as Data) === keyExtractor(current)
-                      )
-                  ) || [];
-                setSelectOptions([...selectedValues, ...result]);
-              } else {
-                setSelectOptions(result);
-              }
-            }
-          }
-        } catch (e) {
-          // TODO: Catch error
-        } finally {
-          modal.requestUpdate();
-          setLoading(false);
-        }
-      }
-    },
-    [options, value, keyExtractor]
-  );
-
-  const getDisplayValue = React.useCallback(() => {
-    // This handles multiselect, here I'm ignoring groups
-    if (Array.isArray(value) && !(selectOptions instanceof Map)) {
-      if (value.length === 0) return _placeholder;
-      else {
-        const options =
-          selectOptions.length > 0 ? selectOptions : (value as Data[]);
-        return options
-          ?.reduce(
-            (acc, option, index) =>
-              value.find(
-                key => keyExtractor(option, index) == keyExtractor(key, index)
-              )
-                ? acc + labelExtractor(option) + ', '
-                : acc,
-            ''
-          )
-          .slice(0, -2);
-      }
-      // This handles single select
-    } else {
-      // Handle placeholder for groups
-      if (!value || selectOptions instanceof Map) return _placeholder;
-      const selectedOption = selectOptions?.find(
-        (option, index) =>
-          keyExtractor(option, index) == keyExtractor(value as Data, index)
-      );
-      return labelExtractor(selectedOption ?? (value as Data));
-    }
-  }, [_placeholder, value, selectOptions]);
+function Select<Data, Type extends 'single' | 'multi'>(
+  props: SelectNativeProps<Data, Type>
+): JSX.Element {
+  const {
+    groupKeyExtractor,
+    onSelect,
+    selectModalTitle,
+    selectModalTitleComponent,
+    searchBarPlaceholder,
+    hideSearchBar,
+    confirmButtonText,
+    rightComponent,
+    variant = 'default',
+    hintComponent,
+    hint,
+    style,
+    controlComponent,
+    type,
+    numberOfLines,
+    closeOnPick = type === 'single',
+    modal,
+    selectOptions,
+    keyExtractor,
+    labelExtractor,
+    value,
+    handleOnSearch,
+    loading,
+    options,
+    setSelectOptions,
+    handleBlur,
+    handlePressInput,
+    getDisplayValue,
+    focused,
+    disabled,
+    _label,
+    ...rest
+  } = useSelect(props);
 
   modal.sync(
     <Modal
@@ -226,18 +71,13 @@ function Select<Data, Type extends 'single' | 'multi'>({
     />
   );
 
-  const handlePressInput = async () => {
-    modal.show();
-    handleFocus();
-    await handleLazyFocus();
-  };
-
   return (
     <>
       {controlComponent ? (
         controlComponent(handlePressInput, getDisplayValue() || '')
       ) : (
         <HintInputContainer
+          {...rest}
           viewStyle={style}
           onPress={handlePressInput}
           focused={focused}
@@ -253,7 +93,6 @@ function Select<Data, Type extends 'single' | 'multi'>({
               {rightComponent}
             </>
           }
-          {...rest}
         >
           <StyledSelectionText
             numberOfLines={numberOfLines}

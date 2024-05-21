@@ -185,15 +185,6 @@ export const SingleGroup = {
       setSingleValue(key);
     }
 
-    const handleSearch = React.useCallback((searchArg: string) => {
-      return new Map(
-        [...grouped].filter(([key, value]) => {
-          if (searchArg) return value.label.includes(searchArg);
-          else return true;
-        })
-      );
-    }, []);
-
     return (
       <Select
         {...args}
@@ -203,7 +194,29 @@ export const SingleGroup = {
         hideSearchBar
         onSelect={handleSelectSingleValue}
         labelExtractor={labelExtractor}
-        onSearch={handleSearch}
+        keyExtractor={keyExtractor}
+      />
+    );
+  },
+};
+
+export const MultiGroup = {
+  render: (args: IStory) => {
+    const [values, setValues] = useState<Option[]>([]);
+
+    function handleSelectSingleValue(keys: Option[]) {
+      setValues(keys);
+    }
+
+    return (
+      <Select
+        {...args}
+        options={grouped}
+        value={values}
+        type={'multi'}
+        hideSearchBar
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
         keyExtractor={keyExtractor}
       />
     );
