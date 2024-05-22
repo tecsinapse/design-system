@@ -2,6 +2,8 @@ import { InputContainerProps } from '@tecsinapse/react-core';
 
 export type OptionData<T> = T & { _checked: boolean };
 
+export type SelectType = 'single' | 'multi';
+
 export interface LoadingProps {
   loading?: boolean;
 }
@@ -10,7 +12,9 @@ type SearchFn<Data> = (
   searchInput?: string
 ) => Promise<Data[] | Map<string, Data[]>>;
 
-export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
+export type Extractor<Data> = (t: Data, index?: number) => string;
+
+export interface SelectNativeProps<Data, Type extends SelectType>
   extends Omit<InputContainerProps, 'value' | 'onChange' | 'onChangeText'> {
   options: SearchFn<Data> | Data[] | Map<string, Data[]>;
   onSelect: (
@@ -19,9 +23,9 @@ export interface SelectNativeProps<Data, Type extends 'single' | 'multi'>
   value: Type extends 'single' ? Data | null | undefined : Data[];
   type: Type;
 
-  keyExtractor: (t: Data, index?: number) => string;
-  labelExtractor: (t: Data) => string;
-  groupKeyExtractor?: (t: Data) => string;
+  keyExtractor: Extractor<Data>;
+  labelExtractor: Extractor<Data>;
+  groupKeyExtractor?: Extractor<Data>;
 
   hideSearchBar?: boolean;
   placeholder?: string;

@@ -1,12 +1,18 @@
 import React from 'react';
 import { getStyledModal } from '../styled';
-import { LoadingProps, OptionData, SelectNativeProps } from '../types';
+import {
+  LoadingProps,
+  OptionData,
+  SelectNativeProps,
+  SelectType,
+} from '../types';
 import { ListRenderItemInfo } from 'react-native';
 import Option from '../components/Option';
 import { getStatusBarHeight, useDebouncedState } from '@tecsinapse/react-core';
 import { IBaseModal } from '../../../atoms/Modal';
+import { isOptionChecked, multiBuilder, singleBuilder } from '../functions';
 
-const useModal = <Data, Type extends 'single' | 'multi'>({
+const useModal = <Data, Type extends SelectType>({
   keyExtractor,
   labelExtractor,
   focused,
@@ -39,14 +45,13 @@ const useModal = <Data, Type extends 'single' | 'multi'>({
       return _options.map((option, index) => {
         return {
           ...option,
-          _checked:
-            type === 'multi'
-              ? !!selectedValues.find(
-                  value =>
-                    keyExtractor(option, index) == keyExtractor(value, index)
-                )
-              : keyExtractor((selectedValues[0] || {}) as Data, index) ==
-                keyExtractor(option, index),
+          _checked: isOptionChecked(
+            type,
+            option,
+            selectedValues,
+            keyExtractor,
+            index
+          ),
         };
       });
     },
@@ -55,22 +60,11 @@ const useModal = <Data, Type extends 'single' | 'multi'>({
 
   const handlePressItem = React.useCallback(
     (option: Data) => {
-      setSelectedValues(selectedValues => {
-        if (type === 'multi') {
-          const newArr: Data[] = [];
-          let found = false;
-          for (const value of selectedValues) {
-            if (keyExtractor(value) != keyExtractor(option)) newArr.push(value);
-            else found = true;
-          }
-          if (!found) newArr.push(option);
-          return newArr;
-        }
-        return keyExtractor((selectedValues[0] || {}) as Data) ===
-          keyExtractor(option)
-          ? []
-          : [option];
-      });
+      setSelectedValues(prev =>
+        type === 'multi'
+          ? multiBuilder(option, prev, keyExtractor)
+          : singleBuilder(option, prev, keyExtractor)
+      );
     },
     [keyExtractor, type]
   );

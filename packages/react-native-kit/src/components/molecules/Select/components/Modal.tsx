@@ -14,7 +14,7 @@ import {
 import Section from './Section';
 import Flat from './Flat';
 import useModal from '../hooks/useModal';
-import { LoadingProps, SelectNativeProps } from '../types';
+import { LoadingProps, SelectNativeProps, SelectType } from '../types';
 import { RFValue } from '@tecsinapse/react-core';
 
 const ModalTitle = ({ title }: { title?: string }) =>
@@ -29,7 +29,7 @@ const ModalTitle = ({ title }: { title?: string }) =>
     </TextTitleModal>
   ) : null;
 
-const Component = <Data, Type extends 'single' | 'multi'>(
+const Component = <Data, Type extends SelectType>(
   props: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal
 ): JSX.Element => {
   const {
@@ -71,7 +71,7 @@ const Component = <Data, Type extends 'single' | 'multi'>(
         )}
       </Header>
 
-      {!hideSearchBar && (
+      {!hideSearchBar ? (
         <SearchBarContainer>
           <Input
             placeholder={searchBarPlaceholder}
@@ -82,11 +82,11 @@ const Component = <Data, Type extends 'single' | 'multi'>(
             }
           />
         </SearchBarContainer>
-      )}
+      ) : null}
 
-      {loading && (
+      {loading ? (
         <FetchIndicator animating={true} color={'grey'} size={'large'} />
-      )}
+      ) : null}
 
       {options instanceof Map ? (
         <Section
@@ -104,7 +104,7 @@ const Component = <Data, Type extends 'single' | 'multi'>(
         />
       )}
 
-      {!closeOnPick && (
+      {!closeOnPick ? (
         <ModalFooter>
           <Button
             variant={'filled'}
@@ -117,7 +117,7 @@ const Component = <Data, Type extends 'single' | 'multi'>(
             </Text>
           </Button>
         </ModalFooter>
-      )}
+      ) : null}
     </ModalView>
   );
 };

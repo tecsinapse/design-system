@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLazyModalManager } from '../../../atoms/Modal';
 import { useInputFocus } from '@tecsinapse/react-core';
-import { SelectNativeProps } from '../types';
+import { SelectNativeProps, SelectType } from '../types';
+import { findValue, getMultiLabel, getSingleLabel } from '../functions';
 
-const useSelect = <Data, Type extends 'single' | 'multi'>({
+const useSelect = <Data, Type extends SelectType>({
   value,
   options,
   keyExtractor,
@@ -48,12 +49,13 @@ const useSelect = <Data, Type extends 'single' | 'multi'>({
       try {
         const result = await options();
         if (result) {
+          const _value = value as Data;
           if (
-            value &&
+            _value &&
             !(result instanceof Map) &&
-            !result.find(v => keyExtractor(value as Data) === keyExtractor(v))
+            !findValue(result, _value, keyExtractor)
           ) {
-            setSelectOptions([value as Data, ...result]);
+            setSelectOptions([_value, ...result]);
           } else setSelectOptions(result);
         }
       } catch (e) {
@@ -73,26 +75,21 @@ const useSelect = <Data, Type extends 'single' | 'multi'>({
           const result = await onSearch(searchInput);
           if (result) {
             if (type === 'single') {
+              const _value = value as Data;
               if (
-                value &&
+                _value &&
                 !(result instanceof Map) &&
-                !result.find(
-                  v => keyExtractor(value as Data) === keyExtractor(v)
-                )
+                !findValue(result, _value, keyExtractor)
               ) {
-                setSelectOptions([value as Data, ...result]);
+                setSelectOptions([_value, ...result]);
               } else setSelectOptions(result);
             } else {
-              if ((value as Data[])?.length && !(result instanceof Map)) {
-                const selectedValues =
-                  (value as Data[]).filter(
-                    v =>
-                      !result.find(
-                        current =>
-                          keyExtractor(v as Data) === keyExtractor(current)
-                      )
-                  ) || [];
-                setSelectOptions([...selectedValues, ...result]);
+              const _value = value as Data[];
+              if (_value?.length && !(result instanceof Map)) {
+                const selected =
+                  _value.filter(it => !findValue(result, it, keyExtractor)) ??
+                  [];
+                setSelectOptions([...selected, ...result]);
               } else {
                 setSelectOptions(result);
               }
@@ -112,37 +109,21 @@ const useSelect = <Data, Type extends 'single' | 'multi'>({
   const getDisplayValue = React.useCallback(() => {
     // Here we handle multi select
     if (Array.isArray(value)) {
-      if (value.length === 0) return _placeholder;
-      else {
-        const _options: Data[] =
-          selectOptions instanceof Map
-            ? [...selectOptions.values()].flatMap(v => v)
-            : selectOptions;
-        const options = _options.length > 0 ? _options : (value as Data[]);
-        return options
-          ?.reduce(
-            (acc, option, index) =>
-              value.find(
-                key => keyExtractor(option, index) == keyExtractor(key, index)
-              )
-                ? acc + labelExtractor(option) + ', '
-                : acc,
-            ''
-          )
-          .slice(0, -2);
-      }
-      // This handles single select
-    } else {
-      if (!value) return _placeholder;
-      const _selectedOption: Data[] =
-        selectOptions instanceof Map
-          ? [...selectOptions.values()].flatMap(v => v)
-          : selectOptions;
-      const selectedOption = _selectedOption?.find(
-        (option, index) =>
-          keyExtractor(option, index) == keyExtractor(value as Data, index)
+      return getMultiLabel(
+        value,
+        String(_placeholder),
+        selectOptions,
+        keyExtractor,
+        labelExtractor
       );
-      return labelExtractor(selectedOption ?? (value as Data));
+    } else {
+      return getSingleLabel(
+        value as Data,
+        String(_placeholder),
+        selectOptions,
+        keyExtractor,
+        labelExtractor
+      );
     }
   }, [_placeholder, value, selectOptions]);
 

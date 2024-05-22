@@ -1,12 +1,12 @@
 import React from 'react';
 import { ListItem, StyledTextItemSelect } from '../styled';
 import { View } from 'react-native';
-import { OptionData } from '../types';
+import { OptionData, SelectType } from '../types';
 import { Checkbox, RadioButton } from '@tecsinapse/react-core';
 
 interface IOption<Data> {
   item: OptionData<Data>;
-  type: 'single' | 'multi';
+  type: SelectType;
   labelExtractor: (t: Data) => string;
   handlePressItem: (t: Data) => void;
 }

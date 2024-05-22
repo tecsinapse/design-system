@@ -4,9 +4,9 @@ import { Text } from '../../atoms/Text';
 import { Modal } from './components/Modal';
 import { SelectIcon, StyledSelectionText } from './styled';
 import useSelect from './hooks/useSelect';
-import { SelectNativeProps } from './types';
+import { SelectNativeProps, SelectType } from './types';
 
-function Select<Data, Type extends 'single' | 'multi'>(
+function Select<Data, Type extends SelectType>(
   props: SelectNativeProps<Data, Type>
 ): JSX.Element {
   const {
