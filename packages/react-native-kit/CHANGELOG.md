@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.0...@tecsinapse/react-native-kit@3.5.1) (2024-05-23)
+
+### Bug Fixes
+
+- **native-kit:** select group options not bypassing undefined array ([9dbc18b](https://github.com/tecsinapse/design-system/commit/9dbc18bd3244934fbca616277629198ffbd7006a))
+
 # [3.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.4.2...@tecsinapse/react-native-kit@3.5.0) (2024-05-23)
 
 ### Features
