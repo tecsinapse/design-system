@@ -46,8 +46,6 @@ export const SearchBarContainer = styled(View)<ViewProps & Partial<StyleProps>>`
 export const ListItem = styled(PressableSurface)<
   PressableSurfaceProps & Partial<StyleProps>
 >`
-  border-bottom-width: ${RFValueStr('1px')};
-  border-color: ${({ theme }) => theme.color.secondary.light};
   padding-top: ${({ theme }) => theme.spacing.mili};
   padding-bottom: ${({ theme }) => theme.spacing.mili};
   padding-left: ${({ theme }) => theme.spacing.deca};
@@ -76,4 +74,16 @@ export const TextTitleModal = styled(Text)<Partial<StyleProps>>`
 `;
 export const StyledTextItemSelect = styled(Text)`
   width: 90%;
+`;
+
+export const Divider = styled(View)<ViewProps & Partial<StyleProps>>`
+  height: ${RFValueStr('1px')};
+  display: flex;
+  flex: 1 1 auto;
+  background-color: ${({ theme }) => theme.color.secondary.light};
+`;
+
+export const SectionHeader = styled(View)<ViewProps & Partial<StyleProps>>`
+  background-color: #fff;
+  padding: ${({ theme }) => theme.spacing.deca};
 `;

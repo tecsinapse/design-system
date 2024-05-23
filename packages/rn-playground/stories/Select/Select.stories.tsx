@@ -164,3 +164,61 @@ export const SingleFetch = (args: IStory) => {
     />
   );
 };
+
+const group1 = new Array(5).fill(undefined).map((_, index) => ({
+  key: index,
+  label: `Option ${index}`,
+}));
+const group2 = new Array(5).fill(undefined).map((_, index) => ({
+  key: index + 5,
+  label: `Option ${index + 5}`,
+}));
+const grouped = new Map().set('Group 1', group1).set('Group 2', group2);
+
+export const SingleGroup = {
+  render: (args: IStory) => {
+    const [singleValue, setSingleValue] = useState<Option | undefined>(
+      undefined
+    );
+
+    function handleSelectSingleValue(key: Option | undefined) {
+      setSingleValue(key);
+    }
+
+    return (
+      <Select
+        {...args}
+        options={grouped}
+        value={singleValue}
+        type={'single'}
+        hideSearchBar
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+      />
+    );
+  },
+};
+
+export const MultiGroup = {
+  render: (args: IStory) => {
+    const [values, setValues] = useState<Option[]>([]);
+
+    function handleSelectSingleValue(keys: Option[]) {
+      setValues(keys);
+    }
+
+    return (
+      <Select
+        {...args}
+        options={grouped}
+        value={values}
+        type={'multi'}
+        hideSearchBar
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+      />
+    );
+  },
+};
