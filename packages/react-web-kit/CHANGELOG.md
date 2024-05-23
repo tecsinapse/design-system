@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.3...@tecsinapse/react-web-kit@3.4.4) (2024-05-23)
+
+### Bug Fixes
+
+- tag storybook ([ea54e65](https://github.com/tecsinapse/design-system/commit/ea54e6523d0121eb97031879dc405b3f52a8b3cc))
+- tag storybook props ([1b76a8f](https://github.com/tecsinapse/design-system/commit/1b76a8f4d7152a3556c7e73a90ec3a6b5bc73120))
+
 ## [3.4.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.2...@tecsinapse/react-web-kit@3.4.3) (2024-04-09)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
