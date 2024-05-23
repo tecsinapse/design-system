@@ -2,4 +2,4 @@ node_modules
 dist/
 *.d.ts
 *.stories.tsx
-packages/rn-playground/.storybook/storybook.requires.ts
+*.requires.ts

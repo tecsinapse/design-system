@@ -3,4 +3,4 @@ dist/
 *.d.ts
 *.stories.tsx
 *.js
-packages/rn-playground/.storybook/storybook.requires.ts
+*.requires.ts
