@@ -14,7 +14,7 @@ import {
 import Section from './Section';
 import Flat from './Flat';
 import useModal from '../hooks/useModal';
-import { LoadingProps, SelectNativeProps, SelectType } from '../types';
+import { LoadingProps, OverrideModalProps, SelectType } from '../types';
 import { RFValue } from '@tecsinapse/react-core';
 
 const ModalTitle = ({ title }: { title?: string }) =>
@@ -30,7 +30,7 @@ const ModalTitle = ({ title }: { title?: string }) =>
   ) : null;
 
 const Component = <Data, Type extends SelectType>(
-  props: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal
+  props: OverrideModalProps<Data, Type> & LoadingProps & IBaseModal
 ): JSX.Element => {
   const {
     ModalComponent,
@@ -49,6 +49,7 @@ const Component = <Data, Type extends SelectType>(
     confirmButtonText,
     handleConfirm,
     close,
+    groupLabelExtractor,
     ...others
   } = useModal(props);
 
@@ -94,6 +95,7 @@ const Component = <Data, Type extends SelectType>(
           getData={getData}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
+          groupLabelExtractor={groupLabelExtractor}
         />
       ) : (
         <Flat

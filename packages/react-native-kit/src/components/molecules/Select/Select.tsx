@@ -10,7 +10,7 @@ function Select<Data, Type extends SelectType>(
   props: SelectNativeProps<Data, Type>
 ): JSX.Element {
   const {
-    groupKeyExtractor,
+    groupLabelExtractor,
     onSelect,
     selectModalTitle,
     selectModalTitleComponent,
@@ -46,11 +46,11 @@ function Select<Data, Type extends SelectType>(
 
   modal.sync(
     <Modal
-      options={selectOptions || []}
+      options={selectOptions ?? []}
       focused={true}
       keyExtractor={keyExtractor}
       labelExtractor={labelExtractor}
-      groupKeyExtractor={groupKeyExtractor}
+      groupLabelExtractor={groupLabelExtractor}
       searchBarPlaceholder={searchBarPlaceholder}
       type={type}
       onSelect={onSelect}
@@ -74,7 +74,7 @@ function Select<Data, Type extends SelectType>(
   return (
     <>
       {controlComponent ? (
-        controlComponent(handlePressInput, getDisplayValue() || '')
+        controlComponent(handlePressInput, getDisplayValue() ?? '')
       ) : (
         <HintInputContainer
           {...rest}
@@ -99,7 +99,7 @@ function Select<Data, Type extends SelectType>(
             fontWeight="bold"
             disabled={disabled}
           >
-            {getDisplayValue() || ' '}
+            {getDisplayValue() ?? ' '}
           </StyledSelectionText>
         </HintInputContainer>
       )}

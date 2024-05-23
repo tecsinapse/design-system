@@ -33,7 +33,7 @@ const useSelect = <Data, Type extends SelectType>({
 
   const onlyLabel = label && !placeholder;
   const hasValue =
-    type === 'single' ? !!value : ((value || []) as []).length > 0;
+    type === 'single' ? !!value : ((value ?? []) as []).length > 0;
   const _placeholder = onlyLabel ? label : placeholder;
   const _label = hasValue ? label : undefined;
 

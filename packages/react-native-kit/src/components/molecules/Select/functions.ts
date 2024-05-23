@@ -71,7 +71,7 @@ export const getMultiLabel = <Data>(
 };
 
 export const getSingleLabel = <Data>(
-  value: Data,
+  value: Data | null | undefined,
   placeholder: string,
   options: Data[] | Map<string, Data[]>,
   keyExtractor: Extractor<Data>,

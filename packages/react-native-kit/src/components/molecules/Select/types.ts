@@ -1,4 +1,5 @@
 import { InputContainerProps } from '@tecsinapse/react-core';
+import { ListRenderItemInfo } from 'react-native';
 
 export type OptionData<T> = T & { _checked: boolean };
 
@@ -25,7 +26,7 @@ export interface SelectNativeProps<Data, Type extends SelectType>
 
   keyExtractor: Extractor<Data>;
   labelExtractor: Extractor<Data>;
-  groupKeyExtractor?: Extractor<Data>;
+  groupLabelExtractor?: (title: string) => string;
 
   hideSearchBar?: boolean;
   placeholder?: string;
@@ -43,3 +44,23 @@ export interface SelectNativeProps<Data, Type extends SelectType>
   ) => JSX.Element;
   numberOfLines?: number;
 }
+
+type BaseList<Data> = {
+  renderItem: (item: ListRenderItemInfo<OptionData<Data>>) => JSX.Element;
+  getData: (options: Data[]) => OptionData<Data>[];
+  keyExtractor: Extractor<Data>;
+};
+
+export type BaseSectionList<Data> = BaseList<Data> & {
+  options: Map<string, Data[]>;
+  groupLabelExtractor?: (title: string) => string;
+};
+
+export type BaseFlatList<Data> = BaseList<Data> & {
+  options: Data[];
+};
+
+export type OverrideModalProps<Data, Type extends SelectType> = Omit<
+  SelectNativeProps<Data, Type>,
+  'options'
+> & { options: Data[] | Map<string, Data[]> };
