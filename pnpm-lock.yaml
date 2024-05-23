@@ -199,7 +199,7 @@ importers:
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.0.38)(react@18.3.1)
       '@tecsinapse/react-core':
-        specifier: 3.4.2
+        specifier: 3.4.3
         version: link:../react-core
       react-native-linear-gradient:
         specifier: ~2.8.3
@@ -221,7 +221,7 @@ importers:
         specifier: ~11.11.0
         version: 11.11.5(@emotion/react@11.11.4)(@types/react@18.0.38)(react@18.3.1)
       '@tecsinapse/react-core':
-        specifier: 3.4.2
+        specifier: 3.4.3
         version: link:../react-core
       date-fns:
         specifier: ~2.30.0

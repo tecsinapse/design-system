@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.1...@tecsinapse/react-native-kit@3.5.2) (2024-05-23)
+
+### Bug Fixes
+
+- add label extractor to groups on select ([dff4742](https://github.com/tecsinapse/design-system/commit/dff474299fcb9693fd8ea056bfa5eead4d58b21c))
+
 ## [3.5.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.0...@tecsinapse/react-native-kit@3.5.1) (2024-05-23)
 
 ### Bug Fixes
