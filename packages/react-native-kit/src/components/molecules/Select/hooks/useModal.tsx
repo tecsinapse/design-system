@@ -42,7 +42,7 @@ const useModal = <Data, Type extends SelectType>({
 
   const getData = React.useCallback(
     (_options: Data[]): OptionData<Data>[] => {
-      return _options.map((option, index) => {
+      return (_options ?? []).map((option, index) => {
         return {
           ...option,
           _checked: isOptionChecked(
