@@ -30,7 +30,7 @@ const tooltipStyles = tv({
   },
 });
 
-type TooltipVariants = VariantProps<typeof tooltipStyles> & ClassProp;
+export type TooltipVariants = VariantProps<typeof tooltipStyles> & ClassProp;
 
 /**
  * Represents the tooltip component with specified variants.
