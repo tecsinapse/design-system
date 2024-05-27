@@ -1,8 +1,8 @@
 import React from 'react';
 import { ProgressBar, ProgressBarProps } from '@tecsinapse/react-native-kit';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof ProgressBar> = {
+const StoryMeta: Meta<typeof ProgressBar> = {
   title: 'ProgressBar',
   component: ProgressBar,
   args: {
@@ -17,5 +17,5 @@ const StoryMeta: ComponentMeta<typeof ProgressBar> = {
 export default StoryMeta;
 
 export const Base = (args: ProgressBarProps) => {
-  return <ProgressBar {...args} animate={false} />;
+  return <ProgressBar {...args} />;
 };

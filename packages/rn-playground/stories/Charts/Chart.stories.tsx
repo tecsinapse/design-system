@@ -1,15 +1,15 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 import { PieChart, PieChartData } from '@tecsinapse/react-charts';
 
-const PieChartMeta: ComponentMeta<typeof PieChart> = {
+const PieChartMeta: Meta<typeof PieChart> = {
   title: 'Charts',
   component: PieChart,
 };
 
 export default PieChartMeta;
 
-type PieChartStory = ComponentStory<typeof PieChart>;
+type PieChartStory = StoryFn<typeof PieChart>;
 
 const data = [
   { value: 10, label: 'Fora do prazo' },

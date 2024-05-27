@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 
 import { default as Select, SelectProps } from './Select';
@@ -23,7 +23,7 @@ const OPTIONS_EXAMPLE: Option[] = [
   { label: 'Rio de Janeiro', value: 'value6' },
 ];
 
-const TemplateSingle: Story<SelectProps<Option, 'single'>> = ({
+const TemplateSingle: StoryFn<SelectProps<Option, 'single'>> = ({
   options: _options,
   ...args
 }) => {
@@ -64,16 +64,18 @@ const TemplateSingle: Story<SelectProps<Option, 'single'>> = ({
   );
 };
 
-export const Single = TemplateSingle.bind({});
+export const Single = {
+  render: TemplateSingle,
 
-Single.args = {
-  placeholder: 'Placeholder do select',
-  label: 'Label',
-  options: OPTIONS_EXAMPLE,
-  hideSearchBar: false,
+  args: {
+    placeholder: 'Placeholder do select',
+    label: 'Label',
+    options: OPTIONS_EXAMPLE,
+    hideSearchBar: false,
+  },
 };
 
-const TemplateMulti: Story<SelectProps<Option, 'multi'>> = ({
+const TemplateMulti: StoryFn<SelectProps<Option, 'multi'>> = ({
   options: _options,
   ...args
 }) => {
@@ -114,16 +116,18 @@ const TemplateMulti: Story<SelectProps<Option, 'multi'>> = ({
   );
 };
 
-export const Multi = TemplateMulti.bind({});
+export const Multi = {
+  render: TemplateMulti,
 
-Multi.args = {
-  placeholder: 'Placeholder do select',
-  label: 'Label',
-  options: OPTIONS_EXAMPLE,
-  hideSearchBar: false,
+  args: {
+    placeholder: 'Placeholder do select',
+    label: 'Label',
+    options: OPTIONS_EXAMPLE,
+    hideSearchBar: false,
+  },
 };
 
-const TemplateMultiLazy: Story<SelectProps<Option, 'multi'>> = ({
+const TemplateMultiLazy: StoryFn<SelectProps<Option, 'multi'>> = ({
   options: _options,
   ...args
 }) => {
@@ -179,12 +183,14 @@ const TemplateMultiLazy: Story<SelectProps<Option, 'multi'>> = ({
   );
 };
 
-export const Lazy = TemplateMultiLazy.bind({});
+export const Lazy = {
+  render: TemplateMultiLazy,
 
-Lazy.args = {
-  placeholder: 'Placeholder do select',
-  label: 'Label',
-  hideSearchBar: false,
+  args: {
+    placeholder: 'Placeholder do select',
+    label: 'Label',
+    hideSearchBar: false,
+  },
 };
 
 const Container = styled('div')`

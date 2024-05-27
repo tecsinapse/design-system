@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import Grid, { IGridWeb } from './Grid';
 import { GridItem } from './Item';
 import { Text } from '../../../';
@@ -20,7 +20,7 @@ const Container = styled('div')`
   border-radius: 8px;
 `;
 
-const TemplateGrid: Story<IGridWeb> = args => {
+const TemplateGrid: StoryFn<IGridWeb> = args => {
   return (
     <Grid {...args}>
       <GridItem wrapper span={12}>
@@ -80,13 +80,15 @@ const TemplateGrid: Story<IGridWeb> = args => {
   );
 };
 
-export const WithGridItem = TemplateGrid.bind({});
+export const WithGridItem = {
+  render: TemplateGrid,
 
-WithGridItem.args = {
-  spacing: 'nano',
+  args: {
+    spacing: 'nano',
+  },
 };
 
-const TemplateLayout: Story<IGridWeb> = args => {
+const TemplateLayout: StoryFn<IGridWeb> = args => {
   return (
     <Grid {...args}>
       <Container>
@@ -123,14 +125,16 @@ const TemplateLayout: Story<IGridWeb> = args => {
   );
 };
 
-export const WithLayout = TemplateLayout.bind({});
+export const WithLayout = {
+  render: TemplateLayout,
 
-WithLayout.args = {
-  layout: [[12], [6, 6], [4, 4, 4], [3, 3, 3, 3]],
-  spacing: 'mili',
+  args: {
+    layout: [[12], [6, 6], [4, 4, 4], [3, 3, 3, 3]],
+    spacing: 'mili',
+  },
 };
 
-const TemplateResponsive: Story<IGridWeb> = args => {
+const TemplateResponsive: StoryFn<IGridWeb> = args => {
   return (
     <Grid {...args}>
       <GridItem wrapper span={{ sm: 12 }}>
@@ -190,8 +194,10 @@ const TemplateResponsive: Story<IGridWeb> = args => {
   );
 };
 
-export const WithGridItemResponsive = TemplateResponsive.bind({});
+export const WithGridItemResponsive = {
+  render: TemplateResponsive,
 
-WithGridItemResponsive.args = {
-  spacing: 'nano',
+  args: {
+    spacing: 'nano',
+  },
 };

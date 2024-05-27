@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { badge, containerBadge } from '@tecsinapse/cortex-core';
+import { badge, containerBadge } from '../src';
 
 export default {
-  title: 'Lab/Badge',
+  title: 'Cortex/Badge',
   component: <div />,
   argTypes: {
     intent: {
@@ -30,6 +30,7 @@ const Template: StoryFn = args => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

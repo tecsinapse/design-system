@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { hint } from '@tecsinapse/cortex-core';
+import { hint } from '../src';
 
 export default {
-  title: 'Lab/Hint',
+  title: 'Cortex/Hint',
   component: <div />,
   argTypes: {
     intent: {
@@ -21,6 +21,7 @@ const Template: StoryFn = args => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import TextArea, { TextAreaProps } from './TextArea';
 
 export default {
@@ -7,18 +7,20 @@ export default {
   component: TextArea,
 };
 
-const Template: Story<TextAreaProps> = ({ value: _value, ...args }) => {
+const Template: StoryFn<TextAreaProps> = ({ value: _value, ...args }) => {
   const [value, setValue] = React.useState(_value);
   return <TextArea {...args} value={value} onChange={arg => setValue(arg)} />;
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  value:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pulvinar leo vel est egestas laoreet. Nam facilisis, dui vitae convallis convallis, erat felis ornare massa, non auctor libero tortor eu nisi.',
-  numberOfLines: 3,
-  maxLength: 255,
-  label: 'Label',
-  placeholder: 'Placeholder',
+  args: {
+    value:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pulvinar leo vel est egestas laoreet. Nam facilisis, dui vitae convallis convallis, erat felis ornare massa, non auctor libero tortor eu nisi.',
+    numberOfLines: 3,
+    maxLength: 255,
+    label: 'Label',
+    placeholder: 'Placeholder',
+  },
 };

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { button, modal, overlay } from '@tecsinapse/cortex-core';
+import { button, modal, overlay } from '../src';
 
 export default {
-  title: 'Lab/Modal',
+  title: 'Cortex/Modal',
   component: <div />,
 };
 
@@ -50,6 +50,7 @@ const Template: StoryFn = () => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

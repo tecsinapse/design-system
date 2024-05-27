@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React, { ElementType } from 'react';
 import { StyleProps } from '@tecsinapse/react-core';
 
@@ -33,7 +33,7 @@ const breadcrumbs = [
     Component: 'a' as ElementType,
   },
 ];
-const Template: Story = () => {
+const Template: StoryFn = () => {
   return (
     <Container>
       <ContainerBreadcrumb>
@@ -56,4 +56,6 @@ const ContainerBreadcrumb = styled('div')`
   width: 90%;
 `;
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
+};

@@ -1,13 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import {
-  styleInputElement,
-  styleLabelElement,
-  toggle,
-} from '@tecsinapse/cortex-core';
+import { styleInputElement, styleLabelElement, toggle } from '../src';
 
 export default {
-  title: 'Lab/Toggle',
+  title: 'Cortex/Toggle',
   component: <div />,
 };
 
@@ -22,6 +18,7 @@ const Template: StoryFn = () => {
   );
 };
 
-export const Base = Template.bind({});
-
-Base.args = {};
+export const Base = {
+  render: Template,
+  args: {},
+};

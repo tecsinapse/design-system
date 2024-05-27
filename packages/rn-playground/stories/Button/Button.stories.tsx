@@ -1,8 +1,8 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 import { Button, Text } from '@tecsinapse/react-native-kit';
 
-const ButtonMeta: ComponentMeta<typeof Button> = {
+const ButtonMeta: Meta<typeof Button> = {
   title: 'Button',
   component: Button,
   argTypes: {
@@ -12,7 +12,7 @@ const ButtonMeta: ComponentMeta<typeof Button> = {
 
 export default ButtonMeta;
 
-type ButtonStory = ComponentStory<typeof Button>;
+type ButtonStory = StoryFn<typeof Button>;
 
 export const Basic: ButtonStory = args => (
   <Button {...args}>

@@ -9,17 +9,16 @@ import {
 } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { View } from 'react-native';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
 const options = new Array(20).fill(undefined).map((_, index) => ({
   key: index,
   label: `Option ${index}`,
 }));
 
-const StoryMeta: ComponentMeta<typeof Grid> = {
+const StoryMeta: Meta<typeof Grid> = {
   title: 'Grid',
   component: Grid,
-  subcomponents: { GridItem },
 };
 
 export default StoryMeta;

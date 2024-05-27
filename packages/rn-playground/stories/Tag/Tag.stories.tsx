@@ -1,8 +1,8 @@
 import React from 'react';
-import { Tag, IconProps, TagProps } from '@tecsinapse/react-native-kit';
-import { ComponentMeta } from '@storybook/react-native';
+import { IconProps, Tag, TagProps } from '@tecsinapse/react-native-kit';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Tag> = {
+const StoryMeta: Meta<typeof Tag> = {
   title: 'Tag',
   component: Tag,
   argTypes: {

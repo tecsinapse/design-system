@@ -1,16 +1,15 @@
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 import {
   LabeledSwitch,
   LabeledSwitchNativeProps,
 } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
 
-const StoryMeta: ComponentMeta<typeof LabeledSwitch> = {
+const StoryMeta: Meta<typeof LabeledSwitch> = {
   title: 'LabeledSwitch',
   component: LabeledSwitch,
   args: {
-    label: 'Labeled switch',
-    labelPosition: 'right',
+    rightLabel: 'Labeled switch',
   },
 };
 

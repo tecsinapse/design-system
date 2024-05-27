@@ -1,9 +1,9 @@
 import React from 'react';
 import { BottomNavigator, Text } from '@tecsinapse/react-native-kit';
 import { Pressable } from 'react-native';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof BottomNavigator> = {
+const StoryMeta: Meta<typeof BottomNavigator> = {
   title: 'BottomNavigator',
   component: BottomNavigator,
 };

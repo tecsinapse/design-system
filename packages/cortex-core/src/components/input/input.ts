@@ -1,5 +1,6 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 import { clsx } from 'clsx';
+
 export const inputBaseStyles = tv({
   base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 focus-within:outline focus-within:outline-1 text-base font-bold items-center bg-transparent border rounded-mili',
   variants: {
@@ -109,7 +110,7 @@ export const label = (props: LabelBaseVariants) => {
   const { placeholder, intent } = props;
   return labelBaseStyles({
     intent: intent,
-    className: clsx(props.className ?? props.class, {
+    className: clsx(String(props.className) ?? props.class, {
       'peer-placeholder-shown:hidden': !!placeholder,
     }),
   });

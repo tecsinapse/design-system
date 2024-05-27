@@ -1,9 +1,9 @@
 import { DatePicker, DateRange } from '@tecsinapse/react-native-kit';
 import React from 'react';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 import { DatePickerProps } from '@tecsinapse/react-core';
 
-const StoryMeta: ComponentMeta<typeof DatePicker> = {
+const StoryMeta: Meta<typeof DatePicker> = {
   title: 'DatePicker',
   component: DatePicker,
   args: {

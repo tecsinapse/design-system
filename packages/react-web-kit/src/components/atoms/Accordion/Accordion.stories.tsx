@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import Accordion, { AccordionProps } from './Accordion';
 import { Text } from '@tecsinapse/react-core';
 
@@ -13,7 +13,7 @@ export default {
   },
 };
 
-const Template: Story<AccordionProps> = args => {
+const Template: StoryFn<AccordionProps> = args => {
   return (
     <div style={{ width: 600 }}>
       <Accordion {...args} title="Agreement terms">
@@ -28,8 +28,10 @@ const Template: Story<AccordionProps> = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  title: 'Agreement terms',
+  args: {
+    title: 'Agreement terms',
+  },
 };

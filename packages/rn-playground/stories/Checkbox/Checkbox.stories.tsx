@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Checkbox, Text } from '@tecsinapse/react-native-kit';
 import { action } from '@storybook/addon-actions';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Checkbox> = {
+const StoryMeta: Meta<typeof Checkbox> = {
   title: 'Checkbox',
   component: Checkbox,
 };

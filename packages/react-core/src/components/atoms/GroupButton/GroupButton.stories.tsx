@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import {
   GroupButton,
@@ -30,7 +30,7 @@ const options: GroupButtonValue<string>[] = [
   },
 ];
 
-const Template: Story<GroupButtonProps<any>> = ({ ...args }) => {
+const Template: StoryFn<GroupButtonProps<any>> = ({ ...args }) => {
   const [active, setActive] = React.useState<string>(options[0].value);
 
   return (
@@ -47,9 +47,11 @@ const Template: Story<GroupButtonProps<any>> = ({ ...args }) => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  options,
-  buttonSize: 'small',
+  args: {
+    options,
+    buttonSize: 'small',
+  },
 };

@@ -1,8 +1,8 @@
 import { Button, Select, Text } from '@tecsinapse/react-native-kit';
-import React, { useCallback, useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import React, { useState } from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Select> = {
+const StoryMeta: Meta<typeof Select> = {
   title: 'Select',
   component: Select,
   args: {
@@ -16,7 +16,7 @@ const StoryMeta: ComponentMeta<typeof Select> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof Select>;
+type IStory = StoryFn<typeof Select>;
 
 const options = new Array(20).fill(undefined).map((_, index) => ({
   key: index,
@@ -28,101 +28,109 @@ type Option = { label: string; key: number };
 const labelExtractor = (item: Option) => item.label;
 const keyExtractor = (item: Option) => String(item.key);
 
-export const Multi = (args: IStory) => {
-  const [multiValue, setMultiValue] = useState<Option[]>([]);
+export const Multi = {
+  render: (args: IStory) => {
+    const [multiValue, setMultiValue] = useState<Option[]>([]);
 
-  function handleSelectMultipleValues(keys: Option[]) {
-    setMultiValue(keys);
-  }
+    function handleSelectMultipleValues(keys: Option[]) {
+      setMultiValue(keys);
+    }
 
-  const handleSearch = React.useCallback((searchArg: string) => {
-    return options.filter(value => {
-      if (searchArg) return value.label.includes(searchArg);
-      else return true;
-    });
-  }, []);
+    const handleSearch = React.useCallback((searchArg: string) => {
+      return options.filter(value => {
+        if (searchArg) return value.label.includes(searchArg);
+        else return true;
+      });
+    }, []);
 
-  return (
-    <Select
-      {...args}
-      options={options}
-      value={multiValue}
-      type={'multi'}
-      onSelect={handleSelectMultipleValues}
-      labelExtractor={labelExtractor}
-      keyExtractor={keyExtractor}
-      onSearch={handleSearch}
-    />
-  );
+    return (
+      <Select
+        {...args}
+        options={options}
+        value={multiValue}
+        type={'multi'}
+        onSelect={handleSelectMultipleValues}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+        onSearch={handleSearch}
+      />
+    );
+  },
 };
 
-export const MultiCustom = (args: IStory) => {
-  const [multiValue, setMultiValue] = useState<Option[]>([]);
+export const MultiCustom = {
+  render: (args: IStory) => {
+    const [multiValue, setMultiValue] = useState<Option[]>([]);
 
-  function handleSelectMultipleValues(keys: Option[]) {
-    setMultiValue(keys);
-  }
+    function handleSelectMultipleValues(keys: Option[]) {
+      setMultiValue(keys);
+    }
 
-  const handleSearch = React.useCallback((searchArg: string) => {
-    return options.filter(value => {
-      if (searchArg) return value.label.includes(searchArg);
-      else return true;
-    });
-  }, []);
+    const handleSearch = React.useCallback((searchArg: string) => {
+      return options.filter(value => {
+        if (searchArg) return value.label.includes(searchArg);
+        else return true;
+      });
+    }, []);
 
-  return (
-    <Select
-      {...args}
-      options={options}
-      value={multiValue}
-      type={'multi'}
-      onSelect={handleSelectMultipleValues}
-      labelExtractor={labelExtractor}
-      keyExtractor={keyExtractor}
-      onSearch={handleSearch}
-      controlComponent={(onPress, displayValue) => (
-        <>
-          <Button variant={'outlined'} onPress={onPress}>
-            <Text fontWeight={'bold'} fontColor={'orange'}>
-              Open select modal!
+    return (
+      <Select
+        {...args}
+        options={options}
+        value={multiValue}
+        type={'multi'}
+        onSelect={handleSelectMultipleValues}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+        onSearch={handleSearch}
+        controlComponent={(onPress, displayValue) => (
+          <>
+            <Button variant={'outlined'} onPress={onPress}>
+              <Text fontWeight={'bold'} fontColor={'orange'}>
+                Open select modal!
+              </Text>
+            </Button>
+            <Text fontWeight={'bold'} typography={'base'}>
+              Selected values: {displayValue}
             </Text>
-          </Button>
-          <Text fontWeight={'bold'} typography={'base'}>
-            Selected values: {displayValue}
-          </Text>
-        </>
-      )}
-    />
-  );
+          </>
+        )}
+      />
+    );
+  },
 };
 
-export const Single = (args: IStory) => {
-  const [singleValue, setSingleValue] = useState<Option | undefined>(undefined);
+export const Single = {
+  render: (args: IStory) => {
+    const [singleValue, setSingleValue] = useState<Option | undefined>(
+      undefined
+    );
 
-  function handleSelectSingleValue(key: Option | undefined) {
-    setSingleValue(key);
-  }
+    function handleSelectSingleValue(key: Option | undefined) {
+      setSingleValue(key);
+    }
 
-  const handleSearch = React.useCallback((searchArg: string) => {
-    return options.filter(value => {
-      if (searchArg) return value.label.includes(searchArg);
-      else return true;
-    });
-  }, []);
+    const handleSearch = React.useCallback((searchArg: string) => {
+      return options.filter(value => {
+        if (searchArg) return value.label.includes(searchArg);
+        else return true;
+      });
+    }, []);
 
-  return (
-    <Select
-      {...args}
-      options={options}
-      value={singleValue}
-      type={'single'}
-      hideSearchBar
-      onSelect={handleSelectSingleValue}
-      labelExtractor={labelExtractor}
-      onSearch={handleSearch}
-      keyExtractor={keyExtractor}
-    />
-  );
+    return (
+      <Select
+        {...args}
+        options={options}
+        value={singleValue}
+        type={'single'}
+        hideSearchBar
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        onSearch={handleSearch}
+        keyExtractor={keyExtractor}
+      />
+    );
+  },
 };
 
 export const SingleFetch = (args: IStory) => {
@@ -155,4 +163,62 @@ export const SingleFetch = (args: IStory) => {
       keyExtractor={keyExtractor}
     />
   );
+};
+
+const group1 = new Array(5).fill(undefined).map((_, index) => ({
+  key: index,
+  label: `Option ${index}`,
+}));
+const group2 = new Array(5).fill(undefined).map((_, index) => ({
+  key: index + 5,
+  label: `Option ${index + 5}`,
+}));
+const grouped = new Map().set('Group 1', group1).set('Group 2', group2);
+
+export const SingleGroup = {
+  render: (args: IStory) => {
+    const [singleValue, setSingleValue] = useState<Option | undefined>(
+      undefined
+    );
+
+    function handleSelectSingleValue(key: Option | undefined) {
+      setSingleValue(key);
+    }
+
+    return (
+      <Select
+        {...args}
+        options={grouped}
+        value={singleValue}
+        type={'single'}
+        hideSearchBar
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+      />
+    );
+  },
+};
+
+export const MultiGroup = {
+  render: (args: IStory) => {
+    const [values, setValues] = useState<Option[]>([]);
+
+    function handleSelectSingleValue(keys: Option[]) {
+      setValues(keys);
+    }
+
+    return (
+      <Select
+        {...args}
+        options={grouped}
+        value={values}
+        type={'multi'}
+        hideSearchBar
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+      />
+    );
+  },
 };

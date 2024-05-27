@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story } from '@storybook/react';
-import { default as Checkbox, CheckboxProps } from './Checkbox';
+import { StoryFn } from '@storybook/react';
+import { CheckboxProps, default as Checkbox } from './Checkbox';
 import { Text } from '../Text';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   component: Checkbox,
 };
 
-const Template: Story<CheckboxProps> = ({ checked, ...args }) => {
+const Template: StoryFn<CheckboxProps> = ({ checked, ...args }) => {
   const [active, setActive] = React.useState(checked);
 
   React.useEffect(() => {
@@ -22,11 +22,13 @@ const Template: Story<CheckboxProps> = ({ checked, ...args }) => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  labelPosition: 'right',
-  checked: true,
-  color: 'primary',
-  colorTone: 'medium',
+  args: {
+    labelPosition: 'right',
+    checked: true,
+    color: 'primary',
+    colorTone: 'medium',
+  },
 };

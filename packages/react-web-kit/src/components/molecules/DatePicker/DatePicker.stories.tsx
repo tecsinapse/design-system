@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { DatePickerProps, DateRange } from '@tecsinapse/react-core';
 import { ptBR } from 'date-fns/locale';
 import React from 'react';
@@ -9,7 +9,7 @@ export default {
   component: DatePicker,
 };
 
-const Template: Story<DatePickerProps<'range'>> = args => {
+const Template: StoryFn<DatePickerProps<'range'>> = args => {
   const [value, setValue] = React.useState<DateRange>();
 
   return (
@@ -17,16 +17,18 @@ const Template: Story<DatePickerProps<'range'>> = args => {
   );
 };
 
-export const Range = Template.bind({});
+export const Range = {
+  render: Template,
 
-Range.args = {
-  label: 'Select date',
-  placeholder: 'Select date',
-  type: 'range',
-  closeOnPick: false,
+  args: {
+    label: 'Select date',
+    placeholder: 'Select date',
+    type: 'range',
+    closeOnPick: false,
+  },
 };
 
-const TemplateDay: Story<DatePickerProps<'day'>> = args => {
+const TemplateDay: StoryFn<DatePickerProps<'day'>> = args => {
   const [value, setValue] = React.useState<Date>();
 
   return (
@@ -34,11 +36,13 @@ const TemplateDay: Story<DatePickerProps<'day'>> = args => {
   );
 };
 
-export const Day = TemplateDay.bind({});
+export const Day = {
+  render: TemplateDay,
 
-Day.args = {
-  label: 'Select date',
-  placeholder: 'Select date',
-  type: 'day',
-  closeOnPick: true,
+  args: {
+    label: 'Select date',
+    placeholder: 'Select date',
+    type: 'day',
+    closeOnPick: true,
+  },
 };

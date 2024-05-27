@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.4.2...@tecsinapse/react-native-kit@3.5.0-beta.0) (2024-05-24)
+
+### Features
+
+- add select with options groups ([44fa0d0](https://github.com/tecsinapse/design-system/commit/44fa0d09d267b8d380331fbf2f1e746be37c5ee5))
+- add select with options groups ([201bee4](https://github.com/tecsinapse/design-system/commit/201bee4d009dfd3e59f5d7a92ea41266151a8b64))
+- **WIP:** add select with options groups ([fc4c781](https://github.com/tecsinapse/design-system/commit/fc4c78188aa788ff6238a44de98b5b0c4739b59a))
+
+## [3.4.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.4.1...@tecsinapse/react-native-kit@3.4.2) (2024-03-22)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.4.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.4.0...@tecsinapse/react-native-kit@3.4.1) (2024-03-18)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
 # [3.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.3.9...@tecsinapse/react-native-kit@3.4.0) (2024-03-14)
 
 ### Features

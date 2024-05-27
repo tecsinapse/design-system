@@ -1,7 +1,7 @@
-import React from 'react';
-import { Story } from '@storybook/react';
-import { Tag, TagProps } from './index';
+import { StoryFn } from '@storybook/react';
 import { IconProps } from '@tecsinapse/react-core';
+import React from 'react';
+import { Tag, TagProps } from './index';
 
 export default {
   title: 'Hybrid/Tag',
@@ -13,12 +13,14 @@ export default {
   },
 };
 
-const Template: Story<TagProps> = ({
+const Template: StoryFn<TagProps> = ({
   value,
   icon,
   variant,
   dismiss,
   onDismiss,
+  backgroundColorTone,
+  backgroundColorVariant,
 }) => (
   <Tag
     value={value}
@@ -26,15 +28,21 @@ const Template: Story<TagProps> = ({
     variant={variant}
     dismiss={dismiss}
     onDismiss={onDismiss}
+    backgroundColorTone={backgroundColorTone}
+    backgroundColorVariant={backgroundColorVariant}
   />
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  value: 'Label',
-  icon: { name: 'stopwatch', type: 'fontisto' } as IconProps,
-  variant: 'small',
-  dismiss: true,
-  onDismiss: () => alert('Dismiss'),
-} as TagProps;
+  args: {
+    value: 'Label',
+    icon: { name: 'stopwatch', type: 'fontisto' } as IconProps,
+    variant: 'small',
+    dismiss: true,
+    onDismiss: () => alert('Dismiss'),
+    backgroundColorTone: 'secondary',
+    backgroundColorVariant: 'xlight',
+  } as TagProps,
+};

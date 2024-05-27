@@ -1,7 +1,6 @@
 import React from 'react';
-import { getStorybookUI } from '@storybook/react-native';
-import './doctools';
-import './storybook.requires';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { view } from './storybook.requires';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -13,7 +12,12 @@ import {
 } from '@tecsinapse/react-native-kit';
 import styled from '@emotion/native';
 
-const _StorybookUIRoot = getStorybookUI({});
+const _StorybookUIRoot = view.getStorybookUI({
+  storage: {
+    getItem: AsyncStorage.getItem,
+    setItem: AsyncStorage.setItem,
+  },
+});
 
 const StorybookUIRoot = () => {
   const [fontsLoaded] = useFonts({

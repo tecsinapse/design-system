@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import Tooltip, { ITooltip } from './Tooltip';
 import { Button } from '../Button';
 import { Text } from '@tecsinapse/react-core';
@@ -9,7 +9,7 @@ export default {
   component: Tooltip,
 };
 
-const Template: Story<ITooltip> = args => {
+const Template: StoryFn<ITooltip> = args => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <Tooltip {...args}>
@@ -23,8 +23,10 @@ const Template: Story<ITooltip> = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  title: 'Tooltip',
+  args: {
+    title: 'Tooltip',
+  },
 };

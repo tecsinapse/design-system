@@ -1,8 +1,8 @@
 import { Header } from '@tecsinapse/react-native-kit';
 import React from 'react';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Header> = {
+const StoryMeta: Meta<typeof Header> = {
   title: 'Header',
   component: Header,
 };

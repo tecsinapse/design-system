@@ -11,9 +11,9 @@ import {
   TextArea,
 } from '@tecsinapse/react-native-kit';
 
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Skeleton> = {
+const StoryMeta: Meta<typeof Skeleton> = {
   title: 'Skeleton',
   component: Skeleton,
   args: {
@@ -31,7 +31,7 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
 export const Base = (args: SkeletonProps) => {
   const [seconds, setSeconds] = useState(0);
   const [active, setActive] = useState(false);
-  const interval = useRef<NodeJS.Timer>();
+  const interval = useRef<NodeJS.Timeout>();
 
   const animation = args?.animation;
 
@@ -41,7 +41,7 @@ export const Base = (args: SkeletonProps) => {
         setSeconds(seconds => seconds + 1);
       }, 1000);
     } else if (!active && seconds !== 0) {
-      clearInterval(interval.current);
+      clearInterval(interval?.current);
     }
 
     return () => clearInterval(interval.current);

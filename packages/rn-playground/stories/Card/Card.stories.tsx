@@ -1,8 +1,8 @@
 import { Card, Footer, Header, Text } from '@tecsinapse/react-native-kit';
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Card> = {
+const StoryMeta: Meta<typeof Card> = {
   title: 'Card',
   component: Card,
   argTypes: {
@@ -12,7 +12,7 @@ const StoryMeta: ComponentMeta<typeof Card> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof Card>;
+type IStory = StoryFn<typeof Card>;
 
 export const Base = (args: IStory) => (
   <Card {...args}>

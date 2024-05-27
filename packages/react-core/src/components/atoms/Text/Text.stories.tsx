@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import { Text, TextProps } from './index';
 
@@ -7,7 +7,7 @@ export default {
   component: Text,
 };
 
-const Template: Story<TextProps> = ({
+const Template: StoryFn<TextProps> = ({
   fontColor,
   fontWeight,
   typography,
@@ -23,10 +23,12 @@ const Template: Story<TextProps> = ({
   </Text>
 );
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  fontColor: 'dark',
-  fontWeight: 'regular',
-  typography: 'h3',
+  args: {
+    fontColor: 'dark',
+    fontWeight: 'regular',
+    typography: 'h3',
+  },
 };

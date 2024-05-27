@@ -1,8 +1,8 @@
 import { Input } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof Input> = {
+const StoryMeta: Meta<typeof Input> = {
   title: 'Input',
   component: Input,
   args: {
@@ -14,7 +14,7 @@ const StoryMeta: ComponentMeta<typeof Input> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof Input>;
+type IStory = StoryFn<typeof Input>;
 
 export const Base = (args: IStory) => {
   const [value, setValue] = useState<string>('');

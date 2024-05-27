@@ -1,8 +1,8 @@
 import React from 'react';
 import { Icon } from '@tecsinapse/react-native-kit';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const IconMeta: ComponentMeta<typeof Icon> = {
+const IconMeta: Meta<typeof Icon> = {
   title: 'Icon',
   component: Icon,
   args: {
@@ -14,6 +14,12 @@ const IconMeta: ComponentMeta<typeof Icon> = {
 
 export default IconMeta;
 
-type IconStory = ComponentStory<typeof Icon>;
+type IconStory = StoryFn<typeof Icon>;
 
-export const Base: IconStory = args => <Icon {...args} />;
+export const Base = ({ args }: IconStory) => (
+  <Icon
+    {...args}
+    type={args?.type ?? 'font-awesome'}
+    name={args?.name ?? 'rocket'}
+  />
+);

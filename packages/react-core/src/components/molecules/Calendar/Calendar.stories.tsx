@@ -1,4 +1,4 @@
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import { Calendar, CalendarProps } from './index';
 import { DateRange } from './Calendar';
@@ -9,7 +9,7 @@ export default {
   component: Calendar,
 };
 
-const Template: Story<CalendarProps<'range'>> = ({ ...args }) => {
+const Template: StoryFn<CalendarProps<'range'>> = ({ ...args }) => {
   const [value, setValue] = React.useState<DateRange>();
 
   return (
@@ -17,4 +17,6 @@ const Template: Story<CalendarProps<'range'>> = ({ ...args }) => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
+};

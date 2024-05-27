@@ -31,6 +31,9 @@
         "projectId": "edf0f9e6-e02f-464f-abfa-f532c69f0777"
       }
     },
-    "owner": "tecsinapse"
+    "owner": "tecsinapse",
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

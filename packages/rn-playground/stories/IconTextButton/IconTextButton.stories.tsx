@@ -1,8 +1,8 @@
 import { IconTextButton } from '@tecsinapse/react-native-kit';
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react-native';
+import { Meta, StoryFn } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof IconTextButton> = {
+const StoryMeta: Meta<typeof IconTextButton> = {
   title: 'IconTextButton',
   component: IconTextButton,
   args: {
@@ -13,7 +13,7 @@ const StoryMeta: ComponentMeta<typeof IconTextButton> = {
 
 export default StoryMeta;
 
-type IStory = ComponentStory<typeof IconTextButton>;
+type IStory = StoryFn<typeof IconTextButton>;
 export const Base = (args: IStory) => (
   <IconTextButton
     {...args}

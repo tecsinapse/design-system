@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import React from 'react';
 import {
   default as LabeledSwitch,
@@ -11,7 +11,7 @@ export default {
   component: LabeledSwitch,
 };
 
-const Template: Story<LabeledSwitchWebProps> = args => {
+const Template: StoryFn<LabeledSwitchWebProps> = args => {
   const [active, setActive] = React.useState(args.active);
   const onChange = arg => {
     setActive(!active);
@@ -29,11 +29,13 @@ const Template: Story<LabeledSwitchWebProps> = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  active: true,
-  onChange: value => action('Clicked')(value),
-  disabled: false,
-  pressableLabel: true,
+  args: {
+    active: true,
+    onChange: value => action('Clicked')(value),
+    disabled: false,
+    pressableLabel: true,
+  },
 };

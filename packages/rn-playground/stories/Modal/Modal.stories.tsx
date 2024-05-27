@@ -5,13 +5,13 @@ import {
   ModalView,
   Text,
   useModalManager,
+  useModalRemoteControl,
 } from '@tecsinapse/react-native-kit';
-import { useModalRemoteControl } from '@tecsinapse/react-native-kit';
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { ComponentMeta } from '@storybook/react-native';
+import { Meta } from '@storybook/react';
 
-const StoryMeta: ComponentMeta<typeof ModalView> = {
+const StoryMeta: Meta<typeof ModalView> = {
   title: 'Modal',
   component: ModalView,
 };

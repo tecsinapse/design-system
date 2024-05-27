@@ -1,6 +1,6 @@
 import React, { ElementType } from 'react';
 import Menubar, { MenubarProps } from './Menubar';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import styled from '@emotion/styled';
 import { Avatar, Icon, Text } from '@tecsinapse/react-core';
 
@@ -253,7 +253,7 @@ const StyledImage = styled('img')`
   margin-right: 35px;
 `;
 
-const Template: Story<MenubarProps> = args => {
+const Template: StoryFn<MenubarProps> = args => {
   return (
     <>
       <Menubar
@@ -276,4 +276,6 @@ const Template: Story<MenubarProps> = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
+};

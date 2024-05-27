@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { snackbar } from '@tecsinapse/cortex-core';
+import { snackbar } from '../src';
 
 export default {
-  title: 'Lab/Snackbar',
+  title: 'Cortex/Snackbar',
   component: <div />,
   argTypes: {
     intent: {
@@ -19,8 +19,10 @@ const Template: StoryFn = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  description: 'Message Snack',
+  args: {
+    description: 'Message Snack',
+  },
 };

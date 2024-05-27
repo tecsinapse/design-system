@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Story } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import {
   GroupButton,
   GroupButtonOption,
@@ -104,7 +104,7 @@ const HEADERS: HeadersType<ExampleData>[] = [
   { label: 'Email', render: data => data.email },
 ];
 
-const Template: Story = args => {
+const Template: StoryFn = args => {
   const [selected, setSelected] = React.useState<ExampleData[]>([]);
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
   const [currentPage, setCurrentPage] = React.useState<number>(0);
@@ -158,12 +158,14 @@ const Template: Story = args => {
   );
 };
 
-export const Base = Template.bind({});
+export const Base = {
+  render: Template,
 
-Base.args = {
-  selectable: true,
-  exportFunction: () => alert('Export handler'),
-  pagination: true,
+  args: {
+    selectable: true,
+    exportFunction: () => alert('Export handler'),
+    pagination: true,
+  },
 };
 
 const fetchAllUsers = async () => {
@@ -172,7 +174,7 @@ const fetchAllUsers = async () => {
   });
 };
 
-const TemplateClient: Story = args => {
+const TemplateClient: StoryFn = args => {
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(5);
   const [currentPage, setCurrentPage] = React.useState<number>(0);
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -210,11 +212,13 @@ const TemplateClient: Story = args => {
   );
 };
 
-export const ClientSide = TemplateClient.bind({});
+export const ClientSide = {
+  render: TemplateClient,
 
-ClientSide.args = {
-  exportFunction: () => alert('Export handler'),
-  pagination: true,
+  args: {
+    exportFunction: () => alert('Export handler'),
+    pagination: true,
+  },
 };
 
 const EmptyContainer = styled('div')`
@@ -233,7 +237,7 @@ const EmptyState = React.memo(() => (
   </EmptyContainer>
 ));
 
-const TemplateEmpty: Story = args => {
+const TemplateEmpty: StoryFn = args => {
   return (
     <DataGrid
       headers={HEADERS}
@@ -246,4 +250,6 @@ const TemplateEmpty: Story = args => {
   );
 };
 
-export const EmptyGrid = TemplateEmpty.bind({});
+export const EmptyGrid = {
+  render: TemplateEmpty,
+};
