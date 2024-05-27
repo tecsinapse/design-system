@@ -3,7 +3,7 @@ import { getStyledModal } from '../styled';
 import {
   LoadingProps,
   OptionData,
-  SelectNativeProps,
+  OverrideModalProps,
   SelectType,
 } from '../types';
 import { ListRenderItemInfo } from 'react-native';
@@ -23,7 +23,7 @@ const useModal = <Data, Type extends SelectType>({
   close,
   closeOnPick,
   ...others
-}: SelectNativeProps<Data, Type> & LoadingProps & IBaseModal) => {
+}: OverrideModalProps<Data, Type> & LoadingProps & IBaseModal) => {
   const [selectedValues, setSelectedValues] = React.useState<Data[]>([]);
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const ModalComponent = React.useMemo(
@@ -42,7 +42,7 @@ const useModal = <Data, Type extends SelectType>({
 
   const getData = React.useCallback(
     (_options: Data[]): OptionData<Data>[] => {
-      return _options.map((option, index) => {
+      return (_options ?? []).map((option, index) => {
         return {
           ...option,
           _checked: isOptionChecked(

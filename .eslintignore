@@ -3,3 +3,4 @@ dist/
 *.d.ts
 *.stories.tsx
 *.js
+*.requires.ts

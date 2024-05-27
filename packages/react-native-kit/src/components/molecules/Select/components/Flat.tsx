@@ -1,8 +1,14 @@
 import React from 'react';
 import { Divider } from '../styled';
 import { FlatList } from 'react-native';
+import { BaseFlatList } from '../types';
 
-const Flat = ({ options, keyExtractor, renderItem, getData }) => {
+const Flat = <Data,>({
+  options,
+  keyExtractor,
+  renderItem,
+  getData,
+}: BaseFlatList<Data>): JSX.Element => {
   const data = React.useMemo(
     () => (typeof options !== 'function' ? getData(options) : []),
     [options, getData]

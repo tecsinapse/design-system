@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "React components library for web",
-  "version": "3.4.4-beta.0",
+  "version": "3.4.6",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
@@ -21,7 +21,7 @@
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
-    "@tecsinapse/react-core": "3.4.1-beta.0",
+    "@tecsinapse/react-core": "3.4.3",
     "date-fns": "~2.30.0",
     "react-native-vector-icons": "^9.2.0",
     "react-transition-group": "~4.4.5"

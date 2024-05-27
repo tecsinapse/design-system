@@ -2,14 +2,29 @@ import React, { useMemo } from 'react';
 import { Divider, SectionHeader } from '../styled';
 import { SectionList } from 'react-native';
 import { Text } from '../../../atoms/Text';
+import { BaseSectionList } from '../types';
 
-const SectionHead = ({ section: { title } }) => (
+const SectionHead = ({
+  title,
+  groupLabelExtractor,
+}: {
+  title: string;
+  groupLabelExtractor?: (title: string) => string;
+}) => (
   <SectionHeader>
-    <Text fontWeight={'bold'}>{title}</Text>
+    <Text fontWeight={'bold'}>
+      {groupLabelExtractor ? groupLabelExtractor(title) : title}
+    </Text>
   </SectionHeader>
 );
 
-const Section = ({ options, renderItem, getData, keyExtractor }) => {
+const Section = <Data,>({
+  options,
+  renderItem,
+  getData,
+  keyExtractor,
+  groupLabelExtractor,
+}: BaseSectionList<Data>): JSX.Element => {
   const sectionList = useMemo(
     () =>
       options instanceof Map
@@ -26,7 +41,9 @@ const Section = ({ options, renderItem, getData, keyExtractor }) => {
       sections={sectionList}
       renderItem={renderItem}
       ItemSeparatorComponent={Divider}
-      renderSectionHeader={SectionHead}
+      renderSectionHeader={({ section: { title } }) => (
+        <SectionHead title={title} groupLabelExtractor={groupLabelExtractor} />
+      )}
       keyExtractor={keyExtractor}
     />
   );
