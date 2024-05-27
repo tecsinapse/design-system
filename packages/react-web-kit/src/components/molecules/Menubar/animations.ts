@@ -41,7 +41,7 @@ const getContainerOpenMenuTransform = {
   },
   exited: {
     opacity: 0,
-    transform: 'scale(0.99, 0.99) translateY(-600px)',
+    transform: 'scale(0.99, 0.99) translateY(-120%)',
   },
   exiting: {
     opacity: 0.95,
