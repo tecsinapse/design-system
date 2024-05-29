@@ -37,7 +37,7 @@ export interface MenubarProps extends React.HTMLAttributes<HTMLDivElement> {
 const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
   rightComponents,
-  searchPlaceholder = 'O quê você deseja buscar?',
+  searchPlaceholder = 'O que você deseja buscar?',
   options,
   mostUsed,
   mostUsedLabel = 'Mais acessados',
@@ -108,7 +108,12 @@ const Menubar: React.FC<MenubarProps> = ({
         </Transition>
         {rightComponents}
       </StyledMenuBar>
-      <Transition in={open} timeout={250} nodeRef={transitionMenuRef}>
+      <Transition
+        in={open}
+        timeout={250}
+        nodeRef={transitionMenuRef}
+        unmountOnExit
+      >
         {state => (
           <StyledContainerOpenMenu
             style={getContainerOpenMenuStyles(state)}
