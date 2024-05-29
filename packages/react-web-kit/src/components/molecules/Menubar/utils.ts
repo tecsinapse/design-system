@@ -1,4 +1,5 @@
 import { MostUsedType, OptionsType } from './types';
+import { normalize } from './SearchResultItem/utils';
 
 export const filterAndTransform = (
   options: OptionsType[],
@@ -7,7 +8,7 @@ export const filterAndTransform = (
   const normalized: MostUsedType[] = [];
   options.forEach(option => {
     option.items.forEach(item => {
-      if (item.title.toLowerCase().startsWith(search)) {
+      if (normalize(item.title.toLowerCase()).includes(normalize((search.toLowerCase())))) {
         normalized.push({
           title: item.title,
           Component: item.Component,
