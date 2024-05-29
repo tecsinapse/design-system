@@ -108,7 +108,12 @@ const Menubar: React.FC<MenubarProps> = ({
         </Transition>
         {rightComponents}
       </StyledMenuBar>
-      <Transition in={open} timeout={250} nodeRef={transitionMenuRef}>
+      <Transition
+        in={open}
+        timeout={250}
+        nodeRef={transitionMenuRef}
+        unmountOnExit
+      >
         {state => (
           <StyledContainerOpenMenu
             style={getContainerOpenMenuStyles(state)}
