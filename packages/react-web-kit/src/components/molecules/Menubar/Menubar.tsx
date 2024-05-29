@@ -37,7 +37,7 @@ export interface MenubarProps extends React.HTMLAttributes<HTMLDivElement> {
 const Menubar: React.FC<MenubarProps> = ({
   leftComponents,
   rightComponents,
-  searchPlaceholder = 'O quê você deseja buscar?',
+  searchPlaceholder = 'O que você deseja buscar?',
   options,
   mostUsed,
   mostUsedLabel = 'Mais acessados',
