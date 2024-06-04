@@ -6,7 +6,7 @@ interface ButtonProps {
   children?: JSX.Element;
 }
 
-const Button = forwardRef<
+export const Button = forwardRef<
   HTMLButtonElement,
   ButtonProps & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className'>
 >((props, ref) => {
@@ -17,5 +17,3 @@ const Button = forwardRef<
     </button>
   );
 });
-
-export default Button;

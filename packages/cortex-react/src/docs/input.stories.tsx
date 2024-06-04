@@ -3,7 +3,7 @@ import { StoryFn } from '@storybook/react';
 import { Input } from '../components';
 
 export default {
-  title: 'Cortex-React/Input/Root',
+  title: 'Cortex-React/Input',
   component: <div />,
   args: {
     label: 'Label',

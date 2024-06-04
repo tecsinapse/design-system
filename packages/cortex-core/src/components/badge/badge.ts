@@ -1,7 +1,7 @@
 import { tv, VariantProps, ClassProp } from 'tailwind-variants';
 
 const badgeStyles = tv({
-  base: 'text-sub text-white font-bold rounded-pill absolute items-center flex justify-center w-[1rem] h-[1rem] -top-1 -right-1 px-[5px] py-[2px]',
+  base: 'text-sub text-white font-bold rounded-pill',
   variants: {
     intent: {
       primary: 'bg-primary-medium',
@@ -11,9 +11,14 @@ const badgeStyles = tv({
       warning: 'bg-warning-medium',
       info: 'bg-info-medium',
     },
+    isAnchor: {
+      true: 'absolute items-center flex justify-center w-[1rem] h-[1rem] -top-1 -right-1 px-[5px] py-[2px]',
+      false: 'px-[5px]',
+    },
   },
   defaultVariants: {
     intent: 'primary',
+    isAnchor: false,
   },
 });
 
