@@ -6,22 +6,20 @@ export default {
   title: 'Cortex-React/Select',
   component: <div />,
   argTypes: {
-    intent: {
-      options: ['primary', 'secondary', 'success', 'info', 'warning', 'error'],
-      control: { type: 'select' },
-    },
     variant: {
-      options: ['outline', 'text', 'filled'],
+      options: ['default', 'error'],
       control: { type: 'select' },
     },
-    size: {
-      options: ['small', 'default', 'circle', 'square'],
-      control: { type: 'select' },
+    label: {
+      control: { type: 'text' },
+    },
+    placeholderSearchInput: {
+      control: { type: 'text' },
     },
   },
 };
 
-const options = [
+const _options = [
   { key: '1', label: 'São paulo' },
   { key: '2', label: 'Rio de Janeiro' },
   { key: '3', label: 'Campo Grande' },
@@ -33,13 +31,26 @@ const options = [
   { key: '8', label: 'Rio Branco' },
 ];
 
-const Template: StoryFn = () => {
+type Option = { key: string; label: string };
+const Template: StoryFn = args => {
   const [value, setValue] = useState<{ key: string; label: string }>();
+  const [options, setOptions] = useState<Option[]>(_options);
+
+  const handleSearch = React.useCallback((searchArg: string) => {
+    setOptions(
+      (options as Option[]).filter(item =>
+        new RegExp(searchArg, 'ig').test(item.label)
+      )
+    );
+  }, []);
   return (
-    <div className={'w-[250px]'}>
+    <div className={'w-[350px]'}>
       <Select
+        variant={args.variant}
         keyExtractor={op => op.key}
-        label={'Label'}
+        label={args.label}
+        onSearch={handleSearch}
+        placeholderSearchInput={args.placeholderSearchInput}
         labelExtractor={op => op.label}
         onSelect={setValue}
         value={value}
@@ -51,5 +62,9 @@ const Template: StoryFn = () => {
 
 export const Base = {
   render: Template,
-  args: {},
+  args: {
+    variant: 'default',
+    label: 'Label',
+    placeholderSearchInput: 'Placeholder Search',
+  },
 };

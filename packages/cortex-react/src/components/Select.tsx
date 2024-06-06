@@ -6,7 +6,6 @@ import React, {
   useRef,
   useState,
 } from 'react';
-// import { SearchInput } from '../components';
 import { Hint } from './Hint';
 import { IoChevronDownOutline } from 'react-icons/io5';
 import { IoIosCloseCircleOutline } from 'react-icons/io';

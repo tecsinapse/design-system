@@ -15,8 +15,6 @@ interface SearchInputProps {
   BOUNCE_TIMEOUT?: number;
 }
 
-// const { inputFace, inputLeft } = searchInputVariants();
-
 const inputFace = 'bg-white w-full';
 const inputLeft = 'flex items-center';
 const SearchInput = ({
