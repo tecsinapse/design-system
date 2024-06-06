@@ -52,12 +52,12 @@ export const Select = <T,>(props: SelectProps<T>) => {
     options,
     value,
     onSelect,
+    onSearch,
     disabled,
     grouped,
     groupedLabelExtractor,
     hint,
     placeholderSearchInput,
-    onSearch,
     variant = 'default',
   } = props;
   const [open, setOpen] = useState(false);
@@ -100,7 +100,7 @@ export const Select = <T,>(props: SelectProps<T>) => {
 
   const GroupedOptions = ({ options }: { options?: Map<string, T[]> }) => (
     <>
-      {Object.entries(options ?? {}).map(([key, value]) => (
+      {[...(options ?? [])].map(([key, value]) => (
         <div key={key} className={containerGrouped()}>
           <span className={groupedTitle()}>{groupedLabelExtractor?.(key)}</span>
           {value.map((option: T) => (
@@ -120,7 +120,7 @@ export const Select = <T,>(props: SelectProps<T>) => {
   );
 
   return (
-    <div className="w-full relative" ref={ref}>
+    <div className="w-full relative bg-white" ref={ref}>
       <button
         className={button({ disabled, intent: variant })}
         onClick={() => setOpen(prevState => !prevState)}
