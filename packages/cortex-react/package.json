@@ -4,12 +4,8 @@
   "description": "React components based in @tecsinapse/cortex-core",
   "author": "ryancarloscorrea <ryancarlos38@gmail.com>",
   "homepage": "https://github.com/tecsinapse/design-system#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "src/index.ts",
-  "directories": {
-    "lib": "src",
-    "test": "__tests__"
-  },
   "files": [
     "src"
   ],
