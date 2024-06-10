@@ -1,7 +1,7 @@
 import { tv, VariantProps, ClassProp } from 'tailwind-variants';
 
 export const buttonStyles = tv({
-  base: 'p-deca rounded-mili text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer items-center flex justify-center',
+  base: 'p-deca text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer items-center flex justify-center',
   variants: {
     intent: {
       primary:
@@ -19,12 +19,13 @@ export const buttonStyles = tv({
     variant: {
       outline: 'bg-transparent disabled:bg-transparent',
       text: 'bg-transparent border-0 disabled:bg-transparent',
+      filled: '',
     },
     size: {
-      default: 'px-kilo py-mili min-h-[44px]',
-      small: 'px-deca py-mili min-h-[34px]',
-      square: 'p-[14px] min-h-fit aspect-square',
-      circle: 'p-[14px] rounded-full min-h-fit aspect-square',
+      default: 'px-kilo rounded-mili py-mili min-h-[44px]',
+      small: 'px-deca rounded-mili py-mili min-h-[34px]',
+      square: 'p-[14px] rounded-mili min-h-fit aspect-square',
+      circle: 'p-[14px] rounded-full min-h-fit',
     },
   },
   compoundVariants: [
@@ -102,6 +103,7 @@ export const buttonStyles = tv({
   defaultVariants: {
     intent: 'primary',
     size: 'default',
+    variant: 'filled',
   },
 });
 export type ButtonVariants = VariantProps<typeof buttonStyles> & ClassProp;
