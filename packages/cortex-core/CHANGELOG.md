@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.1.9...@tecsinapse/cortex-core@0.1.10-beta.0) (2024-06-10)
+
+### Bug Fixes
+
+- select cortex core ([f694cd2](https://github.com/tecsinapse/design-system/commit/f694cd2b33e8d7c69467a5e86bdcca35af1e8f0a))
+
 ## [0.1.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.1.6-beta.0...@tecsinapse/cortex-core@0.1.9) (2024-05-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core

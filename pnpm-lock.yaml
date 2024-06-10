@@ -159,6 +159,18 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.3)
 
+  packages/cortex-react:
+    dependencies:
+      '@tecsinapse/cortex-core':
+        specifier: 0.1.10-beta.0
+        version: link:../cortex-core
+      clsx:
+        specifier: '*'
+        version: 2.1.1
+      react-icons:
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.3.1)
+
   packages/react-charts:
     dependencies:
       '@emotion/native':
@@ -199,7 +211,7 @@ importers:
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.0.38)(react@18.3.1)
       '@tecsinapse/react-core':
-        specifier: 3.4.3
+        specifier: 3.4.4-beta.0
         version: link:../react-core
       react-native-linear-gradient:
         specifier: ~2.8.3
@@ -221,7 +233,7 @@ importers:
         specifier: ~11.11.0
         version: 11.11.5(@emotion/react@11.11.4)(@types/react@18.0.38)(react@18.3.1)
       '@tecsinapse/react-core':
-        specifier: 3.4.3
+        specifier: 3.4.4-beta.0
         version: link:../react-core
       date-fns:
         specifier: ~2.30.0
@@ -18154,6 +18166,17 @@ packages:
       react-dom: 18.3.1(react@18.3.1)
       react-is: 18.1.0
     dev: true
+
+  /react-icons@5.2.1(react@18.3.1):
+    resolution:
+      {
+        integrity: sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==,
+      }
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.3.1
+    dev: false
 
   /react-is@16.13.1:
     resolution:

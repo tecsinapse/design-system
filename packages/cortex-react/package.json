@@ -1,0 +1,37 @@
+{
+  "name": "@tecinapse/cortex-react",
+  "version": "1.0.1-beta.0",
+  "description": "> TODO: description",
+  "author": "ryancarloscorrea <ryancarlos38@gmail.com>",
+  "homepage": "https://github.com/tecsinapse/design-system#readme",
+  "license": "ISC",
+  "main": "src/index.ts",
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tecsinapse/design-system.git"
+  },
+  "scripts": {
+    "dev": "rollup --config --watch",
+    "dev:dts": "tsc --project tsconfig.build.json --watch",
+    "build:es": "rollup --config",
+    "build:dts": "tsc --project tsconfig.build.json"
+  },
+  "bugs": {
+    "url": "https://github.com/tecsinapse/design-system/issues"
+  },
+  "peerDependencies": {
+    "tailwind": ">=3.3.0"
+  },
+  "dependencies": {
+    "@tecsinapse/cortex-core": "0.1.10-beta.0",
+    "clsx": "*",
+    "react-icons": "^5.2.1"
+  }
+}
