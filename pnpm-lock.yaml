@@ -163,10 +163,10 @@ importers:
   packages/cortex-react:
     dependencies:
       '@tecsinapse/cortex-core':
-        specifier: workspace:^
+        specifier: 0.1.9
         version: link:../cortex-core
       clsx:
-        specifier: ^2.1.1
+        specifier: '*'
         version: 2.1.1
       react-icons:
         specifier: ^5.2.1
