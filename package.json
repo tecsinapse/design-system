@@ -79,6 +79,6 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.json": "prettier --write"
+    ".{json,mdx,md}": "prettier --write"
   }
 }

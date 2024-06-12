@@ -5,7 +5,7 @@ import { DateRange } from './Calendar';
 import { ptBR } from 'date-fns/locale';
 
 export default {
-  title: 'Hybrid/Calendar',
+  title: 'react-web-kit/Calendar',
   component: Calendar,
 };
 

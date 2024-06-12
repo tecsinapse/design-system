@@ -7,7 +7,7 @@ import {
 } from './LabeledSwitch';
 
 export default {
-  title: 'Web/LabeledSwitch',
+  title: 'react-web-kit/LabeledSwitch',
   component: LabeledSwitch,
 };
 

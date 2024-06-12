@@ -4,7 +4,7 @@ import React from 'react';
 import { Tag, TagProps } from './index';
 
 export default {
-  title: 'Hybrid/Tag',
+  title: 'react-web-kit/Tag',
   component: Tag,
   parameters: {
     backgrounds: {

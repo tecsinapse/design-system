@@ -6,7 +6,7 @@ import { Text } from '../../../';
 import styled from '@emotion/styled';
 
 export default {
-  title: 'Web/Grid',
+  title: 'react-web-kit/Grid',
   component: Grid,
   subcomponents: { GridItem },
 };

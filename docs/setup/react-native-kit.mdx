@@ -1,0 +1,90 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Setup (non cortex)/react-native-kit" />
+
+# @tecsinapse/react-native-kit
+
+We recommend to use [expo](https://docs.expo.dev/get-started/introduction/) as your mobile development framework, making easier to manage platforms.
+Make sure to configure your environment following [official react native docs](https://reactnative.dev/docs/set-up-your-environment).
+
+After generating your app source code, add the following libraries:
+
+```shell
+expo add @tecsinapse/react-native-kit react-native-linear-gradient react-native-safe-area-context expo-linear-gradient @expo/vector-icons expo-font
+pnpm add -D babel-plugin-module-resolver
+```
+
+## Configure
+
+Add to `babel.config.js`:
+
+```javascript
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [
+      [
+        'module-resolver',
+        {
+          alias: {
+            'react-native-linear-gradient': 'expo-linear-gradient',
+            'react-native-vector-icons/dist': '@expo/vector-icons',
+          },
+        },
+      ],
+    ],
+  };
+};
+```
+
+## Fonts
+
+Create an `assets/fonts` folder inside `src` and copy all **react-native-vector-icons** `ttf` font files.
+Also copy font files in `assets` folder of `@tecsinapse/design-system` repo root.
+
+Add to main entry (the example entry file is one level after `src` folder):
+
+```javascript
+import { useFonts } from 'expo-font';
+
+const [fontsLoaded, fontError] = useFonts({
+  FontAwesome: require('../assets/fonts/FontAwesome.ttf'),
+  FontAwesome5_Regular: require('../assets/fonts/FontAwesome5_Regular.ttf'),
+  FontAwesome5_Solid: require('../assets/fonts/FontAwesome5_Solid.ttf'),
+  FontAwesome5_Brands: require('../assets/fonts/FontAwesome5_Brands.ttf'),
+  MaterialIcons: require('../assets/fonts/MaterialIcons.ttf'),
+  MaterialCommunityIcons: require('../assets/fonts/MaterialCommunityIcons.ttf'),
+  Ionicons: require('../assets/fonts/Ionicons.ttf'),
+  Fontisto: require('../assets/fonts/Fontisto.ttf'),
+  AntDesign: require('../assets/fonts/AntDesign.ttf'),
+  Feather: require('../assets/fonts/Feather.ttf'),
+  'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
+  'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+  'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
+});
+```
+
+## Providers
+
+In order to all features work properly, add some providers and make some imports in you main file:
+
+```jsx
+import {
+  ModalGroupManager,
+  ThemeProvider,
+  lightTheme,
+} from '@tecsinapse/react-native-kit';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+export default function Index() {
+  return (
+    <SafeAreaProvider>
+      <ThemeProvider theme={lightTheme}>
+        <ModalGroupManager />
+        <App />
+      </ThemeProvider>
+    </SafeAreaProvider>
+  );
+}
+```

@@ -5,7 +5,7 @@ import React from 'react';
 import { DatePicker } from './DatePicker';
 
 export default {
-  title: 'Web/Date Picker',
+  title: 'react-web-kit/Date Picker',
   component: DatePicker,
 };
 

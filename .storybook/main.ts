@@ -7,10 +7,9 @@ export default {
   },
   stories: [
     '../packages/react-core/**/*.stories.@(tsx|jsx)',
-    '../packages/react-native-kit/**/*.stories.@(tsx|jsx)',
     '../packages/react-web-kit/**/*.stories.@(tsx|jsx)',
     '../packages/cortex-core/**/*.stories.@(tsx|jsx)',
-    '../docs/**/*.@(js|ts|tsx|mdx)',
+    '../docs/**/*.mdx',
   ],
   addons: [
     '@storybook/addon-docs',

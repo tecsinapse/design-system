@@ -1,0 +1,34 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Usage" />
+
+# Usage
+
+`@tecsinapse/cortex-react` provides a set of reactjs components ready to use with prebuilt tokens.
+You can customize these components any desired way.
+
+For design tokens, see **Tokens** section on sidebar.
+
+Example:
+
+```jsx
+import { Button } from '@tecsinapse/cortex-react';
+
+const Component = () => (
+  <Button className="m-deca" variants={{ intent: 'success' }}>
+    Label
+  </Button>
+);
+```
+
+It's possible to customize your own ui elements by importing `@tecsinapse/cortex-core` primitives:
+
+```jsx
+import { button } from '@tecsinapse/cortex-core';
+
+const Component = () => (
+  <button className={button({ intent: 'primary', className: 'm-deca' })}>
+    Label
+  </button>
+);
+```

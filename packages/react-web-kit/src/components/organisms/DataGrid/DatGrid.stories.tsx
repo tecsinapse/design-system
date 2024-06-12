@@ -14,7 +14,7 @@ import { HeadersType } from './types';
 import styled from '@emotion/styled';
 
 export default {
-  title: 'Web/Data Grid',
+  title: 'react-web-kit/Data Grid',
   component: DataGrid,
 };
 

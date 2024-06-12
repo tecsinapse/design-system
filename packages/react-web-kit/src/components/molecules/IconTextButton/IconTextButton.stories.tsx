@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import IconTextButton from './IconTextButton';
 
 export default {
-  title: 'Web/IconTextButton',
+  title: 'react-web-kit/IconTextButton',
   component: IconTextButton,
 };
 

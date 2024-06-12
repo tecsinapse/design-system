@@ -8,9 +8,12 @@ export const parameters = {
     storySort: {
       order: [
         'Introduction',
-        ['Welcome', 'Get started', 'Using on web', 'Styling', 'Contributing'],
-        'Hybrid',
-        'Web',
+        ['Welcome', 'Installation', 'Usage'],
+        'Setup (non cortex)',
+        'tokens',
+        'development',
+        'Cortex',
+        'react-web-kit',
       ],
     },
   },

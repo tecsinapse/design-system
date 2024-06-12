@@ -1,0 +1,144 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Setup (non cortex)/react-web-kit" />
+
+# @tecsinapse/react-web-kit
+
+Since this package is based on `react-native` components, we need to use `react-native-web` as compatibility layer.
+
+### Requirements
+
+We recommend to bootstrap the project using [vitejs](https://vitejs.dev/) with `react-swc-ts` template. After following initial steps, add the following libraries:
+
+```shell
+pnpm add @tecsinapse/react-web-kit react-native-web
+```
+
+### Configure vite
+
+In your `vite.config.ts` add the alias:
+
+```javascript
+export default defineConfig({
+  resolve: {
+    alias: {
+      'react-native': 'react-native-web',
+    },
+  },
+});
+```
+
+### Icons
+
+You will need to copy the font files from **react-native-vector-icons** to your public folder. The base icons used on the package are `ionicons` and `material-community`,
+all desired icons need to be copied.
+
+Create a folder named `fonts` inside `public` folder and then run this shell copy (bash example):
+
+```shell
+cp node_modules/react-native-vector-icons/Fonts/* public/fonts
+```
+
+Create a `fonts.css` in `public/css` folder:
+
+```css
+@font-face {
+  font-family: 'AntDesign';
+  src: url(/fonts/AntDesign.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Entypo';
+  src: url(/fonts/Entypo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'EvilIcons';
+  src: url(/fonts/EvilIcons.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Feather';
+  src: url(/fonts/Feather.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: url(/fonts/FontAwesome.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'FontAwesome5Brands';
+  src: url(/fonts/FontAwesome5_Brands.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'FontAwesome5_Regular';
+  src: url(/fonts/FontAwesome5_Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'FontAwesome5';
+  src: url(/fonts/FontAwesome5_Solid.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Fontisto';
+  src: url(/fonts/Fontisto.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Foundation';
+  src: url(/fonts/Foundation.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Ionicons';
+  src: url(/fonts/Ionicons.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'MaterialCommunityIcons';
+  src: url(/fonts/MaterialCommunityIcons.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'MaterialIcons';
+  src: url(/fonts/MaterialIcons.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Octicons';
+  src: url(/fonts/Octicons.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'SimpleLineIcons';
+  src: url(/fonts/SimpleLineIcons.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Zocial';
+  src: url(/fonts/Zocial.ttf) format('truetype');
+}
+```
+
+Inject it on `index.html` as `html` header:
+
+```html
+<link rel="stylesheet" type="text/css" href="/css/fonts.css" />
+```
+
+### Fonts
+
+Import **Lato** family from Google fonts.
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+  rel="stylesheet"
+/>
+```
+
+### Providers
+
+Add to your `index` file:
+
+```jsx
+import { ThemeProvider, lightTheme } from '@tecsinapse/react-web-kit';
+
+export default function Index() {
+  return (
+    <ThemeProvider theme={lightTheme}>
+      <App />
+    </ThemeProvider>
+  );
+}
+```
