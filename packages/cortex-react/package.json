@@ -1,15 +1,11 @@
 {
-  "name": "@tecinapse/cortex-react",
-  "version": "1.0.1-beta.0",
+  "name": "@tecsinapse/cortex-react",
+  "version": "1.0.2",
   "description": "React components based in @tecsinapse/cortex-core",
   "author": "ryancarloscorrea <ryancarlos38@gmail.com>",
   "homepage": "https://github.com/tecsinapse/design-system#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "src/index.ts",
-  "directories": {
-    "lib": "src",
-    "test": "__tests__"
-  },
   "files": [
     "src"
   ],
@@ -30,7 +26,7 @@
     "tailwind": ">=3.3.0"
   },
   "dependencies": {
-    "@tecsinapse/cortex-core": "^0.1.10",
+    "@tecsinapse/cortex-core": "0.1.10",
     "clsx": "*",
     "react-icons": "^5.2.1"
   }
