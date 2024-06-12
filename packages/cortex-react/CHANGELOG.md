@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.1.0...@tecsinapse/cortex-react@1.2.0) (2024-06-12)
+
+### Features
+
+- exportando interfacec nativa de Table ([62d38f4](https://github.com/tecsinapse/design-system/commit/62d38f4598afae654cce5db4d6989d8271b4757f))
+
 # 1.1.0 (2024-06-12)
 
 ### Features
