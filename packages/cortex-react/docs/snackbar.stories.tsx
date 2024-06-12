@@ -1,13 +1,17 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { snackbar } from '../src';
+import { Snackbar } from '../src';
+import { defaultIntents } from './utils';
 
 export default {
   title: 'Cortex/Snackbar',
-  component: <div />,
+  component: Snackbar,
+  args: {
+    intent: 'primary',
+  },
   argTypes: {
     intent: {
-      options: ['primary', 'secondary', 'success', 'info', 'warning', 'error'],
+      options: defaultIntents,
       control: { type: 'select' },
     },
   },
@@ -15,14 +19,13 @@ export default {
 
 const Template: StoryFn = args => {
   return (
-    <div className={snackbar({ intent: args.intent })}>{args.description}</div>
+    <Snackbar show={true} variants={{ intent: args.intent }}>
+      <p>Description snackbar</p>
+    </Snackbar>
   );
 };
 
 export const Base = {
   render: Template,
-
-  args: {
-    description: 'Message Snack',
-  },
+  args: {},
 };

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Button, Modal } from '../index';
+import { Button, Modal } from '../src';
 import { MdClose } from 'react-icons/md';
+
 export default {
-  title: 'Cortex-React/Modal',
-  component: <div />,
+  title: 'Cortex/Modal',
+  component: Modal,
 };
 
 const Template: StoryFn = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { checkbox } from '../src';
+import { checkbox } from '../../cortex-core/src';
 
 export default {
   title: 'Cortex/Checkbox',

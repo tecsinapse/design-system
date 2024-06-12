@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Toggle } from '../index';
+import { Toggle } from '../src';
 
 export default {
-  title: 'Cortex-React/Toggle',
-  component: <div />,
+  title: 'Cortex/Toggle',
+  component: Toggle,
 };
 
 const Template: StoryFn = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button, tooltip, tooltipContainer } from '../src';
+import { button, tooltip, tooltipContainer } from '../../cortex-core/src';
 
 export default {
   title: 'Cortex/Tooltip',

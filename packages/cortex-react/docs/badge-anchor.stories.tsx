@@ -1,11 +1,11 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { BadgeAnchor, Button } from '../index';
+import { BadgeAnchor, Button } from '../src';
 import { defaultIntents } from './utils';
 
 export default {
-  title: 'Cortex-React/Badge/Anchor',
-  component: <div />,
+  title: 'Cortex/Badge/Anchor',
+  component: BadgeAnchor,
   args: {
     value: 1,
     intent: 'primary',

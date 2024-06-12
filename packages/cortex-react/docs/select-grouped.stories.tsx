@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Select } from '../index';
+import { Select } from '../src';
 
 export default {
-  title: 'Cortex-React/Select/Grouped',
+  title: 'Cortex/Select/Grouped',
   component: <div />,
   argTypes: {
     variant: {

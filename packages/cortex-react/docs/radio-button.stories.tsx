@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { labelRadioButton, radioButton } from '../src';
+import { labelRadioButton, radioButton } from '../../cortex-core/src';
 
 export default {
   title: 'Cortex/Radio Button',

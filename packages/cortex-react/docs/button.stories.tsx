@@ -1,31 +1,33 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button } from '../src';
+import { Button } from '../src';
 
 export default {
   title: 'Cortex/Button',
-  component: <button />,
+  component: Button,
   argTypes: {
     intent: {
       options: ['primary', 'secondary', 'success', 'info', 'warning', 'error'],
       control: { type: 'select' },
     },
     variant: {
-      options: ['default', 'text', 'outline'],
-      control: { type: 'radio' },
+      options: ['outline', 'text', 'filled'],
+      control: { type: 'select' },
+    },
+    size: {
+      options: ['small', 'default', 'circle', 'square'],
+      control: { type: 'select' },
     },
   },
 };
 
 const Template: StoryFn = args => {
   return (
-    <button
-      disabled={false}
-      className={button({ intent: args.intent, variant: args.variant })}
-      onClick={() => console.debug('CLICK')}
+    <Button
+      variants={{ intent: args.intent, variant: args.variant, size: args.size }}
     >
-      Button
-    </button>
+      Label
+    </Button>
   );
 };
 

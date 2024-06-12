@@ -1,10 +1,11 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Button, Card } from '../index';
+import { Button, Card } from '../src';
 import { IoMdArrowForward } from 'react-icons/io';
+
 export default {
-  title: 'Cortex-React/Card',
-  component: <div />,
+  title: 'Cortex/Card',
+  component: Card,
 };
 
 const Template: StoryFn = () => {

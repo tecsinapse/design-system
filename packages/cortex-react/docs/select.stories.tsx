@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Select } from '../index';
+import { Select } from '../src';
 
 export default {
-  title: 'Cortex-React/Select',
-  component: <div />,
+  title: 'Cortex/Select',
+  component: Select,
   argTypes: {
     variant: {
       options: ['default', 'error'],

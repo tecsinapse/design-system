@@ -9,7 +9,7 @@ import {
   tHeadCell,
   tRoot,
   tRow,
-} from '../src';
+} from '../../cortex-core/src';
 
 export default {
   title: 'Cortex/Table',

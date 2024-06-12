@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { button, drawer, overlay } from '../src';
+import { button, drawer, overlay } from '../../cortex-core/src';
 
 export default {
   title: 'Cortex/Drawer',

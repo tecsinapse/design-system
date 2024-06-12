@@ -1,12 +1,13 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Snackbar } from '../index';
+import { Badge } from '../src';
 import { defaultIntents } from './utils';
 
 export default {
-  title: 'Cortex-React/Snackbar',
-  component: <div />,
+  title: 'Cortex/Badge',
+  component: Badge,
   args: {
+    value: '1',
     intent: 'primary',
   },
   argTypes: {
@@ -14,15 +15,14 @@ export default {
       options: defaultIntents,
       control: { type: 'select' },
     },
+    value: {
+      control: { type: 'text' },
+    },
   },
 };
 
 const Template: StoryFn = args => {
-  return (
-    <Snackbar show={true} variants={{ intent: args.intent }}>
-      <p>Description snackbar</p>
-    </Snackbar>
-  );
+  return <Badge variants={{ intent: args.intent }} value={args.value ?? '2'} />;
 };
 
 export const Base = {

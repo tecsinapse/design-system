@@ -1,9 +1,10 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Input } from '../components';
+import { Input } from '../src/components';
+import { IoEye, IoPerson } from 'react-icons/io5';
 
 export default {
-  title: 'Cortex-React/Input',
+  title: 'Cortex/Input/Custom',
   component: <div />,
   args: {
     label: 'Label',
@@ -26,11 +27,15 @@ export default {
 
 const Template: StoryFn = args => {
   return (
-    <Input.Root
-      variants={{ intent: args.intent }}
-      label={args.label}
-      placeholder={args.placeholder}
-    />
+    <Input.Face variants={{ intent: args.intent }}>
+      <Input.Left>
+        <IoPerson size={16} />
+      </Input.Left>
+      <Input.Box label={args.label} placeholder={args.placeholder}></Input.Box>
+      <Input.Right>
+        <IoEye />
+      </Input.Right>
+    </Input.Face>
   );
 };
 

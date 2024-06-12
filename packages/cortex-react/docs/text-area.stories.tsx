@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { TextArea } from '../index';
+import { TextArea } from '../src';
 
 export default {
-  title: 'Cortex-React/TextArea',
-  component: <div />,
+  title: 'Cortex/TextArea',
+  component: TextArea,
   args: {
     rows: 6,
     intent: 'default',

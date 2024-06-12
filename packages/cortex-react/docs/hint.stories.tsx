@@ -1,28 +1,29 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Badge } from '../index';
-import { defaultIntents } from './utils';
+import { Hint } from '../src';
 
 export default {
-  title: 'Cortex-React/Badge',
-  component: <div />,
+  title: 'Cortex/Hint',
+  component: Hint,
   args: {
-    value: '1',
-    intent: 'primary',
+    intent: 'default',
+    description: 'Hint description',
   },
   argTypes: {
     intent: {
-      options: defaultIntents,
+      options: ['default', 'success', 'warning', 'error'],
       control: { type: 'select' },
     },
-    value: {
+    description: {
       control: { type: 'text' },
     },
   },
 };
 
 const Template: StoryFn = args => {
-  return <Badge variants={{ intent: args.intent }} value={args.value ?? '2'} />;
+  return (
+    <Hint variants={{ intent: args.intent }} description={args.description} />
+  );
 };
 
 export const Base = {
