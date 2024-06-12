@@ -148,14 +148,26 @@ importers:
   packages/cortex-core:
     dependencies:
       clsx:
-        specifier: '*'
+        specifier: ^2.1.1
         version: 2.1.1
       tailwind-merge:
-        specifier: ^2.3.0
+        specifier: '*'
         version: 2.3.0
       tailwind-variants:
         specifier: ^0.2.1
         version: 0.2.1(tailwindcss@3.4.3)
+
+  packages/cortex-react:
+    dependencies:
+      '@tecsinapse/cortex-core':
+        specifier: 0.1.10
+        version: 0.1.10(tailwindcss@3.4.3)
+      clsx:
+        specifier: '*'
+        version: 2.1.1
+      react-icons:
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.3.1)
 
   packages/react-charts:
     dependencies:
@@ -197,8 +209,8 @@ importers:
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.0.38)(react@18.3.1)
       '@tecsinapse/react-core':
-        specifier: 3.4.3
-        version: 3.4.3(@types/react@18.0.38)(react-native-vector-icons@9.2.0)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        specifier: 3.4.4
+        version: 3.4.4(@types/react@18.0.38)(react-native-vector-icons@9.2.0)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-linear-gradient:
         specifier: ~2.8.3
         version: 2.8.3(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
@@ -1709,6 +1721,7 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -1716,6 +1729,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
 
   '@hutson/parse-repository-url@3.0.2':
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
@@ -3003,8 +3017,20 @@ packages:
   '@swc/types@0.1.7':
     resolution: {integrity: sha512-scHWahbHF0eyj3JsxG9CFJgFdFNaVQCNAimBlT6PzS3n/HptxqREjsm4OH6AN3lYcffZYSPxXW8ua2BEHp0lJQ==}
 
+  '@tecsinapse/cortex-core@0.1.10':
+    resolution: {integrity: sha512-g/EekZD702P83QJMNktTJgomfeByQwwI3QS3KbME72FuLLwDmB8NpZOBGCabOpyXy9UIIfPkHkHfsCspnKxQYA==}
+    peerDependencies:
+      tailwindcss: '>=3.3.0'
+
   '@tecsinapse/react-core@3.4.3':
     resolution: {integrity: sha512-2Mq18hdlSaBctjVrfF8lFd6UMUqtZYKy+zbPRpZwJ2/nV+aX3qjaPss3qyQtB8SraTTksibARtRlP/ugBcieyA==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-native: '>=0.72.0'
+      react-native-vector-icons: ^9.2.0
+
+  '@tecsinapse/react-core@3.4.4':
+    resolution: {integrity: sha512-divlKN1dp2Wo34LJ5YDC940gSxRtqt3OPHPq6OxvN2Ii544Kh0ZwyaTkbJzWEYDVd/q4xd4XmjtaLf9gPz9D0w==}
     peerDependencies:
       react: '>=18.0.0'
       react-native: '>=0.72.0'
@@ -3821,6 +3847,9 @@ packages:
   citty@0.1.6:
     resolution: {integrity: sha512-tskPPKEs8D2KPafUypv2gxwJP8h/OaJmC82QQGGDQcHvXX43xF2VDACcJVmZ0EuSxkpO9Kc4MlrA3q0+FG58AQ==}
 
+  class-variance-authority@0.7.0:
+    resolution: {integrity: sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==}
+
   clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
@@ -3878,6 +3907,10 @@ packages:
   clone@2.1.2:
     resolution: {integrity: sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==}
     engines: {node: '>=0.8'}
+
+  clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
 
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
@@ -7093,6 +7126,11 @@ packages:
     peerDependencies:
       react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
       react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
+
+  react-icons@5.2.1:
+    resolution: {integrity: sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==}
+    peerDependencies:
+      react: '*'
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -10472,7 +10510,7 @@ snapshots:
       '@octokit/request-error': 3.0.3
       '@octokit/types': 9.3.2
       is-plain-object: 5.0.0
-      node-fetch: 2.6.7(encoding@0.1.13)
+      node-fetch: 2.7.0(encoding@0.1.13)
       universal-user-agent: 6.0.1
     transitivePeerDependencies:
       - encoding
@@ -12267,7 +12305,27 @@ snapshots:
     dependencies:
       '@swc/counter': 0.1.3
 
+  '@tecsinapse/cortex-core@0.1.10(tailwindcss@3.4.3)':
+    dependencies:
+      class-variance-authority: 0.7.0
+      clsx: 2.1.1
+      tailwind-merge: 2.3.0
+      tailwind-variants: 0.2.1(tailwindcss@3.4.3)
+      tailwindcss: 3.4.3
+
   '@tecsinapse/react-core@3.4.3(@types/react@18.0.38)(react-native-vector-icons@9.2.0)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@emotion/native': 11.11.0(@emotion/react@11.11.4(@types/react@18.0.38)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@emotion/react': 11.11.4(@types/react@18.0.38)(react@18.3.1)
+      currency.js: 2.0.4
+      date-fns: 2.30.0
+      react: 18.3.1
+      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1)
+      react-native-vector-icons: 9.2.0
+    transitivePeerDependencies:
+      - '@types/react'
+
+  '@tecsinapse/react-core@3.4.4(@types/react@18.0.38)(react-native-vector-icons@9.2.0)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@emotion/native': 11.11.0(@emotion/react@11.11.4(@types/react@18.0.38)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.0.38)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@emotion/react': 11.11.4(@types/react@18.0.38)(react@18.3.1)
@@ -12319,11 +12377,11 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 18.19.33
+      '@types/node': 20.12.12
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 18.19.33
+      '@types/node': 20.12.12
 
   '@types/cross-spawn@6.0.6':
     dependencies:
@@ -12349,7 +12407,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.1':
     dependencies:
-      '@types/node': 18.19.33
+      '@types/node': 20.12.12
       '@types/qs': 6.9.15
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -12404,7 +12462,7 @@ snapshots:
 
   '@types/node-fetch@2.6.11':
     dependencies:
-      '@types/node': 18.19.33
+      '@types/node': 20.12.12
       form-data: 4.0.0
 
   '@types/node-forge@1.3.11':
@@ -12459,12 +12517,12 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 18.19.33
+      '@types/node': 20.12.12
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 18.19.33
+      '@types/node': 20.12.12
       '@types/send': 0.17.4
 
   '@types/stack-utils@2.0.3': {}
@@ -13211,6 +13269,10 @@ snapshots:
     dependencies:
       consola: 3.2.3
 
+  class-variance-authority@0.7.0:
+    dependencies:
+      clsx: 2.0.0
+
   clean-stack@2.2.0: {}
 
   cli-cursor@2.1.0:
@@ -13269,6 +13331,8 @@ snapshots:
   clone@1.0.4: {}
 
   clone@2.1.2: {}
+
+  clsx@2.0.0: {}
 
   clsx@2.1.1: {}
 
@@ -14202,9 +14266,9 @@ snapshots:
   execa@5.0.0:
     dependencies:
       cross-spawn: 7.0.3
-      get-stream: 6.0.0
+      get-stream: 6.0.1
       human-signals: 2.1.0
-      is-stream: 2.0.0
+      is-stream: 2.0.1
       merge-stream: 2.0.0
       npm-run-path: 4.0.1
       onetime: 5.1.2
@@ -15296,13 +15360,13 @@ snapshots:
   jake@10.9.1:
     dependencies:
       async: 3.2.5
-      chalk: 4.1.0
+      chalk: 4.1.2
       filelist: 1.0.4
       minimatch: 3.1.2
 
   jest-diff@29.7.0:
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       diff-sequences: 29.6.3
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
@@ -16267,7 +16331,7 @@ snapshots:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.5
+      minimatch: 3.1.2
 
   mute-stream@0.0.8: {}
 
@@ -16513,7 +16577,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       axios: 1.7.2
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       cliui: 8.0.1
@@ -16682,9 +16746,9 @@ snapshots:
   ora@5.3.0:
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
+      cli-spinners: 2.9.2
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
@@ -17146,6 +17210,10 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-is: 18.1.0
+
+  react-icons@5.2.1(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   react-is@16.13.1: {}
 

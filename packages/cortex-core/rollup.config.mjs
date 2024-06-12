@@ -25,7 +25,7 @@ export default [
     plugins: [esbuild({ tsconfig: 'tsconfig.build.json', target: 'esnext' })],
     external: [
       'tailwind-variants',
-      'class-variance-authority',
+      'clsx',
       'tailwind-merge',
     ],
   },
