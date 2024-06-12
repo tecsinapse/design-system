@@ -9,3 +9,4 @@ export * from './Snackbar';
 export * from './Tag';
 export * from './Toggle';
 export * from './TextArea';
+export * from './Table';

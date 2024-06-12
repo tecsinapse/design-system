@@ -20,7 +20,7 @@ const Template: StoryFn = () => {
   return (
     <table className={tRoot({ className: 'min-w-full' })}>
       <thead className={tHead()}>
-        <tr className={tRow({ className: '' })}>
+        <tr className={tRow()}>
           <th colSpan={99}>
             <div
               className={

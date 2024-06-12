@@ -2,32 +2,36 @@
   "name": "@tecsinapse/cortex-react",
   "version": "1.0.2",
   "description": "React components based in @tecsinapse/cortex-core",
-  "author": "ryancarloscorrea <ryancarlos38@gmail.com>",
-  "homepage": "https://github.com/tecsinapse/design-system#readme",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tecsinapse/design-system.git"
-  },
   "scripts": {
     "dev": "rollup --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
     "build:es": "rollup --config",
     "build:dts": "tsc --project tsconfig.build.json"
   },
-  "bugs": {
-    "url": "https://github.com/tecsinapse/design-system/issues"
-  },
-  "peerDependencies": {
-    "tailwind": ">=3.3.0"
-  },
   "dependencies": {
     "@tecsinapse/cortex-core": "0.1.10",
     "clsx": "*",
     "react-icons": "^5.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/cortex-react",
+    "url": "git+https://github.com/tecsinapse/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tecsinapse/design-system/issues"
+  },
+  "homepage": "https://tecsinapse.github.io/design-system/",
+  "peerDependencies": {
+    "tailwind": ">=3.3.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   }
 }
