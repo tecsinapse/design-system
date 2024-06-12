@@ -22,7 +22,7 @@ const Template: StoryFn = () => {
     <Table>
       <THead>
         <TRow>
-          <th colSpan={99}>
+          <Td>
             <div
               className={
                 'mb-centi mt-deca flex w-full flex-row items-center justify-between'
@@ -30,7 +30,7 @@ const Template: StoryFn = () => {
             >
               <p className="text-h3">Example table</p>
             </div>
-          </th>
+          </Td>
         </TRow>
         <TRow>
           {['col 1', 'col 2', 'col 3', 'col 5', 'col 6'].map(name => (
