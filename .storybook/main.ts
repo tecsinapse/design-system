@@ -9,6 +9,7 @@ export default {
     '../packages/react-core/**/*.stories.@(tsx|jsx)',
     '../packages/react-web-kit/**/*.stories.@(tsx|jsx)',
     '../packages/cortex-core/**/*.stories.@(tsx|jsx)',
+    '../packages/cortex-react/**/*.stories.@(tsx|jsx)',
     '../docs/**/*.mdx',
   ],
   addons: [

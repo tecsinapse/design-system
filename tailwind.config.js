@@ -8,6 +8,7 @@ module.exports = {
     './packages/cortex-core/docs/*.{js,ts,jsx,tsx}',
     './docs/**/*.{js,ts,jsx,tsx}',
     './packages/cortex-core/src/components/**/*.{js,ts,jsx,tsx}',
+    './packages/cortex-react/src/**/**/*.{js,ts,jsx,tsx}',
   ],
   presets: [require('./packages/cortex-core/dist/cjs/preset')],
 };

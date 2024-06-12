@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { buttonSelect, dropdown, option as styleOption } from '../src';
-
+import { option as styleOption, selectVariants } from '../src';
 export default {
   title: 'Cortex/Select',
   component: <div />,
@@ -21,10 +20,11 @@ const Template: StoryFn = () => {
     'Option 8',
     'Option 9',
   ];
+  const { button, dropdown } = selectVariants();
   return (
-    <div className="w-full relative">
+    <div className="relative w-[300px]">
       <button
-        className={buttonSelect()}
+        className={button()}
         onClick={() => setOpen(prevState => !prevState)}
       >
         <p>{value ? value : 'Select one'}</p>
