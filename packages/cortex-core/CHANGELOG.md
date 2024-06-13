@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.1.10...@tecsinapse/cortex-core@0.2.0) (2024-06-12)
+
+### Features
+
+- adicionando componente table em cortex-react ([1421f5e](https://github.com/tecsinapse/design-system/commit/1421f5e2c19fb9659a9b57a180954c0741e0a3fc))
+
 ## [0.1.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.1.10-beta.0...@tecsinapse/cortex-core@0.1.10) (2024-06-10)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
