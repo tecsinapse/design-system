@@ -1,69 +1,74 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
 import {
-  button,
-  hr,
-  tCell,
-  tFoot,
-  tHead,
-  tHeadCell,
-  tRoot,
-  tRow,
-} from '../../cortex-core/src';
+  Button,
+  Hr,
+  Table,
+  TCell,
+  Td,
+  TFoot,
+  THead,
+  THeadCell,
+  TRow,
+} from '../index';
 
 export default {
   title: 'Cortex/Table',
-  component: <table />,
+  component: <div />,
 };
 
 const Template: StoryFn = () => {
   return (
-    <table className={tRoot({ className: 'min-w-full' })}>
-      <thead className={tHead()}>
-        <tr className={tRow({ className: '' })}>
-          <th colSpan={99}>
+    <Table>
+      <THead>
+        <TRow>
+          <Td>
             <div
               className={
-                'mb-centi flex w-full flex-row items-center justify-between'
+                'mb-centi mt-deca flex w-full flex-row items-center justify-between'
               }
             >
-              <p className="text-h3">Titulo tabela</p>
+              <p className="text-h3">Example table</p>
             </div>
-          </th>
-        </tr>
-        <tr className={tRow()}>
+          </Td>
+        </TRow>
+        <TRow>
           {['col 1', 'col 2', 'col 3', 'col 5', 'col 6'].map(name => (
-            <th className={tHeadCell()}>{name}</th>
+            <THeadCell>{name}</THeadCell>
           ))}
-        </tr>
-        <tr className={tRow()}>
-          <td colSpan={99}>
-            <hr className={hr()} />
-          </td>
-        </tr>
-      </thead>
+        </TRow>
+        <TRow>
+          <Td>
+            <Hr />
+          </Td>
+        </TRow>
+      </THead>
       <tbody>
         {['row 1', 'row 2', 'row 3', 'row 4', 'row 5', 'row 6'].map(() => (
-          <tr className={tRow()}>
+          <TRow>
             <>
               {['cell 1', 'cell 2', 'cell 3', 'cell 4', 'cell 5'].map(cell => (
-                <td className={tCell()}>{cell}</td>
+                <TCell>{cell}</TCell>
               ))}
             </>
-          </tr>
+          </TRow>
         ))}
       </tbody>
-      <tfoot className={tFoot()}>
-        <tr className={tRow()}>
-          <td colSpan={99}>
+      <TFoot>
+        <TRow>
+          <Td>
             <div className={'mt-centi flex justify-between'}>
-              <button className={button({ intent: 'primary' })}>Botão</button>
-              <button className={button({ intent: 'primary' })}>Botão</button>
+              <Button>
+                <p>Button</p>
+              </Button>
+              <Button>
+                <p>Button</p>
+              </Button>
             </div>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
+          </Td>
+        </TRow>
+      </TFoot>
+    </Table>
   );
 };
 
