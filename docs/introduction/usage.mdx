@@ -32,3 +32,42 @@ const Component = () => (
   </button>
 );
 ```
+
+## Tips
+
+To create variants and compound styles, it's recommended to use [`tailwind-variants`](https://www.tailwind-variants.org/), included as dependency. Add explicitly in `package.json`:
+
+```
+"tailwind-variants": "*"
+```
+
+To help you with classes merging and conditionals, also add [`clsx`](https://www.npmjs.com/package/clsx):
+
+```
+"clsx": "* "
+```
+
+Please refer to official docs for better understanding. Here is the basics:
+
+```jsx
+import { tv } from 'tailwind-variants';
+import { clsx } from 'clsx';
+
+const element = tv({
+  base: 'p-deca h-fit items-center flex justify-center',
+  variants: {
+    intent: {
+      primary: 'bg-primary-medium',
+    },
+  },
+});
+
+const Component = ({ disabled }) => (
+  <div
+    className={element({
+      intent: 'primary',
+      className: clsx('w-[100px]', { 'bg-transparent': disabled }),
+    })}
+  />
+);
+```
