@@ -25,6 +25,9 @@ export default [
     plugins: [esbuild({ tsconfig: 'tsconfig.build.json', target: 'esnext' })],
     external: [
       'react',
+      '@tecsinapse/cortex-core',
+      'react-icons',
+      'clsx'
     ],
   },
 ];

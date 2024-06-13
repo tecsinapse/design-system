@@ -3,7 +3,7 @@ import { StoryFn } from '@storybook/react';
 import TextArea, { TextAreaProps } from './TextArea';
 
 export default {
-  title: 'Hybrid/Text Area',
+  title: 'react-web-kit/Text Area',
   component: TextArea,
 };
 

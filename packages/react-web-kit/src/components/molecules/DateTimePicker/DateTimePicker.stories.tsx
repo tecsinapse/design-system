@@ -5,7 +5,7 @@ import React from 'react';
 import { DateTimePicker } from './DateTimePicker';
 
 export default {
-  title: 'Web/Date Time Picker',
+  title: 'react-web-kit/Date Time Picker',
   component: DateTimePicker,
 };
 

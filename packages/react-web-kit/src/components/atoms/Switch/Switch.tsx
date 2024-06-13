@@ -5,7 +5,8 @@ import {
   useTheme,
 } from '@tecsinapse/react-core';
 import { Transition } from 'react-transition-group';
-import { StyledSwitchContent, StyledSwitch } from './styled';
+import { StyledSwitch, StyledSwitchContent } from './styled';
+import { defaultStyleCircle, transitionStylesCircle } from './constants';
 
 const Switch: FC<SwitchProps> = ({
   onChange,
@@ -53,17 +54,6 @@ const Switch: FC<SwitchProps> = ({
         theme.color[inactiveColor][inactiveColorTone]
       ),
     },
-  };
-
-  const defaultStyleCircle = {
-    transition: `transform ${100}ms ease`,
-  };
-
-  const transitionStylesCircle = {
-    entering: { transform: 'translateX(0%)' },
-    entered: { transform: 'translateX(150%)' },
-    exiting: { transform: 'translateX(150%)' },
-    exited: { transform: 'translateX(0%)' },
   };
 
   return (

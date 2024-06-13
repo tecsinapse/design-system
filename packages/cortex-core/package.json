@@ -15,9 +15,8 @@
     "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
-    "class-variance-authority": "^0.7.0",
-    "clsx": "*",
-    "tailwind-merge": "^2.3.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "*",
     "tailwind-variants": "^0.2.1"
   },
   "repository": {

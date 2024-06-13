@@ -1,0 +1,13 @@
+import { Meta } from "@storybook/blocks";
+import { Shapes } from "./components";
+import { borderWidth } from "../../packages/cortex-core/src";
+
+<Meta title="tokens/Border Width" />
+
+# Border Width
+
+You can use border width tokens with `border` prefix.
+
+Example: `border-nano`
+
+<Shapes data={borderWidth} property='borderWidth' extraStyles={{ borderColor: 'black' }} />

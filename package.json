@@ -14,15 +14,14 @@
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.0",
-    "@storybook/addon-actions": "^8.0.10",
-    "@storybook/addon-backgrounds": "^8.0.10",
-    "@storybook/addon-controls": "^8.0.10",
-    "@storybook/addon-docs": "^8.0.10",
-    "@storybook/addon-viewport": "^8.0.10",
-    "@storybook/blocks": "^8.0.10",
-    "@storybook/builder-vite": "^8.0.10",
-    "@storybook/react": "^8.0.10",
-    "@storybook/react-vite": "^8.0.10",
+    "@storybook/addon-actions": "^8.1.7",
+    "@storybook/addon-backgrounds": "^8.1.7",
+    "@storybook/addon-controls": "^8.1.7",
+    "@storybook/addon-docs": "^8.1.7",
+    "@storybook/addon-viewport": "^8.1.7",
+    "@storybook/blocks": "^8.1.7",
+    "@storybook/react": "^8.1.7",
+    "@storybook/react-vite": "^8.1.7",
     "@types/react": "~18.0.38",
     "@types/react-native-vector-icons": "^6.4.16",
     "@types/react-transition-group": "^4.4.5",
@@ -47,7 +46,7 @@
     "rimraf": "^5.0.5",
     "rollup": "^4",
     "rollup-plugin-esbuild": "^6.1.1",
-    "storybook": "^8.0.10",
+    "storybook": "^8.1.7",
     "typescript": "^5",
     "vite": "^5"
   },
@@ -79,6 +78,6 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.json": "prettier --write"
+    ".{json,mdx,md}": "prettier --write"
   }
 }

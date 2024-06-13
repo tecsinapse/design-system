@@ -1,0 +1,73 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Usage" />
+
+# Usage
+
+`@tecsinapse/cortex-react` provides a set of reactjs components ready to use with prebuilt tokens.
+You can customize these components any desired way.
+
+For design tokens, see **Tokens** section on sidebar.
+
+Example:
+
+```jsx
+import { Button } from '@tecsinapse/cortex-react';
+
+const Component = () => (
+  <Button className="m-deca" variants={{ intent: 'success' }}>
+    Label
+  </Button>
+);
+```
+
+It's possible to customize your own ui elements by importing `@tecsinapse/cortex-core` primitives:
+
+```jsx
+import { button } from '@tecsinapse/cortex-core';
+
+const Component = () => (
+  <button className={button({ intent: 'primary', className: 'm-deca' })}>
+    Label
+  </button>
+);
+```
+
+## Tips
+
+To create variants and compound styles, it's recommended to use [`tailwind-variants`](https://www.tailwind-variants.org/), included as dependency. Add explicitly in `package.json`:
+
+```
+"tailwind-variants": "*"
+```
+
+To help you with classes merging and conditionals, also add [`clsx`](https://www.npmjs.com/package/clsx):
+
+```
+"clsx": "* "
+```
+
+Please refer to official docs for better understanding. Here is the basics:
+
+```jsx
+import { tv } from 'tailwind-variants';
+import { clsx } from 'clsx';
+
+const element = tv({
+  base: 'p-deca h-fit items-center flex justify-center',
+  variants: {
+    intent: {
+      primary: 'bg-primary-medium',
+    },
+  },
+});
+
+const Component = ({ disabled }) => (
+  <div
+    className={element({
+      intent: 'primary',
+      className: clsx('w-[100px]', { 'bg-transparent': disabled }),
+    })}
+  />
+);
+```

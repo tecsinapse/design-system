@@ -1,22 +1,19 @@
-# Ondevice
+# rn-playground
 
-```
-yarn dev
-```
+Please follow the [React native environment setup](https://reactnative.dev/docs/set-up-your-environment?os=linux&platform=android).
+This package is a sample React Native application with all required dependencies. In the [repository docs](https://tecsinapse.github.io/design-system) 
+you will find all steps to start your application.
 
-If you add new stories on the native (ondevice version) you either need to have the watcher running or run the stories loader
+After you configure the SDK and emulator (or your device), you can run the platform command to run the playground app locally. 
+It will be used android as example.
 
-To update the stories one time (it runs before start)
-
-```
-yarn update:stories
-```
-
-To watch the stories files (this is called with run scripts)
-
-```
-yarn watch:stories
+```shell
+pnpm android
 ```
 
-Note that this is only necessary for when you add or remove a story file.
+This will install Expo Go and run metro server.
 
+If you already have Expo Go installed, just run `pnpm run:dev` to start metro server.
+
+Please follow same directives of the root directory (run `pnpm dev`) to watch file changes. Sometimes Expo Go can be unstable, 
+so restarting the app may solve some issues.

@@ -1,0 +1,34 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="development/Environment" />
+
+# Local development
+
+Required dependencies:
+
+- Node >= 20
+- [pnpm](https://pnpm.io/pt/) >= 9
+
+`pnpm` can be installed by running:
+
+```shell
+npm i -g pnpm
+```
+
+Then you can clone the repo and install dependencies:
+
+```shell
+pnpm i
+```
+
+This will install and link all dependencies in the monorepo.
+
+To start storybook, run on the root directory: `pnpm storybook`
+
+While developing, in order to see live updates, keep the dev command up: `pnpm dev`
+
+# Publishing
+
+[Lerna](https://lerna.js.org/) is used to manage the monorepo, for build and publish cycle.
+The publishing workflow in ran automatically when merging on master (stable) or develop (beta) branch.
+Please read **Contributing** section for more details.

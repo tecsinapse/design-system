@@ -5,7 +5,7 @@ import React from 'react';
 import { Badge } from '.';
 
 export default {
-  title: 'Hybrid/Badge',
+  title: 'react-web-kit/Badge',
   component: Badge,
 };
 

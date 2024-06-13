@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Welcome" />
+
+# Welcome to [TecSinapse](https://www.tecsinapse.com.br/) Design System
+
+This repository implements the TecSinapse design system to facilitate the development of front end applications, whether web or mobile.
+This project continues to evolve, seeking to be increasingly accessible and easy to use, so pay attention to the steps described and
+the observations provided, as several tools and alternatives are provided to extend your application.
+
+# Installation & Usage
+
+On the left menu you will find instructions on how to install, customize and design components.
+
+# Available Options
+
+If you are starting a web-only project, it is recommended to use the **Cortex** (`@tecsinapse/cortex-react`) system,
+designed to be easily extensible with _tailwindcss_ and performant in _browsers_.
+
+For mobile projects, we recommend using `@tecsinapse/react-native-kit` for the base components and [`nativewind`](https://www.nativewind.dev/)
+to customize the screen layout.
+
+## @tecsinapse/cortex-react
+
+Most recent proposal for the design system to be used in _client_ or _server side_ applications, focused on providing a simplified and modular interface.
+To configure and install, access the guide in the menu on the left.
+Knowledge about [`tailwindcss`](https://tailwindcss.com/) is recommended.
+
+The primitives are provided by `@tecsinapse/cortex-core` as [`tailwind-variants`](https://www.tailwind-variants.org/) javascript functions,
+being easily reusable in others frameworks besides reactjs.
+
+## @tecsinapse/react-web-kit
+
+First version of the design system using _styled-components_ [`@emotion/styled`](https://emotion.sh/) _CSS in JS_,
+designed for maximum reuse between native mobile and web apps, using `react-native- web` as a compatibility layer.
+
+## @tecsinapse/react-native-kit
+
+Based on _styled-components_ system [`@emotion/native`](https://emotion.sh/) _CSS in JS_, unifying react development on a _mobile first_ shared API.
