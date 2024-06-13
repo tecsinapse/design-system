@@ -3,7 +3,7 @@ import { button, ButtonVariants } from '@tecsinapse/cortex-core';
 
 interface ButtonProps {
   variants?: ButtonVariants;
-  children?: JSX.Element;
+  children?: React.ReactNode;
 }
 
 export const Button = forwardRef<

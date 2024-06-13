@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Input, { InputWebProps } from './Input';
 
 export default {
-  title: 'Hybrid/Input',
+  title: 'react-web-kit/Input',
   component: Input,
 };
 

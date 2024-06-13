@@ -5,7 +5,7 @@ import { Text } from '../Text';
 import Divider, { DividerProps } from './Divider';
 
 export default {
-  title: 'Hybrid/Divider',
+  title: 'react-web-kit/Divider',
   component: Divider,
 };
 

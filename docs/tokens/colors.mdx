@@ -1,0 +1,17 @@
+import { Meta } from "@storybook/blocks";
+import { Circles } from "./components";
+import { colors, textColor } from "../../packages/cortex-core/src";
+
+<Meta title="tokens/Colors" />
+
+# Colors
+
+You can use colors tokens with any applicable tailwind prefix, like background, border, text and others.
+
+### NOTE: `text` colors works only with `text` prefix. You can apply all colors to text, but not "text only" to other prefixes.
+
+Example: `bg-success-light`
+
+Example (Text): `text-medium`
+
+<Circles data={{ ...colors, text: textColor }} />

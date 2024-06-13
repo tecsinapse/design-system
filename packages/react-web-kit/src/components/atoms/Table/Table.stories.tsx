@@ -16,7 +16,7 @@ import TFoot from './Footer/TFoot';
 import { Button } from '../Button';
 
 export default {
-  title: 'Web/Table',
+  title: 'react-web-kit/Table',
   component: Table,
 };
 

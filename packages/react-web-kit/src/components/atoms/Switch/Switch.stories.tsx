@@ -4,7 +4,7 @@ import Switch from './Switch';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Web/Switch',
+  title: 'react-web-kit/Switch',
   component: Switch,
 };
 

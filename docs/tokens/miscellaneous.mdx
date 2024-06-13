@@ -1,0 +1,16 @@
+import { Meta } from "@storybook/blocks";
+import { boxShadow } from "../../packages/cortex-core/src";
+
+<Meta title="tokens/Miscelanneous" />
+
+# Miscelanneous
+Here you will find unlisted tokens, used in some places.
+
+## box-shadow
+Only one token available:
+
+<div style={{ boxShadow: boxShadow.default, width: 500, height: 100, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}>
+  <span style={{ fontFamily: 'monospace', fontSize: '0.9rem' }}>shadow-default: {boxShadow.default}</span>
+</div>
+
+

@@ -13,7 +13,7 @@ const StyledCard = styled(Card)<Partial<StyleProps>>`
 `;
 
 export default {
-  title: 'Hybrid/Card',
+  title: 'react-web-kit/Card',
   component: Card,
 };
 

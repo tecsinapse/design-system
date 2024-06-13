@@ -8,7 +8,7 @@ import {
 } from '../GroupButton';
 
 export default {
-  title: 'Hybrid/Group Button',
+  title: 'react-web-kit/Group Button',
   component: GroupButton,
 };
 

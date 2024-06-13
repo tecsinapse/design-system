@@ -4,7 +4,7 @@ import Skeleton, { SkeletonProps } from './Skeleton';
 import { Card, Text } from '../../../';
 
 export default {
-  title: 'Web/Skeleton',
+  title: 'react-web-kit/Skeleton',
   component: Skeleton,
 };
 

@@ -1,0 +1,188 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Installation" />
+
+# Installation
+
+This guide will have instructions for _cortex_ system, based on `tailwindcss`. If you need to setup `react-web-kit` or `react-native-kit`, look for the setup menu on the left.
+
+## npm package
+
+This project use pnpm as package manager, the examples can be changed for any package manager of your use.
+
+- `pnpm add @tecsinapse/cortex-react`: Contains react components based on `cortex-core` styles.
+
+**NOTE**: If you want to use _core_ primitives, add in your `package.json`:
+
+```
+  "@tecsinapse/cortex-core": "*"
+```
+
+It will get the version of `cortex-react` _core_ dependency, to avoid dependency collision.
+
+## Application setup
+
+Since this is just an ui-kit for applications, you can start any way you want. It's recommended to use
+[vitejs](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) as your framework.
+
+For TecSinapse applications, we provide a [ready to use template](https://github.com/tecsinapse/template-react-vitejs),
+here you can skip all steps.
+
+For icons, use [`react-icons`](https://react-icons.github.io/react-icons/icons/lia/), included as `cortex-react` dependency. To include explicitly in `package.json`:
+
+```
+  "react-icons": "*"
+```
+
+**OBS:** The "official" icons are [LineAwesome](https://icons8.com/line-awesome).
+
+### Font setup
+
+Add to `index.html` the following:
+
+```html
+<head>
+  ...
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+    rel="stylesheet"
+  />
+</head>
+```
+
+[Lato](https://fonts.google.com/specimen/Lato) is the default font.
+
+### TailwindCSS setup
+
+Please [follow `tailwindcss` docs](https://tailwindcss.com/docs/guides/vite). In resume:
+
+```sh
+pnpm add -D tailwindcss autoprefixer postcss
+pnpm dlx tailwindcss init -p
+```
+
+Configure _preflight_, content paths and _preset_ in `tailwind.config.js`:
+
+```
+  corePlugins: {
+    preflight: false
+  },
+  ...
+  content: [
+    ...
+    './node_modules/@tecsinapse/cortex-core/**/*.js',
+    './node_modules/@tecsinapse/cortex-react/**/*.js'
+  ],
+  ...
+  presets: [require('@tecsinapse/cortex-core/dist/esm/preset')]
+```
+
+Create a `src/index.css` with the tailwind layers and base styles:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.miscellaneous.body');
+    font-family: 'Lato', serif;
+    margin: 0;
+  }
+  blockquote,
+  dl,
+  dd,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  figure,
+  p,
+  pre {
+    margin: 0;
+  }
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button;
+    background-image: none;
+  }
+  button,
+  select {
+    text-transform: none;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: inherit;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    width: 4px;
+    height: 4px;
+    background-color: theme('colors.secondary.light');
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: theme('colors.primary.medium');
+  }
+  input:disabled,
+  textarea:disabled {
+    @apply bg-transparent;
+  }
+  #input-face:has(> div > input:disabled) {
+    @apply bg-transparent;
+    @apply border-secondary-light;
+    @apply bg-opacity-0;
+    @apply text-secondary-light;
+  }
+}
+```
+
+Import it to your main/index file:
+
+```javascript
+import './index.css';
+```
+
+Now you can use all components with cortex styles.
+
+```jsx
+import { Button } from '@tecsinapse/cortex-react';
+
+const Component = () => <Button className="m-nano">Button</Button>;
+```

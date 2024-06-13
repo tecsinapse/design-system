@@ -5,7 +5,7 @@ import Modal, { ModalProps } from './Modal';
 import { Button } from '../Button';
 
 export default {
-  title: 'Web/Modal',
+  title: 'react-web-kit/Modal',
   component: Modal,
 };
 

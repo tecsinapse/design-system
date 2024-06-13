@@ -5,7 +5,7 @@ import { Button } from '../Button';
 import { Text } from '@tecsinapse/react-core';
 
 export default {
-  title: 'Web/Tooltip',
+  title: 'react-web-kit/Tooltip',
   component: Tooltip,
 };
 

@@ -5,7 +5,7 @@ import React from 'react';
 import Button, { WebButtonProps } from './Button';
 
 export default {
-  title: 'Hybrid/Button',
+  title: 'react-web-kit/Button',
   component: Button,
 };
 

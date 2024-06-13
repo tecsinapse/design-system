@@ -5,7 +5,7 @@ import { default as Select, SelectProps } from './Select';
 import styled from '@emotion/styled';
 
 export default {
-  title: 'Web/Select',
+  title: 'react-web-kit/Select',
   component: Select,
 };
 

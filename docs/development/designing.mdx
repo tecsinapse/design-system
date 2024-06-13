@@ -1,0 +1,80 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="development/Designing" />
+
+# Designing
+
+In order to keep some patterns and standards, this page will give some directives on how to create new components APIs.
+
+To avoid prop drilling and creating to many properties to initialize a component, expose the variants directly as object, just like the `Button` component.
+
+Always think simple (like KISS principle). This will help with longevity and maintanance, since further customizations mostly has to be done on applications,
+and not in the design system itself.
+
+```jsx
+<Button variants={{ intent: 'primary', size: 'small' }} />
+```
+
+To create complex components, with composable parts, prefer to adopt **compound components**, a very popular pattern to build ui blocks.
+
+Here is a example with the input component:
+
+```jsx
+const getValidChildren = children => {
+  return React.Children.toArray(children).filter(el =>
+    React.isValidElement(el)
+  );
+};
+
+const Box = ({ id, name, label }) => {
+  return (
+    <div>
+      <input id={id} name={name} />
+      <label htmlFor={id}>{label}</label>
+    </div>
+  );
+};
+
+const Face = ({ children }) => {
+  const clones = getValidChildren(children).map(el => {
+    return React.cloneElement(el, { ...el.props });
+  });
+  return <div id={'input-face'}>{clones}</div>;
+};
+
+const Input = ({ id, name, label }) => {
+  return (
+    <Face>
+      <Box id={id} name={name} label={label} />
+    </Face>
+  );
+};
+
+Input.Box = Box;
+Input.Face = Face;
+
+const Component = () => {
+  return (
+    <>
+      {/* Facade */}
+      <Input id="123" name="full-name" label="Full Name" />
+      {/* Compound */}
+      <Input.Face>
+        <Input.Box id="456" name="address" label="Address" />
+      </Input.Face>
+    </>
+  );
+};
+```
+
+Always prefer native html props to extend equivalent behaviors, like `disabled` property of `button`.
+
+Should I use a `boolean` property? Imagine or investigate how many different values of this prop is possible to have.
+
+```
+<Alert danger /> // boolean. renders red box
+<Alert warning /> // boolean. renders yellow box
+
+<Alert warning danger /> // bad. which color should win?
+<Alert variant='danger' /> // good
+```

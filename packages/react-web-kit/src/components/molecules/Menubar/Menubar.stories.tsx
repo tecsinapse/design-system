@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { Avatar, Icon, Text } from '@tecsinapse/react-core';
 
 export default {
-  title: 'Web/Menu Bar',
+  title: 'react-web-kit/Menu Bar',
   component: Menubar,
   parameters: {
     layout: 'fullscreen',

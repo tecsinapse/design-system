@@ -4,7 +4,7 @@ import { Text } from '../Text';
 import { StoryFn } from '@storybook/react';
 
 export default {
-  title: 'Hybrid/Radio Button',
+  title: 'react-web-kit/Radio Button',
   component: RadioButton,
 };
 

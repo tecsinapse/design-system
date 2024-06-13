@@ -5,7 +5,7 @@ import InputMask, { InputMaskWebProps } from './InputMask';
 import { CurrencyOptions, Masks } from '@tecsinapse/react-core';
 
 export default {
-  title: 'Hybrid/InputMask',
+  title: 'react-web-kit/InputMask',
   component: InputMask,
 };
 
