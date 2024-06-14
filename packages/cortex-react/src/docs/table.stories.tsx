@@ -2,7 +2,6 @@ import React from 'react';
 import { StoryFn } from '@storybook/react';
 import {
   Button,
-  Hr,
   Table,
   TCell,
   Td,
@@ -10,6 +9,7 @@ import {
   THead,
   THeadCell,
   TRow,
+  TRowHeader,
 } from '../index';
 
 export default {
@@ -32,16 +32,11 @@ const Template: StoryFn = () => {
             </div>
           </Td>
         </TRow>
-        <TRow>
+        <TRowHeader>
           {['col 1', 'col 2', 'col 3', 'col 5', 'col 6'].map(name => (
             <THeadCell>{name}</THeadCell>
           ))}
-        </TRow>
-        <TRow>
-          <Td>
-            <Hr />
-          </Td>
-        </TRow>
+        </TRowHeader>
       </THead>
       <tbody>
         {['row 1', 'row 2', 'row 3', 'row 4', 'row 5', 'row 6'].map(() => (

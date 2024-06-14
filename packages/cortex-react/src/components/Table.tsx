@@ -48,6 +48,19 @@ export const THeadCell = ({
   </th>
 );
 
+export const TRowHeader = ({
+  children,
+}: TableCommon & ThHTMLAttributes<HTMLTableCellElement>) => (
+  <>
+    <tr className={tRow()}>{children}</tr>
+    <tr className={tRow()}>
+      <td colSpan={99}>
+        <hr className={hr()} />
+      </td>
+    </tr>
+  </>
+);
+
 export const TCell = ({
   children,
   className,
@@ -86,6 +99,7 @@ export const Hr = ({
   </hr>
 );
 
+//TODO: Verificar se realmente é preciso remover, pois funciona na tabela do stories e eram assim no web-kit
 export const Td = ({
   children,
   ...rest
