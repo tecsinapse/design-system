@@ -7,7 +7,7 @@ interface DrawerProps {
   position?: 'left' | 'right';
   children?: React.ReactNode;
 }
-const Drawer = ({
+export const Drawer = ({
   children,
   onClose,
   open,
@@ -30,5 +30,3 @@ const Drawer = ({
     </>
   );
 };
-
-export default Drawer;
