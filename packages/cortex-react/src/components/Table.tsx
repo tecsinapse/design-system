@@ -104,7 +104,5 @@ export const Td = ({
   children,
   ...rest
 }: TableCommon & TdHTMLAttributes<HTMLTableCellElement>) => (
-  <td colSpan={99} {...rest}>
-    {children}
-  </td>
+  <td {...rest}>{children}</td>
 );

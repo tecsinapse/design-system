@@ -22,7 +22,7 @@ const Template: StoryFn = () => {
     <Table>
       <THead>
         <TRow>
-          <Td>
+          <Td colSpan={99}>
             <div
               className={
                 'mb-centi mt-deca flex w-full flex-row items-center justify-between'
@@ -51,7 +51,7 @@ const Template: StoryFn = () => {
       </tbody>
       <TFoot>
         <TRow>
-          <Td>
+          <Td colSpan={99}>
             <div className={'mt-centi flex justify-between'}>
               <Button>
                 <p>Button</p>
