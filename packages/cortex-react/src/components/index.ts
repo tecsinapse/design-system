@@ -10,3 +10,6 @@ export * from './Tag';
 export * from './Toggle';
 export * from './TextArea';
 export * from './Table';
+export * from './Drawer';
+export * from './Breadcrumbs';
+export * from './Avatar';
