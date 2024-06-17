@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Button, Card, Input } from '../index';
-import { Drawer } from '../components';
+import { Button, Card, Drawer, Input } from '../src';
 
 export default {
   title: 'Cortex/Drawer',

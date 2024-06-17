@@ -10,7 +10,7 @@ import {
   THeadCell,
   TRow,
   TRowHeader,
-} from '../index';
+} from '../src';
 
 export default {
   title: 'Cortex/Table',

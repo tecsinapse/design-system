@@ -1,9 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Avatar } from '../index';
+import { Avatar } from '../src';
 
 export default {
-  title: 'Cortex-React/Avatar',
+  title: 'Cortex/Avatar',
   component: <div />,
 };
 

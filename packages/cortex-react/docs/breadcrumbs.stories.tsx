@@ -1,9 +1,9 @@
 import React, { ElementType } from 'react';
 import { StoryFn } from '@storybook/react';
-import { Breadcrumbs, BreadcrumbType } from '../components';
+import { Breadcrumbs, BreadcrumbType } from '../src';
 
 export default {
-  title: 'Cortex-React/Breadcrumbs',
+  title: 'Cortex/Breadcrumbs',
   component: <div />,
   parameters: {
     layout: 'fullscreen',

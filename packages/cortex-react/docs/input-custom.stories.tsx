@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Input } from '../src/components';
+import { Input } from '../src';
 import { IoEye, IoPerson } from 'react-icons/io5';
 
 export default {

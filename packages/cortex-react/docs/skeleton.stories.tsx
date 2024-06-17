@@ -1,10 +1,9 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Card } from '../index';
-import { Skeleton } from '../components/Skeleton';
+import { Card, Skeleton } from '../src';
 
 export default {
-  title: 'Cortex-React/Skeleton',
+  title: 'Cortex/Skeleton',
   component: <div />,
 };
 
