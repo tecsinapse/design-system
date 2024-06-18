@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import { progressBarFilled } from './progressBar';
+import { progressBarFilled } from '../styles';
 
 interface ProgressBarProps {
   /** Number of segments. Defaults to 1. Set to 1 when 0 or less */
