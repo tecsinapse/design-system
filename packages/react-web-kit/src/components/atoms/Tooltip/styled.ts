@@ -154,7 +154,6 @@ export const TooltipSpan = styled('span')<Partial<StyleProps> & InjectedProps>(
 export const Container = styled('div')<{
   position?: Position;
 }>`
-  overflow: visible;
   position: relative;
   width: auto;
   &:hover {
