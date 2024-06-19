@@ -22,6 +22,7 @@ const Template: StoryFn = args => {
         intentProgress={args.intentProgress}
         valueMax={args.valueMax}
         valueMin={args.valueMin}
+        animated={args.animated}
       />
     </div>
   );
@@ -35,5 +36,6 @@ export const Base = {
     valueMin: 0,
     valueMax: 100,
     intentProgress: 'default',
+    animated: true,
   },
 };

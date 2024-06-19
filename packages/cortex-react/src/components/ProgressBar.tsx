@@ -13,6 +13,8 @@ interface ProgressBarProps {
   valueCurrent: number;
   /** Filled partition color. Defaults to 'primary' */
   intentProgress?: 'default' | 'success' | 'warning' | 'info' | 'error';
+  /** show Animation */
+  animated?: boolean;
 }
 
 export const ProgressBar = ({
@@ -21,6 +23,7 @@ export const ProgressBar = ({
   valueMax = 100,
   valueCurrent = 50,
   intentProgress = 'default',
+  animated = true,
 }: ProgressBarProps) => {
   const [displayedValue, setDisplayedValue] = useState(0);
   const [isGrowing, setIsGrowing] = useState(true);
@@ -28,11 +31,12 @@ export const ProgressBar = ({
   useEffect(() => {
     // Set the displayed value to the valueCurrent after the first render
     const timeout = setTimeout(() => {
-      if (valueCurrent < displayedValue) {
-        setIsGrowing(false);
+      if (animated) {
+        if (valueCurrent < displayedValue) {
+          setIsGrowing(false);
+        }
+        if (valueCurrent > displayedValue) setIsGrowing(true);
       }
-      if (valueCurrent > displayedValue) setIsGrowing(true);
-
       setDisplayedValue(valueCurrent);
     }, 0);
     return () => clearTimeout(timeout);
@@ -42,6 +46,7 @@ export const ProgressBar = ({
     ((displayedValue - valueMin) / (valueMax - valueMin)) * 100;
   const segments = Math.max(1, _segments);
   const lengthSeg = 100 / Math.max(segments);
+  const showAnimation = isGrowing && animated;
 
   const items = [...Array(segments).keys()];
   return (
@@ -60,7 +65,7 @@ export const ProgressBar = ({
         ];
         const progressStyle = {
           width: `${width}%`,
-          transitionDelay: `${isGrowing ? `${index * 1000}ms` : '0ms'}`,
+          transitionDelay: `${showAnimation ? `${index * 1000}ms` : '0ms'}`,
         };
 
         return (
@@ -76,7 +81,8 @@ export const ProgressBar = ({
               className={progressBarFilled({
                 intentProgress,
                 className: clsx(
-                  isGrowing && 'transition-[width] duration-1000 ease-linear',
+                  showAnimation &&
+                    'transition-[width] duration-1000 ease-linear',
                   ...styleRadius
                 ),
               })}
