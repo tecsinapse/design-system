@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { GroupButton, GroupButtonValue } from '../src';
+import { GroupButton, GroupButtonProps, GroupButtonValue } from '../src';
 
 export default {
   title: 'Cortex/GroupButton',
-  component: <div />,
+  component: GroupButton,
   args: {},
   argTypes: {},
 };
@@ -17,16 +17,15 @@ const options: GroupButtonValue<string>[] = [
   { value: 'Não' },
 ];
 
-const Template: StoryFn = () => {
+const Template: StoryFn<GroupButtonProps<any>> = () => {
   const [value, setValue] = useState<string>(options[0].value);
   return (
     <GroupButton
+      disableAllOptions={false}
       options={options}
       value={value}
       renderOption={option => option}
-      renderKey={option => {
-        return option;
-      }}
+      renderKey={option => option}
       onChange={option => {
         setValue(option);
       }}

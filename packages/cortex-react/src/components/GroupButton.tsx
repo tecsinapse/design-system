@@ -6,7 +6,7 @@ export interface GroupButtonValue<T> {
   value: T;
 }
 
-interface GroupButtonProps<T> {
+export interface GroupButtonProps<T> {
   value: T;
   options: GroupButtonValue<T>[];
   renderKey: (option?: T) => string | number | undefined;
@@ -17,8 +17,8 @@ interface GroupButtonProps<T> {
     firstButton?: string;
     lastButton?: string;
     inactive?: string;
+    disabled?: string;
   };
-  // // buttonSize?: ButtonSizeType;
   disableAllOptions?: boolean;
 }
 export const GroupButton = <T,>(props: GroupButtonProps<T>) => {
@@ -27,23 +27,24 @@ export const GroupButton = <T,>(props: GroupButtonProps<T>) => {
 
   const { button, container, active, inactive, firstButton, lastButton } =
     groupButton();
-
   return (
     <div className={container()}>
       {options.map(option => {
-        const isActive = value === option.value;
+        const key = renderKey?.(option.value);
+        const isActive = key === renderKey?.(value);
         return (
           <button
+            disabled={true}
             value={String(value)}
             onClick={() => onChange(option.value)}
             className={clsx(
               button(),
               firstButton({ className: `first:${customStyles?.firstButton}` }),
               lastButton({ className: `last:${customStyles?.lastButton}` }),
-              inactive({ className: customStyles?.inactive }),
+              !isActive && inactive({ className: customStyles?.inactive }),
               isActive && active({ className: customStyles?.active })
             )}
-            key={renderKey(option.value)}
+            key={key}
           >
             {renderOption(option.value)}
           </button>
