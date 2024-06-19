@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { HTMLAttributes } from 'react';
-import { getInitialsName } from './utils';
+import { getNameInitials } from './utils';
 
 interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   src?: string;
@@ -29,10 +29,11 @@ export const Avatar = ({ src, name, className, ...rest }: AvatarProps) => {
           alt={name}
           className={'rounded-pill'}
           onError={() => setHasError(true)}
+          data-testid="avatar-img"
         />
       ) : (
-        <p className={'font-bold text-white text-base'}>
-          {getInitialsName(name)}
+        <p className={'font-bold text-white text-base'} data-testid="avatar-p">
+          {getNameInitials(name)}
         </p>
       )}
     </div>

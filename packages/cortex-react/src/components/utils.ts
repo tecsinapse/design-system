@@ -1,10 +1,8 @@
-export const getInitialsName = (name: string) => {
+export const getNameInitials = (name: string) => {
   const nameSplit = name.split(' ');
-  if (nameSplit.length > 1) {
-    return nameSplit
-      .slice(0, 2)
-      .map(name => name[0])
-      .join('');
+  const length = nameSplit.length;
+  if (length > 1) {
+    return `${nameSplit[0][0]}${nameSplit[length - 1][0]}`;
   }
   return name[0];
 };

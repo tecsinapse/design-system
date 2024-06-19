@@ -4,8 +4,9 @@
     "skipLibCheck": true,
     "declarationDir": "./dist/types",
     "rootDir": "./src",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "types": ["jest", "node", "@testing-library/jest-dom"]
   },
-  "include": ["./src"],
+  "include": ["./src", "**/*.spec.ts", "**/*.spec.tsx"],
   "exclude": ["node_modules", "dist"]
 }
