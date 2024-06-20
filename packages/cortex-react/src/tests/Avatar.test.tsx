@@ -33,13 +33,12 @@ test('renders Avatar with existing src image', () => {
 test('renders Avatar with error on src image', async () => {
   render(<Avatar name="Usuario Teste" src={'https://notfoundpng.com.br'} />);
 
-  let imageElement: HTMLElement | null = screen.getByTestId('avatar-img');
+  const imageElement = screen.getByTestId('avatar-img');
 
   fireEvent.error(imageElement);
 
-  imageElement = screen.queryByTestId('avatar-img');
   const textElement = screen.getByTestId('avatar-p');
 
   expect(textElement).toBeInTheDocument();
-  expect(imageElement).toBeNull();
+  expect(imageElement).toBeEmptyDOMElement();
 });
