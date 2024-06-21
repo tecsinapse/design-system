@@ -1,5 +1,5 @@
-import React, { forwardRef, HTMLProps } from 'react';
 import { card } from '@tecsinapse/cortex-core';
+import React, { forwardRef, HTMLProps } from 'react';
 
 interface CardProps {
   children?: React.ReactNode;
