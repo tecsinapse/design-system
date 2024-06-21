@@ -25,7 +25,7 @@ const Template: StoryFn<GroupButtonProps<any>> = () => {
       options={options}
       value={value}
       renderOption={option => option}
-      renderKey={option => option}
+      renderKey={option => String(option)}
       onChange={option => {
         setValue(option);
       }}

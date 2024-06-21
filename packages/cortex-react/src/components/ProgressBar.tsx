@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { progressBarFilled } from '../styles';
 
 interface ProgressBarProps {
@@ -26,27 +26,33 @@ export const ProgressBar = ({
   animated = true,
 }: ProgressBarProps) => {
   const [displayedValue, setDisplayedValue] = useState(0);
-  const [isGrowing, setIsGrowing] = useState(true);
+  const [showAnimation, setShowAnimation] = useState(true);
 
   useEffect(() => {
     // Set the displayed value to the valueCurrent after the first render
     const timeout = setTimeout(() => {
-      if (animated) {
-        if (valueCurrent < displayedValue) {
-          setIsGrowing(false);
-        }
-        if (valueCurrent > displayedValue) setIsGrowing(true);
+      if (valueCurrent < displayedValue) {
+        setShowAnimation(false);
       }
+      if (animated && valueCurrent > displayedValue) setShowAnimation(true);
       setDisplayedValue(valueCurrent);
     }, 0);
     return () => clearTimeout(timeout);
   }, [valueCurrent]);
+  const progressStyle = useCallback(
+    (width: number, index: number) => {
+      return {
+        width: `${width}%`,
+        transitionDelay: `${showAnimation ? `${index * 1000}ms` : `0ms`}`,
+      };
+    },
+    [showAnimation]
+  );
 
   const totalProgress =
     ((displayedValue - valueMin) / (valueMax - valueMin)) * 100;
   const segments = Math.max(1, _segments);
   const lengthSeg = 100 / Math.max(segments);
-  const showAnimation = isGrowing && animated;
 
   const items = [...Array(segments).keys()];
   return (
@@ -57,34 +63,18 @@ export const ProgressBar = ({
         const minmax = (totalProgress - min) / (max - min);
         const width = (minmax > 1 ? 1 : minmax < 0 ? 0 : minmax) * 100;
 
-        const isFirst = index === 0;
-        const isLast = index === items.length - 1;
-        const styleRadius = [
-          isFirst && 'rounded-l-pill',
-          isLast && 'rounded-r-pill',
-        ];
-        const progressStyle = {
-          width: `${width}%`,
-          transitionDelay: `${showAnimation ? `${index * 1000}ms` : '0ms'}`,
-        };
-
         return (
           <div
             key={index}
             className={clsx(
-              'h-[0.5rem] bg-secondary-light flex flex-1',
-              ...styleRadius
+              'h-[0.5rem] bg-secondary-light flex flex-1 first:rounded-l-pill last:rounded-r-pill'
             )}
           >
             <div
-              style={progressStyle}
+              style={progressStyle(width, index)}
               className={progressBarFilled({
                 intentProgress,
-                className: clsx(
-                  showAnimation &&
-                    'transition-[width] duration-1000 ease-linear',
-                  ...styleRadius
-                ),
+                showAnimation: showAnimation,
               })}
             />
           </div>
