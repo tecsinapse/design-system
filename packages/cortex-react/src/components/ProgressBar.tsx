@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React, { useCallback, useEffect, useState } from 'react';
 import { progressBarFilled } from '../styles';
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
   /** Number of segments. Defaults to 1. Set to 1 when 0 or less */
   segments?: number;
   /** Minimum possible value (0% of the bar). Defaults to 0 */
@@ -65,16 +65,18 @@ export const ProgressBar = ({
 
         return (
           <div
+            data-testid="progress-bar"
             key={index}
             className={clsx(
               'h-[0.5rem] bg-secondary-light flex flex-1 first:rounded-l-pill last:rounded-r-pill'
             )}
           >
             <div
+              data-testid={'div-segment-filled'}
               style={progressStyle(width, index)}
               className={progressBarFilled({
                 intentProgress,
-                showAnimation: showAnimation,
+                showAnimation,
               })}
             />
           </div>

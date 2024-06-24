@@ -21,7 +21,6 @@ const Template: StoryFn<GroupButtonProps<any>> = () => {
   const [value, setValue] = useState<string>(options[0].value);
   return (
     <GroupButton
-      disableAllOptions={false}
       options={options}
       value={value}
       renderOption={option => option}
