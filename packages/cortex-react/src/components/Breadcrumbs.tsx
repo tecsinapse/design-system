@@ -1,6 +1,6 @@
 import React, { ElementType } from 'react';
-import { Card } from './Card';
 import { BreadcrumbItem } from './BreadcrumbItem';
+import { Card } from './Card';
 
 export interface BreadcrumbType {
   title: string;
