@@ -1,6 +1,4 @@
-// import { Button, Input, searchInputVariants } from '@web/modules/core'
 import React, { useEffect, useState } from 'react';
-// import CircularLoading from './CircularLoading'
 import { Input, Button } from './';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { IoSearchOutline } from 'react-icons/io5';
@@ -72,10 +70,10 @@ const SearchInput = ({
         >
           {isSubmitting ? (
             <div className={'animate-spin'}>
-              <AiOutlineLoading />
+              <AiOutlineLoading data-testid={'icon-loading'} />
             </div>
           ) : (
-            <IoSearchOutline />
+            <IoSearchOutline data-testid={'icon-search'} />
           )}
         </Button>
       )}
