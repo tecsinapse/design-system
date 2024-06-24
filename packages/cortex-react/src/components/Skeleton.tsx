@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 /**
  * Represents the Skeleton Components.
@@ -9,12 +9,17 @@ import React from 'react';
 
 export const Skeleton = ({
   className,
+  children,
   ...rest
-}: React.HTMLAttributes<HTMLDivElement>) => {
+}: React.HTMLAttributes<HTMLDivElement> & {
+  children?: ReactNode;
+}) => {
   return (
     <div
       {...rest}
       className={clsx('animate-pulse bg-secondary-light', className)}
-    />
+    >
+      {children}
+    </div>
   );
 };
