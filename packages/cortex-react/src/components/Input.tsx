@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   input,
   InputBaseVariants,
@@ -6,6 +5,7 @@ import {
   labelStyle,
 } from '@tecsinapse/cortex-core';
 import { clsx } from 'clsx';
+import React from 'react';
 
 const getValidChildren = (children: React.ReactNode) => {
   return React.Children.toArray(children).filter(el =>
@@ -33,10 +33,12 @@ export const Box = React.forwardRef<HTMLInputElement, InputProps>(
           className={clsx(inputBox(placeholder, label, className))}
           {...rest}
           ref={ref}
+          data-testid="input-input"
         />
         <label
           htmlFor={id ?? name}
           className={labelStyle({ intent: variants?.intent, placeholder })}
+          data-testid="input-label"
         >
           {label}
         </label>
