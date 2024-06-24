@@ -1,8 +1,8 @@
 import React from 'react';
-import { BreadcrumbType } from '../components';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
+import { BreadcrumbType } from '../components';
 
-interface BreadcrumbItemProps extends BreadcrumbType {
+export interface BreadcrumbItemProps extends BreadcrumbType {
   isLast: boolean;
 }
 export const BreadcrumbItem = ({
@@ -22,6 +22,7 @@ export const BreadcrumbItem = ({
         {!isLast ? (
           <MdOutlineKeyboardDoubleArrowRight
             className={'mt-[0.125rem] text-primary-medium'}
+            data-testid="breadcrumb-item-icon"
           />
         ) : (
           <></>
