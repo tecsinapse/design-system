@@ -10,7 +10,7 @@ test('renders Card with children', () => {
     </Card>
   );
 
-  const textElement = screen.getByText('Card test');
+  const cardElement = screen.getByText('Card test');
 
-  expect(textElement).toBeInTheDocument();
+  expect(cardElement).toBeInTheDocument();
 });
