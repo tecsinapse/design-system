@@ -27,7 +27,7 @@ describe('Drawer', () => {
     render(<Drawer open={true} onClose={onClose} />);
     const overlay = screen.getByTestId('overlay');
     fireEvent.click(overlay);
-    expect(onClose).toHaveBeenCalledWith(false);
+    expect(onClose).toHaveBeenCalled();
   });
 
   it('Should apply correct position class', () => {

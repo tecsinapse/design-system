@@ -4,7 +4,7 @@ import { Button, Card, Drawer, Input } from '../src';
 
 export default {
   title: 'Cortex/Drawer',
-  component: <div />,
+  component: Drawer,
 };
 
 const Template: StoryFn = () => {

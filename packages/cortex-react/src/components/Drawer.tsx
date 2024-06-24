@@ -3,7 +3,7 @@ import { drawer, overlay } from '@tecsinapse/cortex-core';
 
 interface DrawerProps {
   open: boolean;
-  onClose: (open: boolean) => void;
+  onClose: () => void;
   position?: 'left' | 'right';
   children?: React.ReactNode;
 }
@@ -18,7 +18,7 @@ export const Drawer = ({
       <div
         data-testid="overlay"
         className={overlay({ show: open })}
-        onClick={() => onClose(false)}
+        onClick={onClose}
       />
       <div
         data-testid="drawer"
