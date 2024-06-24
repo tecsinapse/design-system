@@ -16,10 +16,12 @@ export const Drawer = ({
   return (
     <>
       <div
+        data-testid="overlay"
         className={overlay({ show: open })}
         onClick={() => onClose(false)}
-      ></div>
+      />
       <div
+        data-testid="drawer"
         className={drawer({
           position,
           open,

@@ -9,7 +9,7 @@ const drawerStyles = tv({
     },
     open: {
       true: 'translate-x-0',
-      false: '',
+      false: 'invisible',
     },
   },
   defaultVariants: {
