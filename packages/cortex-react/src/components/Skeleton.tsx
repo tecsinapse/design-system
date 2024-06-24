@@ -17,6 +17,7 @@ export const Skeleton = ({
   return (
     <div
       {...rest}
+      data-testid={'skeleton'}
       className={clsx('animate-pulse bg-secondary-light', className)}
     >
       {children}
