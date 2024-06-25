@@ -14,9 +14,9 @@ describe('BreadcrumbItem', () => {
   it('renders component with title', () => {
     render(<BreadcrumbItem {...breadcrumbProps} isLast={false} />);
 
-    const breadcrumItemElement = screen.getByText('Home');
+    const breadcrumbItemElement = screen.getByText('Home');
 
-    expect(breadcrumItemElement).toBeInTheDocument();
+    expect(breadcrumbItemElement).toBeInTheDocument();
   });
 
   it('applies correct className based on isLast prop', () => {
@@ -24,13 +24,13 @@ describe('BreadcrumbItem', () => {
       <BreadcrumbItem {...breadcrumbProps} isLast={true} />
     );
 
-    const breadcrumItemElement = screen.getByText('Home');
+    const breadcrumbItemElement = screen.getByText('Home');
 
-    expect(breadcrumItemElement).toHaveClass('text-secondary-medium');
+    expect(breadcrumbItemElement).toHaveClass('text-secondary-medium');
 
     rerender(<BreadcrumbItem {...breadcrumbProps} isLast={false} />);
 
-    expect(breadcrumItemElement).toHaveClass('text-secondary-xdark');
+    expect(breadcrumbItemElement).toHaveClass('text-secondary-xdark');
   });
 
   it('renders icon when isLast is false', () => {

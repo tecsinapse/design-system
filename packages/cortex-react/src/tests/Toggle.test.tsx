@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { Toggle } from '../components/Toggle';
+import { Toggle } from '../components';
 
 describe('Toggle', () => {
   it('renders component', () => {
