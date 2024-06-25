@@ -47,7 +47,7 @@ const SearchInput = ({
       <Input.Face variants={{ className: inputFace }}>
         {!onClick && (
           <Input.Left className={inputLeft}>
-            <IoSearchOutline />
+            <IoSearchOutline data-testid={'icon-search-left'} />
           </Input.Left>
         )}
         <Input.Box
@@ -73,7 +73,7 @@ const SearchInput = ({
               <AiOutlineLoading data-testid={'icon-loading'} />
             </div>
           ) : (
-            <IoSearchOutline data-testid={'icon-search'} />
+            <IoSearchOutline data-testid={'icon-search-button'} />
           )}
         </Button>
       )}
