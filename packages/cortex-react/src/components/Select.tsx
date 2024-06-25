@@ -1,4 +1,4 @@
-import { option as styleOption, selectVariants } from '@tecsinapse/cortex-core';
+import { selectVariants, option as styleOption } from '@tecsinapse/cortex-core';
 import React, {
   useCallback,
   useEffect,
@@ -6,9 +6,9 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { Hint } from './Hint';
-import { IoChevronDownOutline } from 'react-icons/io5';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
+import { IoChevronDownOutline } from 'react-icons/io5';
+import { Hint } from './Hint';
 import SearchInput from './SearchInput';
 
 interface CommonProps<T> {
@@ -126,7 +126,7 @@ export const Select = <T,>(props: SelectProps<T>) => {
         onClick={() => setOpen(prevState => !prevState)}
         disabled={disabled}
       >
-        <span>{placeholder}</span>
+        <span data-testid="select-placeholder">{placeholder}</span>
         <IoChevronDownOutline />
       </button>
       <ul
@@ -158,7 +158,11 @@ export const Select = <T,>(props: SelectProps<T>) => {
           }}
         >
           <div className={hintBody()}>
-            {variant === 'error' ? <IoIosCloseCircleOutline /> : <></>}
+            {variant === 'error' ? (
+              <IoIosCloseCircleOutline data-testid={'select-hint-error-icon'} />
+            ) : (
+              <></>
+            )}
             <span>{hint}</span>
           </div>
         </Hint>
