@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Snackbar, Button, DefaultSnack } from '../src';
-import { defaultIntents } from './utils';
+import { Button, DefaultSnack } from '../src';
 import { Toaster } from 'sonner';
 import { Snack } from '../src/service/Snack';
 
@@ -10,7 +9,7 @@ export default {
   component: DefaultSnack,
 };
 
-const Template: StoryFn = args => {
+const Template: StoryFn = () => {
   const snack = new Snack();
   return (
     <div className={'flex gap-x-deca'}>
