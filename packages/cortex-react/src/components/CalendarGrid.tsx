@@ -16,7 +16,7 @@ export const CalendarGrid = ({ state }: CalendarGridProps) => {
       className="bg-white rounded-micro px-deca py-mili"
       data-testid="calendar-grid"
     >
-      <table {...gridProps}>
+      <table {...gridProps} className="border-separate border-spacing-y-nano">
         <thead {...headerProps}>
           <CalendarGridHeaderRow weekDays={weekDays} />
         </thead>

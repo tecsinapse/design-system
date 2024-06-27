@@ -2,7 +2,7 @@ import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Button } from './Button';
 
-interface CalendarHeaderProps {
+export interface CalendarHeaderProps {
   onClickPrevButton: () => void;
   onClickNextButton: () => void;
   title: string;
@@ -14,10 +14,14 @@ export const CalendarHeader = ({
   title,
 }: CalendarHeaderProps) => {
   return (
-    <div className="flex flex-row justify-between items-center gap-x-deca bg-miscellaneous-body p-mili">
+    <div
+      className="flex flex-row justify-between items-center gap-x-deca bg-miscellaneous-body p-mili"
+      data-testid="calendar-header"
+    >
       <Button
         onClick={onClickPrevButton}
         variants={{ variant: 'text', intent: 'secondary', size: 'small' }}
+        data-testid="calendar-header-prev-button"
       >
         <FaChevronLeft />
       </Button>
@@ -25,6 +29,7 @@ export const CalendarHeader = ({
       <Button
         onClick={onClickNextButton}
         variants={{ variant: 'text', intent: 'secondary', size: 'small' }}
+        data-testid="calendar-header-next-button"
       >
         <FaChevronRight />
       </Button>
