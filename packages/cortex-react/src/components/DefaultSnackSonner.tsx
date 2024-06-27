@@ -1,10 +1,10 @@
 import React from 'react';
-import { SnackbarVariants } from '../../../cortex-core/src';
-import { Snackbar } from './Snackbar';
+import { SnackbarVariants } from '@tecsinapse/cortex-core';
+import { BaseSnackbar } from './BaseSnackbar';
 import { IoMdInformationCircleOutline, IoMdClose } from 'react-icons/io';
 import { toast } from 'sonner';
 
-export const DefaultSnack = ({
+export const DefaultSnackSonner = ({
   t,
   text,
   variants,
@@ -13,7 +13,7 @@ export const DefaultSnack = ({
   text: string;
   variants?: SnackbarVariants;
 }) => (
-  <Snackbar show={true} variants={{ intent: variants?.intent }}>
+  <BaseSnackbar show={true} variants={{ intent: variants?.intent }}>
     <div className={'flex justify-between items-center flex-row gap-x-mili'}>
       <IoMdInformationCircleOutline className={'w-[20px] h-[20px] shrink-0'} />
       <p>{text}</p>
@@ -23,5 +23,5 @@ export const DefaultSnack = ({
         className={'cursor-pointer w-[20px] h-[20px] shrink-0'}
       />
     </div>
-  </Snackbar>
+  </BaseSnackbar>
 );

@@ -1,22 +1,22 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Button, DefaultSnack } from '../src';
+import { Button, DefaultSnackSonner, Snackbar } from '../src';
 import { Toaster } from 'sonner';
-import { Snack } from '../src/service/Snack';
 
 export default {
   title: 'Cortex/Snackbar',
-  component: DefaultSnack,
+  component: DefaultSnackSonner,
 };
 
 const Template: StoryFn = () => {
-  const snack = new Snack();
+  const snack = new Snackbar();
   return (
     <div className={'flex gap-x-deca'}>
       <Button
         variants={{ intent: 'primary' }}
         onClick={() =>
-          snack.default(
+          snack.show(
+            'default',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
         }
@@ -26,7 +26,8 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'error' }}
         onClick={() =>
-          snack.error(
+          snack.show(
+            'error',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
         }
@@ -36,7 +37,8 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'success' }}
         onClick={() =>
-          snack.success(
+          snack.show(
+            'success',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
         }
@@ -46,7 +48,8 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'warning' }}
         onClick={() =>
-          snack.warning(
+          snack.show(
+            'warning',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
         }
@@ -56,7 +59,8 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'info' }}
         onClick={() =>
-          snack.info(
+          snack.show(
+            'info',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
         }

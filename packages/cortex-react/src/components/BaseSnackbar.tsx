@@ -1,19 +1,19 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import { snackbar, SnackbarVariants } from '@tecsinapse/cortex-core';
 
 interface SnackbarProps {
   variants?: SnackbarVariants;
-  children: JSX.Element;
+  children?: ReactNode;
   show: boolean;
 }
 
-export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
+export const BaseSnackbar = forwardRef<HTMLDivElement, SnackbarProps>(
   (props, ref) => {
     const { children, show, variants } = props;
     return (
       <>
         {show ? (
-          <div className={snackbar(variants)} ref={ref}>
+          <div className={snackbar(variants)} ref={ref} data-testid="snackbar">
             {children}
           </div>
         ) : (
