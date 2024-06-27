@@ -10,13 +10,7 @@ export default {
 const Template: StoryFn = args => {
   const [value, setValue] = useState(new Date())
 
-  return (
-    <>
-      <Calendar value={value} onChange={(date) => setValue(date)}/>
-      <p>Data selecionada</p>
-      <span>{value.toISOString()}</span>
-    </>
-  );
+  return <Calendar value={value} onChange={(date) => setValue(date)}/>
 };
 
 export const Base = {

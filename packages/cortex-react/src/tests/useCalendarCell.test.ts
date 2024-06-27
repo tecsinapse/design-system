@@ -15,7 +15,7 @@ jest.mock('react-aria', () => ({
 
 const mockUseAriaCalendarCell = jest.mocked(useAriaCalendarCell);
 
-describe('useCalendarCell Hook', () => {
+describe('useCalendarCell', () => {
   let state: CalendarState | RangeCalendarState;
 
   beforeEach(() => {
