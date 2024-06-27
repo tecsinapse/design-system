@@ -1,2 +1,2 @@
-export * from './Snackbar';
+export * from './SnackbarSonner';
 export * from './ISnackbar';

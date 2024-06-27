@@ -1,9 +1,9 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { BaseSnackbar } from '../components';
+import { BaseSnackbar, DefaultSnack } from '../components';
 import { render, screen } from '@testing-library/react';
 
-describe('Snack', () => {
+describe('BaseSnackBar', () => {
   it('Should render Snack', () => {
     render(
       <BaseSnackbar show={true} variants={{ intent: 'default' }}>
@@ -14,7 +14,7 @@ describe('Snack', () => {
     expect(snack).toBeInTheDocument();
   });
 
-  it('Dont Should render Snack', () => {
+  it('Should not render Snack', () => {
     render(
       <BaseSnackbar show={false} variants={{ intent: 'default' }}>
         <p>Description snackbar</p>
@@ -88,5 +88,26 @@ describe('Snack', () => {
     const snack = screen.getByTestId('snackbar');
     expect(snack).toHaveClass('bg-secondary-xlight');
     expect(snack).toHaveClass('text-secondary-medium');
+  });
+});
+
+describe('DefaultSnack', () => {
+  it('Should render DefaultSnack', () => {
+    const textSnack = 'Text example';
+    render(<DefaultSnack text={textSnack} onDismiss={jest.fn} />);
+    const snack = screen.getByTestId('snackbar');
+    const iconInfo = screen.getByTestId('icon-info');
+    const iconClose = screen.getByTestId('icon-close');
+
+    expect(snack).toBeInTheDocument();
+    expect(iconInfo).toBeInTheDocument();
+    expect(iconClose).toBeInTheDocument();
+  });
+  it('Should render correctly text', () => {
+    const textSnack = 'Text example';
+    render(<DefaultSnack text={textSnack} onDismiss={jest.fn} />);
+    const snack = screen.getByTestId('snackbar');
+
+    expect(snack).toHaveTextContent(textSnack);
   });
 });

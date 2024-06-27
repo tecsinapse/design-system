@@ -1,21 +1,23 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Button, DefaultSnackSonner, Snackbar } from '../src';
+import { Button, DefaultSnack } from '../src';
 import { Toaster } from 'sonner';
+import { useSnackbar } from '../src/provider/SnackbarProvider';
 
 export default {
-  title: 'Cortex/Snackbar',
-  component: DefaultSnackSonner,
+  title: 'Cortex/SnackbarSonner',
+  component: DefaultSnack,
 };
 
 const Template: StoryFn = () => {
-  const snack = new Snackbar();
+  const { snackbar } = useSnackbar();
+
   return (
     <div className={'flex gap-x-deca'}>
       <Button
         variants={{ intent: 'primary' }}
         onClick={() =>
-          snack.show(
+          snackbar.show(
             'default',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
@@ -26,7 +28,7 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'error' }}
         onClick={() =>
-          snack.show(
+          snackbar.show(
             'error',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
@@ -37,7 +39,7 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'success' }}
         onClick={() =>
-          snack.show(
+          snackbar.show(
             'success',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
@@ -48,7 +50,7 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'warning' }}
         onClick={() =>
-          snack.show(
+          snackbar.show(
             'warning',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )
@@ -59,7 +61,7 @@ const Template: StoryFn = () => {
       <Button
         variants={{ intent: 'info' }}
         onClick={() =>
-          snack.show(
+          snackbar.show(
             'info',
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
           )

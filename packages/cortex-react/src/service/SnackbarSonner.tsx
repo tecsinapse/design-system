@@ -1,9 +1,9 @@
 import { ExternalToast, toast } from 'sonner';
 import React from 'react';
-import { DefaultSnackSonner } from '../components';
+import { DefaultSnack } from '../components';
 import { ISnackbar, TypeSnack } from './ISnackbar';
 
-export class Snackbar implements ISnackbar<ExternalToast> {
+export class SnackbarSonner implements ISnackbar<ExternalToast> {
   custom(Component: React.ReactElement, options?: ExternalToast) {
     return toast.custom(() => Component, {
       ...options,
@@ -19,10 +19,10 @@ export class Snackbar implements ISnackbar<ExternalToast> {
     return toast.custom(
       t => {
         return (
-          <DefaultSnackSonner
+          <DefaultSnack
             text={message}
             variants={{ intent: type }}
-            t={t}
+            onDismiss={() => toast.dismiss(t)}
           />
         );
       },
