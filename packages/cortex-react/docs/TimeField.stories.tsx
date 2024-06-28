@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
-import { TimeFieldInput, TimeValueT } from '../src';
+import { TimeFieldInput, TimeValueType } from '../src';
 
 export default {
-  title: 'Cortex/Calendar/TimeFieldInput',
+  title: 'Cortex/TimeFieldInput',
   component: <div />,
 };
 
 const Template: StoryFn = () => {
-  const [value, setValue] = useState<TimeValueT>();
-  console.log(value, ' VALUE');
+  const [value, setValue] = useState<TimeValueType>();
   return <TimeFieldInput value={value} onChange={setValue} label={'teste'} />;
 };
 
