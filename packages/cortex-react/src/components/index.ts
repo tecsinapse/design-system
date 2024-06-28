@@ -18,3 +18,4 @@ export * from './Table';
 export * from './Tag';
 export * from './TextArea';
 export * from './Toggle';
+export * from './TimeFieldInput';
