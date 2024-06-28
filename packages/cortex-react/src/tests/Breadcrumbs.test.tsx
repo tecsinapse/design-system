@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React, { ElementType } from 'react';
-import { BreadcrumbType, Breadcrumbs } from '../components/Breadcrumbs';
+import { BreadcrumbType, Breadcrumbs } from '../components';
 
 const breadcrumbs: BreadcrumbType[] = [
   { title: 'Home', Component: 'a' as ElementType },

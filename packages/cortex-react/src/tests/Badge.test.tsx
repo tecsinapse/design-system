@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { Badge, BadgeAnchor } from '../components/Badge';
-import { Button } from '../components/Button';
+import { Badge, BadgeAnchor, Button } from '../components';
 
 describe('Badge', () => {
   it('renders Badge with value', () => {

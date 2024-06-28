@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-
 import React from 'react';
 import { Drawer } from '../components';
 import { fireEvent, render, screen } from '@testing-library/react';
@@ -30,10 +29,16 @@ describe('Drawer', () => {
     expect(onClose).toHaveBeenCalled();
   });
 
-  it('Should apply correct position class', () => {
+  it('Should apply correct position left class', () => {
     render(<Drawer open={true} onClose={jest.fn()} position={'left'} />);
     const drawer = screen.getByTestId('drawer');
     expect(drawer).toHaveClass('left-0');
+  });
+
+  it('Should apply correct position right class', () => {
+    render(<Drawer open={true} onClose={jest.fn()} position={'right'} />);
+    const drawer = screen.getByTestId('drawer');
+    expect(drawer).toHaveClass('right-1');
   });
 
   it('Should render children correctly', () => {

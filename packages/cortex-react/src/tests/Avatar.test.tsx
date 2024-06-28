@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { Avatar } from '../components/Avatar';
+import { Avatar } from '../components';
 
 describe('Avatar', () => {
   it('renders component without src image', () => {
