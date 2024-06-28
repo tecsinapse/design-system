@@ -16,8 +16,8 @@ export const selectVariants = tv({
   },
   variants: {
     open: {
-      true: { dropdown: '-scale-y-1 opacity-1' },
-      false: { dropdown: 'scale-y-0 opacity-0' },
+      true: { dropdown: '-scale-y-1 visible' },
+      false: { dropdown: 'scale-y-0 invisible' },
     },
     disabled: {
       true: {

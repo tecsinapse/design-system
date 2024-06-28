@@ -57,10 +57,10 @@ describe('Select', () => {
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
-    expect(screen.getByRole('select')).toHaveClass('opacity-1');
+    expect(screen.getByRole('select')).toHaveClass('visible');
 
     fireEvent.click(button);
-    expect(screen.queryByRole('select')).toHaveClass('opacity-0');
+    expect(screen.queryByRole('select')).toHaveClass('invisible');
   });
 
   it('select renders all options', () => {
@@ -95,12 +95,12 @@ describe('Select', () => {
     );
 
     fireEvent.click(screen.getByRole('button'));
-    expect(screen.queryByRole('select')).toHaveClass('opacity-1');
+    expect(screen.queryByRole('select')).toHaveClass('visible');
 
     fireEvent.click(screen.getByText('Option 1'));
 
     expect(onSelectMock).toHaveBeenCalledWith(mockOptions[0]);
-    expect(screen.queryByRole('select')).toHaveClass('opacity-0');
+    expect(screen.queryByRole('select')).toHaveClass('invisible');
   });
 
   it('renders selected option placeholder', () => {
@@ -157,7 +157,7 @@ describe('Select', () => {
 
     fireEvent.click(screen.getByRole('button'));
 
-    expect(screen.getByRole('select')).toHaveClass('opacity-1');
+    expect(screen.getByRole('select')).toHaveClass('visible');
 
     const searchInputElement = screen.getByPlaceholderText(placeholderText);
 
