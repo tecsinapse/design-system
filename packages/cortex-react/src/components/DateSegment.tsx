@@ -12,7 +12,7 @@ export const DateSegment = ({ segment, state }: DateSegmentProps) => {
   const { segmentProps } = useDateSegment(segment, state, ref);
 
   return (
-    <div {...segmentProps} ref={ref}>
+    <div {...segmentProps} ref={ref} className={'text-sub accent-transparent'}>
       {segment.text}
     </div>
   );
