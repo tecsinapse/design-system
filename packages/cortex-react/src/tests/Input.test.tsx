@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { LiaAngrySolid, LiaEyeSolid } from 'react-icons/lia';
-import { Input } from '../components/Input';
+import { Input } from '../components';
 
 describe('Input', () => {
   it('renders component', () => {

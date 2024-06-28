@@ -18,17 +18,21 @@ export const useCalendarCell = ({ state, date }: useCalendarCellProps) => {
     formattedDate,
   } = useAriaCalendarCell({ date }, state, ref);
 
-  const isSelectionStart = (state as RangeCalendarState)?.highlightedRange
-    ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.start) &&
-      !isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.end)
+  const rangeStateHighlitedRange = (state as RangeCalendarState)
+    ?.highlightedRange;
+
+  const isSameDayStart = rangeStateHighlitedRange
+    ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.start)
     : undefined;
-  const isSelectionEnd = (state as RangeCalendarState)?.highlightedRange
-    ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.end) &&
-      !isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.start)
+  const isSameDayEnd = rangeStateHighlitedRange
+    ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.end)
     : undefined;
+
+  const isSelectionStart = isSameDayStart && !isSameDayEnd;
+  const isSelectionEnd = isSameDayEnd && !isSameDayStart;
   const inRange =
-    date > (state as RangeCalendarState)?.highlightedRange?.start &&
-    date < (state as RangeCalendarState)?.highlightedRange?.end;
+    date > rangeStateHighlitedRange?.start &&
+    date < rangeStateHighlitedRange?.end;
 
   return {
     ref,

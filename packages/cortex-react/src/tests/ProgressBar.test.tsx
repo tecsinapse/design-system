@@ -84,7 +84,7 @@ describe('ProgressBar', () => {
     expect(filledSegments.length).toBe(5);
   });
 
-  it('Should apply correct collor based in prop intentProgress', () => {
+  it('Should apply correct color based in prop intentProgress', () => {
     const { getByTestId } = render(
       <ProgressBar valueCurrent={50} intentProgress="success" />
     );
@@ -100,6 +100,6 @@ describe('ProgressBar', () => {
       jest.advanceTimersByTime(0);
     });
     const progressBar = getByTestId('div-segment-filled');
-    expect(progressBar.style.width).toBe('50%');
+    expect(progressBar).toHaveStyle('width: 50%');
   });
 });

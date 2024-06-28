@@ -14,14 +14,7 @@ const Template: StoryFn = args => {
   
   const [value, setValue] = useState<DateRange>({start: today, end: tomorrow})
 
-  return (
-    <>
-      <RangeCalendar value={value} onChange={(date) => setValue(date)}/>
-      <p>Intervalo selecionada</p>
-      <p>{value.start?.toISOString()}</p>
-      <p>{value.end?.toISOString()}</p>
-    </>
-  );
+  return <RangeCalendar value={value} onChange={(date) => setValue(date)}/>
 };
 
 export const Base = {

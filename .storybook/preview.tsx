@@ -1,6 +1,7 @@
 import React from 'react';
 import { lightTheme, ThemeProvider } from '../packages/react-core';
 import './index.css';
+import { SnackbarProvider } from '../packages/cortex-react/src/provider/SnackbarProvider';
 
 export const parameters = {
   layout: 'centered',
@@ -42,7 +43,9 @@ export const parameters = {
 
 const withThemeProvider = Story => (
   <ThemeProvider theme={lightTheme}>
-    <Story />
+    <SnackbarProvider>
+      <Story />
+    </SnackbarProvider>
   </ThemeProvider>
 );
 

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { Hint } from '../components/Hint';
+import { Hint } from '../components';
 
 describe('Hint', () => {
   it('renders component with description', () => {
