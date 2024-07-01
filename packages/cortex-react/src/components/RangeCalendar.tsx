@@ -1,11 +1,5 @@
-import {
-  CalendarDate,
-  createCalendar,
-  getLocalTimeZone,
-} from '@internationalized/date';
 import React from 'react';
-import { useLocale, useRangeCalendar } from 'react-aria';
-import { useRangeCalendarState } from 'react-stately';
+import { useRangeCalendar } from '../hooks';
 import { CalendarGrid } from './CalendarGrid';
 import { CalendarHeader } from './CalendarHeader';
 
@@ -15,39 +9,23 @@ export type DateRange = {
 };
 
 interface RangeCalendarProps {
+  value?: DateRange;
   onChange: (value: DateRange) => void;
-  value: DateRange;
 }
 
 export const RangeCalendar = ({ value, onChange }: RangeCalendarProps) => {
-  const { locale } = useLocale();
-  const state = useRangeCalendarState({
-    locale,
-    createCalendar,
-    defaultValue: {
-      start: new CalendarDate(
-        value.start.getFullYear(),
-        value.start.getMonth(),
-        value.start.getDate()
-      ),
-      end: new CalendarDate(
-        value.end.getFullYear(),
-        value.end.getMonth(),
-        value.end.getDate()
-      ),
-    },
-    onChange: value =>
-      onChange({
-        start: value.start.toDate(getLocalTimeZone()),
-        end: value.end.toDate(getLocalTimeZone()),
-      }),
+  const { calendarProps, state, title, ref } = useRangeCalendar({
+    value,
+    onChange,
   });
 
-  const ref = React.useRef(null);
-  const { calendarProps, title } = useRangeCalendar({}, state, ref);
-
   return (
-    <div {...calendarProps} className="calendar" ref={ref}>
+    <div
+      {...calendarProps}
+      className="calendar"
+      ref={ref}
+      data-testid="calendar-range-div"
+    >
       <CalendarHeader
         onClickPrevButton={() => state.focusPreviousPage()}
         onClickNextButton={() => state.focusNextPage()}
