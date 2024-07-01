@@ -12,7 +12,12 @@ export const Button = forwardRef<
 >((props, ref) => {
   const { variants, children, ...rest } = props;
   return (
-    <button className={button(variants)} ref={ref} {...rest}>
+    <button
+      className={button(variants)}
+      ref={ref}
+      data-testid="button"
+      {...rest}
+    >
       {children}
     </button>
   );
