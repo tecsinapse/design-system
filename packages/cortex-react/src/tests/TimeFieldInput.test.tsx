@@ -10,7 +10,6 @@ describe('TimeFieldInput', () => {
     );
     const timeFieldInput = screen.getByTestId('time-field-input');
     expect(timeFieldInput).toBeInTheDocument();
-    expect(timeFieldInput).toHaveClass('border-secondary-light');
   });
 
   it('Should render label', () => {

@@ -4,11 +4,8 @@ import { inputBox, labelStyle } from '@tecsinapse/cortex-core';
 import TimeField from './TimeField';
 
 export type TimeValueType = {
-  /** The hour, numbered from 0 to 23. */
-  readonly hour: number;
-  /** The minute in the hour. */
-  readonly minute: number;
-  /** The second in the minute. */
+  hour: number;
+  minute: number;
 };
 
 export interface TimeFieldInputProps extends InputPropsBase {

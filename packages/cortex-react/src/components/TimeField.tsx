@@ -1,34 +1,15 @@
 import React from 'react';
-import { useLocale, useTimeField } from 'react-aria';
-import { useTimeFieldState } from 'react-stately';
-import { Time } from '@internationalized/date';
 import { TimeValueType } from './TimeFieldInput';
 import { DateSegment } from './DateSegment';
+import { useTimeField } from '../hooks/useTimeField';
 
-interface TimeFieldProps {
+export interface TimeFieldProps {
   value?: TimeValueType;
   onChange: (number: TimeValueType) => void;
 }
 
 const TimeField = (props: TimeFieldProps) => {
-  const { value, onChange } = props;
-  const { locale } = useLocale();
-  const state = useTimeFieldState({
-    value: new Time(value?.hour, value?.minute),
-    onChange: (timeValue: Time) =>
-      onChange({ hour: timeValue.hour, minute: timeValue.minute }),
-    locale,
-  });
-
-  const ref = React.useRef(null);
-  const { fieldProps } = useTimeField(
-    {
-      'aria-label': 'time-field',
-      hourCycle: 24,
-    },
-    state,
-    ref
-  );
+  const { fieldProps, ref, state } = useTimeField(props);
 
   return (
     <div {...fieldProps} ref={ref} className={'flex flex-row'}>
