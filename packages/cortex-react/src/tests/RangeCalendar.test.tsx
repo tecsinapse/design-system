@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, renderHook, screen } from '@testing-library/react';
 import React from 'react';
-import { Calendar } from '../components/Calendar';
-import { useCalendar } from '../hooks';
+import { RangeCalendar } from '../components/RangeCalendar';
+import { useRangeCalendar } from '../hooks';
 
-jest.mock('../hooks/useCalendar', () => ({
-  useCalendar: jest.fn(),
+jest.mock('../hooks/useRangeCalendar', () => ({
+  useRangeCalendar: jest.fn(),
 }));
 
 jest.mock('../components/CalendarGrid', () => ({
@@ -22,7 +22,7 @@ jest.mock('../components/CalendarHeader', () => ({
   )),
 }));
 
-describe('Calendar', () => {
+describe('RangeCalendar', () => {
   const mockOnChange = jest.fn();
   const mockUseCalendar = {
     calendarProps: {},
@@ -35,13 +35,23 @@ describe('Calendar', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    (useCalendar as jest.Mock).mockReturnValue(mockUseCalendar);
+    (useRangeCalendar as jest.Mock).mockReturnValue(mockUseCalendar);
   });
 
   it('Should render', () => {
-    render(<Calendar value={new Date('2024-06-15')} onChange={mockOnChange} />);
+    const value = { start: new Date(), end: new Date() };
+    const onChange = jest.fn();
 
-    const calendarElement = screen.getByTestId('calendar-div');
+    renderHook(() => {
+      return useRangeCalendar({
+        value,
+        onChange,
+      });
+    });
+
+    render(<RangeCalendar value={value} onChange={onChange} />);
+
+    const calendarElement = screen.getByTestId('calendar-range-div');
     const calendarHeaderElement = screen.getByTestId('calendar-header');
     const calendarGridElement = screen.getByTestId('calendar-grid');
 
@@ -51,7 +61,12 @@ describe('Calendar', () => {
   });
 
   it('Should call onClickPreviousPage and onClickNextPage on button clicks', () => {
-    render(<Calendar value={new Date('2024-06-15')} onChange={mockOnChange} />);
+    render(
+      <RangeCalendar
+        value={{ start: new Date(), end: new Date() }}
+        onChange={mockOnChange}
+      />
+    );
 
     const prevButton = screen.getByText('Prev');
     const nextButton = screen.getByText('Next');

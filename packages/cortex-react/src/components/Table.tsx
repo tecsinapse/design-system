@@ -1,10 +1,3 @@
-import React, {
-  HTMLAttributes,
-  ReactNode,
-  TableHTMLAttributes,
-  TdHTMLAttributes,
-  ThHTMLAttributes,
-} from 'react';
 import {
   hr,
   tCell,
@@ -14,6 +7,13 @@ import {
   tRoot,
   tRow,
 } from '@tecsinapse/cortex-core';
+import React, {
+  HTMLAttributes,
+  ReactNode,
+  TableHTMLAttributes,
+  TdHTMLAttributes,
+  ThHTMLAttributes,
+} from 'react';
 
 interface TableCommon {
   children?: ReactNode;
@@ -96,7 +96,7 @@ export const Td = ({
   children,
   ...rest
 }: TableCommon & TdHTMLAttributes<HTMLTableCellElement>) => (
-  <td {...rest} data-testid={'td'}>
+  <td data-testid={'td'} {...rest}>
     {children}
   </td>
 );

@@ -4,7 +4,7 @@ import { CalendarGrid } from './CalendarGrid';
 import { CalendarHeader } from './CalendarHeader';
 
 interface CalendarProps {
-  value: Date;
+  value?: Date;
   onChange: (value: Date) => void;
 }
 
