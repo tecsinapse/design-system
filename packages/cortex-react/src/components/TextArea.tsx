@@ -31,6 +31,7 @@ const Box = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     return (
       <div className="flex w-full flex-col">
         <textarea
+          data-testid={'textarea-box'}
           ref={ref}
           id={id ?? name}
           name={name}
@@ -68,6 +69,7 @@ const Face = React.forwardRef<HTMLDivElement, TextAreaFaceProps>(
       <div
         ref={ref}
         className={clsx(input(variants), className)}
+        data-testid={'textarea-face'}
         id="textarea-face"
         {...rest}
       >
