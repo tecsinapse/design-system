@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.2.2-beta.2...@tecsinapse/cortex-react@1.3.0-beta.0) (2024-07-01)
+
+### Features
+
+- adicionando Storie para SearchInput ([63a79c0](https://github.com/tecsinapse/design-system/commit/63a79c08e6d83c3858dcd25ce7b36c8b256d5576))
+- Adicionando testes para o Button ([1841b09](https://github.com/tecsinapse/design-system/commit/1841b0987387a3d7feeaacf389cee0d3d0128d94))
+- Adicionando testes para o TextArea ([19b2fbf](https://github.com/tecsinapse/design-system/commit/19b2fbf261a652aaf74f94efc3a432e250206f3f))
+
 ## [1.2.2-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.2.2-beta.1...@tecsinapse/cortex-react@1.2.2-beta.2) (2024-06-28)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react

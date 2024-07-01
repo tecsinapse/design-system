@@ -180,7 +180,7 @@ importers:
   packages/cortex-react:
     dependencies:
       '@tecsinapse/cortex-core':
-        specifier: 0.2.2-beta.1
+        specifier: 0.2.2-beta.2
         version: link:../cortex-core
       clsx:
         specifier: '*'
