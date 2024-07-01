@@ -13,7 +13,7 @@ const getValidChildren = (children: React.ReactNode) => {
   ) as React.ReactElement[];
 };
 
-interface InputPropsBase {
+export interface InputPropsBase {
   variants?: InputBaseVariants;
   label?: string;
 }
