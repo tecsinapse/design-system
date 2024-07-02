@@ -2,13 +2,13 @@ import { tv } from 'tailwind-variants';
 
 export const calendarCell = tv({
   slots: {
-    cell: 'text-center rounded-mili text-black',
+    cell: 'text-center rounded-mili text-black hover:bg-primary-light',
     button: 'flex aspect-square items-center justify-center',
   },
   variants: {
     isSelected: {
       true: {
-        cell: 'bg-primary-medium text-white',
+        cell: 'bg-primary-medium text-white hover:bg-primary-medium',
       },
     },
     isSelectionStart: {
@@ -28,7 +28,7 @@ export const calendarCell = tv({
     },
     isOutsideVisibleRange: {
       true: {
-        cell: 'text-secondary-light cursor-default',
+        cell: 'text-secondary-light cursor-default  hover:bg-white-500',
         button: 'cursor-default',
       },
     },

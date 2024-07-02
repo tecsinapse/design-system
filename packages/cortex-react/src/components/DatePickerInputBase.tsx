@@ -15,26 +15,12 @@ export const DatePickerInputBase = ({
   onClickCalendar,
 }: DatePickerInputBaseProps) => {
   return (
-    <Input.Face
-      variants={{
-        className: ['flex flex-row justify-between', variants?.className],
-        intent: variants?.intent,
-      }}
-      data-testid={'date-picker-input-base'}
-    >
+    <Input.Face variants={variants} data-testid={'date-picker-input-base'}>
       <span className={labelStyle({})}>{label}</span>
-      <div
-        className={inputBox(
-          '',
-          label,
-          'flex flex-row gap-x-micro items-center'
-        )}
-      >
-        {children}
-      </div>
-      <Input.Right>
+      <div className={inputBox('', label)}>{children}</div>
+      <Input.Right className={''}>
         <LiaCalendar
-          className="cursor-pointer"
+          className="cursor-pointer mt-centi"
           onClick={onClickCalendar}
           data-testid="date-picker-input-base-calendar"
         />

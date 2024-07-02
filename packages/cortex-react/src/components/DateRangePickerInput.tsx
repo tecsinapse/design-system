@@ -26,7 +26,7 @@ export const DateRangePickerInput = (props: DateRangePickerInputProps) => {
         }}
         label={label}
       >
-        <div ref={ref}>
+        <div ref={ref} className="flex flex-row gap-x-micro items-center">
           <DateField
             {...startFieldProps}
             value={dateToCalendarDate(value?.start)}
