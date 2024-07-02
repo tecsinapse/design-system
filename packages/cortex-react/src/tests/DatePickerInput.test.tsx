@@ -9,15 +9,6 @@ jest.mock('../hooks/useDatePickerInput', () => ({
   useDatePickerInput: jest.fn(),
 }));
 
-// jest.mock('../components/DateField', () => ({
-//   DateField: jest.fn(({ onChange }) => (
-//     <input
-//       data-testid="date-field"
-//       onChange={e => onChange(new Date(e.target.value))}
-//     />
-//   )),
-// }));
-
 describe('DatePickerInput', () => {
   const mockOnChange = jest.fn();
   const defaultProps: DatePickerInputProps = {
