@@ -1,13 +1,13 @@
-import React from 'react';
-import { render, renderHook, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { DateSegment } from '../components/DateSegment';
 import { Time } from '@internationalized/date';
+import '@testing-library/jest-dom';
+import { render, renderHook, screen } from '@testing-library/react';
+import React from 'react';
 import { useDateSegment } from 'react-aria';
 import {
   DateSegment as DateSegmentType,
   useTimeFieldState,
 } from 'react-stately';
+import { DateSegment } from '../components/DateSegment';
 jest.mock('react-aria', () => ({
   useDateSegment: jest.fn(),
 }));
@@ -43,7 +43,9 @@ describe('DateSegment Component', () => {
     const dateSegmentElement = screen.getByText('03');
 
     expect(dateSegmentElement).toBeInTheDocument();
-    expect(dateSegmentElement).toHaveClass('text-sub accent-transparent');
+    expect(dateSegmentElement).toHaveClass(
+      'focus:outline-none focus:bg-secondary-light'
+    );
     expect(dateSegmentElement).toHaveAttribute('aria-label', 'Mocked segment');
   });
 });
