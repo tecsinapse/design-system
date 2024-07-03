@@ -3,6 +3,7 @@ import { Input, Button } from './';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { IoSearchOutline } from 'react-icons/io5';
 import { useDebouncedState } from '../hooks';
+import clsx from 'clsx';
 
 interface SearchInputProps {
   label?: string;
@@ -11,6 +12,7 @@ interface SearchInputProps {
   onChange?: (value: string) => void;
   onClick?: (value: string) => void;
   BOUNCE_TIMEOUT?: number;
+  className?: string;
 }
 
 const inputFace = 'bg-white w-full';
@@ -22,6 +24,7 @@ const SearchInput = ({
   onChange,
   onClick,
   BOUNCE_TIMEOUT = 1000,
+  className,
 }: SearchInputProps) => {
   const [bouncedText, setBouncedText] = useState<string>('');
   const [searchInput, setSearchInput] = useDebouncedState<string>(
@@ -43,7 +46,7 @@ const SearchInput = ({
   };
 
   return (
-    <div className="flex flex-row w-full space-x-mili">
+    <div className={clsx('flex flex-row w-full space-x-mili', className)}>
       <Input.Face variants={{ className: inputFace }}>
         {!onClick && (
           <Input.Left className={inputLeft}>
