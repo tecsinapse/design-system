@@ -15,7 +15,9 @@
     "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "clsx": "^2.1.1",
+    "react-popper": "^2.3.0",
     "tailwind-merge": "*",
     "tailwind-variants": "^0.2.1"
   },
