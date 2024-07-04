@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import { Select } from '.';
 import { SelectContext } from './context';
 
-interface SelectOptionsProps<T> {
+export interface SelectOptionsProps<T> {
   options?: T[];
   onSelect: (value: T) => void;
 }
