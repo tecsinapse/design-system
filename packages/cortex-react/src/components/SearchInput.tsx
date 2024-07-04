@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Input, Button } from './';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { IoSearchOutline } from 'react-icons/io5';
+import { twMerge } from 'tailwind-merge';
 import { useDebouncedState } from '../hooks';
+import { Button, Input } from './';
 
-interface SearchInputProps {
+interface SearchInputProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'> {
   label?: string;
   placeholder?: string;
   isSubmitting?: boolean;
@@ -22,6 +24,8 @@ const SearchInput = ({
   onChange,
   onClick,
   BOUNCE_TIMEOUT = 1000,
+  className,
+  ...rest
 }: SearchInputProps) => {
   const [bouncedText, setBouncedText] = useState<string>('');
   const [searchInput, setSearchInput] = useDebouncedState<string>(
@@ -43,7 +47,11 @@ const SearchInput = ({
   };
 
   return (
-    <div className="flex flex-row w-full space-x-mili">
+    <div
+      className={twMerge('flex flex-row w-full space-x-mili', className)}
+      data-testid={'search-input'}
+      {...rest}
+    >
       <Input.Face variants={{ className: inputFace }}>
         {!onClick && (
           <Input.Left className={inputLeft}>

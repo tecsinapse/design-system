@@ -22,7 +22,7 @@ export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
     InputPropsBase {}
 
-export const Box = React.forwardRef<HTMLInputElement, InputProps>(
+export const InputBox = React.forwardRef<HTMLInputElement, InputProps>(
   ({ id, name, variants, label, placeholder, className, ...rest }, ref) => {
     return (
       <div className={'flex w-full flex-col'}>
@@ -50,7 +50,7 @@ export const Box = React.forwardRef<HTMLInputElement, InputProps>(
 type DivBaseProps = React.HTMLAttributes<HTMLDivElement>;
 type InputFaceProps = DivBaseProps & Pick<InputPropsBase, 'variants'>;
 
-export const Face = React.forwardRef<HTMLDivElement, InputFaceProps>(
+export const InputFace = React.forwardRef<HTMLDivElement, InputFaceProps>(
   ({ children, variants, className, ...rest }, ref) => {
     const clones = getValidChildren(children).map(el => {
       return React.cloneElement(el, { ...el.props, variants });
@@ -68,12 +68,12 @@ export const Face = React.forwardRef<HTMLDivElement, InputFaceProps>(
   }
 );
 
-export const Root = React.forwardRef<HTMLInputElement, InputProps>(
+export const InputRoot = React.forwardRef<HTMLInputElement, InputProps>(
   ({ variants, className, ...rest }, ref) => {
     return (
-      <Face variants={variants} className={className}>
-        <Box {...rest} ref={ref} />
-      </Face>
+      <InputFace variants={variants} className={className}>
+        <InputBox {...rest} ref={ref} />
+      </InputFace>
     );
   }
 );
@@ -83,7 +83,7 @@ type InputElementsProps = DivBaseProps & {
   className?: string;
 };
 
-export const Left = React.forwardRef<HTMLDivElement, InputElementsProps>(
+export const InputLeft = React.forwardRef<HTMLDivElement, InputElementsProps>(
   ({ children, className, ...rest }, ref) => {
     return (
       <div className={clsx(className, 'mr-2.5')} {...rest} ref={ref}>
@@ -93,7 +93,7 @@ export const Left = React.forwardRef<HTMLDivElement, InputElementsProps>(
   }
 );
 
-export const Right = React.forwardRef<HTMLDivElement, InputElementsProps>(
+export const InputRight = React.forwardRef<HTMLDivElement, InputElementsProps>(
   ({ children, className, ...rest }, ref) => {
     return (
       <div className={clsx(className, 'ml-2.5')} {...rest} ref={ref}>
@@ -104,9 +104,9 @@ export const Right = React.forwardRef<HTMLDivElement, InputElementsProps>(
 );
 
 export const Input = {
-  Root,
-  Face,
-  Box,
-  Left,
-  Right,
+  Root: InputRoot,
+  Face: InputFace,
+  Box: InputBox,
+  Left: InputLeft,
+  Right: InputRight,
 };

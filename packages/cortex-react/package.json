@@ -20,6 +20,8 @@
   "dependencies": {
     "@tecsinapse/cortex-core": "0.2.2-beta.2",
     "clsx": "*",
+    "tailwind-merge": "*",
+    "@internationalized/date": "*",
     "react-aria": "^3.33.1",
     "react-icons": "^5.2.1",
     "react-stately": "^3.31.1",
