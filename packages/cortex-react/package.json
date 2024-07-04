@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-react",
-  "version": "1.3.0-beta.1",
+  "version": "1.3.0-beta.2",
   "description": "React components based in @tecsinapse/cortex-core",
   "license": "MIT",
   "main": "dist/esm/index.js",
@@ -18,14 +18,14 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@tecsinapse/cortex-core": "0.2.2-beta.2",
-    "clsx": "*",
-    "tailwind-merge": "*",
     "@internationalized/date": "*",
+    "@tecsinapse/cortex-core": "0.3.0-beta.0",
+    "clsx": "*",
     "react-aria": "^3.33.1",
     "react-icons": "^5.2.1",
     "react-stately": "^3.31.1",
-    "sonner": "^1.5.0"
+    "sonner": "^1.5.0",
+    "tailwind-merge": "*"
   },
   "repository": {
     "type": "git",
