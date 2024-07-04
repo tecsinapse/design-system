@@ -1,10 +1,5 @@
-import React, {
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
+import { useOutsideClickListener } from '../../hooks';
 import { SelectContext } from './context';
 
 export interface SelectRootProps<T> {
@@ -23,18 +18,10 @@ export const SelectRoot = <T,>({
   const [open, setOpen] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = useCallback((event: any) => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      setOpen?.(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true);
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
-  }, [handleClickOutside]);
+  useOutsideClickListener({
+    ref: ref,
+    onClickOutside: () => setOpen?.(false),
+  });
 
   return (
     <SelectContext.Provider

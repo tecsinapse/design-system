@@ -4,4 +4,5 @@ export * from './useCalendarGrid';
 export * from './useDatePickerInput';
 export * from './useDateRangePickerInput';
 export * from './useDebouncedState';
+export * from './useOutsideClickListener';
 export * from './useRangeCalendar';
