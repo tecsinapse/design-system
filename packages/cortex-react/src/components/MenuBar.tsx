@@ -177,24 +177,27 @@ export const MenuBar = (props: MenubarProps) => {
           'w-screen px-kilo py-deca flex flex-row justify-between bg-white'
         }
       >
+        <Button variants={{ size: 'square' }} onClick={() => setShow(!show)}>
+          <IoMenu size={16} />
+        </Button>
+        {/*Menubar.left*/}
         <div className={'flex items-center w-fit'}>
-          <Button variants={{ size: 'square' }} onClick={() => setShow(!show)}>
-            <IoMenu size={16} />
-          </Button>
-          {/*Menubar.left*/}
           <img
             src="https://www.tecsinapse.com.br/wp-content/themes/tecsinapse/img/logo.svg"
             alt="TecSinapse"
             className={'w-auto h-giga ml-kilo mr-tera'}
           />
-          {/*Menubar.left*/}
         </div>
+        {/*Menubar.left*/}
         <SearchInput
           placeholder={'O que você deseja buscar?'}
           className={clsx('mr-tera flex-1', animate)}
         />
         {/*Menubar.Rigth*/}
-        <div className={'flex items-center'}>
+        <div className={'flex items-center gap-x-deca'}>
+          <Avatar name={'RC'} />
+          <Avatar name={'RC'} />
+          <Avatar name={'RC'} />
           <Avatar name={'RC'} />
         </div>
         {/*Menubar.Rigth*/}

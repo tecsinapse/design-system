@@ -5,7 +5,7 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { useDebouncedState } from '../hooks';
 import clsx from 'clsx';
 
-interface SearchInputProps {
+export interface SearchInputProps {
   label?: string;
   placeholder?: string;
   isSubmitting?: boolean;

@@ -1,10 +1,11 @@
 import React, { ElementType } from 'react';
 import { StoryFn } from '@storybook/react';
-import { MenuBar } from '../src';
+import { Menubar } from '../src/components/Menubar';
+import { Avatar } from '../src';
 
 export default {
   title: 'Cortex/Menu Bar',
-  component: MenuBar,
+  component: <div />,
   parameters: {
     layout: 'fullscreen',
   },
@@ -246,7 +247,42 @@ const MOST_USED = [
 ];
 
 const Template: StoryFn = args => {
-  return <MenuBar options={EXAMPLE_MENU} />;
+  return (
+    <>
+      <Menubar.Root>
+        <Menubar.Header>
+          <Menubar.Left>
+            <img
+              src="https://www.tecsinapse.com.br/wp-content/themes/tecsinapse/img/logo.svg"
+              alt="TecSinapse"
+              className={'w-auto h-giga ml-kilo mr-tera'}
+            />
+          </Menubar.Left>
+          <Menubar.Search />
+          <Menubar.Right>
+            <Avatar name={'RC'} />
+            <Avatar name={'RC'} />
+            <Avatar name={'RC'} />
+            <Avatar name={'RC'} />
+          </Menubar.Right>
+        </Menubar.Header>
+        <Menubar.Dropdown>
+          <Menubar.MostUsed label={'Mais acessados'}>
+            {MOST_USED.map(item => (
+              //TODO: O que faze nesse caso? para funcionar o estilo de MostUseditem foi necessário adicionar w-full no <a/>
+              <a href={'test.com'} className={'w-full'}>
+                <Menubar.MostUsedItem
+                  title={item.title}
+                  category={item.category}
+                />
+              </a>
+            ))}
+          </Menubar.MostUsed>
+        </Menubar.Dropdown>
+      </Menubar.Root>
+    </>
+  );
+  // return <MenuBar options={EXAMPLE_MENU} />;
 };
 
 export const Base = {
