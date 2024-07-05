@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
 import { StoryFn } from '@storybook/react';
+import React, { useState } from 'react';
 import { Select } from '../src';
+import SearchInput from '../src/components/SearchInput';
 
 export default {
   title: 'Cortex/Select',
@@ -27,8 +28,8 @@ const _options = [
   { key: '5', label: 'Uberlândia' },
   { key: '6', label: 'Salvador' },
   { key: '7', label: 'São Luis' },
-  { key: '7', label: 'Manaus' },
-  { key: '8', label: 'Rio Branco' },
+  { key: '8', label: 'Manaus' },
+  { key: '9', label: 'Rio Branco' },
 ];
 
 type Option = { key: string; label: string };
@@ -38,24 +39,28 @@ const Template: StoryFn = args => {
 
   const handleSearch = React.useCallback((searchArg: string) => {
     setOptions(
-      (options as Option[]).filter(item =>
+      options.filter(item =>
         new RegExp(searchArg, 'ig').test(item.label)
       )
     );
   }, []);
+
   return (
     <div className={'w-[350px]'}>
-      <Select
-        variant={args.variant}
+      <Select.Root 
+        value={value} 
+        labelExtractor={op => op.label} 
         keyExtractor={op => op.key}
-        label={args.label}
-        onSearch={handleSearch}
-        placeholderSearchInput={args.placeholderSearchInput}
-        labelExtractor={op => op.label}
-        onSelect={setValue}
-        value={value}
-        options={options}
-      />
+      >
+        <Select.Trigger label={args.label} />
+        <Select.Popover>
+          <SearchInput className={'px-deca'} onChange={handleSearch} placeholder={args.placeholderSearchInput} />
+          <Select.Options 
+            options={options} 
+            onSelect={setValue}
+          />
+        </Select.Popover>
+      </Select.Root>
     </div>
   );
 };

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.2.2-beta.2...@tecsinapse/cortex-core@0.3.0-beta.0) (2024-07-04)
+
+### Features
+
+- **TS-7186:** Select Composition ([a2d7ef8](https://github.com/tecsinapse/design-system/commit/a2d7ef8ec2e18d692e046853012b671853df741d))
+
 ## [0.2.2-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.2.2-beta.1...@tecsinapse/cortex-core@0.2.2-beta.2) (2024-07-01)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
