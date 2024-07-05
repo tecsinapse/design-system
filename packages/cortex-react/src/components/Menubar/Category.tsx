@@ -12,9 +12,7 @@ const Category = <T,>({ title, options, render }: CategoryType<T>) => {
       <p className={'mb-mili font-bold'}>{title}</p>
       <hr className={'mb-mili'} />
       <div className={'flex flex-col gap-y-mili'}>
-        {options.map(i => {
-          return render(i);
-        })}
+        {options.map(i => render(i))}
       </div>
     </>
   );

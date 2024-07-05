@@ -18,11 +18,14 @@ export const MenubarProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useMenubar = () => {
+export const useMenubar = (): [
+  show: boolean,
+  setShow: (show: boolean) => void,
+] => {
   const context = useContext(MenubarContext);
 
   if (!context) {
     throw new Error('useSnackbar must be used within a SnackbarProvider');
   }
-  return context;
+  return [context.show, context.setShow];
 };

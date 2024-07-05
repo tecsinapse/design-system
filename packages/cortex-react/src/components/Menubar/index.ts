@@ -6,14 +6,24 @@ import Dropdown from './Dropdown';
 import MostUsed from './MostUsed';
 import MostUsedItem from './MostUsedItem';
 import Header from './Header';
+import Category from './Category';
+import Item from './Item';
+import Categories from './Categories';
+import SubItem from './SubItem';
+import DropdownRoot from './DropdownRoot';
 
 export const Menubar = {
   Root,
   Header,
-  Left,
+  HeaderLeft: Left,
   Search,
-  Right,
+  HeaderRight: Right,
   Dropdown,
   MostUsed,
   MostUsedItem,
+  Category,
+  Categories,
+  Item,
+  SubItem,
+  DropdownRoot,
 };

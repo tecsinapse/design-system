@@ -1,11 +1,11 @@
 import React from 'react';
 import SearchInput, { SearchInputProps } from '../SearchInput';
 import clsx from 'clsx';
-import { animate } from './style';
-import { useMenubar } from './Context';
+import { animate } from '../../styles/menubar';
+import { useMenubar } from '../../provider';
 
 const Search = (props: SearchInputProps) => {
-  const { show } = useMenubar();
+  const [show] = useMenubar();
 
   return (
     <SearchInput
