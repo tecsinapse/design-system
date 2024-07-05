@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { Select } from '../components';
-import SearchInput from '../components/SearchInput';
+import { Input, Select } from '../components';
 
 type SelectOption = {
   id: string;
@@ -165,7 +164,7 @@ describe('Select', () => {
       >
         <Select.Trigger label="Select an option" />
         <Select.Popover>
-          <SearchInput placeholder={placeholderText} />
+          <Input.Search placeholder={placeholderText} />
           <Select.Options options={mockOptions} onSelect={onSelectMock} />
         </Select.Popover>
       </Select.Root>

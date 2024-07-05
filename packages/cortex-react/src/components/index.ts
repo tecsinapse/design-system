@@ -15,7 +15,6 @@ export * from './Input';
 export * from './Modal';
 export * from './ProgressBar';
 export * from './RangeCalendar';
-export * from './SearchInput';
 export * from './Select';
 export * from './Skeleton';
 export * from './Table';
