@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { category } from '../../styles/menubar';
 
 export type CategoryType<T> = {
   title: string;
@@ -7,13 +8,12 @@ export type CategoryType<T> = {
 };
 
 const Category = <T,>({ title, options, render }: CategoryType<T>) => {
+  const { text, hr, container } = category();
   return (
     <>
-      <p className={'mb-mili font-bold'}>{title}</p>
-      <hr className={'mb-mili'} />
-      <div className={'flex flex-col gap-y-mili'}>
-        {options.map(i => render(i))}
-      </div>
+      <p className={text()}>{title}</p>
+      <hr className={hr()} />
+      <div className={container()}>{options.map(i => render(i))}</div>
     </>
   );
 };

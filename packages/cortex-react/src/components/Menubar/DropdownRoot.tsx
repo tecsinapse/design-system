@@ -1,8 +1,9 @@
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 import { Menubar } from './index';
 import { MostUsedItemProps } from './MostUsedItem';
+import { DefaultProps } from './interface';
 
-interface MenuItem extends HTMLAttributes<HTMLDivElement> {
+interface MenuItem extends DefaultProps {
   title: string;
   items?: MenuItem[];
 }

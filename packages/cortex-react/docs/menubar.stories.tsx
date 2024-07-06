@@ -1,4 +1,4 @@
-import React, { ElementType, HTMLProps } from 'react';
+import React, { HTMLProps } from 'react';
 import { StoryFn } from '@storybook/react';
 import { Menubar } from '../src/components/Menubar';
 import { Avatar } from '../src';
@@ -11,16 +11,16 @@ export default {
   },
 };
 
-interface MenuItem extends HTMLProps<HTMLDivElement> {
+export interface MenuItem extends HTMLProps<HTMLDivElement> {
   title: string;
   items?: MenuItem[];
 }
 
-interface MenuCategory {
+export interface MenuCategory {
   title: string;
   items: MenuItem[];
 }
-const EXAMPLE_MENU: MenuCategory[] = [
+export const EXAMPLE_MENU: MenuCategory[] = [
   {
     title: 'Categoria do menu 1',
     items: [
@@ -146,27 +146,12 @@ const EXAMPLE_MENU: MenuCategory[] = [
       {
         title: 'Item menu 4',
         href: '#',
-
-        // rightComponents: (
-        //   <div
-        //     style={{
-        //       display: 'flex',
-        //       backgroundColor: '#2db783',
-        //       borderRadius: '4px',
-        //       padding: '3px',
-        //     }}
-        //   >
-        //     <Text fontColor="light" typography="label">
-        //       Novo
-        //     </Text>
-        //   </div>
-        // ),
       },
     ],
   },
 ];
 
-const MOST_USED = [
+export const MOST_USED = [
   {
     title: 'Item de menu 1',
     category: 'Categoria de menu 1',
@@ -189,7 +174,7 @@ const MOST_USED = [
   },
 ];
 
-const Template: StoryFn = args => {
+const Template: StoryFn = () => {
   return (
     <>
       <Menubar.Root>
@@ -214,41 +199,6 @@ const Template: StoryFn = args => {
           mostUsed={MOST_USED}
           labelMostUsed={'Mais acessados'}
         />
-        {/*  <Menubar.MostUsed label={'Mais acessados'} options={[]}>*/}
-        {/*    {MOST_USED.map(item => (*/}
-        {/*      //TODO: O que faze nesse caso? para funcionar o estilo de MostUseditem foi necessário adicionar w-full no <a/>*/}
-        {/*      <Menubar.MostUsedItem*/}
-        {/*        onClick={() => console.log('click')}*/}
-        {/*        title={item.title}*/}
-        {/*        category={item.category}*/}
-        {/*      />*/}
-        {/*    ))}*/}
-        {/*  </Menubar.MostUsed>*/}
-        {/*  <Menubar.Categories>*/}
-        {/*    {EXAMPLE_MENU.map(item => (*/}
-        {/*      <Menubar.Category*/}
-        {/*        title={item.title}*/}
-        {/*        options={item.items}*/}
-        {/*        render={prop => {*/}
-        {/*          return (*/}
-        {/*            <Menubar.Item*/}
-        {/*              subItems={prop?.items ?? []}*/}
-        {/*              renderSubItems={item => {*/}
-        {/*                return (*/}
-        {/*                  <Menubar.SubItem>*/}
-        {/*                    <a href={'teste2.com'}>{item.title}</a>*/}
-        {/*                  </Menubar.SubItem>*/}
-        {/*                );*/}
-        {/*              }}*/}
-        {/*            >*/}
-        {/*              {prop.title}*/}
-        {/*            </Menubar.Item>*/}
-        {/*          );*/}
-        {/*        }}*/}
-        {/*      />*/}
-        {/*    ))}*/}
-        {/*  </Menubar.Categories>*/}
-        {/*</Menubar.Dropdown>*/}
       </Menubar.Root>
     </>
   );
@@ -257,8 +207,4 @@ const Template: StoryFn = args => {
 
 export const Base = {
   render: Template,
-  // args: {
-  //   src: 'https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png',
-  //   name: 'Elon Musk',
-  // },
 };

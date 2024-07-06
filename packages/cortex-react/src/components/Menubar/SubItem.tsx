@@ -1,16 +1,30 @@
 import React from 'react';
 import { DefaultProps } from './interface';
+import { subItem } from '../../styles/menubar';
 
-const SubItem = ({ children, ...rest }: DefaultProps) => {
-  return (
-    <div
-      {...rest}
-      className={
-        'pl-deca text-sub border-l-[1px] border-primary-medium text-secondary-dark hover:text-primary-medium cursor-pointer'
-      }
-    >
+interface SubItemProps extends DefaultProps {
+  href?: string;
+}
+
+const SubItem = ({ children, href, className, ...rest }: SubItemProps) => {
+  const { container } = subItem();
+
+  const Content = (
+    <div {...rest} className={container({ className })}>
       {children}
     </div>
+  );
+
+  return (
+    <>
+      {href ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {Content}
+        </a>
+      ) : (
+        Content
+      )}
+    </>
   );
 };
 
