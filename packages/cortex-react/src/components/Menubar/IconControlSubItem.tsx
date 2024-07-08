@@ -19,7 +19,7 @@ const IconControlSubItem = ({
     setShow(!show);
   };
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} data-testid="icon-sub-item-menubar">
       {show ? (
         <IoCaretUpCircleOutline className={icon()} />
       ) : (

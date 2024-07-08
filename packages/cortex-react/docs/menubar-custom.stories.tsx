@@ -3,7 +3,7 @@ import { StoryFn } from '@storybook/react';
 import { Menubar } from '../src/components/Menubar';
 import { Avatar, Tag } from '../src';
 import { FaStar } from 'react-icons/fa';
-import { EXAMPLE_MENU, MOST_USED } from './menubar.stories';
+import { EXAMPLE_MENU, MOST_USED } from './menuBarMocks';
 
 export default {
   title: 'Cortex/Menu Bar Custom',

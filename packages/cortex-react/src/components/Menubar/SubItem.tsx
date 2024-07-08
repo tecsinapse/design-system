@@ -10,7 +10,11 @@ const SubItem = ({ children, href, className, ...rest }: SubItemProps) => {
   const { container } = subItem();
 
   const Content = (
-    <div {...rest} className={container({ className })}>
+    <div
+      {...rest}
+      data-testid="sub-item-menubar"
+      className={container({ className })}
+    >
       {children}
     </div>
   );

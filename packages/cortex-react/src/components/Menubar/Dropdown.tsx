@@ -9,7 +9,11 @@ const Dropdown = ({ children, ...rest }: DefaultProps) => {
   const [show] = useMenubar();
 
   return (
-    <div className={clsx(dropdown(), animate({ show }))} {...rest}>
+    <div
+      className={clsx(dropdown(), animate({ show }))}
+      data-testid={'dropdown-menubar'}
+      {...rest}
+    >
       {children}
     </div>
   );

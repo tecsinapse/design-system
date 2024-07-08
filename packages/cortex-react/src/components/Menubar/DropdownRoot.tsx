@@ -27,7 +27,7 @@ const DropdownRoot = ({
   return (
     <Menubar.Dropdown>
       {mostUsed && (mostUsed ?? []).length > 0 ? (
-        <Menubar.MostUsed label={labelMostUsed} options={mostUsed ?? []}>
+        <Menubar.MostUsed label={labelMostUsed}>
           {mostUsed.map((item, index) => {
             const { title, category, ...rest } = item;
             if (index > 3) return <></>;
@@ -46,15 +46,16 @@ const DropdownRoot = ({
       )}
 
       <Menubar.Categories>
-        {options.map(item => (
+        {options.map((item, index) => (
           <Menubar.Category
-            key={item.title}
+            key={`${item.title}-${index}`}
             title={item.title}
             options={item.items}
             render={prop => {
               const { title, items, ...rest } = prop;
               return (
                 <Menubar.Item
+                  key={prop.title}
                   {...rest}
                   subItems={items ?? []}
                   renderSubItems={({ title, ...rest }) => {

@@ -10,7 +10,7 @@ interface MostUsedProps extends DefaultProps {
 const MostUsed = ({ label, children, ...rest }: MostUsedProps) => {
   const { container, label: labelClass, containerList } = mostUsed();
   return (
-    <div className={container()} {...rest}>
+    <div className={container()} data-testid={'most-used-menubar'} {...rest}>
       <p className={labelClass()}>{label}</p>
       <div className={containerList()}>{children}</div>
     </div>

@@ -24,7 +24,7 @@ const Item = <T,>({
 
   const Content = (
     <>
-      <div {...rest} className={container()}>
+      <div data-testid="item-menubar" {...rest} className={container()}>
         <div className={text({ className })}>{children}</div>
         {hasSubItems ? (
           <IconControlSubItem show={showSubItem} setShow={setShowSubItem} />

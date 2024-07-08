@@ -14,7 +14,11 @@ const Header = ({ children, className, ...rest }: HeaderProps) => {
   const [show, setShow] = useMenubar();
 
   return (
-    <div className={clsx(root(), className)} {...rest}>
+    <div
+      className={clsx(root(), className)}
+      data-testid={'header-menubar'}
+      {...rest}
+    >
       <Button variants={{ size: 'square' }} onClick={() => setShow(!show)}>
         <IoMenu size={16} />
       </Button>

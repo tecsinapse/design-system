@@ -21,7 +21,11 @@ const MostUsedItem = ({
   } = mostUsedItem();
 
   const Content = (
-    <Card {...rest} className={container()}>
+    <Card
+      {...rest}
+      data-testid="most-used-item-menubar"
+      className={container()}
+    >
       <p className={titleClass()}>{title}</p>
       <p className={categoryClass()}>{category}</p>
     </Card>

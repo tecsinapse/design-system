@@ -50,6 +50,7 @@ const Masonry = ({ children, columns }: MasonryProps): JSX.Element => {
 
   return (
     <div
+      data-testid={'masonry'}
       className={
         'box-border flex w-full flex-row content-stretch justify-center'
       }
