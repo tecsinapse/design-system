@@ -1,11 +1,11 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button } from '../../cortex-core/src';
-import Popover from '../src/components/Popover';
+import { Popover } from '../src/components';
+import { button } from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Cortex/Popover',
-  component: Popover, 
+  component: Popover,
   argTypes: {
     position: {
       options: ['top', 'bottom', 'left', 'right'],
@@ -32,21 +32,14 @@ interface Test {
 const Template: StoryFn<Test> = (args) => {
   return (
     <div className="h-[150px] mt-deca">
-      <Popover
-        content={
-          <div className="p-4">
-            <h3 className="text-lg font-bold">Título do Popover</h3>
-            <p className="mt-2 text-sm text-gray-600">
-              Este é o conteúdo detalhado do Popover. Você pode adicionar mais informações aqui.
-            </p>
-            <button className={button({ intent: 'secondary', className: 'mt-4' })}>Ação</button>
-          </div>
-        }
-        trigger={args.trigger}
-        placement={args.position}
-      >
-        <button className={button({ intent: 'primary' })}>Teste popover</button>
-      </Popover>
+      <Popover.Root>
+        <Popover.Trigger trigger={args.trigger}>
+          <button className={button({ intent: 'primary' })}>Teste Popover</button>
+        </Popover.Trigger>
+        <Popover.Content className="custom-class" placement={args.position}>
+          <div>Content of the Popover</div>
+        </Popover.Content>
+      </Popover.Root>
     </div>
   );
 };
@@ -54,4 +47,5 @@ const Template: StoryFn<Test> = (args) => {
 export const Base = Template.bind({});
 Base.args = {
   position: 'bottom',
+  trigger: 'click'
 };

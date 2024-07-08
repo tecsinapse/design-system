@@ -6,7 +6,7 @@ import Tooltip from '../components/Tooltip';
 describe('Tooltip', () => {
   it('Should show tooltip on hover', async () => {
     render(
-      <Tooltip tooltipText="Tooltip Content" trigger="hover">
+      <Tooltip text="Tooltip Content" trigger="hover">
         <button data-testid="trigger">Hover me</button>
       </Tooltip>
     );
@@ -24,7 +24,7 @@ describe('Tooltip', () => {
 
   it('Should show tooltip on click', async () => {
     render(
-      <Tooltip tooltipText="Tooltip Content" trigger="click">
+      <Tooltip text="Tooltip Content" trigger="click">
         <button data-testid="trigger">Click me</button>
       </Tooltip>
     );
@@ -41,7 +41,7 @@ describe('Tooltip', () => {
 
   it('Should respect placement prop', async () => {
     render(
-      <Tooltip tooltipText="Tooltip Content" trigger="click" placement="top">
+      <Tooltip text="Tooltip Content" trigger="click" placement="top">
         <button data-testid="trigger">Click me</button>
       </Tooltip>
     );
@@ -55,7 +55,7 @@ describe('Tooltip', () => {
 
   it('Should handle closing when clicking trigger again', async () => {
     render(
-      <Tooltip tooltipText="Tooltip Content" trigger="click">
+      <Tooltip text="Tooltip Content" trigger="click">
         <button data-testid="trigger">Click me</button>
       </Tooltip>
     );
@@ -73,32 +73,20 @@ describe('Tooltip', () => {
   it('Should handle different placement values', async () => {
     render(
       <div>
-        <Tooltip
-          tooltipText="Top Tooltip Content"
-          trigger="click"
-          placement="top"
-        >
+        <Tooltip text="Top Tooltip Content" trigger="click" placement="top">
           <button data-testid="top-trigger">Top Trigger</button>
         </Tooltip>
         <Tooltip
-          tooltipText="Bottom Tooltip Content"
+          text="Bottom Tooltip Content"
           trigger="click"
           placement="bottom"
         >
           <button data-testid="bottom-trigger">Bottom Trigger</button>
         </Tooltip>
-        <Tooltip
-          tooltipText="Left Tooltip Content"
-          trigger="click"
-          placement="left"
-        >
+        <Tooltip text="Left Tooltip Content" trigger="click" placement="left">
           <button data-testid="left-trigger">Left Trigger</button>
         </Tooltip>
-        <Tooltip
-          tooltipText="Right Tooltip Content"
-          trigger="click"
-          placement="right"
-        >
+        <Tooltip text="Right Tooltip Content" trigger="click" placement="right">
           <button data-testid="right-trigger">Right Trigger</button>
         </Tooltip>
       </div>

@@ -21,7 +21,7 @@ export default {
       options: ['hover', 'click'],
       control: { type: 'radio' },
     },
-    tooltipText: {
+    text: {
       control: { type: 'text' },
     },
   },
@@ -32,14 +32,14 @@ interface Test {
   width: number;
   height: number;
   trigger: 'hover' | 'click';
-  tooltipText: string;
+  text: string;
 }
 
 const Template: StoryFn<Test> = args => {
   return (
     <div className="h-[100px] mt-deca">
       <Tooltip
-        tooltipText={args.tooltipText}
+        text={args.text}
         trigger={args.trigger}
         placement={args.placement}
         width={args.width}
@@ -58,6 +58,6 @@ export const Base = {
     width: null,
     height: null,
     trigger: 'hover',
-    tooltipText: 'teste',
+    text: 'teste',
   },
 };
