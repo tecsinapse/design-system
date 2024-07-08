@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.1...@tecsinapse/cortex-react@1.3.0-beta.2) (2024-07-04)
+
+### Bug Fixes
+
+- export interface ([360e08c](https://github.com/tecsinapse/design-system/commit/360e08c3dd39f0b549674745a2131754f33ca9a2))
+
+### Features
+
+- **TS-7186:** Select Composition ([a2d7ef8](https://github.com/tecsinapse/design-system/commit/a2d7ef8ec2e18d692e046853012b671853df741d))
+
 # [1.3.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.0...@tecsinapse/cortex-react@1.3.0-beta.1) (2024-07-02)
 
 ### Bug Fixes
