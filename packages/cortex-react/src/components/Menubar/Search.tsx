@@ -1,14 +1,14 @@
 import React from 'react';
-import SearchInput, { SearchInputProps } from '../SearchInput';
+import { Input, InputSearchProps } from '../Input';
 import clsx from 'clsx';
 import { animate } from '../../styles/menubar';
 import { useMenubar } from '../../provider';
 
-const Search = (props: SearchInputProps) => {
+const Search = (props: InputSearchProps) => {
   const [show] = useMenubar();
 
   return (
-    <SearchInput
+    <Input.Search
       {...props}
       className={clsx('mr-tera flex-1', animate({ show: show }))}
     />

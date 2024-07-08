@@ -1,12 +1,11 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Menubar } from '../src/components/Menubar';
-import { Avatar, Tag } from '../src';
+import { Menubar, Avatar, Tag } from '../src';
 import { FaStar } from 'react-icons/fa';
 import { EXAMPLE_MENU, MOST_USED } from './menuBarMocks';
 
 export default {
-  title: 'Cortex/Menu Bar Custom',
+  title: 'Cortex/Menubar/Custom',
   component: Menubar.DropdownRoot,
   parameters: {
     layout: 'fullscreen',

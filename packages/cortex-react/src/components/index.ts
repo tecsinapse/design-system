@@ -22,4 +22,4 @@ export * from './Tag';
 export * from './TextArea';
 export * from './TimeFieldInput';
 export * from './Toggle';
-export * from './MenuBar';
+export * from './Menubar';

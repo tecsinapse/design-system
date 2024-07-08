@@ -1,11 +1,10 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Menubar } from '../src/components/Menubar';
-import { Avatar } from '../src';
+import { Avatar, Menubar } from '../src';
 import { EXAMPLE_MENU, MOST_USED } from './menuBarMocks';
 
 export default {
-  title: 'Cortex/Menu Bar',
+  title: 'Cortex/Menubar',
   component: <div />,
   parameters: {
     layout: 'fullscreen',
