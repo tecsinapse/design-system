@@ -1,46 +1,63 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button, tooltip, tooltipContainer } from '../../cortex-core/src';
+import { button } from '../../cortex-core/src';
+import Tooltip from '../src/components/Tooltip';
 
 export default {
   title: 'Cortex/Tooltip',
-  component: <div />,
+  component: Tooltip,
   argTypes: {
-    position: {
-      options: ['top', 'bottom'],
+    placement: {
+      options: ['top', 'bottom', 'left', 'right'],
+      control: { type: 'select' },
+    },
+    width: {
+      control: { type: 'number' },
+    },
+    height: {
+      control: { type: 'number' },
+    },
+    trigger: {
+      options: ['hover', 'click'],
       control: { type: 'radio' },
+    },
+    text: {
+      control: { type: 'text' },
     },
   },
 };
 
-type Position = 'bottom' | 'top';
 interface Test {
-  position: Position;
+  placement: 'top' | 'bottom' | 'left' | 'right';
+  width: number;
+  height: number;
+  trigger: 'hover' | 'click';
+  text: string;
 }
-const Template: StoryFn<Test> = ({ position }) => {
+
+const Template: StoryFn<Test> = args => {
   return (
-    <>
-      <div className={tooltipContainer()}>
+    <div className="h-[100px] mt-deca">
+      <Tooltip
+        text={args.text}
+        trigger={args.trigger}
+        placement={args.placement}
+        width={args.width}
+        height={args.height}
+      >
         <button className={button({ intent: 'primary' })}>Teste Tooltip</button>
-        <span
-          id={'spanTest'}
-          className={tooltip({
-            position,
-            className: `w-[400px]`,
-          })}
-        >
-          Text text Text text Text text Text text Text text Text text Text text
-          Text text Text text
-        </span>
-      </div>
-    </>
+      </Tooltip>
+    </div>
   );
 };
 
 export const Base = {
   render: Template,
-
   args: {
-    position: 'top',
+    placement: 'bottom',
+    width: null,
+    height: null,
+    trigger: 'hover',
+    text: 'teste',
   },
 };

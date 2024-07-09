@@ -1,7 +1,6 @@
 import { StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
-import { Select } from '../src';
-import SearchInput from '../src/components/SearchInput';
+import { Input, Select } from '../src';
 
 export default {
   title: 'Cortex/Select',
@@ -33,13 +32,15 @@ const _options = [
 ];
 
 type Option = { key: string; label: string };
+
 const Template: StoryFn = args => {
-  const [value, setValue] = useState<{ key: string; label: string }>();
+  const [value, setValue] = useState<Option>();
   const [options, setOptions] = useState<Option[]>(_options);
 
-  const handleSearch = React.useCallback((searchArg: string) => {
+  const handleSearch = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchArg = event.target.value;
     setOptions(
-      options.filter(item =>
+      _options.filter(item =>
         new RegExp(searchArg, 'ig').test(item.label)
       )
     );
@@ -54,7 +55,11 @@ const Template: StoryFn = args => {
       >
         <Select.Trigger label={args.label} />
         <Select.Popover>
-          <SearchInput className={'px-deca'} onChange={handleSearch} placeholder={args.placeholderSearchInput} />
+          <Input.Search 
+            className={'px-deca'} 
+            onChange={handleSearch} 
+            placeholder={args.placeholderSearchInput} 
+          />
           <Select.Options 
             options={options} 
             onSelect={setValue}
