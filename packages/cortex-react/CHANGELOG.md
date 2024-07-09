@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.2...@tecsinapse/cortex-react@1.3.0-beta.3) (2024-07-09)
+
+### Features
+
+- **TS-6995:** adição do componente tooltip e popover usando a lib floating-ui/react ([767c8b5](https://github.com/tecsinapse/design-system/commit/767c8b5025d1318a943e696f78469d77411633d6))
+- **TS-6995:** Pr Suggestion ([70a37d4](https://github.com/tecsinapse/design-system/commit/70a37d42fa5c51a68bfb33333e0dc42e88a73dd7))
+- **TS-6995:** PR Suggestion ([f29dbe1](https://github.com/tecsinapse/design-system/commit/f29dbe19c1783b21e0cb4b057c5e0cf4e2d7b17d))
+
 # [1.3.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.1...@tecsinapse/cortex-react@1.3.0-beta.2) (2024-07-04)
 
 ### Bug Fixes
