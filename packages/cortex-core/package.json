@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "react-popper": "^2.3.0",
     "tailwind-merge": "*",
     "tailwind-variants": "^0.2.1"
   },

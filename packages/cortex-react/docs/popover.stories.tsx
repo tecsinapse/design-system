@@ -32,11 +32,11 @@ interface Test {
 const Template: StoryFn<Test> = (args) => {
   return (
     <div className="h-[150px] mt-deca">
-      <Popover.Root>
-        <Popover.Trigger trigger={args.trigger}>
+      <Popover.Root placement={args.position} trigger={args.trigger}>
+        <Popover.Trigger>
           <button className={button({ intent: 'primary' })}>Teste Popover</button>
         </Popover.Trigger>
-        <Popover.Content className="custom-class" placement={args.position}>
+        <Popover.Content className="custom-class">
           <div>Content of the Popover</div>
         </Popover.Content>
       </Popover.Root>

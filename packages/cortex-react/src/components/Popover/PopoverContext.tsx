@@ -6,8 +6,8 @@ interface PopoverContextProps {
   triggerProps?: any;
   refs?: any;
   isOpen?: boolean;
-  x?: number | null;
-  y?: number | null;
+  x?: number;
+  y?: number;
   strategy?: 'absolute' | 'fixed';
   floatingStyles?: React.CSSProperties;
   placement?: Placement;
@@ -29,17 +29,19 @@ export const usePopoverContext = () => {
 
 interface PopoverProviderProps {
   children: ReactNode;
+  placement?: Placement;
+  trigger?: 'hover' | 'click';
 }
 
-export const PopoverProvider = ({ children }: PopoverProviderProps) => {
-  const [placement, setPlacement] = useState<Placement | undefined>('bottom');
-  const [trigger, setTrigger] = useState<'hover' | 'click'>('click');
+export const PopoverProvider = ({
+  children,
+  placement,
+  trigger,
+}: PopoverProviderProps) => {
   const floatingLogic = useFloatingLogic({ placement, trigger });
 
   return (
-    <PopoverContext.Provider
-      value={{ ...floatingLogic, setPlacement, setTrigger }}
-    >
+    <PopoverContext.Provider value={{ ...floatingLogic }}>
       {children}
     </PopoverContext.Provider>
   );

@@ -6,8 +6,8 @@ import { Popover } from '../components';
 describe('Popover', () => {
   it('Should show content on hover', async () => {
     render(
-      <Popover.Root>
-        <Popover.Trigger trigger="hover">
+      <Popover.Root trigger="hover" placement="bottom">
+        <Popover.Trigger>
           <button data-testid="trigger">Trigger</button>
         </Popover.Trigger>
         <Popover.Content>
@@ -28,8 +28,8 @@ describe('Popover', () => {
 
   it('Should show content on click', async () => {
     render(
-      <Popover.Root>
-        <Popover.Trigger trigger="click">
+      <Popover.Root trigger="click" placement="bottom">
+        <Popover.Trigger>
           <button data-testid="trigger">Trigger</button>
         </Popover.Trigger>
         <Popover.Content>
@@ -50,11 +50,11 @@ describe('Popover', () => {
 
   it('Should respect placement prop', async () => {
     render(
-      <Popover.Root>
-        <Popover.Trigger trigger="click">
+      <Popover.Root trigger="click" placement="top">
+        <Popover.Trigger>
           <button data-testid="trigger">Trigger</button>
         </Popover.Trigger>
-        <Popover.Content placement="top">
+        <Popover.Content>
           <div data-testid="popover-content">Popover Content</div>
         </Popover.Content>
       </Popover.Root>
@@ -69,8 +69,8 @@ describe('Popover', () => {
 
   it('Should render children correctly', () => {
     render(
-      <Popover.Root>
-        <Popover.Trigger trigger="click">
+      <Popover.Root trigger="click" placement="bottom">
+        <Popover.Trigger>
           <button data-testid="trigger">Popover Trigger</button>
         </Popover.Trigger>
         <Popover.Content>
@@ -85,8 +85,8 @@ describe('Popover', () => {
 
   it('Should handle closing when clicking trigger again', async () => {
     render(
-      <Popover.Root>
-        <Popover.Trigger trigger="click">
+      <Popover.Root trigger="click" placement="bottom">
+        <Popover.Trigger>
           <button data-testid="trigger">Trigger</button>
         </Popover.Trigger>
         <Popover.Content>
@@ -105,63 +105,73 @@ describe('Popover', () => {
     expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
 
-  it('Should handle different placement values', async () => {
+  it('Should handle placement "top"', async () => {
     render(
-      <div>
-        <Popover.Root>
-          <Popover.Trigger trigger="click">
-            <button data-testid="top-trigger">Top Trigger</button>
-          </Popover.Trigger>
-          <Popover.Content placement="top">
-            <div data-testid="top-popover-content">Top Popover Content</div>
-          </Popover.Content>
-        </Popover.Root>
-        <Popover.Root>
-          <Popover.Trigger trigger="click">
-            <button data-testid="bottom-trigger">Bottom Trigger</button>
-          </Popover.Trigger>
-          <Popover.Content placement="bottom">
-            <div data-testid="bottom-popover-content">
-              Bottom Popover Content
-            </div>
-          </Popover.Content>
-        </Popover.Root>
-        <Popover.Root>
-          <Popover.Trigger trigger="click">
-            <button data-testid="left-trigger">Left Trigger</button>
-          </Popover.Trigger>
-          <Popover.Content placement="left">
-            <div data-testid="left-popover-content">Left Popover Content</div>
-          </Popover.Content>
-        </Popover.Root>
-        <Popover.Root>
-          <Popover.Trigger trigger="click">
-            <button data-testid="right-trigger">Right Trigger</button>
-          </Popover.Trigger>
-          <Popover.Content placement="right">
-            <div data-testid="right-popover-content">Right Popover Content</div>
-          </Popover.Content>
-        </Popover.Root>
-      </div>
+      <Popover.Root trigger="click" placement="top">
+        <Popover.Trigger>
+          <button data-testid="top-trigger">Top Trigger</button>
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="top-popover-content">Top Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
     );
 
     const topTrigger = screen.getByTestId('top-trigger');
-    const bottomTrigger = screen.getByTestId('bottom-trigger');
-    const leftTrigger = screen.getByTestId('left-trigger');
-    const rightTrigger = screen.getByTestId('right-trigger');
-
     fireEvent.click(topTrigger);
     const topPopover = await screen.findByTestId('top-popover-content');
     expect(topPopover).toBeInTheDocument();
+  });
 
+  it('Should handle placement "bottom"', async () => {
+    render(
+      <Popover.Root trigger="click" placement="bottom">
+        <Popover.Trigger>
+          <button data-testid="bottom-trigger">Bottom Trigger</button>
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="bottom-popover-content">Bottom Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const bottomTrigger = screen.getByTestId('bottom-trigger');
     fireEvent.click(bottomTrigger);
     const bottomPopover = await screen.findByTestId('bottom-popover-content');
     expect(bottomPopover).toBeInTheDocument();
+  });
 
+  it('Should handle placement "left"', async () => {
+    render(
+      <Popover.Root trigger="click" placement="left">
+        <Popover.Trigger>
+          <button data-testid="left-trigger">Left Trigger</button>
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="left-popover-content">Left Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const leftTrigger = screen.getByTestId('left-trigger');
     fireEvent.click(leftTrigger);
     const leftPopover = await screen.findByTestId('left-popover-content');
     expect(leftPopover).toBeInTheDocument();
+  });
 
+  it('Should handle placement "right"', async () => {
+    render(
+      <Popover.Root trigger="click" placement="right">
+        <Popover.Trigger>
+          <button data-testid="right-trigger">Right Trigger</button>
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="right-popover-content">Right Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const rightTrigger = screen.getByTestId('right-trigger');
     fireEvent.click(rightTrigger);
     const rightPopover = await screen.findByTestId('right-popover-content');
     expect(rightPopover).toBeInTheDocument();

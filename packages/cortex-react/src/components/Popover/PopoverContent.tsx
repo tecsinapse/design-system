@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { usePopoverContext } from './PopoverContext';
 import { Placement } from '@floating-ui/react';
@@ -6,22 +6,10 @@ import { Placement } from '@floating-ui/react';
 interface PopoverContentProps {
   children: React.ReactNode;
   className?: string;
-  placement?: Placement;
 }
 
-const PopoverContent = ({
-  children,
-  className,
-  placement,
-}: PopoverContentProps) => {
-  const { isOpen, x, y, strategy, floatingStyles, setPlacement, refs } =
-    usePopoverContext();
-
-  useEffect(() => {
-    if (placement && setPlacement) {
-      setPlacement(placement);
-    }
-  }, [placement, setPlacement]);
+const PopoverContent = ({ children, className }: PopoverContentProps) => {
+  const { isOpen, x, y, strategy, floatingStyles, refs } = usePopoverContext();
 
   return (
     <>
