@@ -3,7 +3,6 @@ import { Menubar } from './index';
 import { MostUsedItemProps } from './MostUsedItem';
 import { DefaultProps } from './interface';
 import MostUsedList from './MostUsedList';
-import CategoryList from './CategoryList';
 
 interface MenuItem extends DefaultProps {
   title: string;
@@ -39,7 +38,32 @@ const DropdownRoot = ({
       )}
 
       <Menubar.Categories>
-        <CategoryList options={options} />
+        {options.map((item, index) => (
+          <Menubar.Category
+            key={`${item.title}-${index}`}
+            title={item.title}
+            options={item.items}
+            render={prop => {
+              const { title, items, ...rest } = prop;
+              return (
+                <Menubar.Item
+                  key={prop.title}
+                  {...rest}
+                  subItems={items ?? []}
+                  renderSubItems={({ title, ...rest }) => {
+                    return (
+                      <Menubar.SubItem key={title} {...rest}>
+                        {title}
+                      </Menubar.SubItem>
+                    );
+                  }}
+                >
+                  {title}
+                </Menubar.Item>
+              );
+            }}
+          />
+        ))}
       </Menubar.Categories>
     </Menubar.Dropdown>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DefaultProps } from './interface';
 import IconControlSubItem from './IconControlSubItem';
 import { item } from '../../styles/menubar';
+import ItemLink from './ItemLink';
 
 export interface ItemProps<T> extends DefaultProps {
   children?: React.ReactNode;
@@ -23,8 +24,8 @@ const Item = <T,>({
   const [showSubItem, setShowSubItem] = useState(false);
   const hasSubItems = (subItems ?? []).length > 0;
 
-  const Content = (
-    <>
+  return (
+    <ItemLink href={href}>
       <div data-testid="item-menubar" {...rest} className={container()}>
         <div className={text({ className })}>{children}</div>
         {hasSubItems ? (
@@ -38,19 +39,7 @@ const Item = <T,>({
       ) : (
         <></>
       )}
-    </>
-  );
-
-  return (
-    <>
-      {href ? (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          {Content}
-        </a>
-      ) : (
-        Content
-      )}
-    </>
+    </ItemLink>
   );
 };
 
