@@ -13,7 +13,7 @@ const ItemLink = ({ href, children, classNameAnchor }: ItemLinkProps) => {
         <a
           href={href}
           target={'_blank'}
-          rel={'noreferrer'}
+          rel={'noopener noreferrer'}
           className={classNameAnchor}
         >
           {children}

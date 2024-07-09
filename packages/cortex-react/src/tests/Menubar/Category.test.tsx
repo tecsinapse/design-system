@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Menubar } from '../../components/Menubar';
+import { Menubar } from '../../components';
 import { CategoryType } from '../../components/Menubar/Category';
 
 jest.mock('../../styles/menubar', () => ({
@@ -9,6 +9,25 @@ jest.mock('../../styles/menubar', () => ({
     text: () => 'mocked-text-class',
     hr: () => 'mocked-hr-class',
     container: () => 'mocked-container-class',
+  }),
+  menubar: () => ({
+    left: 'mocked-left',
+  }),
+  mostUsed: () => ({
+    container: 'mocked-container-class',
+    label: 'mocked-label-class',
+    containerList: 'mocked-container-list-class',
+  }),
+  mostUsedItem: () => ({
+    title: 'mocked-title-class',
+    category: 'mocked-category-class',
+    container: 'mocked-container-class',
+  }),
+  item: () => ({
+    icon: 'mocked-item-icon',
+  }),
+  subItem: () => ({
+    container: 'mocked-container-class',
   }),
 }));
 

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { Menubar } from '../../components/Menubar';
+import { Menubar } from '../../components';
 
 const mockUseMenubar = jest.fn();
 

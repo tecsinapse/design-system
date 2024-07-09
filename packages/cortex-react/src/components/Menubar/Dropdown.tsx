@@ -4,8 +4,9 @@ import { animate, menubar } from '../../styles/menubar';
 import clsx from 'clsx';
 import { useMenubar } from '../../provider';
 
+const { dropdown } = menubar();
+
 const Dropdown = ({ children, ...rest }: DefaultProps) => {
-  const { dropdown } = menubar();
   const [show] = useMenubar();
 
   return (
