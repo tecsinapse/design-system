@@ -2,7 +2,7 @@ import React from 'react';
 import { PopoverProvider } from './PopoverContext';
 import { Placement } from '@floating-ui/react';
 
-interface PopoverRootProps {
+export interface PopoverRootProps {
   children: React.ReactNode;
   placement?: Placement;
   trigger?: 'hover' | 'click';

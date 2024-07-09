@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { usePopoverContext } from './PopoverContext';
 
-interface PopoverTriggerProps {
+export interface PopoverTriggerProps {
   children: React.ReactElement;
 }
 

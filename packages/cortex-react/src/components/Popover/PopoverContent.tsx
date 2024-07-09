@@ -1,9 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import { usePopoverContext } from './PopoverContext';
-import { Placement } from '@floating-ui/react';
 
-interface PopoverContentProps {
+export interface PopoverContentProps {
   children: React.ReactNode;
   className?: string;
 }
