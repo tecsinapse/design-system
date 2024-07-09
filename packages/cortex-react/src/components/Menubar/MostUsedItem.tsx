@@ -8,18 +8,18 @@ export interface MostUsedItemProps extends CardProps {
   href?: string;
 }
 
+const {
+  title: titleClass,
+  category: categoryClass,
+  container,
+} = mostUsedItem();
+
 const MostUsedItem = ({
   title,
   category,
   href,
   ...rest
 }: MostUsedItemProps) => {
-  const {
-    title: titleClass,
-    category: categoryClass,
-    container,
-  } = mostUsedItem();
-
   const Content = (
     <Card
       {...rest}

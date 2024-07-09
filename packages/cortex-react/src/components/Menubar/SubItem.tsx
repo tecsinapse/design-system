@@ -2,13 +2,13 @@ import React from 'react';
 import { DefaultProps } from './interface';
 import { subItem } from '../../styles/menubar';
 
-interface SubItemProps extends DefaultProps {
+export interface SubItemProps extends DefaultProps {
   href?: string;
 }
 
-const SubItem = ({ children, href, className, ...rest }: SubItemProps) => {
-  const { container } = subItem();
+const { container } = subItem();
 
+const SubItem = ({ children, href, className, ...rest }: SubItemProps) => {
   const Content = (
     <div
       {...rest}

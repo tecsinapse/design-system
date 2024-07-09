@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { MenubarProvider } from '../../provider';
 
-interface RootProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface RootProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 

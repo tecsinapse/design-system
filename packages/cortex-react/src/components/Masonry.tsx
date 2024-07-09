@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 
 export interface MasonryProps {
   columns: number;
@@ -7,7 +7,7 @@ export interface MasonryProps {
 }
 
 const Masonry = ({ children, columns }: MasonryProps): JSX.Element => {
-  const getColumns = () => {
+  const getColumns = useMemo(() => {
     const columnsArray: React.ReactNode[][] = Array.from(
       { length: columns },
       () => []
@@ -20,33 +20,32 @@ const Masonry = ({ children, columns }: MasonryProps): JSX.Element => {
     });
 
     return columnsArray;
-  };
+  }, [children, columns]);
 
-  const renderColumn = (column: React.ReactNode[]) => {
-    return column.map((item, index) => {
-      return (
+  const renderColumn = useMemo(
+    () => (column: React.ReactNode[]) => {
+      return column.map((item, index) => (
         <div className={index > 0 ? 'mt-deca' : 'mt-0'} key={index}>
           {item}
         </div>
-      );
-    });
-  };
+      ));
+    },
+    []
+  );
 
-  const renderColumns = () => {
-    return getColumns().map((column, index) => {
-      return (
-        <div
-          className={clsx(
-            'width-0 flex flex-1 flex-col content-start',
-            index > 0 ? 'ml-deca' : 'ml-0'
-          )}
-          key={index}
-        >
-          {renderColumn(column)}
-        </div>
-      );
-    });
-  };
+  const renderColumns = useMemo(() => {
+    return getColumns.map((column, index) => (
+      <div
+        className={clsx(
+          'width-0 flex flex-1 flex-col content-start',
+          index > 0 ? 'ml-deca' : 'ml-0'
+        )}
+        key={index}
+      >
+        {renderColumn(column)}
+      </div>
+    ));
+  }, [getColumns, renderColumn]);
 
   return (
     <div
@@ -55,7 +54,7 @@ const Masonry = ({ children, columns }: MasonryProps): JSX.Element => {
         'box-border flex w-full flex-row content-stretch justify-center'
       }
     >
-      {renderColumns()}
+      {renderColumns}
     </div>
   );
 };

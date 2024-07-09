@@ -5,12 +5,13 @@ import { Button } from '../Button';
 import { IoMenu } from 'react-icons/io5';
 import { useMenubar } from '../../provider';
 
-interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
+const { root } = menubar();
+
 const Header = ({ children, className, ...rest }: HeaderProps) => {
-  const { root } = menubar();
   const [show, setShow] = useMenubar();
 
   return (

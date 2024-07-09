@@ -3,12 +3,14 @@ import { DefaultProps } from './interface';
 import IconControlSubItem from './IconControlSubItem';
 import { item } from '../../styles/menubar';
 
-interface ItemProps<T> extends DefaultProps {
+export interface ItemProps<T> extends DefaultProps {
   children?: React.ReactNode;
   subItems?: T[];
   renderSubItems?: (prop: T) => React.ReactNode;
   href?: string;
 }
+
+const { container, text } = item();
 
 const Item = <T,>({
   children,
@@ -20,7 +22,6 @@ const Item = <T,>({
 }: ItemProps<T>) => {
   const [showSubItem, setShowSubItem] = useState(false);
   const hasSubItems = (subItems ?? []).length > 0;
-  const { container, text } = item();
 
   const Content = (
     <>

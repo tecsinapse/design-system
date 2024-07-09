@@ -5,6 +5,8 @@ import {
   IoCaretUpCircleOutline,
 } from 'react-icons/io5';
 
+const { icon } = item();
+
 const IconControlSubItem = ({
   show,
   setShow,
@@ -12,8 +14,6 @@ const IconControlSubItem = ({
   show: boolean;
   setShow: Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { icon } = item();
-
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setShow(!show);

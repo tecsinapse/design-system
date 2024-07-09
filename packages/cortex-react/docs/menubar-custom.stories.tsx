@@ -12,6 +12,28 @@ export default {
   },
 };
 
+const isFeatured = (title: string) => {
+  return (
+    <>
+      {title === 'Item menu 1' ? (
+        <Tag label={'Novo'} variants={{ intent: 'success' }} />
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
+
+const isHighlighted = (title: string) => (
+  <>
+    {title.includes('Item de') ? (
+      <FaStar className={'text-primary-medium'} />
+    ) : (
+      <></>
+    )}
+  </>
+);
+
 const Template: StoryFn = () => {
   return (
     <>
@@ -68,20 +90,9 @@ const Template: StoryFn = () => {
                           );
                         }}
                       >
-                        {title.includes('Item de') ? (
-                          <FaStar className={'text-primary-medium'} />
-                        ) : (
-                          <></>
-                        )}
+                        {isHighlighted(title)}
                         {title}
-                        {title === 'Item menu 1' ? (
-                          <Tag
-                            label={'Novo'}
-                            variants={{ intent: 'success' }}
-                          />
-                        ) : (
-                          <></>
-                        )}
+                        {isFeatured(title)}
                       </Menubar.Item>
                     </>
                   );
