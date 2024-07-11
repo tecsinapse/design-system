@@ -1,6 +1,7 @@
 import React, { ReactNode, useRef, useState } from 'react';
 import { useOutsideClickListener } from '../../hooks';
 import { SelectContext } from './context';
+import { Popover } from '../Popover/Popover';
 
 export interface SelectRootProps<T> {
   children: ReactNode;
@@ -27,9 +28,11 @@ export const SelectRoot = <T,>({
     <SelectContext.Provider
       value={{ value, open, setOpen, keyExtractor, labelExtractor }}
     >
-      <div className="w-full relative bg-white" ref={ref}>
-        {children}
-      </div>
+      <Popover.Root placement="bottom" trigger="click">
+        <div className="w-full relative bg-white" ref={ref}>
+          {children}
+        </div>
+      </Popover.Root>
     </SelectContext.Provider>
   );
 };

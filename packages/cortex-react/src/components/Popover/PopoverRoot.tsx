@@ -1,6 +1,7 @@
 import React from 'react';
-import { PopoverProvider } from './PopoverContext';
+
 import { Placement } from '@floating-ui/react';
+import { PopoverProvider } from './PopoverContext';
 
 export interface PopoverRootProps {
   children: React.ReactNode;

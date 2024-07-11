@@ -66,13 +66,18 @@ describe('Select', () => {
         </Select.Popover>
       </Select.Root>
     );
-    const button = screen.getByRole('button');
+
+    const button = screen.getByRole('button', { name: /select an option/i });
     fireEvent.click(button);
 
-    const popover = screen.getByTestId('select-popover');
-    expect(popover).toHaveClass('visible');
+    mockOptions.forEach(option => {
+      expect(screen.getByText(option.name)).toBeInTheDocument();
+    });
+
     fireEvent.click(button);
-    expect(popover).toHaveClass('invisible');
+    mockOptions.forEach(option => {
+      expect(screen.queryByText(option.name)).not.toBeInTheDocument();
+    });
   });
 
   it('Should render all options', () => {
@@ -84,10 +89,14 @@ describe('Select', () => {
       >
         <Select.Trigger label="Select an option" />
         <Select.Popover>
-          <Select.Options options={mockOptions} onSelect={onSelectMock} />
+          <Select.Options options={mockOptions} onSelect={jest.fn()} />
         </Select.Popover>
       </Select.Root>
     );
+
+    const button = screen.getByRole('button', { name: /select an option/i });
+    fireEvent.click(button);
+
     mockOptions.map(option =>
       expect(screen.getByText(option.name)).toBeInTheDocument()
     );
@@ -106,12 +115,17 @@ describe('Select', () => {
         </Select.Popover>
       </Select.Root>
     );
-    fireEvent.click(screen.getByRole('button'));
-    const popover = screen.getByTestId('select-popover');
-    expect(popover).toHaveClass('visible');
+
+    fireEvent.click(screen.getByRole('button', { name: /select an option/i }));
+
+    const popover = screen.getByRole('select');
+    expect(popover).toBeVisible();
+
     fireEvent.click(screen.getByText('Option 1'));
+
     expect(onSelectMock).toHaveBeenCalledWith(mockOptions[0]);
-    expect(popover).toHaveClass('invisible');
+
+    expect(popover).not.toBeVisible();
   });
 
   it('Should render selected option as placeholder', () => {
@@ -148,9 +162,14 @@ describe('Select', () => {
         </Select.Popover>
       </Select.Root>
     );
-    [...(mockGroupedOptions ?? [])].map(([key, value]) => {
-      expect(screen.getByText(key));
-      value.map(option => expect(screen.getByText(option.name)));
+
+    fireEvent.click(screen.getByRole('button', { name: /select an option/i }));
+
+    [...(mockGroupedOptions ?? [])].forEach(([key, value]) => {
+      expect(screen.getByText(key)).toBeInTheDocument();
+      value.forEach(option =>
+        expect(screen.getByText(option.name)).toBeInTheDocument()
+      );
     });
   });
 
@@ -169,8 +188,9 @@ describe('Select', () => {
         </Select.Popover>
       </Select.Root>
     );
-    fireEvent.click(screen.getByRole('button'));
-    expect(screen.getByTestId('select-popover')).toHaveClass('visible');
+
+    fireEvent.click(screen.getByRole('button', { name: /select an option/i }));
+
     const searchInputElement = screen.getByPlaceholderText(placeholderText);
     expect(searchInputElement).toBeInTheDocument();
   });

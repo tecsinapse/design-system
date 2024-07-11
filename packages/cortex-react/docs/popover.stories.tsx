@@ -36,7 +36,7 @@ const Template: StoryFn<Test> = (args) => {
         <Popover.Trigger>
           <button className={button({ intent: 'primary' })}>Teste Popover</button>
         </Popover.Trigger>
-        <Popover.Content className="custom-class">
+        <Popover.Content className="text-white">
           <div>Content of the Popover</div>
         </Popover.Content>
       </Popover.Root>

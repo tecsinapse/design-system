@@ -47,7 +47,7 @@ const Template: StoryFn = args => {
   }, []);
 
   return (
-    <div className={'w-[350px]'}>
+    <div className={'w-[350px] h-[250px]'}>
       <Select.Root 
         value={value} 
         labelExtractor={op => op.label} 

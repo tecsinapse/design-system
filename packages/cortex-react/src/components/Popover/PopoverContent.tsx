@@ -5,18 +5,21 @@ import { usePopoverContext } from './PopoverContext';
 export interface PopoverContentProps {
   children: React.ReactNode;
   className?: string;
+  open?: boolean;
 }
 
-const PopoverContent = ({ children, className }: PopoverContentProps) => {
+const PopoverContent = ({ children, className, open }: PopoverContentProps) => {
   const { isOpen, x, y, strategy, floatingStyles, refs } = usePopoverContext();
+
+  const shouldOpen = open ?? isOpen;
 
   return (
     <>
-      {isOpen ? (
+      {shouldOpen ? (
         <div
           ref={refs.setFloating}
           className={clsx(
-            'border border-gray-200 bg-black text-white p-4 rounded-md shadow-lg z-50',
+            'border border-gray-200 bg-black  p-4 rounded-md shadow-lg z-50',
             className
           )}
           style={{

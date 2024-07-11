@@ -1,19 +1,19 @@
-import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { ReactNode, useContext } from 'react';
+import { Popover } from '../Popover/Popover';
 import { SelectContext } from './context';
-
 export interface SelectPopoverProps {
   children: ReactNode;
 }
-
-const { dropdown } = selectVariants();
 
 export const SelectPopover = ({ children }: SelectPopoverProps) => {
   const { open } = useContext(SelectContext);
 
   return (
-    <div className={dropdown({ open })} data-testid={'select-popover'}>
+    <Popover.Content
+      open={open}
+      className="bg-white max-h-[30vh] w-full overflow-y-scroll"
+    >
       {children}
-    </div>
+    </Popover.Content>
   );
 };

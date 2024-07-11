@@ -53,20 +53,19 @@ const Template: StoryFn = args => {
 
   const handleSearch = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const searchArg = event.target.value;
+
     const newMap = new Map();
-    Array.from(options.entries()).forEach(([key, items]) => {
-      const itemsFiltered = items.filter(item => {
-        return new RegExp(searchArg, 'ig').test(item.label);
-      });
-      if (itemsFiltered.length) {
-        newMap.set(key, itemsFiltered);
-      }
-    });
-    setOptions(newMap);
+    Array.from(map.entries()).forEach( ([key, items]) =>  {
+      const itemsFiltered = items.filter(item =>  {
+        return new RegExp(searchArg, 'ig').test(item.label)})
+        if(itemsFiltered.length)
+          newMap.set(key, itemsFiltered)
+    } ) 
+    setOptions(newMap)
   }, [options]);
 
   return (
-    <div className={'w-[350px]'}>
+    <div className={'w-[350px] h-[250px]'}>
       <Select.Root 
         value={value} 
         labelExtractor={op => op.label} 
