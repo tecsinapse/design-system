@@ -1,7 +1,8 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Popover } from '../src/components';
+
 import { button } from '@tecsinapse/cortex-core';
+import { Popover } from '../src';
 
 export default {
   title: 'Cortex/Popover',
@@ -36,7 +37,7 @@ const Template: StoryFn<Test> = (args) => {
         <Popover.Trigger>
           <button className={button({ intent: 'primary' })}>Teste Popover</button>
         </Popover.Trigger>
-        <Popover.Content className="custom-class">
+        <Popover.Content className="text-white">
           <div>Content of the Popover</div>
         </Popover.Content>
       </Popover.Root>

@@ -1,22 +1,24 @@
 import React from 'react';
 import clsx from 'clsx';
-import { usePopoverContext } from './PopoverContext';
+import { usePopoverContext } from './Context';
 
 export interface PopoverContentProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const PopoverContent = ({ children, className }: PopoverContentProps) => {
+export const PopoverContent = ({
+  children,
+  className,
+}: PopoverContentProps) => {
   const { isOpen, x, y, strategy, floatingStyles, refs } = usePopoverContext();
-
   return (
     <>
       {isOpen ? (
         <div
           ref={refs.setFloating}
           className={clsx(
-            'border border-gray-200 bg-black text-white p-4 rounded-md shadow-lg z-50',
+            'border border-gray-200 bg-black  p-4 rounded-md shadow-lg z-50',
             className
           )}
           style={{
@@ -34,5 +36,3 @@ const PopoverContent = ({ children, className }: PopoverContentProps) => {
     </>
   );
 };
-
-export default PopoverContent;

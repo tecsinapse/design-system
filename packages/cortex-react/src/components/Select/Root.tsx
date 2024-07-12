@@ -1,6 +1,7 @@
-import React, { ReactNode, useRef, useState } from 'react';
-import { useOutsideClickListener } from '../../hooks';
-import { SelectContext } from './context';
+import React, { ReactNode } from 'react';
+
+import Content from './Content';
+import { Popover } from '../Popover';
 
 export interface SelectRootProps<T> {
   children: ReactNode;
@@ -15,21 +16,17 @@ export const SelectRoot = <T,>({
   keyExtractor,
   labelExtractor,
 }: SelectRootProps<T>) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useOutsideClickListener({
-    ref: ref,
-    onClickOutside: () => setOpen?.(false),
-  });
-
   return (
-    <SelectContext.Provider
-      value={{ value, open, setOpen, keyExtractor, labelExtractor }}
-    >
-      <div className="w-full relative bg-white" ref={ref}>
-        {children}
-      </div>
-    </SelectContext.Provider>
+    <Popover.Provider>
+      <Popover.Root placement="bottom" trigger="click">
+        <Content
+          keyExtractor={keyExtractor}
+          labelExtractor={labelExtractor}
+          value={value}
+        >
+          {children}
+        </Content>
+      </Popover.Root>
+    </Popover.Provider>
   );
 };

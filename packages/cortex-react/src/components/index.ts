@@ -30,5 +30,6 @@ export * from './Skeleton';
 export * from './ProgressBar';
 export * from './GroupButton';
 export * from './Tooltip';
-export * from './Popover/Popover';
+export * from './Popover';
 export * from './Menubar';
+
