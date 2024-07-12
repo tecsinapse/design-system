@@ -11,7 +11,9 @@ export const useOutsideClickListener = ({
 }: useOutsideClickListenerProps) => {
   const handleClickOutside = useCallback((event: any) => {
     if (ref.current && !ref.current.contains(event.target)) {
-      onClickOutside?.();
+      setTimeout(() => {
+        onClickOutside?.();
+      }, 10);
     }
   }, []);
 

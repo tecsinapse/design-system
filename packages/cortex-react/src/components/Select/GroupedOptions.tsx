@@ -16,12 +16,12 @@ export const SelectGroupedOptions = <T,>({
   groupedLabelExtractor,
   options,
 }: SelectGroupedOptionsProps<T>) => {
-  const { setOpen, keyExtractor } = useContext(SelectContext);
+  const { setIsOpen, keyExtractor } = useContext(SelectContext);
 
   const handleSelect = useCallback(
     (option: T) => {
       onSelect(option);
-      setOpen?.(false);
+      setIsOpen?.(false);
     },
     [onSelect]
   );

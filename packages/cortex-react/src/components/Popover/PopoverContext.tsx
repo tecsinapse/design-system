@@ -6,6 +6,7 @@ interface PopoverContextProps {
   triggerProps?: any;
   refs?: any;
   isOpen?: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   x?: number;
   y?: number;
   strategy?: 'absolute' | 'fixed';
@@ -15,7 +16,7 @@ interface PopoverContextProps {
   setTrigger?: React.Dispatch<React.SetStateAction<'hover' | 'click'>>;
 }
 
-const PopoverContext = createContext<PopoverContextProps | undefined>(
+export const PopoverContext = createContext<PopoverContextProps | undefined>(
   undefined
 );
 

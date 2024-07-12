@@ -12,24 +12,23 @@ export interface SelectTriggerProps {
 const { button } = selectVariants();
 
 export const SelectTrigger = ({ label, disabled }: SelectTriggerProps) => {
-  const { value, setOpen, labelExtractor, open } = useContext(SelectContext);
+  const { value, setIsOpen, labelExtractor, isOpen } =
+    useContext(SelectContext);
   const placeholder = useMemo(
     () => (value ? labelExtractor(value) : label),
     [label, value]
   );
 
   return (
-    <div onClick={() => setOpen?.(!open)}>
-      <Popover.Trigger>
-        <button
-          className={button({ disabled })}
-          disabled={disabled}
-          role="button"
-        >
-          <span data-testid="select-placeholder">{placeholder}</span>
-          <IoChevronDownOutline />
-        </button>
-      </Popover.Trigger>
-    </div>
+    <Popover.Trigger>
+      <button
+        className={button({ disabled })}
+        disabled={disabled}
+        role="button"
+      >
+        <span data-testid="select-placeholder">{placeholder}</span>
+        <IoChevronDownOutline />
+      </button>
+    </Popover.Trigger>
   );
 };
