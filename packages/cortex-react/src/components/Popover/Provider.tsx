@@ -4,7 +4,7 @@ import { Placement } from '@floating-ui/react';
 import { useFloatingLogic } from '../../hooks';
 import { Context } from './Context';
 
-interface PopoverProviderProps {
+export interface PopoverProviderProps {
   children: ReactNode;
   placement?: Placement;
   trigger?: 'hover' | 'click';
