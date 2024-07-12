@@ -1,6 +1,7 @@
 import React, { useCallback, useContext } from 'react';
 import { SelectContext } from './context';
 import { Select } from '.';
+import { usePopoverContext } from '../Popover/Context';
 
 export interface SelectOptionsProps<T> {
   options?: T[];
@@ -11,7 +12,8 @@ export const SelectOptions = <T,>({
   onSelect,
   options,
 }: SelectOptionsProps<T>) => {
-  const { setIsOpen, keyExtractor } = useContext(SelectContext);
+  const { keyExtractor } = useContext(SelectContext);
+  const { setIsOpen } = usePopoverContext();
 
   const handleSelect = useCallback(
     (option: T) => {

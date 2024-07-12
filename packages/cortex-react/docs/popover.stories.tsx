@@ -1,7 +1,8 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { Popover } from '../src/components';
+
 import { button } from '@tecsinapse/cortex-core';
+import { Popover } from '../src';
 
 export default {
   title: 'Cortex/Popover',

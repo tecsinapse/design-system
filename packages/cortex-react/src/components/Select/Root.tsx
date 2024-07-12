@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { PopoverProvider } from '../Popover/PopoverContext';
-import { Popover } from '../Popover/Popover';
+
 import Content from './Content';
+import { Popover } from '../Popover';
 
 export interface SelectRootProps<T> {
   children: ReactNode;
@@ -17,7 +17,7 @@ export const SelectRoot = <T,>({
   labelExtractor,
 }: SelectRootProps<T>) => {
   return (
-    <PopoverProvider>
+    <Popover.Provider>
       <Popover.Root placement="bottom" trigger="click">
         <Content
           keyExtractor={keyExtractor}
@@ -27,6 +27,6 @@ export const SelectRoot = <T,>({
           {children}
         </Content>
       </Popover.Root>
-    </PopoverProvider>
+    </Popover.Provider>
   );
 };

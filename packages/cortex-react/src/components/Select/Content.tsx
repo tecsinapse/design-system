@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { useOutsideClickListener } from '../../hooks';
 import { SelectContext } from './context';
-import { usePopoverContext } from '../Popover/PopoverContext';
+import { usePopoverContext } from '../Popover/Context';
 
 interface ContentProps<T> {
   children: ReactNode;
@@ -16,7 +16,7 @@ const Content = <T,>({
   labelExtractor,
   value,
 }: ContentProps<T>) => {
-  const { isOpen, setIsOpen, refs } = usePopoverContext();
+  const { setIsOpen, refs } = usePopoverContext();
 
   useOutsideClickListener({
     ref: refs.domReference,
@@ -24,9 +24,7 @@ const Content = <T,>({
   });
 
   return (
-    <SelectContext.Provider
-      value={{ value, isOpen, setIsOpen, keyExtractor, labelExtractor }}
-    >
+    <SelectContext.Provider value={{ value, keyExtractor, labelExtractor }}>
       <div className="w-full relative bg-white">{children}</div>
     </SelectContext.Provider>
   );

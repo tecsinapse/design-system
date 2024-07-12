@@ -2,6 +2,7 @@ import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
 import { Select } from '.';
 import { SelectContext } from './context';
+import { usePopoverContext } from '../Popover/Context';
 
 export interface SelectGroupedOptionsProps<T> {
   onSelect: (value: T) => void;
@@ -16,7 +17,8 @@ export const SelectGroupedOptions = <T,>({
   groupedLabelExtractor,
   options,
 }: SelectGroupedOptionsProps<T>) => {
-  const { setIsOpen, keyExtractor } = useContext(SelectContext);
+  const { keyExtractor } = useContext(SelectContext);
+  const { setIsOpen } = usePopoverContext();
 
   const handleSelect = useCallback(
     (option: T) => {

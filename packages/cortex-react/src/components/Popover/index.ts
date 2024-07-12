@@ -1,3 +1,11 @@
-export { default as Root } from './PopoverRoot';
-export { default as Trigger } from './PopoverTrigger';
-export { default as Content } from './PopoverContent';
+import { PopoverRoot as Root } from './Root';
+import { PopoverTrigger as Trigger } from './Trigger';
+import { PopoverContent as Content } from './Content';
+import { PopoverProvider as Provider } from './Provider';
+
+export const Popover = {
+  Root,
+  Trigger,
+  Content,
+  Provider,
+};

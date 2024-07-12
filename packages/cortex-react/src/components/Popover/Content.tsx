@@ -1,13 +1,16 @@
 import React from 'react';
 import clsx from 'clsx';
-import { usePopoverContext } from './PopoverContext';
+import { usePopoverContext } from './Context';
 
 export interface PopoverContentProps {
   children: React.ReactNode;
   className?: string;
 }
 
-const PopoverContent = ({ children, className }: PopoverContentProps) => {
+export const PopoverContent = ({
+  children,
+  className,
+}: PopoverContentProps) => {
   const { isOpen, x, y, strategy, floatingStyles, refs } = usePopoverContext();
   return (
     <>
@@ -33,5 +36,3 @@ const PopoverContent = ({ children, className }: PopoverContentProps) => {
     </>
   );
 };
-
-export default PopoverContent;
