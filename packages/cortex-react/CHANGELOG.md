@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.4...@tecsinapse/cortex-react@1.3.0-beta.5) (2024-07-12)
+
+### Bug Fixes
+
+- tests menubar ([bf88f24](https://github.com/tecsinapse/design-system/commit/bf88f24ce76a58e35622b0004b6bdeff5f10675c))
+
 # [1.3.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.3...@tecsinapse/cortex-react@1.3.0-beta.4) (2024-07-09)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
