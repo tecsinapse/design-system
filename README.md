@@ -30,6 +30,20 @@ Please, [read it and follow it](./CODE_OF_CONDUCT.md).
 If you feel another member of the community violated our code or you are experiencing problems participating in our community because of another individual's behavior,
 please get in touch with our maintainers.
 
+## Running in GitHub Codespaces
+GitHub Codespaces allows you to develop directly in your browser. Follow the steps below to run the project:
+
+1. **Open the Repository on GitHub:**
+   Go to the main page of the repository on GitHub.
+
+2. **Start a Codespace:**
+   Click the **Code** button and then **Codespaces**. Next, click **Create a codespace**.
+
+3. **Wait for Setup:**
+   The Codespace will be set up automatically. This may take a few minutes.
+
+4. **Follow the steps below:**
+   in "Running locally":
 ## Running locally
 
 Recommended requirements:
