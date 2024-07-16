@@ -194,4 +194,30 @@ describe('Select', () => {
     const searchInputElement = screen.getByPlaceholderText(placeholderText);
     expect(searchInputElement).toBeInTheDocument();
   });
+
+  it('Should not close popover on Select.Popover click that is not an option', () => {
+    render(
+      <Select.Root
+        value={undefined}
+        keyExtractor={keyExtractor}
+        labelExtractor={labelExtractor}
+      >
+        <Select.Trigger label="Select an option" />
+        <Select.Popover>
+          <div data-testid={'popover-content'} />
+          <Select.Options options={mockOptions} onSelect={onSelectMock} />
+        </Select.Popover>
+      </Select.Root>
+    );
+
+    const trigger = screen.getByRole('button', { name: /select an option/i });
+
+    fireEvent.click(trigger);
+
+    const popoverContent = screen.getByTestId('popover-content');
+
+    fireEvent.click(popoverContent);
+
+    expect(popoverContent).toBeInTheDocument();
+  });
 });
