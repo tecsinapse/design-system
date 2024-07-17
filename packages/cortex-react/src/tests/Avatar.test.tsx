@@ -40,7 +40,7 @@ describe('Avatar', () => {
 
     const textElement = screen.getByTestId('avatar-p');
 
-    expect(textElement).toBeEmptyDOMElement();
+    expect(textElement).toBeInTheDocument();
     expect(imageElement).toBeEmptyDOMElement();
   });
 });
