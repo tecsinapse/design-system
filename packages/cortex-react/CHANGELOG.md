@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.8...@tecsinapse/cortex-react@1.3.0-beta.9) (2024-07-17)
+
+### Bug Fixes
+
+- select style ([f0e6cb9](https://github.com/tecsinapse/design-system/commit/f0e6cb93fa43693c5f2598179231cc1b79d71ed1))
+
 # [1.3.0-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.7...@tecsinapse/cortex-react@1.3.0-beta.8) (2024-07-17)
 
 ### Features
