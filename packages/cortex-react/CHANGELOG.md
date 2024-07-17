@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.5...@tecsinapse/cortex-react@1.3.0-beta.6) (2024-07-17)
+
+### Bug Fixes
+
+- select closing when clicking anywhere ([ec8af71](https://github.com/tecsinapse/design-system/commit/ec8af715e45dd1333efcdfabc52e0b0d12e0912b))
+
 # [1.3.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.4...@tecsinapse/cortex-react@1.3.0-beta.5) (2024-07-12)
 
 ### Bug Fixes
