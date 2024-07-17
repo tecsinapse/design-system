@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          
+
           if [ ${{ github.base_ref }} = master ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
@@ -124,5 +124,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: run test suites
+        run: pnpm test
+
       - name: deploy pages
         uses: actions/deploy-pages@v4
