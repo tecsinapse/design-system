@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.1...@tecsinapse/cortex-core@0.3.0-beta.2) (2024-07-17)
+
+### Features
+
+- **TS-7557:** divider cortex-react ([c747718](https://github.com/tecsinapse/design-system/commit/c747718e2fda2572012fb43e0f0e61c25cb0b692))
+
 # [0.3.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.0...@tecsinapse/cortex-core@0.3.0-beta.1) (2024-07-09)
 
 ### Features
