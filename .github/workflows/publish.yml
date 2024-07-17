@@ -48,6 +48,9 @@ jobs:
 
       - name: install and prepare
         run: pnpm i
+        
+      - name: run test suites
+        run: pnpm test
 
       - name: setup npm
         run: |
@@ -59,7 +62,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          
+
           if [ ${{ github.base_ref }} = master ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
