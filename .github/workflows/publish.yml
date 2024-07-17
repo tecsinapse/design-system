@@ -48,6 +48,9 @@ jobs:
 
       - name: install and prepare
         run: pnpm i
+        
+      - name: run test suites
+        run: pnpm test
 
       - name: setup npm
         run: |
@@ -124,8 +127,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: run test suites
-        run: pnpm test
-
       - name: deploy pages
         uses: actions/deploy-pages@v4
