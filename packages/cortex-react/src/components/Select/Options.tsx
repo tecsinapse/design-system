@@ -24,7 +24,7 @@ export const SelectOptions = <T,>({
   );
 
   return (
-    <ul role={'select'}>
+    <ul role={'select'} className={'list-none'}>
       {(options ?? []).map(option => (
         <Select.Option
           option={option}
