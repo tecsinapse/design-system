@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.10...@tecsinapse/cortex-react@1.3.0-beta.11) (2024-07-18)
+
+### Bug Fixes
+
+- menubar dropdown e input ([258d475](https://github.com/tecsinapse/design-system/commit/258d47558936c31efd49c9733957b01659a2831d))
+
+# [1.3.0-beta.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.9...@tecsinapse/cortex-react@1.3.0-beta.10) (2024-07-18)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.3.0-beta.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.8...@tecsinapse/cortex-react@1.3.0-beta.9) (2024-07-17)
+
+### Bug Fixes
+
+- select style ([f0e6cb9](https://github.com/tecsinapse/design-system/commit/f0e6cb93fa43693c5f2598179231cc1b79d71ed1))
+
+# [1.3.0-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.7...@tecsinapse/cortex-react@1.3.0-beta.8) (2024-07-17)
+
+### Features
+
+- **TS-7557:** divider cortex-react ([c747718](https://github.com/tecsinapse/design-system/commit/c747718e2fda2572012fb43e0f0e61c25cb0b692))
+
 # [1.3.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.6...@tecsinapse/cortex-react@1.3.0-beta.7) (2024-07-17)
 
 ### Bug Fixes
