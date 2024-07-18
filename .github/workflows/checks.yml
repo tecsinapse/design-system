@@ -6,6 +6,7 @@ on:
 
 jobs:
   run:
+    name: check code
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
