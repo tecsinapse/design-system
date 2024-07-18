@@ -37,7 +37,7 @@ export const inputBaseStyles = tv({
 });
 
 const labelBaseStyles = tv({
-  base: 'absolute duration-300 -translate-y-2 scale-[0.72] top-2.5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-0 peer-focus:scale-[0.72] peer-focus:-translate-y-2 peer-focus:top-2.5 font-bold text-base peer-disabled:text-secondary-light select-none',
+  base: 'absolute duration-300 -translate-y-2 scale-[0.72] top-2.5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-0 peer-focus:scale-[0.72] peer-focus:-translate-y-2 peer-focus:top-2.5 font-bold text-base peer-disabled:text-secondary-light select-none w-max',
   variants: {
     intent: {
       default: [

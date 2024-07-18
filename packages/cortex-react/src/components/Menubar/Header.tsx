@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { clsx } from 'clsx';
 import { menubar } from '../../styles/menubar';
 import { Button } from '../Button';
 import { IoMenu } from 'react-icons/io5';
@@ -16,7 +15,7 @@ const Header = ({ children, className, ...rest }: HeaderProps) => {
 
   return (
     <div
-      className={clsx(root(), className)}
+      className={root({ className })}
       data-testid={'header-menubar'}
       {...rest}
     >
