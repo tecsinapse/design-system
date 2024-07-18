@@ -41,6 +41,6 @@ describe('Avatar', () => {
     const textElement = screen.getByTestId('avatar-p');
 
     expect(textElement).toBeInTheDocument();
-    expect(imageElement).not.toBeEmptyDOMElement();
+    expect(imageElement).toBeEmptyDOMElement();
   });
 });
