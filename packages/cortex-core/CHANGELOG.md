@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.4...@tecsinapse/cortex-core@0.3.0-beta.5) (2024-07-18)
+
+### Bug Fixes
+
+- menubar dropdown e input ([258d475](https://github.com/tecsinapse/design-system/commit/258d47558936c31efd49c9733957b01659a2831d))
+
 # [0.3.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.3...@tecsinapse/cortex-core@0.3.0-beta.4) (2024-07-18)
 
 ### Bug Fixes
