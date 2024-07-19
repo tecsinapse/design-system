@@ -3,10 +3,10 @@ import { tv } from 'tailwind-variants';
 export const menubar = tv({
   slots: {
     header:
-      'relative w-screen px-kilo py-deca flex flex-row justify-between bg-white z-[100]',
+      'w-screen px-kilo py-deca flex flex-row justify-between bg-white z-[100] relative',
     left: 'flex items-center w-fit',
     right: 'flex items-center gap-x-deca',
-    dropdown: 'absolute w-full bg-white flex-1 shadow-default z-[100] px-[8vw]',
+    dropdown: 'w-full bg-white flex-1 shadow-default z-[100] px-[8vw] absolute',
   },
   variants: {
     show: {
