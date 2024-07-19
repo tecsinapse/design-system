@@ -5,8 +5,8 @@ export const menubar = tv({
     header:
       'relative w-screen px-kilo py-deca flex flex-row justify-between bg-white z-[100]',
     left: 'flex items-center w-fit',
-    dropdown: 'w-full bg-white flex-1 shadow-default z-[100] px-[8vw] absolute',
     right: 'flex items-center gap-x-deca',
+    dropdown: 'w-full bg-white flex-1 shadow-default z-[100] px-[8vw] absolute',
   },
   variants: {
     show: {
