@@ -1,4 +1,5 @@
 import { CalendarDate, getLocalTimeZone } from '@internationalized/date';
+import React from 'react';
 
 export const getNameInitials = (name: string) => {
   const nameSplit = name.split(' ');
@@ -20,3 +21,10 @@ export const dateToCalendarDate = (value?: Date) => {
 export const calendarDateToDate = (value: CalendarDate) => {
   return value.toDate(getLocalTimeZone());
 };
+
+export function cloneWithProps(
+  children: React.ReactElement,
+  triggerProps: any
+) {
+  return React.cloneElement(<div>{children}</div>, triggerProps);
+}
