@@ -8,14 +8,14 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-const { root } = menubar();
+const { header } = menubar();
 
 const Header = ({ children, className, ...rest }: HeaderProps) => {
   const [show, setShow] = useMenubar();
 
   return (
     <div
-      className={root({ className })}
+      className={header({ className })}
       data-testid={'header-menubar'}
       {...rest}
     >

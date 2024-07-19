@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.15](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.14...@tecsinapse/cortex-react@1.3.0-beta.15) (2024-07-19)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.3.0-beta.14](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.13...@tecsinapse/cortex-react@1.3.0-beta.14) (2024-07-19)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.3.0-beta.13](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.11...@tecsinapse/cortex-react@1.3.0-beta.13) (2024-07-19)
+
+### Bug Fixes
+
+- position menubar ([a895224](https://github.com/tecsinapse/design-system/commit/a895224c65410faef21cc0d2e3b40bdc520c324a))
+- position menubar ([d12f2d7](https://github.com/tecsinapse/design-system/commit/d12f2d7a657973e2be7eec3e27c557c728bcdd1a))
+- position menubar ([8bb2816](https://github.com/tecsinapse/design-system/commit/8bb2816e7b4b949643796ddf13a0738e754c503d))
+- position menubar ([08ff9f9](https://github.com/tecsinapse/design-system/commit/08ff9f9df0c74d1c491eb8a6109367432d024835))
+- position menubar (error in release) ([04e5423](https://github.com/tecsinapse/design-system/commit/04e5423997ed46bc1896bdc034772722017f67d5))
+
+# [1.3.0-beta.12](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.11...@tecsinapse/cortex-react@1.3.0-beta.12) (2024-07-19)
+
+### Bug Fixes
+
+- position menubar ([a895224](https://github.com/tecsinapse/design-system/commit/a895224c65410faef21cc0d2e3b40bdc520c324a))
+- position menubar ([d12f2d7](https://github.com/tecsinapse/design-system/commit/d12f2d7a657973e2be7eec3e27c557c728bcdd1a))
+- position menubar ([8bb2816](https://github.com/tecsinapse/design-system/commit/8bb2816e7b4b949643796ddf13a0738e754c503d))
+- position menubar ([08ff9f9](https://github.com/tecsinapse/design-system/commit/08ff9f9df0c74d1c491eb8a6109367432d024835))
+
 # [1.3.0-beta.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.10...@tecsinapse/cortex-react@1.3.0-beta.11) (2024-07-18)
 
 ### Bug Fixes
