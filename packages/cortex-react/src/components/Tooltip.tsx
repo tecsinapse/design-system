@@ -37,7 +37,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <>
-        {React.cloneElement(children, triggerProps)}
+        {React.cloneElement(<div>{children}</div>, { ...triggerProps })}
         {isOpen ? (
           <div
             ref={ref || refs.setFloating}
