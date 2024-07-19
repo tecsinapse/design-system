@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePopoverContext } from './Context';
+import { cloneWithProps } from '../utils';
 
 export interface PopoverTriggerProps {
   children: React.ReactElement;
@@ -8,5 +9,5 @@ export interface PopoverTriggerProps {
 export const PopoverTrigger = ({ children }: PopoverTriggerProps) => {
   const { triggerProps } = usePopoverContext();
 
-  return React.cloneElement(<div>{children}</div>, triggerProps);
+  return cloneWithProps(children, triggerProps);
 };

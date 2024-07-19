@@ -1,6 +1,7 @@
 import React, { forwardRef, useRef } from 'react';
 import { FloatingArrow, Placement } from '@floating-ui/react';
 import { useFloatingLogic } from '../hooks';
+import { cloneWithProps } from './utils';
 
 interface TooltipProps {
   children: React.ReactElement;
@@ -37,7 +38,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <>
-        {React.cloneElement(<div>{children}</div>, { ...triggerProps })}
+        {cloneWithProps(children, triggerProps)}
         {isOpen ? (
           <div
             ref={ref || refs.setFloating}
