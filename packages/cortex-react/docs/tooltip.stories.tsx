@@ -1,7 +1,8 @@
 import React from 'react';
 import { StoryFn } from '@storybook/react';
-import { button } from '../../cortex-core/src';
-import { Tooltip } from '../src/components';
+import { Tooltip } from '../src';
+import { button } from '@tecsinapse/cortex-core';
+
 
 export default {
   title: 'Cortex/Tooltip',
