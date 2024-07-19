@@ -11,7 +11,7 @@ const Dropdown = ({ children, ...rest }: DefaultProps) => {
 
   return (
     <div
-      className={clsx(dropdown(), animate({ show }))}
+      className={clsx(dropdown({ show }), animate({ show }))}
       data-testid={'dropdown-menubar'}
       {...rest}
     >
