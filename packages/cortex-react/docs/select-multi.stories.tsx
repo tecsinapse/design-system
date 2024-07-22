@@ -1,9 +1,10 @@
 import { StoryFn } from '@storybook/react';
-import React, { useState } from 'react';
+import { checkbox } from '@tecsinapse/cortex-core';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import { Input, Select } from '../src';
 
 export default {
-  title: 'Cortex/Select',
+  title: 'Cortex/Select/Multi',
   component: Select,
   argTypes: {
     variant: {
@@ -34,7 +35,7 @@ const _options = [
 type Option = { key: string; label: string };
 
 const Template: StoryFn = args => {
-  const [value, setValue] = useState<Option>();
+  const [value, setValue] = useState<Option[]>([]);
   const [options, setOptions] = useState<Option[]>(_options);
 
   const handleSearch = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,6 +47,15 @@ const Template: StoryFn = args => {
     );
   }, []);
 
+  const checkAll = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    {
+        if(!e.target?.checked)
+            setValue([])
+        else 
+            setValue(_options)
+    }
+  }, [])
+
   return (
     <div className={'w-[350px] h-[250px]'}>
       <Select.Root 
@@ -55,12 +65,20 @@ const Template: StoryFn = args => {
       >
         <Select.Trigger label={args.label} />
         <Select.Popover>
-          <Input.Search 
-            className={'px-deca'} 
-            onChange={handleSearch} 
-            placeholder={args.placeholderSearchInput} 
-          />
-          <Select.Options 
+            <div className='flex flex-row items-center gap-x-deca px-deca'>
+                <input
+                    type='checkbox' 
+                    className={checkbox()}
+                    onChange={checkAll}
+                    checked={_options.length === value.length}
+                />
+                <Input.Search 
+                    className={'flex-1'} 
+                    onChange={handleSearch} 
+                    placeholder={args.placeholderSearchInput} 
+                />
+            </div>
+          <Select.MultiOptions 
             options={options} 
             onSelect={(option) => setValue(option)}
           />

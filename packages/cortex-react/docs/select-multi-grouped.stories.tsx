@@ -1,9 +1,10 @@
 import { StoryFn } from '@storybook/react';
-import React, { useState } from 'react';
+import { checkbox } from '@tecsinapse/cortex-core';
+import React, { ChangeEvent, useCallback, useState } from 'react';
 import { Input, Select } from '../src';
 
 export default {
-  title: 'Cortex/Select/Grouped',
+  title: 'Cortex/Select/Multi/Grouped',
   component: <div />,
   argTypes: {
     variant: {
@@ -48,8 +49,9 @@ const map = new Map([
 ]);
 
 const Template: StoryFn = args => {
-  const [value, setValue] = useState<{ key: string; label: string }>();
+  const [value, setValue] = useState<{ key: string; label: string }[]>();
   const [options, setOptions] = useState(map);
+  const flattenMap = Array.from(map.values()).flatMap(value => value)
 
   const handleSearch = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const searchArg = event.target.value;
@@ -64,6 +66,15 @@ const Template: StoryFn = args => {
     setOptions(newMap)
   }, [options]);
 
+  const checkAll = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    {
+        if(!e.target?.checked)
+            setValue([])
+        else 
+            setValue(flattenMap)
+    }
+  }, [])
+
   return (
     <div className={'w-[350px] h-[250px]'}>
       <Select.Root 
@@ -73,8 +84,20 @@ const Template: StoryFn = args => {
       >
         <Select.Trigger label={args.label} />
         <Select.Popover>
-          <Input.Search onChange={handleSearch} placeholder={args.placeholderSearchInput} className='px-deca'/>
-          <Select.GroupedOptions
+          <div className='flex flex-row items-center gap-x-deca px-deca'>
+                <input
+                    type='checkbox' 
+                    className={checkbox()}
+                    onChange={checkAll}
+                    checked={flattenMap.length === value?.length}
+                />
+                <Input.Search 
+                    className={'flex-1'} 
+                    onChange={handleSearch} 
+                    placeholder={args.placeholderSearchInput} 
+                />
+          </div>
+          <Select.MultiGroupedOptions
             groupedLabelExtractor={labelGroup => labelGroup} 
             options={options} 
             onSelect={(option) => setValue(option)}
