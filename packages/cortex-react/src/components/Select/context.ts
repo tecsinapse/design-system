@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
 interface SelectContextProps<T> {
-  value?: T;
+  value?: T | T[];
   keyExtractor: (value: T) => string;
   labelExtractor: (value: T) => string;
 }
