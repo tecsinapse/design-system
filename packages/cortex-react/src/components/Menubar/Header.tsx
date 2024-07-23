@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import { clsx } from 'clsx';
 import { menubar } from '../../styles/menubar';
 import { Button } from '../Button';
 import { IoMenu } from 'react-icons/io5';
@@ -9,14 +8,14 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-const { root } = menubar();
+const { header } = menubar();
 
 const Header = ({ children, className, ...rest }: HeaderProps) => {
   const [show, setShow] = useMenubar();
 
   return (
     <div
-      className={clsx(root(), className)}
+      className={header({ className })}
       data-testid={'header-menubar'}
       {...rest}
     >

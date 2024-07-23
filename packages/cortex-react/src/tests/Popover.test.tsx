@@ -3,6 +3,16 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Popover } from '../components';
 
+const PopoverButton = () => {
+  return (
+    <div className="relative group">
+      <div className="bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer">
+        Clique aqui
+      </div>
+    </div>
+  );
+};
+
 describe('Popover', () => {
   it('Should show content on hover', async () => {
     render(
@@ -175,5 +185,49 @@ describe('Popover', () => {
     fireEvent.click(rightTrigger);
     const rightPopover = await screen.findByTestId('right-popover-content');
     expect(rightPopover).toBeInTheDocument();
+  });
+
+  it('Should show popover with PopoverButton on hover', async () => {
+    render(
+      <Popover.Root trigger="hover" placement="bottom">
+        <Popover.Trigger>
+          <PopoverButton />
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="popover-content">Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const trigger = screen.getByText('Clique aqui');
+
+    fireEvent.mouseEnter(trigger);
+    const popover = await screen.findByTestId('popover-content');
+    expect(popover).toBeInTheDocument();
+
+    fireEvent.mouseLeave(trigger);
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+  });
+
+  it('Should show popover with PopoverButton on click', async () => {
+    render(
+      <Popover.Root trigger="click" placement="bottom">
+        <Popover.Trigger>
+          <PopoverButton />
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="popover-content">Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const trigger = screen.getByText('Clique aqui');
+
+    fireEvent.click(trigger);
+    const popover = await screen.findByTestId('popover-content');
+    expect(popover).toBeInTheDocument();
+
+    fireEvent.click(trigger);
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
 });

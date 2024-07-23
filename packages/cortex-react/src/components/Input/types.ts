@@ -25,3 +25,7 @@ export interface InputRightProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface InputSearchProps extends InputProps {
   bounceTimeout?: number;
 }
+
+export interface InputMaskProps extends InputProps {
+  mask: any;
+}

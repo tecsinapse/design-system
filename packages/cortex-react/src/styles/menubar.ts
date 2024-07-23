@@ -2,11 +2,19 @@ import { tv } from 'tailwind-variants';
 
 export const menubar = tv({
   slots: {
-    root: 'w-screen px-kilo py-deca flex flex-row justify-between bg-white z-[100]',
+    header:
+      'relative w-screen px-kilo py-deca flex flex-row justify-between bg-white z-[100]',
     left: 'flex items-center w-fit',
     right: 'flex items-center gap-x-deca',
-    dropdown:
-      'w-full bg-white flex-1 pt-kilo pb-mega shadow-default px-[8vw] z-[100]',
+    dropdown: 'w-full bg-white flex-1 shadow-default z-[100] px-[8vw] absolute',
+  },
+  variants: {
+    show: {
+      true: {
+        dropdown: 'pt-kilo pb-mega',
+        false: 'max-h-0',
+      },
+    },
   },
 });
 
@@ -54,7 +62,7 @@ export const animate = tv({
   variants: {
     show: {
       true: 'translate-y-0 opacity-1 visible',
-      false: '-translate-y-[120%] opacity-0 invisible',
+      false: '-translate-y-[120%] opacity-0 invisible max-h-0',
     },
   },
 });
