@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
 
-import Content from './Content';
 import { Popover } from '../Popover';
+import Content from './Content';
+import { SelectContext } from './context';
 
 export interface SelectRootProps<T> {
   children: ReactNode;
-  value?: T;
+  value?: T | T[];
   keyExtractor: (value: T) => string;
   labelExtractor: (value: T) => string;
 }
@@ -19,13 +20,9 @@ export const SelectRoot = <T,>({
   return (
     <Popover.Provider>
       <Popover.Root placement="bottom" trigger="click">
-        <Content
-          keyExtractor={keyExtractor}
-          labelExtractor={labelExtractor}
-          value={value}
-        >
-          {children}
-        </Content>
+        <SelectContext.Provider value={{ value, keyExtractor, labelExtractor }}>
+          <Content>{children}</Content>
+        </SelectContext.Provider>
       </Popover.Root>
     </Popover.Provider>
   );

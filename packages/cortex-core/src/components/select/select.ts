@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const option = tv({
-  base: 'text-base py-mili px-deca font-bold hover:bg-primary-xlight hover:text-primary-medium cursor-pointer active:text-primary-medium',
+  base: 'flex flex-row gap-x-deca items-center text-base py-mili px-deca font-bold hover:bg-primary-xlight hover:text-primary-medium cursor-pointer active:text-primary-medium',
   variants: {
     selected: {
       true: 'text-primary-medium',

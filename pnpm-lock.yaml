@@ -186,7 +186,7 @@ importers:
         specifier: '*'
         version: 3.5.4
       '@tecsinapse/cortex-core':
-        specifier: 0.3.0-beta.7
+        specifier: 0.3.0-beta.8
         version: link:../cortex-core
       clsx:
         specifier: '*'
@@ -197,6 +197,9 @@ importers:
       react-icons:
         specifier: ^5.2.1
         version: 5.2.1(react@18.3.1)
+      react-imask:
+        specifier: 7.6.1
+        version: 7.6.1(react@18.3.1)
       react-stately:
         specifier: ^3.31.1
         version: 3.31.1(react@18.3.1)
@@ -2215,6 +2218,17 @@ packages:
       {
         integrity: sha512-x/rqGMdzj+fWZvCOYForTghzbtqPDZ5gPwaoNGHdgDfF2QA/XZbCBp4Moo5scrkAMPhB7z26XM/AaHuIJdgauA==,
       }
+
+  /@babel/runtime-corejs3@7.24.8:
+    resolution:
+      {
+        integrity: sha512-DXG/BhegtMHhnN7YPIvxWd303/9aXvYFD1TjNL3CD6tUrhI2LVsg3Lck0aql5TRH29n4sj3emcROypkZVUfSuA==,
+      }
+    engines: { node: '>=6.9.0' }
+    dependencies:
+      core-js-pure: 3.37.1
+      regenerator-runtime: 0.14.1
+    dev: false
 
   /@babel/runtime@7.24.5:
     resolution:
@@ -12489,6 +12503,14 @@ packages:
     dependencies:
       browserslist: 4.23.0
 
+  /core-js-pure@3.37.1:
+    resolution:
+      {
+        integrity: sha512-J/r5JTHSmzTxbiYYrzXg9w1VpqrYt+gexenBE9pugeyhwPZTAEJddyiReJWsLO6uNQ8xJZFbod6XC7KKwatCiA==,
+      }
+    requiresBuild: true
+    dev: false
+
   /core-util-is@1.0.3:
     resolution:
       {
@@ -15964,6 +15986,16 @@ packages:
     hasBin: true
     dependencies:
       queue: 6.0.2
+
+  /imask@7.6.1:
+    resolution:
+      {
+        integrity: sha512-sJlIFM7eathUEMChTh9Mrfw/IgiWgJqBKq2VNbyXvBZ7ev/IlO6/KQTKlV/Fm+viQMLrFLG/zCuudrLIwgK2dg==,
+      }
+    engines: { npm: '>=4.0.0' }
+    dependencies:
+      '@babel/runtime-corejs3': 7.24.8
+    dev: false
 
   /import-fresh@2.0.0:
     resolution:
@@ -21263,6 +21295,20 @@ packages:
     peerDependencies:
       react: '*'
     dependencies:
+      react: 18.3.1
+    dev: false
+
+  /react-imask@7.6.1(react@18.3.1):
+    resolution:
+      {
+        integrity: sha512-vLNfzcCz62Yzx/GRGh5tiCph9Gbh2cZu+Tz8OiO5it2eNuuhpA0DWhhSlOtVtSJ80+Bx+vFK5De8eQ9AmbkXzA==,
+      }
+    engines: { npm: '>=4.0.0' }
+    peerDependencies:
+      react: '>=0.14.0'
+    dependencies:
+      imask: 7.6.1
+      prop-types: 15.8.1
       react: 18.3.1
     dev: false
 

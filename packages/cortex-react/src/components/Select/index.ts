@@ -1,4 +1,7 @@
 import { SelectGroupedOptions } from './GroupedOptions';
+import { SelectMultiGroupedOptions } from './MultiGroupedOptions';
+import { SelectMultiOption } from './MultiOption';
+import { SelectMultiOptions } from './MultiOptions';
 import { SelectOption } from './Option';
 import { SelectOptions } from './Options';
 import { SelectPopover } from './Popover';
@@ -12,4 +15,7 @@ export const Select = {
   Options: SelectOptions,
   GroupedOptions: SelectGroupedOptions,
   Option: SelectOption,
+  MultiOptions: SelectMultiOptions,
+  MultiGroupedOptions: SelectMultiGroupedOptions,
+  MultiOption: SelectMultiOption,
 };
