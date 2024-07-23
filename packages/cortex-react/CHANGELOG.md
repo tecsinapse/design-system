@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.16](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.15...@tecsinapse/cortex-react@1.3.0-beta.16) (2024-07-23)
+
+### Bug Fixes
+
+- **TS-7751:** correção no Tooltip/Popover quando ele e usado em volta de um componente + testes ([acdee9f](https://github.com/tecsinapse/design-system/commit/acdee9fc7375018722c7dbf66dd29b08bff9ff0e))
+- **TS-7751:** PR Suggestion ([dc50d2c](https://github.com/tecsinapse/design-system/commit/dc50d2c93554206b2d275cd38ae73161bac28a06))
+
 # [1.3.0-beta.15](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.14...@tecsinapse/cortex-react@1.3.0-beta.15) (2024-07-19)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
