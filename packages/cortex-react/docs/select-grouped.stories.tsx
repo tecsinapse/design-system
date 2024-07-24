@@ -73,7 +73,13 @@ const Template: StoryFn = args => {
       >
         <Select.Trigger label={args.label} />
         <Select.Popover>
-          <Input.Search onChange={handleSearch} placeholder={args.placeholderSearchInput} className='px-deca'/>
+          <Input.Search 
+            variants={{
+              className:'flex-1 mx-deca mt-centi' 
+            }}
+            onChange={handleSearch} 
+            placeholder={args.placeholderSearchInput} 
+          />
           <Select.GroupedOptions
             groupedLabelExtractor={labelGroup => labelGroup} 
             options={options} 

@@ -14,6 +14,7 @@ export const InputFace = React.forwardRef<HTMLDivElement, InputFaceProps>(
     const clones = getValidChildren(children).map(el => {
       return React.cloneElement(el, { ...el.props, variants });
     });
+
     return (
       <div
         data-testid={'input-face'}

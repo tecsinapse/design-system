@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react';
 
 import { Popover } from '../Popover';
-import Content from './Content';
+import { Content } from './Content';
 import { SelectContext } from './context';
-
 export interface SelectRootProps<T> {
   children: ReactNode;
   value?: T | T[];
