@@ -21,7 +21,7 @@ export const SelectMultiOptions = <T,>({
           option={option}
           key={keyExtractor(option)}
           onSelectOption={option =>
-            handleSelectMulti(option, currentValue, onSelect)
+            handleSelectMulti(option, currentValue, onSelect, keyExtractor)
           }
         />
       ))}
