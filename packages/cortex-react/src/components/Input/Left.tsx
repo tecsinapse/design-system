@@ -3,7 +3,7 @@ import React from 'react';
 import { InputLeftProps } from './types';
 
 export const InputLeft = React.forwardRef<HTMLDivElement, InputLeftProps>(
-  ({ children, className, ...rest }, ref) => {
+  ({ children, className, ...rest }: InputLeftProps, ref) => {
     return (
       <div className={clsx(className, 'mr-2.5')} {...rest} ref={ref}>
         {children}

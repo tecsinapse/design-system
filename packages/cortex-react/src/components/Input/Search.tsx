@@ -4,8 +4,18 @@ import { Input } from '.';
 import { useDebouncedState } from '../../hooks';
 import { InputSearchProps } from './types';
 
+/** Teste Search docs */
 export const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
-  ({ bounceTimeout = 1000, variants, className, onChange, ...rest }, ref) => {
+  (
+    {
+      bounceTimeout = 1000,
+      variants,
+      className,
+      onChange,
+      ...rest
+    }: InputSearchProps,
+    ref
+  ) => {
     const [bouncedTextEvent, setBouncedTextEvent] =
       useState<ChangeEvent<HTMLInputElement>>();
     const [searchInputEvent, setSearchInputEvent] = useDebouncedState<

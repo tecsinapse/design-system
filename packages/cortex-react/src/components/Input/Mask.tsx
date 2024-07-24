@@ -27,14 +27,14 @@ const useIMaskLocal = (
 export const InputMaskExpression = React.forwardRef<
   HTMLInputElement,
   InputMaskProps
->(({ mask, ...rest }, ref) => {
+>(({ mask, ...rest }: InputMaskProps, ref) => {
   const { iMaskRef } = useIMaskLocal({ mask }, rest, ref);
 
   return <Input.Root {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
 });
 
 export const InputMaskNumber = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ ...rest }, ref) => {
+  ({ ...rest }: InputProps, ref) => {
     const mask = { mask: Number, scale: 2 };
     const { iMaskRef } = useIMaskLocal(mask, rest, ref);
 
@@ -43,7 +43,7 @@ export const InputMaskNumber = React.forwardRef<HTMLInputElement, InputProps>(
 );
 
 export const InputMaskCurrency = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ ...rest }, ref) => {
+  ({ ...rest }: InputProps, ref) => {
     const mask = {
       mask: 'R$ num',
       blocks: {
