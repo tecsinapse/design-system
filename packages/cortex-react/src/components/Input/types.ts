@@ -1,4 +1,5 @@
 import { InputBaseVariants } from '@tecsinapse/cortex-core';
+import { MutableRefObject } from 'react';
 
 export interface InputPropsBase {
   variants?: InputBaseVariants;
@@ -25,7 +26,12 @@ export interface InputRightProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface InputSearchProps extends InputProps {
   bounceTimeout?: number;
 }
-
 export interface InputMaskProps extends InputProps {
+  /** ref to get input raw value */
+  unmaskedRef?: MutableRefObject<string>;
+}
+
+export interface InputMaskExpressionProps extends InputMaskProps {
+  /** Mask based on https://imask.js.org/ */
   mask: any;
 }
