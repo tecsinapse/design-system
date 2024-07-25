@@ -2,11 +2,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import React, { useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
 import { Input } from '../src';
-
-const Face = Input.Face
-const Right = Input.Right
-const Left = Input.Left
-const Box = Input.Box
+import { Masks } from './utils';
 
 export default {
   title: 'Cortex/Input',
@@ -16,13 +12,11 @@ export default {
     'MaskExpression': Input.MaskExpression, 
     'MaskCurrency': Input.MaskCurrency, 
     'MaskNumber': Input.MaskNumber,
-  },
-  parameters: {
   }
 } as Meta<typeof Input.Root>
 
-export const Root: StoryFn<typeof Input.Root> = (args) => {
-  return <Input.Root label={args.label} placeholder='Placeholder' {...args}/>
+export const Default: StoryFn<typeof Input.Root> = (args) => {
+  return <Input.Root label={args.label} placeholder={'Placeholder'} {...args}/>
 };
 
 export const Custom: StoryFn<typeof Input.Face & typeof Input.Box> = (args) => {
@@ -31,7 +25,7 @@ export const Custom: StoryFn<typeof Input.Face & typeof Input.Box> = (args) => {
       <Input.Left>
         <IoPerson size={16} />
       </Input.Left>
-      <Input.Box label={args.label} placeholder={args.placeholder}></Input.Box>
+      <Input.Box label={args.label} placeholder={'Placeholder'}></Input.Box>
       <Input.Right>
         <IoEye />
       </Input.Right>
@@ -44,7 +38,7 @@ export const Search: StoryFn<typeof Input.Search> = (args) => {
 
   return (
       <Input.Search 
-        placeholder={args.placeholder} 
+        placeholder={'Placeholder'} 
         label={args.label}
         onChange={(e) => setValue(e.target?.value)}
         defaultValue={value}
@@ -52,16 +46,16 @@ export const Search: StoryFn<typeof Input.Search> = (args) => {
   );
 }
 
-export const ExpressionMask: StoryFn<typeof Input.MaskExpression> =  (args) => {
+export const ExpressionMask: StoryFn<typeof Input.MaskExpression> =  ({mask = [Masks.PHONE, Masks.PHONE_EXTENDED], ...args}) => {
   const [expressionValue, setExpressionValue] = useState('1112345678')  
 
   return (
       <Input.MaskExpression
-        placeholder={args.placeholder} 
-        label={'Expression Mask'}
+        placeholder={'Placeholder'} 
+        label={args.label}
         onChange={(e) => setExpressionValue(e.target?.value)}
         defaultValue={expressionValue}
-        mask={args.mask}
+        mask={mask}
       />
   );
 };
@@ -71,7 +65,7 @@ export const NumberMask: StoryFn<typeof Input.MaskNumber> =  (args) => {
   
   return (
     <Input.MaskNumber
-      placeholder={args.placeholder} 
+      placeholder={'Placeholder'} 
       label={'Number Mask'}
       onChange={(e) => setNumberValue(e.target?.value)}
       defaultValue={numberValue}
@@ -84,7 +78,7 @@ export const CurrencyMask: StoryFn<typeof Input.MaskCurrency> =  (args) =>{
 
   return (
     <Input.MaskCurrency
-      placeholder={args.placeholder} 
+      placeholder={'Placeholder'} 
       label={'Currency Mask'}
       onChange={(e) => setCurrencyValue(e.target?.value)}
       defaultValue={currencyValue}
