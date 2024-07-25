@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { ElementType } from 'react';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
-import { BreadcrumbType } from '../components';
+
+export interface BreadcrumbType {
+  title: string;
+  Component: ElementType;
+  componentProps?: any;
+}
 
 export interface BreadcrumbItemProps extends BreadcrumbType {
   isLast: boolean;
 }
+
 export const BreadcrumbItem = ({
   isLast,
   Component,

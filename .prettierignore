@@ -1,5 +1,4 @@
 node_modules
 dist/
 *.d.ts
-*.stories.tsx
 *.requires.ts

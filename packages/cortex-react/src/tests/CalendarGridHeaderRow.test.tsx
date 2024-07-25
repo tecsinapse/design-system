@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { CalendarGridHeaderRow } from '../components/CalendarGridHeaderRow';
+import { CalendarGridHeaderRow } from '../components/Calendar/CalendarGridHeaderRow';
 
 const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
 

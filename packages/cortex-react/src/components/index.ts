@@ -17,7 +17,6 @@ export * from './Menubar';
 export * from './Modal';
 export * from './Popover';
 export * from './ProgressBar';
-export * from './RangeCalendar';
 export * from './Select';
 export * from './Skeleton';
 export * from './Table';

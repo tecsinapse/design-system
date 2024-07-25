@@ -1,9 +1,9 @@
 import { CalendarDate } from '@internationalized/date';
 import React from 'react';
 import { CalendarState, RangeCalendarState } from 'react-stately';
-import { useCalendarCell } from '../hooks';
-import { calendarCell } from '../styles';
-import { Td } from './Table';
+import { useCalendarCell } from '../../hooks';
+import { calendarCell } from '../../styles';
+import { Td } from '../Table';
 
 interface CalendarCellProps {
   state: CalendarState | RangeCalendarState;

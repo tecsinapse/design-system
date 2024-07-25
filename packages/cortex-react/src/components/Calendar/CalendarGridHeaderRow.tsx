@@ -1,5 +1,5 @@
 import React from 'react';
-import { THeadCell } from './Table';
+import { THeadCell } from '../Table';
 
 interface CalendarGridHeaderRowProps {
   weekDays: string[];

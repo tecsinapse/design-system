@@ -1,7 +1,7 @@
 import { CalendarDate } from '@internationalized/date';
 import React from 'react';
 import { useDatePickerInput } from '../hooks';
-import { Calendar } from './Calendar';
+import { Calendar } from './Calendar/Calendar';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
 import { InputPropsBase } from './Input';

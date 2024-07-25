@@ -1,5 +1,5 @@
-import React from 'react';
 import { StoryFn } from '@storybook/react';
+import React from 'react';
 import { checkbox } from '../../cortex-core/src';
 
 export default {
@@ -7,6 +7,7 @@ export default {
   component: <input />,
 };
 
+//TODO: create cortex-react checkbox
 const Template: StoryFn = () => {
   return <input type={'checkbox'} className={checkbox()}></input>;
 };

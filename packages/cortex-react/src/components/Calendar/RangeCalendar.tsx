@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRangeCalendar } from '../hooks';
+import { useRangeCalendar } from '../../hooks';
 import { CalendarGrid } from './CalendarGrid';
 import { CalendarHeader } from './CalendarHeader';
 
@@ -8,7 +8,7 @@ export type DateRange = {
   end: Date;
 };
 
-interface RangeCalendarProps {
+export interface RangeCalendarProps {
   value?: DateRange;
   onChange: (value: DateRange) => void;
 }

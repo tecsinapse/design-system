@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCalendar } from '../hooks';
+import { useCalendar } from '../../hooks';
 import { CalendarGrid } from './CalendarGrid';
 import { CalendarHeader } from './CalendarHeader';
 

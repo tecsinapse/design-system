@@ -4,7 +4,7 @@ import React from 'react';
 import {
   CalendarHeader,
   CalendarHeaderProps,
-} from '../components/CalendarHeader';
+} from '../components/Calendar/CalendarHeader';
 
 const title = 'Junho De 2026';
 

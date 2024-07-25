@@ -18,7 +18,17 @@ const preview: Preview = {
         <>
           <DocBlock.Title />
           <DocBlock.Description />
-          <DocBlock.Canvas />
+          <div
+            style={{
+              backgroundColor: '#e2e6e9',
+              padding: 16,
+              borderRadius: 4,
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <DocBlock.Story />
+          </div>
           <div
             style={{
               color: '#5C6870',
@@ -33,7 +43,7 @@ const preview: Preview = {
             PROPS
           </div>
           <DocBlock.ArgTypes />
-          <DocBlock.Stories includePrimary={false} />
+          <DocBlock.Stories />
         </>
       ),
     },

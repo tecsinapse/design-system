@@ -1,6 +1,6 @@
 import React from 'react';
 import { CalendarState, RangeCalendarState } from 'react-stately';
-import { useCalendarGrid } from '../hooks';
+import { useCalendarGrid } from '../../hooks';
 import { CalendarGridBodyRows } from './CalendarGridBodyRows';
 import { CalendarGridHeaderRow } from './CalendarGridHeaderRow';
 
