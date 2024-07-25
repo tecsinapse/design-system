@@ -5,11 +5,13 @@ import { SelectContext } from './context';
 export interface SelectOptionProps<T> {
   option: T;
   onSelectOption: (option: T) => void;
+  grouped?: boolean;
 }
 
 export const SelectOption = <T,>({
   onSelectOption,
   option,
+  grouped = false,
 }: SelectOptionProps<T>) => {
   const { keyExtractor, labelExtractor, value } = useContext(SelectContext);
 
@@ -18,6 +20,7 @@ export const SelectOption = <T,>({
       onClick={() => onSelectOption(option)}
       className={styleOption({
         selected: value && keyExtractor(value) === keyExtractor(option),
+        grouped,
       })}
       role={'option'}
     >

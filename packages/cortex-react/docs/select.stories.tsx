@@ -56,7 +56,9 @@ const Template: StoryFn = args => {
         <Select.Trigger label={args.label} />
         <Select.Popover>
           <Input.Search 
-            className={'px-deca'} 
+            variants={{
+              className:'flex-1 mx-deca mt-centi' 
+            }}
             onChange={handleSearch} 
             placeholder={args.placeholderSearchInput} 
           />

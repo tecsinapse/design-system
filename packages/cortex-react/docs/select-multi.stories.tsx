@@ -1,6 +1,5 @@
 import { StoryFn } from '@storybook/react';
-import { checkbox } from '@tecsinapse/cortex-core';
-import React, { ChangeEvent, useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { Input, Select } from '../src';
 
 export default {
@@ -47,15 +46,6 @@ const Template: StoryFn = args => {
     );
   }, []);
 
-  const checkAll = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    {
-        if(!e.target?.checked)
-            setValue([])
-        else 
-            setValue(_options)
-    }
-  }, [])
-
   return (
     <div className={'w-[350px] h-[250px]'}>
       <Select.Root 
@@ -65,23 +55,19 @@ const Template: StoryFn = args => {
       >
         <Select.Trigger label={args.label} />
         <Select.Popover>
-            <div className='flex flex-row items-center gap-x-deca px-deca'>
-                <input
-                    type='checkbox' 
-                    className={checkbox()}
-                    onChange={checkAll}
-                    checked={_options.length === value.length}
-                />
-                <Input.Search 
-                    className={'flex-1'} 
-                    onChange={handleSearch} 
-                    placeholder={args.placeholderSearchInput} 
-                />
-            </div>
+          <Input.Search 
+            variants={{
+              className:'flex-1 mx-deca mt-centi' 
+            }}
+            onChange={handleSearch} 
+            placeholder={args.placeholderSearchInput} 
+          />
           <Select.MultiOptions 
             options={options} 
             onSelect={(option) => setValue(option)}
-          />
+          >
+            <Select.MultiCheckAllOptions />
+          </Select.MultiOptions>
         </Select.Popover>
       </Select.Root>
     </div>

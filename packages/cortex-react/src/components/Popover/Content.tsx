@@ -1,5 +1,5 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import { usePopoverContext } from './Context';
 
 export interface PopoverContentProps {
@@ -18,7 +18,7 @@ export const PopoverContent = ({
         <div
           ref={refs.setFloating}
           className={clsx(
-            'border border-gray-200 bg-black  p-4 rounded-md shadow-lg z-50',
+            'border border-gray-200 bg-black p-[0px] rounded-md shadow-lg z-50',
             className
           )}
           style={{
