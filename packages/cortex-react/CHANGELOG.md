@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.18](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.17...@tecsinapse/cortex-react@1.3.0-beta.18) (2024-07-25)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.3.0-beta.17](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.16...@tecsinapse/cortex-react@1.3.0-beta.17) (2024-07-24)
+
+### Bug Fixes
+
+- handleMultiSelect using keyExtractor ([3e0491c](https://github.com/tecsinapse/design-system/commit/3e0491ca6d1dd2303d7849a747dddae25b9c1a24))
+
 # [1.3.0-beta.16](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.15...@tecsinapse/cortex-react@1.3.0-beta.16) (2024-07-23)
 
 ### Bug Fixes

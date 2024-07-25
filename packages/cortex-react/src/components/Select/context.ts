@@ -10,3 +10,14 @@ export const SelectContext = createContext<SelectContextProps<any>>({
   keyExtractor: () => '',
   labelExtractor: () => '',
 });
+
+interface SelectMultiOptionsContextProps<T> {
+  options?: T[];
+  onSelect: (value: T[]) => void;
+}
+
+export const SelectMultiOptionsContext = createContext<
+  SelectMultiOptionsContextProps<any>
+>({
+  onSelect: () => '',
+});

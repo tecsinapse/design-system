@@ -291,47 +291,4 @@ describe('Select', () => {
 
     expect(checkBoxElements.length).toBe(mockedGroupedOptionsFlatten.length);
   });
-
-  // TODO: FIX TEST
-  // it('Should check option by clicking at option', async () => {
-  //   const [value, setValue] = useState<
-  //     {
-  //       id: string;
-  //       name: string;
-  //     }[]
-  //   >([]);
-
-  //   render(
-  //     <Select.Root
-  //       value={value}
-  //       keyExtractor={keyExtractor}
-  //       labelExtractor={labelExtractor}
-  //     >
-  //       <Select.Trigger label="Select an option" />
-  //       <Select.Popover>
-  //         <Select.MultiOptions
-  //           options={mockOptions}
-  //           onSelect={values => setValue(values)}
-  //         />
-  //       </Select.Popover>
-  //     </Select.Root>
-  //   );
-
-  //   const trigger = screen.getByRole('button');
-
-  //   fireEvent.click(trigger);
-
-  //   const optionElements = screen.getAllByRole('option');
-
-  //   fireEvent.click(optionElements[0]);
-  //   fireEvent.click(optionElements[2]);
-
-  //   const checkBoxElements = screen.getAllByRole(
-  //     'checkbox'
-  //   ) as HTMLInputElement[];
-
-  //   expect(checkBoxElements[0]).toBeChecked();
-  //   expect(checkBoxElements[1]).not.toBeChecked();
-  //   expect(checkBoxElements[2]).toBeChecked();
-  // });
 });

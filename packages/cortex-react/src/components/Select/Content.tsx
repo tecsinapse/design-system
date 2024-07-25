@@ -6,7 +6,7 @@ interface ContentProps {
   children: ReactNode;
 }
 
-const Content = ({ children }: ContentProps) => {
+export const Content = ({ children }: ContentProps) => {
   const { setIsOpen } = usePopoverContext();
   const ref = useRef(null);
 
@@ -21,5 +21,3 @@ const Content = ({ children }: ContentProps) => {
     </div>
   );
 };
-
-export default Content;
