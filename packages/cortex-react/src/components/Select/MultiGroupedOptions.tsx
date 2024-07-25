@@ -1,5 +1,5 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Select } from '.';
 import { SelectContext, SelectMultiOptionsContext } from './context';
 import { handleSelectMulti } from './utils';
@@ -20,9 +20,11 @@ export const SelectMultiGroupedOptions = <T,>({
   children,
 }: SelectMultiGroupedOptionsProps<T>) => {
   const { value: currentValue = [], keyExtractor } = useContext(SelectContext);
-  const flattenMap = options
-    ? Array.from(options?.values()).flatMap(value => value)
-    : [];
+  const flattenMap = useMemo(
+    () =>
+      options ? Array.from(options?.values()).flatMap(value => value) : [],
+    [options]
+  );
 
   return (
     <ul role={'select'} className={list()}>
