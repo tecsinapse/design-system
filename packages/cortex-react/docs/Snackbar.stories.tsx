@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Button, DefaultSnack } from '../src';
 import {
@@ -9,9 +9,6 @@ import {
 export default {
   title: 'Cortex/Snackbar',
   component: DefaultSnack,
-  args: {
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-  },
   decorators: [
     Story => (
       <SnackbarProvider>
@@ -19,92 +16,99 @@ export default {
       </SnackbarProvider>
     ),
   ],
-  parameters: {
-    docs: {
-      story: {
-        inline: false,
-        iframeHeight: 400,
-      },
-    },
-  },
 } as Meta<typeof DefaultSnack>;
 
-export const Primary: StoryFn<typeof DefaultSnack> = args => {
-  const { snackbar } = useSnackbar();
-  return (
-    <Button
-      variants={{ intent: 'primary' }}
-      onClick={() => snackbar.show('default', args.text)}
-    >
-      Show Snack Default
-    </Button>
-  );
+export const Default: StoryObj<typeof DefaultSnack> = {
+  args: {
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  render: args => {
+    const { snackbar } = useSnackbar();
+    return (
+      <div className="h-[300px] w-[70vw]">
+        <Button
+          variants={{ intent: 'primary' }}
+          onClick={() => snackbar.show('default', args.text)}
+        >
+          Show Snack default
+        </Button>
+      </div>
+    );
+  },
 };
 
-export const Error: StoryFn<typeof DefaultSnack> = args => {
-  const { snackbar } = useSnackbar();
-  return (
-    <Button
-      variants={{ intent: 'error' }}
-      onClick={() =>
-        snackbar.show(
-          'error',
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-        )
-      }
-    >
-      Show Snack Error
-    </Button>
-  );
+export const Error: StoryObj<typeof DefaultSnack> = {
+  args: {
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  render: args => {
+    const { snackbar } = useSnackbar();
+    return (
+      <div className="h-[300px] w-[70vw]">
+        <Button
+          variants={{ intent: 'primary' }}
+          onClick={() => snackbar.show('error', args.text)}
+        >
+          Show Snack error
+        </Button>
+      </div>
+    );
+  },
 };
 
-export const Success: StoryFn<typeof DefaultSnack> = args => {
-  const { snackbar } = useSnackbar();
-  return (
-    <Button
-      variants={{ intent: 'success' }}
-      onClick={() =>
-        snackbar.show(
-          'success',
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-        )
-      }
-    >
-      Show Snack success
-    </Button>
-  );
+export const Success: StoryObj<typeof DefaultSnack> = {
+  args: {
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  render: args => {
+    const { snackbar } = useSnackbar();
+    return (
+      <div className="h-[300px] w-[70vw]">
+        <Button
+          variants={{ intent: 'primary' }}
+          onClick={() => snackbar.show('success', args.text)}
+        >
+          Show Snack success
+        </Button>
+      </div>
+    );
+  },
 };
 
-export const Warning: StoryFn<typeof DefaultSnack> = args => {
-  const { snackbar } = useSnackbar();
-  return (
-    <Button
-      variants={{ intent: 'warning' }}
-      onClick={() =>
-        snackbar.show(
-          'warning',
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-        )
-      }
-    >
-      Show Snack warning
-    </Button>
-  );
+export const Warning: StoryObj<typeof DefaultSnack> = {
+  args: {
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  render: args => {
+    const { snackbar } = useSnackbar();
+    return (
+      <div className="h-[300px] w-[70vw]">
+        <Button
+          variants={{ intent: 'primary' }}
+          onClick={() => snackbar.show('warning', args.text)}
+        >
+          Show Snack warning
+        </Button>
+      </div>
+    );
+  },
 };
 
-export const Info: StoryFn<typeof DefaultSnack> = args => {
-  const { snackbar } = useSnackbar();
-  return (
-    <Button
-      variants={{ intent: 'info' }}
-      onClick={() =>
-        snackbar.show(
-          'info',
-          'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-        )
-      }
-    >
-      Show Snack info
-    </Button>
-  );
+export const Info: StoryObj<typeof DefaultSnack> = {
+  args: {
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  render: args => {
+    const { snackbar } = useSnackbar();
+    return (
+      <div className="h-[300px] w-[70vw]">
+        <Button
+          variants={{ intent: 'primary' }}
+          onClick={() => snackbar.show('info', args.text)}
+        >
+          Show Snack info
+        </Button>
+      </div>
+    );
+  },
 };

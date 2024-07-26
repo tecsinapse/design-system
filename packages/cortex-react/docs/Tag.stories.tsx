@@ -5,15 +5,6 @@ import { Tag } from '../src';
 export default {
   title: 'Cortex/Tag',
   component: Tag,
-  args: {
-    intent: 'primary',
-  },
-  argTypes: {
-    intent: {
-      options: ['success', 'primary', 'secondary', 'info', 'white'],
-      control: { type: 'select' },
-    },
-  },
 } as Meta<typeof Tag>;
 
 export const Default: StoryObj<typeof Tag> = {

@@ -1,15 +1,58 @@
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { StoryFn } from '@storybook/react';
-import { Menubar, Avatar, Tag } from '../src';
 import { FaStar } from 'react-icons/fa';
+import { Avatar, Menubar, Tag } from '../src';
+import DropdownRoot from '../src/components/Menubar/DropdownRoot';
 import { EXAMPLE_MENU, MOST_USED } from './menuBarMocks';
 
 export default {
-  title: 'Cortex/Menubar/Custom',
-  component: Menubar.DropdownRoot,
+  title: 'Cortex/Menubar',
+  component: Menubar.Root,
+  subcomponents: {
+    Header: Menubar.Header,
+    HeaderLeft: Menubar.HeaderLeft,
+    HeaderRight: Menubar.HeaderRight,
+    Search: Menubar.Search,
+    DropdownRoot: Menubar.DropdownRoot,
+    Dropdown: Menubar.Dropdown,
+    Categories: Menubar.Categories,
+    Category: Menubar.Category,
+    Item: Menubar.Item,
+    SubItem: Menubar.SubItem,
+  },
   parameters: {
     layout: 'fullscreen',
   },
+} as Meta<typeof Menubar.Root>;
+
+export const Default: StoryObj<typeof Menubar.Root> = {
+  render: () => (
+    <div className="h-[800px]">
+      <Menubar.Root>
+        <Menubar.Header>
+          <Menubar.HeaderLeft>
+            <img
+              src="https://www.tecsinapse.com.br/wp-content/themes/tecsinapse/img/logo.svg"
+              alt="TecSinapse"
+              className={'w-auto h-giga ml-kilo mr-tera'}
+            />
+          </Menubar.HeaderLeft>
+          <Menubar.Search />
+          <Menubar.HeaderRight>
+            <Avatar name={'RC'} />
+            <Avatar name={'RC'} />
+            <Avatar name={'RC'} />
+            <Avatar name={'RC'} />
+          </Menubar.HeaderRight>
+        </Menubar.Header>
+        <Menubar.DropdownRoot
+          options={EXAMPLE_MENU}
+          mostUsed={MOST_USED}
+          labelMostUsed={'Mais acessados'}
+        />
+      </Menubar.Root>
+    </div>
+  ),
 };
 
 const isFeatured = (title: string) => {
@@ -34,9 +77,9 @@ const isHighlighted = (title: string) => (
   </>
 );
 
-const Template: StoryFn = () => {
-  return (
-    <>
+export const Custom: StoryObj<typeof DropdownRoot> = {
+  render: () => (
+    <div className="h-[800px]">
       <Menubar.Root>
         <Menubar.Header>
           <Menubar.HeaderLeft>
@@ -102,10 +145,6 @@ const Template: StoryFn = () => {
           </Menubar.Categories>
         </Menubar.Dropdown>
       </Menubar.Root>
-    </>
-  );
-};
-
-export const Base = {
-  render: Template,
+    </div>
+  ),
 };

@@ -1,24 +1,25 @@
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { StoryFn } from '@storybook/react';
 import {
   Button,
-  Table,
   TCell,
-  Td,
   TFoot,
   THead,
   THeadCell,
   TRow,
   TRowHeader,
+  Table,
+  Td,
 } from '../src';
 
 export default {
   title: 'Cortex/Table',
-  component: <div />,
-};
+  component: Table,
+  subcomponents: { THead, THeadCell, TRowHeader, TRow, Td, TCell, TFoot },
+} as Meta<typeof Table>;
 
-const Template: StoryFn = () => {
-  return (
+export const Default: StoryObj<typeof Table> = {
+  render: () => (
     <Table>
       <THead>
         <TRow>
@@ -64,10 +65,5 @@ const Template: StoryFn = () => {
         </TRow>
       </TFoot>
     </Table>
-  );
-};
-
-export const Base = {
-  render: Template,
-  args: {},
+  ),
 };

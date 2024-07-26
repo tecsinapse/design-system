@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
-import { StoryFn } from '@storybook/react';
-import { Button, Modal } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { MdClose } from 'react-icons/md';
+import { Modal } from '../src';
 
 export default {
   title: 'Cortex/Modal',
   component: Modal,
-};
+} as Meta<typeof Modal>;
 
-const Template: StoryFn = () => {
-  const [showModal, setShowModal] = useState(false);
-  return (
-    <>
-      <Button onClick={() => setShowModal(true)}>
-        <p>Show modal</p>
-      </Button>
-      <Modal open={showModal} onClose={() => setShowModal(false)}>
-        <div className={'w-[600px] h-[80%]'}>
+export const Default: StoryObj<typeof Modal> = {
+  args: {
+    open: true,
+  },
+  render: args => (
+    <div className="w-[90vw] h-[500px]">
+      <Modal open={args.open} onClose={() => console.log('onClose')}>
+        <div className={'w-[400px]'}>
           <div className={'justify-between flex flex-row'}>
             <p className={'font-black text-h3'}>What is Lorem Ipsum?</p>
             <MdClose
               className={
                 'text-primary-medium text-deca cursor-pointer hover:text-primary-dark'
               }
-              onClick={() => setShowModal(false)}
+              onClick={() => console.log('onClose')}
             />
           </div>
           <p className={'mt-giga'}>
@@ -39,11 +38,6 @@ const Template: StoryFn = () => {
           </p>
         </div>
       </Modal>
-    </>
-  );
-};
-
-export const Base = {
-  render: Template,
-  args: {},
+    </div>
+  ),
 };

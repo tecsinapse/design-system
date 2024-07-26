@@ -9,7 +9,7 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export const Card = forwardRef<
   HTMLDivElement,
   CardProps & HTMLAttributes<HTMLDivElement>
->((props: CardProps, ref) => {
+>((props: CardProps & HTMLAttributes<HTMLDivElement>, ref) => {
   const { children, className, ...rest } = props;
   return (
     <div className={card({ className })} ref={ref} {...rest}>

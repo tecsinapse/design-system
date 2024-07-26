@@ -53,30 +53,32 @@ const parameters: Parameters = {
         <DocBlock.Description />
         <div
           style={{
-            backgroundColor: '#f8f7f7',
-            padding: 16,
-            borderRadius: 4,
-            display: 'flex',
-            justifyContent: 'center',
+            color: '#5C6870',
+            fontSize: '13px',
+            fontWeight: 'bold',
+            lineHeight: '16px',
+            marginBottom: '12px',
+            marginTop: '32px',
           }}
         >
-          <DocBlock.Story />
+          Props
         </div>
+        <DocBlock.ArgTypes />
         <div
           style={{
             color: '#5C6870',
             fontSize: '13px',
             fontWeight: 'bold',
             lineHeight: '16px',
-            letterSpacing: '0.35em',
             marginBottom: '12px',
             marginTop: '32px',
           }}
         >
-          PROPS
+          Default component
         </div>
-        <DocBlock.ArgTypes />
-        <DocBlock.Stories />
+        <DocBlock.Primary />
+
+        <DocBlock.Stories includePrimary={false} />
       </>
     ),
   },
