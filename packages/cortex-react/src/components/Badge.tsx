@@ -34,19 +34,14 @@ export const Badge = forwardRef<
 export const BadgeAnchor = forwardRef<
   HTMLDivElement,
   BadgeAnchorProps & Omit<HTMLProps<HTMLDivElement>, 'className'>
->(
-  (
-    props: BadgeAnchorProps & Omit<HTMLProps<HTMLDivElement>, 'className'>,
-    ref
-  ) => {
-    const { value, variants, children, ...rest } = props;
-    return (
-      <div className={containerBadge()}>
-        {children}
-        <div ref={ref} className={badge(variants)} {...rest}>
-          {value}
-        </div>
+>((props: BadgeAnchorProps, ref) => {
+  const { value, variants, children, ...rest } = props;
+  return (
+    <div className={containerBadge()}>
+      {children}
+      <div ref={ref} className={badge(variants)} {...rest}>
+        {value}
       </div>
-    );
-  }
-);
+    </div>
+  );
+});

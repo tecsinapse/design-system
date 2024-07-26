@@ -1,125 +1,161 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
-import { Input } from '../src';
+import { Hint, Input } from '../src';
 import { Masks } from './utils';
 
 export default {
   title: 'Cortex/Input',
-  component:  Input.Root,
-  subcomponents: { 
-    'Search': Input.Search,
-    'MaskExpression': Input.MaskExpression, 
-    'MaskCurrency': Input.MaskCurrency, 
-    'MaskNumber': Input.MaskNumber,
-  }
-} as Meta<typeof Input.Root>
+  component: Input.Root,
+  subcomponents: {
+    Search: Input.Search,
+    MaskExpression: Input.MaskExpression,
+    MaskCurrency: Input.MaskCurrency,
+    MaskNumber: Input.MaskNumber,
+  },
+} as Meta<typeof Input.Root>;
 
 const baseArgs = {
   label: 'Label',
   placeholder: 'Placeholder',
   variants: {
-    intent: 'default'
-  }
-}
-
-export const Default: StoryObj<typeof Input.Root> = ({
-  args: {
-   ...baseArgs
+    intent: 'default',
   },
-  render: (args) => <>
-  <Input.Root label={args.label} placeholder={args.placeholder} variants={args.variants} {...args}/>
-  </>
-});
+};
 
-export const Custom: StoryObj<typeof Input.Face & typeof Input.Box> = ({
+export const Default: StoryObj<typeof Input.Root> = {
   args: {
-    ...baseArgs
+    ...baseArgs,
   },
-  render: (args) =>  (
-    <Input.Face >
+  render: args => (
+    <>
+      <Input.Root
+        label={args.label}
+        placeholder={args.placeholder}
+        variants={args.variants}
+        {...args}
+      />
+    </>
+  ),
+};
+
+export const Custom: StoryObj<typeof Input.Face & typeof Input.Box> = {
+  args: {
+    ...baseArgs,
+  },
+  render: args => (
+    <Input.Face>
       <Input.Left>
         <IoPerson size={16} />
       </Input.Left>
-      <Input.Box label={args.label} placeholder={args.placeholder} ></Input.Box>
+      <Input.Box label={args.label} placeholder={args.placeholder}></Input.Box>
       <Input.Right>
         <IoEye />
       </Input.Right>
     </Input.Face>
-  ) 
-});
+  ),
+};
 
-export const Search: StoryObj<typeof Input.Search> = ({
+export const Search: StoryObj<typeof Input.Search> = {
   args: {
     bounceTimeout: 2000,
     ...baseArgs,
   },
-  render: (args) => {
-    const [value, setValue] = useState('')  
+  render: args => {
+    const [value, setValue] = useState('');
 
-  return (
-      <Input.Search 
-        placeholder={'Placeholder'} 
+    return (
+      <Input.Search
+        placeholder={'Placeholder'}
         label={args.label}
-        onChange={(e) => setValue(e.target?.value)}
+        onChange={e => setValue(e.target?.value)}
         defaultValue={value}
       />
-  )}
-})
+    );
+  },
+};
 
-export const ExpressionMask: StoryObj<typeof Input.MaskExpression> = ({
+export const ExpressionMask: StoryObj<typeof Input.MaskExpression> = {
   args: {
     mask: [Masks.PHONE, Masks.PHONE_EXTENDED],
     ...baseArgs,
     label: 'Expression Mask',
   },
-  render: (args) => {
-    const [expressionValue, setExpressionValue] = useState('1112345678')  
+  render: args => {
+    const [expressionValue, setExpressionValue] = useState('1112345678');
 
     return (
+      <Input.MaskExpression
+        placeholder={args.placeholder}
+        label={args.label}
+        onChange={e => setExpressionValue(e.target?.value)}
+        defaultValue={expressionValue}
+        mask={args.mask}
+      />
+    );
+  },
+};
+
+export const NumberMask: StoryObj<typeof Input.MaskNumber> = {
+  args: {
+    ...baseArgs,
+    label: 'Number Mask',
+  },
+  render: args => {
+    const [numberValue, setNumberValue] = useState('1000');
+
+    return (
+      <Input.MaskNumber
+        placeholder={args.placeholder}
+        label={args.label}
+        onChange={e => setNumberValue(e.target?.value)}
+        defaultValue={numberValue}
+      />
+    );
+  },
+};
+
+export const CurrencyMask: StoryObj<typeof Input.MaskCurrency> = {
+  args: {
+    ...baseArgs,
+    label: 'Currency Mask',
+  },
+  render: args => {
+    const [currencyValue, setCurrencyValue] = useState('99,50');
+
+    return (
+      <Input.MaskCurrency
+        placeholder={args.placeholder}
+        label={args.label}
+        onChange={e => setCurrencyValue(e.target?.value)}
+        defaultValue={currencyValue}
+      />
+    );
+  },
+};
+
+export const ShowUnmasked: StoryObj<typeof Input.MaskExpression> = {
+  args: {
+    mask: [Masks.PHONE, Masks.PHONE_EXTENDED],
+    ...baseArgs,
+    label: 'Expression Mask',
+  },
+  render: args => {
+    const [expressionValue, setExpressionValue] = useState('1112345678');
+    const unmaskedRef = useRef('1112345678');
+
+    return (
+      <>
         <Input.MaskExpression
-          placeholder={args.placeholder} 
+          placeholder={args.placeholder}
           label={args.label}
-          onChange={(e) => setExpressionValue(e.target?.value)}
+          onChange={e => setExpressionValue(e.target?.value)}
           defaultValue={expressionValue}
           mask={args.mask}
+          unmaskedRef={unmaskedRef}
         />
+        <Hint>Unmasked: {unmaskedRef.current}</Hint>
+      </>
     );
-  }
-}) 
-
-export const NumberMask: StoryObj<typeof Input.MaskNumber> = ({
-  args: {
-    ...baseArgs,
-    label: 'Number Mask'
   },
-  render: (args) => {
-    const [numberValue, setNumberValue] = useState('1000')   
-  
-  return (
-    <Input.MaskNumber
-      placeholder={args.placeholder} 
-      label={args.label}
-      onChange={(e) => setNumberValue(e.target?.value)}
-      defaultValue={numberValue}
-    />
-  )}
-}) 
-
-export const CurrencyMask: StoryObj<typeof Input.MaskCurrency> = ({
-  args: {
-    ...baseArgs,
-    label: 'Currency Mask'
-  },
-  render: (args) => {
-    const [currencyValue, setCurrencyValue] = useState('99,50')    
-  
-  return (
-    <Input.MaskCurrency
-      placeholder={args.placeholder} 
-      label={args.label}
-      onChange={(e) => setCurrencyValue(e.target?.value)}
-      defaultValue={currencyValue}
-    />
-  )}
-}) 
+};
