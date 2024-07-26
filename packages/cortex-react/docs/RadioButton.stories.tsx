@@ -33,7 +33,7 @@ export const Labeled = {
   },
 };
 
-export const Group = {
+export const Grouped = {
   render: args => (
     <div className="flex flex-col gap-y-deca">
       <div className="flex flex-col items-start">
