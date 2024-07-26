@@ -1,24 +1,98 @@
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { StoryFn } from '@storybook/react';
-import { labelRadioButton, radioButton } from '../../cortex-core/src';
+import { RadioButton } from '../src/components';
 
 export default {
   title: 'Cortex/Radio Button',
-  component: <div />,
+  component: RadioButton,
+} as Meta<typeof RadioButton>;
+
+export const Default: StoryObj<typeof RadioButton> = {
+  render: args => (
+    <>
+      <RadioButton
+        id={'default1'}
+        label={args.label}
+        reversed={args.reversed}
+      />
+    </>
+  ),
+  args: {
+    label: undefined,
+    reversed: false,
+  },
 };
 
-const Template: StoryFn = () => {
-  return (
-    <div className={'gap-mili flex items-center justify-center'}>
-      <input id={'radio'} type={'radio'} className={radioButton()}></input>
-      <label htmlFor={'radio'} className={labelRadioButton()}>
-        Radio Button
-      </label>
+export const Labeled = {
+  render: args => (
+    <RadioButton label={args.label} id={'labeled1'} reversed={args.reversed} />
+  ),
+  args: {
+    label: 'Option 1',
+    reversed: false,
+  },
+};
+
+export const Group = {
+  render: args => (
+    <div className="flex flex-col gap-y-deca">
+      <div className="flex flex-col items-start">
+        <span>Group 1</span>
+        <RadioButton
+          label={args.label1}
+          id={'opt1'}
+          name={'group1'}
+          reversed={args.reversed1}
+        />
+        <RadioButton
+          label={args.label2}
+          id={'opt2'}
+          name={'group1'}
+          reversed={args.reversed2}
+        />
+        <RadioButton
+          label={args.label3}
+          id={'opt3'}
+          name={'group1'}
+          reversed={args.reversed3}
+        />
+      </div>
+
+      <div className="flex flex-col items-start">
+        <span>Group 2</span>
+        <RadioButton
+          label={args.label4}
+          id={'opt4'}
+          name={'group2'}
+          reversed={args.reversed4}
+        />
+        <RadioButton
+          label={args.label5}
+          id={'opt5'}
+          name={'group2'}
+          reversed={args.reversed5}
+        />
+        <RadioButton
+          label={args.label6}
+          id={'opt6'}
+          name={'group2'}
+          reversed={args.reversed6}
+        />
+      </div>
     </div>
-  );
-};
-
-export const Base = {
-  render: Template,
-  args: {},
+  ),
+  args: {
+    label1: 'Option 1',
+    reversed1: false,
+    label2: 'Option 2',
+    reversed2: false,
+    label3: 'Option 3',
+    reversed3: false,
+    label4: 'Option 4',
+    reversed4: false,
+    label5: 'Option 5',
+    reversed5: false,
+    label6: 'Option 6',
+    reversed6: false,
+  },
 };

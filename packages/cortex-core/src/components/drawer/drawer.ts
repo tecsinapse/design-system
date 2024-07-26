@@ -8,7 +8,7 @@ const drawerStyles = tv({
       right: 'right-1 translate-x-full rounded-l-mili',
     },
     open: {
-      true: 'translate-x-0',
+      true: 'translate-x-0 z-[700]',
       false: 'invisible',
     },
   },

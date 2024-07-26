@@ -1,7 +1,7 @@
 import React from 'react';
 import { drawer, overlay } from '@tecsinapse/cortex-core';
 
-interface DrawerProps {
+export interface DrawerProps {
   open: boolean;
   onClose: () => void;
   position?: 'left' | 'right';

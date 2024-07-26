@@ -17,6 +17,7 @@ export * from './Menubar';
 export * from './Modal';
 export * from './Popover';
 export * from './ProgressBar';
+export * from './RadioButton';
 export * from './Select';
 export * from './Skeleton';
 export * from './Table';
