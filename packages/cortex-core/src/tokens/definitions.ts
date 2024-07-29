@@ -144,14 +144,29 @@ const textColor = {
   orange: '#f89907',
 };
 
+const zIndex = {
+  default: 0,
+  absolute: 1,
+  select: 20,
+  input: 20,
+  popover: 30,
+  tooltip: 40,
+  header: 600,
+  backdrop: 700,
+  drawer: 700,
+  sidebar: 800,
+  modal: 1000,
+};
+
 export {
-  colors,
-  textColor,
   borderColor,
+  borderRadius,
   borderWidth,
   boxShadow,
-  borderRadius,
-  spacing,
-  fontSize,
+  colors,
   fontFamily,
+  fontSize,
+  spacing,
+  textColor,
+  zIndex,
 };
