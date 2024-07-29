@@ -1,14 +1,8 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
-import { Select } from '.';
+import { Select, SelectGroupedOptionsProps } from '.';
 import { usePopoverContext } from '../Popover/Context';
 import { SelectContext } from './context';
-
-export interface SelectGroupedOptionsProps<T> {
-  onSelect: (value: T) => void;
-  options?: Map<string, T[]>;
-  groupedLabelExtractor: (value: string) => string;
-}
 
 const { groupedTitle, list } = selectVariants();
 

@@ -3,11 +3,7 @@ import React, { useContext, useMemo } from 'react';
 import { IoChevronDownOutline } from 'react-icons/io5';
 import { Popover } from '../Popover';
 import { SelectContext } from './context';
-
-export interface SelectTriggerProps {
-  label: string;
-  disabled?: boolean;
-}
+import { SelectTriggerProps } from './types';
 
 const { button } = selectVariants();
 

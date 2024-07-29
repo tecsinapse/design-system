@@ -1,12 +1,7 @@
 import { checkbox, option as styleOption } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { SelectContext } from './context';
-
-export interface SelectMultiOptionProps<T> {
-  option: T;
-  onSelectOption: (option: T) => void;
-  grouped?: boolean;
-}
+import { SelectMultiOptionProps } from './types';
 
 export const SelectMultiOption = <T,>({
   onSelectOption,

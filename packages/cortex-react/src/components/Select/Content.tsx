@@ -1,10 +1,7 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useOutsideClickListener } from '../../hooks';
 import { usePopoverContext } from '../Popover/Context';
-
-interface ContentProps {
-  children: ReactNode;
-}
+import { ContentProps } from './types';
 
 export const Content = ({ children }: ContentProps) => {
   const { setIsOpen } = usePopoverContext();

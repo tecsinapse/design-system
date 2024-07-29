@@ -1,15 +1,8 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useContext, useMemo } from 'react';
-import { Select } from '.';
+import { Select, SelectMultiGroupedOptionsProps } from '.';
 import { SelectContext, SelectMultiOptionsContext } from './context';
 import { handleSelectMulti } from './utils';
-
-export interface SelectMultiGroupedOptionsProps<T> {
-  onSelect: (value: T[]) => void;
-  options?: Map<string, T[]>;
-  groupedLabelExtractor: (value: string) => string;
-  children?: React.ReactNode;
-}
 
 const { groupedTitle, list } = selectVariants();
 

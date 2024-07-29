@@ -21,3 +21,5 @@ export const Select = {
   MultiOption: SelectMultiOption,
   MultiCheckAllOptions: SelectMultiCheckAllOptions,
 };
+
+export * from './types';

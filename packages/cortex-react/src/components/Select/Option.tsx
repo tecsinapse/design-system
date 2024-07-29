@@ -1,12 +1,7 @@
 import { option as styleOption } from '@tecsinapse/cortex-core';
 import React, { useContext } from 'react';
 import { SelectContext } from './context';
-
-export interface SelectOptionProps<T> {
-  option: T;
-  onSelectOption: (option: T) => void;
-  grouped?: boolean;
-}
+import { SelectOptionProps } from './types';
 
 export const SelectOption = <T,>({
   onSelectOption,

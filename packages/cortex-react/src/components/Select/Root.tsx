@@ -1,14 +1,9 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 import { Popover } from '../Popover';
 import { Content } from './Content';
 import { SelectContext } from './context';
-export interface SelectRootProps<T> {
-  children: ReactNode;
-  value?: T | T[];
-  keyExtractor: (value: T) => string;
-  labelExtractor: (value: T) => string;
-}
+import { SelectRootProps } from './types';
 
 /** Select component */
 export const SelectRoot = <T,>({

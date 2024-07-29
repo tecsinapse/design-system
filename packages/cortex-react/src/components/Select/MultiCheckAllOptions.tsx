@@ -1,10 +1,7 @@
 import { checkbox, option } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext, useMemo } from 'react';
 import { SelectContext, SelectMultiOptionsContext } from './context';
-
-export interface SelectMultiCheckAllOptionsProps {
-  checkAllLabel?: string;
-}
+import { SelectMultiCheckAllOptionsProps } from './types';
 
 export const SelectMultiCheckAllOptions = <T,>({
   checkAllLabel = 'Select all',

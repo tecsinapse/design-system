@@ -1,9 +1,6 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Popover } from '../Popover';
-
-export interface SelectPopoverProps {
-  children: ReactNode;
-}
+import { SelectPopoverProps } from './types';
 
 export const SelectPopover = ({ children }: SelectPopoverProps) => {
   return (

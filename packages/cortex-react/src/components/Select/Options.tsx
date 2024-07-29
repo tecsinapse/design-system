@@ -1,15 +1,10 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
-import { Select } from '.';
+import { Select, SelectOptionsProps } from '.';
 import { usePopoverContext } from '../Popover/Context';
 import { SelectContext } from './context';
 
 const { list } = selectVariants();
-
-export interface SelectOptionsProps<T> {
-  options?: T[];
-  onSelect: (value: T) => void;
-}
 
 export const SelectOptions = <T,>({
   onSelect,

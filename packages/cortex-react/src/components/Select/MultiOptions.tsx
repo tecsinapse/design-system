@@ -1,15 +1,10 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useContext } from 'react';
-import { Select } from '.';
+import { Select, SelectMultiOptionsProps } from '.';
 import { SelectContext, SelectMultiOptionsContext } from './context';
 import { handleSelectMulti } from './utils';
 
 const { list } = selectVariants();
-export interface SelectMultiOptionsProps<T> {
-  options?: T[];
-  onSelect: (value: T[]) => void;
-  children?: React.ReactNode;
-}
 
 export const SelectMultiOptions = <T,>({
   onSelect,
