@@ -26,7 +26,7 @@ export const useMenubar = (): [
   const context = useContext(MenubarContext);
 
   if (!context) {
-    throw new Error('useSnackbar must be used within a SnackbarProvider');
+    throw new Error('useMenubar must be used within a MenubarProvider');
   }
   return [context.show, context.setShow];
 };

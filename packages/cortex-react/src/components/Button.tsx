@@ -1,7 +1,8 @@
 import { button, ButtonVariants } from '@tecsinapse/cortex-core';
 import React, { forwardRef } from 'react';
 
-interface ButtonProps {
+export interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
   variants?: ButtonVariants;
   children?: React.ReactNode;
 }

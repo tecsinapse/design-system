@@ -193,7 +193,7 @@ importers:
         specifier: '*'
         version: 3.5.4
       '@tecsinapse/cortex-core':
-        specifier: 0.3.0-beta.12
+        specifier: 0.3.0-beta.13
         version: link:../cortex-core
       clsx:
         specifier: '*'
