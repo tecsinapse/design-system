@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.23](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.22...@tecsinapse/cortex-react@1.3.0-beta.23) (2024-07-29)
+
+### Bug Fixes
+
+- DatePickerInputBase style ([358955b](https://github.com/tecsinapse/design-system/commit/358955bfff2fafff54fee1ff3570e9a267306684))
+
 # [1.3.0-beta.22](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.21...@tecsinapse/cortex-react@1.3.0-beta.22) (2024-07-29)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react

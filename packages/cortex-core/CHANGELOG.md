@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0-beta.14](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.13...@tecsinapse/cortex-core@0.3.0-beta.14) (2024-07-29)
+
+### Bug Fixes
+
+- zindex ([8e6eeb5](https://github.com/tecsinapse/design-system/commit/8e6eeb5b6e06b9a5689dee865f4a47f74ec2bd70))
+
 # [0.3.0-beta.13](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.12...@tecsinapse/cortex-core@0.3.0-beta.13) (2024-07-29)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
