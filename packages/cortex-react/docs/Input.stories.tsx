@@ -12,6 +12,10 @@ export default {
     MaskExpression: Input.MaskExpression,
     MaskCurrency: Input.MaskCurrency,
     MaskNumber: Input.MaskNumber,
+    Face: Input.Face,
+    Box: Input.Box,
+    Left: Input.Left,
+    Right: Input.Right,
   },
 } as Meta<typeof Input.Root>;
 

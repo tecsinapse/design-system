@@ -16,13 +16,11 @@ export interface InputFaceProps
     Pick<InputPropsBase, 'variants'> {}
 
 export interface InputLeftProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** child element */
   children: React.ReactNode;
   className?: string;
 }
 
 export interface InputRightProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** child element */
   children: React.ReactNode;
   className?: string;
 }
