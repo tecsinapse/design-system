@@ -1,36 +1,33 @@
+import { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { StoryFn } from '@storybook/react';
 import { TimeFieldInput, TimeValueType } from '../src';
 
 export default {
   title: 'Cortex/TimeFieldInput',
   component: TimeFieldInput,
-  argTypes: {
-    intent: {
-      control: { type: 'select' },
-      options: ['default', 'success', 'warning', 'error'],
+} as Meta<typeof TimeFieldInput>;
+
+export const Default: StoryObj<typeof TimeFieldInput> = {
+  args: {
+    value: { hour: 13, minute: 35 },
+    label: 'Label',
+    variants: {
+      intent: 'default',
     },
   },
-};
-
-const Template: StoryFn = args => {
-  const [value, setValue] = useState<TimeValueType>();
-  return (
-    <>
-      <TimeFieldInput
-        value={value}
-        onChange={setValue}
-        label={args.label}
-        variants={{ intent: args.intent }}
-      />
-    </>
-  );
-};
-
-export const Base = {
-  render: Template,
-  args: {
-    label: 'Label',
-    intent: 'default',
+  render: args => {
+    const [value, setValue] = useState<TimeValueType>(
+      args.value ?? { hour: 0, minute: 0 }
+    );
+    return (
+      <>
+        <TimeFieldInput
+          value={value}
+          onChange={setValue}
+          label={args.label}
+          variants={args.variants}
+        />
+      </>
+    );
   },
 };

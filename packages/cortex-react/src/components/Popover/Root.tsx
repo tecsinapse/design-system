@@ -9,6 +9,7 @@ export interface PopoverRootProps {
   trigger?: 'hover' | 'click';
 }
 
+/** Popover component */
 export const PopoverRoot = ({
   children,
   placement,

@@ -5,6 +5,7 @@ export interface RootProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
+/** Menubar component */
 const Root = ({ children, ...rest }: RootProps) => {
   return (
     <MenubarProvider>

@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { DatePickerInputBase } from '../components/DatePickerInputBase';
+import { DatePickerInputBase } from '../components';
 
 describe('DatePickerInputBase', () => {
   it('Should render correctly', () => {

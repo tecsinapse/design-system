@@ -7,7 +7,8 @@ import {
   DateSegment as DateSegmentType,
   useTimeFieldState,
 } from 'react-stately';
-import { DateSegment } from '../components/DateSegment';
+import { DateSegment } from '../components';
+
 jest.mock('react-aria', () => ({
   useDateSegment: jest.fn(),
 }));

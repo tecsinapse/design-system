@@ -1,12 +1,7 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
 
-/**
- * Represents the Skeleton Components.
- * @param {React.HTMLAttributes<HTMLDivElement>} props - The properties for the Skeleton component.
- * @param {string=} [props.className] - Width, height, border radius and others styles should be passed to className.
- */
-
+/** Skeleton component*/
 export const Skeleton = ({
   className,
   children,

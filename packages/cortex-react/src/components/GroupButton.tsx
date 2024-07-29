@@ -13,7 +13,7 @@ export interface GroupButtonProps<T> {
   renderOption: (option: T) => ReactNode;
   onChange: (option: T) => void;
   /** Custom styles to groupButton
-   * Obs: To style of firstButton and lastButton to be applied use prefix "first:" or "last:" before each style, respectively.
+   * <p>To style of firstButton and lastButton to be applied use prefix "first:" or "last:" before each style, respectively.</p>
    * */
   customStyles?: {
     active?: string;
@@ -27,6 +27,7 @@ export interface GroupButtonProps<T> {
 const { button, container, active, inactive, firstButton, lastButton } =
   groupButton();
 
+/** GroupButton component */
 export const GroupButton = <T,>(props: GroupButtonProps<T>) => {
   const {
     options,

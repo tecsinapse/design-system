@@ -1,5 +1,5 @@
-import React, { forwardRef, useRef } from 'react';
 import { FloatingArrow, Placement } from '@floating-ui/react';
+import React, { forwardRef, useRef } from 'react';
 import { useFloatingLogic } from '../hooks';
 import { cloneWithProps } from './utils';
 
@@ -13,6 +13,7 @@ interface TooltipProps {
   style?: React.CSSProperties;
 }
 
+/** Tooltip Component */
 export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
   (props, ref) => {
     const {

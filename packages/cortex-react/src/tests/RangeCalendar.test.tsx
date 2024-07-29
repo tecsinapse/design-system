@@ -1,18 +1,18 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, renderHook, screen } from '@testing-library/react';
 import React from 'react';
-import { RangeCalendar } from '../components/RangeCalendar';
+import { RangeCalendar } from '../components/';
 import { useRangeCalendar } from '../hooks';
 
 jest.mock('../hooks/useRangeCalendar', () => ({
   useRangeCalendar: jest.fn(),
 }));
 
-jest.mock('../components/CalendarGrid', () => ({
+jest.mock('../components/Calendar/CalendarGrid', () => ({
   CalendarGrid: jest.fn(() => <div data-testid="calendar-grid" />),
 }));
 
-jest.mock('../components/CalendarHeader', () => ({
+jest.mock('../components/Calendar/CalendarHeader', () => ({
   CalendarHeader: jest.fn(({ onClickPrevButton, onClickNextButton, title }) => (
     <div data-testid="calendar-header">
       <button onClick={onClickPrevButton}>Prev</button>

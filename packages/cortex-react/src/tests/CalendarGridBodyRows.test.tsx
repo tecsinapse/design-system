@@ -3,9 +3,9 @@ import '@testing-library/jest-dom';
 import { render, renderHook, screen } from '@testing-library/react';
 import React from 'react';
 import { useCalendarState } from 'react-stately';
-import { CalendarGridBodyRows } from '../components/CalendarGridBodyRows';
+import { CalendarGridBodyRows } from '../components/Calendar/CalendarGridBodyRows';
 
-jest.mock('../components/CalendarCell', () => ({
+jest.mock('../components/Calendar/CalendarCell', () => ({
   CalendarCell: () => <div data-testid="calendar-cell" />,
 }));
 

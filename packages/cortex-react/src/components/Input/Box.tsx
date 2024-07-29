@@ -4,7 +4,10 @@ import React from 'react';
 import { InputProps } from './types';
 
 export const InputBox = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ id, name, variants, label, placeholder, className, ...rest }, ref) => {
+  (
+    { id, name, variants, label, placeholder, className, ...rest }: InputProps,
+    ref
+  ) => {
     return (
       <div className={'flex w-full flex-col'}>
         <input

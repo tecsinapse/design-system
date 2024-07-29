@@ -82,6 +82,8 @@ export const TFoot = ({
     {children}
   </tfoot>
 );
+
+/** Table component */
 export const Table = ({
   children,
   className,

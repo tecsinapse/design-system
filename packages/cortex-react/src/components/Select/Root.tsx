@@ -10,6 +10,7 @@ export interface SelectRootProps<T> {
   labelExtractor: (value: T) => string;
 }
 
+/** Select component */
 export const SelectRoot = <T,>({
   children,
   value,

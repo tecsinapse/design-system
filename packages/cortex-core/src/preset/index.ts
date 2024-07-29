@@ -8,6 +8,7 @@ import {
   fontSize,
   spacing,
   textColor,
+  zIndex,
 } from '../tokens/definitions';
 
 const preset = {
@@ -22,6 +23,7 @@ const preset = {
       fontSize,
       boxShadow,
       borderColor,
+      zIndex,
       keyframes: {
         opacity: {
           '0%': { opacity: 0 },

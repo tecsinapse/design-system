@@ -1,5 +1,5 @@
-import React from 'react';
 import { drawer, overlay } from '@tecsinapse/cortex-core';
+import React from 'react';
 
 export interface DrawerProps {
   open: boolean;
@@ -7,6 +7,8 @@ export interface DrawerProps {
   position?: 'left' | 'right';
   children?: React.ReactNode;
 }
+
+/** Drawer component */
 export const Drawer = ({
   children,
   onClose,

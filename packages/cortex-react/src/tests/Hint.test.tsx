@@ -4,16 +4,16 @@ import React from 'react';
 import { Hint } from '../components';
 
 describe('Hint', () => {
-  it('renders component with description', () => {
+  it('Should renders component with string', () => {
     const descriptionText = 'This is a hint description';
-    render(<Hint description={descriptionText} />);
+    render(<Hint>{descriptionText}</Hint>);
 
     const descriptionElement = screen.getByText(descriptionText);
 
     expect(descriptionElement).toBeInTheDocument();
   });
 
-  it('renders component with children', () => {
+  it('Should render component with children', () => {
     render(
       <Hint>
         <p>Child Element</p>

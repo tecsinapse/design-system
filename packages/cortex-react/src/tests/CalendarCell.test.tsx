@@ -8,7 +8,7 @@ import {
   useCalendarState,
   useRangeCalendarState,
 } from 'react-stately';
-import { CalendarCell } from '../components/CalendarCell';
+import { CalendarCell } from '../components/Calendar/CalendarCell';
 import { useCalendarCell } from '../hooks';
 
 jest.mock('../hooks/useCalendarCell', () => ({

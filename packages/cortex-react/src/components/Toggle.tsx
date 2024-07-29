@@ -5,10 +5,11 @@ import {
 } from '@tecsinapse/cortex-core';
 import React, { InputHTMLAttributes, forwardRef } from 'react';
 
+/** Toggle component */
 export const Toggle = forwardRef<
   HTMLInputElement,
   InputHTMLAttributes<HTMLInputElement>
->((props, ref) => {
+>((props: InputHTMLAttributes<HTMLInputElement>, ref) => {
   return (
     <div
       className={'flex flex-row items-center gap-x-centi'}

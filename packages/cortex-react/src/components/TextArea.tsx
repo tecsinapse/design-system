@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   input,
   InputBaseVariants,
@@ -6,6 +5,7 @@ import {
   labelStyle,
 } from '@tecsinapse/cortex-core';
 import { clsx } from 'clsx';
+import React from 'react';
 
 const getValidChildren = (children: React.ReactNode) => {
   return React.Children.toArray(children).filter(el =>
@@ -79,8 +79,9 @@ const Face = React.forwardRef<HTMLDivElement, TextAreaFaceProps>(
   }
 );
 
+/** TextArea component */
 const Root = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ variants, className, ...rest }, ref) => {
+  ({ variants, className, ...rest }: TextAreaProps, ref) => {
     return (
       <Face variants={variants} className={className}>
         <Box ref={ref} {...rest} />

@@ -1,9 +1,10 @@
+import * as DocBlock from '@storybook/blocks';
+import { Parameters, Preview } from '@storybook/react';
 import React from 'react';
-import { lightTheme, ThemeProvider } from '../packages/react-core';
+import { ThemeProvider, lightTheme } from '../packages/react-core';
 import './index.css';
-import { SnackbarProvider } from '../packages/cortex-react/src/provider/SnackbarProvider';
 
-export const parameters = {
+const parameters: Parameters = {
   layout: 'centered',
   options: {
     storySort: {
@@ -39,13 +40,63 @@ export const parameters = {
       },
     ],
   },
+  type: 'auto',
+  docs: {
+    argTypes: {
+      sort: 'requiredFirst',
+    },
+    canvas: { sourceState: 'shown' },
+    source: {
+      type: 'code',
+      language: 'tsx',
+    },
+    page: () => (
+      <>
+        <DocBlock.Title />
+        <DocBlock.Description />
+        <div
+          style={{
+            color: '#5C6870',
+            fontSize: '13px',
+            fontWeight: 'bold',
+            lineHeight: '16px',
+            marginBottom: '12px',
+            marginTop: '32px',
+          }}
+        >
+          Props
+        </div>
+        <DocBlock.ArgTypes />
+        <div
+          style={{
+            color: '#5C6870',
+            fontSize: '13px',
+            fontWeight: 'bold',
+            lineHeight: '16px',
+            marginBottom: '12px',
+            marginTop: '32px',
+          }}
+        >
+          Default component
+        </div>
+        <DocBlock.Primary />
+
+        <DocBlock.Stories includePrimary={false} />
+      </>
+    ),
+  },
 };
+
+const preview: Preview = {
+  tags: ['autodocs'],
+  parameters,
+};
+
+export default preview;
 
 const withThemeProvider = Story => (
   <ThemeProvider theme={lightTheme}>
-    <SnackbarProvider>
-      <Story />
-    </SnackbarProvider>
+    <Story />
   </ThemeProvider>
 );
 
