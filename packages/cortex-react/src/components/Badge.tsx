@@ -2,7 +2,6 @@ import { badge, BadgeVariants, containerBadge } from '@tecsinapse/cortex-core';
 import React, { forwardRef, HTMLProps } from 'react';
 
 interface BadgeProps {
-  /** accept string or number values */
   value: string | number;
   variants?: BadgeVariants;
 }

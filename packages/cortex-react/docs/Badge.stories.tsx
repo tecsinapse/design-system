@@ -8,25 +8,21 @@ export default {
   subcomponents: { BadgeAnchor },
 } as Meta<typeof Badge>;
 
-const baseArgs = {
-  value: 4,
-  variants: {
-    intent: 'primary',
-  },
-};
-
 export const Default: StoryObj<typeof Badge> = {
   args: {
-    ...baseArgs,
+    value: 4,
+    variants: {
+      intent: 'primary',
+    },
   },
   render: args => <Badge variants={args.variants} value={args.value} />,
 };
 
 export const Anchor: StoryObj<typeof BadgeAnchor> = {
   args: {
-    ...baseArgs,
+    value: 4,
     variants: {
-      ...baseArgs.variants,
+      intent: 'primary',
       isAnchor: true,
     },
   },

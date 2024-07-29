@@ -42,6 +42,9 @@ const parameters: Parameters = {
   },
   type: 'auto',
   docs: {
+    argTypes: {
+      sort: 'requiredFirst',
+    },
     canvas: { sourceState: 'shown' },
     source: {
       type: 'code',
