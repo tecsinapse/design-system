@@ -2,6 +2,7 @@ import React from 'react';
 
 interface ItemLinkProps {
   href?: string;
+  /** child element */
   children?: React.ReactNode;
   classNameAnchor?: string;
 }

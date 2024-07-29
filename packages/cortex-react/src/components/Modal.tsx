@@ -1,9 +1,10 @@
 import { modal, overlay } from '@tecsinapse/cortex-core';
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import React, { InputHTMLAttributes, ReactNode, forwardRef } from 'react';
 
 interface ModalProps {
   open: boolean;
   onClose: () => void;
+  /** child element */
   children?: ReactNode;
 }
 

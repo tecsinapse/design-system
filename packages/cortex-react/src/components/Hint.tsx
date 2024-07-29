@@ -2,6 +2,7 @@ import { hint, HintVariants } from '@tecsinapse/cortex-core';
 import React, { forwardRef, HTMLProps } from 'react';
 
 export interface HintProps {
+  /** child element */
   children: React.ReactNode;
   variants?: HintVariants;
 }

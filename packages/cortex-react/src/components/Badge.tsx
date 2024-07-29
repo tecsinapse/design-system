@@ -1,13 +1,15 @@
 import { badge, BadgeVariants, containerBadge } from '@tecsinapse/cortex-core';
-import React, { forwardRef, HTMLProps } from 'react';
+import * as React from 'react';
+import { forwardRef, HTMLProps } from 'react';
 
-interface BadgeProps {
+export interface BadgeProps {
   value: string | number;
   variants?: BadgeVariants;
 }
 
-interface BadgeAnchorProps extends BadgeProps {
-  children: JSX.Element;
+export interface BadgeAnchorProps extends BadgeProps {
+  /** child element */
+  children: React.ReactNode;
 }
 
 /** Badge component */

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 export interface ContentProps {
+  /** child element */
   children: ReactNode;
 }
 
@@ -18,6 +19,7 @@ export interface SelectMultiGroupedOptionsProps<T> {
   onSelect: (value: T[]) => void;
   options?: Map<string, T[]>;
   groupedLabelExtractor: (value: string) => string;
+  /** child element */
   children?: React.ReactNode;
 }
 
@@ -30,6 +32,7 @@ export interface SelectMultiOptionProps<T> {
 export interface SelectMultiOptionsProps<T> {
   options?: T[];
   onSelect: (value: T[]) => void;
+  /** child element */
   children?: React.ReactNode;
 }
 
@@ -45,9 +48,11 @@ export interface SelectOptionsProps<T> {
 }
 
 export interface SelectPopoverProps {
+  /** child element */
   children: ReactNode;
 }
 export interface SelectRootProps<T> {
+  /** child element */
   children: ReactNode;
   value?: T | T[];
   keyExtractor: (value: T) => string;

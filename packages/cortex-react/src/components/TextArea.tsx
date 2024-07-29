@@ -25,7 +25,16 @@ interface TextAreaProps
 
 const Box = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
-    { id, name, variants, label, placeholder, rows, className, ...rest },
+    {
+      id,
+      name,
+      variants,
+      label,
+      placeholder,
+      rows,
+      className,
+      ...rest
+    }: TextAreaProps,
     ref
   ) => {
     return (
@@ -61,7 +70,7 @@ type DivBaseProps = React.HTMLAttributes<HTMLDivElement>;
 type TextAreaFaceProps = DivBaseProps & Pick<TextAreaPropsBase, 'variants'>;
 
 const Face = React.forwardRef<HTMLDivElement, TextAreaFaceProps>(
-  ({ children, variants, className, ...rest }, ref) => {
+  ({ children, variants, className, ...rest }: TextAreaFaceProps, ref) => {
     const clones = getValidChildren(children).map(el => {
       return React.cloneElement(el, { ...el.props, variants });
     });
@@ -96,7 +105,7 @@ type TextAreaElementsProps = DivBaseProps & {
 };
 
 const Left = React.forwardRef<HTMLDivElement, TextAreaElementsProps>(
-  ({ children, className, ...rest }, ref) => {
+  ({ children, className, ...rest }: TextAreaElementsProps, ref) => {
     return (
       <div className={clsx(className, 'mr-2.5')} {...rest} ref={ref}>
         {children}
@@ -106,7 +115,7 @@ const Left = React.forwardRef<HTMLDivElement, TextAreaElementsProps>(
 );
 
 const Right = React.forwardRef<HTMLDivElement, TextAreaElementsProps>(
-  ({ children, className, ...rest }, ref) => {
+  ({ children, className, ...rest }: TextAreaElementsProps, ref) => {
     return (
       <div className={clsx(className, 'ml-2.5')} {...rest} ref={ref}>
         {children}

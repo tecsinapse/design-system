@@ -5,6 +5,7 @@ import { Input, InputPropsBase } from '../Input';
 
 interface DatePickerInputBaseProps extends InputPropsBase {
   onClickCalendar: () => void;
+  /** child element */
   children: React.ReactElement;
 }
 

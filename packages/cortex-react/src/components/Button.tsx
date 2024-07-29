@@ -4,6 +4,7 @@ import React, { forwardRef } from 'react';
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className'> {
   variants?: ButtonVariants;
+  /** child element */
   children?: React.ReactNode;
 }
 

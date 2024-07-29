@@ -3,6 +3,7 @@ import React from 'react';
 import { usePopoverContext } from './Context';
 
 export interface PopoverContentProps {
+  /** child element */
   children: React.ReactNode;
   className?: string;
 }

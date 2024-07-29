@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 
 export interface MasonryProps {
   columns: number;
+  /** child element */
   children?: ReactNode;
 }
 

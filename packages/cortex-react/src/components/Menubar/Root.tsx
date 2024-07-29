@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { MenubarProvider } from '../../provider';
 
 export interface RootProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** child element */
   children?: ReactNode;
 }
 

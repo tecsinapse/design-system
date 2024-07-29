@@ -1,8 +1,9 @@
 import React from 'react';
-import { usePopoverContext } from './Context';
 import { cloneWithProps } from '../utils';
+import { usePopoverContext } from './Context';
 
 export interface PopoverTriggerProps {
+  /** child element */
   children: React.ReactElement;
 }
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { DefaultProps } from './interface';
-import IconControlSubItem from './IconControlSubItem';
 import { item } from '../../styles/menubar';
+import IconControlSubItem from './IconControlSubItem';
 import ItemLink from './ItemLink';
+import { DefaultProps } from './interface';
 
 export interface ItemProps<T> extends DefaultProps {
+  /** child element */
   children?: React.ReactNode;
   subItems?: T[];
   renderSubItems?: (prop: T) => React.ReactNode;

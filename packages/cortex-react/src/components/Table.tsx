@@ -16,6 +16,7 @@ import React, {
 } from 'react';
 
 interface TableCommon {
+  /** child element */
   children?: ReactNode;
 }
 

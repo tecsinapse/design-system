@@ -2,6 +2,7 @@ import { card } from '@tecsinapse/cortex-core';
 import React, { forwardRef, HTMLAttributes } from 'react';
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+  /** child element */
   children?: React.ReactNode;
 }
 

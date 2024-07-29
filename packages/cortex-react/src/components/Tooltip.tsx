@@ -4,6 +4,7 @@ import { useFloatingLogic } from '../hooks';
 import { cloneWithProps } from './utils';
 
 interface TooltipProps {
+  /** child element */
   children: React.ReactElement;
   text: string;
   trigger?: 'hover' | 'click';

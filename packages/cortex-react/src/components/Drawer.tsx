@@ -5,6 +5,7 @@ export interface DrawerProps {
   open: boolean;
   onClose: () => void;
   position?: 'left' | 'right';
+  /** child element */
   children?: React.ReactNode;
 }
 

@@ -1,14 +1,13 @@
 import clsx from 'clsx';
-import React, { ReactNode } from 'react';
+import React from 'react';
+
+interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** child element */
+  children?: React.ReactNode;
+}
 
 /** Skeleton component*/
-export const Skeleton = ({
-  className,
-  children,
-  ...rest
-}: React.HTMLAttributes<HTMLDivElement> & {
-  children?: ReactNode;
-}) => {
+export const Skeleton = ({ className, children, ...rest }: SkeletonProps) => {
   return (
     <div
       {...rest}

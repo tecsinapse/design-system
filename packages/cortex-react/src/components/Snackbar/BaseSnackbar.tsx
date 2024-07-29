@@ -1,8 +1,9 @@
-import React, { forwardRef, ReactNode } from 'react';
 import { snackbar, SnackbarVariants } from '@tecsinapse/cortex-core';
+import React, { forwardRef, ReactNode } from 'react';
 
 interface SnackbarProps {
   variants?: SnackbarVariants;
+  /** child element */
   children?: ReactNode;
   show: boolean;
 }
