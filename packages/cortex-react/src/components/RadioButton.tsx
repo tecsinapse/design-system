@@ -10,6 +10,7 @@ export interface RadioButtonProps
 
 const { container, input, label: labelStyle } = radioButtonStyles();
 
+/** RadioButton component */
 export const RadioButton = forwardRef<HTMLDivElement, RadioButtonProps>(
   ({ label, reversed, id, ...rest }: RadioButtonProps, ref) => {
     return (

@@ -1,17 +1,18 @@
 import { CalendarDate } from '@internationalized/date';
 import React from 'react';
-import { useDatePickerInput } from '../hooks';
-import { Calendar } from './Calendar/Calendar';
+import { useDatePickerInput } from '../../hooks';
+import { Calendar } from '../Calendar/Calendar';
+import { InputPropsBase } from '../Input';
+import { dateToCalendarDate } from '../utils';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
-import { InputPropsBase } from './Input';
-import { dateToCalendarDate } from './utils';
 
 export interface DatePickerInputProps extends InputPropsBase {
   value?: Date;
   onChange: (date: Date) => void;
 }
 
+/** DatePickerInput component */
 export const DatePickerInput = (props: DatePickerInputProps) => {
   const { onChange, value, label, variants } = props;
   const { fieldProps, state, ref } = useDatePickerInput({ value, onChange });

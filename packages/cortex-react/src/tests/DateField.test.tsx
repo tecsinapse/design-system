@@ -3,9 +3,9 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { DateValue } from 'react-aria';
-import { DateField } from '../components/DateField';
+import { DateField } from '../components';
 
-jest.mock('../components/DateSegment', () => ({
+jest.mock('../components/DatePicker/DateSegment', () => ({
   DateSegment: ({ segment }: { segment: { text: string } }) => (
     <span>{segment.text}</span>
   ),

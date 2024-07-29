@@ -1,7 +1,7 @@
 import { inputBox, labelStyle } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { LiaCalendar } from 'react-icons/lia';
-import { Input, InputPropsBase } from './Input';
+import { Input, InputPropsBase } from '../Input';
 
 interface DatePickerInputBaseProps extends InputPropsBase {
   onClickCalendar: () => void;

@@ -8,6 +8,7 @@ interface CalendarProps {
   onChange: (value: Date) => void;
 }
 
+/** Calendar component */
 export const Calendar = ({ value, onChange }: CalendarProps) => {
   const { calendarProps, title, state } = useCalendar({ value, onChange });
 

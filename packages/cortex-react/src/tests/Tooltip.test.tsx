@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import Tooltip from '../components/Tooltip';
+import { Tooltip } from '../components';
 
 const TooltipButton = () => {
   return (
@@ -73,7 +73,7 @@ describe('Tooltip', () => {
     const trigger = screen.getByTestId('trigger');
 
     fireEvent.click(trigger);
-    let tooltip = await screen.findByText('Tooltip Content');
+    const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
     fireEvent.click(trigger);
@@ -90,7 +90,7 @@ describe('Tooltip', () => {
     const topTrigger = screen.getByText('Top Trigger');
 
     fireEvent.click(topTrigger);
-    let topTooltip = await screen.findByText('Top Tooltip Content');
+    const topTooltip = await screen.findByText('Top Tooltip Content');
     expect(topTooltip).toBeInTheDocument();
   });
 
@@ -104,7 +104,7 @@ describe('Tooltip', () => {
     const bottomTrigger = screen.getByText('Bottom Trigger');
 
     fireEvent.click(bottomTrigger);
-    let bottomTooltip = await screen.findByText('Bottom Tooltip Content');
+    const bottomTooltip = await screen.findByText('Bottom Tooltip Content');
     expect(bottomTooltip).toBeInTheDocument();
   });
 
@@ -118,7 +118,7 @@ describe('Tooltip', () => {
     const leftTrigger = screen.getByText('Left Trigger');
 
     fireEvent.click(leftTrigger);
-    let leftTooltip = await screen.findByText('Left Tooltip Content');
+    const leftTooltip = await screen.findByText('Left Tooltip Content');
     expect(leftTooltip).toBeInTheDocument();
   });
 
@@ -132,7 +132,7 @@ describe('Tooltip', () => {
     const rightTrigger = screen.getByText('Right Trigger');
 
     fireEvent.click(rightTrigger);
-    let rightTooltip = await screen.findByText('Right Tooltip Content');
+    const rightTooltip = await screen.findByText('Right Tooltip Content');
     expect(rightTooltip).toBeInTheDocument();
   });
 

@@ -1,14 +1,14 @@
 import React from 'react';
+import { useTimeField } from '../../hooks/useTimeField';
+import { DateSegment } from '../DatePicker/DateSegment';
 import { TimeValueType } from './TimeFieldInput';
-import { DateSegment } from './DateSegment';
-import { useTimeField } from '../hooks/useTimeField';
 
 export interface TimeFieldProps {
   value?: TimeValueType;
   onChange: (number: TimeValueType) => void;
 }
 
-const TimeField = (props: TimeFieldProps) => {
+export const TimeField = (props: TimeFieldProps) => {
   const { fieldProps, ref, state } = useTimeField(props);
 
   return (
@@ -19,5 +19,3 @@ const TimeField = (props: TimeFieldProps) => {
     </div>
   );
 };
-
-export default TimeField;

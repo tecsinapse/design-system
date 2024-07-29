@@ -5,6 +5,7 @@ import {
 } from '@tecsinapse/cortex-core';
 import React, { InputHTMLAttributes, forwardRef } from 'react';
 
+/** Toggle component */
 export const Toggle = forwardRef<
   HTMLInputElement,
   InputHTMLAttributes<HTMLInputElement>

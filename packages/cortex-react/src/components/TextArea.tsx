@@ -79,6 +79,7 @@ const Face = React.forwardRef<HTMLDivElement, TextAreaFaceProps>(
   }
 );
 
+/** TextArea component */
 const Root = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ variants, className, ...rest }: TextAreaProps, ref) => {
     return (

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Input, InputPropsBase } from './Input';
 import { inputBox, labelStyle } from '@tecsinapse/cortex-core';
-import TimeField from './TimeField';
+import React from 'react';
+import { Input, InputPropsBase } from '../Input';
+import { TimeField } from './TimeField';
 
 export type TimeValueType = {
   hour: number;
@@ -13,6 +13,7 @@ export interface TimeFieldInputProps extends InputPropsBase {
   onChange: (number: TimeValueType) => void;
 }
 
+/** TimeFieldInput component */
 export const TimeFieldInput = (props: TimeFieldInputProps) => {
   const { onChange, value, label, variants } = props;
 

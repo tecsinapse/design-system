@@ -1,8 +1,9 @@
-import React from 'react';
 import { SnackbarVariants } from '@tecsinapse/cortex-core';
+import React from 'react';
+import { IoMdClose, IoMdInformationCircleOutline } from 'react-icons/io';
 import { BaseSnackbar } from './BaseSnackbar';
-import { IoMdInformationCircleOutline, IoMdClose } from 'react-icons/io';
 
+/** Snackbar component */
 export const DefaultSnack = ({
   text,
   onDismiss,

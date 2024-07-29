@@ -17,7 +17,7 @@ export const Default: StoryObj<typeof Popover.Root> = {
   },
   render: args => {
     return (
-      <div className="h-[250px] flex justify-center">
+      <div className="h-[250px]">
         <Popover.Root placement={args.placement} trigger={args.trigger}>
           <Popover.Trigger>
             <button className={button({ intent: 'primary' })}>

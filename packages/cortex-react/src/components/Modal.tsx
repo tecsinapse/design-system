@@ -1,5 +1,5 @@
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 import { modal, overlay } from '@tecsinapse/cortex-core';
+import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 interface ModalProps {
   open: boolean;
@@ -7,6 +7,7 @@ interface ModalProps {
   children?: ReactNode;
 }
 
+/** Modal component */
 export const Modal = forwardRef<
   HTMLDivElement,
   ModalProps & InputHTMLAttributes<HTMLInputElement>

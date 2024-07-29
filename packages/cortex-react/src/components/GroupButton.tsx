@@ -27,6 +27,7 @@ export interface GroupButtonProps<T> {
 const { button, container, active, inactive, firstButton, lastButton } =
   groupButton();
 
+/** GroupButton component */
 export const GroupButton = <T,>(props: GroupButtonProps<T>) => {
   const {
     options,

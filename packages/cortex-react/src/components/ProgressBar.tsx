@@ -17,6 +17,7 @@ export interface ProgressBarProps {
   animated?: boolean;
 }
 
+/** ProgressBar component */
 export const ProgressBar = ({
   segments: _segments = 1,
   valueMin = 0,
