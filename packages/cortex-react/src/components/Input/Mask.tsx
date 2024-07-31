@@ -1,18 +1,20 @@
 import React, { MutableRefObject, Ref, createRef, useEffect } from 'react';
 import { useIMask } from 'react-imask';
 import { Input } from '.';
-import { InputMaskExpressionProps, InputMaskProps, InputProps } from './types';
+import { InputMaskEvent, InputMaskProps, InputProps, Mask } from './types';
 
 const useIMaskLocal = (
-  mask: any,
+  mask: Mask,
   inputProps: InputProps,
   ref?: React.ForwardedRef<HTMLInputElement>,
-  unmaskedRef?: React.MutableRefObject<string>
+  onChangeMask?: (e: InputMaskEvent) => void
 ) => {
   const { ref: iMaskRef, maskRef } = useIMask(mask, {
-    onAccept: () => {
-      if (unmaskedRef) unmaskedRef.current = maskRef.current.unmaskedValue;
-      return inputProps.onChange?.(maskRef.current);
+    onAccept: (value, mask) => {
+      onChangeMask?.({
+        unmaskedValue: mask._unmaskedValue,
+        value: value,
+      });
     },
     ref: ref ? (ref as MutableRefObject<HTMLInputElement>) : createRef(),
   });
@@ -28,43 +30,10 @@ const useIMaskLocal = (
   };
 };
 
-export const InputMaskExpression = React.forwardRef<
-  HTMLInputElement,
-  InputMaskExpressionProps
->(({ mask, unmaskedRef, ...rest }: InputMaskExpressionProps, ref) => {
-  const { iMaskRef } = useIMaskLocal({ mask }, rest, ref, unmaskedRef);
+export const InputMask = React.forwardRef<HTMLInputElement, InputMaskProps>(
+  ({ mask, onChange, ...rest }: InputMaskProps, ref) => {
+    const { iMaskRef } = useIMaskLocal(mask, rest, ref, onChange);
 
-  return <Input.Root {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
-});
-
-export const InputMaskNumber = React.forwardRef<
-  HTMLInputElement,
-  InputMaskProps
->(({ unmaskedRef, ...rest }: InputMaskProps, ref) => {
-  const mask = { mask: Number, scale: 2 };
-  const { iMaskRef } = useIMaskLocal(mask, rest, ref, unmaskedRef);
-
-  return <Input.Root {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
-});
-
-export const InputMaskCurrency = React.forwardRef<
-  HTMLInputElement,
-  InputMaskProps
->(({ unmaskedRef, ...rest }: InputMaskProps, ref) => {
-  const mask = {
-    mask: 'R$ num',
-    blocks: {
-      num: {
-        mask: Number,
-        scale: 2,
-        thousandsSeparator: '.',
-        padFractionalZeros: true,
-        radix: ',',
-        mapToRadix: ['.'],
-      },
-    },
-  };
-  const { iMaskRef } = useIMaskLocal(mask, rest, ref, unmaskedRef);
-
-  return <Input.Root {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
-});
+    return <Input.Root {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
+  }
+);

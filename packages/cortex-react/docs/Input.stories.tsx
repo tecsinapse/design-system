@@ -1,17 +1,21 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
-import { Hint, Input } from '../src';
-import { Masks } from './utils';
+import {
+  CurrencyIMask,
+  ExpressionMasks,
+  Hint,
+  Input,
+  NumberIMask,
+  PercentageIMask,
+} from '../src';
 
 export default {
   title: 'Cortex/Input',
   component: Input.Root,
   subcomponents: {
     Search: Input.Search,
-    MaskExpression: Input.MaskExpression,
-    MaskCurrency: Input.MaskCurrency,
-    MaskNumber: Input.MaskNumber,
+    Mask: Input.Mask,
     Face: Input.Face,
     Box: Input.Box,
     Left: Input.Left,
@@ -79,20 +83,20 @@ export const Search: StoryObj<typeof Input.Search> = {
   },
 };
 
-export const ExpressionMask: StoryObj<typeof Input.MaskExpression> = {
+export const ExpressionMask: StoryObj<typeof Input.Mask> = {
   args: {
-    mask: [Masks.PHONE, Masks.PHONE_EXTENDED],
     ...baseArgs,
+    mask: { mask: [ExpressionMasks.PHONE, ExpressionMasks.PHONE_EXTENDED] },
     label: 'Expression Mask',
   },
   render: args => {
     const [expressionValue, setExpressionValue] = useState('1112345678');
 
     return (
-      <Input.MaskExpression
+      <Input.Mask
         placeholder={args.placeholder}
         label={args.label}
-        onChange={e => setExpressionValue(e.target?.value)}
+        onChange={e => setExpressionValue(e.value)}
         defaultValue={expressionValue}
         mask={args.mask}
       />
@@ -100,65 +104,91 @@ export const ExpressionMask: StoryObj<typeof Input.MaskExpression> = {
   },
 };
 
-export const NumberMask: StoryObj<typeof Input.MaskNumber> = {
+export const NumberMask: StoryObj<typeof Input.Mask> = {
   args: {
     ...baseArgs,
+    mask: NumberIMask,
     label: 'Number Mask',
   },
   render: args => {
     const [numberValue, setNumberValue] = useState('1000');
 
     return (
-      <Input.MaskNumber
+      <Input.Mask
         placeholder={args.placeholder}
         label={args.label}
-        onChange={e => setNumberValue(e.target?.value)}
+        onChange={e => setNumberValue(e.value)}
         defaultValue={numberValue}
+        mask={args.mask}
       />
     );
   },
 };
 
-export const CurrencyMask: StoryObj<typeof Input.MaskCurrency> = {
+export const CurrencyMask: StoryObj<typeof Input.Mask> = {
   args: {
     ...baseArgs,
     label: 'Currency Mask',
+    mask: CurrencyIMask,
   },
   render: args => {
     const [currencyValue, setCurrencyValue] = useState('99,50');
 
     return (
-      <Input.MaskCurrency
+      <Input.Mask
         placeholder={args.placeholder}
         label={args.label}
-        onChange={e => setCurrencyValue(e.target?.value)}
+        onChange={e => setCurrencyValue(e.value)}
         defaultValue={currencyValue}
+        mask={args.mask}
       />
     );
   },
 };
 
-export const ShowUnmasked: StoryObj<typeof Input.MaskExpression> = {
+export const PercentageMask: StoryObj<typeof Input.Mask> = {
   args: {
-    mask: [Masks.PHONE, Masks.PHONE_EXTENDED],
     ...baseArgs,
+    label: 'Percentage Mask',
+    mask: PercentageIMask,
+  },
+  render: args => {
+    const [currencyValue, setCurrencyValue] = useState('99,50');
+
+    return (
+      <Input.Mask
+        placeholder={args.placeholder}
+        label={args.label}
+        onChange={e => setCurrencyValue(e.value)}
+        defaultValue={currencyValue}
+        mask={args.mask}
+      />
+    );
+  },
+};
+
+export const ShowUnmasked: StoryObj<typeof Input.Mask> = {
+  args: {
+    ...baseArgs,
+    mask: { mask: [ExpressionMasks.PHONE, ExpressionMasks.PHONE_EXTENDED] },
     label: 'Expression Mask',
   },
   render: args => {
-    const [expressionValue, setExpressionValue] = useState('1112345678');
-    const unmaskedRef = useRef('1112345678');
+    const [unmaskedValue, setUnmaskedValue] = useState('1112345678');
 
     return (
       <>
-        <Input.MaskExpression
+        <Input.Mask
           placeholder={args.placeholder}
           label={args.label}
-          onChange={e => setExpressionValue(e.target?.value)}
-          defaultValue={expressionValue}
+          onChange={e => {
+            console.log(e);
+            setUnmaskedValue(e.unmaskedValue);
+          }}
+          defaultValue={unmaskedValue}
           mask={args.mask}
-          unmaskedRef={unmaskedRef}
         />
-        <Hint>Unmasked: {unmaskedRef.current}</Hint>
+        <Hint>Unmasked: {unmaskedValue}</Hint>
       </>
     );
   },

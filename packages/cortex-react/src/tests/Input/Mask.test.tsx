@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { Input } from '../..';
+import { CurrencyIMask, ExpressionMasks, Input, NumberIMask } from '../..';
 
 // IMPORTANT: fireEvent.blur after fireEvent.change needed to apply mask
 
@@ -8,10 +8,10 @@ describe('InputMask', () => {
   describe('Expression', () => {
     it('Should apply correct expression mask on phone number masks', () => {
       const maskOptions = {
-        mask: ['(00) 0000-0000', '(00) 00000-0000'],
+        mask: [ExpressionMasks.PHONE, ExpressionMasks.PHONE_EXTENDED],
       };
 
-      render(<Input.MaskExpression mask={maskOptions.mask} />);
+      render(<Input.Mask mask={maskOptions} />);
 
       const maskExpressionElement = screen.getByTestId(
         'input-box'
@@ -36,10 +36,10 @@ describe('InputMask', () => {
 
     it('Should apply correct expression mask on cpf/cnpj masks', () => {
       const maskOptions = {
-        mask: ['000.000.000-00', '00.000.000/0000-00'],
+        mask: [ExpressionMasks.CPF, ExpressionMasks.CNPJ],
       };
 
-      render(<Input.MaskExpression mask={maskOptions.mask} />);
+      render(<Input.Mask mask={maskOptions} />);
 
       const maskExpressionElement = screen.getByTestId(
         'input-box'
@@ -65,7 +65,7 @@ describe('InputMask', () => {
 
   describe('Number', () => {
     it('Should not render text on number mask', () => {
-      render(<Input.MaskNumber />);
+      render(<Input.Mask mask={NumberIMask} />);
 
       const maskNumberElement = screen.getByTestId(
         'input-box'
@@ -81,7 +81,7 @@ describe('InputMask', () => {
     });
 
     it('Should apply number mask correctly', () => {
-      render(<Input.MaskNumber />);
+      render(<Input.Mask mask={NumberIMask} />);
 
       const maskNumberElement = screen.getByTestId(
         'input-box'
@@ -99,7 +99,7 @@ describe('InputMask', () => {
 
   describe('Currency', () => {
     it('Should apply currency mask', () => {
-      render(<Input.MaskCurrency />);
+      render(<Input.Mask mask={CurrencyIMask} />);
 
       const maskCurrencyElement = screen.getByTestId(
         'input-box'
@@ -115,7 +115,7 @@ describe('InputMask', () => {
     });
 
     it('Should not render text on currency mask', () => {
-      render(<Input.MaskCurrency />);
+      render(<Input.Mask mask={CurrencyIMask} />);
 
       const maskCurrencyElement = screen.getByTestId(
         'input-box'
