@@ -1,9 +1,10 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
 import { Select, SelectOptionsProps } from '.';
+import { useSelectOptions } from '../../hooks';
 import { usePopoverContext } from '../Popover/Context';
+import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext } from './context';
-
 const { list } = selectVariants();
 
 export const SelectOptions = <T,>({
@@ -12,6 +13,7 @@ export const SelectOptions = <T,>({
 }: SelectOptionsProps<T>) => {
   const { keyExtractor } = useContext(SelectContext);
   const { setIsOpen } = usePopoverContext();
+  const { options: _options, isLoading } = useSelectOptions<T>({ options });
 
   const handleSelect = useCallback(
     (option: T) => {
@@ -21,9 +23,11 @@ export const SelectOptions = <T,>({
     [onSelect]
   );
 
-  return (
+  return isLoading ? (
+    <SkeletonOptions />
+  ) : (
     <ul role={'select'} className={list()}>
-      {(options ?? []).map(option => (
+      {_options?.map(option => (
         <Select.Option
           option={option}
           key={keyExtractor(option)}

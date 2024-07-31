@@ -41,7 +41,7 @@ export const SelectMultiCheckAllOptions = <T,>({
       <input
         type="checkbox"
         className={checkbox()}
-        onChange={checkAll}
+        onChange={() => undefined}
         checked={isChecked}
       />
       <span>{checkAllLabel}</span>

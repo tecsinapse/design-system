@@ -7,7 +7,7 @@ export interface ContentProps {
 
 export interface SelectGroupedOptionsProps<T> {
   onSelect: (value: T) => void;
-  options?: Map<string, T[]>;
+  options?: Map<string, T[]> | (() => Promise<Map<string, T[]>>);
   groupedLabelExtractor: (value: string) => string;
 }
 
@@ -17,7 +17,7 @@ export interface SelectMultiCheckAllOptionsProps {
 
 export interface SelectMultiGroupedOptionsProps<T> {
   onSelect: (value: T[]) => void;
-  options?: Map<string, T[]>;
+  options?: Map<string, T[]> | (() => Promise<Map<string, T[]>>);
   groupedLabelExtractor: (value: string) => string;
   /** child element */
   children?: React.ReactNode;
@@ -30,7 +30,7 @@ export interface SelectMultiOptionProps<T> {
 }
 
 export interface SelectMultiOptionsProps<T> {
-  options?: T[];
+  options?: T[] | (() => Promise<T[]>);
   onSelect: (value: T[]) => void;
   /** child element */
   children?: React.ReactNode;
@@ -43,7 +43,7 @@ export interface SelectOptionProps<T> {
 }
 
 export interface SelectOptionsProps<T> {
-  options?: T[];
+  options?: T[] | (() => Promise<T[]>);
   onSelect: (value: T) => void;
 }
 
