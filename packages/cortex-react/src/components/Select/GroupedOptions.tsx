@@ -1,7 +1,9 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
 import { Select, SelectGroupedOptionsProps } from '.';
+import { useSelectGroupedOptions } from '../../hooks';
 import { usePopoverContext } from '../Popover/Context';
+import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext } from './context';
 
 const { groupedTitle, list } = selectVariants();
@@ -13,6 +15,7 @@ export const SelectGroupedOptions = <T,>({
 }: SelectGroupedOptionsProps<T>) => {
   const { keyExtractor } = useContext(SelectContext);
   const { setIsOpen } = usePopoverContext();
+  const { options: _options, isLoading } = useSelectGroupedOptions({ options });
 
   const handleSelect = useCallback(
     (option: T) => {
@@ -22,9 +25,11 @@ export const SelectGroupedOptions = <T,>({
     [onSelect]
   );
 
-  return (
+  return isLoading ? (
+    <SkeletonOptions />
+  ) : (
     <ul role={'select'} className={list()}>
-      {[...(options ?? [])].map(([key, value]) => (
+      {[...(_options ?? [])].map(([key, value]) => (
         <div key={key}>
           <span className={groupedTitle()}>{groupedLabelExtractor?.(key)}</span>
           {value.map((option: T) => (
