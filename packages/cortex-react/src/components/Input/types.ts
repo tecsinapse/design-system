@@ -43,8 +43,3 @@ export interface InputMaskProps extends Omit<InputProps, 'onChange'> {
   /** Mask based on https://imask.js.org/ */
   mask: Mask;
 }
-
-export interface InputMaskExpressionProps extends InputMaskProps {
-  /** Mask based on https://imask.js.org/ */
-  mask: Mask;
-}
