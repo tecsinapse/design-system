@@ -51,29 +51,29 @@ describe('DateRangePickerInput', () => {
     const button = screen.getByTestId('date-picker-input-base-calendar');
 
     fireEvent.click(button);
-    expect(mockUseDateRangePickerInput.state.open).toHaveBeenCalled();
-
-    mockUseDateRangePickerInput.state.isOpen = true;
-    render(<DateRangePickerInput {...defaultProps} />);
 
     const calendarElement = screen.getByTestId('calendar-range-div');
     expect(calendarElement).toBeInTheDocument();
 
     fireEvent.click(button);
-    expect(mockUseDateRangePickerInput.state.close).toHaveBeenCalled();
+
+    expect(screen.queryByTestId('calendar-div')).not.toBeInTheDocument();
   });
 
-  it('Should call onChange and close calendar when date is selected', () => {
+  it('Should call onChange and close calendar when date is selected', async () => {
     render(<DateRangePickerInput {...defaultProps} />);
 
-    mockUseDateRangePickerInput.state.isOpen = true;
-    render(<DateRangePickerInput {...defaultProps} />);
+    const button = screen.getByTestId('date-picker-input-base-calendar');
+    fireEvent.click(button);
+
+    const calendarElement = await screen.findByTestId('calendar-range-div');
+    expect(calendarElement).toBeInTheDocument();
 
     const newStartDate = new CalendarDate(2024, 7, 16);
     const newEndDate = new CalendarDate(2024, 7, 18);
 
-    const calendarCellStartDate = screen.getAllByText(newStartDate.day)[0];
-    const calendarCellEndDate = screen.getAllByText(newEndDate.day)[0];
+    const calendarCellStartDate = screen.getByText(newStartDate.day.toString());
+    const calendarCellEndDate = screen.getByText(newEndDate.day.toString());
 
     expect(calendarCellStartDate).toBeInTheDocument();
     expect(calendarCellEndDate).toBeInTheDocument();
@@ -87,6 +87,9 @@ describe('DateRangePickerInput', () => {
         end: newEndDate,
       }
     );
-    expect(mockUseDateRangePickerInput.state.close).toHaveBeenCalled();
+
+    expect(
+      await screen.queryByTestId('calendar-range-div')
+    ).not.toBeInTheDocument();
   });
 });
