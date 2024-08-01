@@ -13,12 +13,10 @@ export const SelectRoot = <T,>({
   labelExtractor,
 }: SelectRootProps<T>) => {
   return (
-    <Popover.Provider>
-      <Popover.Root placement="bottom" trigger="click">
-        <SelectContext.Provider value={{ value, keyExtractor, labelExtractor }}>
-          <Content>{children}</Content>
-        </SelectContext.Provider>
-      </Popover.Root>
-    </Popover.Provider>
+    <Popover.Root placement="bottom" trigger="click">
+      <SelectContext.Provider value={{ value, keyExtractor, labelExtractor }}>
+        <Content>{children}</Content>
+      </SelectContext.Provider>
+    </Popover.Root>
   );
 };

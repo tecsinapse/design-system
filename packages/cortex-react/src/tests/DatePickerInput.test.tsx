@@ -49,33 +49,36 @@ describe('DatePickerInput', () => {
     const button = screen.getByTestId('date-picker-input-base-calendar');
 
     fireEvent.click(button);
-    expect(mockUseDatePickerInput.state.open).toHaveBeenCalled();
-
-    mockUseDatePickerInput.state.isOpen = true;
-    render(<DatePickerInput {...defaultProps} />);
 
     const calendarElement = screen.getByTestId('calendar-div');
     expect(calendarElement).toBeInTheDocument();
 
     fireEvent.click(button);
-    expect(mockUseDatePickerInput.state.close).toHaveBeenCalled();
+
+    expect(screen.queryByTestId('calendar-div')).not.toBeInTheDocument();
   });
 
-  it('Should call onChange and close calendar when date is selected', () => {
-    mockUseDatePickerInput.state.isOpen = true;
+  it('Should call onChange and close calendar when date is selected', async () => {
     render(<DatePickerInput {...defaultProps} />);
 
+    const button = screen.getByTestId('date-picker-input-base-calendar');
+    fireEvent.click(button);
+
+    const calendarElement = await screen.findByTestId('calendar-div');
+    expect(calendarElement).toBeInTheDocument();
+
     const newDate = new CalendarDate(2024, 6, 16);
+    const expectedDateText = newDate.day.toString();
 
-    const calendarCellSixteen = screen.getAllByText(newDate.day)[0];
+    const calendarCell = screen.getByText(expectedDateText);
+    expect(calendarCell).toBeInTheDocument();
 
-    expect(calendarCellSixteen).toBeInTheDocument();
-
-    fireEvent.click(calendarCellSixteen);
+    fireEvent.click(calendarCell);
 
     expect(mockUseDatePickerInput.state.setDateValue).toHaveBeenCalledWith(
       new CalendarDate(2024, 6, 16)
     );
-    expect(mockUseDatePickerInput.state.close).toHaveBeenCalled();
+
+    expect(await screen.queryByTestId('calendar-div')).not.toBeInTheDocument();
   });
 });
