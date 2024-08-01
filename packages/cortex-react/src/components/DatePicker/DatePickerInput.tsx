@@ -15,7 +15,6 @@ export interface DatePickerInputProps extends InputPropsBase {
   onChange: (date: Date) => void;
 }
 
-/** DatePickerInput component */
 const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
   const { setIsOpen } = usePopoverContext();
   const { onChange, value, label, variants } = props;
@@ -53,7 +52,7 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
     </div>
   );
 };
-
+/** DatePickerInput component */
 export const DatePickerInput = (props: DatePickerInputProps) => (
   <Popover.Root placement="bottom-start" trigger="click">
     <Content>

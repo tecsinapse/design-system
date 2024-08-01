@@ -16,9 +16,5 @@ export const Content = ({ children }: ContentProps) => {
     onClickOutside: () => setIsOpen(false),
   });
 
-  return (
-    <div className="w-full relative bg-white" ref={ref}>
-      {children}
-    </div>
-  );
+  return <div ref={ref}>{children}</div>;
 };
