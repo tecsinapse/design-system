@@ -26,14 +26,17 @@ export const Default: StoryObj<typeof DatePickerInput> = {
 
 export const Range: StoryObj<typeof DateRangePickerInput> = {
   render: () => {
-    const [value, setValue] = useState(new Date());
+    const start = new Date();
+    const end = new Date();
+    end.setDate(end.getDate() + 2);
+    const [value, setValue] = useState({ start, end });
 
     return (
-      <div className={'w-[200px] h-[450px]'}>
-        <DatePickerInput
+      <div className={'w-[250px] h-[450px]'}>
+        <DateRangePickerInput
           value={value}
           onChange={value => setValue(value)}
-          label="Select date"
+          label="Select date range"
         />
       </div>
     );
