@@ -1,6 +1,6 @@
 import { CalendarDate } from '@internationalized/date';
 import React from 'react';
-import { useDatePickerInput, useOutsideClickListener } from '../../hooks';
+import { useDatePickerInput } from '../../hooks';
 import { Calendar } from '../Calendar/Calendar';
 import { InputPropsBase } from '../Input';
 import { dateToCalendarDate } from '../utils';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDateRangePickerInput, useOutsideClickListener } from '../../hooks';
+import { useDateRangePickerInput } from '../../hooks';
 import { DateRange, RangeCalendar } from '../Calendar/RangeCalendar';
 import { InputPropsBase } from '../Input';
 import { dateToCalendarDate } from '../utils';
