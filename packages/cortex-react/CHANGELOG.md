@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.30](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.29...@tecsinapse/cortex-react@1.3.0-beta.30) (2024-08-02)
+
+### Bug Fixes
+
+- **TS-7832:** fix bug zindex popover ([9fd773f](https://github.com/tecsinapse/design-system/commit/9fd773f31130cf6699665eed5a8626184c701ed3))
+
 # [1.3.0-beta.29](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.28...@tecsinapse/cortex-react@1.3.0-beta.29) (2024-08-01)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
