@@ -7,10 +7,14 @@ import { SelectTriggerProps } from './types';
 
 const { button } = selectVariants();
 
-export const SelectTrigger = ({ label, disabled }: SelectTriggerProps) => {
+export const SelectTrigger = ({
+  label,
+  placeholder,
+  disabled,
+}: SelectTriggerProps) => {
   const { value, labelExtractor } = useContext(SelectContext);
-  const placeholder = useMemo(() => {
-    if (value?.length === 0 || !value) return label;
+  const _placeholder = useMemo(() => {
+    if (value?.length === 0 || !value) return placeholder ?? label;
     if (value?.length === 1) return labelExtractor(value[0]);
     if (value?.length > 1) return `${value.length} items selected`;
     return labelExtractor(value);
@@ -23,7 +27,7 @@ export const SelectTrigger = ({ label, disabled }: SelectTriggerProps) => {
         disabled={disabled}
         role="button"
       >
-        <span data-testid="select-placeholder">{placeholder}</span>
+        <span data-testid="select-placeholder">{_placeholder}</span>
         <IoChevronDownOutline />
       </button>
     </Popover.Trigger>

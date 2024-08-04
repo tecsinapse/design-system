@@ -61,5 +61,6 @@ export interface SelectRootProps<T> {
 
 export interface SelectTriggerProps {
   label: string;
+  placeholder?: string;
   disabled?: boolean;
 }

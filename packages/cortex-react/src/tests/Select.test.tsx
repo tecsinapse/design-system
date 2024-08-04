@@ -76,6 +76,22 @@ describe('Select', () => {
       expect(selectElement).toBeInTheDocument();
     });
 
+    it('Should render custom placeholder', () => {
+      render(
+        <Select.Root
+          value={undefined}
+          keyExtractor={keyExtractor}
+          labelExtractor={labelExtractor}
+        >
+          <Select.Trigger label="Select an option" placeholder="Placeholder" />
+        </Select.Root>
+      );
+
+      const placeholderElement = screen.getByText('Placeholder');
+
+      expect(placeholderElement).toBeInTheDocument();
+    });
+
     it('Should open and close popover on button click', () => {
       render(
         <Select.Root
