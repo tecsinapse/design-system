@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.30](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.29...@tecsinapse/cortex-react@1.3.0-beta.30) (2024-08-02)
+
+### Bug Fixes
+
+- **TS-7832:** fix bug zindex popover ([9fd773f](https://github.com/tecsinapse/design-system/commit/9fd773f31130cf6699665eed5a8626184c701ed3))
+
+# [1.3.0-beta.29](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.28...@tecsinapse/cortex-react@1.3.0-beta.29) (2024-08-01)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.3.0-beta.28](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.27...@tecsinapse/cortex-react@1.3.0-beta.28) (2024-08-01)
+
+### Bug Fixes
+
+- remove unused interface ([7b7fab0](https://github.com/tecsinapse/design-system/commit/7b7fab006a90f45b56f102ea47809bc752618321))
+
+### Features
+
+- **Ts-7916:** correção nos teste do DatePickerInputBase e PR Suggestion ([b131285](https://github.com/tecsinapse/design-system/commit/b1312851770c5edb45c3229b70b87aeb1414546c))
+- **TS-7916:** retirar import ([c1cefb6](https://github.com/tecsinapse/design-system/commit/c1cefb64c8d55f29c7e2c618c7a9e614e8e78724))
+- **TS-7969:** implementar popover no componente de datepicker e refatoração dos teste ([c58366e](https://github.com/tecsinapse/design-system/commit/c58366e7085cc9651259c846197bf08f02fffa69))
+
 # [1.3.0-beta.27](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.26...@tecsinapse/cortex-react@1.3.0-beta.27) (2024-07-31)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react

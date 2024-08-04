@@ -6,7 +6,7 @@ import { DatePickerInputBase } from '../components';
 describe('DatePickerInputBase', () => {
   it('Should render correctly', () => {
     render(
-      <DatePickerInputBase onClickCalendar={jest.fn}>
+      <DatePickerInputBase>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
@@ -21,20 +21,17 @@ describe('DatePickerInputBase', () => {
   it('Should render label', () => {
     const labelExample = 'Lorem Ipsum';
     render(
-      <DatePickerInputBase onClickCalendar={jest.fn} label={labelExample}>
+      <DatePickerInputBase label={labelExample}>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
-    const datePickerInputBaseElement = screen.getByText(labelExample);
-    expect(datePickerInputBaseElement).toBeInTheDocument();
+    const labelElement = screen.getByText(labelExample);
+    expect(labelElement).toBeInTheDocument();
   });
 
   it('Should render variant error', () => {
     render(
-      <DatePickerInputBase
-        onClickCalendar={jest.fn}
-        variants={{ intent: 'error' }}
-      >
+      <DatePickerInputBase variants={{ intent: 'error' }}>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
@@ -44,12 +41,9 @@ describe('DatePickerInputBase', () => {
     expect(datePickerInputBaseElement).toHaveClass('border-error-medium');
   });
 
-  it('Should render variant sucess', () => {
+  it('Should render variant success', () => {
     render(
-      <DatePickerInputBase
-        onClickCalendar={jest.fn}
-        variants={{ intent: 'success' }}
-      >
+      <DatePickerInputBase variants={{ intent: 'success' }}>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
@@ -61,10 +55,7 @@ describe('DatePickerInputBase', () => {
 
   it('Should render variant warning', () => {
     render(
-      <DatePickerInputBase
-        onClickCalendar={jest.fn}
-        variants={{ intent: 'warning' }}
-      >
+      <DatePickerInputBase variants={{ intent: 'warning' }}>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
@@ -75,13 +66,8 @@ describe('DatePickerInputBase', () => {
   });
 
   it('Should click calendar icon', () => {
-    const handleClickCalendar = jest.fn();
-
     render(
-      <DatePickerInputBase
-        onClickCalendar={handleClickCalendar}
-        variants={{ intent: 'warning' }}
-      >
+      <DatePickerInputBase>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
@@ -91,7 +77,5 @@ describe('DatePickerInputBase', () => {
     );
 
     fireEvent.click(datePickerInputBaseCalendarIconElement);
-
-    expect(handleClickCalendar).toHaveBeenCalled();
   });
 });

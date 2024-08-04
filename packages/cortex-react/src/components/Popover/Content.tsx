@@ -19,7 +19,7 @@ export const PopoverContent = ({
         <div
           ref={refs.setFloating}
           className={clsx(
-            'border border-gray-200 bg-black p-[0px] rounded-md shadow-lg z-50',
+            'border border-gray-200 bg-black p-[0px] rounded-md shadow-lg z-popover',
             className
           )}
           style={{
