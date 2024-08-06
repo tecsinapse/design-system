@@ -1,10 +1,11 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
-import { Select, SelectOptionsProps } from '.';
 import { useSelectOptions } from '../../hooks';
 import { usePopoverContext } from '../Popover/Context';
+import { SelectOption } from './Option';
 import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext } from './context';
+import { SelectOptionsProps } from './types';
 const { list } = selectVariants();
 
 export const SelectOptions = <T,>({
@@ -28,7 +29,7 @@ export const SelectOptions = <T,>({
   ) : (
     <ul role={'select'} className={list()}>
       {_options?.map(option => (
-        <Select.Option
+        <SelectOption
           option={option}
           key={keyExtractor(option)}
           onSelectOption={handleSelect}

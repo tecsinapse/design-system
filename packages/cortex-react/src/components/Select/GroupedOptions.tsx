@@ -1,10 +1,11 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
-import { Select, SelectGroupedOptionsProps } from '.';
 import { useSelectGroupedOptions } from '../../hooks';
 import { usePopoverContext } from '../Popover/Context';
+import { SelectOption } from './Option';
 import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext } from './context';
+import { SelectGroupedOptionsProps } from './types';
 
 const { groupedTitle, list } = selectVariants();
 
@@ -33,7 +34,7 @@ export const SelectGroupedOptions = <T,>({
         <div key={key}>
           <span className={groupedTitle()}>{groupedLabelExtractor?.(key)}</span>
           {value.map((option: T) => (
-            <Select.Option
+            <SelectOption
               grouped
               option={option}
               key={keyExtractor(option)}

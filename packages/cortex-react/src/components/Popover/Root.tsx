@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Placement } from '@floating-ui/react';
-import { Popover } from '.';
+import { PopoverProvider } from './Provider';
 
 export interface PopoverRootProps {
   /** child element */
@@ -17,8 +17,8 @@ export const PopoverRoot = ({
   trigger,
 }: PopoverRootProps) => {
   return (
-    <Popover.Provider placement={placement} trigger={trigger}>
+    <PopoverProvider placement={placement} trigger={trigger}>
       {children}
-    </Popover.Provider>
+    </PopoverProvider>
   );
 };

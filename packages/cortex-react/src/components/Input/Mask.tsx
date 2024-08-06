@@ -1,6 +1,6 @@
 import React, { MutableRefObject, Ref, createRef, useEffect } from 'react';
 import { useIMask } from 'react-imask';
-import { Input } from '.';
+import { InputRoot } from './Root';
 import { InputMaskEvent, InputMaskProps, InputProps, Mask } from './types';
 
 const useIMaskLocal = (
@@ -34,6 +34,6 @@ export const InputMask = React.forwardRef<HTMLInputElement, InputMaskProps>(
   ({ mask, onChange, ...rest }: InputMaskProps, ref) => {
     const { iMaskRef } = useIMaskLocal(mask, rest, ref, onChange);
 
-    return <Input.Root {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
+    return <InputRoot {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
   }
 );

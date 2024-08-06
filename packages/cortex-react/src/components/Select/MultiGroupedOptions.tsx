@@ -1,9 +1,10 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useContext, useMemo } from 'react';
-import { Select, SelectMultiGroupedOptionsProps } from '.';
 import { useSelectGroupedOptions } from '../../hooks';
+import { SelectMultiOption } from './MultiOption';
 import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext, SelectMultiOptionsContext } from './context';
+import { SelectMultiGroupedOptionsProps } from './types';
 import { handleSelectMulti } from './utils';
 
 const { groupedTitle, list } = selectVariants();
@@ -37,7 +38,7 @@ export const SelectMultiGroupedOptions = <T,>({
                 {groupedLabelExtractor?.(key)}
               </span>
               {value.map((option: T) => (
-                <Select.MultiOption
+                <SelectMultiOption
                   grouped
                   option={option}
                   key={keyExtractor(option)}

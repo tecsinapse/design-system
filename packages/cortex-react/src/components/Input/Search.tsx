@@ -1,7 +1,9 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
-import { Input } from '.';
 import { useDebouncedState } from '../../hooks';
+import { InputBox } from './Box';
+import { InputFace } from './Face';
+import { InputLeft } from './Left';
 import { InputSearchProps } from './types';
 
 /** Teste Search docs */
@@ -29,12 +31,12 @@ export const InputSearch = React.forwardRef<HTMLInputElement, InputSearchProps>(
     }, [bouncedTextEvent]);
 
     return (
-      <Input.Face variants={variants} className={className}>
-        <Input.Left>
+      <InputFace variants={variants} className={className}>
+        <InputLeft>
           <IoSearchOutline data-testid={'icon-search-left'} />
-        </Input.Left>
-        <Input.Box {...rest} ref={ref} onChange={e => setSearchInputEvent(e)} />
-      </Input.Face>
+        </InputLeft>
+        <InputBox {...rest} ref={ref} onChange={e => setSearchInputEvent(e)} />
+      </InputFace>
     );
   }
 );
