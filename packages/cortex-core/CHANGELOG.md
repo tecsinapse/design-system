@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.14...@tecsinapse/cortex-core@0.3.0) (2024-08-06)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
 # [0.3.0-beta.14](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.0-beta.13...@tecsinapse/cortex-core@0.3.0-beta.14) (2024-07-29)
 
 ### Bug Fixes
