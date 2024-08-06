@@ -1,9 +1,10 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
 import React, { useContext } from 'react';
-import { Select, SelectMultiOptionsProps } from '.';
 import { useSelectOptions } from '../../hooks';
+import { SelectMultiOption } from './MultiOption';
 import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext, SelectMultiOptionsContext } from './context';
+import { SelectMultiOptionsProps } from './types';
 import { handleSelectMulti } from './utils';
 
 const { list } = selectVariants();
@@ -24,7 +25,7 @@ export const SelectMultiOptions = <T,>({
         <ul role={'select'} className={list()}>
           {children}
           {_options?.map(option => (
-            <Select.MultiOption
+            <SelectMultiOption
               option={option}
               key={keyExtractor(option)}
               onSelectOption={option =>
