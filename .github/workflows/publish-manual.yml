@@ -43,6 +43,9 @@ jobs:
       - name: install and prepare
         run: pnpm i
 
+      - name: run test suites
+        run: pnpm test
+
       - name: setup npm
         run: |
           npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"

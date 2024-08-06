@@ -1,15 +1,15 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
 const drawerStyles = tv({
-  base: 'bg-white fixed  top-0 h-full p-deca shadow-lg transition-all duration-500 transform',
+  base: 'bg-white fixed  top-0 h-full p-deca shadow-lg transition-all duration-500 transform overflow-y-scroll',
   variants: {
     position: {
       left: 'left-0 -translate-x-full rounded-r-mili',
       right: 'right-1 translate-x-full rounded-l-mili',
     },
     open: {
-      true: 'translate-x-0',
-      false: '',
+      true: 'translate-x-0 z-[700]',
+      false: 'invisible',
     },
   },
   defaultVariants: {

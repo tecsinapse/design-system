@@ -1,12 +1,15 @@
-import React from 'react';
 import { drawer, overlay } from '@tecsinapse/cortex-core';
+import React from 'react';
 
-interface DrawerProps {
+export interface DrawerProps {
   open: boolean;
-  onClose: (open: boolean) => void;
+  onClose: () => void;
   position?: 'left' | 'right';
+  /** child element */
   children?: React.ReactNode;
 }
+
+/** Drawer component */
 export const Drawer = ({
   children,
   onClose,
@@ -16,10 +19,12 @@ export const Drawer = ({
   return (
     <>
       <div
+        data-testid="overlay"
         className={overlay({ show: open })}
-        onClick={() => onClose(false)}
-      ></div>
+        onClick={onClose}
+      />
       <div
+        data-testid="drawer"
         className={drawer({
           position,
           open,

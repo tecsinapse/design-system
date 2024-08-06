@@ -1,13 +1,16 @@
-import React, { forwardRef, HTMLProps } from 'react';
 import { card } from '@tecsinapse/cortex-core';
+import React, { forwardRef, HTMLAttributes } from 'react';
 
-interface CardProps {
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+  /** child element */
   children?: React.ReactNode;
 }
+
+/** Card component */
 export const Card = forwardRef<
   HTMLDivElement,
-  CardProps & HTMLProps<HTMLDivElement>
->((props, ref) => {
+  CardProps & HTMLAttributes<HTMLDivElement>
+>((props: CardProps & HTMLAttributes<HTMLDivElement>, ref) => {
   const { children, className, ...rest } = props;
   return (
     <div className={card({ className })} ref={ref} {...rest}>

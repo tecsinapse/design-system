@@ -9,14 +9,17 @@ export default {
     '../docs/**/*.mdx',
   ],
   addons: [
-    '@storybook/addon-docs',
+    { name: '@storybook/addon-docs', options: { configureJSX: true } },
     '@storybook/addon-controls',
     '@storybook/addon-backgrounds',
     '@storybook/addon-actions',
     '@storybook/addon-viewport',
+    '@storybook/addon-essentials',
   ],
   staticDirs: ['public/'],
-  docs: {
-    autodocs: true,
+  typescript: {
+    // Overrides the default Typescript configuration to allow multi-package components to be documented via Autodocs.
+    reactDocgen: 'react-docgen-typescript',
+    check: false,
   },
 };

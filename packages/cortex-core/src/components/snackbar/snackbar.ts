@@ -1,10 +1,10 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
 const snackbarStyles = tv({
-  base: 'animate-opacity fixed left-1/2 translate-x-[-50%] translate-y-[-50%] bottom-deca my-0 mx-auto max-w-[600px] shadow-default text-base font-bold p-mili rounded-mili',
+  base: 'animate-opacity flex flex-1 shadow-default text-base font-bold p-mili rounded-mili',
   variants: {
     intent: {
-      primary: 'bg-primary-xlight text-primary-medium',
+      default: 'bg-primary-xlight text-primary-medium',
       secondary: 'bg-secondary-xlight text-secondary-medium',
       success: 'bg-success-xlight text-success-medium',
       error: 'bg-error-xlight text-error-medium',
@@ -13,7 +13,7 @@ const snackbarStyles = tv({
     },
   },
   defaultVariants: {
-    intent: 'primary',
+    intent: 'default',
   },
 });
 

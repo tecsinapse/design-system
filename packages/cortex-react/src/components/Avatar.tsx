@@ -1,12 +1,15 @@
 import clsx from 'clsx';
 import React, { HTMLAttributes } from 'react';
-import { getInitialsName } from './utils';
+import { getNameInitials } from './utils';
 
-interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
+export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   src?: string;
   name: string;
 }
 
+/** Avatar component, if src is not passed it
+ * will render the first characters from the first
+ * and last name passed in props.*/
 export const Avatar = ({ src, name, className, ...rest }: AvatarProps) => {
   const [hasError, setHasError] = React.useState<boolean>(false);
 
@@ -29,10 +32,11 @@ export const Avatar = ({ src, name, className, ...rest }: AvatarProps) => {
           alt={name}
           className={'rounded-pill'}
           onError={() => setHasError(true)}
+          data-testid="avatar-img"
         />
       ) : (
-        <p className={'font-bold text-white text-base'}>
-          {getInitialsName(name)}
+        <p className={'font-bold text-white text-base'} data-testid="avatar-p">
+          {getNameInitials(name)}
         </p>
       )}
     </div>

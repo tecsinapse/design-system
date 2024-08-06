@@ -1,31 +1,21 @@
-import React, { forwardRef, HTMLProps } from 'react'
-import { hint, HintVariants } from '@tecsinapse/cortex-core'
+import { hint, HintVariants } from '@tecsinapse/cortex-core';
+import React, { forwardRef, HTMLProps } from 'react';
 
-interface HintProps {
-  children?: never
-  description: string
-  variants?: HintVariants
+export interface HintProps {
+  /** child element */
+  children: React.ReactNode;
+  variants?: HintVariants;
 }
 
-interface HintPropsWithChildrenProps {
-  children: JSX.Element
-  description?: never
-  variants?: HintVariants
-}
-
-type HintPropsUnion = HintProps | HintPropsWithChildrenProps
-
-export const Hint = forwardRef<HTMLDivElement, HintPropsUnion & Omit<HTMLProps<HTMLDivElement>, 'className'>>(
-  (props, ref) => {
-    const { description, children, variants } = props
-    return (
-      <div
-        className={hint(variants)}
-        ref={ref}
-      >
-        {description ? <p>{description}</p> : <></>}
-        {children}
-      </div>
-    )
-  }
-)
+/** Hint component, commonly used for hint string. It can also be used with custom components in children. */
+export const Hint = forwardRef<
+  HTMLDivElement,
+  HintProps & Omit<HTMLProps<HTMLDivElement>, 'className'>
+>((props: HintProps, ref) => {
+  const { children, variants } = props;
+  return (
+    <div className={hint(variants)} ref={ref}>
+      {children ?? <></>}
+    </div>
+  );
+});

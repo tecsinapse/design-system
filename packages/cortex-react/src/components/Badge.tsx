@@ -1,19 +1,22 @@
-import React, { forwardRef, HTMLProps } from 'react';
 import { badge, BadgeVariants, containerBadge } from '@tecsinapse/cortex-core';
+import * as React from 'react';
+import { forwardRef, HTMLProps } from 'react';
 
-interface BadgeProps {
+export interface BadgeProps {
   value: string | number;
   variants?: BadgeVariants;
 }
 
-interface BadgeAnchorProps extends BadgeProps {
-  children: JSX.Element;
+export interface BadgeAnchorProps extends BadgeProps {
+  /** child element */
+  children: React.ReactNode;
 }
 
+/** Badge component */
 export const Badge = forwardRef<
   HTMLDivElement,
   BadgeProps & Omit<HTMLProps<HTMLDivElement>, 'className'>
->((props, ref) => {
+>((props: BadgeProps, ref) => {
   const { value, variants, ...rest } = props;
   return (
     <div
@@ -32,7 +35,7 @@ export const Badge = forwardRef<
 export const BadgeAnchor = forwardRef<
   HTMLDivElement,
   BadgeAnchorProps & Omit<HTMLProps<HTMLDivElement>, 'className'>
->((props, ref) => {
+>((props: BadgeAnchorProps, ref) => {
   const { value, variants, children, ...rest } = props;
   return (
     <div className={containerBadge()}>
