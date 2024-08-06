@@ -23,7 +23,7 @@ export const SelectTrigger = ({
   return (
     <Popover.Trigger>
       <button
-        className={button({ disabled })}
+        className={button({ disabled, className: 'bg-white' })}
         disabled={disabled}
         role="button"
       >
