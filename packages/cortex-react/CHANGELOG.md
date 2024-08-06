@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.32](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.31...@tecsinapse/cortex-react@1.3.0-beta.32) (2024-08-06)
+
+### Bug Fixes
+
+- **Ts-8074:** select bg-white ([e3be7fb](https://github.com/tecsinapse/design-system/commit/e3be7fbfec8dd4edd463373c7d0952d8e2b58001))
+
 # [1.3.0-beta.31](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.30...@tecsinapse/cortex-react@1.3.0-beta.31) (2024-08-04)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
