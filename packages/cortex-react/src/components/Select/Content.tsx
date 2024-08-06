@@ -13,7 +13,7 @@ export const Content = ({ children }: ContentProps) => {
   });
 
   return (
-    <div className="w-full relative bg-white" ref={ref}>
+    <div className="w-full relative" ref={ref}>
       {children}
     </div>
   );
