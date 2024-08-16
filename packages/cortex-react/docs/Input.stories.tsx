@@ -118,7 +118,7 @@ export const NumberMask: StoryObj<typeof Input.Mask> = {
         placeholder={args.placeholder}
         label={args.label}
         onChange={e => setNumberValue(e.value)}
-        defaultValue={numberValue}
+        value={numberValue}
         mask={args.mask}
       />
     );
@@ -139,7 +139,7 @@ export const CurrencyMask: StoryObj<typeof Input.Mask> = {
         placeholder={args.placeholder}
         label={args.label}
         onChange={e => setCurrencyValue(e.value)}
-        defaultValue={currencyValue}
+        value={currencyValue}
         mask={args.mask}
       />
     );
@@ -160,7 +160,7 @@ export const PercentageMask: StoryObj<typeof Input.Mask> = {
         placeholder={args.placeholder}
         label={args.label}
         onChange={e => setCurrencyValue(e.value)}
-        defaultValue={currencyValue}
+        value={currencyValue}
         mask={args.mask}
       />
     );
@@ -182,13 +182,58 @@ export const ShowUnmasked: StoryObj<typeof Input.Mask> = {
           placeholder={args.placeholder}
           label={args.label}
           onChange={e => {
-            console.log(e);
+            // console.log(e);
             setUnmaskedValue(e.unmaskedValue);
           }}
-          defaultValue={unmaskedValue}
+          value={unmaskedValue}
           mask={args.mask}
         />
         <Hint>Unmasked: {unmaskedValue}</Hint>
+      </>
+    );
+  },
+};
+
+const total = 100;
+
+export const DoubleMask: StoryObj<typeof Input.Mask> = {
+  args: {
+    ...baseArgs,
+    label: 'Expression Mask',
+  },
+  render: args => {
+    const [currency, setCurrency] = useState(String(total));
+    const [percentage, setPercentage] = useState(String(total));
+
+    console.log('percentage', percentage);
+    console.log('currency', currency);
+
+    return (
+      <>
+        <Input.Mask
+          placeholder={'currency'}
+          label={'currency'}
+          onChange={e => {
+            // console.log(e);
+            setCurrency(e.unmaskedValue);
+            const update = String((Number(currency) / total) * 100);
+            setPercentage(update);
+          }}
+          value={currency}
+          mask={CurrencyIMask}
+        />
+        <Input.Mask
+          placeholder={'percentage'}
+          label={'percentage'}
+          onChange={e => {
+            // console.log(e);
+            const update = String((total * Number(percentage)) / 100);
+            setCurrency(update);
+            setPercentage(e.unmaskedValue);
+          }}
+          value={percentage}
+          mask={PercentageIMask}
+        />
       </>
     );
   },
