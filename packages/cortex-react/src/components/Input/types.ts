@@ -42,4 +42,6 @@ export interface InputMaskProps extends Omit<InputProps, 'onChange'> {
   onChange?: (e: InputMaskEvent) => void;
   /** Mask based on https://imask.js.org/ */
   mask: Mask;
+  /** If true, this input value can be changed outside input element */
+  controlled?: boolean;
 }

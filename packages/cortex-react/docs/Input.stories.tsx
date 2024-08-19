@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
 import {
   CurrencyIMask,
@@ -97,7 +97,7 @@ export const ExpressionMask: StoryObj<typeof Input.Mask> = {
         placeholder={args.placeholder}
         label={args.label}
         onChange={e => setExpressionValue(e.value)}
-        defaultValue={expressionValue}
+        value={expressionValue}
         mask={args.mask}
       />
     );
@@ -153,14 +153,14 @@ export const PercentageMask: StoryObj<typeof Input.Mask> = {
     mask: PercentageIMask,
   },
   render: args => {
-    const [currencyValue, setCurrencyValue] = useState('99,50');
+    const [percentageValue, setPercentageValue] = useState('99,50');
 
     return (
       <Input.Mask
         placeholder={args.placeholder}
         label={args.label}
-        onChange={e => setCurrencyValue(e.value)}
-        value={currencyValue}
+        onChange={e => setPercentageValue(e.value)}
+        value={percentageValue}
         mask={args.mask}
       />
     );
@@ -182,7 +182,6 @@ export const ShowUnmasked: StoryObj<typeof Input.Mask> = {
           placeholder={args.placeholder}
           label={args.label}
           onChange={e => {
-            // console.log(e);
             setUnmaskedValue(e.unmaskedValue);
           }}
           value={unmaskedValue}
@@ -202,37 +201,44 @@ export const DoubleMask: StoryObj<typeof Input.Mask> = {
     label: 'Expression Mask',
   },
   render: args => {
-    const [currency, setCurrency] = useState(String(total));
-    const [percentage, setPercentage] = useState(String(total));
+    const [currency, setCurrency] = useState(total);
+    const [percentage, setPercentage] = useState(total);
 
-    console.log('percentage', percentage);
-    console.log('currency', currency);
+    useEffect(() => {
+      if (currency === 0) {
+        setPercentage(0);
+      } else {
+        const update = (currency * 100) / total;
+        setPercentage(update);
+      }
+    }, [currency]);
+
+    useEffect(() => {
+      if (percentage === 0) {
+        setCurrency(0);
+      } else {
+        const update = (percentage / 100) * total;
+        setCurrency(update);
+      }
+    }, [percentage]);
 
     return (
       <>
         <Input.Mask
           placeholder={'currency'}
           label={'currency'}
-          onChange={e => {
-            // console.log(e);
-            setCurrency(e.unmaskedValue);
-            const update = String((Number(currency) / total) * 100);
-            setPercentage(update);
-          }}
+          onChange={e => setCurrency(Number(e.unmaskedValue ?? 0))}
           value={currency}
           mask={CurrencyIMask}
+          controlled
         />
         <Input.Mask
           placeholder={'percentage'}
           label={'percentage'}
-          onChange={e => {
-            // console.log(e);
-            const update = String((total * Number(percentage)) / 100);
-            setCurrency(update);
-            setPercentage(e.unmaskedValue);
-          }}
+          onChange={e => setPercentage(Number(e.unmaskedValue ?? 0))}
           value={percentage}
           mask={PercentageIMask}
+          controlled
         />
       </>
     );
