@@ -4,7 +4,7 @@ import { InputRoot } from './Root';
 import { InputMaskProps } from './types';
 
 export const InputMask = React.forwardRef<HTMLInputElement, InputMaskProps>(
-  ({ mask, onChange, value, controlled, ...rest }: InputMaskProps, ref) => {
+  ({ mask, onChange, value, ...rest }: InputMaskProps, ref) => {
     const {
       ref: iMaskRef,
       setUnmaskedValue,
@@ -21,11 +21,11 @@ export const InputMask = React.forwardRef<HTMLInputElement, InputMaskProps>(
     });
 
     useEffect(() => {
-      if (value && controlled) {
+      if (value !== undefined) {
         setUnmaskedValue(String(value));
         maskRef.current?.updateValue();
       }
-    }, [value, controlled]);
+    }, [value]);
 
     return <InputRoot {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
   }

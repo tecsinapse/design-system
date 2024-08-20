@@ -37,11 +37,11 @@ export interface Mask extends Record<string, any> {
   mask: any;
 }
 
-export interface InputMaskProps extends Omit<InputProps, 'onChange'> {
+export interface InputMaskProps extends Omit<InputProps, 'onChange' | 'value'> {
   /** Get value and unmaskedValue */
   onChange?: (e: InputMaskEvent) => void;
   /** Mask based on https://imask.js.org/ */
   mask: Mask;
-  /** If true, this input value can be changed outside input element */
-  controlled?: boolean;
+  /** For number input, you can retrieve the number value using the unmasked value from onChange event */
+  value?: string;
 }
