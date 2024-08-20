@@ -1,11 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
 import {
   CurrencyIMask,
   ExpressionMasks,
   Hint,
   Input,
+  InputMaskEvent,
   NumberIMask,
   PercentageIMask,
 } from '../src';
@@ -97,7 +98,7 @@ export const ExpressionMask: StoryObj<typeof Input.Mask> = {
         placeholder={args.placeholder}
         label={args.label}
         onChange={e => setExpressionValue(e.value)}
-        defaultValue={expressionValue}
+        value={expressionValue}
         mask={args.mask}
       />
     );
@@ -117,8 +118,8 @@ export const NumberMask: StoryObj<typeof Input.Mask> = {
       <Input.Mask
         placeholder={args.placeholder}
         label={args.label}
-        onChange={e => setNumberValue(e.value)}
-        defaultValue={numberValue}
+        onChange={e => setNumberValue(e.unmaskedValue)}
+        value={numberValue}
         mask={args.mask}
       />
     );
@@ -138,8 +139,8 @@ export const CurrencyMask: StoryObj<typeof Input.Mask> = {
       <Input.Mask
         placeholder={args.placeholder}
         label={args.label}
-        onChange={e => setCurrencyValue(e.value)}
-        defaultValue={currencyValue}
+        onChange={e => setCurrencyValue(e.unmaskedValue)}
+        value={currencyValue}
         mask={args.mask}
       />
     );
@@ -153,14 +154,14 @@ export const PercentageMask: StoryObj<typeof Input.Mask> = {
     mask: PercentageIMask,
   },
   render: args => {
-    const [currencyValue, setCurrencyValue] = useState('99,50');
+    const [percentageValue, setPercentageValue] = useState('99,5');
 
     return (
       <Input.Mask
         placeholder={args.placeholder}
         label={args.label}
-        onChange={e => setCurrencyValue(e.value)}
-        defaultValue={currencyValue}
+        onChange={e => setPercentageValue(e.unmaskedValue)}
+        value={percentageValue}
         mask={args.mask}
       />
     );
@@ -175,20 +176,90 @@ export const ShowUnmasked: StoryObj<typeof Input.Mask> = {
   },
   render: args => {
     const [unmaskedValue, setUnmaskedValue] = useState('1112345678');
+    const [unmaskedNumberValue, setUnmaskedNumberValue] = useState('90,54');
 
     return (
-      <>
+      <div className="flex flex-col gap-y-micro">
         <Input.Mask
           placeholder={args.placeholder}
           label={args.label}
           onChange={e => {
-            console.log(e);
             setUnmaskedValue(e.unmaskedValue);
           }}
-          defaultValue={unmaskedValue}
+          value={unmaskedValue}
           mask={args.mask}
         />
         <Hint>Unmasked: {unmaskedValue}</Hint>
+
+        <Input.Mask
+          label={'Number mask'}
+          onChange={e => {
+            setUnmaskedNumberValue(e.unmaskedValue);
+          }}
+          value={unmaskedNumberValue}
+          mask={CurrencyIMask}
+        />
+        <Hint>Unmasked: {unmaskedNumberValue}</Hint>
+      </div>
+    );
+  },
+};
+
+const total = 100;
+
+export const DoubleMask: StoryObj<typeof Input.Mask> = {
+  args: {
+    ...baseArgs,
+    label: 'Expression Mask',
+  },
+  render: args => {
+    const [currency, setCurrency] = useState(String(total));
+    const [percentage, setPercentage] = useState(String(total));
+
+    const handleChangeCurrency = useCallback(
+      (e: InputMaskEvent) => {
+        const rawNumber = Number(e.unmaskedValue ?? 0);
+        setCurrency(e.unmaskedValue);
+        if (rawNumber === 0) {
+          setPercentage('0');
+        } else {
+          const update = (rawNumber * 100) / total;
+          setPercentage(String(update));
+        }
+      },
+      [currency]
+    );
+
+    const handleChangePercentage = useCallback(
+      (e: InputMaskEvent) => {
+        const rawNumber = Number(e.unmaskedValue ?? 0);
+        setPercentage(e.unmaskedValue);
+        if (rawNumber === 0) {
+          setCurrency('0');
+        } else {
+          const update = (rawNumber / 100) * total;
+          setCurrency(String(update));
+        }
+      },
+      [percentage]
+    );
+
+    return (
+      <>
+        <Input.Mask
+          placeholder={'currency'}
+          label={'currency'}
+          onChange={handleChangeCurrency}
+          value={currency}
+          mask={CurrencyIMask}
+        />
+        <Input.Mask
+          placeholder={'percentage'}
+          label={'percentage'}
+          onChange={handleChangePercentage}
+          value={percentage}
+          mask={PercentageIMask}
+        />
       </>
     );
   },

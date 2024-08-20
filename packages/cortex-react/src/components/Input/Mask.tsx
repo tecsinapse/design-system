@@ -1,38 +1,31 @@
 import React, { MutableRefObject, Ref, createRef, useEffect } from 'react';
 import { useIMask } from 'react-imask';
 import { InputRoot } from './Root';
-import { InputMaskEvent, InputMaskProps, InputProps, Mask } from './types';
-
-const useIMaskLocal = (
-  mask: Mask,
-  inputProps: InputProps,
-  ref?: React.ForwardedRef<HTMLInputElement>,
-  onChangeMask?: (e: InputMaskEvent) => void
-) => {
-  const { ref: iMaskRef, maskRef } = useIMask(mask, {
-    onAccept: (value, mask) => {
-      onChangeMask?.({
-        unmaskedValue: mask._unmaskedValue,
-        value: value,
-      });
-    },
-    ref: ref ? (ref as MutableRefObject<HTMLInputElement>) : createRef(),
-  });
-
-  useEffect(() => {
-    if (inputProps.value === '') {
-      maskRef.current?.updateValue();
-    }
-  }, [maskRef, inputProps.value]);
-
-  return {
-    iMaskRef,
-  };
-};
+import { InputMaskProps } from './types';
 
 export const InputMask = React.forwardRef<HTMLInputElement, InputMaskProps>(
-  ({ mask, onChange, ...rest }: InputMaskProps, ref) => {
-    const { iMaskRef } = useIMaskLocal(mask, rest, ref, onChange);
+  ({ mask, onChange, value, ...rest }: InputMaskProps, ref) => {
+    const {
+      ref: iMaskRef,
+      setUnmaskedValue,
+      maskRef,
+    } = useIMask(mask, {
+      onAccept: (value, mask) => {
+        onChange?.({
+          unmaskedValue: mask._unmaskedValue,
+          value: value,
+        });
+      },
+      ref: ref ? (ref as MutableRefObject<HTMLInputElement>) : createRef(),
+      defaultValue: String(value ?? ''),
+    });
+
+    useEffect(() => {
+      if (value !== undefined) {
+        setUnmaskedValue(String(value));
+        maskRef.current?.updateValue();
+      }
+    }, [value]);
 
     return <InputRoot {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
   }

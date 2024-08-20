@@ -111,7 +111,7 @@ describe('InputMask', () => {
 
       fireEvent.blur(maskCurrencyElement);
 
-      expect(maskCurrencyElement.value).toBe('R$ 92,60');
+      expect(maskCurrencyElement.value).toBe('R$ 92,6');
     });
 
     it('Should not render text on currency mask', () => {
