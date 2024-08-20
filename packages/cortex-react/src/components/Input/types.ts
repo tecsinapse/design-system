@@ -1,4 +1,5 @@
 import { InputBaseVariants } from '@tecsinapse/cortex-core';
+import { CurrencyOptions } from '../../hooks';
 
 export interface InputPropsBase {
   variants?: InputBaseVariants;
@@ -28,20 +29,18 @@ export interface InputSearchProps extends InputProps {
   bounceTimeout?: number;
 }
 
-export type InputMaskEvent = {
-  value: string;
-  unmaskedValue: string;
-};
-
-export interface Mask extends Record<string, any> {
-  mask: any;
-}
+export type MaskType = string | RegExp | Array<RegExp>;
 
 export interface InputMaskProps extends Omit<InputProps, 'onChange' | 'value'> {
-  /** Get value and unmaskedValue */
-  onChange?: (e: InputMaskEvent) => void;
-  /** Mask based on https://imask.js.org/ */
-  mask: Mask;
-  /** For number input, you can retrieve the number value using the unmasked value from onChange event */
-  value?: string;
+  value?: string | number;
+  onChange?: (value: any) => void;
+  /**
+   To use mask for strings you have to pass a MaskType[] or ((value: string) => MaskType[])
+   A MaskType can be a string, RegExp, or Array<RegExp>.
+   In case we have a string, '9' represents digits, 'a' represents alphabet characters, and any other character represents fixed characters in the mask.
+   For example a phone mask can be represented as ['(99) \\99999-9999'], or ['(99) ', '/[9]/', '9999-9999'], or ['(', /[0-9]/, /[0-9]/, ') ', '/[9]/', '9999-9999'] and many others.
+   To use mask for numbers you have to pass a CurrencyOptions object
+   A CurrencyOptions object contains symbol, separator, decimal, precision. For example {symbol: 'R$ ', separator: '.', decimal: ',', precision: 2,}.
+   **/
+  mask?: (MaskType[] | ((value: string) => MaskType[])) | CurrencyOptions;
 }
