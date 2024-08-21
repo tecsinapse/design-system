@@ -29,6 +29,11 @@ export interface InputSearchProps extends InputProps {
   bounceTimeout?: number;
 }
 
+export interface MaskValue {
+  formatted?: string;
+  raw?: string | number;
+}
+
 export type MaskType = string | RegExp | Array<RegExp>;
 
 export interface InputMaskProps extends Omit<InputProps, 'onChange' | 'value'> {

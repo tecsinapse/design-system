@@ -1,7 +1,7 @@
 import currency from 'currency.js';
 import { useCallback, useState } from 'react';
+import { MaskValue } from '../components';
 import { extractNumbersFromString } from '../utils';
-import { MaskValue } from './useStringMask';
 
 export type CurrencyOptions = currency.Options;
 

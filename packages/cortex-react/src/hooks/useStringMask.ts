@@ -1,11 +1,5 @@
 import { useCallback, useState } from 'react';
-
-export interface MaskValue {
-  formatted?: string;
-  raw?: string | number;
-}
-
-export type MaskType = string | RegExp | Array<RegExp>;
+import { MaskType, MaskValue } from '../components';
 
 /**
  * TODO:
