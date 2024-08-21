@@ -192,7 +192,7 @@ importers:
         specifier: '*'
         version: 3.5.4
       '@tecsinapse/cortex-core':
-        specifier: 0.3.1-beta.1
+        specifier: 0.3.1-beta.2
         version: link:../cortex-core
       clsx:
         specifier: '*'
@@ -256,7 +256,7 @@ importers:
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.0.38)(react@18.3.1)
       '@tecsinapse/react-core':
-        specifier: 3.4.7-beta.1
+        specifier: 3.4.7-beta.2
         version: link:../react-core
       react-native-linear-gradient:
         specifier: ~2.8.3
