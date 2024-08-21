@@ -24,3 +24,4 @@ export * from './TextArea';
 export * from './TimeField';
 export * from './Toggle';
 export * from './Tooltip';
+export * from './Kanban';
