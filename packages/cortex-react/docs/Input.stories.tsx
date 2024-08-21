@@ -216,7 +216,7 @@ export const DoubleMask: StoryObj<typeof Input.Mask> = {
           label={'percentage'}
           onChange={handleChangePercentage}
           value={percentage}
-          mask={PercentageMask}
+          mask={PercentageMaskDef}
         />
       </>
     );
