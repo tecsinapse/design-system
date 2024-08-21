@@ -11,11 +11,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-- imports from '.' ([b20b979](https://github.com/tecsinapse/design-system/commit/b20b9797fb61046d43bbaf14f3b347333fdcf8ee))
-
-# [1.3.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.32...@tecsinapse/cortex-react@1.3.0) (2024-08-06)
+# [1.3.0-beta.36](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.35...@tecsinapse/cortex-react@1.3.0-beta.36) (2024-08-21)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.3.0-beta.35](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.34...@tecsinapse/cortex-react@1.3.0-beta.35) (2024-08-21)
+
+### Bug Fixes
+
+- story label ([37c3e23](https://github.com/tecsinapse/design-system/commit/37c3e2394a63adf3996cb2ced061bf89a74525e5))
+
+# [1.3.0-beta.34](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.33...@tecsinapse/cortex-react@1.3.0-beta.34) (2024-08-20)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.3.0-beta.33](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.32...@tecsinapse/cortex-react@1.3.0-beta.33) (2024-08-19)
+
+- imports from '.' ([b20b979](https://github.com/tecsinapse/design-system/commit/b20b9797fb61046d43bbaf14f3b347333fdcf8ee))
+- **TS-8275:** input mask fix start ([3eec0c8](https://github.com/tecsinapse/design-system/commit/3eec0c89137b6c8423fb52b29558a1442d30a0b1))
 
 # [1.3.0-beta.32](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.3.0-beta.31...@tecsinapse/cortex-react@1.3.0-beta.32) (2024-08-06)
 

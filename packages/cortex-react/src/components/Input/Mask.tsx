@@ -1,39 +1,73 @@
-import React, { MutableRefObject, Ref, createRef, useEffect } from 'react';
-import { useIMask } from 'react-imask';
+import React, { Ref, useCallback, useEffect } from 'react';
+import { useNumberMask, useStringMask } from '../../hooks';
 import { InputRoot } from './Root';
-import { InputMaskEvent, InputMaskProps, InputProps, Mask } from './types';
-
-const useIMaskLocal = (
-  mask: Mask,
-  inputProps: InputProps,
-  ref?: React.ForwardedRef<HTMLInputElement>,
-  onChangeMask?: (e: InputMaskEvent) => void
-) => {
-  const { ref: iMaskRef, maskRef } = useIMask(mask, {
-    onAccept: (value, mask) => {
-      onChangeMask?.({
-        unmaskedValue: mask._unmaskedValue,
-        value: value,
-      });
-    },
-    ref: ref ? (ref as MutableRefObject<HTMLInputElement>) : createRef(),
-  });
-
-  useEffect(() => {
-    if (inputProps.value === '') {
-      maskRef.current?.updateValue();
-    }
-  }, [maskRef, inputProps.value]);
-
-  return {
-    iMaskRef,
-  };
-};
+import { InputMaskProps } from './types';
 
 export const InputMask = React.forwardRef<HTMLInputElement, InputMaskProps>(
-  ({ mask, onChange, ...rest }: InputMaskProps, ref) => {
-    const { iMaskRef } = useIMaskLocal(mask, rest, ref, onChange);
+  ({ mask, onChange, value, ...rest }: InputMaskProps, ref) => {
+    const getInputHook = (value: string | number) => {
+      if (mask !== undefined) {
+        if (Array.isArray(mask) || typeof mask === 'function') {
+          return useStringMask(mask, value);
+        } else {
+          return useNumberMask(mask, value);
+        }
+      } else {
+        return [undefined, undefined];
+      }
+    };
 
-    return <InputRoot {...rest} ref={iMaskRef as Ref<HTMLInputElement>} />;
+    const [maskValue, setMaskValue] = getInputHook(value ?? '');
+
+    const _value =
+      maskValue === undefined
+        ? value?.toString()
+        : maskValue.formatted
+          ? maskValue.formatted
+          : '';
+
+    useEffect(() => {
+      if (onChange) {
+        onChange(maskValue?.raw);
+      }
+    }, [maskValue]);
+
+    const onChangeValue = useCallback(
+      (value: string | number) => {
+        if (maskValue !== undefined && setMaskValue !== undefined) {
+          setMaskValue(value);
+        } else onChange?.(value);
+      },
+      [value]
+    );
+
+    useEffect(() => {
+      /** Used to reinitialize maskValue when the value is updated in the parent component **/
+      if (
+        maskValue !== undefined &&
+        setMaskValue !== undefined &&
+        value !== undefined &&
+        typeof maskValue === 'object'
+      ) {
+        /** Case there is a mask **/
+        if (
+          maskValue.raw !== undefined &&
+          maskValue.raw.toString() !== value.toString()
+        ) {
+          onChangeValue(value);
+        }
+      } else if (maskValue === undefined && value !== undefined) {
+        onChangeValue(value);
+      }
+    }, [value]);
+
+    return (
+      <InputRoot
+        {...rest}
+        value={_value}
+        onChange={e => onChangeValue(e.target.value)}
+        ref={ref as Ref<HTMLInputElement>}
+      />
+    );
   }
 );
