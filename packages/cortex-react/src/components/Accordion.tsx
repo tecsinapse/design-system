@@ -10,6 +10,9 @@ import React, {
 import { LiaAngleRightSolid } from 'react-icons/lia';
 
 interface AccordionProps {
+  /**
+   * Content children
+   */
   children?: React.ReactNode;
   /**
    * The default position for the Accordion will be in opened mode
