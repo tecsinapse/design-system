@@ -113,6 +113,7 @@ const Content = ({ children }: Pick<AccordionProps, 'children'>) => {
         { 'w-0': !open }
       )}
       ref={container}
+      data-testid="accordion-container"
     >
       {children}
     </div>
