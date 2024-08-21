@@ -1,7 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React, { useCallback, useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
-import { BRLMask, Input, Masks, PercentageMask } from '../src';
+import {
+  BRLMask,
+  Input,
+  Masks,
+  PercentageMask as PercentageMaskDef,
+} from '../src';
 
 export default {
   title: 'Cortex/Input',
@@ -138,11 +143,11 @@ export const CurrencyMask: StoryObj<typeof Input.Mask> = {
   },
 };
 
-export const PercentageMaskS: StoryObj<typeof Input.Mask> = {
+export const PercentageMask: StoryObj<typeof Input.Mask> = {
   args: {
     ...baseArgs,
     label: 'Percentage Mask',
-    mask: PercentageMask,
+    mask: PercentageMaskDef,
   },
   render: args => {
     const [percentageValue, setPercentageValue] = useState('99,5');
