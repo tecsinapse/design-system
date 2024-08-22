@@ -1,3 +1,4 @@
+export * from './Accordion';
 export * from './Avatar';
 export * from './Badge';
 export * from './Breadcrumbs';
@@ -24,4 +25,6 @@ export * from './TextArea';
 export * from './TimeField';
 export * from './Toggle';
 export * from './Tooltip';
+export * from './Kanban';
+export * from './Loading';
 export * from './Carousel';

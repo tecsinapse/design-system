@@ -1,7 +1,7 @@
 import { clsx } from 'clsx';
 import React from 'react';
 
-interface KanbanProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface KanbanProps extends React.HTMLAttributes<HTMLDivElement> {
   /** child element */
   children?: React.ReactNode;
 }
