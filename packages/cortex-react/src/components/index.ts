@@ -26,3 +26,4 @@ export * from './TimeField';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Kanban';
+export * from './Loading';
