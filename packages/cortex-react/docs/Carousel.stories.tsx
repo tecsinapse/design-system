@@ -11,7 +11,6 @@ export const Default: StoryObj<typeof Carousel> = {
   args: {},
   render: () => {
     const items: ImageCarousel[] = Array.from({ length: 10 }).map((_, i) => ({
-      id: i,
       src: `https://picsum.photos/1000?idx=${i}`,
       title: `Lorem Ipsum ${i}`,
       alt: `image-${i}`,

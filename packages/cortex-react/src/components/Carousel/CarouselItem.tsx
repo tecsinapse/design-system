@@ -19,8 +19,7 @@ export const CarouselItem = ({ item }: CarouselItemProps) => {
             'z-absolute absolute top-[50%] transform -translate-y-[50%] left-[10%] text-white text-h2 font-bold max-w-[40%]'
           }
         >
-          Conheça o novo portal Carrera e todos os novos recursos disponíveis
-          para tornar seu uso mais prático e intuitivo.
+          {item.title}
         </p>
       ) : (
         <></>
