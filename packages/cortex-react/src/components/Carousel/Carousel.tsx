@@ -4,10 +4,26 @@ import { useSpringCarousel } from 'react-spring-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { CarouselItem } from './CarouselItem';
 
+type TextCarousel = {
+  text: string;
+  /** fontColor (in hex) */
+  color: string;
+  /** fontSize (in px) */
+  size?: string;
+};
+
+type ButtonCarousel = {
+  title?: string;
+  link?: string;
+  target?: '_blank' | '_self';
+};
+
 export type ImageCarousel = {
   src: string;
   alt: string;
-  title?: string;
+  title: TextCarousel;
+  subtitle: TextCarousel;
+  button?: ButtonCarousel;
 };
 
 export interface CarouselProps {

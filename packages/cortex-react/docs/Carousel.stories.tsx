@@ -12,8 +12,22 @@ export const Default: StoryObj<typeof Carousel> = {
   render: () => {
     const items: ImageCarousel[] = Array.from({ length: 10 }).map((_, i) => ({
       src: `https://picsum.photos/1000?idx=${i}`,
-      title: `Lorem Ipsum ${i}`,
       alt: `image-${i}`,
+      title: {
+        text: `Title Lorem Ipsum ${i}`,
+        size: '40px',
+        color: '#000',
+      },
+      subtitle: {
+        text: `Subtitle Lorem Ipsum ${i}`,
+        size: '20px',
+        color: '#fff',
+      },
+      button: {
+        title: 'Acessar tecsinapse',
+        link: 'https://tecsinapse.com.br/',
+        target: '_blank',
+      },
     }));
     return <Carousel images={items} />;
   },

@@ -8,8 +8,22 @@ describe('Carousel component', () => {
     (_, i) => ({
       id: i,
       src: `https://picsum.photos/100?idx=${i}`,
-      title: `Title example ${i}`,
       alt: `image-${i}`,
+      title: {
+        text: `Title Lorem Ipsum ${i} teste teste teste`,
+        size: '40px',
+        color: '#000',
+      },
+      subtitle: {
+        text: `Subtitle Lorem Ipsum ${i}`,
+        size: '20px',
+        color: '#fff',
+      },
+      button: {
+        title: 'Acessar tecsinapse',
+        link: 'https://tecsinapse.com.br/',
+        target: '_blank',
+      },
     })
   );
 
@@ -20,11 +34,20 @@ describe('Carousel component', () => {
     expect(firstImage).toBeInTheDocument();
   });
 
-  it('Should render image with title', () => {
+  it('Should render image with title and subtitle', () => {
     const { getAllByText } = render(<Carousel images={mockImages} />);
 
-    const firstImage = getAllByText(String(mockImages[0].title))[0];
-    expect(firstImage).toBeInTheDocument();
+    const textTitle = getAllByText(String(mockImages[0].title.text))[0];
+    const textSubtitle = getAllByText(String(mockImages[0].subtitle.text))[0];
+
+    expect(textTitle).toBeInTheDocument();
+    expect(textSubtitle).toBeInTheDocument();
+
+    expect(textTitle).toHaveStyle('color:#000');
+    expect(textTitle).toHaveStyle('fontSize:40px');
+
+    expect(textSubtitle).toHaveStyle('color:#fff');
+    expect(textSubtitle).toHaveStyle('fontSize:20px');
   });
 
   it('Should render buttons navigate', () => {
@@ -32,6 +55,16 @@ describe('Carousel component', () => {
 
     expect(screen.queryByTestId('button-carousel-prev')).toBeInTheDocument();
     expect(screen.queryByTestId('button-carousel-next')).toBeInTheDocument();
+  });
+
+  it('Should render button link', () => {
+    const { getAllByText, queryAllByTestId } = render(
+      <Carousel images={mockImages} />
+    );
+    const textButton = getAllByText(String(mockImages[0].button?.title))[0];
+    const button = queryAllByTestId('button-link-carousel')[0];
+    expect(textButton).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
   });
 
   it('Should not render buttons navigate', () => {
