@@ -63,4 +63,6 @@ export interface SelectTriggerProps {
   label: string;
   placeholder?: string;
   disabled?: boolean;
+  /** If no function is passed, it will render'`${n} items selected' */
+  multiLabelSelected?: (n: number) => string;
 }
