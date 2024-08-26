@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 export interface ContentProps {
   /** child element */
   children: ReactNode;
+  className?: string;
 }
 
 export interface SelectGroupedOptionsProps<T> {
@@ -57,6 +58,7 @@ export interface SelectRootProps<T> {
   value?: T | T[];
   keyExtractor: (value: T) => string;
   labelExtractor: (value: T) => string;
+  className?: string;
 }
 
 export interface SelectTriggerProps {
