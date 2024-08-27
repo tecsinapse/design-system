@@ -28,6 +28,11 @@ interface AccordionProps {
    * default: `false`
    */
   floating?: boolean;
+  /**
+   * Callback executed on accordion `open` event
+   * @returns void
+   */
+  onOpen?: () => void;
 }
 
 const Context = createContext<{
@@ -35,7 +40,7 @@ const Context = createContext<{
   toggle?: () => void;
 }>({ open: false });
 
-const useAccordionContext = () => {
+export const useAccordionContext = () => {
   const context = useContext(Context);
   if (!context) {
     throw new Error('useAccordionContext must be used within a Accordion');
@@ -50,7 +55,8 @@ const Trigger = ({
    * Only applied to trigger arrow
    */
   className,
-}: Pick<AccordionProps, 'floating' | 'label'> & {
+  onOpen,
+}: Pick<AccordionProps, 'floating' | 'label' | 'onOpen'> & {
   /**
    * Only applied to trigger arrow
    */
@@ -63,13 +69,20 @@ const Trigger = ({
     );
   }
 
+  const action = () => {
+    if (!open) {
+      onOpen?.();
+    }
+    toggle?.();
+  };
+
   return (
     <div
       className={clsx(
         'flex flex-col justify-between align-center px-mili border-r border-secondary-light cursor-pointer',
         { 'mr-deca': floating }
       )}
-      onClick={toggle}
+      onClick={action}
     >
       <div
         className={clsx(
@@ -138,10 +151,16 @@ const Face = ({
   );
 };
 
-const Root = ({ children, defaultOpen, label, floating }: AccordionProps) => {
+const Root = ({
+  children,
+  defaultOpen,
+  label,
+  floating,
+  onOpen,
+}: AccordionProps) => {
   return (
     <Face defaultOpen={defaultOpen}>
-      <Trigger label={label} floating={floating} />
+      <Trigger label={label} floating={floating} onOpen={onOpen} />
       <Content>{children}</Content>
     </Face>
   );
