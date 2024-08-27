@@ -11,12 +11,16 @@ export const SelectTrigger = ({
   label,
   placeholder,
   disabled,
+  multiLabelSelected,
 }: SelectTriggerProps) => {
   const { value, labelExtractor } = useContext(SelectContext);
   const _placeholder = useMemo(() => {
     if (value?.length === 0 || !value) return placeholder ?? label;
     if (value?.length === 1) return labelExtractor(value[0]);
-    if (value?.length > 1) return `${value.length} items selected`;
+    if (value?.length > 1)
+      return multiLabelSelected
+        ? multiLabelSelected(value.length)
+        : `${value.length} items selected`;
     return labelExtractor(value);
   }, [label, value]);
 
