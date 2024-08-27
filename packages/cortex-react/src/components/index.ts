@@ -27,3 +27,4 @@ export * from './Toggle';
 export * from './Tooltip';
 export * from './Kanban';
 export * from './Loading';
+export * from './Carousel';
