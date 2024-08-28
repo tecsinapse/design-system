@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.4.3...@tecsinapse/cortex-react@1.5.0-beta.0) (2024-08-28)
+
+### Bug Fixes
+
+* remove hardcoded testid from Input.Box ([1855bbd](https://github.com/tecsinapse/design-system/commit/1855bbddbdf0afea927b6e075f8c9ef90b4fbacc))
+
+### Features
+
+* Adicionando prop children na tag ([ff92ac4](https://github.com/tecsinapse/design-system/commit/ff92ac44b15d6883bbe74ce829e4b1765e2c50d8))
+
 ## [1.4.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.4.2...@tecsinapse/cortex-react@1.4.3) (2024-08-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
