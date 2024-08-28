@@ -1,4 +1,4 @@
-import { ClassValue, createTV, VariantProps } from 'tailwind-variants';
+import { createTV, VariantProps } from 'tailwind-variants';
 import { fontSize } from '../../tokens/definitions';
 
 const myTV = createTV({
@@ -27,7 +27,7 @@ const tagStyles = myTV({
 });
 
 export type TagVariants = VariantProps<typeof tagStyles> & {
-  className?: ClassValue;
+  className?: string;
 };
 
 /**
@@ -37,4 +37,4 @@ export type TagVariants = VariantProps<typeof tagStyles> & {
  * @param {string=} [props.className] - The additional CSS classes for the tag.
  * @param {string=} [props.class] - The additional CSS classes for the tag.
  */
-export const tag = (props?: TagVariants) => tagStyles(props);
+export const tag = (props: TagVariants) => tagStyles(props);

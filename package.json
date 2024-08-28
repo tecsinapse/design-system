@@ -78,7 +78,7 @@
     "prettify": "prettier --write ./**/*.{ts,tsx,json} && prettier --write *.{ts,tsx,json}",
     "bootstrap": "pnpm build",
     "tsc": "tsc",
-    "prepare": "husky install && pnpm bootstrap",
+    "prepare": "husky && pnpm bootstrap",
     "test": "lerna run test"
   },
   "engines": {
