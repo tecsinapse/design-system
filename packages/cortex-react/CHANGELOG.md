@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.0-beta.1...@tecsinapse/cortex-react@1.5.0-beta.2) (2024-08-28)
+
+### Bug Fixes
+
+* update ts types ([e4cc125](https://github.com/tecsinapse/design-system/commit/e4cc12545bc3848d84e978f72df6521c123f871b))
+
 # [1.5.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.0-beta.0...@tecsinapse/cortex-react@1.5.0-beta.1) (2024-08-28)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
