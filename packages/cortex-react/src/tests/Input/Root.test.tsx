@@ -14,7 +14,11 @@ describe('Input.Root', () => {
 
   it('Should render Input.Root with Input.Face and Input.Box', () => {
     render(
-      <Input.Root variants={{ intent: 'default' }} className="custom-class" />
+      <Input.Root
+        variants={{ intent: 'default' }}
+        className="custom-class"
+        data-testid="input-box"
+      />
     );
 
     const inputFace = screen.getByTestId('input-face');
@@ -37,7 +41,7 @@ describe('Input.Root', () => {
   it('Should forward ref to Input.Box', () => {
     const ref = React.createRef<HTMLInputElement>();
 
-    render(<Input.Root ref={ref} />);
+    render(<Input.Root ref={ref} data-testid="input-box" />);
 
     const inputBox = screen.getByTestId('input-box');
 
@@ -45,7 +49,13 @@ describe('Input.Root', () => {
   });
 
   it('Should pass props to InputBox', () => {
-    render(<Input.Root name="test" placeholder="Enter text" />);
+    render(
+      <Input.Root
+        name="test"
+        placeholder="Enter text"
+        data-testid="input-box"
+      />
+    );
 
     const inputBox = screen.getByTestId('input-box');
 
