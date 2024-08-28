@@ -14,7 +14,8 @@
   },
   "devDependencies": {
     "@lerna-lite/cli": "^3.8.0",
-    "@lerna-lite/run": "^3.8.0",
+    "@lerna-lite/publish": "^3.8.0",
+    "@lerna-lite/version": "^3.8.0",
     "@rollup/plugin-alias": "^5.1.0",
     "@storybook/addon-actions": "^8.2.6",
     "@storybook/addon-backgrounds": "^8.2.6",
@@ -72,7 +73,7 @@
     "lint": "pnpm lint:fix:quiet",
     "lint:fix": "pnpm lint:ts --fix-dry-run",
     "lint:fix:quiet": "pnpm lint:ts --fix --quiet",
-    "prepare": "husky install && pnpm build",
+    "prepare": "husky && pnpm build",
     "test": "pnpm --filter '@tecsinapse/*' run test"
   },
   "engines": {
