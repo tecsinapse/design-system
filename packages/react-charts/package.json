@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/react-charts",
-  "version": "1.4.7",
+  "version": "1.4.8-beta.0",
   "description": "Charts for React and React Native",
   "homepage": "https://github.com/tecsinapse/design-system/",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "react-native-svg": "13.9.0"
   },
   "scripts": {
-    "dev": "rollup --config --watch",
+    "dev:es": "rollup --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
     "build:es": "rollup --config",
     "build:dts": "tsc --project tsconfig.build.json"
