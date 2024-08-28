@@ -66,5 +66,3 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     );
   }
 );
-
-export default Tooltip;

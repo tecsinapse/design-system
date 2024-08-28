@@ -1,6 +1,6 @@
-import { ExternalToast, toast } from 'sonner';
 import React from 'react';
-import { DefaultSnack } from '../components';
+import { ExternalToast, toast } from 'sonner';
+import { DefaultSnack } from '../components/Snackbar/DefaultSnack';
 import { ISnackbar, TypeSnack } from './ISnackbar';
 
 export class SnackbarSonner implements ISnackbar<ExternalToast> {

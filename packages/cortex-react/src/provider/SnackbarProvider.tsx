@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useContext } from 'react';
-import { SnackbarSonner } from '../service';
 import { Toaster } from 'sonner';
+import { SnackbarSonner } from '../service/SnackbarSonner';
 
 interface SnackbarProviderProps {
   snackbar: SnackbarSonner;
