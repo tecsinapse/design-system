@@ -10,12 +10,10 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rollup --config --watch",
+    "dev:es": "rollup --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
-    "build:core": "rollup --config",
-    "build:core:dts": "tsc --project tsconfig.build.json",
-    "yalc:push": "yalc push --changed",
-    "yalc:show": "yalc installations show $npm_package_name"
+    "build:es": "rollup --config",
+    "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
     "@emotion/native": "~11.11.0",

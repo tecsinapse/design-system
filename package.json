@@ -13,6 +13,8 @@
     "tailwindcss": "~3.4.3"
   },
   "devDependencies": {
+    "@lerna-lite/cli": "^3.8.0",
+    "@lerna-lite/run": "^3.8.0",
     "@rollup/plugin-alias": "^5.1.0",
     "@storybook/addon-actions": "^8.2.6",
     "@storybook/addon-backgrounds": "^8.2.6",
@@ -43,7 +45,6 @@
     "husky": "^9",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "lerna": "^8",
     "lint-staged": "^15",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
@@ -61,25 +62,18 @@
     "vite": "^5"
   },
   "scripts": {
-    "dev": "lerna run dev,dev:dts",
-    "build": "lerna run build:es,build:dts",
-    "build:core": "lerna run --scope @tecsinapse/react-core build:es,build:dts",
-    "build:platform": "lerna run --ignore @tecsinapse/react-core build:es,build:dts",
+    "dev": "pnpm --filter '@tecsinapse/*' run '/^dev:.*/'",
+    "build": "pnpm --filter '@tecsinapse/*' run '/^build:.*/'",
     "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' storybook build -o sbdocs/",
-    "yalc:push": "lerna run yalc:push",
-    "yalc:show": "yalc installations show",
     "rm:dts": "rimraf -rf packages/*/dist/*.d.ts",
     "rm:dist": "rimraf -rf packages/*/dist/",
     "lint:ts": "eslint 'packages/**/*.ts{,x}'",
     "lint": "pnpm lint:fix:quiet",
     "lint:fix": "pnpm lint:ts --fix-dry-run",
     "lint:fix:quiet": "pnpm lint:ts --fix --quiet",
-    "prettify": "prettier --write ./**/*.{ts,tsx,json} && prettier --write *.{ts,tsx,json}",
-    "bootstrap": "pnpm build",
-    "tsc": "tsc",
-    "prepare": "husky install && pnpm bootstrap",
-    "test": "lerna run test"
+    "prepare": "husky install && pnpm build",
+    "test": "pnpm --filter '@tecsinapse/*' run test"
   },
   "engines": {
     "node": ">=18"

@@ -10,7 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rollup --config --watch",
+    "dev:es": "rollup --config --watch",
+    "dev:dts": "tsc --project tsconfig.build.json --watch",
     "build:es": "rollup --config",
     "build:dts": "tsc --project tsconfig.build.json"
   },
