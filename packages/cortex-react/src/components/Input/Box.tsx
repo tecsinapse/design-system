@@ -17,7 +17,6 @@ export const InputBox = React.forwardRef<HTMLInputElement, InputProps>(
           className={clsx(inputBox(placeholder, label, className))}
           {...rest}
           ref={ref}
-          data-testid="input-box"
         />
         <label
           htmlFor={id ?? name}
