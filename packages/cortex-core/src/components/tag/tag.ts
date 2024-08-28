@@ -1,4 +1,4 @@
-import { ClassProp, createTV, VariantProps } from 'tailwind-variants';
+import { createTV, VariantProps } from 'tailwind-variants';
 import { fontSize } from '../../tokens/definitions';
 
 const myTV = createTV({
@@ -11,7 +11,7 @@ const myTV = createTV({
 });
 
 const tagStyles = myTV({
-  base: 'rounded-micro px-micro py-nano w-fit font-bold text-label items-center flex',
+  base: 'rounded-micro px-micro py-nano w-fit font-bold text-label items-center flex gap-1',
   variants: {
     intent: {
       success: 'bg-success-medium text-white',
@@ -26,7 +26,9 @@ const tagStyles = myTV({
   },
 });
 
-export type TagVariants = VariantProps<typeof tagStyles> & ClassProp;
+export type TagVariants = VariantProps<typeof tagStyles> & {
+  className?: string;
+};
 
 /**
  * Represents the tag component with specified variants.
@@ -35,4 +37,4 @@ export type TagVariants = VariantProps<typeof tagStyles> & ClassProp;
  * @param {string=} [props.className] - The additional CSS classes for the tag.
  * @param {string=} [props.class] - The additional CSS classes for the tag.
  */
-export const tag = (props?: TagVariants) => tagStyles(props);
+export const tag = (props: TagVariants) => tagStyles(props);
