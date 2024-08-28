@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { Tag } from '../components';
 
@@ -43,5 +43,20 @@ describe('Tag', () => {
     const dismiss = screen.getByTestId('tag-close-button');
 
     expect(dismiss).toBeInTheDocument();
+  });
+
+  it('dismiss should have been called', () => {
+    const fn = jest.fn();
+    render(
+      <Tag.Face>
+        <Tag.Label>tag label</Tag.Label>
+        <Tag.Close onClick={fn} />
+      </Tag.Face>
+    );
+
+    const dismiss = screen.getByTestId('tag-close-button');
+    fireEvent.click(dismiss);
+
+    expect(fn).toHaveBeenCalled();
   });
 });
