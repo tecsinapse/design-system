@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.1...@tecsinapse/cortex-react@1.5.2) (2024-08-29)
+
+### Bug Fixes
+
+* multiSelectCheckAllOptions checkAll function ([8ab0266](https://github.com/tecsinapse/design-system/commit/8ab0266c34346b13f6cc2352a1fe0010ed847f76))
+
 ## [1.5.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.0-beta.2...@tecsinapse/cortex-react@1.5.1) (2024-08-29)
 
 ### Bug Fixes
