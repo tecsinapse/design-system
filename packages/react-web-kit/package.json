@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "React components library for web",
-  "version": "3.4.15-beta.1",
+  "version": "3.4.15",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",

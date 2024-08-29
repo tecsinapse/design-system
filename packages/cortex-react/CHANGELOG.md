@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.0-beta.2...@tecsinapse/cortex-react@1.5.1) (2024-08-29)
+
+### Bug Fixes
+
+* resolve circular dependencies ([b271a5a](https://github.com/tecsinapse/design-system/commit/b271a5aa325fcc8356dfebdebef1ef06bde3de48))
+
 # [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.4.3...@tecsinapse/cortex-react@1.5.0) (2024-08-27)
 
 ### Features
