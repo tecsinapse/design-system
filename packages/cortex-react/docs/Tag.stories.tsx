@@ -4,55 +4,68 @@ import { Tag } from '../src';
 
 export default {
   title: 'Cortex/Tag',
-  component: Tag,
-} as Meta<typeof Tag>;
+  component: Tag.Root,
+} as Meta<typeof Tag.Root>;
 
-export const Default: StoryObj<typeof Tag> = {
+export const Default: StoryObj<typeof Tag.Root> = {
   args: {
     label: 'Primary',
     variants: {
       intent: 'primary',
     },
   },
-  render: args => <Tag variants={args.variants} label={args.label} />,
+  render: args => (
+    <div className="flex gap-2">
+      <Tag.Root variants={args.variants} label={`${args.label} root`} />
+      <Tag.Root
+        variants={args.variants}
+        label={`${args.label} root dismissable`}
+        onDismiss={() => console.log('dismiss')}
+      />
+      <Tag.Face variants={args.variants}>
+        <Tag.Label>{`${args.label} composed`}</Tag.Label>
+        <Tag.Close onClick={() => console.log('dismiss')} />
+      </Tag.Face>
+    </div>
+  ),
 };
 
-export const Secondary: StoryObj<typeof Tag> = {
+export const Secondary: StoryObj<typeof Tag.Root> = {
   args: {
     label: 'Secondary',
     variants: {
       intent: 'secondary',
     },
   },
-  render: args => <Tag variants={args.variants} label={args.label} />,
+  render: args => <Tag.Root variants={args.variants} label={args.label} />,
 };
 
-export const Info: StoryObj<typeof Tag> = {
+export const Info: StoryObj<typeof Tag.Root> = {
   args: {
     label: 'Info',
     variants: {
       intent: 'info',
     },
   },
-  render: args => <Tag variants={args.variants} label={args.label} />,
+  render: args => <Tag.Root variants={args.variants} label={args.label} />,
 };
 
-export const White: StoryObj<typeof Tag> = {
+export const White: StoryObj<typeof Tag.Root> = {
   args: {
     label: 'White',
     variants: {
       intent: 'white',
     },
   },
-  render: args => <Tag variants={args.variants} label={args.label} />,
+  render: args => <Tag.Root variants={args.variants} label={args.label} />,
 };
 
-export const Success: StoryObj<typeof Tag> = {
+export const Success: StoryObj<typeof Tag.Root> = {
   args: {
     label: 'Success',
     variants: {
       intent: 'success',
     },
   },
-  render: args => <Tag variants={args.variants} label={args.label} />,
+  render: args => <Tag.Root variants={args.variants} label={args.label} />,
 };

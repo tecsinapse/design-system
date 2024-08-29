@@ -13,7 +13,7 @@ describe('Input.Box', () => {
   });
 
   it('Should update value on change', () => {
-    render(<Input.Box label="Name" />);
+    render(<Input.Box label="Name" data-testid="input-box" />);
 
     const inputElement = screen.getByTestId('input-box') as HTMLInputElement;
 
@@ -27,7 +27,12 @@ describe('Input.Box', () => {
     const handleBlur = jest.fn();
 
     render(
-      <Input.Box label="Name" onFocus={handleFocus} onBlur={handleBlur} />
+      <Input.Box
+        label="Name"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        data-testid="input-box"
+      />
     );
     const inputElement = screen.getByTestId('input-box') as HTMLInputElement;
 
@@ -65,7 +70,14 @@ describe('Input.Box', () => {
   it('Should forward ref correctly', () => {
     const ref = React.createRef<HTMLInputElement>();
 
-    render(<Input.Box name="test" label="Test Label" ref={ref} />);
+    render(
+      <Input.Box
+        name="test"
+        label="Test Label"
+        ref={ref}
+        data-testid="input-box"
+      />
+    );
 
     const inputElement = screen.getByTestId('input-box');
 

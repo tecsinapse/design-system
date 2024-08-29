@@ -1,8 +1,13 @@
 import React from 'react';
-import { Menubar } from './index';
-import { MostUsedItemProps } from './MostUsedItem';
+import Categories from './Categories';
+import Category from './Category';
+import Dropdown from './Dropdown';
 import { DefaultProps } from './interface';
+import Item from './Item';
+import MostUsed from './MostUsed';
+import { MostUsedItemProps } from './MostUsedItem';
 import MostUsedList from './MostUsedList';
+import SubItem from './SubItem';
 
 interface MenuItem extends DefaultProps {
   title: string;
@@ -28,44 +33,44 @@ const DropdownRoot = ({
   const hasMostUsed = mostUsed && (mostUsed ?? []).length > 0;
 
   return (
-    <Menubar.Dropdown>
+    <Dropdown>
       {hasMostUsed ? (
-        <Menubar.MostUsed label={labelMostUsed}>
+        <MostUsed label={labelMostUsed}>
           <MostUsedList mostUsed={mostUsed} />
-        </Menubar.MostUsed>
+        </MostUsed>
       ) : (
         <></>
       )}
 
-      <Menubar.Categories>
+      <Categories>
         {options.map((item, index) => (
-          <Menubar.Category
+          <Category
             key={`${item.title}-${index}`}
             title={item.title}
             options={item.items}
             render={prop => {
               const { title, items, ...rest } = prop;
               return (
-                <Menubar.Item
+                <Item
                   key={prop.title}
                   {...rest}
                   subItems={items ?? []}
                   renderSubItems={({ title, ...rest }) => {
                     return (
-                      <Menubar.SubItem key={title} {...rest}>
+                      <SubItem key={title} {...rest}>
                         {title}
-                      </Menubar.SubItem>
+                      </SubItem>
                     );
                   }}
                 >
                   {title}
-                </Menubar.Item>
+                </Item>
               );
             }}
           />
         ))}
-      </Menubar.Categories>
-    </Menubar.Dropdown>
+      </Categories>
+    </Dropdown>
   );
 };
 

@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "React Native components library",
-  "version": "3.5.6",
+  "version": "3.5.7-beta.1",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
@@ -10,17 +10,15 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rollup --config --watch",
+    "dev:es": "rollup --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
     "build:es": "rollup --config",
-    "build:dts": "tsc --project tsconfig.build.json",
-    "yalc:push": "yalc push --changed",
-    "yalc:show": "yalc installations show $npm_package_name"
+    "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
-    "@tecsinapse/react-core": "3.4.7",
+    "@tecsinapse/react-core": "workspace:*",
     "react-native-linear-gradient": "~2.8.3"
   },
   "devDependencies": {

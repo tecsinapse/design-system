@@ -15,7 +15,7 @@ describe('Input.Search', () => {
       ...props,
     };
 
-    return render(<Input.Search {...defaultProps} />);
+    return render(<Input.Search {...defaultProps} data-testid="input-box" />);
   };
 
   beforeEach(() => {

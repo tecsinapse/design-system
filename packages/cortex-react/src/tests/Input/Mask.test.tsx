@@ -7,7 +7,9 @@ import { BRLMask, Input, Masks } from '../..';
 describe('InputMask', () => {
   describe('Expression', () => {
     it('Should apply correct expression mask on phone number masks', () => {
-      render(<Input.Mask mask={Masks.COMBINED_PHONE} />);
+      render(
+        <Input.Mask mask={Masks.COMBINED_PHONE} data-testid="input-box" />
+      );
 
       const maskExpressionElement = screen.getByTestId(
         'input-box'
@@ -31,7 +33,9 @@ describe('InputMask', () => {
     });
 
     it('Should apply correct expression mask on cpf/cnpj masks', () => {
-      render(<Input.Mask mask={Masks.COMBINED_CPF_CNPJ} />);
+      render(
+        <Input.Mask mask={Masks.COMBINED_CPF_CNPJ} data-testid="input-box" />
+      );
 
       const maskExpressionElement = screen.getByTestId(
         'input-box'
@@ -49,7 +53,7 @@ describe('InputMask', () => {
 
   describe('Currency', () => {
     it('Should apply currency mask', () => {
-      render(<Input.Mask mask={BRLMask} />);
+      render(<Input.Mask mask={BRLMask} data-testid="input-box" />);
 
       const maskCurrencyElement = screen.getByTestId(
         'input-box'
@@ -65,7 +69,7 @@ describe('InputMask', () => {
     });
 
     it('Should not render text on currency mask', () => {
-      render(<Input.Mask mask={BRLMask} />);
+      render(<Input.Mask mask={BRLMask} data-testid="input-box" />);
 
       const maskCurrencyElement = screen.getByTestId(
         'input-box'

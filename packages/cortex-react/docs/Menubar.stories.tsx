@@ -59,7 +59,7 @@ const isFeatured = (title: string) => {
   return (
     <>
       {title === 'Item menu 1' ? (
-        <Tag label={'Novo'} variants={{ intent: 'success' }} />
+        <Tag.Root label={'Novo'} variants={{ intent: 'success' }} />
       ) : (
         <></>
       )}
