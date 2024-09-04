@@ -264,7 +264,7 @@ export const Lazy = {
           if (searchParam) return value.name.includes(searchParam);
           else return true;
         });
-    }, []);
+    }, [searchParam]);
 
     return (
       <div className={'w-[350px] h-[450px]'}>

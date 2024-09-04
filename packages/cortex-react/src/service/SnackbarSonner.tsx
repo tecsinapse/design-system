@@ -4,10 +4,16 @@ import { DefaultSnack } from '../components/Snackbar/DefaultSnack';
 import { ISnackbar, TypeSnack } from './ISnackbar';
 
 export class SnackbarSonner implements ISnackbar<ExternalToast> {
+  _options?: ExternalToast;
+
+  constructor(options?: ExternalToast) {
+    this._options = { ...options, duration: options?.duration ?? 5000 };
+  }
+
   custom(Component: React.ReactElement, options?: ExternalToast) {
     return toast.custom(() => Component, {
+      ...this._options,
       ...options,
-      duration: options?.duration ?? 5000,
     });
   }
 
@@ -26,7 +32,7 @@ export class SnackbarSonner implements ISnackbar<ExternalToast> {
           />
         );
       },
-      { ...options, duration: options?.duration ?? 5000 }
+      { ...this._options, ...options }
     );
   }
 }
