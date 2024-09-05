@@ -1,4 +1,4 @@
-import esbuild from "rollup-plugin-esbuild";
+import esbuild from 'rollup-plugin-esbuild';
 
 const outputDefaultConfig = {
   preserveModules: true,
@@ -26,8 +26,20 @@ export default [
     external: [
       'react',
       '@tecsinapse/cortex-core',
-      'react-icons',
-      'clsx'
+      'react-icons/lia',
+      'react-icons/md',
+      'react-icons/io5',
+      'react-icons/io',
+      'react-icons/fa',
+      'clsx',
+      'currency.js',
+      'react-stately',
+      'react-aria',
+      'sonner',
+      '@floating-ui/react',
+      'react-spring-carousel',
+      'tailwind-variants',
+      '@internationalized/date',
     ],
   },
 ];

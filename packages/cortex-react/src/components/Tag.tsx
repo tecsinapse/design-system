@@ -1,22 +1,70 @@
 import { tag, TagVariants } from '@tecsinapse/cortex-core';
 import React, { forwardRef, HTMLProps } from 'react';
+import { LiaTimesSolid } from 'react-icons/lia';
 
 interface TagProps {
+  /**
+   * Component variants
+   */
   variants?: TagVariants;
-  label?: string;
-  children?: React.ReactNode;
+  /**
+   * Label
+   */
+  label: string;
+  /**
+   * Dismiss callback
+   * @returns void
+   */
+  onDismiss?: () => void;
 }
 
-/** Tag component */
-export const Tag = forwardRef<
-  HTMLDivElement,
-  TagProps & HTMLProps<HTMLDivElement>
->((props, ref) => {
-  const { label, variants, children } = props;
+const Close = ({ onClick, className }: HTMLProps<HTMLButtonElement>) => {
   return (
-    <div className={tag(variants)} ref={ref}>
-      {label ? <p>{label}</p> : <></>}
+    <button onClick={onClick} data-testid="tag-close-button">
+      <LiaTimesSolid className={className} />
+    </button>
+  );
+};
+
+const Label = ({ children, className }: HTMLProps<HTMLParagraphElement>) => {
+  return <p className={className}>{children}</p>;
+};
+
+const Face = forwardRef<
+  HTMLDivElement,
+  Pick<TagProps, 'variants'> & HTMLProps<HTMLDivElement>
+>((props, ref) => {
+  const { variants, className, children } = props;
+  return (
+    <div
+      className={tag({
+        ...variants,
+        className,
+      })}
+      ref={ref}
+    >
       {children}
     </div>
   );
 });
+
+/** Tag component */
+const Root = forwardRef<HTMLDivElement, TagProps & HTMLProps<HTMLDivElement>>(
+  (props, ref) => {
+    const { label, variants, className, onDismiss } = props;
+
+    return (
+      <Face variants={variants} className={className} ref={ref}>
+        <Label>{label}</Label>
+        {onDismiss ? <Close onClick={onDismiss} /> : null}
+      </Face>
+    );
+  }
+);
+
+export const Tag = {
+  Root,
+  Close,
+  Label,
+  Face,
+};

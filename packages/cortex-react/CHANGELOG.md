@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.1...@tecsinapse/cortex-react@1.5.2) (2024-08-29)
+
+### Bug Fixes
+
+* multiSelectCheckAllOptions checkAll function ([8ab0266](https://github.com/tecsinapse/design-system/commit/8ab0266c34346b13f6cc2352a1fe0010ed847f76))
+
+## [1.5.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.0-beta.2...@tecsinapse/cortex-react@1.5.1) (2024-08-29)
+
+### Bug Fixes
+
+* resolve circular dependencies ([b271a5a](https://github.com/tecsinapse/design-system/commit/b271a5aa325fcc8356dfebdebef1ef06bde3de48))
+
+# [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.4.3...@tecsinapse/cortex-react@1.5.0) (2024-08-27)
+
+### Features
+
+- Adicionando prop children na tag ([ff92ac4](https://github.com/tecsinapse/design-system/commit/ff92ac44b15d6883bbe74ce829e4b1765e2c50d8))
+
 ## [1.4.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.4.2...@tecsinapse/cortex-react@1.4.3) (2024-08-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react

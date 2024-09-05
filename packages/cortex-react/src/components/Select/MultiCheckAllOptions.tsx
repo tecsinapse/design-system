@@ -19,18 +19,25 @@ export const SelectMultiCheckAllOptions = <T,>({
 
   const checkAll = useCallback(() => {
     {
-      let updateSelected: T[] = [...currentValue];
+      const updateSelected: T[] = Array.from(currentValue);
       if (!isChecked) {
-        updateSelected = [
-          ...new Set<T>([...updateSelected, ...(options ?? [])]),
-        ];
+        const notSelected = options?.filter(
+          option =>
+            !updateSelected.find(
+              it => keyExtractor(it) === keyExtractor(option)
+            )
+        );
+        updateSelected.push(...(notSelected ?? []));
       } else {
-        const optionKeys = new Set(
-          options?.map(option => keyExtractor(option))
-        );
-        updateSelected = updateSelected.filter(
-          item => !optionKeys.has(keyExtractor(item))
-        );
+        const elementsToDelete = updateSelected
+          .map(it =>
+            options?.find(option => keyExtractor(option) === keyExtractor(it))
+          )
+          .filter(it => it) as T[];
+
+        elementsToDelete.map(it => {
+          updateSelected.splice(updateSelected.indexOf(it), 1);
+        });
       }
       onSelect(updateSelected);
     }

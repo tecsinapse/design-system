@@ -42,11 +42,11 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          
+
           if [ ${{ github.ref_name }} = master ]; then
-            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --yes
+            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
           else
-            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-prerelease --preid beta --create-release github --yes
+            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-prerelease --preid beta --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --dist-tag beta --yes
           fi

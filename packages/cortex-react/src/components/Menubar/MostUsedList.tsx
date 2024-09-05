@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { DropdownRootProps } from './DropdownRoot';
-import { Menubar } from '..';
+import MostUsedItem from './MostUsedItem';
 
 const MostUsedList = ({ mostUsed }: Pick<DropdownRootProps, 'mostUsed'>) => {
   return (
@@ -10,7 +10,7 @@ const MostUsedList = ({ mostUsed }: Pick<DropdownRootProps, 'mostUsed'>) => {
         if (index > 3)
           return <Fragment key={`${title}-${category}`}></Fragment>;
         return (
-          <Menubar.MostUsedItem
+          <MostUsedItem
             key={`${title}-${category}`}
             title={title}
             category={category}

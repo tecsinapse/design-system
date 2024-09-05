@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-web-kit",
   "description": "React components library for web",
-  "version": "3.4.14",
+  "version": "3.4.15",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
@@ -10,18 +10,16 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rollup --config --watch",
+    "dev:es": "rollup --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
     "build:es": "rollup --config",
-    "build:dts": "tsc --project tsconfig.build.json",
-    "yalc:push": "yalc push --changed",
-    "yalc:show": "yalc installations show $npm_package_name"
+    "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
     "@emotion/styled": "~11.11.0",
-    "@tecsinapse/react-core": "3.4.3",
+    "@tecsinapse/react-core": "workspace:*",
     "date-fns": "~2.30.0",
     "react-native-vector-icons": "^9.2.0",
     "react-transition-group": "~4.4.5"
