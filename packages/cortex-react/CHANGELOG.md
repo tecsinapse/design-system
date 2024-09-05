@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.2...@tecsinapse/cortex-react@1.5.3) (2024-09-04)
+
+### Bug Fixes
+
+* expose default options for snackbar ([2a3460c](https://github.com/tecsinapse/design-system/commit/2a3460c25c24b9e7fc7a352ea07c4ade6e5def78))
+* lazy select stories ([32202f9](https://github.com/tecsinapse/design-system/commit/32202f9986e0129d6c9615b1d475de2670b55209))
+
 ## [1.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.1...@tecsinapse/cortex-react@1.5.2) (2024-08-29)
 
 ### Bug Fixes
