@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import { usePopoverContext } from './Context';
+import { useOutsideClickListener } from '../../hooks';
 
 export interface PopoverContentProps {
   /** child element */
@@ -12,7 +13,14 @@ export const PopoverContent = ({
   children,
   className,
 }: PopoverContentProps) => {
-  const { isOpen, x, y, strategy, floatingStyles, refs } = usePopoverContext();
+  const { isOpen, x, y, strategy, floatingStyles, setIsOpen, refs } =
+    usePopoverContext();
+
+  useOutsideClickListener({
+    ref: refs.floating,
+    onClickOutside: () => setIsOpen(false),
+  });
+
   return (
     <>
       {isOpen ? (
