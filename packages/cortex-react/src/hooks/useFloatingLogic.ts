@@ -7,6 +7,10 @@ import {
   arrow,
   autoUpdate,
   Placement,
+  useClick,
+  useDismiss,
+  useInteractions,
+  useRole,
 } from '@floating-ui/react';
 
 interface FloatingLogicProps {
@@ -26,6 +30,8 @@ export const useFloatingLogic = ({
     {
       placement,
       whileElementsMounted: autoUpdate,
+      open: isOpen,
+      onOpenChange: setIsOpen,
       middleware: [
         offset(10),
         flip({
@@ -37,7 +43,15 @@ export const useFloatingLogic = ({
       ],
     }
   );
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
+  const role = useRole(context);
 
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    role,
+  ]);
   useEffect(() => {
     if (isOpen) update();
   }, [isOpen, update]);
@@ -51,6 +65,7 @@ export const useFloatingLogic = ({
     ...(trigger === 'click' && {
       onClick: () => setIsOpen(prev => !prev),
     }),
+    ...getReferenceProps(),
   };
 
   return {
@@ -63,5 +78,7 @@ export const useFloatingLogic = ({
     context,
     floatingStyles,
     triggerProps,
+    getReferenceProps,
+    getFloatingProps,
   };
 };

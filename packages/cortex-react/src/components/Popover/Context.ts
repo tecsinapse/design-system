@@ -1,5 +1,9 @@
 import React, { createContext, useContext } from 'react';
-import { Placement } from '@floating-ui/react';
+import {
+  FloatingContext,
+  Placement,
+  UseInteractionsReturn,
+} from '@floating-ui/react';
 
 interface ContextProps {
   triggerProps?: any;
@@ -13,6 +17,9 @@ interface ContextProps {
   placement?: Placement;
   setPlacement?: React.Dispatch<React.SetStateAction<Placement | undefined>>;
   setTrigger?: React.Dispatch<React.SetStateAction<'hover' | 'click'>>;
+  getReferenceProps: UseInteractionsReturn['getReferenceProps'];
+  getFloatingProps: UseInteractionsReturn['getFloatingProps'];
+  context: FloatingContext;
 }
 
 export const Context = createContext<ContextProps | undefined>(undefined);
