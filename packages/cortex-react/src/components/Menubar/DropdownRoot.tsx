@@ -9,12 +9,12 @@ import { MostUsedItemProps } from './MostUsedItem';
 import MostUsedList from './MostUsedList';
 import SubItem from './SubItem';
 
-interface MenuItem extends DefaultProps {
+export interface MenuItem extends DefaultProps {
   title: string;
   items?: MenuItem[];
 }
 
-interface MenuCategory {
+export interface MenuCategory {
   title: string;
   items: MenuItem[];
 }
