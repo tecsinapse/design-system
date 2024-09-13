@@ -1,32 +1,30 @@
-import React, { createContext, ReactNode, useContext } from 'react';
-
-interface ContextProviderProps {
-  show: boolean;
-  setShow: (show: boolean) => void;
-}
-
-const MenubarContext = createContext<ContextProviderProps | null>({
-  show: false,
-  setShow: () => undefined,
-});
+import React, { ReactNode, useEffect, useRef } from 'react';
+import { useOutsideClickListener } from '../hooks';
+import { MenubarContext } from './MenubarContext';
 
 export const MenubarProvider = ({ children }: { children: ReactNode }) => {
   const [show, setShow] = React.useState(false);
+  const ref = useRef(null);
+  const showRef = useRef(false);
+
+  useEffect(() => {
+    showRef.current = show;
+  }, [show]);
+
+  const onClickOutside = () => {
+    if (showRef.current === true) {
+      setShow(false);
+    }
+  };
+
+  useOutsideClickListener({
+    ref,
+    onClickOutside,
+  });
+
   return (
     <MenubarContext.Provider value={{ show, setShow }}>
-      {children}
+      <div ref={ref}>{children}</div>
     </MenubarContext.Provider>
   );
-};
-
-export const useMenubar = (): [
-  show: boolean,
-  setShow: (show: boolean) => void,
-] => {
-  const context = useContext(MenubarContext);
-
-  if (!context) {
-    throw new Error('useMenubar must be used within a MenubarProvider');
-  }
-  return [context.show, context.setShow];
 };

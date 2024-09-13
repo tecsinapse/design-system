@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
-import { Avatar, Menubar, Tag } from '../src';
+import { Avatar, Menubar, Tag, Tooltip } from '../src';
 import DropdownRoot from '../src/components/Menubar/DropdownRoot';
 import { EXAMPLE_MENU, MOST_USED } from './menuBarMocks';
 
@@ -39,7 +39,13 @@ export const Default: StoryObj<typeof Menubar.Root> = {
           </Menubar.HeaderLeft>
           <Menubar.Search />
           <Menubar.HeaderRight>
-            <Avatar name={'RC'} />
+            <Tooltip
+              text={
+                'IADWJAWIODIODJWDIJA IODAWJIDOAJ DIOWJDAIWOJAIOWDJ WIODJ AIOJIWD JAIWDJAIWDJAWIDJAWIDAJWI DJAWDIJAWDIAJW IODAWD IOAJWD AWDOAJD AIODJAIWDJ AIAJDIOAJ DAIODJAIOWDJ AIODAIOWDAJW DAOIDJADIOAJDIAJ IOJAIJDAWIODJAID'
+              }
+            >
+              <Avatar name={'RC'} />
+            </Tooltip>
             <Avatar name={'RC'} />
             <Avatar name={'RC'} />
             <Avatar name={'RC'} />

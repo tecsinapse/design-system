@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { IoMenu } from 'react-icons/io5';
+import { IoCloseOutline, IoMenu } from 'react-icons/io5';
 import { useMenubar } from '../../provider';
 import { menubar } from '../../styles/menubar';
 import { Button } from '../Button';
@@ -21,7 +21,7 @@ const Header = ({ children, className, ...rest }: HeaderProps) => {
       {...rest}
     >
       <Button variants={{ size: 'square' }} onClick={() => setShow(!show)}>
-        <IoMenu size={16} />
+        {show ? <IoCloseOutline size={16} /> : <IoMenu size={16} />}
       </Button>
       {children}
     </div>
