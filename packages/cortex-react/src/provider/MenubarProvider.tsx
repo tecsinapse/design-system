@@ -1,4 +1,11 @@
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useRef,
+} from 'react';
+import { useOutsideClickListener } from '../hooks';
 
 interface ContextProviderProps {
   show: boolean;
@@ -12,9 +19,20 @@ const MenubarContext = createContext<ContextProviderProps | null>({
 
 export const MenubarProvider = ({ children }: { children: ReactNode }) => {
   const [show, setShow] = React.useState(false);
+  const ref = useRef(null);
+
+  const onClickOutside = useCallback(() => {
+    setShow(false);
+  }, []);
+
+  useOutsideClickListener({
+    ref,
+    onClickOutside,
+  });
+
   return (
     <MenubarContext.Provider value={{ show, setShow }}>
-      {children}
+      <div ref={ref}>{children}</div>
     </MenubarContext.Provider>
   );
 };

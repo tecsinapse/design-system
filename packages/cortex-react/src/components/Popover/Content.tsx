@@ -27,7 +27,7 @@ export const PopoverContent = ({
   return (
     <>
       {isOpen && (
-        <FloatingFocusManager context={context} modal={true}>
+        <FloatingFocusManager context={context} modal={false}>
           <div
             ref={refs.setFloating}
             {...getFloatingProps()}
