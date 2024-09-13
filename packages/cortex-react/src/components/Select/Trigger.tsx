@@ -26,11 +26,7 @@ export const SelectTrigger = ({
 
   return (
     <Popover.Trigger>
-      <button
-        className={button({ disabled, className: 'bg-white' })}
-        disabled={disabled}
-        role="button"
-      >
+      <button className={button()} disabled={disabled} role="button">
         <span data-testid="select-placeholder">{_placeholder}</span>
         <IoChevronDownOutline />
       </button>

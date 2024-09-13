@@ -15,16 +15,11 @@ export const option = tv({
 export const selectVariants = tv({
   slots: {
     button:
-      'flex w-full justify-between items-center bg-white relative min-h-[44px] h-auto flex px-centi py-1.5 text-base font-bold items-center bg-transparent border border-secondary-light rounded-mili',
+      'disabled:pointer-events-none disabled:text-secondary-light flex w-full justify-between items-center bg-white relative min-h-[44px] h-auto flex px-centi py-1.5 text-base font-bold items-center border border-secondary-light rounded-mili',
     groupedTitle: 'font-bold text-secondary-medium mx-centi',
     list: 'list-none p-0',
   },
   variants: {
-    disabled: {
-      true: {
-        button: 'pointer-events-none text-secondary-light bg-secondary-xlight',
-      },
-    },
     intent: {
       error: { button: 'border-error-light' },
       default: '',

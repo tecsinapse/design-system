@@ -9,6 +9,7 @@ export interface PopoverTriggerProps {
 
 export const PopoverTrigger = ({ children }: PopoverTriggerProps) => {
   const { triggerProps } = usePopoverContext();
+  const isDisabled = children.props?.disabled;
 
-  return cloneWithProps(children, triggerProps);
+  return cloneWithProps(children, isDisabled ? {} : triggerProps);
 };
