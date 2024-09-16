@@ -18,16 +18,13 @@ describe('SubItem Menubar', () => {
 
   it('Should renders as a link when href is provided', () => {
     const { container } = render(
-      <Menubar.SubItem href="http://example.com">Test Child</Menubar.SubItem>
+      <Menubar.SubItem anchorProps={{ href: 'http://example.com' }}>
+        Test Child
+      </Menubar.SubItem>
     );
     expect(container.querySelector('a')).toHaveAttribute(
       'href',
       'http://example.com'
-    );
-    expect(container.querySelector('a')).toHaveAttribute('target', '_blank');
-    expect(container.querySelector('a')).toHaveAttribute(
-      'rel',
-      'noopener noreferrer'
     );
   });
 });

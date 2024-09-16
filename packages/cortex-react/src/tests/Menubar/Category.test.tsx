@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Menubar } from '../../components';
-import { CategoryType } from '../../components/Menubar/Category';
+import { CategoryType, Menubar } from '../../components';
 
 jest.mock('../../styles/menubar', () => ({
   category: () => ({

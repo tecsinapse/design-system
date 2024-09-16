@@ -2,29 +2,15 @@ import React from 'react';
 import Categories from './Categories';
 import Category from './Category';
 import Dropdown from './Dropdown';
-import { DefaultProps } from './interface';
 import Item from './Item';
 import MostUsed from './MostUsed';
-import { MostUsedItemProps } from './MostUsedItem';
 import MostUsedList from './MostUsedList';
 import SubItem from './SubItem';
+import { DropdownRootProps } from './types';
 
-interface MenuItem extends DefaultProps {
-  title: string;
-  items?: MenuItem[];
-}
-
-interface MenuCategory {
-  title: string;
-  items: MenuItem[];
-}
-
-export interface DropdownRootProps {
-  labelMostUsed?: string;
-  mostUsed?: MostUsedItemProps[];
-  options: MenuCategory[];
-}
-
+/**
+ * The options of DropdownRoot should be used with href, if you need use other components like <Link> from 'react-router-dom', see example in Custom Menubar.
+ */
 const DropdownRoot = ({
   mostUsed,
   options,

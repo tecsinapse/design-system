@@ -41,7 +41,7 @@ export const Default: StoryObj<typeof Menubar.Root> = {
           <Menubar.HeaderRight>
             <Tooltip
               text={
-                'IADWJAWIODIODJWDIJA IODAWJIDOAJ DIOWJDAIWOJAIOWDJ WIODJ AIOJIWD JAIWDJAIWDJAWIDJAWIDAJWI DJAWDIJAWDIAJW IODAWD IOAJWD AWDOAJD AIODJAIWDJ AIAJDIOAJ DAIODJAIOWDJ AIODAIOWDAJW DAOIDJADIOAJDIAJ IOJAIJDAWIODJAID'
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
               }
             >
               <Avatar name={'RC'} />
@@ -109,7 +109,7 @@ export const Custom: StoryObj<typeof DropdownRoot> = {
               <Menubar.MostUsedItem
                 title={item.title}
                 category={item.category}
-                href={item.href}
+                anchorProps={item.anchorProps}
               />
             ))}
           </Menubar.MostUsed>

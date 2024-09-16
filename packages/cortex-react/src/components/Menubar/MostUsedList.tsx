@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { DropdownRootProps } from './DropdownRoot';
+import { DropdownRootProps } from './types';
 import MostUsedItem from './MostUsedItem';
 
 const MostUsedList = ({ mostUsed }: Pick<DropdownRootProps, 'mostUsed'>) => {

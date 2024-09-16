@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultProps } from './interface';
+import { DefaultProps } from './types';
 import { menubar } from '../../styles/menubar';
 
 const { right } = menubar();

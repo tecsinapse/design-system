@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultProps } from './interface';
+import { DefaultProps } from './types';
 import Masonry from '../Masonry';
 
 const Categories = ({ children }: DefaultProps) => {

@@ -23,16 +23,13 @@ describe('Item Menubar', () => {
 
   it('Should renders as a link when href is provided', () => {
     const { container } = render(
-      <Menubar.Item href="http://example.com">Test Child</Menubar.Item>
+      <Menubar.Item anchorProps={{ href: 'http://example.com' }}>
+        Test Child
+      </Menubar.Item>
     );
     expect(container.querySelector('a')).toHaveAttribute(
       'href',
       'http://example.com'
-    );
-    expect(container.querySelector('a')).toHaveAttribute('target', '_blank');
-    expect(container.querySelector('a')).toHaveAttribute(
-      'rel',
-      'noopener noreferrer'
     );
   });
 });
