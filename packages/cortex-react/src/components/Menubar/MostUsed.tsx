@@ -1,14 +1,8 @@
 import React from 'react';
 import { mostUsed } from '../../styles/menubar';
-import { DefaultProps } from './interface';
+import { MostUsedProps } from './types';
 
 const { container, label: labelClass, containerList } = mostUsed();
-
-export interface MostUsedProps extends DefaultProps {
-  label?: string;
-  /** child element */
-  children?: React.ReactNode;
-}
 
 const MostUsed = ({ label, children, ...rest }: MostUsedProps) => {
   return (

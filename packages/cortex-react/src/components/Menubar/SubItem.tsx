@@ -1,17 +1,18 @@
 import React from 'react';
-import { DefaultProps } from './interface';
+import { SubItemProps } from './types';
 import { subItem } from '../../styles/menubar';
 import ItemLink from './ItemLink';
 
-export interface SubItemProps extends DefaultProps {
-  href?: string;
-}
-
 const { container } = subItem();
 
-const SubItem = ({ children, href, className, ...rest }: SubItemProps) => {
+const SubItem = ({
+  children,
+  anchorProps,
+  className,
+  ...rest
+}: SubItemProps) => {
   return (
-    <ItemLink href={href}>
+    <ItemLink anchorProps={anchorProps}>
       <div
         {...rest}
         data-testid="sub-item-menubar"

@@ -1,10 +1,6 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { MenubarProvider } from '../../provider';
-
-export interface RootProps {
-  /** child element */
-  children?: ReactNode;
-}
+import { RootProps } from './types';
 
 /** Menubar component */
 const Root = ({ children }: RootProps) => {

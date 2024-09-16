@@ -1,22 +1,12 @@
 import React from 'react';
+import { ItemLinkProps } from './types';
+import clsx from 'clsx';
 
-interface ItemLinkProps {
-  href?: string;
-  /** child element */
-  children?: React.ReactNode;
-  classNameAnchor?: string;
-}
-
-const ItemLink = ({ href, children, classNameAnchor }: ItemLinkProps) => {
+const ItemLink = ({ anchorProps, children }: ItemLinkProps) => {
   return (
     <>
-      {href ? (
-        <a
-          href={href}
-          target={'_blank'}
-          rel={'noopener noreferrer'}
-          className={classNameAnchor}
-        >
+      {anchorProps ? (
+        <a {...anchorProps} className={clsx('w-full', anchorProps?.className)}>
           {children}
         </a>
       ) : (

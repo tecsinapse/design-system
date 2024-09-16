@@ -27,3 +27,5 @@ export const Menubar = {
   SubItem,
   DropdownRoot,
 };
+
+export * from './types';

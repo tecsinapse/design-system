@@ -1,13 +1,8 @@
 import React from 'react';
 import { mostUsedItem } from '../../styles/menubar';
-import { Card, CardProps } from '../Card';
+import { Card } from '../Card';
 import ItemLink from './ItemLink';
-
-export interface MostUsedItemProps extends CardProps {
-  title: string;
-  category: string;
-  href?: string;
-}
+import { MostUsedItemProps } from './types';
 
 const {
   title: titleClass,
@@ -18,11 +13,11 @@ const {
 const MostUsedItem = ({
   title,
   category,
-  href,
+  anchorProps,
   ...rest
 }: MostUsedItemProps) => {
   return (
-    <ItemLink href={href} classNameAnchor={'w-full'}>
+    <ItemLink anchorProps={anchorProps}>
       <Card
         {...rest}
         data-testid="most-used-item-menubar"

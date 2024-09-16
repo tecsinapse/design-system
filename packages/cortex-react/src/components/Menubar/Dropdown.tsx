@@ -1,5 +1,5 @@
 import React from 'react';
-import { DefaultProps } from './interface';
+import { DefaultProps } from './types';
 import { animate, menubar } from '../../styles/menubar';
 import clsx from 'clsx';
 import { useMenubar } from '../../provider';

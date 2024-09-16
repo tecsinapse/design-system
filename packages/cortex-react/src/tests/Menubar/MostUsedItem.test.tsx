@@ -24,7 +24,7 @@ describe('MostUsedItem Menubar', () => {
       <Menubar.MostUsedItem
         title="Test Title"
         category="Test Category"
-        href="http://example.com"
+        anchorProps={{ href: 'http://example.com' }}
       />
     );
     expect(container.firstChild).toHaveProperty('tagName', 'A');
