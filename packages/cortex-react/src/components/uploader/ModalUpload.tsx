@@ -3,16 +3,19 @@ import { MdClose } from 'react-icons/md';
 import { button } from '@tecsinapse/cortex-core';
 import { Modal } from '../Modal';
 import { createPortal } from 'react-dom';
+
 interface ModalUploadProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  titleModal?: string;
 }
 
 export const ModalUpload = ({
   isOpen,
   onClose,
   children,
+  titleModal = 'File Upload',
 }: ModalUploadProps) => {
   return createPortal(
     <Modal
@@ -22,7 +25,7 @@ export const ModalUpload = ({
     >
       <div className="flex w-full items-center justify-between mb-deca">
         <div />
-        <h2 className="text-deca font-semibold">Upload de arquivos</h2>
+        <h2 className="text-deca font-semibold">{titleModal}</h2>
         <button
           className={button({ size: 'square' })}
           onClick={onClose}

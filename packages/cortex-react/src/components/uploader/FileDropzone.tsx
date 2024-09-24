@@ -1,11 +1,14 @@
 import React from 'react';
 import { HiOutlineCloudArrowUp } from 'react-icons/hi2';
-interface FileDropzoneProps {
-  dropzoneProps: any;
-  button: () => string;
-}
+import { FileDropzoneProps } from './types';
 
-export const FileDropzone = ({ dropzoneProps, button }: FileDropzoneProps) => {
+export const FileDropzone = ({
+  dropzoneProps,
+  button,
+  selectFileText = 'Select a file to start',
+  dropText = 'By dragging and dropping it here or clicking the button below',
+  buttonText = 'Select File',
+}: FileDropzoneProps) => {
   return (
     <div
       {...dropzoneProps.getRootProps()}
@@ -17,15 +20,11 @@ export const FileDropzone = ({ dropzoneProps, button }: FileDropzoneProps) => {
       <div className="flex flex-col justify-center text-center items-center gap-deca">
         <HiOutlineCloudArrowUp className="text-primary-medium" size={35} />
         <div className="gap-mili">
-          <p className="text-lg font-semibold ">
-            Selecione um arquivo para começar
-          </p>
-          <p className="text-sm text-gray-500">
-            Arrastando ele e soltando aqui ou clicando no botão abaixo
-          </p>
+          <p className="text-lg font-semibold ">{selectFileText}</p>
+          <p className="text-sm text-gray-500">{dropText}</p>
         </div>
 
-        <button className={button()}>Selecionar Arquivo</button>
+        <button className={button()}>{buttonText}</button>
       </div>
     </div>
   );

@@ -3,14 +3,7 @@ import { button } from '@tecsinapse/cortex-core';
 import { FileDropzone } from './FileDropzone';
 import { FileUploadList } from './FileUploadList';
 import { ModalUpload } from './ModalUpload';
-
-interface FileUploadModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  files: { file: File; loading: 'loading' | 'success' | 'error' }[];
-  removeFile: (index: number) => void;
-  dropzoneProps: any;
-}
+import { FileUploadModalProps } from './types';
 
 export const Uploader = ({
   isOpen,
@@ -18,11 +11,26 @@ export const Uploader = ({
   files,
   removeFile,
   dropzoneProps,
+  selectFileText,
+  dropText,
+  buttonText,
+  uploadProgressText,
+  titleModal,
 }: FileUploadModalProps) => {
   return (
-    <ModalUpload onClose={onClose} isOpen={isOpen}>
-      <FileDropzone dropzoneProps={dropzoneProps} button={button} />
-      <FileUploadList files={files} removeFile={removeFile} />
+    <ModalUpload onClose={onClose} isOpen={isOpen} titleModal={titleModal}>
+      <FileDropzone
+        dropzoneProps={dropzoneProps}
+        button={button}
+        selectFileText={selectFileText}
+        dropText={dropText}
+        buttonText={buttonText}
+      />
+      <FileUploadList
+        files={files}
+        removeFile={removeFile}
+        uploadProgressText={uploadProgressText}
+      />
     </ModalUpload>
   );
 };

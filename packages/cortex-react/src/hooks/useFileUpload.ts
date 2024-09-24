@@ -1,10 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-
-interface FileItem {
-  file: File;
-  loading: 'loading' | 'success' | 'error';
-}
+import { DropzoneProps, FileItem } from '../components/Uploader/types';
 
 export const useFileUpload = () => {
   const [files, setFiles] = useState<FileItem[]>([]);
@@ -61,7 +57,11 @@ export const useFileUpload = () => {
     openModal,
     closeModal,
     deleteFile: handleRemoveFile,
-    dropzoneProps: { getInputProps, getRootProps, isDragActive },
+    dropzoneProps: {
+      getInputProps,
+      getRootProps,
+      isDragActive,
+    } as DropzoneProps,
     isOpen,
     files,
   };
