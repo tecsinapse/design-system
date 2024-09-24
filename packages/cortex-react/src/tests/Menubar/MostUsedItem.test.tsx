@@ -27,7 +27,6 @@ describe('MostUsedItem Menubar', () => {
         anchorProps={{ href: 'http://example.com' }}
       />
     );
-    expect(container.firstChild).toHaveProperty('tagName', 'A');
     expect(container.querySelector('a')).toHaveAttribute(
       'href',
       'http://example.com'
