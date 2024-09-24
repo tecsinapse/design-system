@@ -3,6 +3,7 @@ import { FaRegFileLines } from 'react-icons/fa6';
 import { button } from '@tecsinapse/cortex-core';
 import { ProgressBarInfinite } from './ProgressBarInfinite';
 import { FileUploadItemProps } from './types';
+import { MdClose } from 'react-icons/md';
 
 export const FileUploadItem = ({
   fileItem,
@@ -44,7 +45,7 @@ export const FileUploadItem = ({
               size: 'small',
             })}
           >
-            ✕
+            <MdClose />
           </button>
         )}
       </div>
