@@ -1,13 +1,26 @@
 import { useState, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { useDropzone, Accept } from 'react-dropzone';
 import { DropzoneProps, FileItem } from '../components/Uploader/types';
 
-export const useFileUpload = () => {
-  const [files, setFiles] = useState<FileItem[]>([]);
-  const [isOpen, setOpen] = useState(false);
+enum AcceptEnum {
+  IMAGE = 'image/*',
+  APPLICATION = 'application/*',
+  TEXT = 'text/*',
+  VIDEO = 'video/*',
+}
 
-  const openModal = useCallback(() => setOpen(true), []);
-  const closeModal = useCallback(() => setOpen(false), []);
+interface UseFileUploadOptions {
+  acceptTypes?: Array<keyof typeof AcceptEnum>;
+}
+
+export const useFileUpload = ({
+  acceptTypes = ['IMAGE', 'APPLICATION', 'TEXT', 'VIDEO'],
+}: UseFileUploadOptions = {}) => {
+  const [files, setFiles] = useState<FileItem[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = useCallback(() => setIsOpen(true), []);
+  const closeModal = useCallback(() => setIsOpen(false), []);
 
   const updateFileStatus = (index: number, status: 'success' | 'error') => {
     setFiles(prevFiles =>
@@ -38,14 +51,17 @@ export const useFileUpload = () => {
     });
   };
 
+  const mappedAccept: Accept = acceptTypes.reduce((acc, type) => {
+    const mimeType = AcceptEnum[type];
+    if (mimeType) {
+      acc[mimeType] = [];
+    }
+    return acc;
+  }, {} as Accept);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: {
-      'image/*': [],
-      'application/*': [],
-      'text/*': [],
-      'video/*': [],
-    },
+    accept: mappedAccept,
     multiple: true,
   });
 

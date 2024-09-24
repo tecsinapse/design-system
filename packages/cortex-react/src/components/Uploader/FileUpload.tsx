@@ -45,7 +45,7 @@ export const FileUploadItem = ({
               size: 'small',
             })}
           >
-            <MdClose />
+            <MdClose size={20} />
           </button>
         )}
       </div>

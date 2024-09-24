@@ -13,7 +13,9 @@ export const FileUploadList = ({
         <div className="flex items-center justify-center w-deca h-deca bg-primary-medium rounded-full text-micro text-white">
           {`${files.length}`}
         </div>
-        <h2 className="text-md font-semibold">{uploadProgressText}</h2>
+        <h2 className="text-md font-semibold" data-testid="upload-progress">
+          {uploadProgressText}
+        </h2>
       </div>
 
       {files.map((fileItem, index) => (

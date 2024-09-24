@@ -49,9 +49,7 @@ describe('Uploader', () => {
 
     const uploads = screen.getAllByText(/upload/i);
     expect(uploads.length).toBeGreaterThan(0);
-    expect(
-      screen.getByText('Selecione um arquivo para começar')
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('select-dropzone')).toBeInTheDocument();
   });
 
   it('should display files being uploaded', () => {
@@ -65,7 +63,7 @@ describe('Uploader', () => {
       />
     );
 
-    expect(screen.getByText('Upload(s) em progresso')).toBeInTheDocument();
+    expect(screen.getByTestId('upload-progress')).toBeInTheDocument();
     expect(screen.getByText('file1.png')).toBeInTheDocument();
     expect(screen.getByText('file2.jpg')).toBeInTheDocument();
   });
@@ -81,7 +79,7 @@ describe('Uploader', () => {
       />
     );
 
-    const dropzone = screen.getByText('Selecione um arquivo para começar');
+    const dropzone = screen.getByTestId('select-dropzone');
     expect(dropzone).toBeInTheDocument();
   });
 

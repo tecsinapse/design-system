@@ -12,7 +12,10 @@ export default {
 export const Default: StoryObj<typeof Uploader> = {
   render: args => {
     const { files, openModal, closeModal, deleteFile, dropzoneProps, isOpen } =
-      useFileUpload();
+      useFileUpload({
+        acceptTypes: ['IMAGE', 'VIDEO'],
+      });
+
     return (
       <div>
         <button className={button()} onClick={openModal}>

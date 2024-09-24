@@ -20,7 +20,9 @@ export const FileDropzone = ({
       <div className="flex flex-col justify-center text-center items-center gap-deca">
         <HiOutlineCloudArrowUp className="text-primary-medium" size={35} />
         <div className="gap-mili">
-          <p className="text-lg font-semibold ">{selectFileText}</p>
+          <p className="text-lg font-semibold" data-testid="select-dropzone">
+            {selectFileText}
+          </p>
           <p className="text-sm text-gray-500">{dropText}</p>
         </div>
 
