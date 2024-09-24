@@ -10,6 +10,7 @@ export interface MenuItem extends DefaultProps {
   title: string;
   items?: MenuItem[];
   anchorProps?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  [key: string]: unknown;
 }
 
 export interface MenuCategory {
