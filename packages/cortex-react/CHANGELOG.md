@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.6...@tecsinapse/cortex-react@1.5.7) (2024-09-24)
+
+### Bug Fixes
+
+* add currency.js dependency ([c86498b](https://github.com/tecsinapse/design-system/commit/c86498bd308f286d724345cdb9dcc2627eae9311))
+
 ## [1.5.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.5...@tecsinapse/cortex-react@1.5.6) (2024-09-16)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
