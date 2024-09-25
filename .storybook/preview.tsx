@@ -1,7 +1,7 @@
 import * as DocBlock from '@storybook/blocks';
 import { Parameters, Preview } from '@storybook/react';
 import React from 'react';
-import { ThemeProvider, lightTheme } from '../packages/react-core/src';
+import { ThemeProvider, lightTheme } from '../packages/react-core';
 import './index.css';
 
 const parameters: Parameters = {
