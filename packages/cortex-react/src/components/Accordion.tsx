@@ -33,6 +33,11 @@ interface AccordionProps {
    * @returns void
    */
   onOpen?: () => void;
+  /**
+   * invert direction of arrow
+   * default: `false`
+   */
+  invertedArrow?: boolean;
 }
 
 const Context = createContext<{
@@ -56,7 +61,8 @@ const Trigger = ({
    */
   className,
   onOpen,
-}: Pick<AccordionProps, 'floating' | 'label' | 'onOpen'> & {
+  invertedArrow = false,
+}: Pick<AccordionProps, 'floating' | 'label' | 'onOpen' | 'invertedArrow'> & {
   /**
    * Only applied to trigger arrow
    */
@@ -97,7 +103,7 @@ const Trigger = ({
           className={clsx(
             'text-secondary-medium transition-transform duration-200',
             {
-              'rotate-180': open,
+              'rotate-180': invertedArrow ? !open : open,
             }
           )}
         />
@@ -157,10 +163,16 @@ const Root = ({
   label,
   floating,
   onOpen,
+  invertedArrow,
 }: AccordionProps) => {
   return (
     <Face defaultOpen={defaultOpen}>
-      <Trigger label={label} floating={floating} onOpen={onOpen} />
+      <Trigger
+        label={label}
+        floating={floating}
+        onOpen={onOpen}
+        invertedArrow={invertedArrow}
+      />
       <Content>{children}</Content>
     </Face>
   );
