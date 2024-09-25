@@ -18,7 +18,6 @@ export const useRangeCalendar = ({
   onChange,
 }: useRangeCalendarProps) => {
   const { locale } = useLocale();
-
   const state = useRangeCalendarState({
     locale,
     createCalendar,
@@ -28,8 +27,8 @@ export const useRangeCalendar = ({
     },
     onChange: value =>
       onChange({
-        start: value?.start ? calendarDateToDate(value.start) : new Date(),
-        end: value?.end ? calendarDateToDate(value.end) : new Date(),
+        start: calendarDateToDate(value.start),
+        end: calendarDateToDate(value.end),
       }),
   });
 
