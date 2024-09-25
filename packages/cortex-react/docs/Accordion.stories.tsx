@@ -11,9 +11,14 @@ export const Default: StoryObj<typeof Accordion.Root> = {
   args: {
     label: 'Root',
     defaultOpen: false,
+    invertedArrow: false,
   },
   render: args => (
-    <Accordion.Root label={args.label} defaultOpen={args.defaultOpen}>
+    <Accordion.Root
+      label={args.label}
+      defaultOpen={args.defaultOpen}
+      invertedArrow={args.invertedArrow}
+    >
       <div className="w-[300px] bg-white p-mili">
         <h1 className="text-h1">Example content</h1>
         <p>
@@ -36,10 +41,14 @@ export const Floating: StoryObj<typeof Accordion.Root> = {
   args: {
     floating: true,
     defaultOpen: true,
+    invertedArrow: false,
   },
   render: args => (
     <Accordion.Face defaultOpen={args.defaultOpen}>
-      <Accordion.Trigger floating={args.floating} />
+      <Accordion.Trigger
+        floating={args.floating}
+        invertedArrow={args.invertedArrow}
+      />
       <Accordion.Content>
         <div className="w-[300px]">
           <h1 className="text-h1">Example content</h1>
