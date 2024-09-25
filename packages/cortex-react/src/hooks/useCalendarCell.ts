@@ -21,18 +21,20 @@ export const useCalendarCell = ({ state, date }: useCalendarCellProps) => {
   const rangeStateHighlitedRange = (state as RangeCalendarState)
     ?.highlightedRange;
 
-  const isSameDayStart = rangeStateHighlitedRange
-    ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.start)
+  const isSameDayStart = rangeStateHighlitedRange?.start
+    ? isSameDay(date, rangeStateHighlitedRange?.start)
     : undefined;
-  const isSameDayEnd = rangeStateHighlitedRange
-    ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.end)
+  const isSameDayEnd = rangeStateHighlitedRange?.end
+    ? isSameDay(date, rangeStateHighlitedRange?.end)
     : undefined;
 
   const isSelectionStart = isSameDayStart && !isSameDayEnd;
   const isSelectionEnd = isSameDayEnd && !isSameDayStart;
   const inRange =
-    date > rangeStateHighlitedRange?.start &&
-    date < rangeStateHighlitedRange?.end;
+    rangeStateHighlitedRange?.start && rangeStateHighlitedRange?.end
+      ? date > rangeStateHighlitedRange?.start &&
+        date < rangeStateHighlitedRange?.end
+      : false;
 
   return {
     ref,
