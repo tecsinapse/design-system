@@ -34,6 +34,11 @@ interface AccordionProps {
    */
   onOpen?: () => void;
   /**
+   * Callback executed on accordion `close` event
+   * @returns void
+   */
+  onClose?: () => void;
+  /**
    * invert direction of arrow
    * default: `false`
    */
@@ -61,8 +66,12 @@ const Trigger = ({
    */
   className,
   onOpen,
+  onClose,
   invertedArrow = false,
-}: Pick<AccordionProps, 'floating' | 'label' | 'onOpen' | 'invertedArrow'> & {
+}: Pick<
+  AccordionProps,
+  'floating' | 'label' | 'onOpen' | 'onClose' | 'invertedArrow'
+> & {
   /**
    * Only applied to trigger arrow
    */
@@ -78,6 +87,8 @@ const Trigger = ({
   const action = () => {
     if (!open) {
       onOpen?.();
+    } else {
+      onClose?.();
     }
     toggle?.();
   };
@@ -164,6 +175,7 @@ const Root = ({
   floating,
   onOpen,
   invertedArrow,
+  onClose,
 }: AccordionProps) => {
   return (
     <Face defaultOpen={defaultOpen}>
@@ -171,6 +183,7 @@ const Root = ({
         label={label}
         floating={floating}
         onOpen={onOpen}
+        onClose={onClose}
         invertedArrow={invertedArrow}
       />
       <Content>{children}</Content>

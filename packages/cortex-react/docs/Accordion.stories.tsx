@@ -18,6 +18,7 @@ export const Default: StoryObj<typeof Accordion.Root> = {
       label={args.label}
       defaultOpen={args.defaultOpen}
       invertedArrow={args.invertedArrow}
+      onClose={() => console.log('onClose')}
     >
       <div className="w-[300px] bg-white p-mili">
         <h1 className="text-h1">Example content</h1>
