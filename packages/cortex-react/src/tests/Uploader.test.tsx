@@ -2,12 +2,9 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { Uploader } from '../components';
+import { FileUpload, FileStatus } from '../components/Uploader/types';
 
-// Definindo o tipo FileItem
-type FileItem = {
-  file: File;
-  loading: 'loading' | 'success' | 'error';
-};
+type FileItem<T = unknown> = FileUpload<T>;
 
 beforeAll(() => {
   global.URL.createObjectURL = jest.fn(() => 'mocked-url');
@@ -17,11 +14,13 @@ describe('Uploader', () => {
   const mockFiles: FileItem[] = [
     {
       file: new File(['content'], 'file1.png', { type: 'image/png' }),
-      loading: 'loading',
+      status: FileStatus.UPLOADING,
+      uid: '1',
     },
     {
       file: new File(['content'], 'file2.jpg', { type: 'image/jpeg' }),
-      loading: 'success',
+      status: FileStatus.SUCCESS,
+      uid: '2',
     },
   ];
 
