@@ -1,72 +1,104 @@
-import { useState, useCallback } from 'react';
-import { useDropzone, Accept } from 'react-dropzone';
-import { DropzoneProps, FileItem } from '../components/Uploader/types';
+import { useCallback, useState } from 'react';
+import { Accept, useDropzone } from 'react-dropzone';
+import { v4 as uuidv4 } from 'uuid';
+import {
+  AcceptSpecificMap,
+  DropzoneProps,
+  FileStatus,
+  type FileUpload,
+} from '../components/Uploader/types';
 
 enum AcceptEnum {
   IMAGE = 'image/*',
-  APPLICATION = 'application/*',
+  APPLICATION = 'application/octet-stream',
   TEXT = 'text/*',
   VIDEO = 'video/*',
 }
 
-interface UseFileUploadOptions {
+interface UseFileUploadOptions<T> {
   acceptTypes?: Array<keyof typeof AcceptEnum>;
+  onAccept?: (files: FileUpload<T>[]) => Promise<FileUpload<T>[]>;
+  maxSize?: number;
+  minSize?: number;
+  allowMultiple?: boolean;
+  // onDelete: (file: T) => Promise<boolean>;
 }
 
-export const useFileUpload = ({
+export const useFileUpload = <T>({
   acceptTypes = ['IMAGE', 'APPLICATION', 'TEXT', 'VIDEO'],
-}: UseFileUploadOptions = {}) => {
-  const [files, setFiles] = useState<FileItem[]>([]);
+  onAccept,
+  maxSize,
+  minSize,
+  allowMultiple = true,
+  // onDelete,
+}: UseFileUploadOptions<T>) => {
+  const [files, setFiles] = useState<FileUpload<T>[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = useCallback(() => setIsOpen(true), []);
   const closeModal = useCallback(() => setIsOpen(false), []);
 
-  const updateFileStatus = (index: number, status: 'success' | 'error') => {
-    setFiles(prevFiles =>
-      prevFiles.map((file, i) =>
-        i === index ? { ...file, loading: status } : file
-      )
-    );
-  };
-
   const onDrop = async (acceptedFiles: File[]): Promise<void> => {
-    const newFiles = acceptedFiles.map(file => ({
+    const newFiles: FileUpload<T>[] = acceptedFiles.map(file => ({
       file,
-      loading: 'loading' as const,
+      status: onAccept ? FileStatus.UPLOADING : FileStatus.SUCCESS,
+      uid: uuidv4(),
     }));
 
-    setFiles(prevFiles => [...prevFiles, ...newFiles]);
+    const map = new Map();
+    for (const i of newFiles) {
+      map.set(i.uid, i);
+    }
 
-    newFiles.forEach((_, index) => {
-      const fileIndex = files.length + index;
-      setTimeout(() => {
-        try {
-          updateFileStatus(fileIndex, 'success');
-        } catch (error) {
-          updateFileStatus(fileIndex, 'error');
-          console.error(error);
+    try {
+      setFiles(prevFiles => [...prevFiles, ...newFiles]);
+      if (onAccept) {
+        const updatedFiles = await onAccept(newFiles);
+        setFiles(prevFiles => {
+          const current = new Map();
+          for (const i of [...prevFiles, ...updatedFiles]) {
+            current.set(i.uid, i);
+          }
+          return [...current.values()];
+        });
+      }
+    } catch (e) {
+      setFiles(prevFiles => {
+        const current = new Map();
+
+        const updatedFiles = newFiles.map(f => ({
+          ...f,
+          status: FileStatus.ERROR,
+        }));
+        for (const i of [...prevFiles, ...updatedFiles]) {
+          current.set(i.uid, i);
         }
-      }, 2000);
-    });
+        return [...current.values()];
+      });
+    }
   };
 
   const mappedAccept: Accept = acceptTypes.reduce((acc, type) => {
-    const mimeType = AcceptEnum[type];
-    if (mimeType) {
-      acc[mimeType] = [];
-    }
+    const specificTypes = AcceptSpecificMap[
+      type as keyof typeof AcceptSpecificMap
+    ] || [AcceptEnum[type as keyof typeof AcceptEnum]] || [type];
+    specificTypes.forEach(specificType => {
+      if (specificType) acc[specificType] = [];
+    });
     return acc;
   }, {} as Accept);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: mappedAccept,
-    multiple: true,
+    multiple: allowMultiple,
+    maxSize,
+    minSize,
   });
 
   const handleRemoveFile = useCallback((index: number) => {
     setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
+    // onDelete(files[index]);
   }, []);
 
   return {

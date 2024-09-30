@@ -2,11 +2,11 @@ import React from 'react';
 import { FileUploadItem } from './FileUpload';
 import { FileUploadListProps } from './types';
 
-export const FileUploadList = ({
+export const FileUploadList = <T,>({
   files,
   removeFile,
   uploadProgressText = 'Upload(s) in progress',
-}: FileUploadListProps) => {
+}: FileUploadListProps<T>) => {
   return (
     <div className="bg-white w-full border-2 p-deca flex flex-col overflow-y-auto rounded-mili">
       <div className="flex gap-mili items-center mb-deca">

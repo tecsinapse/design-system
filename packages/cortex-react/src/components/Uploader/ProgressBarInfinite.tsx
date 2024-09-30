@@ -2,15 +2,15 @@ import React from 'react';
 import { progressBarVariants } from '../../styles';
 
 interface ProgressBarProps {
-  isLoading: 'loading' | 'success' | 'error';
+  status: 'uploading' | 'success' | 'error';
 }
 const { container, bar, progress } = progressBarVariants();
 
-export const ProgressBarInfinite = ({ isLoading }: ProgressBarProps) => {
+export const ProgressBarInfinite = ({ status }: ProgressBarProps) => {
   return (
     <div className={container()}>
       <div className={bar()}>
-        <div className={progress({ isLoading })} />
+        <div className={progress({ status })} />
       </div>
     </div>
   );

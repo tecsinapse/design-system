@@ -5,11 +5,11 @@ import { ProgressBarInfinite } from './ProgressBarInfinite';
 import { FileUploadItemProps } from './types';
 import { MdClose } from 'react-icons/md';
 
-export const FileUploadItem = ({
+export const FileUploadItem = <T,>({
   fileItem,
   index,
   removeFile,
-}: FileUploadItemProps) => {
+}: FileUploadItemProps<T>) => {
   return (
     <div className="flex flex-col" key={index}>
       <div className="flex items-center justify-between border rounded-t-mili shadow p-mili">
@@ -35,7 +35,7 @@ export const FileUploadItem = ({
             </p>
           </div>
         </div>
-        {fileItem.loading === 'success' && (
+        {fileItem.status === 'success' && (
           <button
             onClick={() => removeFile(index)}
             data-testid="remove-button"
@@ -50,7 +50,7 @@ export const FileUploadItem = ({
         )}
       </div>
 
-      <ProgressBarInfinite isLoading={fileItem.loading} />
+      <ProgressBarInfinite status={fileItem.status} />
     </div>
   );
 };

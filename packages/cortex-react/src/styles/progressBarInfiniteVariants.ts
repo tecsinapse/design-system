@@ -4,11 +4,11 @@ export const progressBarVariants = tv({
   slots: {
     container: 'relative mb-mili',
     bar: 'h-1.5 w-full overflow-hidden',
-    progress: 'w-full h-full origin-left-right',
+    progress: 'w-full h-full origin-left-right rounded-b-mili',
   },
   variants: {
-    isLoading: {
-      loading: {
+    status: {
+      uploading: {
         progress: 'bg-info-medium animate-progress',
       },
       success: {

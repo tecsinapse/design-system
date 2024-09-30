@@ -5,7 +5,7 @@ import { FileUploadList } from './FileUploadList';
 import { ModalUpload } from './ModalUpload';
 import { FileUploadModalProps } from './types';
 
-export const Uploader = ({
+export const Uploader = <T,>({
   isOpen,
   onClose,
   files,
@@ -16,7 +16,7 @@ export const Uploader = ({
   buttonText,
   uploadProgressText,
   titleModal,
-}: FileUploadModalProps) => {
+}: FileUploadModalProps<T>) => {
   return (
     <ModalUpload onClose={onClose} isOpen={isOpen} titleModal={titleModal}>
       <FileDropzone
