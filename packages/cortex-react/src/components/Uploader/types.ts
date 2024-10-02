@@ -50,7 +50,7 @@ export type FileUpload<T> = {
   status: FileStatus;
 };
 
-export interface RootProps<T> {
+export interface RootUploaderProps<T> {
   open: boolean;
   onClose: () => void;
   files: FileUpload<T>[];

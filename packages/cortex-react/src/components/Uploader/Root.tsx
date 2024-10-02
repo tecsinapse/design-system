@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RootProps } from './types';
+import { RootUploaderProps } from './types';
 import { Modal } from './Modal';
 import { Dropzone } from './Dropzone';
 import { Files } from './Files';
@@ -16,7 +16,7 @@ export const Root = <T,>({
   buttonText,
   uploadProgressText,
   titleModal,
-}: RootProps<T>) => {
+}: RootUploaderProps<T>) => {
   return (
     <Modal onClose={onClose} open={open} title={titleModal}>
       <Dropzone
