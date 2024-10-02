@@ -30,6 +30,13 @@ export interface DropzoneProps {
   buttonText?: string;
 }
 
+export interface ModalProps {
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+  title?: string;
+}
+
 export enum FileStatus {
   SUCCESS = 'success',
   ERROR = 'error',
@@ -43,7 +50,7 @@ export type FileUpload<T> = {
   status: FileStatus;
 };
 
-export interface ModalProps<T> {
+export interface RootProps<T> {
   open: boolean;
   onClose: () => void;
   files: FileUpload<T>[];

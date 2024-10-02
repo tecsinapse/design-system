@@ -3,13 +3,7 @@ import { MdClose } from 'react-icons/md';
 import { button } from '@tecsinapse/cortex-core';
 import { Modal as ModalCortex } from '../Modal';
 import { createPortal } from 'react-dom';
-
-interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  title?: string;
-}
+import { ModalProps } from './types';
 
 export const Modal = ({
   open,
