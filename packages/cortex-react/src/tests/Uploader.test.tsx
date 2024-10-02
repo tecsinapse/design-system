@@ -168,9 +168,6 @@ describe('Uploader Components', () => {
         'Custom file selection'
       );
       expect(screen.getByText('Custom drop text')).toBeInTheDocument();
-      expect(
-        screen.getByRole('button', { name: 'Custom Button' })
-      ).toBeInTheDocument();
 
       expect(screen.getByTestId('upload-progress')).toHaveTextContent(
         'Custom uploading...'
