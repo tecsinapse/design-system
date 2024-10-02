@@ -1,12 +1,12 @@
 import React from 'react';
-import { FileUploadItem } from './FileUpload';
-import { FileUploadListProps } from './types';
+import { File } from './Upload';
+import { FilesProps } from './types';
 
-export const FileUploadList = <T,>({
+export const Files = <T,>({
   files,
-  removeFile,
+  onDelete,
   uploadProgressText = 'Upload(s) in progress',
-}: FileUploadListProps<T>) => {
+}: FilesProps<T>) => {
   return (
     <div className="bg-white w-full border-2 p-deca flex flex-col overflow-y-auto rounded-mili">
       <div className="flex gap-mili items-center mb-deca">
@@ -18,13 +18,8 @@ export const FileUploadList = <T,>({
         </h2>
       </div>
 
-      {files.map((fileItem, index) => (
-        <FileUploadItem
-          key={index}
-          fileItem={fileItem}
-          index={index}
-          removeFile={removeFile}
-        />
+      {files.map((file, index) => (
+        <File key={file.uid} file={file} index={index} onDelete={onDelete} />
       ))}
     </div>
   );

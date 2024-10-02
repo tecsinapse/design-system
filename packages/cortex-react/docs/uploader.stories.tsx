@@ -7,8 +7,8 @@ import { useFileUpload } from '../src/hooks';
 
 export default {
   title: 'Cortex/Uploader',
-  component: Uploader,
-} as Meta<typeof Uploader>;
+  component: Uploader.Root,
+} as Meta<typeof Uploader.Root>;
 
 const onAccept = async <T,>(
   files: FileUpload<T>[]
@@ -39,24 +39,25 @@ const onAccept = async <T,>(
 
 export const Default: StoryObj<typeof Uploader> = {
   render: args => {
-    const { files, openModal, closeModal, deleteFile, dropzoneProps, isOpen } =
+    const { files, onOpen, onClose, onDelete, dropzoneProps, open } =
       useFileUpload<{ id: string }>({
-        acceptTypes: ['IMAGE', 'VIDEO'],
+        accept: {
+          APPLICATION: [],
+          AUDIO: [],
+          VIDEO: ['video/mp4'],
+        },
         onAccept,
       });
-    console.log(files);
+
     return (
       <div>
-        <button className={button()} onClick={openModal}>
+        <button className={button()} onClick={onOpen}>
           Upload File
         </button>
-        <Uploader
-          isOpen={isOpen}
-          onClose={closeModal}
-          files={files}
-          removeFile={deleteFile}
-          dropzoneProps={dropzoneProps}
-        />
+        <Uploader.Modal open={open} onClose={onClose}>
+          <Uploader.Dropzone dropzoneProps={dropzoneProps} />
+          <Uploader.Files files={files} onDelete={onDelete} />
+        </Uploader.Modal>
       </div>
     );
   },

@@ -2,22 +2,17 @@ import React from 'react';
 import { FaRegFileLines } from 'react-icons/fa6';
 import { button } from '@tecsinapse/cortex-core';
 import { ProgressBarInfinite } from './ProgressBarInfinite';
-import { FileUploadItemProps } from './types';
+import { FileProps } from './types';
 import { MdClose } from 'react-icons/md';
 
-export const FileUploadItem = <T,>({
-  fileItem,
-  index,
-  removeFile,
-}: FileUploadItemProps<T>) => {
+export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
   return (
     <div className="flex flex-col" key={index}>
       <div className="flex items-center justify-between border rounded-t-mili shadow p-mili">
         <div className="flex gap-centi">
-          {fileItem.file instanceof File &&
-          fileItem.file.type.startsWith('image/') ? (
+          {file.file && file.file.type.startsWith('image/') ? (
             <img
-              src={URL.createObjectURL(fileItem.file)}
+              src={URL.createObjectURL(file.file)}
               alt="Preview"
               className="w-tera h-tera rounded-mili"
             />
@@ -28,16 +23,16 @@ export const FileUploadItem = <T,>({
           )}
           <div className="flex-col">
             <p className="font-semibold truncate max-w-[200px]">
-              {fileItem.file.name}
+              {file.file.name}
             </p>
             <p className="text-sm text-gray-500">
-              {(fileItem.file.size / 1024).toFixed(2)} KB
+              {(file.file.size / 1024).toFixed(2)} KB
             </p>
           </div>
         </div>
-        {fileItem.status === 'success' && (
+        {file.status === 'success' && (
           <button
-            onClick={() => removeFile(index)}
+            onClick={() => onDelete(index)}
             data-testid="remove-button"
             className={button({
               className:
@@ -50,7 +45,7 @@ export const FileUploadItem = <T,>({
         )}
       </div>
 
-      <ProgressBarInfinite status={fileItem.status} />
+      <ProgressBarInfinite status={file.status} />
     </div>
   );
 };

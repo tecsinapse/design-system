@@ -1,101 +1,197 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { Uploader } from '../components';
-import { FileUpload, FileStatus } from '../components/Uploader/types';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { useFileUpload } from '../hooks';
+import { FileStatus, FileUpload, Uploader } from '../components';
 
-type FileItem<T = unknown> = FileUpload<T>;
+jest.mock('../hooks'); // Mockando o hook
 
-beforeAll(() => {
-  global.URL.createObjectURL = jest.fn(() => 'mocked-url');
+const mockFiles: FileUpload<unknown>[] = [
+  {
+    uid: '1',
+    file: new File(['file content'], 'file1.txt', { type: 'text/plain' }),
+    status: FileStatus.UPLOADING,
+  },
+  {
+    uid: '2',
+    file: new File(['file content'], 'file2.txt', { type: 'text/plain' }),
+    status: FileStatus.SUCCESS,
+  },
+];
+
+beforeEach(() => {
+  (useFileUpload as jest.Mock).mockReturnValue({
+    files: mockFiles,
+    onOpen: jest.fn(),
+    onClose: jest.fn(),
+    dropzoneProps: {
+      getRootProps: jest.fn(() => ({
+        onClick: jest.fn(),
+        role: 'button',
+        'data-testid': 'dropzone',
+      })),
+      getInputProps: jest.fn(() => ({
+        'aria-label': 'file input',
+        type: 'file',
+      })),
+    },
+    open: true,
+  });
 });
 
-describe('Uploader', () => {
-  const mockFiles: FileItem[] = [
-    {
-      file: new File(['content'], 'file1.png', { type: 'image/png' }),
-      status: FileStatus.UPLOADING,
-      uid: '1',
-    },
-    {
-      file: new File(['content'], 'file2.jpg', { type: 'image/jpeg' }),
-      status: FileStatus.SUCCESS,
-      uid: '2',
-    },
-  ];
+describe('Uploader Components', () => {
+  describe('Dropzone', () => {
+    it('should render with default props', () => {
+      render(
+        <Uploader.Dropzone dropzoneProps={useFileUpload({}).dropzoneProps} />
+      );
 
-  const removeFileMock = jest.fn();
-  const dropzoneProps = {
-    getRootProps: jest.fn(),
-    getInputProps: jest.fn(),
-    isDragActive: false,
-  };
+      expect(screen.getByTestId('select-dropzone')).toHaveTextContent(
+        'Select a file to start'
+      );
+      expect(
+        screen.getByText(
+          'By dragging and dropping it here or clicking the button below'
+        )
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Select File' })
+      ).toBeInTheDocument();
+    });
 
-  beforeEach(() => {
-    jest.clearAllMocks();
+    it('should render with custom props', () => {
+      render(
+        <Uploader.Dropzone
+          dropzoneProps={useFileUpload({}).dropzoneProps}
+          selectFileText="Custom file selection"
+          dropText="Custom drop text"
+          buttonText="Custom Button"
+        />
+      );
+
+      expect(screen.getByTestId('select-dropzone')).toHaveTextContent(
+        'Custom file selection'
+      );
+      expect(screen.getByText('Custom drop text')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Custom Button' })
+      ).toBeInTheDocument();
+    });
+
+    it('should call getRootProps and getInputProps', () => {
+      render(
+        <Uploader.Dropzone dropzoneProps={useFileUpload({}).dropzoneProps} />
+      );
+
+      expect(useFileUpload({}).dropzoneProps.getRootProps).toHaveBeenCalled();
+      expect(useFileUpload({}).dropzoneProps.getInputProps).toHaveBeenCalled();
+    });
   });
 
-  it('should render the uploader component with the correct modal', () => {
-    render(
-      <Uploader
-        isOpen={true}
-        onClose={jest.fn()}
-        files={mockFiles}
-        removeFile={removeFileMock}
-        dropzoneProps={dropzoneProps}
-      />
-    );
+  describe('Files', () => {
+    it('should render the files list', () => {
+      render(<Uploader.Files files={mockFiles} onDelete={jest.fn()} />);
 
-    const uploads = screen.getAllByText(/upload/i);
-    expect(uploads.length).toBeGreaterThan(0);
-    expect(screen.getByTestId('select-dropzone')).toBeInTheDocument();
+      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
+        'Upload(s) in progress'
+      );
+      expect(screen.getByText('2')).toBeInTheDocument();
+      expect(screen.getByText('file1.txt')).toBeInTheDocument();
+      expect(screen.getByText('file2.txt')).toBeInTheDocument();
+    });
+
+    it('should render with custom upload progress text', () => {
+      render(
+        <Uploader.Files
+          files={mockFiles}
+          onDelete={jest.fn()}
+          uploadProgressText="Uploading..."
+        />
+      );
+
+      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
+        'Uploading...'
+      );
+    });
   });
 
-  it('should display files being uploaded', () => {
-    render(
-      <Uploader
-        isOpen={true}
-        onClose={jest.fn()}
-        files={mockFiles}
-        removeFile={removeFileMock}
-        dropzoneProps={dropzoneProps}
-      />
-    );
+  describe('Modal', () => {
+    const mockOnClose = jest.fn();
 
-    expect(screen.getByTestId('upload-progress')).toBeInTheDocument();
-    expect(screen.getByText('file1.png')).toBeInTheDocument();
-    expect(screen.getByText('file2.jpg')).toBeInTheDocument();
+    it('should render the modal with title and close button', () => {
+      render(
+        <Uploader.Modal open={true} onClose={mockOnClose} title="Test Modal">
+          Modal Content
+        </Uploader.Modal>
+      );
+
+      expect(screen.getByText('Test Modal')).toBeInTheDocument();
+      expect(screen.getByText('Modal Content')).toBeInTheDocument();
+      expect(screen.getByTestId('close-button')).toBeInTheDocument();
+    });
+
+    it('should call onClose when close button is clicked', () => {
+      render(
+        <Uploader.Modal open={true} onClose={mockOnClose}>
+          Modal Content
+        </Uploader.Modal>
+      );
+
+      fireEvent.click(screen.getByTestId('close-button'));
+      expect(mockOnClose).toHaveBeenCalled();
+    });
   });
 
-  it('should render the dropzone area', () => {
-    render(
-      <Uploader
-        isOpen={true}
-        onClose={jest.fn()}
-        files={mockFiles}
-        removeFile={removeFileMock}
-        dropzoneProps={dropzoneProps}
-      />
-    );
+  describe('Root', () => {
+    const mockOnClose = jest.fn();
+    const mockOnDelete = jest.fn();
 
-    const dropzone = screen.getByTestId('select-dropzone');
-    expect(dropzone).toBeInTheDocument();
-  });
+    it('should render Uploader.Root with modal, dropzone, and files', () => {
+      render(
+        <Uploader.Root
+          open={true}
+          onClose={mockOnClose}
+          files={mockFiles}
+          onDelete={mockOnDelete}
+          dropzoneProps={useFileUpload({}).dropzoneProps}
+          selectFileText="Custom file selection"
+          dropText="Custom drop text"
+          buttonText="Custom Button"
+          uploadProgressText="Custom uploading..."
+          titleModal="Custom Modal Title"
+        />
+      );
 
-  it('should call onClose when the modal is closed', () => {
-    const onCloseMock = jest.fn();
+      expect(screen.getByText('Custom Modal Title')).toBeInTheDocument();
 
-    render(
-      <Uploader
-        isOpen={true}
-        onClose={onCloseMock}
-        files={mockFiles}
-        removeFile={removeFileMock}
-        dropzoneProps={dropzoneProps}
-      />
-    );
+      expect(screen.getByTestId('select-dropzone')).toHaveTextContent(
+        'Custom file selection'
+      );
+      expect(screen.getByText('Custom drop text')).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Custom Button' })
+      ).toBeInTheDocument();
 
-    fireEvent.click(screen.getByTestId('close-button'));
-    expect(onCloseMock).toHaveBeenCalled();
+      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
+        'Custom uploading...'
+      );
+      expect(screen.getByText('file1.txt')).toBeInTheDocument();
+      expect(screen.getByText('file2.txt')).toBeInTheDocument();
+    });
+
+    it('should call onClose when close button is clicked', () => {
+      render(
+        <Uploader.Root
+          open={true}
+          onClose={mockOnClose}
+          files={mockFiles}
+          onDelete={mockOnDelete}
+          dropzoneProps={useFileUpload({}).dropzoneProps}
+        />
+      );
+
+      fireEvent.click(screen.getByTestId('close-button'));
+      expect(mockOnClose).toHaveBeenCalled();
+    });
   });
 });

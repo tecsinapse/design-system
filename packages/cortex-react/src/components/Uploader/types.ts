@@ -5,27 +5,26 @@ export interface FileItem {
   loading: 'loading' | 'success' | 'error';
 }
 
-export interface FileUploadItemProps<T> {
-  fileItem: FileUpload<T>;
+export interface FileProps<T> {
+  file: FileUpload<T>;
   index: number;
-  removeFile: (index: number) => void;
+  onDelete: (index: number) => void;
 }
 
-export interface FileUploadListProps<T> {
+export interface FilesProps<T> {
   files: FileUpload<T>[];
-  removeFile: (index: number) => void;
+  onDelete: (index: number) => void;
   uploadProgressText?: string;
 }
 
-export interface DropzoneProps {
+export interface UseDropzoneProps {
   getRootProps: <T extends DropzoneRootProps>(props?: T) => T;
   getInputProps: <T extends DropzoneInputProps>(props?: T) => T;
   isDragActive: boolean;
 }
 
-export interface FileDropzoneProps {
-  dropzoneProps: DropzoneProps;
-  button: () => string;
+export interface DropzoneProps {
+  dropzoneProps: UseDropzoneProps;
   selectFileText?: string;
   dropText?: string;
   buttonText?: string;
@@ -40,17 +39,16 @@ export enum FileStatus {
 export type FileUpload<T> = {
   file: File;
   metadata?: T;
-  // progress?: number;
   uid: string;
   status: FileStatus;
 };
 
-export interface FileUploadModalProps<T> {
-  isOpen: boolean;
+export interface ModalProps<T> {
+  open: boolean;
   onClose: () => void;
   files: FileUpload<T>[];
-  removeFile: (index: number) => void;
-  dropzoneProps: DropzoneProps;
+  onDelete: (index: number) => void;
+  dropzoneProps: UseDropzoneProps;
   selectFileText?: string;
   dropText?: string;
   buttonText?: string;
@@ -76,7 +74,7 @@ export const AcceptSpecificMap = {
     'application/x-tar',
     'application/x-httpd-php',
     'application/octet-stream',
-  ],
+  ] as const,
   IMAGE: [
     'image/jpeg',
     'image/png',
@@ -86,7 +84,7 @@ export const AcceptSpecificMap = {
     'image/tiff',
     'image/webp',
     'image/x-icon',
-  ],
+  ] as const,
   VIDEO: [
     'video/mp4',
     'video/mpeg',
@@ -96,7 +94,7 @@ export const AcceptSpecificMap = {
     'video/webm',
     'video/ogg',
     'video/x-flv',
-  ],
+  ] as const,
   AUDIO: [
     'audio/mpeg',
     'audio/wav',
@@ -106,7 +104,7 @@ export const AcceptSpecificMap = {
     'audio/mp4',
     'audio/aac',
     'audio/webm',
-  ],
+  ] as const,
   TEXT: [
     'text/plain',
     'text/csv',
@@ -115,5 +113,5 @@ export const AcceptSpecificMap = {
     'text/xml',
     'text/javascript',
     'text/markdown',
-  ],
-};
+  ] as const,
+} as const;

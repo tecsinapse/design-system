@@ -1,20 +1,24 @@
 import React from 'react';
 import { HiOutlineCloudArrowUp } from 'react-icons/hi2';
-import { FileDropzoneProps } from './types';
+import { DropzoneProps } from './types';
+import { button } from '@tecsinapse/cortex-core';
+import clsx from 'clsx';
 
-export const FileDropzone = ({
+export const Dropzone = ({
   dropzoneProps,
-  button,
   selectFileText = 'Select a file to start',
   dropText = 'By dragging and dropping it here or clicking the button below',
   buttonText = 'Select File',
-}: FileDropzoneProps) => {
+}: DropzoneProps) => {
   return (
     <div
       {...dropzoneProps.getRootProps()}
-      className={`bg-white w-full border-dashed border-2 p-deca flex flex-col justify-center rounded-mili ${
-        dropzoneProps.isDragActive ? 'border-success-medium bg-gray-100' : ''
-      }`}
+      className={clsx(
+        'bg-white w-full border-dashed border-2 p-deca flex flex-col justify-center rounded-mili',
+        {
+          'border-success-medium bg-gray-100': dropzoneProps.isDragActive,
+        }
+      )}
     >
       <input {...dropzoneProps.getInputProps()} />
       <div className="flex flex-col justify-center text-center items-center gap-deca">
@@ -23,7 +27,7 @@ export const FileDropzone = ({
           <p className="text-lg font-semibold" data-testid="select-dropzone">
             {selectFileText}
           </p>
-          <p className="text-sm text-gray-500">{dropText}</p>
+          <p className="text-sm text-secondary-medium">{dropText}</p>
         </div>
 
         <button className={button()}>{buttonText}</button>
