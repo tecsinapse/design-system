@@ -17,7 +17,7 @@ export const ProgressBarInfinite = ({
 }: ProgressBarInfiniteProps) => {
   return (
     <div className={container()}>
-      <div className={bar()}>
+      <div className={bar()} data-testid="infinite-progress-bar">
         <div className={progress({ status: intentProgress })} />
       </div>
     </div>

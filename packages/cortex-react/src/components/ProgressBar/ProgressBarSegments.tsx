@@ -34,7 +34,7 @@ export const ProgressBarSegments = ({
   );
 
   return (
-    <div className="flex gap-x-nano flex-row">
+    <div className="flex gap-x-nano flex-row" data-testid="progress-bar">
       {items.map((_, index) => {
         const max = lengthSeg * (index + 1);
         const min = lengthSeg * index;
@@ -50,6 +50,7 @@ export const ProgressBarSegments = ({
           >
             <div
               style={progressStyle(width, index)}
+              data-testid="div-segment-filled"
               className={progressBarFilled({ intentProgress, showAnimation })}
             />
           </div>
