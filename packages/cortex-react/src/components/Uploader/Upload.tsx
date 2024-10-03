@@ -1,9 +1,9 @@
 import React from 'react';
 import { FaRegFileLines } from 'react-icons/fa6';
 import { button } from '@tecsinapse/cortex-core';
-import { ProgressBarInfinite } from './ProgressBarInfinite';
 import { FileProps } from './types';
 import { MdClose } from 'react-icons/md';
+import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
   return (
@@ -45,7 +45,7 @@ export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
         )}
       </div>
 
-      <ProgressBarInfinite status={file.status} />
+      <ProgressBar intentProgress={file.status} type="infinite" />
     </div>
   );
 };
