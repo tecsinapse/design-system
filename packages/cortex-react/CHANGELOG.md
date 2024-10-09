@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.9...@tecsinapse/cortex-react@1.6.0-beta.0) (2024-10-09)
+
+### Features
+
+* **TS-9090:** checkbox component ([ad276e1](https://github.com/tecsinapse/design-system/commit/ad276e1616e3545728ee688446df4dbcf447de9a))
+
 ## [1.5.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.8...@tecsinapse/cortex-react@1.5.9) (2024-09-25)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
