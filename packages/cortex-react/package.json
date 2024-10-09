@@ -24,13 +24,15 @@
     "clsx": "*",
     "currency.js": "~2.0.4",
     "react-aria": "^3.33.1",
+    "react-dropzone": "^14.2.3",
     "react-icons": "^5.2.1",
     "react-imask": "7.6.1",
     "react-spring": "^9.7.4",
     "react-spring-carousel": "^2.0.19",
     "react-stately": "^3.31.1",
     "sonner": "^1.5.0",
-    "tailwind-merge": "*"
+    "tailwind-merge": "*",
+    "uuid": "^10.0.0"
   },
   "repository": {
     "type": "git",
