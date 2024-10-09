@@ -7,7 +7,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **TS-9090:** checkbox component ([ad276e1](https://github.com/tecsinapse/design-system/commit/ad276e1616e3545728ee688446df4dbcf447de9a))
+- **TS-9090:** checkbox component ([ad276e1](https://github.com/tecsinapse/design-system/commit/ad276e1616e3545728ee688446df4dbcf447de9a))
+
+## [1.5.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.9...@tecsinapse/cortex-react@1.5.10) (2024-09-26)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
 
 ## [1.5.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.8...@tecsinapse/cortex-react@1.5.9) (2024-09-25)
 
@@ -21,7 +25,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* add currency.js dependency ([c86498b](https://github.com/tecsinapse/design-system/commit/c86498bd308f286d724345cdb9dcc2627eae9311))
+- add currency.js dependency ([c86498b](https://github.com/tecsinapse/design-system/commit/c86498bd308f286d724345cdb9dcc2627eae9311))
 
 ## [1.5.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.5...@tecsinapse/cortex-react@1.5.6) (2024-09-16)
 
@@ -43,20 +47,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* expose default options for snackbar ([2a3460c](https://github.com/tecsinapse/design-system/commit/2a3460c25c24b9e7fc7a352ea07c4ade6e5def78))
-* lazy select stories ([32202f9](https://github.com/tecsinapse/design-system/commit/32202f9986e0129d6c9615b1d475de2670b55209))
+- expose default options for snackbar ([2a3460c](https://github.com/tecsinapse/design-system/commit/2a3460c25c24b9e7fc7a352ea07c4ade6e5def78))
+- lazy select stories ([32202f9](https://github.com/tecsinapse/design-system/commit/32202f9986e0129d6c9615b1d475de2670b55209))
 
 ## [1.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.1...@tecsinapse/cortex-react@1.5.2) (2024-08-29)
 
 ### Bug Fixes
 
-* multiSelectCheckAllOptions checkAll function ([8ab0266](https://github.com/tecsinapse/design-system/commit/8ab0266c34346b13f6cc2352a1fe0010ed847f76))
+- multiSelectCheckAllOptions checkAll function ([8ab0266](https://github.com/tecsinapse/design-system/commit/8ab0266c34346b13f6cc2352a1fe0010ed847f76))
 
 ## [1.5.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.5.0-beta.2...@tecsinapse/cortex-react@1.5.1) (2024-08-29)
 
 ### Bug Fixes
 
-* resolve circular dependencies ([b271a5a](https://github.com/tecsinapse/design-system/commit/b271a5aa325fcc8356dfebdebef1ef06bde3de48))
+- resolve circular dependencies ([b271a5a](https://github.com/tecsinapse/design-system/commit/b271a5aa325fcc8356dfebdebef1ef06bde3de48))
 
 # [1.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.4.3...@tecsinapse/cortex-react@1.5.0) (2024-08-27)
 
