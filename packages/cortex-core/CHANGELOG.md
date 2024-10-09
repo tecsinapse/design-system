@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.3...@tecsinapse/cortex-core@0.4.0-beta.0) (2024-10-09)
+
+### Features
+
+* **TS-7559:** PR Suggestion ([26a38b9](https://github.com/tecsinapse/design-system/commit/26a38b9f99a9f19e8afef58e80299c54abd024da))
+
 ## [0.3.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.3-beta.0...@tecsinapse/cortex-core@0.3.3) (2024-09-13)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
