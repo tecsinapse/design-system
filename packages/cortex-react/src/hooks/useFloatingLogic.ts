@@ -1,27 +1,35 @@
-import { useState, useEffect, RefObject } from 'react';
 import {
-  useFloating,
-  offset,
-  flip,
-  shift,
   arrow,
   autoUpdate,
+  flip,
+  offset,
   Placement,
+  shift,
   useClick,
   useDismiss,
+  useFloating,
+  useHover,
   useInteractions,
   useRole,
 } from '@floating-ui/react';
+import { RefObject, useEffect, useState } from 'react';
 
 interface FloatingLogicProps {
   placement?: Placement;
   trigger?: 'hover' | 'click';
+  delay?:
+    | number
+    | {
+        open?: number;
+        close?: number;
+      };
   arrowRef?: RefObject<SVGSVGElement>;
 }
 
 export const useFloatingLogic = ({
   placement,
   trigger,
+  delay,
   arrowRef,
 }: FloatingLogicProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,14 +51,16 @@ export const useFloatingLogic = ({
       ],
     }
   );
-  const click = useClick(context);
+  const click = useClick(context, { enabled: trigger === 'click' });
   const dismiss = useDismiss(context);
   const role = useRole(context);
+  const hover = useHover(context, { enabled: trigger === 'hover', delay });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     click,
     dismiss,
     role,
+    hover,
   ]);
   useEffect(() => {
     if (isOpen) update();
@@ -58,13 +68,6 @@ export const useFloatingLogic = ({
 
   const triggerProps = {
     ref: refs.setReference,
-    ...(trigger === 'hover' && {
-      onMouseEnter: () => setIsOpen(true),
-      onMouseLeave: () => setIsOpen(false),
-    }),
-    ...(trigger === 'click' && {
-      onClick: () => setIsOpen(prev => !prev),
-    }),
     ...getReferenceProps(),
   };
 

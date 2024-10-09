@@ -11,6 +11,17 @@ interface TooltipProps {
   placement?: Placement;
   width?: number;
   height?: number;
+  /** Delay to display in milliseconds if `trigger` = `hover`
+   *
+   * Defaults to `{ open: 500, close: 0 }`
+   * It's possible to provide only a number for same delay to show/hide
+   */
+  delay?:
+    | number
+    | {
+        open?: number;
+        close?: number;
+      };
   style?: React.CSSProperties;
 }
 
@@ -24,6 +35,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       placement = 'top',
       width,
       height,
+      delay = { open: 500, close: 0 },
     } = props;
     const arrowRef = useRef(null);
 
@@ -36,7 +48,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       refs,
       context,
       floatingStyles,
-    } = useFloatingLogic({ placement, arrowRef, trigger });
+      getFloatingProps,
+    } = useFloatingLogic({ placement, arrowRef, trigger, delay });
 
     return (
       <>
@@ -55,6 +68,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               height,
               ...floatingStyles,
             }}
+            {...getFloatingProps()}
           >
             {text}
             <FloatingArrow ref={arrowRef} context={context} fill="black" />
