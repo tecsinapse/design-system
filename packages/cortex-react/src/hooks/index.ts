@@ -4,7 +4,7 @@ export * from './useCalendarGrid';
 export * from './useDatePickerInput';
 export * from './useDateRangePickerInput';
 export * from './useDebouncedState';
-export * from './useFloatingLogic';
+export * from './useFloatingElement';
 export * from './useNumberMask';
 export * from './useOutsideClickListener';
 export * from './useRangeCalendar';

@@ -14,24 +14,26 @@ import {
 } from '@floating-ui/react';
 import { RefObject, useEffect, useState } from 'react';
 
-interface FloatingLogicProps {
+export type Delay =
+  | number
+  | {
+      open?: number;
+      close?: number;
+    };
+
+interface FloatingElementProps {
   placement?: Placement;
   trigger?: 'hover' | 'click';
-  delay?:
-    | number
-    | {
-        open?: number;
-        close?: number;
-      };
+  delay?: Delay;
   arrowRef?: RefObject<SVGSVGElement>;
 }
 
-export const useFloatingLogic = ({
+export const useFloatingElement = ({
   placement,
   trigger,
   delay,
   arrowRef,
-}: FloatingLogicProps) => {
+}: FloatingElementProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { x, y, strategy, refs, update, context, floatingStyles } = useFloating(
