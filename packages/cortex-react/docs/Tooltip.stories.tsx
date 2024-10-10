@@ -12,7 +12,8 @@ export const Default: StoryObj<typeof Tooltip> = {
   args: {
     placement: 'bottom',
     trigger: 'hover',
-    text: 'teste',
+    text: 'It shows a Tooltip!',
+    delay: { open: 500, close: 0 },
   },
   render: args => (
     <div className="h-[300px]">
@@ -22,9 +23,10 @@ export const Default: StoryObj<typeof Tooltip> = {
         placement={args.placement}
         width={args.width}
         height={args.height}
+        delay={args.delay}
       >
         <button className={button({ intent: 'primary' })}>
-          Tooltip Element
+          What does this button do?
         </button>
       </Tooltip>
     </div>
