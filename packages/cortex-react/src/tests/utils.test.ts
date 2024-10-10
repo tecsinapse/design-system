@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { getNameInitials } from '../components/utils';
+import { getNameInitials } from '../utils';
 
 describe('GetNameInitials', () => {
   it('test getNameInitials single name', () => {

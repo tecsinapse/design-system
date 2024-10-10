@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import React from 'react';
 import { Tooltip } from '../components';
 
@@ -14,7 +15,27 @@ const TooltipButton = () => {
 };
 
 describe('Tooltip', () => {
-  it('Should show tooltip on hover', async () => {
+  it('Should show tooltip on hover with no delay', async () => {
+    render(
+      <Tooltip text="Tooltip Content" trigger="hover" delay={0}>
+        <button data-testid="trigger">Hover me</button>
+      </Tooltip>
+    );
+
+    const trigger = screen.getByTestId('trigger');
+
+    await userEvent.hover(trigger);
+
+    const tooltip = await screen.findByText('Tooltip Content');
+    expect(tooltip).toBeInTheDocument();
+
+    userEvent.unhover(trigger);
+
+    // We should await same action again
+    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+  });
+
+  it('Should show tooltip on hover with delay', async () => {
     render(
       <Tooltip text="Tooltip Content" trigger="hover">
         <button data-testid="trigger">Hover me</button>
@@ -23,13 +44,15 @@ describe('Tooltip', () => {
 
     const trigger = screen.getByTestId('trigger');
 
-    fireEvent.mouseEnter(trigger);
+    await userEvent.hover(trigger);
+
     const tooltip = await screen.findByText('Tooltip Content');
 
     expect(tooltip).toBeInTheDocument();
 
-    fireEvent.mouseLeave(trigger);
-    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
+    userEvent.unhover(trigger);
+
+    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip on click', async () => {
@@ -136,7 +159,25 @@ describe('Tooltip', () => {
     expect(rightTooltip).toBeInTheDocument();
   });
 
-  it('Should show tooltip with TooltipButton on hover', async () => {
+  it('Should show tooltip with TooltipButton on hover no delay', async () => {
+    render(
+      <Tooltip text="Tooltip Content" trigger="hover" delay={0}>
+        <TooltipButton />
+      </Tooltip>
+    );
+
+    const trigger = screen.getByText('Clique aqui');
+
+    await userEvent.hover(trigger);
+    const tooltip = await screen.findByText('Tooltip Content');
+    expect(tooltip).toBeInTheDocument();
+
+    userEvent.unhover(trigger);
+
+    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+  });
+
+  it('Should show tooltip with TooltipButton on hover delay', async () => {
     render(
       <Tooltip text="Tooltip Content" trigger="hover">
         <TooltipButton />
@@ -145,12 +186,13 @@ describe('Tooltip', () => {
 
     const trigger = screen.getByText('Clique aqui');
 
-    fireEvent.mouseEnter(trigger);
+    await userEvent.hover(trigger);
     const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
-    fireEvent.mouseLeave(trigger);
-    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
+    userEvent.unhover(trigger);
+
+    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip with TooltipButton on click', async () => {

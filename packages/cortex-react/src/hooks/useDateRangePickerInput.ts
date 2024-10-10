@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useDateRangePicker } from 'react-aria';
 import { useDateRangePickerState } from 'react-stately';
 import { DateRange } from '../components';
-import { calendarDateToDate, dateToCalendarDate } from '../components/utils';
+import { calendarDateToDate, dateToCalendarDate } from '../utils';
 
 interface useDateRangePickerInputProps {
   value?: DateRange;

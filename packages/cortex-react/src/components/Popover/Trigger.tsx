@@ -1,5 +1,5 @@
 import React from 'react';
-import { cloneWithProps } from '../utils';
+import { cloneWithProps } from '../../utils';
 import { usePopoverContext } from './Context';
 
 export interface PopoverTriggerProps {

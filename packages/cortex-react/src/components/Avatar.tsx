@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React, { HTMLAttributes } from 'react';
-import { getNameInitials } from './utils';
+import { getNameInitials } from '../utils';
 
 export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   src?: string;

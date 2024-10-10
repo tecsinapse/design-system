@@ -30,6 +30,7 @@
     "@testing-library/dom": "^10.1.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.0.38",
     "@types/react-native-vector-icons": "^6.4.16",
@@ -85,5 +86,6 @@
       "prettier --write"
     ],
     ".{json,mdx,md}": "prettier --write"
-  }
+  },
+  "packageManager": "pnpm@9.11.0"
 }
