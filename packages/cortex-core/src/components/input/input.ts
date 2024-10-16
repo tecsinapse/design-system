@@ -1,5 +1,5 @@
-import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 import { clsx } from 'clsx';
+import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
 export const inputBaseStyles = tv({
   base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 bg-white focus-within:outline focus-within:outline-1 text-base font-bold items-center border rounded-mili has-[:disabled]:bg-transparent',
@@ -37,7 +37,7 @@ export const inputBaseStyles = tv({
 });
 
 const labelBaseStyles = tv({
-  base: 'absolute duration-300 -translate-y-2 scale-[0.72] top-2.5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-0 peer-focus:scale-[0.72] peer-focus:-translate-y-2 peer-focus:top-2.5 font-bold text-base peer-disabled:text-secondary-light select-none w-max',
+  base: 'absolute duration-300 -translate-y-2 scale-[0.72] top-2.5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-0 peer-focus:scale-[0.72] peer-focus:-translate-y-2 peer-focus:top-2.5 font-bold text-base peer-disabled:text-secondary-light select-none w-max peer-autofill:scale-[0.72] peer-autofill:-translate-y-2 peer-autofill:top-2.5',
   variants: {
     intent: {
       default: [
