@@ -16,11 +16,15 @@ export const Default: StoryObj<typeof ProgressBar> = {
   args: {
     value: 75,
     intent: 'default',
-    type: 'default',
+    infinite: false,
   },
   render: args => (
     <div className={'w-[500px]'}>
-      <ProgressBar value={args.value} intent={args.intent} type={args.type} />
+      <ProgressBar
+        value={args.value}
+        intent={args.intent}
+        infinite={args.infinite}
+      />
     </div>
   ),
 };

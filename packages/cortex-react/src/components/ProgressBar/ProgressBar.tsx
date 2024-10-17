@@ -1,21 +1,16 @@
 import React from 'react';
-import { ProgressBarInfinite } from './ProgressBarInfinite';
-import { LinearProgress } from './LinearProgress';
+import { Progress } from './Progress';
 
 export interface ProgressBarProps {
   value: number;
   intent?: 'default' | 'success' | 'warning' | 'info' | 'error';
-  type?: 'infinite' | 'default';
+  infinite: boolean;
 }
 
 export const ProgressBar = ({
   value = 50,
   intent = 'default',
-  type = 'default',
+  infinite = false,
 }: ProgressBarProps) => {
-  return type === 'infinite' ? (
-    <ProgressBarInfinite intentProgress={intent} />
-  ) : (
-    <LinearProgress value={value} intent={intent} />
-  );
+  return <Progress value={value} intent={intent} infinite={infinite} />;
 };
