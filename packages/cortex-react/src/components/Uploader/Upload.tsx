@@ -45,7 +45,7 @@ export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
         )}
       </div>
 
-      <ProgressBar intentProgress={file.status} type="infinite" />
+      <ProgressBar intent={'info'} infinite={file.status !== 'success'} />
     </div>
   );
 };

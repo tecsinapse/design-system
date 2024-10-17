@@ -2,9 +2,9 @@ import React from 'react';
 import { Progress } from './Progress';
 
 export interface ProgressBarProps {
-  value: number;
+  value?: number;
   intent?: 'default' | 'success' | 'warning' | 'info' | 'error';
-  infinite: boolean;
+  infinite?: boolean;
 }
 
 export const ProgressBar = ({

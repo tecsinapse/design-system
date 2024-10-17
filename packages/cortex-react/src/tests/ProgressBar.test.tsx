@@ -1,117 +1,44 @@
-import '@testing-library/jest-dom';
-import { act, render, screen } from '@testing-library/react';
 import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { ProgressBar } from '../components';
 
 describe('ProgressBar', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
+  it('renders the ProgressBar with default props', () => {
+    render(<ProgressBar />);
+    const progressElement = screen.getByTestId('linear-progress');
+    const filledProgress = screen.getByTestId('progress-filled');
+
+    expect(progressElement).toBeInTheDocument();
+    expect(filledProgress).toHaveStyle({ width: '50%' });
+    expect(filledProgress).toHaveClass('bg-primary-medium');
   });
 
-  afterEach(() => jest.useRealTimers());
+  it('renders the ProgressBar with a custom value', () => {
+    render(<ProgressBar value={75} />);
+    const filledProgress = screen.getByTestId('progress-filled');
 
-  it('Renders ProgressBar with type "default"', () => {
-    const { getByTestId } = render(<ProgressBar valueCurrent={50} />);
-    const progressBar = getByTestId('progress-bar');
-    expect(progressBar).toBeInTheDocument();
+    expect(filledProgress).toHaveStyle({ width: '75%' });
   });
 
-  it('Renders ProgressBar with type "infinite"', () => {
-    const { getByTestId } = render(<ProgressBar type="infinite" />);
-    const infiniteBar = getByTestId('infinite-progress-bar');
-    expect(infiniteBar).toBeInTheDocument();
+  it('renders the ProgressBar with infinite prop', () => {
+    render(<ProgressBar infinite />);
+    const filledProgress = screen.getByTestId('progress-filled');
+
+    expect(filledProgress).not.toHaveStyle('width: 50%');
+    expect(filledProgress).toHaveClass('animate-progress');
   });
 
-  it('Render ProgressBar 0% filled', () => {
-    render(<ProgressBar valueCurrent={0} />);
+  it('applies the correct intent class', () => {
+    const { rerender } = render(<ProgressBar intent="success" />);
+    const filledProgress = screen.getByTestId('progress-filled');
 
-    act(() => {
-      jest.advanceTimersByTime(0); // Avança o tempo para permitir que o useEffect seja executado
-    });
+    expect(filledProgress).toHaveClass('bg-success-medium');
 
-    const filledSegments = screen.getAllByTestId('div-segment-filled');
-    filledSegments.forEach(segment => {
-      expect(segment).toHaveStyle('width: 0%');
-    });
-  });
+    rerender(<ProgressBar intent="warning" />);
+    expect(filledProgress).toHaveClass('bg-warning-medium');
 
-  it('Render ProgressBar 50% filled', () => {
-    render(<ProgressBar valueCurrent={50} />);
-
-    act(() => {
-      jest.advanceTimersByTime(0); // Avança o tempo para permitir que o useEffect seja executado
-    });
-
-    const filledSegments = screen.getAllByTestId('div-segment-filled');
-    filledSegments.forEach(segment => {
-      expect(segment).toHaveStyle('width: 50%');
-    });
-  });
-
-  it('Renders progressBar with 100% filled', () => {
-    render(<ProgressBar valueCurrent={100} />);
-
-    act(() => {
-      jest.advanceTimersByTime(0); // Avança o tempo para permitir que o useEffect seja executado
-    });
-    const filledSegments = screen.getAllByTestId('div-segment-filled');
-    filledSegments.forEach(segment => {
-      expect(segment).toHaveStyle('width: 100%');
-    });
-  });
-
-  it('ProgressBar must handle values outside the range (More than 100%)', () => {
-    render(<ProgressBar valueCurrent={150} />);
-
-    act(() => {
-      jest.advanceTimersByTime(0); // Avança o tempo para permitir que o useEffect seja executado
-    });
-    const filledSegments = screen.getAllByTestId('div-segment-filled');
-    filledSegments.forEach(segment => {
-      expect(segment).toHaveStyle('width: 100%');
-    });
-  });
-
-  it('ProgressBar must handle values outside the range (Less than 0%)', () => {
-    render(<ProgressBar valueCurrent={-50} />);
-
-    act(() => {
-      jest.advanceTimersByTime(0); // Avança o tempo para permitir que o useEffect seja executado
-    });
-    const filledSegments = screen.getAllByTestId('div-segment-filled');
-    filledSegments.forEach(segment => {
-      expect(segment).toHaveStyle('width: 0%');
-    });
-  });
-
-  it('Progress bar show segments correctly', () => {
-    render(<ProgressBar valueCurrent={50} segments={5} />);
-    const filledSegments = screen.getAllByTestId('div-segment-filled');
-    expect(filledSegments.length).toBe(5);
-  });
-
-  it('Should apply correct color based on intentProgress prop', () => {
-    const { getByTestId } = render(
-      <ProgressBar valueCurrent={50} intentProgress="success" />
-    );
-    const progressBar = getByTestId('div-segment-filled');
-    expect(progressBar).toHaveClass('bg-success-medium');
-  });
-
-  it('Should respect min and max values', () => {
-    const { getByTestId } = render(
-      <ProgressBar valueCurrent={75} valueMin={50} valueMax={100} />
-    );
-    act(() => {
-      jest.advanceTimersByTime(0);
-    });
-    const progressBar = getByTestId('div-segment-filled');
-    expect(progressBar).toHaveStyle('width: 50%');
-  });
-
-  it('Should render infinite progress bar without segments', () => {
-    render(<ProgressBar type="infinite" intentProgress="info" />);
-    const infiniteProgress = screen.getByTestId('infinite-progress-bar');
-    expect(infiniteProgress).toBeInTheDocument();
+    rerender(<ProgressBar intent="error" />);
+    expect(filledProgress).toHaveClass('bg-error-medium');
   });
 });
