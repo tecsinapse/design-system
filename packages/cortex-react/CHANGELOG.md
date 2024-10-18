@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.2...@tecsinapse/cortex-react@1.7.0-beta.3) (2024-10-18)
+
+### Bug Fixes
+
+* **TS-9295:** criação de novos teste para o progressBar ([9b8c533](https://github.com/tecsinapse/design-system/commit/9b8c53387f967dc4f4556089e7c5de1741f6cdf2))
+
+### Features
+
+* **TS-9295:** adição do progress animado ([3a841af](https://github.com/tecsinapse/design-system/commit/3a841af0067a000a9a617ff7d734827229e2d6ac))
+* **TS-9295:** refatoração do progress bar para nao ser mais de segmento ([de81587](https://github.com/tecsinapse/design-system/commit/de81587a2a210cf01f485b2b5a976f7d903b7cb3))
+
 # [1.7.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.1...@tecsinapse/cortex-react@1.7.0-beta.2) (2024-10-17)
 
 ### Bug Fixes
