@@ -47,7 +47,7 @@ export const item = tv({
 export const category = tv({
   slots: {
     text: 'mb-mili font-bold',
-    hr: 'mb-mili border-secondary-light',
+    hr: 'mb-mili border-0 h-px bg-secondary-light',
     container: 'flex flex-col gap-y-mili',
   },
 });
