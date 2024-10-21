@@ -5,26 +5,25 @@ import { ProgressBar } from '../src';
 export default {
   title: 'Cortex/ProgressBar',
   component: ProgressBar,
+  argTypes: {
+    value: {
+      description: 'Valor da barra de progresso (0 a 100)',
+    },
+  },
 } as Meta<typeof ProgressBar>;
 
 export const Default: StoryObj<typeof ProgressBar> = {
   args: {
-    valueCurrent: 75,
-    segments: 3,
-    valueMin: 0,
-    valueMax: 100,
-    intentProgress: 'default',
-    animated: true,
+    value: 75,
+    intent: 'default',
+    infinite: false,
   },
   render: args => (
     <div className={'w-[500px]'}>
       <ProgressBar
-        segments={args.segments}
-        valueCurrent={args.valueCurrent}
-        intentProgress={args.intentProgress}
-        valueMax={args.valueMax}
-        valueMin={args.valueMin}
-        animated={args.animated}
+        value={args.value}
+        intent={args.intent}
+        infinite={args.infinite}
       />
     </div>
   ),

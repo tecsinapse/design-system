@@ -34,14 +34,12 @@ export const Default: StoryObj<typeof Input.Root> = {
     ...baseArgs,
   },
   render: args => (
-    <>
-      <Input.Root
-        label={args.label}
-        placeholder={args.placeholder}
-        variants={args.variants}
-        {...args}
-      />
-    </>
+    <Input.Root
+      label={args.label}
+      placeholder={args.placeholder}
+      variants={args.variants}
+      {...args}
+    />
   ),
 };
 
