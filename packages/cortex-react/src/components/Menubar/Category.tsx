@@ -7,7 +7,6 @@ const Category = <T,>({ title, options, render }: CategoryType<T>) => {
   return (
     <>
       <p className={text()}>{title}</p>
-      <a />
       <hr className={hr()} />
       <div className={container()}>{options.map(i => render(i))}</div>
     </>
