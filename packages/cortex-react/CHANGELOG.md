@@ -20,6 +20,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * input floating label w/ autofill ([1ad4f40](https://github.com/tecsinapse/design-system/commit/1ad4f40d36e714406c00ce3f7da4549fa22a98a4))
 
+# [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.1...@tecsinapse/cortex-react@1.7.0) (2024-10-10)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 # [1.7.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.0...@tecsinapse/cortex-react@1.7.0-beta.1) (2024-10-10)
 
 ### Bug Fixes
