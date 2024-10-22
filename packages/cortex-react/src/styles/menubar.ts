@@ -37,8 +37,9 @@ export const mostUsedItem = tv({
 
 export const item = tv({
   slots: {
-    container: 'flex flex-row gap-x-deca items-center',
-    text: 'text-secondary-dark hover:text-primary-medium hover:cursor-pointer text-base',
+    container:
+      'flex flex-row gap-x-deca items-center text-secondary-dark text-base',
+    textBehavior: 'hover:text-primary-medium hover:cursor-pointer text-base',
     icon: 'text-primary-medium hover:cursor-pointer',
   },
 });
@@ -46,7 +47,7 @@ export const item = tv({
 export const category = tv({
   slots: {
     text: 'mb-mili font-bold',
-    hr: 'mb-mili',
+    hr: 'mb-mili border-0 h-px bg-secondary-light',
     container: 'flex flex-col gap-y-mili',
   },
 });

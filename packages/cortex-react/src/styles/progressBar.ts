@@ -1,17 +1,33 @@
 import { tv } from 'tailwind-variants';
 
-export const progressBarFilled = tv({
-  base: 'h-full first:rounded-l-pill last:rounded-r-pill',
+export const ProgressVariants = tv({
+  slots: {
+    container: 'relative mb-mili',
+    bar: 'h-1.5 w-full overflow-hidden bg-secondary-xlight',
+    progress: 'w-full h-full rounded-mili',
+  },
   variants: {
-    intentProgress: {
-      default: 'bg-primary-medium',
-      error: 'bg-error-medium',
-      info: 'bg-info-medium',
-      warning: 'bg-warning-medium',
-      success: 'bg-success-medium',
+    intent: {
+      default: {
+        progress: 'bg-primary-medium',
+      },
+      error: {
+        progress: 'bg-error-medium',
+      },
+      info: {
+        progress: 'bg-info-medium',
+      },
+      warning: {
+        progress: 'bg-warning-medium',
+      },
+      success: {
+        progress: 'bg-success-medium',
+      },
     },
-    showAnimation: {
-      true: 'transition-[width] duration-1000 ease-linear',
+    infinite: {
+      true: {
+        progress: 'animate-progress origin-left-right',
+      },
     },
   },
 });

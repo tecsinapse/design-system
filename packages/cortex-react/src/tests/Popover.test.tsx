@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 import { Popover } from '../components';
 
 const PopoverButton = () => {
@@ -28,12 +29,14 @@ describe('Popover', () => {
 
     const trigger = screen.getByTestId('trigger');
 
-    fireEvent.mouseEnter(trigger);
+    userEvent.hover(trigger);
     const popover = await screen.findByTestId('popover-content');
     expect(popover).toBeInTheDocument();
 
-    fireEvent.mouseLeave(trigger);
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+    userEvent.unhover(trigger);
+    expect(
+      await screen.findByTestId('popover-content')
+    ).not.toBeInTheDocument();
   });
 
   it('Should show content on click', async () => {
@@ -201,12 +204,14 @@ describe('Popover', () => {
 
     const trigger = screen.getByText('Clique aqui');
 
-    fireEvent.mouseEnter(trigger);
+    userEvent.hover(trigger);
     const popover = await screen.findByTestId('popover-content');
     expect(popover).toBeInTheDocument();
 
-    fireEvent.mouseLeave(trigger);
-    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+    userEvent.unhover(trigger);
+    expect(
+      await screen.findByTestId('popover-content')
+    ).not.toBeInTheDocument();
   });
 
   it('Should show popover with PopoverButton on click', async () => {

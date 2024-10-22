@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.3...@tecsinapse/cortex-react@1.7.2) (2024-10-21)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.7.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.2...@tecsinapse/cortex-react@1.7.0-beta.3) (2024-10-18)
+
+### Bug Fixes
+
+* **TS-9295:** criação de novos teste para o progressBar ([9b8c533](https://github.com/tecsinapse/design-system/commit/9b8c53387f967dc4f4556089e7c5de1741f6cdf2))
+
+### Features
+
+* **TS-9295:** adição do progress animado ([3a841af](https://github.com/tecsinapse/design-system/commit/3a841af0067a000a9a617ff7d734827229e2d6ac))
+* **TS-9295:** refatoração do progress bar para nao ser mais de segmento ([de81587](https://github.com/tecsinapse/design-system/commit/de81587a2a210cf01f485b2b5a976f7d903b7cb3))
+
+# [1.7.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.1...@tecsinapse/cortex-react@1.7.0-beta.2) (2024-10-17)
+
+### Bug Fixes
+
+* input floating label w/ autofill ([1ad4f40](https://github.com/tecsinapse/design-system/commit/1ad4f40d36e714406c00ce3f7da4549fa22a98a4))
+
+# [1.7.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.1...@tecsinapse/cortex-react@1.7.0) (2024-10-10)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.7.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.0-beta.0...@tecsinapse/cortex-react@1.7.0-beta.1) (2024-10-10)
+
+### Bug Fixes
+
+* update popover tests to use userEvent ([b887f81](https://github.com/tecsinapse/design-system/commit/b887f81a70349d317c88d8c26e3d7599744c131d))
+
+# [1.7.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.6.0...@tecsinapse/cortex-react@1.7.0-beta.0) (2024-10-09)
+
+### Features
+
+* **TS-7559:** add icon close ([9ed7993](https://github.com/tecsinapse/design-system/commit/9ed7993b5591e6bd50beca771c287496e37a4cc9))
+* **TS-7559:** adição do componente de uploader DS ([345c2c4](https://github.com/tecsinapse/design-system/commit/345c2c46b7201a27b2af26f53252596e98fcc51d))
+* **TS-7559:** adição do progress infite ao progress ja existente ([d8ebfb3](https://github.com/tecsinapse/design-system/commit/d8ebfb365352f27c7236c6e1000d92174d93056f))
+* **TS-7559:** Correção ([05cbdd1](https://github.com/tecsinapse/design-system/commit/05cbdd149bb52520162afbf8746f853650283e50))
+* **TS-7559:** correção nos teste ([d7f9980](https://github.com/tecsinapse/design-system/commit/d7f9980a552948ce3c6f7b99587b3172fe01e7a1))
+* **TS-7559:** correções ([7575bf8](https://github.com/tecsinapse/design-system/commit/7575bf8885bc159037bcc79d0a16fd357a1e46ac))
+* **TS-7559:** Formated code uploading ([a0c078f](https://github.com/tecsinapse/design-system/commit/a0c078f821083adbc4f4c75beb1d21270cf1380a))
+* **TS-7559:** PR Suggestion ([f4a8366](https://github.com/tecsinapse/design-system/commit/f4a83660c3a5cf343a29f5d8c0c43ae4e81137ff))
+* **TS-7559:** PR Suggestion ([26a38b9](https://github.com/tecsinapse/design-system/commit/26a38b9f99a9f19e8afef58e80299c54abd024da))
+* **TS-7559:** PR Suggestion ([4b556b5](https://github.com/tecsinapse/design-system/commit/4b556b5fa11b4a2c5af82a93465ff649cb9043f4))
+* **TS-7559:** test correction ([d3adf16](https://github.com/tecsinapse/design-system/commit/d3adf16a5ad0ad2c5120ec273433d8bf77f2dd62))
+
 # [1.6.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.6.0-beta.0...@tecsinapse/cortex-react@1.6.0) (2024-10-09)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react

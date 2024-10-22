@@ -6,7 +6,7 @@ import {
 } from 'react-aria';
 import { useRangeCalendarState } from 'react-stately';
 import { DateRange } from '../components';
-import { calendarDateToDate, dateToCalendarDate } from '../components/utils';
+import { calendarDateToDate, dateToCalendarDate } from '../utils';
 
 interface useRangeCalendarProps {
   value?: DateRange;

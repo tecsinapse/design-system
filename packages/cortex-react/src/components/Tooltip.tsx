@@ -1,7 +1,7 @@
 import { FloatingArrow, Placement } from '@floating-ui/react';
 import React, { forwardRef, useRef } from 'react';
-import { useFloatingLogic } from '../hooks';
-import { cloneWithProps } from './utils';
+import { useFloatingElement, type Delay } from '../hooks';
+import { cloneWithProps } from '../utils';
 
 interface TooltipProps {
   /** child element */
@@ -11,6 +11,12 @@ interface TooltipProps {
   placement?: Placement;
   width?: number;
   height?: number;
+  /** Delay to display in milliseconds if `trigger` = `hover`
+   *
+   * Defaults to `{ open: 500, close: 0 }`
+   * It's possible to provide only a number for same delay to show/hide
+   */
+  delay?: Delay;
   style?: React.CSSProperties;
 }
 
@@ -24,6 +30,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       placement = 'top',
       width,
       height,
+      delay = { open: 500, close: 0 },
     } = props;
     const arrowRef = useRef(null);
 
@@ -36,7 +43,8 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       refs,
       context,
       floatingStyles,
-    } = useFloatingLogic({ placement, arrowRef, trigger });
+      getFloatingProps,
+    } = useFloatingElement({ placement, arrowRef, trigger, delay });
 
     return (
       <>
@@ -55,13 +63,12 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               height,
               ...floatingStyles,
             }}
+            {...getFloatingProps()}
           >
             {text}
             <FloatingArrow ref={arrowRef} context={context} fill="black" />
           </div>
-        ) : (
-          <></>
-        )}
+        ) : null}
       </>
     );
   }

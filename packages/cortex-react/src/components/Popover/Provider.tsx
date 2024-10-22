@@ -1,7 +1,7 @@
 import { Placement } from '@floating-ui/react';
 import React, { ReactNode } from 'react';
 
-import { useFloatingLogic } from '../../hooks';
+import { useFloatingElement } from '../../hooks';
 import { Context } from './Context';
 
 export interface PopoverProviderProps {
@@ -16,7 +16,7 @@ export const PopoverProvider = ({
   placement,
   trigger,
 }: PopoverProviderProps) => {
-  const floatingLogic = useFloatingLogic({ placement, trigger });
+  const floatingLogic = useFloatingElement({ placement, trigger });
 
   return (
     <Context.Provider value={{ ...floatingLogic }}>{children}</Context.Provider>
