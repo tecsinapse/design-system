@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Node } from './Node';
 
-interface StepRootProps {
+export interface StepRootProps {
   segmented?: boolean;
   children: React.ReactNode;
 }

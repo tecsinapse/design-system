@@ -1,7 +1,7 @@
 import React from 'react';
 import { StepNodeVariants } from '../../styles/stepNodeVariants';
 
-interface StepNodeProps
+export interface StepNodeProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   marked?: boolean;
   intent?: 'success' | 'warning' | 'error';
