@@ -9,6 +9,7 @@ export interface StepNodeProps
   isLast?: boolean;
   segmented?: boolean;
   selected?: boolean;
+  /** child element */
   children: React.ReactNode;
 }
 
@@ -20,7 +21,7 @@ export const Node = ({
   segmented = false,
   selected = false,
   children,
-  onClick,
+  className,
   ...rest
 }: StepNodeProps) => {
   const { container, content, separator } = StepNodeVariants({
@@ -33,9 +34,9 @@ export const Node = ({
   });
 
   return (
-    <button className={container()} onClick={onClick} {...rest}>
+    <button className={container({ className })} {...rest}>
       <div className={content()}>{children}</div>
-      {segmented && <div className={separator()} />}
+      {segmented ? <div className={separator()} /> : <></>}
     </button>
   );
 };
