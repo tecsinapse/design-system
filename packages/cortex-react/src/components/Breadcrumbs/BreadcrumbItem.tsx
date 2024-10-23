@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { ElementType } from 'react';
 import { MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md';
 
@@ -21,7 +22,12 @@ export const BreadcrumbItem = ({
     <Component {...componentProps} key={title}>
       <div className={'flex gap-x-mili items-center'}>
         <p
-          className={isLast ? 'text-secondary-medium' : 'text-secondary-xdark'}
+          className={clsx(
+            'no-underline',
+            isLast
+              ? 'text-secondary-medium cursor-default'
+              : 'text-secondary-xdark cursor-pointer'
+          )}
         >
           {title}
         </p>
