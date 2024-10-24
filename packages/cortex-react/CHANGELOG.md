@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.3...@tecsinapse/cortex-react@1.7.4) (2024-10-22)
+
+### Bug Fixes
+
+* **TS-9474:** january error ([9430765](https://github.com/tecsinapse/design-system/commit/94307651665797eca90db77943bfa9adff6bed3b))
+
 ## [1.7.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.2...@tecsinapse/cortex-react@1.7.3) (2024-10-21)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
