@@ -9,7 +9,7 @@ interface ContextProps {
   triggerProps?: any;
   refs?: any;
   isOpen?: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   x?: number;
   y?: number;
   strategy?: 'absolute' | 'fixed';

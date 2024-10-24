@@ -12,7 +12,13 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import { RefObject, useEffect, useState } from 'react';
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 
 export type Delay =
   | number
@@ -26,6 +32,9 @@ interface FloatingElementProps {
   trigger?: 'hover' | 'click';
   delay?: Delay;
   arrowRef?: RefObject<SVGSVGElement>;
+  controlled?: boolean;
+  isOpen?: boolean;
+  setIsOpen?: Dispatch<SetStateAction<boolean>> | undefined;
 }
 
 export const useFloatingElement = ({
@@ -33,15 +42,18 @@ export const useFloatingElement = ({
   trigger,
   delay,
   arrowRef,
+  controlled,
+  isOpen,
+  setIsOpen,
 }: FloatingElementProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [openUncontrolled, onOpenChangeUncontrolled] = useState(false);
 
   const { x, y, strategy, refs, update, context, floatingStyles } = useFloating(
     {
       placement,
       whileElementsMounted: autoUpdate,
-      open: isOpen,
-      onOpenChange: setIsOpen,
+      open: controlled ? isOpen : openUncontrolled,
+      onOpenChange: controlled ? setIsOpen : onOpenChangeUncontrolled,
       middleware: [
         offset(10),
         flip({
