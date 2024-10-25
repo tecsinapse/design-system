@@ -27,7 +27,7 @@ export type Delay =
       close?: number;
     };
 
-interface FloatingElementProps {
+export interface FloatingElementProps {
   placement?: Placement;
   trigger?: 'hover' | 'click';
   delay?: Delay;
@@ -77,8 +77,9 @@ export const useFloatingElement = ({
     hover,
   ]);
   useEffect(() => {
-    if (isOpen) update();
-  }, [isOpen, update]);
+    if (controlled && isOpen) update();
+    else if (openUncontrolled) update();
+  }, [openUncontrolled, update, isOpen]);
 
   const triggerProps = {
     ref: refs.setReference,
@@ -86,8 +87,10 @@ export const useFloatingElement = ({
   };
 
   return {
-    isOpen,
-    setIsOpen,
+    isOpen: controlled ? (isOpen as boolean) : openUncontrolled,
+    setIsOpen: controlled
+      ? (setIsOpen as Dispatch<SetStateAction<boolean>>)
+      : onOpenChangeUncontrolled,
     x,
     y,
     strategy,

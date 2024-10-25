@@ -32,11 +32,7 @@ export const PopoverProvider = ({
   trigger,
   ...props
 }: PopoverProviderProps) => {
-  const floatingLogic = useFloatingElement({
-    placement,
-    trigger,
-    ...props,
-  });
+  const floatingLogic = useFloatingElement({ placement, trigger, ...props });
 
   return (
     <Context.Provider value={{ ...floatingLogic }}>{children}</Context.Provider>
