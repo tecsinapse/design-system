@@ -235,4 +235,35 @@ describe('Popover', () => {
     fireEvent.click(trigger);
     expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
+
+  it('Should show popover controlled and close in click inside', async () => {
+    const setIsOpen = jest.fn();
+    render(
+      <Popover.Root
+        trigger="click"
+        placement="bottom"
+        controlled
+        isOpen={true}
+        setIsOpen={setIsOpen}
+      >
+        <Popover.Trigger>
+          <PopoverButton />
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="popover-content" onClick={setIsOpen}>
+            Popover Content
+          </div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const trigger = screen.getByText('Clique aqui');
+
+    fireEvent.click(trigger);
+    const popover = await screen.findByTestId('popover-content');
+    expect(popover).toBeInTheDocument();
+
+    fireEvent.click(popover);
+    expect(setIsOpen).toHaveBeenCalled();
+  });
 });

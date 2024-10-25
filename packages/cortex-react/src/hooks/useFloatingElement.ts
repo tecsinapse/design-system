@@ -12,7 +12,13 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import { RefObject, useEffect, useState } from 'react';
+import {
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 
 export type Delay =
   | number
@@ -21,11 +27,14 @@ export type Delay =
       close?: number;
     };
 
-interface FloatingElementProps {
+export interface FloatingElementProps {
   placement?: Placement;
   trigger?: 'hover' | 'click';
   delay?: Delay;
   arrowRef?: RefObject<SVGSVGElement>;
+  controlled?: boolean;
+  isOpen?: boolean;
+  setIsOpen?: Dispatch<SetStateAction<boolean>> | undefined;
 }
 
 export const useFloatingElement = ({
@@ -33,15 +42,18 @@ export const useFloatingElement = ({
   trigger,
   delay,
   arrowRef,
+  controlled,
+  isOpen,
+  setIsOpen,
 }: FloatingElementProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [openUncontrolled, onOpenChangeUncontrolled] = useState(false);
 
   const { x, y, strategy, refs, update, context, floatingStyles } = useFloating(
     {
       placement,
       whileElementsMounted: autoUpdate,
-      open: isOpen,
-      onOpenChange: setIsOpen,
+      open: controlled ? isOpen : openUncontrolled,
+      onOpenChange: controlled ? setIsOpen : onOpenChangeUncontrolled,
       middleware: [
         offset(10),
         flip({
@@ -65,8 +77,9 @@ export const useFloatingElement = ({
     hover,
   ]);
   useEffect(() => {
-    if (isOpen) update();
-  }, [isOpen, update]);
+    if (controlled && isOpen) update();
+    else if (openUncontrolled) update();
+  }, [openUncontrolled, update, isOpen]);
 
   const triggerProps = {
     ref: refs.setReference,
@@ -74,8 +87,10 @@ export const useFloatingElement = ({
   };
 
   return {
-    isOpen,
-    setIsOpen,
+    isOpen: controlled ? (isOpen as boolean) : openUncontrolled,
+    setIsOpen: controlled
+      ? (setIsOpen as Dispatch<SetStateAction<boolean>>)
+      : onOpenChangeUncontrolled,
     x,
     y,
     strategy,
