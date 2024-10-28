@@ -12,3 +12,4 @@ export * from './useSelectGroupedOptions';
 export * from './useSelectOptions';
 export * from './useStringMask';
 export * from './useFileUpload';
+export * from './useDimensions';
