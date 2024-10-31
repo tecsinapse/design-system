@@ -34,7 +34,7 @@ export const Node = ({
   });
 
   return (
-    <button className={container({ className })} {...rest}>
+    <button type="button" className={container({ className })} {...rest}>
       <div className={content()}>{children}</div>
       {segmented ? <div className={separator()} /> : <></>}
     </button>

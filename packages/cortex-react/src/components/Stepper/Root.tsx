@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Node } from './Node';
 
 export interface StepRootProps {
@@ -8,14 +8,17 @@ export interface StepRootProps {
 
 export const Root = ({ segmented = false, children }: StepRootProps) => {
   const [selectedNode, setSelectedNode] = useState<number | null>(null);
-  const childrenCount = React.Children.count(children);
+  const childrenCount = useMemo(
+    () => React.Children.count(children),
+    [children]
+  );
 
-  const handleNodeClick = (index: number, onClick?: () => void) => {
+  const handleNodeClick = useCallback((index: number, onClick?: () => void) => {
     setSelectedNode(index);
     if (onClick) {
       onClick();
     }
-  };
+  }, []);
 
   const renderNode = useMemo(
     () => (child: React.ReactNode, index: number) => {
