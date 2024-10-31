@@ -95,9 +95,9 @@ const preview: Preview = {
 export default preview;
 
 const withThemeProvider = Story => (
-  // <ThemeProvider theme={lightTheme}>
-  <Story />
-  // </ThemeProvider>
+  <ThemeProvider theme={lightTheme}>
+    <Story />
+  </ThemeProvider>
 );
 
 export const decorators = [withThemeProvider];
