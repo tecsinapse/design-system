@@ -1,7 +1,6 @@
 import React from 'react';
 import { DefaultProps } from './types';
 import { menubar } from '../../styles/menubar';
-import { useDimensions } from '../../hooks';
 
 const { right } = menubar();
 
