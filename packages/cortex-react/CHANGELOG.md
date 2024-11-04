@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.5-beta.3...@tecsinapse/cortex-react@1.8.0-beta.1) (2024-11-04)
+
+### Bug Fixes
+
+* **TS-7561:** export props ([31a6b31](https://github.com/tecsinapse/design-system/commit/31a6b3181794308fd8aa351456320c6a4bc47651))
+
+### Features
+
+* **TS-7561:** criação do componente Stepper ([4a0d139](https://github.com/tecsinapse/design-system/commit/4a0d13913bda80a21bc280e1f3e7cd83ce531496))
+* **TS-7561:** PR Suggestion ([e3ef927](https://github.com/tecsinapse/design-system/commit/e3ef9279e05b5f198950cee550a736f1037c8a3d))
+* **TS-7561:** PR Suggestion ([970f724](https://github.com/tecsinapse/design-system/commit/970f7247dbab034550b341b749868204cf9e86bd))
+
 ## [1.7.5-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.5-beta.2...@tecsinapse/cortex-react@1.7.5-beta.3) (2024-11-04)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
