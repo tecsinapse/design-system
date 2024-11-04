@@ -5,8 +5,14 @@ import { menubar } from '../../styles/menubar';
 const { right } = menubar();
 
 const Right = ({ children, ...rest }: DefaultProps) => {
+  const { className } = rest;
+
   return (
-    <div className={right()} data-testid={'header-right-menubar'} {...rest}>
+    <div
+      className={right({ className })}
+      data-testid={'header-right-menubar'}
+      {...rest}
+    >
       {children}
     </div>
   );

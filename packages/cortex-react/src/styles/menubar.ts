@@ -3,9 +3,9 @@ import { tv } from 'tailwind-variants';
 export const menubar = tv({
   slots: {
     header:
-      'relative w-screen px-kilo py-deca flex flex-row justify-between bg-white z-sidebar',
+      'relative w-screen px-kilo py-deca flex flex-row md:justify-between bg-white z-sidebar sm:justify-start',
     left: 'flex items-center w-fit',
-    right: 'flex items-center gap-x-deca',
+    right: 'flex items-center gap-x-deca hidden sm:flex',
     dropdown:
       'w-full bg-white flex-1 shadow-default z-popover px-[8vw] absolute',
   },

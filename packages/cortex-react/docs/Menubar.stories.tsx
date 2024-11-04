@@ -34,11 +34,11 @@ export const Default: StoryObj<typeof Menubar.Root> = {
             <img
               src="https://www.tecsinapse.com.br/wp-content/themes/tecsinapse/img/logo.svg"
               alt="TecSinapse"
-              className={'w-auto h-giga ml-kilo mr-tera'}
+              className={'w-auto h-giga mx-kilo'}
             />
           </Menubar.HeaderLeft>
-          <Menubar.Search />
-          <Menubar.HeaderRight>
+          <Menubar.Search className='mr-kilo hidden sm:flex'/>
+          <Menubar.HeaderRight> 
             <Tooltip
               text={
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
