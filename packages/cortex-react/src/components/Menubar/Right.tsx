@@ -6,11 +6,14 @@ import { useDimensions } from '../../hooks';
 const { right } = menubar();
 
 const Right = ({ children, ...rest }: DefaultProps) => {
-  const { width } = useDimensions();
-  if (width <= 640) return <></>;
+  const { className } = rest;
 
   return (
-    <div className={right()} data-testid={'header-right-menubar'} {...rest}>
+    <div
+      className={right({ className })}
+      data-testid={'header-right-menubar'}
+      {...rest}
+    >
       {children}
     </div>
   );
