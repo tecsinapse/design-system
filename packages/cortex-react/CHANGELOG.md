@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.8.0-beta.1...@tecsinapse/cortex-react@1.8.0) (2024-11-08)
+
+### Bug Fixes
+
+* zindex carousel ([1b30f32](https://github.com/tecsinapse/design-system/commit/1b30f3207acee0f0d378fad5314fbf95c39eb5fa))
+
+### Features
+
+* responsividade no Carousel ([c7ddb1f](https://github.com/tecsinapse/design-system/commit/c7ddb1f8c6918ccfe803ea84fde7e7673f166e60))
+
 ## [1.7.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.7.5...@tecsinapse/cortex-react@1.7.6) (2024-10-25)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
