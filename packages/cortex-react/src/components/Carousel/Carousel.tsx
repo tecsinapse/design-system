@@ -51,7 +51,7 @@ export const Carousel = ({ images }: CarouselProps) => {
             variants={{
               size: 'square',
               className:
-                'z-absolute absolute left-deca top-[50%]  transform -translate-y-[50%] p-centi',
+                'z-absolute absolute left-deca top-[50%]  transform -translate-y-[50%] p-centi hidden lg:flex',
             }}
             onClick={slideToPrevItem}
           >
@@ -62,7 +62,7 @@ export const Carousel = ({ images }: CarouselProps) => {
             variants={{
               size: 'square',
               className:
-                'z-absolute absolute right-deca top-[50%] transform -translate-y-[50%] p-centi',
+                'z-absolute absolute right-deca top-[50%] transform -translate-y-[50%] p-centi hidden lg:flex',
             }}
             onClick={slideToNextItem}
           >

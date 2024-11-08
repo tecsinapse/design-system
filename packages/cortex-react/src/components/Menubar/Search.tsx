@@ -6,11 +6,12 @@ import { useMenubar } from '../../provider';
 
 const Search = (props: InputSearchProps) => {
   const [show] = useMenubar();
+  const { className } = props;
 
   return (
     <Input.Search
       {...props}
-      className={clsx('mr-tera flex-1', animate({ show: show }))}
+      className={clsx('flex-1', animate({ show: show }), className)}
     />
   );
 };
