@@ -20,7 +20,7 @@ export const CarouselItem = ({ item }: CarouselItemProps) => {
   return (
     <>
       <img
-        className={'w-full h-[360px] object-cover rounded-mili'}
+        className={'w-full h-[360px] object-cover rounded-mili z-absolute'}
         src={item.src}
         alt={item.alt}
       />
