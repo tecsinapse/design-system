@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 export interface ContentProps {
   /** child element */
@@ -61,7 +61,7 @@ export interface SelectRootProps<T> {
   className?: string;
 }
 
-export interface SelectTriggerProps {
+export interface SelectTriggerProps extends HTMLAttributes<HTMLButtonElement> {
   label: string;
   placeholder?: string;
   disabled?: boolean;

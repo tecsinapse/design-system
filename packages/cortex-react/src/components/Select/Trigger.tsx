@@ -12,6 +12,7 @@ export const SelectTrigger = ({
   placeholder,
   disabled,
   multiLabelSelected,
+  ...rest
 }: SelectTriggerProps) => {
   const { value, labelExtractor } = useContext(SelectContext);
   const _placeholder = useMemo(() => {
@@ -24,9 +25,16 @@ export const SelectTrigger = ({
     return labelExtractor(value);
   }, [label, value]);
 
+  const { className } = rest;
+
   return (
     <Popover.Trigger>
-      <button className={button()} disabled={disabled} role="button">
+      <button
+        className={button({ className })}
+        disabled={disabled}
+        role="button"
+        {...rest}
+      >
         <span data-testid="select-placeholder">{_placeholder}</span>
         <IoChevronDownOutline />
       </button>
