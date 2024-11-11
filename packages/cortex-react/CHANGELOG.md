@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.8.1...@tecsinapse/cortex-react@1.9.0) (2024-11-11)
+
+### Features
+
+* adicionando HtmlButtonProps na interface do Select trigger, ajuste de estilo groupButton e ([2dd1903](https://github.com/tecsinapse/design-system/commit/2dd19035e5dcafc08cfb9c7a158d4dbf89b18e11))
+
 ## [1.8.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.8.0...@tecsinapse/cortex-react@1.8.1) (2024-11-11)
 
 ### Bug Fixes
