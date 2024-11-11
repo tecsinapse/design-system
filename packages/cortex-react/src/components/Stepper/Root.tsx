@@ -7,7 +7,19 @@ export interface StepRootProps {
 }
 
 export const Root = ({ segmented = false, children }: StepRootProps) => {
-  const [selectedNode, setSelectedNode] = useState<number | null>(null);
+  const initialSelectedIndex = useMemo(() => {
+    let initialIndex: number | null = null;
+    React.Children.forEach(children, (child, index) => {
+      if (React.isValidElement(child) && child.props.selected) {
+        initialIndex = index;
+      }
+    });
+    return initialIndex;
+  }, [children]);
+
+  const [selectedNode, setSelectedNode] = useState<number | null>(
+    initialSelectedIndex
+  );
   const childrenCount = useMemo(
     () => React.Children.count(children),
     [children]

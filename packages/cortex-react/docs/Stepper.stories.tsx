@@ -18,6 +18,7 @@ const steps = [
   {
     label: 'Abertura',
     marked: true,
+    selected: true,
     intent: 'success' as const,
     icon: <FaCheckCircle className="text-success-medium" />,
     onClick: () => console.log('Abertura clicada!'),
@@ -56,13 +57,17 @@ export const Default: StoryObj<typeof Stepper.Root> = {
     <div className="h-[300px] w-[1000px] px-4 mx-auto">
       <Stepper.Root segmented>
         {steps.map(
-          ({ label, marked, intent, icon, onClick, disabled }, index) => (
+          (
+            { label, marked, intent, icon, onClick, disabled, selected },
+            index
+          ) => (
             <Stepper.Node
               key={index}
               marked={marked}
               intent={intent}
               onClick={onClick}
               disabled={disabled}
+              selected={selected}
             >
               <div className="flex items-center space-x-2">
                 {icon}
