@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.8.0...@tecsinapse/cortex-react@1.8.1) (2024-11-11)
+
+### Bug Fixes
+
+* correção no default selected stepper ([59be341](https://github.com/tecsinapse/design-system/commit/59be3411d422c6404afff3464556fb0aae54f218))
+
 # [1.8.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.8.0-beta.1...@tecsinapse/cortex-react@1.8.0) (2024-11-08)
 
 ### Bug Fixes
