@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.0...@tecsinapse/cortex-react@1.9.1) (2024-11-12)
+
+### Bug Fixes
+
+* style container groupButton ([7ee8dbe](https://github.com/tecsinapse/design-system/commit/7ee8dbeadae89aa9c4af1fe5bf5fd40f15abc1d2))
+
 # [1.9.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.8.1...@tecsinapse/cortex-react@1.9.0) (2024-11-11)
 
 ### Features
