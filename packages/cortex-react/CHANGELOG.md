@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.1...@tecsinapse/cortex-react@1.9.2) (2024-11-19)
+
+### Bug Fixes
+
+* interface Trigger Select ([064b827](https://github.com/tecsinapse/design-system/commit/064b827396e3dcaccfb11ed308cb918ab1db62f2))
+
 ## [1.9.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.0...@tecsinapse/cortex-react@1.9.1) (2024-11-12)
 
 ### Bug Fixes
