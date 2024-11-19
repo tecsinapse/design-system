@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 export interface ContentProps {
   /** child element */
@@ -61,7 +61,8 @@ export interface SelectRootProps<T> {
   className?: string;
 }
 
-export interface SelectTriggerProps extends HTMLAttributes<HTMLButtonElement> {
+export interface SelectTriggerProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   placeholder?: string;
   disabled?: boolean;
