@@ -9,3 +9,5 @@ export const Accordion = {
   Content: AccordionContent,
   Trigger: AccordionTrigger,
 };
+
+export * from './context';
