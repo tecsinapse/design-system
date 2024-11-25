@@ -28,6 +28,18 @@ describe('Accordion', () => {
     expect(element).not.toHaveClass('w-0');
   });
 
+  it('Should render a open accordion vertical', async () => {
+    render(
+      <Accordion.Root label="Default" defaultOpen direction="vertical">
+        <span data-testid="content">Example content</span>
+      </Accordion.Root>
+    );
+
+    const element = screen.getByTestId('accordion-container');
+
+    expect(element).not.toHaveClass('w-0');
+  });
+
   it('Should render a error when label is not provided on non floating accordion', async () => {
     try {
       render(
