@@ -7,6 +7,7 @@ export interface DrawerProps {
   position?: 'left' | 'right';
   /** child element */
   children?: React.ReactNode;
+  className?: string;
 }
 
 /** Drawer component */
@@ -15,6 +16,7 @@ export const Drawer = ({
   onClose,
   open,
   position = 'right',
+  className,
 }: DrawerProps) => {
   return (
     <>
@@ -28,6 +30,7 @@ export const Drawer = ({
         className={drawer({
           position,
           open,
+          className,
         })}
       >
         {children}
