@@ -22,6 +22,8 @@ export interface GroupButtonProps<T> {
     inactive?: string;
   };
   disableAllOptions?: boolean;
+  /** Classname to container groupButton */
+  className?: string;
 }
 
 const { button, container, active, inactive, firstButton, lastButton } =
@@ -37,10 +39,14 @@ export const GroupButton = <T,>(props: GroupButtonProps<T>) => {
     onChange,
     customStyles,
     disableAllOptions,
+    className,
   } = props;
 
   return (
-    <div className={container()} data-testid="group-button-container">
+    <div
+      className={container({ className })}
+      data-testid="group-button-container"
+    >
       {options.map(option => {
         const key = renderKey?.(option.value);
         const isActive = key === renderKey?.(value);
