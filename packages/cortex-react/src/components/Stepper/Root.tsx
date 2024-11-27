@@ -1,9 +1,10 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Node } from './Node';
 
 export interface StepRootProps {
-  segmented?: boolean;
+  /** child element */
   children: React.ReactNode;
+  segmented?: boolean;
 }
 
 export const Root = ({ segmented = false, children }: StepRootProps) => {
