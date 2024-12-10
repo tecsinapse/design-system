@@ -14,10 +14,12 @@ const tagStyles = myTV({
   base: 'rounded-micro px-micro py-nano w-fit font-bold text-label items-center flex gap-1',
   variants: {
     intent: {
-      success: 'bg-success-medium text-white',
       primary: 'bg-primary-medium text-white',
       secondary: 'bg-secondary-medium text-white',
       info: 'bg-info-medium text-white',
+      success: 'bg-success-medium text-white',
+      warning: 'bg-warning-medium text-white',
+      error: 'bg-error-medium text-white',
       white: 'bg-white text-secondary-medium',
     },
   },

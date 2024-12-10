@@ -69,3 +69,23 @@ export const Success: StoryObj<typeof Tag.Root> = {
   },
   render: args => <Tag.Root variants={args.variants} label={args.label} />,
 };
+
+export const Warning: StoryObj<typeof Tag.Root> = {
+  args: {
+    label: 'Warning',
+    variants: {
+      intent: 'warning',
+    },
+  },
+  render: args => <Tag.Root variants={args.variants} label={args.label} />,
+};
+
+export const Error: StoryObj<typeof Tag.Root> = {
+  args: {
+    label: 'Error',
+    variants: {
+      intent: 'error',
+    },
+  },
+  render: args => <Tag.Root variants={args.variants} label={args.label} />,
+};
