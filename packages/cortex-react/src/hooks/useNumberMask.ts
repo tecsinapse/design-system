@@ -5,13 +5,6 @@ import { extractNumbersFromString } from '../utils';
 
 export type CurrencyOptions = currency.Options;
 
-const DEFAULT_OPTIONS: CurrencyOptions = {
-  symbol: 'R$ ',
-  separator: '.',
-  decimal: ',',
-  precision: 2,
-};
-
 const getRegex = (precision: number) =>
   new RegExp(`\\B(?=(\\d{${precision}})(?!\\d))`, 'g');
 
@@ -19,7 +12,7 @@ export const getInternalNumberAndMask = (
   value: string | number,
   options?: CurrencyOptions
 ): { internalNumber: number; mergedOptions: CurrencyOptions } => {
-  const mergedOptions = { ...DEFAULT_OPTIONS, ...options };
+  const mergedOptions = { ...options };
   const { precision = -1 } = mergedOptions;
 
   let internalNumber;
@@ -76,7 +69,7 @@ export const useNumberMask = (
 
       return {
         raw: internalNumber,
-        formatted: currency(internalNumber).format(mergedOptions),
+        formatted: currency(internalNumber, mergedOptions).format(),
       };
     },
     [options, getRegex]

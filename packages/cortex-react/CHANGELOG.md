@@ -23,7 +23,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* ajustando z-index menubar ([574f5af](https://github.com/tecsinapse/design-system/commit/574f5af239964dc27ab38ee2e98d74fae7cef4f2))
+- ajustando z-index menubar ([574f5af](https://github.com/tecsinapse/design-system/commit/574f5af239964dc27ab38ee2e98d74fae7cef4f2))
 
 ## [1.9.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.4...@tecsinapse/cortex-react@1.9.5) (2024-11-25)
 
@@ -33,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **NO_US:** export accordion context ([f8bacff](https://github.com/tecsinapse/design-system/commit/f8bacff0ea2cd1521fff1afc5833e081dc7393d0))
+- **NO_US:** export accordion context ([f8bacff](https://github.com/tecsinapse/design-system/commit/f8bacff0ea2cd1521fff1afc5833e081dc7393d0))
 
 ## [1.9.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.2-beta.0...@tecsinapse/cortex-react@1.9.3) (2024-11-25)
 
