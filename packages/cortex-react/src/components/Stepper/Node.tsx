@@ -9,8 +9,9 @@ export interface StepNodeProps
   isLast?: boolean;
   segmented?: boolean;
   selected?: boolean;
+  interactive?: boolean;
   /** child element */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const Node = ({
@@ -20,6 +21,7 @@ export const Node = ({
   isLast = false,
   segmented = false,
   selected = false,
+  interactive = true,
   children,
   className,
   ...rest
@@ -29,13 +31,14 @@ export const Node = ({
     marked,
     isFirst,
     isLast,
-    selected,
+    selected: selected && interactive,
     disabled: rest.disabled,
+    interactive,
   });
 
   return (
     <button type="button" className={container({ className })} {...rest}>
-      <div className={content()}>{children}</div>
+      {children ? <div className={content()}>{children}</div> : <></>}
       {segmented ? <div className={separator()} /> : <></>}
     </button>
   );
