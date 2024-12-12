@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.4.6-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.5-beta.0...@tecsinapse/cortex-core@0.4.6-beta.0) (2024-12-12)
+## [0.4.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.5-beta.0...@tecsinapse/cortex-core@0.4.6) (2024-12-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
 
@@ -51,13 +51,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* input floating label w/ autofill ([1ad4f40](https://github.com/tecsinapse/design-system/commit/1ad4f40d36e714406c00ce3f7da4549fa22a98a4))
+- input floating label w/ autofill ([1ad4f40](https://github.com/tecsinapse/design-system/commit/1ad4f40d36e714406c00ce3f7da4549fa22a98a4))
 
 # [0.4.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.3...@tecsinapse/cortex-core@0.4.0-beta.0) (2024-10-09)
 
 ### Features
 
-* **TS-7559:** PR Suggestion ([26a38b9](https://github.com/tecsinapse/design-system/commit/26a38b9f99a9f19e8afef58e80299c54abd024da))
+- **TS-7559:** PR Suggestion ([26a38b9](https://github.com/tecsinapse/design-system/commit/26a38b9f99a9f19e8afef58e80299c54abd024da))
 
 ## [0.3.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.3-beta.0...@tecsinapse/cortex-core@0.3.3) (2024-09-13)
 
@@ -75,7 +75,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* update ts types ([e4cc125](https://github.com/tecsinapse/design-system/commit/e4cc12545bc3848d84e978f72df6521c123f871b))
+- update ts types ([e4cc125](https://github.com/tecsinapse/design-system/commit/e4cc12545bc3848d84e978f72df6521c123f871b))
 
 ## [0.3.2-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.3.2-beta.0...@tecsinapse/cortex-core@0.3.2-beta.1) (2024-08-28)
 
