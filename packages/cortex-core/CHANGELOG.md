@@ -7,6 +7,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
 
+## [0.4.5-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.4...@tecsinapse/cortex-core@0.4.5-beta.0) (2024-12-12)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
 ## [0.4.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.3...@tecsinapse/cortex-core@0.4.4) (2024-11-25)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core

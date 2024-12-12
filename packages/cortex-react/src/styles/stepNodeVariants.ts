@@ -4,8 +4,7 @@ export const StepNodeVariants = tv({
   slots: {
     container:
       'flex flex-col items-center justify-center text-center w-full max-w-[268px]',
-    content:
-      'flex p-mili text-center w-full text-sub justify-center font-bold cursor-pointer',
+    content: 'flex p-mili text-center w-full text-sub justify-center font-bold',
     separator: 'h-micro w-full',
   },
   variants: {
@@ -18,6 +17,11 @@ export const StepNodeVariants = tv({
       },
       error: {
         separator: 'bg-error-medium',
+      },
+    },
+    interactive: {
+      true: {
+        content: 'cursor-pointer',
       },
     },
     marked: {

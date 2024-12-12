@@ -60,7 +60,7 @@ export const Default: StoryObj<typeof Stepper.Root> = {
 
     return (
       <div className="h-[300px] w-[1000px] px-4 mx-auto">
-        <Stepper.Root segmented={args.segmented}>
+        <Stepper.Root segmented={args.segmented} interactive>
           {steps.map((props, index) => (
             <Stepper.Node
               key={index}
