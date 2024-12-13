@@ -69,7 +69,7 @@ export const useNumberMask = (
 
       return {
         raw: internalNumber,
-        formatted: currency(value, mergedOptions).format(),
+        formatted: currency(internalNumber, mergedOptions).format(),
       };
     },
     [options, getRegex]
