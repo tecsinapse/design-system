@@ -80,6 +80,14 @@ export const getMask = (
   return regexArray;
 };
 
+export const applyStringMask = (
+  value: string,
+  mask: MaskType[] | ((value: string) => MaskType[])
+) => {
+  const selectedMask = getMask(mask, value);
+  return mergeMask(value, selectedMask);
+};
+
 /**
  * TODO:
  * @param mask
@@ -90,32 +98,19 @@ export const useStringMask = (
   mask: MaskType[] | ((value: string) => MaskType[]),
   defaultValue?: string | number
 ): [MaskValue, (text: string | number) => void] => {
-  const applyMask = useCallback(
-    (value = ''): MaskValue => {
-      const selectedMask = getMask(mask, value);
-      const { formatted, raw } = mergeMask(value, selectedMask);
-
-      return {
-        raw,
-        formatted,
-      };
-    },
-    [mask]
-  );
-
   const [value, setValue] = useState<MaskValue>(
-    applyMask(defaultValue?.toString())
+    applyStringMask(String(defaultValue ?? ''), mask)
   );
 
   const handleChangeValue = useCallback(
     (formattedValue: string | number) => {
-      const { raw, formatted } = applyMask(formattedValue?.toString());
+      const { raw, formatted } = applyStringMask(String(formattedValue), mask);
       setValue({
         raw,
         formatted,
       });
     },
-    [applyMask, setValue]
+    [setValue]
   );
 
   return [value, handleChangeValue];
