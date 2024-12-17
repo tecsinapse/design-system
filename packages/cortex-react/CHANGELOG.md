@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.10...@tecsinapse/cortex-react@1.9.11) (2024-12-17)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 ## [1.9.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.9-beta.0...@tecsinapse/cortex-react@1.9.10) (2024-12-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
