@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@3.4.9...@tecsinapse/react-core@3.4.10) (2024-12-13)
+
+### Bug Fixes
+
+* **NO_US:** number mask ([a7d3e67](https://github.com/tecsinapse/design-system/commit/a7d3e67454eecfd436453bcf3ef17a0b069d9d4c))
+
 ## [3.4.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@3.4.9-beta.0...@tecsinapse/react-core@3.4.9) (2024-12-12)
 
 **Note:** Version bump only for package @tecsinapse/react-core
