@@ -50,6 +50,21 @@ export const getInternalNumberAndMask = (
   };
 };
 
+export const applyNumberMask = (
+  value?: string | number,
+  options?: CurrencyOptions
+) => {
+  const { internalNumber, mergedOptions } = getInternalNumberAndMask(
+    value ?? 0,
+    options
+  );
+
+  return {
+    raw: internalNumber,
+    formatted: currency(internalNumber, mergedOptions).format(),
+  };
+};
+
 /**
  * TODO:
  * @param options
@@ -60,32 +75,19 @@ export const useNumberMask = (
   options?: CurrencyOptions,
   defaultValue?: string | number
 ): [MaskValue, (value: string | number) => void] => {
-  const applyMask = useCallback(
-    (value: string | number = 0): MaskValue => {
-      const { internalNumber, mergedOptions } = getInternalNumberAndMask(
-        value,
-        options
-      );
-
-      return {
-        raw: internalNumber,
-        formatted: currency(internalNumber, mergedOptions).format(),
-      };
-    },
-    [options, getRegex]
+  const [value, setValue] = useState<MaskValue>(
+    applyNumberMask(defaultValue, options)
   );
-
-  const [value, setValue] = useState<MaskValue>(applyMask(defaultValue));
 
   const handleChangeValue = useCallback(
     (formattedValue: string | number) => {
-      const { raw, formatted } = applyMask(formattedValue);
+      const { raw, formatted } = applyNumberMask(formattedValue, options);
       setValue({
         raw,
         formatted,
       });
     },
-    [applyMask, setValue]
+    [setValue]
   );
 
   return [value, handleChangeValue];

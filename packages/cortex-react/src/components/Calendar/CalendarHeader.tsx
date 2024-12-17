@@ -22,6 +22,7 @@ export const CalendarHeader = ({
         onClick={onClickPrevButton}
         variants={{ variant: 'text', intent: 'secondary', size: 'small' }}
         data-testid="calendar-header-prev-button"
+        type="button"
       >
         <FaChevronLeft />
       </Button>
@@ -30,6 +31,7 @@ export const CalendarHeader = ({
         onClick={onClickNextButton}
         variants={{ variant: 'text', intent: 'secondary', size: 'small' }}
         data-testid="calendar-header-next-button"
+        type="button"
       >
         <FaChevronRight />
       </Button>
