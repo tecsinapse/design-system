@@ -4,6 +4,7 @@ import {
   flip,
   offset,
   Placement,
+  safePolygon,
   shift,
   useClick,
   useDismiss,
@@ -68,7 +69,11 @@ export const useFloatingElement = ({
   const click = useClick(context, { enabled: trigger === 'click' });
   const dismiss = useDismiss(context);
   const role = useRole(context);
-  const hover = useHover(context, { enabled: trigger === 'hover', delay });
+  const hover = useHover(context, {
+    enabled: trigger === 'hover',
+    delay,
+    handleClose: safePolygon(),
+  });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     click,
