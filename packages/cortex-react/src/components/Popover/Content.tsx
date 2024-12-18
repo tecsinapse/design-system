@@ -1,9 +1,16 @@
+import {
+  FloatingFocusManager,
+  type FloatingFocusManagerProps,
+} from '@floating-ui/react';
 import clsx from 'clsx';
 import React from 'react';
 import { usePopoverContext } from './Context';
-import { FloatingFocusManager } from '@floating-ui/react';
 
-export interface PopoverContentProps {
+/**
+ * To extend the behavior, look at docs https://floating-ui.com/docs/FloatingFocusManager#props
+ */
+export interface PopoverContentProps
+  extends Omit<FloatingFocusManagerProps, 'children' | 'context'> {
   /** child element */
   children: React.ReactNode;
   className?: string;
@@ -12,6 +19,8 @@ export interface PopoverContentProps {
 export const PopoverContent = ({
   children,
   className,
+  modal = false,
+  ...rest
 }: PopoverContentProps) => {
   const {
     isOpen,
@@ -27,7 +36,7 @@ export const PopoverContent = ({
   return (
     <>
       {isOpen && (
-        <FloatingFocusManager context={context} modal={false}>
+        <FloatingFocusManager {...rest} context={context} modal={modal}>
           <div
             ref={refs.setFloating}
             {...getFloatingProps()}
