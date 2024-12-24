@@ -3,32 +3,34 @@ import React from 'react';
 import { useDatePickerInput } from '../../hooks';
 import { dateToCalendarDate } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
-import { InputPropsBase } from '../Input';
+import { InputProps } from '../Input';
 import { Popover } from '../Popover';
 import { usePopoverContext } from '../Popover/Context';
 import { Content } from './Content';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
 
-export interface DatePickerInputProps extends InputPropsBase {
+export interface DatePickerInputProps
+  extends Omit<InputProps, 'value' | 'onChange'> {
   value?: Date;
   onChange: (date: Date) => void;
 }
 
 const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
   const { setIsOpen } = usePopoverContext();
-  const { onChange, value, label, variants } = props;
+  const { onChange, value, label, variants, disabled } = props;
   const { fieldProps, state, ref } = useDatePickerInput({ value, onChange });
 
   return (
     <div ref={ref} data-testid="date-picker-input">
-      <Popover.Trigger>
+      <Popover.Trigger disabled={disabled}>
         <DatePickerInputBase
           variants={{
             ...variants,
             intent: state.isInvalid ? 'error' : variants?.intent,
           }}
           label={label}
+          disabled={disabled}
         >
           <div>
             <DateField
@@ -36,6 +38,7 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
               onChange={value => {
                 state.setDateValue(value as CalendarDate);
               }}
+              isDisabled={disabled}
             />
           </div>
         </DatePickerInputBase>

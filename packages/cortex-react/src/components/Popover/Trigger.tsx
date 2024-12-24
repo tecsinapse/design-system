@@ -5,11 +5,15 @@ import { usePopoverContext } from './Context';
 export interface PopoverTriggerProps {
   /** child element */
   children: React.ReactElement;
+  disabled?: boolean;
 }
 
-export const PopoverTrigger = ({ children }: PopoverTriggerProps) => {
+export const PopoverTrigger = ({
+  children,
+  disabled = false,
+}: PopoverTriggerProps) => {
   const { triggerProps } = usePopoverContext();
-  const isDisabled = children.props?.disabled;
+  const isDisabled = disabled ?? children.props?.disabled;
 
   return cloneWithProps(children, isDisabled ? {} : triggerProps);
 };

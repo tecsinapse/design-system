@@ -78,4 +78,30 @@ describe('DatePickerInputBase', () => {
 
     fireEvent.click(datePickerInputBaseCalendarIconElement);
   });
+
+  it('Should show calendar icon correct style', () => {
+    const { rerender } = render(
+      <DatePickerInputBase>
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    const datePickerInputBaseCalendarIconElement = screen.getByTestId(
+      'date-picker-input-base-calendar'
+    );
+
+    expect(datePickerInputBaseCalendarIconElement).toHaveClass(
+      'mt-centi cursor-pointer'
+    );
+
+    rerender(
+      <DatePickerInputBase disabled>
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    expect(datePickerInputBaseCalendarIconElement).toHaveClass(
+      'mt-centi text-secondary-light'
+    );
+  });
 });
