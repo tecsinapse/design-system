@@ -62,7 +62,6 @@ export const DatePickerInputBase = ({
             data-testid="date-picker-input-base-calendar-button"
           >
             <LiaCalendar
-              onClick={onToggle}
               className={icon({ disabled })}
               data-testid="date-picker-input-base-calendar-icon"
             />
