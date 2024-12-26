@@ -6,7 +6,7 @@ import { calendarDateToDate, dateToCalendarDate } from '../utils';
 
 interface useDatePickerInputProps {
   value?: Date;
-  onChange: (date: Date) => void;
+  onChange: (date?: Date) => void;
 }
 
 export const useDatePickerInput = ({
@@ -14,7 +14,7 @@ export const useDatePickerInput = ({
   onChange,
 }: useDatePickerInputProps) => {
   const state = useDatePickerState({
-    defaultValue: dateToCalendarDate(value),
+    defaultValue: value ? dateToCalendarDate(value) : null,
     onChange: (value: CalendarDate) => {
       onChange(calendarDateToDate(value));
     },

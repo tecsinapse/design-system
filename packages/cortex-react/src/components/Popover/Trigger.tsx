@@ -8,6 +8,14 @@ export interface PopoverTriggerProps {
   disabled?: boolean;
 }
 
+const isDisabledProps = {
+  onClick: () => undefined,
+  onKeyDown: () => undefined,
+  onMouseDown: () => undefined,
+  onKeyUp: () => undefined,
+  onPointerDown: () => undefined,
+};
+
 export const PopoverTrigger = ({
   children,
   disabled = false,
@@ -15,5 +23,8 @@ export const PopoverTrigger = ({
   const { triggerProps } = usePopoverContext();
   const isDisabled = disabled ?? children.props?.disabled;
 
-  return cloneWithProps(children, isDisabled ? {} : triggerProps);
+  return cloneWithProps(children, {
+    ...triggerProps,
+    ...(isDisabled ? isDisabledProps : {}),
+  });
 };

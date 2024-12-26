@@ -4,8 +4,8 @@ import { CalendarGrid } from './CalendarGrid';
 import { CalendarHeader } from './CalendarHeader';
 
 export type DateRange = {
-  start: Date;
-  end: Date;
+  start?: Date;
+  end?: Date;
 };
 
 export interface RangeCalendarProps {

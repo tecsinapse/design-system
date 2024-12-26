@@ -12,7 +12,7 @@ import { DatePickerInputBase } from './DatePickerInputBase';
 export interface DateRangePickerInputProps
   extends Omit<InputProps, 'value' | 'onChange'> {
   value?: DateRange;
-  onChange: (date: DateRange) => void;
+  onChange: (date?: DateRange) => void;
 }
 
 const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
@@ -23,7 +23,7 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
 
   return (
     <div ref={ref} data-testid="date-range-picker-input">
-      <Popover.Trigger disabled={disabled}>
+      <Popover.Trigger disabled={true}>
         <DatePickerInputBase
           variants={{
             ...variants,
@@ -31,25 +31,14 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
           }}
           label={label}
           disabled={disabled}
+          value={value}
+          onClickCleanIcon={() => state.setValue(null)}
+          onClickCalendarIcon={() => setIsOpen(open => !open)}
         >
           <div className="flex flex-row gap-x-micro items-center">
-            <DateField
-              {...startFieldProps}
-              value={dateToCalendarDate(value?.start)}
-              onChange={value => {
-                state.setDate('start', value);
-              }}
-              isDisabled={disabled}
-            />
+            <DateField {...startFieldProps} isDisabled={disabled} />
             <span>-</span>
-            <DateField
-              {...endFieldProps}
-              value={dateToCalendarDate(value?.end)}
-              onChange={value => {
-                state.setDate('end', value);
-              }}
-              isDisabled={disabled}
-            />
+            <DateField {...endFieldProps} isDisabled={disabled} />
           </div>
         </DatePickerInputBase>
       </Popover.Trigger>

@@ -66,14 +66,49 @@ describe('DatePickerInputBase', () => {
   });
 
   it('Should click calendar icon', () => {
+    const handleClickCalendarIcon = jest.fn();
     render(
-      <DatePickerInputBase>
+      <DatePickerInputBase onClickCalendarIcon={handleClickCalendarIcon}>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
 
     const datePickerInputBaseCalendarIconElement = screen.getByTestId(
-      'date-picker-input-base-calendar'
+      'date-picker-input-base-calendar-icon'
+    );
+
+    fireEvent.click(datePickerInputBaseCalendarIconElement);
+    expect(handleClickCalendarIcon).toHaveBeenCalled();
+  });
+
+  it('Should click clean icon', () => {
+    const handleClickCleanIcon = jest.fn();
+    render(
+      <DatePickerInputBase
+        value={new Date()}
+        onClickCleanIcon={handleClickCleanIcon}
+      >
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    const datePickerInputBaseCleanIconElement = screen.getByTestId(
+      'date-picker-input-base-clean-icon'
+    );
+
+    fireEvent.click(datePickerInputBaseCleanIconElement);
+    expect(handleClickCleanIcon).toHaveBeenCalled();
+  });
+
+  it('Should show clean icon when value exists', () => {
+    render(
+      <DatePickerInputBase value={new Date()}>
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    const datePickerInputBaseCalendarIconElement = screen.getByTestId(
+      'date-picker-input-base-clean-icon'
     );
 
     fireEvent.click(datePickerInputBaseCalendarIconElement);
@@ -87,7 +122,7 @@ describe('DatePickerInputBase', () => {
     );
 
     const datePickerInputBaseCalendarIconElement = screen.getByTestId(
-      'date-picker-input-base-calendar'
+      'date-picker-input-base-calendar-icon'
     );
 
     expect(datePickerInputBaseCalendarIconElement).toHaveClass(

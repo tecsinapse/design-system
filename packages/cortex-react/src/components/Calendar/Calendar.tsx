@@ -5,7 +5,7 @@ import { CalendarHeader } from './CalendarHeader';
 
 interface CalendarProps {
   value?: Date;
-  onChange: (value: Date) => void;
+  onChange: (value?: Date) => void;
 }
 
 /** Calendar component */

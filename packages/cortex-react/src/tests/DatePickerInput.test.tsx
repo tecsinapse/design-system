@@ -1,9 +1,9 @@
-import { CalendarDate } from '@internationalized/date';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { DatePickerInput, DatePickerInputProps } from '../components';
 import { useDatePickerInput } from '../hooks';
+import { dateToCalendarDate } from '../utils';
 
 jest.mock('../hooks/useDatePickerInput', () => ({
   useDatePickerInput: jest.fn(),
@@ -12,7 +12,7 @@ jest.mock('../hooks/useDatePickerInput', () => ({
 describe('DatePickerInput', () => {
   const mockOnChange = jest.fn();
   const defaultProps: DatePickerInputProps = {
-    value: new Date('2024-06-15'),
+    value: undefined,
     onChange: mockOnChange,
     label: 'Select Date',
     variants: { intent: 'default' },
@@ -46,7 +46,7 @@ describe('DatePickerInput', () => {
   it('Should open and close calendar on icon click', () => {
     render(<DatePickerInput {...defaultProps} />);
 
-    const button = screen.getByTestId('date-picker-input-base-calendar');
+    const button = screen.getByTestId('date-picker-input-base-calendar-icon');
 
     fireEvent.click(button);
 
@@ -61,13 +61,13 @@ describe('DatePickerInput', () => {
   it('Should call onChange and close calendar when date is selected', async () => {
     render(<DatePickerInput {...defaultProps} />);
 
-    const button = screen.getByTestId('date-picker-input-base-calendar');
+    const button = screen.getByTestId('date-picker-input-base-calendar-icon');
     fireEvent.click(button);
 
     const calendarElement = await screen.findByTestId('calendar-div');
     expect(calendarElement).toBeInTheDocument();
 
-    const newDate = new CalendarDate(2024, 6, 16);
+    const newDate = dateToCalendarDate(new Date());
     const expectedDateText = newDate.day.toString();
 
     const calendarCell = screen.getByText(expectedDateText);
@@ -76,7 +76,7 @@ describe('DatePickerInput', () => {
     fireEvent.click(calendarCell);
 
     expect(mockUseDatePickerInput.state.setDateValue).toHaveBeenCalledWith(
-      new CalendarDate(2024, 6, 16)
+      newDate
     );
 
     expect(await screen.queryByTestId('calendar-div')).not.toBeInTheDocument();

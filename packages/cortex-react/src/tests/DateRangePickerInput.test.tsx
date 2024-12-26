@@ -12,7 +12,7 @@ jest.mock('../hooks/useDateRangePickerInput', () => ({
 describe('DateRangePickerInput', () => {
   const mockOnChange = jest.fn();
   const defaultProps: DateRangePickerInputProps = {
-    value: { start: new Date(2024, 6, 3), end: new Date(2024, 6, 3) },
+    value: undefined,
     onChange: mockOnChange,
     label: 'Select Date',
     variants: { intent: 'default' },
@@ -48,7 +48,7 @@ describe('DateRangePickerInput', () => {
   it('Should open and close calendar on icon click', () => {
     render(<DateRangePickerInput {...defaultProps} />);
 
-    const button = screen.getByTestId('date-picker-input-base-calendar');
+    const button = screen.getByTestId('date-picker-input-base-calendar-icon');
 
     fireEvent.click(button);
 
@@ -63,17 +63,31 @@ describe('DateRangePickerInput', () => {
   it('Should call onChange and close calendar when date is selected', async () => {
     render(<DateRangePickerInput {...defaultProps} />);
 
-    const button = screen.getByTestId('date-picker-input-base-calendar');
+    const button = screen.getByTestId('date-picker-input-base-calendar-icon');
     fireEvent.click(button);
 
     const calendarElement = await screen.findByTestId('calendar-range-div');
     expect(calendarElement).toBeInTheDocument();
 
-    const newStartDate = new CalendarDate(2024, 7, 16);
-    const newEndDate = new CalendarDate(2024, 7, 18);
+    const today = new Date();
 
-    const calendarCellStartDate = screen.getByText(newStartDate.day.toString());
-    const calendarCellEndDate = screen.getByText(newEndDate.day.toString());
+    const calendarStartDate = new CalendarDate(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      14
+    );
+    const calendarEndDate = new CalendarDate(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      16
+    );
+
+    const calendarCellStartDate = screen.getByText(
+      calendarStartDate.day.toString()
+    );
+    const calendarCellEndDate = screen.getByText(
+      calendarEndDate.day.toString()
+    );
 
     expect(calendarCellStartDate).toBeInTheDocument();
     expect(calendarCellEndDate).toBeInTheDocument();
@@ -83,8 +97,8 @@ describe('DateRangePickerInput', () => {
 
     expect(mockUseDateRangePickerInput.state.setDateRange).toHaveBeenCalledWith(
       {
-        start: newStartDate,
-        end: newEndDate,
+        start: calendarStartDate,
+        end: calendarEndDate,
       }
     );
 

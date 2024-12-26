@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { DatePickerInput, DateRangePickerInput } from '../src';
+import { DatePickerInput, DateRange, DateRangePickerInput } from '../src';
 
 export default {
   title: 'Cortex/DatePickerInput',
@@ -10,7 +10,7 @@ export default {
 
 export const Default: StoryObj<typeof DatePickerInput> = {
   render: () => {
-    const [value, setValue] = useState(new Date());
+    const [value, setValue] = useState<Date | undefined>(new Date());
 
     return (
       <div className={'w-[200px] h-[450px]'}>
@@ -24,12 +24,13 @@ export const Default: StoryObj<typeof DatePickerInput> = {
   },
 };
 
+const start = new Date();
+const end = new Date();
+end.setDate(end.getDate() + 2);
+
 export const Range: StoryObj<typeof DateRangePickerInput> = {
   render: () => {
-    const start = new Date();
-    const end = new Date();
-    end.setDate(end.getDate() + 2);
-    const [value, setValue] = useState({ start, end });
+    const [value, setValue] = useState<DateRange | undefined>({ start, end });
 
     return (
       <div className={'w-[250px] h-[450px]'}>
