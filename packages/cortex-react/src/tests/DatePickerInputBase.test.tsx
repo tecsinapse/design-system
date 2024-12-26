@@ -123,7 +123,7 @@ describe('DatePickerInputBase', () => {
     );
 
     expect(datePickerInputBaseCalendarIconElement).toHaveClass(
-      'mt-centi cursor-pointer'
+      'cursor-pointer'
     );
 
     rerender(
@@ -133,7 +133,7 @@ describe('DatePickerInputBase', () => {
     );
 
     expect(datePickerInputBaseCalendarIconElement).toHaveClass(
-      'mt-centi text-secondary-light cursor-default'
+      'text-secondary-light cursor-default'
     );
   });
 
@@ -148,9 +148,7 @@ describe('DatePickerInputBase', () => {
       'date-picker-input-base-clean-icon'
     );
 
-    expect(datePickerInputBaseCleanIconElement).toHaveClass(
-      'mt-centi cursor-pointer'
-    );
+    expect(datePickerInputBaseCleanIconElement).toHaveClass('cursor-pointer');
 
     rerender(
       <DatePickerInputBase value={new Date()} disabled>
@@ -159,7 +157,7 @@ describe('DatePickerInputBase', () => {
     );
 
     expect(datePickerInputBaseCleanIconElement).toHaveClass(
-      'mt-centi text-secondary-light cursor-default'
+      'text-secondary-light cursor-default'
     );
   });
 

@@ -43,7 +43,7 @@ export const DatePickerInputBase = ({
       <div className={inputBox('', label, 'w-full flex flex-row')}>
         {children}
       </div>
-      <Input.Right className={''}>
+      <Input.Right className={'mt-centi'}>
         {showCloseIcon ? (
           <button
             onClick={onClean}
