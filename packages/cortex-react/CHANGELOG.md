@@ -7,8 +7,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* disabled on datepickerinput icons + tests. ([a40736a](https://github.com/tecsinapse/design-system/commit/a40736ac142e263dfabfcfcba99b825d37a41004))
-* remove double onToggle ([6e236d5](https://github.com/tecsinapse/design-system/commit/6e236d5018dd49642c018072c10f06f86f48c882))
+- disabled on datepickerinput icons + tests. ([a40736a](https://github.com/tecsinapse/design-system/commit/a40736ac142e263dfabfcfcba99b825d37a41004))
+- remove double onToggle ([6e236d5](https://github.com/tecsinapse/design-system/commit/6e236d5018dd49642c018072c10f06f86f48c882))
+
+## [1.9.12](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.12-beta.0...@tecsinapse/cortex-react@1.9.12) (2024-12-18)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
 
 ## [1.9.12-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.11...@tecsinapse/cortex-react@1.9.12-beta.0) (2024-12-18)
 
