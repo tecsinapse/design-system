@@ -6,7 +6,7 @@ import { calendarDateToDate, dateToCalendarDate } from '../utils';
 
 interface useDateRangePickerInputProps {
   value?: DateRange;
-  onChange: (date: DateRange) => void;
+  onChange: (date?: DateRange) => void;
 }
 
 export const useDateRangePickerInput = ({
@@ -14,14 +14,16 @@ export const useDateRangePickerInput = ({
   onChange,
 }: useDateRangePickerInputProps) => {
   const state = useDateRangePickerState({
-    defaultValue: {
-      start: dateToCalendarDate(value?.start),
-      end: dateToCalendarDate(value?.end),
-    },
+    defaultValue: value
+      ? {
+          start: dateToCalendarDate(value?.start),
+          end: dateToCalendarDate(value?.end),
+        }
+      : null,
     onChange: value => {
       onChange({
-        start: calendarDateToDate(value.start),
-        end: calendarDateToDate(value.end),
+        start: value ? calendarDateToDate(value.start) : undefined,
+        end: value ? calendarDateToDate(value.end) : undefined,
       });
     },
   });

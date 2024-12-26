@@ -11,5 +11,6 @@ export const dateToCalendarDate = (value?: Date) => {
 };
 
 export const calendarDateToDate = (value: CalendarDate) => {
+  if (!value) return undefined;
   return value.toDate(getLocalTimeZone());
 };

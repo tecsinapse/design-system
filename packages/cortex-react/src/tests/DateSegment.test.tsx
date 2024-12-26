@@ -15,23 +15,25 @@ jest.mock('react-aria', () => ({
 
 const mockUseDateSegmentAria = jest.mocked(useDateSegment);
 
+const segment: DateSegmentType = {
+  type: 'hour',
+  text: '03',
+  placeholder: '',
+  isPlaceholder: false,
+  isEditable: false,
+};
+
 describe('DateSegment Component', () => {
-  it('renders the DateSegment component', () => {
+  beforeEach(() => {
     mockUseDateSegmentAria.mockReturnValue({
       segmentProps: {
         'aria-label': 'Mocked segment',
         tabIndex: -1,
       },
     });
+  });
 
-    const segment: DateSegmentType = {
-      type: 'hour',
-      text: '03',
-      placeholder: '',
-      isPlaceholder: false,
-      isEditable: false,
-    };
-
+  it('Should render the DateSegment component', () => {
     const { result } = renderHook(() =>
       useTimeFieldState({
         value: new Time(3, 26),
@@ -46,6 +48,26 @@ describe('DateSegment Component', () => {
     expect(dateSegmentElement).toBeInTheDocument();
     expect(dateSegmentElement).toHaveClass(
       'focus:outline-none focus:bg-secondary-light'
+    );
+    expect(dateSegmentElement).toHaveAttribute('aria-label', 'Mocked segment');
+  });
+
+  it('Should show correct style when state is disabled', () => {
+    const { result } = renderHook(() =>
+      useTimeFieldState({
+        value: new Time(3, 26),
+        onChange: jest.fn(),
+        locale: 'pt-BR',
+        isDisabled: true,
+      })
+    );
+
+    render(<DateSegment segment={segment} state={result.current} />);
+    const dateSegmentElement = screen.getByText('03');
+
+    expect(dateSegmentElement).toBeInTheDocument();
+    expect(dateSegmentElement).toHaveClass(
+      'focus:outline-none focus:bg-secondary-light text-secondary-light'
     );
     expect(dateSegmentElement).toHaveAttribute('aria-label', 'Mocked segment');
   });

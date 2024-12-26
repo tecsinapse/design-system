@@ -5,7 +5,7 @@ import { calendarDateToDate, dateToCalendarDate } from '../utils';
 
 interface useCalendarProps {
   value?: Date;
-  onChange: (value: Date) => void;
+  onChange: (value?: Date) => void;
 }
 
 export const useCalendar = ({ value, onChange }: useCalendarProps) => {
@@ -13,7 +13,7 @@ export const useCalendar = ({ value, onChange }: useCalendarProps) => {
   const state = useCalendarState({
     locale,
     createCalendar,
-    defaultValue: dateToCalendarDate(value),
+    defaultValue: value ? dateToCalendarDate(value) : null,
     onChange: value => onChange(calendarDateToDate(value)),
   });
 
