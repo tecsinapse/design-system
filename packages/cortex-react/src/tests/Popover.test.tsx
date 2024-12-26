@@ -266,4 +266,50 @@ describe('Popover', () => {
     fireEvent.click(popover);
     expect(setIsOpen).toHaveBeenCalled();
   });
+
+  it('Should not show content on hover when trigger disabled', async () => {
+    render(
+      <Popover.Root trigger="hover" placement="bottom">
+        <Popover.Trigger disabled>
+          <button data-testid="trigger">Trigger</button>
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="popover-content">Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const trigger = screen.getByTestId('trigger');
+
+    userEvent.hover(trigger);
+    const popover = await screen.queryByTestId('popover-content');
+    expect(popover).not.toBeInTheDocument();
+
+    userEvent.unhover(trigger);
+    expect(
+      await screen.queryByTestId('popover-content')
+    ).not.toBeInTheDocument();
+  });
+
+  it('Should not show content on click when trigger disabled', async () => {
+    render(
+      <Popover.Root trigger="click" placement="bottom">
+        <Popover.Trigger disabled>
+          <button data-testid="trigger">Trigger</button>
+        </Popover.Trigger>
+        <Popover.Content>
+          <div data-testid="popover-content">Popover Content</div>
+        </Popover.Content>
+      </Popover.Root>
+    );
+
+    const trigger = screen.getByTestId('trigger');
+
+    fireEvent.click(trigger);
+    const popover = await screen.queryByTestId('popover-content');
+    expect(popover).not.toBeInTheDocument();
+
+    fireEvent.click(trigger);
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
+  });
 });
