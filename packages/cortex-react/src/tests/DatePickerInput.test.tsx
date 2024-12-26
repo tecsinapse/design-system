@@ -46,7 +46,7 @@ describe('DatePickerInput', () => {
   it('Should open and close calendar on icon click', () => {
     render(<DatePickerInput {...defaultProps} />);
 
-    const button = screen.getByTestId('date-picker-input-base-calendar-icon');
+    const button = screen.getByTestId('date-picker-input-base-calendar-button');
 
     fireEvent.click(button);
 
@@ -61,7 +61,7 @@ describe('DatePickerInput', () => {
   it('Should call onChange and close calendar when date is selected', async () => {
     render(<DatePickerInput {...defaultProps} />);
 
-    const button = screen.getByTestId('date-picker-input-base-calendar-icon');
+    const button = screen.getByTestId('date-picker-input-base-calendar-button');
     fireEvent.click(button);
 
     const calendarElement = await screen.findByTestId('calendar-div');

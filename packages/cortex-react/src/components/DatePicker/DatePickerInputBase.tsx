@@ -49,17 +49,28 @@ export const DatePickerInputBase = ({
       </div>
       <Input.Right className={''}>
         {showCloseIcon ? (
-          <IoMdClose
-            className={iconStyle}
+          <button
             onClick={onClickCleanIcon}
-            data-testid="date-picker-input-base-clean-icon"
-          />
+            disabled={disabled}
+            data-testid="date-picker-input-base-clean-button"
+          >
+            <IoMdClose
+              className={iconStyle}
+              data-testid="date-picker-input-base-clean-icon"
+            />
+          </button>
         ) : (
-          <LiaCalendar
+          <button
             onClick={onClickCalendarIcon}
-            className={iconStyle}
-            data-testid="date-picker-input-base-calendar-icon"
-          />
+            disabled={disabled}
+            data-testid="date-picker-input-base-calendar-button"
+          >
+            <LiaCalendar
+              onClick={onClickCalendarIcon}
+              className={iconStyle}
+              data-testid="date-picker-input-base-calendar-icon"
+            />
+          </button>
         )}
       </Input.Right>
     </Input.Face>

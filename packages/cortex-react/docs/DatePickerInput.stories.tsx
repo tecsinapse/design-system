@@ -9,7 +9,11 @@ export default {
 } as Meta<typeof DatePickerInput>;
 
 export const Default: StoryObj<typeof DatePickerInput> = {
-  render: () => {
+  args: {
+    label: 'Select Date',
+    disabled: false,
+  },
+  render: args => {
     const [value, setValue] = useState<Date | undefined>(new Date());
 
     return (
@@ -17,7 +21,8 @@ export const Default: StoryObj<typeof DatePickerInput> = {
         <DatePickerInput
           value={value}
           onChange={value => setValue(value)}
-          label="Select date"
+          label={args.label}
+          disabled={args.disabled}
         />
       </div>
     );
@@ -29,7 +34,11 @@ const end = new Date();
 end.setDate(end.getDate() + 2);
 
 export const Range: StoryObj<typeof DateRangePickerInput> = {
-  render: () => {
+  args: {
+    label: 'Select date range',
+    disabled: false,
+  },
+  render: args => {
     const [value, setValue] = useState<DateRange | undefined>({ start, end });
 
     return (
@@ -37,7 +46,8 @@ export const Range: StoryObj<typeof DateRangePickerInput> = {
         <DateRangePickerInput
           value={value}
           onChange={value => setValue(value)}
-          label="Select date range"
+          label={args.label}
+          disabled={args.disabled}
         />
       </div>
     );

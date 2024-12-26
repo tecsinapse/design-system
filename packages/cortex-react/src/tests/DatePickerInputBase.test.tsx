@@ -65,7 +65,7 @@ describe('DatePickerInputBase', () => {
     expect(datePickerInputBaseElement).toHaveClass('border-warning-medium');
   });
 
-  it('Should click calendar icon', () => {
+  it('Should click calendar button', () => {
     const handleClickCalendarIcon = jest.fn();
     render(
       <DatePickerInputBase onClickCalendarIcon={handleClickCalendarIcon}>
@@ -73,15 +73,15 @@ describe('DatePickerInputBase', () => {
       </DatePickerInputBase>
     );
 
-    const datePickerInputBaseCalendarIconElement = screen.getByTestId(
-      'date-picker-input-base-calendar-icon'
+    const datePickerInputBaseCalendarButtonElement = screen.getByTestId(
+      'date-picker-input-base-calendar-button'
     );
 
-    fireEvent.click(datePickerInputBaseCalendarIconElement);
+    fireEvent.click(datePickerInputBaseCalendarButtonElement);
     expect(handleClickCalendarIcon).toHaveBeenCalled();
   });
 
-  it('Should click clean icon', () => {
+  it('Should click clean button', () => {
     const handleClickCleanIcon = jest.fn();
     render(
       <DatePickerInputBase
@@ -92,11 +92,11 @@ describe('DatePickerInputBase', () => {
       </DatePickerInputBase>
     );
 
-    const datePickerInputBaseCleanIconElement = screen.getByTestId(
-      'date-picker-input-base-clean-icon'
+    const datePickerInputBaseCleanButtonElement = screen.getByTestId(
+      'date-picker-input-base-clean-button'
     );
 
-    fireEvent.click(datePickerInputBaseCleanIconElement);
+    fireEvent.click(datePickerInputBaseCleanButtonElement);
     expect(handleClickCleanIcon).toHaveBeenCalled();
   });
 
@@ -111,7 +111,7 @@ describe('DatePickerInputBase', () => {
       'date-picker-input-base-clean-icon'
     );
 
-    fireEvent.click(datePickerInputBaseCalendarIconElement);
+    expect(datePickerInputBaseCalendarIconElement).toBeInTheDocument();
   });
 
   it('Should show calendar icon correct style', () => {
@@ -138,5 +138,70 @@ describe('DatePickerInputBase', () => {
     expect(datePickerInputBaseCalendarIconElement).toHaveClass(
       'mt-centi text-secondary-light'
     );
+  });
+
+  it('Should show clean icon correct style', () => {
+    const { rerender } = render(
+      <DatePickerInputBase value={new Date()}>
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    const datePickerInputBaseCleanIconElement = screen.getByTestId(
+      'date-picker-input-base-clean-icon'
+    );
+
+    expect(datePickerInputBaseCleanIconElement).toHaveClass(
+      'mt-centi cursor-pointer'
+    );
+
+    rerender(
+      <DatePickerInputBase value={new Date()} disabled>
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    expect(datePickerInputBaseCleanIconElement).toHaveClass(
+      'mt-centi text-secondary-light'
+    );
+  });
+
+  it('Should not call clean function on clean button click when disabled', () => {
+    const handleClickCleanIcon = jest.fn();
+    render(
+      <DatePickerInputBase
+        value={new Date()}
+        onClickCleanIcon={handleClickCleanIcon}
+        disabled
+      >
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    const datePickerInputBaseCleanButtonElement = screen.getByTestId(
+      'date-picker-input-base-clean-button'
+    );
+
+    fireEvent.click(datePickerInputBaseCleanButtonElement);
+    expect(handleClickCleanIcon).not.toHaveBeenCalled();
+  });
+
+  it('Should not call calendar function on calendar button click when disabled', () => {
+    const handleClickCalendarIcon = jest.fn();
+    render(
+      <DatePickerInputBase
+        onClickCalendarIcon={handleClickCalendarIcon}
+        disabled
+      >
+        <span>placeholder</span>
+      </DatePickerInputBase>
+    );
+
+    const datePickerInputBaseCleanButtonElement = screen.getByTestId(
+      'date-picker-input-base-calendar-button'
+    );
+
+    fireEvent.click(datePickerInputBaseCleanButtonElement);
+    expect(handleClickCalendarIcon).not.toHaveBeenCalled();
   });
 });
