@@ -1,8 +1,8 @@
 import { inputBox, labelStyle } from '@tecsinapse/cortex-core';
-import clsx from 'clsx';
 import React, { useMemo } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { LiaCalendar } from 'react-icons/lia';
+import { datePickerInputBase } from '../../styles';
 import { DateRange } from '../Calendar';
 import { Input, InputProps } from '../Input';
 
@@ -11,26 +11,22 @@ interface DatePickerInputBaseProps
   /** child element */
   children: React.ReactElement;
   value?: Date | DateRange;
-  onClickCleanIcon?: () => void;
-  onClickCalendarIcon?: () => void;
+  onClean?: () => void;
+  onToggle?: () => void;
   disabled?: boolean;
 }
+
+const { icon } = datePickerInputBase();
 
 export const DatePickerInputBase = ({
   children,
   variants,
   label,
-  disabled,
+  disabled = false,
   value,
-  onClickCleanIcon,
-  onClickCalendarIcon,
+  onClean,
+  onToggle,
 }: DatePickerInputBaseProps) => {
-  const iconStyle = useMemo(
-    () =>
-      clsx('mt-centi', !disabled ? 'cursor-pointer' : 'text-secondary-light'),
-    [disabled]
-  );
-
   const showCloseIcon = useMemo(() => {
     const hasDate = (value as Date) != undefined;
     const hasStartDate = (value as DateRange)?.start != undefined;
@@ -50,24 +46,24 @@ export const DatePickerInputBase = ({
       <Input.Right className={''}>
         {showCloseIcon ? (
           <button
-            onClick={onClickCleanIcon}
+            onClick={onClean}
             disabled={disabled}
             data-testid="date-picker-input-base-clean-button"
           >
             <IoMdClose
-              className={iconStyle}
+              className={icon({ disabled })}
               data-testid="date-picker-input-base-clean-icon"
             />
           </button>
         ) : (
           <button
-            onClick={onClickCalendarIcon}
+            onClick={onToggle}
             disabled={disabled}
             data-testid="date-picker-input-base-calendar-button"
           >
             <LiaCalendar
-              onClick={onClickCalendarIcon}
-              className={iconStyle}
+              onClick={onToggle}
+              className={icon({ disabled })}
               data-testid="date-picker-input-base-calendar-icon"
             />
           </button>

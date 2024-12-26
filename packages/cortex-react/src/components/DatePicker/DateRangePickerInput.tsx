@@ -32,8 +32,8 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
           label={label}
           disabled={disabled}
           value={value}
-          onClickCleanIcon={() => state.setValue(null)}
-          onClickCalendarIcon={() => setIsOpen(open => !open)}
+          onClean={() => state.setValue(null)}
+          onToggle={() => setIsOpen(open => !open)}
         >
           <div className="flex flex-row gap-x-micro items-center">
             <DateField {...startFieldProps} isDisabled={disabled} />

@@ -1,12 +1,14 @@
-import clsx from 'clsx';
 import React from 'react';
 import { useDateSegment } from 'react-aria';
 import { DateFieldState, DateSegment as DateSegmentType } from 'react-stately';
+import { dateSegment } from '../../styles';
 
 interface DateSegmentProps {
   segment: DateSegmentType;
   state: DateFieldState;
 }
+
+const { base } = dateSegment();
 
 export const DateSegment = ({ segment, state }: DateSegmentProps) => {
   const ref = React.useRef(null);
@@ -16,10 +18,7 @@ export const DateSegment = ({ segment, state }: DateSegmentProps) => {
     <div
       {...segmentProps}
       ref={ref}
-      className={clsx(
-        'focus:outline-none focus:bg-secondary-light',
-        state.isDisabled ? 'text-secondary-light' : ''
-      )}
+      className={base({ disabled: state.isDisabled })}
     >
       {segment.text}
     </div>

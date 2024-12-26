@@ -31,8 +31,8 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
           label={label}
           disabled={disabled}
           value={value}
-          onClickCleanIcon={() => state.setValue(null)}
-          onClickCalendarIcon={() => setIsOpen(open => !open)}
+          onClean={() => state.setValue(null)}
+          onToggle={() => setIsOpen(open => !open)}
         >
           <div>
             <DateField {...fieldProps} isDisabled={disabled} />

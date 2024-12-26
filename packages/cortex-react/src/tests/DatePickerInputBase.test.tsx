@@ -68,7 +68,7 @@ describe('DatePickerInputBase', () => {
   it('Should click calendar button', () => {
     const handleClickCalendarIcon = jest.fn();
     render(
-      <DatePickerInputBase onClickCalendarIcon={handleClickCalendarIcon}>
+      <DatePickerInputBase onToggle={handleClickCalendarIcon}>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
@@ -84,10 +84,7 @@ describe('DatePickerInputBase', () => {
   it('Should click clean button', () => {
     const handleClickCleanIcon = jest.fn();
     render(
-      <DatePickerInputBase
-        value={new Date()}
-        onClickCleanIcon={handleClickCleanIcon}
-      >
+      <DatePickerInputBase value={new Date()} onClean={handleClickCleanIcon}>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
@@ -136,7 +133,7 @@ describe('DatePickerInputBase', () => {
     );
 
     expect(datePickerInputBaseCalendarIconElement).toHaveClass(
-      'mt-centi text-secondary-light'
+      'mt-centi text-secondary-light cursor-default'
     );
   });
 
@@ -162,7 +159,7 @@ describe('DatePickerInputBase', () => {
     );
 
     expect(datePickerInputBaseCleanIconElement).toHaveClass(
-      'mt-centi text-secondary-light'
+      'mt-centi text-secondary-light cursor-default'
     );
   });
 
@@ -171,7 +168,7 @@ describe('DatePickerInputBase', () => {
     render(
       <DatePickerInputBase
         value={new Date()}
-        onClickCleanIcon={handleClickCleanIcon}
+        onClean={handleClickCleanIcon}
         disabled
       >
         <span>placeholder</span>
@@ -189,10 +186,7 @@ describe('DatePickerInputBase', () => {
   it('Should not call calendar function on calendar button click when disabled', () => {
     const handleClickCalendarIcon = jest.fn();
     render(
-      <DatePickerInputBase
-        onClickCalendarIcon={handleClickCalendarIcon}
-        disabled
-      >
+      <DatePickerInputBase onToggle={handleClickCalendarIcon} disabled>
         <span>placeholder</span>
       </DatePickerInputBase>
     );
