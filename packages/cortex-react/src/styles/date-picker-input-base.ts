@@ -2,7 +2,7 @@ import { tv } from 'tailwind-variants';
 
 export const datePickerInputBase = tv({
   slots: {
-    icon: 'cursor-pointer',
+    icon: 'cursor-pointer text-deca',
   },
   variants: {
     disabled: {

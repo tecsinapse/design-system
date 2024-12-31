@@ -34,9 +34,7 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
           onClean={() => state.setValue(null)}
           onToggle={() => setIsOpen(open => !open)}
         >
-          <div>
-            <DateField {...fieldProps} isDisabled={disabled} />
-          </div>
+          <DateField {...fieldProps} isDisabled={disabled} />
         </DatePickerInputBase>
       </Popover.Trigger>
       <Popover.Content className="bg-inherit shadow-none border-none">
