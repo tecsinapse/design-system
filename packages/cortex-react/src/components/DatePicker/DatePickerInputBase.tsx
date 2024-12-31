@@ -39,11 +39,11 @@ export const DatePickerInputBase = ({
 
   return (
     <Input.Face variants={variants} data-testid={'date-picker-input-base'}>
-      <span className={labelStyle({})}>{label}</span>
+      <label className={labelStyle({})}>{label}</label>
       <div className={inputBox('', label, 'w-full flex flex-row')}>
         {children}
       </div>
-      <Input.Right className={'mt-centi'}>
+      <Input.Right className="flex h-full justify-center">
         {showCloseIcon ? (
           <button
             onClick={onClean}
