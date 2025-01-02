@@ -9,9 +9,11 @@ import {
 import { useDateFieldState } from 'react-stately';
 import { DateSegment } from './DateSegment';
 
-interface DateFieldProps extends AriaDateFieldProps<DateValue> {}
+interface DateFieldProps extends AriaDateFieldProps<DateValue> {
+  onClick?: () => void;
+}
 
-export const DateField = (props: DateFieldProps) => {
+export const DateField = ({ onClick, ...props }: DateFieldProps) => {
   const { locale } = useLocale();
   const state = useDateFieldState({
     ...props,
@@ -27,7 +29,13 @@ export const DateField = (props: DateFieldProps) => {
   );
 
   return (
-    <div {...fieldProps} ref={ref} className={'flex flex-row'}>
+    <div
+      {...fieldProps}
+      ref={ref}
+      className={'flex flex-row'}
+      onClick={onClick}
+      data-testid={'date-field-div'}
+    >
       {state.segments.map((segment, i) => (
         <DateSegment key={i} segment={segment} state={state} />
       ))}

@@ -1,10 +1,9 @@
 import React from 'react';
-import { useDatePickerInput } from '../../hooks';
+import { useDatePickerInput, useDatePickerInputCommon } from '../../hooks';
 import { dateToCalendarDate } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { InputProps } from '../Input';
 import { Popover } from '../Popover';
-import { usePopoverContext } from '../Popover/Context';
 import { Content } from '../Select/Content';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
@@ -16,9 +15,14 @@ export interface DatePickerInputProps
 }
 
 const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
-  const { setIsOpen } = usePopoverContext();
   const { onChange, value, label, variants, disabled } = props;
   const { fieldProps, state, ref } = useDatePickerInput({ value, onChange });
+  const { handleTogglePopover, handleChangeCalendar } =
+    useDatePickerInputCommon({
+      onChangeCalendar: (value?: Date) => {
+        state.setDateValue(dateToCalendarDate(value));
+      },
+    });
 
   return (
     <div ref={ref} data-testid="date-picker-input">
@@ -32,19 +36,20 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
           disabled={disabled}
           value={value}
           onClean={() => state.setValue(null)}
-          onToggle={() => setIsOpen(open => !open)}
+          onToggle={handleTogglePopover}
         >
-          <DateField {...fieldProps} isDisabled={disabled} />
+          <DateField
+            {...fieldProps}
+            isDisabled={disabled}
+            onClick={handleTogglePopover}
+          />
         </DatePickerInputBase>
       </Popover.Trigger>
-      <Popover.Content className="bg-inherit shadow-none border-none">
-        <Calendar
-          value={value}
-          onChange={value => {
-            setIsOpen(false);
-            state.setDateValue(dateToCalendarDate(value));
-          }}
-        />
+      <Popover.Content
+        className="bg-inherit shadow-none border-none"
+        initialFocus={-1}
+      >
+        <Calendar value={value} onChange={handleChangeCalendar} />
       </Popover.Content>
     </div>
   );

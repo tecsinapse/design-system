@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import { useDateSegment } from 'react-aria';
 import { DateFieldState, DateSegment as DateSegmentType } from 'react-stately';
 import { dateSegment } from '../../styles';
 
-interface DateSegmentProps {
+interface DateSegmentProps extends HTMLAttributes<HTMLDivElement> {
   segment: DateSegmentType;
   state: DateFieldState;
 }
