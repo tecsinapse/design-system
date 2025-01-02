@@ -17,7 +17,7 @@ export interface DatePickerInputProps
 const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
   const { onChange, value, label, variants, disabled } = props;
   const { fieldProps, state, ref } = useDatePickerInput({ value, onChange });
-  const { handleTogglePopover, handleChangeCalendar } =
+  const { handleTogglePopover, handleChangeCalendar, handleCloseCalendar } =
     useDatePickerInputCommon({
       onChangeCalendar: (value?: Date) => {
         state.setDateValue(dateToCalendarDate(value));
@@ -40,6 +40,10 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
         >
           <DateField
             {...fieldProps}
+            onChange={value => {
+              fieldProps.onChange?.(value);
+              handleCloseCalendar();
+            }}
             isDisabled={disabled}
             onClick={handleTogglePopover}
           />

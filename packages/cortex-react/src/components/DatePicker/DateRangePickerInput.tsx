@@ -18,7 +18,7 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
   const { onChange, value, label, variants, disabled = false } = props;
   const { endFieldProps, startFieldProps, ref, state } =
     useDateRangePickerInput({ value, onChange });
-  const { handleTogglePopover, handleChangeCalendar } =
+  const { handleTogglePopover, handleChangeCalendar, handleCloseCalendar } =
     useDatePickerInputCommon({
       onChangeRangeCalendar: value => {
         state.setDateRange({
@@ -45,12 +45,20 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
           <div className="flex flex-row gap-x-micro items-center">
             <DateField
               {...startFieldProps}
+              onChange={value => {
+                startFieldProps.onChange?.(value);
+                handleCloseCalendar();
+              }}
               isDisabled={disabled}
               onClick={handleTogglePopover}
             />
             <span>-</span>
             <DateField
               {...endFieldProps}
+              onChange={value => {
+                endFieldProps.onChange?.(value);
+                handleCloseCalendar();
+              }}
               isDisabled={disabled}
               onClick={handleTogglePopover}
             />

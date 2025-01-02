@@ -23,8 +23,13 @@ export const useDatePickerInputCommon = ({
     onChangeRangeCalendar?.(value as DateRange);
   }, []);
 
+  const handleCloseCalendar = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   return {
     handleTogglePopover,
     handleChangeCalendar,
+    handleCloseCalendar,
   };
 };
