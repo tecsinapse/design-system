@@ -15,7 +15,7 @@ describe('DateField', () => {
   const mockOnChange = jest.fn();
   const value: DateValue = new CalendarDate(2024, 6, 4);
 
-  it('renders DateField component', () => {
+  it('Should render DateField component', () => {
     render(<DateField value={value} onChange={mockOnChange} />);
 
     expect(screen.getByText('2024')).toBeInTheDocument();
@@ -54,5 +54,17 @@ describe('DateField', () => {
       month: newMonth,
       day: newDay,
     });
+  });
+
+  it('Should call onClick if passed', () => {
+    const onClickMock = jest.fn();
+
+    render(<DateField onClick={onClickMock} />);
+
+    const dateFieldDiv = screen.getByTestId('date-field-div');
+
+    fireEvent.click(dateFieldDiv);
+
+    expect(onClickMock).toHaveBeenCalled();
   });
 });

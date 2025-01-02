@@ -67,7 +67,9 @@ describe('DatePickerInput', () => {
     const calendarElement = await screen.findByTestId('calendar-div');
     expect(calendarElement).toBeInTheDocument();
 
-    const newDate = dateToCalendarDate(new Date());
+    const today = new Date();
+    today.setDate(15);
+    const newDate = dateToCalendarDate(today);
     const expectedDateText = newDate.day.toString();
 
     const calendarCell = screen.getByText(expectedDateText);

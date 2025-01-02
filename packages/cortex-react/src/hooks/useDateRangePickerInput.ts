@@ -36,5 +36,10 @@ export const useDateRangePickerInput = ({
     ref
   );
 
-  return { startFieldProps, endFieldProps, state, ref };
+  return {
+    startFieldProps,
+    endFieldProps,
+    state,
+    ref,
+  };
 };
