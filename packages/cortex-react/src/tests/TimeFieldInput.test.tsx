@@ -1,35 +1,33 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { Time } from '@internationalized/date';
 import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+import React from 'react';
 import { TimeFieldInput } from '../components';
 
 describe('TimeFieldInput', () => {
   it('Should render correctly', () => {
-    render(
-      <TimeFieldInput onChange={jest.fn} value={{ minute: 10, hour: 5 }} />
-    );
+    const value: Time = new Time(5, 10);
+    render(<TimeFieldInput onChange={jest.fn} value={value} />);
     const timeFieldInput = screen.getByTestId('time-field-input');
     expect(timeFieldInput).toBeInTheDocument();
   });
 
   it('Should render label', () => {
     const labelExample = 'Lorem Ipsum';
+    const value: Time = new Time(5, 10);
     render(
-      <TimeFieldInput
-        onChange={jest.fn}
-        value={{ minute: 10, hour: 5 }}
-        label={labelExample}
-      />
+      <TimeFieldInput onChange={jest.fn} value={value} label={labelExample} />
     );
     const timeFieldInput = screen.getByText(labelExample);
     expect(timeFieldInput).toBeInTheDocument();
   });
 
   it('Should render variant error', () => {
+    const value: Time = new Time(5, 10);
     render(
       <TimeFieldInput
         onChange={jest.fn}
-        value={{ minute: 10, hour: 5 }}
+        value={value}
         variants={{ intent: 'error' }}
       />
     );
@@ -38,10 +36,11 @@ describe('TimeFieldInput', () => {
   });
 
   it('Should render variant sucess', () => {
+    const value: Time = new Time(5, 10);
     render(
       <TimeFieldInput
         onChange={jest.fn}
-        value={{ minute: 10, hour: 5 }}
+        value={value}
         variants={{ intent: 'success' }}
       />
     );
@@ -50,10 +49,11 @@ describe('TimeFieldInput', () => {
   });
 
   it('Should render variant warning', () => {
+    const value: Time = new Time(5, 10);
     render(
       <TimeFieldInput
         onChange={jest.fn}
-        value={{ minute: 10, hour: 5 }}
+        value={value}
         variants={{ intent: 'warning' }}
       />
     );

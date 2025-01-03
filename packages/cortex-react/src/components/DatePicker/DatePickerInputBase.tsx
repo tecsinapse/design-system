@@ -49,6 +49,7 @@ export const DatePickerInputBase = ({
             onClick={onClean}
             disabled={disabled}
             data-testid="date-picker-input-base-clean-button"
+            type="button"
           >
             <IoMdClose
               className={icon({ disabled })}
@@ -60,6 +61,7 @@ export const DatePickerInputBase = ({
             onClick={onToggle}
             disabled={disabled}
             data-testid="date-picker-input-base-calendar-button"
+            type="button"
           >
             <LiaCalendar
               className={icon({ disabled })}

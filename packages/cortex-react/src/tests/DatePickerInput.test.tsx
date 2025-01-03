@@ -1,9 +1,9 @@
+import { CalendarDateTime } from '@internationalized/date';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { DatePickerInput, DatePickerInputProps } from '../components';
 import { useDatePickerInput } from '../hooks';
-import { dateToCalendarDate } from '../utils';
 
 jest.mock('../hooks/useDatePickerInput', () => ({
   useDatePickerInput: jest.fn(),
@@ -23,7 +23,7 @@ describe('DatePickerInput', () => {
     state: {
       isOpen: false,
       isInvalid: false,
-      setDateValue: jest.fn(),
+      setValue: jest.fn(),
       close: jest.fn(),
       open: jest.fn(),
     },
@@ -69,16 +69,19 @@ describe('DatePickerInput', () => {
 
     const today = new Date();
     today.setDate(15);
-    const newDate = dateToCalendarDate(today);
-    const expectedDateText = newDate.day.toString();
+    const newCalendarDate = new CalendarDateTime(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      today.getDate()
+    );
 
-    const calendarCell = screen.getByText(expectedDateText);
+    const calendarCell = screen.getByText('15');
     expect(calendarCell).toBeInTheDocument();
 
     fireEvent.click(calendarCell);
 
-    expect(mockUseDatePickerInput.state.setDateValue).toHaveBeenCalledWith(
-      newDate
+    expect(mockUseDatePickerInput.state.setValue).toHaveBeenCalledWith(
+      newCalendarDate
     );
 
     expect(await screen.queryByTestId('calendar-div')).not.toBeInTheDocument();

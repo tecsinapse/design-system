@@ -1,6 +1,7 @@
+import { Granularity } from '@react-types/datepicker';
 import React from 'react';
 import { useDatePickerInputCommon, useDateRangePickerInput } from '../../hooks';
-import { dateToCalendarDate } from '../../utils';
+import { dateToCalendarDateTime } from '../../utils';
 import { DateRange, RangeCalendar } from '../Calendar/RangeCalendar';
 import { InputProps } from '../Input';
 import { Popover } from '../Popover';
@@ -12,18 +13,30 @@ export interface DateRangePickerInputProps
   extends Omit<InputProps, 'value' | 'onChange'> {
   value?: DateRange;
   onChange: (date?: DateRange) => void;
+  /** Whether to display the time in 12 or 24 hour format. By default, this is determined by the user's locale. */
+  hourCycle?: 12 | 24;
+  /** Determines the smallest unit that is displayed in the date picker. By default, this is `"day"` for dates, and `"minute"` for times. */
+  granularity?: Granularity;
 }
 
 const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
-  const { onChange, value, label, variants, disabled = false } = props;
+  const {
+    onChange,
+    value,
+    label,
+    variants,
+    disabled = false,
+    hourCycle = 24,
+    granularity = 'day',
+  } = props;
   const { endFieldProps, startFieldProps, ref, state } =
     useDateRangePickerInput({ value, onChange });
   const { handleTogglePopover, handleChangeCalendar, handleCloseCalendar } =
     useDatePickerInputCommon({
       onChangeRangeCalendar: value => {
         state.setDateRange({
-          start: dateToCalendarDate(value?.start),
-          end: dateToCalendarDate(value?.end),
+          start: dateToCalendarDateTime(value?.start),
+          end: dateToCalendarDateTime(value?.end),
         });
       },
     });
@@ -50,7 +63,10 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
                 handleCloseCalendar();
               }}
               isDisabled={disabled}
-              onClick={handleTogglePopover}
+              onClickDate={handleTogglePopover}
+              hourCycle={hourCycle}
+              granularity={granularity}
+              disabled={disabled}
             />
             <span>-</span>
             <DateField
@@ -60,7 +76,10 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
                 handleCloseCalendar();
               }}
               isDisabled={disabled}
-              onClick={handleTogglePopover}
+              onClickDate={handleTogglePopover}
+              hourCycle={hourCycle}
+              granularity={granularity}
+              disabled={disabled}
             />
           </div>
         </DatePickerInputBase>

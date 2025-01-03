@@ -1,4 +1,4 @@
-import { CalendarDate } from '@internationalized/date';
+import { CalendarDateTime } from '@internationalized/date';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
@@ -71,15 +71,21 @@ describe('DateRangePickerInput', () => {
 
     const today = new Date();
 
-    const calendarStartDate = new CalendarDate(
+    const calendarStartDate = new CalendarDateTime(
       today.getFullYear(),
       today.getMonth() + 1,
-      14
+      14,
+      today.getHours(),
+      today.getMinutes(),
+      30
     );
-    const calendarEndDate = new CalendarDate(
+    const calendarEndDate = new CalendarDateTime(
       today.getFullYear(),
       today.getMonth() + 1,
-      16
+      16,
+      today.getHours(),
+      today.getMinutes(),
+      30
     );
 
     const calendarCellStartDate = screen.getByText(
