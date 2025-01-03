@@ -1,6 +1,7 @@
+import { Granularity } from '@react-types/datepicker';
 import React from 'react';
 import { useDatePickerInput, useDatePickerInputCommon } from '../../hooks';
-import { dateToCalendarDate } from '../../utils';
+import { dateToCalendarDateTime } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
 import { InputProps } from '../Input';
 import { Popover } from '../Popover';
@@ -12,15 +13,30 @@ export interface DatePickerInputProps
   extends Omit<InputProps, 'value' | 'onChange'> {
   value?: Date;
   onChange: (date?: Date) => void;
+  /** Whether to display the time in 12 or 24 hour format. By default, this is determined by the user's locale. */
+  hourCycle?: 12 | 24;
+  /** Determines the smallest unit that is displayed in the date picker. By default, this is `"day"` for dates, and `"minute"` for times. */
+  granularity?: Granularity;
 }
 
 const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
-  const { onChange, value, label, variants, disabled } = props;
-  const { fieldProps, state, ref } = useDatePickerInput({ value, onChange });
+  const {
+    onChange,
+    value,
+    label,
+    variants,
+    disabled,
+    hourCycle = 24,
+    granularity = 'day',
+  } = props;
+  const { fieldProps, state, ref } = useDatePickerInput({
+    value,
+    onChange,
+  });
   const { handleTogglePopover, handleChangeCalendar, handleCloseCalendar } =
     useDatePickerInputCommon({
       onChangeCalendar: (value?: Date) => {
-        state.setDateValue(dateToCalendarDate(value));
+        state.setValue(dateToCalendarDateTime(value));
       },
     });
 
@@ -45,7 +61,9 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
               handleCloseCalendar();
             }}
             isDisabled={disabled}
-            onClick={handleTogglePopover}
+            onClickDate={handleTogglePopover}
+            hourCycle={hourCycle}
+            granularity={granularity}
           />
         </DatePickerInputBase>
       </Popover.Trigger>

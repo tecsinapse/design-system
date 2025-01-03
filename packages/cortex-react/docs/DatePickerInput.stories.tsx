@@ -12,6 +12,8 @@ export const Default: StoryObj<typeof DatePickerInput> = {
   args: {
     label: 'Select Date',
     disabled: false,
+    granularity: 'day',
+    hourCycle: 24,
   },
   render: args => {
     const [value, setValue] = useState<Date | undefined>(new Date());
@@ -23,6 +25,8 @@ export const Default: StoryObj<typeof DatePickerInput> = {
           onChange={value => setValue(value)}
           label={args.label}
           disabled={args.disabled}
+          hourCycle={args.hourCycle}
+          granularity={args.granularity}
         />
       </div>
     );
@@ -37,17 +41,46 @@ export const Range: StoryObj<typeof DateRangePickerInput> = {
   args: {
     label: 'Select date range',
     disabled: false,
+    granularity: 'day',
+    hourCycle: 24,
   },
   render: args => {
     const [value, setValue] = useState<DateRange | undefined>({ start, end });
 
     return (
-      <div className={'w-[250px] h-[450px]'}>
+      <div className={'w-[400px] h-[450px]'}>
         <DateRangePickerInput
           value={value}
           onChange={value => setValue(value)}
           label={args.label}
           disabled={args.disabled}
+          hourCycle={args.hourCycle}
+          granularity={args.granularity}
+        />
+      </div>
+    );
+  },
+};
+
+export const DateTime: StoryObj<typeof DatePickerInput> = {
+  args: {
+    label: 'Select Date',
+    disabled: false,
+    granularity: 'second',
+    hourCycle: 24,
+  },
+  render: args => {
+    const [value, setValue] = useState<Date | undefined>(new Date());
+
+    return (
+      <div className={'w-[200px] h-[450px]'}>
+        <DatePickerInput
+          value={value}
+          onChange={value => setValue(value)}
+          label={args.label}
+          disabled={args.disabled}
+          hourCycle={args.hourCycle}
+          granularity={args.granularity}
         />
       </div>
     );

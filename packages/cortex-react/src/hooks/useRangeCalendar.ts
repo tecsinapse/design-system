@@ -6,7 +6,7 @@ import {
 } from 'react-aria';
 import { useRangeCalendarState } from 'react-stately';
 import { DateRange } from '../components';
-import { calendarDateToDate, dateToCalendarDate } from '../utils';
+import { calendarDateToDate, dateToCalendarDateTime } from '../utils';
 
 interface useRangeCalendarProps {
   value?: DateRange;
@@ -22,8 +22,8 @@ export const useRangeCalendar = ({
     locale,
     createCalendar,
     defaultValue: {
-      start: dateToCalendarDate(value?.start),
-      end: dateToCalendarDate(value?.end),
+      start: dateToCalendarDateTime(value?.start),
+      end: dateToCalendarDateTime(value?.end),
     },
     onChange: value =>
       onChange({

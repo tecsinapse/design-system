@@ -1,8 +1,8 @@
-import { CalendarDate } from '@internationalized/date';
+import { CalendarDateTime } from '@internationalized/date';
 import { useRef } from 'react';
 import { useDatePicker } from 'react-aria';
 import { useDatePickerState } from 'react-stately';
-import { calendarDateToDate, dateToCalendarDate } from '../utils';
+import { calendarDateToDate, dateToCalendarDateTime } from '../utils';
 
 interface useDatePickerInputProps {
   value?: Date;
@@ -14,8 +14,8 @@ export const useDatePickerInput = ({
   onChange,
 }: useDatePickerInputProps) => {
   const state = useDatePickerState({
-    defaultValue: value ? dateToCalendarDate(value) : null,
-    onChange: (value: CalendarDate) => {
+    defaultValue: value ? dateToCalendarDateTime(value) : null,
+    onChange: (value: CalendarDateTime) => {
       onChange(calendarDateToDate(value));
     },
   });

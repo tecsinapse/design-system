@@ -1,15 +1,30 @@
 import React from 'react';
-import { useTimeField } from '../../hooks/useTimeField';
+import {
+  AriaTimeFieldProps,
+  TimeValue,
+  useLocale,
+  useTimeField,
+} from 'react-aria';
+import { useTimeFieldState } from 'react-stately';
 import { DateSegment } from '../DatePicker/DateSegment';
-import { TimeValueType } from './TimeFieldInput';
 
-export interface TimeFieldProps {
-  value?: TimeValueType;
-  onChange: (number: TimeValueType) => void;
+export interface TimeFieldProps extends AriaTimeFieldProps<TimeValue> {
+  disabled?: boolean;
 }
 
-export const TimeField = (props: TimeFieldProps) => {
-  const { fieldProps, ref, state } = useTimeField(props);
+export const TimeField = ({ disabled, ...props }: TimeFieldProps) => {
+  const { locale } = useLocale();
+  const state = useTimeFieldState({
+    ...props,
+    locale,
+    isDisabled: disabled,
+  });
+  const ref = React.useRef(null);
+  const { fieldProps } = useTimeField(
+    { 'aria-label': 'time-field' },
+    state,
+    ref
+  );
 
   return (
     <div {...fieldProps} ref={ref} className={'flex flex-row'}>

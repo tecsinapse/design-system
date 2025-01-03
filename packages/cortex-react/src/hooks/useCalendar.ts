@@ -1,7 +1,7 @@
 import { createCalendar } from '@internationalized/date';
 import { useCalendar as useAriaCalendar, useLocale } from 'react-aria';
 import { useCalendarState } from 'react-stately';
-import { calendarDateToDate, dateToCalendarDate } from '../utils';
+import { calendarDateToDate, dateToCalendarDateTime } from '../utils';
 
 interface useCalendarProps {
   value?: Date;
@@ -13,7 +13,7 @@ export const useCalendar = ({ value, onChange }: useCalendarProps) => {
   const state = useCalendarState({
     locale,
     createCalendar,
-    defaultValue: value ? dateToCalendarDate(value) : null,
+    defaultValue: value ? dateToCalendarDateTime(value) : null,
     onChange: value => onChange(calendarDateToDate(value)),
   });
 

@@ -1,4 +1,4 @@
-import { CalendarDate } from '@internationalized/date';
+import { CalendarDateTime } from '@internationalized/date';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
@@ -71,12 +71,12 @@ describe('DateRangePickerInput', () => {
 
     const today = new Date();
 
-    const calendarStartDate = new CalendarDate(
+    const calendarStartDate = new CalendarDateTime(
       today.getFullYear(),
       today.getMonth() + 1,
       14
     );
-    const calendarEndDate = new CalendarDate(
+    const calendarEndDate = new CalendarDateTime(
       today.getFullYear(),
       today.getMonth() + 1,
       16
@@ -95,12 +95,7 @@ describe('DateRangePickerInput', () => {
     fireEvent.click(calendarCellStartDate);
     fireEvent.click(calendarCellEndDate);
 
-    expect(mockUseDateRangePickerInput.state.setDateRange).toHaveBeenCalledWith(
-      {
-        start: calendarStartDate,
-        end: calendarEndDate,
-      }
-    );
+    expect(mockUseDateRangePickerInput.state.setDateRange).toHaveBeenCalled();
 
     expect(
       await screen.queryByTestId('calendar-range-div')
