@@ -43,7 +43,7 @@ export const TimeFieldInput = (props: TimeFieldInputProps) => {
             value={value}
             hourCycle={hourCycle}
             granularity={granularity}
-            disabled={disabled}
+            isDisabled={disabled}
           />
         </div>
       </Input.Face>

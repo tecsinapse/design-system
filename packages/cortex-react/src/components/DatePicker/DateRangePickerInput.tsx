@@ -66,7 +66,6 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
               onClickDate={handleTogglePopover}
               hourCycle={hourCycle}
               granularity={granularity}
-              disabled={disabled}
             />
             <span>-</span>
             <DateField
@@ -79,7 +78,6 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
               onClickDate={handleTogglePopover}
               hourCycle={hourCycle}
               granularity={granularity}
-              disabled={disabled}
             />
           </div>
         </DatePickerInputBase>

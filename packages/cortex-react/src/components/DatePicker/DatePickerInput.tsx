@@ -64,7 +64,6 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
             onClickDate={handleTogglePopover}
             hourCycle={hourCycle}
             granularity={granularity}
-            disabled={disabled}
           />
         </DatePickerInputBase>
       </Popover.Trigger>

@@ -15,13 +15,11 @@ import { DateSegment } from './DateSegment';
 interface DateFieldProps extends AriaDateFieldProps<DateValue> {
   onClickDate?: () => void;
   onClickTime?: () => void;
-  disabled?: boolean;
 }
 
 export const DateField = ({
   onClickDate,
   onClickTime,
-  disabled,
   ...props
 }: DateFieldProps) => {
   const { locale } = useLocale();
@@ -29,7 +27,6 @@ export const DateField = ({
     ...props,
     createCalendar,
     locale,
-    isDisabled: disabled,
   });
 
   const ref = React.useRef(null);

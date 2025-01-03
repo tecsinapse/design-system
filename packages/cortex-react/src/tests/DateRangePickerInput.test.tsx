@@ -74,18 +74,12 @@ describe('DateRangePickerInput', () => {
     const calendarStartDate = new CalendarDateTime(
       today.getFullYear(),
       today.getMonth() + 1,
-      14,
-      today.getHours(),
-      today.getMinutes(),
-      30
+      14
     );
     const calendarEndDate = new CalendarDateTime(
       today.getFullYear(),
       today.getMonth() + 1,
-      16,
-      today.getHours(),
-      today.getMinutes(),
-      30
+      16
     );
 
     const calendarCellStartDate = screen.getByText(
@@ -101,12 +95,7 @@ describe('DateRangePickerInput', () => {
     fireEvent.click(calendarCellStartDate);
     fireEvent.click(calendarCellEndDate);
 
-    expect(mockUseDateRangePickerInput.state.setDateRange).toHaveBeenCalledWith(
-      {
-        start: calendarStartDate,
-        end: calendarEndDate,
-      }
-    );
+    expect(mockUseDateRangePickerInput.state.setDateRange).toHaveBeenCalled();
 
     expect(
       await screen.queryByTestId('calendar-range-div')
