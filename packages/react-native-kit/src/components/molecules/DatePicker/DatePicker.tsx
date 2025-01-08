@@ -38,7 +38,7 @@ export const DatePicker = <T extends SelectionType>({
     if (value) {
       if (type === 'range') {
         if ((value as DateRange).lowest !== undefined)
-          return new Date((value as DateRange).lowest).getFullYear();
+          return new Date((value as DateRange).lowest as Date).getFullYear();
       } else {
         return new Date(value as Date).getFullYear();
       }
@@ -50,7 +50,7 @@ export const DatePicker = <T extends SelectionType>({
     if (value) {
       if (type === 'range') {
         if ((value as DateRange).lowest !== undefined)
-          return new Date((value as DateRange).lowest).getMonth();
+          return new Date((value as DateRange).lowest as Date).getMonth();
       } else {
         return new Date(value as Date).getMonth();
       }

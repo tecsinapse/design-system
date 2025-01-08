@@ -73,11 +73,11 @@ function DatePicker<T extends SelectionType>({
       return formatDate(value as Date, format, { locale: locale });
     } else {
       const { lowest, highest } = value as DateRange;
-      if (highest)
+      if (highest && lowest) {
         return `${formatDate(lowest, format, {
           locale: locale,
         })} - ${formatDate(highest, format, { locale: locale })}`;
-      else return placeholder;
+      } else return placeholder;
     }
   };
 

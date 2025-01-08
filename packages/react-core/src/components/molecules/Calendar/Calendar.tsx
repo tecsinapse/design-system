@@ -1,20 +1,20 @@
 import { add, format, getWeeksInMonth, set } from 'date-fns';
 import * as React from 'react';
+import { useRef } from 'react';
 import { TouchableOpacity, View, ViewProps } from 'react-native';
 import { Icon } from '../../atoms/Icon';
 import { Text, TextProps } from '../../atoms/Text';
+import { MonthWeek, SelectYear, SelectYearProps, Weekdays } from './components';
 import {
   Content,
   Control,
   getCapitalizedTextComponent,
   TitleContainer,
 } from './styled';
-import { Weekdays, MonthWeek, SelectYear, SelectYearProps } from './components';
-import { useRef } from 'react';
 
 export type SelectionType = 'range' | 'day';
 
-export type DateRange = { lowest: Date; highest?: Date };
+export type DateRange = { lowest?: Date; highest?: Date };
 
 export type Value<T extends SelectionType> = T extends 'range'
   ? DateRange
@@ -62,8 +62,8 @@ function Calendar<T extends SelectionType>({
       _year && _month
         ? new Date(_year, _month, 1, 0, 0, 0, 0)
         : _month
-        ? new Date(now.getFullYear(), _month, 1, 0, 0, 0, 0)
-        : now,
+          ? new Date(now.getFullYear(), _month, 1, 0, 0, 0, 0)
+          : now,
     [_year, _month]
   );
 
