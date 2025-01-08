@@ -21,6 +21,7 @@ export interface UseDropzoneProps {
   getRootProps: <T extends DropzoneRootProps>(props?: T) => T;
   getInputProps: <T extends DropzoneInputProps>(props?: T) => T;
   isDragActive: boolean;
+  hasMultipleFile: boolean;
 }
 
 export interface DropzoneProps {
@@ -28,6 +29,7 @@ export interface DropzoneProps {
   selectFileText?: string;
   dropText?: string;
   buttonText?: string;
+  hasMultipleFile?: boolean;
 }
 
 export interface ModalProps {
@@ -47,7 +49,7 @@ export type FileUpload<T> = {
   file: File;
   metadata?: T;
   uid: string;
-  status: FileStatus;
+  status: 'success' | 'error' | 'uploading';
 };
 
 export interface RootUploaderProps<T> {

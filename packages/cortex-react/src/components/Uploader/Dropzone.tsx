@@ -3,6 +3,7 @@ import { HiOutlineCloudArrowUp } from 'react-icons/hi2';
 import { DropzoneProps } from './types';
 import { button } from '@tecsinapse/cortex-core';
 import clsx from 'clsx';
+import { Tooltip } from '../Tooltip';
 
 export const Dropzone = ({
   dropzoneProps,
@@ -29,8 +30,24 @@ export const Dropzone = ({
           </p>
           <p className="text-sm text-secondary-medium">{dropText}</p>
         </div>
-
-        <button className={button()}>{buttonText}</button>
+        {dropzoneProps.hasMultipleFile ? (
+          <Tooltip
+            style={{ cursor: 'none' }}
+            text="Você só pode selecionar um único arquivo."
+          >
+            <button
+              disabled={dropzoneProps.hasMultipleFile}
+              className={button()}
+              style={{ cursor: 'not-allowed' }}
+            >
+              {buttonText}
+            </button>
+          </Tooltip>
+        ) : (
+          <button disabled={dropzoneProps.hasMultipleFile} className={button()}>
+            {buttonText}
+          </button>
+        )}
       </div>
     </div>
   );
