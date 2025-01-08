@@ -1,8 +1,8 @@
-import React from 'react';
 import { compareAsc as compare, isSameDay } from 'date-fns';
-import { Cell, Selected, Week } from '../styled';
-import { DateRange, SelectionType, Value } from '../Calendar';
+import React from 'react';
 import { TextProps } from '../../../atoms/Text';
+import { DateRange, SelectionType, Value } from '../Calendar';
+import { Cell, Selected, Week } from '../styled';
 
 interface IMonthWeek<T extends SelectionType> {
   TextComponent: React.FC<TextProps>;
@@ -27,7 +27,7 @@ const MonthWeek = <T extends SelectionType>({
       if (type !== 'range' || !_value) return false;
       else {
         const { lowest, highest } = _value as DateRange;
-        if (!highest) return false;
+        if (!highest || !lowest) return false;
         return compare(lowest, date) <= 0 && compare(highest, date) >= 0;
       }
     },
@@ -40,7 +40,7 @@ const MonthWeek = <T extends SelectionType>({
       else if (type === 'range' && _value) {
         const { lowest, highest } = _value as DateRange;
         return (
-          isSameDay(lowest, date) ||
+          (lowest ? isSameDay(lowest, date) : false) ||
           (highest ? isSameDay(highest, date) : false)
         );
       } else {
@@ -60,7 +60,7 @@ const MonthWeek = <T extends SelectionType>({
         let newValue;
         const { lowest, highest } = _value as DateRange;
 
-        if (!highest) {
+        if (!highest && lowest) {
           if (compare(date, lowest) === -1) {
             newValue = { lowest: date, highest: undefined };
           } else if (compare(date, lowest) === 0) {
@@ -68,7 +68,7 @@ const MonthWeek = <T extends SelectionType>({
           } else {
             newValue = { lowest: lowest, highest: date };
           }
-        } else {
+        } else if (lowest && highest) {
           if (compare(date, lowest) === -1) {
             newValue = { lowest: date, highest: undefined };
           } else if (compare(date, lowest) === 0) {
@@ -100,7 +100,7 @@ const MonthWeek = <T extends SelectionType>({
 
         if (type === 'range' && value) {
           const { lowest, highest } = value as DateRange;
-          isRangeStart = highest && isSameDay(lowest, date);
+          isRangeStart = lowest && isSameDay(lowest, date);
           isRangeEnd = !!highest && isSameDay(highest, date);
         } else {
           isRangeStart = false;

@@ -1,18 +1,18 @@
 import {
   Calendar,
+  CalendarIcon,
   DatePicker as DatePickerCore,
   DatePickerProps,
   DateRange,
   Masks,
-  SelectionType,
-  CalendarIcon,
   PressableSurface,
+  SelectionType,
   useTheme,
 } from '@tecsinapse/react-core';
+import { isValid, parse } from 'date-fns';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Dropdown } from '../../atoms/Dropdown';
 import { InputMask } from '../../atoms/InputMask';
-import { parse, isValid } from 'date-fns';
 
 export type WebDatePickerProps<T extends SelectionType> = Omit<
   DatePickerProps<T>,
@@ -48,7 +48,7 @@ export const DatePicker = <T extends SelectionType>({
     if (value) {
       if (type === 'range') {
         if ((value as DateRange).lowest !== undefined)
-          return new Date((value as DateRange).lowest).getFullYear();
+          return new Date((value as DateRange).lowest as Date).getFullYear();
       } else {
         return new Date(value as Date).getFullYear();
       }
@@ -60,7 +60,7 @@ export const DatePicker = <T extends SelectionType>({
     if (value) {
       if (type === 'range') {
         if ((value as DateRange).lowest !== undefined)
-          return new Date((value as DateRange).lowest).getMonth();
+          return new Date((value as DateRange).lowest as Date).getMonth();
       } else {
         return new Date(value as Date).getMonth();
       }
