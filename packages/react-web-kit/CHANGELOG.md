@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.18-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.17...@tecsinapse/react-web-kit@3.4.18-beta.0) (2025-01-09)
+
+### Bug Fixes
+
+* **ts-10727:** datepicker on native-kit breaking if lowest is undefined ([ada71dd](https://github.com/tecsinapse/design-system/commit/ada71dd43df648f8f033f1d3d1717a5f46c4d77d))
+
 ## [3.4.17](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.16...@tecsinapse/react-web-kit@3.4.17) (2024-12-13)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

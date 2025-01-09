@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.10-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.9...@tecsinapse/react-native-kit@3.5.10-beta.0) (2025-01-09)
+
+### Bug Fixes
+
+* **ts-10727:** datepicker on native-kit breaking if lowest is undefined ([ada71dd](https://github.com/tecsinapse/design-system/commit/ada71dd43df648f8f033f1d3d1717a5f46c4d77d))
+
 ## [3.5.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.8...@tecsinapse/react-native-kit@3.5.9) (2024-12-13)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
