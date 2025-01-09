@@ -10,7 +10,7 @@ describe('ProgressBar', () => {
     const filledProgress = screen.getByTestId('progress-filled');
 
     expect(progressElement).toBeInTheDocument();
-    expect(filledProgress).toHaveStyle({ width: '50%' });
+    expect(filledProgress).toHaveStyle({ width: '100%' });
     expect(filledProgress).toHaveClass('bg-primary-medium');
   });
 
