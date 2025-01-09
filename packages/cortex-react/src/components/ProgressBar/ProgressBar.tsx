@@ -8,7 +8,7 @@ export interface ProgressBarProps {
 }
 
 export const ProgressBar = ({
-  value = 50,
+  value = 100,
   intent = 'default',
   infinite = false,
 }: ProgressBarProps) => {

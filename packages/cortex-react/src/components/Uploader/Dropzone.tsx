@@ -3,6 +3,7 @@ import { HiOutlineCloudArrowUp } from 'react-icons/hi2';
 import { DropzoneProps } from './types';
 import { button } from '@tecsinapse/cortex-core';
 import clsx from 'clsx';
+import { Tooltip } from '../Tooltip';
 
 export const Dropzone = ({
   dropzoneProps,
@@ -10,17 +11,20 @@ export const Dropzone = ({
   dropText = 'By dragging and dropping it here or clicking the button below',
   buttonText = 'Select File',
 }: DropzoneProps) => {
+  const { getRootProps, getInputProps, isDragActive, isFileLimitReached } =
+    dropzoneProps;
+
   return (
     <div
-      {...dropzoneProps.getRootProps()}
+      {...getRootProps()}
       className={clsx(
         'bg-white w-full border-dashed border-2 p-deca flex flex-col justify-center rounded-mili',
         {
-          'border-success-medium bg-gray-100': dropzoneProps.isDragActive,
+          'border-success-medium bg-gray-100': isDragActive,
         }
       )}
     >
-      <input {...dropzoneProps.getInputProps()} />
+      <input {...getInputProps()} />
       <div className="flex flex-col justify-center text-center items-center gap-deca">
         <HiOutlineCloudArrowUp className="text-primary-medium" size={35} />
         <div className="gap-mili">
@@ -30,7 +34,15 @@ export const Dropzone = ({
           <p className="text-sm text-secondary-medium">{dropText}</p>
         </div>
 
-        <button className={button()}>{buttonText}</button>
+        {isFileLimitReached ? (
+          <Tooltip text="Você só pode selecionar um único arquivo.">
+            <button disabled className={clsx(button(), 'cursor-not-allowed')}>
+              {buttonText}
+            </button>
+          </Tooltip>
+        ) : (
+          <button className={button()}>{buttonText}</button>
+        )}
       </div>
     </div>
   );
