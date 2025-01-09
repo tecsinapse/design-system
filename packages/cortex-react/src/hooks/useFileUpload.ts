@@ -96,6 +96,8 @@ export const useFileUpload = <T>({
     setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
   }, []);
 
+  const isFileLimitReached = !allowMultiple && files.length > 0;
+
   return {
     onOpen,
     onClose,
@@ -104,6 +106,7 @@ export const useFileUpload = <T>({
       getInputProps,
       getRootProps,
       isDragActive,
+      isFileLimitReached,
     } as UseDropzoneProps,
     open: isOpen,
     files,

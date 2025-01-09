@@ -6,6 +6,17 @@ import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 
 export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
+  function statusIntent(status: 'success' | 'error' | 'uploading') {
+    switch (status) {
+      case 'success':
+        return 'success';
+      case 'error':
+        return 'error';
+      default:
+        return 'info';
+    }
+  }
+
   return (
     <div className="flex flex-col" key={index}>
       <div className="flex items-center justify-between border rounded-t-mili shadow p-mili">
@@ -45,7 +56,10 @@ export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
         )}
       </div>
 
-      <ProgressBar intent={'info'} infinite={file.status !== 'success'} />
+      <ProgressBar
+        intent={statusIntent(file.status)}
+        infinite={file.status !== 'success'}
+      />
     </div>
   );
 };
