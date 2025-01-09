@@ -11,7 +11,7 @@ export const Dropzone = ({
   dropText = 'By dragging and dropping it here or clicking the button below',
   buttonText = 'Select File',
 }: DropzoneProps) => {
-  const { getRootProps, getInputProps, isDragActive, hasMultipleFile } =
+  const { getRootProps, getInputProps, isDragActive, isFileLimitReached } =
     dropzoneProps;
 
   return (
@@ -34,7 +34,7 @@ export const Dropzone = ({
           <p className="text-sm text-secondary-medium">{dropText}</p>
         </div>
 
-        {hasMultipleFile ? (
+        {isFileLimitReached ? (
           <Tooltip text="Você só pode selecionar um único arquivo.">
             <button disabled className={clsx(button(), 'cursor-not-allowed')}>
               {buttonText}

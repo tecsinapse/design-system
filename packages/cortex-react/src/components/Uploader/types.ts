@@ -21,7 +21,7 @@ export interface UseDropzoneProps {
   getRootProps: <T extends DropzoneRootProps>(props?: T) => T;
   getInputProps: <T extends DropzoneInputProps>(props?: T) => T;
   isDragActive: boolean;
-  hasMultipleFile: boolean;
+  isFileLimitReached: boolean;
 }
 
 export interface DropzoneProps {
@@ -29,7 +29,7 @@ export interface DropzoneProps {
   selectFileText?: string;
   dropText?: string;
   buttonText?: string;
-  hasMultipleFile?: boolean;
+  isFileLimitReached?: boolean;
 }
 
 export interface ModalProps {
