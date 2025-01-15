@@ -38,8 +38,8 @@ export const mostUsedItem = tv({
 export const item = tv({
   slots: {
     container:
-      'flex flex-row gap-x-deca items-center text-secondary-dark text-base',
-    textBehavior: 'hover:text-primary-medium hover:cursor-pointer text-base',
+      'flex flex-row gap-x-deca items-center text-secondary-dark hover:cursor-pointer text-base',
+    textBehavior: 'hover:text-primary-medium',
     icon: 'text-primary-medium hover:cursor-pointer',
   },
 });

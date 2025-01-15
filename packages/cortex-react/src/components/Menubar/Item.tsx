@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import clsx from 'clsx';
+import React, { useCallback, useState } from 'react';
+import { useMenubar } from '../../provider';
 import { item } from '../../styles/menubar';
 import IconControlSubItem from './IconControlSubItem';
 import ItemLink from './ItemLink';
 import { ItemProps } from './types';
-import clsx from 'clsx';
-import { useMenubar } from '../../provider';
 
 const { container, textBehavior } = item();
 
@@ -20,20 +20,27 @@ const Item = <T,>({
   const hasSubItems = (subItems ?? []).length > 0;
   const [, setShow] = useMenubar();
 
+  const handleClickItemMenubar = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if (hasSubItems) {
+        e.stopPropagation();
+        setShowSubItem(prev => !prev);
+      } else {
+        setShow(false);
+      }
+    },
+    []
+  );
+
   return (
     <ItemLink anchorProps={anchorProps}>
       <div
         data-testid="item-menubar"
         {...rest}
-        onClick={e => {
-          if (hasSubItems) e.stopPropagation();
-          else {
-            setShow(false);
-          }
-        }}
+        onClick={handleClickItemMenubar}
         className={clsx(
           container({ className }),
-          !hasSubItems && textBehavior()
+          (!hasSubItems || anchorProps) && textBehavior()
         )}
       >
         {children}
