@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { render } from '@testing-library/react';
 import { Menubar } from '../../components';
 
 describe('Item Menubar', () => {
@@ -31,5 +31,23 @@ describe('Item Menubar', () => {
       'href',
       'http://example.com'
     );
+  });
+
+  it('Should renders correct style for item text', () => {
+    render(
+      <>
+        <Menubar.Item anchorProps={{ href: 'http://example.com' }}>
+          Test Child 1
+        </Menubar.Item>
+        <Menubar.Item anchorProps={undefined} subItems={[{}]}>
+          Test Child 2
+        </Menubar.Item>
+      </>
+    );
+
+    const menubarItems = screen.getAllByTestId('item-menubar');
+
+    expect(menubarItems[0]).toHaveClass('hover:text-primary-medium');
+    expect(menubarItems[1]).not.toHaveClass('hover:text-primary-medium');
   });
 });
