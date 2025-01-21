@@ -32,6 +32,12 @@ export const Badge = forwardRef<
   );
 });
 
+function getDisplayValue(value: string | number) {
+  const number = Number(value);
+  if (isNaN(number)) return value;
+  return number > 99 ? '99+' : number;
+}
+
 export const BadgeAnchor = forwardRef<
   HTMLDivElement,
   BadgeAnchorProps & Omit<HTMLProps<HTMLDivElement>, 'className'>
@@ -41,7 +47,7 @@ export const BadgeAnchor = forwardRef<
     <div className={containerBadge()}>
       {children}
       <div ref={ref} className={badge(variants)} {...rest}>
-        {value}
+        {getDisplayValue(value)}
       </div>
     </div>
   );

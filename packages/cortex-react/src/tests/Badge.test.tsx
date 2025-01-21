@@ -29,4 +29,21 @@ describe('Badge', () => {
     expect(childElement).toBeInTheDocument();
     expect(badgeElement).toBeInTheDocument();
   });
+
+  it('renders BadgeAnchor with children and value that exceeds the max value', () => {
+    const value = 100;
+    render(
+      <BadgeAnchor value={value} data-testid="anchor">
+        <Button>
+          <p>Button</p>
+        </Button>
+      </BadgeAnchor>
+    );
+
+    const childElement = screen.getByText('Button');
+    const badgeElement = screen.getByText('99+');
+
+    expect(childElement).toBeInTheDocument();
+    expect(badgeElement).toBeInTheDocument();
+  });
 });

@@ -1,4 +1,4 @@
-import { tv, VariantProps, ClassProp } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
 const badgeStyles = tv({
   base: 'text-sub text-white font-bold rounded-pill',
@@ -12,7 +12,7 @@ const badgeStyles = tv({
       info: 'bg-info-medium',
     },
     isAnchor: {
-      true: 'absolute items-center flex justify-center w-[1rem] h-[1rem] -top-1 -right-1 px-[5px] py-[2px]',
+      true: 'absolute flex justify-center h-[1.125rem] -top-1 -right-1 px-[5px]',
       false: 'px-[5px]',
     },
   },
