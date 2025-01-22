@@ -10,7 +10,7 @@ export const useOutsideClickListener = ({
   onClickOutside,
 }: useOutsideClickListenerProps) => {
   const handleClickOutside = useCallback((event: any) => {
-    if (ref.current && !ref.current.contains(event.target)) {
+    if (ref.current && !ref.current.contains(event.composedPath()[0])) {
       onClickOutside?.();
     }
   }, []);
