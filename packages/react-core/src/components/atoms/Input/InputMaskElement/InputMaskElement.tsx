@@ -74,7 +74,7 @@ const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
       (value: string | number) => {
         if (maskValue !== undefined && setMaskValue !== undefined) {
           setMaskValue(value);
-        } else onChange && onChange(value);
+        } else onChange?.(value);
       },
       [value]
     );

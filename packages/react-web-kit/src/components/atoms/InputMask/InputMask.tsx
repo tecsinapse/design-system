@@ -12,6 +12,7 @@ import { StyledWebTextInputMask } from './styled';
 export type InputMaskWebProps = Omit<InputMaskElementProps, 'style'> &
   InputContainerProps & { ref?: React.Ref<HTMLInputElement | undefined> };
 
+// @ts-expect-error fix forward ref typescript error
 const InputMask: FC<InputMaskWebProps> = React.forwardRef(
   (
     {

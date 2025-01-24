@@ -37,7 +37,7 @@ const Checkbox = ({
   ...rest
 }: CheckboxProps): JSX.Element => {
   const handleChange = () => {
-    onChange && onChange(!checked);
+    onChange?.(!checked);
   };
 
   return (

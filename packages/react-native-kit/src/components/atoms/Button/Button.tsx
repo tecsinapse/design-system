@@ -13,7 +13,7 @@ export const Button: FC<ButtonNativeProps> = ({
 }) => {
   const handleOnPress = useCallback(
     event => {
-      autoDismissKeyboard && Keyboard.dismiss();
+      if (autoDismissKeyboard) Keyboard.dismiss();
       onPress?.(event);
     },
     [onPress]

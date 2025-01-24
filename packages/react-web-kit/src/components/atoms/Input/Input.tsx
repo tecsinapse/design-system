@@ -12,6 +12,7 @@ import { StyledWebTextInput } from './styled';
 export type InputWebProps = Omit<InputElementProps, 'style'> &
   InputContainerProps & { ref?: React.Ref<HTMLInputElement | undefined> };
 
+// @ts-expect-error fix forward ref typescript error
 const Input: FC<InputWebProps> = React.forwardRef(
   (
     {

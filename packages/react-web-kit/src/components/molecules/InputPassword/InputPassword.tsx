@@ -4,6 +4,7 @@ import { Input, InputWebProps } from '../../atoms/Input';
 
 export type InputPasswordWebProps = InputWebProps;
 
+// @ts-expect-error fix forward ref typescript error
 const InputPassword: FC<InputPasswordWebProps> = React.forwardRef(
   ({ rightComponent, ...rest }, ref) => {
     const [revealed, setRevealed] = useState(false);

@@ -32,7 +32,7 @@ const RadioButton = ({
   ...rest
 }: RadioButtonProps): JSX.Element => {
   const handleChange = () => {
-    onChange && onChange(!checked);
+    onChange?.(!checked);
   };
 
   return (
