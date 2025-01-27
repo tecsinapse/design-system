@@ -5,15 +5,14 @@ import {
   InputMaskElementProps,
   useInputFocus,
 } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
+import React from 'react';
 import { TextInput, View } from 'react-native';
 import { StyledWebTextInputMask } from './styled';
 
 export type InputMaskWebProps = Omit<InputMaskElementProps, 'style'> &
   InputContainerProps & { ref?: React.Ref<HTMLInputElement | undefined> };
 
-// @ts-expect-error fix forward ref typescript error
-const InputMask: FC<InputMaskWebProps> = React.forwardRef(
+const InputMask = React.forwardRef<HTMLInputElement, InputMaskWebProps>(
   (
     {
       label,

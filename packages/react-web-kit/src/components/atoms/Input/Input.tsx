@@ -5,15 +5,14 @@ import {
   InputElementProps,
   useInputFocus,
 } from '@tecsinapse/react-core';
-import React, { FC } from 'react';
+import React from 'react';
 import { TextInput, View } from 'react-native';
 import { StyledWebTextInput } from './styled';
 
 export type InputWebProps = Omit<InputElementProps, 'style'> &
   InputContainerProps & { ref?: React.Ref<HTMLInputElement | undefined> };
 
-// @ts-expect-error fix forward ref typescript error
-const Input: FC<InputWebProps> = React.forwardRef(
+const Input = React.forwardRef<HTMLInputElement, InputWebProps>(
   (
     {
       label,

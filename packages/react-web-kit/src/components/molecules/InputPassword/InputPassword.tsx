@@ -1,11 +1,10 @@
 import { InputPasswordIcon } from '@tecsinapse/react-core';
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Input, InputWebProps } from '../../atoms/Input';
 
 export type InputPasswordWebProps = InputWebProps;
 
-// @ts-expect-error fix forward ref typescript error
-const InputPassword: FC<InputPasswordWebProps> = React.forwardRef(
+const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordWebProps>(
   ({ rightComponent, ...rest }, ref) => {
     const [revealed, setRevealed] = useState(false);
     return (
