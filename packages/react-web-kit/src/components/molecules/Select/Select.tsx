@@ -42,9 +42,9 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
   anchor?: 'top' | 'bottom';
   displayTextProps?: TextProps;
   multiLabels?: MultiLabels;
-  variant?: InputVariantType
-  hint?: string
-  hintComponent?: JSX.Element
+  variant?: InputVariantType;
+  hint?: string;
+  hintComponent?: JSX.Element;
 }
 
 /** NOTE: For better performance, you should memoize options and handlers */
@@ -200,9 +200,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
           </Text>
         </PressableInputContainer>
       </StyledInputContainer>
-      <StyledHintContainer>
-        {_hint}
-      </StyledHintContainer>
+      <StyledHintContainer>{_hint}</StyledHintContainer>
       <Transition
         in={dropDownVisible}
         timeout={300}

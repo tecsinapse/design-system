@@ -80,7 +80,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
         setChecked(!checked);
         if (auxChecked) {
           onSelect([..._value, key] as OnSelectArg);
-          [..._value, key].length === lenghtOptions && setCheckedAll(true);
+          if ([..._value, key].length === lenghtOptions) setCheckedAll(true);
         } else {
           const auxArray: Data[] = [..._value];
           const indexToExclude = auxArray.findIndex(
