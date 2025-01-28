@@ -10,14 +10,14 @@ export const useInputFocus = (
   const handleFocus = useCallback(() => {
     if (focusEnabled) {
       setFocused(true);
-      onFocus && onFocus();
+      onFocus?.();
     }
   }, [focusEnabled, setFocused, onFocus]);
 
   const handleBlur = useCallback(() => {
     if (focusEnabled) {
       setFocused(false);
-      onBlur && onBlur();
+      onBlur?.();
     }
   }, [focusEnabled, setFocused, onBlur]);
 

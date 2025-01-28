@@ -61,10 +61,10 @@ export const Wrapper = styled('div')<Partial<StyleProps & SkeletonProps>>`
     !active
       ? undefined
       : animation === 'pulse'
-      ? theme.miscellaneous.bodyColor
-      : theme.miscellaneous.surfaceColor};
-  width: ${({ width }) => `${width}px` ?? '100%'};
-  height: ${({ height }) => `${height}px` ?? 'auto'};
+        ? theme.miscellaneous.bodyColor
+        : theme.miscellaneous.surfaceColor};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
+  height: ${({ height }) => (height ? `${height}px` : 'auto')};
   border-radius: ${({ theme, radius }: StyleProps & Partial<SkeletonProps>) =>
     radius ? theme.borderRadius[radius] : 'unset'};
   ${({ animation, active }) =>

@@ -94,7 +94,7 @@ function DatePicker<T extends SelectionType>({
     }
     if (closeOnPick && value && type === 'range') {
       const { lowest, highest } = value as DateRange;
-      lowest && highest && setTimeout(handleRequestCloseCalendar, 200);
+      if (lowest && highest) setTimeout(handleRequestCloseCalendar, 200);
     }
   }, [value, closeOnPick, type, handleRequestCloseCalendar]);
 
