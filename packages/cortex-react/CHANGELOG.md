@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.20](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.19...@tecsinapse/cortex-react@1.9.20) (2025-01-22)
+
+### Bug Fixes
+
+* badge styles ([f787688](https://github.com/tecsinapse/design-system/commit/f787688a13c422adc9ad63782debc7fa514db0a6))
+
 ## [1.9.20-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.19...@tecsinapse/cortex-react@1.9.20-beta.0) (2025-01-28)
 
 ### Bug Fixes
