@@ -110,7 +110,7 @@ export const label = (props: LabelBaseVariants) => {
   const { placeholder, intent } = props;
   return labelBaseStyles({
     intent: intent,
-    className: clsx(String(props.className) ?? props.class, {
+    className: clsx(props.className ? String(props.className) : props.class, {
       'peer-placeholder-shown:hidden': !!placeholder,
     }),
   });

@@ -79,7 +79,7 @@ export const Selector: React.FC<SelectorProps> = ({
   };
 
   const handlePressOut = () => {
-    pressInTimeoutRef.current && clearTimeout(pressInTimeoutRef.current);
+    if (pressInTimeoutRef.current) clearTimeout(pressInTimeoutRef.current);
   };
 
   return (

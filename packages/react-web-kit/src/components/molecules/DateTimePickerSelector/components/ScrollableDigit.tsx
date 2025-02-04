@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { ListRenderItemInfo } from 'react-native';
-import { TextProps, Text } from '@tecsinapse/react-core';
-import { useTheme } from '@tecsinapse/react-core';
-import { RFValue } from '@tecsinapse/react-core';
+import { TextProps, Text , useTheme , RFValue } from '@tecsinapse/react-core';
 import { StyledTextLabel, TimeDigitContainer } from '../styled';
 import { MemoizedTimeCard } from '.';
 

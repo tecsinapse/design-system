@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.21-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.20...@tecsinapse/react-web-kit@3.4.21-beta.0) (2025-01-28)
+
+### Bug Fixes
+
+* **TS-9671:** typescript errors ([fd32230](https://github.com/tecsinapse/design-system/commit/fd32230f735e445365dfb9d08d1f46fdd20bca44))
+
 ## [3.4.20](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.19-beta.0...@tecsinapse/react-web-kit@3.4.20) (2025-01-15)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

@@ -22,7 +22,7 @@ export const Avatar = ({ src, name, className, ...rest }: AvatarProps) => {
     <div
       {...rest}
       className={clsx(
-        'rounded-pill bg-secondary-dark w-mega h-mega flex items-center justify-center cursor-pointer',
+        'rounded-pill bg-secondary-dark h-mega flex items-center justify-center cursor-pointer',
         className
       )}
     >
@@ -30,7 +30,7 @@ export const Avatar = ({ src, name, className, ...rest }: AvatarProps) => {
         <img
           src={src}
           alt={name}
-          className={'rounded-pill'}
+          className={'rounded-pill aspect-square h-mega'}
           onError={() => setHasError(true)}
           data-testid="avatar-img"
         />
