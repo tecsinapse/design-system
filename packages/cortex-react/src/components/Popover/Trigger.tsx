@@ -16,10 +16,7 @@ const isDisabledProps = {
   onPointerDown: () => undefined,
 };
 
-export const PopoverTrigger = ({
-  children,
-  disabled = false,
-}: PopoverTriggerProps) => {
+export const PopoverTrigger = ({ children, disabled }: PopoverTriggerProps) => {
   const { triggerProps } = usePopoverContext();
   const isDisabled = disabled ?? children.props?.disabled;
 
