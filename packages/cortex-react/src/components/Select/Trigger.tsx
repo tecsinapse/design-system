@@ -28,7 +28,7 @@ export const SelectTrigger = ({
   const { className } = rest;
 
   return (
-    <Popover.Trigger>
+    <Popover.Trigger disabled={disabled}>
       <button
         className={button({ className })}
         disabled={disabled}
