@@ -2,8 +2,7 @@ import { tv } from 'tailwind-variants';
 
 export const StepNodeVariants = tv({
   slots: {
-    container:
-      'flex flex-col items-center justify-center text-center w-full max-w-[268px]',
+    container: 'flex flex-col items-center justify-center text-center w-full',
     content: 'flex p-mili text-center w-full text-sub justify-center font-bold',
     separator: 'h-micro w-full',
   },
