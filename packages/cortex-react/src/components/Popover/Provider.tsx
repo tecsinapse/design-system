@@ -8,12 +8,14 @@ export interface ControlledProps {
   controlled: true;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  fallbackPlacements?: Array<Placement>;
 }
 
 export interface UncontrolledProviderProps {
   /** child element */
   children: ReactNode;
   placement?: Placement;
+  fallbackPlacements?: Array<Placement>;
   trigger?: 'hover' | 'click';
   controlled?: false;
 }
@@ -30,9 +32,15 @@ export const PopoverProvider = ({
   children,
   placement,
   trigger,
+  fallbackPlacements,
   ...props
 }: PopoverProviderProps) => {
-  const floatingLogic = useFloatingElement({ placement, trigger, ...props });
+  const floatingLogic = useFloatingElement({
+    placement,
+    trigger,
+    fallbackPlacements,
+    ...props,
+  });
 
   return (
     <Context.Provider value={{ ...floatingLogic }}>{children}</Context.Provider>
