@@ -4,6 +4,7 @@ import { Popover } from '../Popover';
 import { Content } from './Content';
 import { SelectContext } from './context';
 import { SelectRootProps } from './types';
+import { Placement } from '@floating-ui/react';
 
 /** Select component */
 export const SelectRoot = <T,>({
@@ -14,7 +15,11 @@ export const SelectRoot = <T,>({
   className,
 }: SelectRootProps<T>) => {
   return (
-    <Popover.Root placement="bottom" trigger="click">
+    <Popover.Root
+      fallbackPlacements={['bottom', 'top'] as Array<Placement>}
+      placement="bottom"
+      trigger="click"
+    >
       <SelectContext.Provider value={{ value, keyExtractor, labelExtractor }}>
         <Content className={className}>{children}</Content>
       </SelectContext.Provider>

@@ -36,6 +36,7 @@ export interface FloatingElementProps {
   controlled?: boolean;
   isOpen?: boolean;
   setIsOpen?: Dispatch<SetStateAction<boolean>> | undefined;
+  fallbackPlacements?: Array<Placement>;
 }
 
 export const useFloatingElement = ({
@@ -46,6 +47,7 @@ export const useFloatingElement = ({
   controlled,
   isOpen,
   setIsOpen,
+  fallbackPlacements = ['right', 'bottom', 'left', 'top'],
 }: FloatingElementProps) => {
   const [openUncontrolled, onOpenChangeUncontrolled] = useState(false);
 
@@ -59,7 +61,7 @@ export const useFloatingElement = ({
         offset(10),
         flip({
           flipAlignment: true,
-          fallbackPlacements: ['right', 'bottom', 'left', 'top'],
+          fallbackPlacements,
         }),
         shift(),
         ...(arrowRef ? [arrow({ element: arrowRef })] : []),
