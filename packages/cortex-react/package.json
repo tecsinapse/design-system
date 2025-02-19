@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-react",
-  "version": "1.9.24-beta.0",
+  "version": "1.9.24",
   "description": "React components based in @tecsinapse/cortex-core",
   "license": "MIT",
   "main": "dist/esm/index.js",
