@@ -1,9 +1,10 @@
-import { selectVariants } from '@tecsinapse/cortex-core';
+import { labelStyle, selectVariants } from '@tecsinapse/cortex-core';
 import React, { useContext, useMemo } from 'react';
 import { IoChevronDownOutline } from 'react-icons/io5';
 import { Popover } from '../Popover';
 import { SelectContext } from './context';
 import { SelectTriggerProps } from './types';
+import clsx from 'clsx';
 
 const { button } = selectVariants();
 
@@ -27,17 +28,42 @@ export const SelectTrigger = ({
 
   const { className } = rest;
 
+  const hasValue = Array.isArray(value) ? value.length > 0 : !!value;
   return (
     <Popover.Trigger disabled={disabled}>
-      <button
-        className={button({ className })}
-        disabled={disabled}
-        role="button"
-        {...rest}
-      >
-        <span data-testid="select-placeholder">{_placeholder}</span>
-        <IoChevronDownOutline />
-      </button>
+      <div className="w-full gap-mili">
+        <button
+          className={button({ className })}
+          disabled={disabled}
+          role="button"
+          {...rest}
+        >
+          <span
+            className={clsx(
+              'custom-span-class',
+              hasValue && label ? 'mt-mili' : ''
+            )}
+            data-testid="select-placeholder"
+          >
+            {_placeholder}
+          </span>
+          <IoChevronDownOutline />
+        </button>
+        {hasValue && label ? (
+          <label
+            htmlFor="select-trigger"
+            className={clsx(
+              'ml-centi',
+              labelStyle({ intent: 'intent', placeholder })
+            )}
+            data-testid="input-label"
+          >
+            {label}
+          </label>
+        ) : (
+          <></>
+        )}
+      </div>
     </Popover.Trigger>
   );
 };
