@@ -39,10 +39,7 @@ export const SelectTrigger = ({
           {...rest}
         >
           <span
-            className={clsx(
-              'custom-span-class',
-              hasValue && label ? 'mt-mili' : ''
-            )}
+            className={clsx({ 'mt-mili': hasValue && label })}
             data-testid="select-placeholder"
           >
             {_placeholder}
@@ -54,7 +51,7 @@ export const SelectTrigger = ({
             htmlFor="select-trigger"
             className={clsx(
               'ml-centi',
-              labelStyle({ intent: 'intent', placeholder })
+              labelStyle({ intent: 'default', placeholder })
             )}
             data-testid="input-label"
           >
