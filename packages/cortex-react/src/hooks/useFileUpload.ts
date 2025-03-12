@@ -117,6 +117,6 @@ export const useFileUpload = <T>({
     } as UseDropzoneProps,
     open: isOpen,
     files,
-    handleClearFiles,
+    onClearFiles: handleClearFiles,
   };
 };
