@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.29](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.28...@tecsinapse/cortex-react@1.9.29) (2025-03-12)
+
+### Bug Fixes
+
+* **TS-12055:** export file rejection type ([358e0ac](https://github.com/tecsinapse/design-system/commit/358e0ace1fe9e3d5e9afd0dbefd206d50296ec15))
+
 ## [1.9.28](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.27...@tecsinapse/cortex-react@1.9.28) (2025-03-12)
 
 ### Bug Fixes
