@@ -1,11 +1,12 @@
 import { useCallback, useState } from 'react';
-import { Accept, FileRejection, useDropzone } from 'react-dropzone';
+import { Accept, useDropzone } from 'react-dropzone';
 import { v4 as uuidv4 } from 'uuid';
 import {
   UseDropzoneProps,
   FileStatus,
   AcceptSpecificMap,
   type FileUpload,
+  FileRejection,
 } from '../components/Uploader/types';
 
 interface UseFileUploadOptions<T> {
