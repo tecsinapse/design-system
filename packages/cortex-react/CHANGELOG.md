@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.28](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.27...@tecsinapse/cortex-react@1.9.28) (2025-03-12)
+
+### Bug Fixes
+
+* **TS-12032:** export name ([674c7a7](https://github.com/tecsinapse/design-system/commit/674c7a728b52f77a1a383aca40d9c05d81badc79))
+
 ## [1.9.27](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.26...@tecsinapse/cortex-react@1.9.27) (2025-03-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
