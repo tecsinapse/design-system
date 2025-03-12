@@ -45,6 +45,16 @@ export enum FileStatus {
   UPLOADING = 'uploading',
 }
 
+export interface FileError {
+  message: string;
+  code: string;
+}
+
+export type FileRejection = {
+  file: File;
+  errors: FileError[];
+};
+
 export type FileUpload<T> = {
   file: File;
   metadata?: T;
