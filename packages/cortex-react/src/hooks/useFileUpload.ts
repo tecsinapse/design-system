@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Accept, useDropzone } from 'react-dropzone';
+import { Accept, FileRejection, useDropzone } from 'react-dropzone';
 import { v4 as uuidv4 } from 'uuid';
 import {
   UseDropzoneProps,
@@ -20,6 +20,7 @@ interface UseFileUploadOptions<T> {
   maxSize?: number;
   allowMultiple?: boolean;
   onDelete?: (file: FileUpload<T>) => Promise<void>;
+  onFileRejected?: (fileRejections: FileRejection[]) => void;
 }
 
 export const useFileUpload = <T>({
@@ -27,6 +28,7 @@ export const useFileUpload = <T>({
   onAccept,
   maxSize,
   allowMultiple = true,
+  onFileRejected,
 }: UseFileUploadOptions<T>) => {
   const [files, setFiles] = useState<FileUpload<T>[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -90,10 +92,15 @@ export const useFileUpload = <T>({
     accept: mappedAccept,
     multiple: allowMultiple,
     maxSize,
+    onDropRejected: onFileRejected,
   });
 
   const handleRemoveFile = useCallback((index: number) => {
     setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
+  }, []);
+
+  const handleClearFiles = useCallback(() => {
+    setFiles([]);
   }, []);
 
   const isFileLimitReached = !allowMultiple && files.length > 0;
@@ -110,5 +117,6 @@ export const useFileUpload = <T>({
     } as UseDropzoneProps,
     open: isOpen,
     files,
+    handleClearFiles,
   };
 };
