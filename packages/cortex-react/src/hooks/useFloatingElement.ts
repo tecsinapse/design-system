@@ -67,7 +67,7 @@ export const useFloatingElement = ({
         shift(),
         size({
           apply({ rects, elements }) {
-            const minWidth = elements.floating.scrollWidth;
+            const minWidth = 150;
             const referenceWidth = rects.reference.width;
 
             elements.floating.style.width = `${Math.max(referenceWidth, minWidth)}px`;
@@ -77,7 +77,6 @@ export const useFloatingElement = ({
       ],
     }
   );
-
   const click = useClick(context, { enabled: trigger === 'click' });
   const dismiss = useDismiss(context);
   const role = useRole(context);
@@ -93,7 +92,6 @@ export const useFloatingElement = ({
     role,
     hover,
   ]);
-
   useEffect(() => {
     if (controlled && isOpen) update();
     else if (openUncontrolled) update();
