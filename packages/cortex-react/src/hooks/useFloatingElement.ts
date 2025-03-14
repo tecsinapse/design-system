@@ -67,10 +67,7 @@ export const useFloatingElement = ({
         shift(),
         size({
           apply({ rects, elements }) {
-            const minWidth = 150;
-            const referenceWidth = rects.reference.width;
-
-            elements.floating.style.width = `${Math.max(referenceWidth, minWidth)}px`;
+            elements.floating.style.width = `${rects.reference.width}px`;
           },
         }),
         ...(arrowRef ? [arrow({ element: arrowRef })] : []),
