@@ -6,6 +6,7 @@ import {
   Placement,
   safePolygon,
   shift,
+  size,
   useClick,
   useDismiss,
   useFloating,
@@ -64,6 +65,11 @@ export const useFloatingElement = ({
           fallbackPlacements,
         }),
         shift(),
+        size({
+          apply({ rects, elements }) {
+            elements.floating.style.width = `${rects.reference.width}px`;
+          },
+        }),
         ...(arrowRef ? [arrow({ element: arrowRef })] : []),
       ],
     }
