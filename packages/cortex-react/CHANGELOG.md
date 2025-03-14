@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.32](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.31...@tecsinapse/cortex-react@1.9.32) (2025-03-14)
+
+### Bug Fixes
+
+* width popover ([5d227ca](https://github.com/tecsinapse/design-system/commit/5d227ca26b8b16bbd51cbc0e60581a47224f1b7a))
+
 ## [1.9.31](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.30...@tecsinapse/cortex-react@1.9.31) (2025-03-14)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
