@@ -15,7 +15,9 @@ export const Modal = ({
     <ModalCortex
       open={open}
       onClose={onClose}
-      className="flex-col w-[70%] h-[50%] bg-secondary-xlight rounded-mili"
+      className={
+        'flex flex-col bg-secondary-xlight rounded-mili min-w-[70%] h-[50%] overflow-auto'
+      }
     >
       <div className="flex w-full items-center justify-between mb-deca">
         <div />
@@ -28,9 +30,7 @@ export const Modal = ({
           <MdClose size={20} />
         </button>
       </div>
-      <div className="flex flex-col md:flex-row w-full h-full max-h-[85%] gap-deca">
-        {children}
-      </div>
+      {children}
     </ModalCortex>,
     document.body
   );

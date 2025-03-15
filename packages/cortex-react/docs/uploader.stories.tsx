@@ -1,13 +1,18 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { button } from '@tecsinapse/cortex-core';
 import React from 'react';
-import { Uploader } from '../src';
+import { Button, Uploader } from '../src';
 import { FileStatus, type FileUpload } from '../src/components/Uploader/types';
 import { useFileUpload } from '../src/hooks';
 
 export default {
   title: 'Cortex/Uploader',
   component: Uploader.Root,
+  subcomponents: {
+    Modal: Uploader.Modal,
+    Files: Uploader.Files,
+    Dropzone: Uploader.Dropzone,
+  },
 } as Meta<typeof Uploader.Root>;
 
 const onAccept = async <T,>(
@@ -44,6 +49,7 @@ export const Default: StoryObj<typeof Uploader> = {
         accept: {
           APPLICATION: [],
           AUDIO: [],
+          IMAGE: [],
           VIDEO: ['video/mp4'],
         },
         onAccept,
@@ -54,9 +60,45 @@ export const Default: StoryObj<typeof Uploader> = {
         <button className={button()} onClick={onOpen}>
           Upload File
         </button>
+        <Uploader.Root
+          open={open}
+          onClose={onClose}
+          dropzoneProps={dropzoneProps}
+          files={files}
+          onDelete={onDelete}
+        />
+      </div>
+    );
+  },
+};
+
+export const Custom: StoryObj<typeof Uploader> = {
+  render: args => {
+    const { files, onOpen, onClose, onDelete, dropzoneProps, open } =
+      useFileUpload<{ id: string }>({
+        accept: {
+          APPLICATION: [],
+          AUDIO: [],
+          VIDEO: ['video/mp4'],
+        },
+        onAccept,
+      });
+
+    return (
+      <div>
+        <button className={button()} onClick={onOpen}>
+          Upload File Custom
+        </button>
         <Uploader.Modal open={open} onClose={onClose}>
-          <Uploader.Dropzone dropzoneProps={dropzoneProps} />
-          <Uploader.Files files={files} onDelete={onDelete} />
+          <div className="flex flex-col overflow-y-auto w-full gap-kilo">
+            <div className="flex flex-row flex-1 gap-kilo">
+              <Uploader.Dropzone dropzoneProps={dropzoneProps} />
+              <Uploader.Files files={files} onDelete={onDelete} />
+            </div>
+            <Button type="button" variants={{ className: 'mb-deca' }}>
+              Teste
+            </Button>
+          </div>
         </Uploader.Modal>
       </div>
     );
