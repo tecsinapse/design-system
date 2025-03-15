@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.35](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.34...@tecsinapse/cortex-react@1.9.35) (2025-03-15)
+
+### Bug Fixes
+
+* **TS-11855:** estilos uploader ([be64d2b](https://github.com/tecsinapse/design-system/commit/be64d2bd0fda05b90f869f77b8365b0198fd1c5c))
+
 ## [1.9.34](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.33...@tecsinapse/cortex-react@1.9.34) (2025-03-14)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
