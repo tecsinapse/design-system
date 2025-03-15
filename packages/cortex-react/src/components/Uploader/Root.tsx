@@ -19,17 +19,19 @@ export const Root = <T,>({
 }: RootUploaderProps<T>) => {
   return (
     <Modal onClose={onClose} open={open} title={titleModal}>
-      <Dropzone
-        dropzoneProps={dropzoneProps}
-        selectFileText={selectFileText}
-        dropText={dropText}
-        buttonText={buttonText}
-      />
-      <Files
-        files={files}
-        onDelete={onDelete}
-        uploadProgressText={uploadProgressText}
-      />
+      <div className="flex flex-1 flex-col w-full gap-deca md:flex-row">
+        <Dropzone
+          dropzoneProps={dropzoneProps}
+          selectFileText={selectFileText}
+          dropText={dropText}
+          buttonText={buttonText}
+        />
+        <Files
+          files={files}
+          onDelete={onDelete}
+          uploadProgressText={uploadProgressText}
+        />
+      </div>
     </Modal>
   );
 };
