@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.36](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.35...@tecsinapse/cortex-react@1.9.36) (2025-03-16)
+
+### Bug Fixes
+
+* date picker input when value is cleaned from outside ([510634e](https://github.com/tecsinapse/design-system/commit/510634e3ba2b103c8a2da33a338d446c16752d50))
+
 ## [1.9.35](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.34...@tecsinapse/cortex-react@1.9.35) (2025-03-15)
 
 ### Bug Fixes
