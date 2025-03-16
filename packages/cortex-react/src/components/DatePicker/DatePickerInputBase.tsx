@@ -46,6 +46,7 @@ export const DatePickerInputBase = ({
       <Input.Right className="flex h-full justify-center">
         {showCloseIcon ? (
           <button
+            className="bg-transparent"
             onClick={onClean}
             disabled={disabled}
             data-testid="date-picker-input-base-clean-button"
@@ -58,6 +59,7 @@ export const DatePickerInputBase = ({
           </button>
         ) : (
           <button
+            className="bg-transparent"
             onClick={onToggle}
             disabled={disabled}
             data-testid="date-picker-input-base-calendar-button"
