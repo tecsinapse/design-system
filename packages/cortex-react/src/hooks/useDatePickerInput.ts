@@ -1,5 +1,5 @@
 import { CalendarDateTime } from '@internationalized/date';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDatePicker } from 'react-aria';
 import { useDatePickerState } from 'react-stately';
 import { calendarDateToDate, dateToCalendarDateTime } from '../utils';
@@ -25,6 +25,12 @@ export const useDatePickerInput = ({
     state,
     ref
   );
+
+  useEffect(() => {
+    if (!value) {
+      state.setValue(null);
+    }
+  }, [value]);
 
   return {
     fieldProps,
