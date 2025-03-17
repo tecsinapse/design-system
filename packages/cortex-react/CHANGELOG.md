@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.38](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.37...@tecsinapse/cortex-react@1.9.38) (2025-03-17)
+
+### Bug Fixes
+
+* removing popover portal ([5b6aad0](https://github.com/tecsinapse/design-system/commit/5b6aad02ae69c5b9026241a13da9ce4638fd09b8))
+
 ## [1.9.37](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.36...@tecsinapse/cortex-react@1.9.37) (2025-03-17)
 
 ### Bug Fixes
