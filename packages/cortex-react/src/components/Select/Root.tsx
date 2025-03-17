@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject, useState } from 'react';
 
 import { Popover } from '../Popover';
 import { Content } from './Content';
@@ -14,13 +14,22 @@ export const SelectRoot = <T,>({
   labelExtractor,
   className,
 }: SelectRootProps<T>) => {
+  const [triggerWidth, setTriggerWidth] = useState<number>(0);
   return (
     <Popover.Root
       fallbackPlacements={['bottom', 'top'] as Array<Placement>}
       placement="bottom"
       trigger="click"
     >
-      <SelectContext.Provider value={{ value, keyExtractor, labelExtractor }}>
+      <SelectContext.Provider
+        value={{
+          value,
+          keyExtractor,
+          labelExtractor,
+          triggerWidth,
+          setTriggerWidth,
+        }}
+      >
         <Content className={className}>{children}</Content>
       </SelectContext.Provider>
     </Popover.Root>
