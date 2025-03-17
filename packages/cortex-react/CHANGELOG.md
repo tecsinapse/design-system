@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.37](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.36...@tecsinapse/cortex-react@1.9.37) (2025-03-17)
+
+### Bug Fixes
+
+* force datepicker icon bg as transparent ([6f44e52](https://github.com/tecsinapse/design-system/commit/6f44e524f7ba4175b0792c133194db21b8f0f4c7))
+
 ## [1.9.36](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.35...@tecsinapse/cortex-react@1.9.36) (2025-03-16)
 
 ### Bug Fixes
