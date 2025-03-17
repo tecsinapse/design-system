@@ -37,7 +37,7 @@ export const PopoverContent = ({
   return (
     <>
       {isOpen && (
-        <FloatingPortal>
+        <FloatingPortal preserveTabOrder>
           <FloatingFocusManager {...rest} context={context} modal={modal}>
             <div
               ref={refs.setFloating}
