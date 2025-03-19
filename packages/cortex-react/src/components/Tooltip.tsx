@@ -30,6 +30,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       placement = 'top',
       width,
       height,
+      style,
       delay = { open: 500, close: 0 },
     } = props;
     const arrowRef = useRef(null);
@@ -61,6 +62,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
               left: x ?? 0,
               width,
               height,
+              ...style,
               ...floatingStyles,
             }}
             {...getFloatingProps()}
