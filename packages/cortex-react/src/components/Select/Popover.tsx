@@ -11,7 +11,10 @@ export const SelectPopover = ({ children }: SelectPopoverProps) => {
     <FloatingPortal>
       <Popover.Content
         className="bg-white max-h-[30vh] overflow-y-scroll gap-y-mili flex flex-col p-0"
-        style={{ width: triggerWidth ? `${triggerWidth}px` : 'auto' }}
+        style={{
+          width: triggerWidth ? `${triggerWidth}px` : 'auto',
+          zIndex: 9999,
+        }}
       >
         {children}
       </Popover.Content>
