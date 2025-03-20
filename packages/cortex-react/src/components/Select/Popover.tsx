@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Popover } from '../Popover';
 import { SelectPopoverProps } from './types';
+import { FloatingPortal } from '@floating-ui/react';
+import { SelectContext } from './context';
 
 export const SelectPopover = ({ children }: SelectPopoverProps) => {
+  const { triggerWidth } = useContext(SelectContext);
+
   return (
-    <Popover.Content className="bg-white max-h-[30vh] w-full overflow-y-scroll gap-y-mili flex flex-col p-0">
-      {children}
-    </Popover.Content>
+    <FloatingPortal>
+      <Popover.Content
+        className="bg-white max-h-[30vh] overflow-y-scroll gap-y-mili flex flex-col p-0"
+        style={{ width: triggerWidth ? `${triggerWidth}px` : 'auto' }}
+      >
+        {children}
+      </Popover.Content>
+    </FloatingPortal>
   );
 };

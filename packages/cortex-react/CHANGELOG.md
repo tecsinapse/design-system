@@ -3,10 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.39-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.38-beta.2...@tecsinapse/cortex-react@1.9.39-beta.0) (2025-03-19)
+
+### Bug Fixes
+
+* passando parametro style para div do tooltip ([25eb5e1](https://github.com/tecsinapse/design-system/commit/25eb5e1a79c805749d4d47e1276c86eea89e9eb0))
+
 ## [1.9.38](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.37...@tecsinapse/cortex-react@1.9.38) (2025-03-17)
 
 ### Bug Fixes
 
+* removing popover portal ([5b6aad0](https://github.com/tecsinapse/design-system/commit/5b6aad02ae69c5b9026241a13da9ce4638fd09b8))
+
+## [1.9.38-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.38-beta.1...@tecsinapse/cortex-react@1.9.38-beta.2) (2025-03-17)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.9.38-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.38-beta.0...@tecsinapse/cortex-react@1.9.38-beta.1) (2025-03-17)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.9.38-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.37...@tecsinapse/cortex-react@1.9.38-beta.0) (2025-03-17)
+
+### Bug Fixes
+
+* popover width select ([4930883](https://github.com/tecsinapse/design-system/commit/49308833c9466c12a9ae93bbfcefd442ca3df27f))
 * removing popover portal ([5b6aad0](https://github.com/tecsinapse/design-system/commit/5b6aad02ae69c5b9026241a13da9ce4638fd09b8))
 
 ## [1.9.37](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.36...@tecsinapse/cortex-react@1.9.37) (2025-03-17)

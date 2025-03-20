@@ -15,12 +15,14 @@ export interface PopoverContentProps
   /** child element */
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const PopoverContent = ({
   children,
   className,
   modal = false,
+  style,
   ...rest
 }: PopoverContentProps) => {
   const {
@@ -49,7 +51,7 @@ export const PopoverContent = ({
               position: strategy,
               top: y ?? 0,
               left: x ?? 0,
-
+              ...style,
               ...floatingStyles,
             }}
           >

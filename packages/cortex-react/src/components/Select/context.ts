@@ -1,9 +1,11 @@
-import { createContext } from 'react';
+import { createContext, RefObject } from 'react';
 
 interface SelectContextProps<T> {
   value?: T | T[];
   keyExtractor: (value: T) => string;
   labelExtractor: (value: T) => string;
+  triggerWidth?: number;
+  setTriggerWidth?: (width: number) => void;
 }
 
 export const SelectContext = createContext<SelectContextProps<any>>({
