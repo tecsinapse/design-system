@@ -47,6 +47,7 @@ export const Carousel = ({ images }: CarouselProps) => {
       {itemsCarousel.length > 1 ? (
         <>
           <Button
+            type={'button'}
             data-testid={'button-carousel-prev'}
             variants={{
               size: 'square',
@@ -58,6 +59,7 @@ export const Carousel = ({ images }: CarouselProps) => {
             <IoIosArrowBack />
           </Button>
           <Button
+            type={'button'}
             data-testid={'button-carousel-next'}
             variants={{
               size: 'square',
