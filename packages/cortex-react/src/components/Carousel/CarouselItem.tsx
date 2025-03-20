@@ -41,11 +41,13 @@ export const CarouselItem = ({ item }: CarouselItemProps) => {
       </div>
       {item.button ? (
         <a
+          type={'button'}
           href={item.button.link}
           target={item.button.target ?? '_self'}
           rel="noopener noreferrer"
         >
           <Button
+            type={'button'}
             data-testid={'button-link-carousel'}
             variants={{
               className: 'z-absolute absolute bottom-deca left-[10%]',
