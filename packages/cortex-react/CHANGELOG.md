@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.41](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.40...@tecsinapse/cortex-react@1.9.41) (2025-03-20)
+
+### Bug Fixes
+
+* passando type button para buttons do carousel ([68dcd42](https://github.com/tecsinapse/design-system/commit/68dcd4215a4bca137aecea02909aeadc2a6087c5))
+
 ## [1.9.40](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.39-beta.1...@tecsinapse/cortex-react@1.9.40) (2025-03-20)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
