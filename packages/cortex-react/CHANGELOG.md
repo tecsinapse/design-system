@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.42](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.41...@tecsinapse/cortex-react@1.9.42) (2025-03-22)
+
+### Bug Fixes
+
+* **NO_US:** MultiGroupedOptions useMemo com dep incorreta ([fd4ab36](https://github.com/tecsinapse/design-system/commit/fd4ab36068d06fb7bcf7e5f27e5a7c93bbe7768d))
+
 ## [1.9.41](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.40...@tecsinapse/cortex-react@1.9.41) (2025-03-20)
 
 ### Bug Fixes
