@@ -20,7 +20,7 @@ export const SelectMultiGroupedOptions = <T,>({
   const flattenMap = useMemo(
     () =>
       _options ? Array.from(_options?.values()).flatMap(value => value) : [],
-    [options]
+    [_options]
   );
 
   return (
