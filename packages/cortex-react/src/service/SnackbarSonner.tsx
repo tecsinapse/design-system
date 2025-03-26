@@ -2,11 +2,12 @@ import React from 'react';
 import { ExternalToast, toast } from 'sonner';
 import { DefaultSnack } from '../components/Snackbar/DefaultSnack';
 import { ISnackbar, TypeSnack } from './ISnackbar';
+import { IExternalToast } from './IExternalToast';
 
-export class SnackbarSonner implements ISnackbar<ExternalToast> {
-  _options?: ExternalToast;
+export class SnackbarSonner implements ISnackbar<IExternalToast> {
+  _options?: IExternalToast;
 
-  constructor(options?: ExternalToast) {
+  constructor(options?: IExternalToast) {
     this._options = { ...options, duration: options?.duration ?? 5000 };
   }
 
@@ -20,15 +21,21 @@ export class SnackbarSonner implements ISnackbar<ExternalToast> {
   show(
     type: TypeSnack,
     message: string,
-    options?: Omit<ExternalToast, 'className' | 'style'>
+    options?: Omit<IExternalToast, 'className' | 'style'>
   ) {
+
     return toast.custom(
       t => {
         return (
           <DefaultSnack
             text={message}
             variants={{ intent: type }}
-            onDismiss={() => toast.dismiss(t)}
+            onDismiss={() => {
+              toast.dismiss(t)
+              if (options?.onDismiss && typeof options?.onDismiss === 'function') {
+                options.onDismiss()
+              }
+            }}
           />
         );
       },

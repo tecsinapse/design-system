@@ -9,6 +9,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **NO_US:** MultiGroupedOptions useMemo com dep incorreta ([fd4ab36](https://github.com/tecsinapse/design-system/commit/fd4ab36068d06fb7bcf7e5f27e5a7c93bbe7768d))
 
+## [1.9.42-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.41...@tecsinapse/cortex-react@1.9.42-beta.0) (2025-03-26)
+
+### Bug Fixes
+
+* **NO_US:** MultiGroupedOptions useMemo com dep incorreta ([fd4ab36](https://github.com/tecsinapse/design-system/commit/fd4ab36068d06fb7bcf7e5f27e5a7c93bbe7768d))
+
 ## [1.9.41](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.40...@tecsinapse/cortex-react@1.9.41) (2025-03-20)
 
 ### Bug Fixes

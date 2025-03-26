@@ -28,7 +28,7 @@ export const Default: StoryObj<typeof DefaultSnack> = {
       <div className="h-[300px] w-[70vw]">
         <Button
           variants={{ intent: 'primary' }}
-          onClick={() => snackbar.show('default', args.text)}
+          onClick={() => snackbar.show('default', args.text, { onDismiss: () => console.log('click')})}
         >
           Show Snack default
         </Button>
