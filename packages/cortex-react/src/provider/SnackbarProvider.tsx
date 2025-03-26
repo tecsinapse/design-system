@@ -1,6 +1,7 @@
 import React, { createContext, ReactNode, useContext } from 'react';
-import { Toaster, type ExternalToast } from 'sonner';
-import { SnackbarSonner } from '../service/SnackbarSonner';
+import { Toaster } from 'sonner';
+import { SnackbarSonner } from '../service';
+import { IExternalToast } from '../service/IExternalToast';
 
 interface SnackbarProviderProps {
   snackbar: SnackbarSonner;
@@ -12,7 +13,7 @@ export const SnackbarProvider = ({
   options,
 }: {
   children: ReactNode;
-  options?: ExternalToast;
+  options?: IExternalToast;
 }) => {
   const snackbar = new SnackbarSonner(options);
   return (
