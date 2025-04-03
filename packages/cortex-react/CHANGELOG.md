@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.44](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.43...@tecsinapse/cortex-react@1.9.44) (2025-04-03)
+
+### Bug Fixes
+
+* **TS-12539:** dimensoes maximas uploader modal ([78b5af7](https://github.com/tecsinapse/design-system/commit/78b5af7ded856e92d5292e14ae579fe525ab5293))
+
 ## [1.9.43](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.42-beta.0...@tecsinapse/cortex-react@1.9.43) (2025-03-26)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
