@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.45](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.44...@tecsinapse/cortex-react@1.9.45) (2025-04-05)
+
+### Bug Fixes
+
+* **NO_US:** remove storybook test ([110b884](https://github.com/tecsinapse/design-system/commit/110b884a6002ad60a97eda7d9794654be8201d67))
+* **TS-12602:** passando props de div para a tag ([b27dc42](https://github.com/tecsinapse/design-system/commit/b27dc4248bac2fe0a646bdd26223feca9f43a759))
+
 ## [1.9.44](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.43...@tecsinapse/cortex-react@1.9.44) (2025-04-03)
 
 ### Bug Fixes
