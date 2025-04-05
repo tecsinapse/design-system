@@ -16,11 +16,7 @@ export const Default: StoryObj<typeof Tag.Root> = {
   },
   render: args => (
     <div className="flex gap-2">
-      <Tag.Root
-        variants={args.variants}
-        label={`${args.label} root`}
-        onClick={() => console.log('test')}
-      />
+      <Tag.Root variants={args.variants} label={`${args.label} root`} />
       <Tag.Root
         variants={args.variants}
         label={`${args.label} root dismissable`}
