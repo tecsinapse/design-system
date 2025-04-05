@@ -37,6 +37,7 @@ const Face = forwardRef<
   const { variants, className, children } = props;
   return (
     <div
+      {...props}
       className={tag({
         ...variants,
         className,
@@ -54,7 +55,7 @@ const Root = forwardRef<HTMLDivElement, TagProps & HTMLProps<HTMLDivElement>>(
     const { label, variants, className, onDismiss } = props;
 
     return (
-      <Face variants={variants} className={className} ref={ref}>
+      <Face variants={variants} className={className} ref={ref} {...props}>
         <Label>{label}</Label>
         {onDismiss ? <Close onClick={onDismiss} /> : null}
       </Face>
