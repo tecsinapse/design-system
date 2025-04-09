@@ -1,8 +1,8 @@
+import { RFValue, Text, TextProps, useTheme } from '@tecsinapse/react-core';
 import * as React from 'react';
 import { ListRenderItemInfo } from 'react-native';
-import { TextProps, Text , useTheme , RFValue } from '@tecsinapse/react-core';
 import { StyledTextLabel, TimeDigitContainer } from '../styled';
-import { MemoizedTimeCard } from '.';
+import MemoizedTimeCard from './MemoizedTimeCard';
 
 export interface ScrollableDigitProps {
   TextComponent?: React.FC<TextProps>;

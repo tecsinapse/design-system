@@ -1,9 +1,9 @@
+import { button } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { FaRegFileLines } from 'react-icons/fa6';
-import { button } from '@tecsinapse/cortex-core';
-import { FileProps } from './types';
 import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
+import { FileProps } from './types';
 
 export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
   function statusIntent(status: 'success' | 'error' | 'uploading') {
@@ -58,7 +58,7 @@ export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
 
       <ProgressBar
         intent={statusIntent(file.status)}
-        infinite={file.status !== 'success'}
+        infinite={file.status === 'uploading'}
       />
     </div>
   );

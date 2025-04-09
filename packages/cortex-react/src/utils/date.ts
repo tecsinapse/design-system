@@ -18,12 +18,12 @@ export const dateToCalendarDateTime = (value?: Date) => {
   );
 };
 
-export const calendarDateToDate = (value?: CalendarDateTime) => {
+export const calendarDateToDate = (value?: CalendarDateTime | null) => {
   if (!value) return undefined;
   return value.toDate(getLocalTimeZone());
 };
 
-export const timeFromTimeValue = (value?: TimeValue) => {
+export const timeFromTimeValue = (value?: TimeValue | null) => {
   if (!value) return undefined;
   return new Time(value.hour, value.minute, value.second, value.millisecond);
 };

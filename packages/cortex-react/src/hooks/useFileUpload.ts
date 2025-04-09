@@ -1,12 +1,16 @@
 import { useCallback, useState } from 'react';
-import { Accept, useDropzone } from 'react-dropzone';
+import {
+  Accept,
+  useDropzone,
+  type DropEvent,
+  type FileRejection,
+} from 'react-dropzone';
 import { v4 as uuidv4 } from 'uuid';
 import {
-  UseDropzoneProps,
-  FileStatus,
   AcceptSpecificMap,
+  FileStatus,
+  UseDropzoneProps,
   type FileUpload,
-  FileRejection,
 } from '../components/Uploader/types';
 
 interface UseFileUploadOptions<T> {
@@ -21,7 +25,7 @@ interface UseFileUploadOptions<T> {
   maxSize?: number;
   allowMultiple?: boolean;
   onDelete?: (file: FileUpload<T>) => Promise<void>;
-  onFileRejected?: (fileRejections: FileRejection[]) => void;
+  onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
 }
 
 export const useFileUpload = <T>({
