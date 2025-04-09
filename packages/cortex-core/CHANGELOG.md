@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.9...@tecsinapse/cortex-core@1.1.0) (2025-04-09)
+
+### Features
+
+* add new button `base` size ([f1a1312](https://github.com/tecsinapse/design-system/commit/f1a13127eac6b19e7cff7d9bb1ded5321e752923))
+
 ## [0.4.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.8-beta.0...@tecsinapse/cortex-core@0.4.9) (2025-02-04)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core

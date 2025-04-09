@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.21...@tecsinapse/react-web-kit@3.5.0) (2025-04-09)
+
+### Features
+
+* add new button `base` size ([f1a1312](https://github.com/tecsinapse/design-system/commit/f1a13127eac6b19e7cff7d9bb1ded5321e752923))
+
 ## [3.4.21](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.4.21-beta.0...@tecsinapse/react-web-kit@3.4.21) (2025-02-04)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
