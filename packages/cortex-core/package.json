@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-core",
-  "version": "0.4.9",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Core library for tailwindcss based design",
   "main": "dist/esm/index.js",
@@ -16,9 +16,8 @@
     "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "tailwind-merge": "*",
-    "tailwind-variants": "^0.2.1"
+    "clsx": "2.1.1",
+    "tailwind-variants": "1.0.0"
   },
   "repository": {
     "type": "git",

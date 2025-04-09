@@ -1,7 +1,7 @@
-import { tv, VariantProps, ClassProp } from 'tailwind-variants';
+import { tv, VariantProps } from 'tailwind-variants';
 
 export const buttonStyles = tv({
-  base: 'p-deca text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer items-center flex justify-center',
+  base: 'text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer items-center flex justify-center',
   variants: {
     intent: {
       primary:
@@ -26,6 +26,7 @@ export const buttonStyles = tv({
       small: 'px-deca rounded-mili py-mili min-h-[34px]',
       square: 'p-[14px] rounded-mili min-h-fit aspect-square',
       circle: 'p-[14px] rounded-full min-h-fit',
+      base: '',
     },
   },
   compoundVariants: [
@@ -106,7 +107,9 @@ export const buttonStyles = tv({
     variant: 'filled',
   },
 });
-export type ButtonVariants = VariantProps<typeof buttonStyles> & ClassProp;
+export type ButtonVariants = VariantProps<typeof buttonStyles> & {
+  className?: string;
+};
 
 /**
  * Represents the button component with specified variants.

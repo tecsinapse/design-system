@@ -1,4 +1,10 @@
-import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
+import {
+  DropzoneInputProps,
+  DropzoneRootProps,
+  type FileError,
+  type FileRejection,
+  type FileWithPath,
+} from 'react-dropzone';
 
 export interface FileItem {
   file: File;
@@ -44,16 +50,6 @@ export enum FileStatus {
   ERROR = 'error',
   UPLOADING = 'uploading',
 }
-
-export interface FileError {
-  message: string;
-  code: string;
-}
-
-export type FileRejection = {
-  file: File;
-  errors: FileError[];
-};
 
 export type FileUpload<T> = {
   file: File;
@@ -134,3 +130,5 @@ export const AcceptSpecificMap = {
     'text/markdown',
   ] as const,
 } as const;
+
+export type { FileError, FileRejection, FileWithPath };

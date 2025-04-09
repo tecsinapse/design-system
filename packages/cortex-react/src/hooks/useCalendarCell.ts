@@ -23,16 +23,17 @@ export const useCalendarCell = ({ state, date }: useCalendarCellProps) => {
 
   const isSameDayStart =
     rangeStateHighlitedRange && date
-      ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.start)
+      ? isSameDay(date, rangeStateHighlitedRange.start)
       : undefined;
   const isSameDayEnd =
     rangeStateHighlitedRange && date
-      ? isSameDay(date, (state as RangeCalendarState)?.highlightedRange?.end)
+      ? isSameDay(date, rangeStateHighlitedRange.end)
       : undefined;
 
   const isSelectionStart = isSameDayStart && !isSameDayEnd;
   const isSelectionEnd = isSameDayEnd && !isSameDayStart;
   const inRange =
+    rangeStateHighlitedRange &&
     date > rangeStateHighlitedRange?.start &&
     date < rangeStateHighlitedRange?.end;
 
@@ -45,6 +46,6 @@ export const useCalendarCell = ({ state, date }: useCalendarCellProps) => {
     formattedDate,
     isSelectionStart,
     isSelectionEnd,
-    inRange,
+    inRange: Boolean(inRange),
   };
 };
