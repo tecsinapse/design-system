@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.10.0...@tecsinapse/cortex-react@1.10.1) (2025-04-10)
+
+### Bug Fixes
+
+* move `react-icons` to `peerDependency` ([6160a14](https://github.com/tecsinapse/design-system/commit/6160a149834e4ed4d16851be49d67f9da45e274b))
+* remove `mr` from `Loading` component ([a19648e](https://github.com/tecsinapse/design-system/commit/a19648e0ae26ed6466171442af227b980d9fc886))
+
 # [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.45...@tecsinapse/cortex-react@1.10.0) (2025-04-09)
 
 ### Features
