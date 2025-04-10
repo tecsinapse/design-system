@@ -1,5 +1,5 @@
-import React from 'react';
 import { clsx } from 'clsx';
+import React from 'react';
 
 export interface LoadingProps {
   className?: string;
@@ -11,7 +11,7 @@ export const Loading = ({ className }: LoadingProps) => {
       <svg
         aria-hidden="true"
         className={clsx(
-          'w-4 h-4 text-gray-200 animate-spin fill-white mr-mili',
+          'w-4 h-4 text-gray-200 animate-spin fill-white',
           className
         )}
         viewBox="0 0 100 101"
