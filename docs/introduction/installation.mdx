@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/blocks";
+import { Meta } from '@storybook/blocks';
 
 <Meta title="Introduction/Installation" />
 
@@ -15,10 +15,10 @@ This project use pnpm as package manager, the examples can be changed for any pa
 **NOTE**: If you want to use _core_ primitives, add in your `package.json`:
 
 ```
-  "@tecsinapse/cortex-core": "*"
+  "@tecsinapse/cortex-core": "1.0.0"
 ```
 
-It will get the version of `cortex-react` _core_ dependency, to avoid dependency collision.
+Where `1.0.0` is the version that `@tecsinapse/cortex-react` uses. Always check to avoid dependency collision.
 
 ## Application setup
 
@@ -28,11 +28,13 @@ Since this is just an ui-kit for applications, you can start any way you want. I
 For TecSinapse applications, we provide a [ready to use template](https://github.com/tecsinapse/template-react-vitejs),
 here you can skip all steps.
 
-For icons, use [`react-icons`](https://react-icons.github.io/react-icons/icons/lia/), included as `cortex-react` dependency. To include explicitly in `package.json`:
+For icons, use [`react-icons`](https://react-icons.github.io/react-icons/icons/lia/). Include explicitly in `package.json`:
 
 ```
-  "react-icons": "*"
+  "react-icons": "latest"
 ```
+
+Where `latest` is the version that you want to use.
 
 **OBS:** The "official" icons are [LineAwesome](https://icons8.com/line-awesome).
 

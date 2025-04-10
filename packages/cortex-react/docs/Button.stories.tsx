@@ -65,18 +65,3 @@ export const Square: StoryObj<typeof Button> = {
     </Button>
   ),
 };
-
-// const Template: StoryFn = args => {
-//   return (
-//     <Button
-//       variants={{ intent: args.intent, variant: args.variant, size: args.size }}
-//     >
-//       Label
-//     </Button>
-//   );
-// };
-
-// export const Base = {
-//   render: Template,
-//   args: {},
-// };
