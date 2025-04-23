@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   corePlugins: {
-    preflight: true,
+    preflight: false,
   },
   content: [
     './packages/react-web-kit/src/components/atoms/**/*.{js,ts,jsx,tsx}',
