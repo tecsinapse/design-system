@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.10.1...@tecsinapse/cortex-react@1.11.0) (2025-04-24)
+
+### Features
+
+* add color picker component ([#342](https://github.com/tecsinapse/design-system/issues/342)) ([760388e](https://github.com/tecsinapse/design-system/commit/760388efa75119399c659d0923179ea8e41138ec))
+
 ## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.10.0...@tecsinapse/cortex-react@1.10.1) (2025-04-10)
 
 ### Bug Fixes
