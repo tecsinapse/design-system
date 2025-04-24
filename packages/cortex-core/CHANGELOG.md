@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.0...@tecsinapse/cortex-core@1.1.1) (2025-04-10)
+
+### Bug Fixes
+
+* move `react-icons` to `peerDependency` ([6160a14](https://github.com/tecsinapse/design-system/commit/6160a149834e4ed4d16851be49d67f9da45e274b))
+
 # [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.9...@tecsinapse/cortex-core@1.1.0) (2025-04-09)
 
 ### Features
