@@ -7,6 +7,7 @@ export * from './Calendar';
 export * from './Card';
 export * from './Carousel';
 export * from './Checkbox';
+export * from './ColorPicker';
 export * from './DatePicker';
 export * from './Divider';
 export * from './Drawer';

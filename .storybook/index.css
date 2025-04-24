@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.miscellaneous.body');
+    font-family: 'Lato', serif;
+    margin: 0;
+  }
+  blockquote,
+  dl,
+  dd,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  figure,
+  p,
+  pre {
+    margin: 0;
+  }
+  button,
+  [role='button'] {
+    cursor: pointer;
+  }
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button;
+    background-image: none;
+  }
+  button,
+  select {
+    text-transform: none;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+  }
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: inherit;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    width: 4px;
+    height: 4px;
+    background-color: theme('colors.secondary.light');
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: theme('colors.primary.medium');
+  }
+  input:disabled,
+  textarea:disabled {
+    @apply bg-transparent;
+  }
+  #input-face:has(> div > input:disabled) {
+    @apply bg-transparent;
+    @apply border-secondary-light;
+    @apply bg-opacity-0;
+    @apply text-secondary-light;
+  }
+}
