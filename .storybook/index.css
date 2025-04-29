@@ -86,4 +86,7 @@
     @apply bg-opacity-0;
     @apply text-secondary-light;
   }
+  a {
+    text-decoration: none;
+  }
 }

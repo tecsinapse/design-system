@@ -1,10 +1,10 @@
+import clsx from 'clsx';
 import React from 'react';
 import { ItemLinkProps } from './types';
-import clsx from 'clsx';
 
-const ItemLink = ({ anchorProps, children }: ItemLinkProps) => {
+const ItemLink = ({ anchorProps, children, ...rest }: ItemLinkProps) => {
   return (
-    <div>
+    <div {...rest}>
       {anchorProps ? (
         <a
           target={'_blank'}

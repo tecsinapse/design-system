@@ -30,8 +30,8 @@ export const mostUsed = tv({
 export const mostUsedItem = tv({
   slots: {
     container: 'flex-1 py-mili',
-    title: 'text-primary-medium font-bold',
-    category: 'text-secondary-medium',
+    title: 'text-primary-medium font-bold text-base',
+    category: 'text-secondary-medium text-label',
   },
 });
 
