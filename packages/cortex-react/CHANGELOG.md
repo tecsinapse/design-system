@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.11.1...@tecsinapse/cortex-react@1.12.0-beta.0) (2025-04-29)
+
+### Bug Fixes
+
+* intial name tests and support to middle name ([a4b8273](https://github.com/tecsinapse/design-system/commit/a4b82739629a6213a4d7d4a9c5046f5096ad6ae8))
+* misaligned expand icon on menubar subitem ([dec86fa](https://github.com/tecsinapse/design-system/commit/dec86fa6df2b702480a16bf592f2d7d8125c9238))
+* user name initials on avatar being undefined ([a399d21](https://github.com/tecsinapse/design-system/commit/a399d218cca18809c2ea7a772ad06a6a2fd13de6))
+
+### Features
+
+* add color picker component ([4279a24](https://github.com/tecsinapse/design-system/commit/4279a24ee19bd809aee61a838dc252771665ca58))
+
 ## [1.11.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.11.0...@tecsinapse/cortex-react@1.11.1) (2025-04-29)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
