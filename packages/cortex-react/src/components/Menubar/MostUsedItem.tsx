@@ -17,7 +17,7 @@ const MostUsedItem = ({
   ...rest
 }: MostUsedItemProps) => {
   return (
-    <ItemLink anchorProps={anchorProps}>
+    <ItemLink anchorProps={anchorProps} className="flex flex-grow">
       <Card
         {...rest}
         data-testid="most-used-item-menubar"

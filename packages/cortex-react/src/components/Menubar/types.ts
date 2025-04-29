@@ -35,7 +35,7 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-export interface ItemLinkProps {
+export interface ItemLinkProps extends React.HTMLAttributes<HTMLDivElement> {
   /** link to redirect */
   anchorProps?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
   /** child element */
