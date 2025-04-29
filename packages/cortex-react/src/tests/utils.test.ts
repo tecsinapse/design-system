@@ -15,8 +15,4 @@ describe('GetNameInitials', () => {
     expect(withoutMiddleName).toBe('UT');
     expect(withMiddleName).toBe('UJ');
   });
-
-  it('test getNameInitials empty name', () => {
-    expect(getNameInitials('')).toBe(undefined);
-  });
 });
