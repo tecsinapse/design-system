@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.12.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.12.0...@tecsinapse/cortex-react@1.12.1) (2025-05-01)
+
+### Bug Fixes
+
+* **TS-13085:** aplicar html no title e subtitle do carouselItem ([cc05bdf](https://github.com/tecsinapse/design-system/commit/cc05bdf82d577e8c89af7f57d1d39e7e043de24b))
+
 # [1.12.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.11.1...@tecsinapse/cortex-react@1.12.0) (2025-04-29)
 
 ### Bug Fixes
