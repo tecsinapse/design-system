@@ -49,11 +49,8 @@ export const Carousel = ({ images }: CarouselProps) => {
           <Button
             type={'button'}
             data-testid={'button-carousel-prev'}
-            variants={{
-              size: 'square',
-              className:
-                'z-absolute absolute left-deca top-[50%]  transform -translate-y-[50%] p-centi hidden lg:flex',
-            }}
+            className="z-absolute absolute left-deca top-[50%]  transform -translate-y-[50%] p-centi hidden lg:flex"
+            size="square"
             onClick={slideToPrevItem}
           >
             <IoIosArrowBack />
@@ -61,11 +58,8 @@ export const Carousel = ({ images }: CarouselProps) => {
           <Button
             type={'button'}
             data-testid={'button-carousel-next'}
-            variants={{
-              size: 'square',
-              className:
-                'z-absolute absolute right-deca top-[50%] transform -translate-y-[50%] p-centi hidden lg:flex',
-            }}
+            size="square"
+            className="z-absolute absolute right-deca top-[50%] transform -translate-y-[50%] p-centi hidden lg:flex"
             onClick={slideToNextItem}
           >
             <IoIosArrowForward />
