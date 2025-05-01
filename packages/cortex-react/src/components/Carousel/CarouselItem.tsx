@@ -49,9 +49,7 @@ export const CarouselItem = ({ item }: CarouselItemProps) => {
           <Button
             type={'button'}
             data-testid={'button-link-carousel'}
-            variants={{
-              className: 'z-absolute absolute bottom-deca left-[10%]',
-            }}
+            className="z-absolute absolute bottom-deca left-[10%]"
           >
             {item.button.title}
           </Button>
