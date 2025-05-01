@@ -13,17 +13,38 @@ export const AccordionContent = ({
   const { open } = useAccordionContext();
 
   useLayoutEffect(() => {
-    if (direction === 'horizontal') {
-      const widthSize = Array.from(
-        (container.current?.children || []) as HTMLCollection
-      ).reduce((prev, curr) => prev + curr.clientWidth, 0);
-      setWidth(`${widthSize}px`);
-    } else {
-      const heightSize = Array.from(
-        (container.current?.children || []) as HTMLCollection
-      ).reduce((prev, curr) => prev + curr.clientHeight, 0);
-      setHeight(`${heightSize}px`);
-    }
+    const getChildrenDimensions = () => {
+      if (!container.current) return;
+      const childrenArray = Array.from(
+        container.current.children || []
+      ) as HTMLElement[];
+      if (direction === 'horizontal') {
+        const widthSize = childrenArray.reduce(
+          (prev, curr) => prev + curr.clientWidth,
+          0
+        );
+        setWidth(`${widthSize}px`);
+      } else {
+        const heightSize = childrenArray.reduce(
+          (prev, curr) => prev + curr.clientHeight,
+          0
+        );
+        setHeight(`${heightSize}px`);
+      }
+    };
+
+    getChildrenDimensions();
+
+    const observer = new ResizeObserver(() => {
+      getChildrenDimensions();
+    });
+
+    const childrenArray = Array.from(container.current?.children || []);
+    childrenArray.forEach(el => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
   }, [direction]);
 
   return (

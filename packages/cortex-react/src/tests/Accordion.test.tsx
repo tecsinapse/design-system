@@ -4,6 +4,14 @@ import React from 'react';
 import { Accordion } from '../components';
 
 describe('Accordion', () => {
+  beforeAll(() => {
+    global.ResizeObserver = class {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    };
+  });
+
   it('Should render a closed accordion', async () => {
     render(
       <Accordion.Root label="Default">
