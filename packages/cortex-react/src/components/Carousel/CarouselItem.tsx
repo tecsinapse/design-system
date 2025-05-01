@@ -1,6 +1,5 @@
 import React from 'react';
 import { ImageCarousel } from './Carousel';
-import clsx from 'clsx';
 import { Button } from '../Button';
 
 export interface CarouselItemProps {
@@ -29,15 +28,16 @@ export const CarouselItem = ({ item }: CarouselItemProps) => {
           'z-absolute absolute top-[50%] transform -translate-y-[50%] left-[10%] mx-deca max-w-[60%]'
         }
       >
-        <p className={clsx('text-h2 font-bold')} style={stylesTitle}>
-          {item.title.text}
-        </p>
         <p
-          className={'text-white text-h2 font-bold hidden lg:flex'}
+          className={'text-h2 font-bold'}
+          style={stylesTitle}
+          dangerouslySetInnerHTML={{ __html: item.title.text }}
+        />
+        <p
+          className={'text-white text-h2 font-bold hidden lg:block'}
           style={stylesSubTitle}
-        >
-          {item.subtitle.text}
-        </p>
+          dangerouslySetInnerHTML={{ __html: item.subtitle.text }}
+        />
       </div>
       {item.button ? (
         <a
