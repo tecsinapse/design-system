@@ -58,7 +58,7 @@ export const useFileUpload = <T>({
     let toProcess = acceptedFiles;
 
     if (preventDuplicates) {
-      const found = acceptedFiles.filter(file =>
+      const found = (acceptedFiles ?? []).filter(file =>
         files.some(existing => existing.file.name === file.name)
       );
       if (found.length > 0) {
