@@ -37,8 +37,8 @@ export const Default: StoryObj<typeof Menubar.Root> = {
               className={'w-auto h-giga mx-kilo'}
             />
           </Menubar.HeaderLeft>
-          <Menubar.Search className='mr-kilo hidden sm:flex'/>
-          <Menubar.HeaderRight> 
+          <Menubar.Search className="mr-kilo hidden sm:flex" />
+          <Menubar.HeaderRight>
             <Tooltip
               text={
                 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
@@ -123,6 +123,8 @@ export const Custom: StoryObj<typeof DropdownRoot> = {
                     <>
                       <Menubar.Item
                         {...rest}
+                        title={title}
+                        parentCategoryTitle={item.title}
                         subItems={items ?? []}
                         className={'flex flex-row items-center gap-x-deca'}
                         renderSubItems={item => {
