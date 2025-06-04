@@ -1,17 +1,24 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import { Menubar } from '../../components';
+import { renderWithProvider } from '../Input/utils/renderWithProvider';
 
 describe('Item Menubar', () => {
   it('Should renders children correctly', () => {
-    const { getByText } = render(<Menubar.Item>Test Child</Menubar.Item>);
+    const { getByText } = renderWithProvider(
+      <Menubar.Item parentCategoryTitle={'Test Category'} title={'Test Title'}>
+        Test Child
+      </Menubar.Item>
+    );
     expect(getByText('Test Child')).toBeInTheDocument();
   });
 
   it('Should renders IconControlSubItem when subItems are provided', () => {
-    const { getByTestId } = render(
+    const { getByTestId } = renderWithProvider(
       <Menubar.Item
+        parentCategoryTitle={'Test Category'}
+        title={'Test Title'}
         subItems={['SubItem 1']}
         renderSubItems={subItem => <div key={subItem}>{subItem}</div>}
       >
@@ -22,8 +29,12 @@ describe('Item Menubar', () => {
   });
 
   it('Should renders as a link when href is provided', () => {
-    const { container } = render(
-      <Menubar.Item anchorProps={{ href: 'http://example.com' }}>
+    const { container } = renderWithProvider(
+      <Menubar.Item
+        parentCategoryTitle={'Test Category'}
+        title={'Test Title'}
+        anchorProps={{ href: 'http://example.com' }}
+      >
         Test Child
       </Menubar.Item>
     );
@@ -34,12 +45,21 @@ describe('Item Menubar', () => {
   });
 
   it('Should renders correct style for item text', () => {
-    render(
+    renderWithProvider(
       <>
-        <Menubar.Item anchorProps={{ href: 'http://example.com' }}>
+        <Menubar.Item
+          parentCategoryTitle={'Test Category'}
+          title={'Test Title'}
+          anchorProps={{ href: 'http://example.com' }}
+        >
           Test Child 1
         </Menubar.Item>
-        <Menubar.Item anchorProps={undefined} subItems={[{}]}>
+        <Menubar.Item
+          parentCategoryTitle={'Test Category 2'}
+          title={'Test Title 2'}
+          anchorProps={undefined}
+          subItems={[{}]}
+        >
           Test Child 2
         </Menubar.Item>
       </>
