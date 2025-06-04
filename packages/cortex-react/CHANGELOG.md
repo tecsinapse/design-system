@@ -13,6 +13,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * [TS-13155] adição do controle de arquivos duplicados ao uploader ([a2ce349](https://github.com/tecsinapse/design-system/commit/a2ce3492498cbfacd16b3dedb10e061a7a40357a))
 
+## [1.12.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.12.2...@tecsinapse/cortex-react@1.12.3) (2025-05-01)
+
+### Bug Fixes
+
+* **TS-13147:** carroussel buttons ([fd42c9d](https://github.com/tecsinapse/design-system/commit/fd42c9d1324d8834df7ceea8fa3bf9b9424fad30))
+
 ## [1.12.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.12.1...@tecsinapse/cortex-react@1.12.2) (2025-05-01)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
