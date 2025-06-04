@@ -74,4 +74,6 @@ export interface ItemProps<T> extends DefaultProps {
   subItems?: T[];
   renderSubItems?: (prop: T) => React.ReactNode;
   anchorProps?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  parentCategoryTitle: string;
+  title: string;
 }

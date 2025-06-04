@@ -22,20 +22,24 @@ interface UseFileUploadOptions<T> {
     TEXT?: (typeof AcceptSpecificMap.TEXT)[number][];
   };
   onAccept?: (files: FileUpload<T>[]) => Promise<FileUpload<T>[]>;
+  onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
   maxSize?: number;
   allowMultiple?: boolean;
-  onDelete?: (file: FileUpload<T>) => Promise<void>;
-  onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
+  preventDuplicates?: boolean;
+  onDuplicate?: (duplicates: File[]) => void;
 }
 
 export const useFileUpload = <T>({
   accept = {},
   onAccept,
+  onFileRejected,
   maxSize,
   allowMultiple = true,
-  onFileRejected,
+  preventDuplicates = false,
+  onDuplicate,
 }: UseFileUploadOptions<T>) => {
   const [files, setFiles] = useState<FileUpload<T>[]>([]);
+  const [duplicates, setDuplicates] = useState<File[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const onOpen = useCallback(() => setIsOpen(true), []);
@@ -51,7 +55,24 @@ export const useFileUpload = <T>({
   );
 
   const onDrop = async (acceptedFiles: File[]): Promise<void> => {
-    const newFiles: FileUpload<T>[] = acceptedFiles.map(file => ({
+    let toProcess = acceptedFiles;
+
+    if (preventDuplicates) {
+      const found = (acceptedFiles ?? []).filter(file =>
+        files.some(existing => existing.file.name === file.name)
+      );
+      if (found.length > 0) {
+        setDuplicates(found);
+        onDuplicate?.(found);
+      }
+
+      toProcess = acceptedFiles.filter(
+        file => !found.some(dup => dup.name === file.name)
+      );
+      if (toProcess.length === 0) return;
+    }
+
+    const newFiles: FileUpload<T>[] = toProcess.map(file => ({
       file,
       status: onAccept ? FileStatus.UPLOADING : FileStatus.SUCCESS,
       uid: uuidv4(),
@@ -122,6 +143,7 @@ export const useFileUpload = <T>({
     } as UseDropzoneProps,
     open: isOpen,
     files,
+    duplicates,
     onClearFiles: handleClearFiles,
   };
 };
