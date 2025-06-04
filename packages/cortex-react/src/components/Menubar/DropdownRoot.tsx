@@ -40,6 +40,8 @@ const DropdownRoot = ({
                 <Item
                   key={prop.title}
                   {...rest}
+                  parentCategoryTitle={item.title}
+                  title={title}
                   subItems={items ?? []}
                   renderSubItems={({ title, ...rest }) => {
                     return (
