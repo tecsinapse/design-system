@@ -8,6 +8,7 @@ import { SelectOptions } from './Options';
 import { SelectPopover } from './Popover';
 import { SelectRoot } from './Root';
 import { SelectTrigger } from './Trigger';
+import { SelectCustomOption } from './CustomOption';
 
 export const Select = {
   Root: SelectRoot,
@@ -20,6 +21,7 @@ export const Select = {
   MultiGroupedOptions: SelectMultiGroupedOptions,
   MultiOption: SelectMultiOption,
   MultiCheckAllOptions: SelectMultiCheckAllOptions,
+  CustomOption: SelectCustomOption,
 };
 
 export * from './types';

@@ -448,5 +448,43 @@ describe('Select', () => {
         });
       });
     });
+
+    it('Should render with prefixed text label', () => {
+      render(
+        <Select.Root
+          value={undefined}
+          keyExtractor={keyExtractor}
+          labelExtractor={labelExtractor}
+        >
+          <Select.Trigger label="Select an option" />
+          <Select.Popover>
+            <Select.Options>
+              {mockOptions.map(option => (
+                <Select.CustomOption
+                  onSelectOption={onSelectMock}
+                  option={option}
+                  key={option.id}
+                >
+                  <p>Custom: {option.name}</p>
+                </Select.CustomOption>
+              ))}
+            </Select.Options>
+          </Select.Popover>
+        </Select.Root>
+      );
+
+      // Abre o Popover
+      const trigger = screen.getByRole('button');
+      fireEvent.click(trigger);
+
+      // Verifica se as opções possuem o texto prefixado "Custom: "
+      const customOptionOne = screen.getByText('Custom: Option 1');
+      const customOptionTwo = screen.getByText('Custom: Option 2');
+      const customOptionThree = screen.getByText('Custom: Option 3');
+
+      expect(customOptionOne).toBeInTheDocument();
+      expect(customOptionTwo).toBeInTheDocument();
+      expect(customOptionThree).toBeInTheDocument();
+    });
   });
 });

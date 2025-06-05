@@ -43,9 +43,13 @@ export interface SelectOptionProps<T> {
   grouped?: boolean;
 }
 
+export interface CustomOptionProps<T> extends SelectOptionProps<T> {
+  children?: ReactNode;
+}
 export interface SelectOptionsProps<T> {
   options?: T[] | (() => Promise<T[]>);
-  onSelect: (value: T) => void;
+  onSelect?: (value: T) => void;
+  children?: ReactNode;
 }
 
 export interface SelectPopoverProps {
