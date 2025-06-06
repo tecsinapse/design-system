@@ -139,12 +139,112 @@ export const CustomOption = {
                         toggleFavorite(option.key);
                       }}
                     >
-                      {favorites[option.key] ? <LiaStarSolid /> : <LiaStar />}
+                      {favorites[option.key] ? (
+                        <LiaStarSolid
+                          className={'text-primary-medium text-deca'}
+                        />
+                      ) : (
+                        <LiaStar className={'text-deca'} />
+                      )}
                     </div>
                   </div>
                 </Select.CustomOption>
               ))}
             </Select.Options>
+          </Select.Popover>
+        </Select.Root>
+      </div>
+    );
+  },
+};
+
+export const CustomMultiOption = {
+  args: {
+    variant: {
+      intent: 'default',
+    },
+    label: 'Label',
+    placeholderSearchInput: 'Placeholder Search',
+  },
+  render: args => {
+    const [options, setOptions] = useState<Option[]>(_options);
+    const [favorites, setFavorites] = useState<{ [key: string]: boolean }>(
+      _options.reduce(
+        (acc, option) => {
+          acc[option.key] = false;
+          return acc;
+        },
+        {} as { [key: string]: boolean }
+      )
+    );
+
+    const handleSearch = React.useCallback(
+      (event: React.ChangeEvent<HTMLInputElement>) => {
+        const searchArg = event.target.value;
+        setOptions(
+          _options.filter(item => new RegExp(searchArg, 'ig').test(item.label))
+        );
+      },
+      []
+    );
+
+    const toggleFavorite = (key: string) => {
+      setFavorites(prevFavorites => ({
+        ...prevFavorites,
+        [key]: !prevFavorites[key],
+      }));
+    };
+
+    const [value, setValue] = useState<Option[]>([]);
+
+    return (
+      <div className={'w-[350px] h-[450px]'}>
+        <Select.Root
+          value={value}
+          labelExtractor={op => op.label}
+          keyExtractor={op => op.key}
+        >
+          <Select.Trigger label={args.label} />
+          <Select.Popover>
+            <Input.Search
+              variants={{
+                className: 'flex-1 mx-deca mt-centi',
+              }}
+              onChange={handleSearch}
+              placeholder={args.placeholderSearchInput}
+            />
+            <Select.MultiOptions>
+              {options.map(option => (
+                <Select.CustomMultiOption
+                  key={option.key}
+                  option={option}
+                  onSelect={option => setValue(option)}
+                >
+                  <div
+                    className={
+                      'flex flex-1 flex-nowrap items-center justify-between '
+                    }
+                  >
+                    <p>{option.label}</p>
+                    <div
+                      className={'px-mili'}
+                      onClick={e => {
+                        e.stopPropagation();
+                        toggleFavorite(option.key);
+                      }}
+                    >
+                      {favorites[option.key] ? (
+                        <LiaStarSolid
+                          className={'text-primary-medium text-deca'}
+                        />
+                      ) : (
+                        <LiaStar className={'text-deca'} />
+                      )}
+                    </div>
+                  </div>
+                </Select.CustomMultiOption>
+              ))}
+            </Select.MultiOptions>
           </Select.Popover>
         </Select.Root>
       </div>

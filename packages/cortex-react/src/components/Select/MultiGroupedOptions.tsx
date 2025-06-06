@@ -5,7 +5,6 @@ import { SelectMultiOption } from './MultiOption';
 import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext, SelectMultiOptionsContext } from './context';
 import { SelectMultiGroupedOptionsProps } from './types';
-import { handleSelectMulti } from './utils';
 
 const { groupedTitle, list } = selectVariants();
 
@@ -15,7 +14,7 @@ export const SelectMultiGroupedOptions = <T,>({
   options,
   children,
 }: SelectMultiGroupedOptionsProps<T>) => {
-  const { value: currentValue = [], keyExtractor } = useContext(SelectContext);
+  const { keyExtractor } = useContext(SelectContext);
   const { options: _options, isLoading } = useSelectGroupedOptions({ options });
   const flattenMap = useMemo(
     () =>
@@ -42,14 +41,7 @@ export const SelectMultiGroupedOptions = <T,>({
                   grouped
                   option={option}
                   key={keyExtractor(option)}
-                  onSelectOption={option =>
-                    handleSelectMulti(
-                      option,
-                      currentValue,
-                      onSelect,
-                      keyExtractor
-                    )
-                  }
+                  onSelect={onSelect}
                 />
               ))}
             </div>

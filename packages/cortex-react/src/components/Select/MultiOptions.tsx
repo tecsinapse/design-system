@@ -5,7 +5,6 @@ import { SelectMultiOption } from './MultiOption';
 import { SkeletonOptions } from './SkeletonOptions';
 import { SelectContext, SelectMultiOptionsContext } from './context';
 import { SelectMultiOptionsProps } from './types';
-import { handleSelectMulti } from './utils';
 
 const { list } = selectVariants();
 
@@ -14,7 +13,7 @@ export const SelectMultiOptions = <T,>({
   options,
   children,
 }: SelectMultiOptionsProps<T>) => {
-  const { keyExtractor, value: currentValue = [] } = useContext(SelectContext);
+  const { keyExtractor } = useContext(SelectContext);
   const { options: _options, isLoading } = useSelectOptions({ options });
 
   return (
@@ -28,9 +27,7 @@ export const SelectMultiOptions = <T,>({
             <SelectMultiOption
               option={option}
               key={keyExtractor(option)}
-              onSelectOption={option =>
-                handleSelectMulti(option, currentValue, onSelect, keyExtractor)
-              }
+              onSelect={onSelect}
             />
           ))}
         </ul>

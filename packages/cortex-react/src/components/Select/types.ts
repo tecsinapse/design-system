@@ -26,13 +26,17 @@ export interface SelectMultiGroupedOptionsProps<T> {
 
 export interface SelectMultiOptionProps<T> {
   option: T;
-  onSelectOption: (option: T) => void;
+  onSelect?: (option: T[]) => void;
   grouped?: boolean;
+}
+
+export interface CustomMultiOptionProps<T> extends SelectMultiOptionProps<T> {
+  children?: ReactNode;
 }
 
 export interface SelectMultiOptionsProps<T> {
   options?: T[] | (() => Promise<T[]>);
-  onSelect: (value: T[]) => void;
+  onSelect?: (value: T[]) => void;
   /** child element */
   children?: React.ReactNode;
 }
