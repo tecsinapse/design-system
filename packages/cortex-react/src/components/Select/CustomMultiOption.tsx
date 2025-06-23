@@ -1,15 +1,18 @@
 import { checkbox, option as styleOption } from '@tecsinapse/cortex-core';
 import React from 'react';
-import { SelectMultiOptionProps } from './types';
+import { CustomMultiOptionProps } from './types';
 import { useMultiSelectOption } from './useMultiSelectOption';
 
-export const SelectMultiOption = <T,>({
+export const SelectCustomMultiOption = <T,>({
   onSelect,
   option,
   grouped = false,
-}: SelectMultiOptionProps<T>) => {
-  const { onClickOption, isChecked, inputRef, labelExtractor } =
-    useMultiSelectOption(option, onSelect);
+  children,
+}: CustomMultiOptionProps<T>) => {
+  const { onClickOption, isChecked, inputRef } = useMultiSelectOption(
+    option,
+    onSelect
+  );
 
   return (
     <li
@@ -24,7 +27,7 @@ export const SelectMultiOption = <T,>({
         onChange={() => false}
         ref={inputRef}
       />
-      {labelExtractor(option)}
+      {children}
     </li>
   );
 };

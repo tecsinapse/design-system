@@ -1,5 +1,5 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { useSelectOptions } from '../../hooks';
 import { usePopoverContext } from '../Popover/Context';
 import { SelectOption } from './Option';
@@ -11,6 +11,7 @@ const { list } = selectVariants();
 export const SelectOptions = <T,>({
   onSelect,
   options,
+  children,
 }: SelectOptionsProps<T>) => {
   const { keyExtractor } = useContext(SelectContext);
   const { setIsOpen } = usePopoverContext();
@@ -18,23 +19,29 @@ export const SelectOptions = <T,>({
 
   const handleSelect = useCallback(
     (option: T) => {
-      onSelect(option);
+      onSelect?.(option);
       setIsOpen?.(false);
     },
     [onSelect]
   );
 
-  return isLoading ? (
-    <SkeletonOptions />
-  ) : (
-    <ul role={'select'} className={list()}>
-      {_options?.map(option => (
+  const defaultOptions = useMemo(
+    () =>
+      _options?.map(option => (
         <SelectOption
           option={option}
           key={keyExtractor(option)}
           onSelectOption={handleSelect}
         />
-      ))}
+      )) ?? [],
+    [_options, keyExtractor, handleSelect]
+  );
+
+  return isLoading ? (
+    <SkeletonOptions />
+  ) : (
+    <ul role="select" className={list()}>
+      {children ?? defaultOptions}
     </ul>
   );
 };

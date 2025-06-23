@@ -39,7 +39,7 @@ export const SelectMultiCheckAllOptions = <T,>({
           updateSelected.splice(updateSelected.indexOf(it), 1);
         });
       }
-      onSelect(updateSelected);
+      onSelect?.(updateSelected);
     }
   }, [options, onSelect]);
 

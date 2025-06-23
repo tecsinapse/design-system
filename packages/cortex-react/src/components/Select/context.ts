@@ -1,4 +1,4 @@
-import { createContext, RefObject } from 'react';
+import { createContext } from 'react';
 
 interface SelectContextProps<T> {
   value?: T | T[];
@@ -15,7 +15,7 @@ export const SelectContext = createContext<SelectContextProps<any>>({
 
 interface SelectMultiOptionsContextProps<T> {
   options?: T[];
-  onSelect: (value: T[]) => void;
+  onSelect?: (value: T[]) => void;
 }
 
 export const SelectMultiOptionsContext = createContext<
