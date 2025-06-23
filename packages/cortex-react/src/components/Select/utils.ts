@@ -1,8 +1,8 @@
 export const handleSelectMulti = <T>(
   option: T,
   value: T[],
-  onSelect: (value: T[]) => void,
-  keyExtractor: (value: T) => string
+  keyExtractor: (value: T) => string,
+  onSelect?: (value: T[]) => void
 ) => {
   const current: T[] = Array.from(value ?? []);
   const indexOf = current.findIndex(
@@ -13,5 +13,5 @@ export const handleSelectMulti = <T>(
   } else {
     current.splice(indexOf, 1);
   }
-  onSelect(current);
+  onSelect?.(current);
 };

@@ -7,6 +7,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
 
+# [1.13.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.0-beta.2...@tecsinapse/cortex-react@1.13.0-beta.5) (2025-06-23)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.13.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.0-beta.3...@tecsinapse/cortex-react@1.13.0-beta.4) (2025-06-06)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.13.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.0-beta.2...@tecsinapse/cortex-react@1.13.0-beta.3) (2025-06-05)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 # [1.13.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.0-beta.1...@tecsinapse/cortex-react@1.13.0-beta.2) (2025-06-04)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
