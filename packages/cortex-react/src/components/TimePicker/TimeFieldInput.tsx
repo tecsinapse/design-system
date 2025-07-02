@@ -6,13 +6,13 @@ import { LiaClock } from 'react-icons/lia';
 import { timePickerInputBase as timeFieldInput } from '../../styles/time-field-input';
 import { IoMdClose } from 'react-icons/io';
 import { useTimeFieldState } from 'react-stately';
-import { useLocale } from 'react-aria';
+import { TimeValue, useLocale } from 'react-aria';
 import { TimeField } from './TimeField';
 
 interface TimePickerInputBaseProps
   extends Omit<InputProps, 'value' | 'onChange'> {
-  value?: Time;
-  onChange: (value: Time | null) => void;
+  value?: TimeValue;
+  onChange: (value: TimeValue | null) => void;
   onClean?: () => void;
   onToggle?: () => void;
   disabled?: boolean;
@@ -33,40 +33,27 @@ export const TimeFieldInput = ({
   hourCycle,
   granularity,
 }: TimePickerInputBaseProps) => {
-  const { locale } = useLocale();
-  const state = useTimeFieldState({
-    value: value,
-    onChange: onChange,
-    locale,
-    isDisabled: disabled,
-    hourCycle,
-    granularity,
-    shouldForceLeadingZeros: true,
-  });
-
   const showCloseIcon = useMemo(() => {
     const hasTime = (value as Time) != undefined;
     return hasTime;
   }, [value]);
 
-  useEffect(() => {
-    if (!value) {
-      state.setValue(null);
-    }
-  }, [value]);
-
   return (
     <Input.Face
-      variants={{
-        ...variants,
-        intent: state.isInvalid ? 'error' : variants?.intent,
-      }}
+      variants={variants}
       className={'flex flex-row justify-between'}
       data-testid={'time-field-input'}
     >
       <span className={labelStyle({})}>{label}</span>
       <div className={inputBox('', label)}>
-        <TimeField state={state} onClickTime={onToggle} disabled={disabled} />
+        <TimeField
+          onClickTime={onToggle}
+          disabled={disabled}
+          value={value}
+          onChange={onChange}
+          hourCycle={hourCycle}
+          granularity={granularity}
+        />
       </div>
       <Input.Right className="h-full justify-center">
         {showCloseIcon ? (

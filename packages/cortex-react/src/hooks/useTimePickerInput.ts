@@ -24,13 +24,11 @@ export const useTimePickerInput = ({
     if (newValue && minuteInterval > 1) {
       const time = newValue as Time;
       const adjustedMinute =
-        Math.round(time.minute / minuteInterval) * minuteInterval;
-      if (adjustedMinute !== time.minute) {
-        const adjustedTime = time.set({ minute: adjustedMinute });
-        onChange?.(adjustedTime);
-        setPopoverTime(adjustedTime);
-        return;
-      }
+        (Math.round(time.minute / minuteInterval) * minuteInterval) % 60;
+      const adjustedTime = time.set({ minute: adjustedMinute });
+      onChange?.(adjustedTime);
+      setPopoverTime(adjustedTime);
+      return;
     }
     const newTime = newValue
       ? new Time(newValue.hour, newValue.minute, newValue.second)
