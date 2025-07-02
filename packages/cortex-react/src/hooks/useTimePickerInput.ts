@@ -6,10 +6,7 @@ import { TimeValue } from 'react-aria';
 interface useTimePickerInputProps {
   value?: Time;
   onChange?: (value?: Time) => void;
-  hourCycle: 12 | 24;
   minuteInterval: number;
-  disabled?: boolean;
-  granularity: 'hour' | 'minute' | 'second';
 }
 
 export const useTimePickerInput = ({

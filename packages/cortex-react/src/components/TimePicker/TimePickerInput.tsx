@@ -46,10 +46,7 @@ const TimePickerInputWithPopover = (props: TimePickerInputProps) => {
   } = useTimePickerInput({
     value,
     onChange,
-    hourCycle,
     minuteInterval,
-    disabled,
-    granularity,
   });
 
   return (

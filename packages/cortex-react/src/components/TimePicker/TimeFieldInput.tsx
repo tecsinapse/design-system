@@ -1,12 +1,11 @@
 import { Time } from '@internationalized/date';
 import { inputBox, labelStyle } from '@tecsinapse/cortex-core';
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Input, InputProps } from '../Input';
 import { LiaClock } from 'react-icons/lia';
 import { timePickerInputBase as timeFieldInput } from '../../styles/time-field-input';
 import { IoMdClose } from 'react-icons/io';
-import { useTimeFieldState } from 'react-stately';
-import { TimeValue, useLocale } from 'react-aria';
+import { TimeValue } from 'react-aria';
 import { TimeField } from './TimeField';
 
 interface TimePickerInputBaseProps
