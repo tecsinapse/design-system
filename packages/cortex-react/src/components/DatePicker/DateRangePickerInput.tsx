@@ -5,7 +5,7 @@ import { dateToCalendarDateTime } from '../../utils';
 import { DateRange, RangeCalendar } from '../Calendar/RangeCalendar';
 import { InputProps } from '../Input';
 import { Popover } from '../Popover';
-import { Content } from './Content';
+import { Content } from '../Content';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
 

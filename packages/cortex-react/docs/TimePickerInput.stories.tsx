@@ -1,26 +1,27 @@
 import { Time } from '@internationalized/date';
 import { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { TimeFieldInput } from '../src';
+import { TimePickerInput } from '../src/components';
 
 export default {
-  title: 'Cortex/TimeFieldInput',
-  component: TimeFieldInput,
-} as Meta<typeof TimeFieldInput>;
+  title: 'Cortex/TimePickerInput',
+  component: TimePickerInput,
+} as Meta<typeof TimePickerInput>;
 
-export const Default: StoryObj<typeof TimeFieldInput> = {
+export const Default: StoryObj<typeof TimePickerInput> = {
   args: {
     value: new Time(13, 35),
     label: 'Label',
     variants: {
       intent: 'default',
     },
+    minuteInterval: 1,
   },
   render: args => {
     const [value, setValue] = useState<Time | undefined>(args.value);
     return (
-      <div className="w-[100px]">
-        <TimeFieldInput
+      <div>
+        <TimePickerInput
           value={value}
           onChange={setValue}
           label={args.label}
@@ -28,7 +29,9 @@ export const Default: StoryObj<typeof TimeFieldInput> = {
           hourCycle={args.hourCycle}
           granularity={args.granularity}
           disabled={args.disabled}
+          minuteInterval={args.minuteInterval}
         />
+        <button onClick={() => setValue(undefined)}> clean</button>
       </div>
     );
   },
