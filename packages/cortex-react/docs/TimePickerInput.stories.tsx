@@ -20,19 +20,16 @@ export const Default: StoryObj<typeof TimePickerInput> = {
   render: args => {
     const [value, setValue] = useState<Time | undefined>(args.value);
     return (
-      <div>
-        <TimePickerInput
-          value={value}
-          onChange={setValue}
-          label={args.label}
-          variants={args.variants}
-          hourCycle={args.hourCycle}
-          granularity={args.granularity}
-          disabled={args.disabled}
-          minuteInterval={args.minuteInterval}
-        />
-        <button onClick={() => setValue(undefined)}> clean</button>
-      </div>
+      <TimePickerInput
+        value={value}
+        onChange={setValue}
+        label={args.label}
+        variants={args.variants}
+        hourCycle={args.hourCycle}
+        granularity={args.granularity}
+        disabled={args.disabled}
+        minuteInterval={args.minuteInterval}
+      />
     );
   },
 };
