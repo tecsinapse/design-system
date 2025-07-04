@@ -65,7 +65,7 @@ const TimePickerInputWithPopover = (props: TimePickerInputProps) => {
         />
       </Popover.Trigger>
       <Popover.Content
-        className="bg-white shadow-lg border-none p-deca flex flex-col"
+        className="bg-white shadow-default border-none p-deca flex flex-col"
         initialFocus={-1}
       >
         <TimePickerSelector

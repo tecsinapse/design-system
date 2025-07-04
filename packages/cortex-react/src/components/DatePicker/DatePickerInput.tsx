@@ -68,7 +68,7 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
         </DatePickerInputBase>
       </Popover.Trigger>
       <Popover.Content
-        className="bg-inherit shadow-lg border-none"
+        className="bg-inherit shadow-default border-none"
         initialFocus={-1}
       >
         <Calendar value={value} onChange={handleChangeCalendar} />
