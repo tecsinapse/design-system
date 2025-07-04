@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.0-beta.5...@tecsinapse/cortex-react@1.13.1) (2025-06-23)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 ## [1.13.1-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.1-beta.0...@tecsinapse/cortex-react@1.13.1-beta.1) (2025-07-04)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
@@ -39,17 +43,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **TS-13147:** carroussel buttons ([fd42c9d](https://github.com/tecsinapse/design-system/commit/fd42c9d1324d8834df7ceea8fa3bf9b9424fad30))
+- **TS-13147:** carroussel buttons ([fd42c9d](https://github.com/tecsinapse/design-system/commit/fd42c9d1324d8834df7ceea8fa3bf9b9424fad30))
 
 ### Features
 
-* [TS-13155] adição do controle de arquivos duplicados ao uploader ([a2ce349](https://github.com/tecsinapse/design-system/commit/a2ce3492498cbfacd16b3dedb10e061a7a40357a))
+- [TS-13155] adição do controle de arquivos duplicados ao uploader ([a2ce349](https://github.com/tecsinapse/design-system/commit/a2ce3492498cbfacd16b3dedb10e061a7a40357a))
 
 ## [1.12.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.12.2...@tecsinapse/cortex-react@1.12.3) (2025-05-01)
 
 ### Bug Fixes
 
-* **TS-13147:** carroussel buttons ([fd42c9d](https://github.com/tecsinapse/design-system/commit/fd42c9d1324d8834df7ceea8fa3bf9b9424fad30))
+- **TS-13147:** carroussel buttons ([fd42c9d](https://github.com/tecsinapse/design-system/commit/fd42c9d1324d8834df7ceea8fa3bf9b9424fad30))
 
 ## [1.12.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.12.1...@tecsinapse/cortex-react@1.12.2) (2025-05-01)
 
@@ -59,31 +63,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **TS-13085:** aplicar html no title e subtitle do carouselItem ([cc05bdf](https://github.com/tecsinapse/design-system/commit/cc05bdf82d577e8c89af7f57d1d39e7e043de24b))
+- **TS-13085:** aplicar html no title e subtitle do carouselItem ([cc05bdf](https://github.com/tecsinapse/design-system/commit/cc05bdf82d577e8c89af7f57d1d39e7e043de24b))
 
 # [1.12.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.11.1...@tecsinapse/cortex-react@1.12.0) (2025-04-29)
 
 ### Bug Fixes
 
-* intial name tests and support to middle name ([a4b8273](https://github.com/tecsinapse/design-system/commit/a4b82739629a6213a4d7d4a9c5046f5096ad6ae8))
-* misaligned expand icon on menubar subitem ([dec86fa](https://github.com/tecsinapse/design-system/commit/dec86fa6df2b702480a16bf592f2d7d8125c9238))
-* user name initials on avatar being undefined ([a399d21](https://github.com/tecsinapse/design-system/commit/a399d218cca18809c2ea7a772ad06a6a2fd13de6))
+- intial name tests and support to middle name ([a4b8273](https://github.com/tecsinapse/design-system/commit/a4b82739629a6213a4d7d4a9c5046f5096ad6ae8))
+- misaligned expand icon on menubar subitem ([dec86fa](https://github.com/tecsinapse/design-system/commit/dec86fa6df2b702480a16bf592f2d7d8125c9238))
+- user name initials on avatar being undefined ([a399d21](https://github.com/tecsinapse/design-system/commit/a399d218cca18809c2ea7a772ad06a6a2fd13de6))
 
 ### Features
 
-* add color picker component ([4279a24](https://github.com/tecsinapse/design-system/commit/4279a24ee19bd809aee61a838dc252771665ca58))
+- add color picker component ([4279a24](https://github.com/tecsinapse/design-system/commit/4279a24ee19bd809aee61a838dc252771665ca58))
 
 # [1.12.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.11.1...@tecsinapse/cortex-react@1.12.0-beta.0) (2025-04-29)
 
 ### Bug Fixes
 
-* intial name tests and support to middle name ([a4b8273](https://github.com/tecsinapse/design-system/commit/a4b82739629a6213a4d7d4a9c5046f5096ad6ae8))
-* misaligned expand icon on menubar subitem ([dec86fa](https://github.com/tecsinapse/design-system/commit/dec86fa6df2b702480a16bf592f2d7d8125c9238))
-* user name initials on avatar being undefined ([a399d21](https://github.com/tecsinapse/design-system/commit/a399d218cca18809c2ea7a772ad06a6a2fd13de6))
+- intial name tests and support to middle name ([a4b8273](https://github.com/tecsinapse/design-system/commit/a4b82739629a6213a4d7d4a9c5046f5096ad6ae8))
+- misaligned expand icon on menubar subitem ([dec86fa](https://github.com/tecsinapse/design-system/commit/dec86fa6df2b702480a16bf592f2d7d8125c9238))
+- user name initials on avatar being undefined ([a399d21](https://github.com/tecsinapse/design-system/commit/a399d218cca18809c2ea7a772ad06a6a2fd13de6))
 
 ### Features
 
-* add color picker component ([4279a24](https://github.com/tecsinapse/design-system/commit/4279a24ee19bd809aee61a838dc252771665ca58))
+- add color picker component ([4279a24](https://github.com/tecsinapse/design-system/commit/4279a24ee19bd809aee61a838dc252771665ca58))
 
 ## [1.11.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.11.0...@tecsinapse/cortex-react@1.11.1) (2025-04-29)
 
@@ -93,33 +97,33 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* add color picker component ([#342](https://github.com/tecsinapse/design-system/issues/342)) ([760388e](https://github.com/tecsinapse/design-system/commit/760388efa75119399c659d0923179ea8e41138ec))
+- add color picker component ([#342](https://github.com/tecsinapse/design-system/issues/342)) ([760388e](https://github.com/tecsinapse/design-system/commit/760388efa75119399c659d0923179ea8e41138ec))
 
 ## [1.10.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.10.0...@tecsinapse/cortex-react@1.10.1) (2025-04-10)
 
 ### Bug Fixes
 
-* move `react-icons` to `peerDependency` ([6160a14](https://github.com/tecsinapse/design-system/commit/6160a149834e4ed4d16851be49d67f9da45e274b))
-* remove `mr` from `Loading` component ([a19648e](https://github.com/tecsinapse/design-system/commit/a19648e0ae26ed6466171442af227b980d9fc886))
+- move `react-icons` to `peerDependency` ([6160a14](https://github.com/tecsinapse/design-system/commit/6160a149834e4ed4d16851be49d67f9da45e274b))
+- remove `mr` from `Loading` component ([a19648e](https://github.com/tecsinapse/design-system/commit/a19648e0ae26ed6466171442af227b980d9fc886))
 
 # [1.10.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.45...@tecsinapse/cortex-react@1.10.0) (2025-04-09)
 
 ### Features
 
-* add new button `base` size ([f1a1312](https://github.com/tecsinapse/design-system/commit/f1a13127eac6b19e7cff7d9bb1ded5321e752923))
+- add new button `base` size ([f1a1312](https://github.com/tecsinapse/design-system/commit/f1a13127eac6b19e7cff7d9bb1ded5321e752923))
 
 ## [1.9.45](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.44...@tecsinapse/cortex-react@1.9.45) (2025-04-05)
 
 ### Bug Fixes
 
-* **NO_US:** remove storybook test ([110b884](https://github.com/tecsinapse/design-system/commit/110b884a6002ad60a97eda7d9794654be8201d67))
-* **TS-12602:** passando props de div para a tag ([b27dc42](https://github.com/tecsinapse/design-system/commit/b27dc4248bac2fe0a646bdd26223feca9f43a759))
+- **NO_US:** remove storybook test ([110b884](https://github.com/tecsinapse/design-system/commit/110b884a6002ad60a97eda7d9794654be8201d67))
+- **TS-12602:** passando props de div para a tag ([b27dc42](https://github.com/tecsinapse/design-system/commit/b27dc4248bac2fe0a646bdd26223feca9f43a759))
 
 ## [1.9.44](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.43...@tecsinapse/cortex-react@1.9.44) (2025-04-03)
 
 ### Bug Fixes
 
-* **TS-12539:** dimensoes maximas uploader modal ([78b5af7](https://github.com/tecsinapse/design-system/commit/78b5af7ded856e92d5292e14ae579fe525ab5293))
+- **TS-12539:** dimensoes maximas uploader modal ([78b5af7](https://github.com/tecsinapse/design-system/commit/78b5af7ded856e92d5292e14ae579fe525ab5293))
 
 ## [1.9.43](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.42-beta.0...@tecsinapse/cortex-react@1.9.43) (2025-03-26)
 
@@ -129,19 +133,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **NO_US:** MultiGroupedOptions useMemo com dep incorreta ([fd4ab36](https://github.com/tecsinapse/design-system/commit/fd4ab36068d06fb7bcf7e5f27e5a7c93bbe7768d))
+- **NO_US:** MultiGroupedOptions useMemo com dep incorreta ([fd4ab36](https://github.com/tecsinapse/design-system/commit/fd4ab36068d06fb7bcf7e5f27e5a7c93bbe7768d))
 
 ## [1.9.42-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.41...@tecsinapse/cortex-react@1.9.42-beta.0) (2025-03-26)
 
 ### Bug Fixes
 
-* **NO_US:** MultiGroupedOptions useMemo com dep incorreta ([fd4ab36](https://github.com/tecsinapse/design-system/commit/fd4ab36068d06fb7bcf7e5f27e5a7c93bbe7768d))
+- **NO_US:** MultiGroupedOptions useMemo com dep incorreta ([fd4ab36](https://github.com/tecsinapse/design-system/commit/fd4ab36068d06fb7bcf7e5f27e5a7c93bbe7768d))
 
 ## [1.9.41](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.40...@tecsinapse/cortex-react@1.9.41) (2025-03-20)
 
 ### Bug Fixes
 
-* passando type button para buttons do carousel ([68dcd42](https://github.com/tecsinapse/design-system/commit/68dcd4215a4bca137aecea02909aeadc2a6087c5))
+- passando type button para buttons do carousel ([68dcd42](https://github.com/tecsinapse/design-system/commit/68dcd4215a4bca137aecea02909aeadc2a6087c5))
 
 ## [1.9.40](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.39-beta.1...@tecsinapse/cortex-react@1.9.40) (2025-03-20)
 
@@ -159,13 +163,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* passando parametro style para div do tooltip ([25eb5e1](https://github.com/tecsinapse/design-system/commit/25eb5e1a79c805749d4d47e1276c86eea89e9eb0))
+- passando parametro style para div do tooltip ([25eb5e1](https://github.com/tecsinapse/design-system/commit/25eb5e1a79c805749d4d47e1276c86eea89e9eb0))
 
 ## [1.9.38](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.37...@tecsinapse/cortex-react@1.9.38) (2025-03-17)
 
 ### Bug Fixes
 
-* removing popover portal ([5b6aad0](https://github.com/tecsinapse/design-system/commit/5b6aad02ae69c5b9026241a13da9ce4638fd09b8))
+- removing popover portal ([5b6aad0](https://github.com/tecsinapse/design-system/commit/5b6aad02ae69c5b9026241a13da9ce4638fd09b8))
 
 ## [1.9.38-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.38-beta.1...@tecsinapse/cortex-react@1.9.38-beta.2) (2025-03-17)
 
@@ -179,26 +183,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* popover width select ([4930883](https://github.com/tecsinapse/design-system/commit/49308833c9466c12a9ae93bbfcefd442ca3df27f))
-* removing popover portal ([5b6aad0](https://github.com/tecsinapse/design-system/commit/5b6aad02ae69c5b9026241a13da9ce4638fd09b8))
+- popover width select ([4930883](https://github.com/tecsinapse/design-system/commit/49308833c9466c12a9ae93bbfcefd442ca3df27f))
+- removing popover portal ([5b6aad0](https://github.com/tecsinapse/design-system/commit/5b6aad02ae69c5b9026241a13da9ce4638fd09b8))
 
 ## [1.9.37](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.36...@tecsinapse/cortex-react@1.9.37) (2025-03-17)
 
 ### Bug Fixes
 
-* force datepicker icon bg as transparent ([6f44e52](https://github.com/tecsinapse/design-system/commit/6f44e524f7ba4175b0792c133194db21b8f0f4c7))
+- force datepicker icon bg as transparent ([6f44e52](https://github.com/tecsinapse/design-system/commit/6f44e524f7ba4175b0792c133194db21b8f0f4c7))
 
 ## [1.9.36](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.35...@tecsinapse/cortex-react@1.9.36) (2025-03-16)
 
 ### Bug Fixes
 
-* date picker input when value is cleaned from outside ([510634e](https://github.com/tecsinapse/design-system/commit/510634e3ba2b103c8a2da33a338d446c16752d50))
+- date picker input when value is cleaned from outside ([510634e](https://github.com/tecsinapse/design-system/commit/510634e3ba2b103c8a2da33a338d446c16752d50))
 
 ## [1.9.35](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.34...@tecsinapse/cortex-react@1.9.35) (2025-03-15)
 
 ### Bug Fixes
 
-* **TS-11855:** estilos uploader ([be64d2b](https://github.com/tecsinapse/design-system/commit/be64d2bd0fda05b90f869f77b8365b0198fd1c5c))
+- **TS-11855:** estilos uploader ([be64d2b](https://github.com/tecsinapse/design-system/commit/be64d2bd0fda05b90f869f77b8365b0198fd1c5c))
 
 ## [1.9.34](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.33...@tecsinapse/cortex-react@1.9.34) (2025-03-14)
 
@@ -212,7 +216,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* width popover ([5d227ca](https://github.com/tecsinapse/design-system/commit/5d227ca26b8b16bbd51cbc0e60581a47224f1b7a))
+- width popover ([5d227ca](https://github.com/tecsinapse/design-system/commit/5d227ca26b8b16bbd51cbc0e60581a47224f1b7a))
 
 ## [1.9.31](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.30...@tecsinapse/cortex-react@1.9.31) (2025-03-14)
 
@@ -226,13 +230,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **TS-12055:** export file rejection type ([358e0ac](https://github.com/tecsinapse/design-system/commit/358e0ace1fe9e3d5e9afd0dbefd206d50296ec15))
+- **TS-12055:** export file rejection type ([358e0ac](https://github.com/tecsinapse/design-system/commit/358e0ace1fe9e3d5e9afd0dbefd206d50296ec15))
 
 ## [1.9.28](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.27...@tecsinapse/cortex-react@1.9.28) (2025-03-12)
 
 ### Bug Fixes
 
-* **TS-12032:** export name ([674c7a7](https://github.com/tecsinapse/design-system/commit/674c7a728b52f77a1a383aca40d9c05d81badc79))
+- **TS-12032:** export name ([674c7a7](https://github.com/tecsinapse/design-system/commit/674c7a728b52f77a1a383aca40d9c05d81badc79))
 
 ## [1.9.27](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.9.26...@tecsinapse/cortex-react@1.9.27) (2025-03-12)
 

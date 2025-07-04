@@ -27,9 +27,7 @@ export const useDatePickerInput = ({
   );
 
   useEffect(() => {
-    if (!value) {
-      state.setValue(null);
-    }
+    state.setValue(value ? dateToCalendarDateTime(value) : null);
   }, [value]);
 
   return {
