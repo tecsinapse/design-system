@@ -83,7 +83,7 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
         </DatePickerInputBase>
       </Popover.Trigger>
       <Popover.Content
-        className="bg-inherit shadow-none border-none"
+        className="bg-inherit shadow-lg border-none"
         initialFocus={-1}
       >
         <RangeCalendar value={value} onChange={handleChangeCalendar} />

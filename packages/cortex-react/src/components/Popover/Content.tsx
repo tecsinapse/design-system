@@ -1,7 +1,6 @@
 import {
   FloatingFocusManager,
   type FloatingFocusManagerProps,
-  FloatingPortal,
 } from '@floating-ui/react';
 import clsx from 'clsx';
 import React from 'react';
