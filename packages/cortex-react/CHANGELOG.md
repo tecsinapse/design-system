@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.1-beta.2...@tecsinapse/cortex-react@1.13.1-beta.3) (2025-07-07)
+
+### Bug Fixes
+
+* infinite loop on date change ([d0f8f16](https://github.com/tecsinapse/design-system/commit/d0f8f16f9f9c762cbf914d91ae2f1acc18fd51ae))
+
 ## [1.13.1-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.1-beta.1...@tecsinapse/cortex-react@1.13.1-beta.2) (2025-07-04)
 
 ### Bug Fixes
