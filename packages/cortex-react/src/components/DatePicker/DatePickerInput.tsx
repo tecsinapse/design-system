@@ -1,11 +1,10 @@
 import { Granularity } from '@react-types/datepicker';
-import React from 'react';
 import { useDatePickerInput, useDatePickerInputCommon } from '../../hooks';
 import { dateToCalendarDateTime } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
+import { Content } from '../Content';
 import { InputProps } from '../Input';
 import { Popover } from '../Popover';
-import { Content } from '../Content';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
 
@@ -35,8 +34,8 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
   });
   const { handleTogglePopover, handleChangeCalendar, handleCloseCalendar } =
     useDatePickerInputCommon({
-      onChangeCalendar: (value?: Date) => {
-        state.setValue(dateToCalendarDateTime(value));
+      onChangeCalendar: (_value?: Date) => {
+        state.setValue(dateToCalendarDateTime(_value));
       },
     });
 

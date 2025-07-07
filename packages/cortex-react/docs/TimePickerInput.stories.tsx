@@ -1,10 +1,10 @@
 import { Time } from '@internationalized/date';
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TimePickerInput } from '../src/components';
 
 export default {
-  title: 'Cortex/TimePickerInput',
+  title: 'Cortex/Time Picker',
   component: TimePickerInput,
 } as Meta<typeof TimePickerInput>;
 
