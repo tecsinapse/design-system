@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GroupButton, GroupButtonValue } from '../src';
 
 export default {
-  title: 'Cortex/GroupButton',
+  title: 'Cortex/Group Button',
   component: GroupButton,
   args: {},
   argTypes: {},

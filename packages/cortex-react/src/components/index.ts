@@ -28,7 +28,7 @@ export * from './Stepper';
 export * from './Table';
 export * from './Tag';
 export * from './TextArea';
-export * from './TimeField';
+export * from './TimePicker';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Uploader';

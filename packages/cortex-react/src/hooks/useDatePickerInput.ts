@@ -15,8 +15,8 @@ export const useDatePickerInput = ({
 }: useDatePickerInputProps) => {
   const state = useDatePickerState({
     defaultValue: value ? dateToCalendarDateTime(value) : null,
-    onChange: (value: CalendarDateTime | null) => {
-      onChange(calendarDateToDate(value));
+    onChange: (_value: CalendarDateTime | null) => {
+      onChange(calendarDateToDate(_value));
     },
   });
   const ref = useRef(null);
@@ -27,7 +27,14 @@ export const useDatePickerInput = ({
   );
 
   useEffect(() => {
-    state.setValue(value ? dateToCalendarDateTime(value) : null);
+    if (!value) {
+      state.setValue(null);
+    } else if (
+      value &&
+      state.value?.compare(dateToCalendarDateTime(value)) !== 0
+    ) {
+      state.setValue(dateToCalendarDateTime(value));
+    }
   }, [value]);
 
   return {
