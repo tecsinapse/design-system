@@ -1,14 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Card } from '../src';
 import { Kanban } from '../src/components/Kanban';
 
 export default {
-  title: 'Cortex/ContainerKanban',
+  title: 'Cortex/Kanban',
   component: Kanban.Root,
 } as Meta<typeof Kanban.Root>;
 
-export const Default: StoryObj<typeof Kanban.Root> = {
+export const Container: StoryObj<typeof Kanban.Root> = {
   render: () => {
     const fakeList = new Array(10).fill(0).map((_, i) => i);
 

@@ -1,10 +1,10 @@
 import { fixupConfigRules } from '@eslint/compat';
-import globals from 'globals';
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
+import globals from 'globals';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -63,6 +63,9 @@ export default [
     rules: {
       'react/prop-types': 'off',
       'react/display-name': 'off',
+      // In react 17 this rule is not needed
+      'react/jsx-uses-react': 'off',
+      'react/react-in-jsx-scope': 'off',
       'no-console': 'warn',
       'import/no-extraneous-dependencies': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',

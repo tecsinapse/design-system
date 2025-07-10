@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
 import { TextArea } from '../src/components/TextArea';
 
 export default {
-  title: 'Cortex/TextArea',
+  title: 'Cortex/Text Area',
   component: TextArea.Root,
   subcomponents: {
     Face: TextArea.Face,

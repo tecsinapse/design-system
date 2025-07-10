@@ -14,3 +14,4 @@ export * from './useRangeCalendar';
 export * from './useSelectGroupedOptions';
 export * from './useSelectOptions';
 export * from './useStringMask';
+export * from './useTimePickerInput';

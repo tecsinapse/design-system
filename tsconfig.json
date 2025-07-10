@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "noEmit": true,
     "strict": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",

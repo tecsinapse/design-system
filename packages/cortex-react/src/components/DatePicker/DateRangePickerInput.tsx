@@ -5,7 +5,7 @@ import { dateToCalendarDateTime } from '../../utils';
 import { DateRange, RangeCalendar } from '../Calendar/RangeCalendar';
 import { InputProps } from '../Input';
 import { Popover } from '../Popover';
-import { Content } from './Content';
+import { Content } from '../Content';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
 
@@ -83,7 +83,7 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
         </DatePickerInputBase>
       </Popover.Trigger>
       <Popover.Content
-        className="bg-inherit shadow-none border-none"
+        className="bg-inherit shadow-default border-none"
         initialFocus={-1}
       >
         <RangeCalendar value={value} onChange={handleChangeCalendar} />

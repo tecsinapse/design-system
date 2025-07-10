@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DatePickerInput, DateRange, DateRangePickerInput } from '../src';
 
 export default {
-  title: 'Cortex/DatePickerInput',
+  title: 'Cortex/Date Picker',
   component: DatePickerInput,
   subcomponents: { DateRangePickerInput },
 } as Meta<typeof DatePickerInput>;
