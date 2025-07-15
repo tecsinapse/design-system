@@ -23,6 +23,8 @@ export const CalendarCell = ({ state, date }: CalendarCellProps) => {
     isSelectionStart,
     isSelectionEnd,
     inRange,
+    isToday,
+    isDisabled,
   } = useCalendarCell({ state, date });
 
   return (
@@ -30,18 +32,15 @@ export const CalendarCell = ({ state, date }: CalendarCellProps) => {
       {...cellProps}
       data-testid={'calendar-cell-td'}
       className={cell({
-        isOutsideVisibleRange,
+        isDisabled: isOutsideVisibleRange || isDisabled,
         isSelected,
         isSelectionStart,
         isSelectionEnd,
         inRange,
+        isToday,
       })}
     >
-      <div
-        {...buttonProps}
-        ref={ref}
-        className={button({ isOutsideVisibleRange })}
-      >
+      <div {...buttonProps} ref={ref} className={button({ isDisabled })}>
         {formattedDate}
       </div>
     </Td>

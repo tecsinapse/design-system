@@ -1,4 +1,3 @@
-import { Granularity } from '@react-types/datepicker';
 import { useDatePickerInput, useDatePickerInputCommon } from '../../hooks';
 import { dateToCalendarDateTime } from '../../utils';
 import { Calendar } from '../Calendar/Calendar';
@@ -7,15 +6,13 @@ import { InputProps } from '../Input';
 import { Popover } from '../Popover';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
+import { BaseDatePickerInputProps } from './types';
 
 export interface DatePickerInputProps
-  extends Omit<InputProps, 'value' | 'onChange'> {
+  extends Omit<InputProps, 'value' | 'onChange'>,
+    BaseDatePickerInputProps {
   value?: Date;
   onChange: (date?: Date) => void;
-  /** Whether to display the time in 12 or 24 hour format. By default, this is determined by the user's locale. */
-  hourCycle?: 12 | 24;
-  /** Determines the smallest unit that is displayed in the date picker. By default, this is `"day"` for dates, and `"minute"` for times. */
-  granularity?: Granularity;
 }
 
 const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
@@ -27,10 +24,15 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
     disabled,
     hourCycle = 24,
     granularity = 'day',
+    isTodayHighlited,
+    minValue,
+    maxValue,
   } = props;
   const { fieldProps, state, ref } = useDatePickerInput({
     value,
     onChange,
+    minValue,
+    maxValue,
   });
   const { handleTogglePopover, handleChangeCalendar, handleCloseCalendar } =
     useDatePickerInputCommon({
@@ -70,7 +72,13 @@ const DatePickerInputWithPopover = (props: DatePickerInputProps) => {
         className="bg-inherit shadow-default border-none"
         initialFocus={-1}
       >
-        <Calendar value={value} onChange={handleChangeCalendar} />
+        <Calendar
+          value={value}
+          onChange={handleChangeCalendar}
+          isTodayHighlited={isTodayHighlited}
+          minValue={minValue}
+          maxValue={maxValue}
+        />
       </Popover.Content>
     </div>
   );

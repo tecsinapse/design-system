@@ -11,11 +11,15 @@ import { calendarDateToDate, dateToCalendarDateTime } from '../utils';
 interface useRangeCalendarProps {
   value?: DateRange;
   onChange: (value: DateRange) => void;
+  minValue?: Date;
+  maxValue?: Date;
 }
 
 export const useRangeCalendar = ({
   value,
   onChange,
+  minValue,
+  maxValue,
 }: useRangeCalendarProps) => {
   const { locale } = useLocale();
   const state = useRangeCalendarState({
@@ -30,6 +34,8 @@ export const useRangeCalendar = ({
         start: calendarDateToDate(value.start),
         end: calendarDateToDate(value.end),
       }),
+    minValue: minValue ? dateToCalendarDateTime(minValue) : null,
+    maxValue: maxValue ? dateToCalendarDateTime(maxValue) : null,
   });
 
   const ref = useRef(null);

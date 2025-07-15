@@ -7,11 +7,15 @@ import { calendarDateToDate, dateToCalendarDateTime } from '../utils';
 interface useDateRangePickerInputProps {
   value?: DateRange;
   onChange: (date?: DateRange) => void;
+  minValue?: Date;
+  maxValue?: Date;
 }
 
 export const useDateRangePickerInput = ({
   value,
   onChange,
+  minValue,
+  maxValue,
 }: useDateRangePickerInputProps) => {
   const state = useDateRangePickerState({
     defaultValue: value
@@ -26,6 +30,8 @@ export const useDateRangePickerInput = ({
         end: value ? calendarDateToDate(value.end) : undefined,
       });
     },
+    minValue: minValue ? dateToCalendarDateTime(minValue) : null,
+    maxValue: maxValue ? dateToCalendarDateTime(maxValue) : null,
   });
 
   const ref = useRef(null);
