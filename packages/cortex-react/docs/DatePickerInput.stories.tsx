@@ -17,6 +17,8 @@ export const Default: StoryObj<typeof DatePickerInput> = {
   },
   render: args => {
     const [value, setValue] = useState<Date | undefined>(new Date());
+    const startDate = new Date();
+    startDate.setUTCHours(0, 0, 0, 0);
 
     return (
       <div className={'w-[200px] h-[450px]'}>
@@ -27,6 +29,7 @@ export const Default: StoryObj<typeof DatePickerInput> = {
           disabled={args.disabled}
           hourCycle={args.hourCycle}
           granularity={args.granularity}
+          minValue={startDate}
         />
       </div>
     );
@@ -56,6 +59,7 @@ export const Range: StoryObj<typeof DateRangePickerInput> = {
           disabled={args.disabled}
           hourCycle={args.hourCycle}
           granularity={args.granularity}
+          isTodayHighlited={false}
         />
       </div>
     );

@@ -10,6 +10,7 @@ import {
 } from 'react-stately';
 import { CalendarCell } from '../components/Calendar/CalendarCell';
 import { useCalendarCell } from '../hooks';
+import { CalendarProvider } from '../provider';
 
 jest.mock('../hooks/useCalendarCell', () => ({
   useCalendarCell: jest.fn(),
@@ -24,11 +25,13 @@ const mockUseCalendarCell = jest.mocked(useCalendarCell);
 
 const MockTable = ({ children }: { children: JSX.Element }) => {
   return (
-    <table>
-      <tbody>
-        <tr>{children}</tr>
-      </tbody>
-    </table>
+    <CalendarProvider isTodayHighlited={false}>
+      <table>
+        <tbody>
+          <tr>{children}</tr>
+        </tbody>
+      </table>
+    </CalendarProvider>
   );
 };
 
@@ -42,6 +45,8 @@ const useCalendarMockReturn = {
   isSelectionEnd: false,
   isSelectionStart: false,
   ref: { current: null },
+  isToday: false,
+  isDisabled: false,
 };
 
 describe('CalendarCell', () => {
@@ -152,5 +157,47 @@ describe('CalendarCell', () => {
     const calendarCellElement = screen.getByTestId('calendar-cell-td');
 
     expect(calendarCellElement).toHaveClass('text-black');
+  });
+
+  it('Should apply day indicator if isTodayHighlited is true', () => {
+    mockUseCalendarCell.mockReturnValue({
+      ...useCalendarMockReturn,
+      isToday: true,
+    });
+
+    render(
+      <MockTable>
+        <CalendarCell
+          state={calendarStateMock}
+          date={parseDate('2024-06-08')}
+        />
+      </MockTable>
+    );
+
+    const calendarCellElement = screen.getByTestId('calendar-cell-td');
+
+    expect(calendarCellElement).toHaveClass('border-primary-light border-2');
+  });
+
+  it('Should not apply day indicator if isTodayHighlited is false', () => {
+    mockUseCalendarCell.mockReturnValue({
+      ...useCalendarMockReturn,
+      isToday: false,
+    });
+
+    render(
+      <MockTable>
+        <CalendarCell
+          state={calendarStateMock}
+          date={parseDate('2024-06-08')}
+        />
+      </MockTable>
+    );
+
+    const calendarCellElement = screen.getByTestId('calendar-cell-td');
+
+    expect(calendarCellElement).not.toHaveClass(
+      'border-primary-light border-2'
+    );
   });
 });
