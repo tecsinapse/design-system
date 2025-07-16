@@ -8,6 +8,7 @@ import {
   useRangeCalendarState,
 } from 'react-stately';
 import { useCalendarCell } from '../hooks/useCalendarCell';
+import { useCalendarContext } from '../provider';
 
 jest.mock('react-aria', () => ({
   useCalendarCell: jest.fn(),
@@ -15,10 +16,18 @@ jest.mock('react-aria', () => ({
 
 const mockUseAriaCalendarCell = jest.mocked(useAriaCalendarCell);
 
+jest.mock('../provider', () => ({
+  useCalendarContext: jest.fn(),
+}));
+const mockUseCalendarContext = useCalendarContext as jest.Mock;
+
 describe('useCalendarCell', () => {
   let state: CalendarState | RangeCalendarState;
 
   beforeEach(() => {
+    mockUseCalendarContext.mockReturnValue({
+      isTodayHighlited: false,
+    });
     mockUseAriaCalendarCell.mockReturnValue({
       cellProps: { role: 'gridcell' },
       buttonProps: { role: 'button' },

@@ -1,7 +1,13 @@
-import { CalendarDate, isSameDay } from '@internationalized/date';
+import {
+  CalendarDate,
+  getLocalTimeZone,
+  isSameDay,
+  today,
+} from '@internationalized/date';
 import { useRef } from 'react';
 import { useCalendarCell as useAriaCalendarCell } from 'react-aria';
 import { CalendarState, RangeCalendarState } from 'react-stately';
+import { useCalendarContext } from '../provider';
 
 interface useCalendarCellProps {
   state: CalendarState | RangeCalendarState;
@@ -9,6 +15,7 @@ interface useCalendarCellProps {
 }
 
 export const useCalendarCell = ({ state, date }: useCalendarCellProps) => {
+  const { isTodayHighlited } = useCalendarContext();
   const ref = useRef(null);
   const {
     cellProps,
@@ -16,7 +23,12 @@ export const useCalendarCell = ({ state, date }: useCalendarCellProps) => {
     isSelected,
     isOutsideVisibleRange,
     formattedDate,
+    isDisabled,
   } = useAriaCalendarCell({ date }, state, ref);
+
+  const isToday = isTodayHighlited
+    ? isSameDay(date, today(getLocalTimeZone()))
+    : false;
 
   const rangeStateHighlitedRange = (state as RangeCalendarState)
     ?.highlightedRange;
@@ -47,5 +59,7 @@ export const useCalendarCell = ({ state, date }: useCalendarCellProps) => {
     isSelectionStart,
     isSelectionEnd,
     inRange: Boolean(inRange),
+    isToday,
+    isDisabled,
   };
 };

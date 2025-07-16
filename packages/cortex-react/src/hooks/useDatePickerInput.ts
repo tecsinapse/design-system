@@ -7,17 +7,23 @@ import { calendarDateToDate, dateToCalendarDateTime } from '../utils';
 interface useDatePickerInputProps {
   value?: Date;
   onChange: (date?: Date) => void;
+  minValue?: Date;
+  maxValue?: Date;
 }
 
 export const useDatePickerInput = ({
   value,
   onChange,
+  minValue,
+  maxValue,
 }: useDatePickerInputProps) => {
   const state = useDatePickerState({
     defaultValue: value ? dateToCalendarDateTime(value) : null,
     onChange: (_value: CalendarDateTime | null) => {
       onChange(calendarDateToDate(_value));
     },
+    minValue: minValue ? dateToCalendarDateTime(minValue) : null,
+    maxValue: maxValue ? dateToCalendarDateTime(maxValue) : null,
   });
   const ref = useRef(null);
   const { fieldProps } = useDatePicker(

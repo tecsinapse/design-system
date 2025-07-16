@@ -1,22 +1,18 @@
-import { Granularity } from '@react-types/datepicker';
-import React from 'react';
+import { BaseDatePickerInputProps } from './types';
 import { useDatePickerInputCommon, useDateRangePickerInput } from '../../hooks';
 import { dateToCalendarDateTime } from '../../utils';
-import { DateRange, RangeCalendar } from '../Calendar/RangeCalendar';
-import { InputProps } from '../Input';
-import { Popover } from '../Popover';
 import { Content } from '../Content';
 import { DateField } from './DateField';
 import { DatePickerInputBase } from './DatePickerInputBase';
+import { Popover } from '../Popover';
+import { InputProps } from '../Input';
+import { DateRange, RangeCalendar } from '../Calendar/RangeCalendar';
 
 export interface DateRangePickerInputProps
-  extends Omit<InputProps, 'value' | 'onChange'> {
+  extends Omit<InputProps, 'value' | 'onChange'>,
+    BaseDatePickerInputProps {
   value?: DateRange;
   onChange: (date?: DateRange) => void;
-  /** Whether to display the time in 12 or 24 hour format. By default, this is determined by the user's locale. */
-  hourCycle?: 12 | 24;
-  /** Determines the smallest unit that is displayed in the date picker. By default, this is `"day"` for dates, and `"minute"` for times. */
-  granularity?: Granularity;
 }
 
 const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
@@ -28,9 +24,12 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
     disabled = false,
     hourCycle = 24,
     granularity = 'day',
+    isTodayHighlited,
+    minValue,
+    maxValue,
   } = props;
   const { endFieldProps, startFieldProps, ref, state } =
-    useDateRangePickerInput({ value, onChange });
+    useDateRangePickerInput({ value, onChange, minValue, maxValue });
   const { handleTogglePopover, handleChangeCalendar, handleCloseCalendar } =
     useDatePickerInputCommon({
       onChangeRangeCalendar: value => {
@@ -86,7 +85,13 @@ const DateRangePickerInputWithPopover = (props: DateRangePickerInputProps) => {
         className="bg-inherit shadow-default border-none"
         initialFocus={-1}
       >
-        <RangeCalendar value={value} onChange={handleChangeCalendar} />
+        <RangeCalendar
+          value={value}
+          onChange={handleChangeCalendar}
+          isTodayHighlited={isTodayHighlited}
+          minValue={minValue}
+          maxValue={maxValue}
+        />
       </Popover.Content>
     </div>
   );

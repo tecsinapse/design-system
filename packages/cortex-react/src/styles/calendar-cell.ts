@@ -6,27 +6,32 @@ export const calendarCell = tv({
     button: 'flex aspect-square items-center justify-center',
   },
   variants: {
+    isToday: {
+      true: {
+        cell: 'border-primary-light border-2',
+      },
+    },
     isSelected: {
       true: {
-        cell: 'bg-primary-medium text-white hover:bg-primary-medium',
+        cell: 'bg-primary-medium border-2 border-primary-medium text-white hover:bg-primary-medium',
       },
     },
     isSelectionStart: {
       true: {
-        cell: 'bg-primary-medium rounded-r-none text-white',
+        cell: 'bg-primary-medium border-2 border-primary-medium rounded-r-none text-white',
       },
     },
     isSelectionEnd: {
       true: {
-        cell: 'bg-primary-medium rounded-l-none text-white',
+        cell: 'bg-primary-medium border-2 border-primary-medium rounded-l-none text-white',
       },
     },
     inRange: {
       true: {
-        cell: 'bg-primary-light rounded-none text-black',
+        cell: 'bg-primary-light border-0 rounded-none text-black',
       },
     },
-    isOutsideVisibleRange: {
+    isDisabled: {
       true: {
         cell: 'text-secondary-light cursor-default  hover:bg-white-500',
         button: 'cursor-default',
