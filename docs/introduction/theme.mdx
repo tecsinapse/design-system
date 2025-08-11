@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Custom Theme" />
+
+# Custom Theme
+
+`@tecsinapse/cortex-core` provides a function to apply custom themes that overrides the default primary and secondary colors
+
+Usage example:
+
+```jsx
+import { updateThemeColors } from '@tecsinapse/cortex-core';
+
+updateThemColors({
+  primary: {
+    xlight: '#CDFAFE',
+    light: '#00D4FF',
+    medium: '#3DA3BF',
+    dark: '#155E75',
+    xdark: '#0C4A6E',
+  },
+  secondary: {
+    xlight: '#e5e5e5',
+    light: '#cccccc',
+    medium: '#b2b2b2',
+    dark: '#999999',
+    xdark: '#7f7f7f',
+  },
+});
+```

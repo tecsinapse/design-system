@@ -1,17 +1,17 @@
 const colors = {
   primary: {
-    xlight: '#fef9f0',
-    light: '#fccb83',
-    medium: '#f89907',
-    dark: '#ae6b05',
-    xdark: '#633d03',
+    xlight: 'var(--color-primary-xlight, #fef9f0)',
+    light: 'var(--color-primary-light, #fccb83)',
+    medium: 'var(--color-primary-medium, #f89907)',
+    dark: 'var(--color-primary-dark, #ae6b05)',
+    xdark: 'var(--color-primary-xdark, #633d03)',
   },
   secondary: {
-    xlight: '#f8f7f7',
-    light: '#c2bfbc',
-    medium: '#85807a',
-    dark: '#5d5955',
-    xdark: '#353231',
+    xlight: 'var(--color-secondary-xlight, #f8f7f7)',
+    light: 'var(--color-secondary-light, #c2bfbc)',
+    medium: 'var(--color-secondary-medium, #85807a)',
+    dark: 'var(--color-secondary-dark, #5d5955)',
+    xdark: 'var(--color-secondary-xdark, #353231)',
   },
   info: {
     xlight: '#f0f8fe',
