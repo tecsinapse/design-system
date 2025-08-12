@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.14-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.13...@tecsinapse/react-native-kit@3.5.14-beta.0) (2025-08-12)
+
+### Bug Fixes
+
+* altera método padrão de obter idioma do dispositivo ([9b2a345](https://github.com/tecsinapse/design-system/commit/9b2a3458e2aa6dca5b2821503bd54e49db7ab886))
+
 ## [3.5.13](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.13-beta.0...@tecsinapse/react-native-kit@3.5.13) (2025-02-04)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
