@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.2-beta.2...@tecsinapse/cortex-core@1.1.2) (2025-08-11)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
 ## [1.1.2-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.2-beta.2...@tecsinapse/cortex-core@1.1.2-beta.3) (2025-08-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
@@ -23,13 +27,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* move `react-icons` to `peerDependency` ([6160a14](https://github.com/tecsinapse/design-system/commit/6160a149834e4ed4d16851be49d67f9da45e274b))
+- move `react-icons` to `peerDependency` ([6160a14](https://github.com/tecsinapse/design-system/commit/6160a149834e4ed4d16851be49d67f9da45e274b))
 
 # [1.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.9...@tecsinapse/cortex-core@1.1.0) (2025-04-09)
 
 ### Features
 
-* add new button `base` size ([f1a1312](https://github.com/tecsinapse/design-system/commit/f1a13127eac6b19e7cff7d9bb1ded5321e752923))
+- add new button `base` size ([f1a1312](https://github.com/tecsinapse/design-system/commit/f1a13127eac6b19e7cff7d9bb1ded5321e752923))
 
 ## [0.4.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.8-beta.0...@tecsinapse/cortex-core@0.4.9) (2025-02-04)
 
@@ -39,13 +43,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* badge styles ([f787688](https://github.com/tecsinapse/design-system/commit/f787688a13c422adc9ad63782debc7fa514db0a6))
+- badge styles ([f787688](https://github.com/tecsinapse/design-system/commit/f787688a13c422adc9ad63782debc7fa514db0a6))
 
 ## [0.4.8-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.7...@tecsinapse/cortex-core@0.4.8-beta.0) (2025-01-28)
 
 ### Bug Fixes
 
-* badge styles ([f787688](https://github.com/tecsinapse/design-system/commit/f787688a13c422adc9ad63782debc7fa514db0a6))
+- badge styles ([f787688](https://github.com/tecsinapse/design-system/commit/f787688a13c422adc9ad63782debc7fa514db0a6))
 
 ## [0.4.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@0.4.6-beta.0...@tecsinapse/cortex-core@0.4.7) (2024-12-12)
 
