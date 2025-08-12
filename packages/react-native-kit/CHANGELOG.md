@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.14](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.14-beta.0...@tecsinapse/react-native-kit@3.5.14) (2025-08-12)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
 ## [3.5.14-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.13...@tecsinapse/react-native-kit@3.5.14-beta.0) (2025-08-12)
 
 ### Bug Fixes
