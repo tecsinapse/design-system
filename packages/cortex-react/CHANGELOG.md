@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.8-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.7-beta.1...@tecsinapse/cortex-react@1.13.8-beta.0) (2025-08-22)
+
+### Bug Fixes
+
+* remove div desnecessária do modal ([6672bba](https://github.com/tecsinapse/design-system/commit/6672bba9112b82c88bc4e89fccbcf7701db31359))
+
 ## [1.13.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.7-beta.0...@tecsinapse/cortex-react@1.13.7) (2025-08-22)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
