@@ -20,7 +20,7 @@ export const InputBox = React.forwardRef<HTMLInputElement, InputProps>(
         />
         <label
           htmlFor={id ?? name}
-          className={labelStyle({ intent: variants?.intent, placeholder })}
+          className={labelStyle({ intent: variants?.intent, placeholder, className: "pointer-events-none" })}
           data-testid="input-label"
         >
           {label}

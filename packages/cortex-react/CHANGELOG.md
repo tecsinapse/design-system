@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.7-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.6...@tecsinapse/cortex-react@1.13.7-beta.0) (2025-08-22)
+
+### Bug Fixes
+
+* **TS-15255:** ajustado className do label ([10053bc](https://github.com/tecsinapse/design-system/commit/10053bce0cdac3e8b8c9411d9be7c5587ca3d883))
+
 ## [1.13.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.5-beta.0...@tecsinapse/cortex-react@1.13.6) (2025-08-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
