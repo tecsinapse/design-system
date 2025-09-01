@@ -1,5 +1,5 @@
 import { modal, overlay } from '@tecsinapse/cortex-core';
-import React, { InputHTMLAttributes, ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef, type DialogHTMLAttributes } from 'react';
 
 interface ModalProps {
   open: boolean;
@@ -10,20 +10,25 @@ interface ModalProps {
 
 /** Modal component */
 export const Modal = forwardRef<
-  HTMLDivElement,
-  ModalProps & InputHTMLAttributes<HTMLInputElement>
+  HTMLDialogElement,
+  ModalProps & DialogHTMLAttributes<HTMLDialogElement>
 >((props, ref) => {
-  const { open, onClose, children, className } = props;
+  const { open, onClose, children, className, ...rest } = props;
   return (
-    <div ref={ref} {...props}>
+    <>
       <div
         data-testid="overlay"
         className={overlay({ show: open })}
         onClick={onClose}
       />
-      <dialog data-testid="modal" className={modal({ open, className })}>
+      <dialog
+        {...rest}
+        ref={ref}
+        data-testid="modal"
+        className={modal({ open, className })}
+      >
         {children}
       </dialog>
-    </div>
+    </>
   );
 });

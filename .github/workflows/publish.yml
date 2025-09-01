@@ -6,6 +6,11 @@ on:
     branches:
       - develop
       - master
+    paths-ignore:
+      - '.husky/**'
+      - '.github/**'
+      - 'packages/rn-playground/**'
+      - '*.md'
 
 jobs:
   lerna:
