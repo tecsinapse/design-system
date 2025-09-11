@@ -11,7 +11,7 @@ export interface ColorPickerProps
 const Box = forwardRef<HTMLInputElement, ColorPickerProps>((props, ref) => {
   const { id, className, ...rest } = props;
   return (
-    <div className={`w-tera h-kilo border overflow-hidden relative ${className ?? ""}`}>
+    <div className={clsx('w-tera h-kilo border overflow-hidden relative', className)}>
       <input
         {...rest}
         id={id}
