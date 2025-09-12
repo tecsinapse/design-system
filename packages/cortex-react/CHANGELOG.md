@@ -7,6 +7,16 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
 
+## [1.13.8-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.8-beta.1...@tecsinapse/cortex-react@1.13.8-beta.2) (2025-09-12)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.13.8-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.8-beta.0...@tecsinapse/cortex-react@1.13.8-beta.1) (2025-09-12)
+
+### Bug Fixes
+
+* **TS-15823:** ajustado botoes ([493a592](https://github.com/tecsinapse/design-system/commit/493a5927e0c1941efd2bf7c1403493f1a2f053d6))
+
 ## [1.13.8-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.7-beta.1...@tecsinapse/cortex-react@1.13.8-beta.0) (2025-08-22)
 
 ### Bug Fixes
