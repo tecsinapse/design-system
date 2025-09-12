@@ -44,6 +44,7 @@ export const Carousel = ({ images }: CarouselProps) => {
 
   return (
     <div className={'overflow-hidden w-fit relative'}>
+      {carouselFragment}
       {itemsCarousel.length > 1 ? (
         <>
           <Button
@@ -68,7 +69,6 @@ export const Carousel = ({ images }: CarouselProps) => {
       ) : (
         <></>
       )}
-      {carouselFragment}
     </div>
   );
 };
