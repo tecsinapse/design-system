@@ -49,7 +49,7 @@ export const Carousel = ({ images }: CarouselProps) => {
   }, [emblaApi, images.length]);
 
   return (
-    <div className="overflow-hidden w-fit relative" ref={emblaRef}>
+    <div className="overflow-hidden w-full relative" ref={emblaRef}>
       <div className="flex">
         {images.map((image, i) => (
           <div className="min-w-full flex-shrink-0 relative" key={`${image.alt}-${i}`}>
