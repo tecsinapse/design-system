@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.9...@tecsinapse/cortex-react@1.14.0-beta.0) (2025-09-17)
+
+### Bug Fixes
+
+* **carousel:** ajusta testes para compatibilidade com embla-carousel-react ([91beb93](https://github.com/tecsinapse/design-system/commit/91beb93eff913c2ee08e0ecabcb363c73062f736))
+
+### Features
+
+* **carousel:** Migra componente Carousel para embla-carousel-react ([b1b2d49](https://github.com/tecsinapse/design-system/commit/b1b2d49c31d26de29d74d81552262ba5c5668d27))
+
 ## [1.13.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.8-beta.2...@tecsinapse/cortex-react@1.13.9) (2025-09-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
