@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@emotion/native':
         specifier: ~11.11.0
-        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@emotion/react':
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.3.1)(react@18.3.1)
@@ -167,7 +167,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-native:
         specifier: 0.74.1
-        version: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+        version: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
       react-native-web:
         specifier: ^0.19.11
         version: 0.19.12(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -222,6 +222,9 @@ importers:
       currency.js:
         specifier: 2.0.4
         version: 2.0.4
+      embla-carousel-react:
+        specifier: ^8.6.0
+        version: 8.6.0(react@18.3.1)
       react-aria:
         specifier: 3.38.1
         version: 3.38.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -233,10 +236,7 @@ importers:
         version: 7.6.1(react@18.3.1)
       react-spring:
         specifier: 9.7.5
-        version: 9.7.5(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
-      react-spring-carousel:
-        specifier: 2.0.19
-        version: 2.0.19(react-dom@18.3.1(react@18.3.1))(react-spring@9.7.5(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        version: 9.7.5(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-stately:
         specifier: 3.36.1
         version: 3.36.1(react@18.3.1)
@@ -251,23 +251,23 @@ importers:
     dependencies:
       '@emotion/native':
         specifier: ~11.11.0
-        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@emotion/react':
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.3.1)(react@18.3.1)
       react-native-svg-charts:
         specifier: ^5.4.0
-        version: 5.4.0(react-native-svg@13.9.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 5.4.0(react-native-svg@13.9.0(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
     devDependencies:
       react-native-svg:
         specifier: 13.9.0
-        version: 13.9.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 13.9.0(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
 
   packages/react-core:
     dependencies:
       '@emotion/native':
         specifier: ~11.11.0
-        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@emotion/react':
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.3.1)(react@18.3.1)
@@ -282,7 +282,7 @@ importers:
     dependencies:
       '@emotion/native':
         specifier: ~11.11.0
-        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@emotion/react':
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.3.1)(react@18.3.1)
@@ -291,17 +291,17 @@ importers:
         version: link:../react-core
       react-native-linear-gradient:
         specifier: ~2.8.3
-        version: 2.8.3(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 2.8.3(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
     devDependencies:
       react-native-safe-area-context:
         specifier: ^4
-        version: 4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 4.10.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
 
   packages/react-web-kit:
     dependencies:
       '@emotion/native':
         specifier: ~11.11.0
-        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@emotion/react':
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.3.1)(react@18.3.1)
@@ -325,16 +325,16 @@ importers:
     dependencies:
       '@emotion/native':
         specifier: ~11.11.0
-        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@emotion/react':
         specifier: ~11.11.0
         version: 11.11.4(@types/react@18.3.1)(react@18.3.1)
       '@react-native-async-storage/async-storage':
         specifier: 1.23.1
-        version: 1.23.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))
+        version: 1.23.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))
       '@react-native-community/datetimepicker':
         specifier: 8.0.1
-        version: 8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@react-native-community/slider':
         specifier: 4.5.2
         version: 4.5.2
@@ -361,22 +361,22 @@ importers:
         version: 18.3.1(react@18.3.1)
       react-native:
         specifier: '*'
-        version: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+        version: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
       react-native-gesture-handler:
         specifier: ~2.16.2
-        version: 2.16.2(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 2.16.2(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-linear-gradient:
         specifier: ~2.8.3
-        version: 2.8.3(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 2.8.3(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-reanimated:
         specifier: ~3.10.1
-        version: 3.10.1(@babel/core@7.24.5)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 3.10.1(@babel/core@7.24.5)(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-safe-area-context:
         specifier: 4.10.1
-        version: 4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 4.10.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-svg:
         specifier: 15.2.0
-        version: 15.2.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 15.2.0(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-vector-icons:
         specifier: ^9.2.0
         version: 9.2.0
@@ -392,19 +392,19 @@ importers:
         version: 7.6.19
       '@storybook/addon-ondevice-actions':
         specifier: ^7.6.18
-        version: 7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@storybook/addon-ondevice-backgrounds':
         specifier: ^7.6.18
-        version: 7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@storybook/addon-ondevice-controls':
         specifier: ^7.6.18
-        version: 7.6.18(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(@react-native-community/slider@4.5.2)(@types/react@18.3.1)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+        version: 7.6.18(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(@react-native-community/slider@4.5.2)(@types/react@18.3.1)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@storybook/react':
         specifier: ^7.6.18
         version: 7.6.19(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)
       '@storybook/react-native':
         specifier: ^7.6.18
-        version: 7.6.18(babel-plugin-macros@3.1.0)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)(typescript@5.7.3)
+        version: 7.6.18(babel-plugin-macros@3.1.0)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)(typescript@5.7.3)
       '@types/react':
         specifier: '*'
         version: 18.3.1
@@ -2911,8 +2911,6 @@ packages:
   '@react-native/metro-babel-transformer@0.74.83':
     resolution: {integrity: sha512-hGdx5N8diu8y+GW/ED39vTZa9Jx1di2ZZ0aapbhH4egN1agIAusj5jXTccfNBwwWF93aJ5oVbRzfteZgjbutKg==}
     engines: {node: '>=18'}
-    peerDependencies:
-      '@babel/core': '*'
 
   '@react-native/normalize-colors@0.74.83':
     resolution: {integrity: sha512-jhCY95gRDE44qYawWVvhTjTplW1g+JtKTKM3f8xYT1dJtJ8QWv+gqEtKcfmOHfDkSDaMKG0AGBaDTSK8GXLH8Q==}
@@ -4154,14 +4152,6 @@ packages:
     peerDependencies:
       graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
 
-  '@use-gesture/core@10.3.1':
-    resolution: {integrity: sha512-WcINiDt8WjqBdUXye25anHiNxPc0VOrlT8F6LLkU6cycrOGUDyY/yyFmsg3k8i5OLvv25llc0QC45GhR/C8llw==}
-
-  '@use-gesture/react@10.3.1':
-    resolution: {integrity: sha512-Yy19y6O2GJq8f7CHf7L0nxL8bf4PZCPaVOCgJrusOeFHY1LvHgYXnmnXg6N5iwAnbgbZCDjo60SiM6IPJi9C5g==}
-    peerDependencies:
-      react: '>= 16.8.0'
-
   '@vitejs/plugin-react-swc@3.7.0':
     resolution: {integrity: sha512-yrknSb3Dci6svCd/qhHqhFPDSw0QtjumcqdKMoNNzmOl5lMXTTiqzjWtG4Qask2HdvvzaNgSunbQGet8/GrKdA==}
     peerDependencies:
@@ -5313,6 +5303,19 @@ packages:
 
   electron-to-chromium@1.4.779:
     resolution: {integrity: sha512-oaTiIcszNfySXVJzKcjxd2YjPxziAd+GmXyb2HbidCeFo6Z88ygOT7EimlrEQhM2U08VhSrbKhLOXP0kKUCZ6g==}
+
+  embla-carousel-react@8.6.0:
+    resolution: {integrity: sha512-0/PjqU7geVmo6F734pmPqpyHqiM99olvyecY7zdweCw+6tKEXnrE90pBiBbMMU8s5tICemzpQ3hi5EpxzGW+JA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.1 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+
+  embla-carousel-reactive-utils@8.6.0:
+    resolution: {integrity: sha512-fMVUDUEx0/uIEDM0Mz3dHznDhfX+znCCDCeIophYb1QGVM7YThSWX+wz11zlYwWFOr74b4QLGg0hrGPJeG2s4A==}
+    peerDependencies:
+      embla-carousel: 8.6.0
+
+  embla-carousel@8.6.0:
+    resolution: {integrity: sha512-SjWyZBHJPbqxHOzckOfo8lHisEaJWmwd23XppYFYVh10bU66/Pn5tkVkbkCMZVdbUE5eTCI2nD8OyIP4Z+uwkA==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -8172,13 +8175,6 @@ packages:
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
 
-  react-spring-carousel@2.0.19:
-    resolution: {integrity: sha512-OiSTuxjLv0whsjLWnZFkhCZXfaNFgBOZHr8EmggZqVZ5z+78zB87C0gTwyBA86Vo/Uljlvez6ELwLszj8fDa9A==}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      react-spring: '^9.4.5-beta.0 '
-
   react-spring@9.7.5:
     resolution: {integrity: sha512-oG6DkDZIASHzPiGYw5KwrCvoFZqsaO3t2R7KE37U6S/+8qWSph/UjRQalPpZxlbgheqV9LT62H6H9IyoopHdug==}
     peerDependencies:
@@ -8422,9 +8418,6 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-  rxjs@7.8.1:
-    resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
-
   safe-array-concat@1.1.3:
     resolution: {integrity: sha512-AURm5f0jYEOydBj7VQlVvDrjeFgthDdEF5H1dP+6mNpoXOMo1quQqJ4wvJDyRZ9+pO3kGWoOdmV08cSv2aJV6Q==}
     engines: {node: '>=0.4'}
@@ -8465,10 +8458,6 @@ packages:
   schema-utils@4.2.0:
     resolution: {integrity: sha512-L0jRsrPpjdckP3oPug3/VxNKt2trR8TcabrM6FOAAlvC/9Phcmm+cuAgTlxBqdBR1WJx7Naj9WHw+aOmheSVbw==}
     engines: {node: '>= 12.13.0'}
-
-  screenfull@5.2.0:
-    resolution: {integrity: sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==}
-    engines: {node: '>=0.10.0'}
 
   selfsigned@2.4.1:
     resolution: {integrity: sha512-th5B4L2U+eGLq1TVh7zNRGBapioSORUeymIydxgFpwww9d2qyKvtuPU2jJuHvYAwwqi2Y596QBL3eEqcPEYL8Q==}
@@ -10612,10 +10601,10 @@ snapshots:
 
   '@emotion/memoize@0.8.1': {}
 
-  '@emotion/native@11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@emotion/native@11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@emotion/primitives-core': 11.11.0(@emotion/react@11.11.4(@types/react@18.3.1)(react@18.3.1))(react@18.3.1)
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
     transitivePeerDependencies:
       - '@emotion/react'
       - react
@@ -12841,10 +12830,10 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@react-native-async-storage/async-storage@1.23.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))':
+  '@react-native-async-storage/async-storage@1.23.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))':
     dependencies:
       merge-options: 3.0.4
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
   '@react-native-community/cli-clean@13.6.6(encoding@0.1.13)':
     dependencies:
@@ -12993,11 +12982,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       invariant: 2.2.4
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
   '@react-native-community/slider@4.5.2': {}
 
@@ -13072,12 +13061,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@react-native/community-cli-plugin@0.74.83(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(encoding@0.1.13)':
+  '@react-native/community-cli-plugin@0.74.83(@babel/preset-env@7.24.5(@babel/core@7.24.5))(encoding@0.1.13)':
     dependencies:
       '@react-native-community/cli-server-api': 13.6.6(encoding@0.1.13)
       '@react-native-community/cli-tools': 13.6.6(encoding@0.1.13)
       '@react-native/dev-middleware': 0.74.83(encoding@0.1.13)
-      '@react-native/metro-babel-transformer': 0.74.83(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))
+      '@react-native/metro-babel-transformer': 0.74.83(@babel/preset-env@7.24.5(@babel/core@7.24.5))
       chalk: 4.1.2
       execa: 5.1.1
       metro: 0.80.9(encoding@0.1.13)
@@ -13087,7 +13076,6 @@ snapshots:
       querystring: 0.2.1
       readline: 1.3.0
     transitivePeerDependencies:
-      - '@babel/core'
       - '@babel/preset-env'
       - bufferutil
       - encoding
@@ -13121,7 +13109,7 @@ snapshots:
 
   '@react-native/js-polyfills@0.74.83': {}
 
-  '@react-native/metro-babel-transformer@0.74.83(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))':
+  '@react-native/metro-babel-transformer@0.74.83(@babel/preset-env@7.24.5(@babel/core@7.24.5))':
     dependencies:
       '@babel/core': 7.24.5
       '@react-native/babel-preset': 0.74.83(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))
@@ -13133,12 +13121,12 @@ snapshots:
 
   '@react-native/normalize-colors@0.74.83': {}
 
-  '@react-native/virtualized-lists@0.74.83(@types/react@18.3.1)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@react-native/virtualized-lists@0.74.83(@types/react@18.3.1)(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.1
 
@@ -13163,14 +13151,14 @@ snapshots:
       '@react-spring/types': 9.7.5
       react: 18.3.1
 
-  '@react-spring/native@9.7.5(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@react-spring/native@9.7.5(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@react-spring/animated': 9.7.5(react@18.3.1)
       '@react-spring/core': 9.7.5(react@18.3.1)
       '@react-spring/shared': 9.7.5(react@18.3.1)
       '@react-spring/types': 9.7.5
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
   '@react-spring/rafz@9.7.5': {}
 
@@ -13847,7 +13835,7 @@ snapshots:
       storybook: 8.2.7(@babel/preset-env@7.24.5(@babel/core@7.24.5))
       tiny-invariant: 1.3.3
 
-  '@storybook/addon-ondevice-actions@7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@storybook/addon-ondevice-actions@7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@storybook/addon-actions': 7.6.19
       '@storybook/core-events': 7.6.20
@@ -13855,35 +13843,35 @@ snapshots:
       '@storybook/manager-api': 7.6.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       fast-deep-equal: 2.0.1
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
     transitivePeerDependencies:
       - react-dom
 
-  '@storybook/addon-ondevice-backgrounds@7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@storybook/addon-ondevice-backgrounds@7.6.18(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@storybook/manager-api': 7.6.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@storybook/preview-api': 7.6.19
-      '@storybook/react-native-theming': 7.6.18(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@storybook/react-native-theming': 7.6.18(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
     transitivePeerDependencies:
       - react-dom
 
-  '@storybook/addon-ondevice-controls@7.6.18(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(@react-native-community/slider@4.5.2)(@types/react@18.3.1)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@storybook/addon-ondevice-controls@7.6.18(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(@react-native-community/slider@4.5.2)(@types/react@18.3.1)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@react-native-community/datetimepicker': 8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@react-native-community/datetimepicker': 8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@react-native-community/slider': 4.5.2
       '@storybook/addon-controls': 7.6.19(@types/react@18.3.1)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@storybook/channels': 7.6.20
       '@storybook/client-logger': 7.6.20
       '@storybook/core-events': 7.6.20
       '@storybook/manager-api': 7.6.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@storybook/react-native-theming': 7.6.18(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@storybook/react-native-theming': 7.6.18(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       deep-equal: 1.1.2
       prop-types: 15.8.1
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
-      react-native-modal-datetime-picker: 14.0.1(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native-modal-datetime-picker: 14.0.1(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))
       react-native-modal-selector: 2.1.2
       tinycolor2: 1.6.0
     transitivePeerDependencies:
@@ -14307,12 +14295,12 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.2.7(@babel/preset-env@7.24.5(@babel/core@7.24.5))
 
-  '@storybook/react-native-theming@7.6.18(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
+  '@storybook/react-native-theming@7.6.18(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
-  '@storybook/react-native@7.6.18(babel-plugin-macros@3.1.0)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)(typescript@5.7.3)':
+  '@storybook/react-native@7.6.18(babel-plugin-macros@3.1.0)(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)(typescript@5.7.3)':
     dependencies:
       '@storybook/channels': 7.6.20
       '@storybook/client-logger': 7.6.20
@@ -14326,7 +14314,7 @@ snapshots:
       '@storybook/preview-api': 7.6.19
       '@storybook/preview-web': 7.6.17
       '@storybook/react': 7.6.19(encoding@0.1.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.3)
-      '@storybook/react-native-theming': 7.6.18(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@storybook/react-native-theming': 7.6.18(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       chokidar: 3.6.0
       commander: 8.3.0
       dedent: 1.5.3(babel-plugin-macros@3.1.0)
@@ -14334,8 +14322,8 @@ snapshots:
       glob: 7.2.3
       prettier: 2.8.8
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
-      react-native-safe-area-context: 4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native-safe-area-context: 4.10.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react-native-swipe-gestures: 1.0.5
       type-fest: 2.19.0
       util: 0.12.5
@@ -14879,13 +14867,6 @@ snapshots:
       '@urql/core': 2.3.6(graphql@15.8.0)
       graphql: 15.8.0
       wonka: 4.0.15
-
-  '@use-gesture/core@10.3.1': {}
-
-  '@use-gesture/react@10.3.1(react@18.3.1)':
-    dependencies:
-      '@use-gesture/core': 10.3.1
-      react: 18.3.1
 
   '@vitejs/plugin-react-swc@3.7.0(@swc/helpers@0.5.11)(vite@5.4.19(@types/node@22.5.1)(terser@5.31.0))':
     dependencies:
@@ -16108,6 +16089,18 @@ snapshots:
       jake: 10.9.1
 
   electron-to-chromium@1.4.779: {}
+
+  embla-carousel-react@8.6.0(react@18.3.1):
+    dependencies:
+      embla-carousel: 8.6.0
+      embla-carousel-reactive-utils: 8.6.0(embla-carousel@8.6.0)
+      react: 18.3.1
+
+  embla-carousel-reactive-utils@8.6.0(embla-carousel@8.6.0):
+    dependencies:
+      embla-carousel: 8.6.0
+
+  embla-carousel@8.6.0: {}
 
   emittery@0.13.1: {}
 
@@ -19567,7 +19560,7 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-native-gesture-handler@2.16.2(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-gesture-handler@2.16.2(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       '@egjs/hammerjs': 2.0.17
       hoist-non-react-statics: 3.3.2
@@ -19575,24 +19568,24 @@ snapshots:
       lodash: 4.17.21
       prop-types: 15.8.1
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
-  react-native-linear-gradient@2.8.3(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-linear-gradient@2.8.3(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
-  react-native-modal-datetime-picker@14.0.1(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)):
+  react-native-modal-datetime-picker@14.0.1(@react-native-community/datetimepicker@8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)):
     dependencies:
-      '@react-native-community/datetimepicker': 8.0.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@react-native-community/datetimepicker': 8.0.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       prop-types: 15.8.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
   react-native-modal-selector@2.1.2:
     dependencies:
       prop-types: 15.8.1
 
-  react-native-reanimated@3.10.1(@babel/core@7.24.5)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-reanimated@3.10.1(@babel/core@7.24.5)(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       '@babel/core': 7.24.5
       '@babel/plugin-transform-arrow-functions': 7.24.1(@babel/core@7.24.5)
@@ -19604,14 +19597,14 @@ snapshots:
       convert-source-map: 2.0.0
       invariant: 2.2.4
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
-  react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-safe-area-context@4.10.1(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
-  react-native-svg-charts@5.4.0(react-native-svg@13.9.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-svg-charts@5.4.0(react-native-svg@13.9.0(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       d3-array: 1.2.4
       d3-interpolate-path: 2.0.0
@@ -19619,22 +19612,22 @@ snapshots:
       d3-shape: 1.3.7
       prop-types: 15.8.1
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
-      react-native-svg: 13.9.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native-svg: 13.9.0(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
 
-  react-native-svg@13.9.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-svg@13.9.0(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       css-select: 5.1.0
       css-tree: 1.1.3
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
-  react-native-svg@15.2.0(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-native-svg@15.2.0(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       css-select: 5.1.0
       css-tree: 1.1.3
       react: 18.3.1
-      react-native: 0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
+      react-native: 0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1)
 
   react-native-swipe-gestures@1.0.5: {}
 
@@ -19658,7 +19651,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1):
+  react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native-community/cli': 13.6.6(encoding@0.1.13)
@@ -19666,11 +19659,11 @@ snapshots:
       '@react-native-community/cli-platform-ios': 13.6.6(encoding@0.1.13)
       '@react-native/assets-registry': 0.74.83
       '@react-native/codegen': 0.74.83(@babel/preset-env@7.24.5(@babel/core@7.24.5))
-      '@react-native/community-cli-plugin': 0.74.83(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(encoding@0.1.13)
+      '@react-native/community-cli-plugin': 0.74.83(@babel/preset-env@7.24.5(@babel/core@7.24.5))(encoding@0.1.13)
       '@react-native/gradle-plugin': 0.74.83
       '@react-native/js-polyfills': 0.74.83
       '@react-native/normalize-colors': 0.74.83
-      '@react-native/virtualized-lists': 0.74.83(@types/react@18.3.1)(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@react-native/virtualized-lists': 0.74.83(@types/react@18.3.1)(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
@@ -19701,7 +19694,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.1
     transitivePeerDependencies:
-      - '@babel/core'
       - '@babel/preset-env'
       - bufferutil
       - encoding
@@ -19737,20 +19729,11 @@ snapshots:
       react: 18.3.1
       react-is: 18.3.1
 
-  react-spring-carousel@2.0.19(react-dom@18.3.1(react@18.3.1))(react-spring@9.7.5(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1))(react@18.3.1):
-    dependencies:
-      '@use-gesture/react': 10.3.1(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-spring: 9.7.5(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
-      rxjs: 7.8.1
-      screenfull: 5.2.0
-
-  react-spring@9.7.5(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
+  react-spring@9.7.5(react-dom@18.3.1(react@18.3.1))(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       '@react-spring/core': 9.7.5(react@18.3.1)
       '@react-spring/konva': 9.7.5(react@18.3.1)
-      '@react-spring/native': 9.7.5(react-native@0.74.1(@babel/core@7.24.5)(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      '@react-spring/native': 9.7.5(react-native@0.74.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(@types/react@18.3.1)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       '@react-spring/three': 9.7.5(react@18.3.1)
       '@react-spring/web': 9.7.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@react-spring/zdog': 9.7.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -20088,10 +20071,6 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  rxjs@7.8.1:
-    dependencies:
-      tslib: 2.8.1
-
   safe-array-concat@1.1.3:
     dependencies:
       call-bind: 1.0.8
@@ -20140,8 +20119,6 @@ snapshots:
       ajv: 8.13.0
       ajv-formats: 2.1.1
       ajv-keywords: 5.1.0(ajv@8.13.0)
-
-  screenfull@5.2.0: {}
 
   selfsigned@2.4.1:
     dependencies:

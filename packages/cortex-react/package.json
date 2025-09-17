@@ -23,11 +23,11 @@
     "@tecsinapse/cortex-core": "workspace:*",
     "clsx": "2.1.1",
     "currency.js": "2.0.4",
+    "embla-carousel-react": "^8.6.0",
     "react-aria": "3.38.1",
     "react-dropzone": "14.3.8",
     "react-imask": "7.6.1",
     "react-spring": "9.7.5",
-    "react-spring-carousel": "2.0.19",
     "react-stately": "3.36.1",
     "sonner": "1.7.3",
     "uuid": "11.1.0"
