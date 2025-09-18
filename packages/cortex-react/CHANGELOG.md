@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.0...@tecsinapse/cortex-react@1.14.0-beta.1) (2025-09-17)
+
+### Bug Fixes
+
+* **carousel:** corrige largura do componente Carousel ([ebd9e17](https://github.com/tecsinapse/design-system/commit/ebd9e173a4c9435b7bc3266a70ec0440b2aa76c7))
+
 # [1.14.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.9...@tecsinapse/cortex-react@1.14.0-beta.0) (2025-09-17)
 
 ### Bug Fixes
