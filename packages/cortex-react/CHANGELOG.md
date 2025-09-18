@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.1...@tecsinapse/cortex-react@1.14.0-beta.2) (2025-09-18)
+
+### Features
+
+* **cortex-react:** adiciona auto scroll e corrige z-index no Carrossel ([2514d94](https://github.com/tecsinapse/design-system/commit/2514d949c81802292cd6fc125cd07cb30fb9fca9))
+
 # [1.14.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.0...@tecsinapse/cortex-react@1.14.0-beta.1) (2025-09-17)
 
 ### Bug Fixes
