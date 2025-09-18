@@ -29,6 +29,6 @@ export const Default: StoryObj<typeof Carousel> = {
         target: '_blank',
       },
     }));
-    return <Carousel images={items} />;
+    return <Carousel images={items} autoScroll/>;
   },
 };

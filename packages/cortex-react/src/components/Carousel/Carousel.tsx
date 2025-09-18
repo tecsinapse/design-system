@@ -3,6 +3,7 @@ import { Button } from '../Button';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { CarouselItem } from './CarouselItem';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 type TextCarousel = {
   text: string;
@@ -26,10 +27,12 @@ export type ImageCarousel = {
 
 export interface CarouselProps {
   images: ImageCarousel[];
+  autoScroll?: boolean;
 }
 
-export const Carousel = ({ images }: CarouselProps) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+export const Carousel = ({ images, autoScroll }: CarouselProps) => {
+  const plugins = autoScroll ? [Autoplay()] : [];
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, plugins);
 
   const itemsCarousel = images.map((imageProp, i) => ({
     id: `${imageProp.alt}-${i}`,
@@ -63,7 +66,7 @@ export const Carousel = ({ images }: CarouselProps) => {
           <Button
             type={'button'}
             data-testid={'button-carousel-prev'}
-            className="z-select absolute left-deca top-[50%] transform -translate-y-[50%] p-centi flex"
+            className="z-absolute absolute left-deca top-[50%] transform -translate-y-[50%] p-centi flex"
             size="square"
             onClick={slideToPrevItem}
           >
@@ -73,7 +76,7 @@ export const Carousel = ({ images }: CarouselProps) => {
             type={'button'}
             data-testid={'button-carousel-next'}
             size="square"
-            className="z-select absolute right-deca top-[50%] transform -translate-y-[50%] p-centi flex"
+            className="z-absolute absolute right-deca top-[50%] transform -translate-y-[50%] p-centi flex"
             onClick={slideToNextItem}
           >
             <IoIosArrowForward />
