@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0...@tecsinapse/cortex-react@1.15.0-beta.0) (2025-10-20)
+
+### Features
+
+* **ts-16329:** adicionando lógica de abertura do manager no hook ([07f7552](https://github.com/tecsinapse/design-system/commit/07f7552e03c4bcd60b7cfb67098bdc269b4d3004))
+* **ts-16329:** adicionando o manager no root ([6489544](https://github.com/tecsinapse/design-system/commit/64895441e61337f8a73bdae6fdaa0e3f52351be4))
+* **ts-16329:** ajustando tipagem ([b765333](https://github.com/tecsinapse/design-system/commit/b7653330f0cd08a72d226f856a37697136120b93))
+* **ts-16329:** atualizando o componente file ([4ed7486](https://github.com/tecsinapse/design-system/commit/4ed748656d08b1c03a50ee0a6d70c75e795d0068))
+* **ts-16329:** atualizando o storybook ([8388870](https://github.com/tecsinapse/design-system/commit/83888708b455e201ab469b824cb8594f52ab0512))
+* **ts-16329:** corrigindo testes ([604ff7f](https://github.com/tecsinapse/design-system/commit/604ff7f3b41ead7c6ec676bbcd1e74f2fe582838))
+* **ts-16329:** criando componente do file manager ([f78d530](https://github.com/tecsinapse/design-system/commit/f78d530793fa2b256204df32b64184d8b2794518))
+
 # [1.14.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.2...@tecsinapse/cortex-react@1.14.0) (2025-09-18)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
