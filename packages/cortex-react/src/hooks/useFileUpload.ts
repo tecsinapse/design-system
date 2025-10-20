@@ -41,9 +41,12 @@ export const useFileUpload = <T>({
   const [files, setFiles] = useState<FileUpload<T>[]>([]);
   const [duplicates, setDuplicates] = useState<File[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isManagerOpen, setIsManagerOpen] = useState(false);
 
   const onOpen = useCallback(() => setIsOpen(true), []);
   const onClose = useCallback(() => setIsOpen(false), []);
+  const openManager = useCallback(() => setIsManagerOpen(true), []);
+  const closeManager = useCallback(() => setIsManagerOpen(false), []);
 
   const updateFiles = useCallback(
     (prevFiles: FileUpload<T>[], newFiles: FileUpload<T>[]) => {
@@ -55,6 +58,8 @@ export const useFileUpload = <T>({
   );
 
   const onDrop = async (acceptedFiles: File[]): Promise<void> => {
+    openManager();
+    onClose();
     let toProcess = acceptedFiles;
 
     if (preventDuplicates) {
@@ -142,6 +147,8 @@ export const useFileUpload = <T>({
       isFileLimitReached,
     } as UseDropzoneProps,
     open: isOpen,
+    closeManager,
+    isManagerOpen,
     files,
     duplicates,
     onClearFiles: handleClearFiles,
