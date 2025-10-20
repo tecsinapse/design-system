@@ -4,6 +4,7 @@ import React from 'react';
 import { Button, Uploader } from '../src';
 import { FileStatus, type FileUpload } from '../src/components/Uploader/types';
 import { useFileUpload } from '../src/hooks';
+import { Manager } from '../src/components/Uploader/Manager';
 
 export default {
   title: 'Cortex/Uploader',
@@ -44,16 +45,24 @@ const onAccept = async <T,>(
 
 export const Default: StoryObj<typeof Uploader> = {
   render: args => {
-    const { files, onOpen, onClose, onDelete, dropzoneProps, open } =
-      useFileUpload<{ id: string }>({
-        accept: {
-          APPLICATION: [],
-          AUDIO: [],
-          IMAGE: [],
-          VIDEO: ['video/mp4'],
-        },
-        onAccept,
-      });
+    const {
+      files,
+      onOpen,
+      onClose,
+      onDelete,
+      dropzoneProps,
+      open,
+      isManagerOpen,
+      closeManager,
+    } = useFileUpload<{ id: string }>({
+      accept: {
+        APPLICATION: [],
+        AUDIO: [],
+        IMAGE: [],
+        VIDEO: ['video/mp4'],
+      },
+      onAccept,
+    });
 
     return (
       <div>
@@ -66,6 +75,8 @@ export const Default: StoryObj<typeof Uploader> = {
           dropzoneProps={dropzoneProps}
           files={files}
           onDelete={onDelete}
+          isManagerOpen={isManagerOpen}
+          closeManager={closeManager}
         />
       </div>
     );
