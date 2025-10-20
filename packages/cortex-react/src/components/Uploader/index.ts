@@ -1,5 +1,6 @@
 import { Dropzone } from './Dropzone';
 import { Files } from './Files';
+import { Manager } from './Manager';
 import { Modal } from './Modal';
 import { Root } from './Root';
 
@@ -11,4 +12,5 @@ export const Uploader = {
   Files,
   Modal,
   Root,
+  Manager,
 };
