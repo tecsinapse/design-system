@@ -1,9 +1,9 @@
 import { tv } from 'tailwind-variants';
 import { createPortal } from 'react-dom';
-import { FileUpload } from './types';
 import { File } from './Upload';
 import { Button } from '../Button';
 import { IoMdClose } from 'react-icons/io';
+import { ManagerProps } from './types';
 
 const foldermodal = tv({
   base: 'fixed rounded-micro p-kilo bg-white shadow-xl flex transition z-modal',
@@ -14,14 +14,6 @@ const foldermodal = tv({
     },
   },
 });
-
-interface ManagerProps<T> {
-  open: boolean;
-  files: FileUpload<T>[];
-  onDelete: (index: number) => void;
-  uploadProgressText?: string;
-  onClose: () => void;
-}
 
 export const Manager = <T,>({
   open,

@@ -72,6 +72,13 @@ export interface RootUploaderProps<T> {
   uploadProgressText?: string;
   titleModal?: string;
 }
+export interface ManagerProps<T> {
+  open: boolean;
+  files: FileUpload<T>[];
+  onDelete: (index: number) => void;
+  uploadProgressText?: string;
+  onClose: () => void;
+}
 
 export const AcceptSpecificMap = {
   APPLICATION: [
