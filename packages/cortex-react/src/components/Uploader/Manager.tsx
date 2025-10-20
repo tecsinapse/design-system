@@ -19,7 +19,7 @@ interface ManagerProps<T> {
   open: boolean;
   files: FileUpload<T>[];
   onDelete: (index: number) => void;
-  uploadProgressText: string;
+  uploadProgressText?: string;
   onClose: () => void;
 }
 
