@@ -51,7 +51,7 @@ export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
               size: 'small',
             })}
           >
-            <MdClose size={20} />
+            <MdClose size={15} />
           </button>
         )}
       </div>
