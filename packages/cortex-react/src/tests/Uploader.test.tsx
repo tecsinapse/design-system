@@ -36,6 +36,8 @@ beforeEach(() => {
       })),
     },
     open: true,
+    closeManager: jest.fn(),
+    isManagerOpen: false,
   });
 });
 
@@ -159,6 +161,8 @@ describe('Uploader Components', () => {
           buttonText="Custom Button"
           uploadProgressText="Custom uploading..."
           titleModal="Custom Modal Title"
+          closeManager={mockOnClose}
+          isManagerOpen={false}
         />
       );
 
@@ -168,12 +172,6 @@ describe('Uploader Components', () => {
         'Custom file selection'
       );
       expect(screen.getByText('Custom drop text')).toBeInTheDocument();
-
-      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
-        'Custom uploading...'
-      );
-      expect(screen.getByText('file1.txt')).toBeInTheDocument();
-      expect(screen.getByText('file2.txt')).toBeInTheDocument();
     });
 
     it('should call onClose when close button is clicked', () => {
@@ -184,11 +182,35 @@ describe('Uploader Components', () => {
           files={mockFiles}
           onDelete={mockOnDelete}
           dropzoneProps={useFileUpload({}).dropzoneProps}
+          closeManager={mockOnClose}
+          isManagerOpen={false}
         />
       );
 
       fireEvent.click(screen.getByTestId('close-button'));
       expect(mockOnClose).toHaveBeenCalled();
+    });
+
+    it('should render the manager with the files', () => {
+      render(
+        <Uploader.Root
+          open={false}
+          onClose={mockOnClose}
+          files={mockFiles}
+          onDelete={mockOnDelete}
+          uploadProgressText="Custom uploading..."
+          dropzoneProps={useFileUpload({}).dropzoneProps}
+          closeManager={mockOnClose}
+          isManagerOpen={true}
+        />
+      );
+
+      expect(screen.getByText('file1.txt')).toBeInTheDocument();
+      expect(screen.getByText('file2.txt')).toBeInTheDocument();
+      expect(screen.getByText('file2.txt')).toBeInTheDocument();
+      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
+        'Custom uploading...'
+      );
     });
   });
 });

@@ -41,7 +41,9 @@ export const Manager = <T,>({
       <div className="flex flex-col w-full h-full gap-mili items-center">
         <div className="flex items-center justify-between w-full">
           <div />
-          <h3 className="ml-mega">{uploadProgressText}</h3>
+          <h3 className="ml-mega" data-testid="upload-progress">
+            {uploadProgressText}
+          </h3>
           <Button
             variants={{ variant: 'outline', size: 'circle' }}
             onClick={onClose}
