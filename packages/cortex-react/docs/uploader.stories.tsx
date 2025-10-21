@@ -44,7 +44,7 @@ const onAccept = async <T,>(
 };
 
 export const Default: StoryObj<typeof Uploader> = {
-  render: args => {
+  render: () => {
     const {
       files,
       onOpen,
@@ -77,6 +77,7 @@ export const Default: StoryObj<typeof Uploader> = {
           onDelete={onDelete}
           isManagerOpen={isManagerOpen}
           closeManager={closeManager}
+          uploadProgressText="Upload(s) em progresso"
         />
       </div>
     );
