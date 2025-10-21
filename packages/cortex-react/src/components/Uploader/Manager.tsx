@@ -6,7 +6,7 @@ import { ManagerProps } from './types';
 import { useState } from 'react';
 import { clsx } from 'clsx';
 import { IoArrowDown, IoArrowUp } from 'react-icons/io5';
-import { manager } from '@tecsinapse/cortex-core/src/components/manager/manager';
+import { manager } from '@tecsinapse/cortex-core';
 
 export const Manager = <T,>({
   open,
