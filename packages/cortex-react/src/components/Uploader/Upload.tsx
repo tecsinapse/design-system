@@ -5,7 +5,12 @@ import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
 import { FileProps } from './types';
 
-export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
+export const File = <T,>({
+  file,
+  index,
+  onDelete,
+  showDelete = true,
+}: FileProps<T>) => {
   function statusIntent(status: 'success' | 'error' | 'uploading') {
     switch (status) {
       case 'success':
@@ -41,7 +46,7 @@ export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
             </p>
           </div>
         </div>
-        {file.status === 'success' && (
+        {file.status === 'success' && showDelete ? (
           <button
             onClick={() => onDelete(index)}
             data-testid="remove-button"
@@ -53,7 +58,7 @@ export const File = <T,>({ file, index, onDelete }: FileProps<T>) => {
           >
             <MdClose size={15} />
           </button>
-        )}
+        ) : null}
       </div>
 
       <ProgressBar

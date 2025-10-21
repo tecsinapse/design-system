@@ -15,6 +15,7 @@ export interface FileProps<T> {
   file: FileUpload<T>;
   index: number;
   onDelete: (index: number) => void;
+  showDelete?: boolean;
 }
 
 export interface FilesProps<T> {
