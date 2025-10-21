@@ -1,19 +1,12 @@
-import { tv } from 'tailwind-variants';
 import { createPortal } from 'react-dom';
 import { File } from './Upload';
 import { Button } from '../Button';
 import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
-
-const foldermodal = tv({
-  base: 'fixed rounded-micro p-kilo bg-white shadow-xl flex transition bottom-deca right-deca z-modal',
-  variants: {
-    open: {
-      true: 'scale-100 visible',
-      false: 'invisible',
-    },
-  },
-});
+import { useState } from 'react';
+import { clsx } from 'clsx';
+import { IoArrowDown, IoArrowUp } from 'react-icons/io5';
+import { manager } from '@tecsinapse/cortex-core/src/components/manager/manager';
 
 export const Manager = <T,>({
   open,
@@ -22,19 +15,24 @@ export const Manager = <T,>({
   uploadProgressText = 'Upload(s) in progress',
   onClose,
 }: ManagerProps<T>) => {
+  const [min, setMin] = useState(false);
+
   return createPortal(
     <div
-      className={foldermodal({
+      className={manager({
         className: 'h-auto max-h-[350px] w-[450px] overflow-hidden pt-deca',
         open,
       })}
     >
       <div className="flex flex-col w-full h-full gap-mili items-center">
         <div className="flex items-center justify-between w-full">
-          <div />
-          <h3 className="ml-mega" data-testid="upload-progress">
-            {uploadProgressText}
-          </h3>
+          <Button
+            variants={{ variant: 'outline', size: 'square' }}
+            onClick={() => setMin(min => !min)}
+          >
+            {min ? <IoArrowUp /> : <IoArrowDown />}
+          </Button>
+          <h3 data-testid="upload-progress">{uploadProgressText}</h3>
           <Button
             variants={{ variant: 'filled', size: 'square' }}
             onClick={onClose}
@@ -42,13 +40,19 @@ export const Manager = <T,>({
             <IoMdClose />
           </Button>
         </div>
-        <div className="flex flex-col w-full overflow-scroll h-auto max-h-[300px] pb-kilo px-deca">
+        <div
+          className={clsx(
+            'w-full overflow-scroll h-auto max-h-[300px] px-deca',
+            { hidden: min, 'flex flex-col': !min, 'pb-deca': files.length > 3 }
+          )}
+        >
           {files.map((file, index) => (
             <File
               file={file}
               key={file.uid}
               index={index}
               onDelete={onDelete}
+              showDelete={false}
             />
           ))}
         </div>
