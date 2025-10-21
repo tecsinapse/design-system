@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.1...@tecsinapse/cortex-react@1.15.0-beta.2) (2025-10-21)
+
+### Features
+
+* **uploader:** adicionando uma prop para remover o botão de deletar arquivo ([f79ca0d](https://github.com/tecsinapse/design-system/commit/f79ca0d521c20aafab1b8ec3fa5c3a7a3a1e91e1))
+* **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
+* **uploader:** atualizando os stories ([739cdcb](https://github.com/tecsinapse/design-system/commit/739cdcbb673e1ad298e809d5e78b69d118e34154))
+* **uploader:** expondo a função de abrir o manager no hook ([c279974](https://github.com/tecsinapse/design-system/commit/c279974b1dadf50411bea93277e7aa3e26bc8f1e))
+* **uploader:** modificando alguns estilos + adicionando minimização ([dd311dd](https://github.com/tecsinapse/design-system/commit/dd311dd15a97f62e375bbcc1c9a49697371f9e1b))
+* **uploader:** mudanças de estilo ([4500f39](https://github.com/tecsinapse/design-system/commit/4500f39303754296a13ebe1360e8f873ecae6bf6))
+
 # [1.15.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.0...@tecsinapse/cortex-react@1.15.0-beta.1) (2025-10-20)
 
 ### Features
