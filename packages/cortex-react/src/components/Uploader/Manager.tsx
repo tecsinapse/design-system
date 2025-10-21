@@ -6,7 +6,7 @@ import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
 
 const foldermodal = tv({
-  base: 'fixed rounded-micro p-kilo bg-white shadow-xl flex transition z-modal',
+  base: 'fixed rounded-micro p-kilo bg-white shadow-xl flex transition bottom-deca right-deca z-modal',
   variants: {
     open: {
       true: 'scale-100 visible',
@@ -25,8 +25,7 @@ export const Manager = <T,>({
   return createPortal(
     <div
       className={foldermodal({
-        className:
-          'h-[350px] w-[400px] bg-white bottom-deca right-deca overflow-hidden',
+        className: 'h-auto max-h-[350px] w-[450px] overflow-hidden pt-deca',
         open,
       })}
     >
@@ -37,13 +36,13 @@ export const Manager = <T,>({
             {uploadProgressText}
           </h3>
           <Button
-            variants={{ variant: 'outline', size: 'circle' }}
+            variants={{ variant: 'filled', size: 'square' }}
             onClick={onClose}
           >
             <IoMdClose />
           </Button>
         </div>
-        <div className="flex flex-col w-full overflow-scroll">
+        <div className="flex flex-col w-full overflow-scroll h-auto max-h-[300px] pb-kilo px-deca">
           {files.map((file, index) => (
             <File
               file={file}
