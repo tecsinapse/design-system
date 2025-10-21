@@ -147,6 +147,7 @@ export const useFileUpload = <T>({
       isFileLimitReached,
     } as UseDropzoneProps,
     open: isOpen,
+    openManager,
     closeManager,
     isManagerOpen,
     files,
