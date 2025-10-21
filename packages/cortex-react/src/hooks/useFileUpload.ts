@@ -45,8 +45,20 @@ export const useFileUpload = <T>({
 
   const onOpen = useCallback(() => setIsOpen(true), []);
   const onClose = useCallback(() => setIsOpen(false), []);
+
+  const handleRemoveFile = useCallback((index: number) => {
+    setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
+  }, []);
+
+  const handleClearFiles = useCallback(() => {
+    setFiles([]);
+  }, []);
+
   const openManager = useCallback(() => setIsManagerOpen(true), []);
-  const closeManager = useCallback(() => setIsManagerOpen(false), []);
+  const closeManager = useCallback(() => {
+    handleClearFiles();
+    setIsManagerOpen(false);
+  }, []);
 
   const updateFiles = useCallback(
     (prevFiles: FileUpload<T>[], newFiles: FileUpload<T>[]) => {
@@ -125,14 +137,6 @@ export const useFileUpload = <T>({
     maxSize,
     onDropRejected: onFileRejected,
   });
-
-  const handleRemoveFile = useCallback((index: number) => {
-    setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
-  }, []);
-
-  const handleClearFiles = useCallback(() => {
-    setFiles([]);
-  }, []);
 
   const isFileLimitReached = !allowMultiple && files.length > 0;
 
