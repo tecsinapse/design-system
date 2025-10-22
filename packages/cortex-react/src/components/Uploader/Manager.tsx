@@ -43,8 +43,8 @@ export const Manager = <T,>({
         <div
           className={clsx('w-full h-auto max-h-[300px] gap-mili', {
             hidden: min,
-            'flex flex-col justify-center items-center': !min,
-            'pb-deca overflow-scroll': files.length > 3,
+            'flex flex-col': !min,
+            'pb-kilo overflow-scroll pr-deca': files.length > 3,
           })}
         >
           {files.map((file, index) => (
