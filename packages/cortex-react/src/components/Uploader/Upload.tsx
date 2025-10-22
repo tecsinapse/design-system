@@ -23,7 +23,7 @@ export const File = <T,>({
   }
 
   return (
-    <div className="flex flex-col" key={index}>
+    <div className="flex flex-col w-full" key={index}>
       <div className="flex items-center justify-between border rounded-t-mili shadow p-mili">
         <div className="flex gap-centi">
           {file.file && file.file.type.startsWith('image/') ? (

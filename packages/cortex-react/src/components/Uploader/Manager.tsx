@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
 import { useState } from 'react';
 import { clsx } from 'clsx';
-import { IoArrowDown, IoArrowUp } from 'react-icons/io5';
+import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import { manager } from '@tecsinapse/cortex-core';
 
 export const Manager = <T,>({
@@ -20,17 +20,17 @@ export const Manager = <T,>({
   return createPortal(
     <div
       className={manager({
-        className: 'h-auto max-h-[350px] w-[450px] overflow-hidden pt-deca',
+        className: 'h-auto max-h-[350px] w-[450px] overflow-hidden',
         open,
       })}
     >
       <div className="flex flex-col w-full h-full gap-mili items-center">
         <div className="flex items-center justify-between w-full">
           <Button
-            variants={{ variant: 'outline', size: 'square' }}
+            variants={{ variant: 'text', size: 'square' }}
             onClick={() => setMin(min => !min)}
           >
-            {min ? <IoArrowUp /> : <IoArrowDown />}
+            {min ? <IoChevronUp /> : <IoChevronDown />}
           </Button>
           <h3 data-testid="upload-progress">{uploadProgressText}</h3>
           <Button
@@ -41,10 +41,11 @@ export const Manager = <T,>({
           </Button>
         </div>
         <div
-          className={clsx(
-            'w-full overflow-scroll h-auto max-h-[300px] px-deca',
-            { hidden: min, 'flex flex-col': !min, 'pb-deca': files.length > 3 }
-          )}
+          className={clsx('w-full h-auto max-h-[300px] gap-mili', {
+            hidden: min,
+            'flex flex-col justify-center items-center': !min,
+            'pb-deca overflow-scroll': files.length > 3,
+          })}
         >
           {files.map((file, index) => (
             <File
