@@ -27,6 +27,7 @@ interface UseFileUploadOptions<T> {
   allowMultiple?: boolean;
   preventDuplicates?: boolean;
   onDuplicate?: (duplicates: File[]) => void;
+  hasManager?: boolean;
 }
 
 export const useFileUpload = <T>({
@@ -37,6 +38,7 @@ export const useFileUpload = <T>({
   allowMultiple = true,
   preventDuplicates = false,
   onDuplicate,
+  hasManager = true,
 }: UseFileUploadOptions<T>) => {
   const [files, setFiles] = useState<FileUpload<T>[]>([]);
   const [duplicates, setDuplicates] = useState<File[]>([]);
@@ -70,8 +72,10 @@ export const useFileUpload = <T>({
   );
 
   const onDrop = async (acceptedFiles: File[]): Promise<void> => {
-    openManager();
-    onClose();
+    if (hasManager) {
+      openManager();
+      onClose();
+    }
     let toProcess = acceptedFiles;
 
     if (preventDuplicates) {
