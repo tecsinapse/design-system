@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.3...@tecsinapse/cortex-react@1.15.0-beta.4) (2025-10-22)
+
+### Features
+
+* **uploader:** ajustando espaçamento + icone de minimizar ([1357a39](https://github.com/tecsinapse/design-system/commit/1357a393300339fdd9392332331924502282d846))
+* **uploader:** ajustando posicionamento com scroll ([dec8950](https://github.com/tecsinapse/design-system/commit/dec89503e886ed2f5a29646f1108a1507fccd47b))
+
 # [1.15.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.2...@tecsinapse/cortex-react@1.15.0-beta.3) (2025-10-21)
 
 ### Features
