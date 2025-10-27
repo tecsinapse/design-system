@@ -72,7 +72,7 @@ export const File = <T,>({
 export const Folder = <T,>({ items }: FolderProps<T>) => {
   const paths: Set<string> = new Set();
   for (const file in items) {
-    const path = items[file].file.relativePath.slice(1).split('/');
+    const path = (items[file].file as any).relativePath.slice(1).split('/');
     path.map(item => paths.add(item));
   }
 
