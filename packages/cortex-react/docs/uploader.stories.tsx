@@ -162,3 +162,48 @@ export const CustomWithoutManager: StoryObj<typeof Uploader> = {
     );
   },
 };
+
+export const CustomForFolder: StoryObj<typeof Uploader> = {
+  render: () => {
+    const {
+      files,
+      onOpen,
+      onClose,
+      onDelete,
+      dropzoneProps,
+      open,
+      closeManager,
+      isManagerOpen,
+    } = useFileUpload<{ id: string }>({
+      accept: {
+        APPLICATION: [],
+        AUDIO: [],
+        VIDEO: [],
+        IMAGE: [],
+      },
+      onAccept,
+    });
+
+    return (
+      <div>
+        <button className={button()} onClick={onOpen}>
+          Upload Folder
+        </button>
+        <Uploader.Modal open={open} onClose={onClose}>
+          <div className="flex flex-col overflow-y-auto w-full gap-kilo">
+            <div className="flex flex-row flex-1 gap-kilo">
+              <Uploader.Dropzone dropzoneProps={dropzoneProps} />
+            </div>
+          </div>
+        </Uploader.Modal>
+        <Uploader.Manager
+          files={files}
+          onClose={closeManager}
+          onDelete={onDelete}
+          open={isManagerOpen}
+          type="folder"
+        />
+      </div>
+    );
+  },
+};

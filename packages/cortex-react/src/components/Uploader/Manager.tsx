@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { File } from './Upload';
+import { File, Folder } from './Upload';
 import { Button } from '../Button';
 import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
@@ -14,6 +14,7 @@ export const Manager = <T,>({
   onDelete,
   uploadProgressText = 'Upload(s) in progress',
   onClose,
+  type = 'file',
 }: ManagerProps<T>) => {
   const [min, setMin] = useState(false);
 
@@ -47,15 +48,19 @@ export const Manager = <T,>({
             'pb-kilo overflow-scroll pr-deca': files.length > 3,
           })}
         >
-          {files.map((file, index) => (
-            <File
-              file={file}
-              key={file.uid}
-              index={index}
-              onDelete={onDelete}
-              showDelete={false}
-            />
-          ))}
+          {type === 'file' ? (
+            files.map((file, index) => (
+              <File
+                file={file}
+                key={file.uid}
+                index={index}
+                onDelete={onDelete}
+                showDelete={false}
+              />
+            ))
+          ) : (
+            <Folder items={files} />
+          )}
         </div>
       </div>
     </div>,

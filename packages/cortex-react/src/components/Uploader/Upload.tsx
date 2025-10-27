@@ -1,9 +1,9 @@
 import { button } from '@tecsinapse/cortex-core';
 import React from 'react';
-import { FaRegFileLines } from 'react-icons/fa6';
+import { FaRegFileLines, FaRegFolder } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
-import { FileProps } from './types';
+import { FileProps, FolderProps } from './types';
 
 export const File = <T,>({
   file,
@@ -64,6 +64,43 @@ export const File = <T,>({
       <ProgressBar
         intent={statusIntent(file.status)}
         infinite={file.status === 'uploading'}
+      />
+    </div>
+  );
+};
+
+export const Folder = <T,>({ items }: FolderProps<T>) => {
+  const paths: Set<string> = new Set();
+  for (const file in items) {
+    const path = items[file].file.relativePath.slice(1).split('/');
+    path.map(item => paths.add(item));
+  }
+
+  const intent = (items ?? []).some(item => item.status === 'success')
+    ? 'success'
+    : (items ?? []).some(item => item.status === 'error')
+      ? 'error'
+      : 'info';
+
+  return (
+    <div className="flex flex-col w-full">
+      <div className="flex items-center justify-between border rounded-t-mili shadow p-mili">
+        <div className="flex gap-centi">
+          <span className="border-2 text-kilo text-primary-medium w-tera h-tera flex items-center justify-center rounded-mili">
+            <FaRegFolder />
+          </span>
+          <div className="flex-col">
+            <p className="font-semibold truncate max-w-[200px]">
+              {Array.from(paths)[0]}
+            </p>
+            <p className="text-sm text-gray-500">{paths.size - 1} itens</p>
+          </div>
+        </div>
+      </div>
+
+      <ProgressBar
+        intent={intent}
+        infinite={(items ?? []).some(item => item.status === 'uploading')}
       />
     </div>
   );
