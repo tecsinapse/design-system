@@ -2,7 +2,7 @@ import { button } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { FaRegFileLines, FaRegFolder } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
-import { ProgressBar } from '../ProgressBar/ProgressBar';
+import { ProgressBar, ProgressBarProps } from '../ProgressBar/ProgressBar';
 import { FileProps, FileUpload, FolderListProps, FolderProps } from './types';
 
 export const File = <T,>({
@@ -160,7 +160,9 @@ export const FolderList = <T,>({ files }: FolderListProps<T>) => {
     });
   }
   const folders = children.map(folder => {
-    const intent = (folder.files ?? []).some(item => item.status === 'success')
+    const intent: 'default' | 'success' | 'warning' | 'info' | 'error' = (
+      folder.files ?? []
+    ).some(item => item.status === 'success')
       ? 'success'
       : (files ?? []).some(item => item.status === 'error')
         ? 'error'
