@@ -17,8 +17,14 @@ export interface FileProps<T> {
   onDelete: (index: number) => void;
   showDelete?: boolean;
 }
-export interface FolderProps<T> {
-  items: FileUpload<T>[];
+export interface FolderProps {
+  name: string;
+  size: number;
+  intent: string;
+  loading: boolean;
+}
+export interface FolderListProps<T> {
+  files: FileUpload<T>[];
 }
 
 export interface FilesProps<T> {

@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { File, Folder } from './Upload';
+import { File, Folder, FolderList } from './Upload';
 import { Button } from '../Button';
 import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
@@ -59,7 +59,7 @@ export const Manager = <T,>({
               />
             ))
           ) : (
-            <Folder items={files} />
+            <FolderList files={files} />
           )}
         </div>
       </div>
