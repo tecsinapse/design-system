@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { File, Folder, FolderList } from './Upload';
+import { File, FolderList } from './Upload';
 import { Button } from '../Button';
 import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';

@@ -2,7 +2,7 @@ import { button } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { FaRegFileLines, FaRegFolder } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
-import { ProgressBar, ProgressBarProps } from '../ProgressBar/ProgressBar';
+import { ProgressBar } from '../ProgressBar/ProgressBar';
 import { FileProps, FileUpload, FolderListProps, FolderProps } from './types';
 
 export const File = <T,>({
@@ -135,7 +135,7 @@ export const FolderList = <T,>({ files }: FolderListProps<T>) => {
     children: Map<any, any>;
   }): { total: number; files: any[] } => {
     let total = 0;
-    const files = [];
+    const files: any[] = [];
     for (const child of node.children.values()) {
       if (child.type === 'file') {
         total += 1;
@@ -149,7 +149,7 @@ export const FolderList = <T,>({ files }: FolderListProps<T>) => {
     }
     return { total, files };
   };
-  const children = [];
+  const children: { name: string; size: number; files: FileUpload<T>[] }[] = [];
   for (const [name, node] of tree.children) {
     const size = count(node).total;
     const files = count(node).files;
