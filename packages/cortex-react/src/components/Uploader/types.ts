@@ -20,9 +20,12 @@ export interface FileProps<T> {
 }
 export interface FolderProps {
   name: string;
-  size: number;
-  intent: 'default' | 'success' | 'warning' | 'info' | 'error';
-  loading: boolean;
+  subItems: { status: string; path: string }[];
+}
+
+export interface FileFolder extends File {
+  relativePath: string;
+  path: string;
 }
 export interface FolderListProps<T> {
   files: FileUpload<T>[];
@@ -63,7 +66,7 @@ export enum FileStatus {
 }
 
 export type FileUpload<T> = {
-  file: File;
+  file: FileFolder;
   metadata?: T;
   uid: string;
   status: 'success' | 'error' | 'uploading';

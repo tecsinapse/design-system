@@ -1,9 +1,50 @@
 import { button } from '@tecsinapse/cortex-core';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FaRegFileLines, FaRegFolder } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
-import { FileProps, FileUpload, FolderListProps, FolderProps } from './types';
+import { FileProps, FolderListProps, FolderProps } from './types';
+
+const recursiveCountFolderElements = (node: Record<string, any>): number => {
+  let count = 0;
+  for (const key in node) {
+    count++;
+    count += recursiveCountFolderElements(node[key]);
+  }
+  return count;
+};
+
+const prettyPrintTree = (tree: any, indent = ''): string => {
+  let output = '';
+  const entries = Object.entries(tree);
+  entries.forEach(([name, children], index) => {
+    const isLast = index === entries.length - 1;
+    output += `${indent}${isLast ? '└── ' : '├── '}${name}\n`;
+    const childIndent = indent + (isLast ? '    ' : '│   ');
+    output += prettyPrintTree(children, childIndent);
+  });
+  return output;
+};
+
+const countFolderElements = (paths: string[], root: string): number => {
+  if (!paths.length) return 0;
+
+  const tree: Record<string, any> = {};
+
+  for (const path of paths) {
+    const parts = path
+      .replace(root + '/', '')
+      .split('/')
+      .filter(Boolean);
+    let current = tree;
+    for (const part of parts) {
+      if (!current[part]) current[part] = {};
+      current = current[part];
+    }
+  }
+
+  return recursiveCountFolderElements(tree);
+};
 
 export const File = <T,>({
   file,
@@ -69,7 +110,26 @@ export const File = <T,>({
   );
 };
 
-export const Folder = <T,>({ name, size, intent, loading }: FolderProps) => {
+export const Folder = ({ name, subItems }: FolderProps) => {
+  const size = countFolderElements(
+    subItems.map(it => it.path),
+    name
+  );
+  const loading = useMemo(
+    () => subItems.some(it => it.status === 'uploading'),
+    [subItems]
+  );
+  const intent = useMemo(() => {
+    if (loading) return 'info';
+    if (
+      (subItems ?? []).some(item => item.status === 'error') &&
+      (subItems ?? []).some(item => item.status === 'success')
+    ) {
+      return 'warning';
+    }
+    return 'success';
+  }, [subItems]);
+
   return (
     <div className="flex flex-col w-full">
       <div className="flex items-center justify-between border rounded-t-mili shadow p-mili">
@@ -92,96 +152,21 @@ export const Folder = <T,>({ name, size, intent, loading }: FolderProps) => {
 };
 
 export const FolderList = <T,>({ files }: FolderListProps<T>) => {
-  const paths: Set<string> = new Set();
-  const buildTree = (files: FileUpload<T>[]) => {
-    const root = {
-      type: 'root',
-      children: new Map(),
-    };
-
-    for (const file of files) {
-      const parts: string[] = (file.file as any).relativePath
-        .slice(1)
-        .split('/');
-
-      parts.map(item => paths.add(item));
-
-      let current = root;
-
-      parts.forEach((part, index) => {
-        const isLast = index === parts.length - 1;
-
-        if (isLast) {
-          current.children.set(part, {
-            type: 'file',
-            file: file,
-          });
-        } else {
-          if (!current.children.has(part)) {
-            current.children.set(part, {
-              type: 'folder',
-              children: new Map(),
-            });
-          }
-          current = current.children.get(part);
-        }
+  const folders: Record<string, { status: string; path: string }[]> =
+    useMemo(() => {
+      const segments: Record<string, { status: string; path: string }[]> = {};
+      files.forEach(file => {
+        const path = file.file.relativePath.replace(/^\//, '');
+        const root = path.split('/')[0];
+        const current = Array.from(segments?.[root] ?? []);
+        segments[root] = [...current, { path: path, status: file.status }];
       });
-    }
-
-    return root;
-  };
-  const tree = buildTree(files);
-  const count = (node: {
-    children: Map<any, any>;
-  }): { total: number; files: any[] } => {
-    let total = 0;
-    const files: any[] = [];
-    for (const child of node.children.values()) {
-      if (child.type === 'file') {
-        total += 1;
-        files.push(child.file);
-      } else if (child.type === 'folder') {
-        total += 1;
-        const nested = count(child);
-        total += nested.total;
-        files.push(...nested.files);
-      }
-    }
-    return { total, files };
-  };
-  const children: { name: string; size: number; files: FileUpload<T>[] }[] = [];
-  for (const [name, node] of tree.children) {
-    const size = count(node).total;
-    const files = count(node).files;
-    children.push({
-      name,
-      size,
-      files,
-    });
-  }
-  const folders = children.map(folder => {
-    const intent: 'default' | 'success' | 'warning' | 'info' | 'error' = (
-      folder.files ?? []
-    ).some(item => item.status === 'success')
-      ? 'success'
-      : (files ?? []).some(item => item.status === 'error')
-        ? 'error'
-        : 'info';
-    return { ...folder, intent };
-  });
-
+      return segments;
+    }, [files]);
   return (
     <>
-      {folders.map(({ intent, name, size, files }, index) => (
-        <Folder
-          name={name}
-          size={size}
-          intent={intent}
-          loading={files.some(
-            (file: FileUpload<T>) => file.status === 'uploading'
-          )}
-          key={index}
-        />
+      {Object.entries(folders).map(([name, children], index) => (
+        <Folder name={name} subItems={children} key={index} />
       ))}
     </>
   );
