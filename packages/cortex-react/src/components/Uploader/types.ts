@@ -66,7 +66,7 @@ export enum FileStatus {
 }
 
 export type FileUpload<T> = {
-  file: FileFolder;
+  file: FileFolder | File;
   metadata?: T;
   uid: string;
   status: 'success' | 'error' | 'uploading';

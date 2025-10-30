@@ -72,7 +72,9 @@ export const useFileUpload = <T>({
     []
   );
 
-  const onDrop = async (acceptedFiles: FileFolder[]): Promise<void> => {
+  const onDrop = async (
+    acceptedFiles: FileFolder[] | File[]
+  ): Promise<void> => {
     if (hasManager) {
       openManager();
       onClose();
