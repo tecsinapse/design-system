@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { FaRegFileLines, FaRegFolder } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
-import { FileProps, FolderListProps, FolderProps } from './types';
+import { FileFolder, FileProps, FolderListProps, FolderProps } from './types';
 
 const recursiveCountFolderElements = (node: Record<string, any>): number => {
   let count = 0;
@@ -156,7 +156,7 @@ export const FolderList = <T,>({ files }: FolderListProps<T>) => {
     useMemo(() => {
       const segments: Record<string, { status: string; path: string }[]> = {};
       files.forEach(file => {
-        const path = file.file.relativePath.replace(/^\//, '');
+        const path = (file.file as FileFolder).relativePath.replace(/^\//, '');
         const root = path.split('/')[0];
         const current = Array.from(segments?.[root] ?? []);
         segments[root] = [...current, { path: path, status: file.status }];
