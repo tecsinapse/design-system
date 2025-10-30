@@ -8,7 +8,6 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import {
   AcceptSpecificMap,
-  FileFolder,
   FileStatus,
   UseDropzoneProps,
   type FileUpload,
@@ -72,9 +71,7 @@ export const useFileUpload = <T>({
     []
   );
 
-  const onDrop = async (
-    acceptedFiles: FileFolder[] | File[]
-  ): Promise<void> => {
+  const onDrop = async (acceptedFiles: File[]): Promise<void> => {
     if (hasManager) {
       openManager();
       onClose();
