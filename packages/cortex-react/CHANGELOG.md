@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.7...@tecsinapse/cortex-react@1.15.0-beta.8) (2025-10-30)
+
+### Features
+
+* **uploader:** ajustando tipagem ([665adf4](https://github.com/tecsinapse/design-system/commit/665adf470ea3951f66c24eec3e9fa736f8de32f5))
+* **uploader:** ajustando tipagem ([b95787c](https://github.com/tecsinapse/design-system/commit/b95787caffe67a9d3dc008b0418dd8ddc45d453b))
+* **uploader:** extendendo o tipo File com declaração global ([9a724f3](https://github.com/tecsinapse/design-system/commit/9a724f312320b3d4e57dc381cd7570cd9049b13f))
+* **uploader:** mudando a lógica da contagem de arquivos por pasta + tipagem ([bc4e337](https://github.com/tecsinapse/design-system/commit/bc4e3374fe97404c1b29b8f4553874731d2e0954))
+* **uploader:** retirando utilização de tipo não-utilizado ([8c592e3](https://github.com/tecsinapse/design-system/commit/8c592e32150a0697466ee819a1bdb9f3d686c0eb))
+* **uploader:** usando casting para evitar erro de ts ([ba436cb](https://github.com/tecsinapse/design-system/commit/ba436cb7b1a975e145430348730889923e101f47))
+
 # [1.15.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.6...@tecsinapse/cortex-react@1.15.0-beta.7) (2025-10-28)
 
 ### Features
