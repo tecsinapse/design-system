@@ -3,9 +3,9 @@ import React, { useMemo } from 'react';
 import { FaRegFileLines, FaRegFolder } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
-import { FileFolder, FileProps, FolderListProps, FolderProps } from './types';
+import { FileProps, FolderListProps, FolderProps } from './types';
 
-const recursiveCountFolderElements = (node: Record<string, any>): number => {
+const recursiveCountFolderElements = (node: Record<string, {}>): number => {
   let count = 0;
   for (const key in node) {
     count++;
@@ -14,7 +14,7 @@ const recursiveCountFolderElements = (node: Record<string, any>): number => {
   return count;
 };
 
-const prettyPrintTree = (tree: any, indent = ''): string => {
+const prettyPrintTree = (tree: Record<string, {}>, indent = ''): string => {
   let output = '';
   const entries = Object.entries(tree);
   entries.forEach(([name, children], index) => {
@@ -29,7 +29,7 @@ const prettyPrintTree = (tree: any, indent = ''): string => {
 const countFolderElements = (paths: string[], root: string): number => {
   if (!paths.length) return 0;
 
-  const tree: Record<string, any> = {};
+  const tree: Record<string, {}> = {};
 
   for (const path of paths) {
     const parts = path
@@ -156,7 +156,7 @@ export const FolderList = <T,>({ files }: FolderListProps<T>) => {
     useMemo(() => {
       const segments: Record<string, { status: string; path: string }[]> = {};
       files.forEach(file => {
-        const path = (file.file as FileFolder).relativePath.replace(/^\//, '');
+        const path = file.file.relativePath.replace(/^\//, '');
         const root = path.split('/')[0];
         const current = Array.from(segments?.[root] ?? []);
         segments[root] = [...current, { path: path, status: file.status }];

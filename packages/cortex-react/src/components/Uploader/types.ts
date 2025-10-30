@@ -5,7 +5,13 @@ import {
   type FileRejection,
   type FileWithPath,
 } from 'react-dropzone';
-import { ProgressBarProps } from '../ProgressBar/ProgressBar';
+
+declare global {
+  interface File {
+    relativePath: string;
+    path?: string;
+  }
+}
 
 export interface FileItem {
   file: File;
@@ -21,11 +27,6 @@ export interface FileProps<T> {
 export interface FolderProps {
   name: string;
   subItems: { status: string; path: string }[];
-}
-
-export interface FileFolder extends File {
-  relativePath: string;
-  path: string;
 }
 export interface FolderListProps<T> {
   files: FileUpload<T>[];
@@ -66,7 +67,7 @@ export enum FileStatus {
 }
 
 export type FileUpload<T> = {
-  file: FileFolder | File;
+  file: File;
   metadata?: T;
   uid: string;
   status: 'success' | 'error' | 'uploading';
