@@ -3,10 +3,10 @@ import { File, FolderList } from './Upload';
 import { Button } from '../Button';
 import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
-import { useState } from 'react';
 import { clsx } from 'clsx';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import { manager } from '@tecsinapse/cortex-core';
+import { useManager } from '../../hooks/useManager';
 
 export const Manager = <T,>({
   open,
@@ -14,9 +14,8 @@ export const Manager = <T,>({
   onDelete,
   uploadProgressText = 'Upload(s) in progress',
   onClose,
-  type = 'file',
 }: ManagerProps<T>) => {
-  const [min, setMin] = useState(false);
+  const { min, setMin, regularFiles, folderFiles } = useManager({ files });
 
   return createPortal(
     <div
@@ -48,19 +47,18 @@ export const Manager = <T,>({
             'pb-kilo overflow-scroll pr-deca': files.length > 3,
           })}
         >
-          {type === 'file' ? (
-            files.map((file, index) => (
-              <File
-                file={file}
-                key={file.uid}
-                index={index}
-                onDelete={onDelete}
-                showDelete={false}
-              />
-            ))
-          ) : (
-            <FolderList files={files} />
-          )}
+          {regularFiles.length > 0
+            ? regularFiles.map((file, index) => (
+                <File
+                  file={file}
+                  key={file.uid}
+                  index={index}
+                  onDelete={onDelete}
+                  showDelete={false}
+                />
+              ))
+            : null}
+          {folderFiles.length > 0 ? <FolderList files={folderFiles} /> : null}
         </div>
       </div>
     </div>,
