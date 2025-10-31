@@ -71,6 +71,7 @@ export type FileUpload<T> = {
   metadata?: T;
   uid: string;
   status: 'success' | 'error' | 'uploading';
+  isFolder?: boolean;
 };
 
 export interface RootUploaderProps<T> {

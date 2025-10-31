@@ -28,6 +28,7 @@ interface UseFileUploadOptions<T> {
   preventDuplicates?: boolean;
   onDuplicate?: (duplicates: File[]) => void;
   hasManager?: boolean;
+  isFolder?: boolean;
 }
 
 export const useFileUpload = <T>({
@@ -39,6 +40,7 @@ export const useFileUpload = <T>({
   preventDuplicates = false,
   onDuplicate,
   hasManager = true,
+  isFolder = false,
 }: UseFileUploadOptions<T>) => {
   const [files, setFiles] = useState<FileUpload<T>[]>([]);
   const [duplicates, setDuplicates] = useState<File[]>([]);
@@ -97,6 +99,7 @@ export const useFileUpload = <T>({
       file,
       status: onAccept ? FileStatus.UPLOADING : FileStatus.SUCCESS,
       uid: uuidv4(),
+      isFolder,
     }));
 
     try {
