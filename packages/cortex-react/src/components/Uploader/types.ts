@@ -94,7 +94,6 @@ export interface ManagerProps<T> {
   onDelete: (index: number) => void;
   uploadProgressText?: string;
   onClose: () => void;
-  type?: 'file' | 'folder';
 }
 
 export const AcceptSpecificMap = {
