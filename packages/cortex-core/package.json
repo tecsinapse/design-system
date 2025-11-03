@@ -19,6 +19,9 @@
     "clsx": "2.1.1",
     "tailwind-variants": "1.0.0"
   },
+  "devDependencies": {
+    "rollup-plugin-copy": "^3.4.0"
+  },
   "repository": {
     "type": "git",
     "directory": "packages/cortex-core",

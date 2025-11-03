@@ -1,11 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../tailwind.config.js";
+@import "tailwindcss";
+@import "../packages/cortex-core/src/default.css";
 
 @layer base {
   body {
-    background-color: theme('colors.miscellaneous.body');
-    font-family: 'Lato', serif;
+    background-color: var(--color-miscellaneous-body);
+    font-family: var(--font-family-sans);
     margin: 0;
   }
   blockquote,
@@ -69,12 +69,12 @@
   ::-webkit-scrollbar-thumb {
     width: 4px;
     height: 4px;
-    background-color: theme('colors.secondary.light');
+    background-color: var(--color-secondary-light);
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: theme('colors.primary.medium');
+    background-color: var(--color-primary-medium);
   }
   input:disabled,
   textarea:disabled {
@@ -82,9 +82,9 @@
   }
   #input-face:has(> div > input:disabled) {
     @apply bg-transparent;
-    @apply border-secondary-light;
-    @apply bg-opacity-0;
-    @apply text-secondary-light;
+    @apply border-[var(--color-secondary-light)];
+    
+    @apply text-[var(--color-secondary-light)];
   }
   a {
     text-decoration: none;
