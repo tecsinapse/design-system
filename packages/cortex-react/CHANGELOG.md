@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.8...@tecsinapse/cortex-react@1.15.0-beta.9) (2025-10-31)
+
+### Features
+
+* **uploader:** adicionando a prop isFolder aos arquivos ([2c1fe79](https://github.com/tecsinapse/design-system/commit/2c1fe79b4d8d3c8c420c4984252cf11a8cb89190))
+* **uploader:** criando um hook para o manager + separando os arquivos soltos e os de pasta ([349a695](https://github.com/tecsinapse/design-system/commit/349a695936c34e80aee460fa11052a0c4f8f4ec3))
+* **uploader:** criando um novo caso de uso nos stories ([a52f0d1](https://github.com/tecsinapse/design-system/commit/a52f0d17e5acf9aeb503d177b0af95fc97b375cc))
+
 # [1.15.0-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.7...@tecsinapse/cortex-react@1.15.0-beta.8) (2025-10-30)
 
 ### Features
