@@ -22,7 +22,7 @@ interface UseFileUploadOptions<T> {
     VIDEO?: (typeof AcceptSpecificMap.VIDEO)[number][];
     TEXT?: (typeof AcceptSpecificMap.TEXT)[number][];
   };
-  onAccept?: (files: FileUpload<T>[]) => Promise<FileUpload<T>[]>;
+  onAccept?: (files: FileUpload<T | unknown>[]) => Promise<FileUpload<T>[]>;
   onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
   maxSize?: number;
   allowMultiple?: boolean;
@@ -51,6 +51,7 @@ export const useFileUpload = <T>({
     setFiles,
     isOpen: isManagerOpen,
     setIsOpen: setIsManagerOpen,
+    uploadFiles,
   } = useManager();
   const [duplicates, setDuplicates] = useState<File[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -110,32 +111,18 @@ export const useFileUpload = <T>({
       isFolder,
     }));
 
-    try {
-      setFiles(prevFiles => [...prevFiles, ...newFiles]);
-      if (onAccept) {
-        const updatedFiles = await onAccept(newFiles);
-        setFiles(prevFiles => updateFiles(prevFiles, updatedFiles));
-      }
-    } catch (e) {
-      const updatedFiles = newFiles.map(f => ({
-        ...f,
-        status: FileStatus.ERROR,
-      }));
-      setFiles(prevFiles => updateFiles(prevFiles, updatedFiles));
-    }
+    uploadFiles({ onAccept, newFiles, updateFiles });
   };
 
   useEffect(() => {
     if (hasManager) {
       showManager?.({
-        files,
         onClose: closeManager,
         onDelete: handleRemoveFile,
-        open: isManagerOpen,
         uploadProgressText,
       });
     }
-  }, [isManagerOpen, files, handleRemoveFile, closeManager]);
+  }, [handleRemoveFile, closeManager]);
 
   const addMimeTypes = (key: keyof typeof AcceptSpecificMap, acc: Accept) => {
     AcceptSpecificMap[key].forEach(mimeType => {
