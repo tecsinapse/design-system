@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Accept,
   useDropzone,
@@ -12,6 +12,7 @@ import {
   UseDropzoneProps,
   type FileUpload,
 } from '../components/Uploader/types';
+import { useManager } from '../provider';
 
 interface UseFileUploadOptions<T> {
   accept?: {
@@ -29,6 +30,7 @@ interface UseFileUploadOptions<T> {
   onDuplicate?: (duplicates: File[]) => void;
   hasManager?: boolean;
   isFolder?: boolean;
+  uploadProgressText?: string;
 }
 
 export const useFileUpload = <T>({
@@ -41,6 +43,7 @@ export const useFileUpload = <T>({
   onDuplicate,
   hasManager = true,
   isFolder = false,
+  uploadProgressText,
 }: UseFileUploadOptions<T>) => {
   const [files, setFiles] = useState<FileUpload<T>[]>([]);
   const [duplicates, setDuplicates] = useState<File[]>([]);
@@ -72,6 +75,8 @@ export const useFileUpload = <T>({
     },
     []
   );
+
+  const { showManager } = useManager();
 
   const onDrop = async (acceptedFiles: File[]): Promise<void> => {
     if (hasManager) {
@@ -116,6 +121,18 @@ export const useFileUpload = <T>({
       setFiles(prevFiles => updateFiles(prevFiles, updatedFiles));
     }
   };
+
+  useEffect(() => {
+    if (hasManager) {
+      showManager?.({
+        files,
+        onClose: closeManager,
+        onDelete: handleRemoveFile,
+        open: isManagerOpen,
+        uploadProgressText,
+      });
+    }
+  }, [isManagerOpen, files, handleRemoveFile, closeManager]);
 
   const addMimeTypes = (key: keyof typeof AcceptSpecificMap, acc: Accept) => {
     AcceptSpecificMap[key].forEach(mimeType => {
