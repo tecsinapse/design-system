@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.9...@tecsinapse/cortex-react@1.15.0-beta.10) (2025-11-05)
+
+### Features
+
+* **uploader:** atualizando o stories ([1d9802d](https://github.com/tecsinapse/design-system/commit/1d9802de6e81ec64c0e75f329f051821976d6dbf))
+* **uploader:** criando um contexto de utilização do manager + usando ele no hook de upload ([6d4343c](https://github.com/tecsinapse/design-system/commit/6d4343c0f9378af238aa8c1c8bd14dcc3118cd46))
+* **uploader:** mudando tipagem + pequenas correções no manager ([9a43a54](https://github.com/tecsinapse/design-system/commit/9a43a5492791c76bf2455fa93f83a12dd1800376))
+* **uploader:** retirando a prop type do manager ([52848f3](https://github.com/tecsinapse/design-system/commit/52848f3145a47392becf74f0b6854ccb467e6296))
+
 # [1.15.0-beta.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.8...@tecsinapse/cortex-react@1.15.0-beta.9) (2025-10-31)
 
 ### Features
