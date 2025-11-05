@@ -21,7 +21,7 @@ export interface FileItem {
 export interface FileProps<T> {
   file: FileUpload<T>;
   index: number;
-  onDelete: (index: number) => void;
+  onDelete?: (index: number) => void;
   showDelete?: boolean;
 }
 export interface FolderProps {
@@ -89,11 +89,11 @@ export interface RootUploaderProps<T> {
   titleModal?: string;
 }
 export interface ManagerProps<T> {
-  open: boolean;
-  files: FileUpload<T>[];
-  onDelete: (index: number) => void;
+  open?: boolean;
+  files?: FileUpload<T>[];
+  onDelete?: (index: number) => void;
   uploadProgressText?: string;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export const AcceptSpecificMap = {

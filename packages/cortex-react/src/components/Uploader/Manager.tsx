@@ -6,7 +6,7 @@ import { ManagerProps } from './types';
 import { clsx } from 'clsx';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import { manager } from '@tecsinapse/cortex-core';
-import { useManager } from '../../hooks/useManager';
+import { useManagerHelpers } from '../../hooks/useManagerHelpers';
 
 export const Manager = <T,>({
   open,
@@ -15,7 +15,9 @@ export const Manager = <T,>({
   uploadProgressText = 'Upload(s) in progress',
   onClose,
 }: ManagerProps<T>) => {
-  const { min, setMin, regularFiles, folderFiles } = useManager({ files });
+  const { min, setMin, regularFiles, folderFiles } = useManagerHelpers({
+    files,
+  });
 
   return createPortal(
     <div
@@ -44,7 +46,7 @@ export const Manager = <T,>({
           className={clsx('w-full h-auto max-h-[300px] gap-mili', {
             hidden: min,
             'flex flex-col': !min,
-            'pb-kilo overflow-scroll pr-deca': files.length > 3,
+            'pb-kilo overflow-scroll pr-deca': (files ?? []).length > 3,
           })}
         >
           {regularFiles.length > 0

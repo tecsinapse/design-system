@@ -89,7 +89,7 @@ export const File = <T,>({
         </div>
         {file.status === 'success' && showDelete ? (
           <button
-            onClick={() => onDelete(index)}
+            onClick={() => onDelete?.(index)}
             data-testid="remove-button"
             className={button({
               className:
