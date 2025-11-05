@@ -45,10 +45,15 @@ export const useFileUpload = <T>({
   isFolder = false,
   uploadProgressText,
 }: UseFileUploadOptions<T>) => {
-  const [files, setFiles] = useState<FileUpload<T>[]>([]);
+  const {
+    showManager,
+    files,
+    setFiles,
+    isOpen: isManagerOpen,
+    setIsOpen: setIsManagerOpen,
+  } = useManager();
   const [duplicates, setDuplicates] = useState<File[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [isManagerOpen, setIsManagerOpen] = useState(false);
 
   const onOpen = useCallback(() => setIsOpen(true), []);
   const onClose = useCallback(() => setIsOpen(false), []);
@@ -68,15 +73,13 @@ export const useFileUpload = <T>({
   }, []);
 
   const updateFiles = useCallback(
-    (prevFiles: FileUpload<T>[], newFiles: FileUpload<T>[]) => {
-      const current = new Map<string, FileUpload<T>>();
+    (prevFiles: FileUpload<unknown>[], newFiles: FileUpload<unknown>[]) => {
+      const current = new Map<string, FileUpload<unknown>>();
       [...prevFiles, ...newFiles].forEach(file => current.set(file.uid, file));
       return [...current.values()];
     },
     []
   );
-
-  const { showManager } = useManager();
 
   const onDrop = async (acceptedFiles: File[]): Promise<void> => {
     if (hasManager) {

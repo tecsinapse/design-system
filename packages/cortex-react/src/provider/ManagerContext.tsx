@@ -1,22 +1,30 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { Manager } from '../components/Uploader/Manager';
-import { ManagerProps } from '../components';
+import { FileUpload, ManagerProps } from '../components';
 
-interface ManagerContextProps {
+interface ManagerContextProps<T> {
   showManager: (props: ManagerProps<unknown>) => void;
+  files: FileUpload<T>[];
+  setFiles: React.Dispatch<React.SetStateAction<FileUpload<unknown>[]>>;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ManagerContext = createContext<ManagerContextProps | null>(null);
+const ManagerContext = createContext<ManagerContextProps<unknown> | null>(null);
 
 export const ManagerProvider = ({ children }: { children: ReactNode }) => {
   const [props, setProps] = useState<ManagerProps<unknown>>({});
+  const [files, setFiles] = useState<FileUpload<unknown>[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const showManager = <T,>(_props: ManagerProps<T>) => {
     setProps(_props);
   };
 
   return (
-    <ManagerContext.Provider value={{ showManager }}>
+    <ManagerContext.Provider
+      value={{ showManager, files, setFiles, isOpen, setIsOpen }}
+    >
       {children}
       <Manager {...props} />
     </ManagerContext.Provider>
