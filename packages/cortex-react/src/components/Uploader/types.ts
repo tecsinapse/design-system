@@ -30,6 +30,11 @@ export interface FolderProps {
 }
 export interface FolderListProps<T> {
   files: FileUpload<T>[];
+  setFolders: React.Dispatch<
+    React.SetStateAction<
+      [string, { status: string; path: string }[]][] | undefined
+    >
+  >;
 }
 
 export interface FilesProps<T> {

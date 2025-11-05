@@ -151,7 +151,7 @@ export const Folder = ({ name, subItems }: FolderProps) => {
   );
 };
 
-export const FolderList = <T,>({ files }: FolderListProps<T>) => {
+export const FolderList = <T,>({ files, setFolders }: FolderListProps<T>) => {
   const folders: Record<string, { status: string; path: string }[]> =
     useMemo(() => {
       const segments: Record<string, { status: string; path: string }[]> = {};
@@ -163,6 +163,7 @@ export const FolderList = <T,>({ files }: FolderListProps<T>) => {
       });
       return segments;
     }, [files]);
+  setFolders(Object.entries(folders));
   return (
     <>
       {Object.entries(folders).map(([name, children], index) => (

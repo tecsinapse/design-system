@@ -15,9 +15,10 @@ export const Manager = <T,>({
   uploadProgressText = 'Upload(s) in progress',
   onClose,
 }: ManagerProps<T>) => {
-  const { min, setMin, regularFiles, folderFiles } = useManagerHelpers({
-    files,
-  });
+  const { min, setMin, regularFiles, folderFiles, totalLength, setFolders } =
+    useManagerHelpers({
+      files,
+    });
 
   return createPortal(
     <div
@@ -46,7 +47,7 @@ export const Manager = <T,>({
           className={clsx('w-full h-auto max-h-[300px] gap-mili', {
             hidden: min,
             'flex flex-col': !min,
-            'pb-kilo overflow-scroll pr-deca': (files ?? []).length > 3,
+            'pb-kilo overflow-scroll pr-deca': totalLength > 3,
           })}
         >
           {regularFiles.length > 0
@@ -60,7 +61,9 @@ export const Manager = <T,>({
                 />
               ))
             : null}
-          {folderFiles.length > 0 ? <FolderList files={folderFiles} /> : null}
+          {folderFiles.length > 0 ? (
+            <FolderList files={folderFiles} setFolders={setFolders} />
+          ) : null}
         </div>
       </div>
     </div>,

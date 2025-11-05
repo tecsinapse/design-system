@@ -7,6 +7,8 @@ export const useManagerHelpers = <T>({
   files?: FileUpload<T>[];
 }) => {
   const [min, setMin] = useState(false);
+  const [folders, setFolders] =
+    useState<[string, { status: string; path: string }[]][]>();
   const folderFiles = useMemo(
     () => files?.filter(file => file.isFolder) ?? [],
     [files]
@@ -15,10 +17,13 @@ export const useManagerHelpers = <T>({
     () => files?.filter(file => !file.isFolder) ?? [],
     [files]
   );
+  const totalLength = (regularFiles ?? []).length + (folders ?? []).length;
   return {
     min,
     setMin,
     folderFiles,
     regularFiles,
+    totalLength,
+    setFolders,
   };
 };
