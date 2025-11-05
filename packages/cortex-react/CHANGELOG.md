@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.10...@tecsinapse/cortex-react@1.15.0-beta.11) (2025-11-05)
+
+### Features
+
+* **uploader:** passando os estados de files e isOpen para o contexto ([536ee65](https://github.com/tecsinapse/design-system/commit/536ee65ecef9c937a0ee9b3004265d7fc7edfb56))
+
 # [1.15.0-beta.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.9...@tecsinapse/cortex-react@1.15.0-beta.10) (2025-11-05)
 
 ### Features
