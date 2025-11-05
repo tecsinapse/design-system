@@ -1,6 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { button } from '@tecsinapse/cortex-core';
-import { Button, Uploader } from '../src';
+import {
+  Button,
+  ManagerProvider,
+  SnackbarProvider,
+  Uploader,
+  useManager,
+} from '../src';
 import { FileStatus, type FileUpload } from '../src/components/Uploader/types';
 import { useFileUpload } from '../src/hooks';
 import { useState } from 'react';
@@ -14,6 +20,13 @@ export default {
     Dropzone: Uploader.Dropzone,
     Manager: Uploader.Manager,
   },
+  decorators: [
+    Story => (
+      <ManagerProvider>
+        <Story />
+      </ManagerProvider>
+    ),
+  ],
 } as Meta<typeof Uploader.Root>;
 
 const onAccept = async <T,>(
@@ -203,7 +216,6 @@ export const CustomForFolder: StoryObj<typeof Uploader> = {
           onClose={closeManager}
           onDelete={onDelete}
           open={isManagerOpen}
-          type="folder"
         />
       </div>
     );
@@ -267,8 +279,57 @@ export const CustomForFileAndFolder: StoryObj<typeof Uploader> = {
           onClose={closeManager}
           onDelete={onDelete}
           open={isManagerOpen}
-          type="folder"
         />
+      </div>
+    );
+  },
+};
+
+export const CustomWithManagerContext: StoryObj<typeof Uploader> = {
+  render: () => {
+    const [isFolder, setIsFolder] = useState(false);
+    const { onOpen, onClose, dropzoneProps, open } = useFileUpload<{
+      id: string;
+    }>({
+      accept: {
+        APPLICATION: [],
+        AUDIO: [],
+        VIDEO: [],
+        IMAGE: [],
+      },
+      onAccept,
+      isFolder,
+    });
+
+    return (
+      <div>
+        <div className="flex gap-deca">
+          <button
+            className={button()}
+            onClick={() => {
+              onOpen();
+              setIsFolder(false);
+            }}
+          >
+            Upload File
+          </button>
+          <button
+            className={button()}
+            onClick={() => {
+              onOpen();
+              setIsFolder(true);
+            }}
+          >
+            Upload Folder
+          </button>
+        </div>
+        <Uploader.Modal open={open} onClose={onClose}>
+          <div className="flex flex-col overflow-y-auto w-full gap-kilo">
+            <div className="flex flex-row flex-1 gap-kilo">
+              <Uploader.Dropzone dropzoneProps={dropzoneProps} />
+            </div>
+          </div>
+        </Uploader.Modal>
       </div>
     );
   },
