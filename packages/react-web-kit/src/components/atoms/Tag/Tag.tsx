@@ -17,7 +17,7 @@ const Tag: React.FC<TagProps> = ({
   backgroundColorVariant,
   backgroundColorTone,
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   const {
     colorVariant = 'secondary',
     colorTone = 'dark',

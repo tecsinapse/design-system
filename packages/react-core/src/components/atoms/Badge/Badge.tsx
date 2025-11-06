@@ -17,7 +17,7 @@ const Badge = ({
   color = 'primary',
   tone = 'medium',
   value,
-}: BadgeProps): JSX.Element => {
+}: BadgeProps): React.ReactElement => {
   return (
     <ViewStyled>
       {children}

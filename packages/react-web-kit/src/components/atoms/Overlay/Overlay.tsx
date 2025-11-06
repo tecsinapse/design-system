@@ -18,7 +18,7 @@ const Overlay = ({
   onClose,
   zIndex = 'default',
   children,
-}: OverlayProps): JSX.Element => {
+}: OverlayProps): React.ReactElement => {
   const transitionRef = useRef(null);
   return (
     <Transition in={open} timeout={timeout} nodeRef={transitionRef}>

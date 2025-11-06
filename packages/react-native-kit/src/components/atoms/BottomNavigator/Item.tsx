@@ -27,14 +27,14 @@ type ItemPropsWithChildren<T extends ValueType> = Omit<
   'icon' | 'label' | 'labelElement' | 'labelProps'
 >;
 
-function Item<T extends ValueType>(props: ItemPropsWithChildren<T>);
-function Item<T extends ValueType>(props: ItemPropsWithIcon<T>);
+function Item<T extends ValueType>(props: ItemPropsWithChildren<T>): React.ReactElement;
+function Item<T extends ValueType>(props: ItemPropsWithIcon<T>): React.ReactElement;
 function Item<T extends ValueType>({
   _selected,
   icon,
   children,
   ...rest
-}: Partial<BottomNavigatorItemProps<T>>): JSX.Element {
+}: Partial<BottomNavigatorItemProps<T>>): React.ReactElement {
   const styledButtonStyle = _selected
     ? undefined
     : { backgroundColor: 'transparent' };

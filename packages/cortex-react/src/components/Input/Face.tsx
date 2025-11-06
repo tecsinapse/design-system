@@ -12,7 +12,8 @@ const getValidChildren = (children: React.ReactNode) => {
 export const InputFace = React.forwardRef<HTMLDivElement, InputFaceProps>(
   ({ children, variants, className, ...rest }: InputFaceProps, ref) => {
     const clones = getValidChildren(children).map(el => {
-      return React.cloneElement(el, { ...el.props, variants });
+      const elProps = (el.props as any) || {};
+      return React.cloneElement(el, { ...elProps, variants });
     });
 
     return (

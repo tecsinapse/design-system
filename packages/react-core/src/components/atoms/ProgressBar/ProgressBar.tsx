@@ -32,7 +32,7 @@ const ProgressBar = ({
   color = 'primary',
   colorTone = 'medium',
   ...rest
-}: ProgressBarProps): JSX.Element => {
+}: ProgressBarProps): React.ReactElement => {
   const theme = useTheme() as ThemeProp;
 
   const valueNow =

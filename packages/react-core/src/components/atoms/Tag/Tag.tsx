@@ -25,7 +25,7 @@ const Tag: React.FC<TagProps> = ({
   backgroundColorTone = 'secondary',
   backgroundColorVariant = 'xlight',
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   const [dismiss, setDismiss] = useState(false);
   const fadeAnim = React.useRef(new Animated.Value(1)).current;
   const duration = 300;

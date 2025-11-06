@@ -22,7 +22,7 @@ const PressableSurface = ({
   effectStyle,
   style,
   ...rest
-}: PressableSurfaceProps): JSX.Element => {
+}: PressableSurfaceProps): React.ReactElement => {
   const theme = useTheme() as ThemeProp;
   let effectBaseColor = theme.miscellaneous.surfaceColor;
   let bgColor = 'transparent';

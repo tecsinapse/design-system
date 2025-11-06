@@ -19,7 +19,7 @@ export const Root = ({
   const initialSelectedIndex = useMemo(() => {
     let initialIndex: number | null = null;
     React.Children.forEach(children, (child, index) => {
-      if (React.isValidElement(child) && child.props.selected) {
+      if (React.isValidElement(child) && (child as any).props.selected) {
         initialIndex = index;
       }
     });
@@ -48,14 +48,14 @@ export const Root = ({
 
   const renderNode = useMemo(
     () => (child: React.ReactNode, index: number) => {
-      if (React.isValidElement(child) && child.type === Node) {
+        if (React.isValidElement(child) && child.type === Node) {
         return React.cloneElement(child as React.ReactElement<any>, {
           isFirst: index === 0,
           isLast: index === childrenCount - 1,
           selected: selectedNode === index,
           segmented,
           interactive,
-          onClick: () => handleNodeClick(index, child.props.onClick),
+          onClick: () => handleNodeClick(index, (child as any).props.onClick),
         });
       }
       return null;

@@ -18,7 +18,7 @@ const isDisabledProps = {
 
 export const PopoverTrigger = ({ children, disabled }: PopoverTriggerProps) => {
   const { triggerProps } = usePopoverContext();
-  const isDisabled = disabled ?? children.props?.disabled;
+  const isDisabled = disabled ?? (children as any)?.props?.disabled;
 
   return cloneWithProps(children, {
     ...triggerProps,

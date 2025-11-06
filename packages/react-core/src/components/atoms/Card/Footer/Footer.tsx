@@ -6,7 +6,7 @@ export interface FooterProps {
   children?: ReactNode;
 }
 
-const Footer = ({ children, style }: FooterProps): JSX.Element => (
+const Footer = ({ children, style }: FooterProps): React.ReactElement => (
   <View style={style}>{children}</View>
 );
 

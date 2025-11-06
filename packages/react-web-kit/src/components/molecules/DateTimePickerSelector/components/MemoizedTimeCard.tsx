@@ -15,7 +15,7 @@ const MemoizedTimeCard = React.memo(
     isSelected,
     onPress,
     TextComponent,
-  }: MemoizedTimeCardProps): JSX.Element => (
+  }: MemoizedTimeCardProps): React.ReactElement => (
     <TimeCard id={time} key={time} isSelected={isSelected} onPress={onPress}>
       <TextComponent
         colorVariant={isSelected ? 'primary' : 'secondary'}

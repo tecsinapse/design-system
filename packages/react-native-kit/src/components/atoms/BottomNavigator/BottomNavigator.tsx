@@ -18,7 +18,7 @@ function BottomNavigator<T extends string | number | symbol>({
   onSelect,
   children,
   ...rest
-}: BottomNavigatorProps<T>): JSX.Element {
+}: BottomNavigatorProps<T>): React.ReactElement {
   return (
     <StyledView {...rest}>
       {React.Children.map(children, child => {
@@ -29,9 +29,9 @@ function BottomNavigator<T extends string | number | symbol>({
 
         return (
           <TabContainer selected={isSelected} onPress={() => onSelect(value)}>
-            {React.cloneElement(child as React.ReactElement, {
-              _selected: isSelected,
-            })}
+                {React.cloneElement(child as any, {
+                  _selected: isSelected,
+                })}
             {label && !labelElement && (
               <Text
                 colorVariant={
