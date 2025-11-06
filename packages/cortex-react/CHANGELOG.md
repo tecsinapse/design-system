@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.13](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.12...@tecsinapse/cortex-react@1.15.0-beta.13) (2025-11-05)
+
+### Features
+
+* **uploader:** aprimorando a lógica de contagem de itens do manager ([84f3f7e](https://github.com/tecsinapse/design-system/commit/84f3f7e00b886b540c110f5bc1cf432c5a5df0a8))
+
 # [1.15.0-beta.12](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.11...@tecsinapse/cortex-react@1.15.0-beta.12) (2025-11-05)
 
 ### Features
