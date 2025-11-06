@@ -5,13 +5,16 @@ import { FileStatus, FileUpload, ManagerProps } from '../components';
 interface UploadFilesProps<T> {
   onAccept?: (files: FileUpload<T>[]) => Promise<FileUpload<T>[]>;
   newFiles: FileUpload<T>[];
-  updateFiles: any;
+  updateFiles: (
+    prevFiles: FileUpload<unknown>[],
+    newFiles: FileUpload<T>[]
+  ) => FileUpload<T>[];
 }
 
 interface ManagerContextProps<T> {
-  showManager: (props: ManagerProps<unknown>) => void;
+  showManager: (props: ManagerProps<T>) => void;
   files: FileUpload<T>[];
-  setFiles: React.Dispatch<React.SetStateAction<FileUpload<unknown>[]>>;
+  setFiles: React.Dispatch<React.SetStateAction<FileUpload<T>[]>>;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   uploadFiles: (props: UploadFilesProps<T>) => void;
