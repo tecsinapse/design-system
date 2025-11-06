@@ -14,7 +14,7 @@ import {
 } from '../components/Uploader/types';
 import { useManager } from '../provider';
 
-interface UseFileUploadOptions {
+interface UseFileUploadOptions<T> {
   accept?: {
     IMAGE?: (typeof AcceptSpecificMap.IMAGE)[number][];
     APPLICATION?: (typeof AcceptSpecificMap.APPLICATION)[number][];
@@ -22,7 +22,7 @@ interface UseFileUploadOptions {
     VIDEO?: (typeof AcceptSpecificMap.VIDEO)[number][];
     TEXT?: (typeof AcceptSpecificMap.TEXT)[number][];
   };
-  onAccept?: (files: FileUpload<unknown>[]) => Promise<FileUpload<unknown>[]>;
+  onAccept?: (files: FileUpload<T>[]) => Promise<FileUpload<T>[]>;
   onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
   maxSize?: number;
   allowMultiple?: boolean;
@@ -44,7 +44,7 @@ export const useFileUpload = <T>({
   hasManager = true,
   isFolder = false,
   uploadProgressText,
-}: UseFileUploadOptions) => {
+}: UseFileUploadOptions<T>) => {
   const {
     showManager,
     files,
