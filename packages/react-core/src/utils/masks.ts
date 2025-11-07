@@ -20,6 +20,8 @@ export const Masks = {
       ? Masks.PHONE
       : Masks.PHONE_EXTENDED;
   },
-  COMBINED_CPF_CNPJ: (value: string) =>
-    value?.length <= 14 ? Masks.CPF : Masks.CNPJ,
+  COMBINED_CPF_CNPJ: (value: string) => {
+    const onlyNumbers = extractDigitsFromString(value);
+    return onlyNumbers.length <= 11 ? Masks.CPF : Masks.CNPJ
+  },
 };
