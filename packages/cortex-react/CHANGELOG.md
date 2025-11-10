@@ -3,13 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.14.1-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.3...@tecsinapse/cortex-react@1.14.1-beta.0) (2025-11-10)
-
-### Bug Fixes
-
-* update MockTable prop type from JSX.Element to React.ReactNode ([a2819b0](https://github.com/tecsinapse/design-system/commit/a2819b0e4b42b2818a3ab53158400914be6f74c7))
-
 # [1.14.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.2...@tecsinapse/cortex-react@1.14.0) (2025-09-18)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [1.14.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.2...@tecsinapse/cortex-react@1.14.0-beta.3) (2025-11-10)
+
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
 
