@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.3...@tecsinapse/cortex-core@1.2.0-beta.8) (2025-11-10)
+
+### Features
+
+* Atualiza para Tailwind CSS v4 e refatora tokens de design ([94ec961](https://github.com/tecsinapse/design-system/commit/94ec96134ae250bb915e2b6f66fa075a61b16ae5))
+
 ## [1.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.2-beta.3...@tecsinapse/cortex-core@1.1.3) (2025-08-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
