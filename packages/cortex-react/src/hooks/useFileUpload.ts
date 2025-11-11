@@ -22,7 +22,7 @@ interface UseFileUploadOptions<T> {
     VIDEO?: (typeof AcceptSpecificMap.VIDEO)[number][];
     TEXT?: (typeof AcceptSpecificMap.TEXT)[number][];
   };
-  onAccept?: (files: FileUpload<T>[]) => Promise<FileUpload<T>[]>;
+  onAccept?: (files: FileUpload<unknown>[]) => Promise<FileUpload<unknown>[]>;
   onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
   maxSize?: number;
   allowMultiple?: boolean;
