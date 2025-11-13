@@ -23,6 +23,7 @@ interface UseFileUploadOptions<T> {
     TEXT?: (typeof AcceptSpecificMap.TEXT)[number][];
   };
   onAccept?: (files: FileUpload<unknown>[]) => Promise<FileUpload<unknown>[]>;
+  onOpenManager?: () => void;
   onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
   maxSize?: number;
   allowMultiple?: boolean;
@@ -36,6 +37,7 @@ interface UseFileUploadOptions<T> {
 export const useFileUpload = <T>({
   accept = {},
   onAccept,
+  onOpenManager,
   onFileRejected,
   maxSize,
   allowMultiple = true,
@@ -67,7 +69,11 @@ export const useFileUpload = <T>({
     setFiles([]);
   }, []);
 
-  const openManager = useCallback(() => setIsManagerOpen(true), []);
+  const openManager = useCallback(() => {
+    setIsManagerOpen(true);
+    onOpenManager?.();
+  }, []);
+
   const closeManager = useCallback(() => {
     handleClearFiles();
     setIsManagerOpen(false);
