@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.15](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.14...@tecsinapse/cortex-react@1.15.0-beta.15) (2025-11-11)
+
+### Features
+
+* **uploader:** mudando tipagem do contexto do manager ([fbddec1](https://github.com/tecsinapse/design-system/commit/fbddec10d0e9bcca7ca6ec5b0c3a233f22738bcf))
+
 # [1.15.0-beta.14](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.13...@tecsinapse/cortex-react@1.15.0-beta.14) (2025-11-07)
 
 ### Features
