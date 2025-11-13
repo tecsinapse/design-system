@@ -57,6 +57,7 @@ export interface DropzoneProps {
   dropText?: string;
   buttonText?: string;
   isFileLimitReached?: boolean;
+  hasButton?: boolean;
 }
 
 export interface ModalProps {
