@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.20](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.19...@tecsinapse/cortex-react@1.15.0-beta.20) (2025-11-13)
+
+### Features
+
+* **uploader:** corrigindo a função onDrop ([40474b5](https://github.com/tecsinapse/design-system/commit/40474b52444ddd6adad1356f4f1d85322d924b27))
+
 # [1.15.0-beta.19](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.18...@tecsinapse/cortex-react@1.15.0-beta.19) (2025-11-13)
 
 ### Features
