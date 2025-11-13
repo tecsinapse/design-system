@@ -1,5 +1,5 @@
 import { button } from '@tecsinapse/cortex-core';
-import React, { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { FaRegFileLines, FaRegFolder } from 'react-icons/fa6';
 import { MdClose } from 'react-icons/md';
 import { ProgressBar } from '../ProgressBar/ProgressBar';
@@ -111,9 +111,13 @@ export const File = <T,>({
 };
 
 export const Folder = ({ name, subItems }: FolderProps) => {
-  const size = countFolderElements(
-    subItems.map(it => it.path),
-    name
+  const size = useMemo(
+    () =>
+      countFolderElements(
+        subItems.map(it => it.path),
+        name
+      ),
+    [subItems, name]
   );
   const loading = useMemo(
     () => subItems.some(it => it.status === 'uploading'),
@@ -163,7 +167,7 @@ export const FolderList = <T,>({ files, setFolders }: FolderListProps<T>) => {
       });
       return segments;
     }, [files]);
-  setFolders(Object.entries(folders));
+  useEffect(() => setFolders(Object.entries(folders)), [folders, setFolders]);
   return (
     <>
       {Object.entries(folders).map(([name, children], index) => (

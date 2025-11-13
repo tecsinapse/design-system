@@ -225,16 +225,9 @@ export const CustomForFolder: StoryObj<typeof Uploader> = {
 export const CustomForFileAndFolder: StoryObj<typeof Uploader> = {
   render: () => {
     const [isFolder, setIsFolder] = useState(false);
-    const {
-      files,
-      onOpen,
-      onClose,
-      onDelete,
-      dropzoneProps,
-      open,
-      closeManager,
-      isManagerOpen,
-    } = useFileUpload<{ id: string }>({
+    const { onOpen, onClose, dropzoneProps, open } = useFileUpload<{
+      id: string;
+    }>({
       accept: {
         APPLICATION: [],
         AUDIO: [],
@@ -274,12 +267,6 @@ export const CustomForFileAndFolder: StoryObj<typeof Uploader> = {
             </div>
           </div>
         </Uploader.Modal>
-        <Uploader.Manager
-          files={files}
-          onClose={closeManager}
-          onDelete={onDelete}
-          open={isManagerOpen}
-        />
       </div>
     );
   },
