@@ -8,16 +8,11 @@ import { Manager } from './Manager';
 export const Root = <T,>({
   open,
   onClose,
-  files,
-  onDelete,
   dropzoneProps,
   selectFileText,
   dropText,
   buttonText,
-  uploadProgressText,
   titleModal,
-  isManagerOpen,
-  closeManager,
 }: RootUploaderProps<T>) => {
   return (
     <>
@@ -31,13 +26,6 @@ export const Root = <T,>({
           />
         </div>
       </Modal>
-      <Manager
-        open={isManagerOpen}
-        files={files}
-        onDelete={onDelete}
-        uploadProgressText={uploadProgressText}
-        onClose={closeManager}
-      />
     </>
   );
 };

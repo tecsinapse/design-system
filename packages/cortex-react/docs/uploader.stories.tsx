@@ -1,12 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { button } from '@tecsinapse/cortex-core';
-import {
-  Button,
-  ManagerProvider,
-  SnackbarProvider,
-  Uploader,
-  useManager,
-} from '../src';
+import { Button, ManagerProvider, Uploader } from '../src';
 import { FileStatus, type FileUpload } from '../src/components/Uploader/types';
 import { useFileUpload } from '../src/hooks';
 import { useState } from 'react';
@@ -99,16 +93,9 @@ export const Default: StoryObj<typeof Uploader> = {
 
 export const CustomWithManager: StoryObj<typeof Uploader> = {
   render: () => {
-    const {
-      files,
-      onOpen,
-      onClose,
-      onDelete,
-      dropzoneProps,
-      open,
-      closeManager,
-      isManagerOpen,
-    } = useFileUpload<{ id: string }>({
+    const { onOpen, onClose, dropzoneProps, open } = useFileUpload<{
+      id: string;
+    }>({
       accept: {
         APPLICATION: [],
         AUDIO: [],
@@ -132,12 +119,6 @@ export const CustomWithManager: StoryObj<typeof Uploader> = {
             </Button>
           </div>
         </Uploader.Modal>
-        <Uploader.Manager
-          files={files}
-          onClose={closeManager}
-          onDelete={onDelete}
-          open={isManagerOpen}
-        />
       </div>
     );
   },
@@ -179,16 +160,9 @@ export const CustomWithoutManager: StoryObj<typeof Uploader> = {
 
 export const CustomForFolder: StoryObj<typeof Uploader> = {
   render: () => {
-    const {
-      files,
-      onOpen,
-      onClose,
-      onDelete,
-      dropzoneProps,
-      open,
-      closeManager,
-      isManagerOpen,
-    } = useFileUpload<{ id: string }>({
+    const { onOpen, onClose, dropzoneProps, open } = useFileUpload<{
+      id: string;
+    }>({
       accept: {
         APPLICATION: [],
         AUDIO: [],
@@ -211,68 +185,12 @@ export const CustomForFolder: StoryObj<typeof Uploader> = {
             </div>
           </div>
         </Uploader.Modal>
-        <Uploader.Manager
-          files={files}
-          onClose={closeManager}
-          onDelete={onDelete}
-          open={isManagerOpen}
-        />
       </div>
     );
   },
 };
 
 export const CustomForFileAndFolder: StoryObj<typeof Uploader> = {
-  render: () => {
-    const [isFolder, setIsFolder] = useState(false);
-    const { onOpen, onClose, dropzoneProps, open } = useFileUpload<{
-      id: string;
-    }>({
-      accept: {
-        APPLICATION: [],
-        AUDIO: [],
-        VIDEO: [],
-        IMAGE: [],
-      },
-      onAccept,
-      isFolder,
-    });
-
-    return (
-      <div>
-        <div className="flex gap-deca">
-          <button
-            className={button()}
-            onClick={() => {
-              onOpen();
-              setIsFolder(false);
-            }}
-          >
-            Upload File
-          </button>
-          <button
-            className={button()}
-            onClick={() => {
-              onOpen();
-              setIsFolder(true);
-            }}
-          >
-            Upload Folder
-          </button>
-        </div>
-        <Uploader.Modal open={open} onClose={onClose}>
-          <div className="flex flex-col overflow-y-auto w-full gap-kilo">
-            <div className="flex flex-row flex-1 gap-kilo">
-              <Uploader.Dropzone dropzoneProps={dropzoneProps} />
-            </div>
-          </div>
-        </Uploader.Modal>
-      </div>
-    );
-  },
-};
-
-export const CustomWithManagerContext: StoryObj<typeof Uploader> = {
   render: () => {
     const [isFolder, setIsFolder] = useState(false);
     const { onOpen, onClose, dropzoneProps, open } = useFileUpload<{
