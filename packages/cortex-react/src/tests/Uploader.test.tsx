@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useFileUpload } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
+import { ManagerProvider } from '../provider';
 
 jest.mock('../hooks'); // Mockando o hook
 
@@ -193,16 +194,18 @@ describe('Uploader Components', () => {
 
     it('should render the manager with the files', () => {
       render(
-        <Uploader.Root
-          open={false}
-          onClose={mockOnClose}
-          files={mockFiles}
-          onDelete={mockOnDelete}
-          uploadProgressText="Custom uploading..."
-          dropzoneProps={useFileUpload({}).dropzoneProps}
-          closeManager={mockOnClose}
-          isManagerOpen={true}
-        />
+        <ManagerProvider>
+          <Uploader.Root
+            open={false}
+            onClose={mockOnClose}
+            files={mockFiles}
+            onDelete={mockOnDelete}
+            uploadProgressText="Custom uploading..."
+            dropzoneProps={useFileUpload({}).dropzoneProps}
+            closeManager={mockOnClose}
+            isManagerOpen={true}
+          />
+        </ManagerProvider>
       );
 
       expect(screen.getByText('file1.txt')).toBeInTheDocument();
