@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.16](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.15...@tecsinapse/cortex-react@1.15.0-beta.16) (2025-11-13)
+
+### Features
+
+* **uploader:** adicionando prop de ação ao abrir manager ([d650e48](https://github.com/tecsinapse/design-system/commit/d650e48f5294a5348960432bc055dbfe877a7d46))
+
 # [1.15.0-beta.15](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.14...@tecsinapse/cortex-react@1.15.0-beta.15) (2025-11-11)
 
 ### Features
