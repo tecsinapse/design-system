@@ -151,13 +151,14 @@ export const useFileUpload = <T>({
     return acc;
   }, {} as Accept);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: mappedAccept,
-    multiple: allowMultiple,
-    maxSize,
-    onDropRejected: onFileRejected,
-  });
+  const { getRootProps, getInputProps, isDragActive, fileRejections } =
+    useDropzone({
+      onDrop,
+      accept: mappedAccept,
+      multiple: allowMultiple,
+      maxSize,
+      onDropRejected: onFileRejected,
+    });
 
   const isFileLimitReached = !allowMultiple && files.length > 0;
 
@@ -170,6 +171,7 @@ export const useFileUpload = <T>({
       getRootProps,
       isDragActive,
       isFileLimitReached,
+      fileRejections,
     } as UseDropzoneProps,
     open: isOpen,
     openManager,

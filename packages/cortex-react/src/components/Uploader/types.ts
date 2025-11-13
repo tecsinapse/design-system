@@ -48,6 +48,7 @@ export interface UseDropzoneProps {
   getInputProps: <T extends DropzoneInputProps>(props?: T) => T;
   isDragActive: boolean;
   isFileLimitReached: boolean;
+  fileRejections: FileRejection[];
 }
 
 export interface DropzoneProps {
