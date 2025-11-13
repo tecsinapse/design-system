@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.19](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.18...@tecsinapse/cortex-react@1.15.0-beta.19) (2025-11-13)
+
+### Features
+
+* **uploader:** criando uma prop para tirar o botão e subtitulo do dropzone ([a1a2b49](https://github.com/tecsinapse/design-system/commit/a1a2b49f1e80cf318c25ec43b33ce127bc5be3d7))
+
 # [1.15.0-beta.18](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.17...@tecsinapse/cortex-react@1.15.0-beta.18) (2025-11-13)
 
 ### Features
