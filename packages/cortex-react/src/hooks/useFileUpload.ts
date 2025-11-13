@@ -32,6 +32,8 @@ interface UseFileUploadOptions {
   hasManager?: boolean;
   isFolder?: boolean;
   uploadProgressText?: string;
+  noClick?: boolean;
+  ignoreRejections?: boolean;
 }
 
 export const useFileUpload = <T>({
@@ -45,6 +47,8 @@ export const useFileUpload = <T>({
   onDuplicate,
   hasManager = true,
   isFolder = false,
+  noClick = false,
+  ignoreRejections = false,
   uploadProgressText,
 }: UseFileUploadOptions) => {
   const {
@@ -93,7 +97,7 @@ export const useFileUpload = <T>({
     acceptedFiles: File[],
     fileRejections: FileRejection[]
   ): Promise<void> => {
-    if (fileRejections.length > 0) return;
+    if (fileRejections.length > 0 && !ignoreRejections) return;
     if (hasManager) {
       openManager();
       onClose();
@@ -161,6 +165,7 @@ export const useFileUpload = <T>({
     multiple: allowMultiple,
     maxSize,
     onDropRejected: onFileRejected,
+    noClick,
   });
 
   const isFileLimitReached = !allowMultiple && files.length > 0;
