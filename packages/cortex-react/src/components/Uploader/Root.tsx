@@ -3,7 +3,7 @@ import React from 'react';
 import { RootUploaderProps } from './types';
 import { Modal } from './Modal';
 import { Dropzone } from './Dropzone';
-import { Manager } from './Manager';
+import { Files } from './Files';
 
 export const Root = <T,>({
   open,
@@ -13,6 +13,9 @@ export const Root = <T,>({
   dropText,
   buttonText,
   titleModal,
+  onDelete,
+  uploadProgressText,
+  files,
 }: RootUploaderProps<T>) => {
   return (
     <>
@@ -23,6 +26,11 @@ export const Root = <T,>({
             selectFileText={selectFileText}
             dropText={dropText}
             buttonText={buttonText}
+          />
+          <Files
+            files={files}
+            onDelete={onDelete}
+            uploadProgressText={uploadProgressText}
           />
         </div>
       </Modal>

@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { useFileUpload } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
 import { ManagerProvider } from '../provider';
+import { Dropzone } from '../components/Uploader/Dropzone';
 
 jest.mock('../hooks'); // Mockando o hook
 
@@ -162,8 +163,6 @@ describe('Uploader Components', () => {
           buttonText="Custom Button"
           uploadProgressText="Custom uploading..."
           titleModal="Custom Modal Title"
-          closeManager={mockOnClose}
-          isManagerOpen={false}
         />
       );
 
@@ -183,8 +182,6 @@ describe('Uploader Components', () => {
           files={mockFiles}
           onDelete={mockOnDelete}
           dropzoneProps={useFileUpload({}).dropzoneProps}
-          closeManager={mockOnClose}
-          isManagerOpen={false}
         />
       );
 
@@ -194,22 +191,24 @@ describe('Uploader Components', () => {
 
     it('should render the manager with the files', () => {
       render(
-        <ManagerProvider>
-          <Uploader.Root
-            open={false}
-            onClose={mockOnClose}
-            files={mockFiles}
-            onDelete={mockOnDelete}
-            uploadProgressText="Custom uploading..."
+        <Uploader.Modal open={false} onClose={mockOnClose}>
+          <Uploader.Dropzone
             dropzoneProps={useFileUpload({}).dropzoneProps}
-            closeManager={mockOnClose}
-            isManagerOpen={true}
+            selectFileText="Custom file selection"
+            dropText="Custom drop text"
+            buttonText="Custom Button"
           />
-        </ManagerProvider>
+          <Uploader.Manager
+            files={mockFiles}
+            uploadProgressText="Custom uploading..."
+            open={true}
+            onClose={jest.fn()}
+            onDelete={jest.fn()}
+          />
+        </Uploader.Modal>
       );
 
       expect(screen.getByText('file1.txt')).toBeInTheDocument();
-      expect(screen.getByText('file2.txt')).toBeInTheDocument();
       expect(screen.getByText('file2.txt')).toBeInTheDocument();
       expect(screen.getByTestId('upload-progress')).toHaveTextContent(
         'Custom uploading...'

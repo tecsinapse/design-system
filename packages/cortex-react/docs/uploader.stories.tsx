@@ -52,24 +52,17 @@ const onAccept = async <T,>(
 
 export const Default: StoryObj<typeof Uploader> = {
   render: () => {
-    const {
-      files,
-      onOpen,
-      onClose,
-      onDelete,
-      dropzoneProps,
-      open,
-      isManagerOpen,
-      closeManager,
-    } = useFileUpload<{ id: string }>({
-      accept: {
-        APPLICATION: [],
-        AUDIO: [],
-        IMAGE: [],
-        VIDEO: ['video/mp4'],
-      },
-      onAccept,
-    });
+    const { files, onOpen, onClose, onDelete, dropzoneProps, open } =
+      useFileUpload<{ id: string }>({
+        accept: {
+          APPLICATION: [],
+          AUDIO: [],
+          IMAGE: [],
+          VIDEO: ['video/mp4'],
+        },
+        onAccept,
+        hasManager: false,
+      });
 
     return (
       <div>
@@ -82,8 +75,6 @@ export const Default: StoryObj<typeof Uploader> = {
           dropzoneProps={dropzoneProps}
           files={files}
           onDelete={onDelete}
-          isManagerOpen={isManagerOpen}
-          closeManager={closeManager}
           uploadProgressText="Upload(s) em progresso"
         />
       </div>

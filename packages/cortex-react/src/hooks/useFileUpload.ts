@@ -14,7 +14,7 @@ import {
 } from '../components/Uploader/types';
 import { useManager } from '../provider';
 
-interface UseFileUploadOptions<T> {
+interface UseFileUploadOptions {
   accept?: {
     IMAGE?: (typeof AcceptSpecificMap.IMAGE)[number][];
     APPLICATION?: (typeof AcceptSpecificMap.APPLICATION)[number][];
@@ -46,7 +46,7 @@ export const useFileUpload = <T>({
   hasManager = true,
   isFolder = false,
   uploadProgressText,
-}: UseFileUploadOptions<T>) => {
+}: UseFileUploadOptions) => {
   const {
     showManager,
     files,
@@ -55,6 +55,7 @@ export const useFileUpload = <T>({
     setIsOpen: setIsManagerOpen,
     uploadFiles,
   } = useManager();
+
   const [duplicates, setDuplicates] = useState<File[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 

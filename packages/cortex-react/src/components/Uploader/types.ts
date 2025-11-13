@@ -82,8 +82,6 @@ export type FileUpload<T> = {
 export interface RootUploaderProps<T> {
   open: boolean;
   onClose: () => void;
-  isManagerOpen: boolean;
-  closeManager: () => void;
   files: FileUpload<T>[];
   onDelete: (index: number) => void;
   dropzoneProps: UseDropzoneProps;
