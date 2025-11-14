@@ -145,4 +145,35 @@
   --z-drawer: 700;
   --z-sidebar: 800;
   --z-modal: 1000;
+
+  /* Opacity customizada */
+  --opacity-1: 1;
+
+  /* Duration customizada */
+  --duration-250: 250ms;
+
+  /* Animações customizadas */
+  --animate-opacity: opacity 1s ease-in-out;
+  --animate-progress: progress 1s infinite linear;
+
+  /* Transform origin customizado */
+  --transform-origin-left-right: 0% 50%;
+
+  /* Keyframes */
+  @keyframes opacity {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes progress {
+    0% { transform: translateX(0) scaleX(0); }
+    40% { transform: translateX(0) scaleX(0.4); }
+    100% { transform: translateX(100%) scaleX(0.5); }
+  }
+}
+
+@layer utilities {
+  .origin-left-right {
+    transform-origin: var(--transform-origin-left-right);
+  }
 }

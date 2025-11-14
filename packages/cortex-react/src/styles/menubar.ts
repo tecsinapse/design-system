@@ -6,15 +6,14 @@ export const menubar = tv({
       'relative w-screen px-kilo py-deca flex flex-row md:justify-between bg-white z-header sm:justify-start',
     left: 'flex items-center w-fit',
     right: 'flex items-center gap-x-deca hidden sm:flex',
-    dropdown: 'w-full bg-white flex-1 shadow-default z-popover px-[8vw]',
+    dropdown:
+      'w-full bg-white flex-1 shadow-default z-popover px-[8vw] absolute',
   },
   variants: {
     show: {
       true: {
         dropdown: 'pt-kilo pb-mega',
-      },
-      false: {
-        dropdown: 'max-h-0',
+        false: 'max-h-0',
       },
     },
   },
@@ -61,11 +60,11 @@ export const subItem = tv({
 });
 
 export const animate = tv({
-  base: 'transition-all ease-in-out duration-250 overflow-hidden',
+  base: 'transition-all ease-in-out duration-250',
   variants: {
     show: {
-      true: 'max-h-screen',
-      false: 'max-h-0',
+      true: 'translate-y-0 opacity-1 visible',
+      false: '-translate-y-[120%] opacity-0 invisible max-h-0',
     },
   },
 });
