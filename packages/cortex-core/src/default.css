@@ -133,18 +133,18 @@
   --color-text-dark: #353231;
   --color-text-orange: #f89907;
 
-  /* Z-index */
-  --z-default: 0;
-  --z-absolute: 1;
-  --z-select: 20;
-  --z-input: 20;
-  --z-popover: 30;
-  --z-tooltip: 40;
-  --z-header: 600;
-  --z-backdrop: 700;
-  --z-drawer: 700;
-  --z-sidebar: 800;
-  --z-modal: 1000;
+  /* Z-index - CORRIGIDO: prefixo --z-index-* para funcionar como classes */
+  --z-index-default: 0;
+  --z-index-absolute: 1;
+  --z-index-select: 20;
+  --z-index-input: 20;
+  --z-index-popover: 30;
+  --z-index-tooltip: 40;
+  --z-index-header: 600;
+  --z-index-backdrop: 700;
+  --z-index-drawer: 700;
+  --z-index-sidebar: 800;
+  --z-index-modal: 1000;
 
   /* Opacity customizada */
   --opacity-1: 1;
