@@ -162,6 +162,7 @@ export const CustomForFolder: StoryObj<typeof Uploader> = {
       },
       onAccept,
       isFolder: true,
+      noClick: true,
     });
 
     return (
@@ -172,7 +173,10 @@ export const CustomForFolder: StoryObj<typeof Uploader> = {
         <Uploader.Modal open={open} onClose={onClose}>
           <div className="flex flex-col overflow-y-auto w-full gap-kilo">
             <div className="flex flex-row flex-1 gap-kilo">
-              <Uploader.Dropzone dropzoneProps={dropzoneProps} />
+              <Uploader.Dropzone
+                dropzoneProps={dropzoneProps}
+                hasButton={false}
+              />
             </div>
           </div>
         </Uploader.Modal>
