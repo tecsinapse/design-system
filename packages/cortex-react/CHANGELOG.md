@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.23](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.22...@tecsinapse/cortex-react@1.15.0-beta.23) (2025-11-14)
+
+### Features
+
+* **uploader:** bloqueando o botão de fechar manager enquanto onAccept estiver carregando ([63f310d](https://github.com/tecsinapse/design-system/commit/63f310d487fe439e9d6a45fedd75d98ae7b0171c))
+
 # [1.15.0-beta.22](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.21...@tecsinapse/cortex-react@1.15.0-beta.22) (2025-11-14)
 
 ### Features
