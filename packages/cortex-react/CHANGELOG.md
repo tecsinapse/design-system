@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.15.0-beta.22](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.21...@tecsinapse/cortex-react@1.15.0-beta.22) (2025-11-14)
+
+### Features
+
+* **uploader:** bloqueando o click para abrir o explorer + permitindo ignorar as rejeições no onDrop ([77c92b1](https://github.com/tecsinapse/design-system/commit/77c92b15949671f1dd383a9c97120b719c77f58d))
+* **uploader:** pequena atualização nos stories ([718aad3](https://github.com/tecsinapse/design-system/commit/718aad3dfdd99add4ce45357d689c1f62ad95d36))
+
 # [1.15.0-beta.21](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.0-beta.20...@tecsinapse/cortex-react@1.15.0-beta.21) (2025-11-13)
 
 ### Features
