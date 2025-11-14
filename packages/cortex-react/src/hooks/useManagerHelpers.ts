@@ -18,6 +18,10 @@ export const useManagerHelpers = <T>({
     [files]
   );
   const totalLength = (regularFiles ?? []).length + (folders ?? []).length;
+  const isLoading = useMemo(
+    () => files?.some(file => file.status === 'uploading'),
+    [files]
+  );
   return {
     min,
     setMin,
@@ -25,5 +29,6 @@ export const useManagerHelpers = <T>({
     regularFiles,
     totalLength,
     setFolders,
+    isLoading,
   };
 };

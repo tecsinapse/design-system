@@ -7,6 +7,7 @@ import { clsx } from 'clsx';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import { manager } from '@tecsinapse/cortex-core';
 import { useManagerHelpers } from '../../hooks/useManagerHelpers';
+import { Loading } from '../Loading';
 
 export const Manager = <T,>({
   open,
@@ -15,10 +16,17 @@ export const Manager = <T,>({
   uploadProgressText = 'Upload(s) in progress',
   onClose,
 }: ManagerProps<T>) => {
-  const { min, setMin, regularFiles, folderFiles, totalLength, setFolders } =
-    useManagerHelpers({
-      files,
-    });
+  const {
+    min,
+    setMin,
+    regularFiles,
+    folderFiles,
+    totalLength,
+    setFolders,
+    isLoading,
+  } = useManagerHelpers({
+    files,
+  });
 
   return createPortal(
     <div
@@ -39,8 +47,9 @@ export const Manager = <T,>({
           <Button
             variants={{ variant: 'filled', size: 'square' }}
             onClick={onClose}
+            disabled={isLoading}
           >
-            <IoMdClose />
+            {isLoading ? <Loading /> : <IoMdClose />}
           </Button>
         </div>
         <div
