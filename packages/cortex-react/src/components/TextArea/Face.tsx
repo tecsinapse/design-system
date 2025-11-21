@@ -7,8 +7,9 @@ import { getValidChildren } from './utils';
 export const TextAreaFace = React.forwardRef<HTMLDivElement, TextAreaFaceProps>(
   ({ children, variants, className, ...rest }: TextAreaFaceProps, ref) => {
     const clones = getValidChildren(children).map(el => {
-      const elProps = (el.props as any) || {};
-      return React.cloneElement(el, { ...elProps, variants });
+      const element = el as React.ReactElement<{ variants?: unknown }>;
+      const elProps = element.props || {};
+      return React.cloneElement(element, { ...elProps, variants });
     });
     return (
       <div

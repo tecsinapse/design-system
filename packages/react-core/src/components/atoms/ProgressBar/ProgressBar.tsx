@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '@emotion/react';
-import { ViewProps } from 'react-native';
+import { ViewProps, DimensionValue } from 'react-native';
 import {
   ColorGradationType,
   ColorType,
@@ -63,7 +63,7 @@ const ProgressBar = ({
       >
         <Progress
           style={{
-            width: progressPercent as any,
+            width: progressPercent as DimensionValue,
             backgroundColor: theme.color[color][colorTone],
             borderRightWidth: width > 0 && width < 100 ? 2 : 0,
           }}

@@ -12,15 +12,19 @@ const getValidChildren = (children: React.ReactNode) => {
 export const InputFace = React.forwardRef<HTMLDivElement, InputFaceProps>(
   ({ children, variants, className, ...rest }: InputFaceProps, ref) => {
     const clones = getValidChildren(children).map(el => {
-      const elProps = (el.props as any) || {};
-      return React.cloneElement(el, { ...elProps, variants });
+      const element = el as React.ReactElement<{ variants?: unknown }>;
+      const elProps = element.props || {};
+      return React.cloneElement(element, { ...elProps, variants });
     });
 
     return (
       <div
         data-testid={'input-face'}
         {...rest}
-        className={clsx(input(variants), className)}
+        className={clsx(
+          input(variants),
+          className
+        )}
         ref={ref}
       >
         {clones}

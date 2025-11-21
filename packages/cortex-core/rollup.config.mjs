@@ -1,5 +1,5 @@
 import esbuild from "rollup-plugin-esbuild";
-import copy from 'rollup-plugin-copy';
+
 
 const outputDefaultConfig = {
   preserveModules: true,
@@ -25,11 +25,7 @@ export default [
     ],
     plugins: [
       esbuild({ tsconfig: 'tsconfig.build.json', target: 'esnext' }),
-      copy({
-        targets: [
-          { src: 'src/default.css', dest: 'dist' }
-        ]
-      })
+
     ],
     external: [
       'tailwind-variants',

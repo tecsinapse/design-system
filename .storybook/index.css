@@ -80,12 +80,7 @@
   textarea:disabled {
     @apply bg-transparent;
   }
-  #input-face:has(> div > input:disabled) {
-    @apply bg-transparent;
-    @apply border-[var(--color-secondary-light)];
-    
-    @apply text-[var(--color-secondary-light)];
-  }
+
   a {
     text-decoration: none;
   }

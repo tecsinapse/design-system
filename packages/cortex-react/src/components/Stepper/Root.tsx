@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Node } from './Node';
+import { Node, StepNodeProps } from './Node';
 import clsx from 'clsx';
 
 export interface StepRootProps {
@@ -19,8 +19,11 @@ export const Root = ({
   const initialSelectedIndex = useMemo(() => {
     let initialIndex: number | null = null;
     React.Children.forEach(children, (child, index) => {
-      if (React.isValidElement(child) && (child as any).props.selected) {
-        initialIndex = index;
+      if (React.isValidElement(child)) {
+        const element = child as React.ReactElement<StepNodeProps>;
+        if (element.props.selected) {
+          initialIndex = index;
+        }
       }
     });
     return initialIndex;
@@ -48,14 +51,15 @@ export const Root = ({
 
   const renderNode = useMemo(
     () => (child: React.ReactNode, index: number) => {
-        if (React.isValidElement(child) && child.type === Node) {
-        return React.cloneElement(child as React.ReactElement<any>, {
+      if (React.isValidElement(child) && child.type === Node) {
+        const element = child as React.ReactElement<StepNodeProps>;
+        return React.cloneElement(element, {
           isFirst: index === 0,
           isLast: index === childrenCount - 1,
           selected: selectedNode === index,
           segmented,
           interactive,
-          onClick: () => handleNodeClick(index, (child as any).props.onClick),
+          onClick: () => handleNodeClick(index, element.props.onClick as any),
         });
       }
       return null;

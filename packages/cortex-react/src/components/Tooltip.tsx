@@ -49,7 +49,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
 
     return (
       <>
-        {cloneWithProps(children, triggerProps)}
+        {cloneWithProps(children, triggerProps as any)}
         {isOpen ? (
           <div
             ref={ref || refs.setFloating}
