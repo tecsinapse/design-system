@@ -24,7 +24,7 @@ export const SelectMultiOption = <T,>({
         onChange={() => false}
         ref={inputRef}
       />
-      {labelExtractor(option)}
+      <span className="truncate flex-1">{labelExtractor(option)}</span>
     </li>
   );
 };
