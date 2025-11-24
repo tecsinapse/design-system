@@ -20,8 +20,9 @@ export const Modal = ({
       }
     >
       <div className="flex w-full items-center justify-between mb-deca">
-        <div />
-        <h2 className="text-deca font-semibold">{title}</h2>
+        <h2 className="text-deca font-semibold ml-tera flex-1 text-center">
+          {title}
+        </h2>
         <button
           className={button({ size: 'square' })}
           onClick={onClose}

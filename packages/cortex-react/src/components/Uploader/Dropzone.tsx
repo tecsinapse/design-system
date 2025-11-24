@@ -10,6 +10,7 @@ export const Dropzone = ({
   selectFileText = 'Select a file to start',
   dropText = 'By dragging and dropping it here or clicking the button below',
   buttonText = 'Select File',
+  hasButton = true,
 }: DropzoneProps) => {
   const { getRootProps, getInputProps, isDragActive, isFileLimitReached } =
     dropzoneProps;
@@ -25,24 +26,33 @@ export const Dropzone = ({
       )}
     >
       <input {...getInputProps()} />
-      <div className="flex flex-col justify-center text-center items-center gap-deca">
-        <HiOutlineCloudArrowUp className="text-primary-medium" size={35} />
-        <div className="gap-mili">
+      <div className="flex flex-col justify-center text-center items-center">
+        <div>
+          <HiOutlineCloudArrowUp
+            className="text-primary-medium mb-nano"
+            size={35}
+          />
           <p className="text-lg font-semibold" data-testid="select-dropzone">
             {selectFileText}
           </p>
-          <p className="text-sm text-secondary-medium">{dropText}</p>
         </div>
-
-        {isFileLimitReached ? (
-          <Tooltip text="Você só pode selecionar um único arquivo.">
-            <button disabled className={clsx(button(), 'cursor-not-allowed')}>
-              {buttonText}
-            </button>
-          </Tooltip>
-        ) : (
-          <button className={button()}>{buttonText}</button>
-        )}
+        {hasButton ? (
+          <div className="flex flex-col items-center gap-centi">
+            <p className="text-sm text-secondary-medium">{dropText}</p>
+            {isFileLimitReached ? (
+              <Tooltip text="Você só pode selecionar um único arquivo.">
+                <button
+                  disabled
+                  className={clsx(button(), 'cursor-not-allowed')}
+                >
+                  {buttonText}
+                </button>
+              </Tooltip>
+            ) : (
+              <button className={button()}>{buttonText}</button>
+            )}
+          </div>
+        ) : null}
       </div>
     </div>
   );

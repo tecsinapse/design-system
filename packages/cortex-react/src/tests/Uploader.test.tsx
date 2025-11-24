@@ -3,6 +3,8 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useFileUpload } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
+import { ManagerProvider } from '../provider';
+import { Dropzone } from '../components/Uploader/Dropzone';
 
 jest.mock('../hooks'); // Mockando o hook
 
@@ -36,6 +38,8 @@ beforeEach(() => {
       })),
     },
     open: true,
+    closeManager: jest.fn(),
+    isManagerOpen: false,
   });
 });
 
@@ -168,12 +172,6 @@ describe('Uploader Components', () => {
         'Custom file selection'
       );
       expect(screen.getByText('Custom drop text')).toBeInTheDocument();
-
-      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
-        'Custom uploading...'
-      );
-      expect(screen.getByText('file1.txt')).toBeInTheDocument();
-      expect(screen.getByText('file2.txt')).toBeInTheDocument();
     });
 
     it('should call onClose when close button is clicked', () => {
@@ -189,6 +187,32 @@ describe('Uploader Components', () => {
 
       fireEvent.click(screen.getByTestId('close-button'));
       expect(mockOnClose).toHaveBeenCalled();
+    });
+
+    it('should render the manager with the files', () => {
+      render(
+        <Uploader.Modal open={false} onClose={mockOnClose}>
+          <Uploader.Dropzone
+            dropzoneProps={useFileUpload({}).dropzoneProps}
+            selectFileText="Custom file selection"
+            dropText="Custom drop text"
+            buttonText="Custom Button"
+          />
+          <Uploader.Manager
+            files={mockFiles}
+            uploadProgressText="Custom uploading..."
+            open={true}
+            onClose={jest.fn()}
+            onDelete={jest.fn()}
+          />
+        </Uploader.Modal>
+      );
+
+      expect(screen.getByText('file1.txt')).toBeInTheDocument();
+      expect(screen.getByText('file2.txt')).toBeInTheDocument();
+      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
+        'Custom uploading...'
+      );
     });
   });
 });

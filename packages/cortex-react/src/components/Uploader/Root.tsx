@@ -8,30 +8,32 @@ import { Files } from './Files';
 export const Root = <T,>({
   open,
   onClose,
-  files,
-  onDelete,
   dropzoneProps,
   selectFileText,
   dropText,
   buttonText,
-  uploadProgressText,
   titleModal,
+  onDelete,
+  uploadProgressText,
+  files,
 }: RootUploaderProps<T>) => {
   return (
-    <Modal onClose={onClose} open={open} title={titleModal}>
-      <div className="flex flex-1 flex-col w-full gap-deca md:flex-row">
-        <Dropzone
-          dropzoneProps={dropzoneProps}
-          selectFileText={selectFileText}
-          dropText={dropText}
-          buttonText={buttonText}
-        />
-        <Files
-          files={files}
-          onDelete={onDelete}
-          uploadProgressText={uploadProgressText}
-        />
-      </div>
-    </Modal>
+    <>
+      <Modal onClose={onClose} open={open} title={titleModal}>
+        <div className="flex flex-1 flex-col w-full gap-deca md:flex-row">
+          <Dropzone
+            dropzoneProps={dropzoneProps}
+            selectFileText={selectFileText}
+            dropText={dropText}
+            buttonText={buttonText}
+          />
+          <Files
+            files={files}
+            onDelete={onDelete}
+            uploadProgressText={uploadProgressText}
+          />
+        </div>
+      </Modal>
+    </>
   );
 };

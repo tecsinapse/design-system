@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.5...@tecsinapse/cortex-core@1.2.0-beta.6) (2025-10-30)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+# [1.2.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.4...@tecsinapse/cortex-core@1.2.0-beta.5) (2025-10-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+# [1.2.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.3...@tecsinapse/cortex-core@1.2.0-beta.4) (2025-10-27)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+# [1.2.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.2...@tecsinapse/cortex-core@1.2.0-beta.3) (2025-10-24)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+# [1.2.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.1...@tecsinapse/cortex-core@1.2.0-beta.2) (2025-10-22)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+# [1.2.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.0...@tecsinapse/cortex-core@1.2.0-beta.1) (2025-10-21)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+# [1.2.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.3...@tecsinapse/cortex-core@1.2.0-beta.0) (2025-10-21)
+
+### Features
+
+* **uploader:** adicionando as classes do manager no cortex-core ([e123329](https://github.com/tecsinapse/design-system/commit/e12332998fbf9533a0382145d5c585d856775a4c))
+* **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
+
 ## [1.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.2-beta.3...@tecsinapse/cortex-core@1.1.3) (2025-08-12)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core

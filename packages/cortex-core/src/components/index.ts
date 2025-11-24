@@ -16,3 +16,4 @@ export * from './table/table';
 export * from './tag/tag';
 export * from './toggle/toggle';
 export * from './tooltip/tooltip';
+export * from './manager/manager';
