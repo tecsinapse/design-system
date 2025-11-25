@@ -64,7 +64,7 @@ export const File = <T,>({
   }
 
   const formatFileSize = (size: number) => {
-    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    const units = ['B', 'KB', 'MB', 'GB'];
     let i = 0;
     while (size >= 1024 && i < units.length - 1) {
       size /= 1024;
