@@ -64,19 +64,13 @@ export const File = <T,>({
   }
 
   const formatFileSize = (size: number) => {
-    const kb = 1024;
-    const mb = 1024 * kb;
-    const gb = 1024 * mb;
-
-    if (size < kb) {
-      return `${size} B`;
-    } else if (size < mb) {
-      return `${(size / kb).toFixed(2)} KB`;
-    } else if (size < gb) {
-      return `${(size / mb).toFixed(2)} MB`;
-    } else {
-      return `${(size / gb).toFixed(2)} GB`;
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let i = 0;
+    while (size >= 1024 && i < units.length - 1) {
+      size /= 1024;
+      i++;
     }
+    return `${size.toFixed(2)} ${units[i]}`;
   };
 
   return (
