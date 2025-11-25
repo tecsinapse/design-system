@@ -63,6 +63,22 @@ export const File = <T,>({
     }
   }
 
+  const formatFileSize = (size: number) => {
+    const kb = 1024;
+    const mb = 1024 * kb;
+    const gb = 1024 * mb;
+
+    if (size < kb) {
+      return `${size} B`;
+    } else if (size < mb) {
+      return `${(size / kb).toFixed(2)} KB`;
+    } else if (size < gb) {
+      return `${(size / mb).toFixed(2)} MB`;
+    } else {
+      return `${(size / gb).toFixed(2)} GB`;
+    }
+  };
+
   return (
     <div className="flex flex-col w-full" key={index}>
       <div className="flex items-center justify-between border rounded-t-mili shadow p-mili">
@@ -83,7 +99,7 @@ export const File = <T,>({
               {file.file.name}
             </p>
             <p className="text-sm text-gray-500">
-              {(file.file.size / 1024).toFixed(2)} KB
+              {formatFileSize(file.file.size)}
             </p>
           </div>
         </div>
