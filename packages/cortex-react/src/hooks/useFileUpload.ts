@@ -32,6 +32,7 @@ interface UseFileUploadOptions {
   hasManager?: boolean;
   isFolder?: boolean;
   uploadProgressText?: string;
+  uploadSuccessText?: string;
   noClick?: boolean;
   ignoreRejections?: boolean;
 }
@@ -50,6 +51,7 @@ export const useFileUpload = <T>({
   noClick = false,
   ignoreRejections = false,
   uploadProgressText,
+  uploadSuccessText,
 }: UseFileUploadOptions) => {
   const {
     showManager,
@@ -135,6 +137,7 @@ export const useFileUpload = <T>({
         onClose: closeManager,
         onDelete: handleRemoveFile,
         uploadProgressText,
+        uploadSuccessText,
       });
     }
   }, [handleRemoveFile, closeManager]);
