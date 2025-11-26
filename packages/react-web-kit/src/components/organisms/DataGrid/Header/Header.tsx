@@ -29,7 +29,7 @@ const Header = <Data,>({
   rowKeyExtractor,
   selectedRows,
   onSelected,
-}: DataGridHeaderProps<Data>): JSX.Element => {
+}: DataGridHeaderProps<Data>): React.ReactElement => {
   const [sortDirection, setSortDirection] = React.useState<SortState>(
     NEXT_STATE.initial
   );

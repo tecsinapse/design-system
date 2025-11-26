@@ -37,7 +37,7 @@ export interface GroupButtonProps<T> {
   value: T;
   options: GroupButtonValue<T>[];
   renderKey: (option?: T) => string | number | undefined;
-  renderOption: (option: T, active: boolean) => JSX.Element;
+  renderOption: (option: T, active: boolean) => React.ReactElement;
   onChange: (option: T) => void;
   buttonSize?: ButtonSizeType;
   style?: StyleProp<ViewStyle>;

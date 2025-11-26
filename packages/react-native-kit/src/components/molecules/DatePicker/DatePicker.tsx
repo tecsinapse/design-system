@@ -26,7 +26,7 @@ export const DatePicker = <T extends SelectionType>({
   value,
   type,
   ...rest
-}: NativeDatePickerProps<T>): JSX.Element => {
+}: NativeDatePickerProps<T>): React.ReactElement => {
   const modal = useLazyModalManager();
 
   const handleChange = (value?: Value<T>) => {

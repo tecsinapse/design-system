@@ -82,7 +82,7 @@ const DataGrid = <Data,>({
   emptyPlaceholder,
   exportComponent,
   ...rest
-}: DataGridProps<Data>): JSX.Element => {
+}: DataGridProps<Data>): React.ReactElement => {
   if (selectable && (!selectedRows || !onSelectedRows)) {
     throw new Error(
       '[DataGrid] You should specify selection handlers (selectedRows, onSelectedRows)'

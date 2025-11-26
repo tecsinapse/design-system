@@ -15,7 +15,7 @@ const MemoizedYearCard = React.memo(
     isSelected,
     onPress,
     TextComponent,
-  }: MemoizedYearCardProps): JSX.Element => (
+  }: MemoizedYearCardProps): React.ReactElement => (
     <YearCard
       id={String(year)}
       key={year}

@@ -7,7 +7,7 @@ export interface MasonryProps {
   children?: ReactNode;
 }
 
-const Masonry = ({ children, columns }: MasonryProps): JSX.Element => {
+const Masonry = ({ children, columns }: MasonryProps): React.ReactElement => {
   const getColumns = () => {
     const columnsArray: React.ReactNode[][] = Array.from(
       { length: columns },

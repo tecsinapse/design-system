@@ -31,7 +31,7 @@ const ModalTitle = ({ title }: { title?: string }) =>
 
 const Component = <Data, Type extends SelectType>(
   props: OverrideModalProps<Data, Type> & LoadingProps & IBaseModal
-): JSX.Element => {
+): React.ReactElement => {
   const {
     ModalComponent,
     selectModalTitleComponent,

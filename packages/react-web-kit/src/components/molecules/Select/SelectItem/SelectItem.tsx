@@ -34,7 +34,7 @@ const SelectItem = <Data, Type extends 'single' | 'multi'>({
   checkedAll: boolean;
   setCheckedAll: (t: boolean) => void;
   lenghtOptions: number;
-}): JSX.Element => {
+}): React.ReactElement => {
   const isMulti = type === 'multi';
   const [checked, setChecked] = React.useState<boolean>(
     value !== undefined &&

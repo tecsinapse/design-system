@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.9-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.4.9-beta.4...@tecsinapse/react-charts@1.4.9-beta.5) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-charts
+
+## [1.4.9-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.4.9-beta.3...@tecsinapse/react-charts@1.4.9-beta.4) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-charts
+
+## [1.4.9-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.4.9-beta.2...@tecsinapse/react-charts@1.4.9-beta.3) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-charts
+
+## [1.4.9-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.4.9-beta.1...@tecsinapse/react-charts@1.4.9-beta.2) (2025-11-11)
+
+**Note:** Version bump only for package @tecsinapse/react-charts
+
+## [1.4.9-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.4.9-beta.0...@tecsinapse/react-charts@1.4.9-beta.1) (2025-11-11)
+
+**Note:** Version bump only for package @tecsinapse/react-charts
+
+## [1.4.9-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.4.8...@tecsinapse/react-charts@1.4.9-beta.0) (2025-11-10)
+
+**Note:** Version bump only for package @tecsinapse/react-charts
+
 ## [1.4.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-charts@1.4.8-beta.1...@tecsinapse/react-charts@1.4.8) (2024-08-29)
 
 **Note:** Version bump only for package @tecsinapse/react-charts

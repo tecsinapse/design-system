@@ -32,7 +32,7 @@ const GridItem = ({
   flexBasis,
   style,
   ...rest
-}: IGridItemNative): JSX.Element => {
+}: IGridItemNative): React.ReactElement => {
   const { spacing } = useTheme();
   if (!React.Children.only(children)) {
     throw new Error('The number of children in GridItem should be one');
@@ -58,19 +58,23 @@ const GridItem = ({
     paddingLeft: getGridItemPadding('left', _spacing, spacing),
   };
 
-  const clone = React.cloneElement(children, {
-    ...children?.props,
-    style: wrapper
-      ? children?.props.style
-      : { ..._style, ...children?.props.style },
-  });
+  let clone: React.ReactElement | undefined = undefined;
+  if (React.isValidElement(children)) {
+    const childEl = children as React.ReactElement & { props?: any };
+    clone = React.cloneElement(childEl, {
+      ...childEl.props,
+      style: wrapper
+        ? childEl.props?.style
+        : { ..._style, ...childEl.props?.style },
+    });
+  }
 
   return wrapper ? (
     <View {...rest} style={[style, _style]}>
       {clone}
     </View>
   ) : (
-    clone
+    (clone as React.ReactElement)
   );
 };
 

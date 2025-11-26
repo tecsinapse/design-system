@@ -10,12 +10,12 @@ export interface DropdownProps {
   onClickAway?: () => void;
 }
 
-const Component: React.FC<DropdownProps & { children: JSX.Element }> = ({
+const Component: React.FC<DropdownProps & { children?: React.ReactNode }> = ({
   visible,
   setVisible,
   onClickAway,
   children,
-}): JSX.Element => {
+}): React.ReactElement => {
   const refDropDown = React.useRef(null);
   useClickAwayListener(refDropDown, setVisible, 'mousedown', onClickAway);
 
@@ -26,7 +26,7 @@ const Component: React.FC<DropdownProps & { children: JSX.Element }> = ({
           style={{ ...defaultStyles, ...transition['bottom'][state] }}
           ref={refDropDown}
         >
-          {children}
+          {React.isValidElement(children) ? children : <>{children}</>}
         </StyledContainerDropdown>
       )}
     </Transition>

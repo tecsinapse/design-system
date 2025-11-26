@@ -34,7 +34,7 @@ const Component = <Data, Type extends 'single' | 'multi'>(
     setDropDownVisible: (t: boolean) => void;
   },
   ref: React.ForwardedRef<HTMLDivElement>
-): JSX.Element => {
+): React.ReactElement => {
   const [searchArg, setSearchArg] = useDebouncedState<string>('', onSearch);
   const lengthOptions = React.useMemo(() => options.length, [options]);
 

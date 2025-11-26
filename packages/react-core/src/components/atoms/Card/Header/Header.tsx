@@ -6,7 +6,7 @@ export interface HeaderProps {
   children?: ReactNode;
 }
 
-const Header = ({ children, style }: HeaderProps): JSX.Element => (
+const Header = ({ children, style }: HeaderProps): React.ReactElement => (
   <View style={style}>{children}</View>
 );
 

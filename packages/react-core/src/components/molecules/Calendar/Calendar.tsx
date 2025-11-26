@@ -56,7 +56,7 @@ function Calendar<T extends SelectionType>({
   locale,
   selectYearProps,
   ...rest
-}: CalendarProps<T>): JSX.Element {
+}: CalendarProps<T>): React.ReactElement {
   const _referenceDate = React.useMemo(
     () =>
       _year && _month

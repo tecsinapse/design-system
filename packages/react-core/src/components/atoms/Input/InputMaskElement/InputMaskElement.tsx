@@ -38,7 +38,7 @@ const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
       ...rest
     },
     ref
-  ): JSX.Element => {
+  ): React.ReactElement => {
     const theme = useTheme() as ThemeProp;
 
     const _placeholderColor = placeholderTextColor || theme.font.color.dark;

@@ -13,7 +13,7 @@ const Paper = ({
   children,
   elevated = false,
   ...rest
-}: PaperProps): JSX.Element => (
+}: PaperProps): React.ReactElement => (
   <StyledPaper {...rest} elevated={elevated}>
     {children}
   </StyledPaper>

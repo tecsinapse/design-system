@@ -45,7 +45,7 @@ const GridItem = ({
   flexBasis,
   style,
   ...rest
-}: IGridItemWeb): JSX.Element => {
+}: IGridItemWeb): React.ReactElement => {
   const { spacing } = useTheme();
   const { sm, md, lg } = useBreakpoints();
   if (!React.Children.only(children)) {
@@ -75,19 +75,23 @@ const GridItem = ({
     paddingLeft: getGridItemPadding('left', _spacing, spacing),
   };
 
-  const clone = React.cloneElement(children, {
-    ...children?.props,
-    style: wrapper
-      ? children?.props.style
-      : { ..._style, ...children?.props.style },
-  });
+  let clone: React.ReactElement | undefined = undefined;
+  if (React.isValidElement(children)) {
+    const childEl = children as React.ReactElement & { props?: any };
+    clone = React.cloneElement(childEl, {
+      ...childEl.props,
+      style: wrapper
+        ? childEl.props?.style
+        : { ..._style, ...childEl.props?.style },
+    });
+  }
 
   return wrapper ? (
     <div {...rest} style={_style}>
       {clone}
     </div>
   ) : (
-    clone
+    (clone as React.ReactElement)
   );
 };
 

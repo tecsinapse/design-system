@@ -1,8 +1,8 @@
 import { tag, TagVariants } from '@tecsinapse/cortex-core';
-import React, { forwardRef, HTMLProps } from 'react';
+import React, { HTMLProps } from 'react';
 import { LiaTimesSolid } from 'react-icons/lia';
 
-export interface TagProps {
+export interface TagProps extends HTMLProps<HTMLDivElement> {
   /**
    * all `tag` styles as object
    */
@@ -24,6 +24,8 @@ export interface TagProps {
    * @returns void
    */
   onDismiss?: () => void;
+  /** React ref */
+  ref?: React.Ref<HTMLDivElement>;
 }
 
 const Close = ({
@@ -55,11 +57,14 @@ const Label = ({
   );
 };
 
-const Face = forwardRef<
-  HTMLDivElement,
-  Pick<TagProps, 'variants' | 'intent'> & HTMLProps<HTMLDivElement>
->((props, ref) => {
-  const { variants, className, intent, children, style, ...rest } = props;
+interface FaceProps
+  extends Pick<TagProps, 'variants' | 'intent'>, 
+  HTMLProps<HTMLDivElement> {
+  ref?: React.Ref<HTMLDivElement>;
+}
+
+const Face = (props: FaceProps) => {
+  const { variants, className, intent, children, style, ref, ...rest } = props;
   return (
     <div
       {...rest}
@@ -74,12 +79,11 @@ const Face = forwardRef<
       {children}
     </div>
   );
-});
+};
 
 /** Tag component */
-const Root = forwardRef<HTMLDivElement, TagProps & HTMLProps<HTMLDivElement>>(
-  (props, ref) => {
-    const { label, variants, intent, className, onDismiss, ...rest } = props;
+const Root = (props: TagProps) => {
+    const { label, variants, intent, className, onDismiss, ref, ...rest } = props;
 
     return (
       <Face
@@ -94,7 +98,7 @@ const Root = forwardRef<HTMLDivElement, TagProps & HTMLProps<HTMLDivElement>>(
       </Face>
     );
   }
-);
+
 
 export const Tag = {
   Root,

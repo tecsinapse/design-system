@@ -65,7 +65,7 @@ const Menubar: React.FC<MenubarProps> = ({
   }, [search]);
 
   return (
-    <div ref={ref => (menuRef.current = ref)} {...rest}>
+    <div ref={ref => { menuRef.current = ref; }} {...rest}>
       <StyledMenuBar>
         <StyledMenuButton variant="filled" color="primary" onPress={toggleOpen}>
           {!open ? (

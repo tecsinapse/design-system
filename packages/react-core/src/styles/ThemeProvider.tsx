@@ -5,7 +5,7 @@ import { ThemeProviderProps } from '../types/defaults';
 const ThemeProvider: FC<ThemeProviderProps> = ({
   theme,
   children,
-}): JSX.Element => {
+}): React.ReactElement => {
   return <EmotionProvider theme={theme}>{children}</EmotionProvider>;
 };
 

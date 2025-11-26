@@ -12,7 +12,7 @@ const GroupButtonOption = ({
   TextComponent = Text,
   active,
   description,
-}: GroupButtonOptionProps): JSX.Element => {
+}: GroupButtonOptionProps): React.ReactElement => {
   const StyledText = getStyledGroupItemText(TextComponent);
   return (
     <StyledText fontWeight="bold" typography="sub" active={active}>

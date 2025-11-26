@@ -16,7 +16,7 @@ const Component = <Data,>({
   labelExtractor,
   item,
   type,
-}: IOption<Data>): JSX.Element => {
+}: IOption<Data>): React.ReactElement => {
   const label = labelExtractor(item);
 
   return (

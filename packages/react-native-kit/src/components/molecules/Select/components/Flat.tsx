@@ -8,7 +8,7 @@ const Flat = <Data,>({
   keyExtractor,
   renderItem,
   getData,
-}: BaseFlatList<Data>): JSX.Element => {
+}: BaseFlatList<Data>): React.ReactElement => {
   const data = React.useMemo(
     () => (typeof options !== 'function' ? getData(options) : []),
     [options, getData]

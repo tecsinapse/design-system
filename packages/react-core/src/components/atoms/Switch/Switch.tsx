@@ -42,7 +42,7 @@ const Switch: FC<SwitchProps> = ({
   dotStyle,
   disabled = false,
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   const theme = useTheme() as ThemeProp;
 
   const width = React.useRef(0);

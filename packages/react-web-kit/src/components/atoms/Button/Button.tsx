@@ -26,7 +26,7 @@ const Button: FC<WebButtonProps> = ({
   onPressIn,
   onPressOut,
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   const _frozen = frozen || state === 'loading';
   const { mouseOver, handleMouseOut, handleMouseOver } = useMouseHover(
     !disabled && !_frozen,

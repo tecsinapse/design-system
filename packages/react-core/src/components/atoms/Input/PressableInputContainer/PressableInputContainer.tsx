@@ -25,7 +25,7 @@ const PressableInputContainer = ({
   style,
   children,
   ...rest
-}: PressableInputContainerProps): JSX.Element => {
+}: PressableInputContainerProps): React.ReactElement => {
   return (
     <StyledPressableSurface onPress={onPress} disabled={disabled} style={style}>
       <InputContainer disabled={disabled} {...rest}>

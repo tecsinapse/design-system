@@ -8,7 +8,7 @@ import { SelectNativeProps, SelectType } from './types';
 
 function Select<Data, Type extends SelectType>(
   props: SelectNativeProps<Data, Type>
-): JSX.Element {
+): React.ReactElement {
   const {
     groupLabelExtractor,
     onSelect,

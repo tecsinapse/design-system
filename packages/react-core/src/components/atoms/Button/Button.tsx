@@ -33,9 +33,9 @@ export interface ButtonProps extends PressableSurfaceProps {
   borderRadius?: BorderRadiusType;
   size?: ButtonSizeType;
   state?: ButtonStateType;
-  loadingComponent?: JSX.Element;
-  errorComponent?: JSX.Element;
-  successComponent?: JSX.Element;
+  loadingComponent?: React.ReactNode;
+  errorComponent?: React.ReactNode;
+  successComponent?: React.ReactNode;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -52,7 +52,7 @@ const Button: FC<ButtonProps> = ({
   frozen,
   disabled,
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   const theme = useTheme() as ThemeProp;
   const _frozen = frozen || state === 'loading';
   let _color: ColorType;

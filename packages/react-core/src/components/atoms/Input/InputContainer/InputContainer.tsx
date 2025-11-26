@@ -28,8 +28,8 @@ export interface InputContainerProps {
   labelStack?: FontStackType;
   LabelComponent?: FC<TextProps>;
   labelWeight?: FontWeightType;
-  leftComponent?: JSX.Element;
-  rightComponent?: JSX.Element;
+  leftComponent?: React.ReactNode;
+  rightComponent?: React.ReactNode;
   borderColor?: ColorType;
   borderColorGradation?: ColorGradationType;
   style?: StyleProp<ViewStyle>;
@@ -38,7 +38,7 @@ export interface InputContainerProps {
   disabled?: boolean;
   variant?: InputVariantType;
   hint?: string;
-  hintComponent?: JSX.Element;
+  hintComponent?: React.ReactNode;
   testID?: string;
 }
 
@@ -59,7 +59,7 @@ const InputContainer: FC<InputContainerProps & Partial<InputElementProps>> = ({
   variant,
   children,
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   let _defaultLabelColor = labelColorVariant;
   if (variant === 'error') _defaultLabelColor = 'error';
   if (variant === 'success') _defaultLabelColor = 'success';

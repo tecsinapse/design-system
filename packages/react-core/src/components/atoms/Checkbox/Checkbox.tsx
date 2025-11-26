@@ -35,7 +35,7 @@ const Checkbox = ({
   labelPosition = 'left',
   disabled = false,
   ...rest
-}: CheckboxProps): JSX.Element => {
+}: CheckboxProps): React.ReactElement => {
   const handleChange = () => {
     onChange?.(!checked);
   };

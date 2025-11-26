@@ -19,7 +19,7 @@ const Tooltip: React.FC<ITooltip> = ({
   maxWidht,
   position = 'bottom',
 }) => {
-  const spanRef = React.useRef<HTMLSpanElement | null>();
+  const spanRef = React.useRef<HTMLSpanElement | null>(null);
   const [computed, setComputed] = React.useState<ComputedType | undefined>(
     undefined
   );
@@ -38,7 +38,9 @@ const Tooltip: React.FC<ITooltip> = ({
         maxWidth={maxWidht}
         computed={computed}
         position={position}
-        ref={ref => (spanRef.current = ref)}
+        ref={ref => {
+          spanRef.current = ref;
+        }}
       >
         <Text
           fontWeight="bold"

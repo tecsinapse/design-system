@@ -30,7 +30,7 @@ const RadioButton = ({
   color = 'primary',
   colorTone = 'medium',
   ...rest
-}: RadioButtonProps): JSX.Element => {
+}: RadioButtonProps): React.ReactElement => {
   const handleChange = () => {
     onChange?.(!checked);
   };

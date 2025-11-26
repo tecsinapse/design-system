@@ -1,19 +1,18 @@
 import { modal, overlay } from '@tecsinapse/cortex-core';
-import { ReactNode, forwardRef, type DialogHTMLAttributes } from 'react';
+import { ReactNode, type DialogHTMLAttributes } from 'react';
 
-interface ModalProps {
+interface ModalProps extends DialogHTMLAttributes<HTMLDialogElement> {
   open: boolean;
   onClose: () => void;
   /** child element */
   children?: ReactNode;
+  /** React ref */
+  ref?: React.Ref<HTMLDialogElement>;
 }
 
 /** Modal component */
-export const Modal = forwardRef<
-  HTMLDialogElement,
-  ModalProps & DialogHTMLAttributes<HTMLDialogElement>
->((props, ref) => {
-  const { open, onClose, children, className, ...rest } = props;
+export const Modal = (props: ModalProps) => {
+  const { open, onClose, children, className, ref, ...rest } = props;
   return (
     <>
       <div
@@ -31,4 +30,4 @@ export const Modal = forwardRef<
       </dialog>
     </>
   );
-});
+};

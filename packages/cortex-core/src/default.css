@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - primary */
+  --color-primary-xlight: #fef9f0;
+  --color-primary-light: #fccb83;
+  --color-primary-medium: #f89907;
+  --color-primary-dark: #ae6b05;
+  --color-primary-xdark: #633d03;
+
+  /* Colors - secondary */
+  --color-secondary-xlight: #f8f7f7;
+  --color-secondary-light: #c2bfbc;
+  --color-secondary-medium: #85807a;
+  --color-secondary-dark: #5d5955;
+  --color-secondary-xdark: #353231;
+
+  /* Colors - info */
+  --color-info-xlight: #f0f8fe;
+  --color-info-light: #85c7fa;
+  --color-info-medium: #239bf6;
+  --color-info-dark: #0873c4;
+  --color-info-xdark: #043962;
+
+  /* Colors - success / warning / error */
+  --color-success-xlight: #f3fcf8;
+  --color-success-light: #99e6c9;
+  --color-success-medium: #2db783;
+  --color-success-dark: #238f67;
+  --color-success-xdark: #14523b;
+
+  --color-warning-xlight: #fffcf0;
+  --color-warning-light: #ffe380;
+  --color-warning-medium: #ffc700;
+  --color-warning-dark: #cc9f00;
+  --color-warning-xdark: #665000;
+
+  --color-error-xlight: #fdf3f2;
+  --color-error-light: #ee9891;
+  --color-error-medium: #e04638;
+  --color-error-dark: #9b2318;
+  --color-error-xdark: #58240e;
+
+  /* Misc */
+  --color-body: #f8f7f7;
+
+  /* Spacing */
+  --spacing-nano: 0.125rem;
+  --spacing-micro: 0.25rem;
+  --spacing-mili: 0.5rem;
+  --spacing-centi: 0.75rem;
+  --spacing-deca: 1rem;
+  --spacing-kilo: 1.5rem;
+  --spacing-mega: 2rem;
+  --spacing-giga: 2.5rem;
+  --spacing-tera: 3rem;
+  --spacing-peta: 3.5rem;
+  --spacing-hexa: 4rem;
+
+  /* Radius */
+  --radius-nano: 0.125rem;
+  --radius-micro: 0.25rem;
+  --radius-mili: 0.5rem;
+  --radius-centi: 1rem;
+  --radius-deca: 1.5rem;
+  --radius-pill: 999999px;
+
+  /* Border width */
+  --border-width-pico: 0.063rem;
+  --border-width-nano: 0.125rem;
+
+  /* Font families */
+  --font-sans: 'Lato', system-ui, -apple-system, 'BlinkMacSystemFont', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: Consolas, monaco, monospace;
+
+  /* Font sizes com line-height */
+
+  /* H5 */
+  --text-h5: 1rem;
+  --text-h5--line-height: 1.5rem;
+  --text-h5-lg: 1.5rem;
+
+  /* H4 */
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.688rem;
+  --text-h4-lg: 1.688rem;
+
+  /* H3 */
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 2rem;
+  --text-h3-lg: 2rem;
+
+  /* H2 */
+  --text-h2: 1.625rem;
+  --text-h2--line-height: 2.375rem;
+  --text-h2-lg: 2.375rem;
+
+  /* H1 */
+  --text-h1: 2rem;
+  --text-h1--line-height: 2.625rem;
+  --text-h1-lg: 2.625rem;
+
+  /* Base / Sub / Label */
+  --text-base: 0.875rem;
+  --text-base--line-height: 1.313rem;
+  --text-base-lg: 1.313rem;
+
+  --text-sub: 0.75rem;
+  --text-sub--line-height: 1.125rem;
+  --text-sub-lg: 1.125rem;
+
+  --text-label: 0.625rem;
+  --text-label--line-height: 0.75rem;
+  --text-label-lg: 0.75rem;
+
+  /* Icon sizes */
+  --text-micro: 0.75rem;
+  --text-mili: 0.875rem;
+  --text-centi: 1rem;
+  --text-deca: 1.125rem;
+  --text-kilo: 1.5rem;
+  --text-mega: 2rem;
+
+  /* Box shadow */
+  --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  /* Border colors */
+  --color-border-success-light: #99E6C9;
+
+  /* Text colors */
+  --color-text-light: #fff;
+  --color-text-medium: #85807a;
+  --color-text-dark: #353231;
+  --color-text-orange: #f89907;
+
+  /* Z-index */
+  --z-index-default: 0;
+  --z-index-absolute: 1;
+  --z-index-select: 20;
+  --z-index-input: 20;
+  --z-index-popover: 30;
+  --z-index-tooltip: 40;
+  --z-index-header: 600;
+  --z-index-backdrop: 700;
+  --z-index-drawer: 700;
+  --z-index-sidebar: 800;
+  --z-index-modal: 1000;
+
+  /* Opacity customizada */
+  --opacity-1: 1;
+
+  /* Duration customizada */
+  --duration-250: 250ms;
+
+  /* Animações customizadas */
+  --animate-opacity: opacity 1s ease-in-out;
+  --animate-progress: progress 1s infinite linear;
+
+  /* Transform origin customizado */
+  --transform-origin-left-right: 0% 50%;
+
+  /* Keyframes */
+  @keyframes opacity {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes progress {
+    0% {
+      transform: translateX(0) scaleX(0);
+    }
+
+    40% {
+      transform: translateX(0) scaleX(0.4);
+    }
+
+    100% {
+      transform: translateX(100%) scaleX(0.5);
+    }
+  }
+}
+
+@layer utilities {
+  .origin-left-right {
+    transform-origin: var(--transform-origin-left-right);
+  }
+}

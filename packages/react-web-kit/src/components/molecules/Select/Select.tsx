@@ -44,7 +44,7 @@ export interface SelectProps<Data, Type extends 'single' | 'multi'>
   multiLabels?: MultiLabels;
   variant?: InputVariantType;
   hint?: string;
-  hintComponent?: JSX.Element;
+  hintComponent?: React.ReactNode;
 }
 
 /** NOTE: For better performance, you should memoize options and handlers */
@@ -69,7 +69,7 @@ const Select = <Data, Type extends 'single' | 'multi'>({
   hint,
   hintComponent,
   ...rest
-}: SelectProps<Data, Type>): JSX.Element => {
+}: SelectProps<Data, Type>): React.ReactElement => {
   const [dropDownVisible, setDropDownVisible] = React.useState<boolean>(false);
   const [selectOptions, setSelectOptions] = useState<Data[]>([]);
   const refDropDown = React.useRef(null);

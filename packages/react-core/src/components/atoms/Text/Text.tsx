@@ -47,7 +47,7 @@ const Text: FC<TextProps> = ({
   textTransform = 'none',
   capitalFirst = false,
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   return (
     <StyledColoredText
       {...rest}

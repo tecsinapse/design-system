@@ -56,7 +56,7 @@ export const Selector: React.FC<SelectorProps> = ({
   TextComponent,
   ...rest
 }) => {
-  const pressInTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const pressInTimeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
 
   const handlePressInNext = (_next?: number) => {
     const daysInMonth = getDaysInMonth(referenceDate);

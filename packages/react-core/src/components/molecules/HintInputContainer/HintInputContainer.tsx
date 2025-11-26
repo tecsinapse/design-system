@@ -15,9 +15,9 @@ export interface HintInputContainerProps extends PressableInputContainerProps {
   onPress?: () => void | never;
   disabled?: boolean;
   hint?: string;
-  hintComponent?: JSX.Element;
+  hintComponent?: React.ReactNode;
   variant?: InputVariantType;
-  rightComponent?: JSX.Element;
+  rightComponent?: React.ReactNode;
 }
 
 const HintInputContainer: React.FC<HintInputContainerProps> = ({

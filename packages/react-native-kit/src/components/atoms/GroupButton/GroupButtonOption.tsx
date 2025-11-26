@@ -5,7 +5,7 @@ import {
 import React from 'react';
 import { Text } from '../Text';
 
-const GroupButtonOption = (props: GroupButtonOptionProps): JSX.Element => {
+const GroupButtonOption = (props: GroupButtonOptionProps): React.ReactElement => {
   return <CoreGroupButtonOption {...props} TextComponent={Text} />;
 };
 

@@ -24,7 +24,7 @@ const Section = <Data,>({
   getData,
   keyExtractor,
   groupLabelExtractor,
-}: BaseSectionList<Data>): JSX.Element => {
+}: BaseSectionList<Data>): React.ReactElement => {
   const sectionList = useMemo(
     () =>
       options instanceof Map

@@ -23,9 +23,9 @@ const InputElement = React.forwardRef<TextInput, InputElementProps>(
       disabled = false,
       placeholderTextColor,
       ...rest
-    },
+  },
     ref
-  ): JSX.Element => {
+    ): React.ReactElement => {
     const theme = useTheme();
     const _placeholderColor = placeholderTextColor || theme.font?.color?.dark;
 

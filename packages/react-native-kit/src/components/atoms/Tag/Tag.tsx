@@ -9,7 +9,7 @@ export interface TagProps extends Omit<TagCoreProps, 'value'> {
   value: string | ReactNode;
 }
 
-const Tag: React.FC<TagProps> = ({ value, ...rest }): JSX.Element => {
+const Tag: React.FC<TagProps> = ({ value, ...rest }): React.ReactElement => {
   return (
     <TagCore
       value={
