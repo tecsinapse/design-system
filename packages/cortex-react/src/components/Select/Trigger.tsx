@@ -48,7 +48,7 @@ export const SelectTrigger = ({
           {...rest}
         >
           <span
-            className={clsx({ 'mt-mili': hasValue && label })}
+            className={clsx('truncate', { 'mt-mili': hasValue && label })}
             data-testid="select-placeholder"
           >
             {_placeholder}

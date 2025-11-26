@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Accept,
   useDropzone,
@@ -12,8 +12,9 @@ import {
   UseDropzoneProps,
   type FileUpload,
 } from '../components/Uploader/types';
+import { useManager } from '../provider';
 
-interface UseFileUploadOptions<T> {
+interface UseFileUploadOptions {
   accept?: {
     IMAGE?: (typeof AcceptSpecificMap.IMAGE)[number][];
     APPLICATION?: (typeof AcceptSpecificMap.APPLICATION)[number][];
@@ -21,40 +22,88 @@ interface UseFileUploadOptions<T> {
     VIDEO?: (typeof AcceptSpecificMap.VIDEO)[number][];
     TEXT?: (typeof AcceptSpecificMap.TEXT)[number][];
   };
-  onAccept?: (files: FileUpload<T>[]) => Promise<FileUpload<T>[]>;
+  onAccept?: (files: FileUpload<unknown>[]) => Promise<FileUpload<unknown>[]>;
+  onOpenManager?: () => void;
   onFileRejected?: (fileRejections: FileRejection[], event: DropEvent) => void;
   maxSize?: number;
   allowMultiple?: boolean;
   preventDuplicates?: boolean;
   onDuplicate?: (duplicates: File[]) => void;
+  hasManager?: boolean;
+  isFolder?: boolean;
+  uploadProgressText?: string;
+  uploadSuccessText?: string;
+  noClick?: boolean;
+  ignoreRejections?: boolean;
 }
 
 export const useFileUpload = <T>({
   accept = {},
   onAccept,
+  onOpenManager,
   onFileRejected,
   maxSize,
   allowMultiple = true,
   preventDuplicates = false,
   onDuplicate,
-}: UseFileUploadOptions<T>) => {
-  const [files, setFiles] = useState<FileUpload<T>[]>([]);
+  hasManager = true,
+  isFolder = false,
+  noClick = false,
+  ignoreRejections = false,
+  uploadProgressText,
+  uploadSuccessText,
+}: UseFileUploadOptions) => {
+  const {
+    showManager,
+    files,
+    setFiles,
+    isOpen: isManagerOpen,
+    setIsOpen: setIsManagerOpen,
+    uploadFiles,
+  } = useManager();
+
   const [duplicates, setDuplicates] = useState<File[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const onOpen = useCallback(() => setIsOpen(true), []);
   const onClose = useCallback(() => setIsOpen(false), []);
 
+  const handleRemoveFile = useCallback((index: number) => {
+    setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
+  }, []);
+
+  const handleClearFiles = useCallback(() => {
+    setFiles([]);
+  }, []);
+
+  const openManager = useCallback(() => {
+    setIsManagerOpen(true);
+    onOpenManager?.();
+  }, []);
+
+  const closeManager = useCallback(() => {
+    handleClearFiles();
+    setIsManagerOpen(false);
+  }, []);
+
   const updateFiles = useCallback(
-    (prevFiles: FileUpload<T>[], newFiles: FileUpload<T>[]) => {
-      const current = new Map<string, FileUpload<T>>();
+    (prevFiles: FileUpload<unknown>[], newFiles: FileUpload<unknown>[]) => {
+      const current = new Map<string, FileUpload<unknown>>();
       [...prevFiles, ...newFiles].forEach(file => current.set(file.uid, file));
       return [...current.values()];
     },
     []
   );
 
-  const onDrop = async (acceptedFiles: File[]): Promise<void> => {
+  const onDrop = async (
+    acceptedFiles: File[],
+    fileRejections: FileRejection[]
+  ): Promise<void> => {
+    if (fileRejections.length > 0 && !ignoreRejections) return;
+    if (hasManager) {
+      openManager();
+      onClose();
+    }
     let toProcess = acceptedFiles;
 
     if (preventDuplicates) {
@@ -76,22 +125,22 @@ export const useFileUpload = <T>({
       file,
       status: onAccept ? FileStatus.UPLOADING : FileStatus.SUCCESS,
       uid: uuidv4(),
+      isFolder,
     }));
 
-    try {
-      setFiles(prevFiles => [...prevFiles, ...newFiles]);
-      if (onAccept) {
-        const updatedFiles = await onAccept(newFiles);
-        setFiles(prevFiles => updateFiles(prevFiles, updatedFiles));
-      }
-    } catch (e) {
-      const updatedFiles = newFiles.map(f => ({
-        ...f,
-        status: FileStatus.ERROR,
-      }));
-      setFiles(prevFiles => updateFiles(prevFiles, updatedFiles));
-    }
+    uploadFiles({ onAccept, newFiles, updateFiles });
   };
+
+  useEffect(() => {
+    if (hasManager) {
+      showManager?.({
+        onClose: closeManager,
+        onDelete: handleRemoveFile,
+        uploadProgressText,
+        uploadSuccessText,
+      });
+    }
+  }, [handleRemoveFile, closeManager]);
 
   const addMimeTypes = (key: keyof typeof AcceptSpecificMap, acc: Accept) => {
     AcceptSpecificMap[key].forEach(mimeType => {
@@ -119,15 +168,8 @@ export const useFileUpload = <T>({
     multiple: allowMultiple,
     maxSize,
     onDropRejected: onFileRejected,
+    noClick,
   });
-
-  const handleRemoveFile = useCallback((index: number) => {
-    setFiles(prevFiles => prevFiles.filter((_, i) => i !== index));
-  }, []);
-
-  const handleClearFiles = useCallback(() => {
-    setFiles([]);
-  }, []);
 
   const isFileLimitReached = !allowMultiple && files.length > 0;
 
@@ -142,6 +184,9 @@ export const useFileUpload = <T>({
       isFileLimitReached,
     } as UseDropzoneProps,
     open: isOpen,
+    openManager,
+    closeManager,
+    isManagerOpen,
     files,
     duplicates,
     onClearFiles: handleClearFiles,

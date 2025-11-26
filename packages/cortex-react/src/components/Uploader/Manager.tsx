@@ -1,0 +1,83 @@
+import { createPortal } from 'react-dom';
+import { File, FolderList } from './Upload';
+import { Button } from '../Button';
+import { IoMdClose } from 'react-icons/io';
+import { ManagerProps } from './types';
+import { clsx } from 'clsx';
+import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
+import { manager } from '@tecsinapse/cortex-core';
+import { useManagerHelpers } from '../../hooks/useManagerHelpers';
+
+export const Manager = <T,>({
+  open,
+  files,
+  onDelete,
+  uploadProgressText = 'Upload(s) in progress',
+  uploadSuccessText = 'Upload(s) completed',
+  onClose,
+}: ManagerProps<T>) => {
+  const {
+    min,
+    setMin,
+    regularFiles,
+    folderFiles,
+    totalLength,
+    setFolders,
+    isLoading,
+  } = useManagerHelpers({
+    files,
+  });
+
+  return createPortal(
+    <div
+      className={manager({
+        className: 'h-auto max-h-[350px] w-[450px] overflow-hidden',
+        open,
+      })}
+    >
+      <div className="flex flex-col w-full h-full gap-mili items-center">
+        <div className="flex items-center justify-between w-full">
+          <Button
+            variants={{ variant: 'text', size: 'square' }}
+            onClick={() => setMin(min => !min)}
+          >
+            {min ? <IoChevronUp /> : <IoChevronDown />}
+          </Button>
+          <h3 data-testid="upload-progress">
+            {isLoading ? uploadProgressText : uploadSuccessText}
+          </h3>
+          <Button
+            variants={{ variant: 'filled', size: 'square' }}
+            onClick={onClose}
+            disabled={isLoading}
+          >
+            <IoMdClose />
+          </Button>
+        </div>
+        <div
+          className={clsx('w-full h-auto max-h-[300px] gap-mili', {
+            hidden: min,
+            'flex flex-col': !min,
+            'pb-kilo overflow-scroll pr-deca': totalLength > 3,
+          })}
+        >
+          {regularFiles.length > 0
+            ? regularFiles.map((file, index) => (
+                <File
+                  file={file}
+                  key={file.uid}
+                  index={index}
+                  onDelete={onDelete}
+                  showDelete={false}
+                />
+              ))
+            : null}
+          {folderFiles.length > 0 ? (
+            <FolderList files={folderFiles} setFolders={setFolders} />
+          ) : null}
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+};

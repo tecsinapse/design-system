@@ -6,6 +6,13 @@ import {
   type FileWithPath,
 } from 'react-dropzone';
 
+declare global {
+  interface File {
+    relativePath: string;
+    path?: string;
+  }
+}
+
 export interface FileItem {
   file: File;
   loading: 'loading' | 'success' | 'error';
@@ -14,7 +21,20 @@ export interface FileItem {
 export interface FileProps<T> {
   file: FileUpload<T>;
   index: number;
-  onDelete: (index: number) => void;
+  onDelete?: (index: number) => void;
+  showDelete?: boolean;
+}
+export interface FolderProps {
+  name: string;
+  subItems: { status: string; path: string }[];
+}
+export interface FolderListProps<T> {
+  files: FileUpload<T>[];
+  setFolders: React.Dispatch<
+    React.SetStateAction<
+      [string, { status: string; path: string }[]][] | undefined
+    >
+  >;
 }
 
 export interface FilesProps<T> {
@@ -28,6 +48,7 @@ export interface UseDropzoneProps {
   getInputProps: <T extends DropzoneInputProps>(props?: T) => T;
   isDragActive: boolean;
   isFileLimitReached: boolean;
+  fileRejections: FileRejection[];
 }
 
 export interface DropzoneProps {
@@ -36,6 +57,7 @@ export interface DropzoneProps {
   dropText?: string;
   buttonText?: string;
   isFileLimitReached?: boolean;
+  hasButton?: boolean;
 }
 
 export interface ModalProps {
@@ -56,6 +78,7 @@ export type FileUpload<T> = {
   metadata?: T;
   uid: string;
   status: 'success' | 'error' | 'uploading';
+  isFolder?: boolean;
 };
 
 export interface RootUploaderProps<T> {
@@ -69,6 +92,14 @@ export interface RootUploaderProps<T> {
   buttonText?: string;
   uploadProgressText?: string;
   titleModal?: string;
+}
+export interface ManagerProps<T> {
+  open?: boolean;
+  files?: FileUpload<T>[];
+  onDelete?: (index: number) => void;
+  uploadProgressText?: string;
+  uploadSuccessText?: string;
+  onClose?: () => void;
 }
 
 export const AcceptSpecificMap = {

@@ -39,23 +39,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **cortex-react:** adiciona auto scroll e corrige z-index no Carrossel ([2514d94](https://github.com/tecsinapse/design-system/commit/2514d949c81802292cd6fc125cd07cb30fb9fca9))
+- **cortex-react:** adiciona auto scroll e corrige z-index no Carrossel ([2514d94](https://github.com/tecsinapse/design-system/commit/2514d949c81802292cd6fc125cd07cb30fb9fca9))
 
 # [1.14.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.0-beta.0...@tecsinapse/cortex-react@1.14.0-beta.1) (2025-09-17)
 
 ### Bug Fixes
 
-* **carousel:** corrige largura do componente Carousel ([ebd9e17](https://github.com/tecsinapse/design-system/commit/ebd9e173a4c9435b7bc3266a70ec0440b2aa76c7))
+- **carousel:** corrige largura do componente Carousel ([ebd9e17](https://github.com/tecsinapse/design-system/commit/ebd9e173a4c9435b7bc3266a70ec0440b2aa76c7))
 
 # [1.14.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.9...@tecsinapse/cortex-react@1.14.0-beta.0) (2025-09-17)
 
 ### Bug Fixes
 
-* **carousel:** ajusta testes para compatibilidade com embla-carousel-react ([91beb93](https://github.com/tecsinapse/design-system/commit/91beb93eff913c2ee08e0ecabcb363c73062f736))
+- **carousel:** ajusta testes para compatibilidade com embla-carousel-react ([91beb93](https://github.com/tecsinapse/design-system/commit/91beb93eff913c2ee08e0ecabcb363c73062f736))
 
 ### Features
 
-* **carousel:** Migra componente Carousel para embla-carousel-react ([b1b2d49](https://github.com/tecsinapse/design-system/commit/b1b2d49c31d26de29d74d81552262ba5c5668d27))
+- **carousel:** Migra componente Carousel para embla-carousel-react ([b1b2d49](https://github.com/tecsinapse/design-system/commit/b1b2d49c31d26de29d74d81552262ba5c5668d27))
 
 ## [1.13.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.8-beta.2...@tecsinapse/cortex-react@1.13.9) (2025-09-12)
 
@@ -73,13 +73,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **TS-15823:** ajustado botoes ([493a592](https://github.com/tecsinapse/design-system/commit/493a5927e0c1941efd2bf7c1403493f1a2f053d6))
+- **TS-15823:** ajustado botoes ([493a592](https://github.com/tecsinapse/design-system/commit/493a5927e0c1941efd2bf7c1403493f1a2f053d6))
 
 ## [1.13.8-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.7-beta.1...@tecsinapse/cortex-react@1.13.8-beta.0) (2025-08-22)
 
 ### Bug Fixes
 
-* remove div desnecessária do modal ([6672bba](https://github.com/tecsinapse/design-system/commit/6672bba9112b82c88bc4e89fccbcf7701db31359))
+- remove div desnecessária do modal ([6672bba](https://github.com/tecsinapse/design-system/commit/6672bba9112b82c88bc4e89fccbcf7701db31359))
 
 ## [1.13.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.13.7-beta.0...@tecsinapse/cortex-react@1.13.7) (2025-08-22)
 
