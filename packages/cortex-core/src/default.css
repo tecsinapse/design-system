@@ -74,7 +74,7 @@
   --font-mono: Consolas, monaco, monospace;
 
   /* Font sizes com line-height */
-  
+
   /* H5 */
   --text-h5: 1rem;
   --text-h5--line-height: 1.5rem;
@@ -133,7 +133,7 @@
   --color-text-dark: #353231;
   --color-text-orange: #f89907;
 
-  /* Z-index - CORRIGIDO: prefixo --z-index-* para funcionar como classes */
+  /* Z-index */
   --z-index-default: 0;
   --z-index-absolute: 1;
   --z-index-select: 20;
@@ -161,14 +161,27 @@
 
   /* Keyframes */
   @keyframes opacity {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes progress {
-    0% { transform: translateX(0) scaleX(0); }
-    40% { transform: translateX(0) scaleX(0.4); }
-    100% { transform: translateX(100%) scaleX(0.5); }
+    0% {
+      transform: translateX(0) scaleX(0);
+    }
+
+    40% {
+      transform: translateX(0) scaleX(0.4);
+    }
+
+    100% {
+      transform: translateX(100%) scaleX(0.5);
+    }
   }
 }
 
