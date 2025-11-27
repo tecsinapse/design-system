@@ -1,5 +1,5 @@
 export const _options = [
-  { key: '1', label: 'São paulo' },
+  { key: '1', label: 'São Paulo' },
   { key: '2', label: 'Rio de Janeiro' },
   { key: '3', label: 'Campo Grande' },
   { key: '4', label: 'Goiania' },

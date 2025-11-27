@@ -19,7 +19,7 @@ export const SelectOption = <T,>({
       })}
       role={'option'}
     >
-      {labelExtractor(option)}
+      <span className="truncate flex-1">{labelExtractor(option)}</span>
     </li>
   );
 };
