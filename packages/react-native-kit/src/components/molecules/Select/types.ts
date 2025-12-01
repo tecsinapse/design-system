@@ -36,17 +36,17 @@ export interface SelectNativeProps<Data, Type extends SelectType>
   searchBarPlaceholder?: string;
   confirmButtonText?: string;
   selectModalTitle?: string;
-  selectModalTitleComponent?: JSX.Element;
+  selectModalTitleComponent?: React.ReactNode;
   closeOnPick?: boolean;
   controlComponent?: (
     onPress: () => void,
     displayValue?: string
-  ) => JSX.Element;
+  ) => React.ReactElement;
   numberOfLines?: number;
 }
 
 type BaseList<Data> = {
-  renderItem: (item: ListRenderItemInfo<OptionData<Data>>) => JSX.Element;
+  renderItem: (item: ListRenderItemInfo<OptionData<Data>>) => React.ReactElement;
   getData: (options: Data[]) => OptionData<Data>[];
   keyExtractor: Extractor<Data>;
 };

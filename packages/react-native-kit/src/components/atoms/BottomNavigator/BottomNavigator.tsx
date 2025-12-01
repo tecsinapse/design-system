@@ -18,18 +18,19 @@ function BottomNavigator<T extends string | number | symbol>({
   onSelect,
   children,
   ...rest
-}: BottomNavigatorProps<T>): JSX.Element {
+}: BottomNavigatorProps<T>): React.ReactElement {
   return (
     <StyledView {...rest}>
       {React.Children.map(children, child => {
-        const { value, label, labelProps, labelElement } = (
-          child as React.ReactElement<BottomNavigatorItemProps<T>>
-        ).props;
-        const isSelected = value == selected;
+        if (!React.isValidElement(child)) return null;
+
+        const item = child as React.ReactElement<BottomNavigatorItemProps<T>>;
+        const { value, label, labelProps, labelElement } = item.props;
+        const isSelected = value === selected;
 
         return (
           <TabContainer selected={isSelected} onPress={() => onSelect(value)}>
-            {React.cloneElement(child as React.ReactElement, {
+            {React.cloneElement(item, {
               _selected: isSelected,
             })}
             {label && !labelElement && (

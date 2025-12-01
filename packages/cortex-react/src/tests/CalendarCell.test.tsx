@@ -23,7 +23,7 @@ jest.mock('react-stately', () => ({
 
 const mockUseCalendarCell = jest.mocked(useCalendarCell);
 
-const MockTable = ({ children }: { children: JSX.Element }) => {
+const MockTable = ({ children }: { children: React.ReactNode }) => {
   return (
     <CalendarProvider isTodayHighlited={false}>
       <table>

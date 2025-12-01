@@ -1,5 +1,6 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
+
 const badgeStyles = tv({
   base: 'text-sub text-white font-bold rounded-pill',
   variants: {

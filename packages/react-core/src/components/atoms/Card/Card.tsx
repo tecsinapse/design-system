@@ -17,7 +17,7 @@ const Card = ({
   elevated = false,
   onPress,
   ...rest
-}: CardProps): JSX.Element => {
+}: CardProps): React.ReactElement => {
   if (onPress) {
     return (
       <StyledCard {...rest} elevated={elevated} onPress={onPress}>

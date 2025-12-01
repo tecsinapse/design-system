@@ -10,7 +10,7 @@ import { Text } from '../../atoms/Text';
 export const Calendar = <T extends SelectionType>({
   locale,
   ...rest
-}: CalendarProps<T>): JSX.Element => {
+}: CalendarProps<T>): React.ReactElement => {
   return (
     <CalendarCore
       {...rest}

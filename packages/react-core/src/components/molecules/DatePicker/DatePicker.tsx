@@ -13,7 +13,7 @@ export interface DatePickerProps<T extends SelectionType>
   controlComponent?: (
     onPress: () => void,
     displayValue?: string
-  ) => JSX.Element;
+  ) => React.ReactElement;
   TextComponent?: React.FC<TextProps>;
   CalendarComponent: React.FC<CalendarProps<T>>;
   placeholder?: string;
@@ -24,7 +24,7 @@ export interface DatePickerProps<T extends SelectionType>
   renderCalendar: (
     calendar: React.ReactElement,
     blur?: () => void
-  ) => JSX.Element | null;
+  ) => React.ReactElement | null;
   requestShowCalendar: () => void;
   requestCloseCalendar: () => void;
 }
@@ -55,7 +55,7 @@ function DatePicker<T extends SelectionType>({
   requestShowCalendar,
   requestCloseCalendar,
   ...rest
-}: DatePickerProps<T>): JSX.Element {
+}: DatePickerProps<T>): React.ReactElement {
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
     onBlur,

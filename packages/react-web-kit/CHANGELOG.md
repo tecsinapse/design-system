@@ -3,15 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.5.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.2-beta.0...@tecsinapse/react-web-kit@3.5.2) (2025-11-24)
+# [4.0.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.2...@tecsinapse/react-web-kit@4.0.0-beta.0) (2025-12-01)
+
+* Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
+
+### BREAKING CHANGES
+
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
+* chore!: upgrade dependencies to React 19 and Tailwind v4
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
+## [3.5.1-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.7...@tecsinapse/react-web-kit@3.5.1-beta.8) (2025-11-26)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
 
-## [3.5.2-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1...@tecsinapse/react-web-kit@3.5.2-beta.0) (2025-11-21)
+## [3.5.1-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.6...@tecsinapse/react-web-kit@3.5.1-beta.7) (2025-11-26)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
 
-## [3.5.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.0...@tecsinapse/react-web-kit@3.5.1) (2025-11-10)
+## [3.5.1-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.5...@tecsinapse/react-web-kit@3.5.1-beta.6) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.5.1-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.4...@tecsinapse/react-web-kit@3.5.1-beta.5) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.5.1-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.3...@tecsinapse/react-web-kit@3.5.1-beta.4) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.5.1-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.2...@tecsinapse/react-web-kit@3.5.1-beta.3) (2025-11-11)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.5.1-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.1...@tecsinapse/react-web-kit@3.5.1-beta.2) (2025-11-11)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+## [3.5.1-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.1-beta.0...@tecsinapse/react-web-kit@3.5.1-beta.1) (2025-11-10)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit
 

@@ -13,7 +13,7 @@ export interface DateTimePickerProps
   controlComponent?: (
     onPress: () => void,
     displayValue?: string
-  ) => JSX.Element;
+  ) => React.ReactElement;
   TextComponent?: React.FC<TextProps>;
   DateTimeSelectorComponent: React.FC<DateTimeSelectorProps>;
   placeholder?: string;
@@ -22,7 +22,7 @@ export interface DateTimePickerProps
   renderSelector: (
     selector: React.ReactElement,
     blur?: () => void
-  ) => JSX.Element | null;
+  ) => React.ReactElement | null;
   requestShowSelector: () => void;
   requestCloseSelector: () => void;
 }
