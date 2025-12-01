@@ -67,6 +67,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **upload:** permitindo upload de varias pastas ao mesmo tempo ([d4c89ec](https://github.com/tecsinapse/design-system/commit/d4c89ec786c18bdaf2369b674124028412c88041))
 
 ## [1.14.1-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.1-beta.5...@tecsinapse/cortex-react@1.14.1-beta.6) (2025-11-26)
+## [1.15.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3-beta.0...@tecsinapse/cortex-react@1.15.3) (2025-11-27)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.15.3-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.2...@tecsinapse/cortex-react@1.15.3-beta.0) (2025-11-27)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.15.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.1-beta.1...@tecsinapse/cortex-react@1.15.2) (2025-11-25)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
 
