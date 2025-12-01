@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.16...@tecsinapse/react-native-kit@4.0.0-beta.0) (2025-12-01)
+
+* Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
+
+### BREAKING CHANGES
+
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
+* chore!: upgrade dependencies to React 19 and Tailwind v4
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
 ## [3.5.15-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.7...@tecsinapse/react-native-kit@3.5.15-beta.8) (2025-11-26)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit

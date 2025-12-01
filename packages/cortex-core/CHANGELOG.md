@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0...@tecsinapse/cortex-core@2.0.0-beta.0) (2025-12-01)
+
+* Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
+
+### BREAKING CHANGES
+
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
+* chore!: upgrade dependencies to React 19 and Tailwind v4
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
 # [1.2.0-beta.15](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.14...@tecsinapse/cortex-core@1.2.0-beta.15) (2025-11-26)
 
 ### Features
