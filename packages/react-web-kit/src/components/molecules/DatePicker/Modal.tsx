@@ -11,7 +11,7 @@ const Component = <T extends SelectionType>({
   onRequestClose,
   children,
   ...modalProps
-}: CalendarProps<T> & ModalProps & { children: JSX.Element }): JSX.Element => {
+}: CalendarProps<T> & ModalProps & { children: React.ReactElement | React.ReactNode }): React.ReactElement => {
   return (
     <RNModal
       transparent

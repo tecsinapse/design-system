@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "skipLibCheck": true,
+    "types": ["react"],
     "noEmit": false,
     "emitDeclarationOnly": true,
     "declaration": true,

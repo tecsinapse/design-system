@@ -16,7 +16,7 @@ const IconTextButton: React.FC<WebIconTextButtonProps> = ({
   variant = 'filled',
   size = 'default',
   ...rest
-}): JSX.Element => {
+}): React.ReactElement => {
   const { handleHover, handlePressed, defaultFontColor } =
     useIconTextButton(variant);
 
