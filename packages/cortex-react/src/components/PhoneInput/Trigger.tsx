@@ -82,7 +82,7 @@ export const PhoneInputTrigger = ({
       const formatted = formatValue(prefix, e.target.value);
       const nextValue = `${prefix}${formatted}`;
       const raw = formatRaw(nextValue);
-      if (raw.length > maxLength) {
+      if (maxLength !== undefined && raw.length > maxLength) {
         return;
       }
       setRawValue(raw);
