@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.2...@tecsinapse/cortex-react@2.1.0-beta.3) (2025-12-04)
+
+### Features
+
+* **ts-4497:** corrigindo alguns estilos do input ([1118df2](https://github.com/tecsinapse/design-system/commit/1118df2c738d474aecf3c214eec1038a1fd34696))
+
 # [2.1.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.1...@tecsinapse/cortex-react@2.1.0-beta.2) (2025-12-04)
 
 ### Features
