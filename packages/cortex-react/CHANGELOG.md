@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.0...@tecsinapse/cortex-react@2.1.0-beta.1) (2025-12-04)
+
+### Features
+
+* **ts-4497:** atualizando deps + retirando json desnecessário ([db41468](https://github.com/tecsinapse/design-system/commit/db41468fd1148d1f424a71939556db131a6a4a33))
+* **ts-4497:** atualizando os componentes com a nova lógica + stories ([ff2c092](https://github.com/tecsinapse/design-system/commit/ff2c092af8a92d5dc448ce3f3f228edec82fc46f))
+* **ts-4497:** começando a utilizar a lib react-international-phone + atualizando contexto ([4a90938](https://github.com/tecsinapse/design-system/commit/4a909384f4ab167db0380920e9c522f768a124f8))
+* **ts-4497:** retirando componente antigo ([6f9639e](https://github.com/tecsinapse/design-system/commit/6f9639e8ac80b09a571fe1398f4e09ceb1d223ff))
+
 # [2.1.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0...@tecsinapse/cortex-react@2.1.0-beta.0) (2025-12-04)
 
 ### Features
