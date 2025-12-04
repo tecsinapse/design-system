@@ -83,7 +83,7 @@ export const PhoneInput = () => {
     const formatted = formatIncompletePhoneNumber(localValue, iso);
     const nextValue = `${prefix}${formatted}`;
     const raw = nextValue.replace(/[^+\d]/g, '');
-    if (raw.length > maxLength) {
+    if (maxLength !== undefined && raw.length > maxLength) {
       return;
     }
     setValue(nextValue);
