@@ -19,11 +19,14 @@ export const Default: StoryObj<typeof PhoneInput> = {
 
     return (
       <div className="flex items-center h-[200px] w-[400px]">
-        <PhoneInput.Root defaultDDI="55">
-          <PhoneInput.Trigger
-            onChange={newValue => setValue(newValue)}
-            value={value}
-          />
+        <PhoneInput.Root
+          defaultCountry="br"
+          onChange={newValue => {
+            setValue(newValue.inputValue);
+          }}
+          value={value}
+        >
+          <PhoneInput.Trigger />
           <PhoneInput.Popover>
             <PhoneInput.Options />
           </PhoneInput.Popover>

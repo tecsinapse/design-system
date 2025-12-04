@@ -1,3 +1,4 @@
+import { ParsedCountry } from 'react-international-phone';
 import { Country } from './context';
 
 export const PhoneInputOption = ({
@@ -5,8 +6,8 @@ export const PhoneInputOption = ({
   handleSelectCountry,
   disableClick = false,
 }: {
-  country: Country | null;
-  handleSelectCountry: (country: Country | null) => void;
+  country: ParsedCountry;
+  handleSelectCountry: (country: ParsedCountry) => void;
   disableClick?: boolean;
 }) => {
   return (
@@ -18,8 +19,8 @@ export const PhoneInputOption = ({
         }
       }}
     >
-      <span>{country?.country}</span>
-      <span className="text-gray-400 text-sm">+{country?.code}</span>
+      <span>{country?.name}</span>
+      <span className="text-gray-400 text-sm">+{country?.dialCode}</span>
     </div>
   );
 };

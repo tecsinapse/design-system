@@ -1,10 +1,10 @@
 import { FloatingPortal } from '@floating-ui/react';
 import { Popover } from '../Popover';
 import { ReactNode } from 'react';
-import { usePhoneInput } from './context';
+import { usePhoneContext } from './context';
 
 export const PhoneInputPopover = ({ children }: { children: ReactNode }) => {
-  const { triggerWidth } = usePhoneInput();
+  const { triggerWidth } = usePhoneContext();
   return (
     <FloatingPortal>
       <Popover.Content
