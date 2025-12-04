@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Input } from '../Input';
 import { countries } from './countryCodes';
 import examples from 'libphonenumber-js/mobile/examples';
@@ -11,6 +11,7 @@ import {
 import { Popover } from '../Popover';
 import { IoChevronDown } from 'react-icons/io5';
 import { Divider } from '../Divider';
+import { FloatingPortal } from '@floating-ui/react';
 
 interface Country {
   country: string;
@@ -50,6 +51,8 @@ export const PhoneInput = () => {
   const [value, setValue] = useState('');
   const [country, setCountry] = useState<Country | null>(null);
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
+  const [triggerWidth, setTriggerWidth] = useState<number>();
+  const triggerRef = useRef<HTMLDivElement>(null);
 
   const filtered = useMemo(() => {
     return countries.filter(
@@ -86,51 +89,67 @@ export const PhoneInput = () => {
     setValue(nextValue);
   };
 
-  return (
-    <div className="flex items-center h-[200px] w-[350px] overflow-hidden">
-      <div className="relative w-full h-full">
-        <Popover.Root
-          placement="bottom-start"
-          controlled
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        >
-          <Popover.Trigger>
-            <Input.Face variants={{ className: 'outline-none border-1' }}>
-              <Input.Box
-                value={value}
-                onChange={handleChange}
-                placeholder={
-                  country
-                    ? formatIncompletePhoneNumber(
-                        String(
-                          getExampleNumber(country.iso as CountryCode, examples)
-                            ?.nationalNumber
-                        ),
-                        country.iso as CountryCode
-                      )
-                    : 'Insira o telefone'
-                }
-                minLength={`+${country?.code} `.length}
-              />
-              <Input.Left>
-                <div
-                  className="flex items-center gap-1 cursor-pointer"
-                  onClick={() => setIsOpen(true)}
-                >
-                  {country ? (
-                    <img
-                      src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country?.iso}.svg`}
-                      className="w-[25px]"
-                    />
-                  ) : null}
-                  <IoChevronDown className="h-full text-md" />
-                </div>
-              </Input.Left>
-            </Input.Face>
-          </Popover.Trigger>
+  useEffect(() => {
+    if (triggerRef.current && setTriggerWidth) {
+      const width = triggerRef.current.getBoundingClientRect().width;
+      setTriggerWidth(width);
+    }
+  }, [triggerRef.current, setTriggerWidth]);
 
-          <Popover.Content className="w-full bg-white shadow-md rounded-md overflow-hidden h-full outline-none">
+  return (
+    <Popover.Root
+      placement="bottom-start"
+      controlled
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+    >
+      <div className="relative w-full h-full">
+        <Popover.Trigger>
+          <Input.Face
+            variants={{ className: 'outline-none border-1' }}
+            ref={triggerRef}
+          >
+            <Input.Box
+              value={value}
+              onChange={handleChange}
+              placeholder={
+                country
+                  ? formatIncompletePhoneNumber(
+                      String(
+                        getExampleNumber(country.iso as CountryCode, examples)
+                          ?.nationalNumber
+                      ),
+                      country.iso as CountryCode
+                    )
+                  : 'Insira o telefone'
+              }
+              minLength={`+${country?.code} `.length}
+            />
+            <Input.Left>
+              <div
+                className="flex items-center gap-1 cursor-pointer w-full"
+                onClick={() => setIsOpen(true)}
+              >
+                {country ? (
+                  <img
+                    src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country?.iso}.svg`}
+                    className="w-[25px]"
+                  />
+                ) : null}
+                <IoChevronDown className="h-full text-md" />
+              </div>
+            </Input.Left>
+          </Input.Face>
+        </Popover.Trigger>
+
+        <FloatingPortal>
+          <Popover.Content
+            className="bg-white shadow-md rounded-md overflow-hidden h-full max-h-[30vh] outline-none"
+            style={{
+              zIndex: 9999,
+              width: triggerWidth ? `${triggerWidth}px` : 'auto',
+            }}
+          >
             <div className="w-full h-full flex flex-col overflow-y-auto">
               {country ? (
                 <>
@@ -148,13 +167,13 @@ export const PhoneInput = () => {
                   country={country}
                   setCountry={setCountry}
                   setIsOpen={setIsOpen}
-                  key={country.code}
+                  key={`${country.code} ${country.iso}`}
                 />
               ))}
             </div>
           </Popover.Content>
-        </Popover.Root>
+        </FloatingPortal>
       </div>
-    </div>
+    </Popover.Root>
   );
 };
