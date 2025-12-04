@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.1...@tecsinapse/cortex-react@2.1.0-beta.2) (2025-12-04)
+
+### Features
+
+* **ts-4497:** exportando componente ([1498a8e](https://github.com/tecsinapse/design-system/commit/1498a8e7a45a2d0e81660b2026a65ab35acb0c38))
+
 # [2.1.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.0...@tecsinapse/cortex-react@2.1.0-beta.1) (2025-12-04)
 
 ### Features
