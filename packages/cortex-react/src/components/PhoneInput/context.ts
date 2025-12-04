@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import { usePhoneInput } from 'react-international-phone';
 
 export interface Country {
   country: string;
@@ -6,18 +7,18 @@ export interface Country {
   code: string;
 }
 
-interface PhoneInputContextProps {
+interface PhoneInputContextProps extends ReturnType<typeof usePhoneInput> {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   triggerWidth?: number;
-  setTriggerWidth?: (width: number) => void;
-  isOpen?: boolean;
-  setIsOpen?: (isOpen: boolean) => void;
-  country?: Country | null;
-  setCountry?: (country: Country | null) => void;
+  setTriggerWidth?: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
-export const PhoneInputContext = createContext<PhoneInputContextProps>({});
+export const PhoneInputContext = createContext<PhoneInputContextProps | null>(
+  null
+);
 
-export const usePhoneInput = () => {
+export const usePhoneContext = () => {
   const context = useContext(PhoneInputContext);
   if (!context) {
     throw new Error(

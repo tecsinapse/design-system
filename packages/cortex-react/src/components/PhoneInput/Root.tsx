@@ -1,23 +1,47 @@
 import { ReactNode, useState } from 'react';
 import { Popover } from '../Popover';
 import clsx from 'clsx';
-import { Country, PhoneInputContext } from './context';
-import { countries } from './countryCodes';
+import {
+  usePhoneInput,
+  defaultCountries,
+  ParsedCountry,
+  CountryIso2,
+} from 'react-international-phone';
+import { PhoneInputContext, usePhoneContext } from './context';
 
 export const PhoneInputRoot = ({
   children,
   className,
-  defaultDDI,
+  defaultCountry,
+  value,
+  onChange,
 }: {
   children: ReactNode;
+  value?: string;
+  onChange?: (data: {
+    phone: string;
+    inputValue: string;
+    country: ParsedCountry;
+  }) => void;
   className?: string;
-  defaultDDI?: string;
+  defaultCountry?: CountryIso2;
 }) => {
   const [triggerWidth, setTriggerWidth] = useState<number>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [country, setCountry] = useState<Country | null>(
-    countries.find(c => c.code === defaultDDI) ?? null
-  );
+
+  const {
+    country,
+    handlePhoneValueChange,
+    inputRef,
+    inputValue,
+    phone,
+    setCountry,
+  } = usePhoneInput({
+    countries: defaultCountries,
+    onChange,
+    defaultCountry,
+    value,
+  });
 
   return (
     <Popover.Root
@@ -34,6 +58,10 @@ export const PhoneInputRoot = ({
           setIsOpen,
           country,
           setCountry,
+          handlePhoneValueChange,
+          inputValue,
+          phone,
+          inputRef,
         }}
       >
         <div className={clsx('relative w-full h-full', className)}>
