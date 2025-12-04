@@ -1,0 +1,21 @@
+import { FloatingPortal } from '@floating-ui/react';
+import { Popover } from '../Popover';
+import { ReactNode } from 'react';
+import { usePhoneInput } from './context';
+
+export const PhoneInputPopover = ({ children }: { children: ReactNode }) => {
+  const { triggerWidth } = usePhoneInput();
+  return (
+    <FloatingPortal>
+      <Popover.Content
+        className="bg-white shadow-md rounded-md overflow-hidden h-full max-h-[30vh] outline-none"
+        style={{
+          zIndex: 9999,
+          width: triggerWidth ? `${triggerWidth}px` : 'auto',
+        }}
+      >
+        {children}
+      </Popover.Content>
+    </FloatingPortal>
+  );
+};
