@@ -1,13 +1,34 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { PhoneInput } from '../src/components/PhoneInput';
+import { useState } from 'react';
 
 export default {
   title: 'Cortex/Phone Input',
-  component: PhoneInput,
-} as Meta<typeof PhoneInput>;
+  component: PhoneInput.Root,
+  subcomponents: {
+    Popover: PhoneInput.Popover,
+    Trigger: PhoneInput.Trigger,
+    Option: PhoneInput.Option,
+    Options: PhoneInput.Options,
+  },
+} as Meta<typeof PhoneInput.Root>;
 
 export const Default: StoryObj<typeof PhoneInput> = {
   render: () => {
-    return <PhoneInput />;
+    const [value, setValue] = useState('');
+
+    return (
+      <div className="flex items-center h-[200px] w-[400px]">
+        <PhoneInput.Root defaultDDI="55">
+          <PhoneInput.Trigger
+            onChange={newValue => setValue(newValue)}
+            value={value}
+          />
+          <PhoneInput.Popover>
+            <PhoneInput.Options />
+          </PhoneInput.Popover>
+        </PhoneInput.Root>
+      </div>
+    );
   },
 };
