@@ -32,3 +32,4 @@ export * from './TimePicker';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Uploader';
+export * from './PhoneInput';
