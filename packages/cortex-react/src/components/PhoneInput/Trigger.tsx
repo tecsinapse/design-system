@@ -29,10 +29,7 @@ export const PhoneInputTrigger = ({
 
   return (
     <Popover.Trigger disabled={disabled}>
-      <Input.Face
-        variants={{ className: 'outline-none border-1' }}
-        ref={triggerRef}
-      >
+      <Input.Face ref={triggerRef}>
         <Input.Box
           value={inputValue}
           onChange={handlePhoneValueChange}
