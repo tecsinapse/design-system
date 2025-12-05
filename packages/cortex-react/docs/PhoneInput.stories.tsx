@@ -21,8 +21,8 @@ export const Default: StoryObj<typeof PhoneInput> = {
       <div className="flex items-center h-[200px] w-[400px]">
         <PhoneInput.Root
           defaultCountry="br"
-          onChange={newValue => {
-            setValue(newValue.inputValue);
+          onChange={value => {
+            setValue(value);
           }}
           value={value}
         >
