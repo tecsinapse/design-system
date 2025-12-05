@@ -1,11 +1,8 @@
 import { IoChevronDown } from 'react-icons/io5';
-import { Input, InputPropsBase, Popover } from '..';
+import { Input, Popover } from '..';
 import { useEffect, useRef } from 'react';
 import { usePhoneContext } from './context';
-
-interface PhoneInputTriggerProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    InputPropsBase {}
+import { PhoneInputTriggerProps } from './types';
 
 export const PhoneInputTrigger = ({
   disabled = false,

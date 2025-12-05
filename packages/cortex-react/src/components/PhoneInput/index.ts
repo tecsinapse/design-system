@@ -11,3 +11,5 @@ export const PhoneInput = {
   Option: PhoneInputOption,
   Options: PhoneInputOptions,
 };
+
+export * from './types';

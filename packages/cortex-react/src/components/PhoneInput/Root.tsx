@@ -1,22 +1,9 @@
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { Popover } from '../Popover';
 import clsx from 'clsx';
-import {
-  usePhoneInput,
-  defaultCountries,
-  ParsedCountry,
-  UsePhoneInputConfig,
-} from 'react-international-phone';
+import { usePhoneInput, defaultCountries } from 'react-international-phone';
 import { PhoneInputContext } from './context';
-
-interface PhoneInputRootProps extends Omit<UsePhoneInputConfig, 'onChange'> {
-  children: ReactNode;
-  className?: string;
-  onChange?: (
-    value: string,
-    rest: { inputValue: string; country: ParsedCountry }
-  ) => void;
-}
+import { PhoneInputRootProps } from './types';
 
 export const PhoneInputRoot = ({
   children,
