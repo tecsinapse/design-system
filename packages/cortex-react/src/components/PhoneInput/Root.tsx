@@ -5,26 +5,25 @@ import {
   usePhoneInput,
   defaultCountries,
   ParsedCountry,
-  CountryIso2,
+  UsePhoneInputConfig,
 } from 'react-international-phone';
 import { PhoneInputContext } from './context';
 
-export const PhoneInputRoot = ({
-  children,
-  className,
-  defaultCountry,
-  value,
-  onChange,
-}: {
+interface PhoneInputRootProps extends Omit<UsePhoneInputConfig, 'onChange'> {
   children: ReactNode;
-  value?: string;
+  className?: string;
   onChange?: (
     value: string,
     rest: { inputValue: string; country: ParsedCountry }
   ) => void;
-  className?: string;
-  defaultCountry?: CountryIso2;
-}) => {
+}
+
+export const PhoneInputRoot = ({
+  children,
+  className,
+  onChange,
+  ...rest
+}: PhoneInputRootProps) => {
   const [triggerWidth, setTriggerWidth] = useState<number>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -40,8 +39,7 @@ export const PhoneInputRoot = ({
     onChange: ({ phone, ...rest }) => {
       onChange?.(phone, { ...rest });
     },
-    defaultCountry,
-    value,
+    ...rest,
   });
 
   return (

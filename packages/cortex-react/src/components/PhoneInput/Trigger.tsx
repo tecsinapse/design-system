@@ -1,15 +1,17 @@
 import { IoChevronDown } from 'react-icons/io5';
-import { Input, Popover } from '..';
+import { Input, InputPropsBase, Popover } from '..';
 import { useEffect, useRef } from 'react';
 import { usePhoneContext } from './context';
+
+interface PhoneInputTriggerProps
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+    InputPropsBase {}
 
 export const PhoneInputTrigger = ({
   disabled = false,
   label,
-}: {
-  disabled?: boolean;
-  label?: string;
-}) => {
+  ...rest
+}: PhoneInputTriggerProps) => {
   const {
     setIsOpen,
     setTriggerWidth,
@@ -34,6 +36,7 @@ export const PhoneInputTrigger = ({
           value={inputValue}
           onChange={handlePhoneValueChange}
           label={label ?? 'Insert a phone number'}
+          {...rest}
         />
         <Input.Right>
           <div
