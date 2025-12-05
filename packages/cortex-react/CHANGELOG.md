@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.4...@tecsinapse/cortex-react@2.1.0-beta.5) (2025-12-05)
+
+### Features
+
+* **ts-4497:** adicionando props de input e configs da lib de telefone nos componentes ([25e90b7](https://github.com/tecsinapse/design-system/commit/25e90b7a3f6173bbee0f5ec80d52ad7a4cd09e53))
+* **ts-4497:** colocando os tipos de props em um arquivo separado + exportando ([b6fc90c](https://github.com/tecsinapse/design-system/commit/b6fc90cf9f6aac0d0c8209ded2eef289b630ff64))
+
 # [2.1.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.3...@tecsinapse/cortex-react@2.1.0-beta.4) (2025-12-05)
 
 ### Features
