@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.5...@tecsinapse/cortex-react@2.1.0-beta.6) (2025-12-05)
+
+### Features
+
+* **ts-4497:** corrigindo cor de fundo dos botões das opções ([4eaa3b8](https://github.com/tecsinapse/design-system/commit/4eaa3b8a859998289b18d37cbaafcfc5f37841a7))
+
 # [2.1.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.4...@tecsinapse/cortex-react@2.1.0-beta.5) (2025-12-05)
 
 ### Features
