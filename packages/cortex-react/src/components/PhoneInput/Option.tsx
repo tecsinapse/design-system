@@ -11,7 +11,7 @@ export const PhoneInputOption = ({
 }) => {
   return (
     <button
-      className="flex w-full h-[2rem] items-center justify-between p-centi cursor-pointer hover:bg-gray-100"
+      className="flex w-full h-[2rem] items-center justify-between p-centi cursor-pointer hover:bg-gray-100 bg-inherit"
       onClick={() => {
         handleSelectCountry(country);
       }}
