@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Divider } from '../Divider';
-import { Country, usePhoneContext } from './context';
+import { usePhoneContext } from './context';
 import { PhoneInputOption } from './Option';
 import { Input } from '..';
 import {
@@ -13,14 +13,22 @@ const countries = defaultCountries.map(c => {
   return parseCountry(c);
 });
 
-export const PhoneInputOptions = () => {
+export const PhoneInputOptions = ({
+  hasSearch = true,
+}: {
+  hasSearch?: boolean;
+}) => {
   const { country, setCountry, setIsOpen } = usePhoneContext();
   const [searchText, setSearchText] = useState('');
+
   const filteredCountries = useMemo(() => {
     return countries.filter(
-      c => c.iso2 !== country?.iso2 && c.name.includes(searchText)
+      c =>
+        c.iso2 !== country?.iso2 &&
+        (c.name.toLowerCase().includes(searchText.toLowerCase()) ||
+          c.dialCode.includes(searchText))
     );
-  }, [country]);
+  }, [country, searchText]);
 
   const handleSelect = (country: ParsedCountry) => {
     setCountry?.(country.iso2);
@@ -29,7 +37,12 @@ export const PhoneInputOptions = () => {
 
   return (
     <div className="w-full h-full flex flex-col overflow-y-auto">
-      <Input.Search onChange={e => setSearchText(e.target.value)} />
+      {hasSearch ? (
+        <Input.Search
+          onChange={e => setSearchText(e.target.value)}
+          variants={{ className: 'mx-deca my-centi outline-none' }}
+        />
+      ) : null}
       {country ? (
         <>
           <PhoneInputOption

@@ -7,7 +7,7 @@ import {
   ParsedCountry,
   CountryIso2,
 } from 'react-international-phone';
-import { PhoneInputContext, usePhoneContext } from './context';
+import { PhoneInputContext } from './context';
 
 export const PhoneInputRoot = ({
   children,
@@ -18,11 +18,10 @@ export const PhoneInputRoot = ({
 }: {
   children: ReactNode;
   value?: string;
-  onChange?: (data: {
-    phone: string;
-    inputValue: string;
-    country: ParsedCountry;
-  }) => void;
+  onChange?: (
+    value: string,
+    rest: { inputValue: string; country: ParsedCountry }
+  ) => void;
   className?: string;
   defaultCountry?: CountryIso2;
 }) => {
@@ -38,7 +37,9 @@ export const PhoneInputRoot = ({
     setCountry,
   } = usePhoneInput({
     countries: defaultCountries,
-    onChange,
+    onChange: ({ phone, ...rest }) => {
+      onChange?.(phone, { ...rest });
+    },
     defaultCountry,
     value,
   });

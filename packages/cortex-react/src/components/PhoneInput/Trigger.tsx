@@ -33,7 +33,7 @@ export const PhoneInputTrigger = ({
         <Input.Box
           value={inputValue}
           onChange={handlePhoneValueChange}
-          placeholder={label}
+          label={label ?? 'Insert a phone number'}
         />
         <Input.Right>
           <div
