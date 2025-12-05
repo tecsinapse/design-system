@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.3...@tecsinapse/cortex-react@2.1.0-beta.4) (2025-12-05)
+
+### Features
+
+* **ts-4497:** aprimorando search de países + adicionando dados no onChange + adicionando fallback de label ([f87a5e3](https://github.com/tecsinapse/design-system/commit/f87a5e3b19ec14277fb53e484b0446b9c676cd54))
+* **ts-4497:** atualizando stories ([e4bd25b](https://github.com/tecsinapse/design-system/commit/e4bd25b247c6603551bb03c3181af339c77f01de))
+* **ts-4497:** substituindo div por botão nas opções de país ([8fd656a](https://github.com/tecsinapse/design-system/commit/8fd656a09621b3bf9ad0cd4b93dee7738cdc8f4a))
+
 # [2.1.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.2...@tecsinapse/cortex-react@2.1.0-beta.3) (2025-12-04)
 
 ### Features
