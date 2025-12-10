@@ -11,12 +11,12 @@ interface PromiseSnackConfig<T = unknown> {
     options?: Omit<IExternalToast, 'className' | 'style'>;
   };
   success?: {
-    message?: string | ((data: T) => string);
+    message?: string;
     type?: TypeSnack;
     options?: Omit<IExternalToast, 'className' | 'style'>;
   };
   error?: {
-    message?: string | ((error: unknown) => string);
+    message?: string;
     type?: TypeSnack;
     options?: Omit<IExternalToast, 'className' | 'style'>;
   };
@@ -63,8 +63,8 @@ export class SnackbarSonner implements ISnackbar<IExternalToast> {
     );
   }
 
-  promise<T>(
-    promise: () => Promise<T>,
+  async promise<T>(
+    promise: Promise<T>,
     config: PromiseSnackConfig<T>
   ): Promise<T> {
     const { loading, success, error } = config;
@@ -74,43 +74,35 @@ export class SnackbarSonner implements ISnackbar<IExternalToast> {
       duration: loading.options?.duration ?? Infinity,
     });
 
-    promise()
-      .then(result => {
-        if (!success) {
-          toast.dismiss(id);
-          return;
-        }
+    try {
+      await promise;
 
-        const msg =
-          typeof success.message === 'function'
-            ? success.message(result)
-            : (success.message ?? 'Operação concluída com sucesso.');
+      if (!success) {
+        toast.dismiss(id);
+      } else {
+        const msg = success?.message ?? 'Operação concluída com sucesso.';
 
-        this.show(success.type ?? 'success', msg, {
-          ...success.options,
+        this.show(success?.type ?? 'success', msg, {
+          ...success?.options,
           id,
           duration:
-            success.options?.duration ?? this._options?.duration ?? 5000,
+            success?.options?.duration ?? this._options?.duration ?? 5000,
         });
-      })
-      .catch(err => {
-        if (!error) {
-          toast.dismiss(id);
-          return;
-        }
+      }
+    } catch (err) {
+      if (!error) {
+        toast.dismiss(id);
+      } else {
+        const msg = error?.message ?? 'Ocorreu um erro inesperado.';
 
-        const msg =
-          typeof error.message === 'function'
-            ? error.message(err)
-            : (error.message ?? 'Ocorreu um erro inesperado.');
-
-        this.show(error.type ?? 'error', msg, {
-          ...error.options,
+        this.show(error?.type ?? 'error', msg, {
+          ...error?.options,
           id,
-          duration: error.options?.duration ?? this._options?.duration ?? 5000,
+          duration: error?.options?.duration ?? this._options?.duration ?? 5000,
         });
-      });
+      }
+    }
 
-    return promise();
+    return promise;
   }
 }
