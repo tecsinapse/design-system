@@ -28,9 +28,41 @@ export const Default: StoryObj<typeof DefaultSnack> = {
       <div className="h-[300px] w-[70vw]">
         <Button
           variants={{ intent: 'primary' }}
-          onClick={() => snackbar.show('default', args.text, { onDismiss: () => console.log('click')})}
+          onClick={() =>
+            snackbar.show('default', args.text, {
+              onDismiss: () => console.log('click'),
+            })
+          }
         >
           Show Snack default
+        </Button>
+      </div>
+    );
+  },
+};
+
+export const PromiseSnack: StoryObj<typeof DefaultSnack> = {
+  args: {
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  render: ({ text }) => {
+    const testPromise = () => {
+      return new Promise(resolve => {
+        setTimeout(() => resolve('Finalizado'), 5000);
+      });
+    };
+    const { snackbar } = useSnackbar();
+    return (
+      <div className="h-[300px] w-[70vw]">
+        <Button
+          variants={{ intent: 'primary' }}
+          onClick={() =>
+            snackbar.promise(testPromise, {
+              loading: { message: text },
+            })
+          }
+        >
+          Show Snack Promise
         </Button>
       </div>
     );
