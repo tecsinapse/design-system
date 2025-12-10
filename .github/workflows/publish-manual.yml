@@ -43,6 +43,9 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
+          git tag -l | xargs -r git tag -d 2>/dev/null || true
+          git fetch --tags --force
+
           if [ "${{ github.ref_name }}" = "master" ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
