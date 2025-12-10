@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: install and prepare
         run: pnpm i
@@ -34,7 +34,7 @@ jobs:
 
       - name: setup npm
         run: |
-          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.DESIGN_SYSTEM_NPM_TOKEN }}"
 
       - name: version and publish
         env:
@@ -43,7 +43,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
-          if [ ${{ github.ref_name }} = master ]; then
+          if [ "${{ github.ref_name }}" = "master" ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
           else
