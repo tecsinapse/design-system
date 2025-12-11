@@ -8,9 +8,8 @@ export const PhoneInputPopover = ({ children }: { children: ReactNode }) => {
   return (
     <FloatingPortal>
       <Popover.Content
-        className="bg-white shadow-md rounded-md overflow-hidden h-full max-h-[30vh] outline-none"
+        className="bg-white shadow-md rounded-md overflow-hidden h-full max-h-[30vh] outline-none z-9999"
         style={{
-          zIndex: 9999,
           width: triggerWidth ? `${triggerWidth}px` : 'auto',
         }}
       >
