@@ -37,17 +37,6 @@ export const ModalView: FC<IBaseModal> = ({
   const opacityCarrier = useRef(new Animated.Value(0)).current;
   const offset = isLastShown && keyboardOpened > 0 ? 0 : bottom;
 
-  const getKeyboardHeight = (keyboard: number) => {
-    if (keyboard === 0) return 0;
-
-    const wHeight = Math.ceil(Dimensions.get('window').height);
-    const sHeight = Math.ceil(Dimensions.get('screen').height);
-    if (wHeight !== sHeight) {
-      return keyboard + (sHeight - wHeight - (StatusBar.currentHeight || 0));
-    }
-    return keyboard;
-  };
-
   const show = useCallback(() => {
     Animated.sequence([
       Animated.timing(backgroundCarrier, {
@@ -142,7 +131,6 @@ export const ModalView: FC<IBaseModal> = ({
       <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
         <Animated.View
           style={{
-            // paddingBottom: isLastShown ? getKeyboardHeight(keyboardOpened) : 0,
             opacity: opacityCarrier,
             transform: [{ translateY: translationCarrier }],
           }}
