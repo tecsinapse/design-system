@@ -9,6 +9,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * ajustes para subir rn-playground no android. ([b6be6a7](https://github.com/tecsinapse/design-system/commit/b6be6a7e94b702a567e90c8f848c88f9edcd968e))
 
+# [4.0.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.2...@tecsinapse/react-native-kit@4.0.0-beta.4) (2025-12-30)
+
+### Bug Fixes
+
+* ajustes para subir rn-playground no android. ([b6be6a7](https://github.com/tecsinapse/design-system/commit/b6be6a7e94b702a567e90c8f848c88f9edcd968e))
+
 # [4.0.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.1...@tecsinapse/react-native-kit@4.0.0-beta.2) (2025-12-05)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
