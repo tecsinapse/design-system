@@ -1,5 +1,12 @@
 import { BoxContent } from '@tecsinapse/react-core';
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   Animated,
   Dimensions,
@@ -8,6 +15,8 @@ import {
   LayoutChangeEvent,
   Pressable,
   StatusBar,
+  StyleProp,
+  ViewStyle,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackDropView, CloseBar, StyledPressableBackDrop } from './styled';
@@ -24,6 +33,7 @@ export const ModalView: FC<IBaseModal> = ({
   BoxComponent = BoxContent,
   frozen,
   isLastShown,
+  isRaiseKeyboard = true,
   showCloseBar = true,
   close,
   onClose,
@@ -137,15 +147,24 @@ export const ModalView: FC<IBaseModal> = ({
     };
   }, []);
 
+  const viewStyle = useMemo<StyleProp<ViewStyle>>(
+    () => [
+      {
+        opacity: opacityCarrier,
+        transform: [{ translateY: translationCarrier }],
+      },
+      isLastShown && isRaiseKeyboard
+        ? { paddingBottom: getKeyboardHeight(keyboardOpened) }
+        : null,
+    ],
+    [opacityCarrier, translationCarrier, isLastShown, isRaiseKeyboard, keyboardOpened]
+  );
+
   return (
     <StyledPressableBackDrop onPress={!frozen ? close : undefined}>
       <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
         <Animated.View
-          style={{
-            paddingBottom: isLastShown ? getKeyboardHeight(keyboardOpened) : 0,
-            opacity: opacityCarrier,
-            transform: [{ translateY: translationCarrier }],
-          }}
+          style={viewStyle}
         >
           <Pressable>
             <BoxComponent
