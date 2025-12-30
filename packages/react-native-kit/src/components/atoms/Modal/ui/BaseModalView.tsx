@@ -142,7 +142,7 @@ export const ModalView: FC<IBaseModal> = ({
       <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
         <Animated.View
           style={{
-            paddingBottom: isLastShown ? getKeyboardHeight(keyboardOpened) : 0,
+            // paddingBottom: isLastShown ? getKeyboardHeight(keyboardOpened) : 0,
             opacity: opacityCarrier,
             transform: [{ translateY: translationCarrier }],
           }}
