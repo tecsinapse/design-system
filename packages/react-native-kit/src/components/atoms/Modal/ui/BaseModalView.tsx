@@ -24,7 +24,7 @@ export const ModalView: FC<IBaseModal> = ({
   BoxComponent = BoxContent,
   frozen,
   isLastShown,
-  isRaiseKeyboard,
+  isRaiseKeyboard = true,
   showCloseBar = true,
   close,
   onClose,
