@@ -145,6 +145,7 @@ export const ModalView: FC<IBaseModal> = ({
           style={{
             ...(isLastShown && isRaiseKeyboard && {
             paddingBottom: getKeyboardHeight(keyboardOpened) }),
+            ...(!isLastShown && isRaiseKeyboard && { paddingBottom: 0 }),
             opacity: opacityCarrier,
             transform: [{ translateY: translationCarrier }],
           }}
