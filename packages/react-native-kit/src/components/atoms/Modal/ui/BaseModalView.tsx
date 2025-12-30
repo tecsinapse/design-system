@@ -24,7 +24,6 @@ export const ModalView: FC<IBaseModal> = ({
   BoxComponent = BoxContent,
   frozen,
   isLastShown,
-  isRaiseKeyboard,
   showCloseBar = true,
   close,
   onClose,
@@ -143,9 +142,8 @@ export const ModalView: FC<IBaseModal> = ({
       <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
         <Animated.View
           style={{
-            ...(isLastShown && isRaiseKeyboard && {
+            ...(isLastShown && {
             paddingBottom: getKeyboardHeight(keyboardOpened) }),
-            ...(!isLastShown && isRaiseKeyboard && { paddingBottom: 0 }),
             opacity: opacityCarrier,
             transform: [{ translateY: translationCarrier }],
           }}
