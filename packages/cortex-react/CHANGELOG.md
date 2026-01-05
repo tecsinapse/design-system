@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0...@tecsinapse/cortex-react@2.2.0-beta.0) (2026-01-05)
+
+### Features
+
+* **autocomplete:** alterando versão na mão ([c7c887d](https://github.com/tecsinapse/design-system/commit/c7c887d1ca82b762e4d1b92cd9cd82034cf19f52))
+* **autocomplete:** criando o componente de autocomplete ([3291104](https://github.com/tecsinapse/design-system/commit/3291104ed3f088422f15259ab46226774e18c39f))
+* **autocomplete:** exportando o componentre autocomplete + stories ([4a56cd0](https://github.com/tecsinapse/design-system/commit/4a56cd057845c10b1a6098ef2ff0ce07ae0248b0))
+
 # [2.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0-beta.0...@tecsinapse/cortex-react@2.0.0) (2025-12-01)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
