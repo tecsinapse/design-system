@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { Autocomplete } from '../src/components/Autocomplete/Autocomplete';
+import { selectOptions } from './autocompleteMocks';
 
 export default {
   title: 'Cortex/Autocomplete',
@@ -23,6 +24,7 @@ export const Default: StoryObj<typeof Autocomplete> = {
           inputValue={value}
           setInputValue={setValue}
           onChange={onChange}
+          options={selectOptions}
         />
       </div>
     );

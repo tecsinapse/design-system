@@ -13,33 +13,19 @@ interface AutocompleteProps {
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  onSelect: (option: Option) => void;
+  options: Option[];
+  onSelect?: (option: Option) => void;
   label?: string;
   placeholder?: string;
   disabled?: boolean;
-  options: Option[];
 }
 interface Option {
   label: string;
   value: string;
 }
 
-const selectOptions = [
-  { label: 'Brasil', value: 'brasil' },
-  { label: 'Alemanha', value: 'alemanha' },
-  { label: 'Japão', value: 'japao' },
-  { label: 'Canadá', value: 'canada' },
-  { label: 'Austrália', value: 'australia' },
-  { label: 'França', value: 'franca' },
-  { label: 'Itália', value: 'italia' },
-  { label: 'México', value: 'mexico' },
-  { label: 'Portugal', value: 'portugal' },
-  { label: 'Argentina', value: 'argentina' },
-];
-
 export const Autocomplete = ({
   inputValue,
-  setInputValue,
   label,
   onChange,
   onSelect,
@@ -47,27 +33,18 @@ export const Autocomplete = ({
   options,
 }: AutocompleteProps) => {
   const [triggerWidth, setTriggerWidth] = useState<number>();
-  const [selectedValue, setSelectedValue] = useState<Option>({
-    label: '',
-    value: '',
-  });
   const [open, setOpen] = useState<boolean>(true);
 
   const filteredOptions = useMemo(() => {
-    const optionsList = (selectOptions ?? []).filter(op =>
+    const optionsList = (options ?? []).filter(op =>
       op.label.toLowerCase().includes(inputValue.toLowerCase())
     );
     return optionsList;
-  }, [selectOptions, inputValue]);
+  }, [options, inputValue]);
 
   const handleSelect = (option: Option) => {
-    if (!(selectedValue.value === option.value)) {
-      setSelectedValue(option);
-    }
-
-    setInputValue('');
     setOpen(false);
-    onSelect(option);
+    onSelect?.(option);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,12 +91,12 @@ export const Autocomplete = ({
             initialFocus={-1}
           >
             <div className="w-full flex flex-col overflow-y-auto">
-              {(options ?? filteredOptions ?? []).map(op => (
+              {(options ?? filteredOptions ?? []).map(option => (
                 <div
                   className="flex w-full h-[3rem] items-center gap-centi p-centi cursor-pointer hover:bg-secondary-xlight bg-inherit"
-                  onClick={() => handleSelect(op)}
+                  onClick={() => handleSelect(option)}
                 >
-                  <span className="text-base truncate">{op.label}</span>
+                  <span className="text-base truncate">{option.label}</span>
                 </div>
               ))}
             </div>
