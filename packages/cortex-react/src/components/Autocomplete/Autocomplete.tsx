@@ -13,6 +13,7 @@ interface AutocompleteProps {
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  onSelect: (option: Option) => void;
   label?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -41,6 +42,7 @@ export const Autocomplete = ({
   setInputValue,
   label,
   onChange,
+  onSelect,
   disabled,
   options,
 }: AutocompleteProps) => {
@@ -65,6 +67,7 @@ export const Autocomplete = ({
 
     setInputValue('');
     setOpen(false);
+    onSelect(option);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
