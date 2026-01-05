@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.2...@tecsinapse/cortex-react@2.2.0-beta.3) (2026-01-05)
+
+### Features
+
+* **autocomplete:** adicionando prop de onSelect ([c0f4f5e](https://github.com/tecsinapse/design-system/commit/c0f4f5e3b23698d00f21d1e8fdc419ab7e784eaa))
+
 # [2.2.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.1...@tecsinapse/cortex-react@2.2.0-beta.2) (2026-01-05)
 
 ### Features
