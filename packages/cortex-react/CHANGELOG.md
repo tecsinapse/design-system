@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.1...@tecsinapse/cortex-react@2.2.0-beta.2) (2026-01-05)
+
+### Features
+
+* **autocomplete:** adicionando prop de opções ([224ee87](https://github.com/tecsinapse/design-system/commit/224ee877af8787fe8e7c09b8ec0ebe1c8f22a047))
+
 # [2.2.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.0...@tecsinapse/cortex-react@2.2.0-beta.1) (2026-01-05)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
