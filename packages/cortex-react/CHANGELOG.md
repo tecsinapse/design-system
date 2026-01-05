@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.3...@tecsinapse/cortex-react@2.2.0-beta.4) (2026-01-05)
+
+### Features
+
+* **autocomplete:** modificando autocomplete + stories ([3054df8](https://github.com/tecsinapse/design-system/commit/3054df8ccfb1e571ddc5d349613e2dc16327b8b4))
+
 # [2.2.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.2...@tecsinapse/cortex-react@2.2.0-beta.3) (2026-01-05)
 
 ### Features
