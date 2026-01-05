@@ -16,6 +16,7 @@ interface AutocompleteProps {
   label?: string;
   placeholder?: string;
   disabled?: boolean;
+  options: Option[];
 }
 interface Option {
   label: string;
@@ -41,6 +42,7 @@ export const Autocomplete = ({
   label,
   onChange,
   disabled,
+  options,
 }: AutocompleteProps) => {
   const [triggerWidth, setTriggerWidth] = useState<number>();
   const [selectedValue, setSelectedValue] = useState<Option>({
@@ -109,7 +111,7 @@ export const Autocomplete = ({
             initialFocus={-1}
           >
             <div className="w-full flex flex-col overflow-y-auto">
-              {filteredOptions.map(op => (
+              {(options ?? filteredOptions ?? []).map(op => (
                 <div
                   className="flex w-full h-[3rem] items-center gap-centi p-centi cursor-pointer hover:bg-secondary-xlight bg-inherit"
                   onClick={() => handleSelect(op)}
