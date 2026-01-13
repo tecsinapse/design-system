@@ -6,6 +6,7 @@ import { AutocompleteContext } from './context';
 export const AutocompleteOption = ({
   option,
   onSelect,
+  grouped = false,
 }: AutocompleteOptionProps) => {
   const context = useContext(AutocompleteContext);
   if (!context)
@@ -26,6 +27,7 @@ export const AutocompleteOption = ({
       onClick={() => handleSelect(option)}
       className={styleOption({
         selected: false,
+        grouped,
       })}
       role="option"
     >

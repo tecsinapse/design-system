@@ -30,9 +30,16 @@ export interface AutocompleteOptionsProps {
   children?: ReactNode;
 }
 
+export interface AutocompleteGroupedOptionsProps {
+  options?: Map<string, Option[]>; //adicionar promise
+  groupedLabelExtractor: (value: string) => string;
+  onSelect?: (option: Option) => void;
+}
+
 export interface AutocompleteOptionProps {
   option: Option;
   onSelect?: (option: Option) => void;
+  grouped?: boolean;
 }
 
 export interface AutocompleteProps<T> {

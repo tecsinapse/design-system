@@ -12,17 +12,18 @@ export const AutocompleteTrigger = ({
   placeholder,
 }: AutocompleteTriggerProps) => {
   const context = useContext(AutocompleteContext);
-  if (!context) throw new Error('AutocompleteTrigger must be used within AutocompleteRoot');
+  if (!context)
+    throw new Error('AutocompleteTrigger must be used within AutocompleteRoot');
 
   const { setTriggerWidth, setOpen } = context;
   const triggerRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (triggerRef.current) {
+    if (triggerRef.current && setTriggerWidth) {
       const width = triggerRef.current.getBoundingClientRect().width;
       setTriggerWidth(width);
     }
-  }, [setTriggerWidth]);
+  }, [triggerRef.current, setTriggerWidth]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event);
@@ -46,4 +47,3 @@ export const AutocompleteTrigger = ({
     </Popover.Trigger>
   );
 };
-

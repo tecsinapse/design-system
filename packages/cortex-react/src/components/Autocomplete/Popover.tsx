@@ -19,7 +19,7 @@ export const AutocompletePopover = ({
     <FloatingPortal>
       <Popover.Content
         className={clsx(
-          'w-full bg-white shadow-md rounded-md overflow-hidden max-h-[30vh] outline-none z-9999',
+          'bg-white shadow-md rounded-md overflow-y-auto max-h-[30vh] outline-none z-9999',
           className
         )}
         style={{
