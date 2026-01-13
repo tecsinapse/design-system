@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React, { useMemo, useState } from 'react';
-import { selectOptions } from './autocompleteMocks';
+import { groupedOptions, selectOptions } from './autocompleteMocks';
 import { Autocomplete } from '../src';
 
 export default {
@@ -71,6 +71,47 @@ export const CustomOptions: StoryObj<typeof Autocomplete> = {
                 <Autocomplete.Option key={option.value} option={option} />
               ))}
             </Autocomplete.Options>
+          </Autocomplete.Popover>
+        </Autocomplete.Root>
+      </div>
+    );
+  },
+};
+
+export const GroupedOptions: StoryObj<typeof Autocomplete> = {
+  render: () => {
+    const [inputValue, setInputValue] = useState('');
+
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+
+      setInputValue(value);
+    };
+
+    const filteredOptions = useMemo(() => {
+      const search = inputValue.toLowerCase();
+
+      const filteredEntries = [...groupedOptions.entries()]
+        .map(([group, options]) => {
+          const matchedOptions = options.filter(op =>
+            op.label.toLowerCase().includes(search)
+          );
+          return [group, matchedOptions] as [string, typeof options];
+        })
+        .filter(([_, matchedOptions]) => matchedOptions.length > 0);
+
+      return new Map(filteredEntries);
+    }, [inputValue]);
+
+    return (
+      <div className="flex items-center h-[200px] w-[400px]">
+        <Autocomplete.Root>
+          <Autocomplete.Trigger inputValue={inputValue} onChange={onChange} />
+          <Autocomplete.Popover>
+            <Autocomplete.GroupedOptions
+              groupedLabelExtractor={labelGroup => labelGroup}
+              options={filteredOptions}
+            />
           </Autocomplete.Popover>
         </Autocomplete.Root>
       </div>
