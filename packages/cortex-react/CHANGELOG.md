@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.4...@tecsinapse/cortex-react@2.2.0-beta.5) (2026-01-14)
+
+### Features
+
+* **autocomplete:** adicionando grouped options nos stories ([c48496b](https://github.com/tecsinapse/design-system/commit/c48496b31d8bf9826afa4d71d7e52af4d57c495d))
+* **autocomplete:** criando grouped options + corrigindo popover ([8a9745a](https://github.com/tecsinapse/design-system/commit/8a9745a644a11e26c08f0e9bb252f1127ae3a2e6))
+* **autocomplete:** criando o contexto do autocomplete + tipagem ([d45b881](https://github.com/tecsinapse/design-system/commit/d45b8818dc16e250d00e3dc0e5347f7e146166c1))
+* **autocomplete:** separando o autocomplete em subcomponentes + stories ([d43950b](https://github.com/tecsinapse/design-system/commit/d43950b3968b7841e59ad368fe4f6b3a15613bed))
+
 # [2.2.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.3...@tecsinapse/cortex-react@2.2.0-beta.4) (2026-01-05)
 
 ### Features
