@@ -2,6 +2,8 @@ import { selectVariants } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { AutocompleteGroupedOptionsProps, Option } from './types';
 import { AutocompleteOption } from './Option';
+import { useAutocompleteGroupedOptions } from '../../hooks/useAutocompleteGroupedOptions';
+import { SkeletonOptions } from '../Select/SkeletonOptions';
 
 const { groupedTitle, list } = selectVariants();
 
@@ -10,9 +12,14 @@ export const AutocompleteGroupedOptions = ({
   groupedLabelExtractor,
   options,
 }: AutocompleteGroupedOptionsProps) => {
-  return (
+  const { options: _options, isLoading } = useAutocompleteGroupedOptions({
+    options,
+  });
+  return isLoading ? (
+    <SkeletonOptions />
+  ) : (
     <ul role={'listbox'} className={list()}>
-      {[...(options ?? [])].map(([key, value]) => (
+      {[...(_options ?? [])].map(([key, value]) => (
         <div key={key}>
           <span className={groupedTitle()}>{groupedLabelExtractor?.(key)}</span>
           {value.map((option: Option) => (

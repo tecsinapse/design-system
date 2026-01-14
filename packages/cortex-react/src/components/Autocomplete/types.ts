@@ -25,13 +25,13 @@ export interface AutocompletePopoverProps {
 }
 
 export interface AutocompleteOptionsProps {
-  options?: Option[];
+  options?: Option[] | (() => Promise<Option[]>);
   onSelect?: (option: Option) => void;
   children?: ReactNode;
 }
 
 export interface AutocompleteGroupedOptionsProps {
-  options?: Map<string, Option[]>; //adicionar promise
+  options?: Map<string, Option[]> | (() => Promise<Map<string, Option[]>>);
   groupedLabelExtractor: (value: string) => string;
   onSelect?: (option: Option) => void;
 }
@@ -42,11 +42,11 @@ export interface AutocompleteOptionProps {
   grouped?: boolean;
 }
 
-export interface AutocompleteProps<T> {
+export interface AutocompleteProps {
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  options: Option[];
+  options: Option[] | (() => Promise<Option[]>);
   onSelect?: (option: Option) => void;
   label?: string;
   placeholder?: string;

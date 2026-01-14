@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { groupedOptions, selectOptions } from './autocompleteMocks';
 import { Autocomplete } from '../src';
+import { Option } from '../src/components/Autocomplete/types';
 
 export default {
   title: 'Cortex/Autocomplete',
@@ -111,6 +112,115 @@ export const GroupedOptions: StoryObj<typeof Autocomplete> = {
             <Autocomplete.GroupedOptions
               groupedLabelExtractor={labelGroup => labelGroup}
               options={filteredOptions}
+            />
+          </Autocomplete.Popover>
+        </Autocomplete.Root>
+      </div>
+    );
+  },
+};
+
+type User = { id: number; name: string };
+
+export const Lazy: StoryObj<typeof Autocomplete> = {
+  render: () => {
+    const [searchParam, setSearchParam] = useState('');
+
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+
+      setSearchParam(value);
+    };
+
+    const fetchUsers = async () => {
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/users',
+        {
+          method: 'GET',
+        }
+      );
+      return (await response.json()) as User[];
+    };
+
+    const fetchPromise: () => Promise<Option[]> = useCallback(async () => {
+      const dataTest = await fetchUsers();
+      return (dataTest || [])
+        .map(item => ({
+          value: item.id.toString(),
+          label: item.name,
+        }))
+        .filter(value => {
+          if (searchParam)
+            return value.label
+              .toLowerCase()
+              .includes(searchParam.toLowerCase());
+          else return true;
+        });
+    }, [searchParam]);
+
+    return (
+      <div className="flex items-center h-[200px] w-[400px]">
+        <Autocomplete.Root>
+          <Autocomplete.Trigger inputValue={searchParam} onChange={onChange} />
+          <Autocomplete.Popover>
+            <Autocomplete.Options options={fetchPromise} />
+          </Autocomplete.Popover>
+        </Autocomplete.Root>
+      </div>
+    );
+  },
+};
+
+export const LazyGrouped: StoryObj<typeof Autocomplete> = {
+  render: () => {
+    const [searchParam, setSearchParam] = useState('');
+
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+
+      setSearchParam(value);
+    };
+    const fetchUsers = async () => {
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/users',
+        {
+          method: 'GET',
+        }
+      );
+      return (await response.json()) as User[];
+    };
+
+    const fetchPromise: () => Promise<Map<string, Option[]>> =
+      useCallback(async () => {
+        const dataTest = await fetchUsers();
+        const map = new Map<string, Option[]>();
+        dataTest.forEach(value => {
+          if (
+            searchParam &&
+            !value.name.toLowerCase().includes(searchParam.toLowerCase())
+          )
+            return;
+          const group = `Group ${(value.id % 3) + 1}`;
+          const updatedValue = [
+            ...(map.get(group) ?? []),
+            {
+              value: value.id.toString(),
+              label: value.name,
+            },
+          ];
+          map.set(group, updatedValue);
+        });
+        return map;
+      }, [searchParam]);
+
+    return (
+      <div className="flex items-center h-[200px] w-[400px]">
+        <Autocomplete.Root>
+          <Autocomplete.Trigger inputValue={searchParam} onChange={onChange} />
+          <Autocomplete.Popover>
+            <Autocomplete.GroupedOptions
+              groupedLabelExtractor={labelGroup => labelGroup}
+              options={fetchPromise}
             />
           </Autocomplete.Popover>
         </Autocomplete.Root>
