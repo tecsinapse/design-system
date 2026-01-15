@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Option } from '../components/Autocomplete/types';
 
-interface useAutocompleteGroupedOptionsProps {
-  options?: Map<string, Option[]> | (() => Promise<Map<string, Option[]>>);
+interface useAutocompleteGroupedOptionsProps<T> {
+  options?: Map<string, T[]> | (() => Promise<Map<string, T[]>>);
 }
 
-export const useAutocompleteGroupedOptions = ({
+export const useAutocompleteGroupedOptions = <T>({
   options: _options,
-}: useAutocompleteGroupedOptionsProps) => {
-  const [options, setOptions] = useState<Map<string, Option[]> | undefined>();
+}: useAutocompleteGroupedOptionsProps<T>) => {
+  const [options, setOptions] = useState<Map<string, T[]> | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<string | undefined>();
 
-  const initData = async (fetch: () => Promise<Map<string, Option[]>>) => {
+  const initData = async (fetch: () => Promise<Map<string, T[]>>) => {
     setIsLoading(true);
     try {
       const result = await fetch();

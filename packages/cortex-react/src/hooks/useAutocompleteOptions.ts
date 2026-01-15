@@ -1,18 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Option } from '../components/Autocomplete/types';
 
-interface useAutocompleteOptionsProps {
-  options?: Option[] | (() => Promise<Option[]>);
+interface useAutocompleteOptionsProps<T> {
+  options?: T[] | (() => Promise<T[]>);
 }
 
-export const useAutocompleteOptions = ({
+export const useAutocompleteOptions = <T>({
   options: _options,
-}: useAutocompleteOptionsProps) => {
-  const [options, setOptions] = useState<Option[] | undefined>();
+}: useAutocompleteOptionsProps<T>) => {
+  const [options, setOptions] = useState<T[] | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>();
   const [error, setError] = useState<string | undefined>();
 
-  const initData = useCallback(async (fetch: () => Promise<Option[]>) => {
+  const initData = useCallback(async (fetch: () => Promise<T[]>) => {
     setIsLoading(true);
     try {
       const result = await fetch();

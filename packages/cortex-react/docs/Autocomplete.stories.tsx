@@ -34,7 +34,10 @@ export const Default: StoryObj<typeof Autocomplete> = {
 
     return (
       <div className="flex items-center h-[200px] w-[400px]">
-        <Autocomplete.Root>
+        <Autocomplete.Root
+          keyExtractor={(op: Option) => op.value}
+          labelExtractor={(op: Option) => op.label}
+        >
           <Autocomplete.Trigger inputValue={value} onChange={onChange} />
           <Autocomplete.Popover>
             <Autocomplete.Options options={filteredOptions} />
@@ -64,7 +67,10 @@ export const CustomOptions: StoryObj<typeof Autocomplete> = {
 
     return (
       <div className="flex items-center h-[200px] w-[400px]">
-        <Autocomplete.Root>
+        <Autocomplete.Root
+          keyExtractor={(op: Option) => op.value}
+          labelExtractor={(op: Option) => op.label}
+        >
           <Autocomplete.Trigger inputValue={value} onChange={onChange} />
           <Autocomplete.Popover>
             <Autocomplete.Options>
@@ -106,7 +112,10 @@ export const GroupedOptions: StoryObj<typeof Autocomplete> = {
 
     return (
       <div className="flex items-center h-[200px] w-[400px]">
-        <Autocomplete.Root>
+        <Autocomplete.Root
+          keyExtractor={(op: Option) => op.value}
+          labelExtractor={(op: Option) => op.label}
+        >
           <Autocomplete.Trigger inputValue={inputValue} onChange={onChange} />
           <Autocomplete.Popover>
             <Autocomplete.GroupedOptions
@@ -160,7 +169,10 @@ export const Lazy: StoryObj<typeof Autocomplete> = {
 
     return (
       <div className="flex items-center h-[200px] w-[400px]">
-        <Autocomplete.Root>
+        <Autocomplete.Root
+          keyExtractor={(op: Option) => op.value}
+          labelExtractor={(op: Option) => op.label}
+        >
           <Autocomplete.Trigger inputValue={searchParam} onChange={onChange} />
           <Autocomplete.Popover>
             <Autocomplete.Options options={fetchPromise} />
@@ -215,7 +227,10 @@ export const LazyGrouped: StoryObj<typeof Autocomplete> = {
 
     return (
       <div className="flex items-center h-[200px] w-[400px]">
-        <Autocomplete.Root>
+        <Autocomplete.Root
+          keyExtractor={(op: Option) => op.value}
+          labelExtractor={(op: Option) => op.label}
+        >
           <Autocomplete.Trigger inputValue={searchParam} onChange={onChange} />
           <Autocomplete.Popover>
             <Autocomplete.GroupedOptions

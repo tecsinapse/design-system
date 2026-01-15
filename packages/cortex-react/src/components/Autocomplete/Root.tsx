@@ -3,7 +3,11 @@ import { Popover } from '../Popover';
 import { AutocompleteContext } from './context';
 import { AutocompleteRootProps } from './types';
 
-export const AutocompleteRoot = ({ children }: AutocompleteRootProps) => {
+export const AutocompleteRoot = <T,>({
+  keyExtractor,
+  labelExtractor,
+  children,
+}: AutocompleteRootProps<T>) => {
   const [triggerWidth, setTriggerWidth] = useState<number>();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -14,6 +18,8 @@ export const AutocompleteRoot = ({ children }: AutocompleteRootProps) => {
         setOpen,
         triggerWidth,
         setTriggerWidth,
+        keyExtractor,
+        labelExtractor,
       }}
     >
       <Popover.Root

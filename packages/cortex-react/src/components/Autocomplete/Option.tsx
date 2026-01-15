@@ -1,21 +1,23 @@
 import { option as styleOption } from '@tecsinapse/cortex-core';
 import React, { useCallback, useContext } from 'react';
-import { AutocompleteOptionProps, Option } from './types';
-import { AutocompleteContext } from './context';
+import { AutocompleteOptionProps } from './types';
+import { AutocompleteContext, AutocompleteContextType } from './context';
 
-export const AutocompleteOption = ({
+export const AutocompleteOption = <T,>({
   option,
   onSelect,
   grouped = false,
-}: AutocompleteOptionProps) => {
-  const context = useContext(AutocompleteContext);
+}: AutocompleteOptionProps<T>) => {
+  const context = useContext<AutocompleteContextType<T> | undefined>(
+    AutocompleteContext
+  );
   if (!context)
     throw new Error('AutocompleteOptions must be used within AutocompleteRoot');
 
-  const { setOpen } = context;
+  const { setOpen, labelExtractor } = context;
 
   const handleSelect = useCallback(
-    (option: Option) => {
+    (option: T) => {
       setOpen(false);
       onSelect?.(option);
     },
@@ -31,7 +33,7 @@ export const AutocompleteOption = ({
       })}
       role="option"
     >
-      <span className="truncate flex-1">{option.label}</span>
+      <span className="truncate flex-1">{labelExtractor(option)}</span>
     </li>
   );
 };

@@ -5,7 +5,9 @@ export interface Option {
   value: string;
 }
 
-export interface AutocompleteRootProps {
+export interface AutocompleteRootProps<T> {
+  keyExtractor: (option: T) => string;
+  labelExtractor: (option: T) => string;
   children: ReactNode;
   className?: string;
 }
@@ -24,30 +26,32 @@ export interface AutocompletePopoverProps {
   className?: string;
 }
 
-export interface AutocompleteOptionsProps {
-  options?: Option[] | (() => Promise<Option[]>);
-  onSelect?: (option: Option) => void;
+export interface AutocompleteOptionsProps<T> {
+  keyExtractor?: (option: T) => string;
+  options?: T[] | (() => Promise<T[]>);
+  onSelect?: (option: T) => void;
   children?: ReactNode;
 }
 
-export interface AutocompleteGroupedOptionsProps {
-  options?: Map<string, Option[]> | (() => Promise<Map<string, Option[]>>);
+export interface AutocompleteGroupedOptionsProps<T> {
+  options?: Map<string, T[]> | (() => Promise<Map<string, T[]>>);
   groupedLabelExtractor: (value: string) => string;
-  onSelect?: (option: Option) => void;
+  onSelect?: (option: T) => void;
 }
 
-export interface AutocompleteOptionProps {
-  option: Option;
-  onSelect?: (option: Option) => void;
+export interface AutocompleteOptionProps<T> {
+  keyExtractor?: (option: T) => string;
+  option: T;
+  onSelect?: (option: T) => void;
   grouped?: boolean;
 }
 
-export interface AutocompleteProps {
+export interface AutocompleteProps<T> {
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  options: Option[] | (() => Promise<Option[]>);
-  onSelect?: (option: Option) => void;
+  options: T[] | (() => Promise<T[]>);
+  onSelect?: (option: T) => void;
   label?: string;
   placeholder?: string;
   disabled?: boolean;
