@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.5...@tecsinapse/cortex-react@2.2.0-beta.6) (2026-01-14)
+
+### Features
+
+* **autocomplete:** adicionando lazy nas opções normais e agrupadas + stories ([49b9425](https://github.com/tecsinapse/design-system/commit/49b94257c8f67c6dadd06b0198f94183121022c3))
+
 # [2.2.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.4...@tecsinapse/cortex-react@2.2.0-beta.5) (2026-01-14)
 
 ### Features
