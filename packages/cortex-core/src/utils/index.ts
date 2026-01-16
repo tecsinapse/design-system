@@ -9,16 +9,19 @@ export const updateThemeColors = (theme: Partial<typeof colors>): void => {
     Object.entries(colorShades).forEach(([shade, hexValue]) => {
       if (!hexValue) return;
       root.style.setProperty(`--color-${colorName}-${shade}`, hexValue);
-      (shade !== 'xlight' &&
+      if (
+        shade !== 'xlight' &&
         shade !== 'xdark' &&
         getContrast(
           root.style.getPropertyValue(`--color-text-${shade}`),
           hexValue
-        ) < 4.5) ??
+        ) < 4.5
+      ) {
         root.style.setProperty(
           `--color-text-${shade}`,
           readableColor(hexValue)
         );
+      }
     });
   });
 };
