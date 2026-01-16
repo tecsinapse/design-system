@@ -39,8 +39,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **uploader:** adicionando as classes do manager no cortex-core ([e123329](https://github.com/tecsinapse/design-system/commit/e12332998fbf9533a0382145d5c585d856775a4c))
-* **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
+- **uploader:** adicionando as classes do manager no cortex-core ([e123329](https://github.com/tecsinapse/design-system/commit/e12332998fbf9533a0382145d5c585d856775a4c))
+- **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
 
 ## [1.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.2-beta.3...@tecsinapse/cortex-core@1.1.3) (2025-08-12)
 
