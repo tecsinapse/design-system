@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.15.4-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3...@tecsinapse/cortex-react@1.15.4-beta.0) (2026-01-16)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 ## [1.15.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3-beta.0...@tecsinapse/cortex-react@1.15.3) (2025-11-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
