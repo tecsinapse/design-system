@@ -3,15 +3,93 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.5.16](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.16-beta.0...@tecsinapse/react-native-kit@3.5.16) (2025-11-24)
+## [4.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.12...@tecsinapse/react-native-kit@4.0.1) (2026-01-13)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
 
-## [3.5.16-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15...@tecsinapse/react-native-kit@3.5.16-beta.0) (2025-11-21)
+# [4.0.0-beta.12](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.11...@tecsinapse/react-native-kit@4.0.0-beta.12) (2026-01-13)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
 
-## [3.5.15](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.0...@tecsinapse/react-native-kit@3.5.15) (2025-11-10)
+# [4.0.0-beta.11](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.10...@tecsinapse/react-native-kit@4.0.0-beta.11) (2025-12-30)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0-beta.10](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.9...@tecsinapse/react-native-kit@4.0.0-beta.10) (2025-12-30)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0-beta.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.8...@tecsinapse/react-native-kit@4.0.0-beta.9) (2025-12-30)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.7...@tecsinapse/react-native-kit@4.0.0-beta.8) (2025-12-30)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.6...@tecsinapse/react-native-kit@4.0.0-beta.7) (2025-12-30)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.2...@tecsinapse/react-native-kit@4.0.0-beta.6) (2025-12-30)
+
+### Bug Fixes
+
+* ajustes para subir rn-playground no android. ([68cd323](https://github.com/tecsinapse/design-system/commit/68cd323a070b7c02c55fdf697f90d2edf26c037e))
+* version ([6531cec](https://github.com/tecsinapse/design-system/commit/6531cecb6988bcc053b11220771f0e4ed5620f14))
+
+# [4.0.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.1...@tecsinapse/react-native-kit@4.0.0-beta.2) (2025-12-05)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.0...@tecsinapse/react-native-kit@4.0.0-beta.1) (2025-12-05)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.0...@tecsinapse/react-native-kit@4.0.0) (2025-12-01)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+# [4.0.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.16...@tecsinapse/react-native-kit@4.0.0-beta.0) (2025-12-01)
+
+* Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
+
+### BREAKING CHANGES
+
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
+* chore!: upgrade dependencies to React 19 and Tailwind v4
+* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+
+## [3.5.15-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.7...@tecsinapse/react-native-kit@3.5.15-beta.8) (2025-11-26)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.5.15-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.6...@tecsinapse/react-native-kit@3.5.15-beta.7) (2025-11-26)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.5.15-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.5...@tecsinapse/react-native-kit@3.5.15-beta.6) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.5.15-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.4...@tecsinapse/react-native-kit@3.5.15-beta.5) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.5.15-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.3...@tecsinapse/react-native-kit@3.5.15-beta.4) (2025-11-14)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.5.15-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.2...@tecsinapse/react-native-kit@3.5.15-beta.3) (2025-11-11)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.5.15-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.1...@tecsinapse/react-native-kit@3.5.15-beta.2) (2025-11-11)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [3.5.15-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@3.5.15-beta.0...@tecsinapse/react-native-kit@3.5.15-beta.1) (2025-11-10)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
 

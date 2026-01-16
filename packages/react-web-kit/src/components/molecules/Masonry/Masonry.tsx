@@ -16,7 +16,7 @@ const Masonry = ({
   columns,
   spacingTop,
   spacingLeft,
-}: MasonryProps): JSX.Element => {
+}: MasonryProps): React.ReactElement => {
   const getColumns = () => {
     const columnsArray: React.ReactNode[][] = Array.from(
       { length: columns },

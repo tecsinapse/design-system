@@ -33,7 +33,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       style,
       delay = { open: 500, close: 0 },
     } = props;
-    const arrowRef = useRef(null);
+  const arrowRef = useRef<SVGSVGElement | null>(null);
 
     const {
       isOpen,
@@ -45,11 +45,11 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       context,
       floatingStyles,
       getFloatingProps,
-    } = useFloatingElement({ placement, arrowRef, trigger, delay });
+  } = useFloatingElement({ placement, arrowRef: arrowRef as unknown as React.RefObject<SVGSVGElement>, trigger, delay });
 
     return (
       <>
-        {cloneWithProps(children, triggerProps)}
+        {cloneWithProps(children, triggerProps as any)}
         {isOpen ? (
           <div
             ref={ref || refs.setFloating}

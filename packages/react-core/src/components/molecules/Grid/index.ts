@@ -2,7 +2,7 @@ import React from 'react';
 import { SpacingType } from '../../../types/defaults';
 
 export interface IGrid {
-  children: JSX.Element[];
+  children: React.ReactNode[];
   /** Layout should represent the multiplier of columns to fill the rows properly.
    * Example:
    * const layout = [

@@ -12,7 +12,7 @@ const Grid = ({
   style,
   spacing,
   ...rest
-}: IGridWeb): JSX.Element => {
+}: IGridWeb): React.ReactElement => {
   if (layout) {
     const flatLayout = layout.flat();
     return (
@@ -25,16 +25,19 @@ const Grid = ({
         }}
         {...rest}
       >
-        {React.Children.map(children, (child, index) => (
-          <GridItem
-            key={`child-${index}`}
-            columns={columns}
-            span={flatLayout[index]}
-            spacing={spacing}
-          >
-            {child}
-          </GridItem>
-        ))}
+        {React.Children.map(children, (child, index) => {
+          const content = React.isValidElement(child) ? child : <>{child}</>;
+          return (
+            <GridItem
+              key={`child-${index}`}
+              columns={columns}
+              span={flatLayout[index]}
+              spacing={spacing}
+            >
+              {content}
+            </GridItem>
+          );
+        })}
       </div>
     );
   }
@@ -50,12 +53,16 @@ const Grid = ({
       {...rest}
     >
       {React.Children.map(children, (child, index) => {
-        return React.cloneElement(child, {
-          ...child?.props,
-          columns,
-          spacing: child?.props.spacing ?? spacing,
-          key: `child-${index}`,
-        });
+        if (React.isValidElement(child)) {
+          const childEl = child as React.ReactElement & { props?: any };
+          return React.cloneElement(childEl, {
+            ...childEl.props,
+            columns,
+            spacing: childEl.props?.spacing ?? spacing,
+            key: `child-${index}`,
+          });
+        }
+        return child;
       })}
     </div>
   );

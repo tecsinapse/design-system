@@ -4,7 +4,10 @@
     "skipLibCheck": true,
     "declarationDir": "./dist/types",
     "rootDir": "./src",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "jsx": "react-jsx",
+    "types": ["react", "react-native"],
+    "lib": ["ESNext", "DOM"]
   },
   "include": ["./src"],
   "exclude": ["node_modules", "dist"]

@@ -7,6 +7,7 @@ export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
 }
 
+
 /** Avatar component, if src is not passed it
  * will render the first characters from the first
  * and last name passed in props.*/

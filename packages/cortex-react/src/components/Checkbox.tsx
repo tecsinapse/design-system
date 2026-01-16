@@ -1,7 +1,6 @@
 import { checkbox } from '@tecsinapse/cortex-core';
 import React, {
   HTMLAttributes,
-  forwardRef,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -11,18 +10,17 @@ import React, {
 export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   /** Sets checkbox indeterminate value */
   indeterminate?: boolean;
+  /** React ref */
+  ref?: React.Ref<CheckboxRef>;
 }
 
 export interface CheckboxRef extends HTMLAttributes<HTMLInputElement> {
   setIndeterminate: (value: boolean) => void;
 }
 
-export const Checkbox = forwardRef<
-  CheckboxRef,
-  CheckboxProps & HTMLAttributes<HTMLInputElement>
->((props: CheckboxProps & HTMLAttributes<HTMLInputElement>, ref) => {
+export const Checkbox = (props: CheckboxProps) => {
   const localRef = useRef<HTMLInputElement>(null);
-  const { className, indeterminate, ...rest } = props;
+  const { className, indeterminate, ref, ...rest } = props;
 
   const setIndeterminate = useCallback((value: boolean) => {
     if (localRef?.current) {
@@ -50,4 +48,4 @@ export const Checkbox = forwardRef<
       {...rest}
     />
   );
-});
+};

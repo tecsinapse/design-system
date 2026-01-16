@@ -3,13 +3,16 @@ import {
   styleLabelElement,
   toggle,
 } from '@tecsinapse/cortex-core';
-import React, { InputHTMLAttributes, forwardRef } from 'react';
+import React, { InputHTMLAttributes } from 'react';
+
+export interface ToggleProps extends InputHTMLAttributes<HTMLInputElement> {
+  /** React ref */
+  ref?: React.Ref<HTMLInputElement>;
+}
 
 /** Toggle component */
-export const Toggle = forwardRef<
-  HTMLInputElement,
-  InputHTMLAttributes<HTMLInputElement>
->((props: InputHTMLAttributes<HTMLInputElement>, ref) => {
+export const Toggle = (props: ToggleProps) => {
+  const { ref, ...rest } = props;
   return (
     <div
       className={'flex flex-row items-center gap-x-centi'}
@@ -21,10 +24,10 @@ export const Toggle = forwardRef<
           className={styleInputElement()}
           ref={ref}
           data-testid="toggle-input"
-          {...props}
+          {...rest}
         />
         <div className={toggle()} />
       </label>
     </div>
   );
-});
+};

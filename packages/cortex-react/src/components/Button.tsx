@@ -1,5 +1,5 @@
 import { button, ButtonVariants } from '@tecsinapse/cortex-core';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -35,14 +35,13 @@ export interface ButtonProps
   size?: ButtonVariants['size'];
   /** children content */
   children?: React.ReactNode;
+  /** React ref */
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
 /** Button component */
-export const Button = forwardRef<
-  HTMLButtonElement,
-  ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
->((props: ButtonProps, ref) => {
-  const { variants, intent, variant, size, children, className, ...rest } =
+export const Button = (props: ButtonProps) => {
+  const { variants, intent, variant, size, children, className, ref, ...rest } =
     props;
   return (
     <button
@@ -53,4 +52,4 @@ export const Button = forwardRef<
       {children}
     </button>
   );
-});
+};

@@ -36,7 +36,7 @@ export const DatePicker = <T extends SelectionType>({
   label,
   invalidDateLabel = 'Invalid date',
   ...rest
-}: WebDatePickerProps<T>): JSX.Element => {
+}: WebDatePickerProps<T>): React.ReactElement => {
   const [visible, setVisible] = useState(false);
   const [controlledInput, setControlledInput] = useState<string>();
   const show = useCallback(() => setVisible(true), []);
