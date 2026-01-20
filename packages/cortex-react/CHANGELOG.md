@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.1...@tecsinapse/cortex-react@2.1.0-beta.7) (2026-01-20)
+
+### Features
+
+* **ts-4497:** adicionando props de input e configs da lib de telefone nos componentes ([25e90b7](https://github.com/tecsinapse/design-system/commit/25e90b7a3f6173bbee0f5ec80d52ad7a4cd09e53))
+* **ts-4497:** ajustando classes de cor e z-index ([b13de51](https://github.com/tecsinapse/design-system/commit/b13de517163123f3d388fce9d8c309a0861a5d22))
+* **ts-4497:** ajustando condição com numero undefined ([88254bb](https://github.com/tecsinapse/design-system/commit/88254bb035b4c2feb21453d0e6a425dbb217bbf5))
+* **ts-4497:** ajustando condição para ts ([15a5544](https://github.com/tecsinapse/design-system/commit/15a554412bd2fb20d60c758c99df5e7ec0bc222b))
+* **ts-4497:** aprimorando search de países + adicionando dados no onChange + adicionando fallback de label ([f87a5e3](https://github.com/tecsinapse/design-system/commit/f87a5e3b19ec14277fb53e484b0446b9c676cd54))
+* **ts-4497:** atualizando deps + retirando json desnecessário ([db41468](https://github.com/tecsinapse/design-system/commit/db41468fd1148d1f424a71939556db131a6a4a33))
+* **ts-4497:** atualizando os componentes com a nova lógica + stories ([ff2c092](https://github.com/tecsinapse/design-system/commit/ff2c092af8a92d5dc448ce3f3f228edec82fc46f))
+* **ts-4497:** atualizando stories ([e4bd25b](https://github.com/tecsinapse/design-system/commit/e4bd25b247c6603551bb03c3181af339c77f01de))
+* **ts-4497:** atualizando stories ([871bb9c](https://github.com/tecsinapse/design-system/commit/871bb9ce285e5fcd604f6d70f995c3934e917ec9))
+* **ts-4497:** colocando os tipos de props em um arquivo separado + exportando ([b6fc90c](https://github.com/tecsinapse/design-system/commit/b6fc90cf9f6aac0d0c8209ded2eef289b630ff64))
+* **ts-4497:** começando a utilizar a lib react-international-phone + atualizando contexto ([4a90938](https://github.com/tecsinapse/design-system/commit/4a909384f4ab167db0380920e9c522f768a124f8))
+* **ts-4497:** corrigindo alguns estilos do input ([1118df2](https://github.com/tecsinapse/design-system/commit/1118df2c738d474aecf3c214eec1038a1fd34696))
+* **ts-4497:** corrigindo cor de fundo dos botões das opções ([4eaa3b8](https://github.com/tecsinapse/design-system/commit/4eaa3b8a859998289b18d37cbaafcfc5f37841a7))
+* **ts-4497:** criando componente de conteúdo do popover + contexto ([ccab314](https://github.com/tecsinapse/design-system/commit/ccab314cbc2659c88075c465ac96a6c2d1e451d0))
+* **ts-4497:** criando componente de phone input + stories ([f9f174d](https://github.com/tecsinapse/design-system/commit/f9f174d956ca33ba87861482f6345bb203f324e2))
+* **ts-4497:** criando componentes de opções + trigger do popover + exportando componente composto ([a044f3c](https://github.com/tecsinapse/design-system/commit/a044f3cb4d920f66f2d75f4f391ceede51bf2d26))
+* **ts-4497:** destacando opções no popover + criando componente de root ([d2595bc](https://github.com/tecsinapse/design-system/commit/d2595bcc228f5ed66e31391fe9d654a426e9ce1d))
+* **ts-4497:** exportando componente ([1498a8e](https://github.com/tecsinapse/design-system/commit/1498a8e7a45a2d0e81660b2026a65ab35acb0c38))
+* **ts-4497:** instalando a lib de formatação de telefones + adicionando json com países ([edbceb7](https://github.com/tecsinapse/design-system/commit/edbceb78f74bb4f592abe248ddedf79d1fd8aeee))
+* **ts-4497:** retirando componente antigo ([6f9639e](https://github.com/tecsinapse/design-system/commit/6f9639e8ac80b09a571fe1398f4e09ceb1d223ff))
+* **ts-4497:** substituindo div por botão nas opções de país ([8fd656a](https://github.com/tecsinapse/design-system/commit/8fd656a09621b3bf9ad0cd4b93dee7738cdc8f4a))
+* **ts-4497:** trocando link externo por biblioteca de bandeiras ([25e76a3](https://github.com/tecsinapse/design-system/commit/25e76a3c1984d7da4f8e113f975ea5eda0bdd3fd))
+
+# [2.1.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.5...@tecsinapse/cortex-react@2.1.0-beta.6) (2025-12-05)
+
+### Features
+
+* **ts-4497:** corrigindo cor de fundo dos botões das opções ([4eaa3b8](https://github.com/tecsinapse/design-system/commit/4eaa3b8a859998289b18d37cbaafcfc5f37841a7))
+
+# [2.1.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.4...@tecsinapse/cortex-react@2.1.0-beta.5) (2025-12-05)
+
+### Features
+
+* **ts-4497:** adicionando props de input e configs da lib de telefone nos componentes ([25e90b7](https://github.com/tecsinapse/design-system/commit/25e90b7a3f6173bbee0f5ec80d52ad7a4cd09e53))
+* **ts-4497:** colocando os tipos de props em um arquivo separado + exportando ([b6fc90c](https://github.com/tecsinapse/design-system/commit/b6fc90cf9f6aac0d0c8209ded2eef289b630ff64))
+
+# [2.1.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.3...@tecsinapse/cortex-react@2.1.0-beta.4) (2025-12-05)
+
+### Features
+
+* **ts-4497:** aprimorando search de países + adicionando dados no onChange + adicionando fallback de label ([f87a5e3](https://github.com/tecsinapse/design-system/commit/f87a5e3b19ec14277fb53e484b0446b9c676cd54))
+* **ts-4497:** atualizando stories ([e4bd25b](https://github.com/tecsinapse/design-system/commit/e4bd25b247c6603551bb03c3181af339c77f01de))
+* **ts-4497:** substituindo div por botão nas opções de país ([8fd656a](https://github.com/tecsinapse/design-system/commit/8fd656a09621b3bf9ad0cd4b93dee7738cdc8f4a))
+
+# [2.1.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.2...@tecsinapse/cortex-react@2.1.0-beta.3) (2025-12-04)
+
+### Features
+
+* **ts-4497:** corrigindo alguns estilos do input ([1118df2](https://github.com/tecsinapse/design-system/commit/1118df2c738d474aecf3c214eec1038a1fd34696))
+
+# [2.1.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.1...@tecsinapse/cortex-react@2.1.0-beta.2) (2025-12-04)
+
+### Features
+
+* **ts-4497:** exportando componente ([1498a8e](https://github.com/tecsinapse/design-system/commit/1498a8e7a45a2d0e81660b2026a65ab35acb0c38))
+
+# [2.1.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.0...@tecsinapse/cortex-react@2.1.0-beta.1) (2025-12-04)
+
+### Features
+
+* **ts-4497:** atualizando deps + retirando json desnecessário ([db41468](https://github.com/tecsinapse/design-system/commit/db41468fd1148d1f424a71939556db131a6a4a33))
+* **ts-4497:** atualizando os componentes com a nova lógica + stories ([ff2c092](https://github.com/tecsinapse/design-system/commit/ff2c092af8a92d5dc448ce3f3f228edec82fc46f))
+* **ts-4497:** começando a utilizar a lib react-international-phone + atualizando contexto ([4a90938](https://github.com/tecsinapse/design-system/commit/4a909384f4ab167db0380920e9c522f768a124f8))
+* **ts-4497:** retirando componente antigo ([6f9639e](https://github.com/tecsinapse/design-system/commit/6f9639e8ac80b09a571fe1398f4e09ceb1d223ff))
+
+# [2.1.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0...@tecsinapse/cortex-react@2.1.0-beta.0) (2025-12-04)
+
+### Features
+
+* **ts-4497:** ajustando condição com numero undefined ([88254bb](https://github.com/tecsinapse/design-system/commit/88254bb035b4c2feb21453d0e6a425dbb217bbf5))
+* **ts-4497:** ajustando condição para ts ([15a5544](https://github.com/tecsinapse/design-system/commit/15a554412bd2fb20d60c758c99df5e7ec0bc222b))
+* **ts-4497:** atualizando stories ([871bb9c](https://github.com/tecsinapse/design-system/commit/871bb9ce285e5fcd604f6d70f995c3934e917ec9))
+* **ts-4497:** criando componente de conteúdo do popover + contexto ([ccab314](https://github.com/tecsinapse/design-system/commit/ccab314cbc2659c88075c465ac96a6c2d1e451d0))
+* **ts-4497:** criando componente de phone input + stories ([f9f174d](https://github.com/tecsinapse/design-system/commit/f9f174d956ca33ba87861482f6345bb203f324e2))
+* **ts-4497:** criando componentes de opções + trigger do popover + exportando componente composto ([a044f3c](https://github.com/tecsinapse/design-system/commit/a044f3cb4d920f66f2d75f4f391ceede51bf2d26))
+* **ts-4497:** destacando opções no popover + criando componente de root ([d2595bc](https://github.com/tecsinapse/design-system/commit/d2595bcc228f5ed66e31391fe9d654a426e9ce1d))
+* **ts-4497:** instalando a lib de formatação de telefones + adicionando json com países ([edbceb7](https://github.com/tecsinapse/design-system/commit/edbceb78f74bb4f592abe248ddedf79d1fd8aeee))
 ## [2.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0-beta.2...@tecsinapse/cortex-react@2.0.1) (2026-01-13)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
