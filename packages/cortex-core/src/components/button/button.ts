@@ -1,7 +1,7 @@
 import { tv, VariantProps } from 'tailwind-variants';
 
 export const buttonStyles = tv({
-  base: 'text-base h-fit font-bold disabled:text-white enabled:active:scale-95 transform transition hover:text-white text-white cursor-pointer items-center flex justify-center',
+  base: 'text-base h-fit font-bold disabled:text-light enabled:active:scale-95 transform transition hover:text-light text-light cursor-pointer items-center flex justify-center',
   variants: {
     intent: {
       primary:

@@ -122,7 +122,7 @@ export const TimePickerSelector = ({
                 <span
                   className={clsx(
                     dayPeriodStyle,
-                    !isPM && 'bg-primary-medium text-white'
+                    !isPM && 'bg-primary-medium text-light'
                   )}
                 >
                   AM
@@ -135,7 +135,7 @@ export const TimePickerSelector = ({
                 <span
                   className={clsx(
                     dayPeriodStyle,
-                    isPM && 'bg-primary-medium text-white'
+                    isPM && 'bg-primary-medium text-light'
                   )}
                 >
                   PM
