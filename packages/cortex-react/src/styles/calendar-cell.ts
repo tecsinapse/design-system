@@ -13,17 +13,17 @@ export const calendarCell = tv({
     },
     isSelected: {
       true: {
-        cell: 'bg-primary-medium border-2 border-primary-medium text-white hover:bg-primary-medium',
+        cell: 'bg-primary-medium border-2 border-primary-medium text-light hover:bg-primary-medium',
       },
     },
     isSelectionStart: {
       true: {
-        cell: 'bg-primary-medium border-2 border-primary-medium rounded-r-none text-white',
+        cell: 'bg-primary-medium border-2 border-primary-medium rounded-r-none text-light',
       },
     },
     isSelectionEnd: {
       true: {
-        cell: 'bg-primary-medium border-2 border-primary-medium rounded-l-none text-white',
+        cell: 'bg-primary-medium border-2 border-primary-medium rounded-l-none text-light',
       },
     },
     inRange: {
