@@ -3,7 +3,14 @@ import { getContrast, readableColor } from 'polished';
 
 export const updateThemeColors = (theme: Partial<typeof colors>): void => {
   const root = document.documentElement;
-
+  console.log(
+    'Primary Medium: ',
+    root.style.getPropertyValue('--color-primary-medium')
+  );
+  console.log(
+    'Text Medium: ',
+    root.style.getPropertyValue('--color-text-medium')
+  );
   Object.entries(theme).forEach(([colorName, colorShades]) => {
     if (!colorShades) return;
     Object.entries(colorShades).forEach(([shade, hexValue]) => {
