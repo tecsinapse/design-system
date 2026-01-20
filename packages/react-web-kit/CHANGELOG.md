@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@4.0.0-beta.7...@tecsinapse/react-web-kit@4.0.1) (2026-01-13)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+# [4.0.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@4.0.0-beta.6...@tecsinapse/react-web-kit@4.0.0-beta.7) (2026-01-13)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+# [4.0.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@4.0.0-beta.2...@tecsinapse/react-web-kit@4.0.0-beta.6) (2025-12-30)
+
+### Bug Fixes
+
+* ajustes para subir rn-playground no android. ([68cd323](https://github.com/tecsinapse/design-system/commit/68cd323a070b7c02c55fdf697f90d2edf26c037e))
+* version ([6531cec](https://github.com/tecsinapse/design-system/commit/6531cecb6988bcc053b11220771f0e4ed5620f14))
+
+# [4.0.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@4.0.0-beta.1...@tecsinapse/react-web-kit@4.0.0-beta.2) (2025-12-05)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
+# [4.0.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@4.0.0-beta.0...@tecsinapse/react-web-kit@4.0.0-beta.1) (2025-12-05)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
 # [4.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@4.0.0-beta.0...@tecsinapse/react-web-kit@4.0.0) (2025-12-01)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

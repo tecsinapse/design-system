@@ -34,7 +34,7 @@ jobs:
 
       - name: setup npm
         run: |
-          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}"
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.DESIGN_SYSTEM_NPM_TOKEN }}"
 
       - name: version and publish
         env:

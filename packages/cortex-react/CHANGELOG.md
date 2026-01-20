@@ -57,6 +57,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **ts-4497:** criando componentes de opções + trigger do popover + exportando componente composto ([a044f3c](https://github.com/tecsinapse/design-system/commit/a044f3cb4d920f66f2d75f4f391ceede51bf2d26))
 * **ts-4497:** destacando opções no popover + criando componente de root ([d2595bc](https://github.com/tecsinapse/design-system/commit/d2595bcc228f5ed66e31391fe9d654a426e9ce1d))
 * **ts-4497:** instalando a lib de formatação de telefones + adicionando json com países ([edbceb7](https://github.com/tecsinapse/design-system/commit/edbceb78f74bb4f592abe248ddedf79d1fd8aeee))
+## [2.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0-beta.2...@tecsinapse/cortex-react@2.0.1) (2026-01-13)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.0.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0-beta.1...@tecsinapse/cortex-react@2.0.0-beta.2) (2025-12-05)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.0.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0-beta.0...@tecsinapse/cortex-react@2.0.0-beta.1) (2025-12-05)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
 
 # [2.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0-beta.0...@tecsinapse/cortex-react@2.0.0) (2025-12-01)
 
