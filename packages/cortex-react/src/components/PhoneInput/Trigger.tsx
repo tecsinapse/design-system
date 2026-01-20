@@ -1,8 +1,9 @@
 import { IoChevronDown } from 'react-icons/io5';
 import { Input, Popover } from '..';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { usePhoneContext } from './context';
 import { PhoneInputTriggerProps } from './types';
+import { FlagIcon } from './FlagIcon';
 
 export const PhoneInputTrigger = ({
   disabled = false,
@@ -41,10 +42,7 @@ export const PhoneInputTrigger = ({
             onClick={() => setIsOpen?.(true)}
           >
             {country ? (
-              <img
-                src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${country?.iso2.toUpperCase()}.svg`}
-                className="w-[25px]"
-              />
+              <FlagIcon countryCode={country.iso2} className="w-[25px]" />
             ) : null}
             <IoChevronDown className="h-full text-md" />
           </div>
