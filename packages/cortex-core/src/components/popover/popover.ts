@@ -8,6 +8,10 @@ export const popoverStyles = tv({
   base: 'border border-gray-200 bg-black text-white p-4 rounded-md shadow-lg z-50',
 });
 
+export const popoverItem = tv({
+  base: 'p-deca flex flex-row space-x-mili items-center hover:bg-primary-light hover:cursor-pointer'
+})
+
 export type popoverVariants = VariantProps<typeof popoverStyles> & ClassProp;
 
 /**
