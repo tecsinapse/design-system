@@ -1,5 +1,5 @@
 import { colors } from '../tokens/definitions';
-import { getContrast, readableColor } from 'polished';
+import { getContrast } from 'polished';
 
 export const updateThemeColors = (theme: Partial<typeof colors>): void => {
   const root = document.documentElement;
@@ -10,8 +10,10 @@ export const updateThemeColors = (theme: Partial<typeof colors>): void => {
       if (!hexValue) return;
       root.style.setProperty(`--color-${colorName}-${shade}`, hexValue);
       if (colorName === 'primary' && shade === 'medium') {
-        if (getContrast(hexValue, '#fff') < 4.5) {
-          root.style.setProperty('--color-text-light', readableColor(hexValue));
+        if (getContrast(hexValue, '#fff') < 2.5) {
+          root.style.setProperty('--color-light', '#000');
+        } else {
+          root.style.setProperty('--color-light', '#fff');
         }
       }
     });

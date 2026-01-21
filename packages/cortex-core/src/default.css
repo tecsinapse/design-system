@@ -128,10 +128,10 @@
   --color-border-success-light: #99E6C9;
 
   /* Text colors */
-  --color-text-light: #fff;
-  --color-text-medium: #85807a;
-  --color-text-dark: #353231;
-  --color-text-orange: #f89907;
+  --color-light: #fff;
+  --color-medium: #85807a;
+  --color-dark: #353231;
+  --color-orange: #f89907;
 
   /* Z-index */
   --z-index-default: 0;
