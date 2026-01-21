@@ -18,6 +18,11 @@ export default {
   ],
 } as Meta<typeof DefaultSnack>;
 
+const testPromise = () =>
+  new Promise(resolve => {
+    setTimeout(() => resolve('Finalizado'), 8000);
+  });
+
 export const Default: StoryObj<typeof DefaultSnack> = {
   args: {
     text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
@@ -28,9 +33,36 @@ export const Default: StoryObj<typeof DefaultSnack> = {
       <div className="h-[300px] w-[70vw]">
         <Button
           variants={{ intent: 'primary' }}
-          onClick={() => snackbar.show('default', args.text, { onDismiss: () => console.log('click')})}
+          onClick={() =>
+            snackbar.show('default', args.text, {
+              onDismiss: () => console.log('click'),
+            })
+          }
         >
           Show Snack default
+        </Button>
+      </div>
+    );
+  },
+};
+
+export const PromiseSnack: StoryObj<typeof DefaultSnack> = {
+  args: {
+    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  },
+  render: ({ text }) => {
+    const { snackbar } = useSnackbar();
+    return (
+      <div className="h-[300px] w-[70vw]">
+        <Button
+          variants={{ intent: 'primary' }}
+          onClick={async () =>
+            await snackbar.promise(testPromise(), {
+              loading: { message: text },
+            })
+          }
+        >
+          Show Snack promise
         </Button>
       </div>
     );
