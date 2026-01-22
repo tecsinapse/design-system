@@ -42,7 +42,7 @@ const colors = {
     xdark: '#58240e',
   },
   miscellaneous: {
-    body: '#f8f7f7',
+    body: 'var(--color-body, #f8f7f7)',
   },
 };
 
