@@ -15,7 +15,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* adicionado styles de popoverItem e pressableButton ([e751895](https://github.com/tecsinapse/design-system/commit/e751895f66d35bd1ecc9317f002ff09f2a460bd8))
+- adicionado styles de popoverItem e pressableButton ([e751895](https://github.com/tecsinapse/design-system/commit/e751895f66d35bd1ecc9317f002ff09f2a460bd8))
 
 # [2.0.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.0-beta.0...@tecsinapse/cortex-core@2.0.0) (2025-12-01)
 
@@ -23,21 +23,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0...@tecsinapse/cortex-core@2.0.0-beta.0) (2025-12-01)
 
-* Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
+- Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
 
 ### BREAKING CHANGES
 
-* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+- This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
 
-* chore!: upgrade dependencies to React 19 and Tailwind v4
-* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+- chore!: upgrade dependencies to React 19 and Tailwind v4
+- This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
 
 # [1.2.0-beta.15](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.14...@tecsinapse/cortex-core@1.2.0-beta.15) (2025-11-26)
 
 ### Features
 
-* **uploader:** adicionando as classes do manager no cortex-core ([e123329](https://github.com/tecsinapse/design-system/commit/e12332998fbf9533a0382145d5c585d856775a4c))
-* **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
+- **uploader:** adicionando as classes do manager no cortex-core ([e123329](https://github.com/tecsinapse/design-system/commit/e12332998fbf9533a0382145d5c585d856775a4c))
+- **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
 
 # [1.2.0-beta.14](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.13...@tecsinapse/cortex-core@1.2.0-beta.14) (2025-11-26)
 
@@ -67,7 +67,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* Atualiza para Tailwind CSS v4 e refatora tokens de design ([94ec961](https://github.com/tecsinapse/design-system/commit/94ec96134ae250bb915e2b6f66fa075a61b16ae5))
+- Atualiza para Tailwind CSS v4 e refatora tokens de design ([94ec961](https://github.com/tecsinapse/design-system/commit/94ec96134ae250bb915e2b6f66fa075a61b16ae5))
 
 ## [1.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.1.2-beta.3...@tecsinapse/cortex-core@1.1.3) (2025-08-12)
 

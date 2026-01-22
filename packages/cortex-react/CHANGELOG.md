@@ -11,8 +11,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* atualizando versão na mão pra gerar beta ([2dd1899](https://github.com/tecsinapse/design-system/commit/2dd189973b2102f9e7f7e50c5c8660fd8d81f834))
-* corrigindo tipagem do hook do ManagerContext e do useFileUpload ([044f00c](https://github.com/tecsinapse/design-system/commit/044f00c7c5f0bca3ae9f6fcdb562fc537c5084ab))
+- atualizando versão na mão pra gerar beta ([2dd1899](https://github.com/tecsinapse/design-system/commit/2dd189973b2102f9e7f7e50c5c8660fd8d81f834))
+- corrigindo tipagem do hook do ManagerContext e do useFileUpload ([044f00c](https://github.com/tecsinapse/design-system/commit/044f00c7c5f0bca3ae9f6fcdb562fc537c5084ab))
 
 ## [2.1.2-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.2-beta.0...@tecsinapse/cortex-react@2.1.2-beta.1) (2025-12-11)
 
