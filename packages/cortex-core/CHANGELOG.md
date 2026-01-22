@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0...@tecsinapse/cortex-core@1.3.0-beta.0) (2026-01-22)
+
+### Features
+
+* atualizando versões ([a43b9e7](https://github.com/tecsinapse/design-system/commit/a43b9e708fdb4c093d2799346da932045b75974f))
+* criando função inicial de darkmode ([80f8b81](https://github.com/tecsinapse/design-system/commit/80f8b81369867b44e7cab5f0a4b64d66998784ba))
+
 # [1.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.7...@tecsinapse/cortex-core@1.2.0) (2025-11-24)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
