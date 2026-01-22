@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.0-beta.0...@tecsinapse/cortex-react@1.16.0-beta.1) (2026-01-22)
+
+### Features
+
+* criando contexto de dark theme + stories de teste ([13b567b](https://github.com/tecsinapse/design-system/commit/13b567bd86e78f4fd5dbf8a96bc4dd0976e5761f))
+
 # [1.16.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3...@tecsinapse/cortex-react@1.16.0-beta.0) (2026-01-22)
 
 ### Features
