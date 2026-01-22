@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.1...@tecsinapse/react-native-kit@4.0.3-beta.0) (2026-01-22)
+
+### Bug Fixes
+
+* scrollview dentro de modais ([511e0ca](https://github.com/tecsinapse/design-system/commit/511e0ca7ef7d8ed45d6bc44f4fc5a57428ae0f9c))
+* scrollview dentro de modais ([8fb73b0](https://github.com/tecsinapse/design-system/commit/8fb73b04ad88e6cc5abbe52bd9b0d76125062eac))
+
 ## [4.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.0-beta.12...@tecsinapse/react-native-kit@4.0.1) (2026-01-13)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
