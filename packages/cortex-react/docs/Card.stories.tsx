@@ -11,7 +11,7 @@ export default {
 export const Default: StoryObj<typeof Card> = {
   args: {
     children: (
-      <div className={'w-[300px]'}>
+      <div className={'w-[300px] text-default'}>
         <p className={'text-h5 font-bold'}>Exemple card</p>
         <div className={'flex flex-row items-center gap-x-deca mt-deca'}>
           <Button variants={{ variant: 'outline', size: 'small' }}>
@@ -23,6 +23,10 @@ export const Default: StoryObj<typeof Card> = {
     ),
   },
   render: args => {
-    return <Card>{args.children}</Card>;
+    return (
+      <div className="w-[400px] h-[300px] bg-[#0E0E0E] flex justify-center items-center">
+        <Card>{args.children}</Card>
+      </div>
+    );
   },
 };
