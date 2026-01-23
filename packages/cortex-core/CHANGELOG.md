@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.2...@tecsinapse/cortex-core@1.3.0-beta.3) (2026-01-23)
+
+### Features
+
+* criando token de cor variavel para conteudo + aplicando na menubar ([7dc6d44](https://github.com/tecsinapse/design-system/commit/7dc6d44fe746c928a0e5fcb2ddab576a7a2d2ddd))
+
 # [1.3.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.1...@tecsinapse/cortex-core@1.3.0-beta.2) (2026-01-23)
 
 ### Features
