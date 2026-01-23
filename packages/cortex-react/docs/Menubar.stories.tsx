@@ -37,7 +37,7 @@ export const Default: StoryObj<typeof Menubar.Root> = {
               className={'w-auto h-giga mx-kilo'}
             />
           </Menubar.HeaderLeft>
-          <Menubar.Search className="mr-kilo hidden sm:flex" />
+          <Menubar.Search className="mr-kilo hidden sm:flex text-default" />
           <Menubar.HeaderRight>
             <Tooltip
               text={

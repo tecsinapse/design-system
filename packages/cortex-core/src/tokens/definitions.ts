@@ -1,3 +1,22 @@
+const darkColors = {
+  body: '#1e1e1e',
+  text: {
+    default: '#fff',
+  },
+  surface: {
+    base: '#1e1e1e',
+    raised: '#252526',
+    overlay: '#2d2d30',
+  },
+  content: {
+    primary: '#f8f7f7',
+    secondary: '#c2bfbc',
+    tertiary: '#85807a',
+    disabled: '#5d5955',
+    inverse: '#353231',
+  },
+};
+
 const colors = {
   primary: {
     xlight: 'var(--color-primary-xlight, #fef9f0)',
@@ -38,6 +57,13 @@ const colors = {
     base: 'var(--color-surface-base, #f8f7f7)',
     raised: 'var(--color-surface-raised, #fbfbfb)',
     overlay: 'var(--color-surface-overlay, #ffffff)',
+  },
+  content: {
+    primary: 'var(--color-content-primary, #353231)',
+    secondary: 'var(--color-content-secondary, #5d5955)',
+    tertiary: 'var(--color-content-tertiary, #85807a)',
+    disabled: 'var(--color-content-disabled, #c2bfbc)',
+    inverse: 'var(--color-content-inverse, #ffffff)',
   },
   error: {
     xlight: '#fdf3f2',
@@ -170,6 +196,7 @@ export {
   borderWidth,
   boxShadow,
   colors,
+  darkColors,
   fontFamily,
   fontSize,
   spacing,
