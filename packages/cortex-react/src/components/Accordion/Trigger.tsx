@@ -55,11 +55,11 @@ export const AccordionTrigger = ({
         className={clsx(
           'rounded-mili border border-secondary-light flex align-center justify-center p-micro',
           {
-            'absolute -translate-x-micro translate-y-deca bg-white':
+            'absolute -translate-x-micro translate-y-deca bg-surface-overlay':
               floating && direction === 'horizontal',
           },
           {
-            'absolute -translate-y-micro translate-x-deca bg-white':
+            'absolute -translate-y-micro translate-x-deca bg-surface-overlay':
               floating && direction === 'vertical',
           },
           className

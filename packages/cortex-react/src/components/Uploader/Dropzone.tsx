@@ -19,7 +19,7 @@ export const Dropzone = ({
     <div
       {...getRootProps()}
       className={clsx(
-        'bg-white w-full border-dashed border-2 p-deca flex flex-col justify-center rounded-mili overflow-auto h-[18rem]',
+        'bg-surface-overlay w-full border-dashed border-2 p-deca flex flex-col justify-center rounded-mili overflow-auto h-[18rem]',
         {
           'border-success-medium bg-gray-100': isDragActive,
         }

@@ -11,13 +11,15 @@ export default {
 export const Default: StoryObj<ColorPickerType> = {
   args: {
     defaultValue: '#f89907',
-    disabled: true,
+    disabled: false,
   },
   render: args => (
-    <ColorPicker.Root
-      defaultValue={args.defaultValue}
-      disabled={args.disabled}
-    />
+    <div className="bg-[#0E0E0E] w-[300px] h-[300px] flex justify-center items-center">
+      <ColorPicker.Root
+        defaultValue={args.defaultValue}
+        disabled={args.disabled}
+      />
+    </div>
   ),
 };
 

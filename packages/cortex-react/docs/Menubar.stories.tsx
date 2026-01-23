@@ -27,7 +27,7 @@ export default {
 
 export const Default: StoryObj<typeof Menubar.Root> = {
   render: () => (
-    <div className="h-[800px]">
+    <div className="h-[800px] bg-[#1e1e1e]">
       <Menubar.Root>
         <Menubar.Header>
           <Menubar.HeaderLeft>

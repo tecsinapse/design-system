@@ -8,7 +8,7 @@ export const Files = <T,>({
   uploadProgressText = 'Upload(s) in progress',
 }: FilesProps<T>) => {
   return (
-    <div className="bg-white w-full border-2 p-deca flex flex-col overflow-y-auto rounded-mili h-[18rem]">
+    <div className="bg-surface-overlay w-full border-2 p-deca flex flex-col overflow-y-auto rounded-mili h-[18rem]">
       <div className="flex gap-mili items-center mb-deca">
         <div className="flex items-center justify-center w-deca h-deca bg-primary-medium rounded-full text-micro text-white">
           {`${files.length}`}
