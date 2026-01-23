@@ -34,6 +34,11 @@ const colors = {
     dark: '#cc9f00',
     xdark: '#665000',
   },
+  surface: {
+    base: 'var(--color-surface-base, #f8f7f7)',
+    raised: 'var(--color-surface-raised, #fbfbfb)',
+    overlay: 'var(--color-surface-overlay, #ffffff)',
+  },
   error: {
     xlight: '#fdf3f2',
     light: '#ee9891',
@@ -138,6 +143,7 @@ const fontFamily = {
 };
 
 const textColor = {
+  default: 'var(--color-text-default, #000)',
   light: '#fff',
   medium: '#85807a',
   dark: '#353231',

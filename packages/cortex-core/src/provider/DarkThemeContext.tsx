@@ -24,8 +24,16 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
     if (theme === 'dark') {
       style.setProperty('--color-body', '#1e1e1e');
+      style.setProperty('--color-text-default', '#fff');
+      style.setProperty('--color-surface-base', '#1e1e1e');
+      style.setProperty('--color-surface-raised', '#252526');
+      style.setProperty('--color-surface-overlay', '#2d2d30');
     } else {
       style.setProperty('--color-body', '#f8f7f7');
+      style.setProperty('--color-text-default', '#000');
+      style.setProperty('--color-surface-base', '#f8f7f7');
+      style.setProperty('--color-surface-raised', '#fbfbfb');
+      style.setProperty('--color-surface-overlay', '#ffffff');
     }
   }, [theme]);
 
