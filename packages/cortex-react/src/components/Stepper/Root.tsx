@@ -70,7 +70,7 @@ export const Root = ({
   return (
     <div
       className={clsx(
-        'flex w-full space-x-2 bg-white p-4 pb-2 rounded-mili',
+        'flex w-full space-x-2 bg-surface-overlay p-4 pb-2 rounded-mili',
         className
       )}
     >

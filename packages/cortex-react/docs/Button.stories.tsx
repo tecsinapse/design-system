@@ -3,7 +3,7 @@ import React from 'react';
 import { FaUser } from 'react-icons/fa';
 import { Button } from '../src';
 import { FaMoon, FaSun } from 'react-icons/fa6';
-import { colors, ThemeProvider, useDarkTheme } from '@tecsinapse/cortex-core';
+import { ThemeProvider, useDarkTheme } from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Cortex/Button',

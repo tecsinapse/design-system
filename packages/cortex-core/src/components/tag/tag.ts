@@ -20,7 +20,7 @@ const tagStyles = myTV({
       success: 'bg-success-medium text-white',
       warning: 'bg-warning-medium text-white',
       error: 'bg-error-medium text-white',
-      white: 'bg-white text-secondary-medium',
+      white: 'bg-surface-overlay text-secondary-medium',
     },
   },
   defaultVariants: {

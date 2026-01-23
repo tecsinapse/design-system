@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
 export const inputBaseStyles = tv({
-  base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 bg-white focus-within:outline focus-within:outline-1 text-base font-bold items-center border rounded-mili has-[:disabled]:bg-transparent has-[:disabled]:border-secondary-light has-[:disabled]:text-secondary-light',
+  base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 bg-surface-overlay focus-within:outline focus-within:outline-1 text-base font-bold items-center border rounded-mili has-[:disabled]:bg-transparent has-[:disabled]:border-content-minimal has-[:disabled]:text-content-minimal',
   variants: {
     intent: {
       default: [
