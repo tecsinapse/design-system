@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.1...@tecsinapse/cortex-core@1.3.0-beta.2) (2026-01-23)
+
+### Features
+
+* adaptando o bg de todos os componentes para o novo padrão ([05219cb](https://github.com/tecsinapse/design-system/commit/05219cbe47808e3fdc7c70e0eb600e0123db188a))
+* criando intent de surface e setando ele de acordo com o tema ([b097336](https://github.com/tecsinapse/design-system/commit/b0973362ac18baf01c82e89d2aaa9ac193ede4ad))
+* criando stories para testar o darkmode + adaptando o card ([cac52d2](https://github.com/tecsinapse/design-system/commit/cac52d269d0ccdf8def7283ab00d2f9cdf32c4f3))
+
 # [1.3.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.0...@tecsinapse/cortex-core@1.3.0-beta.1) (2026-01-22)
 
 ### Features
