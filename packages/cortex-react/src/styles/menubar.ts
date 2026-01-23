@@ -22,7 +22,7 @@ export const menubar = tv({
 export const mostUsed = tv({
   slots: {
     container: 'mb-kilo',
-    label: 'font-bold mb-centi',
+    label: 'font-bold mb-centi text-default',
     containerList: 'gap-x-kilo flex flex-row',
   },
 });
@@ -31,14 +31,14 @@ export const mostUsedItem = tv({
   slots: {
     container: 'flex-1 py-mili',
     title: 'text-primary-medium font-bold text-base',
-    category: 'text-secondary-medium text-label',
+    category: 'text-content-tertiary text-label',
   },
 });
 
 export const item = tv({
   slots: {
     container:
-      'flex flex-row gap-x-deca items-center text-secondary-dark hover:cursor-pointer text-base',
+      'flex flex-row gap-x-deca items-center text-content-secondary hover:cursor-pointer text-base',
     textBehavior: 'hover:text-primary-medium',
     icon: 'text-primary-medium hover:cursor-pointer',
   },
@@ -46,8 +46,8 @@ export const item = tv({
 
 export const category = tv({
   slots: {
-    text: 'mb-mili font-bold',
-    hr: 'mb-mili border-0 h-px bg-secondary-light',
+    text: 'mb-mili font-bold text-default',
+    hr: 'mb-mili border-0 h-px bg-content-primary',
     container: 'flex flex-col gap-y-mili',
   },
 });
@@ -55,7 +55,7 @@ export const category = tv({
 export const subItem = tv({
   slots: {
     container:
-      'pl-deca text-sub border-l-[1px] border-primary-medium text-secondary-dark hover:text-primary-medium cursor-pointer',
+      'pl-deca text-sub border-l-[1px] border-primary-medium text-content-secondary hover:text-primary-medium cursor-pointer',
   },
 });
 

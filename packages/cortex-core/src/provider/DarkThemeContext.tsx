@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { colors, darkColors, textColor } from '../tokens/definitions';
 
 type Theme = 'light' | 'dark';
 
@@ -23,17 +24,36 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const style = document.documentElement.style;
 
     if (theme === 'dark') {
-      style.setProperty('--color-body', '#1e1e1e');
-      style.setProperty('--color-text-default', '#fff');
-      style.setProperty('--color-surface-base', '#1e1e1e');
-      style.setProperty('--color-surface-raised', '#252526');
-      style.setProperty('--color-surface-overlay', '#2d2d30');
+      style.setProperty('--color-body', darkColors.body);
+      style.setProperty('--color-text-default', darkColors.text.default);
+      style.setProperty('--color-surface-base', darkColors.surface.base);
+      style.setProperty('--color-surface-raised', darkColors.surface.raised);
+      style.setProperty('--color-surface-overlay', darkColors.surface.overlay);
+      style.setProperty('--color-content-primary', darkColors.content.primary);
+      style.setProperty(
+        '--color-content-secondary',
+        darkColors.content.secondary
+      );
+      style.setProperty(
+        '--color-content-tertiary',
+        darkColors.content.tertiary
+      );
+      style.setProperty(
+        '--color-content-disabled',
+        darkColors.content.disabled
+      );
+      style.setProperty('--color-content-inverse', darkColors.content.inverse);
     } else {
-      style.setProperty('--color-body', '#f8f7f7');
-      style.setProperty('--color-text-default', '#000');
-      style.setProperty('--color-surface-base', '#f8f7f7');
-      style.setProperty('--color-surface-raised', '#fbfbfb');
-      style.setProperty('--color-surface-overlay', '#ffffff');
+      style.setProperty('--color-body', colors.miscellaneous.body);
+      style.setProperty('--color-text-default', textColor.default);
+      style.setProperty('--color-surface-base', colors.surface.base);
+      style.setProperty('--color-surface-raised', colors.surface.raised);
+      style.setProperty('--color-surface-overlay', colors.surface.overlay);
+      style.setProperty('--color-content-primary', colors.content.primary);
+      style.setProperty('--color-content-secondary', colors.content.secondary);
+      style.setProperty('--color-content-tertiary', colors.content.tertiary);
+      style.setProperty('--color-content-disabled', colors.content.disabled);
+      style.setProperty('--color-content-inverse', colors.content.inverse);
     }
   }, [theme]);
 
