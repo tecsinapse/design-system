@@ -1,22 +1,3 @@
-const darkColors = {
-  body: '#1e1e1e',
-  text: {
-    default: '#fff',
-  },
-  surface: {
-    base: '#1e1e1e',
-    raised: '#252526',
-    overlay: '#2d2d30',
-  },
-  content: {
-    high: '#f8f7f7',
-    medium: '#c2bfbc',
-    low: '#85807a',
-    minimal: '#5d5955',
-    inverse: '#353231',
-  },
-};
-
 const colors = {
   primary: {
     xlight: 'var(--color-primary-xlight, #fef9f0)',
@@ -169,7 +150,8 @@ const fontFamily = {
 };
 
 const textColor = {
-  default: 'var(--color-text-default, #000)',
+  default: 'var(--color-default, #000)',
+  inverse: 'var(--color-inverse, #fff)',
   light: '#fff',
   medium: '#85807a',
   dark: '#353231',

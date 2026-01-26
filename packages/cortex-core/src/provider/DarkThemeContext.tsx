@@ -5,60 +5,35 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { colors, darkColors, textColor } from '../tokens/definitions';
 
 type Theme = 'light' | 'dark';
 
-interface ThemeContextValue {
+interface DarkThemeContextValue {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextValue | null>(null);
+const DarkThemeContext = createContext<DarkThemeContextValue | null>(null);
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    const style = document.documentElement.style;
-
-    if (theme === 'dark') {
-      style.setProperty('--color-body', darkColors.body);
-      style.setProperty('--color-default', darkColors.text.default);
-      style.setProperty('--color-surface-base', darkColors.surface.base);
-      style.setProperty('--color-surface-raised', darkColors.surface.raised);
-      style.setProperty('--color-surface-overlay', darkColors.surface.overlay);
-      style.setProperty('--color-content-high', darkColors.content.high);
-      style.setProperty('--color-content-medium', darkColors.content.medium);
-      style.setProperty('--color-content-low', darkColors.content.low);
-      style.setProperty('--color-content-minimal', darkColors.content.minimal);
-      style.setProperty('--color-content-inverse', darkColors.content.inverse);
-    } else {
-      style.setProperty('--color-body', colors.miscellaneous.body);
-      style.setProperty('--color-default', textColor.default);
-      style.setProperty('--color-surface-base', colors.surface.base);
-      style.setProperty('--color-surface-raised', colors.surface.raised);
-      style.setProperty('--color-surface-overlay', colors.surface.overlay);
-      style.setProperty('--color-content-high', colors.content.high);
-      style.setProperty('--color-content-medium', colors.content.medium);
-      style.setProperty('--color-content-low', colors.content.low);
-      style.setProperty('--color-content-minimal', colors.content.minimal);
-      style.setProperty('--color-content-inverse', colors.content.inverse);
-    }
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <DarkThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
-    </ThemeContext.Provider>
+    </DarkThemeContext.Provider>
   );
 };
 
 export const useDarkTheme = () => {
-  const ctx = useContext(ThemeContext);
+  const ctx = useContext(DarkThemeContext);
   if (!ctx) throw new Error('useTheme must be used inside ThemeProvider');
   return ctx;
 };

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { Button, Card } from '../src';
-import { ThemeProvider, useDarkTheme } from '@tecsinapse/cortex-core';
+import { DarkThemeProvider, useDarkTheme } from '@tecsinapse/cortex-core';
 import { useMemo } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa6';
 import { IoMdArrowForward } from 'react-icons/io';
@@ -9,9 +9,9 @@ export default {
   title: 'Cortex/Dark Mode',
   decorators: [
     Story => (
-      <ThemeProvider>
+      <DarkThemeProvider>
         <Story />
-      </ThemeProvider>
+      </DarkThemeProvider>
     ),
   ],
 } as Meta;
@@ -19,7 +19,7 @@ export default {
 export const Default: StoryObj = {
   args: {
     children: (
-      <div className={'w-[300px] text-default'}>
+      <div className={'w-[300px]'}>
         <p className={'text-h5 font-bold'}>Exemple card</p>
         <div className={'flex flex-row items-center gap-x-deca mt-deca'}>
           <Button variants={{ variant: 'outline', size: 'small' }}>

@@ -2,7 +2,7 @@ import { tv } from 'tailwind-variants';
 
 export const calendarCell = tv({
   slots: {
-    cell: 'text-center rounded-mili text-black hover:bg-primary-light',
+    cell: 'text-center rounded-mili hover:bg-primary-light',
     button: 'flex aspect-square items-center justify-center',
   },
   variants: {
@@ -33,7 +33,7 @@ export const calendarCell = tv({
     },
     isDisabled: {
       true: {
-        cell: 'text-content-minimal cursor-default  hover:bg-white-500',
+        cell: 'text-content-minimal cursor-default  hover:bg-surface-overlay',
         button: 'cursor-default',
       },
     },

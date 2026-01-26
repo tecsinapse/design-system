@@ -1,5 +1,47 @@
 @import "tailwindcss";
 
+:root {
+  /* Body */
+  --color-body: #f8f7f7;
+
+  /* Text */
+  --color-default: #000;
+  --color-inverse: #fff;
+  
+  /* Surface */
+  --color-surface-base: #f8f7f7;
+  --color-surface-raised: #fbfbfb;
+  --color-surface-overlay: #ffffff;
+  
+  /* Content */
+  --color-content-high: #353231;
+  --color-content-medium: #5d5955;
+  --color-content-low: #85807a;
+  --color-content-minimal: #c2bfbc;
+  --color-content-inverse: #ffffff;
+}
+
+:root[data-theme='dark'] {
+  /* Body */
+  --color-body: #1e1e1e;
+
+  /* Text */
+  --color-default: #fff;
+  --color-inverse: #000;
+
+  /* Surface */
+  --color-surface-base: #1e1e1e;
+  --color-surface-raised: #252526;
+  --color-surface-overlay: #2d2d30;
+
+  /* Content */
+  --color-content-high: #f8f7f7;
+  --color-content-medium: #c2bfbc;
+  --color-content-low: #85807a;
+  --color-content-minimal: #5d5955;
+  --color-content-inverse: #353231;
+}
+
 @theme {
   /* Colors - primary */
   --color-primary-xlight: #fef9f0;
@@ -42,19 +84,19 @@
   --color-error-xdark: #58240e;
 
   /* Colors - content */
-  --color-content-high: #353231;
-  --color-content-medium: #5d5955;
-  --color-content-low: #85807a;
-  --color-content-minimal: #c2bfbc;
-  --color-content-inverse: #ffffff;
+  --color-content-high: var(--color-content-high);
+  --color-content-medium: var(--color-content-medium);
+  --color-content-low: var(--color-content-low);
+  --color-content-minimal: var(--color-content-minimal);
+  --color-content-inverse: var(--color-content-inverse);
 
   /* Colors - surface */
-  --color-surface-base: #f8f7f7;
-  --color-surface-raised: #fbfbfb;
-  --color-surface-overlay: #ffffff;
+  --color-surface-base: var(--color-surface-base);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-surface-overlay: var(--color-surface-overlay);
 
   /* Misc */
-  --color-body: #f8f7f7;
+  --color-body: var(--color-body);
 
   /* Spacing */
   --spacing-nano: 0.125rem;
@@ -140,7 +182,8 @@
   --color-border-success-light: #99E6C9;
 
   /* Text colors */
-  --color-default: #000;
+  --color-default: var(--color-default);
+  --color-inverse: var(--color-inverse);
   --color-light: #fff;
   --color-medium: #85807a;
   --color-dark: #353231;
