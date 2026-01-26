@@ -12,6 +12,7 @@
   --color-surface-base: #f8f7f7;
   --color-surface-raised: #fbfbfb;
   --color-surface-overlay: #ffffff;
+  --color-surface-inverse: #000;
   
   /* Content */
   --color-content-high: #353231;
@@ -33,6 +34,7 @@
   --color-surface-base: #1e1e1e;
   --color-surface-raised: #252526;
   --color-surface-overlay: #2d2d30;
+  --color-surface-inverse: #fff;
 
   /* Content */
   --color-content-high: #f8f7f7;
@@ -94,6 +96,7 @@
   --color-surface-base: var(--color-surface-base);
   --color-surface-raised: var(--color-surface-raised);
   --color-surface-overlay: var(--color-surface-overlay);
+  --color-surface-inverse: var(--color-surface-inverse);
 
   /* Misc */
   --color-body: var(--color-body);

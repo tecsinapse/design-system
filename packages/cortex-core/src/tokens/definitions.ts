@@ -178,7 +178,6 @@ export {
   borderWidth,
   boxShadow,
   colors,
-  darkColors,
   fontFamily,
   fontSize,
   spacing,
