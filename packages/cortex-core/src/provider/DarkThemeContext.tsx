@@ -29,19 +29,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       style.setProperty('--color-surface-base', darkColors.surface.base);
       style.setProperty('--color-surface-raised', darkColors.surface.raised);
       style.setProperty('--color-surface-overlay', darkColors.surface.overlay);
-      style.setProperty('--color-content-primary', darkColors.content.primary);
-      style.setProperty(
-        '--color-content-secondary',
-        darkColors.content.secondary
-      );
-      style.setProperty(
-        '--color-content-tertiary',
-        darkColors.content.tertiary
-      );
-      style.setProperty(
-        '--color-content-disabled',
-        darkColors.content.disabled
-      );
+      style.setProperty('--color-content-high', darkColors.content.high);
+      style.setProperty('--color-content-medium', darkColors.content.medium);
+      style.setProperty('--color-content-low', darkColors.content.low);
+      style.setProperty('--color-content-minimal', darkColors.content.minimal);
       style.setProperty('--color-content-inverse', darkColors.content.inverse);
     } else {
       style.setProperty('--color-body', colors.miscellaneous.body);
@@ -49,10 +40,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       style.setProperty('--color-surface-base', colors.surface.base);
       style.setProperty('--color-surface-raised', colors.surface.raised);
       style.setProperty('--color-surface-overlay', colors.surface.overlay);
-      style.setProperty('--color-content-primary', colors.content.primary);
-      style.setProperty('--color-content-secondary', colors.content.secondary);
-      style.setProperty('--color-content-tertiary', colors.content.tertiary);
-      style.setProperty('--color-content-disabled', colors.content.disabled);
+      style.setProperty('--color-content-high', colors.content.high);
+      style.setProperty('--color-content-medium', colors.content.medium);
+      style.setProperty('--color-content-low', colors.content.low);
+      style.setProperty('--color-content-minimal', colors.content.minimal);
       style.setProperty('--color-content-inverse', colors.content.inverse);
     }
   }, [theme]);

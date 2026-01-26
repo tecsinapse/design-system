@@ -9,10 +9,10 @@ const darkColors = {
     overlay: '#2d2d30',
   },
   content: {
-    primary: '#f8f7f7',
-    secondary: '#c2bfbc',
-    tertiary: '#85807a',
-    disabled: '#5d5955',
+    high: '#f8f7f7',
+    medium: '#c2bfbc',
+    low: '#85807a',
+    minimal: '#5d5955',
     inverse: '#353231',
   },
 };
@@ -59,10 +59,10 @@ const colors = {
     overlay: 'var(--color-surface-overlay, #ffffff)',
   },
   content: {
-    primary: 'var(--color-content-primary, #353231)',
-    secondary: 'var(--color-content-secondary, #5d5955)',
-    tertiary: 'var(--color-content-tertiary, #85807a)',
-    disabled: 'var(--color-content-disabled, #c2bfbc)',
+    high: 'var(--color-content-high, #353231)',
+    medium: 'var(--color-content-medium, #5d5955)',
+    low: 'var(--color-content-low, #85807a)',
+    minimal: 'var(--color-content-minimal, #c2bfbc)',
     inverse: 'var(--color-content-inverse, #ffffff)',
   },
   error: {
