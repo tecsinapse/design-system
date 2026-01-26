@@ -27,7 +27,7 @@ export const Dropzone = ({
     >
       <input {...getInputProps()} />
       <div className="flex flex-col justify-center text-center items-center">
-        <div>
+        <div className="flex flex-col items-center">
           <HiOutlineCloudArrowUp
             className="text-primary-medium mb-nano"
             size={35}
