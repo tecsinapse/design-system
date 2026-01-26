@@ -5,7 +5,7 @@ export const popoverContainer = tv({
 });
 
 export const popoverStyles = tv({
-  base: 'border border-gray-200 bg-black text-white p-4 rounded-md shadow-lg z-50',
+  base: 'border border-gray-200 bg-surface-inverse text-white p-4 rounded-md shadow-lg z-50',
 });
 
 export type popoverVariants = VariantProps<typeof popoverStyles> & ClassProp;

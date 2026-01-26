@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import { colors, darkColors, textColor } from '../tokens/definitions';
 
 type Theme = 'light' | 'dark';
 
@@ -28,6 +29,7 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
       style.setProperty('--color-surface-base', darkColors.surface.base);
       style.setProperty('--color-surface-raised', darkColors.surface.raised);
       style.setProperty('--color-surface-overlay', darkColors.surface.overlay);
+      style.setProperty('--color-surface-inverse', darkColors.surface.inverse);
       style.setProperty('--color-content-high', darkColors.content.high);
       style.setProperty('--color-content-medium', darkColors.content.medium);
       style.setProperty('--color-content-low', darkColors.content.low);
@@ -39,6 +41,7 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
       style.setProperty('--color-surface-base', colors.surface.base);
       style.setProperty('--color-surface-raised', colors.surface.raised);
       style.setProperty('--color-surface-overlay', colors.surface.overlay);
+      style.setProperty('--color-surface-inverse', colors.surface.inverse);
       style.setProperty('--color-content-high', colors.content.high);
       style.setProperty('--color-content-medium', colors.content.medium);
       style.setProperty('--color-content-low', colors.content.low);

@@ -7,6 +7,7 @@ const darkColors = {
     base: '#1e1e1e',
     raised: '#252526',
     overlay: '#2d2d30',
+    inverse: '#fff',
   },
   content: {
     high: '#f8f7f7',
@@ -57,6 +58,7 @@ const colors = {
     base: 'var(--color-surface-base, #f8f7f7)',
     raised: 'var(--color-surface-raised, #fbfbfb)',
     overlay: 'var(--color-surface-overlay, #ffffff)',
+    inverse: 'var(--color-surface-inverse, #000000)',
   },
   content: {
     high: 'var(--color-content-high, #353231)',
