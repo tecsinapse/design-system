@@ -27,7 +27,7 @@ export default {
 
 export const Default: StoryObj<typeof Menubar.Root> = {
   render: () => (
-    <div className="h-[800px] bg-[#1e1e1e]">
+    <div className="h-[800px]">
       <Menubar.Root>
         <Menubar.Header>
           <Menubar.HeaderLeft>
@@ -37,7 +37,7 @@ export const Default: StoryObj<typeof Menubar.Root> = {
               className={'w-auto h-giga mx-kilo'}
             />
           </Menubar.HeaderLeft>
-          <Menubar.Search className="mr-kilo hidden sm:flex text-default" />
+          <Menubar.Search className="mr-kilo hidden sm:flex" />
           <Menubar.HeaderRight>
             <Tooltip
               text={

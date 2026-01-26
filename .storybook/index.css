@@ -5,6 +5,7 @@
 @layer base {
   body {
     background-color: theme('colors.miscellaneous.body');
+    color: theme('textColor.default');
     font-family: 'Lato', serif;
     margin: 0;
   }
