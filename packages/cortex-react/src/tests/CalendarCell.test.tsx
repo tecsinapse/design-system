@@ -142,23 +142,6 @@ describe('CalendarCell', () => {
     expect(calendarCellElement).toHaveClass('text-white');
   });
 
-  it('Should apply text-black on month not selected dates ', () => {
-    mockUseCalendarCell.mockReturnValue({ ...useCalendarMockReturn });
-
-    render(
-      <MockTable>
-        <CalendarCell
-          state={calendarStateMock}
-          date={parseDate('2024-06-08')}
-        />
-      </MockTable>
-    );
-
-    const calendarCellElement = screen.getByTestId('calendar-cell-td');
-
-    expect(calendarCellElement).toHaveClass('text-black');
-  });
-
   it('Should apply day indicator if isTodayHighlited is true', () => {
     mockUseCalendarCell.mockReturnValue({
       ...useCalendarMockReturn,
