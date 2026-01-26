@@ -25,7 +25,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
     if (theme === 'dark') {
       style.setProperty('--color-body', darkColors.body);
-      style.setProperty('--color-text-default', darkColors.text.default);
+      style.setProperty('--color-default', darkColors.text.default);
       style.setProperty('--color-surface-base', darkColors.surface.base);
       style.setProperty('--color-surface-raised', darkColors.surface.raised);
       style.setProperty('--color-surface-overlay', darkColors.surface.overlay);
@@ -36,7 +36,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       style.setProperty('--color-content-inverse', darkColors.content.inverse);
     } else {
       style.setProperty('--color-body', colors.miscellaneous.body);
-      style.setProperty('--color-text-default', textColor.default);
+      style.setProperty('--color-default', textColor.default);
       style.setProperty('--color-surface-base', colors.surface.base);
       style.setProperty('--color-surface-raised', colors.surface.raised);
       style.setProperty('--color-surface-overlay', colors.surface.overlay);

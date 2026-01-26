@@ -85,7 +85,7 @@ export const DarkMode: StoryObj<typeof Button> = {
   render: args => {
     const { toggleTheme, theme } = useDarkTheme();
     return (
-      <div className="w-[300px] h-[300px] bg-miscellaneous-body flex items-center justify-center">
+      <div className="w-[300px] h-[300px] bg-body flex items-center justify-center">
         <Button variants={args.variants} onClick={toggleTheme}>
           {theme === 'dark' ? <FaSun /> : <FaMoon />}
         </Button>

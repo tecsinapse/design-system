@@ -34,7 +34,7 @@ export const Default: StoryObj = {
     const { theme, toggleTheme } = useDarkTheme();
     const isDark = useMemo(() => theme === 'dark', [theme]);
     return (
-      <div className="h-[500px] w-[500px] bg-miscellaneous-body flex flex-col justify-center items-center">
+      <div className="h-[500px] w-[500px] bg-body flex flex-col justify-center items-center">
         <Card>{args.children}</Card>
         <Button onClick={toggleTheme} className="fixed bottom-8 right-8">
           {isDark ? <FaSun /> : <FaMoon />}
