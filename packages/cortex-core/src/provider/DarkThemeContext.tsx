@@ -5,19 +5,18 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { colors, darkColors, textColor } from '../tokens/definitions';
 
 type Theme = 'light' | 'dark';
 
-interface ThemeContextValue {
+interface DarkThemeContextValue {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextValue | null>(null);
+const DarkThemeContext = createContext<DarkThemeContextValue | null>(null);
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
@@ -51,14 +50,14 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <DarkThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
-    </ThemeContext.Provider>
+    </DarkThemeContext.Provider>
   );
 };
 
 export const useDarkTheme = () => {
-  const ctx = useContext(ThemeContext);
+  const ctx = useContext(DarkThemeContext);
   if (!ctx) throw new Error('useTheme must be used inside ThemeProvider');
   return ctx;
 };
