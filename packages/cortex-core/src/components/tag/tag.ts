@@ -15,12 +15,12 @@ const tagStyles = myTV({
   variants: {
     intent: {
       primary: 'bg-primary-medium text-white',
-      secondary: 'bg-secondary-medium text-white',
+      secondary: 'bg-content-low text-white',
       info: 'bg-info-medium text-white',
       success: 'bg-success-medium text-white',
       warning: 'bg-warning-medium text-white',
       error: 'bg-error-medium text-white',
-      white: 'bg-surface-overlay text-secondary-medium',
+      white: 'bg-surface-overlay text-content-low',
     },
   },
   defaultVariants: {

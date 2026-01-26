@@ -25,11 +25,11 @@ describe('BreadcrumbItem', () => {
 
     const breadcrumbItemElement = screen.getByText('Home');
 
-    expect(breadcrumbItemElement).toHaveClass('text-secondary-medium');
+    expect(breadcrumbItemElement).toHaveClass('text-content-low');
 
     rerender(<BreadcrumbItem {...breadcrumbProps} isLast={false} />);
 
-    expect(breadcrumbItemElement).toHaveClass('text-secondary-xdark');
+    expect(breadcrumbItemElement).toHaveClass('text-content-medium');
   });
 
   it('renders icon when isLast is false', () => {

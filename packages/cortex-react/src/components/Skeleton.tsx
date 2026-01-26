@@ -12,7 +12,7 @@ export const Skeleton = ({ className, children, ...rest }: SkeletonProps) => {
     <div
       {...rest}
       data-testid={'skeleton'}
-      className={clsx('animate-pulse bg-secondary-light', className)}
+      className={clsx('animate-pulse bg-content-minimal', className)}
     >
       {children}
     </div>
