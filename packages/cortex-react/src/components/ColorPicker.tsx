@@ -30,7 +30,7 @@ const Box = forwardRef<HTMLInputElement, ColorPickerProps>((props, ref) => {
 
 const Face = ({ children }) => {
   return (
-    <div className="rounded-mili p-mili shadow-default bg-[#222222] flex flex-row items-center gap-2">
+    <div className="rounded-mili p-mili shadow-default bg-default flex flex-row items-center gap-2">
       {children}
     </div>
   );
