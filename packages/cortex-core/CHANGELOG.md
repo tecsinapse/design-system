@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.3...@tecsinapse/cortex-core@1.3.0-beta.4) (2026-01-26)
+
+### Features
+
+* mudando os nomes dos shades de content ([59c4646](https://github.com/tecsinapse/design-system/commit/59c46462d1b4c233426373a3fed3e7d64c97ba2a))
+
 # [1.3.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.2...@tecsinapse/cortex-core@1.3.0-beta.3) (2026-01-23)
 
 ### Features
