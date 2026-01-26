@@ -8,6 +8,6 @@ describe('Skeleton', () => {
     render(<Skeleton />);
     const skeleton = screen.getByTestId('skeleton');
     expect(skeleton).toBeInTheDocument();
-    expect(skeleton).toHaveClass('animate-pulse bg-secondary-light');
+    expect(skeleton).toHaveClass('animate-pulse bg-content-minimal');
   });
 });

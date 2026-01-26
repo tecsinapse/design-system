@@ -62,7 +62,7 @@ describe('CalendarCell', () => {
       .mockReturnValue({} as RangeCalendarState);
   });
 
-  it('Should apply text-secondary-light on outside dates ', () => {
+  it('Should apply text-content-minimal on outside dates ', () => {
     mockUseCalendarCell.mockReturnValue({
       ...useCalendarMockReturn,
       isOutsideVisibleRange: true,
@@ -79,7 +79,7 @@ describe('CalendarCell', () => {
 
     const calendarCellElement = screen.getByTestId('calendar-cell-td');
 
-    expect(calendarCellElement).toHaveClass('text-secondary-light');
+    expect(calendarCellElement).toHaveClass('text-content-minimal');
   });
 
   it('Should apply text-white on selected date', () => {

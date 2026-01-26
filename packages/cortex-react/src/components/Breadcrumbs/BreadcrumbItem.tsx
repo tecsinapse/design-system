@@ -25,8 +25,8 @@ export const BreadcrumbItem = ({
           className={clsx(
             'no-underline',
             isLast
-              ? 'text-secondary-medium cursor-default'
-              : 'text-secondary-xdark cursor-pointer'
+              ? 'text-content-low cursor-default'
+              : 'text-content-medium cursor-pointer'
           )}
         >
           {title}

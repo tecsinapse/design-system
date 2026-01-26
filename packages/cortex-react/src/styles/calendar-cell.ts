@@ -33,7 +33,7 @@ export const calendarCell = tv({
     },
     isDisabled: {
       true: {
-        cell: 'text-secondary-light cursor-default  hover:bg-white-500',
+        cell: 'text-content-minimal cursor-default  hover:bg-white-500',
         button: 'cursor-default',
       },
     },

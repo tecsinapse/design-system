@@ -22,7 +22,7 @@ export const Avatar = ({ src, name, className, ...rest }: AvatarProps) => {
     <div
       {...rest}
       className={clsx(
-        'rounded-pill bg-secondary-dark h-mega flex items-center justify-center cursor-pointer aspect-square',
+        'rounded-pill bg-content-medium h-mega flex items-center justify-center cursor-pointer aspect-square',
         className
       )}
     >

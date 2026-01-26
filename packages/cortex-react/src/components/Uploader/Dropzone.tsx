@@ -38,7 +38,7 @@ export const Dropzone = ({
         </div>
         {hasButton ? (
           <div className="flex flex-col items-center gap-centi">
-            <p className="text-sm text-secondary-medium">{dropText}</p>
+            <p className="text-sm text-content-low">{dropText}</p>
             {isFileLimitReached ? (
               <Tooltip text="Você só pode selecionar um único arquivo.">
                 <button

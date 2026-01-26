@@ -81,7 +81,8 @@
     "lint:fix": "pnpm lint:ts --fix-dry-run",
     "lint:fix:quiet": "pnpm lint:ts --fix --quiet",
     "prepare": "husky && pnpm build",
-    "test": "pnpm --filter '@tecsinapse/*' run test"
+    "test": "pnpm --filter '@tecsinapse/*' run test",
+    "build:core": "cd packages/cortex-core && pnpm build:es && pnpm build:dts && cd ../.."
   },
   "engines": {
     "node": ">=18"

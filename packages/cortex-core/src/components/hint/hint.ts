@@ -4,7 +4,7 @@ const hintStyles = tv({
   base: 'text-label font-bold flex items-center',
   variants: {
     intent: {
-      default: 'text-secondary-medium',
+      default: 'text-content-low',
       success: 'text-success-medium',
       warning: 'text-warning-medium',
       error: 'text-error-medium',
