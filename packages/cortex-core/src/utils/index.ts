@@ -11,14 +11,3 @@ export const updateThemeColors = (theme: Partial<typeof colors>): void => {
     });
   });
 };
-
-export const setDarkMode = () => {
-  const style = document.documentElement.style;
-  const isDark = style.getPropertyValue('--color-body') !== '#f8f7f7';
-
-  if (!isDark) {
-    style.setProperty('--color-body', '#1e1e1e');
-  } else {
-    style.setProperty('--color-body', '#f8f7f7');
-  }
-};
