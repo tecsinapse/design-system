@@ -43,7 +43,7 @@ export const PopoverContent = ({
             ref={refs.setFloating}
             {...getFloatingProps()}
             className={clsx(
-              'border border-content-minimal bg-surface-inverse p-[0px] rounded-md shadow-default z-popover',
+              'border border-gray-200 bg-surface-inverse p-0 rounded-md shadow-default z-popover',
               className
             )}
             style={{
