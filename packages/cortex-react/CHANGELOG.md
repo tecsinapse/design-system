@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.0-beta.4...@tecsinapse/cortex-react@1.16.0-beta.5) (2026-01-26)
+
+### Features
+
+* correções de estilo no uploader ([d6fc7f6](https://github.com/tecsinapse/design-system/commit/d6fc7f6164f83edd99c5494cfdbe37397a9164cd))
+* corrigindo cor de textos nos stories + retirando alguns testes ([9bf00e7](https://github.com/tecsinapse/design-system/commit/9bf00e7ff8389b45a1b821aa8c412327566ef35a))
+* criando token de surface inverse ([92f90cb](https://github.com/tecsinapse/design-system/commit/92f90cb81bc0fbc120c8c2671052582e485de611))
+* **dark mode:** retirando teste desnecessário ([abd4505](https://github.com/tecsinapse/design-system/commit/abd4505fa6a5ed093c4293158442e18e6f67d645))
+* **dark mode:** trocando o esquema de troca de tema para var com data-theme + correção de tokens ([93427d7](https://github.com/tecsinapse/design-system/commit/93427d74d4663e4d58abf9cc9e8bb23bdb196e5d))
+* trocando cor da borda do popover content ([64a9ab3](https://github.com/tecsinapse/design-system/commit/64a9ab3d917c4270c2014cba8bc9095f47ef8a70))
+* trocando todos os tokens secondary por content no cortex-core e cortex-react ([1712f39](https://github.com/tecsinapse/design-system/commit/1712f39f9e04af044eeb8735fb0706fb11ac1624))
+
 # [1.16.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.0-beta.3...@tecsinapse/cortex-react@1.16.0-beta.4) (2026-01-26)
 
 ### Features

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.4...@tecsinapse/cortex-core@1.3.0-beta.5) (2026-01-26)
+
+### Features
+
+* criando token de surface inverse ([92f90cb](https://github.com/tecsinapse/design-system/commit/92f90cb81bc0fbc120c8c2671052582e485de611))
+* **dark mode:** trocando o esquema de troca de tema para var com data-theme + correção de tokens ([93427d7](https://github.com/tecsinapse/design-system/commit/93427d74d4663e4d58abf9cc9e8bb23bdb196e5d))
+* trocando todos os tokens secondary por content no cortex-core e cortex-react ([1712f39](https://github.com/tecsinapse/design-system/commit/1712f39f9e04af044eeb8735fb0706fb11ac1624))
+
 # [1.3.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.3...@tecsinapse/cortex-core@1.3.0-beta.4) (2026-01-26)
 
 ### Features
