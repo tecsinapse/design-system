@@ -36,14 +36,15 @@ export const AutocompleteTrigger = ({
 
   return (
     <Popover.Trigger>
-      <Input.Root
-        label={label ?? 'Selecione uma opção'}
-        value={inputValue}
-        onChange={handleChange}
-        disabled={disabled}
-        placeholder={placeholder}
-        ref={triggerRef}
-      />
+      <div ref={triggerRef}>
+        <Input.Root
+          label={label ?? 'Selecione uma opção'}
+          value={inputValue}
+          onChange={handleChange}
+          disabled={disabled}
+          placeholder={placeholder}
+        />
+      </div>
     </Popover.Trigger>
   );
 };
