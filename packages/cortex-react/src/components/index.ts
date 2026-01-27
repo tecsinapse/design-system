@@ -33,3 +33,4 @@ export * from './Toggle';
 export * from './Tooltip';
 export * from './Uploader';
 export * from './Autocomplete';
+export * from './PhoneInput';
