@@ -20,7 +20,7 @@ interface ManagerContextProps<T> {
   uploadFiles: (props: UploadFilesProps<T>) => void;
 }
 
-const ManagerContext = createContext<ManagerContextProps<unknown> | null>(null);
+const ManagerContext = createContext<ManagerContextProps<any> | null>(null);
 
 export const ManagerProvider = ({ children }: { children: ReactNode }) => {
   const [props, setProps] = useState<ManagerProps<unknown>>({});

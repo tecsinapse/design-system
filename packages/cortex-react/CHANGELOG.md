@@ -15,6 +15,130 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
 
+## [2.1.2-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.1...@tecsinapse/cortex-react@2.1.2-beta.2) (2026-01-22)
+
+### Bug Fixes
+
+- atualizando versão na mão pra gerar beta ([2dd1899](https://github.com/tecsinapse/design-system/commit/2dd189973b2102f9e7f7e50c5c8660fd8d81f834))
+- corrigindo tipagem do hook do ManagerContext e do useFileUpload ([044f00c](https://github.com/tecsinapse/design-system/commit/044f00c7c5f0bca3ae9f6fcdb562fc537c5084ab))
+
+## [2.1.2-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.2-beta.0...@tecsinapse/cortex-react@2.1.2-beta.1) (2025-12-11)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [2.1.2-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0...@tecsinapse/cortex-react@2.1.2-beta.0) (2025-12-11)
+
+### Bug Fixes
+
+- atualizando versão na mão pra gerar beta ([2dd1899](https://github.com/tecsinapse/design-system/commit/2dd189973b2102f9e7f7e50c5c8660fd8d81f834))
+- corrigindo tipagem do hook do ManagerContext e do useFileUpload ([044f00c](https://github.com/tecsinapse/design-system/commit/044f00c7c5f0bca3ae9f6fcdb562fc537c5084ab))
+
+## [2.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.1-beta.4...@tecsinapse/cortex-react@2.1.1) (2026-01-20)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [2.1.1-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.7...@tecsinapse/cortex-react@2.1.1-beta.4) (2026-01-20)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [2.1.1-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.1-beta.2...@tecsinapse/cortex-react@2.1.1-beta.3) (2025-12-10)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [2.1.1-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.1-beta.1...@tecsinapse/cortex-react@2.1.1-beta.2) (2025-12-10)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [2.1.1-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.1-beta.1...@tecsinapse/cortex-react@2.1.1-beta.1) (2025-12-10)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.7...@tecsinapse/cortex-react@2.1.0) (2026-01-20)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.1.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.1...@tecsinapse/cortex-react@2.1.0-beta.7) (2026-01-20)
+
+### Features
+
+- **ts-4497:** adicionando props de input e configs da lib de telefone nos componentes ([25e90b7](https://github.com/tecsinapse/design-system/commit/25e90b7a3f6173bbee0f5ec80d52ad7a4cd09e53))
+- **ts-4497:** ajustando classes de cor e z-index ([b13de51](https://github.com/tecsinapse/design-system/commit/b13de517163123f3d388fce9d8c309a0861a5d22))
+- **ts-4497:** ajustando condição com numero undefined ([88254bb](https://github.com/tecsinapse/design-system/commit/88254bb035b4c2feb21453d0e6a425dbb217bbf5))
+- **ts-4497:** ajustando condição para ts ([15a5544](https://github.com/tecsinapse/design-system/commit/15a554412bd2fb20d60c758c99df5e7ec0bc222b))
+- **ts-4497:** aprimorando search de países + adicionando dados no onChange + adicionando fallback de label ([f87a5e3](https://github.com/tecsinapse/design-system/commit/f87a5e3b19ec14277fb53e484b0446b9c676cd54))
+- **ts-4497:** atualizando deps + retirando json desnecessário ([db41468](https://github.com/tecsinapse/design-system/commit/db41468fd1148d1f424a71939556db131a6a4a33))
+- **ts-4497:** atualizando os componentes com a nova lógica + stories ([ff2c092](https://github.com/tecsinapse/design-system/commit/ff2c092af8a92d5dc448ce3f3f228edec82fc46f))
+- **ts-4497:** atualizando stories ([e4bd25b](https://github.com/tecsinapse/design-system/commit/e4bd25b247c6603551bb03c3181af339c77f01de))
+- **ts-4497:** atualizando stories ([871bb9c](https://github.com/tecsinapse/design-system/commit/871bb9ce285e5fcd604f6d70f995c3934e917ec9))
+- **ts-4497:** colocando os tipos de props em um arquivo separado + exportando ([b6fc90c](https://github.com/tecsinapse/design-system/commit/b6fc90cf9f6aac0d0c8209ded2eef289b630ff64))
+- **ts-4497:** começando a utilizar a lib react-international-phone + atualizando contexto ([4a90938](https://github.com/tecsinapse/design-system/commit/4a909384f4ab167db0380920e9c522f768a124f8))
+- **ts-4497:** corrigindo alguns estilos do input ([1118df2](https://github.com/tecsinapse/design-system/commit/1118df2c738d474aecf3c214eec1038a1fd34696))
+- **ts-4497:** corrigindo cor de fundo dos botões das opções ([4eaa3b8](https://github.com/tecsinapse/design-system/commit/4eaa3b8a859998289b18d37cbaafcfc5f37841a7))
+- **ts-4497:** criando componente de conteúdo do popover + contexto ([ccab314](https://github.com/tecsinapse/design-system/commit/ccab314cbc2659c88075c465ac96a6c2d1e451d0))
+- **ts-4497:** criando componente de phone input + stories ([f9f174d](https://github.com/tecsinapse/design-system/commit/f9f174d956ca33ba87861482f6345bb203f324e2))
+- **ts-4497:** criando componentes de opções + trigger do popover + exportando componente composto ([a044f3c](https://github.com/tecsinapse/design-system/commit/a044f3cb4d920f66f2d75f4f391ceede51bf2d26))
+- **ts-4497:** destacando opções no popover + criando componente de root ([d2595bc](https://github.com/tecsinapse/design-system/commit/d2595bcc228f5ed66e31391fe9d654a426e9ce1d))
+- **ts-4497:** exportando componente ([1498a8e](https://github.com/tecsinapse/design-system/commit/1498a8e7a45a2d0e81660b2026a65ab35acb0c38))
+- **ts-4497:** instalando a lib de formatação de telefones + adicionando json com países ([edbceb7](https://github.com/tecsinapse/design-system/commit/edbceb78f74bb4f592abe248ddedf79d1fd8aeee))
+- **ts-4497:** retirando componente antigo ([6f9639e](https://github.com/tecsinapse/design-system/commit/6f9639e8ac80b09a571fe1398f4e09ceb1d223ff))
+- **ts-4497:** substituindo div por botão nas opções de país ([8fd656a](https://github.com/tecsinapse/design-system/commit/8fd656a09621b3bf9ad0cd4b93dee7738cdc8f4a))
+- **ts-4497:** trocando link externo por biblioteca de bandeiras ([25e76a3](https://github.com/tecsinapse/design-system/commit/25e76a3c1984d7da4f8e113f975ea5eda0bdd3fd))
+
+# [2.1.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.5...@tecsinapse/cortex-react@2.1.0-beta.6) (2025-12-05)
+
+### Features
+
+- **ts-4497:** corrigindo cor de fundo dos botões das opções ([4eaa3b8](https://github.com/tecsinapse/design-system/commit/4eaa3b8a859998289b18d37cbaafcfc5f37841a7))
+
+# [2.1.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.4...@tecsinapse/cortex-react@2.1.0-beta.5) (2025-12-05)
+
+### Features
+
+- **ts-4497:** adicionando props de input e configs da lib de telefone nos componentes ([25e90b7](https://github.com/tecsinapse/design-system/commit/25e90b7a3f6173bbee0f5ec80d52ad7a4cd09e53))
+- **ts-4497:** colocando os tipos de props em um arquivo separado + exportando ([b6fc90c](https://github.com/tecsinapse/design-system/commit/b6fc90cf9f6aac0d0c8209ded2eef289b630ff64))
+
+# [2.1.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.3...@tecsinapse/cortex-react@2.1.0-beta.4) (2025-12-05)
+
+### Features
+
+- **ts-4497:** aprimorando search de países + adicionando dados no onChange + adicionando fallback de label ([f87a5e3](https://github.com/tecsinapse/design-system/commit/f87a5e3b19ec14277fb53e484b0446b9c676cd54))
+- **ts-4497:** atualizando stories ([e4bd25b](https://github.com/tecsinapse/design-system/commit/e4bd25b247c6603551bb03c3181af339c77f01de))
+- **ts-4497:** substituindo div por botão nas opções de país ([8fd656a](https://github.com/tecsinapse/design-system/commit/8fd656a09621b3bf9ad0cd4b93dee7738cdc8f4a))
+
+# [2.1.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.2...@tecsinapse/cortex-react@2.1.0-beta.3) (2025-12-04)
+
+### Features
+
+- **ts-4497:** corrigindo alguns estilos do input ([1118df2](https://github.com/tecsinapse/design-system/commit/1118df2c738d474aecf3c214eec1038a1fd34696))
+
+# [2.1.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.1...@tecsinapse/cortex-react@2.1.0-beta.2) (2025-12-04)
+
+### Features
+
+- **ts-4497:** exportando componente ([1498a8e](https://github.com/tecsinapse/design-system/commit/1498a8e7a45a2d0e81660b2026a65ab35acb0c38))
+
+# [2.1.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.0-beta.0...@tecsinapse/cortex-react@2.1.0-beta.1) (2025-12-04)
+
+### Features
+
+- **ts-4497:** atualizando deps + retirando json desnecessário ([db41468](https://github.com/tecsinapse/design-system/commit/db41468fd1148d1f424a71939556db131a6a4a33))
+- **ts-4497:** atualizando os componentes com a nova lógica + stories ([ff2c092](https://github.com/tecsinapse/design-system/commit/ff2c092af8a92d5dc448ce3f3f228edec82fc46f))
+- **ts-4497:** começando a utilizar a lib react-international-phone + atualizando contexto ([4a90938](https://github.com/tecsinapse/design-system/commit/4a909384f4ab167db0380920e9c522f768a124f8))
+- **ts-4497:** retirando componente antigo ([6f9639e](https://github.com/tecsinapse/design-system/commit/6f9639e8ac80b09a571fe1398f4e09ceb1d223ff))
+
+# [2.1.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0...@tecsinapse/cortex-react@2.1.0-beta.0) (2025-12-04)
+
+### Features
+
+- **ts-4497:** ajustando condição com numero undefined ([88254bb](https://github.com/tecsinapse/design-system/commit/88254bb035b4c2feb21453d0e6a425dbb217bbf5))
+- **ts-4497:** ajustando condição para ts ([15a5544](https://github.com/tecsinapse/design-system/commit/15a554412bd2fb20d60c758c99df5e7ec0bc222b))
+- **ts-4497:** atualizando stories ([871bb9c](https://github.com/tecsinapse/design-system/commit/871bb9ce285e5fcd604f6d70f995c3934e917ec9))
+- **ts-4497:** criando componente de conteúdo do popover + contexto ([ccab314](https://github.com/tecsinapse/design-system/commit/ccab314cbc2659c88075c465ac96a6c2d1e451d0))
+- **ts-4497:** criando componente de phone input + stories ([f9f174d](https://github.com/tecsinapse/design-system/commit/f9f174d956ca33ba87861482f6345bb203f324e2))
+- **ts-4497:** criando componentes de opções + trigger do popover + exportando componente composto ([a044f3c](https://github.com/tecsinapse/design-system/commit/a044f3cb4d920f66f2d75f4f391ceede51bf2d26))
+- **ts-4497:** destacando opções no popover + criando componente de root ([d2595bc](https://github.com/tecsinapse/design-system/commit/d2595bcc228f5ed66e31391fe9d654a426e9ce1d))
+- **ts-4497:** instalando a lib de formatação de telefones + adicionando json com países ([edbceb7](https://github.com/tecsinapse/design-system/commit/edbceb78f74bb4f592abe248ddedf79d1fd8aeee))
+
 ## [2.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0-beta.2...@tecsinapse/cortex-react@2.0.1) (2026-01-13)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
@@ -33,79 +157,80 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3...@tecsinapse/cortex-react@2.0.0-beta.0) (2025-12-01)
 
-* Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
+- Chore ts 16539 atualizar react 19 (#376) ([83705f3](https://github.com/tecsinapse/design-system/commit/83705f3f7ff4f11b70ab91dd7abf6782ef318cc1)), closes [#376](https://github.com/tecsinapse/design-system/issues/376)
 
 ### BREAKING CHANGES
 
-* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+- This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
 
-* chore!: upgrade dependencies to React 19 and Tailwind v4
-* This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
+- chore!: upgrade dependencies to React 19 and Tailwind v4
+- This release requires React 19 and Tailwind CSS v4. Projects must upgrade their environment.
 
 # [1.15.0-beta.26](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.1-beta.6...@tecsinapse/cortex-react@1.15.0-beta.26) (2025-11-26)
 
 ### Features
 
-* **ts-16329:** adicionando lógica de abertura do manager no hook ([07f7552](https://github.com/tecsinapse/design-system/commit/07f7552e03c4bcd60b7cfb67098bdc269b4d3004))
-* **ts-16329:** adicionando o manager no root ([6489544](https://github.com/tecsinapse/design-system/commit/64895441e61337f8a73bdae6fdaa0e3f52351be4))
-* **ts-16329:** ajustando tipagem ([b765333](https://github.com/tecsinapse/design-system/commit/b7653330f0cd08a72d226f856a37697136120b93))
-* **ts-16329:** atualizando o componente file ([4ed7486](https://github.com/tecsinapse/design-system/commit/4ed748656d08b1c03a50ee0a6d70c75e795d0068))
-* **ts-16329:** atualizando o storybook ([8388870](https://github.com/tecsinapse/design-system/commit/83888708b455e201ab469b824cb8594f52ab0512))
-* **ts-16329:** corrigindo testes ([604ff7f](https://github.com/tecsinapse/design-system/commit/604ff7f3b41ead7c6ec676bbcd1e74f2fe582838))
-* **ts-16329:** criando componente do file manager ([f78d530](https://github.com/tecsinapse/design-system/commit/f78d530793fa2b256204df32b64184d8b2794518))
-* **uploader:** adaptando tipagem temporariamente ([e4dfe05](https://github.com/tecsinapse/design-system/commit/e4dfe05a6d16da33ebb08e1c68620ae21ee3cf96))
-* **uploader:** adicionando a prop isFolder aos arquivos ([2c1fe79](https://github.com/tecsinapse/design-system/commit/2c1fe79b4d8d3c8c420c4984252cf11a8cb89190))
-* **uploader:** adicionando o suporte a upload de pastas ([e811d94](https://github.com/tecsinapse/design-system/commit/e811d9464e262134ee4bd3192c6d82243d1bf97b))
-* **uploader:** adicionando prop de ação ao abrir manager ([d650e48](https://github.com/tecsinapse/design-system/commit/d650e48f5294a5348960432bc055dbfe877a7d46))
-* **uploader:** adicionando uma prop para remover o botão de deletar arquivo ([f79ca0d](https://github.com/tecsinapse/design-system/commit/f79ca0d521c20aafab1b8ec3fa5c3a7a3a1e91e1))
-* **uploader:** ajustando a mudança de estados no gerenciamento de pastas ([eba355f](https://github.com/tecsinapse/design-system/commit/eba355fcfdc3730c03c0c7e63441c8796fd2f526))
-* **uploader:** ajustando espaçamento + icone de minimizar ([1357a39](https://github.com/tecsinapse/design-system/commit/1357a393300339fdd9392332331924502282d846))
-* **uploader:** ajustando posicionamento com scroll ([dec8950](https://github.com/tecsinapse/design-system/commit/dec89503e886ed2f5a29646f1108a1507fccd47b))
-* **uploader:** ajustando tipagem ([07a97c8](https://github.com/tecsinapse/design-system/commit/07a97c8a3e4acfd36659f79d1b33ab0fc2108d28))
-* **uploader:** ajustando tipagem ([665adf4](https://github.com/tecsinapse/design-system/commit/665adf470ea3951f66c24eec3e9fa736f8de32f5))
-* **uploader:** ajustando tipagem ([b95787c](https://github.com/tecsinapse/design-system/commit/b95787caffe67a9d3dc008b0418dd8ddc45d453b))
-* **uploader:** ajustando tipagem ([5b25d58](https://github.com/tecsinapse/design-system/commit/5b25d581240f596c24f9e4f39d24f72fab9189a9))
-* **uploader:** ajustando tipagem + retirando imports ([5f78f99](https://github.com/tecsinapse/design-system/commit/5f78f9989f315a0144544d43d42ea40de328d2f0))
-* **uploader:** aprimorando a lógica de contagem de itens do manager ([84f3f7e](https://github.com/tecsinapse/design-system/commit/84f3f7e00b886b540c110f5bc1cf432c5a5df0a8))
-* **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
-* **uploader:** atualizando o stories ([1d9802d](https://github.com/tecsinapse/design-system/commit/1d9802de6e81ec64c0e75f329f051821976d6dbf))
-* **uploader:** atualizando os stories ([739cdcb](https://github.com/tecsinapse/design-system/commit/739cdcbb673e1ad298e809d5e78b69d118e34154))
-* **uploader:** atualizando stories ([f06bc81](https://github.com/tecsinapse/design-system/commit/f06bc810ebb4472506c8deda4f2a4b8c9cd70c0d))
-* **uploader:** bloqueando o botão de fechar manager enquanto onAccept estiver carregando ([63f310d](https://github.com/tecsinapse/design-system/commit/63f310d487fe439e9d6a45fedd75d98ae7b0171c))
-* **uploader:** bloqueando o click para abrir o explorer + permitindo ignorar as rejeições no onDrop ([77c92b1](https://github.com/tecsinapse/design-system/commit/77c92b15949671f1dd383a9c97120b719c77f58d))
-* **uploader:** centralizando o título do modal de upload ([1082bb3](https://github.com/tecsinapse/design-system/commit/1082bb346a116a557d17b74058f0e57baf59a03d))
-* **uploader:** corrigindo a função onDrop ([40474b5](https://github.com/tecsinapse/design-system/commit/40474b52444ddd6adad1356f4f1d85322d924b27))
-* **uploader:** corrigindo testes ([a2c7838](https://github.com/tecsinapse/design-system/commit/a2c7838b343df299203c639c659c54064bbe092f))
-* **uploader:** corrigindo testes + atualizando root e stories ([f66311b](https://github.com/tecsinapse/design-system/commit/f66311bece1f678e4e87a902dda8d4f0a1d91332))
-* **uploader:** corrigindo tipos ([9eff89a](https://github.com/tecsinapse/design-system/commit/9eff89ae89a2450f4d81f152a2a6aeef732511f3))
-* **uploader:** criando um contexto de utilização do manager + usando ele no hook de upload ([6d4343c](https://github.com/tecsinapse/design-system/commit/6d4343c0f9378af238aa8c1c8bd14dcc3118cd46))
-* **uploader:** criando um hook para o manager + separando os arquivos soltos e os de pasta ([349a695](https://github.com/tecsinapse/design-system/commit/349a695936c34e80aee460fa11052a0c4f8f4ec3))
-* **uploader:** criando um novo caso de uso nos stories ([a52f0d1](https://github.com/tecsinapse/design-system/commit/a52f0d17e5acf9aeb503d177b0af95fc97b375cc))
-* **uploader:** criando uma prop para tirar o botão e subtitulo do dropzone ([a1a2b49](https://github.com/tecsinapse/design-system/commit/a1a2b49f1e80cf318c25ec43b33ce127bc5be3d7))
-* **uploader:** expondo a função de abrir o manager no hook ([c279974](https://github.com/tecsinapse/design-system/commit/c279974b1dadf50411bea93277e7aa3e26bc8f1e))
-* **uploader:** exportando o manager ([657551c](https://github.com/tecsinapse/design-system/commit/657551c56ad0383de4929f3500df9483a98f2571))
-* **uploader:** extendendo o tipo File com declaração global ([9a724f3](https://github.com/tecsinapse/design-system/commit/9a724f312320b3d4e57dc381cd7570cd9049b13f))
-* **uploader:** limpando os arquivos ao fechar o manager ([153aa86](https://github.com/tecsinapse/design-system/commit/153aa861857271907308ffe6f44762e8648525a0))
-* **uploader:** modificando alguns estilos + adicionando minimização ([dd311dd](https://github.com/tecsinapse/design-system/commit/dd311dd15a97f62e375bbcc1c9a49697371f9e1b))
-* **uploader:** mudanças de estilo ([4500f39](https://github.com/tecsinapse/design-system/commit/4500f39303754296a13ebe1360e8f873ecae6bf6))
-* **uploader:** mudando a lógica da contagem de arquivos por pasta + tipagem ([bc4e337](https://github.com/tecsinapse/design-system/commit/bc4e3374fe97404c1b29b8f4553874731d2e0954))
-* **uploader:** mudando a lógica de retorno do onDrop em erros ([2e6bd09](https://github.com/tecsinapse/design-system/commit/2e6bd0903b56f3fb05b32474e0a860b794f8abaf))
-* **uploader:** mudando tipagem + pequenas correções no manager ([9a43a54](https://github.com/tecsinapse/design-system/commit/9a43a5492791c76bf2455fa93f83a12dd1800376))
-* **uploader:** mudando tipagem do contexto do manager ([fbddec1](https://github.com/tecsinapse/design-system/commit/fbddec10d0e9bcca7ca6ec5b0c3a233f22738bcf))
-* **uploader:** parando a função de onDrop se nenhum arquivo for aceito ([c25b4f3](https://github.com/tecsinapse/design-system/commit/c25b4f381f74c5f79caee2f14d5f7a161014469d))
-* **uploader:** passando os estados de files e isOpen para o contexto ([536ee65](https://github.com/tecsinapse/design-system/commit/536ee65ecef9c937a0ee9b3004265d7fc7edfb56))
-* **uploader:** pequena atualização nos stories ([718aad3](https://github.com/tecsinapse/design-system/commit/718aad3dfdd99add4ce45357d689c1f62ad95d36))
-* **uploader:** possibilitando uploader sem manager + atualizando stories ([3216938](https://github.com/tecsinapse/design-system/commit/321693806b29e743ddf65561c784d51d259b04da))
-* **uploader:** realocando a lógica de upload para possibilitar navegação com atualização de estado ([37a2a53](https://github.com/tecsinapse/design-system/commit/37a2a5342168d6b22fa69fb9879a0387da37a785))
-* **uploader:** retirando a prop type do manager ([52848f3](https://github.com/tecsinapse/design-system/commit/52848f3145a47392becf74f0b6854ccb467e6296))
-* **uploader:** retirando um return desnecessário ([bdcbf15](https://github.com/tecsinapse/design-system/commit/bdcbf155977db39ebdd417d2b1f1c96c622111b1))
-* **uploader:** retirando utilização de tipo não-utilizado ([8c592e3](https://github.com/tecsinapse/design-system/commit/8c592e32150a0697466ee819a1bdb9f3d686c0eb))
-* **uploader:** retornando as rejeições de arquivos ([b07c8b0](https://github.com/tecsinapse/design-system/commit/b07c8b041de73e7727b0ac1581ffe72328e1e904))
-* **uploader:** separando tipagem ([204aa58](https://github.com/tecsinapse/design-system/commit/204aa5830b0cb749a75c23e273be43b9e6e1f69c))
-* **uploader:** usando casting para evitar erro de ts ([ba436cb](https://github.com/tecsinapse/design-system/commit/ba436cb7b1a975e145430348730889923e101f47))
-* **upload:** permitindo upload de varias pastas ao mesmo tempo ([d4c89ec](https://github.com/tecsinapse/design-system/commit/d4c89ec786c18bdaf2369b674124028412c88041))
+- **ts-16329:** adicionando lógica de abertura do manager no hook ([07f7552](https://github.com/tecsinapse/design-system/commit/07f7552e03c4bcd60b7cfb67098bdc269b4d3004))
+- **ts-16329:** adicionando o manager no root ([6489544](https://github.com/tecsinapse/design-system/commit/64895441e61337f8a73bdae6fdaa0e3f52351be4))
+- **ts-16329:** ajustando tipagem ([b765333](https://github.com/tecsinapse/design-system/commit/b7653330f0cd08a72d226f856a37697136120b93))
+- **ts-16329:** atualizando o componente file ([4ed7486](https://github.com/tecsinapse/design-system/commit/4ed748656d08b1c03a50ee0a6d70c75e795d0068))
+- **ts-16329:** atualizando o storybook ([8388870](https://github.com/tecsinapse/design-system/commit/83888708b455e201ab469b824cb8594f52ab0512))
+- **ts-16329:** corrigindo testes ([604ff7f](https://github.com/tecsinapse/design-system/commit/604ff7f3b41ead7c6ec676bbcd1e74f2fe582838))
+- **ts-16329:** criando componente do file manager ([f78d530](https://github.com/tecsinapse/design-system/commit/f78d530793fa2b256204df32b64184d8b2794518))
+- **uploader:** adaptando tipagem temporariamente ([e4dfe05](https://github.com/tecsinapse/design-system/commit/e4dfe05a6d16da33ebb08e1c68620ae21ee3cf96))
+- **uploader:** adicionando a prop isFolder aos arquivos ([2c1fe79](https://github.com/tecsinapse/design-system/commit/2c1fe79b4d8d3c8c420c4984252cf11a8cb89190))
+- **uploader:** adicionando o suporte a upload de pastas ([e811d94](https://github.com/tecsinapse/design-system/commit/e811d9464e262134ee4bd3192c6d82243d1bf97b))
+- **uploader:** adicionando prop de ação ao abrir manager ([d650e48](https://github.com/tecsinapse/design-system/commit/d650e48f5294a5348960432bc055dbfe877a7d46))
+- **uploader:** adicionando uma prop para remover o botão de deletar arquivo ([f79ca0d](https://github.com/tecsinapse/design-system/commit/f79ca0d521c20aafab1b8ec3fa5c3a7a3a1e91e1))
+- **uploader:** ajustando a mudança de estados no gerenciamento de pastas ([eba355f](https://github.com/tecsinapse/design-system/commit/eba355fcfdc3730c03c0c7e63441c8796fd2f526))
+- **uploader:** ajustando espaçamento + icone de minimizar ([1357a39](https://github.com/tecsinapse/design-system/commit/1357a393300339fdd9392332331924502282d846))
+- **uploader:** ajustando posicionamento com scroll ([dec8950](https://github.com/tecsinapse/design-system/commit/dec89503e886ed2f5a29646f1108a1507fccd47b))
+- **uploader:** ajustando tipagem ([07a97c8](https://github.com/tecsinapse/design-system/commit/07a97c8a3e4acfd36659f79d1b33ab0fc2108d28))
+- **uploader:** ajustando tipagem ([665adf4](https://github.com/tecsinapse/design-system/commit/665adf470ea3951f66c24eec3e9fa736f8de32f5))
+- **uploader:** ajustando tipagem ([b95787c](https://github.com/tecsinapse/design-system/commit/b95787caffe67a9d3dc008b0418dd8ddc45d453b))
+- **uploader:** ajustando tipagem ([5b25d58](https://github.com/tecsinapse/design-system/commit/5b25d581240f596c24f9e4f39d24f72fab9189a9))
+- **uploader:** ajustando tipagem + retirando imports ([5f78f99](https://github.com/tecsinapse/design-system/commit/5f78f9989f315a0144544d43d42ea40de328d2f0))
+- **uploader:** aprimorando a lógica de contagem de itens do manager ([84f3f7e](https://github.com/tecsinapse/design-system/commit/84f3f7e00b886b540c110f5bc1cf432c5a5df0a8))
+- **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
+- **uploader:** atualizando o stories ([1d9802d](https://github.com/tecsinapse/design-system/commit/1d9802de6e81ec64c0e75f329f051821976d6dbf))
+- **uploader:** atualizando os stories ([739cdcb](https://github.com/tecsinapse/design-system/commit/739cdcbb673e1ad298e809d5e78b69d118e34154))
+- **uploader:** atualizando stories ([f06bc81](https://github.com/tecsinapse/design-system/commit/f06bc810ebb4472506c8deda4f2a4b8c9cd70c0d))
+- **uploader:** bloqueando o botão de fechar manager enquanto onAccept estiver carregando ([63f310d](https://github.com/tecsinapse/design-system/commit/63f310d487fe439e9d6a45fedd75d98ae7b0171c))
+- **uploader:** bloqueando o click para abrir o explorer + permitindo ignorar as rejeições no onDrop ([77c92b1](https://github.com/tecsinapse/design-system/commit/77c92b15949671f1dd383a9c97120b719c77f58d))
+- **uploader:** centralizando o título do modal de upload ([1082bb3](https://github.com/tecsinapse/design-system/commit/1082bb346a116a557d17b74058f0e57baf59a03d))
+- **uploader:** corrigindo a função onDrop ([40474b5](https://github.com/tecsinapse/design-system/commit/40474b52444ddd6adad1356f4f1d85322d924b27))
+- **uploader:** corrigindo testes ([a2c7838](https://github.com/tecsinapse/design-system/commit/a2c7838b343df299203c639c659c54064bbe092f))
+- **uploader:** corrigindo testes + atualizando root e stories ([f66311b](https://github.com/tecsinapse/design-system/commit/f66311bece1f678e4e87a902dda8d4f0a1d91332))
+- **uploader:** corrigindo tipos ([9eff89a](https://github.com/tecsinapse/design-system/commit/9eff89ae89a2450f4d81f152a2a6aeef732511f3))
+- **uploader:** criando um contexto de utilização do manager + usando ele no hook de upload ([6d4343c](https://github.com/tecsinapse/design-system/commit/6d4343c0f9378af238aa8c1c8bd14dcc3118cd46))
+- **uploader:** criando um hook para o manager + separando os arquivos soltos e os de pasta ([349a695](https://github.com/tecsinapse/design-system/commit/349a695936c34e80aee460fa11052a0c4f8f4ec3))
+- **uploader:** criando um novo caso de uso nos stories ([a52f0d1](https://github.com/tecsinapse/design-system/commit/a52f0d17e5acf9aeb503d177b0af95fc97b375cc))
+- **uploader:** criando uma prop para tirar o botão e subtitulo do dropzone ([a1a2b49](https://github.com/tecsinapse/design-system/commit/a1a2b49f1e80cf318c25ec43b33ce127bc5be3d7))
+- **uploader:** expondo a função de abrir o manager no hook ([c279974](https://github.com/tecsinapse/design-system/commit/c279974b1dadf50411bea93277e7aa3e26bc8f1e))
+- **uploader:** exportando o manager ([657551c](https://github.com/tecsinapse/design-system/commit/657551c56ad0383de4929f3500df9483a98f2571))
+- **uploader:** extendendo o tipo File com declaração global ([9a724f3](https://github.com/tecsinapse/design-system/commit/9a724f312320b3d4e57dc381cd7570cd9049b13f))
+- **uploader:** limpando os arquivos ao fechar o manager ([153aa86](https://github.com/tecsinapse/design-system/commit/153aa861857271907308ffe6f44762e8648525a0))
+- **uploader:** modificando alguns estilos + adicionando minimização ([dd311dd](https://github.com/tecsinapse/design-system/commit/dd311dd15a97f62e375bbcc1c9a49697371f9e1b))
+- **uploader:** mudanças de estilo ([4500f39](https://github.com/tecsinapse/design-system/commit/4500f39303754296a13ebe1360e8f873ecae6bf6))
+- **uploader:** mudando a lógica da contagem de arquivos por pasta + tipagem ([bc4e337](https://github.com/tecsinapse/design-system/commit/bc4e3374fe97404c1b29b8f4553874731d2e0954))
+- **uploader:** mudando a lógica de retorno do onDrop em erros ([2e6bd09](https://github.com/tecsinapse/design-system/commit/2e6bd0903b56f3fb05b32474e0a860b794f8abaf))
+- **uploader:** mudando tipagem + pequenas correções no manager ([9a43a54](https://github.com/tecsinapse/design-system/commit/9a43a5492791c76bf2455fa93f83a12dd1800376))
+- **uploader:** mudando tipagem do contexto do manager ([fbddec1](https://github.com/tecsinapse/design-system/commit/fbddec10d0e9bcca7ca6ec5b0c3a233f22738bcf))
+- **uploader:** parando a função de onDrop se nenhum arquivo for aceito ([c25b4f3](https://github.com/tecsinapse/design-system/commit/c25b4f381f74c5f79caee2f14d5f7a161014469d))
+- **uploader:** passando os estados de files e isOpen para o contexto ([536ee65](https://github.com/tecsinapse/design-system/commit/536ee65ecef9c937a0ee9b3004265d7fc7edfb56))
+- **uploader:** pequena atualização nos stories ([718aad3](https://github.com/tecsinapse/design-system/commit/718aad3dfdd99add4ce45357d689c1f62ad95d36))
+- **uploader:** possibilitando uploader sem manager + atualizando stories ([3216938](https://github.com/tecsinapse/design-system/commit/321693806b29e743ddf65561c784d51d259b04da))
+- **uploader:** realocando a lógica de upload para possibilitar navegação com atualização de estado ([37a2a53](https://github.com/tecsinapse/design-system/commit/37a2a5342168d6b22fa69fb9879a0387da37a785))
+- **uploader:** retirando a prop type do manager ([52848f3](https://github.com/tecsinapse/design-system/commit/52848f3145a47392becf74f0b6854ccb467e6296))
+- **uploader:** retirando um return desnecessário ([bdcbf15](https://github.com/tecsinapse/design-system/commit/bdcbf155977db39ebdd417d2b1f1c96c622111b1))
+- **uploader:** retirando utilização de tipo não-utilizado ([8c592e3](https://github.com/tecsinapse/design-system/commit/8c592e32150a0697466ee819a1bdb9f3d686c0eb))
+- **uploader:** retornando as rejeições de arquivos ([b07c8b0](https://github.com/tecsinapse/design-system/commit/b07c8b041de73e7727b0ac1581ffe72328e1e904))
+- **uploader:** separando tipagem ([204aa58](https://github.com/tecsinapse/design-system/commit/204aa5830b0cb749a75c23e273be43b9e6e1f69c))
+- **uploader:** usando casting para evitar erro de ts ([ba436cb](https://github.com/tecsinapse/design-system/commit/ba436cb7b1a975e145430348730889923e101f47))
+- **upload:** permitindo upload de varias pastas ao mesmo tempo ([d4c89ec](https://github.com/tecsinapse/design-system/commit/d4c89ec786c18bdaf2369b674124028412c88041))
 
 ## [1.14.1-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.1-beta.5...@tecsinapse/cortex-react@1.14.1-beta.6) (2025-11-26)
+
 ## [1.15.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3-beta.0...@tecsinapse/cortex-react@1.15.3) (2025-11-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
