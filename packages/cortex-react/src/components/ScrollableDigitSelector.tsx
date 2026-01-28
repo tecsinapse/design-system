@@ -57,7 +57,7 @@ export const ScrollableDigitSelector = ({
             <span
               className={clsx(
                 'p-micro rounded-micro border-1 border-transparent hover:bg-primary-light hover:border-primary cursor-pointer',
-                value === val && 'bg-primary-medium text-light'
+                value === val && 'bg-primary-medium text-on-primary'
               )}
             >
               {formatValue(val)}

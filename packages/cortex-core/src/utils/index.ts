@@ -11,9 +11,9 @@ export const updateThemeColors = (theme: Partial<typeof colors>): void => {
       root.style.setProperty(`--color-${colorName}-${shade}`, hexValue);
       if (colorName === 'primary' && shade === 'medium') {
         if (getContrast(hexValue, '#fff') < 2.5) {
-          root.style.setProperty('--color-light', '#000');
+          root.setAttribute('data-contrast', 'black');
         } else {
-          root.style.setProperty('--color-light', '#fff');
+          root.setAttribute('data-contrast', 'white');
         }
       }
     });

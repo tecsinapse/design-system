@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+:root {
+  --color-on-primary: #fff
+}
+
+:root[data-contrast='black'] {
+  --color-on-primary: #000
+}
+
 @theme {
   /* Colors - primary */
   --color-primary-xlight: #fef9f0;
@@ -128,6 +136,7 @@
   --color-border-success-light: #99E6C9;
 
   /* Text colors */
+  --color-on-primary: var(--color-on-primary);
   --color-light: #fff;
   --color-medium: #85807a;
   --color-dark: #353231;

@@ -14,7 +14,7 @@ const tagStyles = myTV({
   base: 'rounded-micro px-micro py-nano w-fit font-bold text-label items-center flex gap-1',
   variants: {
     intent: {
-      primary: 'bg-primary-medium text-light',
+      primary: 'bg-primary-medium text-on-primary',
       secondary: 'bg-secondary-medium text-white',
       info: 'bg-info-medium text-white',
       success: 'bg-success-medium text-white',
