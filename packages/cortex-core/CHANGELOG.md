@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.1...@tecsinapse/cortex-core@2.1.0-beta.0) (2026-01-28)
+
+### Features
+
+* adaptando o bg de todos os componentes para o novo padrão ([c59bfbb](https://github.com/tecsinapse/design-system/commit/c59bfbbe9b0c303d90a3feb0603b301c0c72f41e))
+* adaptando os tokens de cor para a v4 do tailwind + atualizando versões ([df4c21b](https://github.com/tecsinapse/design-system/commit/df4c21bc22258dd36a4c378cc359161d8269ff59))
+* criando contexto de dark theme + stories de teste ([32be451](https://github.com/tecsinapse/design-system/commit/32be45168dc97709c7c30d2c2de26672a585bf82))
+* criando intent de surface e setando ele de acordo com o tema ([f9e74f0](https://github.com/tecsinapse/design-system/commit/f9e74f0e2af17c28e91475d1a91b529f80f0a1d7))
+* criando stories para testar o darkmode + adaptando o card ([e154366](https://github.com/tecsinapse/design-system/commit/e1543660924574a33bac3b79cd84941b62045e02))
+* criando token de cor variavel para conteudo + aplicando na menubar ([bde4ff0](https://github.com/tecsinapse/design-system/commit/bde4ff0c8b07c04f79bd056eb96da8717110c464))
+* criando token de surface inverse ([891eec3](https://github.com/tecsinapse/design-system/commit/891eec359ca208c010001ed1101a36c3c305283a))
+* **dark mode:** adicionando regra para condicionar o tema ao padrão do sistema ([2c07b1c](https://github.com/tecsinapse/design-system/commit/2c07b1c0fa26081728fd986cc93f0b908cf508fb))
+* **dark mode:** trocando o esquema de troca de tema para var com data-theme + correção de tokens ([c83e1f9](https://github.com/tecsinapse/design-system/commit/c83e1f9798f4bfc193209d019cd23cb1faa29794))
+* mudando os nomes dos shades de content ([29eef14](https://github.com/tecsinapse/design-system/commit/29eef14e1a8a9ab88f784d642d2c1c3dce53597f))
+* mudando tokens de cor do input e select ([3dc81ec](https://github.com/tecsinapse/design-system/commit/3dc81ece3a2a8e51fbb6c73d4f03c7543a52eb8d))
+* trocando todos os tokens secondary por content no cortex-core e cortex-react ([ccf1e25](https://github.com/tecsinapse/design-system/commit/ccf1e255dfdf02be5fda2e7cf936be4747a4ce84))
+
 ## [2.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.0-beta.2...@tecsinapse/cortex-core@2.0.1) (2026-01-13)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core

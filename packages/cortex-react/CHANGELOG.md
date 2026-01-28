@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.2...@tecsinapse/cortex-react@2.3.0-beta.0) (2026-01-28)
+
+### Features
+
+* adaptando o bg de todos os componentes para o novo padrão ([c59bfbb](https://github.com/tecsinapse/design-system/commit/c59bfbbe9b0c303d90a3feb0603b301c0c72f41e))
+* adaptando os tokens de cor para a v4 do tailwind + atualizando versões ([df4c21b](https://github.com/tecsinapse/design-system/commit/df4c21bc22258dd36a4c378cc359161d8269ff59))
+* correções de estilo no uploader ([a57c428](https://github.com/tecsinapse/design-system/commit/a57c4286a935552ce9d5437077e7866fb26d0c8b))
+* corrigindo cor de textos nos stories + retirando alguns testes ([5a28c87](https://github.com/tecsinapse/design-system/commit/5a28c87592b4e7f8bf74b923e0a6c9ddf43b066d))
+* criando contexto de dark theme + stories de teste ([32be451](https://github.com/tecsinapse/design-system/commit/32be45168dc97709c7c30d2c2de26672a585bf82))
+* criando stories para testar o darkmode + adaptando o card ([e154366](https://github.com/tecsinapse/design-system/commit/e1543660924574a33bac3b79cd84941b62045e02))
+* criando token de cor variavel para conteudo + aplicando na menubar ([bde4ff0](https://github.com/tecsinapse/design-system/commit/bde4ff0c8b07c04f79bd056eb96da8717110c464))
+* criando token de surface inverse ([891eec3](https://github.com/tecsinapse/design-system/commit/891eec359ca208c010001ed1101a36c3c305283a))
+* **dark mode:** retirando teste desnecessário ([7923a97](https://github.com/tecsinapse/design-system/commit/7923a972eb6184d88f7356ed6eb175001294e146))
+* **dark mode:** trocando o esquema de troca de tema para var com data-theme + correção de tokens ([c83e1f9](https://github.com/tecsinapse/design-system/commit/c83e1f9798f4bfc193209d019cd23cb1faa29794))
+* mudando os nomes dos shades de content ([29eef14](https://github.com/tecsinapse/design-system/commit/29eef14e1a8a9ab88f784d642d2c1c3dce53597f))
+* trocando cor da borda do popover content ([c7a9f3d](https://github.com/tecsinapse/design-system/commit/c7a9f3d4d76a1b5d12364f51940e40b716beeb09))
+* trocando todos os tokens secondary por content no cortex-core e cortex-react ([ccf1e25](https://github.com/tecsinapse/design-system/commit/ccf1e255dfdf02be5fda2e7cf936be4747a4ce84))
+
 ## [2.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.2-beta.2...@tecsinapse/cortex-react@2.1.2) (2026-01-22)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
