@@ -1,7 +1,7 @@
 import { colors } from '../tokens/definitions';
 import { getContrast } from 'polished';
 
-export const updateThemeText = (
+const updateThemeText = (
   colorName: string,
   shade: string,
   hexValue: string
