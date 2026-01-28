@@ -16,20 +16,7 @@ export const Default: StoryObj<typeof Button> = {
       size: 'default',
     },
   },
-  render: args => {
-    useEffect(() => {
-      updateThemeColors({
-        primary: {
-          xlight: '#FFFCD8',
-          light: '#FFF799',
-          medium: '#FFED00',
-          dark: '#D69A2E',
-          xdark: '#8F5D1A',
-        },
-      });
-    }, []);
-    return <Button variants={args.variants}>Filled Button</Button>;
-  },
+  render: args => <Button variants={args.variants}>Filled Button</Button>,
 };
 
 export const Outline: StoryObj<typeof Button> = {
