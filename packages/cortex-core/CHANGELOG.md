@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.3...@tecsinapse/cortex-core@2.0.2-beta.4) (2026-01-28)
+
+### Bug Fixes
+
+* tirando export de função interna ([631cb00](https://github.com/tecsinapse/design-system/commit/631cb00373da6b973e2956c62551510df860858c))
+
+## [2.0.2-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.2...@tecsinapse/cortex-core@2.0.2-beta.3) (2026-01-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+## [2.0.2-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.1...@tecsinapse/cortex-core@2.0.2-beta.2) (2026-01-21)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+## [2.0.2-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.0...@tecsinapse/cortex-core@2.0.2-beta.1) (2026-01-16)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
+## [2.0.2-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.1...@tecsinapse/cortex-core@2.0.2-beta.0) (2026-01-16)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
 ## [2.0.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.0-beta.2...@tecsinapse/cortex-core@2.0.1) (2026-01-13)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
@@ -36,8 +58,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **uploader:** adicionando as classes do manager no cortex-core ([e123329](https://github.com/tecsinapse/design-system/commit/e12332998fbf9533a0382145d5c585d856775a4c))
-* **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
+- **uploader:** adicionando as classes do manager no cortex-core ([e123329](https://github.com/tecsinapse/design-system/commit/e12332998fbf9533a0382145d5c585d856775a4c))
+- **uploader:** atualizando o export das classes do manager no core ([7b8b4d3](https://github.com/tecsinapse/design-system/commit/7b8b4d3e88eadb6b9616dd6fc4bfa03c11440f94))
 
 # [1.2.0-beta.14](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.2.0-beta.13...@tecsinapse/cortex-core@1.2.0-beta.14) (2025-11-26)
 

@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { Button } from '../src';
+import { updateThemeColors } from '@tecsinapse/cortex-core';
 
 export default {
   title: 'Cortex/Button',

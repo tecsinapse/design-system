@@ -46,7 +46,7 @@ export const Error: StoryObj<typeof Hint> = {
 export const CustomChildren: StoryObj<typeof Hint> = {
   render: args => (
     <Hint variants={args.variants}>
-      <div className="bg-primary-medium text-white px-deca py-micro">
+      <div className="bg-primary-medium text-on-primary px-deca py-micro">
         Div Hint
       </div>
     </Hint>
