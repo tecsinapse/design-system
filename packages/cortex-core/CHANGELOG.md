@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.3...@tecsinapse/cortex-core@2.0.2-beta.4) (2026-01-28)
+
+### Bug Fixes
+
+* tirando export de função interna ([631cb00](https://github.com/tecsinapse/design-system/commit/631cb00373da6b973e2956c62551510df860858c))
+
 ## [2.0.2-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.2...@tecsinapse/cortex-core@2.0.2-beta.3) (2026-01-28)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
