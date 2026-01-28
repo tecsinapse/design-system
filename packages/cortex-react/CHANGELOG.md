@@ -3,12 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.5...@tecsinapse/cortex-react@2.2.0-beta.6) (2026-01-14)
+
+### Features
+
+- **autocomplete:** adicionando lazy nas opções normais e agrupadas + stories ([49b9425](https://github.com/tecsinapse/design-system/commit/49b94257c8f67c6dadd06b0198f94183121022c3))
+
+# [2.2.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.4...@tecsinapse/cortex-react@2.2.0-beta.5) (2026-01-14)
+
+### Features
+
+- **autocomplete:** adicionando grouped options nos stories ([c48496b](https://github.com/tecsinapse/design-system/commit/c48496b31d8bf9826afa4d71d7e52af4d57c495d))
+- **autocomplete:** criando grouped options + corrigindo popover ([8a9745a](https://github.com/tecsinapse/design-system/commit/8a9745a644a11e26c08f0e9bb252f1127ae3a2e6))
+- **autocomplete:** criando o contexto do autocomplete + tipagem ([d45b881](https://github.com/tecsinapse/design-system/commit/d45b8818dc16e250d00e3dc0e5347f7e146166c1))
+- **autocomplete:** separando o autocomplete em subcomponentes + stories ([d43950b](https://github.com/tecsinapse/design-system/commit/d43950b3968b7841e59ad368fe4f6b3a15613bed))
+
+# [2.2.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.3...@tecsinapse/cortex-react@2.2.0-beta.4) (2026-01-05)
+
+### Features
+
+- **autocomplete:** modificando autocomplete + stories ([3054df8](https://github.com/tecsinapse/design-system/commit/3054df8ccfb1e571ddc5d349613e2dc16327b8b4))
+
+# [2.2.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.2...@tecsinapse/cortex-react@2.2.0-beta.3) (2026-01-05)
+
+### Features
+
+- **autocomplete:** adicionando prop de onSelect ([c0f4f5e](https://github.com/tecsinapse/design-system/commit/c0f4f5e3b23698d00f21d1e8fdc419ab7e784eaa))
+
+# [2.2.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.1...@tecsinapse/cortex-react@2.2.0-beta.2) (2026-01-05)
+
+### Features
+
+- **autocomplete:** adicionando prop de opções ([224ee87](https://github.com/tecsinapse/design-system/commit/224ee877af8787fe8e7c09b8ec0ebe1c8f22a047))
+
+# [2.2.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.0...@tecsinapse/cortex-react@2.2.0-beta.1) (2026-01-05)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.2.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0...@tecsinapse/cortex-react@2.2.0-beta.0) (2026-01-05)
+
+### Features
+
+- **autocomplete:** alterando versão na mão ([c7c887d](https://github.com/tecsinapse/design-system/commit/c7c887d1ca82b762e4d1b92cd9cd82034cf19f52))
+- **autocomplete:** criando o componente de autocomplete ([3291104](https://github.com/tecsinapse/design-system/commit/3291104ed3f088422f15259ab46226774e18c39f))
+- **autocomplete:** exportando o componentre autocomplete + stories ([4a56cd0](https://github.com/tecsinapse/design-system/commit/4a56cd057845c10b1a6098ef2ff0ce07ae0248b0))
+
 ## [2.1.2-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.1...@tecsinapse/cortex-react@2.1.2-beta.2) (2026-01-22)
 
 ### Bug Fixes
 
-* atualizando versão na mão pra gerar beta ([2dd1899](https://github.com/tecsinapse/design-system/commit/2dd189973b2102f9e7f7e50c5c8660fd8d81f834))
-* corrigindo tipagem do hook do ManagerContext e do useFileUpload ([044f00c](https://github.com/tecsinapse/design-system/commit/044f00c7c5f0bca3ae9f6fcdb562fc537c5084ab))
+- atualizando versão na mão pra gerar beta ([2dd1899](https://github.com/tecsinapse/design-system/commit/2dd189973b2102f9e7f7e50c5c8660fd8d81f834))
+- corrigindo tipagem do hook do ManagerContext e do useFileUpload ([044f00c](https://github.com/tecsinapse/design-system/commit/044f00c7c5f0bca3ae9f6fcdb562fc537c5084ab))
 
 ## [2.1.2-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.2-beta.0...@tecsinapse/cortex-react@2.1.2-beta.1) (2025-12-11)
 
