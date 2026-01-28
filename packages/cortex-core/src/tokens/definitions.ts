@@ -138,9 +138,9 @@ const fontFamily = {
 };
 
 const textColor = {
-  light: '#fff',
-  medium: '#85807a',
-  dark: '#353231',
+  light: 'var(--color-on-primary, #fff)',
+  medium: 'var(--color-medium, #85807a)',
+  dark: 'var(--color-dark, #353231)',
   orange: '#f89907',
 };
 

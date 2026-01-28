@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-core",
-  "version": "2.0.1",
+  "version": "2.0.2-beta.2",
   "license": "MIT",
   "description": "Core library for tailwindcss based design",
   "main": "dist/esm/index.js",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "clsx": "2.1.1",
+    "polished": "^4.3.1",
     "tailwind-variants": "3.1.1"
   },
   "devDependencies": {
