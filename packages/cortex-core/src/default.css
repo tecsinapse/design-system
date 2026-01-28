@@ -7,6 +7,7 @@
   /* Text */
   --color-default: #000;
   --color-inverse: #fff;
+  --color-on-primary: #fff;
   
   /* Surface */
   --color-surface-base: #f8f7f7;
@@ -20,6 +21,10 @@
   --color-content-low: #85807a;
   --color-content-minimal: #c2bfbc;
   --color-content-inverse: #ffffff;
+}
+
+:root[data-contrast='black'] {
+  --color-on-primary: #000
 }
 
 @media(prefers-color-scheme: dark) {
@@ -211,6 +216,7 @@
   /* Text colors */
   --color-default: var(--color-default);
   --color-inverse: var(--color-inverse);
+  --color-on-primary: var(--color-on-primary);
   --color-light: #fff;
   --color-medium: #85807a;
   --color-dark: #353231;

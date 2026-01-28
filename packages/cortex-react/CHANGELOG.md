@@ -7,19 +7,99 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* adaptando o bg de todos os componentes para o novo padrão ([c59bfbb](https://github.com/tecsinapse/design-system/commit/c59bfbbe9b0c303d90a3feb0603b301c0c72f41e))
-* adaptando os tokens de cor para a v4 do tailwind + atualizando versões ([df4c21b](https://github.com/tecsinapse/design-system/commit/df4c21bc22258dd36a4c378cc359161d8269ff59))
-* correções de estilo no uploader ([a57c428](https://github.com/tecsinapse/design-system/commit/a57c4286a935552ce9d5437077e7866fb26d0c8b))
-* corrigindo cor de textos nos stories + retirando alguns testes ([5a28c87](https://github.com/tecsinapse/design-system/commit/5a28c87592b4e7f8bf74b923e0a6c9ddf43b066d))
-* criando contexto de dark theme + stories de teste ([32be451](https://github.com/tecsinapse/design-system/commit/32be45168dc97709c7c30d2c2de26672a585bf82))
-* criando stories para testar o darkmode + adaptando o card ([e154366](https://github.com/tecsinapse/design-system/commit/e1543660924574a33bac3b79cd84941b62045e02))
-* criando token de cor variavel para conteudo + aplicando na menubar ([bde4ff0](https://github.com/tecsinapse/design-system/commit/bde4ff0c8b07c04f79bd056eb96da8717110c464))
-* criando token de surface inverse ([891eec3](https://github.com/tecsinapse/design-system/commit/891eec359ca208c010001ed1101a36c3c305283a))
-* **dark mode:** retirando teste desnecessário ([7923a97](https://github.com/tecsinapse/design-system/commit/7923a972eb6184d88f7356ed6eb175001294e146))
-* **dark mode:** trocando o esquema de troca de tema para var com data-theme + correção de tokens ([c83e1f9](https://github.com/tecsinapse/design-system/commit/c83e1f9798f4bfc193209d019cd23cb1faa29794))
-* mudando os nomes dos shades de content ([29eef14](https://github.com/tecsinapse/design-system/commit/29eef14e1a8a9ab88f784d642d2c1c3dce53597f))
-* trocando cor da borda do popover content ([c7a9f3d](https://github.com/tecsinapse/design-system/commit/c7a9f3d4d76a1b5d12364f51940e40b716beeb09))
-* trocando todos os tokens secondary por content no cortex-core e cortex-react ([ccf1e25](https://github.com/tecsinapse/design-system/commit/ccf1e255dfdf02be5fda2e7cf936be4747a4ce84))
+- adaptando o bg de todos os componentes para o novo padrão ([c59bfbb](https://github.com/tecsinapse/design-system/commit/c59bfbbe9b0c303d90a3feb0603b301c0c72f41e))
+- adaptando os tokens de cor para a v4 do tailwind + atualizando versões ([df4c21b](https://github.com/tecsinapse/design-system/commit/df4c21bc22258dd36a4c378cc359161d8269ff59))
+- correções de estilo no uploader ([a57c428](https://github.com/tecsinapse/design-system/commit/a57c4286a935552ce9d5437077e7866fb26d0c8b))
+- corrigindo cor de textos nos stories + retirando alguns testes ([5a28c87](https://github.com/tecsinapse/design-system/commit/5a28c87592b4e7f8bf74b923e0a6c9ddf43b066d))
+- criando contexto de dark theme + stories de teste ([32be451](https://github.com/tecsinapse/design-system/commit/32be45168dc97709c7c30d2c2de26672a585bf82))
+- criando stories para testar o darkmode + adaptando o card ([e154366](https://github.com/tecsinapse/design-system/commit/e1543660924574a33bac3b79cd84941b62045e02))
+- criando token de cor variavel para conteudo + aplicando na menubar ([bde4ff0](https://github.com/tecsinapse/design-system/commit/bde4ff0c8b07c04f79bd056eb96da8717110c464))
+- criando token de surface inverse ([891eec3](https://github.com/tecsinapse/design-system/commit/891eec359ca208c010001ed1101a36c3c305283a))
+- **dark mode:** retirando teste desnecessário ([7923a97](https://github.com/tecsinapse/design-system/commit/7923a972eb6184d88f7356ed6eb175001294e146))
+- **dark mode:** trocando o esquema de troca de tema para var com data-theme + correção de tokens ([c83e1f9](https://github.com/tecsinapse/design-system/commit/c83e1f9798f4bfc193209d019cd23cb1faa29794))
+- mudando os nomes dos shades de content ([29eef14](https://github.com/tecsinapse/design-system/commit/29eef14e1a8a9ab88f784d642d2c1c3dce53597f))
+- trocando cor da borda do popover content ([c7a9f3d](https://github.com/tecsinapse/design-system/commit/c7a9f3d4d76a1b5d12364f51940e40b716beeb09))
+- trocando todos os tokens secondary por content no cortex-core e cortex-react ([ccf1e25](https://github.com/tecsinapse/design-system/commit/ccf1e255dfdf02be5fda2e7cf936be4747a4ce84))
+
+## [2.2.1-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.1-beta.1...@tecsinapse/cortex-react@2.2.1-beta.2) (2026-01-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [2.2.1-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.7...@tecsinapse/cortex-react@2.2.1-beta.1) (2026-01-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [2.2.1-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.2-beta.1...@tecsinapse/cortex-react@2.2.1-beta.0) (2026-01-21)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.7...@tecsinapse/cortex-react@2.2.0) (2026-01-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.2.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.2-beta.2...@tecsinapse/cortex-react@2.2.0-beta.7) (2026-01-28)
+
+### Features
+
+- **autocomplete:** adicionando grouped options nos stories ([c48496b](https://github.com/tecsinapse/design-system/commit/c48496b31d8bf9826afa4d71d7e52af4d57c495d))
+- **autocomplete:** adicionando lazy nas opções normais e agrupadas + stories ([49b9425](https://github.com/tecsinapse/design-system/commit/49b94257c8f67c6dadd06b0198f94183121022c3))
+- **autocomplete:** adicionando prop de onSelect ([c0f4f5e](https://github.com/tecsinapse/design-system/commit/c0f4f5e3b23698d00f21d1e8fdc419ab7e784eaa))
+- **autocomplete:** adicionando prop de opções ([224ee87](https://github.com/tecsinapse/design-system/commit/224ee877af8787fe8e7c09b8ec0ebe1c8f22a047))
+- **autocomplete:** alterando versão na mão ([c7c887d](https://github.com/tecsinapse/design-system/commit/c7c887d1ca82b762e4d1b92cd9cd82034cf19f52))
+- **autocomplete:** corrigindo calculo da triggerwidth ([864bb88](https://github.com/tecsinapse/design-system/commit/864bb88cfae74f3738f1a0285016a8467370a435))
+- **autocomplete:** criando grouped options + corrigindo popover ([8a9745a](https://github.com/tecsinapse/design-system/commit/8a9745a644a11e26c08f0e9bb252f1127ae3a2e6))
+- **autocomplete:** criando o componente de autocomplete ([3291104](https://github.com/tecsinapse/design-system/commit/3291104ed3f088422f15259ab46226774e18c39f))
+- **autocomplete:** criando o contexto do autocomplete + tipagem ([d45b881](https://github.com/tecsinapse/design-system/commit/d45b8818dc16e250d00e3dc0e5347f7e146166c1))
+- **autocomplete:** exportando o componentre autocomplete + stories ([4a56cd0](https://github.com/tecsinapse/design-system/commit/4a56cd057845c10b1a6098ef2ff0ce07ae0248b0))
+- **autocomplete:** modificando autocomplete + stories ([3054df8](https://github.com/tecsinapse/design-system/commit/3054df8ccfb1e571ddc5d349613e2dc16327b8b4))
+- **autocomplete:** separando o autocomplete em subcomponentes + stories ([d43950b](https://github.com/tecsinapse/design-system/commit/d43950b3968b7841e59ad368fe4f6b3a15613bed))
+- **autocomplete:** tirando a memoização das options ([802e425](https://github.com/tecsinapse/design-system/commit/802e42502559203da5293fb67ec432e5cd98396e))
+- **autocomplete:** trocando a tipagem das opções para generic + key e label extractor ([30fccca](https://github.com/tecsinapse/design-system/commit/30fcccaa5337aadb7638f6b30b37fa403e61d8f6))
+
+# [2.2.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.5...@tecsinapse/cortex-react@2.2.0-beta.6) (2026-01-14)
+
+### Features
+
+- **autocomplete:** adicionando lazy nas opções normais e agrupadas + stories ([49b9425](https://github.com/tecsinapse/design-system/commit/49b94257c8f67c6dadd06b0198f94183121022c3))
+
+# [2.2.0-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.4...@tecsinapse/cortex-react@2.2.0-beta.5) (2026-01-14)
+
+### Features
+
+- **autocomplete:** adicionando grouped options nos stories ([c48496b](https://github.com/tecsinapse/design-system/commit/c48496b31d8bf9826afa4d71d7e52af4d57c495d))
+- **autocomplete:** criando grouped options + corrigindo popover ([8a9745a](https://github.com/tecsinapse/design-system/commit/8a9745a644a11e26c08f0e9bb252f1127ae3a2e6))
+- **autocomplete:** criando o contexto do autocomplete + tipagem ([d45b881](https://github.com/tecsinapse/design-system/commit/d45b8818dc16e250d00e3dc0e5347f7e146166c1))
+- **autocomplete:** separando o autocomplete em subcomponentes + stories ([d43950b](https://github.com/tecsinapse/design-system/commit/d43950b3968b7841e59ad368fe4f6b3a15613bed))
+
+# [2.2.0-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.3...@tecsinapse/cortex-react@2.2.0-beta.4) (2026-01-05)
+
+### Features
+
+- **autocomplete:** modificando autocomplete + stories ([3054df8](https://github.com/tecsinapse/design-system/commit/3054df8ccfb1e571ddc5d349613e2dc16327b8b4))
+
+# [2.2.0-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.2...@tecsinapse/cortex-react@2.2.0-beta.3) (2026-01-05)
+
+### Features
+
+- **autocomplete:** adicionando prop de onSelect ([c0f4f5e](https://github.com/tecsinapse/design-system/commit/c0f4f5e3b23698d00f21d1e8fdc419ab7e784eaa))
+
+# [2.2.0-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.1...@tecsinapse/cortex-react@2.2.0-beta.2) (2026-01-05)
+
+### Features
+
+- **autocomplete:** adicionando prop de opções ([224ee87](https://github.com/tecsinapse/design-system/commit/224ee877af8787fe8e7c09b8ec0ebe1c8f22a047))
+
+# [2.2.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.0-beta.0...@tecsinapse/cortex-react@2.2.0-beta.1) (2026-01-05)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+# [2.2.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.0.0...@tecsinapse/cortex-react@2.2.0-beta.0) (2026-01-05)
+
+### Features
+
+- **autocomplete:** alterando versão na mão ([c7c887d](https://github.com/tecsinapse/design-system/commit/c7c887d1ca82b762e4d1b92cd9cd82034cf19f52))
+- **autocomplete:** criando o componente de autocomplete ([3291104](https://github.com/tecsinapse/design-system/commit/3291104ed3f088422f15259ab46226774e18c39f))
+- **autocomplete:** exportando o componentre autocomplete + stories ([4a56cd0](https://github.com/tecsinapse/design-system/commit/4a56cd057845c10b1a6098ef2ff0ce07ae0248b0))
 
 ## [2.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.1.2-beta.2...@tecsinapse/cortex-react@2.1.2) (2026-01-22)
 

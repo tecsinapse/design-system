@@ -82,7 +82,7 @@ describe('CalendarCell', () => {
     expect(calendarCellElement).toHaveClass('text-content-minimal');
   });
 
-  it('Should apply text-white on selected date', () => {
+  it('Should apply text-on-primary on selected date', () => {
     mockUseCalendarCell.mockReturnValue({
       ...useCalendarMockReturn,
       isSelected: true,
@@ -99,10 +99,10 @@ describe('CalendarCell', () => {
 
     const calendarCellElement = screen.getByTestId('calendar-cell-td');
 
-    expect(calendarCellElement).toHaveClass('text-white');
+    expect(calendarCellElement).toHaveClass('text-on-primary');
   });
 
-  it('Should apply text-white on range start selected date', () => {
+  it('Should apply text-on-primary on range start selected date', () => {
     mockUseCalendarCell.mockReturnValue({
       ...useCalendarMockReturn,
       isSelectionStart: true,
@@ -119,10 +119,10 @@ describe('CalendarCell', () => {
 
     const calendarCellElement = screen.getByTestId('calendar-cell-td');
 
-    expect(calendarCellElement).toHaveClass('text-white');
+    expect(calendarCellElement).toHaveClass('text-on-primary');
   });
 
-  it('Should apply text-white on range end selected date', () => {
+  it('Should apply text-on-primary on range end selected date', () => {
     mockUseCalendarCell.mockReturnValue({
       ...useCalendarMockReturn,
       isSelectionEnd: true,
@@ -139,7 +139,7 @@ describe('CalendarCell', () => {
 
     const calendarCellElement = screen.getByTestId('calendar-cell-td');
 
-    expect(calendarCellElement).toHaveClass('text-white');
+    expect(calendarCellElement).toHaveClass('text-on-primary');
   });
 
   it('Should apply day indicator if isTodayHighlited is true', () => {
