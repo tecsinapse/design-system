@@ -1,5 +1,5 @@
 import { selectVariants } from '@tecsinapse/cortex-core';
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { AutocompleteOption } from './Option';
 import { AutocompleteOptionsProps } from './types';
 import { useAutocompleteOptions } from '../../hooks/useAutocompleteOptions';
@@ -25,23 +25,18 @@ export const AutocompleteOptions = <T,>({
     options,
   });
 
-  const defaultOptions = useMemo(
-    () =>
-      _options?.map(option => (
-        <AutocompleteOption
-          key={keyExtractor(option)}
-          option={option}
-          onSelect={onSelect}
-        />
-      )) ?? [],
-    [_options, onSelect, keyExtractor]
-  );
-
   return isLoading ? (
     <SkeletonOptions />
   ) : (
     <ul role="listbox" className={list()}>
-      {children ?? defaultOptions}
+      {children ??
+        _options?.map(option => (
+          <AutocompleteOption
+            key={keyExtractor(option)}
+            option={option}
+            onSelect={onSelect}
+          />
+        ))}
     </ul>
   );
 };
