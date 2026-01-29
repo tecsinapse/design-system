@@ -15,6 +15,7 @@ interface DarkThemeContextValue {
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
   isDark: boolean;
+  systemTheme: 'dark' | 'light';
 }
 
 const DarkThemeContext = createContext<DarkThemeContextValue | null>(null);
@@ -56,8 +57,14 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const isDark = useMemo(() => theme === 'dark', [theme]);
 
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+
   return (
-    <DarkThemeContext.Provider value={{ theme, setTheme, toggleTheme, isDark }}>
+    <DarkThemeContext.Provider
+      value={{ theme, setTheme, toggleTheme, isDark, systemTheme }}
+    >
       {children}
     </DarkThemeContext.Provider>
   );
