@@ -22,7 +22,7 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.dataset.theme = theme;
   }, [theme]);
 
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
