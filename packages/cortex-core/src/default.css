@@ -27,30 +27,6 @@
   --color-on-primary: #000
 }
 
-@media(prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    /* Body */
-    --color-body: #1e1e1e;
-
-    /* Text */
-    --color-default: #fff;
-    --color-inverse: #000;
-
-    /* Surface */
-    --color-surface-base: #1e1e1e;
-    --color-surface-raised: #252526;
-    --color-surface-overlay: #2d2d30;
-    --color-surface-inverse: #fff;
-
-    /* Content */
-    --color-content-high: #f8f7f7;
-    --color-content-medium: #c2bfbc;
-    --color-content-low: #85807a;
-    --color-content-minimal: #5d5955;
-    --color-content-inverse: #353231;
-    }
-}
-
 :root[data-theme='dark'] {
   /* Body */
   --color-body: #1e1e1e;
