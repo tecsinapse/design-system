@@ -1,0 +1,92 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Dark Mode" />
+
+# Dark Mode
+
+`@tecsinapse/cortex-core` provides a function to apply a dark mode, in two different ways: either with a manual toggle function, or based on the default preference of the user's system, or both.
+
+## Dark Mode Setup
+
+First, wrap your application with the DarkThemeProvider, preferrably in the index.tsx, to allow the usage of the useDarkTheme hook.
+
+```jsx
+import { DarkThemeProvider } from '@tecsinapse/cortex-core';
+import { App } from './App'
+
+function initApp({ children }: { children: ReactNode }) {
+  return (
+    <DarkThemeProvider>
+      <App />
+    </DarkThemeProvider>
+  );
+}
+```
+
+In your src/index.css, add the miscellaneous.body token to the background, and the textColor.default to text.
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.miscellaneous.body');
+    color: theme('textColor.default');
+  }
+}
+```
+
+## Manual Toggle
+
+By calling the useDarkTheme hook, you can have access to a variety of states and functions to use the resource.
+
+You can use the toggleTheme function in a button, to change the theme, and use the isDark state value to choose the button icon, for example.
+
+```jsx
+import { useDarkTheme } from '@tecsinapse/cortex-core';
+import { FaMoon, FaSun } from 'react-icons/fa6';
+
+const ToggleDarkTheme = () => {
+  const { toggleTheme, isDark } = useDarkTheme();
+
+  return (
+    <Button onClick={toggleTheme}>{isDark ? <FaSun /> : <FaMoon />}</Button>
+  );
+};
+```
+
+## Using the System's default to set the theme
+
+The useDarkTheme hook will provide you a setState function, named setTheme, to manually set the theme, and a systemTheme value, that exposes the current system's default theme.
+
+With that, you are able to set the system's default as the app's theme, if you wish.
+
+```jsx
+import { useDarkTheme } from '@tecsinapse/cortex-core';
+
+const App = ({ children }: { children: ReactNode }) => {
+  const { setTheme, systemTheme } = useDarkTheme();
+
+  useEffect(() => {
+    setTheme(systemTheme);
+  }, []);
+
+  return <>{children}</>;
+};
+```
+
+## Using the color tokens in you app
+
+After that, you can use the dinamic surface, content, and text (default and inverse) tokens, as you can see in the **Tokens** section in the sidebar.
+
+```jsx
+const Component = () => {
+  return (
+    <div className="bg-surface-overlay">
+      <p>My Text</p>
+    </div>
+  );
+};
+```
