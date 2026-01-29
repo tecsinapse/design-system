@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import { colors, darkColors, textColor } from '../tokens/definitions';
@@ -13,6 +14,7 @@ interface DarkThemeContextValue {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
+  isDark: boolean;
 }
 
 const DarkThemeContext = createContext<DarkThemeContextValue | null>(null);
@@ -52,8 +54,10 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
 
+  const isDark = useMemo(() => theme === 'dark', [theme]);
+
   return (
-    <DarkThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <DarkThemeContext.Provider value={{ theme, setTheme, toggleTheme, isDark }}>
       {children}
     </DarkThemeContext.Provider>
   );
