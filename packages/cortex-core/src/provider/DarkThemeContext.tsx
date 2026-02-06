@@ -51,6 +51,8 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
       style.setProperty('--color-content-minimal', colors.content.minimal);
       style.setProperty('--color-content-inverse', colors.content.inverse);
     }
+
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
