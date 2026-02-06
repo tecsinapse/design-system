@@ -26,7 +26,6 @@ export const ManagerProvider = ({ children }: { children: ReactNode }) => {
   const [props, setProps] = useState<ManagerProps<unknown>>({});
   const [files, setFiles] = useState<FileUpload<unknown>[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(true);
 
   const uploadFiles = async <T,>({
     onAccept,
@@ -45,7 +44,6 @@ export const ManagerProvider = ({ children }: { children: ReactNode }) => {
         status: FileStatus.ERROR,
       }));
       setFiles(prevFiles => updateFiles(prevFiles, updatedFiles));
-      setIsSuccess(false);
     }
   };
 
@@ -58,7 +56,7 @@ export const ManagerProvider = ({ children }: { children: ReactNode }) => {
       value={{ showManager, files, setFiles, isOpen, setIsOpen, uploadFiles }}
     >
       {children}
-      <Manager files={files} open={isOpen} isSuccess={isSuccess} {...props} />
+      <Manager files={files} open={isOpen} {...props} />
     </ManagerContext.Provider>
   );
 };
