@@ -14,7 +14,7 @@ interface DarkThemeContextValue {
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
   isDark: boolean;
-  systemTheme: 'dark' | 'light';
+  systemTheme: Theme;
 }
 
 const DarkThemeContext = createContext<DarkThemeContextValue | null>(null);
