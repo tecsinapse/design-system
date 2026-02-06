@@ -98,7 +98,9 @@ export interface ManagerProps<T> {
   files?: FileUpload<T>[];
   onDelete?: (index: number) => void;
   uploadProgressText?: string;
-  uploadResultText?: string;
+  uploadSuccessText?: string;
+  uploadErrorText?: string;
+  isSuccess?: boolean;
   onClose?: () => void;
 }
 

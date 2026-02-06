@@ -13,7 +13,9 @@ export const Manager = <T,>({
   files,
   onDelete,
   uploadProgressText = 'Upload(s) in progress',
-  uploadResultText = 'Upload(s) completed',
+  uploadSuccessText = 'Upload(s) completed',
+  uploadErrorText = 'Upload(s) failed',
+  isSuccess,
   onClose,
 }: ManagerProps<T>) => {
   const {
@@ -44,7 +46,11 @@ export const Manager = <T,>({
             {min ? <IoChevronUp /> : <IoChevronDown />}
           </Button>
           <h3 data-testid="upload-progress">
-            {isLoading ? uploadProgressText : uploadResultText}
+            {isLoading
+              ? uploadProgressText
+                ? isSuccess
+                : uploadSuccessText
+              : uploadErrorText}
           </h3>
           <Button
             variants={{ variant: 'filled', size: 'square' }}
