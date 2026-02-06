@@ -140,7 +140,7 @@ export const useFileUpload = <T>({
         uploadResultText,
       });
     }
-  }, [handleRemoveFile, closeManager]);
+  }, [handleRemoveFile, closeManager, uploadResultText]);
 
   const addMimeTypes = (key: keyof typeof AcceptSpecificMap, acc: Accept) => {
     AcceptSpecificMap[key].forEach(mimeType => {
