@@ -60,45 +60,45 @@ describe('DateRangePickerInput', () => {
     expect(screen.queryByTestId('calendar-div')).not.toBeInTheDocument();
   });
 
-  // it('Should call onChange and close calendar when date is selected', async () => {
-  //   render(<DateRangePickerInput {...defaultProps} />);
+  it('Should call onChange and close calendar when date is selected', async () => {
+    render(<DateRangePickerInput {...defaultProps} />);
 
-  //   const button = screen.getByTestId('date-picker-input-base-calendar-button');
-  //   fireEvent.click(button);
+    const button = screen.getByTestId('date-picker-input-base-calendar-button');
+    fireEvent.click(button);
 
-  //   const calendarElement = await screen.findByTestId('calendar-range-div');
-  //   expect(calendarElement).toBeInTheDocument();
+    const calendarElement = await screen.findByTestId('calendar-range-div');
+    expect(calendarElement).toBeInTheDocument();
 
-  //   const today = new Date();
+    const today = new Date();
 
-  //   const calendarStartDate = new CalendarDateTime(
-  //     today.getFullYear(),
-  //     today.getMonth() + 1,
-  //     14
-  //   );
-  //   const calendarEndDate = new CalendarDateTime(
-  //     today.getFullYear(),
-  //     today.getMonth() + 1,
-  //     16
-  //   );
+    const calendarStartDate = new CalendarDateTime(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      14
+    );
+    const calendarEndDate = new CalendarDateTime(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      16
+    );
 
-  //   const calendarCellStartDate = screen.getByText(
-  //     calendarStartDate.day.toString()
-  //   );
-  //   const calendarCellEndDate = screen.getByText(
-  //     calendarEndDate.day.toString()
-  //   );
+    const calendarCellStartDate = screen.getByText(
+      calendarStartDate.day.toString()
+    );
+    const calendarCellEndDate = screen.getByText(
+      calendarEndDate.day.toString()
+    );
 
-  //   expect(calendarCellStartDate).toBeInTheDocument();
-  //   expect(calendarCellEndDate).toBeInTheDocument();
+    expect(calendarCellStartDate).toBeInTheDocument();
+    expect(calendarCellEndDate).toBeInTheDocument();
 
-  //   fireEvent.click(calendarCellStartDate);
-  //   fireEvent.click(calendarCellEndDate);
+    fireEvent.click(calendarCellStartDate);
+    fireEvent.click(calendarCellEndDate);
 
-  //   expect(mockUseDateRangePickerInput.state.setDateRange).toHaveBeenCalled();
+    expect(mockUseDateRangePickerInput.state.setDateRange).toHaveBeenCalled();
 
-  //   expect(
-  //     await screen.queryByTestId('calendar-range-div')
-  //   ).not.toBeInTheDocument();
-  // });
+    expect(
+      await screen.queryByTestId('calendar-range-div')
+    ).not.toBeInTheDocument();
+  });
 });
