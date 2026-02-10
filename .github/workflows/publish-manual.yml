@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "pnpm"
+          cache: 'pnpm'
 
       - name: install and prepare
         run: pnpm i
@@ -46,6 +46,21 @@ jobs:
           if [ "${{ github.ref_name }}" = "master" ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
+          elif ["${{ github.ref_name }}" == legacy/*]; then
+            npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
+            npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes
           else
-            npx --yes lerna publish --canary --preid beta --dist-tag beta --no-private --ignore-scripts --yes
+            OUTPUT=$(npx --yes lerna publish --canary --preid beta --dist-tag beta --no-private --ignore-scripts --yes)
+
+            echo "$OUTPUT"
+
+            PUBLISHED=$(echo "$OUTPUT" | grep -E "@.+@.+beta")
+
+            echo "published_packages<<EOF" >> $GITHUB_OUTPUT
+            echo "$PUBLISHED" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+
+            echo "### 🚀 Betas publicados" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "$PUBLISHED" | sed 's/^/- `/; s/$/`/' >> $GITHUB_STEP_SUMMARY
           fi
