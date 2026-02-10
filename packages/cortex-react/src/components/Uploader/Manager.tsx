@@ -43,7 +43,7 @@ export const Manager = <T,>({
           >
             {min ? <IoChevronUp /> : <IoChevronDown />}
           </Button>
-          <h3 data-testid="upload-progress">teste</h3>
+          <h3 data-testid="upload-progress">aa</h3>
           <Button
             variants={{ variant: 'filled', size: 'square' }}
             onClick={onClose}
