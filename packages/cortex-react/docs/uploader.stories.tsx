@@ -98,7 +98,7 @@ export const CustomWithManager: StoryObj<typeof Uploader> = {
     return (
       <div>
         <button className={button()} onClick={onOpen}>
-          Upload File Custom With Manager Testing
+          Upload File Custom With Manager
         </button>
         <Uploader.Modal open={open} onClose={onClose}>
           <div className="flex flex-col overflow-y-auto w-full gap-kilo">
