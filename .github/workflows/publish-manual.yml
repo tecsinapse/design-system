@@ -54,7 +54,7 @@ jobs:
 
             echo "$OUTPUT"
 
-            PUBLISHED=$(echo "$OUTPUT" | grep -E "@.+@.+beta")
+            PUBLISHED=$(echo "$OUTPUT" | grep -oE "@[^ ]+@[^ ]*beta[^ ]*")
 
             echo "published_packages<<EOF" >> $GITHUB_OUTPUT
             echo "$PUBLISHED" >> $GITHUB_OUTPUT
