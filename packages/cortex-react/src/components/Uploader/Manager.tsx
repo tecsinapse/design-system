@@ -13,7 +13,7 @@ export const Manager = <T,>({
   files,
   onDelete,
   uploadProgressText = 'Upload(s) in progress',
-  uploadResultText = 'Upload(s) completed testing',
+  uploadResultText = 'Upload(s) completed',
   onClose,
 }: ManagerProps<T>) => {
   const {
