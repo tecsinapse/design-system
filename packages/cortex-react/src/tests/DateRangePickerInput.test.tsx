@@ -82,9 +82,9 @@ describe('DateRangePickerInput', () => {
       16
     );
 
-    const calendarCellStartDate = screen.getByText(
+    const calendarCellStartDate = screen.getAllByText(
       calendarStartDate.day.toString()
-    );
+    )[0];
     const calendarCellEndDate = screen.getByText(
       calendarEndDate.day.toString()
     );
