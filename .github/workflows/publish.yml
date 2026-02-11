@@ -6,6 +6,7 @@ on:
     branches:
       - develop
       - master
+      - 'legacy/**'
     paths-ignore:
       - '.husky/**'
       - '.github/**'
@@ -51,10 +52,10 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
-          if [ ${{ github.base_ref }} = master ]; then
+          if [ "${{ github.base_ref }}" = "master" ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
-          elif ["${{ github.ref_name }}" == legacy/*]; then
+          elif [[ "${{ github.base_ref }}" == legacy/* ]]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes
           else
