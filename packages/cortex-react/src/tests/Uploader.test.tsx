@@ -210,9 +210,9 @@ describe('Uploader Components', () => {
 
       expect(screen.getByText('file1.txt')).toBeInTheDocument();
       expect(screen.getByText('file2.txt')).toBeInTheDocument();
-      // expect(screen.getByTestId('upload-progress')).toHaveTextContent(
-      //   'Custom uploading...'
-      // );
+      expect(screen.getByTestId('upload-progress')).toHaveTextContent(
+        'Custom uploading...'
+      );
     });
   });
 });
