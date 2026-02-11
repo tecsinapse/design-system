@@ -50,7 +50,7 @@ jobs:
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes
           else
-            OUTPUT=$(npx --yes lerna publish --canary --preid beta --dist-tag beta --no-private --ignore-scripts --yes)
+            OUTPUT=$(npx --yes lerna publish --canary --preid "beta.$GITHUB_RUN_NUMBER" --dist-tag beta --no-private --ignore-scripts --yes)
 
             echo "$OUTPUT"
 
