@@ -135,11 +135,8 @@ export const Folder = ({ name, subItems }: FolderProps) => {
   );
   const intent = useMemo(() => {
     if (loading) return 'info';
-    if (
-      (subItems ?? []).some(item => item.status === 'error') &&
-      (subItems ?? []).some(item => item.status === 'success')
-    ) {
-      return 'warning';
+    if ((subItems ?? []).some(item => item.status === 'error')) {
+      return 'error';
     }
     return 'success';
   }, [subItems]);
