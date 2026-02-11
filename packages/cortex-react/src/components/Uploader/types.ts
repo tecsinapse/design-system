@@ -99,7 +99,6 @@ export interface ManagerProps<T> {
   onDelete?: (index: number) => void;
   uploadProgressText?: string;
   uploadResultText?: string;
-  isSuccess?: boolean;
   onClose?: () => void;
 }
 
