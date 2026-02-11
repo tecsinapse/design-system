@@ -32,7 +32,7 @@ interface UseFileUploadOptions<T> {
   hasManager?: boolean;
   isFolder?: boolean;
   uploadProgressText?: string;
-  uploadSuccessText?: string;
+  uploadResultText?: string;
   noClick?: boolean;
   ignoreRejections?: boolean;
 }
@@ -51,7 +51,7 @@ export const useFileUpload = <T>({
   noClick = false,
   ignoreRejections = false,
   uploadProgressText,
-  uploadSuccessText,
+  uploadResultText,
 }: UseFileUploadOptions<T>) => {
   const {
     showManager,
@@ -137,10 +137,10 @@ export const useFileUpload = <T>({
         onClose: closeManager,
         onDelete: handleRemoveFile,
         uploadProgressText,
-        uploadSuccessText,
+        uploadResultText,
       });
     }
-  }, [handleRemoveFile, closeManager]);
+  }, [handleRemoveFile, closeManager, uploadResultText]);
 
   const addMimeTypes = (key: keyof typeof AcceptSpecificMap, acc: Accept) => {
     AcceptSpecificMap[key].forEach(mimeType => {

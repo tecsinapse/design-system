@@ -307,6 +307,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [1.14.1-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.14.1-beta.5...@tecsinapse/cortex-react@1.14.1-beta.6) (2025-11-26)
 
+## [1.15.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.1-beta.5...@tecsinapse/cortex-react@1.15.4) (2026-02-11)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.16.1-beta.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.1-beta.4...@tecsinapse/cortex-react@1.16.1-beta.5) (2026-02-09)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.16.1-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.1-beta.3...@tecsinapse/cortex-react@1.16.1-beta.4) (2026-02-06)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.16.1-beta.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.1-beta.2...@tecsinapse/cortex-react@1.16.1-beta.3) (2026-02-06)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.16.1-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.1-beta.1...@tecsinapse/cortex-react@1.16.1-beta.2) (2026-02-06)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.16.1-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.1-beta.0...@tecsinapse/cortex-react@1.16.1-beta.1) (2026-02-04)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
+## [1.16.1-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3...@tecsinapse/cortex-react@1.16.1-beta.0) (2026-02-04)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 ## [1.15.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.15.3-beta.0...@tecsinapse/cortex-react@1.15.3) (2025-11-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
