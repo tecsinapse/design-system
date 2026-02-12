@@ -7,13 +7,14 @@ import React, {
   useState,
 } from 'react';
 import { colors, darkColors, textColor } from '../tokens/definitions';
+import { useCallback } from 'storybook/internal/preview-api';
 
-type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark';
 
 interface DarkThemeContextValue {
   theme: Theme;
   setTheme: (theme: Theme) => void;
-  toggleTheme: () => void;
+  toggleTheme: () => Theme;
   isDark: boolean;
   systemTheme: 'dark' | 'light';
 }
@@ -51,11 +52,13 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
       style.setProperty('--color-content-minimal', colors.content.minimal);
       style.setProperty('--color-content-inverse', colors.content.inverse);
     }
-
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
+  const toggleTheme = useCallback(() => {
+    const next: Theme = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    return next;
+  }, [theme]);
 
   const isDark = useMemo(() => theme === 'dark', [theme]);
 
