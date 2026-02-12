@@ -6,13 +6,14 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { useCallback } from 'storybook/internal/preview-api';
 
-type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark';
 
 interface DarkThemeContextValue {
   theme: Theme;
   setTheme: (theme: Theme) => void;
-  toggleTheme: () => void;
+  toggleTheme: () => Theme;
   isDark: boolean;
   systemTheme: Theme;
 }
@@ -24,10 +25,13 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
+  const toggleTheme = useCallback(() => {
+    const next: Theme = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    return next;
+  }, [theme]);
 
   const isDark = useMemo(() => theme === 'dark', [theme]);
 
