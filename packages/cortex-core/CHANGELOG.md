@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.6...@tecsinapse/cortex-core@1.3.0-beta.7) (2026-02-12)
+
+### Features
+
+* **dark mode:** adicionando dark mode no localStorage ([cb99076](https://github.com/tecsinapse/design-system/commit/cb99076c7f0a30ec6da2fcabc041db3eeb215435))
+* **dark mode:** retornando o tema mudado no toggle ([cc439d4](https://github.com/tecsinapse/design-system/commit/cc439d436ab468c6644047f0aec7521a5cc5ac6c))
+
 # [1.3.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.5...@tecsinapse/cortex-core@1.3.0-beta.6) (2026-01-30)
 
 ### Features
