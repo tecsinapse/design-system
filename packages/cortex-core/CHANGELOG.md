@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-beta.9](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.8...@tecsinapse/cortex-core@1.3.0-beta.9) (2026-02-12)
+
+### Features
+
+* **dark mode:** corrigindo import ([c3431a3](https://github.com/tecsinapse/design-system/commit/c3431a34115382e44e08da040cdae5cc4d97118c))
+
 # [1.3.0-beta.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@1.3.0-beta.7...@tecsinapse/cortex-core@1.3.0-beta.8) (2026-02-12)
 
 ### Features
