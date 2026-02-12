@@ -21,6 +21,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - trocando cor da borda do popover content ([c7a9f3d](https://github.com/tecsinapse/design-system/commit/c7a9f3d4d76a1b5d12364f51940e40b716beeb09))
 - trocando todos os tokens secondary por content no cortex-core e cortex-react ([ccf1e25](https://github.com/tecsinapse/design-system/commit/ccf1e255dfdf02be5fda2e7cf936be4747a4ce84))
 
+## [2.2.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.1-beta.2...@tecsinapse/cortex-react@2.2.1) (2026-01-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 ## [2.2.1-beta.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.2.1-beta.1...@tecsinapse/cortex-react@2.2.1-beta.2) (2026-01-28)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react

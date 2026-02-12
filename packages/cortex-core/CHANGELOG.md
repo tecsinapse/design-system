@@ -20,6 +20,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - mudando tokens de cor do input e select ([3dc81ec](https://github.com/tecsinapse/design-system/commit/3dc81ece3a2a8e51fbb6c73d4f03c7543a52eb8d))
 - trocando todos os tokens secondary por content no cortex-core e cortex-react ([ccf1e25](https://github.com/tecsinapse/design-system/commit/ccf1e255dfdf02be5fda2e7cf936be4747a4ce84))
 
+## [2.0.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.4...@tecsinapse/cortex-core@2.0.2) (2026-01-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-core
+
 ## [2.0.2-beta.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2-beta.3...@tecsinapse/cortex-core@2.0.2-beta.4) (2026-01-28)
 
 ### Bug Fixes
