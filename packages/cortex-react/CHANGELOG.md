@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0-beta.7](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.0-beta.6...@tecsinapse/cortex-react@1.16.0-beta.7) (2026-02-12)
+
+### Features
+
+* corrigindo testes ([fc5de0a](https://github.com/tecsinapse/design-system/commit/fc5de0a7355c3461a14706168df8317e0b414eb6))
+
 # [1.16.0-beta.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@1.16.0-beta.5...@tecsinapse/cortex-react@1.16.0-beta.6) (2026-01-30)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
