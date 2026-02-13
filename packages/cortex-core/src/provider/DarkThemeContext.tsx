@@ -1,12 +1,12 @@
 import React, {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
   useState,
 } from 'react';
-import { useCallback } from 'storybook/internal/preview-api';
 
 export type Theme = 'light' | 'dark';
 
