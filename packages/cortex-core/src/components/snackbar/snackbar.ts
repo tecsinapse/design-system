@@ -5,7 +5,7 @@ const snackbarStyles = tv({
   variants: {
     intent: {
       default: 'bg-primary-xlight text-primary-medium',
-      secondary: 'bg-secondary-xlight text-secondary-medium',
+      secondary: 'bg-content-inverse text-content-low',
       success: 'bg-success-xlight text-success-medium',
       error: 'bg-error-xlight text-error-medium',
       info: 'bg-info-xlight text-info-medium',

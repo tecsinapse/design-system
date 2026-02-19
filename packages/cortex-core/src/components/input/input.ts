@@ -2,14 +2,14 @@ import { clsx } from 'clsx';
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
 export const inputBaseStyles = tv({
-  base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 bg-white focus-within:outline focus-within:outline-1 text-base font-bold items-center border rounded-mili has-[:disabled]:bg-transparent has-[:disabled]:border-secondary-light has-[:disabled]:text-secondary-light',
+  base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 bg-surface-overlay focus-within:outline focus-within:outline-1 text-base font-bold items-center border rounded-mili has-[:disabled]:bg-transparent has-[:disabled]:border-content-minimal has-[:disabled]:text-content-minimal',
   variants: {
     intent: {
       default: [
-        'input-secondary',
-        'border-secondary-light',
-        'focus-within:border-secondary-dark',
-        'focus-within:outline-secondary-dark',
+        'input-content',
+        'border-content-minimal',
+        'focus-within:border-content-medium',
+        'focus-within:outline-content-medium',
       ],
       success: [
         'input-success',
@@ -37,13 +37,13 @@ export const inputBaseStyles = tv({
 });
 
 const labelBaseStyles = tv({
-  base: 'absolute duration-300 -translate-y-2 scale-[0.72] top-2.5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-0 peer-focus:scale-[0.72] peer-focus:-translate-y-2 peer-focus:top-2.5 font-bold text-base peer-disabled:text-secondary-light select-none w-max peer-autofill:scale-[0.72] peer-autofill:-translate-y-2 peer-autofill:top-2.5',
+  base: 'absolute duration-300 -translate-y-2 scale-[0.72] top-2.5 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-0 peer-focus:scale-[0.72] peer-focus:-translate-y-2 peer-focus:top-2.5 font-bold text-base peer-disabled:text-content-minimal select-none w-max peer-autofill:scale-[0.72] peer-autofill:-translate-y-2 peer-autofill:top-2.5',
   variants: {
     intent: {
       default: [
-        'text-secondary-medium',
-        'peer-focus:text-secondary-medium',
-        'peer-placeholder-shown:text-secondary-medium',
+        'text-content-low',
+        'peer-focus:text-content-low',
+        'peer-placeholder-shown:text-content-low',
       ],
       success: ['text-success-medium'],
       warning: ['text-warning-medium'],
@@ -75,7 +75,7 @@ export const inputBox = (
 ) =>
   clsx(
     className,
-    'peer relative outline-none placeholder:text-base placeholder:text-secondary-medium placeholder-shown:top-0 disabled:placeholder:text-secondary-light disabled:text-secondary-light bg-transparent',
+    'peer relative outline-none placeholder:text-base placeholder:text-content-low placeholder-shown:top-0 disabled:placeholder:text-content-minimal disabled:text-content-minimal bg-transparent',
     {
       'focus:top-1.5': !placeholder && !!label,
       'top-1.5': !!label,

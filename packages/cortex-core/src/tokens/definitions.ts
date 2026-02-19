@@ -34,6 +34,18 @@ const colors = {
     dark: '#cc9f00',
     xdark: '#665000',
   },
+  surface: {
+    base: 'var(--color-surface-base, #f8f7f7)',
+    raised: 'var(--color-surface-raised, #fbfbfb)',
+    overlay: 'var(--color-surface-overlay, #ffffff)',
+  },
+  content: {
+    high: 'var(--color-content-high, #353231)',
+    medium: 'var(--color-content-medium, #5d5955)',
+    low: 'var(--color-content-low, #85807a)',
+    minimal: 'var(--color-content-minimal, #c2bfbc)',
+    inverse: 'var(--color-content-inverse, #ffffff)',
+  },
   error: {
     xlight: '#fdf3f2',
     light: '#ee9891',
@@ -138,6 +150,8 @@ const fontFamily = {
 };
 
 const textColor = {
+  default: 'var(--color-default, #000)',
+  inverse: 'var(--color-inverse, #fff)',
   light: 'var(--color-on-primary, #fff)',
   medium: 'var(--color-medium, #85807a)',
   dark: 'var(--color-dark, #353231)',

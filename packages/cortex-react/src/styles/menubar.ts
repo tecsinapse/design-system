@@ -3,11 +3,11 @@ import { tv } from 'tailwind-variants';
 export const menubar = tv({
   slots: {
     header:
-      'relative w-screen px-kilo py-deca flex flex-row md:justify-between bg-white z-header sm:justify-start',
+      'relative w-screen px-kilo py-deca flex flex-row md:justify-between bg-surface-overlay z-header sm:justify-start',
     left: 'flex items-center w-fit',
     right: 'flex items-center gap-x-deca hidden sm:flex',
     dropdown:
-      'w-full bg-white flex-1 shadow-default z-popover px-[8vw] absolute',
+      'w-full bg-surface-overlay flex-1 shadow-default z-popover px-[8vw] absolute',
   },
   variants: {
     show: {
@@ -22,7 +22,7 @@ export const menubar = tv({
 export const mostUsed = tv({
   slots: {
     container: 'mb-kilo',
-    label: 'font-bold mb-centi',
+    label: 'font-bold mb-centi text-default',
     containerList: 'gap-x-kilo flex flex-row',
   },
 });
@@ -31,14 +31,14 @@ export const mostUsedItem = tv({
   slots: {
     container: 'flex-1 py-mili',
     title: 'text-primary-medium font-bold text-base',
-    category: 'text-secondary-medium text-label',
+    category: 'text-content-low text-label',
   },
 });
 
 export const item = tv({
   slots: {
     container:
-      'flex flex-row gap-x-deca items-center text-secondary-dark hover:cursor-pointer text-base',
+      'flex flex-row gap-x-deca items-center text-content-medium hover:cursor-pointer text-base',
     textBehavior: 'hover:text-primary-medium',
     icon: 'text-primary-medium hover:cursor-pointer',
   },
@@ -46,8 +46,8 @@ export const item = tv({
 
 export const category = tv({
   slots: {
-    text: 'mb-mili font-bold',
-    hr: 'mb-mili border-0 h-px bg-secondary-light',
+    text: 'mb-mili font-bold text-default',
+    hr: 'mb-mili border-0 h-px bg-content-high',
     container: 'flex flex-col gap-y-mili',
   },
 });
@@ -55,7 +55,7 @@ export const category = tv({
 export const subItem = tv({
   slots: {
     container:
-      'pl-deca text-sub border-l-[1px] border-primary-medium text-secondary-dark hover:text-primary-medium cursor-pointer',
+      'pl-deca text-sub border-l-[1px] border-primary-medium text-content-medium hover:text-primary-medium cursor-pointer',
   },
 });
 

@@ -43,7 +43,7 @@ export const AccordionTrigger = ({
   return (
     <div
       className={clsx(
-        'flex justify-between align-center border-secondary-light cursor-pointer',
+        'flex justify-between align-center border-content-minimal cursor-pointer',
         { 'mr-deca': floating && direction === 'horizontal' },
         { 'mb-deca': floating && direction === 'vertical' },
         { 'border-r flex-col px-mili': direction === 'horizontal' },
@@ -53,13 +53,13 @@ export const AccordionTrigger = ({
     >
       <div
         className={clsx(
-          'rounded-mili border border-secondary-light flex align-center justify-center p-micro',
+          'rounded-mili border border-content-minimal flex align-center justify-center p-micro',
           {
-            'absolute -translate-x-micro translate-y-deca bg-white':
+            'absolute -translate-x-micro translate-y-deca bg-surface-overlay':
               floating && direction === 'horizontal',
           },
           {
-            'absolute -translate-y-micro translate-x-deca bg-white':
+            'absolute -translate-y-micro translate-x-deca bg-surface-overlay':
               floating && direction === 'vertical',
           },
           className
@@ -68,7 +68,7 @@ export const AccordionTrigger = ({
         {direction === 'horizontal' ? (
           <LiaAngleRightSolid
             className={clsx(
-              'text-secondary-medium transition-transform duration-200',
+              'text-content-low transition-transform duration-200',
               {
                 'rotate-180': invertedArrow ? !open : open,
               }
@@ -77,7 +77,7 @@ export const AccordionTrigger = ({
         ) : (
           <LiaAngleDownSolid
             className={clsx(
-              'text-secondary-medium transition-transform duration-200',
+              'text-content-low transition-transform duration-200',
               {
                 'rotate-180': invertedArrow ? !open : open,
               }

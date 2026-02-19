@@ -13,7 +13,7 @@ export const CalendarGrid = ({ state }: CalendarGridProps) => {
 
   return (
     <div
-      className="bg-white rounded-micro px-deca py-mili"
+      className="bg-surface-overlay rounded-micro px-deca py-mili"
       data-testid="calendar-grid"
     >
       <table {...gridProps} className="border-separate border-spacing-y-nano">

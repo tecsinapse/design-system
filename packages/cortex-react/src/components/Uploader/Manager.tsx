@@ -43,7 +43,7 @@ export const Manager = <T,>({
           >
             {min ? <IoChevronUp /> : <IoChevronDown />}
           </Button>
-          <h3 data-testid="upload-progress">
+          <h3 data-testid="upload-progress" className="font-bold text-h4">
             {isLoading ? uploadProgressText : uploadResultText}
           </h3>
           <Button

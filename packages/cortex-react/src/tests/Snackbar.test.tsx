@@ -86,7 +86,7 @@ describe('BaseSnackBar', () => {
       </BaseSnackbar>
     );
     const snack = screen.getByTestId('snackbar');
-    expect(snack).toHaveClass('bg-secondary-xlight');
-    expect(snack).toHaveClass('text-secondary-medium');
+    expect(snack).toHaveClass('bg-content-inverse');
+    expect(snack).toHaveClass('text-content-low');
   });
 });
