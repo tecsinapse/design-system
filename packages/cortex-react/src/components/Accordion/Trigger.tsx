@@ -8,7 +8,7 @@ export const AccordionTrigger = ({
   label,
   children,
   floating = false,
-  left = true,
+  arrowPosition = 'left',
   showDivider = true,
   showArrowBorder = true,
   /**
@@ -22,7 +22,7 @@ export const AccordionTrigger = ({
 }: Pick<
   AccordionProps,
   | 'floating'
-  | 'left'
+  | 'arrowPosition'
   | 'showDivider'
   | 'showArrowBorder'
   | 'label'
@@ -40,7 +40,7 @@ export const AccordionTrigger = ({
   const { open, toggle } = useAccordionContext();
   if (!floating && !label && !children) {
     throw new Error(
-      'A label must be specified if the trigger is not floating variant'
+      'A label or children must be specified if the trigger is not floating variant'
     );
   }
 
@@ -70,7 +70,7 @@ export const AccordionTrigger = ({
       )}
       onClick={action}
     >
-      {!floating && left === false && (
+      {!floating && arrowPosition === 'right' && (
         <span
           className={clsx({
             '-rotate-180 [writing-mode:vertical-lr]':
@@ -118,7 +118,7 @@ export const AccordionTrigger = ({
           />
         )}
       </div>
-      {!floating && left === true && (
+      {!floating && arrowPosition === 'left' && (
         <span
           className={clsx({
             '-rotate-180 [writing-mode:vertical-lr]':

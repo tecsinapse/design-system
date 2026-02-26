@@ -50,7 +50,7 @@ export const Vertical: StoryObj<typeof Accordion.Root> = {
     direction: 'vertical',
     showDivider: false,
     showArrowBorder: false,
-    left: true,
+    arrowPosition: 'left',
   },
   render: args => (
     <div className="h-[500px]">
@@ -61,7 +61,7 @@ export const Vertical: StoryObj<typeof Accordion.Root> = {
           direction={args.direction}
           showDivider={args.showDivider}
           showArrowBorder={args.showArrowBorder}
-          left={args.left}
+          arrowPosition={args.arrowPosition}
         >
           <div className="flex gap-2 items-center">
             <Badge value={4} />
