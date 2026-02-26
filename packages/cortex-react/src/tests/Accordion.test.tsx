@@ -57,7 +57,7 @@ describe('Accordion', () => {
       );
     } catch (e) {
       expect((e as Error).message).toBe(
-        'A label must be specified if the trigger is not floating variant'
+        'A label or children must be specified if the trigger is not floating variant'
       );
     }
   });
