@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Accordion } from '../src';
+import { Accordion, Badge } from '../src';
 
 export default {
   title: 'Cortex/Accordion',
@@ -45,18 +45,27 @@ export const Default: StoryObj<typeof Accordion.Root> = {
 
 export const Vertical: StoryObj<typeof Accordion.Root> = {
   args: {
-    label: 'Root',
+    label: (
+      <div className="flex gap-2 items-center">
+        <Badge value={4} />
+        <span className="font-bold">Root</span>
+      </div>
+    ),
     defaultOpen: false,
     invertedArrow: false,
     direction: 'vertical',
+    border: false,
+    left: true
   },
   render: args => (
     <div className="h-[500px]">
       <Accordion.Root
         label={args.label}
+        border={args.border}
         defaultOpen={args.defaultOpen}
         invertedArrow={args.invertedArrow}
         direction={args.direction}
+        left={args.left}
         onClose={() => console.log('onClose')}
       >
         <div className="w-[300px] bg-white p-mili">

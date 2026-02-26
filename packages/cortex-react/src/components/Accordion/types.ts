@@ -11,12 +11,23 @@ export interface AccordionProps {
   /**
    * If floating trigger is provided, no label is displayed
    */
-  label?: string;
+  label?: React.ReactNode;
   /**
    * Show floating arrow in Trigger instead of default labeled mode
    * default: `false`
    */
   floating?: boolean;
+  /**
+   * Shows a border on the trigger
+   * @default true
+   */
+  border?: boolean;
+
+  /**
+   * Aligns the trigger to the left
+   * @default true
+   */
+  left?: boolean;
   /**
    * Callback executed on accordion `open` event
    * @returns void

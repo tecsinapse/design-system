@@ -7,6 +7,8 @@ import { AccordionProps } from './types';
 export const AccordionTrigger = ({
   label,
   floating = false,
+  left = true,
+  border = false,
   /**
    * Only applied to trigger arrow
    */
@@ -17,7 +19,14 @@ export const AccordionTrigger = ({
   direction = 'horizontal',
 }: Pick<
   AccordionProps,
-  'floating' | 'label' | 'onOpen' | 'onClose' | 'invertedArrow' | 'direction'
+  | 'floating'
+  | 'left'
+  | 'border'
+  | 'label'
+  | 'onOpen'
+  | 'onClose'
+  | 'invertedArrow'
+  | 'direction'
 > & {
   /**
    * Only applied to trigger arrow
@@ -43,17 +52,34 @@ export const AccordionTrigger = ({
   return (
     <div
       className={clsx(
-        'flex justify-between align-center border-secondary-light cursor-pointer',
+        'flex justify-between align-center cursor-pointer',
         { 'mr-deca': floating && direction === 'horizontal' },
         { 'mb-deca': floating && direction === 'vertical' },
-        { 'border-r flex-col px-mili': direction === 'horizontal' },
-        { 'border-b py-mili': direction === 'vertical' }
+        {
+          'border-r border-secondary-light flex-col px-mili':
+            direction === 'horizontal',
+        },
+        {
+          'border-b border-secondary-light py-mili':
+            border && direction === 'vertical',
+        }
       )}
       onClick={action}
     >
+      {!floating && left === false && (
+        <span
+          className={clsx({
+            '-rotate-180 [writing-mode:vertical-lr]':
+              direction === 'horizontal',
+          })}
+        >
+          {label}
+        </span>
+      )}
+
       <div
         className={clsx(
-          'rounded-mili border border-secondary-light flex align-center justify-center p-micro',
+          'rounded-mili flex align-center justify-center p-micro',
           {
             'absolute -translate-x-micro translate-y-deca bg-white':
               floating && direction === 'horizontal',
@@ -61,6 +87,9 @@ export const AccordionTrigger = ({
           {
             'absolute -translate-y-micro translate-x-deca bg-white':
               floating && direction === 'vertical',
+          },
+          {
+            'border border-secondary-light': border,
           },
           className
         )}
@@ -85,7 +114,7 @@ export const AccordionTrigger = ({
           />
         )}
       </div>
-      {!floating ? (
+      {!floating && left === true && (
         <span
           className={clsx({
             '-rotate-180 [writing-mode:vertical-lr]':
@@ -94,7 +123,7 @@ export const AccordionTrigger = ({
         >
           {label}
         </span>
-      ) : null}
+      )}
     </div>
   );
 };
