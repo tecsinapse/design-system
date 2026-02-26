@@ -6,9 +6,11 @@ import { AccordionProps } from './types';
 
 export const AccordionTrigger = ({
   label,
+  children,
   floating = false,
   left = true,
-  border = false,
+  showDivider = true,
+  showArrowBorder = true,
   /**
    * Only applied to trigger arrow
    */
@@ -21,8 +23,10 @@ export const AccordionTrigger = ({
   AccordionProps,
   | 'floating'
   | 'left'
-  | 'border'
+  | 'showDivider'
+  | 'showArrowBorder'
   | 'label'
+  | 'children'
   | 'onOpen'
   | 'onClose'
   | 'invertedArrow'
@@ -34,7 +38,7 @@ export const AccordionTrigger = ({
   className?: string;
 }) => {
   const { open, toggle } = useAccordionContext();
-  if (!floating && !label) {
+  if (!floating && !label && !children) {
     throw new Error(
       'A label must be specified if the trigger is not floating variant'
     );
@@ -61,7 +65,7 @@ export const AccordionTrigger = ({
         },
         {
           'border-b border-secondary-light py-mili':
-            border && direction === 'vertical',
+            showDivider && direction === 'vertical',
         }
       )}
       onClick={action}
@@ -73,7 +77,7 @@ export const AccordionTrigger = ({
               direction === 'horizontal',
           })}
         >
-          {label}
+          {children ?? label}
         </span>
       )}
 
@@ -89,7 +93,7 @@ export const AccordionTrigger = ({
               floating && direction === 'vertical',
           },
           {
-            'border border-secondary-light': border,
+            'border border-secondary-light': showArrowBorder,
           },
           className
         )}
@@ -121,7 +125,7 @@ export const AccordionTrigger = ({
               direction === 'horizontal',
           })}
         >
-          {label}
+          {children ?? label}
         </span>
       )}
     </div>

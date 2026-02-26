@@ -21,8 +21,12 @@ export interface AccordionProps {
    * Shows a border on the trigger
    * @default true
    */
-  border?: boolean;
-
+  showArrowBorder?: boolean;
+  /**
+   * Shows a divider on the trigger
+   * @default true
+   */
+  showDivider?: boolean;
   /**
    * Aligns the trigger to the left
    * @default true
