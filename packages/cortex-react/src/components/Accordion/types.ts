@@ -18,6 +18,21 @@ export interface AccordionProps {
    */
   floating?: boolean;
   /**
+   * Shows a border on the trigger
+   * @default true
+   */
+  showArrowBorder?: boolean;
+  /**
+   * Shows a divider on the trigger
+   * @default true
+   */
+  showDivider?: boolean;
+  /**
+   * Aligns the trigger to the left
+   * @default true
+   */
+  arrowPosition?: 'left' | 'right';
+  /**
    * Callback executed on accordion `open` event
    * @returns void
    */
