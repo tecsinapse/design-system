@@ -6,7 +6,11 @@ import { AccordionProps } from './types';
 
 export const AccordionTrigger = ({
   label,
+  children,
   floating = false,
+  arrowPosition = 'left',
+  showDivider = true,
+  showArrowBorder = true,
   /**
    * Only applied to trigger arrow
    */
@@ -17,7 +21,16 @@ export const AccordionTrigger = ({
   direction = 'horizontal',
 }: Pick<
   AccordionProps,
-  'floating' | 'label' | 'onOpen' | 'onClose' | 'invertedArrow' | 'direction'
+  | 'floating'
+  | 'arrowPosition'
+  | 'showDivider'
+  | 'showArrowBorder'
+  | 'label'
+  | 'children'
+  | 'onOpen'
+  | 'onClose'
+  | 'invertedArrow'
+  | 'direction'
 > & {
   /**
    * Only applied to trigger arrow
@@ -25,9 +38,9 @@ export const AccordionTrigger = ({
   className?: string;
 }) => {
   const { open, toggle } = useAccordionContext();
-  if (!floating && !label) {
+  if (!floating && !label && !children) {
     throw new Error(
-      'A label must be specified if the trigger is not floating variant'
+      'A label or children must be specified if the trigger is not floating variant'
     );
   }
 
@@ -43,17 +56,34 @@ export const AccordionTrigger = ({
   return (
     <div
       className={clsx(
-        'flex justify-between align-center border-secondary-light cursor-pointer',
+        'flex justify-between align-center cursor-pointer',
         { 'mr-deca': floating && direction === 'horizontal' },
         { 'mb-deca': floating && direction === 'vertical' },
-        { 'border-r flex-col px-mili': direction === 'horizontal' },
-        { 'border-b py-mili': direction === 'vertical' }
+        {
+          'border-r border-secondary-light flex-col px-mili':
+            direction === 'horizontal',
+        },
+        {
+          'border-b border-secondary-light py-mili':
+            showDivider && direction === 'vertical',
+        }
       )}
       onClick={action}
     >
+      {!floating && arrowPosition === 'right' && (
+        <span
+          className={clsx({
+            '-rotate-180 [writing-mode:vertical-lr]':
+              direction === 'horizontal',
+          })}
+        >
+          {children ?? label}
+        </span>
+      )}
+
       <div
         className={clsx(
-          'rounded-mili border border-secondary-light flex align-center justify-center p-micro',
+          'rounded-mili flex align-center justify-center p-micro',
           {
             'absolute -translate-x-micro translate-y-deca bg-white':
               floating && direction === 'horizontal',
@@ -61,6 +91,9 @@ export const AccordionTrigger = ({
           {
             'absolute -translate-y-micro translate-x-deca bg-white':
               floating && direction === 'vertical',
+          },
+          {
+            'border border-secondary-light': showArrowBorder,
           },
           className
         )}
@@ -85,16 +118,16 @@ export const AccordionTrigger = ({
           />
         )}
       </div>
-      {!floating ? (
+      {!floating && arrowPosition === 'left' && (
         <span
           className={clsx({
             '-rotate-180 [writing-mode:vertical-lr]':
               direction === 'horizontal',
           })}
         >
-          {label}
+          {children ?? label}
         </span>
-      ) : null}
+      )}
     </div>
   );
 };
