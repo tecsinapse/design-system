@@ -8,7 +8,7 @@ import {
   useModalRemoteControl,
 } from '@tecsinapse/react-native-kit';
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Meta } from '@storybook/react';
 
 const StoryMeta: Meta<typeof ModalView> = {
@@ -52,12 +52,26 @@ const InnerModal: FC<IBaseModal> = ({ close, ...others }) => {
     </ModalView>
   );
 };
+const data = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
 
 const MyModal: FC<IBaseModal> = ({ close, ...others }) => {
   const modal = useModalManager(() => <InnerModal />);
   return (
-    <ModalView {...others} close={close}>
+    <ModalView {...others} close={close} frozen>
       <View style={{ padding: 20 }}>
+        <View>
+          <ScrollView horizontal style={{ gap: 20 }}>
+            {data.map((item, index) => (
+              <View
+                key={index}
+                style={{width: 100, height: 100, backgroundColor: "red"}}
+              >
+                <Text >{item}</Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
         <Text typography="h2">Hey, I'm a modal!</Text>
         <Input value={''}></Input>
         <Button onPress={close}>
