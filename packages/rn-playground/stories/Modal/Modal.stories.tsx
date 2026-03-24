@@ -20,11 +20,23 @@ export default StoryMeta;
 
 export const Base = () => {
   const myModal = useModalManager(() => <MyModal />);
+  const data = [...new Array(101).keys()];
 
   return (
-    <Button onPress={() => myModal.show()}>
-      <Text>Open a little modal</Text>
-    </Button>
+    <View style={{height: 100, backgroundColor: '#6e6e6e'}}>
+      <Button onPress={() => myModal.show()}>
+        <Text>Open a little modal</Text>
+      </Button>
+
+      <ScrollView horizontal style={{ gap: 20}}>
+        {data.map(it => (
+          <View key={it} style={{width: 40, height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f6f6f6', gap: 20}}>
+            <Text>{it}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+
   );
 };
 
@@ -52,27 +64,24 @@ const InnerModal: FC<IBaseModal> = ({ close, ...others }) => {
     </ModalView>
   );
 };
-const data = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-
 
 const MyModal: FC<IBaseModal> = ({ close, ...others }) => {
+  const data = [...new Array(101).keys()];
   const modal = useModalManager(() => <InnerModal />);
+
   return (
-    <ModalView {...others} close={close} frozen>
-      <View style={{ padding: 20 }}>
-        <View>
-          <ScrollView horizontal style={{ gap: 20 }}>
-            {data.map((item, index) => (
-              <View
-                key={index}
-                style={{width: 100, height: 100, backgroundColor: "red"}}
-              >
-                <Text >{item}</Text>
+    <ModalView {...others} close={close}>
+      <View style={{ padding: 20, gap: 10 }}>
+        <Text typography="h2">Hey, I'm a modal!</Text>
+        <View style={{height: 100, backgroundColor: '#6e6e6e'}}>
+          <ScrollView horizontal style={{zIndex: 9999}}>
+            {data.map(it => (
+              <View key={it} style={{width: 40, height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f6f6f6'}}>
+                <Text>{it}</Text>
               </View>
             ))}
           </ScrollView>
         </View>
-        <Text typography="h2">Hey, I'm a modal!</Text>
         <Input value={''}></Input>
         <Button onPress={close}>
           <Text>Close me!</Text>

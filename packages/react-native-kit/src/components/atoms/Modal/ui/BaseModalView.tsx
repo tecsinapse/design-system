@@ -8,11 +8,12 @@ import {
   LayoutChangeEvent,
   Pressable,
   StatusBar,
+  Text,
+  View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BackDropView, CloseBar } from './styled';
+import { BackDropView, CloseBar, StyledPressableBackDrop, StyledView } from './styled';
 import { IBaseModal } from './types';
-import BackDrop from './BackDrop';
 
 const BACKDROP_ALPHA = 0.65;
 const INTERPOLATION_STEPS = 10;
@@ -140,7 +141,7 @@ export const ModalView: FC<IBaseModal> = ({
   }, []);
 
   return (
-    <BackDrop onPress={!frozen ? close : undefined}>
+    <StyledPressableBackDrop onPress={!frozen ? close : undefined}>
       <BackDropView style={{ backgroundColor: backgroundInterpolation }}>
         <Animated.View
           style={{
@@ -150,6 +151,7 @@ export const ModalView: FC<IBaseModal> = ({
               }),
             opacity: opacityCarrier,
             transform: [{ translateY: translationCarrier }],
+            zIndex: 1000,
           }}
         >
           <Pressable>
@@ -164,6 +166,6 @@ export const ModalView: FC<IBaseModal> = ({
           </Pressable>
         </Animated.View>
       </BackDropView>
-    </BackDrop>
+    </StyledPressableBackDrop>
   );
 };
