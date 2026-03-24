@@ -12,7 +12,7 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BackDropView, CloseBar, StyledPressableBackDrop, StyledView } from './styled';
+import { BackDropView, CloseBar, StyledPressableBackDrop } from './styled';
 import { IBaseModal } from './types';
 
 const BACKDROP_ALPHA = 0.65;
