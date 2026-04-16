@@ -20,7 +20,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.18",
     "@internationalized/date": "3.7.0",
-    "@tecsinapse/cortex-core": "workspace:*",
+    "@tecsinapse/cortex-core": "1.2.1-beta.13",
     "clsx": "2.1.1",
     "currency.js": "2.0.4",
     "embla-carousel-autoplay": "^8.0.0",
