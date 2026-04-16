@@ -227,8 +227,8 @@ importers:
         specifier: 3.7.0
         version: 3.7.0
       '@tecsinapse/cortex-core':
-        specifier: workspace:*
-        version: link:../cortex-core
+        specifier: 2.0.3-beta.4
+        version: 2.0.3-beta.4(tailwind-merge@3.4.0)(tailwindcss@4.1.16)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -4054,6 +4054,11 @@ packages:
     resolution: {integrity: sha512-bbguNBcDxsRmi9nnlWJxhfDWamY3lmcyACHcdO1crxfzuLpOhHLLtEIN/nCbbAtj5rchUgQD17QVAKi1f7IsKg==}
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7
+
+  '@tecsinapse/cortex-core@2.0.3-beta.4':
+    resolution: {integrity: sha512-x8cx4zkSKnfO7JM9lBwTcj4vJy3s7MRMr+PSp15fqNXOmz6n7spuLtRFgfhrTN6VhTMAEXMBfEy2sGMxDkDrEA==}
+    peerDependencies:
+      tailwindcss: ^4.1.16
 
   '@testing-library/dom@10.1.0':
     resolution: {integrity: sha512-wdsYKy5zupPyLCW2Je5DLHSxSfbIp6h80WoHOQc+RPtmPGA52O9x5MJEkv92Sjonpq+poOAtUKhh1kBGAXBrNA==}
@@ -15302,6 +15307,15 @@ snapshots:
       '@tailwindcss/oxide': 4.1.16
       tailwindcss: 4.1.16
       vite: 5.4.19(@types/node@22.5.1)(lightningcss@1.30.2)(terser@5.31.0)
+
+  '@tecsinapse/cortex-core@2.0.3-beta.4(tailwind-merge@3.4.0)(tailwindcss@4.1.16)':
+    dependencies:
+      clsx: 2.1.1
+      polished: 4.3.1
+      tailwind-variants: 3.1.1(tailwind-merge@3.4.0)(tailwindcss@4.1.16)
+      tailwindcss: 4.1.16
+    transitivePeerDependencies:
+      - tailwind-merge
 
   '@testing-library/dom@10.1.0':
     dependencies:

@@ -20,7 +20,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.18",
     "@internationalized/date": "3.7.0",
-    "@tecsinapse/cortex-core": "workspace:*",
+    "@tecsinapse/cortex-core": "2.0.3-beta.4",
     "clsx": "2.1.1",
     "country-flag-icons": "^1.6.4",
     "currency.js": "2.0.4",
