@@ -1,9 +1,30 @@
 // NOTE: Add here all individually utils, then you can use it on input components everywhere.
 import { extractDigitsFromString } from './extractNumbersFromString';
 
+const alfaNum = /[a-zA-Z0-9]/;
+
 export const Masks = {
   CPF: ['999.999.999-99'],
-  CNPJ: ['99.999.999/9999-99'],
+  CNPJ: [
+    alfaNum,
+    alfaNum,
+    '.',
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    '.',
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    '/',
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    '-',
+    '9',
+    '9',
+  ],
   DATE: ['99/99/9999'],
   HOUR: ['99:99'],
   MONTH_YEAR: ['99/9999'],
