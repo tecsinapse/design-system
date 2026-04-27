@@ -2,11 +2,23 @@ import { extractDigitsFromString } from '../../utils';
 
 export const ExpressionMasks = {
   CPF: '000.000.000-00',
-  CNPJ: '00.000.000/0000-00',
+  CNPJ: {
+    mask: '**.***.***/****-00',
+    definitions: {
+      '*': /[a-zA-Z0-9]/,
+    },
+    prepare: (str: string) => str.toUpperCase(),
+  },
   PHONE: '(00) 0000-0000',
   PHONE_EXTENDED: '(00) 00000-0000',
   DATE: '00/00/0000',
   CEP: '00000-000',
+};
+
+const alfaNum = /[a-zA-Z0-9]/;
+
+const extractAlphanumericFromString = (value: string) => {
+  return value ? String(value).replace(/[^a-zA-Z0-9]/g, '') : '';
 };
 
 export const NumberIMask = { mask: Number, scale: 2 };
@@ -42,7 +54,26 @@ export const PercentageIMask = {
 
 export const Masks = {
   CPF: ['999.999.999-99'],
-  CNPJ: ['99.999.999/9999-99'],
+  CNPJ: [
+    alfaNum,
+    alfaNum,
+    '.',
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    '.',
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    '/',
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    alfaNum,
+    '-',
+    '9',
+    '9',
+  ],
   DATE: ['99/99/9999'],
   HOUR: ['99:99'],
   MONTH_YEAR: ['99/9999'],
@@ -59,8 +90,10 @@ export const Masks = {
       ? Masks.PHONE
       : Masks.PHONE_EXTENDED;
   },
-  COMBINED_CPF_CNPJ: (value: string) =>
-    value?.length <= 14 ? Masks.CPF : Masks.CNPJ,
+  COMBINED_CPF_CNPJ: (value: string) => {
+    const cleanValue = extractAlphanumericFromString(value);
+    return cleanValue.length <= 11 ? Masks.CPF : Masks.CNPJ;
+  },
 };
 
 export const BRLMask = {
