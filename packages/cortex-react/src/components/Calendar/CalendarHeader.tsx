@@ -15,7 +15,7 @@ export const CalendarHeader = ({
 }: CalendarHeaderProps) => {
   return (
     <div
-      className="flex flex-row justify-between items-center gap-x-deca bg-miscellaneous-body p-mili"
+      className="flex flex-row justify-between items-center gap-x-deca bg-white p-mili"
       data-testid="calendar-header"
     >
       <Button

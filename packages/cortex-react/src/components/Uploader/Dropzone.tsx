@@ -26,13 +26,13 @@ export const Dropzone = ({
       )}
     >
       <input {...getInputProps()} />
-      <div className="flex flex-col justify-center text-center items-center">
-        <div>
+      <div className="flex flex-col justify-center text-center items-center w-full">
+        <div className="flex flex-col items-center w-full">
           <HiOutlineCloudArrowUp
-            className="text-primary-medium mb-nano"
+            className="text-primary-medium mb-nano mx-auto"
             size={35}
           />
-          <p className="text-lg font-semibold" data-testid="select-dropzone">
+          <p className="text-lg font-semibold w-full text-center" data-testid="select-dropzone">
             {selectFileText}
           </p>
         </div>
