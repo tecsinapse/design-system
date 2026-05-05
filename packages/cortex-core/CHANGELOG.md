@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-beta.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.2...@tecsinapse/cortex-core@2.1.0-beta.1) (2026-05-05)
+
+### Features
+
+* adaptando o bg de todos os componentes para o novo padrão ([c59bfbb](https://github.com/tecsinapse/design-system/commit/c59bfbbe9b0c303d90a3feb0603b301c0c72f41e))
+* adaptando os tokens de cor para a v4 do tailwind + atualizando versões ([df4c21b](https://github.com/tecsinapse/design-system/commit/df4c21bc22258dd36a4c378cc359161d8269ff59))
+* criando contexto de dark theme + stories de teste ([32be451](https://github.com/tecsinapse/design-system/commit/32be45168dc97709c7c30d2c2de26672a585bf82))
+* criando intent de surface e setando ele de acordo com o tema ([f9e74f0](https://github.com/tecsinapse/design-system/commit/f9e74f0e2af17c28e91475d1a91b529f80f0a1d7))
+* criando stories para testar o darkmode + adaptando o card ([e154366](https://github.com/tecsinapse/design-system/commit/e1543660924574a33bac3b79cd84941b62045e02))
+* criando token de cor variavel para conteudo + aplicando na menubar ([bde4ff0](https://github.com/tecsinapse/design-system/commit/bde4ff0c8b07c04f79bd056eb96da8717110c464))
+* criando token de surface inverse ([891eec3](https://github.com/tecsinapse/design-system/commit/891eec359ca208c010001ed1101a36c3c305283a))
+* **dark mode:** adicionando boolean isDark no contexto ([ec3b357](https://github.com/tecsinapse/design-system/commit/ec3b357462ead3e296d7da15a7c1ab35ae272aaa))
+* **dark mode:** adicionando o dark mode no localStorage ([e6f92a2](https://github.com/tecsinapse/design-system/commit/e6f92a2f8a5ae16b392954b27b4ad490864d9363))
+* **dark mode:** adicionando regra para condicionar o tema ao padrão do sistema ([2c07b1c](https://github.com/tecsinapse/design-system/commit/2c07b1c0fa26081728fd986cc93f0b908cf508fb))
+* **dark mode:** ajustando tipagem do dark mode context ([26bc0c1](https://github.com/tecsinapse/design-system/commit/26bc0c1953938b4765ca5dd2d0c875d4e8872bed))
+* **dark mode:** corrigindo a cor do texto nos modais ([c9cf4e2](https://github.com/tecsinapse/design-system/commit/c9cf4e25e0f4802805691674f61dd6f8fb0d05c4))
+* **dark mode:** corrigindo import ([f9480e3](https://github.com/tecsinapse/design-system/commit/f9480e32dc3256a6784c328b19f7e19dbfb258e1))
+* **dark mode:** corrigindo o overlay do modal ([ed5d3f6](https://github.com/tecsinapse/design-system/commit/ed5d3f6cdfd58d4b9112f65d92317a004f1ff83e))
+* **dark mode:** retornando o tema mudado no toggle ([f7aa75a](https://github.com/tecsinapse/design-system/commit/f7aa75afdc2c66198333ef06f9665cf0e40330ce))
+* **dark mode:** tirando o dark mode automatico do css + expondo systemTheme ([3f05ff2](https://github.com/tecsinapse/design-system/commit/3f05ff203aafa2632230e62f993884a9661dcd73))
+* **dark mode:** trocando estratégia de mudança de atributo no document ([d1a37e6](https://github.com/tecsinapse/design-system/commit/d1a37e67d08102bd51afe9de1cbe8bcd5da3a580))
+* **dark mode:** trocando o esquema de troca de tema para var com data-theme + correção de tokens ([c83e1f9](https://github.com/tecsinapse/design-system/commit/c83e1f9798f4bfc193209d019cd23cb1faa29794))
+* mudando os nomes dos shades de content ([29eef14](https://github.com/tecsinapse/design-system/commit/29eef14e1a8a9ab88f784d642d2c1c3dce53597f))
+* mudando tokens de cor do input e select ([3dc81ec](https://github.com/tecsinapse/design-system/commit/3dc81ece3a2a8e51fbb6c73d4f03c7543a52eb8d))
+* trocando todos os tokens secondary por content no cortex-core e cortex-react ([ccf1e25](https://github.com/tecsinapse/design-system/commit/ccf1e255dfdf02be5fda2e7cf936be4747a4ce84))
+
 # [2.1.0-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.0.1...@tecsinapse/cortex-core@2.1.0-beta.0) (2026-01-28)
 
 ### Features
