@@ -44,7 +44,7 @@ describe('Button', () => {
   it('Should render correctly variant secondary', () => {
     render(<Button variants={{ intent: 'secondary' }} data-testid="button" />);
     const button = screen.getByTestId('button');
-    expect(button).toHaveClass('bg-secondary-medium');
+    expect(button).toHaveClass('bg-content-low');
   });
 
   it('Should render correctly variant outlined', () => {

@@ -16,7 +16,7 @@ export const Default: StoryObj<typeof Accordion.Root> = {
   args: {
     label: 'Root',
     defaultOpen: false,
-    invertedArrow: false
+    invertedArrow: false,
   },
   render: args => (
     <Accordion.Root
@@ -25,7 +25,7 @@ export const Default: StoryObj<typeof Accordion.Root> = {
       invertedArrow={args.invertedArrow}
       onClose={() => console.log('onClose')}
     >
-      <div className="w-[300px] bg-white p-mili">
+      <div className="w-[300px] bg-surface-overlay p-mili">
         <h1 className="text-h1">Example content</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ex
@@ -105,7 +105,7 @@ export const Floating: StoryObj<typeof Accordion.Root> = {
         direction={args.direction}
       ></Accordion.Trigger>
       <Accordion.Content direction={args.direction}>
-        <div className="w-[300px]">
+        <div className="w-[300px] text-content-high">
           <h1 className="text-h1">Example content</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur

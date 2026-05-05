@@ -5,6 +5,7 @@
 @layer base {
   body {
     background-color: var(--color-miscellaneous-body);
+    color: var(--color-default);
     font-family: var(--font-family-sans);
     margin: 0;
   }

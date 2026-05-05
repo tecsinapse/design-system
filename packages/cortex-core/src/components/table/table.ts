@@ -18,8 +18,8 @@ export const tFoot = tv({
   base: '[&>tr]:rounded-none [&>tr]:shadow-none',
 });
 export const tRoot = tv({
-  base: 'min-w-fit border-separate border-spacing-x-[22px] border-spacing-y-mili rounded-mili bg-white shadow-default',
+  base: 'min-w-fit border-separate border-spacing-x-[22px] border-spacing-y-mili rounded-mili bg-surface-overlay shadow-default',
 });
 export const hr = tv({
-  base: '-mx-[24px] -mb-[4px] -mt-[50px] h-[42px] border-0 bg-secondary-xlight',
+  base: '-mx-[24px] -mb-[4px] -mt-[50px] h-[42px] border-0 bg-surface-base',
 });

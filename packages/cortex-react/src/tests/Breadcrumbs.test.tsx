@@ -31,8 +31,8 @@ describe('Breadcrumbs', () => {
       const lastTitleElement = screen.getByText(item.title);
       expect(lastTitleElement).toHaveClass(
         index === breadcrumbs.length - 1
-          ? 'text-secondary-medium'
-          : 'text-secondary-xdark'
+          ? 'text-content-low'
+          : 'text-content-medium'
       );
     });
   });
