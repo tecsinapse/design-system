@@ -9,6 +9,9 @@ export const AccordionRoot = ({
   defaultOpen,
   label,
   floating,
+  showDivider,
+  showArrowBorder,
+  arrowPosition,
   onOpen,
   invertedArrow,
   onClose,
@@ -21,6 +24,9 @@ export const AccordionRoot = ({
         floating={floating}
         onOpen={onOpen}
         onClose={onClose}
+        showDivider={showDivider}
+        showArrowBorder={showArrowBorder}
+        arrowPosition={arrowPosition}
         invertedArrow={invertedArrow}
         direction={direction}
       />
