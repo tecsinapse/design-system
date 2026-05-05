@@ -28,8 +28,8 @@ export const StepNodeVariants = tv({
         content: 'font-bold',
       },
       false: {
-        content: 'text-secondary-medium',
-        separator: 'bg-secondary-light',
+        content: 'text-content-low',
+        separator: 'bg-content-minimal',
       },
     },
     selected: {

@@ -12,7 +12,7 @@ const Root = ({ children, className, ...rest }: KanbanProps) => {
     <div
       {...rest}
       className={clsx(
-        'border border-dashed border-secondary-medium rounded-mili bg-secondary-xlight overflow-hidden',
+        'border border-dashed border-content-low rounded-mili bg-content-inverse overflow-hidden',
         className
       )}
     >

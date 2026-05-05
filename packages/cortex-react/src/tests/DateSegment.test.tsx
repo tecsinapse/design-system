@@ -47,7 +47,7 @@ describe('DateSegment Component', () => {
 
     expect(dateSegmentElement).toBeInTheDocument();
     expect(dateSegmentElement).toHaveClass(
-      'focus:outline-none focus:bg-secondary-light'
+      'focus:outline-none focus:bg-content-minimal'
     );
     expect(dateSegmentElement).toHaveAttribute('aria-label', 'Mocked segment');
   });
@@ -67,7 +67,7 @@ describe('DateSegment Component', () => {
 
     expect(dateSegmentElement).toBeInTheDocument();
     expect(dateSegmentElement).toHaveClass(
-      'focus:outline-none focus:bg-secondary-light text-secondary-light'
+      'focus:outline-none focus:bg-content-minimal text-content-minimal'
     );
     expect(dateSegmentElement).toHaveAttribute('aria-label', 'Mocked segment');
   });

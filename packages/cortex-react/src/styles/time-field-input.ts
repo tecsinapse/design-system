@@ -7,7 +7,7 @@ export const timePickerInputBase = tv({
   variants: {
     disabled: {
       true: {
-        icon: 'text-secondary-light cursor-default',
+        icon: 'text-content-minimal cursor-default',
       },
     },
   },

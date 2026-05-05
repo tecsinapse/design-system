@@ -133,7 +133,7 @@ describe('DatePickerInputBase', () => {
     );
 
     expect(datePickerInputBaseCalendarIconElement).toHaveClass(
-      'text-secondary-light cursor-default'
+      'text-content-minimal cursor-default'
     );
   });
 
@@ -157,7 +157,7 @@ describe('DatePickerInputBase', () => {
     );
 
     expect(datePickerInputBaseCleanIconElement).toHaveClass(
-      'text-secondary-light cursor-default'
+      'text-content-minimal cursor-default'
     );
   });
 
