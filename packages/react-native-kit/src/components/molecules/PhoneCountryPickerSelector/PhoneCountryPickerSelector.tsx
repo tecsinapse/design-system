@@ -3,7 +3,8 @@ import {
   PhoneCountrySelectorProps,
 } from '@tecsinapse/react-core';
 import React, { FC, useMemo } from 'react';
-import { useWindowDimensions } from 'react-native';
+import { Dimensions, useWindowDimensions } from 'react-native';
+import Header from '../../atoms/Header/Header';
 import { Text } from '../../atoms/Text';
 import { Divider, TextTitleModal } from '../Select/styled';
 import { CountryOption } from './CountryOption';
@@ -11,8 +12,17 @@ import { SearchInput } from './SearchInput';
 import { CompactSearchBarContainer, CompactTitleHeader, Root } from './styled';
 
 const DRAWER_HEIGHT_RATIO = 0.55;
+const DRAWER_MIN_HEIGHT = 320;
 const TITLE_BLOCK_HEIGHT = 60;
 const SEARCH_BLOCK_HEIGHT = 76;
+
+const getEffectiveWindowHeight = (windowHeight: number) => {
+  if (windowHeight > 0) {
+    return windowHeight;
+  }
+
+  return Dimensions.get('window').height;
+};
 
 export interface PhoneCountryPickerSelectorProps
   extends PhoneCountrySelectorProps {
@@ -30,7 +40,11 @@ const PhoneCountryPickerSelector: FC<PhoneCountryPickerSelectorProps> = ({
   const { height: windowHeight } = useWindowDimensions();
 
   const { drawerHeight, listHeight } = useMemo(() => {
-    const drawer = Math.round(windowHeight * DRAWER_HEIGHT_RATIO);
+    const effectiveHeight = getEffectiveWindowHeight(windowHeight);
+    const drawer = Math.max(
+      Math.round(effectiveHeight * DRAWER_HEIGHT_RATIO),
+      DRAWER_MIN_HEIGHT
+    );
     const titleBlock = title ? TITLE_BLOCK_HEIGHT : 0;
     const searchBlock = hasSearch ? SEARCH_BLOCK_HEIGHT : 0;
     const list = Math.max(drawer - titleBlock - searchBlock, 180);
@@ -42,7 +56,7 @@ const PhoneCountryPickerSelector: FC<PhoneCountryPickerSelectorProps> = ({
     <Root style={{ height: drawerHeight }}>
       {title ? (
         <CompactTitleHeader>
-          <TextTitleModal typography="h4" fontWeight="bold">
+          <TextTitleModal typography="h4" fontWeight="bold" numberOfLines={2}>
             {title}
           </TextTitleModal>
         </CompactTitleHeader>
