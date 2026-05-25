@@ -1,4 +1,4 @@
-import { FloatingArrow, Placement } from '@floating-ui/react';
+import { FloatingArrow, Placement, FloatingPortal } from '@floating-ui/react';
 import React, { forwardRef, useRef } from 'react';
 import { useFloatingElement, type Delay } from '../hooks';
 import { cloneWithProps } from '../utils';
@@ -51,25 +51,27 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       <>
         {cloneWithProps(children, triggerProps as any)}
         {isOpen ? (
-          <div
-            ref={ref || refs.setFloating}
-            className={
-              'bg-black text-white p-2 rounded z-50 shadow-md text-justify'
-            }
-            style={{
-              position: strategy,
-              top: y ?? 0,
-              left: x ?? 0,
-              width,
-              height,
-              ...style,
-              ...floatingStyles,
-            }}
-            {...getFloatingProps()}
-          >
-            {text}
-            <FloatingArrow ref={arrowRef} context={context} fill="black" />
-          </div>
+          <FloatingPortal>
+            <div
+              ref={ref || refs.setFloating}
+              className={
+                'bg-black text-white p-2 rounded z-50 shadow-md text-justify'
+              }
+              style={{
+                position: strategy,
+                top: y ?? 0,
+                left: x ?? 0,
+                width,
+                height,
+                ...style,
+                ...floatingStyles,
+              }}
+              {...getFloatingProps()}
+            >
+              {text}
+              <FloatingArrow ref={arrowRef} context={context} fill="black" />
+            </div>
+          </FloatingPortal>
         ) : null}
       </>
     );
