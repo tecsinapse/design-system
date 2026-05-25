@@ -1,7 +1,7 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
 const drawerStyles = tv({
-  base: 'bg-white fixed  top-0 h-full p-deca shadow-lg transition-all duration-500 transform overflow-y-scroll',
+  base: 'bg-surface-overlay fixed  top-0 h-full p-deca shadow-lg transition-all duration-500 transform overflow-y-scroll',
   variants: {
     position: {
       left: 'left-0 -translate-x-full rounded-r-mili',

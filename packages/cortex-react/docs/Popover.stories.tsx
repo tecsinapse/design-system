@@ -28,7 +28,7 @@ export const Default: StoryObj<typeof Popover.Root> = {
               Trigger Element
             </button>
           </Popover.Trigger>
-          <Popover.Content className="text-white">
+          <Popover.Content className="text-inverse">
             <div>Content of the Popover</div>
           </Popover.Content>
         </Popover.Root>

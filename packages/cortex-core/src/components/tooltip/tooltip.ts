@@ -5,7 +5,7 @@ export const tooltipContainer = tv({
 });
 
 const arrowTooltipStyles = tv({
-  base: 'after:content-[""] after:absolute after:border-secondary-dark',
+  base: 'after:content-[""] after:absolute after:border-content-medium',
   variants: {
     position: {
       top: 'after:left-[50%] after:-ml-[5px] after:top-[100%] after:border-x-8 after:border-x-transparent after:border-t-[8px]',
@@ -15,7 +15,7 @@ const arrowTooltipStyles = tv({
   },
 });
 const tooltipStyles = tv({
-  base: 'h-8 mt-deca w-max h-fit invisible group-hover:visible opacity-0 group-hover:opacity-100  bg-secondary-dark text-white px-centi py-micro rounded-mili absolute',
+  base: 'h-8 mt-deca w-max h-fit invisible group-hover:visible opacity-0 group-hover:opacity-100  bg-content-medium text-white px-centi py-micro rounded-mili absolute',
   variants: {
     position: {
       bottom: [
