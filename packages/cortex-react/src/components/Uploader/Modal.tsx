@@ -16,7 +16,7 @@ export const Modal = ({
       open={open}
       onClose={onClose}
       className={
-        'flex flex-col bg-surface-base rounded-mili min-w-[70vw] max-w-[95vh] max-h-[95vh] overflow-auto text-default'
+        'flex flex-col bg-white rounded-mili min-w-[70vw] max-w-[95vh] max-h-[95vh] overflow-auto'
       }
     >
       <div className="flex w-full items-center justify-between mb-deca">
