@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.4...@tecsinapse/react-native-kit@4.1.0) (2026-05-27)
+
+### Features
+
+* **ts-17515:** adicionando phone input no native kit ([b4a5d62](https://github.com/tecsinapse/design-system/commit/b4a5d629227996b4b1984e0513ec28566dad586b))
+* **ts-17515:** ajustando drawer ([77015fe](https://github.com/tecsinapse/design-system/commit/77015fe1b6b95be2425d2b0d3c7db6385aed887c))
+
 ## [4.0.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.0.4-beta.0...@tecsinapse/react-native-kit@4.0.4) (2026-05-05)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit
