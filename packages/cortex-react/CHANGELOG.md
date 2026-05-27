@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.4.0...@tecsinapse/cortex-react@2.4.1) (2026-05-26)
+
+### Bug Fixes
+
+* **ui:** standardize background colors and fix tooltip portal ([ce2c182](https://github.com/tecsinapse/design-system/commit/ce2c182ee08a44e5ce07677e2cf4310699907c32))
+
 # [2.4.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.3.0-beta.1...@tecsinapse/cortex-react@2.4.0) (2026-05-05)
 
 ### Features
