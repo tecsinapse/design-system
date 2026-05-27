@@ -124,3 +124,13 @@ export type {
   ControlledDateTimeSelectorProps,
   ControlledSelectorComponentProps,
 } from './components/molecules/ControlledDateTimeSelector';
+export { PhoneInput, PhoneCountrySelector, CountryOption, FlagIcon } from './components/molecules/PhoneInput';
+export type {
+  PhoneInputProps,
+  PhoneCountrySelectorProps,
+  CountryOptionProps,
+  PhoneCountrySearchInputProps,
+  FlagIconProps,
+  ParsedCountry,
+  UsePhoneInputConfig,
+} from './components/molecules/PhoneInput';
