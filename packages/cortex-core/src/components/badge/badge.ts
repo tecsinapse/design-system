@@ -1,6 +1,5 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
-
 const badgeStyles = tv({
   base: 'text-sub text-white font-bold rounded-pill',
   variants: {
@@ -15,6 +14,9 @@ const badgeStyles = tv({
     isAnchor: {
       true: 'absolute flex justify-center h-[1.125rem] -top-1 -right-1 px-[5px]',
       false: 'px-[5px]',
+    },
+    hidden: {
+      true: 'hidden',
     },
   },
   defaultVariants: {
