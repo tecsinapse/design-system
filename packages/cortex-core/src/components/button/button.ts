@@ -7,7 +7,7 @@ export const buttonStyles = tv({
       primary:
         'bg-primary-medium disabled:bg-primary-light active:bg-primary-dark enabled:hover:border-primary-dark hover:bg-primary-dark',
       secondary:
-        'bg-secondary-medium disabled:bg-secondary-light active:bg-secondary-dark hover:bg-secondary-dark hover:border-secondary-dark ',
+        'bg-content-low disabled:bg-content-minimal active:bg-content-medium hover:bg-content-medium hover:border-content-medium ',
       success:
         'bg-success-medium disabled:bg-success-light hover:bg-success-dark hover:border-success-dark',
       info: ' bg-info-medium disabled:bg-info-light hover:bg-info-dark hover:border-info-dark ',
@@ -40,7 +40,7 @@ export const buttonStyles = tv({
       intent: 'secondary',
       variant: 'outline',
       className:
-        'text-secondary-medium disabled:text-secondary-light border border-secondary-medium disabled:border-secondary-light',
+        'text-content-low disabled:text-content-minimal border border-content-low disabled:border-content-minimal',
     },
     {
       intent: 'success',
@@ -74,7 +74,7 @@ export const buttonStyles = tv({
     {
       intent: 'secondary',
       variant: 'text',
-      className: 'text-secondary-medium disabled:text-secondary-light',
+      className: 'text-content-low disabled:text-content-minimal',
     },
     {
       intent: 'success',

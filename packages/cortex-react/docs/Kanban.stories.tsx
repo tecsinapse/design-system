@@ -21,9 +21,7 @@ export const Container: StoryObj<typeof Kanban.Root> = {
             {fakeList.map((_, i) => (
               <Card key={i} className={'w-[300px]'}>
                 <p className={'font-bold text-h3'}>Title Card</p>
-                <p className={'text-base text-secondary-medium'}>
-                  Description Card
-                </p>
+                <p className={'text-base text-content-low'}>Description Card</p>
               </Card>
             ))}
           </Kanban.ContainerList>

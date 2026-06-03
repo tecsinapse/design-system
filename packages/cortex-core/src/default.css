@@ -1,11 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --color-on-primary: #fff
+  /* Body */
+  --color-body: #f8f7f7;
+
+  /* Text */
+  --color-default: #000;
+  --color-inverse: #fff;
+  --color-on-primary: #fff;
+  
+  /* Surface */
+  --color-surface-base: #f8f7f7;
+  --color-surface-raised: #fbfbfb;
+  --color-surface-overlay: #ffffff;
+  --color-surface-inverse: #000;
+  
+  /* Content */
+  --color-content-high: #353231;
+  --color-content-medium: #5d5955;
+  --color-content-low: #85807a;
+  --color-content-minimal: #c2bfbc;
+  --color-content-inverse: #ffffff;
 }
 
 :root[data-contrast='black'] {
   --color-on-primary: #000
+}
+
+:root[data-theme='dark'] {
+  /* Body */
+  --color-body: #1e1e1e;
+
+  /* Text */
+  --color-default: #fff;
+  --color-inverse: #000;
+
+  /* Surface */
+  --color-surface-base: #1e1e1e;
+  --color-surface-raised: #252526;
+  --color-surface-overlay: #2d2d30;
+  --color-surface-inverse: #fff;
+
+  /* Content */
+  --color-content-high: #f8f7f7;
+  --color-content-medium: #c2bfbc;
+  --color-content-low: #85807a;
+  --color-content-minimal: #5d5955;
+  --color-content-inverse: #353231;
 }
 
 @theme {
@@ -49,8 +90,21 @@
   --color-error-dark: #9b2318;
   --color-error-xdark: #58240e;
 
+  /* Colors - content */
+  --color-content-high: var(--color-content-high);
+  --color-content-medium: var(--color-content-medium);
+  --color-content-low: var(--color-content-low);
+  --color-content-minimal: var(--color-content-minimal);
+  --color-content-inverse: var(--color-content-inverse);
+
+  /* Colors - surface */
+  --color-surface-base: var(--color-surface-base);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-surface-overlay: var(--color-surface-overlay);
+  --color-surface-inverse: var(--color-surface-inverse);
+
   /* Misc */
-  --color-body: #f8f7f7;
+  --color-body: var(--color-body);
 
   /* Spacing */
   --spacing-nano: 0.125rem;
@@ -136,6 +190,8 @@
   --color-border-success-light: #99E6C9;
 
   /* Text colors */
+  --color-default: var(--color-default);
+  --color-inverse: var(--color-inverse);
   --color-on-primary: var(--color-on-primary);
   --color-light: #fff;
   --color-medium: #85807a;

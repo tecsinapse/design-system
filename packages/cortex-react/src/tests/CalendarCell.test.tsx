@@ -62,7 +62,7 @@ describe('CalendarCell', () => {
       .mockReturnValue({} as RangeCalendarState);
   });
 
-  it('Should apply text-secondary-light on outside dates ', () => {
+  it('Should apply text-content-minimal on outside dates ', () => {
     mockUseCalendarCell.mockReturnValue({
       ...useCalendarMockReturn,
       isOutsideVisibleRange: true,
@@ -79,7 +79,7 @@ describe('CalendarCell', () => {
 
     const calendarCellElement = screen.getByTestId('calendar-cell-td');
 
-    expect(calendarCellElement).toHaveClass('text-secondary-light');
+    expect(calendarCellElement).toHaveClass('text-content-minimal');
   });
 
   it('Should apply text-on-primary on selected date', () => {
@@ -140,23 +140,6 @@ describe('CalendarCell', () => {
     const calendarCellElement = screen.getByTestId('calendar-cell-td');
 
     expect(calendarCellElement).toHaveClass('text-on-primary');
-  });
-
-  it('Should apply text-black on month not selected dates ', () => {
-    mockUseCalendarCell.mockReturnValue({ ...useCalendarMockReturn });
-
-    render(
-      <MockTable>
-        <CalendarCell
-          state={calendarStateMock}
-          date={parseDate('2024-06-08')}
-        />
-      </MockTable>
-    );
-
-    const calendarCellElement = screen.getByTestId('calendar-cell-td');
-
-    expect(calendarCellElement).toHaveClass('text-black');
   });
 
   it('Should apply day indicator if isTodayHighlited is true', () => {

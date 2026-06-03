@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.0.3...@tecsinapse/react-core@4.1.0) (2026-05-27)
+
+### Features
+
+* **ts-17515:** adicionando componente de phone input mobile no react core ([8f7259b](https://github.com/tecsinapse/design-system/commit/8f7259b1d3e8d3ee6e4b7cf6eeef1d0509bc1599))
+
+## [4.0.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.0.3-beta.0...@tecsinapse/react-core@4.0.3) (2026-05-05)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
+## [4.0.3-beta.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.0.2...@tecsinapse/react-core@4.0.3-beta.0) (2026-05-05)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
 ## [4.0.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.0.2-beta.1...@tecsinapse/react-core@4.0.2) (2026-01-28)
 
 **Note:** Version bump only for package @tecsinapse/react-core

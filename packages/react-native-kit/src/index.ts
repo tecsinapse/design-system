@@ -50,3 +50,7 @@ export type { SelectNativeProps } from './components/molecules/Select';
 export { Snackbar } from './components/molecules/Snackbar';
 export type { SnackbarNativeProps } from './components/molecules/Snackbar';
 export { Grid, GridItem } from './components/molecules/Grid';
+export { PhoneInput, FlagIcon } from './components/molecules/PhoneInput';
+export type { NativePhoneInputProps, NativeFlagIconProps } from './components/molecules/PhoneInput';
+export { PhoneCountryPickerSelector } from './components/molecules/PhoneCountryPickerSelector';
+export type { PhoneCountryPickerSelectorProps } from './components/molecules/PhoneCountryPickerSelector';

@@ -1,7 +1,7 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "React Native components library",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
@@ -19,6 +19,8 @@
     "@emotion/native": "~11.11.0",
     "@emotion/react": "~11.11.0",
     "@tecsinapse/react-core": "workspace:*",
+    "react-international-phone": "^4.6.1",
+    "react-native-country-flag": "^2.0.2",
     "react-native-linear-gradient": "~2.8.3"
   },
   "devDependencies": {

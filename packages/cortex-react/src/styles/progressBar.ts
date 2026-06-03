@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 export const ProgressVariants = tv({
   slots: {
     container: 'relative',
-    bar: 'h-1.5 w-full overflow-hidden bg-secondary-xlight',
+    bar: 'h-1.5 w-full overflow-hidden bg-content-inverse',
     progress: 'w-full h-full rounded-mili',
   },
   variants: {

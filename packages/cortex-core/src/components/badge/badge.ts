@@ -5,7 +5,7 @@ const badgeStyles = tv({
   variants: {
     intent: {
       primary: 'bg-primary-medium',
-      secondary: 'bg-secondary-medium',
+      secondary: 'bg-content-low',
       error: 'bg-error-medium',
       success: 'bg-success-medium',
       warning: 'bg-warning-medium',

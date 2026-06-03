@@ -1,0 +1,134 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction/Dark Mode" />
+
+# Dark Mode
+
+`@tecsinapse/cortex-core` provides a dark mode feature, that works with the DarkThemeContext, providing functions and values to make your application as dynamic and beautiful as possible.
+
+## Dark Mode Setup
+
+First, wrap your application with the DarkThemeProvider, preferrably in the index.tsx, to allow the usage of the useDarkTheme hook.
+
+```jsx
+import { DarkThemeProvider } from '@tecsinapse/cortex-core';
+import { App } from './App'
+
+function initApp({ children }: { children: ReactNode }) {
+  return (
+    <DarkThemeProvider>
+      <App />
+    </DarkThemeProvider>
+  );
+}
+```
+
+In your src/index.css, add the **miscellaneous.body** token to the background, and the **textColor.default** to text.
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.miscellaneous.body');
+    color: theme('textColor.default');
+  }
+}
+```
+
+## Manual Toggle
+
+By calling the **useDarkTheme** hook, you can have access to a variety of states and functions to use the resource.
+
+You can use the **toggleTheme** function in a button, to change the theme, and use the **isDark** state value to choose the button icon, for example.
+
+```jsx
+import { useDarkTheme } from '@tecsinapse/cortex-core';
+import { FaMoon, FaSun } from 'react-icons/fa6';
+
+const ToggleDarkTheme = () => {
+  const { toggleTheme, isDark } = useDarkTheme();
+
+  return (
+    <Button onClick={toggleTheme}>{isDark ? <FaSun /> : <FaMoon />}</Button>
+  );
+};
+```
+
+## Using the System's default to set the theme
+
+The **useDarkTheme** hook will provide you a setState function, named **setTheme**, to manually set the theme, and a **systemTheme** value, that exposes the current system's default theme.
+
+With that, you are able to set the system's default as the app's theme, if you wish.
+
+```jsx
+import { useDarkTheme } from '@tecsinapse/cortex-core';
+
+const App = ({ children }: { children: ReactNode }) => {
+  const { setTheme, systemTheme } = useDarkTheme();
+
+  useEffect(() => {
+    setTheme(systemTheme);
+  }, []);
+
+  return <>{children}</>;
+};
+```
+
+## Using the color tokens in your app
+
+After that, you can use the dinamic **surface, content, and text (default and inverse)** tokens, as you can see in the **Tokens** section in the sidebar.
+
+```jsx
+const Component = () => {
+  return (
+    <div className="bg-surface-overlay">
+      <p>My Text</p>
+    </div>
+  );
+};
+```
+
+## Storing the user's chosen theme in the browser
+
+We recommend that you can create a wrapper for the **useDarkTheme** hook in your app, in order to setup the dark mode the right way.
+
+In that wrapper, you can store the user's preference in the browser's **localStorage**. In the example below, we read the **localStorage** to see if an item called **theme** exists. If so, we set it as the app's theme. If not, we set the theme as the system's default.
+
+Then, we create a wrapper for the **toggleTheme** function, that stores the return value in the **localStorage**.
+
+```jsx
+import { Theme, useDarkTheme } from '@tecsinapse/cortex-core'
+import { useCallback, useEffect } from 'react'
+
+const readMode = () => {
+  const mode = localStorage.getItem('theme')
+  return mode
+}
+
+const writeMode = (mode: string) => {
+  localStorage.setItem('theme', mode)
+}
+
+export const useDarkMode = () => {
+  const { setTheme, systemTheme, theme, isDark, toggleTheme } = useDarkTheme()
+
+  useEffect(() => {
+    const mode = readMode()
+    if (mode) {
+      setTheme(mode as Theme)
+    } else {
+      setTheme(systemTheme)
+    }
+  }, [systemTheme, setTheme])
+
+  const toggle = useCallback(() => {
+    const next = toggleTheme()
+    writeMode(next)
+  }, [toggleTheme])
+
+  return { theme, toggle, isDark }
+}
+```
