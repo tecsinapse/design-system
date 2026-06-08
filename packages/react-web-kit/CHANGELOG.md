@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.3...@tecsinapse/react-web-kit@3.5.4) (2026-06-08)
+
+**Note:** Version bump only for package @tecsinapse/react-web-kit
+
 ## [3.5.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@3.5.2...@tecsinapse/react-web-kit@3.5.3) (2026-05-27)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

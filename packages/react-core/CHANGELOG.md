@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.18](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@3.4.17...@tecsinapse/react-core@3.4.18) (2026-06-08)
+
+### Bug Fixes
+
+* CNPJ alfanumérico está sendo perdido por conta da máscara do CPF na digitação ([f1628bb](https://github.com/tecsinapse/design-system/commit/f1628bb34a01db1779d0fd4dad615558aea77bdc))
+
 ## [3.4.17](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@3.4.16...@tecsinapse/react-core@3.4.17) (2026-05-27)
 
 **Note:** Version bump only for package @tecsinapse/react-core
