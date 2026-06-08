@@ -43,6 +43,6 @@ export const Masks = {
   },
   COMBINED_CPF_CNPJ: (value: string) => {
     const onlyNumbers = extractDigitsFromString(value);
-    return onlyNumbers.length <= 11 ? Masks.CPF : Masks.CNPJ;
+    return onlyNumbers.length <= 11 && !/[a-zA-Z]/.test(value) ? Masks.CPF : Masks.CNPJ;
   },
 };
