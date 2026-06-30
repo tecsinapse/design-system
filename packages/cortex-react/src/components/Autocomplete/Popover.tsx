@@ -26,6 +26,7 @@ export const AutocompletePopover = ({
           width: triggerWidth ? `${triggerWidth}px` : 'auto',
           zIndex: 9999,
         }}
+        initialFocus={-1}
       >
         {children}
       </Popover.Content>
