@@ -21,7 +21,8 @@
     "react-native-svg-charts": "^5.4.0"
   },
   "devDependencies": {
-    "react-native-svg": "13.9.0"
+    "react-native-svg": "13.9.0",
+    "@types/react": "^18.3.31"
   },
   "scripts": {
     "dev:es": "rollup --config --watch",

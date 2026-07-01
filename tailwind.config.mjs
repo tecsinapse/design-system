@@ -1,5 +1,4 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     './packages/react-web-kit/src/components/atoms/**/*.{js,ts,jsx,tsx}',
     './packages/cortex-core/docs/*.{js,ts,jsx,tsx}',
