@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { ThemeProvider as EmotionProvider } from '@emotion/react';
 import { ThemeProviderProps } from '../types/defaults';
 
-const ThemeProvider: FC<ThemeProviderProps> = ({
+const ThemeProvider = ({
   theme,
   children,
-}): React.ReactElement => {
+}: ThemeProviderProps): React.ReactElement => {
   return <EmotionProvider theme={theme}>{children}</EmotionProvider>;
 };
 

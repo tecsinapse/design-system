@@ -2,7 +2,10 @@ import styled from '@emotion/native';
 import { View } from 'react-native';
 import { borderRadius, iconSize, spacing } from '../../styles';
 
-export const Circle = styled(View)<{ color: string }>`
+export const Circle = styled(View)<{
+  color: string;
+  children?: React.ReactNode;
+}>`
   background-color: ${({ color }) => color};
   width: ${iconSize.micro};
   height: ${iconSize.micro};

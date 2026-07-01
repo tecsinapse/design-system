@@ -5,7 +5,10 @@ import { spacing } from '../../styles';
 const flexBasis = (columns: number) =>
   css({ flexBasis: `${100 / columns - 2}%` });
 
-export const Container = styled(View)<{ columns: number }>(
+export const Container = styled(View)<{
+  columns: number;
+  children?: React.ReactNode;
+}>(
   ({ columns }) => css`
     display: flex;
     flex-direction: row;
@@ -34,6 +37,7 @@ export const Text = styled(RNText)<{
   };
   expand?: boolean;
   flexEnd?: boolean;
+  children?: React.ReactNode;
 }>(({ font, expand = false, flexEnd = false }) => {
   const { fontFamily, fontWeight } = font;
   return css`
