@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.1.1...@tecsinapse/react-core@4.1.2) (2026-07-02)
+
+### Bug Fixes
+
+* bug em combined_cpf_cnpj ([54a0652](https://github.com/tecsinapse/design-system/commit/54a0652bdaa8f3edee6ff693b2f4d9fd22e0ff61))
+
 ## [4.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.1.0...@tecsinapse/react-core@4.1.1) (2026-06-03)
 
 **Note:** Version bump only for package @tecsinapse/react-core

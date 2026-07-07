@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.1.1...@tecsinapse/cortex-core@2.1.2) (2026-07-02)
+
+### Bug Fixes
+
+* enhance theme color updates to support Shadow DOM ([2c1f2f2](https://github.com/tecsinapse/design-system/commit/2c1f2f2d6e41cb541266b7251fc78b27fc921282))
+
 ## [2.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.1.0...@tecsinapse/cortex-core@2.1.1) (2026-06-03)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core
