@@ -132,7 +132,7 @@ function Calendar<T extends SelectionType>({
   return (
     <View {...rest}>
       <TitleContainer>
-        {showSelectYear ? (
+        {!showSelectYear && (
           <Control onPress={handlePressPrev} align={'start'} isLeft>
             <Icon
               name={'chevron-left'}
@@ -142,7 +142,7 @@ function Calendar<T extends SelectionType>({
               colorTone={'medium'}
             />
           </Control>
-        ) : null}
+        )}
         <TouchableOpacity onPress={handlePressSelectYear}>
           <Capitalized
             colorVariant={'secondary'}
@@ -152,7 +152,7 @@ function Calendar<T extends SelectionType>({
             {format(referenceDate, 'MMMM yyyy', { locale })}
           </Capitalized>
         </TouchableOpacity>
-        {showSelectYear ? (
+        {!showSelectYear && (
           <Control onPress={handlePressNext} align={'end'} isRight>
             <Icon
               name={'chevron-right'}
@@ -162,7 +162,7 @@ function Calendar<T extends SelectionType>({
               colorTone={'medium'}
             />
           </Control>
-        ) : null}
+        )}
       </TitleContainer>
       {showSelectYear ? (
         <Content height={calendarHeightRef.current}>
