@@ -2,10 +2,6 @@ name: publish manual
 
 on: workflow_dispatch
 
-permissions:
-  id-token: write  
-  contents: read
-
 jobs:
   lerna:
     runs-on: ubuntu-latest
@@ -27,15 +23,18 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v4
         with:
-          node-version: '22.14.0'
+          node-version: 20
           cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: install and prepare
         run: pnpm i
 
       - name: run test suites
         run: pnpm test
+
+      - name: setup npm
+        run: |
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.DESIGN_SYSTEM_NPM_TOKEN }}"
 
       - name: version and publish
         env:
