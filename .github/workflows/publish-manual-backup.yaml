@@ -1,4 +1,4 @@
-name: publish manual
+name: publish manual backup
 
 on: workflow_dispatch
 
@@ -46,7 +46,7 @@ jobs:
           if [ "${{ github.ref_name }}" = "master" ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --yes
-          elif ["${{ github.ref_name }}" == legacy/*]; then
+          elif [ "${{ github.ref_name }}" == legacy/* ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
             npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes
           else
