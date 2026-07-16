@@ -1,4 +1,4 @@
-name: publish manual
+name: publish manual backup
 
 on: workflow_dispatch
 
