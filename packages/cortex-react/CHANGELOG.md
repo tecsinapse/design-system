@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.5](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.4.4...@tecsinapse/cortex-react@2.4.5) (2026-07-22)
+
+### Bug Fixes
+
+* limpando timeout no hook useDebouncedState ([b6a2b6c](https://github.com/tecsinapse/design-system/commit/b6a2b6c4cf9a8be3697b86368ceef77594217bd4))
+
 ## [2.4.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.4.3...@tecsinapse/cortex-react@2.4.4) (2026-07-07)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
