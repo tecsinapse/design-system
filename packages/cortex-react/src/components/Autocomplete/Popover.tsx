@@ -19,11 +19,12 @@ export const AutocompletePopover = ({
     <FloatingPortal>
       <Popover.Content
         className={clsx(
-          'bg-white shadow-md rounded-md overflow-y-auto max-h-[30vh] outline-none z-9999',
+          'bg-white shadow-md rounded-md overflow-y-auto max-h-[30vh] outline-none',
           className
         )}
         style={{
           width: triggerWidth ? `${triggerWidth}px` : 'auto',
+          zIndex: 9999,
         }}
         initialFocus={-1}
       >
