@@ -18,6 +18,9 @@ export function useDebouncedState<S>(
     if (timeoutId.current) clearTimeout(timeoutId.current);
     if (timeoutCallback)
       timeoutId.current = setTimeout(() => timeoutCallback(state), timeoutMs);
+    return () => {
+      if (timeoutId.current) clearTimeout(timeoutId.current);
+    };
   }, [state]);
 
   return [state, setState];

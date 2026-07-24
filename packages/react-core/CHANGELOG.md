@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.1.2...@tecsinapse/react-core@4.2.0) (2026-07-22)
+
+### Features
+
+* **TS-15003:** ajustado Calendar para desabilitar ([2c93e84](https://github.com/tecsinapse/design-system/commit/2c93e84c481cfde29e583c3d4535f66a7c54a1dd))
+* **TS-15003:** ajuste de lógica invertida ([26e9975](https://github.com/tecsinapse/design-system/commit/26e99752e632ad9f8dfb5cf7abf7f393be643422))
+
+## [4.1.2](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.1.1...@tecsinapse/react-core@4.1.2) (2026-07-02)
+
+### Bug Fixes
+
+* bug em combined_cpf_cnpj ([54a0652](https://github.com/tecsinapse/design-system/commit/54a0652bdaa8f3edee6ff693b2f4d9fd22e0ff61))
+
 ## [4.1.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.1.0...@tecsinapse/react-core@4.1.1) (2026-06-03)
 
 **Note:** Version bump only for package @tecsinapse/react-core

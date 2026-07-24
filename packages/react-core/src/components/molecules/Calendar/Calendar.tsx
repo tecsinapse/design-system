@@ -132,20 +132,17 @@ function Calendar<T extends SelectionType>({
   return (
     <View {...rest}>
       <TitleContainer>
-        <Control
-          onPress={handlePressPrev}
-          align={'start'}
-          disabled={showSelectYear}
-          isLeft
-        >
-          <Icon
-            name={'chevron-left'}
-            type={'material-community'}
-            size={'kilo'}
-            colorVariant={'secondary'}
-            colorTone={'medium'}
-          />
-        </Control>
+        {!showSelectYear && (
+          <Control onPress={handlePressPrev} align={'start'} isLeft>
+            <Icon
+              name={'chevron-left'}
+              type={'material-community'}
+              size={'kilo'}
+              colorVariant={'secondary'}
+              colorTone={'medium'}
+            />
+          </Control>
+        )}
         <TouchableOpacity onPress={handlePressSelectYear}>
           <Capitalized
             colorVariant={'secondary'}
@@ -155,20 +152,17 @@ function Calendar<T extends SelectionType>({
             {format(referenceDate, 'MMMM yyyy', { locale })}
           </Capitalized>
         </TouchableOpacity>
-        <Control
-          onPress={handlePressNext}
-          align={'end'}
-          disabled={showSelectYear}
-          isRight
-        >
-          <Icon
-            name={'chevron-right'}
-            type={'material-community'}
-            size={'kilo'}
-            colorVariant={'secondary'}
-            colorTone={'medium'}
-          />
-        </Control>
+        {!showSelectYear && (
+          <Control onPress={handlePressNext} align={'end'} isRight>
+            <Icon
+              name={'chevron-right'}
+              type={'material-community'}
+              size={'kilo'}
+              colorVariant={'secondary'}
+              colorTone={'medium'}
+            />
+          </Control>
+        )}
       </TitleContainer>
       {showSelectYear ? (
         <Content height={calendarHeightRef.current}>
