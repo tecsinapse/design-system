@@ -50,7 +50,9 @@ const Snackbar = ({
   style,
 }: SnackbarProps): React.ReactElement => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
-  const timeoutRef = React.useRef<NodeJS.Timeout | undefined>(undefined);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined
+  );
 
   const fadeIn = () => {
     Animated.timing(fadeAnim, {

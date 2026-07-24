@@ -20,6 +20,8 @@
     "@lerna-lite/cli": "^3.8.0",
     "@lerna-lite/publish": "^3.8.0",
     "@lerna-lite/version": "^3.8.0",
+    "@react-types/datepicker": "3.11.0",
+    "@react-types/shared": "3.28.0",
     "@rollup/plugin-alias": "^5.1.0",
     "@storybook/addon-actions": "^8.2.6",
     "@storybook/addon-backgrounds": "^8.2.6",
@@ -87,7 +89,7 @@
     "build:core": "cd packages/cortex-core && pnpm build:es && pnpm build:dts && cd ../.."
   },
   "engines": {
-    "node": ">=18"
+    "node": "22"
   },
   "lint-staged": {
     ".{ts,tsx}": [
@@ -96,5 +98,5 @@
     ],
     ".{json,mdx,md}": "prettier --write"
   },
-  "packageManager": "pnpm@9.11.0"
+  "packageManager": "pnpm@11.17.0"
 }
