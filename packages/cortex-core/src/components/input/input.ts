@@ -76,6 +76,9 @@ export const inputBox = (
   clsx(
     className,
     'peer relative outline-none placeholder:text-base placeholder:text-content-low placeholder-shown:top-0 disabled:placeholder:text-content-minimal disabled:text-content-minimal bg-transparent',
+    '[&:-webkit-autofill]:[-webkit-text-fill-color:var(--color-default)]',
+    '[&:-webkit-autofill]:[transition:background-color_5000s_ease-in-out_0s]',
+    '[&:-webkit-autofill]:[box-shadow:0_0_0_1000px_var(--color-surface-base)_inset]',
     {
       'focus:top-1.5': !placeholder && !!label,
       'top-1.5': !!label,
