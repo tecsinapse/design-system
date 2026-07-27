@@ -1,7 +1,7 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import React, { useState } from 'react';
 import { Input, Select } from '../src';
-import { Option, _options, map } from './selectMocks';
+import { _options, map, Option } from './selectMocks';
 import { LiaStar, LiaStarSolid } from 'react-icons/lia';
 
 export default {

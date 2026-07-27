@@ -16,7 +16,6 @@
       "@tecsinapse/*": ["packages/*/src"]
     }
   },
-  "include": ["jest-dom/extend-expect"],
   "exclude": ["node_modules", "**/dist/**/*", "**/*.stories.*"],
   "typeRoots": ["./node_modules/@types"]
 }

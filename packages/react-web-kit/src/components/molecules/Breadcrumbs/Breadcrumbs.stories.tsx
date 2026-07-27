@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import React, { ElementType } from 'react';
 import { StyleProps } from '@tecsinapse/react-core';
 

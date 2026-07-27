@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { IoEye, IoPerson } from 'react-icons/io5';
 import { TextArea } from '../src/components/TextArea';
