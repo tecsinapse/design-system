@@ -1,2 +1,8 @@
 packages:
   - 'packages/*'
+allowBuilds:
+  '@swc/core': true
+  core-js-pure: true
+  esbuild: true
+autoInstallPeers: false
+nodeLinker: hoisted
