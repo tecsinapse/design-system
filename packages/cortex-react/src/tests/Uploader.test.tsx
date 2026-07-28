@@ -1,13 +1,12 @@
-import '@testing-library/jest-dom';
 import React from 'react';
+import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useFileUpload } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
-import { ManagerProvider } from '../provider';
-import { Dropzone } from '../components/Uploader/Dropzone';
-import { DarkThemeProvider } from '@tecsinapse/cortex-core';
+import { useDarkTheme } from '@tecsinapse/cortex-core';
 
 jest.mock('../hooks'); // Mockando o hook
+jest.mock('../provider'); // Mockando os providers
 
 const mockFiles: FileUpload<unknown>[] = [
   {
@@ -41,6 +40,10 @@ beforeEach(() => {
     open: true,
     closeManager: jest.fn(),
     isManagerOpen: false,
+  });
+
+  (useDarkTheme as jest.Mock).mockReturnValue({
+    isDark: false,
   });
 });
 
@@ -192,23 +195,21 @@ describe('Uploader Components', () => {
 
     it('should render the manager with the files', () => {
       render(
-        <DarkThemeProvider>
-          <Uploader.Modal open={false} onClose={mockOnClose}>
-            <Uploader.Dropzone
-              dropzoneProps={useFileUpload({}).dropzoneProps}
-              selectFileText="Custom file selection"
-              dropText="Custom drop text"
-              buttonText="Custom Button"
-            />
-            <Uploader.Manager
-              files={mockFiles}
-              uploadProgressText="Custom uploading..."
-              open={true}
-              onClose={jest.fn()}
-              onDelete={jest.fn()}
-            />
-          </Uploader.Modal>
-        </DarkThemeProvider>
+        <Uploader.Modal open={false} onClose={mockOnClose}>
+          <Uploader.Dropzone
+            dropzoneProps={useFileUpload({}).dropzoneProps}
+            selectFileText="Custom file selection"
+            dropText="Custom drop text"
+            buttonText="Custom Button"
+          />
+          <Uploader.Manager
+            files={mockFiles}
+            uploadProgressText="Custom uploading..."
+            open={true}
+            onClose={jest.fn()}
+            onDelete={jest.fn()}
+          />
+        </Uploader.Modal>
       );
 
       expect(screen.getByText('file1.txt')).toBeInTheDocument();
