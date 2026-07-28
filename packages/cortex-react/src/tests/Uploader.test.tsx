@@ -5,6 +5,7 @@ import { useFileUpload } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
 import { ManagerProvider } from '../provider';
 import { Dropzone } from '../components/Uploader/Dropzone';
+import { DarkThemeProvider } from '@tecsinapse/cortex-core';
 
 jest.mock('../hooks'); // Mockando o hook
 
@@ -191,21 +192,23 @@ describe('Uploader Components', () => {
 
     it('should render the manager with the files', () => {
       render(
-        <Uploader.Modal open={false} onClose={mockOnClose}>
-          <Uploader.Dropzone
-            dropzoneProps={useFileUpload({}).dropzoneProps}
-            selectFileText="Custom file selection"
-            dropText="Custom drop text"
-            buttonText="Custom Button"
-          />
-          <Uploader.Manager
-            files={mockFiles}
-            uploadProgressText="Custom uploading..."
-            open={true}
-            onClose={jest.fn()}
-            onDelete={jest.fn()}
-          />
-        </Uploader.Modal>
+        <DarkThemeProvider>
+          <Uploader.Modal open={false} onClose={mockOnClose}>
+            <Uploader.Dropzone
+              dropzoneProps={useFileUpload({}).dropzoneProps}
+              selectFileText="Custom file selection"
+              dropText="Custom drop text"
+              buttonText="Custom Button"
+            />
+            <Uploader.Manager
+              files={mockFiles}
+              uploadProgressText="Custom uploading..."
+              open={true}
+              onClose={jest.fn()}
+              onDelete={jest.fn()}
+            />
+          </Uploader.Modal>
+        </DarkThemeProvider>
       );
 
       expect(screen.getByText('file1.txt')).toBeInTheDocument();
