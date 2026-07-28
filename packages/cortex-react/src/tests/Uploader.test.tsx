@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { useFileUpload } from '../hooks';
+import { useFileUpload, useManagerHelpers } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
-import { useManagerHelpers } from '../hooks/useManagerHelpers';
 
 jest.mock('../hooks'); // Mockando o hook
 
