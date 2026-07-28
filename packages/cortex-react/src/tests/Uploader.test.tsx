@@ -1,12 +1,11 @@
-import React from 'react';
 import '@testing-library/jest-dom';
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useFileUpload } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
-import { useDarkTheme } from '@tecsinapse/cortex-core';
+import { useManagerHelpers } from '../hooks/useManagerHelpers';
 
 jest.mock('../hooks'); // Mockando o hook
-jest.mock('../provider'); // Mockando os providers
 
 const mockFiles: FileUpload<unknown>[] = [
   {
@@ -42,7 +41,14 @@ beforeEach(() => {
     isManagerOpen: false,
   });
 
-  (useDarkTheme as jest.Mock).mockReturnValue({
+  (useManagerHelpers as jest.Mock).mockReturnValue({
+    min: true,
+    setMin: jest.fn(),
+    folderFiles: [],
+    regularFiles: mockFiles,
+    totalLength: 2,
+    setFolders: jest.fn(),
+    isLoading: false,
     isDark: false,
   });
 });

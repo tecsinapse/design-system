@@ -6,7 +6,7 @@ import { ManagerProps } from './types';
 import { clsx } from 'clsx';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 import { manager, useDarkTheme } from '@tecsinapse/cortex-core';
-import { useManagerHelpers } from '../../hooks/useManagerHelpers';
+import { useManagerHelpers } from '../../hooks';
 
 export const Manager = <T,>({
   open,
@@ -24,11 +24,10 @@ export const Manager = <T,>({
     totalLength,
     setFolders,
     isLoading,
+    isDark,
   } = useManagerHelpers({
     files,
   });
-
-  const { isDark } = useDarkTheme();
 
   return createPortal(
     <div
