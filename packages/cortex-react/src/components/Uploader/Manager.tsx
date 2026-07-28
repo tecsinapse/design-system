@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
 import { clsx } from 'clsx';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
-import { manager } from '@tecsinapse/cortex-core';
+import { manager, useDarkTheme } from '@tecsinapse/cortex-core';
 import { useManagerHelpers } from '../../hooks/useManagerHelpers';
 
 export const Manager = <T,>({
@@ -28,11 +28,14 @@ export const Manager = <T,>({
     files,
   });
 
+  const { isDark } = useDarkTheme();
+
   return createPortal(
     <div
       className={manager({
         className: 'h-auto max-h-[350px] w-[450px] overflow-hidden',
         open,
+        isDark,
       })}
     >
       <div className="flex flex-col w-full h-full gap-mili items-center">
