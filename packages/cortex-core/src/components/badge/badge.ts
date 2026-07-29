@@ -1,29 +1,32 @@
 import { ClassProp, tv, VariantProps } from 'tailwind-variants';
 
-const badgeStyles = tv({
-  base: 'text-sub text-white font-bold rounded-pill',
-  variants: {
-    intent: {
-      primary: 'bg-primary-medium',
-      secondary: 'bg-content-low',
-      error: 'bg-error-medium',
-      success: 'bg-success-medium',
-      warning: 'bg-warning-medium',
-      info: 'bg-info-medium',
+const badgeStyles = tv(
+  {
+    base: 'text-sub text-white font-bold rounded-pill',
+    variants: {
+      intent: {
+        primary: 'bg-primary-medium',
+        secondary: 'bg-content-low',
+        error: 'bg-error-medium',
+        success: 'bg-success-medium',
+        warning: 'bg-warning-medium',
+        info: 'bg-info-medium',
+      },
+      isAnchor: {
+        true: 'absolute flex justify-center h-[1.125rem] -top-1 -right-1 px-[5px]',
+        false: 'px-[5px]',
+      },
+      hidden: {
+        true: 'hidden',
+      },
     },
-    isAnchor: {
-      true: 'absolute flex justify-center h-[1.125rem] -top-1 -right-1 px-[5px]',
-      false: 'px-[5px]',
-    },
-    hidden: {
-      true: 'hidden',
+    defaultVariants: {
+      intent: 'primary',
+      isAnchor: false,
     },
   },
-  defaultVariants: {
-    intent: 'primary',
-    isAnchor: false,
-  },
-});
+  { twMerge: false }
+);
 
 export const containerBadge = tv({
   base: 'relative items-center justify-center self-center w-fit',
