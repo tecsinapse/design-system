@@ -8,7 +8,7 @@ export const manager = tv({
       false: 'invisible',
     },
     isDark: {
-      true: 'border border-content-minimal',
+      true: 'border border-content-low',
       false: 'shadow-xl',
     },
   },
