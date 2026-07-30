@@ -50,6 +50,7 @@ export const DarkThemeProvider = ({ children }: { children: ReactNode }) => {
 
 export const useDarkTheme = () => {
   const ctx = useContext(DarkThemeContext);
-  if (!ctx) throw new Error('useTheme must be used inside ThemeProvider');
+  if (!ctx)
+    throw new Error('useDarkTheme must be used inside DarkThemeProvider');
   return ctx;
 };
