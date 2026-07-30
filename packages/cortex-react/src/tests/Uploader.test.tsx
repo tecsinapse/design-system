@@ -1,10 +1,8 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { useFileUpload } from '../hooks';
+import { useFileUpload, useManagerHelpers } from '../hooks';
 import { FileStatus, FileUpload, Uploader } from '../components';
-import { ManagerProvider } from '../provider';
-import { Dropzone } from '../components/Uploader/Dropzone';
 
 jest.mock('../hooks'); // Mockando o hook
 
@@ -40,6 +38,17 @@ beforeEach(() => {
     open: true,
     closeManager: jest.fn(),
     isManagerOpen: false,
+  });
+
+  (useManagerHelpers as jest.Mock).mockReturnValue({
+    min: true,
+    setMin: jest.fn(),
+    folderFiles: [],
+    regularFiles: mockFiles,
+    totalLength: 2,
+    setFolders: jest.fn(),
+    isLoading: false,
+    isDark: false,
   });
 });
 
@@ -200,7 +209,7 @@ describe('Uploader Components', () => {
           />
           <Uploader.Manager
             files={mockFiles}
-            uploadProgressText="Custom uploading..."
+            uploadResultText="Custom upload succeeded!"
             open={true}
             onClose={jest.fn()}
             onDelete={jest.fn()}
@@ -211,7 +220,7 @@ describe('Uploader Components', () => {
       expect(screen.getByText('file1.txt')).toBeInTheDocument();
       expect(screen.getByText('file2.txt')).toBeInTheDocument();
       expect(screen.getByTestId('upload-progress')).toHaveTextContent(
-        'Custom uploading...'
+        'Custom upload succeeded!'
       );
     });
   });

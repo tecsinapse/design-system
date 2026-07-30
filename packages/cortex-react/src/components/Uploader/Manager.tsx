@@ -5,8 +5,8 @@ import { IoMdClose } from 'react-icons/io';
 import { ManagerProps } from './types';
 import { clsx } from 'clsx';
 import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
-import { manager } from '@tecsinapse/cortex-core';
-import { useManagerHelpers } from '../../hooks/useManagerHelpers';
+import { manager, useDarkTheme } from '@tecsinapse/cortex-core';
+import { useManagerHelpers } from '../../hooks';
 
 export const Manager = <T,>({
   open,
@@ -24,6 +24,7 @@ export const Manager = <T,>({
     totalLength,
     setFolders,
     isLoading,
+    isDark,
   } = useManagerHelpers({
     files,
   });
@@ -33,6 +34,7 @@ export const Manager = <T,>({
       className={manager({
         className: 'h-auto max-h-[350px] w-[450px] overflow-hidden',
         open,
+        isDark,
       })}
     >
       <div className="flex flex-col w-full h-full gap-mili items-center">

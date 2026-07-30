@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { button } from '@tecsinapse/cortex-core';
+import { button, DarkThemeProvider } from '@tecsinapse/cortex-core';
 import { Button, ManagerProvider, Uploader } from '../src';
 import { FileStatus, type FileUpload } from '../src/components/Uploader/types';
 import { useFileUpload } from '../src/hooks';
@@ -16,9 +16,11 @@ export default {
   },
   decorators: [
     Story => (
-      <ManagerProvider>
-        <Story />
-      </ManagerProvider>
+      <DarkThemeProvider>
+        <ManagerProvider>
+          <Story />
+        </ManagerProvider>
+      </DarkThemeProvider>
     ),
   ],
 } as Meta<typeof Uploader.Root>;

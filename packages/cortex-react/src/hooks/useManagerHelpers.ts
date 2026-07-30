@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { FileUpload } from '../components';
+import { useDarkTheme } from '@tecsinapse/cortex-core';
 
 export const useManagerHelpers = <T>({
   files,
@@ -22,6 +23,7 @@ export const useManagerHelpers = <T>({
     () => files?.some(file => file.status === 'uploading'),
     [files]
   );
+  const { isDark } = useDarkTheme();
   return {
     min,
     setMin,
@@ -30,5 +32,6 @@ export const useManagerHelpers = <T>({
     totalLength,
     setFolders,
     isLoading,
+    isDark,
   };
 };
