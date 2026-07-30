@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-react",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "React components based in @tecsinapse/cortex-core",
   "license": "MIT",
   "main": "dist/esm/index.js",
@@ -33,6 +33,7 @@
     "react-spring": "9.7.5",
     "react-stately": "3.36.1",
     "sonner": "1.7.3",
+    "tailwind-variants": "3.3.0",
     "uuid": "11.1.0"
   },
   "repository": {

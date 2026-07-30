@@ -31,7 +31,7 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
 export const Base = (args: SkeletonProps) => {
   const [seconds, setSeconds] = useState(0);
   const [active, setActive] = useState(false);
-  const interval = useRef<NodeJS.Timeout>();
+  const interval = useRef<ReturnType<typeof setTimeout>>();
 
   const animation = args?.animation;
 
