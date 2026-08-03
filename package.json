@@ -43,6 +43,7 @@
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-react": "7.37.4",
+    "eslint-plugin-storybook": "10.5.4",
     "globals": "^15.14.0",
     "husky": "^9",
     "jest": "^29.7.0",
@@ -61,14 +62,13 @@
     "ts-jest": "^29.1.5",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "vite": "^8.1.5",
-    "eslint-plugin-storybook": "10.5.4"
+    "vite": "^8.1.5"
   },
   "scripts": {
     "dev": "pnpm --filter '@tecsinapse/*' run '/^dev:.*/'",
     "dev:cortex": "pnpm --filter '@tecsinapse/cortex-*' run '/^dev:.*/'",
     "build": "pnpm --filter '@tecsinapse/*' run '/^build:.*/'",
-    "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007",
+    "storybook": "cross-env STORYBOOK_FONT_URL='' storybook dev -p 7007 --no-open",
     "build:storybook": "rimraf -rf sbdocs/ && cross-env STORYBOOK_FONT_URL='/design-system' storybook build -o sbdocs/",
     "rm:dts": "rimraf -rf packages/*/dist/*.d.ts",
     "rm:dist": "rimraf -rf packages/*/dist/",
