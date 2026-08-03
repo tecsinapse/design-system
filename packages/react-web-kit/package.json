@@ -16,12 +16,12 @@
     "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
-    "@emotion/native": "~11.11.0",
-    "@emotion/react": "~11.11.0",
-    "@emotion/styled": "~11.11.0",
+    "@emotion/native": "catalog:",
+    "@emotion/react": "catalog:",
+    "@emotion/styled": "catalog:",
     "@tecsinapse/react-core": "workspace:*",
     "date-fns": "~2.30.0",
-    "react-native-vector-icons": "^9.2.0",
+    "react-native-vector-icons": "catalog:",
     "react-transition-group": "~4.4.5"
   },
   "repository": {

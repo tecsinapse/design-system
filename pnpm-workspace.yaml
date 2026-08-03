@@ -1,5 +1,15 @@
 packages:
   - 'packages/*'
+catalog:
+  '@emotion/native': '~11.11.0'
+  '@emotion/react': '~11.11.0'
+  '@emotion/styled': '~11.11.0'
+  clsx: '2.1.1'
+  currency.js: '~2.0.4'
+  react-international-phone: '^4.6.1'
+  react-native-vector-icons: '^9.2.0'
+  tailwind-variants: '3.3.0'
+  tailwindcss: '^4.1.16'
 allowBuilds:
   '@swc/core': true
   core-js-pure: true

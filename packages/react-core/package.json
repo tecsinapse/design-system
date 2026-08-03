@@ -17,11 +17,11 @@
     "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
-    "@emotion/native": "~11.11.0",
-    "@emotion/react": "~11.11.0",
-    "currency.js": "~2.0.4",
+    "@emotion/native": "catalog:",
+    "@emotion/react": "catalog:",
+    "currency.js": "catalog:",
     "date-fns": "~2.30.0",
-    "react-international-phone": "^4.6.1"
+    "react-international-phone": "catalog:"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,6 @@
   "peerDependencies": {
     "react": ">=18.2.0",
     "react-native": ">=0.74.0",
-    "react-native-vector-icons": "^9.2.0"
+    "react-native-vector-icons": "catalog:"
   }
 }
