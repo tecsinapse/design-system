@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Checkbox, Text } from '@tecsinapse/react-native-kit';
-import { action } from '@storybook/addon-actions';
-import { Meta } from '@storybook/react';
+import { action } from 'storybook/actions';
+import { Meta } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof Checkbox> = {
   title: 'Checkbox',

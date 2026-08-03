@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from '@tecsinapse/react-native-kit';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 
 const TextMeta: Meta<typeof Text> = {
   title: 'Text',

@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import { IconProps } from '@tecsinapse/react-core';
 import React from 'react';
 import { Tag, TagProps } from './index';
@@ -6,9 +6,9 @@ import { Tag, TagProps } from './index';
 export default {
   title: 'react-web-kit/Tag',
   component: Tag,
-  parameters: {
+  globals: {
     backgrounds: {
-      default: 'white',
+      value: 'white',
     },
   },
 };

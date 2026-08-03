@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import { Carousel, ImageCarousel } from '../src';
 
@@ -29,6 +29,6 @@ export const Default: StoryObj<typeof Carousel> = {
         target: '_blank',
       },
     }));
-    return <Carousel images={items} autoScroll/>;
+    return <Carousel images={items} autoScroll />;
   },
 };

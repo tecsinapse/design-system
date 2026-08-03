@@ -5,25 +5,27 @@ export const decorators = [withBackgrounds, withView];
 
 export const parameters = {
   backgrounds: {
-    default: 'light',
-    values: [
-      {
+    options: {
+      white: {
         name: 'white',
         value: '#fff',
       },
-      {
+
+      light: {
         name: 'light',
         value: '#f8f7f7',
       },
-      {
+
+      medium: {
         name: 'medium',
         value: '#85807a',
       },
-      {
+
+      dark: {
         name: 'dark',
         value: '#5d5955',
       },
-    ],
+    },
   },
   // controls: {
   //   matchers: {
@@ -31,4 +33,10 @@ export const parameters = {
   //     date: /Date$/,
   //   },
   // },
+};
+
+export const initialGlobals = {
+  backgrounds: {
+    value: 'light',
+  },
 };

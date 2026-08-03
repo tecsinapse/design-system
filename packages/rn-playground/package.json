@@ -10,8 +10,8 @@
     "run:dev": "expo start -c",
     "run:android": "expo start -c --android",
     "run:ios": "expo start -c --ios",
-    "update:stories": "sb-rn-get-stories --config-path .storybook",
-    "storybook": "sb-rn-watcher --config-path .storybook"
+    "update:stories": "sb-rn-get-stories --config-path .rnstorybook",
+    "storybook": "sb-rn-watcher --config-path .rnstorybook"
   },
   "dependencies": {
     "@emotion/native": "~11.11.0",
@@ -37,12 +37,11 @@
   "devDependencies": {
     "@babel/core": "^7.24.5",
     "@babel/plugin-transform-private-methods": "^7.24.1",
-    "@storybook/addon-actions": "^7.6.18",
-    "@storybook/addon-ondevice-actions": "^7.6.18",
-    "@storybook/addon-ondevice-backgrounds": "^7.6.18",
-    "@storybook/addon-ondevice-controls": "^7.6.18",
-    "@storybook/react": "^7.6.18",
-    "@storybook/react-native": "^7.6.18",
+    "@storybook/addon-actions": "^9.0.8",
+    "@storybook/addon-ondevice-actions": "^10.5.4",
+    "@storybook/addon-ondevice-backgrounds": "^10.5.4",
+    "@storybook/addon-ondevice-controls": "^10.5.4",
+    "@storybook/react-native": "^10.5.4",
     "@types/react": "^18.3.18",
     "babel-loader": "^9.1.2",
     "babel-plugin-module-resolver": "^5.0.0",

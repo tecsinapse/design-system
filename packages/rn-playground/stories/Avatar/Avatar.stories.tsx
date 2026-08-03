@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { Avatar, AvatarProps } from '@tecsinapse/react-native-kit';
 
 const StoryMeta: Meta<typeof Avatar> = {

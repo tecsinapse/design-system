@@ -5,4 +5,12 @@ allowBuilds:
   core-js-pure: true
   esbuild: true
 autoInstallPeers: false
+minimumReleaseAgeExclude:
+  - '@storybook/addon-ondevice-actions@10.5.4'
+  - '@storybook/addon-ondevice-backgrounds@10.5.4'
+  - '@storybook/addon-ondevice-controls@10.5.4'
+  - '@storybook/react-native-theming@10.5.4'
+  - '@storybook/react-native-ui-common@10.5.4'
+  - '@storybook/react-native-ui@10.5.4'
+  - '@storybook/react-native@10.5.4'
 nodeLinker: hoisted

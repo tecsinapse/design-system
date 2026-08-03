@@ -1,6 +1,6 @@
 import React, { ElementType } from 'react';
 import Menubar, { MenubarProps } from './Menubar';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import styled from '@emotion/styled';
 import { Avatar, Icon, Text } from '@tecsinapse/react-core';
 

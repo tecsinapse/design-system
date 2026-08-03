@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { button } from '@tecsinapse/cortex-core';
 import { Button, ManagerProvider, Uploader } from '../src';
 import { FileStatus, type FileUpload } from '../src/components/Uploader/types';
