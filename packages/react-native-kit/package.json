@@ -21,7 +21,7 @@
     "@tecsinapse/react-core": "workspace:*",
     "react-international-phone": "catalog:",
     "react-native-country-flag": "^2.0.2",
-    "react-native-linear-gradient": "~2.8.3"
+    "react-native-linear-gradient": "catalog:"
   },
   "devDependencies": {
     "react-native-safe-area-context": "^4"

@@ -50,7 +50,6 @@ const GridItem = ({
     flexGrow,
     flexShrink,
     justifyContent,
-    boxSizing: 'border-box',
     flexBasis: flexBasis ?? `${getGridItemColumSpan(columns, span)}%`,
     paddingTop: getGridItemPadding('top', _spacing, spacing),
     paddingBottom: getGridItemPadding('bottom', _spacing, spacing),
