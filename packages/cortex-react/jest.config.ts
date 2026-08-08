@@ -4,6 +4,7 @@ const config: Config.InitialOptions = {
   displayName: 'cortex-react',
   verbose: true,
   preset: 'ts-jest',
+  maxWorkers: 4,
   testEnvironment: 'jsdom',
   rootDir: '../../',
   setupFilesAfterEnv: ['<rootDir>jest.setup.ts'],
