@@ -3,7 +3,7 @@ packages:
 catalog:
   '@emotion/native': '~11.11.0'
   '@emotion/react': '~11.14.0'
-  '@emotion/styled': '~11.11.0'
+  '@emotion/styled': '~11.14.1'
   '@storybook/addon-docs': '^10.5.7'
   '@storybook/addon-ondevice-actions': '^10.5.4'
   '@storybook/addon-ondevice-backgrounds': '^10.5.4'
