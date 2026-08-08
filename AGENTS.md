@@ -15,7 +15,7 @@ pnpm monorepo (`packages/*`) publishing independent npm packages via lerna-lite.
 
 - `pnpm dev` — watch-builds all packages (rollup + tsc); `pnpm dev:cortex` for cortex-* only. Prefer this after changing
   `cortex-core` so `cortex-react` picks up source changes.
-- `pnpm test` — jest only runs in `@tecsinapse/cortex-react` (the only package with tests). Single test:
+- `pnpm test` — vitest only runs in `@tecsinapse/cortex-react` (the only package with tests). Single test:
   `pnpm --filter @tecsinapse/cortex-react test -t '<name>'`; watch: `pnpm --filter @tecsinapse/cortex-react test:watch`.
 - No typecheck script exists — type-check via `pnpm --filter <pkg> build:dts` (tsc) or the full build.
 - `pnpm lint` runs eslint **with `--fix --quiet` (auto-edits files)**; `pnpm lint:ts` is the non-fixing check. CI gate
@@ -28,13 +28,13 @@ CI (`check.yml`) order: `pnpm test` → `pnpm lint:fix` → `pnpm build:storyboo
 
 ## Architecture
 
-- Root `tsconfig.json` paths map `@tecsinapse/*` → `packages/*/src`; jest maps `@tecsinapse/cortex-core` to its `src`.
+- Root `tsconfig.json` paths map `@tecsinapse/*` → `packages/*/src`; vitest aliases `@tecsinapse/cortex-core` to its `src`.
   Import `@tecsinapse/cortex-core` (not `dist`) from cortex-react.
 - Each package builds with rollup (`preserveModules` → `dist/esm` + `dist/cjs`) plus
   `tsc --project tsconfig.build.json` → `dist/types`. `dist` is gitignored.
 - Stories/docs live in `packages/cortex-react/docs/*.stories.tsx`, `packages/cortex-core/docs/*`, and root `docs/*.mdx`.
   Files matching `*.stories.*` are excluded from tsconfig and eslint.
-- Tests: jest + ts-jest, jsdom, `rootDir` is repo root; shared setup in root `jest.setup.ts` (ResizeObserver polyfill).
+- Tests: vitest + jsdom, `globals: true`; shared setup in root `vitest.setup.ts` (ResizeObserver polyfill).
   Test files live in `packages/cortex-react/src/tests/`.
 
 ## Conventions

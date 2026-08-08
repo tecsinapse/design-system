@@ -11,14 +11,14 @@
 - `src/service/` — sonner-based toast wrappers (`SnackbarSonner.tsx`).
 - `docs/*.stories.tsx` — storybook stories; **excluded from tsconfig and eslint**, so they are neither typechecked nor
   linted (mocks live alongside, e.g. `selectMocks.ts`).
-- `src/tests/` — jest tests, one file per component.
+- `src/tests/` — vitest tests, one file per component.
 
 ## Testing
 
-- Run: `pnpm --filter @tecsinapse/cortex-react test` (single: add `-t '<name>'`; watch: `test:watch`). Jest rootDir is
-  the repo root; `@tecsinapse/cortex-core` resolves to its `src` via moduleNameMapper.
+- Run: `pnpm --filter @tecsinapse/cortex-react test` (single: add `-t '<name>'`; watch: `test:watch`). Vitest aliases
+  `@tecsinapse/cortex-core` to its `src` via `resolve.alias` in `packages/cortex-react/vitest.config.ts`.
 - Tests import components relatively (`../components`) and assert on Tailwind class names (e.g.
-  `toHaveClass('bg-primary-medium')`), not computed styles. `ResizeObserver` is polyfilled in root `jest.setup.ts`.
+  `toHaveClass('bg-primary-medium')`), not computed styles. `ResizeObserver` is polyfilled in root `vitest.setup.ts`.
 - `tsconfig.build.json` excludes `src/tests`; keep tests out of the shipped `dist`.
 
 ## Conventions
