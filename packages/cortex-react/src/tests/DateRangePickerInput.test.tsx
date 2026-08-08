@@ -1,16 +1,17 @@
 import { CalendarDateTime } from '@internationalized/date';
+import type { Mock } from 'vitest';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { DateRangePickerInput, DateRangePickerInputProps } from '../components';
 import { useDateRangePickerInput } from '../hooks';
 
-jest.mock('../hooks/useDateRangePickerInput', () => ({
-  useDateRangePickerInput: jest.fn(),
+vi.mock('../hooks/useDateRangePickerInput', () => ({
+  useDateRangePickerInput: vi.fn(),
 }));
 
 describe('DateRangePickerInput', () => {
-  const mockOnChange = jest.fn();
+  const mockOnChange = vi.fn();
   const defaultProps: DateRangePickerInputProps = {
     value: undefined,
     onChange: mockOnChange,
@@ -23,16 +24,16 @@ describe('DateRangePickerInput', () => {
     state: {
       isOpen: false,
       isInvalid: false,
-      setDateRange: jest.fn(),
-      close: jest.fn(),
-      open: jest.fn(),
+      setDateRange: vi.fn(),
+      close: vi.fn(),
+      open: vi.fn(),
     },
     ref: React.createRef(),
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
-    (useDateRangePickerInput as jest.Mock).mockReturnValue(
+    vi.clearAllMocks();
+    (useDateRangePickerInput as Mock).mockReturnValue(
       mockUseDateRangePickerInput
     );
   });

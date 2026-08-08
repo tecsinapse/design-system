@@ -12,16 +12,16 @@ import { CalendarCell } from '../components/Calendar/CalendarCell';
 import { useCalendarCell } from '../hooks';
 import { CalendarProvider } from '../provider';
 
-jest.mock('../hooks/useCalendarCell', () => ({
-  useCalendarCell: jest.fn(),
+vi.mock('../hooks/useCalendarCell', () => ({
+  useCalendarCell: vi.fn(),
 }));
 
-jest.mock('react-stately', () => ({
-  useCalendarState: jest.fn(),
-  useRangeCalendarState: jest.fn(),
+vi.mock('react-stately', () => ({
+  useCalendarState: vi.fn(),
+  useRangeCalendarState: vi.fn(),
 }));
 
-const mockUseCalendarCell = jest.mocked(useCalendarCell);
+const mockUseCalendarCell = vi.mocked(useCalendarCell);
 
 const MockTable = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -54,10 +54,10 @@ describe('CalendarCell', () => {
   let rangeCalendarStateMock;
 
   beforeEach(() => {
-    calendarStateMock = jest
+    calendarStateMock = vi
       .mocked(useCalendarState)
       .mockReturnValue({} as CalendarState);
-    rangeCalendarStateMock = jest
+    rangeCalendarStateMock = vi
       .mocked(useRangeCalendarState)
       .mockReturnValue({} as RangeCalendarState);
   });

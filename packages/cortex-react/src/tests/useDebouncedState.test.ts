@@ -3,10 +3,10 @@ import { useDebouncedState } from '../hooks';
 
 describe('useDeboundedState', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
   });
 
-  afterEach(() => jest.useRealTimers());
+  afterEach(() => vi.useRealTimers());
 
   it('Should initialize with the initial state', () => {
     const { result } = renderHook(() => useDebouncedState('initial'));
@@ -16,7 +16,7 @@ describe('useDeboundedState', () => {
   });
 
   it('Should update state immediately', () => {
-    const timeoutCallback = jest.fn();
+    const timeoutCallback = vi.fn();
 
     const { result } = renderHook(() =>
       useDebouncedState<string>('initial', timeoutCallback, 0)
@@ -34,7 +34,7 @@ describe('useDeboundedState', () => {
   });
 
   it('Should call timeoutCallback after timeout', () => {
-    const timeoutCallback = jest.fn();
+    const timeoutCallback = vi.fn();
     const { result } = renderHook(() =>
       useDebouncedState<string>('initial', timeoutCallback, 500)
     );
@@ -48,14 +48,14 @@ describe('useDeboundedState', () => {
     expect(timeoutCallback).not.toHaveBeenCalled();
 
     act(() => {
-      jest.advanceTimersByTime(500);
+      vi.advanceTimersByTime(500);
     });
 
     expect(timeoutCallback).toHaveBeenCalledWith('updated');
   });
 
   it('Dont Should call timeoutCallback after timeout', () => {
-    const timeoutCallback = jest.fn();
+    const timeoutCallback = vi.fn();
     const { result } = renderHook(() =>
       useDebouncedState<string>('initial', timeoutCallback, 500)
     );
@@ -67,7 +67,7 @@ describe('useDeboundedState', () => {
     });
 
     act(() => {
-      jest.advanceTimersByTime(250);
+      vi.advanceTimersByTime(250);
     });
 
     expect(timeoutCallback).not.toHaveBeenCalledWith('updated');

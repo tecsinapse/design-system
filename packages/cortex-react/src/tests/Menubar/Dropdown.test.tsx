@@ -3,11 +3,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Menubar } from '../../components';
 
-jest.mock('../../styles/menubar', () => ({
+vi.mock('../../styles/menubar', () => ({
   menubar: () => ({
     dropdown: () => 'mocked-dropdown-class',
   }),
-  mostUsed: jest.fn(() => ({
+  mostUsed: vi.fn(() => ({
     container: 'mocked-container-class',
     label: 'mocked-label-class',
     containerList: 'mocked-container-list-class',
@@ -23,22 +23,22 @@ jest.mock('../../styles/menubar', () => ({
   subItem: () => ({
     container: 'mocked-container-class',
   }),
-  animate: jest
+  animate: vi
     .fn()
     .mockImplementation(({ show }) =>
       show ? 'mocked-animate-show' : 'mocked-animate-hide'
     ),
 }));
 
-const mockUseMenubar = jest.fn();
+const mockUseMenubar = vi.fn();
 
-jest.mock('../../provider', () => ({
+vi.mock('../../provider', () => ({
   useMenubar: () => mockUseMenubar(),
 }));
 
 describe('Dropdown Menubar', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('Should render correctly', () => {

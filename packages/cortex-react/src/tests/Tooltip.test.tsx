@@ -29,10 +29,10 @@ describe('Tooltip', () => {
     const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
     // We should await same action again
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip on hover with delay', async () => {
@@ -50,9 +50,9 @@ describe('Tooltip', () => {
 
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip on click', async () => {
@@ -172,9 +172,9 @@ describe('Tooltip', () => {
     const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip with TooltipButton on hover delay', async () => {
@@ -190,9 +190,9 @@ describe('Tooltip', () => {
     const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip with TooltipButton on click', async () => {

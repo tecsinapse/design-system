@@ -9,8 +9,8 @@ import {
 const title = 'Junho De 2026';
 
 const props: CalendarHeaderProps = {
-  onClickPrevButton: jest.fn(),
-  onClickNextButton: jest.fn(),
+  onClickPrevButton: vi.fn(),
+  onClickNextButton: vi.fn(),
   title: title,
 };
 
