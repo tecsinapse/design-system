@@ -66,7 +66,7 @@ describe('DatePickerInputBase', () => {
   });
 
   it('Should click calendar button', () => {
-    const handleClickCalendarIcon = jest.fn();
+    const handleClickCalendarIcon = vi.fn();
     render(
       <DatePickerInputBase onToggle={handleClickCalendarIcon}>
         <span>placeholder</span>
@@ -82,7 +82,7 @@ describe('DatePickerInputBase', () => {
   });
 
   it('Should click clean button', () => {
-    const handleClickCleanIcon = jest.fn();
+    const handleClickCleanIcon = vi.fn();
     render(
       <DatePickerInputBase value={new Date()} onClean={handleClickCleanIcon}>
         <span>placeholder</span>
@@ -162,7 +162,7 @@ describe('DatePickerInputBase', () => {
   });
 
   it('Should not call clean function on clean button click when disabled', () => {
-    const handleClickCleanIcon = jest.fn();
+    const handleClickCleanIcon = vi.fn();
     render(
       <DatePickerInputBase
         value={new Date()}
@@ -182,7 +182,7 @@ describe('DatePickerInputBase', () => {
   });
 
   it('Should not call calendar function on calendar button click when disabled', () => {
-    const handleClickCalendarIcon = jest.fn();
+    const handleClickCalendarIcon = vi.fn();
     render(
       <DatePickerInputBase onToggle={handleClickCalendarIcon} disabled>
         <span>placeholder</span>
