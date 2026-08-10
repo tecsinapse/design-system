@@ -5,7 +5,7 @@
     "declarationDir": "./dist/types",
     "rootDir": "./src",
     "baseUrl": "./",
-    "types": ["react", "jest", "@testing-library/jest-dom"]
+    "types": ["react", "vitest/globals", "@testing-library/jest-dom/vitest"]
   },
   "include": ["./src", "**/*.spec.ts", "**/*.spec.tsx"],
   "exclude": ["node_modules", "dist", "src/tests"]

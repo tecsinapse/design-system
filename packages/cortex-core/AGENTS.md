@@ -27,5 +27,5 @@ components**: `tailwind-variants` `tv()` definitions (e.g. `buttonStyles`), desi
   in `tv` definitions.
 - Peer dependency is `tailwindcss ^4.1.16` only; keep it that way (add new deps as peers if needed — root workspace has
   `autoInstallPeers: false`).
-- `cortex-react` picks up source changes in dev via root tsconfig/jest path mapping; a published release requires the
+- `cortex-react` picks up source changes in dev via vitest's resolve.alias; a published release requires the
   automatic lerna flow (never bump versions manually).

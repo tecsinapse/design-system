@@ -33,10 +33,8 @@ describe('Popover', () => {
     const popover = await screen.findByTestId('popover-content');
     expect(popover).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
-    expect(
-      await screen.findByTestId('popover-content')
-    ).not.toBeInTheDocument();
+    await userEvent.unhover(trigger);
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
 
   it('Should show content on click', async () => {
@@ -208,10 +206,8 @@ describe('Popover', () => {
     const popover = await screen.findByTestId('popover-content');
     expect(popover).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
-    expect(
-      await screen.findByTestId('popover-content')
-    ).not.toBeInTheDocument();
+    await userEvent.unhover(trigger);
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
 
   it('Should show popover with PopoverButton on click', async () => {
@@ -237,7 +233,7 @@ describe('Popover', () => {
   });
 
   it('Should show popover controlled and close in click inside', async () => {
-    const setIsOpen = jest.fn();
+    const setIsOpen = vi.fn();
     render(
       <Popover.Root
         trigger="click"
@@ -285,10 +281,8 @@ describe('Popover', () => {
     const popover = await screen.queryByTestId('popover-content');
     expect(popover).not.toBeInTheDocument();
 
-    userEvent.unhover(trigger);
-    expect(
-      await screen.queryByTestId('popover-content')
-    ).not.toBeInTheDocument();
+    await userEvent.unhover(trigger);
+    expect(screen.queryByTestId('popover-content')).not.toBeInTheDocument();
   });
 
   it('Should not show content on click when trigger disabled', async () => {
