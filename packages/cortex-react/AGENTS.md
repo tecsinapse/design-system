@@ -28,5 +28,5 @@
 - New components: create a `docs/<Name>.stories.tsx` and a `src/tests/<Name>.test.tsx`; the CI gate is root
   `pnpm test` → `pnpm lint:fix` → `pnpm build:storybook`.
 - Re-export from `src/index.ts` (components, hooks, service, provider). `react-icons` must be imported from the subpath
-  sets listed in `rollup.config.mjs` externals (`react-icons/lia`, `react-icons/md`, ...) or the build fails to
+  sets listed in `rolldown.config.mjs` externals (`react-icons/lia`, `react-icons/md`, ...) or the build fails to
   externalize.

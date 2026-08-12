@@ -18,7 +18,7 @@ components**: `tailwind-variants` `tv()` definitions (e.g. `buttonStyles`), desi
 
 - `pnpm --filter @tecsinapse/cortex-core build:dts` — type-check (no test suite, no lint target beyond repo rules).
 - `rollup-plugin-copy` copies `src/default.css` → `dist/` — if you add another asset, extend the copy targets in
-  `rollup.config.mjs`.
+  `rolldown.config.mjs`.
 - No tests and no stories live in this package; component stories live in `packages/cortex-react/docs/`.
 
 ## Conventions
