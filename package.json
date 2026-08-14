@@ -54,6 +54,7 @@
     "react-native": "catalog:",
     "react-native-web": "^0.21.2",
     "rimraf": "^5.0.5",
+    "rolldown": "^1.2.3",
     "rollup": "^4.62.4",
     "rollup-plugin-esbuild": "^6.2.1",
     "storybook": "catalog:",

@@ -9,10 +9,11 @@
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "scripts": {
-    "dev:es": "rollup --config --watch",
+    "dev:es": "rolldown --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
-    "build:es": "rollup --config",
+    "build:es": "rimraf dist && rolldown --config",
     "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
