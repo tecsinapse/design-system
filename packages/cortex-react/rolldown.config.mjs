@@ -1,0 +1,28 @@
+export default {
+  input: './src/index.ts',
+  output: {
+    dir: 'dist/esm',
+    format: 'esm',
+    preserveModules: true,
+    preserveModulesRoot: 'src',
+    sourcemap: false,
+  },
+  external: [
+    'react',
+    '@tecsinapse/cortex-core',
+    'react-icons/lia',
+    'react-icons/md',
+    'react-icons/io5',
+    'react-icons/io',
+    'react-icons/fa',
+    'clsx',
+    'currency.js',
+    'react-stately',
+    'react-aria',
+    'sonner',
+    '@floating-ui/react',
+    'react-spring-carousel',
+    'tailwind-variants',
+    '@internationalized/date',
+  ],
+};
