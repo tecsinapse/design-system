@@ -136,3 +136,7 @@ export type {
 } from './components/molecules/Calendar';
 export { default as DatePicker } from './components/molecules/DatePicker/DatePicker';
 export type { DatePickerProps } from './components/molecules/DatePicker';
+export { default as ScrollableSelector } from './components/molecules/ScrollableSelector/ScrollableSelector';
+export type { ScrollableSelectorProps } from './components/molecules/ScrollableSelector';
+export { default as DateBlock } from './components/molecules/ScrollableSelector/components/DateBlock';
+export type { DateBlockProps } from './components/molecules/ScrollableSelector/components/DateBlock';
