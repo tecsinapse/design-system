@@ -5,7 +5,11 @@ jest.mock('../../atoms/Icon/Icon', () => {
   const { Text } = require('react-native');
   return {
     __esModule: true,
-    default: (props: { name: string }) => <Text>{props.name}</Text>,
+    default: (props: { name: string; size?: string }) => (
+      <Text testID="mock-icon" size={props.size}>
+        {props.name}
+      </Text>
+    ),
   };
 });
 
@@ -47,5 +51,37 @@ describe('IconTextButton', () => {
     const className = getByRole('button').props.className as string;
     expect(className).toContain('bg-primary-medium');
     expect(className).toContain('aspect-square');
+  });
+
+  it('honors an explicit iconProps.size over the small/centi default', () => {
+    const { getByTestId } = render(
+      <IconTextButton
+        label="Save"
+        size="small"
+        iconProps={{ name: 'check', type: 'ionicon', size: 'kilo' }}
+      />,
+    );
+    expect(getByTestId('mock-icon').props.size).toBe('kilo');
+  });
+
+  it('uses centi as the default icon size for a default button', () => {
+    const { getByTestId } = render(
+      <IconTextButton
+        label="Save"
+        iconProps={{ name: 'check', type: 'ionicon' }}
+      />,
+    );
+    expect(getByTestId('mock-icon').props.size).toBe('centi');
+  });
+
+  it('uses mili as the icon size for a small button', () => {
+    const { getByTestId } = render(
+      <IconTextButton
+        label="Save"
+        size="small"
+        iconProps={{ name: 'check', type: 'ionicon' }}
+      />,
+    );
+    expect(getByTestId('mock-icon').props.size).toBe('mili');
   });
 });

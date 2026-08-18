@@ -108,7 +108,7 @@ const IconTextButton: React.FC<IconTextButtonProps> = ({
       {iconPosition === 'left' && iconProps && (
         <Icon
           {...iconProps}
-          size={iconProps.size || size === 'small' ? 'mili' : 'centi'}
+          size={iconProps.size ?? (size === 'small' ? 'mili' : 'centi')}
           fontColor={iconProps.fontColor ?? defaultFontColor}
         />
       )}
@@ -123,7 +123,7 @@ const IconTextButton: React.FC<IconTextButtonProps> = ({
       {iconPosition === 'right' && iconProps && (
         <Icon
           {...iconProps}
-          size={iconProps.size || size === 'small' ? 'mili' : 'centi'}
+          size={iconProps.size ?? (size === 'small' ? 'mili' : 'centi')}
           fontColor={iconProps.fontColor ?? defaultFontColor}
         />
       )}
