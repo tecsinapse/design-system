@@ -14,7 +14,8 @@
     "dev:es": "rolldown --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
     "build:es": "rimraf dist && rolldown --config",
-    "build:dts": "tsc --project tsconfig.build.json"
+    "build:dts": "tsc --project tsconfig.build.json",
+    "test": "jest"
   },
   "dependencies": {
     "@tecsinapse/cortex-core": "workspace:*",
@@ -27,6 +28,9 @@
     "tailwind-variants": "catalog:"
   },
   "devDependencies": {
+    "@react-native/jest-preset": "0.86.2",
+    "jest": "^29.7.0",
+    "react-test-renderer": "^19.2.0",
     "uniwind": "^1.10.0"
   },
   "peerDependencies": {

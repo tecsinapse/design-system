@@ -5,8 +5,9 @@
     "declarationDir": "./dist/types",
     "rootDir": "./src",
     "baseUrl": "./",
+    "moduleResolution": "bundler",
     "types": ["react", "react-native"]
   },
   "include": ["./src"],
-  "exclude": ["node_modules", "dist", "src/tests", "docs"]
+  "exclude": ["node_modules", "dist", "src/tests", "docs", "**/*.test.*"]
 }
