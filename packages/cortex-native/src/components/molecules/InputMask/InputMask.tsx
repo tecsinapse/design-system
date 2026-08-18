@@ -37,8 +37,6 @@ const InputMask: FC<InputMaskNativeProps> = React.forwardRef<
       style,
       borderColor,
       borderColorGradation,
-      inputFontStack = 'default',
-      inputFontWeight = 'bold',
       inputContainerStyle,
       variant = 'default',
       hintComponent,

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
 import { clsx } from 'clsx';
 import { useCSSVariable } from 'uniwind';
@@ -18,7 +18,7 @@ export interface InputMaskElementProps
   value?: string | number;
   placeholder?: string;
   disabled?: boolean;
-  onChange?: (value: any) => void;
+  onChange?: (value: string | number) => void;
   mask?: (MaskType[] | ((value: string) => MaskType[])) | CurrencyOptions;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -32,8 +32,8 @@ const StringMaskInput = React.forwardRef<TextInput, InputMaskElementProps>(
     );
 
     useEffect(() => {
-      if (onChange) {
-        onChange(maskValue?.raw);
+      if (onChange && maskValue?.raw !== undefined) {
+        onChange(maskValue.raw);
       }
     }, [maskValue]);
 
@@ -59,8 +59,8 @@ const NumberMaskInput = React.forwardRef<TextInput, InputMaskElementProps>(
     );
 
     useEffect(() => {
-      if (onChange) {
-        onChange(maskValue?.raw);
+      if (onChange && maskValue?.raw !== undefined) {
+        onChange(maskValue.raw);
       }
     }, [maskValue]);
 
@@ -117,9 +117,9 @@ const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
     return (
       <>
         {isNumberMask ? (
-          <NumberMaskInput {...(sharedProps as any)} {...rest} ref={ref} />
+          <NumberMaskInput {...sharedProps} {...rest} ref={ref} />
         ) : (
-          <StringMaskInput {...(sharedProps as any)} {...rest} ref={ref} />
+          <StringMaskInput {...sharedProps} {...rest} ref={ref} />
         )}
       </>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
-import GridItem from './Item';
+import GridItem, { IGridItem } from './Item';
 import { GridSpacing } from './functions';
 
 export interface IGrid {
@@ -47,7 +47,9 @@ const Grid = ({
     <View style={[style]} className="flex flex-row flex-wrap" {...rest}>
       {React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
-          const childEl = child as React.ReactElement & { props?: any };
+          const childEl = child as React.ReactElement & {
+            props?: IGridItem & { spacing?: GridSpacing };
+          };
           return React.cloneElement(childEl, {
             ...childEl.props,
             columns,

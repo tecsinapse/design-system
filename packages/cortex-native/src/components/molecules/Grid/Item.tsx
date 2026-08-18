@@ -78,7 +78,9 @@ const GridItem = ({
 
   let clone: React.ReactElement | undefined = undefined;
   if (React.isValidElement(children)) {
-    const childEl = children as React.ReactElement & { props?: any };
+    const childEl = children as React.ReactElement & {
+      props?: { style?: StyleProp<ViewStyle> };
+    };
     clone = React.cloneElement(childEl, {
       ...childEl.props,
       style: wrapper
@@ -86,7 +88,6 @@ const GridItem = ({
         : { ..._style, ...childEl.props?.style },
     });
   }
-
   return wrapper ? (
     <View {...rest} style={[style, _style]}>
       {clone}

@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
 
 jest.mock('uniwind', () => ({
-  useCSSVariable: (name: string) => '#353231',
+  useCSSVariable: () => '#353231',
 }));
 
 jest.mock('../../atoms/Icon/Icon', () => {

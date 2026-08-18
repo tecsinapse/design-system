@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { StyleProp, TextInput, TextStyle, View, ViewStyle } from 'react-native';
+import { StyleProp, TextInput, View, ViewStyle } from 'react-native';
 import { clsx } from 'clsx';
 import { useCSSVariable } from 'uniwind';
 import { inputElementClasses, inputElementDisabledClasses } from '../../../styles/input';

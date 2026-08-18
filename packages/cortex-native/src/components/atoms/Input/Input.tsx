@@ -31,8 +31,6 @@ const Input = React.forwardRef<TextInput, InputNativeProps>(
       disabled,
       borderColor,
       borderColorGradation,
-      inputFontStack = 'default',
-      inputFontWeight = 'bold',
       inputContainerStyle,
       variant = 'default',
       hintComponent,
