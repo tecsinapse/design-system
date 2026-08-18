@@ -18,3 +18,5 @@ export { default as Checkbox } from './components/atoms/Checkbox/Checkbox';
 export type { CheckboxProps } from './components/atoms/Checkbox/Checkbox';
 export { default as RadioButton } from './components/atoms/RadioButton/RadioButton';
 export type { RadioButtonProps } from './components/atoms/RadioButton/RadioButton';
+export { default as PressableSurface } from './components/atoms/PressableSurface/PressableSurface';
+export type { PressableSurfaceProps } from './components/atoms/PressableSurface/PressableSurface';
