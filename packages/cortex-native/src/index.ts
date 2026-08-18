@@ -127,3 +127,10 @@ export {
   getMultiLabel,
   getSingleLabel,
 } from './components/molecules/Select/functions';
+export { default as Calendar } from './components/molecules/Calendar/Calendar';
+export type {
+  CalendarProps,
+  SelectionType,
+  Value,
+  DateRange,
+} from './components/molecules/Calendar';
