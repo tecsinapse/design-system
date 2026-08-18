@@ -52,3 +52,5 @@ export { getMask, mergeMask, useStringMask } from './utils/useStringMask';
 export type { MaskType, MaskValue } from './utils/useStringMask';
 export { getInternalNumberAndMask, useNumberMask } from './utils/useNumberMask';
 export type { CurrencyOptions } from './utils/useNumberMask';
+export { default as HintInputContainer } from './components/molecules/HintInputContainer/HintInputContainer';
+export type { HintInputContainerProps } from './components/molecules/HintInputContainer/HintInputContainer';

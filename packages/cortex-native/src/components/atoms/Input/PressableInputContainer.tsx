@@ -30,7 +30,13 @@ const PressableInputContainer = ({
   ...rest
 }: PressableInputContainerProps): React.ReactElement => {
   return (
-    <Pressable className="w-full" onPress={onPress} disabled={disabled} style={style}>
+    <Pressable
+      className="w-full"
+      onPress={onPress}
+      disabled={disabled}
+      accessibilityRole="button"
+      style={style}
+    >
       <InputContainer disabled={disabled} {...rest}>
         {children}
       </InputContainer>
