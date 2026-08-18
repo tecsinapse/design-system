@@ -29,4 +29,32 @@ describe('Text', () => {
     const { getByText } = render(<Text capitalFirst>hello</Text>);
     expect(getByText('Hello')).toBeTruthy();
   });
+
+  it('emits the default fontColor class when no colorVariant is set', () => {
+    const { getByTestId } = render(<Text testID="t">label</Text>);
+    const className = getByTestId('t').props.className as string;
+    expect(className).toContain('text-content-high');
+  });
+
+  it('does not emit the fontColor class when colorVariant is set', () => {
+    const { getByTestId } = render(
+      <Text testID="t" colorVariant="error">
+        label
+      </Text>,
+    );
+    const className = getByTestId('t').props.className as string;
+    expect(className).toContain('text-error-medium');
+    expect(className).not.toContain('text-content-high');
+  });
+
+  it('emits the fontColor class when no colorVariant is set', () => {
+    const { getByTestId } = render(
+      <Text testID="t" fontColor="orange">
+        label
+      </Text>,
+    );
+    const className = getByTestId('t').props.className as string;
+    expect(className).toContain('text-orange');
+    expect(className).not.toContain('text-error-');
+  });
 });

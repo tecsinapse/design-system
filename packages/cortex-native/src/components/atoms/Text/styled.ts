@@ -1,4 +1,4 @@
-import { tv, type VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
 export type ColorType =
   | 'primary'
@@ -57,8 +57,6 @@ export const textStyles = tv({
   },
   defaultVariants: { typography: 'base', fontWeight: 'regular' },
 });
-
-export type TextStylesVariants = VariantProps<typeof textStyles>;
 
 export const fontColorStyles: Record<FontColorType, string> = {
   high: 'text-content-high',

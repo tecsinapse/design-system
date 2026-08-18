@@ -54,8 +54,8 @@ const Text: React.FC<TextProps> = ({
       fontStack,
       colorVariant: hasColorTone ? undefined : colorVariant,
     }),
-    fontColorStyles[fontColor],
-    hasColorTone && colorToneStyles[colorVariant as ColorType][colorTone as ColorGradationType],
+    !colorVariant && fontColorStyles[fontColor],
+    colorVariant && colorTone && colorToneStyles[colorVariant][colorTone],
   );
 
   return (
