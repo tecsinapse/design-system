@@ -1,11 +1,10 @@
 import { format as formatDate } from '@tecsinapse/cortex-core';
-import type { Locale } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { Modal, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '../../atoms/Icon/Icon';
-import Text, { TextProps } from '../../atoms/Text/Text';
+import Text from '../../atoms/Text/Text';
 import { useInputFocus } from '../../atoms/Input';
 import HintInputContainer from '../HintInputContainer/HintInputContainer';
 import Calendar from '../Calendar/Calendar';

@@ -11,9 +11,8 @@ import {
   calendarControl,
   calendarTitleRow,
 } from '../../../styles/calendar';
-import { DateRange, SelectionType, Value } from './types';
+import { SelectionType, Value } from './types';
 import { MonthWeek, SelectYear, SelectYearProps, Weekdays } from './components';
-
 const now = set(new Date(), {
   date: 1,
   hours: 0,

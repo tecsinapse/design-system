@@ -1,7 +1,7 @@
 import { compareAsc, isSameDay } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { View } from 'react-native';
-import Text, { TextProps } from '../../../atoms/Text/Text';
+import type { TextProps } from '../../../atoms/Text/Text';
 import PressableSurface from '../../../atoms/PressableSurface/PressableSurface';
 import {
   calendarCellSelected,

@@ -2,7 +2,7 @@ import { format } from '@tecsinapse/cortex-core';
 import type { Locale } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { View } from 'react-native';
-import Text, { TextProps } from '../../../atoms/Text/Text';
+import type { TextProps } from '../../../atoms/Text/Text';
 import { calendarWeek } from '../../../../styles/calendar';
 
 interface IWeekdays {

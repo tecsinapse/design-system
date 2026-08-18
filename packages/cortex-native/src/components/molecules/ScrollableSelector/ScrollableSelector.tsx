@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { DimensionValue, Dimensions, StyleSheet, View } from 'react-native';
+import type { Locale } from '@tecsinapse/cortex-core';
 import Text from '../../atoms/Text/Text';
 import type { TextProps } from '../../atoms/Text/Text';
 import { DateBlock } from './components';
@@ -25,7 +26,7 @@ export interface ScrollableSelectorProps {
   hourLabel?: string;
   minuteLabel?: string;
   TextComponent?: React.FC<TextProps>;
-  locale?: any;
+  locale?: Locale;
 }
 
 const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
