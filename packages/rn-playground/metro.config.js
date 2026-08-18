@@ -1,6 +1,7 @@
 const path = require('path');
 const { getDefaultConfig } = require('expo/metro-config');
 const { generate } = require('@storybook/react-native/scripts/generate');
+const { withUniwindConfig } = require('uniwind/metro');
 
 generate({
   configPath: path.resolve(__dirname, './.rnstorybook'),
@@ -49,6 +50,10 @@ config.resolver.extraNodeModules = {
     workspaceRoot,
     'packages/cortex-react'
   ),
+  '@tecsinapse/cortex-native': path.resolve(
+    workspaceRoot,
+    'packages/cortex-native'
+  ),
 };
 
 config.resolver.sourceExts = [
@@ -63,4 +68,7 @@ config.resolver.sourceExts = [
   'stories.js',
 ];
 
-module.exports = config;
+module.exports = withUniwindConfig(config, {
+  cssEntryFile: './global.css',
+  dtsFile: './uniwind-types.d.ts',
+});

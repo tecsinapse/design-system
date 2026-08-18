@@ -20,6 +20,7 @@
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-native-community/datetimepicker": "9.1.0",
     "@react-native-community/slider": "5.2.0",
+    "@tecsinapse/cortex-native": "workspace:*",
     "@tecsinapse/react-charts": "workspace:*",
     "@tecsinapse/react-native-kit": "workspace:*",
     "expo-font": "~57.0.1",
@@ -48,7 +49,9 @@
     "babel-plugin-module-resolver": "^5.0.3",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-preset-expo": "~57.0.6",
-    "expo": "^57.0.11"
+    "expo": "^57.0.11",
+    "tailwindcss": "catalog:",
+    "uniwind": "^1.11.0"
   },
   "private": true
 }
