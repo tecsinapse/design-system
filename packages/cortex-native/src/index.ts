@@ -8,3 +8,5 @@ export { default as Divider } from './components/atoms/Divider/Divider';
 export type { DividerProps } from './components/atoms/Divider/Divider';
 export { default as BoxContent } from './components/atoms/BoxContent/BoxContent';
 export type { BoxContentProps } from './components/atoms/BoxContent/BoxContent';
+export { default as Paper } from './components/atoms/Paper/Paper';
+export type { PaperProps } from './components/atoms/Paper/Paper';
