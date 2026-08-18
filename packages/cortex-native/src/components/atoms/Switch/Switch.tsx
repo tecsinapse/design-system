@@ -73,7 +73,6 @@ const Switch: React.FC<SwitchProps> = ({
   useEffect(() => {
     const translate = calculateTranslate();
     transitionSwitch(active, translate, transitionValue, animatedColor);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   const handleChange = useCallback(() => {
