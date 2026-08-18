@@ -47,5 +47,8 @@ export const iconColorVar = (
   if (colorVariant && colorTone) {
     return `--color-${colorVariant}-${colorTone}`;
   }
+  if (fontColor === 'light' || fontColor === 'orange') {
+    return `--color-${fontColor}`;
+  }
   return `--color-content-${fontColor}`;
 };

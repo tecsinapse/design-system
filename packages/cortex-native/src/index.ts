@@ -60,3 +60,8 @@ export type {
   LabeledSwitchNativeProps,
   LabelPositionOptions,
 } from './components/molecules/LabeledSwitch/LabeledSwitch';
+export { default as IconTextButton } from './components/molecules/IconTextButton/IconTextButton';
+export type {
+  IconTextButtonProps,
+  IconPositionOptions,
+} from './components/molecules/IconTextButton/IconTextButton';
