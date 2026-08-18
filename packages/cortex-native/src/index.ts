@@ -20,3 +20,5 @@ export { default as RadioButton } from './components/atoms/RadioButton/RadioButt
 export type { RadioButtonProps } from './components/atoms/RadioButton/RadioButton';
 export { default as PressableSurface } from './components/atoms/PressableSurface/PressableSurface';
 export type { PressableSurfaceProps } from './components/atoms/PressableSurface/PressableSurface';
+export { default as ProgressBar } from './components/atoms/ProgressBar/ProgressBar';
+export type { ProgressBarProps } from './components/atoms/ProgressBar/ProgressBar';
