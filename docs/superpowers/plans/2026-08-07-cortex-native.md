@@ -94,13 +94,13 @@ against the plain `:root` declarations — preserve both blocks verbatim and in 
 
 ```css
 :root {
-  --color-body: #f8f7f7;
-  --color-default: #000;
-  /* ...all plain :root vars... */
+    --color-body: #f8f7f7;
+    --color-default: #000;
+    /* ...all plain :root vars... */
 }
 
 @theme {
-  /* ...all @theme vars except animation/origin/keyframes, verbatim... */
+    /* ...all @theme vars except animation/origin/keyframes, verbatim... */
 }
 ```
 
@@ -110,11 +110,11 @@ Create `src/tokens-native.css` with the dark overrides in Uniwind's theme syntax
 ```css
 /* Imported ONLY by native (Uniwind) global.css — never by default.css. */
 @layer theme {
-  :root {
-    @variant dark {
-      /* ...dark overrides from :root[data-theme='dark'], verbatim... */
+    :root {
+        @variant dark {
+            /* ...dark overrides from :root[data-theme='dark'], verbatim... */
+        }
     }
-  }
 }
 ```
 
@@ -125,19 +125,19 @@ Create `src/tokens-native.css` with the dark overrides in Uniwind's theme syntax
 @import "./tokens.css";
 
 :root[data-contrast='black'] {
-  --color-on-primary: #000;
+    --color-on-primary: #000;
 }
 
 :root[data-theme='dark'] {
-  /* ...existing dark overrides, verbatim... */
+    /* ...existing dark overrides, verbatim... */
 }
 
 @theme {
-  /* animation/origin vars + keyframes, verbatim */
+    /* animation/origin vars + keyframes, verbatim */
 }
 
 @layer utilities {
-  /* ...existing, verbatim... */
+    /* ...existing, verbatim... */
 }
 ```
 
@@ -177,8 +177,8 @@ anything does, move it into the provider/utils (web-only) or out of the shared p
 - [ ] **Step 4: Verify web stack still green**
 
 Run: `pnpm --filter @tecsinapse/cortex-core build:dts` → expect `Done`.
-Run: `pnpm --filter @tecsinapse/cortex-react test` → expect 67 suites pass (storybook css imports `default.css` via src
-path — still valid since default.css re-imports tokens.css).
+Run: `pnpm --filter @tecsinapse/cortex-react test` → all existing suites pass (storybook css imports `default.css` via
+src path — still valid since default.css re-imports tokens.css).
 Run: `pnpm lint:ts` → expect 0 errors.
 Visual/cascade check: run storybook and confirm `text-content-high` still renders as `#353231` (light) and flips in dark
 mode — this guards the self-referencing `@theme` var cascade (`--color-content-high: var(--color-content-high)`), which
@@ -223,7 +223,9 @@ git commit -m "feat(cortex-core): extract RN-safe tokens.css + tokens-native.css
   "module": "dist/esm/index.js",
   "react-native": "src/index.ts",
   "types": "dist/types/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev:es": "rolldown --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
@@ -245,14 +247,20 @@ git commit -m "feat(cortex-core): extract RN-safe tokens.css + tokens-native.css
   },
   "peerDependencies": {
     "react": ">=19.0.0",
-    "react-native": ">=0.81.0",
+    "react-native": ">=0.86.0",
     "react-native-safe-area-context": "^4.0.0 || ^5.0.0",
-    "react-native-svg": ">=13.0.0",
+    "react-native-svg": ">=15.0.0",
     "react-native-vector-icons": "catalog:",
     "uniwind": "^1.10.0"
   },
-  "repository": { "type": "git", "directory": "packages/cortex-native", "url": "git+https://github.com/tecsinapse/design-system.git" },
-  "bugs": { "url": "https://github.com/tecsinapse/design-system/issues" },
+  "repository": {
+    "type": "git",
+    "directory": "packages/cortex-native",
+    "url": "git+https://github.com/tecsinapse/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tecsinapse/design-system/issues"
+  },
   "homepage": "https://tecsinapse.github.io/design-system/"
 }
 ```
@@ -265,9 +273,12 @@ Notes:
   raw TS source without needing watch-builds.
 - `react-native-country-flag` replaces the spec's `country-flag-icons`: the latter renders DOM SVG (web-only —
   cortex-react uses it); the former is the proven RN flag renderer already used by react-native-kit.
-- `date-fns` via catalog: add `date-fns: '~4.4.0'` to the catalog in root `pnpm-workspace.yaml` (matches the root
-  dependency's range) as part of this step.
-- `react-native-svg` is peer because only PieChart uses it (legacy pattern: react-charts declares it as peer).
+- `date-fns` via catalog: add `date-fns: '~4.4.0'` to the catalog in root `pnpm-workspace.yaml` (this INTRODUCES the v4
+  catalog entry — there is no root v4 dep today; legacy `react-core`/`react-web-kit` pin `~2.30.0` directly and stay
+  on v2, so the bump is scoped to the new package). cortex-core does NOT consume date-fns and is unaffected. See
+  Task 11 for the v2→v4 API breaking-changes checklist.
+- `react-native-svg` is peer because only PieChart uses it (legacy pattern: react-charts declares it as peer). Pin
+  `>=15.0.0` — Uniwind 1.10 requires SVG primitives v15+ for `className` support used by `withUniwind` (Task 13).
 - Build scripts mirror cortex-core (rolldown + rimraf), NOT legacy rollup — cortex-native is a cortex package and is
   picked up by `pnpm dev:cortex`.
 
@@ -280,7 +291,10 @@ Notes:
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "types": ["react", "react-native"]
+    "types": [
+      "react",
+      "react-native"
+    ]
   }
 }
 ```
@@ -449,15 +463,19 @@ tsconfig (no DOM lib usage).
 
 - [ ] **Step 2: Validate in playground**
 
-In rn-playground App.tsx, wrap the app with `ThemeProvider`, add a toggle, and render
-`<Text className="text-content-high">` + a `bg-primary-medium` View. Toggle light/dark → verify the semantic tokens
-swap: `text-content-high` renders `#353231` in light and `#f8f7f7` in dark (values delivered by `tokens-native.css`'s
-`@variant dark` block — if the text does not flip, the tokens-native import in global.css is missing/wrong, NOT the
-provider). `bg-primary-medium` stays `#f89907` in both (primary is theme-static).
+In rn-playground App.tsx, wrap the app with `ThemeProvider`, add a toggle, and render RN's bare
+`<Text className="text-content-high">` + a `bg-primary-medium` View (do NOT use the cortex-native Text — it isn't
+ported yet at this task; this is just Uniwind's className on RN primitives). Toggle light/dark → verify the semantic
+tokens swap: `text-content-high` renders `#353231` in light and `#f8f7f7` in dark (values delivered by
+`tokens-native.css`'s `@variant dark` block — if the text does not flip, the tokens-native import in global.css is
+missing/wrong, NOT the provider). `bg-primary-medium` stays `#f89907` in both (primary is theme-static).
 
 - [ ] **Step 3: Test + commit**
 
-Unit test the provider's default-theme-from-`useColorScheme` logic (mock `useColorScheme`). `build:dts`, `lint` green.
+Unit test the provider's `theme` prop handling: `theme='light'` calls `Uniwind.setTheme('light')`,
+`theme='dark'` calls `setTheme('dark')`, `theme='system'` (or undefined) calls `setTheme('system')`. Mock the
+`uniwind` module (`jest.mock('uniwind', () => ({ Uniwind: { setTheme: jest.fn() } }))`) — RN's `useColorScheme` is
+NOT mocked because the provider delegates system detection to Uniwind itself. `build:dts`, `lint` green.
 Commit `feat(cortex-native): validate RN dark-mode theming via Uniwind`.
 
 ---
@@ -597,9 +615,9 @@ export interface TextProps {
 }
 
 const Text: React.FC<TextProps> = ({
-  children, style, fontColor, colorVariant, colorTone, capitalFirst,
-  typography, fontWeight, fontStack, textTransform, ...rnProps
-}) => (
+                                     children, style, fontColor, colorVariant, colorTone, capitalFirst,
+                                     typography, fontWeight, fontStack, textTransform, ...rnProps
+                                   }) => (
   <RNText
     className={textStyles({ typography, fontWeight, fontStack, colorVariant, colorTone, fontColor })}
     style={[textTransform ? { textTransform } : null, style]}
@@ -681,13 +699,19 @@ import Button from './Button';
 describe('Button', () => {
   it('calls onPress when pressed', () => {
     const onPress = jest.fn();
-    const { getByRole } = render(<Button title="ok" onPress={onPress} />);
+    const { getByRole } = render(<Button title = "ok"
+    onPress = { onPress }
+    />);
     fireEvent.press(getByRole('button'));
     expect(onPress).toHaveBeenCalled();
   });
   it('does not call onPress when disabled', () => {
     const onPress = jest.fn();
-    const { getByRole } = render(<Button title="ok" onPress={onPress} disabled />);
+    const { getByRole } = render(<Button title = "ok"
+    onPress = { onPress }
+    disabled / >
+  )
+    ;
     fireEvent.press(getByRole('button'));
     expect(onPress).not.toHaveBeenCalled();
   });
@@ -716,9 +740,9 @@ export interface ButtonProps extends VariantProps<typeof buttonStyles> {
 }
 
 const Button: React.FC<ButtonProps> = ({
-  title, onPress, disabled = false, loading = false,
-  intent = 'primary', variant = 'filled', size = 'default', style, testID,
-}) => (
+                                         title, onPress, disabled = false, loading = false,
+                                         intent = 'primary', variant = 'filled', size = 'default', style, testID,
+                                       }) => (
   <Pressable
     testID={testID}
     accessibilityRole="button"
@@ -840,6 +864,13 @@ legacy), (2) implement component with `className` + recipes (reuse cortex-core `
 `packages/cortex-core/src/components/<name>/` — otherwise native recipe in `src/components/<name>/styled.ts`), (3)
 verify jest/build:dts/lint, (4) visual parity in rn-playground, (5) commit `feat(cortex-native): port <Name>`.
 
+**Recipe-validation gate (applies to every reused cortex-core `tv()` recipe):** before adopting a cortex-core recipe,
+render a sample instance in rn-playground with the full variant matrix. Recipes contain web-only variants
+(`hover:*`, `cursor-pointer`, `transition`, `enabled:active:scale-*`, `disabled:*`) — Uniwind may ignore them cleanly
+OR misbehave (stuck hover state, transition no-op, etc.). If anything mis-renders, do NOT silently ship — fork the
+recipe into `cortex-native/src/styles/<name>.ts` (native override) and record the deviation in the commit message.
+This gate is established in Task 6 (Button) and applies uniformly to every reuse below.
+
 | #  | Component        | Legacy source (read-only)                           | Specifics                                                                                                                         |
 |----|------------------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
 | 8a | Tag              | `react-core/src/components/atoms/Tag/`              | check cortex-core `tag.ts` recipe; tone maps `bg-<variant>-<tone>`                                                                |
@@ -883,11 +914,11 @@ Verify each: jest (logic only), build:dts, lint, playground parity, commit `feat
 
 ### Task 10: Port molecules — part 2 (Input + PhoneInput + Select)
 
-| #   | Component  | Legacy source                                                                  | Specifics                                                                                                                                                                                                                              |
-|-----|------------|--------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 10a | Input      | `react-core/src/components/atoms/Input/` + `hooks/useNumberMask.ts`            | **mask logic**: port `useNumberMask` + `formatWithMask` (`currency.js`) into `cortex-native/src/utils/` with unit tests (currency formatting cases from legacy); `Input` uses `TextInput` + `className` + `useTheme`-free color tokens |
-| 10b | PhoneInput | `react-core/src/components/molecules/PhoneInput/` + `PhoneCountrySelector.tsx` | `react-international-phone` (catalog) + `react-native-country-flag` (proven RN flag renderer from legacy native-kit; do NOT use `country-flag-icons` — it renders DOM SVG, web-only); port `FlagIcon`                                  |
-| 10c | Select     | `react-native-kit/src/components/molecules/Select/`                            | Modal + option list; safe-area via `react-native-safe-area-context` (peer)                                                                                                                                                             |
+| #   | Component  | Legacy source                                                                  | Specifics                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-----|------------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 10a | Input      | `react-core/src/components/atoms/Input/` + `hooks/useNumberMask.ts`            | **mask logic (shared)**: port `useNumberMask` + `formatWithMask` (`currency.js`) into **`@tecsinapse/cortex-core`** (`packages/cortex-core/src/utils/`) — these are platform-agnostic and shared with `cortex-react` (which today has a parallel copy in `src/components/Input/Mask.tsx` + `src/hooks/useNumberMask.ts`; the migration kills that duplication). cortex-native imports from `@tecsinapse/cortex-core`; `cortex-react` migrates off its local copy in this task. Unit tests for currency formatting live in cortex-core. `Input` itself uses `TextInput` + `className` + token-record color resolution. |
+| 10b | PhoneInput | `react-core/src/components/molecules/PhoneInput/` + `PhoneCountrySelector.tsx` | `react-international-phone` (catalog) + `react-native-country-flag` (proven RN flag renderer from legacy native-kit; do NOT use `country-flag-icons` — it renders DOM SVG, web-only); port `FlagIcon`                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| 10c | Select     | `react-native-kit/src/components/molecules/Select/`                            | Modal + option list; safe-area via `react-native-safe-area-context` (peer)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 Verify each: unit tests for masks/currency/flag logic; build:dts; lint; playground parity; commit.
 
@@ -901,11 +932,32 @@ Verify each: unit tests for masks/currency/flag logic; build:dts; lint; playgrou
 `DateTimePicker` (`format`), `DateTimeSelector` (`getDaysInMonth` etc.), `Selector.tsx`, and
 `react-native-kit/src/utils/date.ts` (`getLocale` from `date-fns/locale`).
 
+**date-fns v2 → v4 breaking changes to verify per call site (checklist):**
+
+1. **ESM-only output (v4)**: v4 dropped CJS. Tree-shakeable subpath imports (`from 'date-fns/add'`,
+   `from 'date-fns/locale'`) still work; barrel import (`from 'date-fns'`) works for named exports but pulls more
+   than needed. Both rolldown and tsc handle ESM; Metro needs `unstable_enablePackageExports`-equivalent (default in
+   SDK 57 / RN 0.86) — verify with a smoke test in Task 3 before relying on it here.
+2. **`format` signature unchanged** but tokens tightened (`yyyy` vs `YYYY` for week-year; `D` vs `d`). Audit each
+   format string for ambiguous tokens — `react-core` uses several formats that may need re-tokenization.
+3. **`add` / `set` / `getWeeksInMonth` / `getDaysInMonth` / `compareAsc` / `isSameDay` / `getLocale`**: signatures
+   unchanged in v4 for the operations used here. No code changes needed beyond the import path (`'date-fns'` →
+   `'date-fns/add'` for tree-shaking, or keep the barrel).
+4. **No default export from `date-fns`** in v4. If any legacy call uses `import dateFns from 'date-fns'`, switch to
+   named imports.
+5. **Locale objects**: `date-fns/locale` still exposes all locales; if any locale was constructed with options in
+   legacy, v4's `Locale` shape is the same.
+
+Write a smoke test in `packages/cortex-core/src/utils/__tests__/date-fns-v4.smoke.test.ts` that imports each named
+function used and asserts a known value — guards against any silent runtime error before component ports start.
+
 - [ ] **Step 1: Inventory + failing tests**
 
-For each call site, port the logic into `cortex-native/src/utils/date.ts` (v4 imports from `'date-fns'` /
-`'date-fns/locale'`). Write unit tests for the calendar math the components depend on (e.g. week-grid generation for a
-known month/year, same-day comparison). Run tests → FAIL until the utils exist.
+For each call site, port the logic into **`packages/cortex-core/src/utils/date.ts`** (shared with cortex-react's
+existing calendar/datepicker — same consolidation rationale as Task 10a). Use v4 imports from `'date-fns'` /
+`'date-fns/locale'`; the smoke test above confirms the surface before this step. Write unit tests for the calendar
+math the components depend on (e.g. week-grid generation for a known month/year, same-day comparison). Run tests →
+FAIL until the utils exist.
 
 - [ ] **Step 2: Port components**
 
@@ -955,9 +1007,10 @@ Read `react-charts/src/styles/constants.ts` (`fontColor`, `spacing`, `fontStack`
 fontStack: single font-family per RN; colors → runtime-resolved `--color-*` values via `useCSSVariable`, per the Task 7
 pattern). Port PieChart math (`utils.ts`) with unit tests (slice angles for a known dataset) — this REPLACES the legacy
 runtime dep on `react-native-svg-charts`, which is dropped (record it in the Task 14 export audit). Replace
-`@emotion/native` styled with `className` on `react-native-svg` primitives — if `className` is unsupported on svg
-primitives, wrap them with Uniwind's `withUniwind` HOC (documented for third-party components) or fall back to `style`
-with resolved variable values; verify in playground.
+`@emotion/native` styled with Uniwind's `withUniwind` HOC wrapping each `react-native-svg` primitive (the committed
+mechanism for third-party components per the Uniwind 1.x docs confirmed in review) — `className` does NOT propagate
+into `react-native-svg` primitives on its own; `withUniwind` is the supported path. Verify each primitive
+(`G`, `Path`, `Circle`, `Text`, `G`) renders correctly with `className` in playground before moving on.
 
 - [ ] **Step 2: Verify + commit**
 
@@ -983,11 +1036,11 @@ scaling). No emotion imports remain: `grep -rn "@emotion" packages/cortex-native
 
 - [ ] **Step 2: CI gate — already covered; verify, don't add**
 
-No new CI step is required: CI runs `pnpm i` (→ `prepare` → root `pnpm build`, which runs `build:*` for every
-`@tecsinapse/*` package, including cortex-native's `build:es`/`build:dts`) and `pnpm test` (which runs the `test` script
-of every `@tecsinapse/*` package, including cortex-native's jest). Verify locally instead: from a clean state,
-`pnpm build` and `pnpm test` at the root both pick up cortex-native and pass. Then update the AGENTS.md files (root: "
-vitest only runs in cortex-react" is no longer true; cortex-native: document the jest + RNTL setup).
+No new CI step is required: CI installs (`pnpm i` → `prepare` → root `pnpm build`, which runs `build:*` for every
+`@tecsinapse/*` package, including cortex-native's `build:es`/`build:dts`) and runs `pnpm test` (which fans out the
+`test` script of every `@tecsinapse/*` package, including cortex-native's jest). Verify locally instead: from a
+clean state, `pnpm build` and `pnpm test` at the root both pick up cortex-native and pass. Then update the AGENTS.md
+files (root: "vitest only runs in cortex-react" is no longer true; cortex-native: document the jest + RNTL setup).
 
 - [ ] **Step 3: Verify + commit**
 
@@ -996,12 +1049,18 @@ Full `pnpm test` (cortex-react + cortex-native) green; `pnpm lint:fix` green. Co
 
 ---
 
-### Task 15: Deprecate legacy + remove react-web-kit
+### Task 15: Discontinue legacy packages + remove react-web-kit + react-charts
 
-- [ ] **Step 1: Deprecation notices**
+**Scope expansion (vs original plan):** `react-charts` is discontinued alongside `react-web-kit` (not just
+deprecated). PieChart has been ported into cortex-native in Task 13, so the package has no remaining consumers —
+`react-charts` is removed entirely. `react-core` and `react-native-kit` keep the deprecation-only path (consumers
+migrate on their schedule).
 
-Add `"deprecated": "Moved to @tecsinapse/cortex-native"` to `react-core`, `react-native-kit`, `react-charts`
-package.json (npm deprecation metadata field). Do NOT change versions (lerna flow handles release).
+- [ ] **Step 1: Deprecation notices (react-core + react-native-kit only)**
+
+Add `"deprecated": "Moved to @tecsinapse/cortex-native"` to `react-core` and `react-native-kit` package.json (npm
+deprecation metadata field). Do NOT change versions (lerna flow handles release). `react-charts` is NOT deprecated
+because it is removed in Step 3 — deprecating a package about to be deleted is noise.
 
 - [ ] **Step 2: Remove react-web-kit**
 
@@ -1012,19 +1071,49 @@ glob), `.storybook/main.ts` (stories glob), `.storybook/preview.tsx` (display na
 `pnpm --filter '@tecsinapse/*' run build:dts` still passes for remaining packages and `pnpm build:storybook` still works
 without the removed stories.
 
-- [ ] **Step 3: Docs**
+- [ ] **Step 3: Remove react-charts**
+
+Delete `packages/react-charts/`. Remove ALL references — verified consumers today:
+`packages/rn-playground/package.json` (`@tecsinapse/react-charts: workspace:*`),
+`packages/rn-playground/metro.config.js`
+(`extraNodeModules` alias for `@tecsinapse/react-charts`), `packages/rn-playground/App.tsx` (imports `PieChart` from
+`@tecsinapse/react-charts`), root `pnpm-workspace.yaml` (catalog/storybook entries pointing at react-charts stories
+if any), and `lerna.json` if it references the package explicitly. Replace `react-charts` imports in rn-playground
+with `@tecsinapse/cortex-native` (`PieChart` is exported per Task 13). Run
+`pnpm --filter '@tecsinapse/*' run build:dts` to confirm remaining packages still build.
+
+- [ ] **Step 4: rn-playground emotion cleanup**
+
+With both `react-web-kit` and `react-charts` gone and `react-native-kit` deprecated, rn-playground's only emotion
+users are legacy RN stories. Remove `@emotion/native` + `@emotion/react` from `packages/rn-playground/package.json`
+deps, remove any storybook/main entries that reference emotion, and confirm `pnpm --filter @tecsinapse/rn-playground
+run:dev` starts Metro cleanly (the package is private + excluded from CI, so a manual smoke test is the gate).
+
+- [ ] **Step 5: Docs**
 
 Update `docs/setup/` + `AGENTS.md` (root + packages) to describe the new stack: cortex-native + Uniwind setup
 requirements for consumers — Metro plugin (`withUniwindConfig` with `cssEntryFile`), global.css importing
 `'tailwindcss'`, `'uniwind'`, `@tecsinapse/cortex-core/tokens.css` AND `tokens-native.css`, and the required `@source`
 directive(s) so Tailwind scans the library's classes (e.g. `@source '../node_modules/@tecsinapse/cortex-native';`).
 Include the migration notes: intentional API renames (Task 5 fontColor/fontWeight), dropped `RFValue` responsive
-scaling, dropped `react-native-svg-charts`, date-fns v2→v4.
+scaling, dropped `react-native-svg-charts`, dropped `react-charts` package (PieChart moved to cortex-native),
+date-fns v2→v4.
 
-- [ ] **Step 4: Final verification + commit**
+- [ ] **Step 6: Final verification + commit**
 
 Full suite: `pnpm test`, `pnpm lint:fix`, `pnpm build:storybook` (STORYBOOK_FONT_URL handled by scripts). Commit
-`refactor(cortex-native): deprecate legacy emotion packages and remove react-web-kit`.
+`refactor(cortex-native): discontinue legacy emotion packages (react-web-kit + react-charts removed)` (split into
+multiple commits per package if preferred — Step 2, Step 3, Step 4 can each be a separate commit for easier review).
+
+---
+
+**Explicitly deferred (recorded for follow-up, not in this plan):**
+
+- Legacy package source deletion: `react-core` and `react-native-kit` remain on npm after deprecation for the
+  consumer-migration window; removal is scheduled outside this plan once consumers migrate.
+- Legacy dependency hygiene (spec §"Dependencies"): `react-native-kit` declares `date-fns` undeclared and ships an
+  unused `react-international-phone` dep — out of scope since the package is frozen; revisit only if/when removal
+  is scheduled.
 
 ---
 
