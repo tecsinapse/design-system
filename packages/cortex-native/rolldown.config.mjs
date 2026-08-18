@@ -1,0 +1,26 @@
+export default {
+  input: './src/index.ts',
+  output: {
+    dir: 'dist/esm',
+    format: 'esm',
+    preserveModules: true,
+    preserveModulesRoot: 'src',
+    sourcemap: false,
+  },
+  external: [
+    'react',
+    'react-native',
+    '@tecsinapse/cortex-core',
+    'clsx',
+    'currency.js',
+    'date-fns',
+    'react-international-phone',
+    'react-native-country-flag',
+    'react-native-linear-gradient',
+    'react-native-safe-area-context',
+    'react-native-svg',
+    'react-native-vector-icons',
+    'tailwind-variants',
+    'uniwind',
+  ],
+};

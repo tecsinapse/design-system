@@ -1,0 +1,49 @@
+{
+  "name": "@tecsinapse/cortex-native",
+  "version": "1.0.0",
+  "description": "React Native components based on @tecsinapse/cortex-core, styled with Uniwind (Tailwind v4)",
+  "license": "MIT",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "react-native": "src/index.ts",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev:es": "rolldown --config --watch",
+    "dev:dts": "tsc --project tsconfig.build.json --watch",
+    "build:es": "rimraf dist && rolldown --config",
+    "build:dts": "tsc --project tsconfig.build.json"
+  },
+  "dependencies": {
+    "@tecsinapse/cortex-core": "workspace:*",
+    "clsx": "catalog:",
+    "currency.js": "catalog:",
+    "date-fns": "catalog:",
+    "react-international-phone": "catalog:",
+    "react-native-country-flag": "^2.0.2",
+    "react-native-linear-gradient": "catalog:",
+    "tailwind-variants": "catalog:"
+  },
+  "devDependencies": {
+    "uniwind": "^1.10.0"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-native": ">=0.86.0",
+    "react-native-safe-area-context": "^4.0.0 || ^5.0.0",
+    "react-native-svg": ">=15.0.0",
+    "react-native-vector-icons": "catalog:",
+    "uniwind": "^1.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "directory": "packages/cortex-native",
+    "url": "git+https://github.com/tecsinapse/design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tecsinapse/design-system/issues"
+  },
+  "homepage": "https://tecsinapse.github.io/design-system/"
+}
