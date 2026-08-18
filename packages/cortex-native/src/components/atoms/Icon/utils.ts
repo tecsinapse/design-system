@@ -1,23 +1,17 @@
-export type ColorType =
-  | 'primary'
-  | 'secondary'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'error';
+import {
+  ColorGradationType,
+  ColorType,
+  FontColorType,
+} from '../../../styles/types';
 
-export type ColorGradationType = 'xlight' | 'light' | 'medium' | 'dark' | 'xdark';
+export type {
+  ColorGradationType,
+  ColorType,
+  FontColorType,
+} from '../../../styles/types';
 
-export type FontColorType =
-  | 'high'
-  | 'medium'
-  | 'low'
-  | 'minimal'
-  | 'inverse'
-  | 'light'
-  | 'orange';
-
-export type IconSizeType = 'micro' | 'mili' | 'centi' | 'deca' | 'kilo' | 'mega';
+export type IconSizeType =
+  'micro' | 'mili' | 'centi' | 'deca' | 'kilo' | 'mega';
 
 export type IconType =
   | 'material'
@@ -48,7 +42,7 @@ export const ICON_SIZE_PX: Record<IconSizeType, number> = {
 export const iconColorVar = (
   colorVariant: ColorType | undefined,
   colorTone: ColorGradationType | undefined,
-  fontColor: FontColorType = 'high',
+  fontColor: FontColorType = 'high'
 ): string => {
   if (colorVariant && colorTone) {
     return `--color-${colorVariant}-${colorTone}`;

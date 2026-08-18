@@ -1,23 +1,15 @@
 import { tv } from 'tailwind-variants';
+import {
+  ColorGradationType,
+  ColorType,
+  FontColorType,
+} from '../../../styles/types';
 
-export type ColorType =
-  | 'primary'
-  | 'secondary'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'error';
-
-export type ColorGradationType = 'xlight' | 'light' | 'medium' | 'dark' | 'xdark';
-
-export type FontColorType =
-  | 'high'
-  | 'medium'
-  | 'low'
-  | 'minimal'
-  | 'inverse'
-  | 'light'
-  | 'orange';
+export type {
+  ColorGradationType,
+  ColorType,
+  FontColorType,
+} from '../../../styles/types';
 
 export const textStyles = tv({
   base: '',

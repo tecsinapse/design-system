@@ -32,7 +32,9 @@ interface IconComponentProps {
   style?: StyleProp<TextStyle>;
 }
 
-const getIconComponent = (type: IconType): React.ComponentType<IconComponentProps> => {
+const getIconComponent = (
+  type: IconType
+): React.ComponentType<IconComponentProps> => {
   switch (type) {
     case 'zocial':
       return Zocial;
@@ -63,8 +65,6 @@ const getIconComponent = (type: IconType): React.ComponentType<IconComponentProp
       return AntDesign;
     case 'fontisto':
       return Fontisto;
-    default:
-      return MaterialIcons;
   }
 };
 
@@ -93,11 +93,18 @@ const Icon: React.FC<IconProps> = ({
   colorTone = 'medium',
   style,
 }) => {
-  const color = useCSSVariable(iconColorVar(colorVariant, colorTone, fontColor));
+  const color = useCSSVariable(
+    iconColorVar(colorVariant, colorTone, fontColor)
+  );
   const IconComponent = getIconComponent(type);
 
   return (
-    <IconComponent name={name} size={ICON_SIZE_PX[size]} color={color} style={style} />
+    <IconComponent
+      name={name}
+      size={ICON_SIZE_PX[size]}
+      color={color}
+      style={style}
+    />
   );
 };
 
