@@ -32,3 +32,5 @@ export { default as GroupButton } from './components/atoms/GroupButton/GroupButt
 export type { GroupButtonProps, GroupButtonOptions, GroupButtonValue } from './components/atoms/GroupButton/GroupButton';
 export { default as GroupButtonOption } from './components/atoms/GroupButton/GroupButtonOption';
 export type { GroupButtonOptionProps } from './components/atoms/GroupButton/GroupButtonOption';
+export { default as Skeleton } from './components/atoms/Skeleton/Skeleton';
+export type { SkeletonProps, SkeletonRadius } from './components/atoms/Skeleton/Skeleton';
