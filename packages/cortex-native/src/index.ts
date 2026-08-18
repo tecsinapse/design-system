@@ -24,3 +24,5 @@ export { default as ProgressBar } from './components/atoms/ProgressBar/ProgressB
 export type { ProgressBarProps } from './components/atoms/ProgressBar/ProgressBar';
 export { default as Avatar } from './components/atoms/Avatar/Avatar';
 export type { AvatarProps } from './components/atoms/Avatar/Avatar';
+export { default as Card, Header, Footer } from './components/atoms/Card/Card';
+export type { CardProps, HeaderProps, FooterProps } from './components/atoms/Card/Card';
