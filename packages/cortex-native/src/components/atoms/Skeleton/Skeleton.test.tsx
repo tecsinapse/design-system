@@ -3,7 +3,10 @@ import { render } from '@testing-library/react-native';
 
 jest.mock('react-native-linear-gradient', () => {
   const { View } = require('react-native');
-  return { __esModule: true, default: (props: any) => <View {...props} /> };
+  return {
+    __esModule: true,
+    default: (props: Record<string, unknown>) => <View {...props} />,
+  };
 });
 
 import Skeleton from './Skeleton';

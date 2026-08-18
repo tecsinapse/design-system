@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import * as RNGradient from 'react-native-linear-gradient';
 import { waveAnimation } from './animation';
 import { IAnimationComponent } from './types';
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(
-  LinearGradient,
+  RNGradient.default ?? RNGradient.LinearGradient,
 );
 
 export const Wave = ({

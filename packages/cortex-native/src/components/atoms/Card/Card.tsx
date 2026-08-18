@@ -1,9 +1,10 @@
-import { PressableSurfaceProps } from '../PressableSurface/PressableSurface';
+import PressableSurface, {
+  PressableSurfaceProps,
+} from '../PressableSurface/PressableSurface';
 import React, { ReactNode } from 'react';
 import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
 import { clsx } from 'clsx';
 import Paper, { PaperProps } from '../Paper/Paper';
-import PressableSurface from '../PressableSurface/PressableSurface';
 
 export interface CardProps
   extends PaperProps,
