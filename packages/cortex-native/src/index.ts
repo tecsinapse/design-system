@@ -54,3 +54,9 @@ export { getInternalNumberAndMask, useNumberMask } from './utils/useNumberMask';
 export type { CurrencyOptions } from './utils/useNumberMask';
 export { default as HintInputContainer } from './components/molecules/HintInputContainer/HintInputContainer';
 export type { HintInputContainerProps } from './components/molecules/HintInputContainer/HintInputContainer';
+export { default as LabeledSwitch } from './components/molecules/LabeledSwitch/LabeledSwitch';
+export type {
+  LabeledSwitchProps,
+  LabeledSwitchNativeProps,
+  LabelPositionOptions,
+} from './components/molecules/LabeledSwitch/LabeledSwitch';
