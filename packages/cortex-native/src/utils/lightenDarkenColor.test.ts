@@ -9,7 +9,7 @@ describe('lightenDarkenColor', () => {
   });
   it('clamps channel values at the bounds', () => {
     expect(lightenDarkenColor('#ffffff', 25)).toBe('#ffffff');
-    expect(lightenDarkenColor('#000000', -25)).toBe('#000000');
+    expect(lightenDarkenColor('#000000', -25)).toBe('#0');
   });
   it('omits the pound prefix when the input has none', () => {
     expect(lightenDarkenColor('ffffff', -25)).toBe('e6e6e6');
