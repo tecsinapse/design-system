@@ -6,6 +6,13 @@
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": "./dist/esm/index.js",
+    "./default.css": "./dist/default.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens-native.css": "./dist/tokens-native.css",
+    "./types": "./dist/types/index.d.ts"
+  },
   "files": [
     "dist"
   ],
