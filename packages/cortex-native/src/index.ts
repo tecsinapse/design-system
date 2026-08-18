@@ -65,3 +65,9 @@ export type {
   IconTextButtonProps,
   IconPositionOptions,
 } from './components/molecules/IconTextButton/IconTextButton';
+export { default as InputPassword } from './components/molecules/InputPassword/InputPassword';
+export { InputPasswordIcon } from './components/molecules/InputPassword/InputPassword';
+export type {
+  InputPasswordNativeProps,
+  InputPasswordIconProps,
+} from './components/molecules/InputPassword/InputPassword';
