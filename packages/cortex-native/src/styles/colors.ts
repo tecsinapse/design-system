@@ -2,6 +2,55 @@ import { ColorGradationType, ColorType } from './types';
 
 export type { ColorGradationType, ColorType } from './types';
 
+/** Static token border-color classes for a palette variant + tone. */
+export const colorToneBorder: Record<
+  ColorType,
+  Record<ColorGradationType, string>
+> = {
+  primary: {
+    xlight: 'border-primary-xlight',
+    light: 'border-primary-light',
+    medium: 'border-primary-medium',
+    dark: 'border-primary-dark',
+    xdark: 'border-primary-xdark',
+  },
+  secondary: {
+    xlight: 'border-secondary-xlight',
+    light: 'border-secondary-light',
+    medium: 'border-secondary-medium',
+    dark: 'border-secondary-dark',
+    xdark: 'border-secondary-xdark',
+  },
+  info: {
+    xlight: 'border-info-xlight',
+    light: 'border-info-light',
+    medium: 'border-info-medium',
+    dark: 'border-info-dark',
+    xdark: 'border-info-xdark',
+  },
+  success: {
+    xlight: 'border-success-xlight',
+    light: 'border-success-light',
+    medium: 'border-success-medium',
+    dark: 'border-success-dark',
+    xdark: 'border-success-xdark',
+  },
+  warning: {
+    xlight: 'border-warning-xlight',
+    light: 'border-warning-light',
+    medium: 'border-warning-medium',
+    dark: 'border-warning-dark',
+    xdark: 'border-warning-xdark',
+  },
+  error: {
+    xlight: 'border-error-xlight',
+    light: 'border-error-light',
+    medium: 'border-error-medium',
+    dark: 'border-error-dark',
+    xdark: 'border-error-xdark',
+  },
+};
+
 /** Static token background classes for a palette variant + tone. */
 export const colorToneBg: Record<
   ColorType,

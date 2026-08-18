@@ -14,3 +14,7 @@ export { default as Tag } from './components/atoms/Tag/Tag';
 export type { TagProps } from './components/atoms/Tag/Tag';
 export { default as Badge } from './components/atoms/Badge/Badge';
 export type { BadgeProps } from './components/atoms/Badge/Badge';
+export { default as Checkbox } from './components/atoms/Checkbox/Checkbox';
+export type { CheckboxProps } from './components/atoms/Checkbox/Checkbox';
+export { default as RadioButton } from './components/atoms/RadioButton/RadioButton';
+export type { RadioButtonProps } from './components/atoms/RadioButton/RadioButton';
