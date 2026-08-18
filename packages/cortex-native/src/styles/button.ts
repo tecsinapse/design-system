@@ -1,15 +1,15 @@
 import { tv, type VariantProps } from 'tailwind-variants';
 
 export const buttonStyles = tv({
-  base: 'font-bold items-center justify-center rounded-mili',
+  base: 'font-bold text-base items-center justify-center text-on-primary',
   variants: {
     intent: {
-      primary: 'bg-primary-medium text-on-primary',
-      secondary: 'bg-content-low text-content-low',
-      success: 'bg-success-medium text-success-medium',
-      info: 'bg-info-medium text-info-medium',
-      warning: 'bg-warning-medium text-warning-medium',
-      error: 'bg-error-medium text-error-medium',
+      primary: 'bg-primary-medium',
+      secondary: 'bg-content-low',
+      success: 'bg-success-medium',
+      info: 'bg-info-medium',
+      warning: 'bg-warning-medium',
+      error: 'bg-error-medium',
     },
     variant: {
       outline: 'bg-transparent border',
@@ -17,11 +17,10 @@ export const buttonStyles = tv({
       filled: '',
     },
     size: {
-      default: 'px-kilo py-mili min-h-[44px]',
-      small: 'px-deca py-mili min-h-[34px]',
-      square: 'p-[14px] aspect-square',
-      circle: 'p-[14px] rounded-full',
-      base: '',
+      default: 'px-kilo rounded-mili py-mili min-h-[44px]',
+      small: 'px-deca rounded-mili py-mili min-h-[34px]',
+      square: 'p-[14px] rounded-mili min-h-fit aspect-square',
+      circle: 'p-[14px] rounded-full min-h-fit',
     },
   },
   compoundVariants: [
@@ -45,3 +44,20 @@ export const buttonStyles = tv({
   },
 });
 export type ButtonVariants = VariantProps<typeof buttonStyles>;
+
+export const buttonForegroundColors: Record<
+  NonNullable<ButtonVariants['intent']>,
+  string
+> = {
+  primary: '#f89907',
+  secondary: '#85807a',
+  success: '#2db783',
+  info: '#239bf6',
+  warning: '#ffc700',
+  error: '#e04638',
+};
+
+export const getButtonForegroundColor = (
+  intent: NonNullable<ButtonVariants['intent']>,
+  variant: NonNullable<ButtonVariants['variant']>,
+) => (variant === 'filled' ? '#ffffff' : buttonForegroundColors[intent]);
