@@ -22,3 +22,5 @@ export { default as PressableSurface } from './components/atoms/PressableSurface
 export type { PressableSurfaceProps } from './components/atoms/PressableSurface/PressableSurface';
 export { default as ProgressBar } from './components/atoms/ProgressBar/ProgressBar';
 export type { ProgressBarProps } from './components/atoms/ProgressBar/ProgressBar';
+export { default as Avatar } from './components/atoms/Avatar/Avatar';
+export type { AvatarProps } from './components/atoms/Avatar/Avatar';
