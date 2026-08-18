@@ -12,3 +12,5 @@ export { default as Paper } from './components/atoms/Paper/Paper';
 export type { PaperProps } from './components/atoms/Paper/Paper';
 export { default as Tag } from './components/atoms/Tag/Tag';
 export type { TagProps } from './components/atoms/Tag/Tag';
+export { default as Badge } from './components/atoms/Badge/Badge';
+export type { BadgeProps } from './components/atoms/Badge/Badge';
