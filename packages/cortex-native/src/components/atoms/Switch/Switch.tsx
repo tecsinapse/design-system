@@ -58,7 +58,7 @@ const Switch: React.FC<SwitchProps> = ({
 
   const getBackgroundColor = (color: string) => {
     return disabled
-      ? lightenDarkenColor(color, 20)
+      ? lightenDarkenColor(inactiveColorVar || '#ffffff', 20)
       : color;
   };
 
