@@ -1,3 +1,9 @@
+export * from './masks';
+export * from './useStringMask';
+export * from './useNumberMask';
+export * from './formatWithMask';
+export * from './extractNumbersFromString';
+
 import { colors } from '../tokens/definitions';
 import { getContrast } from 'polished';
 
