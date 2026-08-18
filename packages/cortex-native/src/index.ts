@@ -71,3 +71,5 @@ export type {
   InputPasswordNativeProps,
   InputPasswordIconProps,
 } from './components/molecules/InputPassword/InputPassword';
+export { default as TextArea } from './components/molecules/TextArea/TextArea';
+export type { TextAreaProps } from './components/molecules/TextArea/TextArea';
