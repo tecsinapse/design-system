@@ -73,3 +73,5 @@ export type {
 } from './components/molecules/InputPassword/InputPassword';
 export { default as TextArea } from './components/molecules/TextArea/TextArea';
 export type { TextAreaProps } from './components/molecules/TextArea/TextArea';
+export { default as InputMask } from './components/molecules/InputMask/InputMask';
+export type { InputMaskNativeProps } from './components/molecules/InputMask/InputMask';
