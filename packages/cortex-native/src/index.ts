@@ -134,3 +134,5 @@ export type {
   Value,
   DateRange,
 } from './components/molecules/Calendar';
+export { default as DatePicker } from './components/molecules/DatePicker/DatePicker';
+export type { DatePickerProps } from './components/molecules/DatePicker';
