@@ -28,3 +28,7 @@ export { default as Card, Header, Footer } from './components/atoms/Card/Card';
 export type { CardProps, HeaderProps, FooterProps } from './components/atoms/Card/Card';
 export { default as Switch } from './components/atoms/Switch/Switch';
 export type { SwitchProps } from './components/atoms/Switch/Switch';
+export { default as GroupButton } from './components/atoms/GroupButton/GroupButton';
+export type { GroupButtonProps, GroupButtonOptions, GroupButtonValue } from './components/atoms/GroupButton/GroupButton';
+export { default as GroupButtonOption } from './components/atoms/GroupButton/GroupButtonOption';
+export type { GroupButtonOptionProps } from './components/atoms/GroupButton/GroupButtonOption';
