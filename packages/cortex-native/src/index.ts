@@ -2,3 +2,5 @@ export { default as Text } from './components/atoms/Text/Text';
 export type { TextProps } from './components/atoms/Text/Text';
 export { default as Button } from './components/atoms/Button/Button';
 export type { ButtonProps } from './components/atoms/Button/Button';
+export { default as Icon } from './components/atoms/Icon/Icon';
+export type { IconProps } from './components/atoms/Icon/Icon';
