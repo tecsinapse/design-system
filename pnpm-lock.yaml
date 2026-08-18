@@ -261,6 +261,9 @@ importers:
       currency.js:
         specifier: 'catalog:'
         version: 2.0.4
+      date-fns:
+        specifier: 'catalog:'
+        version: 4.4.0
       polished:
         specifier: ^4.3.1
         version: 4.3.1

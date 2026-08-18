@@ -18,5 +18,5 @@ export default {
       ],
     }),
   ],
-  external: ['tailwind-variants', 'clsx', 'tailwind-merge'],
+  external: ['tailwind-variants', 'clsx', 'tailwind-merge', 'date-fns'],
 };

@@ -26,6 +26,7 @@
   "dependencies": {
     "clsx": "catalog:",
     "currency.js": "catalog:",
+    "date-fns": "catalog:",
     "polished": "^4.3.1",
     "tailwind-variants": "catalog:"
   },
