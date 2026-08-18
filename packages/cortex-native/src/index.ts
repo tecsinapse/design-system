@@ -150,3 +150,5 @@ export type {
   DateTimePickerSelectorProps,
   ControlledSelectorComponentProps,
 } from './components/molecules/DateTimePickerSelector';
+export { default as SnappingSlider } from './components/molecules/SnappingSlider/SnappingSlider';
+export type { SnappingSliderProps } from './components/molecules/SnappingSlider';
