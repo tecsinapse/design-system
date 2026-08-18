@@ -1,0 +1,131 @@
+import React, { useCallback, useEffect } from 'react';
+import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
+import { clsx } from 'clsx';
+import { useCSSVariable } from 'uniwind';
+import {
+  inputElementClasses,
+  inputElementDisabledClasses,
+} from '../../../styles/input';
+import { MaskType, useStringMask } from '../../../utils/useStringMask';
+import {
+  CurrencyOptions,
+  useNumberMask,
+} from '../../../utils/useNumberMask';
+
+export interface InputMaskElementProps
+  extends Omit<TextInputProps, 'onChange' | 'value' | 'ref'> {
+  style?: StyleProp<TextStyle>;
+  value?: string | number;
+  placeholder?: string;
+  disabled?: boolean;
+  onChange?: (value: any) => void;
+  mask?: (MaskType[] | ((value: string) => MaskType[])) | CurrencyOptions;
+  onFocus?: () => void;
+  onBlur?: () => void;
+}
+
+const StringMaskInput = React.forwardRef<TextInput, InputMaskElementProps>(
+  ({ mask, value, onChange, ...rest }, ref) => {
+    const [maskValue, setMaskValue] = useStringMask(
+      mask as MaskType[] | ((value: string) => MaskType[]),
+      value ?? ''
+    );
+
+    useEffect(() => {
+      if (onChange) {
+        onChange(maskValue?.raw);
+      }
+    }, [maskValue]);
+
+    const _value =
+      maskValue?.formatted !== undefined ? maskValue.formatted : '';
+
+    return (
+      <TextInput
+        {...rest}
+        ref={ref}
+        onChangeText={setMaskValue}
+        value={_value}
+      />
+    );
+  }
+);
+
+const NumberMaskInput = React.forwardRef<TextInput, InputMaskElementProps>(
+  ({ mask, value, onChange, ...rest }, ref) => {
+    const [maskValue, setMaskValue] = useNumberMask(
+      mask as CurrencyOptions,
+      value ?? ''
+    );
+
+    useEffect(() => {
+      if (onChange) {
+        onChange(maskValue?.raw);
+      }
+    }, [maskValue]);
+
+    const _value =
+      maskValue?.formatted !== undefined ? maskValue.formatted : '';
+
+    return (
+      <TextInput
+        {...rest}
+        ref={ref}
+        onChangeText={setMaskValue}
+        value={_value}
+      />
+    );
+  }
+);
+
+const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
+  (
+    {
+      onChange,
+      placeholder,
+      value,
+      disabled = false,
+      placeholderTextColor,
+      mask,
+      style,
+      ...rest
+    },
+    ref
+  ): React.ReactElement => {
+    const contentHigh = useCSSVariable('--color-content-high') as string;
+    const _placeholderColor = placeholderTextColor || contentHigh;
+
+    const isNumberMask =
+      mask !== undefined &&
+      !Array.isArray(mask) &&
+      typeof mask !== 'function';
+
+    const sharedProps = {
+      mask,
+      value,
+      onChange,
+      placeholder,
+      placeholderTextColor: _placeholderColor,
+      editable: !disabled,
+      style,
+      className: clsx(
+        inputElementClasses,
+        disabled && inputElementDisabledClasses,
+      ),
+    };
+
+    return (
+      <>
+        {isNumberMask ? (
+          <NumberMaskInput {...(sharedProps as any)} {...rest} ref={ref} />
+        ) : (
+          <StringMaskInput {...(sharedProps as any)} {...rest} ref={ref} />
+        )}
+      </>
+    );
+  }
+);
+
+InputMaskElement.displayName = 'InputMaskElement';
+
+export default InputMaskElement;
