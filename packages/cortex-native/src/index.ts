@@ -4,3 +4,5 @@ export { default as Button } from './components/atoms/Button/Button';
 export type { ButtonProps } from './components/atoms/Button/Button';
 export { default as Icon } from './components/atoms/Icon/Icon';
 export type { IconProps } from './components/atoms/Icon/Icon';
+export { default as Divider } from './components/atoms/Divider/Divider';
+export type { DividerProps } from './components/atoms/Divider/Divider';
