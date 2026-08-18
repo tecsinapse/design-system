@@ -10,3 +10,5 @@ export { default as BoxContent } from './components/atoms/BoxContent/BoxContent'
 export type { BoxContentProps } from './components/atoms/BoxContent/BoxContent';
 export { default as Paper } from './components/atoms/Paper/Paper';
 export type { PaperProps } from './components/atoms/Paper/Paper';
+export { default as Tag } from './components/atoms/Tag/Tag';
+export type { TagProps } from './components/atoms/Tag/Tag';
