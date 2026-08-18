@@ -1,6 +1,8 @@
-import { formatWithMask } from './formatWithMask';
-import { getInternalNumberAndMask } from './useNumberMask';
-import { Masks } from './masks';
+import {
+  formatWithMask,
+  getInternalNumberAndMask,
+  Masks,
+} from '@tecsinapse/cortex-core';
 
 describe('formatWithMask', () => {
   it('formats a CPF with a string mask', () => {

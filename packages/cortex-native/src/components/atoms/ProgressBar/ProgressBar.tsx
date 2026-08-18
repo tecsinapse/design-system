@@ -1,7 +1,7 @@
 import React from 'react';
 import { DimensionValue, View, ViewProps } from 'react-native';
 import { clsx } from 'clsx';
-import { extractNumbersFromString } from '../../../utils/extractNumbersFromString';
+import { extractNumbersFromString } from '@tecsinapse/cortex-core';
 import { colorToneBg } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
 

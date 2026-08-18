@@ -14,7 +14,7 @@ jest.mock('../../atoms/Icon/Icon', () => {
 });
 
 import InputMask from './InputMask';
-import { Masks } from '../../../utils/masks';
+import { Masks } from '@tecsinapse/cortex-core';
 
 describe('InputMask', () => {
   it('formats a CPF string as the user types', () => {

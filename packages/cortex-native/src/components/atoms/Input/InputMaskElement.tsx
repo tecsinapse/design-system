@@ -6,11 +6,14 @@ import {
   inputElementClasses,
   inputElementDisabledClasses,
 } from '../../../styles/input';
-import { MaskType, useStringMask } from '../../../utils/useStringMask';
+import {
+  MaskType,
+  useStringMask,
+} from '@tecsinapse/cortex-core';
 import {
   CurrencyOptions,
   useNumberMask,
-} from '../../../utils/useNumberMask';
+} from '@tecsinapse/cortex-core';
 
 export interface InputMaskElementProps
   extends Omit<TextInputProps, 'onChange' | 'value' | 'ref'> {

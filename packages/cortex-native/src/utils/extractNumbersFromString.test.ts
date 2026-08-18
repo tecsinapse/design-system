@@ -1,4 +1,4 @@
-import { extractNumbersFromString } from './extractNumbersFromString';
+import { extractNumbersFromString } from '@tecsinapse/cortex-core';
 
 describe('extractNumbersFromString', () => {
   it('extracts the numeric part of a string', () => {

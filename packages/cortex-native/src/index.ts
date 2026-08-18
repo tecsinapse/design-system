@@ -46,12 +46,22 @@ export type { PressableInputContainerProps } from './components/atoms/Input/Pres
 export { default as InputMaskElement } from './components/atoms/Input/InputMaskElement';
 export type { InputMaskElementProps } from './components/atoms/Input/InputMaskElement';
 export { useInputFocus } from './components/atoms/Input/useInputFocus';
-export { Masks } from './utils/masks';
-export { formatWithMask } from './utils/formatWithMask';
-export { getMask, mergeMask, useStringMask } from './utils/useStringMask';
-export type { MaskType, MaskValue } from './utils/useStringMask';
-export { getInternalNumberAndMask, useNumberMask } from './utils/useNumberMask';
-export type { CurrencyOptions } from './utils/useNumberMask';
+export {
+  Masks,
+  BRLMask,
+  PercentageMask,
+  formatWithMask,
+  getMask,
+  mergeMask,
+  useStringMask,
+  getInternalNumberAndMask,
+  useNumberMask,
+  applyStringMask,
+  applyNumberMask,
+  extractDigitsFromString,
+  extractNumbersFromString,
+} from '@tecsinapse/cortex-core';
+export type { MaskType, MaskValue, CurrencyOptions } from '@tecsinapse/cortex-core';
 export { default as HintInputContainer } from './components/molecules/HintInputContainer/HintInputContainer';
 export type { HintInputContainerProps } from './components/molecules/HintInputContainer/HintInputContainer';
 export { default as LabeledSwitch } from './components/molecules/LabeledSwitch/LabeledSwitch';

@@ -1,5 +1,4 @@
-import { getMask, mergeMask } from './useStringMask';
-import { Masks } from './masks';
+import { getMask, mergeMask, Masks } from '@tecsinapse/cortex-core';
 
 describe('mergeMask', () => {
   it('formats digits with a fixed string mask', () => {
