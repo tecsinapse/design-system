@@ -89,3 +89,5 @@ export type {
   SpacingType,
   PaddingPosition,
 } from './components/molecules/Grid/functions';
+export { default as Snackbar } from './components/molecules/Snackbar/Snackbar';
+export type { SnackbarProps } from './components/molecules/Snackbar/Snackbar';
