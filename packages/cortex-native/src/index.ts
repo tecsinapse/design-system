@@ -24,8 +24,12 @@ export { default as ProgressBar } from './components/atoms/ProgressBar/ProgressB
 export type { ProgressBarProps } from './components/atoms/ProgressBar/ProgressBar';
 export { default as Avatar } from './components/atoms/Avatar/Avatar';
 export type { AvatarProps } from './components/atoms/Avatar/Avatar';
-export { default as Card, Header, Footer } from './components/atoms/Card/Card';
-export type { CardProps, HeaderProps, FooterProps } from './components/atoms/Card/Card';
+export { default as Card, Header as CardHeader, Footer as CardFooter } from './components/atoms/Card/Card';
+export type {
+  CardProps,
+  HeaderProps as CardHeaderProps,
+  FooterProps as CardFooterProps,
+} from './components/atoms/Card/Card';
 export { default as Switch } from './components/atoms/Switch/Switch';
 export type { SwitchProps } from './components/atoms/Switch/Switch';
 export { default as GroupButton } from './components/atoms/GroupButton/GroupButton';
@@ -165,3 +169,12 @@ export { useModalRemoteControl } from './components/molecules/Modal/useModalRemo
 export { default as BottomNavigator } from './components/molecules/BottomNavigator/BottomNavigator';
 export type { BottomNavigatorProps } from './components/molecules/BottomNavigator/BottomNavigator';
 export type { BottomNavigatorItemProps } from './components/molecules/BottomNavigator/Item';
+export { default as Header } from './components/molecules/Header/Header';
+export type { HeaderProps, Attachable } from './components/molecules/Header/Header';
+export {
+  isIphoneX,
+  ifIphoneX,
+  getStatusBarHeight,
+  getBottomSpace,
+} from './utils/IPhoneXHelper';
+export { default as AppHeader } from './components/molecules/Header/Header';
