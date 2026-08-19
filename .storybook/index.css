@@ -1,88 +1,96 @@
-@config "../tailwind.config.js";
+@config "../tailwind.config.mjs";
 @import "tailwindcss";
 @import "../packages/cortex-core/src/default.css";
 
 @layer base {
-  body {
-    background-color: var(--color-miscellaneous-body);
-    color: var(--color-default);
-    font-family: var(--font-family-sans);
-    margin: 0;
-  }
-  blockquote,
-  dl,
-  dd,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  hr,
-  figure,
-  p,
-  pre {
-    margin: 0;
-  }
-  button,
-  [role='button'] {
-    cursor: pointer;
-  }
-  button,
-  [type='button'],
-  [type='reset'],
-  [type='submit'] {
-    -webkit-appearance: button;
-    background-image: none;
-  }
-  button,
-  select {
-    text-transform: none;
-  }
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    font-family: inherit;
-    font-size: 100%;
-    font-weight: inherit;
-    line-height: inherit;
-    color: inherit;
-    margin: 0;
-    padding: 0;
-  }
-  *,
-  ::before,
-  ::after {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: #e5e7eb;
-  }
-  ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-    background-color: inherit;
-    border-radius: 4px;
-  }
+    body {
+        background-color: var(--color-miscellaneous-body);
+        color: var(--color-default);
+        font-family: var(--font-family-sans);
+        margin: 0;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    width: 4px;
-    height: 4px;
-    background-color: var(--color-secondary-light);
-    border-radius: 4px;
-  }
+    blockquote,
+    dl,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    figure,
+    p,
+    pre {
+        margin: 0;
+    }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-primary-medium);
-  }
-  input:disabled,
-  textarea:disabled {
-    @apply bg-transparent;
-  }
+    button,
+    [role='button'] {
+        cursor: pointer;
+    }
 
-  a {
-    text-decoration: none;
-  }
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+        -webkit-appearance: button;
+        background-image: none;
+    }
+
+    button,
+    select {
+        text-transform: none;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font-family: inherit;
+        font-size: 100%;
+        font-weight: inherit;
+        line-height: inherit;
+        color: inherit;
+        margin: 0;
+        padding: 0;
+    }
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: #e5e7eb;
+    }
+
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+        background-color: inherit;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        width: 4px;
+        height: 4px;
+        background-color: var(--color-secondary-light);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: var(--color-primary-medium);
+    }
+
+    input:disabled,
+    textarea:disabled {
+        @apply bg-transparent;
+    }
+
+    a {
+        text-decoration: none;
+    }
 }
