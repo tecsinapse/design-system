@@ -178,3 +178,5 @@ export {
   getBottomSpace,
 } from './utils/IPhoneXHelper';
 export { default as AppHeader } from './components/molecules/Header/Header';
+export { default as PhoneCountryPickerSelector } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';
+export type { PhoneCountryPickerSelectorProps } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';
