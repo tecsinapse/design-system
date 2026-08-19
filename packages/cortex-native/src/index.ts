@@ -180,3 +180,27 @@ export {
 export { default as AppHeader } from './components/molecules/Header/Header';
 export { default as PhoneCountryPickerSelector } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';
 export type { PhoneCountryPickerSelectorProps } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';
+export { default as PieChart } from './components/PieChart/PieChart';
+export type { PieChartProps } from './components/PieChart/PieChart';
+export { default as PieChartDot } from './components/PieChart/Dot';
+export type { DotProps as PieChartDotProps } from './components/PieChart/Dot';
+export { default as PieChartLabel } from './components/PieChart/Label';
+export type { LabelProps as PieChartLabelProps } from './components/PieChart/Label';
+export type {
+  PieChartData,
+  FontFamily,
+  FontWeight,
+  TextAnchor,
+  AlignmentBaseline,
+  SvgTextType,
+} from './components/PieChart/utils';
+export {
+  computeSliceAngles,
+  buildSlicePath,
+  buildPieSlices,
+  getSliceOuterRadius,
+  getInnerRadius,
+  getFontFamilyAndWeight,
+  getTextStyles,
+  chartColorVar,
+} from './components/PieChart/utils';
