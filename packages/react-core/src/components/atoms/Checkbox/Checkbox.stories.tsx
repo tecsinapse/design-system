@@ -4,7 +4,7 @@ import { CheckboxProps, default as Checkbox } from './Checkbox';
 import { Text } from '../Text';
 
 export default {
-  title: 'react-web-kit/Checkbox',
+  title: 'react-core/Checkbox',
   component: Checkbox,
 };
 

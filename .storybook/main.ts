@@ -4,7 +4,6 @@ export default {
   },
   stories: [
     '../packages/react-core/**/*.stories.@(tsx|jsx)',
-    '../packages/react-web-kit/**/*.stories.@(tsx|jsx)',
     '../packages/cortex-react/**/*.stories.@(tsx|jsx)',
     '../docs/**/*.mdx',
   ],
