@@ -43,7 +43,7 @@
     "@storybook/addon-ondevice-controls": "^7.6.18",
     "@storybook/react": "^7.6.18",
     "@storybook/react-native": "^7.6.18",
-    "@types/react": "*",
+    "@types/react": "^18.3.18",
     "babel-loader": "^9.1.2",
     "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
