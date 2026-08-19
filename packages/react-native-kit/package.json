@@ -1,6 +1,7 @@
 {
   "name": "@tecsinapse/react-native-kit",
   "description": "React Native components library",
+  "deprecated": "Moved to @tecsinapse/cortex-native",
   "version": "4.1.3",
   "license": "MIT",
   "main": "dist/esm/index.js",
