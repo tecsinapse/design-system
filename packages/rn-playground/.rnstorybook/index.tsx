@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { view } from './storybook.requires';
 import { useFonts } from 'expo-font';
@@ -6,11 +7,9 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
   lightTheme,
   ModalGroupManager,
-  StyleProps,
   Text,
   ThemeProvider,
 } from '@tecsinapse/react-native-kit';
-import styled from '@emotion/native';
 
 const _StorybookUIRoot = view.getStorybookUI({
   storage: {
@@ -55,12 +54,18 @@ const StorybookUIRoot = () => {
   );
 };
 
-const Header = styled.View<Partial<StyleProps>>`
-  background-color: ${({ theme }) => theme.color.primary.medium};
-  padding: ${({ theme }) => theme.spacing.centi};
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
+const Header = ({ children }: { children: React.ReactNode }) => (
+  <View
+    style={{
+      backgroundColor: lightTheme.color.primary.medium,
+      padding: parseFloat(lightTheme.spacing.centi),
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    }}
+  >
+    {children}
+  </View>
+);
 
 export default StorybookUIRoot;
