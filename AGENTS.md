@@ -7,9 +7,12 @@ pnpm monorepo (`packages/*`) publishing independent npm packages via lerna-lite.
 
 - `cortex-core`, `cortex-react`, `cortex-native` — the actively developed stack: Tailwind 4, web/HTML (react-aria) and
   React Native (uniwind). New components belong here.
-- `react-core`, `react-web-kit`, `react-native-kit`, `react-charts` — legacy emotion CSS-in-JS packages (
-  react-native-web). Only touch for legacy fixes.
-- `rn-playground` — RN demo app, excluded from publishing.
+- `react-core`, `react-native-kit` — legacy emotion CSS-in-JS packages (react-native-web), **deprecated** in favor of
+  `@tecsinapse/cortex-native` (npm `deprecated` field). Only touch for legacy fixes. `react-web-kit` and
+  `react-charts` were removed — their consumers migrate to `cortex-react` / `cortex-native` (see
+  `docs/setup/cortex-native.mdx` for migration notes).
+- `rn-playground` — RN demo app, excluded from publishing. Demo app for the cortex-native stack (Uniwind setup
+  reference: `metro.config.js` `withUniwindConfig` + `global.css`).
 
 ## Commands (run from root)
 

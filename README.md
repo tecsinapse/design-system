@@ -19,6 +19,7 @@ Please refer to the official [documentation](https://tecsinapse.github.io/design
 | **[@tecsinapse/react-native-kit](./packages/react-native-kit)** | emotion native `styled-components` for `react-native` cross platform development | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Freact-native-kit.svg)](https://badge.fury.io/js/%40tecsinapse%2Freact-native-kit) |
 | **[@tecsinapse/cortex-core](./packages/cortex-core)**           | core primitives for `tailwindcss` packages                                       | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Fcortex-core.svg)](https://badge.fury.io/js/%40tecsinapse%2Fcortex-core)           |
 | **[@tecsinapse/cortex-react](./packages/cortex-react)**         | `html` based components using `cortex-core` primitives                           | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Fcortex-react.svg)](https://badge.fury.io/js/%40tecsinapse%2Fcortex-react)         |
+| **[@tecsinapse/cortex-native](./packages/cortex-native)**       | `react native` components using `cortex-core` primitives + uniwind               | [![npm version](https://badge.fury.io/js/%40tecsinapse%2Fcortex-native.svg)](https://badge.fury.io/js/%40tecsinapse%2Fcortex-native)       |
 
 ## Code of conduct
 

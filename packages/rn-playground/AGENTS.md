@@ -1,7 +1,8 @@
 # AGENTS.md
 
-`@tecsinapse/rn-playground` — private Expo (SDK 57, RN 0.86, React 19) demo app for the legacy RN packages. Excluded
-from publishing (lerna `--no-private`; CI paths-ignore) — treat as an app, never a library.
+`@tecsinapse/rn-playground` — private Expo (SDK 57, RN 0.86, React 19) demo app for the **cortex-native** stack (and
+the deprecated `react-native-kit` for legacy story parity). Excluded from publishing (lerna `--no-private`; CI
+paths-ignore) — treat as an app, never a library.
 
 ## Commands (run from this directory, or `pnpm --filter @tecsinapse/rn-playground <script>` from root)
 
@@ -10,8 +11,8 @@ from publishing (lerna `--no-private`; CI paths-ignore) — treat as an app, nev
 - `pnpm run:dev` — `expo start -c` only (Metro) for fast iteration against an already-installed dev build.
 - `pnpm dev:android` — regenerate stories, then start Metro only.
 - `pnpm storybook` — `sb-rn-watcher` storybook dev server.
-- Requires the root `pnpm dev` watch builds running for `react-native-kit` changes to appear (cortex-native is
-  source-resolved via Metro, so no watch build needed for it).
+- cortex-native is source-resolved via Metro (`"react-native": "src/index.ts"`), so its changes appear without a watch
+  build. Legacy `react-native-kit` requires the root `pnpm dev` watch build running for changes to appear.
 
 ## Quirks
 
