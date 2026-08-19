@@ -216,6 +216,7 @@ export {
 export { ThemeProvider, useTheme } from './provider/ThemeProvider';
 export type { ThemeName, ThemeProviderProps } from './provider/ThemeProvider';
 export { useDebouncedState } from './hooks/useDebouncedState';
+export { lightenDarkenColor } from './utils/lightenDarkenColor';
 export { default as PhoneCountryPickerSelector } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';
 export type { PhoneCountryPickerSelectorProps } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';
 export { default as PieChart } from './components/PieChart/PieChart';
