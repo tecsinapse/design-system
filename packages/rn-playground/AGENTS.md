@@ -10,7 +10,8 @@ from publishing (lerna `--no-private`; CI paths-ignore) — treat as an app, nev
 - `pnpm run:dev` — `expo start -c` only (Metro) for fast iteration against an already-installed dev build.
 - `pnpm dev:android` — regenerate stories, then start Metro only.
 - `pnpm storybook` — `sb-rn-watcher` storybook dev server.
-- Requires the root `pnpm dev` watch builds running for `react-native-kit`/`react-charts` changes to appear.
+- Requires the root `pnpm dev` watch builds running for `react-native-kit` changes to appear (cortex-native is
+  source-resolved via Metro, so no watch build needed for it).
 
 ## Quirks
 

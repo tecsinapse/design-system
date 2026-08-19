@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react-vite';
-import { PieChart, PieChartData } from '@tecsinapse/react-charts';
+import { PieChart, type PieChartData } from '@tecsinapse/cortex-native';
 
 const PieChartMeta: Meta<typeof PieChart> = {
   title: 'Charts',

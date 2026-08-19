@@ -372,22 +372,6 @@ importers:
         specifier: 11.1.0
         version: 11.1.0
 
-  packages/react-charts:
-    dependencies:
-      '@emotion/native':
-        specifier: 'catalog:'
-        version: 11.11.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
-      '@emotion/react':
-        specifier: 'catalog:'
-        version: 11.14.0(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
-      react-native-svg-charts:
-        specifier: ^5.4.0
-        version: 5.4.0(react-native-svg@13.9.0(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
-    devDependencies:
-      react-native-svg:
-        specifier: 13.9.0
-        version: 13.9.0(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
-
   packages/react-core:
     dependencies:
       '@emotion/native':
@@ -454,9 +438,6 @@ importers:
       '@tecsinapse/cortex-native':
         specifier: workspace:*
         version: link:../cortex-native
-      '@tecsinapse/react-charts':
-        specifier: workspace:*
-        version: link:../react-charts
       '@tecsinapse/react-native-kit':
         specifier: workspace:*
         version: link:../react-native-kit
@@ -4162,39 +4143,6 @@ packages:
     resolution: {integrity: sha512-6/OplJYgJ0RUlli74d93HJ/OsKVBi8lB1+Z6eJYS1YZzBuIp4qKKHpJ7ad+GvTlWmLR/hLJOWTykN5Nm8NJ7+w==}
     engines: {node: '>=4'}
 
-  d3-array@1.2.4:
-    resolution: {integrity: sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw==}
-
-  d3-collection@1.0.7:
-    resolution: {integrity: sha512-ii0/r5f4sjKNTfh84Di+DpztYwqKhEyUlKoPrzUFfeSkWxjW49xU2QzO9qrPrNkpdI0XJkfzvmTu8V2Zylln6A==}
-
-  d3-color@1.4.1:
-    resolution: {integrity: sha512-p2sTHSLCJI2QKunbGb7ocOh7DgTAn8IrLx21QRc/BSnodXM4sv6aLQlnfpvehFMLZEfBc6g9pH9SWQccFYfJ9Q==}
-
-  d3-format@1.4.5:
-    resolution: {integrity: sha512-J0piedu6Z8iB6TbIGfZgDzfXxUFN3qQRMofy2oPdXzQibYGqPB/9iMcxr/TGalU+2RsyDO+U4f33id8tbnSRMQ==}
-
-  d3-interpolate-path@2.0.0:
-    resolution: {integrity: sha512-q7Wqn0CoWpMfrvTqoLvD099MMqeKRE0jKY3MzruePkZoD5hYzJ8xbGadGDRkq0xjiX0hxpr0Jtt92iOYFt600A==}
-
-  d3-interpolate@1.4.0:
-    resolution: {integrity: sha512-V9znK0zc3jOPV4VD2zZn0sDhZU3WAE2bmlxdIwwQPPzPjvyLkd8B3JUVdS1IDUFDkWZ72c9qnv1GK2ZagTZ8EA==}
-
-  d3-path@1.0.9:
-    resolution: {integrity: sha512-VLaYcn81dtHVTjEHd8B+pbe9yHWpXKZUC87PzoFmsFrJqgFwDe/qxfp5MlfsfM1V5E/iVt0MmEbWQ7FVIXh/bg==}
-
-  d3-scale@1.0.7:
-    resolution: {integrity: sha512-KvU92czp2/qse5tUfGms6Kjig0AhHOwkzXG0+PqIJB3ke0WUv088AHMZI0OssO9NCkXt4RP8yju9rpH8aGB7Lw==}
-
-  d3-shape@1.3.7:
-    resolution: {integrity: sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==}
-
-  d3-time-format@2.3.0:
-    resolution: {integrity: sha512-guv6b2H37s2Uq/GefleCDtbe0XZAuy7Wa49VGkPVPMfLL9qObgBST3lEHJBMUp8S7NdLQAGIvr2KXk8Hc98iKQ==}
-
-  d3-time@1.1.0:
-    resolution: {integrity: sha512-Xh0isrZ5rPYYdqhAVk8VLnMEidhz5aP7htAADH6MfzgmmicPkTo8LhkLxci61/lCB7n7UmE3bN0leRt+qvkLxA==}
-
   data-urls@5.0.0:
     resolution: {integrity: sha512-ZYP5VBHshaDAiVZxjbRVcFJpc+4xGgT0bK3vzy1HLN8jTO975HEbuYzZJcHoQEY5K1a0z8YayJkyVETa08eNTg==}
     engines: {node: '>=18'}
@@ -6728,19 +6676,6 @@ packages:
 
   react-native-safe-area-context@5.8.1:
     resolution: {integrity: sha512-dDYVAJcW5LJlXAqTUFAaWvYJovqxrh6HdJlOkdTQ7dXCcKWhCq5vKoDXJc3n1q5rYcAUaIwmToKNPKibnogC4g==}
-    peerDependencies:
-      react: '*'
-      react-native: '*'
-
-  react-native-svg-charts@5.4.0:
-    resolution: {integrity: sha512-5TaIGSihJaHCGFj32Tc07hZrqqTpvdyAx89PIrW2nLf2tijd61+3UE3jtsiHOvfeAyDgSTWjv6s9qG9d2di7Pw==}
-    peerDependencies:
-      react: '>=16.0.0-alpha.12'
-      react-native: '>=0.46.0'
-      react-native-svg: ^6.2.1||^7.0.3
-
-  react-native-svg@13.9.0:
-    resolution: {integrity: sha512-Ey18POH0dA0ob/QiwCBVrxIiwflhYuw0P0hBlOHeY4J5cdbs8ngdKHeWC/Kt9+ryP6fNoEQ1PUgPYw2Bs/rp5Q==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -12062,44 +11997,6 @@ snapshots:
 
   currency.js@2.0.4: {}
 
-  d3-array@1.2.4: {}
-
-  d3-collection@1.0.7: {}
-
-  d3-color@1.4.1: {}
-
-  d3-format@1.4.5: {}
-
-  d3-interpolate-path@2.0.0:
-    dependencies:
-      d3-interpolate: 1.4.0
-
-  d3-interpolate@1.4.0:
-    dependencies:
-      d3-color: 1.4.1
-
-  d3-path@1.0.9: {}
-
-  d3-scale@1.0.7:
-    dependencies:
-      d3-array: 1.2.4
-      d3-collection: 1.0.7
-      d3-color: 1.4.1
-      d3-format: 1.4.5
-      d3-interpolate: 1.4.0
-      d3-time: 1.1.0
-      d3-time-format: 2.3.0
-
-  d3-shape@1.3.7:
-    dependencies:
-      d3-path: 1.0.9
-
-  d3-time-format@2.3.0:
-    dependencies:
-      d3-time: 1.1.0
-
-  d3-time@1.1.0: {}
-
   data-urls@5.0.0:
     dependencies:
       whatwg-mimetype: 4.0.0
@@ -15129,24 +15026,6 @@ snapshots:
 
   react-native-safe-area-context@5.8.1(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3):
     dependencies:
-      react: 19.2.3
-      react-native: 0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
-
-  react-native-svg-charts@5.4.0(react-native-svg@13.9.0(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3):
-    dependencies:
-      d3-array: 1.2.4
-      d3-interpolate-path: 2.0.0
-      d3-scale: 1.0.7
-      d3-shape: 1.3.7
-      prop-types: 15.8.1
-      react: 19.2.3
-      react-native: 0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
-      react-native-svg: 13.9.0(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
-
-  react-native-svg@13.9.0(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3):
-    dependencies:
-      css-select: 5.1.0
-      css-tree: 1.1.3
       react: 19.2.3
       react-native: 0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
 

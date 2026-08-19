@@ -34,10 +34,6 @@ config.resolver.extraNodeModules = {
     workspaceRoot,
     'packages/react-native-kit'
   ),
-  '@tecsinapse/react-charts': path.resolve(
-    workspaceRoot,
-    'packages/react-charts'
-  ),
   '@tecsinapse/cortex-core': path.resolve(
     workspaceRoot,
     'packages/cortex-core'
