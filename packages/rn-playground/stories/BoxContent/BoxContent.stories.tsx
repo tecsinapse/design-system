@@ -1,7 +1,6 @@
-import { BoxContent, Text } from '@tecsinapse/react-native-kit';
+import { BoxContent, BoxContentProps, Text } from '@tecsinapse/cortex-native';
 import React from 'react';
 import { Meta } from '@storybook/react-vite';
-import { BoxContentProps } from '@tecsinapse/react-core';
 
 const StoryMeta: Meta<typeof BoxContent> = {
   title: 'BoxContent',

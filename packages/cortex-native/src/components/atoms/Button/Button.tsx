@@ -1,8 +1,17 @@
 import React from 'react';
-import { Pressable, ActivityIndicator, StyleProp, ViewStyle } from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import type { VariantProps } from 'tailwind-variants';
 import { useCSSVariable } from 'uniwind';
-import { buttonStyles, getButtonForegroundColorVar } from '../../../styles/button';
+import Text from '../Text/Text';
+import {
+  buttonStyles,
+  getButtonForegroundColorVar,
+} from '../../../styles/button';
 
 export interface ButtonProps extends VariantProps<typeof buttonStyles> {
   title: string;
@@ -41,7 +50,17 @@ const Button: React.FC<ButtonProps> = ({
         (disabled || loading) && { opacity: 0.5 },
       ]}
     >
-      {loading ? <ActivityIndicator color={foregroundColor} /> : title}
+      {loading ? (
+        <ActivityIndicator color={foregroundColor} />
+      ) : (
+        <Text
+          fontWeight="bold"
+          typography="base"
+          style={{ color: foregroundColor }}
+        >
+          {title}
+        </Text>
+      )}
     </Pressable>
   );
 };

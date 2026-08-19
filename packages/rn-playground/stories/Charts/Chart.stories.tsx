@@ -15,7 +15,7 @@ const data = [
   { value: 10, label: 'Fora do prazo' },
   { value: 13, label: 'Dentro do prazo' },
 ];
-const colors = ['#FCCB83', '#F89907'];
+const colors = ['primary-light', 'primary-medium'];
 const pieData: PieChartData[] = data.map((item, index) => ({
   value: item.value,
   label: item.label,

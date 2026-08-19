@@ -29,11 +29,6 @@ config.resolver.extraNodeModules = {
   'react/jsx-dev-runtime': path.join(reactPath, 'jsx-dev-runtime'),
   'react-native': rnPath,
 
-  '@tecsinapse/react-core': path.resolve(workspaceRoot, 'packages/react-core'),
-  '@tecsinapse/react-native-kit': path.resolve(
-    workspaceRoot,
-    'packages/react-native-kit'
-  ),
   '@tecsinapse/cortex-core': path.resolve(
     workspaceRoot,
     'packages/cortex-core'

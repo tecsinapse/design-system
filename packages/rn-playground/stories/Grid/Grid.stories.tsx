@@ -6,7 +6,7 @@ import {
   PressableSurface,
   Select,
   Text,
-} from '@tecsinapse/react-native-kit';
+} from '@tecsinapse/cortex-native';
 import React from 'react';
 import { View } from 'react-native';
 import { Meta } from '@storybook/react-vite';
@@ -55,21 +55,15 @@ export const Base = () => {
           <Input value={''} onChange={() => {}} />
         </GridItem>
         <GridItem span={12} wrapper>
-          <Button>
-            <Text fontColor={'light'}>Button 12</Text>
-          </Button>
+          <Button title="Button 12" />
         </GridItem>
         <GridItem span={6} wrapper>
           <View>
-            <Button>
-              <Text fontColor={'light'}>Button 6.1</Text>
-            </Button>
+            <Button title="Button 6.1" />
           </View>
         </GridItem>
         <GridItem span={6} wrapper>
-          <Button>
-            <Text fontColor={'light'}>Button 6.2</Text>
-          </Button>
+          <Button title="Button 6.2" />
         </GridItem>
 
         <GridItem

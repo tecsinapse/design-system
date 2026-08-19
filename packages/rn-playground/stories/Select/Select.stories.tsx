@@ -1,4 +1,4 @@
-import { Button, Select, Text } from '@tecsinapse/react-native-kit';
+import { Button, Select, Text } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
@@ -85,12 +85,12 @@ export const MultiCustom = {
         onSearch={handleSearch}
         controlComponent={(onPress, displayValue) => (
           <>
-            <Button variant={'outlined'} onPress={onPress}>
-              <Text fontWeight={'bold'} fontColor={'orange'}>
-                Open select modal!
-              </Text>
-            </Button>
-            <Text fontWeight={'bold'} typography={'base'}>
+            <Button
+              variant="outline"
+              title="Open select modal!"
+              onPress={onPress}
+            />
+            <Text fontWeight="bold" typography="base">
               Selected values: {displayValue}
             </Text>
           </>

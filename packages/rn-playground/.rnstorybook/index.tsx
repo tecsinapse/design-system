@@ -1,20 +1,20 @@
 import React from 'react';
 import { View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { view } from './storybook.requires';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
-  lightTheme,
   ModalGroupManager,
   Text,
   ThemeProvider,
-} from '@tecsinapse/react-native-kit';
+} from '@tecsinapse/cortex-native';
 
 const _StorybookUIRoot = view.getStorybookUI({
   storage: {
-    getItem: AsyncStorage.getItem,
-    setItem: AsyncStorage.setItem,
+    getItem: require('@react-native-async-storage/async-storage').default
+      .getItem,
+    setItem: require('@react-native-async-storage/async-storage').default
+      .setItem,
   },
 });
 
@@ -40,12 +40,20 @@ const StorybookUIRoot = () => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1, backgroundColor: '#f8f7f7' }}>
-        <ThemeProvider theme={lightTheme}>
-          <Header>
+        <ThemeProvider theme="light">
+          <View
+            style={{
+              backgroundColor: '#F89907',
+              padding: 12,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
             <Text typography="h4" fontWeight="bold" fontColor="light">
               Design System Playground
             </Text>
-          </Header>
+          </View>
           <_StorybookUIRoot />
           <ModalGroupManager />
         </ThemeProvider>
@@ -53,19 +61,5 @@ const StorybookUIRoot = () => {
     </SafeAreaProvider>
   );
 };
-
-const Header = ({ children }: { children: React.ReactNode }) => (
-  <View
-    style={{
-      backgroundColor: lightTheme.color.primary.medium,
-      padding: parseFloat(lightTheme.spacing.centi),
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    }}
-  >
-    {children}
-  </View>
-);
 
 export default StorybookUIRoot;

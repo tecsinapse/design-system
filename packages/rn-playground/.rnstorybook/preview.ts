@@ -5,27 +5,13 @@ export const decorators = [withBackgrounds, withView];
 
 export const parameters = {
   backgrounds: {
-    options: {
-      white: {
-        name: 'white',
-        value: '#fff',
-      },
-
-      light: {
-        name: 'light',
-        value: '#f8f7f7',
-      },
-
-      medium: {
-        name: 'medium',
-        value: '#85807a',
-      },
-
-      dark: {
-        name: 'dark',
-        value: '#5d5955',
-      },
-    },
+    default: 'light',
+    values: [
+      { name: 'white', value: '#fff' },
+      { name: 'light', value: '#f8f7f7' },
+      { name: 'medium', value: '#85807a' },
+      { name: 'dark', value: '#5d5955' },
+    ],
   },
   // controls: {
   //   matchers: {

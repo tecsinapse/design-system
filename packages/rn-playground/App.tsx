@@ -4,10 +4,10 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import './global.css';
 import StorybookUIRoot from './.rnstorybook';
 import {
+  type ThemeName,
   ThemeProvider,
   useTheme,
-  type ThemeName,
-} from '@tecsinapse/cortex-native/src/provider/ThemeProvider';
+} from '@tecsinapse/cortex-native';
 
 const THEMES: ThemeName[] = ['light', 'dark', 'system'];
 
@@ -22,13 +22,13 @@ function ThemeDemo({
   const nextTheme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
 
   return (
-    <View style={styles.demo}>
+    <View style={styles.demo} className={'bg-primary-medium'}>
       <Pressable style={styles.toggle} onPress={() => onChange(nextTheme)}>
         <Text className="text-content-high">
-          theme={theme} · resolved={resolvedTheme} · tap to switch to {nextTheme}
+          theme={theme} · resolved={resolvedTheme} · tap to switch to{' '}
+          {nextTheme}
         </Text>
       </Pressable>
-      <View className="bg-primary-medium" style={styles.swatch} />
     </View>
   );
 }
@@ -46,7 +46,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   demo: {
-    paddingTop: 64,
     paddingHorizontal: 16,
     gap: 16,
   },

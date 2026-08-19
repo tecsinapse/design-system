@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Text } from '@tecsinapse/react-native-kit';
+import { Paper, Text } from '@tecsinapse/cortex-native';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof Paper> = {

@@ -4,6 +4,7 @@ import { clsx } from 'clsx';
 import { colorToneBg } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
 import Icon, { IconProps } from '../Icon/Icon';
+import Text from '../Text/Text';
 
 export interface TagProps extends ViewProps {
   value: React.ReactNode;
@@ -52,7 +53,7 @@ const Tag: React.FC<TagProps> = ({
   const className = clsx(
     'flex-row justify-center items-center self-center',
     variantClass[variant],
-    colorToneBg[backgroundColorTone][backgroundColorVariant],
+    colorToneBg[backgroundColorTone][backgroundColorVariant]
   );
 
   return (
@@ -64,10 +65,14 @@ const Tag: React.FC<TagProps> = ({
     >
       {icon && (
         <View className="mr-micro">
-          <Icon size={icon.size || 'micro'} colorVariant={icon.colorVariant || 'primary'} {...icon} />
+          <Icon
+            size={icon.size || 'micro'}
+            colorVariant={icon.colorVariant || 'primary'}
+            {...icon}
+          />
         </View>
       )}
-      {value}
+      {typeof value === 'string' ? <Text>{value}</Text> : value}
       {canDismiss && (
         <Pressable
           onPress={handleDismiss}
@@ -75,7 +80,12 @@ const Tag: React.FC<TagProps> = ({
           style={{ marginLeft: 2 }}
           hitSlop={8}
         >
-          <Icon name="close-outline" type="ionicon" size="centi" fontColor="medium" />
+          <Icon
+            name="close-outline"
+            type="ionicon"
+            size="centi"
+            fontColor="medium"
+          />
         </Pressable>
       )}
     </Animated.View>

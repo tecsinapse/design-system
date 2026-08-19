@@ -56,6 +56,8 @@ Follow in order. Do not skip verification.
 
 ## Intentional divergences (checklist)
 
+- **`Button` children→`title`**: legacy `<Button><Text>…</Text></Button>` → `<Button title="…" />`. Title is a single
+  string (no custom child nodes); loading renders a spinner. `variant` is `outline` (no trailing `d`), not `outlined`.
 - **`fontColor` renames** (`Text`, `Icon`): legacy `dark`→`high`, `medium`→`low`; `light`/`orange` unchanged; new
   keys `medium`, `minimal`, `inverse` added.
 - **`fontWeight` expansion**: legacy `regular|bold|black` → full 8-weight `thin…black`.
@@ -66,7 +68,8 @@ Follow in order. Do not skip verification.
   `NativeFlagIconProps`→`FlagIconProps`.
 - **`DatePicker`/`DateTimePicker` are self-contained** — DROP the legacy controlled props (`renderCalendar`,
   `request*`, `DateTimeSelectorComponent` injection). Use `value`/`onChange`/`format`/`placeholder`/`variant`/
-  `hint`/`label`/`type` (`'day'` or `'range'`).
+  `hint`/`label`/`type` (`'day'` or `'range'`). `DateTimePicker` also dropped `dayLabel`, the `style` prop (wrap in a
+  `<View>` for spacing), and `offsetThreshold`.
 - **`PieChart`**: import from `@tecsinapse/cortex-native`, not `@tecsinapse/react-charts`. `PieChartData` now requires
   `label`; `color` is a **token name** (`'orange'`, `'info-medium'`) resolved at runtime — NOT a hex `'#f89907'`.
   `react-native-svg-charts` dep is gone (math is local).
@@ -74,10 +77,16 @@ Follow in order. Do not skip verification.
   (`micro:12 mili:14 centi:16 deca:18 kilo:24 mega:32`).
 - **date-fns v2→v4**: v4 is ESM-only, no default export; format tokens tightened (`yyyy` vs `YYYY`, `d` vs `D`) —
   audit format strings.
+- **Input/TextArea onChange signatures**: `InputMask.onChange` widened to `(value: string | number)` (cast a
+  `useState<string>` setter); `TextArea.onChange` became `(e: TextInputChangeEvent)` — read `e.nativeEvent.text`.
 - **No emotion**: cortex-native has zero `@emotion/*`. Remove any emotion `styled`/`useTheme`.
 
 ## Common mistakes / red flags
 
+- **Raw strings in a View** → RN runtime error "Text strings must be rendered within a `<Text>` component".
+  `Button.title`, `Tag.value`, `Badge.value`, and `Snackbar.children` are all rendered inside a View/Pressable —
+  wrap string/number values in `<Text>` (Tag/Badge now auto-wrap strings; Button requires a string `title`). Jest's test
+  renderer silently allows this, so it only shows up on a device.
 - **Copying `var(--color…)` strings from `tokens/definitions.ts` into a `color` prop** — RN can't evaluate them. For
   prop-valued colors (icon `color`, `ActivityIndicator`), resolve via Uniwind `useCSSVariable('--color-…')`; never
   copy the web `var()` string and never hardcode hex for token colors.
@@ -86,3 +95,10 @@ Follow in order. Do not skip verification.
 - **Missing `@source` in global.css** → components render unstyled silently.
 - **Forgetting both token css files** (`tokens.css` AND `tokens-native.css`) → dark theme tokens missing.
 - **Leaving legacy deps/emotion installed** after migration.
+
+## RN-app infrastructure (not cortex-native, but blocks verification)
+
+- **Storybook v10 backgrounds addon** expects `parameters.backgrounds.values` (array of `{ name, value }`) + `default`,
+  not the v9 keyed `options` object — the decorator crashes on `backgrounds.length` if `values` is undefined.
+- **`@gorhom/bottom-sheet` v4 breaks on Reanimated 4** (`useWorkletCallback` was removed). On SDK 57 / Reanimated 4 apps
+  using storybook, bump to v5 (`>=4` peer still satisfied).

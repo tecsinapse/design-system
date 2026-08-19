@@ -1,6 +1,28 @@
 /* Imported ONLY by native (Uniwind) global.css — never by default.css. */
 @layer theme {
     :root {
+        @variant light {
+            /* Body */
+            --color-body: #f8f7f7;
+
+            /* Text */
+            --color-default: #000;
+            --color-inverse: #fff;
+
+            /* Surface */
+            --color-surface-base: #f8f7f7;
+            --color-surface-raised: #fbfbfb;
+            --color-surface-overlay: #ffffff;
+            --color-surface-inverse: #000;
+
+            /* Content */
+            --color-content-high: #353231;
+            --color-content-medium: #5d5955;
+            --color-content-low: #85807a;
+            --color-content-minimal: #c2bfbc;
+            --color-content-inverse: #ffffff;
+        }
+
         @variant dark {
             /* Body */
             --color-body: #1e1e1e;
