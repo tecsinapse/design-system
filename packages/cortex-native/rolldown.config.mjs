@@ -19,7 +19,7 @@ export default {
     'react-native-linear-gradient',
     'react-native-safe-area-context',
     'react-native-svg',
-    'react-native-vector-icons',
+    /^react-native-vector-icons(\/|$)/,
     'tailwind-variants',
     'uniwind',
   ],
