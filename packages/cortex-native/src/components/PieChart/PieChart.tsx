@@ -54,8 +54,7 @@ interface SliceProps {
 
 const Slice = ({ slice }: SliceProps) => {
   const fill = useCSSVariable(chartColorVar(slice.item.color)) as
-    | string
-    | undefined;
+    string | undefined;
   return (
     <G>
       <Path

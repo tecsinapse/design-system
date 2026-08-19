@@ -23,7 +23,7 @@ describe('computeSliceAngles', () => {
     expect(slices.map(s => s.item.label)).toEqual(['a', 'b', 'c']);
   });
 
-  it('assigns slice angles in descending value order (largest first, from 12 o\'clock)', () => {
+  it("assigns slice angles in descending value order (largest first, from 12 o'clock)", () => {
     const slices = computeSliceAngles(data);
     // total 6 -> full turn per value is 2*PI/6 = PI/3
     // sorted by value desc: c(3), b(2), a(1)
@@ -44,13 +44,15 @@ describe('computeSliceAngles', () => {
     const slices = computeSliceAngles(data);
     const total = slices.reduce(
       (sum, slice) => sum + (slice.endAngle - slice.startAngle),
-      0,
+      0
     );
     closeTo(total, Math.PI * 2);
   });
 
   it('handles a single item as a full circle', () => {
-    const slices = computeSliceAngles([{ value: 5, label: 'only', color: 'primary-medium' }]);
+    const slices = computeSliceAngles([
+      { value: 5, label: 'only', color: 'primary-medium' },
+    ]);
     closeTo(slices[0].startAngle, 0);
     closeTo(slices[0].endAngle, Math.PI * 2);
   });
@@ -91,25 +93,25 @@ describe('getInnerRadius', () => {
 describe('buildSlicePath', () => {
   it('builds the donut arc path for a half turn slice (d3-shape parity)', () => {
     expect(buildSlicePath(0, Math.PI, 100, 50)).toBe(
-      'M 0 -100 A 100 100 0 1 1 0 100 L 0 50 A 50 50 0 1 0 0 -50 Z',
+      'M 0 -100 A 100 100 0 1 1 0 100 L 0 50 A 50 50 0 1 0 0 -50 Z'
     );
   });
 
   it('builds the arc path for a 120 degree slice', () => {
     expect(buildSlicePath(Math.PI, (5 * Math.PI) / 3, 100, 50)).toBe(
-      'M 0 100 A 100 100 0 0 1 -86.6025 -50 L -43.3013 -25 A 50 50 0 0 0 0 50 Z',
+      'M 0 100 A 100 100 0 0 1 -86.6025 -50 L -43.3013 -25 A 50 50 0 0 0 0 50 Z'
     );
   });
 
   it('builds the arc path for the trailing 60 degree slice', () => {
     expect(buildSlicePath((5 * Math.PI) / 3, Math.PI * 2, 100, 50)).toBe(
-      'M -86.6025 -50 A 100 100 0 0 1 0 -100 L 0 -50 A 50 50 0 0 0 -43.3013 -25 Z',
+      'M -86.6025 -50 A 100 100 0 0 1 0 -100 L 0 -50 A 50 50 0 0 0 -43.3013 -25 Z'
     );
   });
 
   it('builds a full annulus path for a complete circle', () => {
     expect(buildSlicePath(0, Math.PI * 2, 100, 50)).toBe(
-      'M 0 -100 A 100 100 0 1 1 0 100 A 100 100 0 1 1 0 -100 M 0 -50 A 50 50 0 1 0 0 50 A 50 50 0 1 0 0 -50 Z',
+      'M 0 -100 A 100 100 0 1 1 0 100 A 100 100 0 1 1 0 -100 M 0 -50 A 50 50 0 1 0 0 50 A 50 50 0 1 0 0 -50 Z'
     );
   });
 
@@ -157,7 +159,7 @@ describe('getTextStyles', () => {
     const styles = getTextStyles(
       { fontSize: 20, fill: 'primary-medium', y: -8 },
       'regular',
-      undefined,
+      undefined
     );
     expect(styles).toMatchObject({
       fontSize: 20,
@@ -188,7 +190,7 @@ describe('buildPieSlices', () => {
         { value: 3, label: 'c', color: 'info-medium', featured: true },
       ],
       32,
-      200,
+      200
     );
 
     expect(slices).toHaveLength(3);
@@ -196,7 +198,9 @@ describe('buildPieSlices', () => {
     closeTo(slices[2].endAngle, Math.PI);
     expect(slices[2].outerRadius).toBe(100);
     expect(slices[2].innerRadius).toBe(58);
-    expect(slices[2].d).toBe('M 0 -100 A 100 100 0 1 1 0 100 L 0 58 A 58 58 0 1 0 0 -58 Z');
+    expect(slices[2].d).toBe(
+      'M 0 -100 A 100 100 0 1 1 0 100 L 0 58 A 58 58 0 1 0 0 -58 Z'
+    );
 
     expect(slices[0].outerRadius).toBe(90);
     closeTo(slices[0].startAngle, (5 * Math.PI) / 3);

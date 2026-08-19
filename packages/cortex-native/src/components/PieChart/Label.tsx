@@ -14,10 +14,7 @@ import {
   type FontFamily,
   type PieChartData,
 } from './utils';
-import {
-  LABEL_CONTAINER_CLASS,
-  LABEL_TEXT_CLASS,
-} from './styled';
+import { LABEL_CONTAINER_CLASS, LABEL_TEXT_CLASS } from './styled';
 
 export interface LabelProps {
   columns: number;
@@ -51,7 +48,10 @@ const LabelText = ({
 }: LabelTextProps & Omit<TextProps, 'style'>) => (
   <RNText
     className={clsx(LABEL_TEXT_CLASS, expand && 'flex-1')}
-    style={[{ fontFamily: font.fontFamily, fontWeight: font.fontWeight }, style]}
+    style={[
+      { fontFamily: font.fontFamily, fontWeight: font.fontWeight },
+      style,
+    ]}
     {...rest}
   />
 );

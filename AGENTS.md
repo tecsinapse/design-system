@@ -5,8 +5,8 @@ pnpm monorepo (`packages/*`) publishing independent npm packages via lerna-lite.
 
 ## Packages
 
-- `cortex-core`, `cortex-react` — the actively developed stack: Tailwind 4 + react-aria, web/HTML. New components belong
-  here.
+- `cortex-core`, `cortex-react`, `cortex-native` — the actively developed stack: Tailwind 4, web/HTML (react-aria) and
+  React Native (uniwind). New components belong here.
 - `react-core`, `react-web-kit`, `react-native-kit`, `react-charts` — legacy emotion CSS-in-JS packages (
   react-native-web). Only touch for legacy fixes.
 - `rn-playground` — RN demo app, excluded from publishing.
@@ -15,8 +15,11 @@ pnpm monorepo (`packages/*`) publishing independent npm packages via lerna-lite.
 
 - `pnpm dev` — watch-builds all packages (`rolldown` for cortex-*, rollup + tsc for legacy); `pnpm dev:cortex` for
   cortex-* only. Prefer this after changing `cortex-core` so `cortex-react` picks up source changes.
-- `pnpm test` — vitest only runs in `@tecsinapse/cortex-react` (the only package with tests). Single test:
-  `pnpm --filter @tecsinapse/cortex-react test -t '<name>'`; watch: `pnpm --filter @tecsinapse/cortex-react test:watch`.
+- `pnpm test` — fans out the `test` script of every `@tecsinapse/*` package. **Two test stacks:**
+  - `@tecsinapse/cortex-react` runs **vitest** (+ jsdom). Single test:
+    `pnpm --filter @tecsinapse/cortex-react test -t '<name>'`; watch: `pnpm --filter @tecsinapse/cortex-react test:watch`.
+  - `@tecsinapse/cortex-native` runs **jest + @testing-library/react-native** (vitest cannot render RN components).
+    Single test: `pnpm --filter @tecsinapse/cortex-native test -t '<name>'`.
 - No typecheck script exists — type-check via `pnpm --filter <pkg> build:dts` (tsc) or the full build.
 - `pnpm lint` runs eslint **with `--fix --quiet` (auto-edits files)**; `pnpm lint:ts` is the non-fixing check. CI gate
   is `pnpm lint:fix`.
@@ -35,8 +38,9 @@ CI (`check.yml`) order: `pnpm test` → `pnpm lint:fix` → `pnpm build:storyboo
   gitignored.
 - Stories/docs live in `packages/cortex-react/docs/*.stories.tsx`, `packages/cortex-core/docs/*`, and root `docs/*.mdx`.
   Files matching `*.stories.*` are excluded from tsconfig and eslint.
-- Tests: vitest + jsdom, `globals: true`; shared setup in root `vitest.setup.ts` (ResizeObserver polyfill).
-  Test files live in `packages/cortex-react/src/tests/`.
+- Tests: **two stacks** — cortex-react uses vitest + jsdom (`globals: true`, shared setup in root `vitest.setup.ts`,
+  ResizeObserver polyfill; test files in `packages/cortex-react/src/tests/`); cortex-native uses jest +
+  `@testing-library/react-native` (local `jest.config.js`, test files co-located as `*.test.ts{x}` in `src/`).
 
 ## Conventions
 

@@ -22,7 +22,8 @@ export const SvgText = withUniwind(RNSvgText);
 export const CONTAINER_CLASS = 'flex-col items-center justify-between flex-1';
 
 /** Layout classes for the legend row (wrap items across the full width). */
-export const LABELS_CONTAINER_CLASS = 'flex-row flex-wrap justify-between w-full';
+export const LABELS_CONTAINER_CLASS =
+  'flex-row flex-wrap justify-between w-full';
 
 /** Layout classes for one legend item (dot + label + value on a row). */
 export const LABEL_CONTAINER_CLASS = 'flex-row items-center mb-centi';

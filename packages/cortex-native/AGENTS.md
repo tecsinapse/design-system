@@ -17,8 +17,12 @@ rn-playground bundle the raw TS source without watch-builds. No emotion, no lega
 
 ## Building / verifying
 
-- `pnpm --filter @tecsinapse/cortex-native build:dts` — type-check + emit `dist/types` (no test suite here; vitest
-  lives only in cortex-react).
+- `pnpm --filter @tecsinapse/cortex-native test` — **jest + @testing-library/react-native** (vitest cannot render RN
+  components). Local `jest.config.js` (preset `react-native`, `moduleNameMapper` for `@tecsinapse/cortex-core` → its
+  `src`); test files are co-located as `*.test.ts{x}` in `src/`. Single test:
+  `pnpm --filter @tecsinapse/cortex-native test -t '<name>'`.
+- `pnpm --filter @tecsinapse/cortex-native build:dts` — type-check + emit `dist/types` (test files are excluded via
+  `**/*.test.*`).
 - `pnpm --filter @tecsinapse/cortex-native build:es` — rolldown ESM build to `dist/esm`.
 - `pnpm lint:ts` (root) — non-fixing eslint check.
 - `pnpm dev:cortex` (root) — watch-builds cortex-core + cortex-native; cortex-react picks up core source changes via
@@ -34,3 +38,7 @@ rn-playground bundle the raw TS source without watch-builds. No emotion, no lega
 - `uniwind` is peer + devDep (root workspace has `autoInstallPeers: false`): the consumer owns the runtime. Consumers
   must set up Uniwind's Metro plugin and import `@tecsinapse/cortex-core/tokens.css` (web) / `tokens-native.css`
   (native) for tokens to render.
+- `rolldown.config.mjs` externals must match **subpaths** for packages imported with them (e.g.
+  `react-native-vector-icons` is imported as `react-native-vector-icons/MaterialCommunityIcons`, so its external is a
+  regex `/^react-native-vector-icons(\/|$)/`, not the bare string) — otherwise rolldown tries to parse the dep's JSX
+  and `build:es` fails.

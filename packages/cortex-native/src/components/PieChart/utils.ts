@@ -65,7 +65,7 @@ export const chartColorVar = (color: string): string => `--color-${color}`;
 
 export const getFontFamilyAndWeight = (
   fontFamily: FontFamily | undefined,
-  weight: FontWeight,
+  weight: FontWeight
 ): { fontFamily: string; fontWeight: TextStyle['fontWeight'] } => ({
   fontFamily: fontFamily ? fontFamily[weight] : DEFAULT_FONT_FAMILY,
   fontWeight: FONT_WEIGHT_VALUE[weight],
@@ -74,7 +74,7 @@ export const getFontFamilyAndWeight = (
 export const getTextStyles = (
   styles: SvgTextType | undefined,
   defaultFontWeight: FontWeight,
-  chartConfig: { fontFamily: FontFamily } | undefined,
+  chartConfig: { fontFamily: FontFamily } | undefined
 ): {
   textAnchor: TextAnchor;
   alignmentBaseline: AlignmentBaseline;
@@ -99,14 +99,14 @@ export const getTextStyles = (
     y,
     ...getFontFamilyAndWeight(
       chartConfig?.fontFamily,
-      styles?.fontWeight ?? defaultFontWeight,
+      styles?.fontWeight ?? defaultFontWeight
     ),
   };
 };
 
 export const getSliceOuterRadius = (
   featured: boolean,
-  maxRadius: number,
+  maxRadius: number
 ): number => (featured ? maxRadius : SLICE_OUTER_RADIUS_RATIO * maxRadius);
 
 /**
@@ -169,7 +169,7 @@ export const buildSlicePath = (
   startAngle: number,
   endAngle: number,
   outerRadius: number,
-  innerRadius: number,
+  innerRadius: number
 ): string => {
   const a0 = startAngle - Math.PI / 2;
   const a1 = endAngle - Math.PI / 2;
@@ -218,14 +218,14 @@ export interface BuiltPieSlice extends PieSlice {
 export const buildPieSlices = (
   data: PieChartData[],
   radius: number,
-  dimension: number,
+  dimension: number
 ): BuiltPieSlice[] => {
   const maxRadius = dimension / 2;
   const innerRadius = getInnerRadius(radius, maxRadius);
   return computeSliceAngles(data).map(slice => {
     const outerRadius = getSliceOuterRadius(
       slice.item.featured ?? false,
-      maxRadius,
+      maxRadius
     );
     return {
       ...slice,
@@ -235,7 +235,7 @@ export const buildPieSlices = (
         slice.startAngle,
         slice.endAngle,
         outerRadius,
-        innerRadius,
+        innerRadius
       ),
     };
   });
