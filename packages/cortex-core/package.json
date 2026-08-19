@@ -43,6 +43,7 @@
   },
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
+    "react": ">=18.0.0 || ^19.0.0",
     "tailwindcss": "catalog:"
   }
 }

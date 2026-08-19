@@ -18,5 +18,13 @@ export default {
       ],
     }),
   ],
-  external: ['tailwind-variants', 'clsx', 'tailwind-merge', 'date-fns'],
+  external: [
+    /^react(\/|$)/,
+    /^date-fns(\/|$)/,
+    'tailwind-variants',
+    'clsx',
+    'tailwind-merge',
+    'currency.js',
+    'polished',
+  ],
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
+import CountryFlag from 'react-native-country-flag';
 
 export interface FlagIconProps {
   countryCode: string;
@@ -7,15 +8,6 @@ export interface FlagIconProps {
 }
 
 const FLAG_SIZE = 25;
-
-const CountryFlagModule = (() => {
-  try {
-    return require('react-native-country-flag')
-      .default as React.ComponentType<{ isoCode: string; size: number }>;
-  } catch {
-    return null;
-  }
-})();
 
 export const FlagIcon: React.FC<FlagIconProps> = ({
   countryCode,
@@ -25,10 +17,8 @@ export const FlagIcon: React.FC<FlagIconProps> = ({
     return null;
   }
 
-  if (CountryFlagModule) {
-    return (
-      <CountryFlagModule isoCode={countryCode.toLowerCase()} size={FLAG_SIZE} />
-    );
+  if (CountryFlag) {
+    return <CountryFlag isoCode={countryCode.toLowerCase()} size={FLAG_SIZE} />;
   }
 
   return (

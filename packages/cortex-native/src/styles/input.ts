@@ -11,7 +11,7 @@ export type InputIntent = 'default' | 'success' | 'warning' | 'error';
  * focus/disabled state is applied explicitly from component state.
  */
 export const inputContainerStyles = tv({
-  base: 'relative min-h-[44px] h-auto flex px-centi py-1.5 bg-surface-overlay text-base font-bold items-center border rounded-mili',
+  base: 'relative min-h-[44px] h-auto flex flex-row px-centi py-1.5 bg-surface-overlay text-base font-bold items-center border rounded-mili',
   variants: {
     intent: {
       default: 'border-content-minimal',
