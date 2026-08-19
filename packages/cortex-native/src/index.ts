@@ -162,3 +162,6 @@ export type { IBaseModal } from './components/molecules/Modal/ui/types';
 export { useModalManager } from './components/molecules/Modal/useModalManager';
 export { useLazyModalManager } from './components/molecules/Modal/useLazyModalManager';
 export { useModalRemoteControl } from './components/molecules/Modal/useModalRemoteControl';
+export { default as BottomNavigator } from './components/molecules/BottomNavigator/BottomNavigator';
+export type { BottomNavigatorProps } from './components/molecules/BottomNavigator/BottomNavigator';
+export type { BottomNavigatorItemProps } from './components/molecules/BottomNavigator/Item';
