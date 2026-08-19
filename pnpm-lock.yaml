@@ -417,12 +417,6 @@ importers:
 
   packages/rn-playground:
     dependencies:
-      '@emotion/native':
-        specifier: 'catalog:'
-        version: 11.11.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@react-native/jest-preset@0.86.2(@babel/core@7.29.7(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
-      '@emotion/react':
-        specifier: 'catalog:'
-        version: 11.14.0(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
       '@gorhom/bottom-sheet':
         specifier: ^4.6.4
         version: 4.6.4(d5047404acd128775ee25216acbe1c47)

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from '@emotion/native';
 import { Paper, Text } from '@tecsinapse/react-native-kit';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
@@ -13,23 +12,19 @@ export default StoryMeta;
 type IStory = StoryFn<typeof Paper>;
 
 export const Base = () => (
-  <StyledPaper>
+  <Paper style={{ backgroundColor: 'white' }}>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
-  </StyledPaper>
+  </Paper>
 );
 
 export const Elevated = () => (
-  <StyledPaper elevated>
+  <Paper elevated style={{ backgroundColor: 'white' }}>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
-  </StyledPaper>
+  </Paper>
 );
-
-const StyledPaper = styled(Paper)`
-  background-color: white;
-`;

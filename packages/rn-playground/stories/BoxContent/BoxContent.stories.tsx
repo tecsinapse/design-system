@@ -1,4 +1,3 @@
-import styled from '@emotion/native';
 import { BoxContent, Text } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { Meta } from '@storybook/react-vite';
@@ -15,15 +14,11 @@ const StoryMeta: Meta<typeof BoxContent> = {
 export default StoryMeta;
 
 export const Base = (args: BoxContentProps) => (
-  <StyledBoxContent {...args}>
+  <BoxContent {...args} style={{ alignItems: 'center' }}>
     <Text>Some text here!</Text>
     <Text>Some text here!</Text>
     <Text>Some text here!</Text>
     <Text>Some text here!</Text>
     <Text>Some text here!</Text>
-  </StyledBoxContent>
+  </BoxContent>
 );
-
-const StyledBoxContent = styled(BoxContent)`
-  align-items: center;
-`;
