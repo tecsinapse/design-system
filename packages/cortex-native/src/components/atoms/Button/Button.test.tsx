@@ -1,6 +1,12 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
+import { ActivityIndicator } from 'react-native';
 import Button from './Button';
+
+jest.mock('uniwind', () => ({
+  useCSSVariable: (name: string) =>
+    name === '--color-on-primary' ? '#ffffff' : '#f89907',
+}));
 
 describe('Button', () => {
   it('calls onPress when pressed', () => {
@@ -40,5 +46,13 @@ describe('Button', () => {
     expect(className).toContain('bg-transparent');
     expect(className).toContain('text-success-medium');
     expect(className).not.toContain('text-on-primary');
+  });
+  it('resolves filled spinner color from the on-primary variable', () => {
+    const { UNSAFE_getByType } = render(<Button title="ok" intent="primary" variant="filled" loading />);
+    expect(UNSAFE_getByType(ActivityIndicator).props.color).toBe('#ffffff');
+  });
+  it('resolves outline spinner color from the intent variable', () => {
+    const { UNSAFE_getByType } = render(<Button title="ok" intent="primary" variant="outline" loading />);
+    expect(UNSAFE_getByType(ActivityIndicator).props.color).toBe('#f89907');
   });
 });

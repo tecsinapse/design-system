@@ -45,19 +45,19 @@ export const buttonStyles = tv({
 });
 export type ButtonVariants = VariantProps<typeof buttonStyles>;
 
-export const buttonForegroundColors: Record<
+export const buttonForegroundColorVars: Record<
   NonNullable<ButtonVariants['intent']>,
   string
 > = {
-  primary: '#f89907',
-  secondary: '#85807a',
-  success: '#2db783',
-  info: '#239bf6',
-  warning: '#ffc700',
-  error: '#e04638',
+  primary: '--color-primary-medium',
+  secondary: '--color-secondary-medium',
+  success: '--color-success-medium',
+  info: '--color-info-medium',
+  warning: '--color-warning-medium',
+  error: '--color-error-medium',
 };
 
-export const getButtonForegroundColor = (
+export const getButtonForegroundColorVar = (
   intent: NonNullable<ButtonVariants['intent']>,
   variant: NonNullable<ButtonVariants['variant']>,
-) => (variant === 'filled' ? '#ffffff' : buttonForegroundColors[intent]);
+) => (variant === 'filled' ? '--color-on-primary' : buttonForegroundColorVars[intent]);
