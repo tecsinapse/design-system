@@ -1,19 +1,21 @@
+import './polyfills';
 import React, { FC, useCallback, useMemo, useRef, useState } from 'react';
 import {
   Modal,
   Pressable,
   StyleProp,
   TextInput,
+  useWindowDimensions,
   View,
   ViewStyle,
 } from 'react-native';
+import type { ParsedCountry } from 'react-international-phone';
 import {
   defaultCountries,
   parseCountry,
   usePhoneInput,
   UsePhoneInputConfig,
 } from 'react-international-phone';
-import type { ParsedCountry } from 'react-international-phone';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Hint from '../../atoms/Input/Hint';
 import InputContainer, {
@@ -30,7 +32,8 @@ import PhoneCountrySelector from './PhoneCountrySelector';
 import { usePhoneInputChange } from './usePhoneInputChange';
 
 export interface PhoneInputProps
-  extends Omit<InputContainerProps, 'focused' | 'disabled' | 'variant'>,
+  extends
+    Omit<InputContainerProps, 'focused' | 'disabled' | 'variant'>,
     Omit<UsePhoneInputConfig, 'onChange' | 'inputRef'> {
   onChange?: (
     phone: string,
@@ -46,6 +49,13 @@ export interface PhoneInputProps
   placeholder?: string;
   style?: StyleProp<ViewStyle>;
 }
+
+const DRAWER_HEIGHT_RATIO = 0.75;
+const DRAWER_MIN_HEIGHT = 320;
+const HANDLE_BLOCK_HEIGHT = 29;
+const TITLE_BLOCK_HEIGHT = 60;
+const SEARCH_BLOCK_HEIGHT = 76;
+const MIN_LIST_HEIGHT = 180;
 
 const PhoneInput: FC<PhoneInputProps> = ({
   onChange,
@@ -70,6 +80,21 @@ const PhoneInput: FC<PhoneInputProps> = ({
   ...phoneConfig
 }) => {
   const { bottom } = useSafeAreaInsets();
+  const { height: windowHeight } = useWindowDimensions();
+
+  const { drawerHeight, listHeight } = useMemo(() => {
+    const drawer = Math.max(
+      Math.round(windowHeight * DRAWER_HEIGHT_RATIO),
+      DRAWER_MIN_HEIGHT
+    );
+    const header =
+      HANDLE_BLOCK_HEIGHT +
+      (countryModalTitle ? TITLE_BLOCK_HEIGHT : 0) +
+      (hasSearch ? SEARCH_BLOCK_HEIGHT : 0);
+    const list = Math.max(drawer - header, MIN_LIST_HEIGHT);
+
+    return { drawerHeight: drawer, listHeight: list };
+  }, [windowHeight, countryModalTitle, hasSearch]);
   const textInputRef = useRef<TextInput>(null);
   const [selectorOpen, setSelectorOpen] = useState(false);
 
@@ -143,7 +168,10 @@ const PhoneInput: FC<PhoneInputProps> = ({
                 }}
               >
                 {country ? (
-                  <FlagIcon countryCode={country.iso2} dialCode={country.dialCode} />
+                  <FlagIcon
+                    countryCode={country.iso2}
+                    dialCode={country.dialCode}
+                  />
                 ) : null}
                 <Icon
                   name="chevron-down"
@@ -162,18 +190,15 @@ const PhoneInput: FC<PhoneInputProps> = ({
           borderColorGradation={borderColorGradation}
           inputContainerStyle={inputContainerStyle}
         >
-          <View className="flex-1 min-w-0">
-            <InputElement
-              ref={textInputRef}
-              value={inputValue}
-              onChange={handleInputChange}
-              placeholder={placeholder}
-              disabled={disabled}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              style={{ width: '100%' }}
-            />
-          </View>
+          <InputElement
+            ref={textInputRef}
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder={placeholder}
+            disabled={disabled}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
         </InputContainer>
         {hint && _hint}
       </View>
@@ -184,39 +209,45 @@ const PhoneInput: FC<PhoneInputProps> = ({
         animationType="slide"
         onRequestClose={handleCloseCountrySelector}
       >
-        <Pressable
-          style={{ flex: 1, justifyContent: 'flex-end' }}
-          onPress={handleCloseCountrySelector}
-        >
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+          <Pressable
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            }}
+            onPress={handleCloseCountrySelector}
+          >
+            <View className="bg-black/60" style={{ flex: 1 }} />
+          </Pressable>
           <View
-            className="bg-black/60 flex-1"
-            style={{ justifyContent: 'flex-end' }}
-          />
-        </Pressable>
-        <View
-          className="bg-surface-overlay rounded-t-deca"
-          style={{ maxHeight: '75%', paddingBottom: bottom }}
-        >
-          <View className="items-center py-micro">
-            <View
-              className="bg-secondary-light rounded-full"
-              style={{ width: 42, height: 5 }}
+            className="bg-surface-overlay rounded-t-deca"
+            style={{ height: drawerHeight, paddingBottom: bottom }}
+          >
+            <View className="items-center py-micro">
+              <View
+                className="bg-secondary-light rounded-full"
+                style={{ width: 42, height: 5 }}
+              />
+            </View>
+            {countryModalTitle ? (
+              <View className="px-deca py-centi">
+                <Text typography="h4" fontWeight="bold">
+                  {countryModalTitle}
+                </Text>
+              </View>
+            ) : null}
+            <PhoneCountrySelector
+              selectedCountry={country}
+              onSelectCountry={handleSelectCountry}
+              hasSearch={hasSearch}
+              searchPlaceholder={searchPlaceholder}
+              countries={parsedCountries}
+              listHeight={listHeight}
             />
           </View>
-          {countryModalTitle ? (
-            <View className="px-deca py-centi">
-              <Text typography="h4" fontWeight="bold">
-                {countryModalTitle}
-              </Text>
-            </View>
-          ) : null}
-          <PhoneCountrySelector
-            selectedCountry={country}
-            onSelectCountry={handleSelectCountry}
-            hasSearch={hasSearch}
-            searchPlaceholder={searchPlaceholder}
-            countries={parsedCountries}
-          />
         </View>
       </Modal>
     </>

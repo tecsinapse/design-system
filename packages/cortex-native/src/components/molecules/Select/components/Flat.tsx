@@ -18,7 +18,6 @@ const Flat = <Data,>({
     <FlatList
       data={data}
       keyExtractor={keyExtractor}
-      fadingEdgeLength={200}
       ItemSeparatorComponent={() => <Divider linePosition="bottom" />}
       renderItem={renderItem}
     />

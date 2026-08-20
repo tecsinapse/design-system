@@ -1,5 +1,7 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
+import './polyfills';
+import PhoneInput from './PhoneInput';
 
 jest.mock('uniwind', () => ({
   useCSSVariable: () => '#353231',
@@ -46,9 +48,11 @@ jest.mock('../../atoms/Icon/Icon', () => {
   };
 });
 
-import PhoneInput from './PhoneInput';
-
 describe('PhoneInput', () => {
+  it('shims global.document for react-international-phone on Hermes', () => {
+    expect(globalThis.document).toBeTruthy();
+  });
+
   it('renders the phone input value from react-international-phone', () => {
     const { getByDisplayValue } = render(<PhoneInput onChange={() => {}} />);
     expect(getByDisplayValue('+55')).toBeTruthy();
@@ -56,7 +60,7 @@ describe('PhoneInput', () => {
 
   it('forwards typed text to the phone change handler', () => {
     const { getByPlaceholderText } = render(
-      <PhoneInput placeholder="phone" onChange={() => {}} />,
+      <PhoneInput placeholder="phone" onChange={() => {}} />
     );
     fireEvent.changeText(getByPlaceholderText('phone'), '+55119');
     expect(mockHandlePhoneValueChange).toHaveBeenCalled();
@@ -64,7 +68,7 @@ describe('PhoneInput', () => {
 
   it('renders the label and hint', () => {
     const { getByText } = render(
-      <PhoneInput label="Phone" hint="digits only" onChange={() => {}} />,
+      <PhoneInput label="Phone" hint="digits only" onChange={() => {}} />
     );
     expect(getByText('Phone')).toBeTruthy();
     expect(getByText('digits only')).toBeTruthy();

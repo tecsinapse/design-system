@@ -55,7 +55,7 @@ const RadioButton = ({
           <View
             className={clsx(
               'rounded-pill border-nano bg-surface-overlay',
-              colorToneBorder[color][colorTone],
+              colorToneBorder[color][colorTone]
             )}
           >
             <View className="scale-[0.8]">
@@ -63,7 +63,7 @@ const RadioButton = ({
                 name="circle"
                 colorVariant={checked ? color : undefined}
                 colorTone={checked ? colorTone : undefined}
-                fontColor={checked ? undefined : 'medium'}
+                fontColor={checked ? undefined : 'minimal'}
                 type="material-community"
                 size="centi"
               />

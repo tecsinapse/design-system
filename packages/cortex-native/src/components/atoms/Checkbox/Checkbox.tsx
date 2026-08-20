@@ -42,7 +42,7 @@ const Checkbox = ({
   const boxClass = clsx(
     'rounded-micro border-nano',
     colorToneBorder[color][colorTone],
-    checked ? colorToneBg[color][colorTone] : 'bg-surface-overlay',
+    checked ? colorToneBg[color][colorTone] : 'bg-surface-overlay'
   );
 
   return (
@@ -61,7 +61,7 @@ const Checkbox = ({
           <View className={boxClass}>
             <Icon
               name={checked ? 'check' : 'checkbox-blank'}
-              fontColor={checked ? 'inverse' : 'medium'}
+              fontColor={checked ? 'inverse' : 'minimal'}
               type="material-community"
               size="centi"
             />

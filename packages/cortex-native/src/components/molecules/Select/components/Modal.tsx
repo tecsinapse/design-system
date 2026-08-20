@@ -24,10 +24,18 @@ const Modal = <Data, Type extends SelectType>(
     confirmButtonText,
   } = props;
 
-  const { searchArg, setSearchArg, getData, renderItem, closeOnPick, handleConfirm, close } = useModal(props);
+  const {
+    searchArg,
+    setSearchArg,
+    getData,
+    renderItem,
+    closeOnPick,
+    handleConfirm,
+    close,
+  } = useModal(props);
 
   return (
-    <View className="w-full flex-col">
+    <View className="flex-1 w-full flex-col">
       <View className="flex-row items-center justify-between px-deca py-centi">
         {selectModalTitleComponent ? (
           selectModalTitleComponent
