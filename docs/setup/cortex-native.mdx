@@ -66,6 +66,31 @@ import './global.css';
 Wrap your app with the native `ThemeProvider` from `@tecsinapse/cortex-native` (light/dark/system themes) and call
 `Uniwind.setTheme` / `useUniwind` when the theme changes — see the rn-playground `App.tsx` for a working example.
 
+## Modal system
+
+The `ModalView`/`useModalManager`/`useModalRemoteControl` system renders every open modal through a single native
+overlay. For modals to open you **must** mount `<ModalGroupManager />` once at your app root, alongside the
+`ThemeProvider`:
+
+```jsx
+import { ModalGroupManager, ThemeProvider } from '@tecsinapse/cortex-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <ThemeProvider theme="light">
+        <AppContent />
+        <ModalGroupManager />
+      </ThemeProvider>
+    </SafeAreaProvider>
+  );
+}
+```
+
+If it is missing, `show()` from `useModalManager` is a no-op and the modal never appears. (`Select` renders its option
+list through its own built-in modal and does not require `ModalGroupManager`.)
+
 ## Icons & fonts
 
 Components use `react-native-vector-icons` (peer). Fonts must be linked per the RN env setup docs; the default font is

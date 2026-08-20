@@ -13,10 +13,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BoxContent from '../../../atoms/BoxContent/BoxContent';
 import { IBaseModal } from './types';
 
-const BACKDROP_ALPHA = 0.5;
-const INTERPOLATION_STEPS = 10;
+const BACKDROP_COLOR = 'rgba(0, 0, 0, 0.5)';
 const INTERPOLATION_DURATION = 195; //ms
-const OPACITY_DURATION = 25; //ms
 
 export const ModalView: FC<IBaseModal> = ({
   children,
@@ -30,12 +28,10 @@ export const ModalView: FC<IBaseModal> = ({
   onClose,
 }) => {
   const { bottom } = useSafeAreaInsets();
-  const [ready, setReady] = useState(false);
   const [keyboardOpened, setKeyboardOpened] = useState(0);
   const [boxHeight, setBoxHeight] = useState(0);
   const backgroundCarrier = useRef(new Animated.Value(0)).current;
   const translationCarrier = useRef(new Animated.Value(0)).current;
-  const opacityCarrier = useRef(new Animated.Value(0)).current;
   const offset = isLastShown && keyboardOpened > 0 ? 0 : bottom;
 
   const getKeyboardHeight = (keyboard: number) => {
@@ -50,43 +46,23 @@ export const ModalView: FC<IBaseModal> = ({
   };
 
   const show = useCallback(() => {
-    Animated.sequence([
-      Animated.timing(backgroundCarrier, {
-        toValue: INTERPOLATION_STEPS,
-        duration: INTERPOLATION_DURATION,
-        easing: Easing.out(Easing.circle),
-        useNativeDriver: false,
-      }),
-      Animated.timing(opacityCarrier, {
-        toValue: 1,
-        duration: OPACITY_DURATION,
-        useNativeDriver: true,
-      }),
-      Animated.timing(translationCarrier, {
-        toValue: 0,
-        duration: INTERPOLATION_DURATION,
-        easing: Easing.out(Easing.circle),
-        useNativeDriver: true,
-      }),
-    ]).start();
+    Animated.timing(backgroundCarrier, {
+      toValue: 1,
+      duration: INTERPOLATION_DURATION,
+      easing: Easing.out(Easing.circle),
+      useNativeDriver: false,
+    }).start();
   }, []);
 
   const hide = useCallback(
     (to: number) => {
-      Animated.sequence([
-        Animated.parallel([
-          Animated.timing(translationCarrier, {
-            toValue: to,
-            duration: INTERPOLATION_DURATION,
-            easing: Easing.out(Easing.circle),
-            useNativeDriver: true,
-          }),
-          Animated.timing(opacityCarrier, {
-            toValue: 0,
-            duration: INTERPOLATION_DURATION,
-            useNativeDriver: true,
-          }),
-        ]),
+      Animated.parallel([
+        Animated.timing(translationCarrier, {
+          toValue: to,
+          duration: INTERPOLATION_DURATION,
+          easing: Easing.out(Easing.circle),
+          useNativeDriver: true,
+        }),
         Animated.timing(backgroundCarrier, {
           toValue: 0,
           duration: INTERPOLATION_DURATION,
@@ -98,32 +74,18 @@ export const ModalView: FC<IBaseModal> = ({
     [onClose]
   );
 
-  const backgroundOpacity = backgroundCarrier.interpolate({
-    inputRange: [0, INTERPOLATION_STEPS],
-    outputRange: [0, BACKDROP_ALPHA],
-  });
-
-  const handleBoxLayoutChanges = useCallback(
-    (lce: LayoutChangeEvent) => {
-      const boxHeightEvent = lce.nativeEvent.layout.height;
-      setBoxHeight(boxHeightEvent);
-
-      if (visible && !ready) {
-        translationCarrier.setValue(boxHeightEvent);
-        setReady(true);
-      }
-    },
-    [visible, ready]
-  );
+  const handleBoxLayoutChanges = useCallback((lce: LayoutChangeEvent) => {
+    setBoxHeight(lce.nativeEvent.layout.height);
+  }, []);
 
   useEffect(() => {
-    if (visible && ready) requestAnimationFrame(() => show());
-    if (!visible && !ready) {
+    if (visible) {
+      show();
+    } else {
       Keyboard.dismiss();
-      requestAnimationFrame(() => hide(boxHeight));
+      hide(boxHeight);
     }
-    if (!visible && ready) setReady(false);
-  }, [ready, visible]);
+  }, [visible]);
 
   useEffect(() => {
     const showEvent = Keyboard.addListener('keyboardDidShow', e =>
@@ -144,15 +106,23 @@ export const ModalView: FC<IBaseModal> = ({
       onPress={!frozen ? close : undefined}
     >
       <Animated.View
-        className="bg-black/50"
-        style={{ justifyContent: 'flex-end', flex: 1, opacity: backgroundOpacity }}
-      >
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: BACKDROP_COLOR,
+          opacity: backgroundCarrier,
+        }}
+      />
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
         <Animated.View
           style={{
-            ...(isLastShown && isRaiseKeyboard && {
-              paddingBottom: getKeyboardHeight(keyboardOpened),
-            }),
-            opacity: opacityCarrier,
+            ...(isLastShown &&
+              isRaiseKeyboard && {
+                paddingBottom: getKeyboardHeight(keyboardOpened),
+              }),
             transform: [{ translateY: translationCarrier }],
           }}
         >
@@ -178,7 +148,7 @@ export const ModalView: FC<IBaseModal> = ({
             </BoxComponent>
           </Pressable>
         </Animated.View>
-      </Animated.View>
+      </View>
     </Pressable>
   );
 };

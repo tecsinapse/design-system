@@ -43,6 +43,9 @@ Follow in order. Do not skip verification.
      ```
      Import `./global.css` in the app entry file (NOT the registration entry).
    - Wrap the app root in the native `ThemeProvider` from `@tecsinapse/cortex-native` (`theme="light"|"dark"|"system"`).
+   - **Mount `<ModalGroupManager />` once at the root** (sibling of `ThemeProvider`). It renders every
+     `ModalView`/`useModalManager` modal through a single native overlay — without it `show()` is a no-op and the
+     modal never opens. `Select`'s option list uses its own built-in modal and does not need it.
 
 2. **Audit imports** — grep the app for `@tecsinapse/react-native-kit`, `@tecsinapse/react-core`,
    `@tecsinapse/react-charts`. Rewrite each import using the mapping table.
@@ -93,11 +96,18 @@ Follow in order. Do not skip verification.
 - **Expecting web-only classes to be stateful on RN**: `hover:`, `active:`, `disabled:`, `transition` do NOT behave as
   state on native. Use Pressable state/opacity instead.
 - **Missing `@source` in global.css** → components render unstyled silently.
+- **Forgetting to mount `<ModalGroupManager />`** → `useModalManager`/`useModalRemoteControl` modals silently never
+  open (`show()` is a no-op). Mount it once at the root next to `ThemeProvider`.
 - **Forgetting both token css files** (`tokens.css` AND `tokens-native.css`) → dark theme tokens missing.
 - **Leaving legacy deps/emotion installed** after migration.
 
 ## RN-app infrastructure (not cortex-native, but blocks verification)
 
+- **React Compiler (`experiments.reactCompiler: true` in app.json)** breaks components that read mutable
+  module singletons during render — the compiler memoizes the read, so the value stays stale (e.g. modals never
+  opening; jest passes because the app babel config isn't applied there). The Modal system is compiler-safe: it
+  exposes its state via `useSyncExternalStore` (`modalLifecycle.subscribe`/`getSnapshot`). When adding new
+  singleton-based components, follow that store pattern — never call external mutable getters during render.
 - **Storybook v10 backgrounds addon** expects `parameters.backgrounds.values` (array of `{ name, value }`) + `default`,
   not the v9 keyed `options` object — the decorator crashes on `backgrounds.length` if `values` is undefined.
 - **`@gorhom/bottom-sheet` v4 breaks on Reanimated 4** (`useWorkletCallback` was removed). On SDK 57 / Reanimated 4 apps

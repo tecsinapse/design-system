@@ -1,5 +1,12 @@
-import React from 'react';
-import { Modal, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {
+  Dimensions,
+  Keyboard,
+  Modal,
+  Pressable,
+  StatusBar,
+  View,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '../../atoms/Icon/Icon';
 import Text from '../../atoms/Text/Text';
@@ -45,6 +52,31 @@ function Select<Data, Type extends SelectType>(
   } = useSelect(props);
 
   const { bottom } = useSafeAreaInsets();
+  const [keyboardOpened, setKeyboardOpened] = useState(0);
+
+  const getKeyboardHeight = (keyboard: number) => {
+    if (keyboard === 0) return 0;
+
+    const wHeight = Math.ceil(Dimensions.get('window').height);
+    const sHeight = Math.ceil(Dimensions.get('screen').height);
+    if (wHeight !== sHeight) {
+      return keyboard + (sHeight - wHeight - (StatusBar.currentHeight || 0));
+    }
+    return keyboard;
+  };
+
+  useEffect(() => {
+    const showEvent = Keyboard.addListener('keyboardDidShow', e =>
+      setKeyboardOpened(e.endCoordinates.height)
+    );
+    const hideEvent = Keyboard.addListener('keyboardDidHide', () =>
+      setKeyboardOpened(0)
+    );
+    return () => {
+      showEvent.remove();
+      hideEvent.remove();
+    };
+  }, []);
 
   return (
     <>
@@ -81,29 +113,50 @@ function Select<Data, Type extends SelectType>(
         animationType="slide"
         onRequestClose={handleClose}
       >
-        <View className="flex-1 justify-end" style={{ paddingBottom: bottom }}>
-          <View className="h-3/4 bg-surface-overlay rounded-t-deca">
-            <SelectModal
-              options={selectOptions ?? []}
-              focused={true}
-              keyExtractor={keyExtractor}
-              labelExtractor={labelExtractor}
-              groupLabelExtractor={groupLabelExtractor}
-              searchBarPlaceholder={searchBarPlaceholder}
-              type={type}
-              onSelect={onSelect}
-              value={value}
-              hideSearchBar={hideSearchBar}
-              onSearch={handleOnSearch}
-              selectModalTitle={selectModalTitle}
-              selectModalTitleComponent={selectModalTitleComponent}
-              confirmButtonText={confirmButtonText}
-              loading={loading}
-              onClose={handleClose}
-              closeOnPick={closeOnPick}
-            />
+        <Pressable
+          testID="select-backdrop"
+          style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          onPress={handleClose}
+        >
+          <View
+            testID="select-sheet"
+            style={{
+              flex: 1,
+              justifyContent: 'flex-end',
+              paddingBottom: getKeyboardHeight(keyboardOpened),
+            }}
+          >
+            <Pressable
+              onPress={event => event.stopPropagation()}
+              style={{ height: '75%' }}
+            >
+              <View
+                className="bg-surface-overlay rounded-t-deca"
+                style={{ flex: 1, paddingBottom: bottom }}
+              >
+                <SelectModal
+                  options={selectOptions ?? []}
+                  focused={true}
+                  keyExtractor={keyExtractor}
+                  labelExtractor={labelExtractor}
+                  groupLabelExtractor={groupLabelExtractor}
+                  searchBarPlaceholder={searchBarPlaceholder}
+                  type={type}
+                  onSelect={onSelect}
+                  value={value}
+                  hideSearchBar={hideSearchBar}
+                  onSearch={handleOnSearch}
+                  selectModalTitle={selectModalTitle}
+                  selectModalTitleComponent={selectModalTitleComponent}
+                  confirmButtonText={confirmButtonText}
+                  loading={loading}
+                  onClose={handleClose}
+                  closeOnPick={closeOnPick}
+                />
+              </View>
+            </Pressable>
           </View>
-        </View>
+        </Pressable>
       </Modal>
     </>
   );

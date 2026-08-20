@@ -133,6 +133,38 @@ export const Single = {
   },
 };
 
+export const SingleSearch = {
+  render: (args: IStory) => {
+    const [singleValue, setSingleValue] = useState<Option | undefined>(
+      undefined
+    );
+
+    function handleSelectSingleValue(key: Option | undefined) {
+      setSingleValue(key);
+    }
+
+    const handleSearch = React.useCallback((searchArg: string) => {
+      return options.filter(value => {
+        if (searchArg) return value.label.includes(searchArg);
+        else return true;
+      });
+    }, []);
+
+    return (
+      <Select
+        {...args}
+        options={options}
+        value={singleValue}
+        type={'single'}
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+        onSearch={handleSearch}
+      />
+    );
+  },
+};
+
 export const SingleFetch = (args: IStory) => {
   const [fetchSingleValue, setFetchSingleValue] = useState<Option | undefined>(
     undefined

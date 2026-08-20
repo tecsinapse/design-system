@@ -1,13 +1,14 @@
-import React, { FC, ReactElement, useState } from 'react';
-import { ModalProps, Modal as RNModal } from 'react-native';
+import React, { FC, useSyncExternalStore } from 'react';
+import { Modal as RNModal, ModalProps } from 'react-native';
 import { createModalLifecycleHandler } from './ModalLifecycleHandler';
-import { IBaseModal } from './ui/types';
 
 export const modalLifecycle = createModalLifecycleHandler();
 
 export const ModalGroupManager: FC<ModalProps> = ({ children, ...others }) => {
-  modalLifecycle.attach(useState<ReactElement<IBaseModal>[]>([]));
-  const _render = modalLifecycle.render();
+  const _render = useSyncExternalStore(
+    modalLifecycle.subscribe,
+    modalLifecycle.getSnapshot
+  );
   const hasModals = _render.length > 0;
 
   return (

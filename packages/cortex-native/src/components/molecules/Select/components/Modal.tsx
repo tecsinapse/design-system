@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Pressable, View } from 'react-native';
 import Button from '../../../atoms/Button/Button';
 import Icon from '../../../atoms/Icon/Icon';
-import InputElement from '../../../atoms/Input/InputElement';
+import Input from '../../../atoms/Input/Input';
 import Text from '../../../atoms/Text/Text';
 import useModal from '../hooks/useModal';
 import { LoadingProps, OverrideModalProps, SelectType } from '../types';
@@ -51,10 +51,13 @@ const Modal = <Data, Type extends SelectType>(
 
       {!hideSearchBar ? (
         <View className="px-deca py-centi">
-          <InputElement
+          <Input
             placeholder={searchBarPlaceholder}
             value={searchArg}
             onChange={setSearchArg}
+            leftComponent={
+              <Icon name="search" type="ionicon" size="centi" fontColor="low" />
+            }
           />
         </View>
       ) : null}

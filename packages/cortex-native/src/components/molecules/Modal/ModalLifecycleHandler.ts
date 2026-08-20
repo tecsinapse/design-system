@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { IBaseModal } from './ui/types';
 
 interface ModalNode {
@@ -10,54 +10,47 @@ interface ModalNode {
 
 export class ModalLifecycleHandler {
   nodeGroup: Map<string, ModalNode>;
-  state:
-    | [ReactElement<IBaseModal>[], Dispatch<ReactElement<IBaseModal>[]>]
-    | undefined;
+  private listeners: Set<() => void> = new Set();
+  private _nodes: ReactElement<IBaseModal>[] = [];
 
   constructor() {
     this.nodeGroup = new Map();
-    this.state = undefined;
   }
 
-  public attach = (
-    state: [ReactElement<IBaseModal>[], Dispatch<ReactElement<IBaseModal>[]>]
-  ) => {
-    this.state = state;
+  public subscribe = (listener: () => void) => {
+    this.listeners.add(listener);
+    return () => {
+      this.listeners.delete(listener);
+    };
   };
+
+  public getSnapshot = (): ReactElement<IBaseModal>[] => this._nodes;
 
   public update = () => {
-    requestAnimationFrame(() => {
-      const nodes = Array.from(this.nodeGroup.values())
-        .filter(node => node.visible || !!node.lastVisualization)
-        .sort(
-          (nodeA, nodeB) =>
-            (nodeA.lastVisualization?.getTime() || 0) -
-            (nodeB.lastVisualization?.getTime() || 0)
-        )
-        .map((node, index, filteredNodes) => {
-          const modalElement = node.modal();
-          const { props } = modalElement;
-          return React.cloneElement(modalElement, {
-            ...props,
-            key: node.id,
-            visible: node.visible,
-            isLastShown: filteredNodes.length - 1 === index,
-            close: () => this.close(node.id),
-            onClose: () => {
-              this.remove(node.id);
-              props.onClose?.();
-            },
-          });
+    this._nodes = Array.from(this.nodeGroup.values())
+      .filter(node => node.visible || !!node.lastVisualization)
+      .sort(
+        (nodeA, nodeB) =>
+          (nodeA.lastVisualization?.getTime() || 0) -
+          (nodeB.lastVisualization?.getTime() || 0)
+      )
+      .map((node, index, filteredNodes) => {
+        const modalElement = node.modal();
+        const { props } = modalElement;
+        return React.cloneElement(modalElement, {
+          ...props,
+          key: node.id,
+          visible: node.visible,
+          isLastShown: filteredNodes.length - 1 === index,
+          close: () => this.close(node.id),
+          onClose: () => {
+            this.remove(node.id);
+            props.onClose?.();
+          },
         });
+      });
 
-      const [, updateState] = this.state || [];
-      updateState?.(nodes);
-    });
-  };
-
-  public render = (): ReactElement<IBaseModal>[] => {
-    const [modals] = this.state || [];
-    return modals || [];
+    this.listeners.forEach(listener => listener());
   };
 
   public sync = (id: string, modal: () => ReactElement<IBaseModal>) => {
@@ -72,19 +65,6 @@ export class ModalLifecycleHandler {
   public destroy = (id: string) => {
     this.nodeGroup.delete(id);
     this.update();
-  };
-
-  private remove = (id: string) => {
-    const savedNode = this.findNode(id);
-    if (savedNode)
-      this.nodeGroup.set(id, { ...savedNode, lastVisualization: undefined });
-    this.update();
-  };
-
-  private findNode = (id: string) => {
-    const node = this.nodeGroup.get(id);
-    if (!node) console.warn(`No modal was found with the id "${id}"`);
-    return node;
   };
 
   public show = (id: string) => {
@@ -105,9 +85,21 @@ export class ModalLifecycleHandler {
   };
 
   public closeLastOpenedModal = (): void => {
-    const [modals] = this.state || [];
-    const lastModal = modals?.pop();
+    const lastModal = this._nodes[this._nodes.length - 1];
     lastModal?.props?.close?.();
+  };
+
+  private remove = (id: string) => {
+    const savedNode = this.findNode(id);
+    if (savedNode)
+      this.nodeGroup.set(id, { ...savedNode, lastVisualization: undefined });
+    this.update();
+  };
+
+  private findNode = (id: string) => {
+    const node = this.nodeGroup.get(id);
+    if (!node) console.warn(`No modal was found with the id "${id}"`);
+    return node;
   };
 }
 
