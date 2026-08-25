@@ -14,5 +14,13 @@ export default {
       targets: [{ src: 'src/default.css', dest: 'dist' }],
     }),
   ],
-  external: ['tailwind-variants', 'clsx', 'tailwind-merge'],
+  external: [
+    /^react(\/|$)/,
+    /^date-fns(\/|$)/,
+    'tailwind-variants',
+    'clsx',
+    'tailwind-merge',
+    'currency.js',
+    'polished',
+  ],
 };

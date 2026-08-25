@@ -13,7 +13,7 @@
   "scripts": {
     "dev:es": "rolldown --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
-    "build:es": "rimraf dist && rolldown --config",
+    "build:es": "rimraf -rf dist && rolldown --config",
     "build:dts": "tsc --project tsconfig.build.json"
   },
   "dependencies": {
@@ -34,6 +34,7 @@
   },
   "homepage": "https://tecsinapse.github.io/design-system/",
   "peerDependencies": {
+    "react": ">=18.0.0 || ^19.0.0",
     "tailwindcss": "catalog:"
   }
 }

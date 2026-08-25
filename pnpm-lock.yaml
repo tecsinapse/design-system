@@ -412,8 +412,8 @@ importers:
         specifier: 'catalog:'
         version: 11.14.0(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
       '@gorhom/bottom-sheet':
-        specifier: ^4.6.4
-        version: 4.6.4(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
+        specifier: ^5.2.14
+        version: 5.2.14(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       '@react-native-async-storage/async-storage':
         specifier: 2.2.0
         version: 2.2.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))
@@ -429,6 +429,9 @@ importers:
       '@tecsinapse/react-native-kit':
         specifier: workspace:*
         version: link:../react-native-kit
+      expo:
+        specifier: ~57.0.7
+        version: 57.0.11(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1)(typescript@5.7.3)
       expo-font:
         specifier: ~57.0.1
         version: 57.0.1(expo@57.0.11(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1)(typescript@5.7.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
@@ -472,9 +475,6 @@ importers:
       '@babel/plugin-transform-private-methods':
         specifier: ^7.24.1
         version: 7.24.1(@babel/core@7.29.7(supports-color@8.1.1))
-      '@storybook/addon-actions':
-        specifier: ^9.0.8
-        version: 9.0.8
       '@storybook/addon-ondevice-actions':
         specifier: 'catalog:'
         version: 10.5.4(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(storybook@10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3))
@@ -483,10 +483,10 @@ importers:
         version: 10.5.4(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(storybook@10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3))
       '@storybook/addon-ondevice-controls':
         specifier: 'catalog:'
-        version: 10.5.4(7e9f465d074414883b4dd6b761f2e396)
+        version: 10.5.4(ee6261c25ba60abb7271d6813e3b974a)
       '@storybook/react-native':
         specifier: 'catalog:'
-        version: 10.5.4(4b07ec879a7eeb5ab90624b942b716e7)
+        version: 10.5.4(bf65fd8a1f81f113d94f9b089796c50c)
       '@types/react':
         specifier: ^19.2.18
         version: 19.2.18
@@ -502,9 +502,6 @@ importers:
       babel-preset-expo:
         specifier: ~57.0.6
         version: 57.0.6(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(expo@57.0.11(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1)(typescript@5.7.3))(react-refresh@0.14.2)(supports-color@8.1.1)
-      expo:
-        specifier: ^57.0.11
-        version: 57.0.11(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1)(typescript@5.7.3)
 
 packages:
 
@@ -1485,15 +1482,15 @@ packages:
     resolution: {integrity: sha512-GmzA9ckNokPypTg10pgpeHNQe7ph+iIKKmhKu3Ob9ANkswreCx7R3cKmY781K8QK3AqVL3xVh9A42JvIAbkkSA==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  '@gorhom/bottom-sheet@4.6.4':
-    resolution: {integrity: sha512-0itLMblLBvepE065w3a60S030c2rNUsGshPC7wbWDm31VyqoaU2xjzh/ojH62YIJOcobBr5QoC30IxBBKDGovQ==}
+  '@gorhom/bottom-sheet@5.2.14':
+    resolution: {integrity: sha512-uLQFlDjp9z+jrOFcMSEldPqL5JdaXL3vXOh+juhwoNvXgTsEorJLjHTugXu+YccAG/0KJnShzKCrb71MHBsvJg==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-native': '*'
       react: '*'
       react-native: '*'
-      react-native-gesture-handler: '>=1.10.1'
-      react-native-reanimated: '>=2.2.0'
+      react-native-gesture-handler: '>=2.16.1'
+      react-native-reanimated: '>=3.16.0 || >=4.0.0-'
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -2549,9 +2546,6 @@ packages:
 
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
-
-  '@storybook/addon-actions@9.0.8':
-    resolution: {integrity: sha512-LFePu7PPnWN0Il/uoUpmA5T0J0C7d6haJIbg0pXrjxW2MQVSYXE4S4LSUz8fOImltBDV3xAl6tLPYHFj6VcrOA==}
 
   '@storybook/addon-docs@10.5.7':
     resolution: {integrity: sha512-KNARJfjICaizinsR3INMEiipZm1ObYo+xw+E26gteu50Bcy2dIZUtk5uHY5XdtardU3AXX6yRXoBZ2HCY3lbHA==}
@@ -8447,7 +8441,7 @@ snapshots:
 
   '@gar/promise-retry@1.0.3': {}
 
-  '@gorhom/bottom-sheet@4.6.4(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)':
+  '@gorhom/bottom-sheet@5.2.14(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)':
     dependencies:
       '@gorhom/portal': 1.0.14(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       invariant: 2.2.4
@@ -8461,7 +8455,7 @@ snapshots:
 
   '@gorhom/portal@1.0.14(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)':
     dependencies:
-      nanoid: 3.3.16
+      nanoid: 3.3.17
       react: 19.2.3
       react-native: 0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
 
@@ -9434,8 +9428,6 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
-  '@storybook/addon-actions@9.0.8': {}
-
   '@storybook/addon-docs@10.5.7(@types/react@19.2.18)(esbuild@0.28.1)(rollup@4.62.4)(storybook@10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3))(vite@8.2.1(esbuild@0.28.1)(jiti@2.7.0)(terser@5.31.0)(yaml@2.9.0))':
     dependencies:
       '@mdx-js/react': 3.0.1(@types/react@19.2.18)(react@19.2.3)
@@ -9470,7 +9462,7 @@ snapshots:
       react-native: 0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
       storybook: 10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3)
 
-  '@storybook/addon-ondevice-controls@10.5.4(7e9f465d074414883b4dd6b761f2e396)':
+  '@storybook/addon-ondevice-controls@10.5.4(ee6261c25ba60abb7271d6813e3b974a)':
     dependencies:
       '@gorhom/portal': 1.0.14(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       '@react-native-community/datetimepicker': 9.1.0(expo@57.0.11(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1)(typescript@5.7.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
@@ -9484,7 +9476,7 @@ snapshots:
       storybook: 10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3)
       tinycolor2: 1.6.0
     optionalDependencies:
-      '@gorhom/bottom-sheet': 4.6.4(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
+      '@gorhom/bottom-sheet': 5.2.14(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
@@ -9568,9 +9560,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@storybook/react-native-ui@10.5.4(9f1f96eeecbb6bdf8d347c477ecd115b)':
+  '@storybook/react-native-ui@10.5.4(44d64220e67e8c97851b0c0afdac4110)':
     dependencies:
-      '@gorhom/bottom-sheet': 4.6.4(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
+      '@gorhom/bottom-sheet': 5.2.14(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       '@gorhom/portal': 1.0.14(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       '@nozbe/microfuzz': 1.0.0
       '@storybook/react': 10.5.4(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3))(supports-color@8.1.1)(typescript@5.7.3)
@@ -9591,12 +9583,12 @@ snapshots:
       - supports-color
       - typescript
 
-  '@storybook/react-native@10.5.4(4b07ec879a7eeb5ab90624b942b716e7)':
+  '@storybook/react-native@10.5.4(bf65fd8a1f81f113d94f9b089796c50c)':
     dependencies:
       '@storybook/mcp': 0.8.0(typescript@5.7.3)
       '@storybook/react': 10.5.4(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3))(supports-color@8.1.1)(typescript@5.7.3)
       '@storybook/react-native-theming': 10.5.4(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
-      '@storybook/react-native-ui': 10.5.4(9f1f96eeecbb6bdf8d347c477ecd115b)
+      '@storybook/react-native-ui': 10.5.4(44d64220e67e8c97851b0c0afdac4110)
       '@storybook/react-native-ui-common': 10.5.4(@types/react@19.2.18)(react-dom@19.2.3(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(storybook@10.5.7(@types/react@19.2.18)(prettier@3.9.6)(react@19.2.3))(supports-color@8.1.1)(typescript@5.7.3)
       '@tmcp/adapter-valibot': 0.1.6(tmcp@1.19.4(typescript@5.7.3))(typescript@5.7.3)
       '@tmcp/transport-http': 0.8.6(tmcp@1.19.4(typescript@5.7.3))
@@ -9615,7 +9607,7 @@ snapshots:
       valibot: 1.4.2(typescript@5.7.3)
       ws: 8.21.1
     optionalDependencies:
-      '@gorhom/bottom-sheet': 4.6.4(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
+      '@gorhom/bottom-sheet': 5.2.14(@types/react-native@0.70.19)(@types/react@19.2.18)(react-native-gesture-handler@2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native-reanimated@4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       react-native-gesture-handler: 2.32.0(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       react-native-reanimated: 4.5.3(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.2(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
     transitivePeerDependencies:
