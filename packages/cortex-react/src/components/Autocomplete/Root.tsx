@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Popover } from '../Popover';
 import { AutocompleteContext } from './context';
 import { AutocompleteRootProps } from './types';
@@ -7,9 +7,14 @@ export const AutocompleteRoot = <T,>({
   keyExtractor,
   labelExtractor,
   children,
+  onOpenChange,
 }: AutocompleteRootProps<T>) => {
   const [triggerWidth, setTriggerWidth] = useState<number>();
   const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    onOpenChange?.(open);
+  }, [open, onOpenChange]);
 
   return (
     <AutocompleteContext.Provider

@@ -10,6 +10,7 @@ export interface AutocompleteRootProps<T> {
   labelExtractor: (option: T) => string;
   children: ReactNode;
   className?: string;
+  onOpenChange?: (open: boolean) => void;
 }
 
 export interface AutocompleteTriggerProps {
