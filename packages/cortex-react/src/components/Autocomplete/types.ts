@@ -24,6 +24,9 @@ export interface AutocompleteTriggerProps {
 export interface AutocompletePopoverProps {
   children: ReactNode;
   className?: string;
+  /** Override the FloatingPortal mount node. When omitted, falls back to
+   *  the closest <PortalProvider>'s root, then to `document.body`. */
+  root?: HTMLElement | null;
 }
 
 export interface AutocompleteOptionsProps<T> {

@@ -59,6 +59,9 @@ export interface SelectOptionsProps<T> {
 export interface SelectPopoverProps {
   /** child element */
   children: ReactNode;
+  /** Override the FloatingPortal mount node. When omitted, falls back to
+   *  the closest <PortalProvider>'s root, then to `document.body`. */
+  root?: HTMLElement | null;
 }
 export interface SelectRootProps<T> {
   /** child element */
