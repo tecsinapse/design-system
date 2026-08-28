@@ -35,4 +35,3 @@ export * from './Uploader';
 export * from './Autocomplete';
 export * from './PhoneInput';
 export * from './Chip';
-export * from './SelectableCard';

@@ -1,5 +1,6 @@
+import React, { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import { FiTrash } from 'react-icons/fi';
 import { IoMdArrowForward } from 'react-icons/io';
 import { Button, Card } from '../src';
 
@@ -24,5 +25,30 @@ export const Default: StoryObj<typeof Card> = {
   },
   render: args => {
     return <Card>{args.children}</Card>;
+  },
+};
+
+export const Selectable: StoryObj<typeof Card> = {
+  render: () => {
+    const [isSelected, setIsSelected] = useState(false);
+
+    return (
+      <div className="w-80">
+        <Card
+          variants={{ selectable: true, isSelected }}
+          className="flex items-center justify-between"
+          onClick={() => setIsSelected(isSelected => !isSelected)}
+        >
+          My Selectable Card
+          <FiTrash
+            className="cursor-pointer hover:text-primary-medium transition-all duration-300 text-deca"
+            onClick={e => {
+              e.stopPropagation();
+              // handle remove
+            }}
+          />
+        </Card>
+      </div>
+    );
   },
 };
