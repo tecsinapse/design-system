@@ -3,14 +3,14 @@ import { Popover } from '../Popover';
 import { SelectPopoverProps } from './types';
 import { FloatingPortal } from '@floating-ui/react';
 import { SelectContext } from './context';
-import { usePortalRoot } from '../../provider';
+import { useResolvedPortalRoot } from '../../provider';
 
 export const SelectPopover = ({ children, root }: SelectPopoverProps) => {
   const { triggerWidth } = useContext(SelectContext);
-  const portalRoot = usePortalRoot();
+  const portalRoot = useResolvedPortalRoot(root);
 
   return (
-    <FloatingPortal root={root ?? portalRoot ?? undefined}>
+    <FloatingPortal root={portalRoot}>
       <Popover.Content
         className="bg-surface-overlay max-h-[30vh] overflow-y-auto gap-y-mili flex flex-col p-0"
         style={{

@@ -2,7 +2,7 @@ import { FloatingArrow, Placement, FloatingPortal } from '@floating-ui/react';
 import React, { forwardRef, useRef } from 'react';
 import { useFloatingElement, type Delay } from '../hooks';
 import { cloneWithProps } from '../utils';
-import { usePortalRoot } from '../provider';
+import { useResolvedPortalRoot, type PortalRoot } from '../provider';
 
 interface TooltipProps {
   /** child element */
@@ -19,9 +19,11 @@ interface TooltipProps {
    */
   delay?: Delay;
   style?: React.CSSProperties;
-  /** Override the FloatingPortal mount node. When omitted, falls back to
-   *  the closest <PortalProvider>'s root, then to `document.body`. */
-  root?: HTMLElement | null;
+  /** Override the FloatingPortal mount node. Pass an `HTMLElement`, a
+   *  `RefObject<HTMLElement>`, or `null` to opt out of any ancestor
+   *  `<PortalProvider>`. When omitted, falls back to the closest
+   *  `<PortalProvider>`'s root, then to `document.body`. */
+  root?: PortalRoot;
 }
 
 /** Tooltip Component */
@@ -39,7 +41,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       root,
     } = props;
   const arrowRef = useRef<SVGSVGElement | null>(null);
-  const portalRoot = usePortalRoot();
+  const portalRoot = useResolvedPortalRoot(root);
 
     const {
       isOpen,
@@ -57,7 +59,7 @@ export const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       <>
         {cloneWithProps(children, triggerProps as any)}
         {isOpen ? (
-          <FloatingPortal root={root ?? portalRoot ?? undefined}>
+          <FloatingPortal root={portalRoot}>
             <div
               ref={ref || refs.setFloating}
               className={

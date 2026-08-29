@@ -1,20 +1,14 @@
 import { FloatingPortal } from '@floating-ui/react';
 import { Popover } from '../Popover';
-import { ReactNode } from 'react';
 import { usePhoneContext } from './context';
-import { usePortalRoot } from '../../provider';
+import { useResolvedPortalRoot } from '../../provider';
+import type { PhoneInputPopoverProps } from './types';
 
-export const PhoneInputPopover = ({
-  children,
-  root,
-}: {
-  children: ReactNode;
-  root?: HTMLElement | null;
-}) => {
+export const PhoneInputPopover = ({ children, root }: PhoneInputPopoverProps) => {
   const { triggerWidth } = usePhoneContext();
-  const portalRoot = usePortalRoot();
+  const portalRoot = useResolvedPortalRoot(root);
   return (
-    <FloatingPortal root={root ?? portalRoot ?? undefined}>
+    <FloatingPortal root={portalRoot}>
       <Popover.Content
         className="bg-surface-overlay shadow-md rounded-md overflow-hidden h-full max-h-[30vh] outline-none z-9999"
         style={{

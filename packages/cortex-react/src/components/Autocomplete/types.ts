@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, ReactNode } from 'react';
+import type { PortalRoot } from '../../provider';
 
 export interface Option {
   label: string;
@@ -24,9 +25,11 @@ export interface AutocompleteTriggerProps {
 export interface AutocompletePopoverProps {
   children: ReactNode;
   className?: string;
-  /** Override the FloatingPortal mount node. When omitted, falls back to
-   *  the closest <PortalProvider>'s root, then to `document.body`. */
-  root?: HTMLElement | null;
+  /** Override the FloatingPortal mount node. Pass an `HTMLElement`, a
+   *  `RefObject<HTMLElement>`, or `null` to opt out of any ancestor
+   *  `<PortalProvider>`. When omitted, falls back to the closest
+   *  `<PortalProvider>`'s root, then to `document.body`. */
+  root?: PortalRoot;
 }
 
 export interface AutocompleteOptionsProps<T> {
