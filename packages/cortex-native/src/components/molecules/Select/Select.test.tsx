@@ -103,6 +103,27 @@ describe('Select', () => {
     expect(queryByText('Choose')).toBeNull();
   });
 
+  it('renders a close button and closes the modal when tapping it', () => {
+    const onSelect = jest.fn();
+    const { getByText, getByRole, getByTestId, queryByText } = render(
+      <Select
+        {...baseProps}
+        value={null}
+        placeholder="pick"
+        selectModalTitle="Choose"
+        onSelect={onSelect}
+      />
+    );
+
+    fireEvent.press(getByRole('button'));
+    expect(getByText('Choose')).toBeTruthy();
+    expect(getByTestId('select-close-button')).toBeTruthy();
+
+    fireEvent.press(getByTestId('select-close-button'));
+    expect(queryByText('Choose')).toBeNull();
+    expect(onSelect).not.toHaveBeenCalled();
+  });
+
   it('raises the options list when the keyboard opens', () => {
     const listeners: Record<string, (e?: any) => void> = {};
     jest.spyOn(Keyboard, 'addListener').mockImplementation(((

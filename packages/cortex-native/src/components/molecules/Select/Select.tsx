@@ -128,7 +128,7 @@ function Select<Data, Type extends SelectType>(
           >
             <Pressable
               onPress={event => event.stopPropagation()}
-              style={{ height: '75%' }}
+              style={{ height: '88%' }}
             >
               <View
                 className="bg-surface-overlay rounded-t-deca"

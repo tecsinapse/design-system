@@ -44,7 +44,13 @@ const Modal = <Data, Type extends SelectType>(
             {selectModalTitle ?? ''}
           </Text>
         )}
-        <Pressable onPress={close} accessibilityRole="button">
+        <Pressable
+          onPress={close}
+          accessibilityRole="button"
+          accessibilityLabel="Close"
+          testID="select-close-button"
+          className="bg-primary-medium items-center justify-center p-[14px] rounded-mili active:opacity-80"
+        >
           <Icon name="close" type="material-community" fontColor="light" />
         </Pressable>
       </View>
