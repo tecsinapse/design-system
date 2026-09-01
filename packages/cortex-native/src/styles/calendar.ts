@@ -9,12 +9,14 @@ export interface CalendarCellState {
   isRangeEnd: boolean;
 }
 
-// Base title-row styling. No background color — the title row sits on the
-// sheet's white surface (matches the legacy emotion stack design). `justify-
-// between` (month view) or `justify-center` (year view) is composed in by the
-// consumer; keep them out of this base so the rendered className never carries
-// conflicting utilities.
-export const calendarTitleRowBase = 'flex-row items-center';
+// Base title-row styling. Sits on a grey surface so the month/year header
+// reads as a distinct band above the grid (matches the legacy emotion stack
+// design — the grey band gives the picker its characteristic "header strip").
+// `justify-between` (month view) or `justify-center` (year view) is composed in
+// by the consumer; keep them out of this base so the rendered className never
+// carries conflicting utilities.
+export const calendarTitleRowBase =
+  'flex-row items-center bg-secondary-xlight';
 
 export const calendarControl = 'p-centi rounded-mili m-mili';
 

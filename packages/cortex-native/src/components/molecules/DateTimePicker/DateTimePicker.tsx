@@ -29,7 +29,9 @@ export interface DateTimePickerProps {
   onFocus?: () => void;
   onBlur?: () => void;
   TextComponent?: React.FC<TextProps>;
+  /** @deprecated No longer rendered — kept for backward compatibility. */
   dateModalTitle?: string;
+  /** @deprecated No longer rendered — kept for backward compatibility. */
   timeModalTitle?: string;
   dateConfirmButtonText?: string;
   timeConfirmButtonText?: string;
@@ -45,8 +47,12 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   mode = 'date',
   format = 'yyyy-MM-dd hh:mm:ss',
   locale,
-  dateModalTitle,
-  timeModalTitle,
+  // dateModalTitle/timeModalTitle are accepted for API compatibility but no
+  // longer render — the title bar was removed from the selector.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  dateModalTitle: _dateModalTitle,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  timeModalTitle: _timeModalTitle,
   dateConfirmButtonText,
   timeConfirmButtonText,
   monthLabel,
@@ -87,7 +93,6 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   const isDate = mode === 'date' || (mode === 'datetime' && currentMode === 0);
   const isMonth = mode === 'month';
 
-  const modalTitle = isDate || isMonth ? dateModalTitle : timeModalTitle;
   const confirmButtonText =
     isDate || isMonth ? dateConfirmButtonText : timeConfirmButtonText;
 
@@ -171,7 +176,6 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
                   handlePressConfirm={handlePressConfirm}
                   handlePressBack={handlePressBack}
                   handleCalendarChange={handleCalendarChange}
-                  modalTitle={modalTitle}
                   confirmButtonText={confirmButtonText}
                   TextComponent={TextComponent}
                   locale={locale}

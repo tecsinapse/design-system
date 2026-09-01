@@ -42,20 +42,20 @@ describe('DateTimePicker', () => {
     const { getByRole, getByText } = render(
       <DateTimePicker
         mode="date"
-        dateModalTitle="Pick date"
+        value={new Date(2026, 7, 15)}
         placeholder="pick"
         onChange={() => {}}
       />,
     );
     fireEvent.press(getByRole('button'));
-    expect(getByText('Pick date')).toBeTruthy();
+    expect(getByText('August 2026')).toBeTruthy();
   });
 
   it('renders the backdrop with the dim scrim color and closes on backdrop tap', () => {
     const { getByRole, getByTestId, queryByText } = render(
       <DateTimePicker
         mode="date"
-        dateModalTitle="Pick date"
+        value={new Date(2026, 7, 15)}
         placeholder="pick"
         onChange={() => {}}
       />,
@@ -63,16 +63,16 @@ describe('DateTimePicker', () => {
     fireEvent.press(getByRole('button'));
     const backdrop = getByTestId('datetimepicker-backdrop');
     expect(backdrop.props.style.backgroundColor).toBe('rgba(0, 0, 0, 0.5)');
-    expect(queryByText('Pick date')).toBeTruthy();
+    expect(queryByText('August 2026')).toBeTruthy();
     fireEvent.press(backdrop);
-    expect(queryByText('Pick date')).toBeNull();
+    expect(queryByText('August 2026')).toBeNull();
   });
 
   it('lets the calendar title row fill the sheet and respect the rounded top corners', () => {
     const { getByRole, getByTestId } = render(
       <DateTimePicker
         mode="date"
-        dateModalTitle="Pick date"
+        value={new Date(2026, 7, 15)}
         placeholder="pick"
         onChange={() => {}}
       />,

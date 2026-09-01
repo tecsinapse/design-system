@@ -104,4 +104,24 @@ describe('Calendar', () => {
     expect(betweenCells.length).toBeGreaterThan(0);
     expect(betweenCells[0].props.className).toContain('bg-primary-light');
   });
+
+  it('paints the title row with bg-secondary-xlight so it reads as a grey header band', () => {
+    const { root } = render(
+      <Calendar type="day" year={2026} month={7} onChange={() => {}} />,
+    );
+    // The title row carries `bg-secondary-xlight` (legacy emotion stack had
+    // `theme.color.secondary.xlight` on TitleContainer). The Calendar's title
+    // row composes `calendarTitleRowBase` with `justify-between`; both must be
+    // present in the className for the grey band to render.
+    const titleRows = root.findAll(n => {
+      const cn = n.props?.className;
+      return (
+        typeof cn === 'string' &&
+        cn.includes('flex-row') &&
+        cn.includes('items-center') &&
+        cn.includes('bg-secondary-xlight')
+      );
+    });
+    expect(titleRows.length).toBeGreaterThan(0);
+  });
 });

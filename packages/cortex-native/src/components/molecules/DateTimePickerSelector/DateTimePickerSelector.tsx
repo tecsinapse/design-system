@@ -18,7 +18,6 @@ export interface ControlledSelectorComponentProps {
   handlePressConfirm: () => void;
   handlePressBack: () => void;
   handleCalendarChange: (value?: Date) => void;
-  modalTitle?: string;
   confirmButtonText?: string;
 }
 
@@ -37,7 +36,6 @@ const DateTimePickerSelector: React.FC<DateTimePickerSelectorProps> = ({
   TextComponent = Text,
   currentMode,
   handlePressBack,
-  modalTitle,
   isDate,
   date,
   handleCalendarChange,
@@ -54,25 +52,20 @@ const DateTimePickerSelector: React.FC<DateTimePickerSelectorProps> = ({
 }) => {
   return (
     <View className="relative bg-surface-overlay" {...rest}>
-      <View className="flex-row items-center mt-mili mb-mili">
-        {currentMode === 1 && (
-          <PressableSurface
-            onPress={handlePressBack}
-            effect="none"
-            className="rounded-mili p-micro mr-mili aspect-square"
-          >
-            <Icon
-              type="material-community"
-              name="chevron-left"
-              size="mega"
-              colorVariant="secondary"
-            />
-          </PressableSurface>
-        )}
-        <TextComponent typography="base" colorVariant="secondary">
-          {modalTitle}
-        </TextComponent>
-      </View>
+      {currentMode === 1 && (
+        <PressableSurface
+          onPress={handlePressBack}
+          effect="none"
+          className="rounded-mili p-micro mr-mili aspect-square absolute top-mili left-mili z-10"
+        >
+          <Icon
+            type="material-community"
+            name="chevron-left"
+            size="mega"
+            colorVariant="secondary"
+          />
+        </PressableSurface>
+      )}
       {isDate ? (
         <Calendar
           type="day"

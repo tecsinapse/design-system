@@ -33,9 +33,8 @@ const baseProps = {
 describe('DateTimePickerSelector', () => {
   it('renders the calendar when isDate is true', () => {
     const { getByText } = render(
-      <DateTimePickerSelector {...baseProps} modalTitle="Pick date" />,
+      <DateTimePickerSelector {...baseProps} />,
     );
-    expect(getByText('Pick date')).toBeTruthy();
     expect(getByText('August 2026')).toBeTruthy();
   });
 
