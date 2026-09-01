@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import type { Mock } from 'vitest';
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useFileUpload } from '../hooks';
@@ -6,7 +7,7 @@ import { FileStatus, FileUpload, Uploader } from '../components';
 import { ManagerProvider } from '../provider';
 import { Dropzone } from '../components/Uploader/Dropzone';
 
-jest.mock('../hooks'); // Mockando o hook
+vi.mock('../hooks'); // Mockando o hook
 
 const mockFiles: FileUpload<unknown>[] = [
   {
@@ -22,23 +23,23 @@ const mockFiles: FileUpload<unknown>[] = [
 ];
 
 beforeEach(() => {
-  (useFileUpload as jest.Mock).mockReturnValue({
+  (useFileUpload as Mock).mockReturnValue({
     files: mockFiles,
-    onOpen: jest.fn(),
-    onClose: jest.fn(),
+    onOpen: vi.fn(),
+    onClose: vi.fn(),
     dropzoneProps: {
-      getRootProps: jest.fn(() => ({
-        onClick: jest.fn(),
+      getRootProps: vi.fn(() => ({
+        onClick: vi.fn(),
         role: 'button',
         'data-testid': 'dropzone',
       })),
-      getInputProps: jest.fn(() => ({
+      getInputProps: vi.fn(() => ({
         'aria-label': 'file input',
         type: 'file',
       })),
     },
     open: true,
-    closeManager: jest.fn(),
+    closeManager: vi.fn(),
     isManagerOpen: false,
   });
 });
@@ -94,7 +95,7 @@ describe('Uploader Components', () => {
 
   describe('Files', () => {
     it('should render the files list', () => {
-      render(<Uploader.Files files={mockFiles} onDelete={jest.fn()} />);
+      render(<Uploader.Files files={mockFiles} onDelete={vi.fn()} />);
 
       expect(screen.getByTestId('upload-progress')).toHaveTextContent(
         'Upload(s) in progress'
@@ -108,7 +109,7 @@ describe('Uploader Components', () => {
       render(
         <Uploader.Files
           files={mockFiles}
-          onDelete={jest.fn()}
+          onDelete={vi.fn()}
           uploadProgressText="Uploading..."
         />
       );
@@ -120,7 +121,7 @@ describe('Uploader Components', () => {
   });
 
   describe('Modal', () => {
-    const mockOnClose = jest.fn();
+    const mockOnClose = vi.fn();
 
     it('should render the modal with title and close button', () => {
       render(
@@ -147,8 +148,8 @@ describe('Uploader Components', () => {
   });
 
   describe('Root', () => {
-    const mockOnClose = jest.fn();
-    const mockOnDelete = jest.fn();
+    const mockOnClose = vi.fn();
+    const mockOnDelete = vi.fn();
 
     it('should render Uploader.Root with modal, dropzone, and files', () => {
       render(
@@ -202,8 +203,8 @@ describe('Uploader Components', () => {
             files={mockFiles}
             uploadProgressText="Custom uploading..."
             open={true}
-            onClose={jest.fn()}
-            onDelete={jest.fn()}
+            onClose={vi.fn()}
+            onDelete={vi.fn()}
           />
         </Uploader.Modal>
       );

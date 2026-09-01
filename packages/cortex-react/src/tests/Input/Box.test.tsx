@@ -23,8 +23,8 @@ describe('Input.Box', () => {
   });
 
   it('Should handle focus and blur events', () => {
-    const handleFocus = jest.fn();
-    const handleBlur = jest.fn();
+    const handleFocus = vi.fn();
+    const handleBlur = vi.fn();
 
     render(
       <Input.Box

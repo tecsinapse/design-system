@@ -2,12 +2,12 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-const mockScrollNext = jest.fn();
-const mockScrollPrev = jest.fn();
-const mockReInit = jest.fn();
-const mockRef = jest.fn();
+const mockScrollNext = vi.fn();
+const mockScrollPrev = vi.fn();
+const mockReInit = vi.fn();
+const mockRef = vi.fn();
 
-jest.mock('embla-carousel-react', () => ({
+vi.mock('embla-carousel-react', () => ({
   __esModule: true,
   default: () => [mockRef, { scrollNext: mockScrollNext, scrollPrev: mockScrollPrev, reInit: mockReInit }],
 }));
@@ -37,7 +37,7 @@ describe('Carousel component', () => {
   }));
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('Should render image', () => {

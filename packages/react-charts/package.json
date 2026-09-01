@@ -16,8 +16,8 @@
     "url": "git+https://github.com/tecsinapse/design-system.git"
   },
   "dependencies": {
-    "@emotion/native": "~11.11.0",
-    "@emotion/react": "~11.11.0",
+    "@emotion/native": "catalog:",
+    "@emotion/react": "catalog:",
     "react-native-svg-charts": "^5.4.0"
   },
   "devDependencies": {

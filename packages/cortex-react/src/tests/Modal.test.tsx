@@ -5,7 +5,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 describe('Modal', () => {
   it('Should render modal closed by default', () => {
-    render(<Modal open={false} onClose={jest.fn} />);
+    render(<Modal open={false} onClose={vi.fn} />);
     const modal = screen.getByTestId('modal');
     const overlay = screen.getByTestId('overlay');
 
@@ -14,7 +14,7 @@ describe('Modal', () => {
   });
 
   it('Should render modal open', () => {
-    render(<Modal open onClose={jest.fn} />);
+    render(<Modal open onClose={vi.fn} />);
     const modal = screen.getByTestId('modal');
     const overlay = screen.getByTestId('overlay');
     expect(modal).not.toHaveClass('invisible');
@@ -22,7 +22,7 @@ describe('Modal', () => {
   });
 
   it('Should call onClose when overlay is clicked', () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
     render(<Modal open={true} onClose={onClose} />);
     const overlay = screen.getByTestId('overlay');
     fireEvent.click(overlay);
@@ -31,7 +31,7 @@ describe('Modal', () => {
 
   it('Should render children correctly', () => {
     render(
-      <Modal open={true} onClose={jest.fn()}>
+      <Modal open={true} onClose={vi.fn()}>
         <h1>Title Modal</h1>
       </Modal>
     );

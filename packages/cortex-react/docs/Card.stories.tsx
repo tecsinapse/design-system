@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import { IoMdArrowForward } from 'react-icons/io';
 import { Button, Card } from '../src';

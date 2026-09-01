@@ -11,7 +11,7 @@ import {
   TextArea,
 } from '@tecsinapse/react-native-kit';
 
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof Skeleton> = {
   title: 'Skeleton',

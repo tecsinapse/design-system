@@ -1,5 +1,5 @@
 import { Time } from '@internationalized/date';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { TimePickerInput } from '../src/components';
 

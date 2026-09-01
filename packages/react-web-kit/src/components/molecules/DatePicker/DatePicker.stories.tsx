@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import { DatePickerProps, DateRange } from '@tecsinapse/react-core';
 import { ptBR } from 'date-fns/locale';
 import React from 'react';

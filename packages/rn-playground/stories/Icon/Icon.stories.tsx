@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@tecsinapse/react-native-kit';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 
 const IconMeta: Meta<typeof Icon> = {
   title: 'Icon',

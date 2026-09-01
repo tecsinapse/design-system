@@ -1,6 +1,6 @@
 import { InputPassword } from '@tecsinapse/react-native-kit';
 import React, { useState } from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof InputPassword> = {
   title: 'InputPassword',

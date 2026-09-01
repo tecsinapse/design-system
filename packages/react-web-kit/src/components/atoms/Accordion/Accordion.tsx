@@ -1,18 +1,8 @@
 import React, { PropsWithChildren, useRef } from 'react';
 import { Icon, Text, ThemeProp } from '@tecsinapse/react-core';
-import {
-  AccordionContainer,
-  ContentContainer,
-  IconContainer,
-  TitleContainer,
-} from './styled';
+import { AccordionContainer, ContentContainer, IconContainer, TitleContainer, } from './styled';
 import { Transition } from 'react-transition-group';
-import {
-  contentStyle,
-  contentTransition,
-  titleStyle,
-  titleTransition,
-} from './animations';
+import { contentStyle, contentTransition, titleStyle, titleTransition, } from './animations';
 import { useTheme } from '@emotion/react';
 
 export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -86,7 +76,9 @@ const Accordion = ({
       <Transition in={open} timeout={transition} nodeRef={ref}>
         {state => (
           <ContentContainer
-            ref={htmlEl => (ref.current = htmlEl)}
+            ref={htmlEl => {
+              ref.current = htmlEl;
+            }}
             style={{
               ...contentStyle(open, transition, contentHeight, theme),
               ...contentTransition(contentHeight, theme)[state],

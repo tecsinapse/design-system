@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/blocks";
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="development/Contributing" />
 
@@ -29,3 +29,47 @@ We appreciate pull requests (PRs) for smaller changes and bug fixes. For larger 
 3. Code, add, commit, and push your changes in your feature branch.
 4. Submit a pull request and make sure that the CI checks pass.
 5. Collaborate with the code owners/reviewers to merge your changes to `master`.
+
+## Creating components
+
+React composition patterns are **highly recommended** when creating components in this design system.
+They avoid boolean prop proliferation, keep components flexible, and make them easier to maintain.
+Existing examples to follow: `Accordion` (`Root`/`Trigger`/`Content` + shared context), `Select` (`Root`/`Trigger`/`Options`/`Option`), and `Stepper` (`Root`/`Node`/`Content`).
+
+### Prefer composition over boolean props
+
+Avoid boolean props like `isEditing`, `showHeader`, `withToolbar` to customize behavior — each one doubles the possible states and creates unmaintainable conditional logic.
+
+```tsx
+// Avoid
+<Composer isThread showAttachments={false} isEditing />
+```
+
+```tsx
+// Prefer explicit variant components that compose shared pieces
+<ThreadComposer channelId="abc" />
+<EditComposer messageId="xyz" />
+```
+
+### Use compound components with shared context
+
+For complex components, structure them as compound components: a root that provides a shared context and smaller subcomponents that consume it. Consumers compose exactly the pieces they need — no hidden conditionals.
+
+```tsx
+<Accordion.Root>
+  <Accordion.Trigger>Title</Accordion.Trigger>
+  <Accordion.Content>Body</Accordion.Content>
+</Accordion.Root>
+```
+
+### Lift state into providers
+
+Move state management into a provider component. UI pieces should only consume the context interface (`state`, `actions`, `meta`) and never know where state comes from. This lets sibling components outside the main UI access state and actions without prop drilling, and lets consumers swap providers while keeping the same UI.
+
+### Compose children over render props
+
+Use `children` for composition instead of `renderX` props — they are more readable and compose naturally. Render props are still fine when the parent needs to hand data to the child (e.g. `renderItem` in lists).
+
+### React 19
+
+The packages support React `>=18 || ^19`. In React 19, `ref` is a regular prop (no `forwardRef`) and `use()` replaces `useContext()` — prefer these when targeting React 19.
