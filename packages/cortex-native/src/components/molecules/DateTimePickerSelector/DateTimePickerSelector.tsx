@@ -107,7 +107,13 @@ const DateTimePickerSelector: React.FC<DateTimePickerSelectorProps> = ({
           />
         </View>
       )}
-      <Button title={confirmButtonText || 'OK'} onPress={handlePressConfirm} />
+      <View className="mx-deca mt-deca mb-mili">
+        <Button
+          title={confirmButtonText || 'OK'}
+          onPress={handlePressConfirm}
+          style={{ width: '100%' }}
+        />
+      </View>
     </View>
   );
 };

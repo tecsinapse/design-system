@@ -58,4 +58,23 @@ describe('DateTimePickerSelector', () => {
     fireEvent.press(getByRole('button'));
     expect(handlePressConfirm).toHaveBeenCalled();
   });
+
+  it('renders the confirm button full-width inside a horizontally padded container', () => {
+    // The Button is sized to its content by default — without explicit width it
+    // would collapse and look "poorly placed" inside the sheet. The container
+    // adds ~16px side margin and the Button fills it, matching the legacy
+    // bottom-sheet confirm layout.
+    const { getByRole, root } = render(
+      <DateTimePickerSelector {...baseProps} confirmButtonText="Confirm" />,
+    );
+    const button = getByRole('button');
+    const style = Array.isArray(button.props.style) ? button.props.style : [button.props.style];
+    expect(style).toContainEqual(expect.objectContaining({ width: '100%' }));
+    // Find the horizontally padded wrapper (mx-deca) wrapping the Button.
+    const wrappers = root.findAll(n => {
+      const cn = n.props?.className;
+      return typeof cn === 'string' && /\bmx-deca\b/.test(cn);
+    });
+    expect(wrappers.length).toBeGreaterThan(0);
+  });
 });

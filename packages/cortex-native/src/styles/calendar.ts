@@ -9,8 +9,12 @@ export interface CalendarCellState {
   isRangeEnd: boolean;
 }
 
-export const calendarTitleRow =
-  'flex-row items-center justify-between bg-secondary-xlight';
+// Base title-row styling. No background color — the title row sits on the
+// sheet's white surface (matches the legacy emotion stack design). `justify-
+// between` (month view) or `justify-center` (year view) is composed in by the
+// consumer; keep them out of this base so the rendered className never carries
+// conflicting utilities.
+export const calendarTitleRowBase = 'flex-row items-center';
 
 export const calendarControl = 'p-centi rounded-mili m-mili';
 

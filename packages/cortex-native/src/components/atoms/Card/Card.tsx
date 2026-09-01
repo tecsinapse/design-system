@@ -3,6 +3,7 @@ import PressableSurface, {
 } from '../PressableSurface/PressableSurface';
 import React, { ReactNode } from 'react';
 import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
+import { useCSSVariable } from 'uniwind';
 import { clsx } from 'clsx';
 import Paper, { PaperProps } from '../Paper/Paper';
 
@@ -25,6 +26,14 @@ const Card = ({
   ...rest
 }: CardProps): React.ReactElement => {
   const className = clsx(cardBaseClass, elevated && 'shadow-default');
+  // Resolve the theme surface so the interactive Card paints its background via
+  // PressableSurface's inline style. RN inline `style` overrides uniwind
+  // className-based backgrounds (the legacy emotion stack routed the same color
+  // through `style`, which is why this used to work); the className stays on
+  // for utility consistency (radius, etc.).
+  const surfaceColor = useCSSVariable('--color-surface-overlay') as
+    | string
+    | undefined;
 
   if (onPress) {
     return (
@@ -33,6 +42,7 @@ const Card = ({
         style={style}
         onPress={onPress}
         className={className}
+        surfaceColor={surfaceColor}
       >
         {children}
       </PressableSurface>

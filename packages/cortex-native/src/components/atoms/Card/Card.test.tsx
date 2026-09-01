@@ -1,4 +1,5 @@
 import React from 'react';
+import { ViewStyle } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
 
 jest.mock('uniwind', () => ({
@@ -29,5 +30,18 @@ describe('Card', () => {
     );
     fireEvent.press(getByTestId('card'));
     expect(onPress).toHaveBeenCalled();
+  });
+  it('applies the theme surface background on a pressable card (not transparent)', () => {
+    const { getByTestId } = render(
+      <Card onPress={() => {}} testID="card">
+        content
+      </Card>,
+    );
+    // Pressable's `style` is a state-callback array: [composedStyle, pressed-state style].
+    // composedStyle = [bgColorStyle, consumerStyle]; so the resolved background color
+    // lives at style[0][0].backgroundColor.
+    const style = getByTestId('card').props.style as Array<Array<ViewStyle>>;
+    expect(style[0][0].backgroundColor).not.toBe('transparent');
+    expect(style[0][0].backgroundColor).toBe('#ffffff');
   });
 });

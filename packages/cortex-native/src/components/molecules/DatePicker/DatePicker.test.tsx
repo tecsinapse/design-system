@@ -55,4 +55,46 @@ describe('DatePicker', () => {
     fireEvent.press(getByText('15'));
     expect(onChange).toHaveBeenCalled();
   });
+
+  it('renders the backdrop with the dim scrim color and closes on backdrop tap', () => {
+    const { getByRole, getByTestId, queryByText } = render(
+      <DatePicker
+        type="day"
+        year={2026}
+        month={7}
+        placeholder="pick"
+        onChange={() => {}}
+      />,
+    );
+    fireEvent.press(getByRole('button'));
+    const backdrop = getByTestId('datepicker-backdrop');
+    expect(backdrop.props.style.backgroundColor).toBe('rgba(0, 0, 0, 0.5)');
+    expect(queryByText('August 2026')).toBeTruthy();
+    fireEvent.press(backdrop);
+    expect(queryByText('August 2026')).toBeNull();
+  });
+
+  it('lets the calendar title row fill the sheet and respect the rounded top corners', () => {
+    const { getByRole, getByTestId } = render(
+      <DatePicker
+        type="day"
+        year={2026}
+        month={7}
+        placeholder="pick"
+        onChange={() => {}}
+      />,
+    );
+    fireEvent.press(getByRole('button'));
+    // The sheet must NOT carry any padding utility — otherwise the bg-secondary-xlight
+    // title row is inset ("cropped") by the sheet's padding. It must also carry
+    // `overflow-hidden` so the title row's grey background is clipped to the sheet's
+    // rounded-t-deca corners (otherwise the grey sticks out square at the corners).
+    const sheet = getByTestId('datepicker-sheet');
+    const className = sheet.props.className as string;
+    expect(className).not.toMatch(/\bp-deca\b/);
+    expect(className).not.toMatch(/\bpx-deca\b/);
+    expect(className).not.toMatch(/\bpt-deca\b/);
+    expect(className).toMatch(/\boverflow-hidden\b/);
+    expect(className).toMatch(/\brounded-t-deca\b/);
+  });
 });

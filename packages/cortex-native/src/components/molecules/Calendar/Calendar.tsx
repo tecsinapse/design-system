@@ -3,13 +3,14 @@ import type { Locale } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useRef } from 'react';
 import { TouchableOpacity, View, ViewProps } from 'react-native';
+import { clsx } from 'clsx';
 import Icon from '../../atoms/Icon/Icon';
 import Text, { TextProps } from '../../atoms/Text/Text';
 import PressableSurface from '../../atoms/PressableSurface/PressableSurface';
 import {
   calendarContent,
   calendarControl,
-  calendarTitleRow,
+  calendarTitleRowBase,
 } from '../../../styles/calendar';
 import { SelectionType, Value } from './types';
 import { MonthWeek, SelectYear, SelectYearProps, Weekdays } from './components';
@@ -95,8 +96,8 @@ function Calendar<T extends SelectionType>({
 
   return (
     <View {...rest}>
-      <View className={calendarTitleRow}>
-        {!showSelectYear && (
+      {!showSelectYear && (
+        <View className={clsx(calendarTitleRowBase, 'justify-between')}>
           <PressableSurface
             onPress={handlePressPrev}
             style={{ alignItems: 'flex-start' }}
@@ -110,18 +111,16 @@ function Calendar<T extends SelectionType>({
               colorTone="medium"
             />
           </PressableSurface>
-        )}
-        <TouchableOpacity onPress={handlePressSelectYear}>
-          <TextComponent
-            colorVariant="secondary"
-            colorTone="xdark"
-            fontWeight="bold"
-            textTransform="capitalize"
-          >
-            {title}
-          </TextComponent>
-        </TouchableOpacity>
-        {!showSelectYear && (
+          <TouchableOpacity onPress={handlePressSelectYear}>
+            <TextComponent
+              colorVariant="secondary"
+              colorTone="xdark"
+              fontWeight="bold"
+              textTransform="capitalize"
+            >
+              {title}
+            </TextComponent>
+          </TouchableOpacity>
           <PressableSurface
             onPress={handlePressNext}
             style={{ alignItems: 'flex-end' }}
@@ -135,8 +134,8 @@ function Calendar<T extends SelectionType>({
               colorTone="medium"
             />
           </PressableSurface>
-        )}
-      </View>
+        </View>
+      )}
       {showSelectYear ? (
         <View className={calendarContent} style={{ height: calendarHeightRef.current }}>
           <SelectYear

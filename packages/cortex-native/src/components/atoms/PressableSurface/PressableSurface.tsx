@@ -32,13 +32,23 @@ const PressableSurface = ({
 }: PressableSurfaceProps): React.ReactElement => {
   const surfaceVar = useCSSVariable(SURFACE_COLOR_VAR) as string | undefined;
   const effectBaseColor = surfaceColor ?? surfaceVar ?? '#ffffff';
-  const bgColor = surfaceColor ? surfaceColor : 'transparent';
+  // Only emit an inline `backgroundColor` when the consumer opted in via
+  // `surfaceColor`. Otherwise the inline style would override the uniwind
+  // className-based background (RN inline `style` always wins over `className`),
+  // which silently breaks consumers that paint themselves via className — e.g.
+  // MonthWeek between cells (`bg-primary-light`), SelectYear selected cards,
+  // Calendar day cells. Consumers that need a themed resting surface should
+  // pass `surfaceColor` explicitly (see Card).
+  const bgColor = surfaceColor;
 
   const readyStyle = (
     state: PressableStateCallbackType,
   ): StyleProp<ViewStyle> => {
     const { pressed } = state;
-    const composedStyle: StyleProp<ViewStyle> = [{ backgroundColor: bgColor }, style];
+    const composedStyle: StyleProp<ViewStyle> = [
+      ...(bgColor ? [{ backgroundColor: bgColor }] : []),
+      style,
+    ];
 
     if (effectStyle) {
       return [composedStyle, effectStyle(pressed)];

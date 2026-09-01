@@ -57,7 +57,7 @@ const SelectYear = ({
         offset: YEAR_CARD_HEIGHT * index,
         index,
       })}
-      fadingEdgeLength={200}
+      fadingEdgeLength={24}
     />
   );
 };

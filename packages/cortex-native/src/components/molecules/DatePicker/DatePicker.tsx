@@ -1,7 +1,7 @@
 import { format as formatDate } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
-import { Modal, View } from 'react-native';
+import { Modal, Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '../../atoms/Icon/Icon';
 import Text from '../../atoms/Text/Text';
@@ -138,19 +138,36 @@ function DatePicker<T extends SelectionType>({
         animationType="slide"
         onRequestClose={handleCloseCalendar}
       >
-        <View className="flex-1 justify-end" style={{ paddingBottom: bottom }}>
-          <View className="bg-surface-overlay rounded-t-deca p-deca">
-            <Calendar
-              type={type}
-              value={value}
-              month={month}
-              year={year}
-              onChange={handleChange}
-              locale={locale}
-              TextComponent={TextComponent}
-            />
+        <Pressable
+          testID="datepicker-backdrop"
+          style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          onPress={handleCloseCalendar}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'flex-end',
+              paddingBottom: bottom,
+            }}
+          >
+            <Pressable onPress={event => event.stopPropagation()}>
+              <View
+                testID="datepicker-sheet"
+                className="bg-surface-overlay rounded-t-deca overflow-hidden"
+              >
+                <Calendar
+                  type={type}
+                  value={value}
+                  month={month}
+                  year={year}
+                  onChange={handleChange}
+                  locale={locale}
+                  TextComponent={TextComponent}
+                />
+              </View>
+            </Pressable>
           </View>
-        </View>
+        </Pressable>
       </Modal>
     </>
   );

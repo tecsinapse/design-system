@@ -50,4 +50,40 @@ describe('DateTimePicker', () => {
     fireEvent.press(getByRole('button'));
     expect(getByText('Pick date')).toBeTruthy();
   });
+
+  it('renders the backdrop with the dim scrim color and closes on backdrop tap', () => {
+    const { getByRole, getByTestId, queryByText } = render(
+      <DateTimePicker
+        mode="date"
+        dateModalTitle="Pick date"
+        placeholder="pick"
+        onChange={() => {}}
+      />,
+    );
+    fireEvent.press(getByRole('button'));
+    const backdrop = getByTestId('datetimepicker-backdrop');
+    expect(backdrop.props.style.backgroundColor).toBe('rgba(0, 0, 0, 0.5)');
+    expect(queryByText('Pick date')).toBeTruthy();
+    fireEvent.press(backdrop);
+    expect(queryByText('Pick date')).toBeNull();
+  });
+
+  it('lets the calendar title row fill the sheet and respect the rounded top corners', () => {
+    const { getByRole, getByTestId } = render(
+      <DateTimePicker
+        mode="date"
+        dateModalTitle="Pick date"
+        placeholder="pick"
+        onChange={() => {}}
+      />,
+    );
+    fireEvent.press(getByRole('button'));
+    const sheet = getByTestId('datetimepicker-sheet');
+    const className = sheet.props.className as string;
+    expect(className).not.toMatch(/\bp-deca\b/);
+    expect(className).not.toMatch(/\bpx-deca\b/);
+    expect(className).not.toMatch(/\bpt-deca\b/);
+    expect(className).toMatch(/\boverflow-hidden\b/);
+    expect(className).toMatch(/\brounded-t-deca\b/);
+  });
 });

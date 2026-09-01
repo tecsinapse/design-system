@@ -2,7 +2,7 @@ import { format as formatDate } from '@tecsinapse/cortex-core';
 import type { Locale } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useState } from 'react';
-import { Modal, View } from 'react-native';
+import { Modal, Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '../../atoms/Icon/Icon';
 import Text, { TextProps } from '../../atoms/Text/Text';
@@ -145,28 +145,45 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
         animationType="slide"
         onRequestClose={handleCloseSelector}
       >
-        <View className="flex-1 justify-end" style={{ paddingBottom: bottom }}>
-          <View className="bg-surface-overlay rounded-t-deca p-deca">
-            <DateTimePickerSelector
-              date={date}
-              setDate={setDate}
-              currentMode={currentMode}
-              isDate={isDate}
-              isMonth={isMonth}
-              handlePressConfirm={handlePressConfirm}
-              handlePressBack={handlePressBack}
-              handleCalendarChange={handleCalendarChange}
-              modalTitle={modalTitle}
-              confirmButtonText={confirmButtonText}
-              TextComponent={TextComponent}
-              locale={locale}
-              monthLabel={monthLabel}
-              yearLabel={yearLabel}
-              hourLabel={hourLabel}
-              minuteLabel={minuteLabel}
-            />
+        <Pressable
+          testID="datetimepicker-backdrop"
+          style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          onPress={handleCloseSelector}
+        >
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'flex-end',
+              paddingBottom: bottom,
+            }}
+          >
+            <Pressable onPress={event => event.stopPropagation()}>
+              <View
+                testID="datetimepicker-sheet"
+                className="bg-surface-overlay rounded-t-deca overflow-hidden"
+              >
+                <DateTimePickerSelector
+                  date={date}
+                  setDate={setDate}
+                  currentMode={currentMode}
+                  isDate={isDate}
+                  isMonth={isMonth}
+                  handlePressConfirm={handlePressConfirm}
+                  handlePressBack={handlePressBack}
+                  handleCalendarChange={handleCalendarChange}
+                  modalTitle={modalTitle}
+                  confirmButtonText={confirmButtonText}
+                  TextComponent={TextComponent}
+                  locale={locale}
+                  monthLabel={monthLabel}
+                  yearLabel={yearLabel}
+                  hourLabel={hourLabel}
+                  minuteLabel={minuteLabel}
+                />
+              </View>
+            </Pressable>
           </View>
-        </View>
+        </Pressable>
       </Modal>
     </>
   );
