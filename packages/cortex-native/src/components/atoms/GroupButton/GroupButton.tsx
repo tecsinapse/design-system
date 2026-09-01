@@ -109,7 +109,7 @@ const groupOptions = <T,>({
         >
           {renderOption?.(option.value, active)}
         </Pressable>
-        {!isLast && <View className="w-pico bg-secondary-light" />}
+        {!isLast && <View className="w-[0.063rem] bg-secondary-light" />}
       </View>
     );
   });

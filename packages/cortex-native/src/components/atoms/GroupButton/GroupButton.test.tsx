@@ -36,7 +36,16 @@ describe('GroupButton', () => {
   });
   it('renders a divider between options', () => {
     const { root } = renderGroup('a');
-    const divider = root.findAll((n) => n.props?.className?.includes('w-pico'))[0];
+    // The divider is a 1px-wide View (`w-[0.063rem]`, matching the legacy
+    // borderWidth.pico token) painted with `bg-secondary-light`. Earlier the
+    // className was `w-pico`, but `pico` only exists as a borderWidth token —
+    // not as a spacing token — so the utility never compiled and the divider
+    // rendered at 0 width. Asserting on the arbitrary-value utility locks the
+    // width so it can't silently regress.
+    const divider = root.findAll((n) =>
+      n.props?.className?.includes('w-[0.063rem]'),
+    )[0];
+    expect(divider).toBeTruthy();
     expect(divider.props.className).toContain('bg-secondary-light');
   });
 });
