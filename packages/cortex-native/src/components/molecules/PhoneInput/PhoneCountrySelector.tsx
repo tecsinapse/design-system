@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native';
 import type { CountryIso2, ParsedCountry } from 'react-international-phone';
-import InputElement from '../../atoms/Input/InputElement';
+import Input from '../../atoms/Input/Input';
 import Divider from '../../atoms/Divider/Divider';
 import CountryOption, { CountryOptionProps } from './CountryOption';
 
@@ -56,7 +56,7 @@ const PhoneCountrySelector: React.FC<PhoneCountrySelectorProps> = ({
     <View testID={testID} className="w-full flex-col">
       {hasSearch ? (
         <View className="p-deca">
-          <InputElement
+          <Input
             value={searchText}
             onChange={setSearchText}
             placeholder={searchPlaceholder}

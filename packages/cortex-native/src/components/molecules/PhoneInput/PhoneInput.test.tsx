@@ -78,4 +78,30 @@ describe('PhoneInput', () => {
     const { getByText } = render(<PhoneInput onChange={() => {}} />);
     expect(getByText('chevron-down')).toBeTruthy();
   });
+
+  it('renders the country search input inside the default Input container when the modal opens', () => {
+    // The search bar used to be a bare `InputElement` (no border, no rounded
+    // corners, no surface bg). It now wraps the full `Input` atom so it
+    // matches every other text input in the system. Opening the flag trigger
+    // reveals the modal with the search field — assert it carries the default
+    // Input container's bordered/rounded utilities.
+    const { getByText, getByPlaceholderText, root } = render(
+      <PhoneInput
+        searchPlaceholder="Search country"
+        onChange={() => {}}
+      />,
+    );
+    fireEvent.press(getByText('chevron-down'));
+    expect(getByPlaceholderText('Search country')).toBeTruthy();
+    const containers = root.findAll(n => {
+      const cn = n.props?.className;
+      return (
+        typeof cn === 'string' &&
+        cn.includes('border') &&
+        cn.includes('rounded-mili') &&
+        cn.includes('bg-surface-overlay')
+      );
+    });
+    expect(containers.length).toBeGreaterThan(0);
+  });
 });
