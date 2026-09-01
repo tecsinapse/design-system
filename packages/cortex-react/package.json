@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/cortex-react",
-  "version": "2.4.5",
+  "version": "2.5.0",
   "description": "React components based in @tecsinapse/cortex-core",
   "license": "MIT",
   "main": "dist/esm/index.js",
@@ -13,7 +13,7 @@
   "scripts": {
     "dev:es": "rolldown --config --watch",
     "dev:dts": "tsc --project tsconfig.build.json --watch",
-    "build:es": "rimraf dist && rolldown --config",
+    "build:es": "rimraf -rf dist && rolldown --config",
     "build:dts": "tsc --project tsconfig.build.json",
     "test": "vitest run",
     "test:watch": "vitest"

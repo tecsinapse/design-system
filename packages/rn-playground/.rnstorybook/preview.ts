@@ -20,9 +20,3 @@ export const parameters = {
   //   },
   // },
 };
-
-export const initialGlobals = {
-  backgrounds: {
-    value: 'light',
-  },
-};

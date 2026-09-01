@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.5](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Freact-native-kit%404.1.4...%40tecsinapse%2Freact-native-kit%404.1.5) (2026-09-01)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
+## [4.1.4](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.1.3...@tecsinapse/react-native-kit@4.1.4) (2026-07-27)
+
+**Note:** Version bump only for package @tecsinapse/react-native-kit
+
 ## [4.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-native-kit@4.1.2...@tecsinapse/react-native-kit@4.1.3) (2026-07-22)
 
 **Note:** Version bump only for package @tecsinapse/react-native-kit

@@ -36,7 +36,6 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-private-methods": "^7.24.1",
-    "@storybook/addon-actions": "^9.0.8",
     "@storybook/addon-ondevice-actions": "catalog:",
     "@storybook/addon-ondevice-backgrounds": "catalog:",
     "@storybook/addon-ondevice-controls": "catalog:",
@@ -46,7 +45,6 @@
     "babel-plugin-module-resolver": "^5.0.3",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-preset-expo": "~57.0.6",
-    "expo": "^57.0.11",
     "tailwindcss": "catalog:",
     "uniwind": "^1.11.0"
   },
