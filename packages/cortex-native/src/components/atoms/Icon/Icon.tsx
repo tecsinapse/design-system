@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorValue, StyleProp, TextStyle } from 'react-native';
+import { ColorValue, type TextProps as RNTextProps } from 'react-native';
 import { useCSSVariable } from 'uniwind';
 import { cn } from '@tecsinapse/cortex-core';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -26,13 +26,10 @@ import {
   IconType,
 } from './utils';
 
-interface IconComponentProps {
+interface IconComponentProps extends RNTextProps {
   name: string;
   size?: number;
   color?: ColorValue | number;
-  style?: StyleProp<TextStyle>;
-  className?: string;
-  testID?: string;
 }
 
 const getIconComponent = (
@@ -71,7 +68,7 @@ const getIconComponent = (
   }
 };
 
-export interface IconProps {
+export interface IconProps extends RNTextProps {
   /** Name of the icon. You must use the same icons from react-native-vector-icons */
   name: string;
   /** Icon family. You must use the same icons from react-native-vector-icons */
@@ -84,9 +81,6 @@ export interface IconProps {
   colorVariant?: ColorType;
   /** Palette theme gradation fill color */
   colorTone?: ColorGradationType;
-  style?: StyleProp<TextStyle>;
-  className?: string;
-  testID?: string;
 }
 
 const Icon: React.FC<IconProps> = ({
@@ -98,7 +92,7 @@ const Icon: React.FC<IconProps> = ({
   colorTone = 'medium',
   style,
   className,
-  testID,
+  ...rest
 }) => {
   const color = useCSSVariable(
     iconColorVar(colorVariant, colorTone, fontColor)
@@ -107,12 +101,12 @@ const Icon: React.FC<IconProps> = ({
 
   return (
     <IconComponent
+      {...rest}
       name={name}
       size={ICON_SIZE_PX[size]}
       color={color}
       style={style}
       className={cn(className)}
-      testID={testID}
     />
   );
 };

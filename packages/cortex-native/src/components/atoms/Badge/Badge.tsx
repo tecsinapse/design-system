@@ -1,18 +1,15 @@
 import React, { ReactNode } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import { View, type ViewProps } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import { colorToneBg } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
 import Text from '../Text/Text';
 
-export interface BadgeProps {
+export interface BadgeProps extends ViewProps {
   color?: ColorType;
   tone?: ColorGradationType;
-  style?: StyleProp<ViewStyle>;
   value: React.ReactNode;
   children?: ReactNode;
-  className?: string;
-  testID?: string;
 }
 
 const Badge = ({
@@ -22,7 +19,7 @@ const Badge = ({
   tone = 'medium',
   value,
   className,
-  testID,
+  ...rest
 }: BadgeProps): React.ReactElement => {
   const renderedValue =
     typeof value === 'string' || typeof value === 'number' ? (
@@ -37,7 +34,7 @@ const Badge = ({
     <View className="relative items-center justify-center self-center">
       {children}
       <View
-        testID={testID}
+        {...rest}
         className={cn(
           'absolute rounded-pill h-centi w-centi -top-1 -right-1 items-center justify-center',
           colorToneBg[color][tone],

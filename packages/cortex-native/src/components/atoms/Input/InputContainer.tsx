@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import Text, { TextProps } from '../Text/Text';
 import {
@@ -36,7 +36,7 @@ export type TypographyVariationType =
   | 'sub'
   | 'label';
 
-export interface InputContainerProps {
+export interface InputContainerProps extends Omit<ViewProps, 'onBlur' | 'onFocus'> {
   label?: string;
   labelColor?: FontColorType;
   labelColorVariant?: ColorType;
@@ -49,16 +49,12 @@ export interface InputContainerProps {
   rightComponent?: React.ReactNode;
   borderColor?: ColorType;
   borderColorGradation?: ColorGradationType;
-  style?: StyleProp<ViewStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;
   focused?: boolean;
   disabled?: boolean;
   variant?: InputVariantType;
   hint?: string;
   hintComponent?: React.ReactNode;
-  testID?: string;
-  className?: string;
-  children?: React.ReactNode;
 }
 
 const variantToIntent: Record<InputVariantType, InputIntent> = {
@@ -85,6 +81,7 @@ const InputContainer: FC<InputContainerProps> = ({
   children,
   testID,
   className,
+  style,
   ...rest
 }): React.ReactElement => {
   let _defaultLabelColor = labelColorVariant;
@@ -106,7 +103,7 @@ const InputContainer: FC<InputContainerProps> = ({
       {...rest}
       testID={testID}
       className={containerClassName}
-      style={[focused && { borderWidth: 2 }, inputContainerStyle]}
+      style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
     >
       {leftComponent && <View className="flex-row items-center">{leftComponent}</View>}
 

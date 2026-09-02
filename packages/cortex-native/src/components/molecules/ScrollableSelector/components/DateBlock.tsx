@@ -7,9 +7,10 @@ import {
   TextProps,
   TouchableOpacity,
   View,
+  ViewProps,
 } from 'react-native';
 
-export interface DateBlockProps {
+export interface DateBlockProps extends ViewProps {
   digits: number[];
   locale?: Locale;
   value: number;
@@ -22,8 +23,6 @@ export interface DateBlockProps {
   markHeight?: number;
   markWidth?: number;
   TextComponent?: React.FC<TextProps>;
-  className?: string;
-  testID?: string;
 
   onChange(type: string, digit: number): void;
 }
@@ -43,6 +42,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
   locale,
   className,
   testID,
+  ...rest
 }) => {
   const months = [...Array(12)].map((_, index) =>
     formatDate(new Date().setMonth(index), 'MMM', { locale })
@@ -79,6 +79,7 @@ const DateBlock: React.FC<DateBlockProps> = ({
 
   return (
     <View
+      {...rest}
       testID={testID}
       className={cn('flex-1 items-center justify-center flex-row h-full', className)}
     >

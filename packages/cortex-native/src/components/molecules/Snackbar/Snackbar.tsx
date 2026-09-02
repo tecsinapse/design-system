@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import { Animated, Pressable, StyleProp, View, ViewStyle } from 'react-native';
+import { Animated, Pressable, View, ViewProps, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import { ColorGradationType, ColorType } from '../../../styles/types';
 import { colorToneBg } from '../../../styles/colors';
 import Icon, { IconProps } from '../../atoms/Icon/Icon';
 
-export interface SnackbarProps {
+export interface SnackbarProps extends ViewProps {
   colorVariant?: ColorType;
   colorTone?: ColorGradationType;
   open: boolean;
@@ -17,10 +17,6 @@ export interface SnackbarProps {
   rightIcon?: Omit<IconProps, 'name' | 'type'>;
   anchor?: 'top' | 'bottom';
   anchorDistance?: number;
-  style?: StyleProp<ViewStyle>;
-  className?: string;
-  testID?: string;
-  children?: ReactNode;
 }
 
 const FADE_DURATION = 500;
@@ -40,6 +36,7 @@ const Snackbar = ({
   style,
   className,
   testID,
+  ...rest
 }: SnackbarProps): React.ReactElement => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(
@@ -99,6 +96,7 @@ const Snackbar = ({
 
   return (
     <Animated.View
+      {...rest}
       testID={testID}
       className={cn(
         colorToneBg[colorVariant][colorTone],

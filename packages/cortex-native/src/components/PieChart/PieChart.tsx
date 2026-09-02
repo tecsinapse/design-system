@@ -21,7 +21,7 @@ import {
   SvgText,
 } from './styled';
 
-export interface PieChartProps {
+export interface PieChartProps extends ViewProps {
   data: PieChartData[];
   /** Chart width/height (square view, in px) */
   dimension?: number;
@@ -39,8 +39,6 @@ export interface PieChartProps {
   chartConfig?: {
     fontFamily: FontFamily;
   };
-  className?: string;
-  testID?: string;
 }
 
 const Container = ({ className, ...props }: ViewProps) => (
@@ -85,6 +83,7 @@ const PieChart: React.FC<PieChartProps> = ({
   chartConfig,
   className,
   testID,
+  ...rest
 }) => {
   const slices = buildPieSlices(data, radius, dimension);
 
@@ -113,7 +112,7 @@ const PieChart: React.FC<PieChartProps> = ({
   const sum = data.reduce((prev, curr) => prev + curr.value, 0);
 
   return (
-    <Container className={className} testID={testID}>
+    <Container {...rest} className={className} testID={testID}>
       <Svg width={dimension} height={dimension}>
         <G x={dimension / 2} y={dimension / 2}>
           {slices.map((slice, index) => (

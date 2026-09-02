@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import { Pressable, StyleProp, View, ViewStyle } from 'react-native';
+import { Pressable, View, type ViewProps } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import Icon from '../Icon/Icon';
 import { colorToneBorder } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
 
-export interface RadioButtonProps {
+export interface RadioButtonProps extends ViewProps {
   /** Element is checked */
   checked?: boolean;
   /** Change handler */
@@ -18,10 +18,7 @@ export interface RadioButtonProps {
   color?: ColorType;
   /** Color gradation from theme */
   colorTone?: ColorGradationType;
-  style?: StyleProp<ViewStyle>;
   children?: ReactNode;
-  testID?: string;
-  className?: string;
 }
 
 const RadioButton = ({

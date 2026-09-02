@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleProp, View, ViewStyle } from 'react-native';
+import { Pressable, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import { colorToneBg, colorToneBorder } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
@@ -23,17 +23,14 @@ export interface GroupButtonValue<T> {
   options?: GroupButtonOptions;
 }
 
-export interface GroupButtonProps<T> {
+export interface GroupButtonProps<T> extends ViewProps {
   value: T;
   options: GroupButtonValue<T>[];
   renderKey: (option?: T) => string | number | undefined;
   renderOption: (option: T, active: boolean) => React.ReactElement;
   onChange: (option: T) => void;
   buttonSize?: 'small' | 'default';
-  style?: StyleProp<ViewStyle>;
   disableAllOptions?: boolean;
-  className?: string;
-  testID?: string;
 }
 
 const sizeClass: Record<'small' | 'default', string> = {
@@ -120,12 +117,30 @@ const groupOptions = <T,>({
 const GroupButton = <T,>({
   style,
   className,
-  testID,
+  value,
+  options,
+  renderKey,
+  renderOption,
+  onChange,
+  buttonSize,
+  disableAllOptions,
   ...rest
 }: GroupButtonProps<T>) => {
   return (
-    <View style={style} testID={testID} className={cn('flex-row', className)}>
-      {groupOptions(rest)}
+    <View
+      {...rest}
+      style={style}
+      className={cn('flex-row', className)}
+    >
+      {groupOptions({
+        value,
+        options,
+        renderKey,
+        renderOption,
+        onChange,
+        buttonSize,
+        disableAllOptions,
+      })}
     </View>
   );
 };

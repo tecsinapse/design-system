@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleProp, ViewStyle } from 'react-native';
+import { Pressable, PressableProps } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import { buttonStyles } from '../../../styles/button';
 import Icon, { IconProps } from '../../atoms/Icon/Icon';
@@ -8,7 +8,7 @@ import { FontColorType } from '../../../styles/types';
 
 export type IconPositionOptions = 'left' | 'right';
 
-export interface IconTextButtonProps {
+export interface IconTextButtonProps extends PressableProps {
   iconProps?: IconProps;
   iconPosition?: IconPositionOptions;
   textProps?: TextProps;
@@ -16,11 +16,6 @@ export interface IconTextButtonProps {
   intent?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error';
   variant?: 'filled' | 'outlined' | 'text';
   size?: 'small' | 'default';
-  onPress?: () => void;
-  disabled?: boolean;
-  style?: StyleProp<ViewStyle>;
-  testID?: string;
-  className?: string;
 }
 
 const fontColorVC: Record<'filled' | 'outlined' | 'text', FontColorType> = {
@@ -86,6 +81,7 @@ const IconTextButton: React.FC<IconTextButtonProps> = ({
   style,
   testID,
   className,
+  ...rest
 }) => {
   const boxed = !label;
   const defaultFontColor = fontColorVC[variant];
@@ -97,14 +93,15 @@ const IconTextButton: React.FC<IconTextButtonProps> = ({
 
   return (
     <Pressable
+      {...rest}
       testID={testID}
       accessibilityRole="button"
       disabled={disabled}
       onPress={onPress}
       className={buttonClassName}
-      style={({ pressed }) => [
-        style,
-        pressed && { opacity: 0.8 },
+      style={state => [
+        typeof style === 'function' ? style(state) : style,
+        state.pressed && { opacity: 0.8 },
         disabled && { opacity: 0.5 },
       ]}
     >
