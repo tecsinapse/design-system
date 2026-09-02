@@ -32,6 +32,10 @@ rn-playground bundle the raw TS source without watch-builds. No emotion, no lega
 
 - Always import styles from `@tecsinapse/cortex-core` (the `tv()` variants) — never copy class strings or import from
   `dist`.
+- Always import `tv` from `@tecsinapse/cortex-core`, never from `tailwind-variants` directly. The shared `tv` registers
+  the custom typography scale (`text-h1`, `text-label`, ...) in tailwind-merge's `font-size` class group; using the
+  bare `tailwind-variants` `tv` makes tailwind-merge treat custom `text-*` sizes as text-color classes and silently
+  drop them when a color class is present in the same recipe output (font sizes lost).
 - **No `@emotion/*` imports anywhere in this package** — this is the Uniwind stack, not the legacy emotion stack.
 - New components: create a `docs/<Name>.stories.tsx` and re-export from `src/index.ts` (components, hooks, provider,
   styles).

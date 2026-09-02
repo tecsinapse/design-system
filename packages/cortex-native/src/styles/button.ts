@@ -1,4 +1,4 @@
-import { tv, type VariantProps } from 'tailwind-variants';
+import { tv, type VariantProps } from '@tecsinapse/cortex-core';
 
 export const buttonStyles = tv({
   base: 'font-bold text-base items-center justify-center text-on-primary',

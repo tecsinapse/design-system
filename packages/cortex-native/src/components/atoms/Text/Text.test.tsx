@@ -57,4 +57,16 @@ describe('Text', () => {
     expect(className).toContain('text-orange');
     expect(className).not.toContain('text-error-');
   });
+
+  it('keeps custom typography size classes when colorVariant is set (twMerge regression)', () => {
+    const { getByTestId } = render(
+      <Text testID="t" typography="h1" colorVariant="success">
+        label
+      </Text>,
+    );
+    const className = getByTestId('t').props.className as string;
+    expect(className).toContain('text-h1');
+    expect(className).toContain('leading-h1');
+    expect(className).toContain('text-success-medium');
+  });
 });

@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import { tv } from '@tecsinapse/cortex-core';
 
 export const menubar = tv({
   slots: {
