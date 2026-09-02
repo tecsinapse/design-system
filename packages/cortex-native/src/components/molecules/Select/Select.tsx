@@ -7,7 +7,7 @@ import {
   StatusBar,
   View,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useBottomSafeAreaInset } from '../../../hooks/useBottomSafeAreaInset';
 import Icon from '../../atoms/Icon/Icon';
 import Text from '../../atoms/Text/Text';
 import HintInputContainer from '../HintInputContainer/HintInputContainer';
@@ -51,7 +51,7 @@ function Select<Data, Type extends SelectType>(
     ...rest
   } = useSelect(props);
 
-  const { bottom } = useSafeAreaInsets();
+  const bottomInset = useBottomSafeAreaInset();
   const [keyboardOpened, setKeyboardOpened] = useState(0);
 
   const getKeyboardHeight = (keyboard: number) => {
@@ -132,7 +132,7 @@ function Select<Data, Type extends SelectType>(
             >
               <View
                 className="bg-surface-overlay rounded-t-deca"
-                style={{ flex: 1, paddingBottom: bottom }}
+                style={{ flex: 1, paddingBottom: bottomInset }}
               >
                 <SelectModal
                   options={selectOptions ?? []}

@@ -1,7 +1,18 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds';
 import { withView } from './withView';
+import { useColorScheme } from 'react-native';
 
-export const decorators = [withBackgrounds, withView];
+export const decorators = [withBackgrounds, withView, (Story, context) => {
+  const isDark = useColorScheme() === 'dark';
+
+  // Dynamically update storybook canvas parameters if your addon supports it
+  context.parameters.backgrounds = {
+    default: isDark ? 'dark' : 'light',
+  };
+
+  return <Story />
+  );
+},];
 
 export const parameters = {
   backgrounds: {

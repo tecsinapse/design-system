@@ -216,6 +216,10 @@ export {
 export { ThemeProvider, useTheme } from './provider/ThemeProvider';
 export type { ThemeName, ThemeProviderProps } from './provider/ThemeProvider';
 export { useDebouncedState } from './hooks/useDebouncedState';
+export {
+  MIN_ANDROID_BOTTOM_INSET,
+  useBottomSafeAreaInset,
+} from './hooks/useBottomSafeAreaInset';
 export { lightenDarkenColor } from './utils/lightenDarkenColor';
 export { default as PhoneCountryPickerSelector } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';
 export type { PhoneCountryPickerSelectorProps } from './components/molecules/PhoneCountryPickerSelector/PhoneCountryPickerSelector';

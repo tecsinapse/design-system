@@ -16,7 +16,7 @@ import {
   usePhoneInput,
   UsePhoneInputConfig,
 } from 'react-international-phone';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useBottomSafeAreaInset } from '../../../hooks/useBottomSafeAreaInset';
 import Hint from '../../atoms/Input/Hint';
 import InputContainer, {
   InputContainerProps,
@@ -79,7 +79,7 @@ const PhoneInput: FC<PhoneInputProps> = ({
   placeholder,
   ...phoneConfig
 }) => {
-  const { bottom } = useSafeAreaInsets();
+  const bottomInset = useBottomSafeAreaInset();
   const { height: windowHeight } = useWindowDimensions();
 
   const { drawerHeight, listHeight } = useMemo(() => {
@@ -91,10 +91,10 @@ const PhoneInput: FC<PhoneInputProps> = ({
       HANDLE_BLOCK_HEIGHT +
       (countryModalTitle ? TITLE_BLOCK_HEIGHT : 0) +
       (hasSearch ? SEARCH_BLOCK_HEIGHT : 0);
-    const list = Math.max(drawer - header, MIN_LIST_HEIGHT);
+    const list = Math.max(drawer - header - bottomInset, MIN_LIST_HEIGHT);
 
     return { drawerHeight: drawer, listHeight: list };
-  }, [windowHeight, countryModalTitle, hasSearch]);
+  }, [windowHeight, countryModalTitle, hasSearch, bottomInset]);
   const textInputRef = useRef<TextInput>(null);
   const [selectorOpen, setSelectorOpen] = useState(false);
 
@@ -224,7 +224,7 @@ const PhoneInput: FC<PhoneInputProps> = ({
           </Pressable>
           <View
             className="bg-surface-overlay rounded-t-deca"
-            style={{ height: drawerHeight, paddingBottom: bottom }}
+            style={{ height: drawerHeight, paddingBottom: bottomInset }}
           >
             <View className="items-center py-micro">
               <View

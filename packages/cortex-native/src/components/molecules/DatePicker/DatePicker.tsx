@@ -2,7 +2,7 @@ import { format as formatDate } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useCallback, useEffect, useState } from 'react';
 import { Modal, Pressable, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useBottomSafeAreaInset } from '../../../hooks/useBottomSafeAreaInset';
 import Icon from '../../atoms/Icon/Icon';
 import Text from '../../atoms/Text/Text';
 import { useInputFocus } from '../../atoms/Input';
@@ -57,7 +57,7 @@ function DatePicker<T extends SelectionType>({
     !disabled
   );
   const [modalVisible, setModalVisible] = useState(false);
-  const { bottom } = useSafeAreaInsets();
+  const bottomInset = useBottomSafeAreaInset();
 
   const handleShowCalendar = useCallback(() => {
     handleFocus();
@@ -147,7 +147,7 @@ function DatePicker<T extends SelectionType>({
             style={{
               flex: 1,
               justifyContent: 'flex-end',
-              paddingBottom: bottom,
+              paddingBottom: bottomInset,
             }}
           >
             <Pressable onPress={event => event.stopPropagation()}>

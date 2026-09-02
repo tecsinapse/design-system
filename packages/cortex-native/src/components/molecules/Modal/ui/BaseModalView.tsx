@@ -9,8 +9,8 @@ import {
   StatusBar,
   View,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import BoxContent from '../../../atoms/BoxContent/BoxContent';
+import { useBottomSafeAreaInset } from '../../../../hooks/useBottomSafeAreaInset';
 import { IBaseModal } from './types';
 
 const BACKDROP_COLOR = 'rgba(0, 0, 0, 0.5)';
@@ -27,12 +27,12 @@ export const ModalView: FC<IBaseModal> = ({
   close,
   onClose,
 }) => {
-  const { bottom } = useSafeAreaInsets();
+  const bottomInset = useBottomSafeAreaInset();
   const [keyboardOpened, setKeyboardOpened] = useState(0);
   const [boxHeight, setBoxHeight] = useState(0);
   const backgroundCarrier = useRef(new Animated.Value(0)).current;
   const translationCarrier = useRef(new Animated.Value(0)).current;
-  const offset = isLastShown && keyboardOpened > 0 ? 0 : bottom;
+  const offset = isLastShown && keyboardOpened > 0 ? 0 : bottomInset;
 
   const getKeyboardHeight = (keyboard: number) => {
     if (keyboard === 0) return 0;

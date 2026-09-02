@@ -3,13 +3,13 @@ import type { Locale } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useState } from 'react';
 import { Modal, Pressable, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Icon from '../../atoms/Icon/Icon';
 import Text, { TextProps } from '../../atoms/Text/Text';
 import { useInputFocus } from '../../atoms/Input';
 import HintInputContainer from '../HintInputContainer/HintInputContainer';
 import DateTimePickerSelector from '../DateTimePickerSelector/DateTimePickerSelector';
 import { InputVariantType } from '../../atoms/Input/InputContainer';
+import { useBottomSafeAreaInset } from '../../../hooks/useBottomSafeAreaInset';
 
 export type DateTimePickerMode = 'date' | 'time' | 'datetime' | 'month';
 
@@ -78,7 +78,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   const [modalVisible, setModalVisible] = useState(false);
   const [date, setDate] = useState<Date>(value || new Date());
   const [currentMode, setCurrentMode] = useState<0 | 1>(0);
-  const { bottom } = useSafeAreaInsets();
+  const bottomInset = useBottomSafeAreaInset();
 
   const handleShowSelector = () => {
     handleFocus();
@@ -159,7 +159,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
             style={{
               flex: 1,
               justifyContent: 'flex-end',
-              paddingBottom: bottom,
+              paddingBottom: bottomInset,
             }}
           >
             <Pressable onPress={event => event.stopPropagation()}>
