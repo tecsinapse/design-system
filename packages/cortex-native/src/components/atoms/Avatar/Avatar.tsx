@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, ImageSourcePropType, View } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import PressableSurface from '../PressableSurface/PressableSurface';
 import Text, { TextProps } from '../Text/Text';
 import { getIniciais } from './helpers';
@@ -21,6 +22,8 @@ export interface AvatarProps {
   onPress?: () => void;
   size?: SizeAvatar;
   TextComponent?: React.ComponentType<TextProps>;
+  className?: string;
+  testID?: string;
 }
 
 const Avatar: React.FC<AvatarProps> = ({
@@ -29,6 +32,8 @@ const Avatar: React.FC<AvatarProps> = ({
   onPress,
   size = 'mega',
   TextComponent = Text,
+  className,
+  testID,
 }) => {
   const [hasError, setHasError] = React.useState<boolean>(false);
 
@@ -42,6 +47,8 @@ const Avatar: React.FC<AvatarProps> = ({
     <PressableSurface
       effect="none"
       onPress={onPress}
+      testID={testID}
+      className={cn(className)}
       style={{ width: dimension, height: dimension }}
     >
       {source && !hasError ? (

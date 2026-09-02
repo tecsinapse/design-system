@@ -1,6 +1,7 @@
 import React from 'react';
 import { ColorValue, StyleProp, TextStyle } from 'react-native';
 import { useCSSVariable } from 'uniwind';
+import { cn } from '@tecsinapse/cortex-core';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -30,6 +31,8 @@ interface IconComponentProps {
   size?: number;
   color?: ColorValue | number;
   style?: StyleProp<TextStyle>;
+  className?: string;
+  testID?: string;
 }
 
 const getIconComponent = (
@@ -82,6 +85,8 @@ export interface IconProps {
   /** Palette theme gradation fill color */
   colorTone?: ColorGradationType;
   style?: StyleProp<TextStyle>;
+  className?: string;
+  testID?: string;
 }
 
 const Icon: React.FC<IconProps> = ({
@@ -92,6 +97,8 @@ const Icon: React.FC<IconProps> = ({
   colorVariant,
   colorTone = 'medium',
   style,
+  className,
+  testID,
 }) => {
   const color = useCSSVariable(
     iconColorVar(colorVariant, colorTone, fontColor)
@@ -104,6 +111,8 @@ const Icon: React.FC<IconProps> = ({
       size={ICON_SIZE_PX[size]}
       color={color}
       style={style}
+      className={cn(className)}
+      testID={testID}
     />
   );
 };

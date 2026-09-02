@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View, ViewProps } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 
 export interface DividerProps extends ViewProps {
   linePosition?: 'top' | 'bottom';
@@ -13,15 +13,17 @@ const Divider: FC<DividerProps> = ({
   noLine = false,
   style,
   testID,
+  className,
   ...rest
 }) => {
-  const className = clsx(
+  const dividerClassName = cn(
     'border-secondary-xlight',
     !noLine && linePosition === 'top' && 'border-t',
     !noLine && linePosition === 'bottom' && 'border-b',
+    className,
   );
   return (
-    <View className={className} style={style} testID={testID} {...rest}>
+    <View className={dividerClassName} style={style} testID={testID} {...rest}>
       {children}
     </View>
   );

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
-import { clsx } from 'clsx';
 import { useCSSVariable } from 'uniwind';
 import {
   inputElementClasses,
   inputElementDisabledClasses,
 } from '../../../styles/input';
 import {
+  cn,
   MaskType,
   useStringMask,
 } from '@tecsinapse/cortex-core';
@@ -91,6 +91,7 @@ const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
       placeholderTextColor,
       mask,
       style,
+      className,
       ...rest
     },
     ref
@@ -111,9 +112,10 @@ const InputMaskElement = React.forwardRef<TextInput, InputMaskElementProps>(
       placeholderTextColor: _placeholderColor,
       editable: !disabled,
       style,
-      className: clsx(
+      className: cn(
         inputElementClasses,
         disabled && inputElementDisabledClasses,
+        className,
       ),
     };
 

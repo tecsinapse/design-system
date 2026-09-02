@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import type { VariantProps } from 'tailwind-variants';
 import { useCSSVariable } from 'uniwind';
+import { cn } from '@tecsinapse/cortex-core';
 import Text from '../Text/Text';
 import {
   buttonStyles,
@@ -19,6 +20,7 @@ export interface ButtonProps extends VariantProps<typeof buttonStyles> {
   disabled?: boolean;
   loading?: boolean;
   style?: StyleProp<ViewStyle>;
+  className?: string;
   testID?: string;
 }
 
@@ -31,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'filled',
   size = 'default',
   style,
+  className,
   testID,
 }) => {
   const foregroundColor = useCSSVariable(
@@ -43,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
       accessibilityRole="button"
       disabled={disabled || loading}
       onPress={onPress}
-      className={buttonStyles({ intent, variant, size })}
+      className={cn(buttonStyles({ intent, variant, size }), className)}
       style={({ pressed }) => [
         style,
         pressed && { opacity: 0.8 },

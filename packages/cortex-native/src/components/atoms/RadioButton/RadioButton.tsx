@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Pressable, StyleProp, View, ViewStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import Icon from '../Icon/Icon';
 import { colorToneBorder } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
@@ -21,6 +21,7 @@ export interface RadioButtonProps {
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
   testID?: string;
+  className?: string;
 }
 
 const RadioButton = ({
@@ -33,6 +34,7 @@ const RadioButton = ({
   colorTone = 'medium',
   style,
   testID,
+  className,
   ...rest
 }: RadioButtonProps): React.ReactElement => {
   const handleChange = () => {
@@ -48,12 +50,13 @@ const RadioButton = ({
       accessibilityState={{ checked: !!checked, disabled }}
       style={style}
       testID={testID}
+      className={cn(className)}
     >
       <View className="flex-row items-center">
         {labelPosition === 'left' && children}
         <View className="p-mili">
           <View
-            className={clsx(
+            className={cn(
               'rounded-pill border-nano bg-surface-overlay',
               colorToneBorder[color][colorTone]
             )}

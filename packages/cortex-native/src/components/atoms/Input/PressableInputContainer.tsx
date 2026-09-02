@@ -8,6 +8,7 @@ import {
 import InputContainer, {
   InputContainerProps,
 } from './InputContainer';
+import { cn } from '@tecsinapse/cortex-core';
 
 export interface PressableInputContainerProps
   extends Omit<
@@ -27,6 +28,7 @@ const PressableInputContainer = ({
   disabled,
   style,
   children,
+  className,
   ...rest
 }: PressableInputContainerProps): React.ReactElement => {
   return (
@@ -37,7 +39,7 @@ const PressableInputContainer = ({
       accessibilityRole="button"
       style={style}
     >
-      <InputContainer disabled={disabled} {...rest}>
+      <InputContainer disabled={disabled} className={cn(className)} {...rest}>
         {children}
       </InputContainer>
     </Pressable>

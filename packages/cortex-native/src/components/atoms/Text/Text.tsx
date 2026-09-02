@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text as RNText, type StyleProp, type TextStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { getLabel } from './functions';
 import {
   colorToneStyles,
@@ -29,6 +29,7 @@ export interface TextProps {
   textTransform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
   capitalFirst?: boolean;
   style?: StyleProp<TextStyle>;
+  className?: string;
   children?: React.ReactNode;
   testID?: string;
 }
@@ -44,10 +45,11 @@ const Text: React.FC<TextProps> = ({
   fontWeight,
   fontStack,
   textTransform,
+  className,
   ...rnProps
 }) => {
   const hasColorTone = !!colorVariant && !!colorTone;
-  const className = clsx(
+  const textClassName = cn(
     textStyles({
       typography,
       fontWeight,
@@ -56,11 +58,12 @@ const Text: React.FC<TextProps> = ({
     }),
     !colorVariant && fontColorStyles[fontColor],
     colorVariant && colorTone && colorToneStyles[colorVariant][colorTone],
+    className,
   );
 
   return (
     <RNText
-      className={className}
+      className={textClassName}
       style={[textTransform ? { textTransform } : null, style]}
       {...rnProps}
     >

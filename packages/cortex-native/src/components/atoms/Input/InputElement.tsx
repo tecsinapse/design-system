@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { useCSSVariable } from 'uniwind';
 import {
   inputElementClasses,
@@ -27,6 +27,7 @@ const InputElement = React.forwardRef<TextInput, InputElementProps>(
       disabled = false,
       placeholderTextColor,
       style,
+      className,
       ...rest
     },
     ref
@@ -38,9 +39,10 @@ const InputElement = React.forwardRef<TextInput, InputElementProps>(
       <TextInput
         {...rest}
         ref={ref}
-        className={clsx(
+        className={cn(
           inputElementClasses,
           disabled && inputElementDisabledClasses,
+          className,
         )}
         onChangeText={onChange}
         value={value}

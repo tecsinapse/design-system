@@ -1,7 +1,6 @@
 import React from 'react';
 import { DimensionValue, View, ViewProps } from 'react-native';
-import { clsx } from 'clsx';
-import { extractNumbersFromString } from '@tecsinapse/cortex-core';
+import { cn, extractNumbersFromString } from '@tecsinapse/cortex-core';
 import { colorToneBg } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
 
@@ -28,6 +27,7 @@ const ProgressBar = ({
   color = 'primary',
   colorTone = 'medium',
   style,
+  className,
   testID,
   ...rest
 }: ProgressBarProps): React.ReactElement => {
@@ -53,7 +53,7 @@ const ProgressBar = ({
         style={{ borderRightWidth: index === segments - 1 ? 0 : 2 }}
       >
         <View
-          className={clsx('h-full border-secondary-xlight', colorToneBg[color][colorTone])}
+          className={cn('h-full border-secondary-xlight', colorToneBg[color][colorTone])}
           style={{
             width: `${width}%` as DimensionValue,
             borderRightWidth: width > 0 && width < 100 ? 2 : 0,
@@ -67,7 +67,7 @@ const ProgressBar = ({
     <View
       {...rest}
       testID={testID}
-      className="h-mili rounded-mili w-full flex-row overflow-hidden"
+      className={cn('h-mili rounded-mili w-full flex-row overflow-hidden', className)}
       style={style}
     >
       {segmentsRender}

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import Text, { TextProps } from '../Text/Text';
 import {
   ColorGradationType,
@@ -57,6 +57,7 @@ export interface InputContainerProps {
   hint?: string;
   hintComponent?: React.ReactNode;
   testID?: string;
+  className?: string;
   children?: React.ReactNode;
 }
 
@@ -83,6 +84,7 @@ const InputContainer: FC<InputContainerProps> = ({
   variant = 'default',
   children,
   testID,
+  className,
   ...rest
 }): React.ReactElement => {
   let _defaultLabelColor = labelColorVariant;
@@ -92,17 +94,18 @@ const InputContainer: FC<InputContainerProps> = ({
   const _labelColorTone = disabled ? 'light' : labelColorTone;
 
   const intent = variantToIntent[variant];
-  const className = clsx(
+  const containerClassName = cn(
     inputContainerStyles({ intent }),
     focused && inputFocusedBorder[intent],
     disabled && inputContainerDisabledClasses,
+    className,
   );
 
   return (
     <View
       {...rest}
       testID={testID}
-      className={className}
+      className={containerClassName}
       style={[focused && { borderWidth: 2 }, inputContainerStyle]}
     >
       {leftComponent && <View className="flex-row items-center">{leftComponent}</View>}

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Pressable, StyleProp, View, ViewStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import Icon from '../Icon/Icon';
 import { colorToneBg, colorToneBorder } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
@@ -21,6 +21,7 @@ export interface CheckboxProps {
   style?: StyleProp<ViewStyle>;
   children?: ReactNode;
   testID?: string;
+  className?: string;
 }
 
 const Checkbox = ({
@@ -33,13 +34,14 @@ const Checkbox = ({
   disabled = false,
   style,
   testID,
+  className,
   ...rest
 }: CheckboxProps): React.ReactElement => {
   const handleChange = () => {
     onChange?.(!checked);
   };
 
-  const boxClass = clsx(
+  const boxClass = cn(
     'rounded-micro border-nano',
     colorToneBorder[color][colorTone],
     checked ? colorToneBg[color][colorTone] : 'bg-surface-overlay'
@@ -54,6 +56,7 @@ const Checkbox = ({
       accessibilityState={{ checked: !!checked, disabled }}
       style={style}
       testID={testID}
+      className={cn(className)}
     >
       <View className="flex-row items-center">
         {labelPosition === 'left' && children}

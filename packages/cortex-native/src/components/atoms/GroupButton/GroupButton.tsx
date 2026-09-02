@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, StyleProp, View, ViewStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { colorToneBg, colorToneBorder } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
 
@@ -32,6 +32,8 @@ export interface GroupButtonProps<T> {
   buttonSize?: 'small' | 'default';
   style?: StyleProp<ViewStyle>;
   disableAllOptions?: boolean;
+  className?: string;
+  testID?: string;
 }
 
 const sizeClass: Record<'small' | 'default', string> = {
@@ -97,7 +99,7 @@ const groupOptions = <T,>({
         <Pressable
           disabled={disabled}
           onPress={() => onChange?.(optionValue)}
-          className={clsx(
+          className={cn(
             'flex-1 justify-center items-center border-t border-b',
             borderClass,
             bgClass,
@@ -115,8 +117,17 @@ const groupOptions = <T,>({
   });
 };
 
-const GroupButton = <T,>({ style, ...rest }: GroupButtonProps<T>) => {
-  return <View style={style} className="flex-row">{groupOptions(rest)}</View>;
+const GroupButton = <T,>({
+  style,
+  className,
+  testID,
+  ...rest
+}: GroupButtonProps<T>) => {
+  return (
+    <View style={style} testID={testID} className={cn('flex-row', className)}>
+      {groupOptions(rest)}
+    </View>
+  );
 };
 
 export default GroupButton;
