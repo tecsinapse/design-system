@@ -1,12 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { view } from './storybook.requires';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
+  Icon,
   ModalGroupManager,
   Text,
-  ThemeProvider,
+  type ThemeName,
 } from '@tecsinapse/cortex-native';
 
 const _StorybookUIRoot = view.getStorybookUI({
@@ -18,7 +19,15 @@ const _StorybookUIRoot = view.getStorybookUI({
   },
 });
 
-const StorybookUIRoot = () => {
+const THEMES: ThemeName[] = ['light', 'dark'];
+
+const StorybookUIRoot = ({
+  theme,
+  onChange,
+}: {
+  theme: ThemeName;
+  onChange: (theme: ThemeName) => void;
+}) => {
   const [fontsLoaded] = useFonts({
     FontAwesome: require('../assets/fonts/FontAwesome.ttf'),
     FontAwesome5_Regular: require('../assets/fonts/FontAwesome5_Regular.ttf'),
@@ -33,32 +42,33 @@ const StorybookUIRoot = () => {
     'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
   });
 
+  const nextTheme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#f8f7f7' }}>
-        <ThemeProvider theme="light">
-          <View
-            style={{
-              backgroundColor: '#F89907',
-              padding: 12,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
+    <View className="flex-1 bg-linear-to-b from-primary-medium to-content-minimal">
+      <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View className="flex-row items-center justify-between bg-primary-medium p-centi">
             <Text typography="h4" fontWeight="bold" fontColor="light">
               Design System Playground
             </Text>
+            <Pressable
+              className="items-center justify-center rounded-mili bg-content-minimal p-centi"
+              onPress={() => onChange(nextTheme)}
+            >
+              <Text typography="sub">Theme</Text>
+              <Icon type="font-awesome" name="exchange" />
+            </Pressable>
           </View>
           <_StorybookUIRoot />
           <ModalGroupManager />
-        </ThemeProvider>
-      </SafeAreaView>
-    </SafeAreaProvider>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </View>
   );
 };
 
