@@ -1,25 +1,25 @@
-import React, { ReactNode } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import React from 'react';
+import { View, ViewProps } from 'react-native';
 import { clsx } from 'clsx';
 
-export interface PaperProps {
+export interface PaperProps extends ViewProps {
   /** Creates elevation shadow */
   elevated?: boolean;
-  style?: StyleProp<ViewStyle>;
-  children?: ReactNode;
-  testID?: string;
 }
 
 const Paper = ({
   children,
   elevated = false,
-  style,
-  testID,
+  className,
+  ...rest
 }: PaperProps): React.ReactElement => (
   <View
-    testID={testID}
-    className={clsx('bg-surface-overlay rounded-mili', elevated && 'shadow-default')}
-    style={style}
+    {...rest}
+    className={clsx(
+      'bg-surface-overlay rounded-mili',
+      elevated && 'shadow-default',
+      className
+    )}
   >
     {children}
   </View>
