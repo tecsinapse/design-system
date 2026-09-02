@@ -8,14 +8,7 @@ export default {
     '../packages/cortex-react/**/*.stories.@(tsx|jsx)',
     '../docs/**/*.mdx',
   ],
-  addons: [
-    { name: '@storybook/addon-docs', options: { configureJSX: true } },
-    '@storybook/addon-controls',
-    '@storybook/addon-backgrounds',
-    '@storybook/addon-actions',
-    '@storybook/addon-viewport',
-    '@storybook/addon-essentials',
-  ],
+  addons: [{ name: '@storybook/addon-docs', options: { configureJSX: true } }],
   staticDirs: ['public/'],
   typescript: {
     // Overrides the default Typescript configuration to allow multi-package components to be documented via Autodocs.

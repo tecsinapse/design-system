@@ -9,7 +9,7 @@ import {
 } from '@tecsinapse/react-native-kit';
 import React from 'react';
 import { View } from 'react-native';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 const options = new Array(20).fill(undefined).map((_, index) => ({
   key: index,

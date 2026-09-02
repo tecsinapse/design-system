@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-react%402.4.6...%40tecsinapse%2Fcortex-react%402.5.0) (2026-09-01)
+
+### Bug Fixes
+
+* **cortex-react:** address PortalProvider review feedback ([f885150](https://github.com/tecsinapse/design-system/commit/f8851507b78caa19e7e4c82060fa5b936a478979))
+* storybook not rendering on mobile ([6731792](https://github.com/tecsinapse/design-system/commit/67317920664c85e3cc71b196ab3bc2e2970c3b41))
+
+### Features
+
+* **cortex-react:** add PortalProvider for configurable FloatingPortal root ([0ec8a2d](https://github.com/tecsinapse/design-system/commit/0ec8a2df127b4bc5c6d8bc861167b4b65cc2cd37))
+
 ## [2.4.6](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-react@2.4.5...@tecsinapse/cortex-react@2.4.6) (2026-07-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react

@@ -3,16 +3,16 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import { Menubar } from '../../components';
 
-const mockUseMenubar = jest.fn();
+const mockUseMenubar = vi.fn();
 
-jest.mock('../../provider', () => ({
+vi.mock('../../provider', () => ({
   useMenubar: () => mockUseMenubar(),
 }));
 
 describe('Header Menubar', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
-    mockUseMenubar.mockReturnValue([false, jest.fn()]);
+    vi.clearAllMocks();
+    mockUseMenubar.mockReturnValue([false, vi.fn()]);
   });
 
   it('Should render correctly', () => {
@@ -26,7 +26,7 @@ describe('Header Menubar', () => {
   });
 
   it('Should toggles show state when Button is clicked', () => {
-    const setShow = jest.fn();
+    const setShow = vi.fn();
     mockUseMenubar.mockReturnValue([false, setShow]);
     const { getByRole } = render(<Menubar.Header>Test Child</Menubar.Header>);
     fireEvent.click(getByRole('button'));

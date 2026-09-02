@@ -1,6 +1,6 @@
 import React from 'react';
 import { DateTimePicker } from '@tecsinapse/react-native-kit';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof DateTimePicker> = {
   title: 'DateTimePicker',

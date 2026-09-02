@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import Tooltip, { ITooltip } from './Tooltip';
 import { Button } from '../Button';
 import { Text } from '@tecsinapse/react-core';

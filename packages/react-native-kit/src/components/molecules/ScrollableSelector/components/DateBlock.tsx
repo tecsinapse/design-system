@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { Block, Mark, StyledScrollView } from '../styled';
 import { TextProps } from '@tecsinapse/react-core';
-import { format as formatDate } from 'date-fns';
+import { format as formatDate, type Locale } from 'date-fns';
 
 export interface DateBlockProps {
   digits: number[];

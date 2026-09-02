@@ -4,7 +4,7 @@ import React from 'react';
 import { Input, InputSearchProps } from '../../components';
 
 describe('Input.Search', () => {
-  let mockOnChange = jest.fn();
+  let mockOnChange = vi.fn();
 
   const setup = (props: Partial<InputSearchProps> = {}) => {
     const defaultProps: InputSearchProps = {
@@ -19,7 +19,7 @@ describe('Input.Search', () => {
   };
 
   beforeEach(() => {
-    mockOnChange = jest.fn();
+    mockOnChange = vi.fn();
   });
 
   it('Should render Input.Search with all elements', () => {

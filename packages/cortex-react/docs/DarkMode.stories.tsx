@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Button, Card } from '../src';
 import { DarkThemeProvider, useDarkTheme } from '@tecsinapse/cortex-core';
 import { useMemo } from 'react';

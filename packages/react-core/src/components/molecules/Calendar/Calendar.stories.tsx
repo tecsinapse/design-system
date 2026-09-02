@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import React from 'react';
 import { Calendar, CalendarProps } from './index';
 import { DateRange } from './Calendar';
