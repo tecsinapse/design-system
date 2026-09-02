@@ -5,6 +5,7 @@ import Text from '../../atoms/Text/Text';
 import type { TextProps } from '../../atoms/Text/Text';
 import { DateBlock } from './components';
 import { getLocale } from '../../../utils/date';
+import { cn } from '@tecsinapse/cortex-core';
 
 export type DateTimePickerMode = 'date' | 'time' | 'datetime' | 'month';
 
@@ -27,6 +28,8 @@ export interface ScrollableSelectorProps {
   minuteLabel?: string;
   TextComponent?: React.FC<TextProps>;
   locale?: Locale;
+  className?: string;
+  testID?: string;
 }
 
 const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
@@ -48,6 +51,8 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   minuteLabel,
   TextComponent = Text,
   locale = getLocale(),
+  className,
+  testID,
 }) => {
   const date = useMemo(() => value ?? new Date(), [value]);
   const [months, setMonths] = useState<number[]>([]);
@@ -131,7 +136,11 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   }, [format, date, months, years, hour, minutes]);
 
   return (
-    <View style={{ flexDirection: 'column', width: '100%' }}>
+    <View
+      testID={testID}
+      className={cn(className)}
+      style={{ flexDirection: 'column', width: '100%' }}
+    >
       <View style={styles.blockLabels}>
         {format === 'MM-yyyy' ? (
           <>

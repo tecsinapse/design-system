@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import GridItem, { IGridItem } from './Item';
 import { GridSpacing } from './functions';
 
@@ -20,12 +21,13 @@ const Grid = ({
   layout,
   style,
   spacing,
+  className,
   ...rest
 }: IGridNative): React.ReactElement => {
   if (layout) {
     const flatLayout = layout.flat();
     return (
-      <View style={[style]} className="flex flex-row flex-wrap" {...rest}>
+      <View style={[style]} {...rest} className={cn('flex flex-row flex-wrap', className)}>
         {React.Children.map(children, (child, index) => {
           const content = React.isValidElement(child) ? child : <>{child}</>;
           return (
@@ -44,7 +46,7 @@ const Grid = ({
   }
 
   return (
-    <View style={[style]} className="flex flex-row flex-wrap" {...rest}>
+    <View style={[style]} {...rest} className={cn('flex flex-row flex-wrap', className)}>
       {React.Children.map(children, (child, index) => {
         if (React.isValidElement(child)) {
           const childEl = child as React.ReactElement & {

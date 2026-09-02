@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Modal, Pressable, View } from 'react-native';
 import Icon from '../../atoms/Icon/Icon';
 import Text, { TextProps } from '../../atoms/Text/Text';
+import { cn } from '@tecsinapse/cortex-core';
 import { useInputFocus } from '../../atoms/Input';
 import HintInputContainer from '../HintInputContainer/HintInputContainer';
 import DateTimePickerSelector from '../DateTimePickerSelector/DateTimePickerSelector';
@@ -39,6 +40,7 @@ export interface DateTimePickerProps {
   yearLabel?: string;
   hourLabel?: string;
   minuteLabel?: string;
+  className?: string;
 }
 
 const DateTimePicker: React.FC<DateTimePickerProps> = ({
@@ -69,6 +71,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hintComponent,
   hint,
   label,
+  className,
 }) => {
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
@@ -165,7 +168,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
             <Pressable onPress={event => event.stopPropagation()}>
               <View
                 testID="datetimepicker-sheet"
-                className="bg-surface-overlay rounded-t-deca overflow-hidden"
+                className={cn('bg-surface-overlay rounded-t-deca overflow-hidden', className)}
               >
                 <DateTimePickerSelector
                   date={date}

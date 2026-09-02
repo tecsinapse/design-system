@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import React from 'react';
 import {
   Text as RNText,
@@ -44,10 +44,11 @@ const LabelText = ({
   font,
   expand = false,
   style,
+  className,
   ...rest
 }: LabelTextProps & Omit<TextProps, 'style'>) => (
   <RNText
-    className={clsx(LABEL_TEXT_CLASS, expand && 'flex-1')}
+    className={cn(LABEL_TEXT_CLASS, expand && 'flex-1', className)}
     style={[
       { fontFamily: font.fontFamily, fontWeight: font.fontWeight },
       style,

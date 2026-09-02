@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { View, ViewProps } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import Icon, { IconProps } from '../../atoms/Icon/Icon';
 import { TextProps } from '../../atoms/Text/Text';
 
@@ -33,6 +34,7 @@ function Item<T extends ValueType>({
   icon,
   children,
   style,
+  className,
   ...rest
 }: Partial<BottomNavigatorItemProps<T>>): React.ReactElement {
   const styledButtonStyle = _selected
@@ -44,7 +46,10 @@ function Item<T extends ValueType>({
   if (icon) {
     return (
       <View
-        className="aspect-square justify-center items-center min-h-[48px] bg-primary-xlight rounded-mili"
+        className={cn(
+          'aspect-square justify-center items-center min-h-[48px] bg-primary-xlight rounded-mili',
+          className
+        )}
         style={[styledButtonStyle, style]}
         {...rest}
       >
@@ -52,7 +57,11 @@ function Item<T extends ValueType>({
       </View>
     );
   } else {
-    return <View style={style} {...rest}>{children}</View>;
+    return (
+      <View className={cn(className)} style={style} {...rest}>
+        {children}
+      </View>
+    );
   }
 }
 

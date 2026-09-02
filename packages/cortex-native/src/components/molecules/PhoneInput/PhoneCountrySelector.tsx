@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { FlatList, StyleProp, View, ViewStyle } from 'react-native';
 import type { CountryIso2, ParsedCountry } from 'react-international-phone';
+import { cn } from '@tecsinapse/cortex-core';
 import Input from '../../atoms/Input/Input';
 import Divider from '../../atoms/Divider/Divider';
 import CountryOption, { CountryOptionProps } from './CountryOption';
@@ -14,6 +15,7 @@ export interface PhoneCountrySelectorProps {
   CountryOptionComponent?: React.FC<CountryOptionProps>;
   listHeight?: number;
   listStyle?: StyleProp<ViewStyle>;
+  className?: string;
   testID?: string;
 }
 
@@ -26,6 +28,7 @@ const PhoneCountrySelector: React.FC<PhoneCountrySelectorProps> = ({
   CountryOptionComponent = CountryOption,
   listHeight,
   listStyle,
+  className,
   testID,
 }) => {
   const [searchText, setSearchText] = useState('');
@@ -53,7 +56,7 @@ const PhoneCountrySelector: React.FC<PhoneCountrySelectorProps> = ({
   ) : null;
 
   return (
-    <View testID={testID} className="w-full flex-col">
+    <View testID={testID} className={cn('w-full flex-col', className)}>
       {hasSearch ? (
         <View className="p-deca">
           <Input

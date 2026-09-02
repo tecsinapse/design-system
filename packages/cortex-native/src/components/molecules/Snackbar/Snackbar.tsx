@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Animated, Pressable, StyleProp, View, ViewStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { ColorGradationType, ColorType } from '../../../styles/types';
 import { colorToneBg } from '../../../styles/colors';
 import Icon, { IconProps } from '../../atoms/Icon/Icon';
@@ -18,6 +18,8 @@ export interface SnackbarProps {
   anchor?: 'top' | 'bottom';
   anchorDistance?: number;
   style?: StyleProp<ViewStyle>;
+  className?: string;
+  testID?: string;
   children?: ReactNode;
 }
 
@@ -36,6 +38,8 @@ const Snackbar = ({
   anchor = 'bottom',
   anchorDistance,
   style,
+  className,
+  testID,
 }: SnackbarProps): React.ReactElement => {
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
   const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | undefined>(
@@ -95,9 +99,11 @@ const Snackbar = ({
 
   return (
     <Animated.View
-      className={clsx(
+      testID={testID}
+      className={cn(
         colorToneBg[colorVariant][colorTone],
         'rounded-mili shadow-default p-mili flex',
+        className
       )}
       style={[
         {

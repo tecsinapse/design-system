@@ -1,4 +1,4 @@
-import { format as formatDate } from '@tecsinapse/cortex-core';
+import { cn, format as formatDate } from '@tecsinapse/cortex-core';
 import type { Locale } from '@tecsinapse/cortex-core';
 import React, { useEffect, useRef } from 'react';
 import {
@@ -22,6 +22,8 @@ export interface DateBlockProps {
   markHeight?: number;
   markWidth?: number;
   TextComponent?: React.FC<TextProps>;
+  className?: string;
+  testID?: string;
 
   onChange(type: string, digit: number): void;
 }
@@ -39,6 +41,8 @@ const DateBlock: React.FC<DateBlockProps> = ({
   markWidth,
   TextComponent = Text,
   locale,
+  className,
+  testID,
 }) => {
   const months = [...Array(12)].map((_, index) =>
     formatDate(new Date().setMonth(index), 'MMM', { locale })
@@ -74,7 +78,10 @@ const DateBlock: React.FC<DateBlockProps> = ({
   };
 
   return (
-    <View className="flex-1 items-center justify-center flex-row h-full">
+    <View
+      testID={testID}
+      className={cn('flex-1 items-center justify-center flex-row h-full', className)}
+    >
       <View
         className="absolute"
         style={{

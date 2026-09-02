@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, StyleProp, ViewStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { buttonStyles } from '../../../styles/button';
 import Icon, { IconProps } from '../../atoms/Icon/Icon';
 import Text, { TextProps } from '../../atoms/Text/Text';
@@ -20,6 +20,7 @@ export interface IconTextButtonProps {
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
   testID?: string;
+  className?: string;
 }
 
 const fontColorVC: Record<'filled' | 'outlined' | 'text', FontColorType> = {
@@ -84,12 +85,14 @@ const IconTextButton: React.FC<IconTextButtonProps> = ({
   disabled = false,
   style,
   testID,
+  className,
 }) => {
   const boxed = !label;
   const defaultFontColor = fontColorVC[variant];
-  const className = clsx(
+  const buttonClassName = cn(
     buttonStyles({ intent, variant: nativeVariant[variant], size }),
     boxed && 'p-centi aspect-square',
+    className,
   );
 
   return (
@@ -98,7 +101,7 @@ const IconTextButton: React.FC<IconTextButtonProps> = ({
       accessibilityRole="button"
       disabled={disabled}
       onPress={onPress}
-      className={className}
+      className={buttonClassName}
       style={({ pressed }) => [
         style,
         pressed && { opacity: 0.8 },
