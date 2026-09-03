@@ -7,12 +7,10 @@ import {
 } from '../../../styles/input';
 import {
   cn,
-  MaskType,
-  useStringMask,
-} from '@tecsinapse/cortex-core';
-import {
   CurrencyOptions,
+  MaskType,
   useNumberMask,
+  useStringMask,
 } from '@tecsinapse/cortex-core';
 
 export interface InputMaskElementProps

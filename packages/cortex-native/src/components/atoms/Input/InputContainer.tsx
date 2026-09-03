@@ -45,9 +45,12 @@ export interface InputContainerProps extends Omit<ViewProps, 'onBlur' | 'onFocus
   labelColorTone?: ColorGradationType;
   labelTypography?: TypographyVariationType;
   labelStack?: FontStackType;
+  /** @see Input.Label — composition alternative: `<Input.Face><Input.Label>…` */
   LabelComponent?: FC<TextProps>;
   labelWeight?: FontWeightType;
+  /** @see Input.Left — composition alternative: `<Input.Face><Input.Left>…` */
   leftComponent?: React.ReactNode;
+  /** @see Input.Right — composition alternative: `<Input.Face><Input.Right>…` */
   rightComponent?: React.ReactNode;
   borderColor?: ColorType;
   borderColorGradation?: ColorGradationType;
@@ -56,6 +59,7 @@ export interface InputContainerProps extends Omit<ViewProps, 'onBlur' | 'onFocus
   disabled?: boolean;
   variant?: InputVariantType;
   hint?: string;
+  /** @see Input.Hint — composition alternative: `<Input.Face><Input.Hint>…` */
   hintComponent?: React.ReactNode;
   /** testID applied to the container `View`, addressable independently of the consumer's own `testID`. */
   inputContainerTestID?: string;

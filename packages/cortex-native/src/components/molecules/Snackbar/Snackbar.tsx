@@ -17,7 +17,9 @@ export interface SnackbarProps extends ViewProps {
   dismissable?: boolean;
   timeout?: number;
   showProgressBar?: boolean;
+  /** @see Snackbar.Icon — composition alternative: `<Snackbar.Root><Snackbar.Icon>…` */
   leftIcon?: IconProps;
+  /** @see Snackbar.Action — composition alternative: `<Snackbar.Root><Snackbar.Action>…` */
   rightIcon?: Omit<IconProps, 'name' | 'type'>;
   anchor?: 'top' | 'bottom';
   anchorDistance?: number;

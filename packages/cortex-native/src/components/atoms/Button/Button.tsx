@@ -15,7 +15,10 @@ import Label from './Label';
 export interface ButtonProps
   extends PressableProps,
     VariantProps<typeof buttonStyles> {
-  /** Convenience label. Ignored when `children` is provided. */
+  /**
+   * Convenience label. Ignored when `children` is provided.
+   * @see Button.Label — composition alternative: `<Button.Root><Button.Label>…`
+   */
   title?: string;
   loading?: boolean;
 }
