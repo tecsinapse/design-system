@@ -80,7 +80,7 @@
 
 Background: `clsx` concatenates and never resolves Tailwind conflicts, so `<Paper className="bg-red-500" />` currently emits `bg-surface-overlay rounded-mili bg-red-500` and the winner depends on CSS source order. `cn` runs the joined string through tailwind-merge with the *same* config `tv` uses, which both resolves the conflict (last wins) and preserves the custom typography scale.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `packages/cortex-react/src/tests/cn.test.ts`:
 
@@ -118,12 +118,12 @@ describe('cn', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-react test -t 'cn'`
 Expected: FAIL — `cn` is not exported from `@tecsinapse/cortex-core`.
 
-- [ ] **Step 3: Extract the twMerge config in `tv.ts`**
+- [x] **Step 3: Extract the twMerge config in `tv.ts`**
 
 In `packages/cortex-core/src/tv.ts`, pull the object literal currently inline at line 22 into a named export, then pass it to `createTV`. Keep the existing explanatory comment above `tv` exactly as-is.
 
@@ -145,7 +145,7 @@ export const twMergeConfig = {
 export const tv = createTV({ twMergeConfig });
 ```
 
-- [ ] **Step 4: Write `cn`**
+- [x] **Step 4: Write `cn`**
 
 Create `packages/cortex-core/src/cn.ts`:
 
@@ -176,7 +176,7 @@ export const cn = (...inputs: ClassValue[]): string =>
 
 If `tsc` rejects the `class: inputs` assignment, import `ClassValue` from `tailwind-variants` instead of `clsx` — the two are structurally the same recursive union, and `tailwind-variants` is already a direct dependency.
 
-- [ ] **Step 5: Export it from the barrel**
+- [x] **Step 5: Export it from the barrel**
 
 In `packages/cortex-core/src/index.ts`, add after line 4 (`export * from './tv';`):
 
@@ -184,17 +184,17 @@ In `packages/cortex-core/src/index.ts`, add after line 4 (`export * from './tv';
 export * from './cn';
 ```
 
-- [ ] **Step 6: Run test to verify it passes**
+- [x] **Step 6: Run test to verify it passes**
 
 Run: `pnpm --filter @tecsinapse/cortex-react test -t 'cn'`
 Expected: PASS, 5 tests.
 
-- [ ] **Step 7: Type-check both consumers**
+- [x] **Step 7: Type-check both consumers**
 
 Run: `pnpm --filter @tecsinapse/cortex-core build:dts && pnpm --filter @tecsinapse/cortex-react test`
 Expected: clean `dts` emit; the full cortex-react suite still green (no regression from the `tv.ts` refactor).
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add packages/cortex-core/src/cn.ts packages/cortex-core/src/tv.ts packages/cortex-core/src/index.ts packages/cortex-react/src/tests/cn.test.ts
@@ -213,7 +213,7 @@ git commit -m "feat(cortex-core): add cn class merger sharing tv's twMerge confi
 - Consumes: `cn` from `@tecsinapse/cortex-core` (Task 1).
 - Produces: the contract test file, extended by Task 3 with molecules. Establishes the rule every later task follows: `className={cn(<base>, <conditionals>, className)}`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `packages/cortex-native/src/className.contract.test.tsx`. Every entry supplies that component's minimal valid props (verified against each props interface):
 
@@ -305,12 +305,12 @@ describe.each(atoms)('$name className contract', ({ render: renderCase, defeats 
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'className contract'`
 Expected: FAIL. Compile errors on `Button`/`Icon`/`Badge`/`Checkbox`/`RadioButton`/`Avatar`/`GroupButton`/`CardHeader`/`CardFooter` (no `className` in their props), plus assertion failures where `clsx` concatenated instead of merged.
 
-- [ ] **Step 3: Apply the sweep to every atom**
+- [x] **Step 3: Apply the sweep to every atom**
 
 For each modified file, three edits:
 
@@ -361,17 +361,17 @@ className={cn(buttonStyles({ intent, variant, size }), className)}
 
 `Card/Card.tsx` is deliberately **not** in this task; its local `const className` shadowing (`Card.tsx:28`) is resolved in Task 7 when it becomes a compound.
 
-- [ ] **Step 4: Run the contract test**
+- [x] **Step 4: Run the contract test**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'className contract'`
 Expected: PASS for all 17 atom cases.
 
-- [ ] **Step 5: Run the whole native suite**
+- [x] **Step 5: Run the whole native suite**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: PASS. `Text.test.tsx:61` (the twMerge typography regression) must still pass — it is the canary that `cn` shares `tv`'s config.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add packages/cortex-native/src/className.contract.test.tsx packages/cortex-native/src/components/atoms
@@ -392,7 +392,7 @@ git commit -m "feat(cortex-native): merge consumer className on all atoms via cn
 
 Excluded here, handled as compounds later: `Header` (Task 11), `Select` (Task 14), `Input`/`InputMask`/`InputPassword` (Tasks 8-9), `Tag` root (Task 13), `Card` (Task 7). Their leaf/child files listed above are still swept now.
 
-- [ ] **Step 1: Extend the contract test**
+- [x] **Step 1: Extend the contract test**
 
 Append to `packages/cortex-native/src/className.contract.test.tsx`, reusing the `Case` type:
 
@@ -446,12 +446,12 @@ describe.each(molecules)('$name className contract', ({ render: renderCase, defe
 
 If any component in this table needs required props not shown, read its props interface at the file:line listed in the spec's inventory and supply the minimum — do not add optional props.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'className contract'`
 Expected: FAIL on the new molecule cases; the 17 atom cases from Task 2 still pass.
 
-- [ ] **Step 3: Apply the sweep**
+- [x] **Step 3: Apply the sweep**
 
 Same three edits as Task 2, Step 3, per file. Two shapes appear here that did not in atoms:
 
@@ -467,17 +467,17 @@ className: cn(inputElementClasses, disabled && inputElementDisabledClasses, clas
 className={cn(LABEL_TEXT_CLASS, expand && 'flex-1', className)}
 ```
 
-- [ ] **Step 4: Run the contract test**
+- [x] **Step 4: Run the contract test**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'className contract'`
 Expected: PASS, all cases.
 
-- [ ] **Step 5: Verify no `clsx` remains in components**
+- [x] **Step 5: Verify no `clsx` remains in components**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: full suite PASS. Then confirm the only remaining `clsx` imports under `src/components/` are the five compound files deferred to Tasks 7-14 (`Card/Card.tsx`, `Tag/Tag.tsx`, `Snackbar/Snackbar.tsx`, `Header/Header.tsx`, `Calendar/Calendar.tsx` if not already swept).
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add packages/cortex-native/src
@@ -504,7 +504,7 @@ git commit -m "feat(cortex-native): merge consumer className on molecules and Pi
 
 `Select` (`types.ts`) and `Header` are covered by Tasks 14 and 11.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `packages/cortex-native/src/propContract.test.tsx`:
 
@@ -559,12 +559,12 @@ describe('props inherited from the RN primitive', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'props inherited from the RN primitive'`
 Expected: FAIL — TypeScript rejects `accessibilityLabel`/`selectable`/`hitSlop` on these components.
 
-- [ ] **Step 3: Change the props bases**
+- [x] **Step 3: Change the props bases**
 
 For each component in the table: extend the base, delete any redeclaration of `style` or `testID`, and spread rest onto the primitive. `Button` (`Button.tsx:16-35`) becomes:
 
@@ -597,17 +597,17 @@ Notes that apply across the table:
 - Keep every domain prop exactly as it is (`fontColor`, `colorVariant`, `colorTone`, `typography`, `intent`, `size`, …). This task only widens.
 - `Text` keeps `numberOfLines`/`ellipsizeMode`/`textTransform` declared even though `TextProps` supplies the first two — they are re-exported in the public `TextProps` type and removing them changes nothing at runtime. Prefer deleting the duplicates only if `build:dts` stays clean.
 
-- [ ] **Step 4: Run the tests**
+- [x] **Step 4: Run the tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: PASS, including Tasks 2-3's contract tests.
 
-- [ ] **Step 5: Type-check**
+- [x] **Step 5: Type-check**
 
 Run: `pnpm --filter @tecsinapse/cortex-native build:dts && pnpm lint:ts`
 Expected: clean. Any error here means a domain prop collided with a base prop — resolve by `Omit<>`ing the base member, never by dropping the domain prop.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add packages/cortex-native/src
@@ -626,7 +626,7 @@ git commit -m "feat(cortex-native): extend RN primitive props across components"
 - Consumes: Task 4's props bases.
 - Produces: `ref` as a declared prop on all five input components. `InputElementProps` gains `ref?: React.Ref<TextInput>`; later tasks pass `ref` through as an ordinary prop.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `packages/cortex-native/src/refContract.test.tsx`:
 
@@ -657,12 +657,12 @@ describe('ref as a plain prop (React 19)', () => {
 
 Check `InputMask`'s required props against `InputMaskNativeProps` (`molecules/InputMask/InputMask.tsx:11`) and adjust the `mask` value to a valid one before running.
 
-- [ ] **Step 2: Run test to verify it passes for the wrong reason**
+- [x] **Step 2: Run test to verify it passes for the wrong reason**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'ref as a plain prop'`
 Expected: PASS — `forwardRef` already satisfies this. That is intentional: this test is the *invariant* that must survive Step 3, not a RED test. It is what makes the refactor safe.
 
-- [ ] **Step 3: Unwrap the five components**
+- [x] **Step 3: Unwrap the five components**
 
 For each: delete the `React.forwardRef<T, P>(...)` wrapper and the trailing `Component.displayName = '...'` line, declare `ref` in the props interface, and destructure it alongside the other props. `Input.tsx:19-46,96` becomes:
 
@@ -685,17 +685,17 @@ export default Input;
 
 `displayName` is no longer needed for these — they are plain named function components. Keep `displayName` only on the compound parts introduced in Tasks 7-14, where RTL queries depend on it.
 
-- [ ] **Step 4: Run the tests**
+- [x] **Step 4: Run the tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: PASS — the ref test from Step 1 still green, now against unwrapped components.
 
-- [ ] **Step 5: Type-check**
+- [x] **Step 5: Type-check**
 
 Run: `pnpm --filter @tecsinapse/cortex-native build:dts`
 Expected: clean. If `React.ComponentProps<typeof View>`-style inference complains about `ref`, declare `ref?: React.Ref<TextInput>` explicitly as shown — this is the fallback the spec's Risks section anticipates.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add packages/cortex-native/src
@@ -716,7 +716,7 @@ git commit -m "refactor(cortex-native): drop forwardRef in favour of React 19 re
 
 Legacy `react-native-kit` consumers passed children; `title` currently forces a string (`Button.tsx:17`). This makes children the additive path without touching `title`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Append to `Button.test.tsx`:
 
@@ -746,12 +746,12 @@ it('renders the spinner instead of children while loading', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'renders children instead of title'`
 Expected: FAIL — `children` is not rendered.
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 Replace `Button.tsx:53-63`'s body:
 
@@ -767,12 +767,12 @@ Replace `Button.tsx:53-63`'s body:
 )}
 ```
 
-- [ ] **Step 4: Run tests**
+- [x] **Step 4: Run tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Button'`
 Expected: PASS, existing Button tests included.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/cortex-native/src/components/atoms/Button
@@ -794,7 +794,7 @@ git commit -m "feat(cortex-native): let Button render children alongside title"
 - Produces: the `Object.assign` compound idiom that Tasks 8-14 copy verbatim:
   `const Card = Object.assign(CardRoot, { Root: CardRoot, Header, Body, Footer })`, with `Card.Root === Card`. Also produces `CardBody`/`CardBodyProps` exports.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Append to `Card.test.tsx`:
 
@@ -849,12 +849,12 @@ describe('Card compound', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Card compound'`
 Expected: FAIL — `Card.Root`/`Card.Body` undefined; className assertions fail because `Card.tsx:28` shadows the prop; rest-prop assertion fails because `Card.tsx:52-56` drops `...rest`.
 
-- [ ] **Step 3: Create `Card/Body.tsx`**
+- [x] **Step 3: Create `Card/Body.tsx`**
 
 ```tsx
 import React from 'react';
@@ -874,7 +874,7 @@ Body.displayName = 'Card.Body';
 export default Body;
 ```
 
-- [ ] **Step 4: Rewrite `Card.tsx`**
+- [x] **Step 4: Rewrite `Card.tsx`**
 
 Rename the inner component to `CardRoot`, stop shadowing `className`, spread `...rest` on both branches, and assemble the compound. Leave the `surfaceColor` behaviour exactly as-is — Task 16 changes it, gated behind Task 15's regression tests.
 
@@ -951,16 +951,16 @@ export type { FooterProps } from './Footer';
 
 Note `Paper` now receives `className={composed}`, and `Paper` itself merges it with its own base (`Paper.tsx:18`) — `cn` is idempotent on already-merged strings, so the duplicated `bg-surface-overlay`/`rounded-mili` collapses correctly.
 
-- [ ] **Step 5: Export `CardBody` from the barrel**
+- [x] **Step 5: Export `CardBody` from the barrel**
 
 In `packages/cortex-native/src/index.ts:27-36`, add `Body as CardBody` to the value export and `BodyProps as CardBodyProps` to the type export, keeping the existing `CardHeader`/`CardFooter` names untouched.
 
-- [ ] **Step 6: Run tests**
+- [x] **Step 6: Run tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Card'`
 Expected: PASS, all Card tests including the pre-existing ones.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add packages/cortex-native/src/components/atoms/Card packages/cortex-native/src/index.ts
@@ -984,7 +984,7 @@ git commit -m "feat(cortex-native): add Card compound parts with Root static"
   - Barrel exports `InputLabel`/`InputLeft`/`InputRight` with their prop types.
   - Task 9 consumes all of these.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 import React from 'react';
@@ -1047,12 +1047,12 @@ describe('Input compound', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Input compound'`
 Expected: FAIL — `Input.Root`, `Input.Face`, `Input.Label` are undefined.
 
-- [ ] **Step 3: Create the context**
+- [x] **Step 3: Create the context**
 
 `atoms/Input/InputContext.tsx`:
 
@@ -1078,7 +1078,7 @@ export const useInputContext = (): InputContextValue => {
 };
 ```
 
-- [ ] **Step 4: Create `Label`, `Left`, `Right`**
+- [x] **Step 4: Create `Label`, `Left`, `Right`**
 
 `atoms/Input/Label.tsx` — owns what `InputContainer`'s `LabelComponent` injection did (`InputContainer.tsx:77`):
 
@@ -1131,11 +1131,11 @@ Left.displayName = 'Input.Left';
 export default Left;
 ```
 
-- [ ] **Step 5: Provide context from `InputContainer` (`Input.Face`)**
+- [x] **Step 5: Provide context from `InputContainer` (`Input.Face`)**
 
 Wrap `InputContainer`'s returned tree in `InputContext.Provider` with `{ focused: !!focused, disabled, variant }`. Keep its existing `label`/`LabelComponent`/`leftComponent`/`rightComponent` props and behaviour untouched — legacy consumers depend on them.
 
-- [ ] **Step 6: Assemble the compound in `Input.tsx`**
+- [x] **Step 6: Assemble the compound in `Input.tsx`**
 
 Rename the component to `InputRoot`, then:
 
@@ -1155,16 +1155,16 @@ export default Input;
 
 Also drop the `LabelComponent={Text}` injection at `Input.tsx:70` — `Input.Label` owns that now, and `InputContainer`'s own default (`InputContainer.tsx:77`) already resolves to `Text`.
 
-- [ ] **Step 7: Export the new parts from the barrel**
+- [x] **Step 7: Export the new parts from the barrel**
 
 In `packages/cortex-native/src/index.ts` near lines 56-70, add `InputLabel`, `InputLeft`, `InputRight` value exports and their prop types, alongside the existing `InputContainer`/`InputElement`/`Hint` exports (which stay as documented aliases of `Input.Face`/`Input.Box`/`Input.Hint`).
 
-- [ ] **Step 8: Run tests**
+- [x] **Step 8: Run tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: PASS — new compound tests plus every pre-existing Input/InputMask/InputPassword/TextArea/PhoneInput test.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add packages/cortex-native/src/components/atoms/Input packages/cortex-native/src/index.ts
@@ -1183,7 +1183,7 @@ git commit -m "feat(cortex-native): add Input compound parts and context"
 - Consumes: `Input.Face`, `Input.Box`, `Input.Label`, `Input.Hint`, `Input.Left`, `Input.Right`, `useInputContext` (Task 8).
 - Produces: no new public API. Guarantees one implementation of the input chrome across five components.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Create `packages/cortex-native/src/inputFamily.parity.test.tsx`:
 
@@ -1213,21 +1213,21 @@ describe('input family shares one chrome implementation', () => {
 
 `InputContainerProps` has no `inputContainerTestID` today. Add it in Step 3 as an optional prop threaded to `Input.Face`'s `testID` — it is additive, and it is what makes the chrome addressable from tests without relying on tree shape.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'input family shares one chrome'`
 Expected: FAIL — `inputContainerTestID` is not a prop.
 
-- [ ] **Step 3: Thread `inputContainerTestID` and swap private imports for parts**
+- [x] **Step 3: Thread `inputContainerTestID` and swap private imports for parts**
 
 Add `inputContainerTestID?: string` to `InputContainerProps` (`InputContainer.tsx:39-61`) and set it as the container `View`'s `testID`. Then in each of the five files, replace direct imports of `InputContainer`/`InputElement`/`Hint` with the `Input.Face`/`Input.Box`/`Input.Hint` statics, changing nothing else about their prop handling.
 
-- [ ] **Step 4: Run tests**
+- [x] **Step 4: Run tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/cortex-native/src
@@ -1247,7 +1247,7 @@ git commit -m "refactor(cortex-native): rebuild input-family monoliths on shared
 - Consumes: `getButtonForegroundColorVar` (`styles/button.ts:60`); `useCSSVariable` from `uniwind`; Task 6's `children` support.
 - Produces: `ButtonContext` with `{ foregroundColor?: string }`, `useButtonContext()`, `Button.Root === Button`, `Button.Label`, `Button.Icon`, and barrel exports `ButtonLabel`/`ButtonIcon`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 describe('Button compound', () => {
@@ -1274,12 +1274,12 @@ describe('Button compound', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Button compound'`
 Expected: FAIL — statics undefined.
 
-- [ ] **Step 3: Create the context**
+- [x] **Step 3: Create the context**
 
 `atoms/Button/ButtonContext.tsx`:
 
@@ -1299,7 +1299,7 @@ export const useButtonContext = (): ButtonContextValue => {
 };
 ```
 
-- [ ] **Step 4: Create the parts**
+- [x] **Step 4: Create the parts**
 
 `atoms/Button/Label.tsx`:
 
@@ -1327,7 +1327,7 @@ export default Label;
 
 `atoms/Button/Icon.tsx` — same shape, wrapping `../Icon/Icon` with `IconProps`, applying `style={[{ color: foregroundColor }, style]}`, `displayName = 'Button.Icon'`.
 
-- [ ] **Step 5: Wrap the root and assemble**
+- [x] **Step 5: Wrap the root and assemble**
 
 In `Button.tsx`, wrap the `Pressable`'s children in `ButtonContext.Provider value={{ foregroundColor }}` (reusing the `foregroundColor` already computed at `Button.tsx:36-38`), rename the component to `ButtonRoot`, and assemble:
 
@@ -1337,7 +1337,7 @@ const Button = Object.assign(ButtonRoot, { Root: ButtonRoot, Label, Icon });
 
 The `title` fallback keeps using the inline `style={{ color: foregroundColor }}` it has today; composed children get the colour from context.
 
-- [ ] **Step 6: Run tests, export, commit**
+- [x] **Step 6: Run tests, export, commit**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Button'` → PASS. Add `ButtonLabel`/`ButtonIcon` (+ prop types) to `index.ts` near lines 3-4.
 
@@ -1359,7 +1359,7 @@ git commit -m "feat(cortex-native): add Button compound parts"
 - Consumes: `cn`; `Attachable` (`Header.tsx:7`); the existing private `FloatingButton` (`Header.tsx:22`).
 - Produces: `Header.Root === Header`, `Header.Left`, `Header.Title`, `Header.Right`; barrel exports `HeaderLeft`/`HeaderTitle`/`HeaderRight`. `Header.Left`/`Header.Right` accept an optional `button?: Attachable` so the monolith can delegate to them.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 describe('Header compound', () => {
@@ -1399,12 +1399,12 @@ describe('Header compound', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Header compound'`
 Expected: FAIL — statics undefined, and the className assertion fails because `Header.tsx:59` overwrites it.
 
-- [ ] **Step 3: Create the parts**
+- [x] **Step 3: Create the parts**
 
 `molecules/Header/Left.tsx` (mirror for `Right.tsx` with `displayName = 'Header.Right'`):
 
@@ -1463,7 +1463,7 @@ Title.displayName = 'Header.Title';
 export default Title;
 ```
 
-- [ ] **Step 4: Rebuild the monolith on the parts**
+- [x] **Step 4: Rebuild the monolith on the parts**
 
 `HeaderRoot` renders `<Header.Left button={leftButton} />`, `children`, `<Header.Right button={rightButton} />`, keeps the `DummyButton` spacer when a button is absent, merges `className` via `cn`, and assembles:
 
@@ -1471,7 +1471,7 @@ export default Title;
 const Header = Object.assign(HeaderRoot, { Root: HeaderRoot, Left, Title, Right });
 ```
 
-- [ ] **Step 5: Run tests, export, commit**
+- [x] **Step 5: Run tests, export, commit**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Header'` → PASS. Add `HeaderLeft`/`HeaderTitle`/`HeaderRight` + prop types to `index.ts` near lines 205-209.
 
@@ -1493,7 +1493,7 @@ git commit -m "feat(cortex-native): add Header compound parts"
 - Consumes: `cn`; `colorToneBg` (`styles/colors.ts`); `Icon`/`IconProps`.
 - Produces: `SnackbarContext` with `{ colorVariant: ColorType; colorTone: ColorGradationType; onDismiss: () => void }`, `useSnackbarContext()`, `Snackbar.Root === Snackbar`, `Snackbar.Icon`, `Snackbar.Content`, `Snackbar.Action`; barrel exports `SnackbarIcon`/`SnackbarContent`/`SnackbarAction`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 describe('Snackbar compound', () => {
@@ -1527,12 +1527,12 @@ describe('Snackbar compound', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Snackbar compound'`
 Expected: FAIL — statics undefined.
 
-- [ ] **Step 3: Extract the parts from `Snackbar.tsx:114-137`**
+- [x] **Step 3: Extract the parts from `Snackbar.tsx:114-137`**
 
 - `Content.tsx` ← the `<View className="flex-row items-center flex-shrink">` wrapper at line 115 plus the `flex-shrink` child at line 121.
 - `SnackbarIcon.tsx` ← lines 116-120, taking `IconProps`, defaulting `size="centi"`, wrapped in `mr-mili`.
@@ -1540,11 +1540,11 @@ Expected: FAIL — statics undefined.
 
 Each part reads `colorVariant`/`colorTone` from context for its tint and appends `className` last via `cn`.
 
-- [ ] **Step 4: Provide context and assemble**
+- [x] **Step 4: Provide context and assemble**
 
 Wrap the `Animated.View` body in `SnackbarContext.Provider`, render the legacy `leftIcon`/`dismissable` path through the new parts, then `Object.assign(SnackbarRoot, { Root: SnackbarRoot, Icon: SnackbarIcon, Content, Action })`.
 
-- [ ] **Step 5: Run tests, export, commit**
+- [x] **Step 5: Run tests, export, commit**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Snackbar'` → PASS.
 
@@ -1566,7 +1566,7 @@ git commit -m "feat(cortex-native): add Snackbar compound parts"
 - Consumes: `cn`; `colorToneBg`; `Icon`/`IconProps`.
 - Produces: `TagContext` with `{ handleDismiss: () => void }`, `useTagContext()`, `Tag.Root === Tag`, `Tag.Icon`, `Tag.Label`, `Tag.Close`; barrel exports `TagIcon`/`TagLabel`/`TagClose`. Mirrors web's `Tag = { Root, Close, Label }`.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 describe('Tag compound', () => {
@@ -1598,19 +1598,19 @@ describe('Tag compound', () => {
 
 `TagProps.value` is currently required (`Tag.tsx:10`); make it optional in Step 3 so composed usage compiles. Optional-ising a required prop is additive — no existing call site breaks.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Tag compound'`
 Expected: FAIL — statics undefined and `value` is required.
 
-- [ ] **Step 3: Extract parts, make `value` optional, assemble**
+- [x] **Step 3: Extract parts, make `value` optional, assemble**
 
 - `TagIcon.tsx` ← `Tag.tsx:66-74`, defaults `size="micro"`, `colorVariant="primary"`, wrapper `mr-micro`.
 - `Label.tsx` ← `Tag.tsx:75`'s string branch, rendering `Text`.
 - `Close.tsx` ← `Tag.tsx:76-90`, `accessibilityRole="button"`, `hitSlop={8}`, `className={cn('ml-[2px]', className)}` (this also lands the spec's §4 `marginLeft: 2` purge), `onPress` from context.
 - Root renders `children ?? <legacy icon/value/close path built from the same parts>`, keeps the `Animated` opacity inline style, and assembles with `Object.assign`.
 
-- [ ] **Step 4: Run tests, export, commit**
+- [x] **Step 4: Run tests, export, commit**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Tag'` → PASS.
 
@@ -1634,7 +1634,7 @@ git commit -m "feat(cortex-native): add Tag compound parts"
 
 Sequenced last: `Select`'s state lives in two hooks and `SelectModal` is one 105-line component. Named `Sheet`, not web's `Popover`, because native renders a bottom-sheet `Modal` (`Select.tsx:110-136`).
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 describe('Select compound', () => {
@@ -1680,24 +1680,24 @@ describe('Select compound', () => {
 
 Verify the required props against `SelectNativeProps` (`molecules/Select/types.ts`) before running and adjust the fixture to match — do not add props the type does not declare.
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'Select compound'`
 Expected: FAIL — statics undefined; `select-trigger` testID does not exist (`select-sheet` already does, `Select.tsx:122`).
 
-- [ ] **Step 3: Extract `Trigger`**
+- [x] **Step 3: Extract `Trigger`**
 
 `parts/Trigger.tsx` ← `Select.tsx:86-107`'s `HintInputContainer` branch, with `testID` defaulting to `'select-trigger'`, reading `value`/`labelExtractor` from context for its display value, and `className` merged last.
 
-- [ ] **Step 4: Extract `Sheet`**
+- [x] **Step 4: Extract `Sheet`**
 
 `parts/Sheet.tsx` ← `Select.tsx:110-136`: the RN `Modal`, the backdrop `Pressable` (`testID="select-backdrop"`), the sheet `View` (`testID="select-sheet"`), and the stop-propagation `Pressable`. Static styling moves to classes (`flex-1 bg-black/50`, `flex-1 justify-end`, `h-[88%]`, `bg-surface-overlay rounded-t-deca flex-1`), landing part of §4's purge; the keyboard/`bottomInset` padding stays inline because it is computed.
 
-- [ ] **Step 5: Split `SelectModal` into `Search`, `Options`, `Confirm`**
+- [x] **Step 5: Split `SelectModal` into `Search`, `Options`, `Confirm`**
 
 From `components/Modal.tsx`: lines 39-56 → the sheet's title row (absorbed by `Sheet`), 58-69 → `parts/Search.tsx`, 73-90 → `parts/Options.tsx` (keeps delegating to `Flat`/`Section`), 92-102 → `parts/Confirm.tsx`. `SelectModal` remains exported and is rebuilt from these parts so nothing that imports it changes.
 
-- [ ] **Step 6: Provide context and assemble**
+- [x] **Step 6: Provide context and assemble**
 
 `SelectRoot` wraps its output in `SelectContext.Provider` fed from `useSelect(props)`, renders `Select.Trigger` (or `controlComponent` when given) plus `Select.Sheet`, and assembles:
 
@@ -1709,12 +1709,12 @@ const Select = Object.assign(SelectRoot, {
 
 `Select` is generic (`<Data, Type extends SelectType>`); `Object.assign` on a generic function preserves the call signature, but verify with `build:dts` that `SelectNativeProps` inference still works at call sites.
 
-- [ ] **Step 7: Run tests and type-check**
+- [x] **Step 7: Run tests and type-check**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test && pnpm --filter @tecsinapse/cortex-native build:dts`
 Expected: PASS and clean emit.
 
-- [ ] **Step 8: Commit**
+- [x] **Step 8: Commit**
 
 ```bash
 git add packages/cortex-native/src/components/molecules/Select packages/cortex-native/src/index.ts
@@ -1732,7 +1732,7 @@ git commit -m "feat(cortex-native): add Select compound parts"
 - Consumes: `Calendar`, `MonthWeek` (`Calendar/components/MonthWeek.tsx`), `SelectYear` (`Calendar/components/SelectYear.tsx`), `PressableSurface`.
 - Produces: executable proof of the invariant `PressableSurface.tsx:35-41` documents in prose. Task 16 must not break these.
 
-- [ ] **Step 1: Write the tests**
+- [x] **Step 1: Write the tests**
 
 Create `atoms/PressableSurface/PressableSurface.test.tsx`:
 
@@ -1768,12 +1768,12 @@ describe('PressableSurface background invariant', () => {
 
 Then add to `Calendar.test.tsx` assertions that a Calendar day cell, a `MonthWeek` in-range cell, and a selected `SelectYear` card each keep their `bg-*` class in `props.className` and carry no inline `backgroundColor`. Read the three component files for the exact class names rather than guessing.
 
-- [ ] **Step 2: Run to verify they pass on today's code**
+- [x] **Step 2: Run to verify they pass on today's code**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'background'`
 Expected: PASS. These are invariants captured *before* the change, not RED tests. If any fails now, stop — the current behaviour differs from what `PressableSurface.tsx:35-41` claims, and Task 16 needs redesign.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add packages/cortex-native/src/components
@@ -1792,7 +1792,7 @@ git commit -m "test(cortex-native): pin className-painted surfaces against inlin
 - Consumes: Task 7's `CardRoot`; Task 15's invariants; `PressableSurface`'s `effect`/`effectIntensity`/`effectStyle` props (`PressableSurface.tsx:15-22`).
 - Produces: a `Card` whose consumer `className` actually paints. `PressableSurface`'s own contract is unchanged.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 it('paints via className with no inline backgroundColor on the pressable branch', () => {
@@ -1814,21 +1814,21 @@ it('still darkens on press', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'paints via className'`
 Expected: FAIL — `Card` passes `surfaceColor`, so an inline `backgroundColor` is present at rest.
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 In `Card.tsx`, stop passing `surfaceColor` to `PressableSurface` and instead pass the resolved theme colour as the press-effect base only. `PressableSurface` computes `effectBaseColor = surfaceColor ?? surfaceVar ?? '#ffffff'` (`PressableSurface.tsx:34`) and already falls back to the same CSS variable, so dropping the prop keeps the pressed colour identical while removing the resting inline background. Delete the now-obsolete `useCSSVariable('--color-surface-overlay')` call and the explanatory comment at `Card.tsx:29-33`, replacing it with one line noting that the surface is painted by className and the press effect derives its base from `PressableSurface`'s own variable lookup.
 
-- [ ] **Step 4: Run tests**
+- [x] **Step 4: Run tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: PASS, including Task 15's Calendar/`MonthWeek`/`SelectYear`/`PressableSurface` invariants.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/cortex-native/src/components/atoms/Card
@@ -1847,7 +1847,7 @@ git commit -m "fix(cortex-native): let Card className paint instead of an inline
 - Consumes: Tasks 8, 11.
 - Produces: completion of spec §4. `Select.tsx`'s and `Tag.tsx`'s purges already landed in Tasks 14 and 13.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 import React from 'react';
@@ -1866,22 +1866,22 @@ describe('layout expressed as classes, not inline styles', () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test -t 'layout expressed as classes'`
 Expected: FAIL — `minHeight: 50` is inline (`Input.tsx:55`).
 
-- [ ] **Step 3: Implement**
+- [x] **Step 3: Implement**
 
 - `Input.tsx:54-57`: delete the `internalStyle` object; pass `className="min-h-[50px]"` to `Input.Face`, merged before the consumer's class. Keep threading `inputContainerStyle` so consumers who set it still win.
 - `Header`'s `FloatingButton`/`DummyButton`: replace `style={{ aspectRatio: 1, height: 49, alignItems: 'center', justifyContent: 'center' }}` with `className="aspect-square h-[49px] items-center justify-center"` (and `aspect-square h-[49px]` for `DummyButton`), merged before `className`.
 
-- [ ] **Step 4: Run tests**
+- [x] **Step 4: Run tests**
 
 Run: `pnpm --filter @tecsinapse/cortex-native test`
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add packages/cortex-native/src
@@ -1901,7 +1901,7 @@ git commit -m "refactor(cortex-native): express layout as classes instead of inl
 - Consumes: every prior task.
 - Produces: the shipped, documented feature.
 
-- [ ] **Step 1: Add `@see` JSDoc to superseded props**
+- [x] **Step 1: Add `@see` JSDoc to superseded props**
 
 On each, a one-line `@see` naming the part — no `@deprecated` (spec decision 6):
 
@@ -1912,15 +1912,15 @@ leftComponent?: React.ReactNode;
 
 Props: `leftComponent`, `rightComponent`, `hintComponent`, `LabelComponent` (`InputContainer.tsx:39-61`), `controlComponent` (`Select/types.ts`), `leftIcon`, `rightIcon` (`Snackbar.tsx:16-17`), `icon`, `value` (`Tag.tsx:10-11`), `leftButton`, `rightButton` (`Header.tsx:14-15`), `title` (`Button.tsx` — points at `Button.Label`).
 
-- [ ] **Step 2: Write the composition story**
+- [x] **Step 2: Write the composition story**
 
 Create `packages/cortex-native/docs/Composition.stories.tsx` with one story per Tier 1 compound showing the composed form beside the monolith form. Stories are excluded from tsconfig and eslint, so they are documentation only.
 
-- [ ] **Step 3: Document the contract**
+- [x] **Step 3: Document the contract**
 
 In `docs/setup/cortex-native.mdx`, add a section stating: `className` is accepted on every component root and merges with the consumer's classes winning; `style` overrides everything; inner parts are reached through composition (`Card.Body`, `Input.Left`, `Select.Trigger`, …); legacy injection props still work. Add a "composed equivalent" column to `.agents/skills/cortex-native-migration/references/component-mapping.md` for the seven Tier 1 components. Add a Conventions bullet to `packages/cortex-native/AGENTS.md`: compose classes with `cn` from cortex-core, consumer `className` last, never `clsx`.
 
-- [ ] **Step 4: Full verification, in CI order**
+- [x] **Step 4: Full verification, in CI order**
 
 ```bash
 pnpm --filter @tecsinapse/cortex-native test
@@ -1933,11 +1933,18 @@ pnpm build:storybook
 
 Expected: all green. `pnpm lint:fix` rewrites files — review its diff before committing.
 
-- [ ] **Step 5: Smoke test in rn-playground**
+- [~] **Step 5: Smoke test in rn-playground** — partially verified
 
 Add (or extend) an rn-playground screen rendering each Tier 1 compound in composed form plus a `<Card className="bg-primary-light">` and a `<Button className="rounded-full">`, then run the app and confirm visually that consumer classes paint and the theme still flips light/dark. This is the deliverable proof — a passing unit suite does not demonstrate that uniwind resolves the merged class strings at runtime.
 
-- [ ] **Step 6: Commit**
+Landed: `packages/rn-playground/stories/Composition/Composition.stories.tsx` renders every Tier 1 compound in
+composed form beside its monolith form, plus `<Card className="bg-primary-light">` / `<Button className="rounded-full">`
+override stories. Verified by a real metro/Hermes bundle (`npx expo export -p android`, 8.7 MB `.hbc`, exit 0), which
+also confirms uniwind's transform kept every newly class-expressed arbitrary value (`min-h-[50px]`, `ml-[2px]`,
+`h-[49px]`, `h-[88%]`, `bg-black/50`, `aspect-square`) in the compiled output. The visual light/dark confirmation
+still needs a device or emulator — unavailable in this environment.
+
+- [x] **Step 6: Commit**
 
 ```bash
 git add -A
