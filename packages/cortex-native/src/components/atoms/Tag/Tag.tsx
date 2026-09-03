@@ -10,7 +10,9 @@ import Label from './Label';
 import Close from './Close';
 
 export interface TagProps extends ViewProps {
+  /** @see Tag.Label — composition alternative: `<Tag.Root><Tag.Label>…` */
   value?: React.ReactNode;
+  /** @see Tag.Icon — composition alternative: `<Tag.Root><Tag.Icon>…` */
   icon?: IconProps;
   dismiss?: boolean;
   onDismiss?: () => void;

@@ -10,7 +10,9 @@ import Right from './Right';
 export type { Attachable } from './FloatingButton';
 
 export interface HeaderProps extends ViewProps {
+  /** @see Header.Right — composition alternative: `<Header.Root><Header.Right>…` */
   rightButton?: Attachable;
+  /** @see Header.Left — composition alternative: `<Header.Root><Header.Left>…` */
   leftButton?: Attachable;
 }
 
