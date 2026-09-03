@@ -17,12 +17,11 @@ import {
   UsePhoneInputConfig,
 } from 'react-international-phone';
 import { useBottomSafeAreaInset } from '../../../hooks/useBottomSafeAreaInset';
-import Hint from '../../atoms/Input/Hint';
-import InputContainer, {
+import Input from '../../atoms/Input/Input';
+import {
   InputContainerProps,
   InputVariantType,
 } from '../../atoms/Input/InputContainer';
-import InputElement from '../../atoms/Input/InputElement';
 import { useInputFocus } from '../../atoms/Input/useInputFocus';
 import Icon from '../../atoms/Icon/Icon';
 import Text from '../../atoms/Text/Text';
@@ -73,6 +72,7 @@ const PhoneInput: FC<PhoneInputProps> = ({
   borderColor,
   borderColorGradation,
   inputContainerStyle,
+  inputContainerTestID,
   countryModalTitle,
   hasSearch = true,
   searchPlaceholder,
@@ -143,12 +143,11 @@ const PhoneInput: FC<PhoneInputProps> = ({
     handlePhoneValueChange
   );
 
-  const _hint = hintComponent || <Hint text={hint} variant={variant} />;
-
+  const _hint = hintComponent || <Input.Hint text={hint} variant={variant} />;
   return (
     <>
       <View style={style} className="w-full">
-        <InputContainer
+        <Input.Face
           label={label}
           LabelComponent={Text}
           leftComponent={leftComponent}
@@ -189,8 +188,9 @@ const PhoneInput: FC<PhoneInputProps> = ({
           borderColor={borderColor}
           borderColorGradation={borderColorGradation}
           inputContainerStyle={inputContainerStyle}
+          inputContainerTestID={inputContainerTestID}
         >
-          <InputElement
+          <Input.Box
             ref={textInputRef}
             value={inputValue}
             onChange={handleInputChange}
@@ -199,7 +199,7 @@ const PhoneInput: FC<PhoneInputProps> = ({
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
-        </InputContainer>
+        </Input.Face>
         {hint && _hint}
       </View>
 
