@@ -100,3 +100,56 @@ describe('Button compound', () => {
     expect(() => render(<Button.Label>x</Button.Label>)).toThrow(/must be used within/);
   });
 });
+
+describe('Button className contract', () => {
+  it('lays composed icon + label out in a row (flex-row)', () => {
+    const { getByRole } = render(
+      <Button intent="primary" variant="filled">
+        <Button.Icon name="checkmark" type="ionicon" />
+        <Button.Label>Save</Button.Label>
+      </Button>
+    );
+    const className = getByRole('button').props.className as string;
+    expect(className).toContain('flex-row');
+  });
+
+  it('lets a consumer className override the row direction via twMerge', () => {
+    const { getByRole } = render(
+      <Button intent="primary" variant="filled" className="flex-col">
+        <Button.Icon name="checkmark" type="ionicon" />
+        <Button.Label>Save</Button.Label>
+      </Button>
+    );
+    const className = getByRole('button').props.className as string;
+    expect(className).toContain('flex-col');
+    expect(className).not.toContain('flex-row');
+  });
+
+  it('gives the composed icon a trailing margin for breathing room next to the label', () => {
+    const { getByTestId } = render(
+      <Button intent="primary" variant="filled">
+        <Button.Icon testID="icon" name="checkmark" type="ionicon" />
+        <Button.Label>Save</Button.Label>
+      </Button>
+    );
+    const className = getByTestId('icon').props.className as string;
+    expect(className).toContain('mr-mili');
+  });
+
+  it('lets a consumer className override the icon margin via twMerge', () => {
+    const { getByTestId } = render(
+      <Button intent="primary" variant="filled">
+        <Button.Icon
+          testID="icon"
+          name="checkmark"
+          type="ionicon"
+          className="mr-0"
+        />
+        <Button.Label>Save</Button.Label>
+      </Button>
+    );
+    const className = getByTestId('icon').props.className as string;
+    expect(className).toContain('mr-0');
+    expect(className).not.toContain('mr-mili');
+  });
+});

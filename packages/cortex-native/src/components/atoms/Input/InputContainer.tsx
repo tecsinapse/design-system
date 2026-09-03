@@ -3,6 +3,8 @@ import { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 
 import { InputContext } from './InputContext';
+import Left from './Left';
+import Right from './Right';
 import Text, { TextProps } from '../Text/Text';
 import {
   ColorGradationType,
@@ -93,6 +95,20 @@ const InputContainer: FC<InputContainerProps> = ({
   style,
   ...rest
 }): React.ReactElement => {
+  const contentChildren: React.ReactNode[] = [];
+  const leftChildren: React.ReactNode[] = [];
+  const rightChildren: React.ReactNode[] = [];
+
+  React.Children.toArray(children).forEach(child => {
+    if (React.isValidElement(child) && child.type === Left) {
+      leftChildren.push(child);
+    } else if (React.isValidElement(child) && child.type === Right) {
+      rightChildren.push(child);
+    } else {
+      contentChildren.push(child);
+    }
+  });
+
   let _defaultLabelColor = labelColorVariant;
   if (variant === 'error') _defaultLabelColor = 'error';
   if (variant === 'success') _defaultLabelColor = 'success';
@@ -117,8 +133,11 @@ const InputContainer: FC<InputContainerProps> = ({
         className={containerClassName}
         style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
       >
-        {leftComponent && (
-          <View className="flex-row items-center">{leftComponent}</View>
+        {(leftComponent || leftChildren.length > 0) && (
+          <View className="flex-row items-center">
+            {leftChildren}
+            {leftComponent}
+          </View>
         )}
 
         <View className="flex-1 py-micro pl-centi pr-centi">
@@ -134,11 +153,14 @@ const InputContainer: FC<InputContainerProps> = ({
               {label}
             </LabelComponent>
           )}
-          {children}
+          {contentChildren}
         </View>
 
-        {rightComponent && (
-          <View className="flex-row items-center">{rightComponent}</View>
+        {(rightComponent || rightChildren.length > 0) && (
+          <View className="flex-row items-center">
+            {rightChildren}
+            {rightComponent}
+          </View>
         )}
       </View>
     </InputContext.Provider>

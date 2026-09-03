@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, within } from '@testing-library/react-native';
+import { View } from 'react-native';
 
 jest.mock('uniwind', () => ({
   useCSSVariable: (name: string) =>
@@ -111,5 +112,55 @@ describe('Input compound', () => {
     );
     expect(getByText('left-legacy')).toBeTruthy();
     expect(getByText('right-legacy')).toBeTruthy();
+  });
+
+  it('routes composed Input.Left/Input.Right into the same slot as the legacy leftComponent/rightComponent props', () => {
+    const composed = render(
+      <>
+        <Input.Face testID="composed-face">
+          <Input.Left>
+            <Text>R$</Text>
+          </Input.Left>
+          <Input.Box testID="composed-box" value="10" />
+          <Input.Right>
+            <Text>kg</Text>
+          </Input.Right>
+        </Input.Face>
+        <Input.Hint text="Helper text" variant="default" />
+      </>
+    );
+
+    const monolith = render(
+      <Input
+        value="10"
+        leftComponent={<Text>R$</Text>}
+        rightComponent={<Text>kg</Text>}
+        hint="Helper text"
+      />
+    );
+
+    [composed, monolith].forEach(rendered => {
+      const sideSlots = rendered
+        .UNSAFE_getAllByProps({ className: 'flex-row items-center' })
+        .filter(instance => instance.type === View);
+      expect(sideSlots).toHaveLength(2);
+      const [leftSlot, rightSlot] = sideSlots;
+      expect(within(leftSlot).getByText('R$')).toBeTruthy();
+      expect(within(rightSlot).getByText('kg')).toBeTruthy();
+
+      // A stacked-in-content-column render (the pre-fix bug) would put R$/kg
+      // inside the content column instead of a side slot: this assertion is
+      // what actually fails against that behaviour.
+      const [contentColumn] = rendered
+        .UNSAFE_getAllByProps({
+          className: 'flex-1 py-micro pl-centi pr-centi',
+        })
+        .filter(instance => instance.type === View);
+      expect(within(contentColumn).queryByText('R$')).toBeNull();
+      expect(within(contentColumn).queryByText('kg')).toBeNull();
+
+      expect(rendered.getByDisplayValue('10')).toBeTruthy();
+      expect(rendered.getByText('Helper text')).toBeTruthy();
+    });
   });
 });
