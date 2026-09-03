@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from '@tecsinapse/cortex-core';
 
 export const buttonStyles = tv({
-  base: 'font-bold text-base items-center justify-center text-on-primary',
+  base: 'font-bold text-base flex-row items-center justify-center text-on-primary',
   variants: {
     intent: {
       primary: 'bg-primary-medium',

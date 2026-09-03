@@ -28,4 +28,20 @@ describe('cn', () => {
   it('returns an empty string when given nothing', () => {
     expect(cn()).toBe('');
   });
+
+  it('lets a consumer margin win over a custom-scale base margin', () => {
+    expect(cn('mr-mili', 'mr-0')).toBe('mr-0');
+  });
+
+  it('lets a consumer padding win over a custom-scale base padding', () => {
+    expect(cn('p-centi', 'p-4')).toBe('p-4');
+  });
+
+  it('lets a consumer radius win over a custom-scale base radius', () => {
+    expect(cn('rounded-mili', 'rounded-full')).toBe('rounded-full');
+  });
+
+  it('still resolves conflicts within the standard numeric scale', () => {
+    expect(cn('p-2', 'p-4')).toBe('p-4');
+  });
 });
