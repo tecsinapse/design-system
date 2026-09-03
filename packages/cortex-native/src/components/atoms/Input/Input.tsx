@@ -33,6 +33,7 @@ const InputRoot = ({
   borderColor,
   borderColorGradation,
   inputContainerStyle,
+  inputContainerTestID,
   variant = 'default',
   hintComponent,
   hint,
@@ -51,10 +52,6 @@ const InputRoot = ({
     !disabled
   );
 
-  const internalStyle: StyleProp<ViewStyle> = {
-    minHeight: 50,
-    ...(inputContainerStyle as object),
-  };
   const onlyLabel = label && !placeholder;
 
   return (
@@ -71,7 +68,9 @@ const InputRoot = ({
         rightComponent={rightComponent}
         borderColor={borderColor}
         borderColorGradation={borderColorGradation}
-        inputContainerStyle={internalStyle}
+        inputContainerStyle={inputContainerStyle}
+        inputContainerTestID={inputContainerTestID}
+        className="min-h-[50px]"
         focused={focused}
         disabled={disabled}
         variant={variant}

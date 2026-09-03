@@ -57,6 +57,8 @@ export interface InputContainerProps extends Omit<ViewProps, 'onBlur' | 'onFocus
   variant?: InputVariantType;
   hint?: string;
   hintComponent?: React.ReactNode;
+  /** testID applied to the container `View`, addressable independently of the consumer's own `testID`. */
+  inputContainerTestID?: string;
 }
 
 const variantToIntent: Record<InputVariantType, InputIntent> = {
@@ -82,6 +84,7 @@ const InputContainer: FC<InputContainerProps> = ({
   variant = 'default',
   children,
   testID,
+  inputContainerTestID,
   className,
   style,
   ...rest
@@ -106,7 +109,7 @@ const InputContainer: FC<InputContainerProps> = ({
     >
       <View
         {...rest}
-        testID={testID}
+        testID={inputContainerTestID ?? testID}
         className={containerClassName}
         style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
       >

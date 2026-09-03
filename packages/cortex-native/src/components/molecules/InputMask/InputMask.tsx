@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
 import { StyleProp, TextInput, View, ViewStyle } from 'react-native';
-import Hint from '../../atoms/Input/Hint';
-import InputContainer, {
-  InputContainerProps,
-} from '../../atoms/Input/InputContainer';
+import Input from '../../atoms/Input/Input';
+import { InputContainerProps } from '../../atoms/Input/InputContainer';
 import InputMaskElement, {
   InputMaskElementProps,
 } from '../../atoms/Input/InputMaskElement';
@@ -34,6 +32,7 @@ const InputMask: FC<InputMaskNativeProps> = ({
   borderColor,
   borderColorGradation,
   inputContainerStyle,
+  inputContainerTestID,
   variant = 'default',
   hintComponent,
   hint,
@@ -45,7 +44,7 @@ const InputMask: FC<InputMaskNativeProps> = ({
   ...rest
 }) => {
   const _hint = hintComponent || (
-    <Hint text={hint} variant={variant} />
+    <Input.Hint text={hint} variant={variant} />
   );
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
@@ -57,7 +56,7 @@ const InputMask: FC<InputMaskNativeProps> = ({
 
   return (
     <View style={style}>
-      <InputContainer
+      <Input.Face
         label={String(value) ? label : undefined}
         labelColor={labelColor}
         labelColorVariant={labelColorVariant}
@@ -70,7 +69,9 @@ const InputMask: FC<InputMaskNativeProps> = ({
         rightComponent={rightComponent}
         borderColor={borderColor}
         borderColorGradation={borderColorGradation}
-        inputContainerStyle={[inputContainerStyle, { minHeight: 50 }]}
+        inputContainerStyle={inputContainerStyle}
+        inputContainerTestID={inputContainerTestID}
+        className="min-h-[50px]"
         focused={focused}
         disabled={disabled}
         variant={variant}
@@ -84,7 +85,7 @@ const InputMask: FC<InputMaskNativeProps> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-      </InputContainer>
+      </Input.Face>
       {hint && _hint}
     </View>
   );

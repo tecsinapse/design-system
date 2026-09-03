@@ -1,6 +1,7 @@
 import React from 'react';
-import { ViewStyle } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
+import type { ReactTestInstance } from 'react-test-renderer';
 
 jest.mock('uniwind', () => ({
   useCSSVariable: () => '#ffffff',
@@ -8,6 +9,30 @@ jest.mock('uniwind', () => ({
 
 import Card from './Card';
 import Text from '../Text/Text';
+
+type MeasureCallback = (
+  left: number,
+  top: number,
+  width: number,
+  height: number,
+  pageX: number,
+  pageY: number,
+) => void;
+
+// Pressable resolves `style({ pressed })` internally before it reaches the
+// rendered host node, so reading `props.style` only ever observes the
+// resting (unpressed) value. Simulating the native responder grant is the
+// only way to observe the pressed-state style RNTL renders.
+function simulatePressIn(element: ReactTestInstance): void {
+  const target = { measure: (cb: MeasureCallback) => cb(0, 0, 100, 100, 5, 5) };
+  fireEvent(element, 'responderGrant', {
+    persist: () => {},
+    nativeEvent: { touches: [{ pageX: 5, pageY: 5 }], changedTouches: [{ pageX: 5, pageY: 5 }] },
+    currentTarget: target,
+    target,
+    timeStamp: Date.now(),
+  });
+}
 
 describe('Card', () => {
   it('renders the surface container with base classes', () => {
@@ -32,18 +57,29 @@ describe('Card', () => {
     fireEvent.press(getByTestId('card'));
     expect(onPress).toHaveBeenCalled();
   });
-  it('applies the theme surface background on a pressable card (not transparent)', () => {
+  it('paints via className with no inline backgroundColor on the pressable branch', () => {
     const { getByTestId } = render(
-      <Card onPress={() => {}} testID="card">
+      <Card testID="card" className="bg-red-500" onPress={() => {}}>
         content
       </Card>,
     );
-    // Pressable's `style` is a state-callback array: [composedStyle, pressed-state style].
-    // composedStyle = [bgColorStyle, consumerStyle]; so the resolved background color
-    // lives at style[0][0].backgroundColor.
-    const style = getByTestId('card').props.style as Array<Array<ViewStyle>>;
-    expect(style[0][0].backgroundColor).not.toBe('transparent');
-    expect(style[0][0].backgroundColor).toBe('#ffffff');
+    const root = getByTestId('card');
+    expect(root.props.className as string).toContain('bg-red-500');
+    const style = root.props.style;
+    const resolved = typeof style === 'function' ? style({ pressed: false }) : style;
+    expect((StyleSheet.flatten(resolved) ?? {}).backgroundColor).toBeUndefined();
+  });
+  it('still darkens on press', () => {
+    const { getByTestId } = render(
+      <Card testID="card" onPress={() => {}}>
+        content
+      </Card>,
+    );
+    const card = getByTestId('card');
+    simulatePressIn(card);
+    const pressed = getByTestId('card').props.style;
+    const resolved = typeof pressed === 'function' ? pressed({ pressed: true }) : pressed;
+    expect((StyleSheet.flatten(resolved) ?? {}).backgroundColor).toBeDefined();
   });
 });
 
