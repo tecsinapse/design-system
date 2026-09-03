@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Keyboard } from 'react-native';
+import { Dimensions, Keyboard, Text } from 'react-native';
 import { act, fireEvent, render } from '@testing-library/react-native';
 import Select from './Select';
 
@@ -157,5 +157,46 @@ describe('Select', () => {
       listeners.keyboardDidShow?.({ endCoordinates: { height: 300 } });
     });
     expect(getByTestId('select-sheet').props.style.paddingBottom).toBe(300);
+  });
+});
+
+describe('Select compound', () => {
+  it('exposes parts with Root aliasing the callable', () => {
+    expect(Select.Root).toBe(Select);
+    (['Trigger', 'Sheet', 'Search', 'Options', 'Confirm'] as const).forEach(
+      part => expect(Select[part]).toBeDefined()
+    );
+  });
+
+  it('opens the sheet from the composed trigger and selects an option', () => {
+    const onSelect = jest.fn();
+    const { getByText, getByTestId } = render(
+      <Select
+        {...baseProps}
+        value={null}
+        placeholder="pick"
+        selectModalTitle="Choose"
+        onSelect={onSelect}
+      />
+    );
+    fireEvent.press(getByTestId('select-trigger'));
+    expect(getByTestId('select-sheet')).toBeTruthy();
+    fireEvent.press(getByText('Alpha'));
+    expect(onSelect).toHaveBeenCalledWith(
+      expect.objectContaining({ id: 1, label: 'Alpha' })
+    );
+  });
+
+  it('still honours the legacy controlComponent render prop', () => {
+    const { getByText } = render(
+      <Select
+        {...baseProps}
+        value={null}
+        controlComponent={(onPress, display) => (
+          <Text onPress={onPress}>custom {display}</Text>
+        )}
+      />
+    );
+    expect(getByText(/custom/)).toBeTruthy();
   });
 });

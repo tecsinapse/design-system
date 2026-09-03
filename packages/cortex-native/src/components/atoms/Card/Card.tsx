@@ -1,11 +1,15 @@
+import React, { ReactNode } from 'react';
+import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
+import { useCSSVariable } from 'uniwind';
+
+import Paper, { PaperProps } from '../Paper/Paper';
 import PressableSurface, {
   PressableSurfaceProps,
 } from '../PressableSurface/PressableSurface';
-import React, { ReactNode } from 'react';
-import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
-import { useCSSVariable } from 'uniwind';
-import { clsx } from 'clsx';
-import Paper, { PaperProps } from '../Paper/Paper';
+import Body from './Body';
+import Footer from './Footer';
+import Header from './Header';
 
 export interface CardProps
   extends PaperProps,
@@ -18,14 +22,15 @@ export interface CardProps
 
 export const cardBaseClass = 'bg-surface-overlay rounded-mili';
 
-const Card = ({
+const CardRoot = ({
   children,
   elevated = false,
   onPress,
+  className,
   style,
   ...rest
 }: CardProps): React.ReactElement => {
-  const className = clsx(cardBaseClass, elevated && 'shadow-default');
+  const composed = cn(cardBaseClass, elevated && 'shadow-default', className);
   // Resolve the theme surface so the interactive Card paints its background via
   // PressableSurface's inline style. RN inline `style` overrides uniwind
   // className-based backgrounds (the legacy emotion stack routed the same color
@@ -41,7 +46,7 @@ const Card = ({
         {...rest}
         style={style}
         onPress={onPress}
-        className={className}
+        className={composed}
         surfaceColor={surfaceColor}
       >
         {children}
@@ -50,14 +55,25 @@ const Card = ({
   }
 
   return (
-    <Paper style={style} elevated={elevated}>
+    <Paper {...rest} className={composed} style={style} elevated={elevated}>
       {children}
     </Paper>
   );
 };
 
+CardRoot.displayName = 'Card';
+
+const Card = Object.assign(CardRoot, {
+  Root: CardRoot,
+  Header,
+  Body,
+  Footer,
+});
+
 export default Card;
 export { default as Header } from './Header';
+export { default as Body } from './Body';
 export { default as Footer } from './Footer';
 export type { HeaderProps } from './Header';
+export type { BodyProps } from './Body';
 export type { FooterProps } from './Footer';

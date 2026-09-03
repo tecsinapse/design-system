@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Dimensions,
-  Keyboard,
-  Modal,
-  Pressable,
-  StatusBar,
-  View,
-} from 'react-native';
-import { useBottomSafeAreaInset } from '../../../hooks/useBottomSafeAreaInset';
-import Icon from '../../atoms/Icon/Icon';
-import Text from '../../atoms/Text/Text';
-import HintInputContainer from '../HintInputContainer/HintInputContainer';
-import { SelectModal } from './components/Modal';
+import React from 'react';
+import Confirm from './parts/Confirm';
+import Options from './parts/Options';
+import Search from './parts/Search';
+import Sheet from './parts/Sheet';
+import Trigger from './parts/Trigger';
+import { SelectContext, SelectContextValue } from './SelectContext';
 import useSelect from './hooks/useSelect';
 import { SelectNativeProps, SelectType } from './types';
 
-function Select<Data, Type extends SelectType>(
+function SelectRoot<Data, Type extends SelectType>(
   props: SelectNativeProps<Data, Type>
 ): React.ReactElement {
   const {
@@ -48,118 +41,80 @@ function Select<Data, Type extends SelectType>(
     focused,
     disabled,
     _label,
-    ...rest
+    ...triggerRest
   } = useSelect(props);
 
-  const bottomInset = useBottomSafeAreaInset();
-  const [keyboardOpened, setKeyboardOpened] = useState(0);
-
-  const getKeyboardHeight = (keyboard: number) => {
-    if (keyboard === 0) return 0;
-
-    const wHeight = Math.ceil(Dimensions.get('window').height);
-    const sHeight = Math.ceil(Dimensions.get('screen').height);
-    if (wHeight !== sHeight) {
-      return keyboard + (sHeight - wHeight - (StatusBar.currentHeight || 0));
-    }
-    return keyboard;
+  const contextValue: SelectContextValue<Data> = {
+    type,
+    value,
+    keyExtractor,
+    labelExtractor,
+    // `SelectNativeProps.onSelect` narrows its argument on `Type`
+    // (`Data | undefined` for single, `Data[]` for multi). The context carries
+    // the union because it is shared by parts that do not know `Type`; the
+    // sheet only ever calls it with the variant `useModal` builds for this
+    // `type`, exactly as the pre-compound `Select` did.
+    onSelect: onSelect as SelectContextValue<Data>['onSelect'],
+    modalVisible,
+    handleClose,
+    closeOnPick,
+    getDisplayValue,
+    handlePressInput,
+    focused,
+    disabled,
+    variant,
+    hint,
+    hintComponent,
+    rightComponent,
+    style,
+    numberOfLines,
+    label: _label,
+    controlComponent,
+    triggerRest,
+    selectOptions: selectOptions ?? [],
+    loading,
+    groupLabelExtractor,
+    searchBarPlaceholder,
+    hideSearchBar,
+    handleOnSearch,
+    selectModalTitle,
+    selectModalTitleComponent,
+    confirmButtonText,
   };
 
-  useEffect(() => {
-    const showEvent = Keyboard.addListener('keyboardDidShow', e =>
-      setKeyboardOpened(e.endCoordinates.height)
-    );
-    const hideEvent = Keyboard.addListener('keyboardDidHide', () =>
-      setKeyboardOpened(0)
-    );
-    return () => {
-      showEvent.remove();
-      hideEvent.remove();
-    };
-  }, []);
-
   return (
-    <>
+    // `SelectContext` is typed for `unknown`; this `<Select.Root>` instance
+    // provides a value shaped for its own concrete `Data`, matching how
+    // `useSelectContext` narrows it back on read (see `SelectContext.tsx`).
+    <SelectContext.Provider
+      value={contextValue as unknown as SelectContextValue<unknown>}
+    >
       {controlComponent ? (
         controlComponent(handlePressInput, getDisplayValue() ?? '')
       ) : (
-        <HintInputContainer
-          {...rest}
-          viewStyle={style}
-          onPress={handlePressInput}
-          focused={focused}
-          disabled={disabled}
-          LabelComponent={Text}
-          variant={variant}
-          hint={hint}
-          hintComponent={hintComponent}
-          label={_label}
-          rightComponent={
-            <>
-              <Icon name="chevron-down" type="ionicon" size="centi" />
-              {rightComponent}
-            </>
-          }
-        >
-          <Text numberOfLines={numberOfLines} fontWeight="bold">
-            {getDisplayValue() ?? ' '}
-          </Text>
-        </HintInputContainer>
+        <Trigger />
       )}
-
-      <Modal
-        visible={modalVisible}
-        transparent
-        animationType="slide"
-        onRequestClose={handleClose}
-      >
-        <Pressable
-          testID="select-backdrop"
-          style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
-          onPress={handleClose}
-        >
-          <View
-            testID="select-sheet"
-            style={{
-              flex: 1,
-              justifyContent: 'flex-end',
-              paddingBottom: getKeyboardHeight(keyboardOpened),
-            }}
-          >
-            <Pressable
-              onPress={event => event.stopPropagation()}
-              style={{ height: '88%' }}
-            >
-              <View
-                className="bg-surface-overlay rounded-t-deca"
-                style={{ flex: 1, paddingBottom: bottomInset }}
-              >
-                <SelectModal
-                  options={selectOptions ?? []}
-                  focused={true}
-                  keyExtractor={keyExtractor}
-                  labelExtractor={labelExtractor}
-                  groupLabelExtractor={groupLabelExtractor}
-                  searchBarPlaceholder={searchBarPlaceholder}
-                  type={type}
-                  onSelect={onSelect}
-                  value={value}
-                  hideSearchBar={hideSearchBar}
-                  onSearch={handleOnSearch}
-                  selectModalTitle={selectModalTitle}
-                  selectModalTitleComponent={selectModalTitleComponent}
-                  confirmButtonText={confirmButtonText}
-                  loading={loading}
-                  onClose={handleClose}
-                  closeOnPick={closeOnPick}
-                />
-              </View>
-            </Pressable>
-          </View>
-        </Pressable>
-      </Modal>
-    </>
+      <Sheet />
+    </SelectContext.Provider>
   );
 }
+
+SelectRoot.displayName = 'Select';
+
+const Select = Object.assign(SelectRoot, {
+  Root: SelectRoot,
+  Trigger,
+  Sheet,
+  Search,
+  Options,
+  Confirm,
+}) as typeof SelectRoot & {
+  Root: typeof SelectRoot;
+  Trigger: typeof Trigger;
+  Sheet: typeof Sheet;
+  Search: typeof Search;
+  Options: typeof Options;
+  Confirm: typeof Confirm;
+};
 
 export default Select;

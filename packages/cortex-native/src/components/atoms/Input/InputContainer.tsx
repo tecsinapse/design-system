@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
+
+import { InputContext } from './InputContext';
 import Text, { TextProps } from '../Text/Text';
 import {
   ColorGradationType,
@@ -99,34 +101,40 @@ const InputContainer: FC<InputContainerProps> = ({
   );
 
   return (
-    <View
-      {...rest}
-      testID={testID}
-      className={containerClassName}
-      style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
+    <InputContext.Provider
+      value={{ focused: !!focused, disabled, variant }}
     >
-      {leftComponent && <View className="flex-row items-center">{leftComponent}</View>}
-
-      <View className="flex-1 py-micro pl-centi pr-centi">
-        {label && (
-          <LabelComponent
-            fontColor={labelColor}
-            colorTone={_labelColorTone}
-            colorVariant={_labelColorVariant}
-            typography={labelTypography}
-            fontWeight={labelWeight}
-            fontStack={labelStack}
-          >
-            {label}
-          </LabelComponent>
+      <View
+        {...rest}
+        testID={testID}
+        className={containerClassName}
+        style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
+      >
+        {leftComponent && (
+          <View className="flex-row items-center">{leftComponent}</View>
         )}
-        {children}
-      </View>
 
-      {rightComponent && (
-        <View className="flex-row items-center">{rightComponent}</View>
-      )}
-    </View>
+        <View className="flex-1 py-micro pl-centi pr-centi">
+          {label && (
+            <LabelComponent
+              fontColor={labelColor}
+              colorTone={_labelColorTone}
+              colorVariant={_labelColorVariant}
+              typography={labelTypography}
+              fontWeight={labelWeight}
+              fontStack={labelStack}
+            >
+              {label}
+            </LabelComponent>
+          )}
+          {children}
+        </View>
+
+        {rightComponent && (
+          <View className="flex-row items-center">{rightComponent}</View>
+        )}
+      </View>
+    </InputContext.Provider>
   );
 };
 

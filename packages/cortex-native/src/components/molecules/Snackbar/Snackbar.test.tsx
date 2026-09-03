@@ -54,3 +54,40 @@ describe('Snackbar', () => {
     jest.useRealTimers();
   });
 });
+
+describe('Snackbar compound', () => {
+  it('exposes parts with Root aliasing the callable', () => {
+    expect(Snackbar.Root).toBe(Snackbar);
+    ['Icon', 'Content', 'Action'].forEach(p =>
+      expect(Snackbar[p as 'Icon']).toBeDefined(),
+    );
+  });
+
+  it('renders composed parts and fires the action', () => {
+    jest.useFakeTimers();
+    const onClose = jest.fn();
+    const { getByText, getByRole } = render(
+      <Snackbar open onClose={onClose}>
+        <Snackbar.Icon name="check" type="ionicon" />
+        <Snackbar.Content>
+          <Text>saved</Text>
+        </Snackbar.Content>
+        <Snackbar.Action />
+      </Snackbar>,
+    );
+    expect(getByText('saved')).toBeTruthy();
+    fireEvent.press(getByRole('button'));
+    jest.runAllTimers();
+    expect(onClose).toHaveBeenCalled();
+    jest.useRealTimers();
+  });
+
+  it('still renders the legacy leftIcon and dismissable affordance', () => {
+    const { getByRole } = render(
+      <Snackbar open dismissable leftIcon={{ name: 'info', type: 'ionicon' }}>
+        <Text>legacy</Text>
+      </Snackbar>,
+    );
+    expect(getByRole('button')).toBeTruthy();
+  });
+});
