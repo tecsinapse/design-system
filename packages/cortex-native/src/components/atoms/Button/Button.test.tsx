@@ -77,3 +77,26 @@ describe('Button', () => {
     expect(queryByText('composed')).toBeNull();
   });
 });
+
+describe('Button compound', () => {
+  it('exposes parts with Root aliasing the callable', () => {
+    expect(Button.Root).toBe(Button);
+    expect(Button.Label).toBeDefined();
+    expect(Button.Icon).toBeDefined();
+  });
+
+  it('tints composed parts with the resolved foreground colour', () => {
+    const { getByTestId, getByText } = render(
+      <Button intent="primary" variant="filled">
+        <Button.Icon testID="icon" name="check" type="ionicon" />
+        <Button.Label>save</Button.Label>
+      </Button>
+    );
+    expect(getByText('save')).toBeTruthy();
+    expect(getByTestId('icon')).toBeTruthy();
+  });
+
+  it('throws when a part is used outside a Button', () => {
+    expect(() => render(<Button.Label>x</Button.Label>)).toThrow(/must be used within/);
+  });
+});

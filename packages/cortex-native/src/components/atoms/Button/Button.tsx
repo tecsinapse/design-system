@@ -8,6 +8,9 @@ import {
   buttonStyles,
   getButtonForegroundColorVar,
 } from '../../../styles/button';
+import { ButtonContext } from './ButtonContext';
+import Icon from './Icon';
+import Label from './Label';
 
 export interface ButtonProps
   extends PressableProps,
@@ -17,7 +20,7 @@ export interface ButtonProps
   loading?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const ButtonRoot: React.FC<ButtonProps> = ({
   title,
   children,
   disabled = false,
@@ -45,21 +48,27 @@ const Button: React.FC<ButtonProps> = ({
         (disabled || loading) && { opacity: 0.5 },
       ]}
     >
-      {loading ? (
-        <ActivityIndicator color={foregroundColor} />
-      ) : (
-        children ?? (
-          <Text
-            fontWeight="bold"
-            typography="base"
-            style={{ color: foregroundColor }}
-          >
-            {title}
-          </Text>
-        )
-      )}
+      <ButtonContext.Provider value={{ foregroundColor }}>
+        {loading ? (
+          <ActivityIndicator color={foregroundColor} />
+        ) : (
+          (children as React.ReactNode) ?? (
+            <Text
+              fontWeight="bold"
+              typography="base"
+              style={{ color: foregroundColor }}
+            >
+              {title}
+            </Text>
+          )
+        )}
+      </ButtonContext.Provider>
     </Pressable>
   );
 };
+
+ButtonRoot.displayName = 'Button';
+
+const Button = Object.assign(ButtonRoot, { Root: ButtonRoot, Label, Icon });
 
 export default Button;
