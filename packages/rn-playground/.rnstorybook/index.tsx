@@ -57,7 +57,7 @@ const StorybookUIRoot = ({
               Design System Playground
             </Text>
             <Pressable
-              className="items-center justify-center rounded-mili bg-content-minimal p-centi"
+              className="items-center justify-center rounded-mili bg-content-inverse p-centi"
               onPress={() => onChange(nextTheme)}
             >
               <Text typography="sub">Theme</Text>
