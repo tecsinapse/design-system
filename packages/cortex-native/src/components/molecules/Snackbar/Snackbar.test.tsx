@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { render, fireEvent } from '@testing-library/react-native';
+import { Pressable, Text, View } from 'react-native';
+import { render, fireEvent, RenderResult } from '@testing-library/react-native';
 
 jest.mock('../../atoms/Icon/Icon', () => {
   const { Text } = require('react-native');
@@ -138,5 +138,72 @@ describe('Snackbar composed icon tint', () => {
     );
 
     expect(getByTestId('icon-check').props.children).toBe('check:primary:dark');
+  });
+});
+
+describe('Snackbar.Content layout', () => {
+  it('grows to fill the space between the icon and the action, replacing flex-shrink', () => {
+    const { getByTestId } = render(
+      <Snackbar.Content testID="content">
+        <Text>msg</Text>
+      </Snackbar.Content>,
+    );
+    const className = getByTestId('content').props.className as string;
+    expect(className).toContain('flex-1');
+    expect(className).not.toContain('flex-shrink');
+  });
+
+  it('lets a consumer className defeat the grow class via cn/twMerge', () => {
+    const { getByTestId } = render(
+      <Snackbar.Content testID="content" className="flex-none">
+        <Text>msg</Text>
+      </Snackbar.Content>,
+    );
+    const className = getByTestId('content').props.className as string;
+    expect(className).toContain('flex-none');
+    expect(className).not.toContain('flex-1');
+  });
+
+  it('produces identical layout classes for the composed and legacy trees with a long message, an icon, and an action', () => {
+    const longMessage =
+      'This is a deliberately long snackbar message that would wrap onto multiple lines on a narrow device, so left alignment and vertical centering must both hold.';
+
+    const classNamesOf = (rendered: RenderResult) => ({
+      root: rendered
+        .UNSAFE_getAllByProps({
+          className: 'flex-row items-center justify-between',
+        })
+        .filter(instance => instance.type === View)
+        .map(instance => instance.props.className as string),
+      content: rendered
+        .UNSAFE_getAllByProps({ className: 'flex-row items-center flex-1' })
+        .filter(instance => instance.type === View)
+        .map(instance => instance.props.className as string),
+      icon: rendered
+        .UNSAFE_getAllByProps({ className: 'mr-mili' })
+        .filter(instance => instance.type === View)
+        .map(instance => instance.props.className as string),
+      action: rendered
+        .UNSAFE_getAllByProps({ className: 'ml-mili' })
+        .filter(instance => instance.type === Pressable)
+        .map(instance => instance.props.className as string),
+    });
+
+    const composed = render(
+      <Snackbar open>
+        <Snackbar.Icon name="check" type="ionicon" />
+        <Snackbar.Content>
+          <Text>{longMessage}</Text>
+        </Snackbar.Content>
+        <Snackbar.Action />
+      </Snackbar>,
+    );
+    const legacy = render(
+      <Snackbar open dismissable leftIcon={{ name: 'info', type: 'ionicon' }}>
+        <Text>{longMessage}</Text>
+      </Snackbar>,
+    );
+
+    expect(classNamesOf(composed)).toEqual(classNamesOf(legacy));
   });
 });

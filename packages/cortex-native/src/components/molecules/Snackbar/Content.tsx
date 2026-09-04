@@ -10,7 +10,7 @@ const Content: React.FC<SnackbarContentProps> = ({
   ...rest
 }) => (
   <View
-    className={cn('flex-row items-center flex-shrink', className)}
+    className={cn('flex-row items-center flex-1', className)}
     {...rest}
   >
     {children}

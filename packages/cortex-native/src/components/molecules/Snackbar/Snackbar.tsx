@@ -136,7 +136,7 @@ const SnackbarRoot = ({
           onDismiss: handleDismiss,
         }}
       >
-        <View className="flex-row justify-between">
+        <View className="flex-row items-center justify-between">
           {leftIcon || dismissable ? (
             <>
               {leftIcon && <SnackbarIcon {...leftIcon} />}
