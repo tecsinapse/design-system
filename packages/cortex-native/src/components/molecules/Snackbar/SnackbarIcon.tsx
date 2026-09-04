@@ -18,7 +18,7 @@ const SnackbarIcon: React.FC<SnackbarIconProps> = ({
       <Icon
         size={size}
         colorVariant={colorVariant ?? context.colorVariant}
-        colorTone={colorTone ?? context.colorTone}
+        colorTone={colorTone ?? context.iconColorTone}
         {...rest}
       />
     </View>

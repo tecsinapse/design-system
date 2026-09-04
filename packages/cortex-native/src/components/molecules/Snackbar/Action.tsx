@@ -12,8 +12,11 @@ const Action: React.FC<SnackbarActionProps> = ({
   onPress,
   ...rest
 }) => {
-  const { onDismiss, colorVariant: contextColorVariant, colorTone: contextColorTone } =
-    useSnackbarContext();
+  const {
+    onDismiss,
+    colorVariant: contextColorVariant,
+    iconColorTone: contextIconColorTone,
+  } = useSnackbarContext();
 
   return (
     <Pressable
@@ -25,7 +28,7 @@ const Action: React.FC<SnackbarActionProps> = ({
         {...rest}
         size={size}
         colorVariant={colorVariant ?? contextColorVariant}
-        colorTone={colorTone ?? contextColorTone}
+        colorTone={colorTone ?? contextIconColorTone}
         name="close"
         type="material-community"
       />
