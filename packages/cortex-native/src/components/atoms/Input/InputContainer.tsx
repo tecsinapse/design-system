@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 import { StyleProp, View, ViewProps, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
+
+import { InputContext } from './InputContext';
+import Left from './Left';
+import Right from './Right';
 import Text, { TextProps } from '../Text/Text';
 import {
   ColorGradationType,
@@ -43,9 +47,12 @@ export interface InputContainerProps extends Omit<ViewProps, 'onBlur' | 'onFocus
   labelColorTone?: ColorGradationType;
   labelTypography?: TypographyVariationType;
   labelStack?: FontStackType;
+  /** @see Input.Label — composition alternative: `<Input.Face><Input.Label>…` */
   LabelComponent?: FC<TextProps>;
   labelWeight?: FontWeightType;
+  /** @see Input.Left — composition alternative: `<Input.Face><Input.Left>…` */
   leftComponent?: React.ReactNode;
+  /** @see Input.Right — composition alternative: `<Input.Face><Input.Right>…` */
   rightComponent?: React.ReactNode;
   borderColor?: ColorType;
   borderColorGradation?: ColorGradationType;
@@ -54,7 +61,10 @@ export interface InputContainerProps extends Omit<ViewProps, 'onBlur' | 'onFocus
   disabled?: boolean;
   variant?: InputVariantType;
   hint?: string;
+  /** @see Input.Hint — composition alternative: `<Input.Face><Input.Hint>…` */
   hintComponent?: React.ReactNode;
+  /** testID applied to the container `View`, addressable independently of the consumer's own `testID`. */
+  inputContainerTestID?: string;
 }
 
 const variantToIntent: Record<InputVariantType, InputIntent> = {
@@ -80,10 +90,25 @@ const InputContainer: FC<InputContainerProps> = ({
   variant = 'default',
   children,
   testID,
+  inputContainerTestID,
   className,
   style,
   ...rest
 }): React.ReactElement => {
+  const contentChildren: React.ReactNode[] = [];
+  const leftChildren: React.ReactNode[] = [];
+  const rightChildren: React.ReactNode[] = [];
+
+  React.Children.toArray(children).forEach(child => {
+    if (React.isValidElement(child) && child.type === Left) {
+      leftChildren.push(child);
+    } else if (React.isValidElement(child) && child.type === Right) {
+      rightChildren.push(child);
+    } else {
+      contentChildren.push(child);
+    }
+  });
+
   let _defaultLabelColor = labelColorVariant;
   if (variant === 'error') _defaultLabelColor = 'error';
   if (variant === 'success') _defaultLabelColor = 'success';
@@ -99,34 +124,46 @@ const InputContainer: FC<InputContainerProps> = ({
   );
 
   return (
-    <View
-      {...rest}
-      testID={testID}
-      className={containerClassName}
-      style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
+    <InputContext.Provider
+      value={{ focused: !!focused, disabled, variant }}
     >
-      {leftComponent && <View className="flex-row items-center">{leftComponent}</View>}
-
-      <View className="flex-1 py-micro pl-centi pr-centi">
-        {label && (
-          <LabelComponent
-            fontColor={labelColor}
-            colorTone={_labelColorTone}
-            colorVariant={_labelColorVariant}
-            typography={labelTypography}
-            fontWeight={labelWeight}
-            fontStack={labelStack}
-          >
-            {label}
-          </LabelComponent>
+      <View
+        {...rest}
+        testID={inputContainerTestID ?? testID}
+        className={containerClassName}
+        style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
+      >
+        {(leftComponent || leftChildren.length > 0) && (
+          <View className="flex-row items-center">
+            {leftChildren}
+            {leftComponent}
+          </View>
         )}
-        {children}
-      </View>
 
-      {rightComponent && (
-        <View className="flex-row items-center">{rightComponent}</View>
-      )}
-    </View>
+        <View className="flex-1 py-micro pl-centi pr-centi">
+          {label && (
+            <LabelComponent
+              fontColor={labelColor}
+              colorTone={_labelColorTone}
+              colorVariant={_labelColorVariant}
+              typography={labelTypography}
+              fontWeight={labelWeight}
+              fontStack={labelStack}
+            >
+              {label}
+            </LabelComponent>
+          )}
+          {contentChildren}
+        </View>
+
+        {(rightComponent || rightChildren.length > 0) && (
+          <View className="flex-row items-center">
+            {rightChildren}
+            {rightComponent}
+          </View>
+        )}
+      </View>
+    </InputContext.Provider>
   );
 };
 

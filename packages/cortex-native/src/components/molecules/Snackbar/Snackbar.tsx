@@ -1,9 +1,13 @@
-import React, { ReactNode } from 'react';
-import { Animated, Pressable, View, ViewProps, ViewStyle } from 'react-native';
+import React from 'react';
+import { Animated, View, ViewProps, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import { ColorGradationType, ColorType } from '../../../styles/types';
 import { colorToneBg } from '../../../styles/colors';
-import Icon, { IconProps } from '../../atoms/Icon/Icon';
+import { IconProps } from '../../atoms/Icon/Icon';
+import { SnackbarContext } from './SnackbarContext';
+import SnackbarIcon from './SnackbarIcon';
+import Content from './Content';
+import Action from './Action';
 
 export interface SnackbarProps extends ViewProps {
   colorVariant?: ColorType;
@@ -13,7 +17,9 @@ export interface SnackbarProps extends ViewProps {
   dismissable?: boolean;
   timeout?: number;
   showProgressBar?: boolean;
+  /** @see Snackbar.Icon — composition alternative: `<Snackbar.Root><Snackbar.Icon>…` */
   leftIcon?: IconProps;
+  /** @see Snackbar.Action — composition alternative: `<Snackbar.Root><Snackbar.Action>…` */
   rightIcon?: Omit<IconProps, 'name' | 'type'>;
   anchor?: 'top' | 'bottom';
   anchorDistance?: number;
@@ -21,7 +27,14 @@ export interface SnackbarProps extends ViewProps {
 
 const FADE_DURATION = 500;
 
-const Snackbar = ({
+/**
+ * Readable foreground tone for the dismiss icon and, by extension, every
+ * composed icon part — the snackbar's own background tone (`colorTone`)
+ * is too pale against itself to serve as an icon tint.
+ */
+const DEFAULT_ICON_COLOR_TONE: ColorGradationType = 'medium';
+
+const SnackbarRoot = ({
   children,
   open = true,
   onClose,
@@ -30,7 +43,7 @@ const Snackbar = ({
   leftIcon,
   colorTone = 'xlight',
   colorVariant = 'primary',
-  rightIcon = { colorTone: 'medium', colorVariant: 'primary' },
+  rightIcon = { colorTone: DEFAULT_ICON_COLOR_TONE, colorVariant: 'primary' },
   anchor = 'bottom',
   anchorDistance,
   style,
@@ -115,32 +128,37 @@ const Snackbar = ({
         style,
       ]}
     >
-      <View className="flex-row justify-between">
-        <View className="flex-row items-center flex-shrink">
-          {leftIcon && (
-            <View className="mr-mili">
-              <Icon {...leftIcon} size="centi" />
-            </View>
+      <SnackbarContext.Provider
+        value={{
+          colorVariant,
+          colorTone,
+          iconColorTone: DEFAULT_ICON_COLOR_TONE,
+          onDismiss: handleDismiss,
+        }}
+      >
+        <View className="flex-row items-center justify-between">
+          {leftIcon || dismissable ? (
+            <>
+              {leftIcon && <SnackbarIcon {...leftIcon} />}
+              <Content>{children}</Content>
+              {dismissable && <Action {...rightIcon} />}
+            </>
+          ) : (
+            children
           )}
-          <View className="flex-shrink">{children}</View>
         </View>
-        {dismissable && (
-          <Pressable
-            accessibilityRole="button"
-            onPress={handleDismiss}
-            className="ml-mili"
-          >
-            <Icon
-              {...rightIcon}
-              size="centi"
-              name="close"
-              type="material-community"
-            />
-          </Pressable>
-        )}
-      </View>
+      </SnackbarContext.Provider>
     </Animated.View>
   );
 };
+
+SnackbarRoot.displayName = 'Snackbar';
+
+const Snackbar = Object.assign(SnackbarRoot, {
+  Root: SnackbarRoot,
+  Icon: SnackbarIcon,
+  Content,
+  Action,
+});
 
 export default Snackbar;

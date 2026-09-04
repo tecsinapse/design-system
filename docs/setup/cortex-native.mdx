@@ -96,6 +96,87 @@ list through its own built-in modal and does not require `ModalGroupManager`.)
 Components use `react-native-vector-icons` (peer). Fonts must be linked per the RN env setup docs; the default font is
 [Lato](https://fonts.google.com/specimen/Lato).
 
+## Styling and composition
+
+Every component's root accepts a `className` prop and merges it with the component's own recipe/variant classes
+using `cn` (a `tailwind-merge`-backed helper sharing `tv`'s merge config). Precedence, in order:
+
+1. Recipe/variant classes — the component's own Tailwind classes for its current variant/intent/size.
+2. Consumer `className` — merged in with `cn`; a consumer class beats a conflicting recipe class, and the losing
+   class is **removed** from the resulting string, not just outranked in cascade/paint order (twMerge semantics).
+3. Consumer `style` — React Native styles are absolute and always win over both, per normal RN `style` semantics.
+
+```jsx
+<Card className="bg-primary-light">
+  <Card.Body>...</Card.Body>
+</Card>
+```
+
+Per-frame or measured values (animated opacity/colour, a computed progress-bar width, a measured skeleton size,
+keyboard/safe-area padding) stay as inline `style` by design — they can't be expressed as static Tailwind classes.
+
+Every props interface also extends the React Native primitive the component renders (`ViewProps`, `PressableProps`,
+`TextProps`, `TextInputProps`, `ScrollViewProps`, ...), so `style`, `testID`, accessibility props and native event
+handlers are always inherited. `ref` is a plain prop (React 19) — none of these components use `forwardRef`.
+
+### Composition, not slot props
+
+Reaching a component's internals is done by composing its exported parts — there is deliberately **no**
+`classNames` slot map and **no** `containerClassName`/`inputClassName`-style per-part prop. Each compound is
+`Object.assign`-ed onto its root, so the root *is* `.Root` (e.g. `Card === Card.Root`), and every part is also
+importable flat from the package barrel:
+
+| Compound | Parts | Flat exports |
+| --- | --- | --- |
+| `Card` | `Root`, `Header`, `Body`, `Footer` | `CardHeader`, `CardBody`, `CardFooter` |
+| `Input` | `Root`, `Face`, `Box`, `Label`, `Hint`, `Left`, `Right` | `InputContainer` (`Face`), `InputElement` (`Box`), `InputLabel`, `Hint`, `InputLeft`, `InputRight` |
+| `Button` | `Root`, `Label`, `Icon` | `ButtonLabel`, `ButtonIcon` |
+| `Header` | `Root`, `Left`, `Title`, `Right` | `HeaderLeft`, `HeaderTitle`, `HeaderRight` |
+| `Snackbar` | `Root`, `Icon`, `Content`, `Action` | `SnackbarIcon`, `SnackbarContent`, `SnackbarAction` |
+| `Tag` | `Root`, `Icon`, `Label`, `Close` | `TagIcon`, `TagLabel`, `TagClose` |
+| `Select` | `Root`, `Trigger`, `Sheet`, `Search`, `Options`, `Confirm` | `SelectTrigger`, `SelectSheet`, `SelectSearch`, `SelectOptions`, `SelectConfirm` |
+
+`Input`'s parts also back `InputMask`, `InputPassword`, `TextArea` and `PhoneInput` internally — they all render
+`Input.Face` / `Input.Box` / `Input.Hint` under the hood.
+
+Composed:
+
+```jsx
+<Input.Face>
+  <Input.Left>
+    <Text>R$</Text>
+  </Input.Left>
+  <Input.Box value={amount} onChange={setAmount} />
+  <Input.Right>
+    <Text>kg</Text>
+  </Input.Right>
+</Input.Face>
+```
+
+Monolith spelling of the same input, via legacy injection props:
+
+```jsx
+<Input
+  leftComponent={<Text>R$</Text>}
+  rightComponent={<Text>kg</Text>}
+  value={amount}
+  onChange={setAmount}
+/>
+```
+
+### Legacy injection props still work
+
+The pre-composition injection props are **not deprecated** — each is annotated on its prop interface with a
+`@see` pointer to its composed equivalent, and every one keeps working exactly as before:
+
+- `leftComponent` / `rightComponent` / `hintComponent` / `LabelComponent` (`Input`, and `Select` via the same
+  `InputContainerProps`) → `Input.Left` / `Input.Right` / `Input.Hint` / `Input.Label`
+- `controlComponent` (`Select`) → `Select.Trigger`
+- `leftIcon` / `rightIcon` (`Snackbar`) → `Snackbar.Icon` / `Snackbar.Action`
+- `icon` / `value` (`Tag`) → `Tag.Icon` / `Tag.Label`
+- `leftButton` / `rightButton` (`Header`) → `Header.Left` / `Header.Right`
+- `title` (`Button`, ignored once `children` is passed) → `Button.Label`
+
 ---
 
 ## Migration notes

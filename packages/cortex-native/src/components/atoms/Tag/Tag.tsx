@@ -1,13 +1,18 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { Animated, Pressable, View, ViewProps } from 'react-native';
+import { Animated, ViewProps } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import { colorToneBg } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
-import Icon, { IconProps } from '../Icon/Icon';
-import Text from '../Text/Text';
+import { IconProps } from '../Icon/Icon';
+import { TagContext } from './TagContext';
+import TagIcon from './TagIcon';
+import Label from './Label';
+import Close from './Close';
 
 export interface TagProps extends ViewProps {
-  value: React.ReactNode;
+  /** @see Tag.Label — composition alternative: `<Tag.Root><Tag.Label>…` */
+  value?: React.ReactNode;
+  /** @see Tag.Icon — composition alternative: `<Tag.Root><Tag.Icon>…` */
   icon?: IconProps;
   dismiss?: boolean;
   onDismiss?: () => void;
@@ -21,7 +26,7 @@ const variantClass: Record<'small' | 'default', string> = {
   default: 'rounded-mili px-centi py-micro',
 };
 
-const Tag: React.FC<TagProps> = ({
+const TagRoot: React.FC<TagProps> = ({
   value,
   icon,
   variant = 'small',
@@ -32,6 +37,7 @@ const Tag: React.FC<TagProps> = ({
   backgroundColorVariant = 'xlight',
   testID,
   className,
+  children,
   ...rest
 }) => {
   const [dismiss, setDismiss] = useState(false);
@@ -59,39 +65,32 @@ const Tag: React.FC<TagProps> = ({
   );
 
   return (
-    <Animated.View
-      testID={testID}
-      className={tagClassName}
-      style={[{ opacity: fadeAnim }, style]}
-      {...rest}
-    >
-      {icon && (
-        <View className="mr-micro">
-          <Icon
-            size={icon.size || 'micro'}
-            colorVariant={icon.colorVariant || 'primary'}
-            {...icon}
-          />
-        </View>
-      )}
-      {typeof value === 'string' ? <Text>{value}</Text> : value}
-      {canDismiss && (
-        <Pressable
-          onPress={handleDismiss}
-          accessibilityRole="button"
-          style={{ marginLeft: 2 }}
-          hitSlop={8}
-        >
-          <Icon
-            name="close-outline"
-            type="ionicon"
-            size="centi"
-            fontColor="medium"
-          />
-        </Pressable>
-      )}
-    </Animated.View>
+    <TagContext.Provider value={{ handleDismiss }}>
+      <Animated.View
+        testID={testID}
+        className={tagClassName}
+        style={[{ opacity: fadeAnim }, style]}
+        {...rest}
+      >
+        {children ?? (
+          <>
+            {icon && <TagIcon {...icon} />}
+            {typeof value === 'string' ? <Label>{value}</Label> : value}
+            {canDismiss && <Close />}
+          </>
+        )}
+      </Animated.View>
+    </TagContext.Provider>
   );
 };
+
+TagRoot.displayName = 'Tag';
+
+const Tag = Object.assign(TagRoot, {
+  Root: TagRoot,
+  Icon: TagIcon,
+  Label,
+  Close,
+});
 
 export default Tag;

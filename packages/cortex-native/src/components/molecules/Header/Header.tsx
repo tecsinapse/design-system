@@ -1,89 +1,42 @@
 import * as React from 'react';
-import { Pressable, View, ViewProps } from 'react-native';
-import Badge from '../../atoms/Badge/Badge';
-import Icon, { IconProps } from '../../atoms/Icon/Icon';
-import { ButtonVariants, buttonStyles } from '../../../styles/button';
+import { View, ViewProps } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 
-export type Attachable = ButtonVariants & {
-  icon: IconProps;
-  valueBadge?: number;
-  onPress?: () => void;
-};
+import { DummyButton, type Attachable } from './FloatingButton';
+import Left from './Left';
+import Title from './Title';
+import Right from './Right';
+
+export type { Attachable } from './FloatingButton';
 
 export interface HeaderProps extends ViewProps {
+  /** @see Header.Right — composition alternative: `<Header.Root><Header.Right>…` */
   rightButton?: Attachable;
+  /** @see Header.Left — composition alternative: `<Header.Root><Header.Left>…` */
   leftButton?: Attachable;
 }
 
-export interface ButtonBaseProps extends ViewProps {
-  button?: Attachable;
-}
-
-const FloatingButton: React.FC<Attachable> = ({
-  icon,
-  onPress,
-  intent = 'primary',
-  variant = 'filled',
-  size = 'small',
-}) => (
-  <Pressable
-    onPress={onPress}
-    className={buttonStyles({ intent, variant, size })}
-    style={{ aspectRatio: 1, height: 49, alignItems: 'center', justifyContent: 'center' }}
-  >
-    {icon ? <Icon {...icon} /> : null}
-  </Pressable>
-);
-
-const DummyButton: React.FC = () => (
-  <Pressable
-    disabled
-    className="bg-transparent"
-    style={{ aspectRatio: 1, height: 49 }}
-  />
-);
-
-const Header: React.FC<HeaderProps> = ({
+const HeaderRoot = ({
   rightButton,
   leftButton,
   children,
+  className,
   style,
   ...rest
-}) => {
-  const ButtonBase: React.FC<ButtonBaseProps> = ({ button }) =>
-    button ? <FloatingButton {...button} /> : null;
+}: HeaderProps): React.ReactElement => (
+  <View
+    {...rest}
+    className={cn('flex-row justify-between items-center px-deca w-full', className)}
+    style={style}
+  >
+    {leftButton ? <Left button={leftButton} /> : <DummyButton />}
+    {children}
+    {rightButton ? <Right button={rightButton} /> : <DummyButton />}
+  </View>
+);
 
-  return (
-    <View
-      {...rest}
-      className="flex-row justify-between items-center px-deca w-full"
-      style={style}
-    >
-      {leftButton ? (
-        leftButton?.valueBadge ? (
-          <Badge value={leftButton.valueBadge} color="error">
-            <ButtonBase button={leftButton} />
-          </Badge>
-        ) : (
-          <ButtonBase button={leftButton} />
-        )
-      ) : (
-        <DummyButton />
-      )}
-      {children}
-      {rightButton ? (
-        rightButton?.valueBadge ? (
-          <Badge value={rightButton.valueBadge} color="error">
-            <ButtonBase button={rightButton} />
-          </Badge>
-        ) : (
-          <ButtonBase button={rightButton} />
-        )
-      ) : (
-        <DummyButton />
-      )}
-    </View>
-  );
-};
+HeaderRoot.displayName = 'Header';
+
+const Header = Object.assign(HeaderRoot, { Root: HeaderRoot, Left, Title, Right });
 
 export default Header;

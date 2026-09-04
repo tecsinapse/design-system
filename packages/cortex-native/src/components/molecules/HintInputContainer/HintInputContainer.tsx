@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
-import Hint from '../../atoms/Input/Hint';
+import Input from '../../atoms/Input/Input';
 import PressableInputContainer, {
   PressableInputContainerProps,
 } from '../../atoms/Input/PressableInputContainer';
@@ -37,7 +37,7 @@ const HintInputContainer: React.FC<HintInputContainerProps> = ({
   ...rest
 }) => {
   const _hint = hintComponent || (
-    <Hint TextComponent={LabelComponent} text={hint} variant={variant} />
+    <Input.Hint TextComponent={LabelComponent} text={hint} variant={variant} />
   );
 
   return (

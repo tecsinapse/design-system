@@ -1,11 +1,14 @@
+import React, { ReactNode } from 'react';
+import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
+
+import Paper, { PaperProps } from '../Paper/Paper';
 import PressableSurface, {
   PressableSurfaceProps,
 } from '../PressableSurface/PressableSurface';
-import React, { ReactNode } from 'react';
-import { GestureResponderEvent, StyleProp, ViewStyle } from 'react-native';
-import { useCSSVariable } from 'uniwind';
-import { clsx } from 'clsx';
-import Paper, { PaperProps } from '../Paper/Paper';
+import Body from './Body';
+import Footer from './Footer';
+import Header from './Header';
 
 export interface CardProps
   extends PaperProps,
@@ -18,22 +21,17 @@ export interface CardProps
 
 export const cardBaseClass = 'bg-surface-overlay rounded-mili';
 
-const Card = ({
+const CardRoot = ({
   children,
   elevated = false,
   onPress,
+  className,
   style,
   ...rest
 }: CardProps): React.ReactElement => {
-  const className = clsx(cardBaseClass, elevated && 'shadow-default');
-  // Resolve the theme surface so the interactive Card paints its background via
-  // PressableSurface's inline style. RN inline `style` overrides uniwind
-  // className-based backgrounds (the legacy emotion stack routed the same color
-  // through `style`, which is why this used to work); the className stays on
-  // for utility consistency (radius, etc.).
-  const surfaceColor = useCSSVariable('--color-surface-overlay') as
-    | string
-    | undefined;
+  const composed = cn(cardBaseClass, elevated && 'shadow-default', className);
+  // The surface is painted via `composed`'s className; PressableSurface derives
+  // its own press-effect base color from its own `--color-surface-overlay` lookup.
 
   if (onPress) {
     return (
@@ -41,8 +39,7 @@ const Card = ({
         {...rest}
         style={style}
         onPress={onPress}
-        className={className}
-        surfaceColor={surfaceColor}
+        className={composed}
       >
         {children}
       </PressableSurface>
@@ -50,14 +47,25 @@ const Card = ({
   }
 
   return (
-    <Paper style={style} elevated={elevated}>
+    <Paper {...rest} className={composed} style={style} elevated={elevated}>
       {children}
     </Paper>
   );
 };
 
+CardRoot.displayName = 'Card';
+
+const Card = Object.assign(CardRoot, {
+  Root: CardRoot,
+  Header,
+  Body,
+  Footer,
+});
+
 export default Card;
 export { default as Header } from './Header';
+export { default as Body } from './Body';
 export { default as Footer } from './Footer';
 export type { HeaderProps } from './Header';
+export type { BodyProps } from './Body';
 export type { FooterProps } from './Footer';
