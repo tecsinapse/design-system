@@ -1,4 +1,4 @@
-import { ClassProp, tv, VariantProps } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from '../../tv';
 
 const snackbarStyles = tv({
   base: 'animate-opacity flex flex-1 shadow-default text-base font-bold p-mili rounded-mili',

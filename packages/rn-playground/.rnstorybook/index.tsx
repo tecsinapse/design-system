@@ -1,25 +1,33 @@
 import React from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Pressable, View } from 'react-native';
 import { view } from './storybook.requires';
 import { useFonts } from 'expo-font';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
-  lightTheme,
+  Icon,
   ModalGroupManager,
-  StyleProps,
   Text,
-  ThemeProvider,
-} from '@tecsinapse/react-native-kit';
-import styled from '@emotion/native';
+  type ThemeName,
+} from '@tecsinapse/cortex-native';
 
 const _StorybookUIRoot = view.getStorybookUI({
   storage: {
-    getItem: AsyncStorage.getItem,
-    setItem: AsyncStorage.setItem,
+    getItem: require('@react-native-async-storage/async-storage').default
+      .getItem,
+    setItem: require('@react-native-async-storage/async-storage').default
+      .setItem,
   },
 });
 
-const StorybookUIRoot = () => {
+const THEMES: ThemeName[] = ['light', 'dark'];
+
+const StorybookUIRoot = ({
+  theme,
+  onChange,
+}: {
+  theme: ThemeName;
+  onChange: (theme: ThemeName) => void;
+}) => {
   const [fontsLoaded] = useFonts({
     FontAwesome: require('../assets/fonts/FontAwesome.ttf'),
     FontAwesome5_Regular: require('../assets/fonts/FontAwesome5_Regular.ttf'),
@@ -34,33 +42,34 @@ const StorybookUIRoot = () => {
     'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
   });
 
+  const nextTheme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#f8f7f7' }}>
-        <ThemeProvider theme={lightTheme}>
-          <Header>
+    <View className="flex-1 bg-linear-to-b from-primary-medium to-content-minimal">
+      <SafeAreaProvider>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View className="flex-row items-center justify-between bg-primary-medium p-centi">
             <Text typography="h4" fontWeight="bold" fontColor="light">
               Design System Playground
             </Text>
-          </Header>
+            <Pressable
+              className="items-center justify-center rounded-mili bg-content-minimal p-centi"
+              onPress={() => onChange(nextTheme)}
+            >
+              <Text typography="sub">Theme</Text>
+              <Icon type="font-awesome" name="exchange" />
+            </Pressable>
+          </View>
           <_StorybookUIRoot />
           <ModalGroupManager />
-        </ThemeProvider>
-      </SafeAreaView>
-    </SafeAreaProvider>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </View>
   );
 };
-
-const Header = styled.View<Partial<StyleProps>>`
-  background-color: ${({ theme }) => theme.color.primary.medium};
-  padding: ${({ theme }) => theme.spacing.centi};
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
 
 export default StorybookUIRoot;

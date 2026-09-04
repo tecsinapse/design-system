@@ -6,22 +6,19 @@
   "scripts": {
     "android": "pnpm update:stories && pnpm run:android",
     "dev:android": "pnpm update:stories && pnpm run:dev",
-    "ios": "pnpm update:stories && pnpm run:ios",
-    "run:dev": "expo start -c -d",
+    "ios": "pnpm update:stories && run:ios",
+    "run:dev": "expo start -d -c",
     "run:android": "expo run:android",
     "run:ios": "expo run:ios",
     "update:stories": "sb-rn-get-stories --config-path .rnstorybook",
     "storybook": "sb-rn-watcher --config-path .rnstorybook"
   },
   "dependencies": {
-    "@emotion/native": "catalog:",
-    "@emotion/react": "catalog:",
     "@gorhom/bottom-sheet": "^5.2.14",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-native-community/datetimepicker": "9.1.0",
     "@react-native-community/slider": "5.2.0",
-    "@tecsinapse/react-charts": "workspace:*",
-    "@tecsinapse/react-native-kit": "workspace:*",
+    "@tecsinapse/cortex-native": "workspace:*",
     "expo-font": "~57.0.1",
     "expo-linear-gradient": "~57.0.1",
     "expo-status-bar": "~57.0.1",
@@ -47,7 +44,9 @@
     "babel-loader": "^9.1.2",
     "babel-plugin-module-resolver": "^5.0.3",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
-    "babel-preset-expo": "~57.0.6"
+    "babel-preset-expo": "~57.0.6",
+    "tailwindcss": "catalog:",
+    "uniwind": "^1.11.0"
   },
   "private": true
 }

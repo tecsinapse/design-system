@@ -14,6 +14,7 @@ catalog:
   '@tailwindcss/vite': '^4.3.3'
   clsx: '2.1.1'
   currency.js: '~2.0.4'
+  date-fns: '~4.4.0'
   eslint-plugin-storybook: '^10.5.7'
   react: '^19.2.0'
   react-dom: '^19.2.0'

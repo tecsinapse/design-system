@@ -8,7 +8,7 @@ import {
 } from '../GroupButton';
 
 export default {
-  title: 'react-web-kit/Group Button',
+  title: 'react-core/Group Button',
   component: GroupButton,
 };
 

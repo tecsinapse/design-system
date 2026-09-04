@@ -1,8 +1,8 @@
 # AGENTS.md
 
 `@tecsinapse/react-core` — legacy hybrid (web + React Native) core library on emotion CSS-in-JS. Base of the
-`react-web-kit` / `react-native-kit` packages. **Do not add new components here** — new work goes to `cortex-core`/
-`cortex-react`; only touch for legacy fixes.
+`react-native-kit` package. **Deprecated in favor of `@tecsinapse/cortex-native`.** Do not add new components here —
+new work goes to `cortex-core`/`cortex-react`/`cortex-native`; only touch for legacy fixes.
 
 ## Layout
 

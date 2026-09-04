@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from '@emotion/native';
-import { Paper, Text } from '@tecsinapse/react-native-kit';
+import { Paper, Text } from '@tecsinapse/cortex-native';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof Paper> = {
@@ -13,23 +12,19 @@ export default StoryMeta;
 type IStory = StoryFn<typeof Paper>;
 
 export const Base = () => (
-  <StyledPaper>
+  <Paper className="bg-content-minimal">
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
-  </StyledPaper>
+  </Paper>
 );
 
 export const Elevated = () => (
-  <StyledPaper elevated>
+  <Paper elevated className="bg-content-minimal">
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
-  </StyledPaper>
+  </Paper>
 );
-
-const StyledPaper = styled(Paper)`
-  background-color: white;
-`;

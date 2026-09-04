@@ -1,6 +1,9 @@
 import { Meta } from '@storybook/react-vite';
-import { DatePickerProps } from '@tecsinapse/react-core';
-import { DatePicker, DateRange } from '@tecsinapse/react-native-kit';
+import {
+  DatePicker,
+  type DatePickerProps,
+  type DateRange,
+} from '@tecsinapse/cortex-native';
 import React from 'react';
 
 const StoryMeta: Meta<typeof DatePicker> = {

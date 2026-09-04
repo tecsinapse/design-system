@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+@import 'uniwind';
+@import '../cortex-core/src/tokens.css';
+@import '../cortex-core/src/tokens-native.css';
+
+@source '../cortex-native/src';
+@source '../cortex-core/src';

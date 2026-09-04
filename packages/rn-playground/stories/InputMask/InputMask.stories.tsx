@@ -1,4 +1,4 @@
-import { InputMask, Masks } from '@tecsinapse/react-native-kit';
+import { InputMask, Masks } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react-vite';
 
@@ -15,7 +15,7 @@ export const Phone = () => {
     <InputMask
       label={'Phone'}
       value={value}
-      onChange={onChange}
+      onChange={onChange as (value: string | number) => void}
       placeholder={'Type your phone'}
       mask={Masks.COMBINED_PHONE}
     />
@@ -28,7 +28,7 @@ export const Cpf = () => {
     <InputMask
       label={'CPF'}
       value={value}
-      onChange={onChange}
+      onChange={onChange as (value: string | number) => void}
       placeholder={'Type your CPF'}
       mask={Masks.CPF}
     />

@@ -1,6 +1,8 @@
 const path = require('path');
 const { getDefaultConfig } = require('expo/metro-config');
 const { generate } = require('@storybook/react-native/scripts/generate');
+const { withUniwindConfig } = require('uniwind/metro');
+
 generate({
   configPath: path.resolve(__dirname, './.rnstorybook'),
 });
@@ -27,19 +29,6 @@ config.resolver.extraNodeModules = {
   'react/jsx-dev-runtime': path.join(reactPath, 'jsx-dev-runtime'),
   'react-native': rnPath,
 
-  '@tecsinapse/react-core': path.resolve(workspaceRoot, 'packages/react-core'),
-  '@tecsinapse/react-native-kit': path.resolve(
-    workspaceRoot,
-    'packages/react-native-kit'
-  ),
-  '@tecsinapse/react-charts': path.resolve(
-    workspaceRoot,
-    'packages/react-charts'
-  ),
-  '@tecsinapse/react-web-kit': path.resolve(
-    workspaceRoot,
-    'packages/react-web-kit'
-  ),
   '@tecsinapse/cortex-core': path.resolve(
     workspaceRoot,
     'packages/cortex-core'
@@ -47,6 +36,10 @@ config.resolver.extraNodeModules = {
   '@tecsinapse/cortex-react': path.resolve(
     workspaceRoot,
     'packages/cortex-react'
+  ),
+  '@tecsinapse/cortex-native': path.resolve(
+    workspaceRoot,
+    'packages/cortex-native'
   ),
 };
 
@@ -62,4 +55,7 @@ config.resolver.sourceExts = [
   'stories.js',
 ];
 
-module.exports = config;
+module.exports = withUniwindConfig(config, {
+  cssEntryFile: './global.css',
+  dtsFile: './uniwind-types.d.ts',
+});
