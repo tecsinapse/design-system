@@ -27,6 +27,13 @@ export interface SnackbarProps extends ViewProps {
 
 const FADE_DURATION = 500;
 
+/**
+ * Readable foreground tone for the dismiss icon and, by extension, every
+ * composed icon part — the snackbar's own background tone (`colorTone`)
+ * is too pale against itself to serve as an icon tint.
+ */
+const DEFAULT_ICON_COLOR_TONE: ColorGradationType = 'medium';
+
 const SnackbarRoot = ({
   children,
   open = true,
@@ -36,7 +43,7 @@ const SnackbarRoot = ({
   leftIcon,
   colorTone = 'xlight',
   colorVariant = 'primary',
-  rightIcon = { colorTone: 'medium', colorVariant: 'primary' },
+  rightIcon = { colorTone: DEFAULT_ICON_COLOR_TONE, colorVariant: 'primary' },
   anchor = 'bottom',
   anchorDistance,
   style,
@@ -122,7 +129,12 @@ const SnackbarRoot = ({
       ]}
     >
       <SnackbarContext.Provider
-        value={{ colorVariant, colorTone, onDismiss: handleDismiss }}
+        value={{
+          colorVariant,
+          colorTone,
+          iconColorTone: DEFAULT_ICON_COLOR_TONE,
+          onDismiss: handleDismiss,
+        }}
       >
         <View className="flex-row justify-between">
           {leftIcon || dismissable ? (

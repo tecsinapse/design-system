@@ -176,46 +176,97 @@ export const HeaderComposedVsMonolith = () => (
   </View>
 );
 
-export const SnackbarComposedVsMonolith = () => (
-  <View className="p-deca">
-    <Caption>
-      Composed — Snackbar.Icon / Snackbar.Content / Snackbar.Action statics
-    </Caption>
-    <Example>
-      <Snackbar open colorVariant="success">
-        <Snackbar.Icon name="checkmark-circle-outline" type="ionicon" />
-        <Snackbar.Content>
+export const SnackbarComposed = () => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <View className="p-deca">
+      <Caption>
+        Composed — Snackbar.Icon / Snackbar.Content / Snackbar.Action statics
+      </Caption>
+      <Text className="mb-mili">
+        Bottom-anchored snackbar with a leading checkmark icon and a
+        trailing close icon. Tap the close icon to dismiss it, then tap
+        &quot;Show snackbar&quot; below to bring it back.
+      </Text>
+      <Text className="mb-mili" typography="sub" colorVariant="secondary">
+        Snackbar positions itself absolutely against its nearest positioned
+        ancestor, so this demo gives it a dedicated relative, fixed-height box
+        to sit in — without one, it would overlap this text instead of
+        flowing below it.
+      </Text>
+      <View className="relative h-[100px] mb-deca">
+        <Snackbar open={open} colorVariant="success" onClose={() => setOpen(false)}>
+          <Snackbar.Icon name="checkmark-circle-outline" type="ionicon" />
+          <Snackbar.Content>
+            <Text colorVariant="success" colorTone="medium">
+              Saved successfully
+            </Text>
+          </Snackbar.Content>
+          <Snackbar.Action />
+        </Snackbar>
+      </View>
+      <Button
+        title="Show snackbar"
+        intent="secondary"
+        variant="outline"
+        disabled={open}
+        onPress={() => setOpen(true)}
+      />
+    </View>
+  );
+};
+
+export const SnackbarMonolith = () => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <View className="p-deca">
+      <Caption>
+        Monolith — legacy leftIcon / dismissable / rightIcon props. Should
+        look identical to the composed story above.
+      </Caption>
+      <Text className="mb-mili">
+        Bottom-anchored snackbar built from the legacy leftIcon /
+        dismissable / rightIcon props instead of the Icon/Content/Action
+        statics. Tap the close icon to dismiss it, then tap &quot;Show
+        snackbar&quot; below to bring it back.
+      </Text>
+      <Text className="mb-mili" typography="sub" colorVariant="secondary">
+        Snackbar positions itself absolutely against its nearest positioned
+        ancestor, so this demo gives it a dedicated relative, fixed-height box
+        to sit in — without one, it would overlap this text instead of
+        flowing below it.
+      </Text>
+      <View className="relative h-[100px] mb-deca">
+        <Snackbar
+          open={open}
+          colorVariant="success"
+          dismissable
+          onClose={() => setOpen(false)}
+          leftIcon={{
+            name: 'checkmark-circle-outline',
+            type: 'ionicon',
+            colorVariant: 'success',
+            colorTone: 'medium',
+          }}
+          rightIcon={{ colorTone: 'medium', colorVariant: 'success' }}
+        >
           <Text colorVariant="success" colorTone="medium">
             Saved successfully
           </Text>
-        </Snackbar.Content>
-        <Snackbar.Action />
-      </Snackbar>
-    </Example>
-
-    <Caption>
-      Monolith — legacy leftIcon / dismissable / rightIcon props
-    </Caption>
-    <Example>
-      <Snackbar
-        open
-        colorVariant="success"
-        dismissable
-        leftIcon={{
-          name: 'checkmark-circle-outline',
-          type: 'ionicon',
-          colorVariant: 'success',
-          colorTone: 'medium',
-        }}
-        rightIcon={{ colorTone: 'medium', colorVariant: 'success' }}
-      >
-        <Text colorVariant="success" colorTone="medium">
-          Saved successfully
-        </Text>
-      </Snackbar>
-    </Example>
-  </View>
-);
+        </Snackbar>
+      </View>
+      <Button
+        title="Show snackbar"
+        intent="secondary"
+        variant="outline"
+        disabled={open}
+        onPress={() => setOpen(true)}
+      />
+    </View>
+  );
+};
 
 export const TagComposedVsMonolith = () => (
   <View className="p-deca">
