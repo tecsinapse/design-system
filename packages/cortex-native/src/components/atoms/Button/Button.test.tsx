@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 import Button from './Button';
 
 jest.mock('uniwind', () => ({
@@ -54,5 +54,26 @@ describe('Button', () => {
   it('resolves outline spinner color from the intent variable', () => {
     const { UNSAFE_getByType } = render(<Button title="ok" intent="primary" variant="outline" loading />);
     expect(UNSAFE_getByType(ActivityIndicator).props.color).toBe('#f89907');
+  });
+  it('renders children instead of title when both are provided', () => {
+    const { getByText, queryByText } = render(
+      <Button title="ignored">
+        <Text>composed</Text>
+      </Button>
+    );
+    expect(getByText('composed')).toBeTruthy();
+    expect(queryByText('ignored')).toBeNull();
+  });
+  it('still renders the title when no children are given', () => {
+    const { getByText } = render(<Button title="plain" />);
+    expect(getByText('plain')).toBeTruthy();
+  });
+  it('renders the spinner instead of children while loading', () => {
+    const { queryByText } = render(
+      <Button loading>
+        <Text>composed</Text>
+      </Button>
+    );
+    expect(queryByText('composed')).toBeNull();
   });
 });

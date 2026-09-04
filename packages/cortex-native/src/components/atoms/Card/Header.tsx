@@ -1,13 +1,11 @@
-import React, { ReactNode } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import React from 'react';
+import { View, ViewProps } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 
-export interface HeaderProps {
-  style?: StyleProp<ViewStyle>;
-  children?: ReactNode;
-}
+export interface HeaderProps extends ViewProps {}
 
-const Header = ({ children, style }: HeaderProps): React.ReactElement => (
-  <View style={style}>{children}</View>
+const Header = ({ children, className, ...rest }: HeaderProps): React.ReactElement => (
+  <View {...rest} className={cn(className)}>{children}</View>
 );
 
 export default Header;

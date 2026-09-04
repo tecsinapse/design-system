@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, ImageSourcePropType, View } from 'react-native';
+import { Image, ImageSourcePropType, View, type ViewProps } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import PressableSurface from '../PressableSurface/PressableSurface';
 import Text, { TextProps } from '../Text/Text';
 import { getIniciais } from './helpers';
@@ -13,7 +14,7 @@ export const AVATAR_SIZE_PX: Record<SizeAvatar, number> = {
   mega: 32,
 };
 
-export interface AvatarProps {
+export interface AvatarProps extends ViewProps {
   /** This property should follow react-native spec. If the asset is remote, use `{ uri: 'https://example.com/logo.png' }`.
    * For local assets, you shold use `require('./logo.png')`. */
   source?: ImageSourcePropType;
@@ -29,6 +30,9 @@ const Avatar: React.FC<AvatarProps> = ({
   onPress,
   size = 'mega',
   TextComponent = Text,
+  className,
+  style,
+  ...rest
 }) => {
   const [hasError, setHasError] = React.useState<boolean>(false);
 
@@ -42,7 +46,9 @@ const Avatar: React.FC<AvatarProps> = ({
     <PressableSurface
       effect="none"
       onPress={onPress}
-      style={{ width: dimension, height: dimension }}
+      {...rest}
+      className={cn(className)}
+      style={[{ width: dimension, height: dimension }, style]}
     >
       {source && !hasError ? (
         <Image

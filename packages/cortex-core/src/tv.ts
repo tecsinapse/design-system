@@ -4,6 +4,31 @@ import { fontSize } from './tokens/definitions';
 
 export type { ClassProp, VariantProps } from 'tailwind-variants';
 
+export const twMergeConfig = {
+  classGroups: {
+    'font-size': [
+      {
+        text: [
+          ...Object.keys(fontSize),
+          'xs',
+          'sm',
+          'base',
+          'lg',
+          'xl',
+          '2xl',
+          '3xl',
+          '4xl',
+          '5xl',
+          '6xl',
+          '7xl',
+          '8xl',
+          '9xl',
+        ],
+      },
+    ],
+  },
+};
+
 /**
  * Shared `tv` factory with a twMerge config that teaches tailwind-merge our
  * custom typography scale (`text-h1`, `text-label`, `text-micro`, ...).
@@ -19,29 +44,4 @@ export type { ClassProp, VariantProps } from 'tailwind-variants';
  * All recipes must import `tv` from here (or `@tecsinapse/cortex-core`)
  * instead of `tailwind-variants` directly.
  */
-export const tv = createTV({
-  twMergeConfig: {
-    classGroups: {
-      'font-size': [
-        {
-          text: [
-            ...Object.keys(fontSize),
-            'xs',
-            'sm',
-            'base',
-            'lg',
-            'xl',
-            '2xl',
-            '3xl',
-            '4xl',
-            '5xl',
-            '6xl',
-            '7xl',
-            '8xl',
-            '9xl',
-          ],
-        },
-      ],
-    },
-  },
-});
+export const tv = createTV({ twMergeConfig });

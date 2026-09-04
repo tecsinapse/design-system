@@ -1,37 +1,33 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  Pressable,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import { ActivityIndicator, Pressable, type PressableProps } from 'react-native';
 import type { VariantProps } from 'tailwind-variants';
 import { useCSSVariable } from 'uniwind';
+import { cn } from '@tecsinapse/cortex-core';
 import Text from '../Text/Text';
 import {
   buttonStyles,
   getButtonForegroundColorVar,
 } from '../../../styles/button';
 
-export interface ButtonProps extends VariantProps<typeof buttonStyles> {
-  title: string;
-  onPress?: () => void;
-  disabled?: boolean;
+export interface ButtonProps
+  extends PressableProps,
+    VariantProps<typeof buttonStyles> {
+  /** Convenience label. Ignored when `children` is provided. */
+  title?: string;
   loading?: boolean;
-  style?: StyleProp<ViewStyle>;
-  testID?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
   title,
-  onPress,
+  children,
   disabled = false,
   loading = false,
   intent = 'primary',
   variant = 'filled',
   size = 'default',
+  className,
   style,
-  testID,
+  ...rest
 }) => {
   const foregroundColor = useCSSVariable(
     getButtonForegroundColorVar(intent, variant)
@@ -39,27 +35,28 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <Pressable
-      testID={testID}
+      {...rest}
       accessibilityRole="button"
       disabled={disabled || loading}
-      onPress={onPress}
-      className={buttonStyles({ intent, variant, size })}
-      style={({ pressed }) => [
-        style,
-        pressed && { opacity: 0.8 },
+      className={cn(buttonStyles({ intent, variant, size }), className)}
+      style={state => [
+        typeof style === 'function' ? style(state) : style,
+        state.pressed && { opacity: 0.8 },
         (disabled || loading) && { opacity: 0.5 },
       ]}
     >
       {loading ? (
         <ActivityIndicator color={foregroundColor} />
       ) : (
-        <Text
-          fontWeight="bold"
-          typography="base"
-          style={{ color: foregroundColor }}
-        >
-          {title}
-        </Text>
+        children ?? (
+          <Text
+            fontWeight="bold"
+            typography="base"
+            style={{ color: foregroundColor }}
+          >
+            {title}
+          </Text>
+        )
       )}
     </Pressable>
   );

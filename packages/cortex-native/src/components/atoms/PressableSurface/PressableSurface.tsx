@@ -6,6 +6,7 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import { useCSSVariable } from 'uniwind';
 import { lightenDarkenColor } from '../../../utils/lightenDarkenColor';
 
@@ -28,6 +29,7 @@ const PressableSurface = ({
   effectIntensity = COLOR_VARIATION_FACTOR,
   effectStyle,
   style,
+  className,
   ...rest
 }: PressableSurfaceProps): React.ReactElement => {
   const surfaceVar = useCSSVariable(SURFACE_COLOR_VAR) as string | undefined;
@@ -66,7 +68,7 @@ const PressableSurface = ({
   };
 
   return (
-    <Pressable {...rest} style={readyStyle}>
+    <Pressable {...rest} className={cn(className)} style={readyStyle}>
       {children}
     </Pressable>
   );

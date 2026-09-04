@@ -1,6 +1,7 @@
 import React from 'react';
-import { ColorValue, StyleProp, TextStyle } from 'react-native';
+import { ColorValue, type TextProps as RNTextProps } from 'react-native';
 import { useCSSVariable } from 'uniwind';
+import { cn } from '@tecsinapse/cortex-core';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
@@ -25,11 +26,10 @@ import {
   IconType,
 } from './utils';
 
-interface IconComponentProps {
+interface IconComponentProps extends RNTextProps {
   name: string;
   size?: number;
   color?: ColorValue | number;
-  style?: StyleProp<TextStyle>;
 }
 
 const getIconComponent = (
@@ -68,7 +68,7 @@ const getIconComponent = (
   }
 };
 
-export interface IconProps {
+export interface IconProps extends RNTextProps {
   /** Name of the icon. You must use the same icons from react-native-vector-icons */
   name: string;
   /** Icon family. You must use the same icons from react-native-vector-icons */
@@ -81,7 +81,6 @@ export interface IconProps {
   colorVariant?: ColorType;
   /** Palette theme gradation fill color */
   colorTone?: ColorGradationType;
-  style?: StyleProp<TextStyle>;
 }
 
 const Icon: React.FC<IconProps> = ({
@@ -92,6 +91,8 @@ const Icon: React.FC<IconProps> = ({
   colorVariant,
   colorTone = 'medium',
   style,
+  className,
+  ...rest
 }) => {
   const color = useCSSVariable(
     iconColorVar(colorVariant, colorTone, fontColor)
@@ -100,10 +101,12 @@ const Icon: React.FC<IconProps> = ({
 
   return (
     <IconComponent
+      {...rest}
       name={name}
       size={ICON_SIZE_PX[size]}
       color={color}
       style={style}
+      className={cn(className)}
     />
   );
 };

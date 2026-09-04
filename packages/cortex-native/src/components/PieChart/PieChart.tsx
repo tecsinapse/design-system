@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, type ViewProps } from 'react-native';
 import { useCSSVariable } from 'uniwind';
+import { cn } from '@tecsinapse/cortex-core';
 import Label from './Label';
 import {
   buildPieSlices,
@@ -20,7 +21,7 @@ import {
   SvgText,
 } from './styled';
 
-export interface PieChartProps {
+export interface PieChartProps extends ViewProps {
   data: PieChartData[];
   /** Chart width/height (square view, in px) */
   dimension?: number;
@@ -40,8 +41,8 @@ export interface PieChartProps {
   };
 }
 
-const Container = (props: ViewProps) => (
-  <View className={CONTAINER_CLASS} {...props} />
+const Container = ({ className, ...props }: ViewProps) => (
+  <View className={cn(CONTAINER_CLASS, className)} {...props} />
 );
 
 const LabelsContainer = (props: ViewProps) => (
@@ -80,6 +81,9 @@ const PieChart: React.FC<PieChartProps> = ({
   subProps,
   columns = 1,
   chartConfig,
+  className,
+  testID,
+  ...rest
 }) => {
   const slices = buildPieSlices(data, radius, dimension);
 
@@ -108,7 +112,7 @@ const PieChart: React.FC<PieChartProps> = ({
   const sum = data.reduce((prev, curr) => prev + curr.value, 0);
 
   return (
-    <Container>
+    <Container {...rest} className={className} testID={testID}>
       <Svg width={dimension} height={dimension}>
         <G x={dimension / 2} y={dimension / 2}>
           {slices.map((slice, index) => (

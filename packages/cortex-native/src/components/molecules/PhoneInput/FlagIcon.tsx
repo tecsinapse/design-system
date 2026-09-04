@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View, ViewProps } from 'react-native';
 import CountryFlag from 'react-native-country-flag';
+import { cn } from '@tecsinapse/cortex-core';
 
-export interface FlagIconProps {
+export interface FlagIconProps extends ViewProps {
   countryCode: string;
   dialCode?: string;
 }
@@ -12,17 +13,29 @@ const FLAG_SIZE = 25;
 export const FlagIcon: React.FC<FlagIconProps> = ({
   countryCode,
   dialCode,
+  className,
+  testID,
+  style,
+  ...rest
 }) => {
   if (!countryCode) {
     return null;
   }
 
   if (CountryFlag) {
-    return <CountryFlag isoCode={countryCode.toLowerCase()} size={FLAG_SIZE} />;
+    return (
+      <View {...rest} testID={testID} className={cn(className)} style={style}>
+        <CountryFlag isoCode={countryCode.toLowerCase()} size={FLAG_SIZE} />
+      </View>
+    );
   }
 
   return (
-    <Text style={{ fontSize: 12, fontWeight: '600' }}>
+    <Text
+      testID={testID}
+      className={cn(className)}
+      style={[{ fontSize: 12, fontWeight: '600' }, style]}
+    >
       {dialCode ? `+${dialCode}` : countryCode.toUpperCase()}
     </Text>
   );
