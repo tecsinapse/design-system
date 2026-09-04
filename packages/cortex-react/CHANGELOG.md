@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.1](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-react%402.5.0...%40tecsinapse%2Fcortex-react%402.5.1) (2026-09-03)
+
+**Note:** Version bump only for package @tecsinapse/cortex-react
+
 # [2.5.0](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-react%402.4.6...%40tecsinapse%2Fcortex-react%402.5.0) (2026-09-01)
 
 ### Bug Fixes

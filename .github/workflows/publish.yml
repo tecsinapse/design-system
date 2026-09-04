@@ -51,10 +51,36 @@ jobs:
 
           if [ "${{ github.base_ref }}" = "master" ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
-            npx --yes lerna publish from-git --ignore-scripts --yes
+
+            OUTPUT=$(npx --yes lerna publish from-git --ignore-scripts --yes)
+
+            echo "$OUTPUT"
+
+            PUBLISHED=$(echo "$OUTPUT" | grep -oE "@[^ ]+@[0-9][^ ]*")
+
+            echo "published_packages<<EOF" >> $GITHUB_OUTPUT
+            echo "$PUBLISHED" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+
+            echo "### 🚀 Latest publicados" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "$PUBLISHED" | sed 's/^/- `/; s/$/`/' >> $GITHUB_STEP_SUMMARY
           elif [[ "${{ github.base_ref }}" == legacy/* ]]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
-            npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes
+
+            OUTPUT=$(npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes)
+
+            echo "$OUTPUT"
+
+            PUBLISHED=$(echo "$OUTPUT" | grep -oE "@[^ ]+@[0-9][^ ]*")
+
+            echo "published_packages<<EOF" >> $GITHUB_OUTPUT
+            echo "$PUBLISHED" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+
+            echo "### 🚀 Legacy publicados" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "$PUBLISHED" | sed 's/^/- `/; s/$/`/' >> $GITHUB_STEP_SUMMARY
           else
             OUTPUT=$(npx --yes lerna publish --canary --preid beta --dist-tag beta --no-private --ignore-scripts --yes)
 
