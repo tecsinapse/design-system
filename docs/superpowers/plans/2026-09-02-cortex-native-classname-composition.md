@@ -1933,16 +1933,40 @@ pnpm build:storybook
 
 Expected: all green. `pnpm lint:fix` rewrites files — review its diff before committing.
 
-- [~] **Step 5: Smoke test in rn-playground** — partially verified
+- [x] **Step 5: Smoke test in rn-playground**
 
 Add (or extend) an rn-playground screen rendering each Tier 1 compound in composed form plus a `<Card className="bg-primary-light">` and a `<Button className="rounded-full">`, then run the app and confirm visually that consumer classes paint and the theme still flips light/dark. This is the deliverable proof — a passing unit suite does not demonstrate that uniwind resolves the merged class strings at runtime.
 
 Landed: `packages/rn-playground/stories/Composition/Composition.stories.tsx` renders every Tier 1 compound in
 composed form beside its monolith form, plus `<Card className="bg-primary-light">` / `<Button className="rounded-full">`
-override stories. Verified by a real metro/Hermes bundle (`npx expo export -p android`, 8.7 MB `.hbc`, exit 0), which
-also confirms uniwind's transform kept every newly class-expressed arbitrary value (`min-h-[50px]`, `ml-[2px]`,
-`h-[49px]`, `h-[88%]`, `bg-black/50`, `aspect-square`) in the compiled output. The visual light/dark confirmation
-still needs a device or emulator — unavailable in this environment.
+override stories.
+
+Verified on an Android emulator (`sdk_gphone64_x86_64`) against a live metro dev server, story by story:
+
+- **Override contract paints.** `<Card className="bg-primary-light">` renders the consumer's surface instead of
+  `bg-surface-overlay`, and `<Button className="rounded-full">` renders a pill instead of the recipe's radius —
+  uniwind resolves the merged class strings at runtime, which the unit suite alone cannot show.
+- **Theme still flips.** Light → dark switches the default Card surface and text tokens; the explicitly overridden
+  `bg-primary-light` card correctly keeps its literal palette class.
+- **Monolith ≡ composed** confirmed visually for `Card`, `Tag`, `Header`, `Select` (including the sheet, whose
+  `bg-black/50` backdrop, `h-[88%]` height and `rounded-t-deca` corners now come from classes, not inline styles).
+
+Two real defects surfaced only in this step and were fixed (commit `08b229c5`):
+
+1. Composed `Input.Left`/`Input.Right` landed in `Input.Face`'s content column instead of its side slots, so
+   `R$ | value | kg` stacked vertically while the legacy `leftComponent`/`rightComponent` props rendered inline.
+   `InputContainer` now partitions children by part identity into the same slots the legacy props feed.
+2. `buttonStyles.base` never set a flex direction, so `Button.Icon` + `Button.Label` stacked (RN defaults to
+   `column`). Base is now `flex-row items-center justify-center`, matching the web recipe, and `Button.Icon` carries
+   `mr-mili` like `SnackbarIcon`.
+
+Fixing (2)'s override test exposed a third, deeper gap: `twMergeConfig` taught tailwind-merge only the custom
+*font-size* scale, so token-scale spacing, radius and border widths (`mr-mili`, `p-centi`, `rounded-mili`,
+`border-nano`) were unclassified and could never be replaced by a consumer class — only appended. `tv.ts` now also
+registers `theme.spacing`, `theme.radius` and the `border-w` class groups, all derived from the token objects with
+`Object.keys()`. `cn('mr-mili','mr-0')`, `cn('p-centi','p-4')`, `cn('rounded-mili','rounded-full')` and
+`cn('border-nano','border-2')` now resolve to the consumer's class, pinned by tests in
+`packages/cortex-react/src/tests/cn.test.ts`.
 
 - [x] **Step 6: Commit**
 
