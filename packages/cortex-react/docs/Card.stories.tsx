@@ -35,8 +35,7 @@ export const Selectable: StoryObj<typeof Card> = {
     return (
       <div className="w-80">
         <Card
-          selectable
-          isSelected={isSelected}
+          variants={{ selectable: true, isSelected }}
           className="flex items-center justify-between"
           onClick={() => setIsSelected(isSelected => !isSelected)}
         >

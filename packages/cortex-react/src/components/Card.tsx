@@ -1,4 +1,4 @@
-import { card } from '@tecsinapse/cortex-core';
+import { card, CardVariants } from '@tecsinapse/cortex-core';
 import React, { HTMLAttributes } from 'react';
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -6,21 +6,17 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   /** React ref */
   ref?: React.Ref<HTMLDivElement>;
-  /** applies interactive styling (cursor pointer, hover shadow) */
-  selectable?: boolean;
-  /** applies the selected border color; only takes effect when `selectable` is also `true` */
-  isSelected?: boolean;
+  /**
+   * all `card` styles as object
+   */
+  variants?: CardVariants;
 }
 
 /** Card component */
 export const Card = (props: CardProps) => {
-  const { children, className, ref, selectable, isSelected, ...rest } = props;
+  const { children, className, ref, variants, ...rest } = props;
   return (
-    <div
-      className={card({ selectable, isSelected, className })}
-      ref={ref}
-      {...rest}
-    >
+    <div className={card({ ...variants, className })} ref={ref} {...rest}>
       {children}
     </div>
   );
