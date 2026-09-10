@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Avatar, Menubar, Tag, Tooltip } from '../src';

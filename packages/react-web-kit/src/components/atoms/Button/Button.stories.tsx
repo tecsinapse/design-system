@@ -1,5 +1,5 @@
-import { action } from '@storybook/addon-actions';
-import { StoryFn } from '@storybook/react';
+import { action } from 'storybook/actions';
+import { StoryFn } from '@storybook/react-vite';
 import { Text } from '@tecsinapse/react-core';
 import React from 'react';
 import Button, { WebButtonProps } from './Button';

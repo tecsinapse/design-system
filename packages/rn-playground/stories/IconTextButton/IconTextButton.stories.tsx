@@ -1,6 +1,6 @@
 import { IconTextButton } from '@tecsinapse/react-native-kit';
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof IconTextButton> = {
   title: 'IconTextButton',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BottomNavigator, Text } from '@tecsinapse/react-native-kit';
 import { Pressable } from 'react-native';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof BottomNavigator> = {
   title: 'BottomNavigator',

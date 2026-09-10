@@ -1,4 +1,5 @@
 import { createCalendar, parseDate } from '@internationalized/date';
+import type { Mock } from 'vitest';
 import { renderHook } from '@testing-library/react';
 import { useCalendarCell as useAriaCalendarCell } from 'react-aria';
 import {
@@ -10,16 +11,16 @@ import {
 import { useCalendarCell } from '../hooks/useCalendarCell';
 import { useCalendarContext } from '../provider';
 
-jest.mock('react-aria', () => ({
-  useCalendarCell: jest.fn(),
+vi.mock('react-aria', () => ({
+  useCalendarCell: vi.fn(),
 }));
 
-const mockUseAriaCalendarCell = jest.mocked(useAriaCalendarCell);
+const mockUseAriaCalendarCell = vi.mocked(useAriaCalendarCell);
 
-jest.mock('../provider', () => ({
-  useCalendarContext: jest.fn(),
+vi.mock('../provider', () => ({
+  useCalendarContext: vi.fn(),
 }));
-const mockUseCalendarContext = useCalendarContext as jest.Mock;
+const mockUseCalendarContext = useCalendarContext as Mock;
 
 describe('useCalendarCell', () => {
   let state: CalendarState | RangeCalendarState;
@@ -43,7 +44,7 @@ describe('useCalendarCell', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('Should return correct props for one selected date', () => {

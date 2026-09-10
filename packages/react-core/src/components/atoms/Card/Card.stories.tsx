@@ -1,7 +1,7 @@
 import React from 'react';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import styled from '@emotion/native';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import Card, { CardProps } from './Card';
 import { StyleProps } from '../../../types/defaults';
 

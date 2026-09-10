@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import { Icon } from '@tecsinapse/react-core';
 import { BadgeWebProps } from './Badge';
 import React from 'react';

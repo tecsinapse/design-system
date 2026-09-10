@@ -9,7 +9,7 @@ import {
 } from '@tecsinapse/react-native-kit';
 import React, { FC } from 'react';
 import { View } from 'react-native';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof ModalView> = {
   title: 'Modal',

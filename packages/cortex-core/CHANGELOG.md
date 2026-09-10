@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.1.3...%40tecsinapse%2Fcortex-core%402.1.4) (2026-09-01)
+
+### Bug Fixes
+
+* disable twMerge on badge.ts ([4ac2b85](https://github.com/tecsinapse/design-system/commit/4ac2b854e0d4da1a15ea38b0768baa43b5351f1c))
+* storybook not rendering on mobile ([6731792](https://github.com/tecsinapse/design-system/commit/67317920664c85e3cc71b196ab3bc2e2970c3b41))
+
 ## [2.1.3](https://github.com/tecsinapse/design-system/compare/@tecsinapse/cortex-core@2.1.2...@tecsinapse/cortex-core@2.1.3) (2026-07-27)
 
 **Note:** Version bump only for package @tecsinapse/cortex-core

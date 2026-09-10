@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paper, SnappingSlider } from '@tecsinapse/react-native-kit';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof SnappingSlider> = {
   title: 'SnappingSlider',

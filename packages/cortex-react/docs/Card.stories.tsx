@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Meta, StoryObj } from '@storybook/react';
 import { FiTrash } from 'react-icons/fi';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { IoMdArrowForward } from 'react-icons/io';
 import { Button, Card } from '../src';
 

@@ -1,14 +1,14 @@
 import React from 'react';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import Accordion, { AccordionProps } from './Accordion';
 import { Text } from '@tecsinapse/react-core';
 
 export default {
   title: 'react-web-kit/Accordion',
   component: Accordion,
-  parameters: {
+  globals: {
     backgrounds: {
-      default: 'white',
+      value: 'white',
     },
   },
 };

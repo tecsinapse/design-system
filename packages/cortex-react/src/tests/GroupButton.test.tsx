@@ -12,7 +12,7 @@ const options: GroupButtonValue<string>[] = [
 ];
 
 const props: GroupButtonProps<string> = {
-  onChange: jest.fn(),
+  onChange: vi.fn(),
   value: options[0].value,
   options,
   renderOption: op => op,

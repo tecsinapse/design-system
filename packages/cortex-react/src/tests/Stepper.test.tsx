@@ -9,25 +9,25 @@ describe('Stepper Component', () => {
       label: 'Abertura',
       marked: true,
       intent: 'success' as const,
-      onClick: jest.fn(),
+      onClick: vi.fn(),
     },
     {
       label: 'Aprovação Adm. Vendas',
       marked: true,
       intent: 'error' as const,
-      onClick: jest.fn(),
+      onClick: vi.fn(),
       disabled: true,
     },
-    { label: 'Faturamento', intent: 'warning' as const, onClick: jest.fn() },
+    { label: 'Faturamento', intent: 'warning' as const, onClick: vi.fn() },
     {
       label: 'Liberado para entrega',
       intent: 'success' as const,
-      onClick: jest.fn(),
+      onClick: vi.fn(),
     },
     {
       label: 'Recebimento comissão VD',
       intent: 'warning' as const,
-      onClick: jest.fn(),
+      onClick: vi.fn(),
     },
   ];
 

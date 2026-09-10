@@ -7,7 +7,7 @@ import { TimeFieldInput } from '../components';
 describe('TimeFieldInput', () => {
   it('Should render correctly', () => {
     const value: Time = new Time(5, 10);
-    render(<TimeFieldInput onChange={jest.fn} value={value} />);
+    render(<TimeFieldInput onChange={vi.fn} value={value} />);
     const timeFieldInput = screen.getByTestId('time-field-input');
     expect(timeFieldInput).toBeInTheDocument();
   });
@@ -16,7 +16,7 @@ describe('TimeFieldInput', () => {
     const labelExample = 'Lorem Ipsum';
     const value: Time = new Time(5, 10);
     render(
-      <TimeFieldInput onChange={jest.fn} value={value} label={labelExample} />
+      <TimeFieldInput onChange={vi.fn} value={value} label={labelExample} />
     );
     const timeFieldInput = screen.getByText(labelExample);
     expect(timeFieldInput).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe('TimeFieldInput', () => {
     const value: Time = new Time(5, 10);
     render(
       <TimeFieldInput
-        onChange={jest.fn}
+        onChange={vi.fn}
         value={value}
         variants={{ intent: 'error' }}
       />
@@ -39,7 +39,7 @@ describe('TimeFieldInput', () => {
     const value: Time = new Time(5, 10);
     render(
       <TimeFieldInput
-        onChange={jest.fn}
+        onChange={vi.fn}
         value={value}
         variants={{ intent: 'success' }}
       />
@@ -52,7 +52,7 @@ describe('TimeFieldInput', () => {
     const value: Time = new Time(5, 10);
     render(
       <TimeFieldInput
-        onChange={jest.fn}
+        onChange={vi.fn}
         value={value}
         variants={{ intent: 'warning' }}
       />

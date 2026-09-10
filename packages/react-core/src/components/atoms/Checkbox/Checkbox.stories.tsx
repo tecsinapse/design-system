@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import { CheckboxProps, default as Checkbox } from './Checkbox';
 import { Text } from '../Text';
 

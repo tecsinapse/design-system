@@ -1,8 +1,35 @@
 packages:
   - 'packages/*'
+catalog:
+  '@emotion/native': '~11.11.0'
+  '@emotion/react': '~11.14.0'
+  '@emotion/styled': '~11.14.1'
+  '@storybook/addon-docs': '^10.5.7'
+  '@storybook/addon-ondevice-actions': '^10.5.4'
+  '@storybook/addon-ondevice-backgrounds': '^10.5.4'
+  '@storybook/addon-ondevice-controls': '^10.5.4'
+  '@storybook/react-native': '^10.5.4'
+  '@storybook/react-vite': '^10.5.7'
+  '@tailwindcss/postcss': '~4.3.3'
+  '@tailwindcss/vite': '^4.3.3'
+  clsx: '2.1.1'
+  currency.js: '~2.0.4'
+  eslint-plugin-storybook: '^10.5.7'
+  react: '^19.2.0'
+  react-dom: '^19.2.0'
+  react-international-phone: '^4.8.0'
+  react-native: '^0.86.2'
+  react-native-linear-gradient: '~2.8.3'
+  react-native-vector-icons: '^9.2.0'
+  storybook: '^10.5.7'
+  tailwind-variants: '3.3.1'
+  tailwindcss: '^4.3.3'
 allowBuilds:
   '@swc/core': true
   core-js-pure: true
   esbuild: true
 autoInstallPeers: false
+minimumReleaseAgeExclude:
+  - '@storybook/*'
 nodeLinker: hoisted
+dedupeDirectDeps: true

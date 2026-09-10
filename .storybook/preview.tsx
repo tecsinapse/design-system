@@ -1,7 +1,7 @@
-import * as DocBlock from '@storybook/blocks';
-import { Parameters, Preview } from '@storybook/react';
+import * as DocBlock from '@storybook/addon-docs/blocks';
+import { Parameters, Preview } from '@storybook/react-vite';
 import React from 'react';
-import { ThemeProvider, lightTheme } from '../packages/react-core';
+import { lightTheme, ThemeProvider } from '../packages/react-core';
 import './index.css';
 
 const parameters: Parameters = {
@@ -20,25 +20,27 @@ const parameters: Parameters = {
     },
   },
   backgrounds: {
-    default: 'light',
-    values: [
-      {
+    options: {
+      white: {
         name: 'white',
         value: '#fff',
       },
-      {
+
+      light: {
         name: 'light',
         value: '#f8f7f7',
       },
-      {
+
+      medium: {
         name: 'medium',
         value: '#85807a',
       },
-      {
+
+      dark: {
         name: 'dark',
         value: '#5d5955',
       },
-    ],
+    },
   },
   type: 'auto',
   docs: {
@@ -90,6 +92,12 @@ const parameters: Parameters = {
 const preview: Preview = {
   tags: ['autodocs'],
   parameters,
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'light',
+    },
+  },
 };
 
 export default preview;

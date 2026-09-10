@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { CategoryType, Menubar } from '../../components';
 
-jest.mock('../../styles/menubar', () => ({
+vi.mock('../../styles/menubar', () => ({
   category: () => ({
     text: () => 'mocked-text-class',
     hr: () => 'mocked-hr-class',

@@ -1,4 +1,5 @@
 import * as dateFnsLocales from 'date-fns/locale';
+import { type Locale } from 'date-fns';
 import { I18nManager } from 'react-native';
 
 export const getLocale = (): Locale => {

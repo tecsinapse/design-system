@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { Paper, Text } from '@tecsinapse/react-native-kit';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof Paper> = {
   title: 'Paper',

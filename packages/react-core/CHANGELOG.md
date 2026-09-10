@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.2](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Freact-core%404.2.1...%40tecsinapse%2Freact-core%404.2.2) (2026-09-01)
+
+**Note:** Version bump only for package @tecsinapse/react-core
+
 ## [4.2.1](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-core@4.2.0...@tecsinapse/react-core@4.2.1) (2026-07-27)
 
 **Note:** Version bump only for package @tecsinapse/react-core

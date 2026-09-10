@@ -1,7 +1,7 @@
 import React from 'react';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import Switch from './Switch';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 export default {
   title: 'react-web-kit/Switch',

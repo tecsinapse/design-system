@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { DatePickerProps } from '@tecsinapse/react-core';
 import { DatePicker, DateRange } from '@tecsinapse/react-native-kit';
 import React from 'react';

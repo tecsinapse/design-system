@@ -5,14 +5,14 @@ import React from 'react';
 import { DateValue } from 'react-aria';
 import { DateField } from '../components';
 
-jest.mock('../components/DatePicker/DateSegment', () => ({
+vi.mock('../components/DatePicker/DateSegment', () => ({
   DateSegment: ({ segment }: { segment: { text: string } }) => (
     <span>{segment.text}</span>
   ),
 }));
 
 describe('DateField', () => {
-  const mockOnChange = jest.fn();
+  const mockOnChange = vi.fn();
   const value: DateValue = new CalendarDate(2024, 6, 4);
 
   it('Should render DateField component', () => {
@@ -57,8 +57,8 @@ describe('DateField', () => {
   });
 
   it('Should call onClickDate and onClickTime if passed', () => {
-    const onClickDateMock = jest.fn();
-    const onClickTimeMock = jest.fn();
+    const onClickDateMock = vi.fn();
+    const onClickTimeMock = vi.fn();
     const value: DateValue = new CalendarDateTime(2024, 6, 4, 13, 30, 15);
 
     render(
@@ -92,8 +92,8 @@ describe('DateField', () => {
   });
 
   it('Should not call onClickDate and onClickTime if click literal', () => {
-    const onClickDateMock = jest.fn();
-    const onClickTimeMock = jest.fn();
+    const onClickDateMock = vi.fn();
+    const onClickTimeMock = vi.fn();
     const value: DateValue = new CalendarDateTime(2024, 6, 4, 13, 30, 15);
 
     render(
@@ -121,8 +121,8 @@ describe('DateField', () => {
   });
 
   it('Should not call onClickDate and onClickTime if state is disabled', () => {
-    const onClickDateMock = jest.fn();
-    const onClickTimeMock = jest.fn();
+    const onClickDateMock = vi.fn();
+    const onClickTimeMock = vi.fn();
     const value: DateValue = new CalendarDateTime(2024, 6, 4, 13, 30, 15);
 
     render(

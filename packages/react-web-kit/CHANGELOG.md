@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.9](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Freact-web-kit%404.0.8...%40tecsinapse%2Freact-web-kit%404.0.9) (2026-09-01)
+
+### Bug Fixes
+
+* Accordion typing ([16967bb](https://github.com/tecsinapse/design-system/commit/16967bb6980bb9b245fa5459dec612e6a2065d01))
+
 ## [4.0.8](https://github.com/tecsinapse/design-system/compare/@tecsinapse/react-web-kit@4.0.7...@tecsinapse/react-web-kit@4.0.8) (2026-07-27)
 
 **Note:** Version bump only for package @tecsinapse/react-web-kit

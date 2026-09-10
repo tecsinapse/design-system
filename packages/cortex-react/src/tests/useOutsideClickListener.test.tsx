@@ -4,7 +4,7 @@ import { useOutsideClickListener } from '../hooks';
 
 describe('useOutsideClickListener', () => {
   it('Should detect click outside element', () => {
-    const onClickOutside = jest.fn();
+    const onClickOutside = vi.fn();
     const ref = createRef<HTMLDivElement>();
     renderHook(() =>
       useOutsideClickListener({
@@ -21,7 +21,7 @@ describe('useOutsideClickListener', () => {
   });
 
   it('Should not detect click on element click', () => {
-    const onClickOutside = jest.fn();
+    const onClickOutside = vi.fn();
     const ref = createRef<HTMLDivElement>();
     renderHook(() =>
       useOutsideClickListener({

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { button } from '@tecsinapse/cortex-core';
 import React from 'react';
 import { Tooltip } from '../src';

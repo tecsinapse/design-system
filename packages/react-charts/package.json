@@ -1,6 +1,6 @@
 {
   "name": "@tecsinapse/react-charts",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Charts for React and React Native",
   "homepage": "https://github.com/tecsinapse/design-system/",
   "license": "MIT",
@@ -16,8 +16,8 @@
     "url": "git+https://github.com/tecsinapse/design-system.git"
   },
   "dependencies": {
-    "@emotion/native": "~11.11.0",
-    "@emotion/react": "~11.11.0",
+    "@emotion/native": "catalog:",
+    "@emotion/react": "catalog:",
     "react-native-svg-charts": "^5.4.0"
   },
   "devDependencies": {

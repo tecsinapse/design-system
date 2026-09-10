@@ -4,7 +4,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { TimeField } from '../components';
 
-jest.mock('../components/DatePicker/DateSegment', () => ({
+vi.mock('../components/DatePicker/DateSegment', () => ({
   DateSegment: ({ segment }: { segment: { text: string } }) => (
     <span>{segment.text}</span>
   ),
@@ -12,7 +12,7 @@ jest.mock('../components/DatePicker/DateSegment', () => ({
 
 describe('TimeField', () => {
   it('renders TimeField component', () => {
-    const mockOnChange = jest.fn();
+    const mockOnChange = vi.fn();
     const value: Time = new Time(10, 30);
 
     render(<TimeField value={value} onChange={mockOnChange} />);
@@ -22,7 +22,7 @@ describe('TimeField', () => {
   });
 
   it('Should call onChange when value change', () => {
-    const mockOnChange = jest.fn();
+    const mockOnChange = vi.fn();
     const value: Time = new Time(10, 30);
 
     render(<TimeField value={value} onChange={mockOnChange} />);

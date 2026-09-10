@@ -117,3 +117,6 @@ sbdocs
 .nx/cache
 # favorites vscode plugin
 .favorites.json
+
+# worktrees
+.worktrees/

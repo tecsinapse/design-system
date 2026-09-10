@@ -1,19 +1,20 @@
 import '@testing-library/jest-dom';
+import type { Mock } from 'vitest';
 import { fireEvent, render, renderHook, screen } from '@testing-library/react';
 import React from 'react';
 import { RangeCalendar } from '../components/';
 import { useRangeCalendar } from '../hooks';
 
-jest.mock('../hooks/useRangeCalendar', () => ({
-  useRangeCalendar: jest.fn(),
+vi.mock('../hooks/useRangeCalendar', () => ({
+  useRangeCalendar: vi.fn(),
 }));
 
-jest.mock('../components/Calendar/CalendarGrid', () => ({
-  CalendarGrid: jest.fn(() => <div data-testid="calendar-grid" />),
+vi.mock('../components/Calendar/CalendarGrid', () => ({
+  CalendarGrid: vi.fn(() => <div data-testid="calendar-grid" />),
 }));
 
-jest.mock('../components/Calendar/CalendarHeader', () => ({
-  CalendarHeader: jest.fn(({ onClickPrevButton, onClickNextButton, title }) => (
+vi.mock('../components/Calendar/CalendarHeader', () => ({
+  CalendarHeader: vi.fn(({ onClickPrevButton, onClickNextButton, title }) => (
     <div data-testid="calendar-header">
       <button onClick={onClickPrevButton}>Prev</button>
       <span>{title}</span>
@@ -23,24 +24,24 @@ jest.mock('../components/Calendar/CalendarHeader', () => ({
 }));
 
 describe('RangeCalendar', () => {
-  const mockOnChange = jest.fn();
+  const mockOnChange = vi.fn();
   const mockUseCalendar = {
     calendarProps: {},
     title: 'June 2024',
     state: {
-      focusPreviousPage: jest.fn(),
-      focusNextPage: jest.fn(),
+      focusPreviousPage: vi.fn(),
+      focusNextPage: vi.fn(),
     },
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
-    (useRangeCalendar as jest.Mock).mockReturnValue(mockUseCalendar);
+    vi.clearAllMocks();
+    (useRangeCalendar as Mock).mockReturnValue(mockUseCalendar);
   });
 
   it('Should render', () => {
     const value = { start: new Date(), end: new Date() };
-    const onChange = jest.fn();
+    const onChange = vi.fn();
 
     renderHook(() => {
       return useRangeCalendar({

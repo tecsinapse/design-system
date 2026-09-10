@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react-vite';
 import { PieChart, PieChartData } from '@tecsinapse/react-charts';
 
 const PieChartMeta: Meta<typeof PieChart> = {

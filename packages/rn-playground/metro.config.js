@@ -1,9 +1,8 @@
 const path = require('path');
 const { getDefaultConfig } = require('expo/metro-config');
 const { generate } = require('@storybook/react-native/scripts/generate');
-
 generate({
-  configPath: path.resolve(__dirname, './.storybook'),
+  configPath: path.resolve(__dirname, './.rnstorybook'),
 });
 
 // Find the project and workspace directories
@@ -12,11 +11,6 @@ const projectRoot = __dirname;
 const workspaceRoot = path.resolve(projectRoot, '../..');
 
 const config = getDefaultConfig(projectRoot);
-
-// 1. Watch all files within the monorepo
-config.watchFolders = [workspaceRoot];
-config.resolver.unstable_enableSymlinks = true;
-config.resolver.disableHierarchicalLookup = true;
 
 // 2. Let Metro know where to resolve packages and in what order
 config.resolver.nodeModulesPaths = [

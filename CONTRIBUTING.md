@@ -1,22 +1,29 @@
 # Contributing
-Make sure to use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to keep a clear changelog, they are auto generated.
+
+Make sure to use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to keep a clear changelog, they
+are auto generated.
 
 ## Code of Conduct
 
-We want to foster an inclusive and friendly community around our Open Source efforts. 
-This project follows the Contributor Covenant Code of Conduct. Please, [read it and follow it](https://github.com/tecsinapse/design-system/tree/master/CODE_OF_CONDUCT.md).
+We want to foster an inclusive and friendly community around our Open Source efforts.
+This project follows the Contributor Covenant Code of Conduct.
+Please, [read it and follow it](https://github.com/tecsinapse/design-system/tree/master/CODE_OF_CONDUCT.md).
 
-If you feel another member of the community violated this code, or you are experiencing problems participating in our community because of another individual's behavior,
+If you feel another member of the community violated this code, or you are experiencing problems participating in our
+community because of another individual's behavior,
 please get in touch with our [maintainers](mailto:devmobile@tecsinapse.com.br).
 
 ## Submitting an issue
-In most cases, submitting an issue is the first step to contributing to our project. Check the existing issues and verify that your issue is not already submitted.
+
+In most cases, submitting an issue is the first step to contributing to our project. Check the existing issues and
+verify that your issue is not already submitted.
 
 For TecSinapse members, keep in touch with the responsible team and checkout our backlog in the project management tool.
 
 ## Submitting a pull request
 
-We appreciate pull requests (PRs) for smaller changes and bug fixes. For larger changes, we encourage you to [submit an issue](https://github.com/tecsinapse/design-system/issues/new) to collect feedback first. 
+We appreciate pull requests (PRs) for smaller changes and bug fixes. For larger changes, we encourage you
+to [submit an issue](https://github.com/tecsinapse/design-system/issues/new) to collect feedback first.
 The normal workflow looks as follows:
 
 1. Let others know that you're working on an issue by leaving a comment or assigning it to yourself.
@@ -24,6 +31,57 @@ The normal workflow looks as follows:
 3. Code, add, commit, and push your changes in your feature branch.
 4. Submit a pull request and make sure that the CI checks pass.
 5. Collaborate with the codeowners/reviewers to merge your changes to `master`.
+
+## Creating components
+
+React composition patterns are **highly recommended** when creating components in this design system.
+They avoid boolean prop proliferation, keep components flexible, and make them easier to maintain.
+Existing examples to follow: `Accordion` (`Root`/`Trigger`/`Content` + shared context), `Select` (`Root`/`Trigger`/
+`Options`/`Option`), and `Stepper` (`Root`/`Node`/`Content`).
+
+### Prefer composition over boolean props
+
+Avoid boolean props like `isEditing`, `showHeader`, `withToolbar` to customize behavior — each one doubles the possible
+states and creates unmaintainable conditional logic.
+
+```tsx
+// Avoid
+<Composer isThread showAttachments={false} isEditing />
+```
+
+```tsx
+// Prefer explicit variant components that compose shared pieces
+<ThreadComposer channelId="abc" />
+<EditComposer messageId="xyz" />
+```
+
+### Use compound components with shared context
+
+For complex components, structure them as compound components: a root that provides a shared context and smaller
+subcomponents that consume it. Consumers compose exactly the pieces they need — no hidden conditionals.
+
+```tsx
+<Accordion.Root>
+  <Accordion.Trigger>Title</Accordion.Trigger>
+  <Accordion.Content>Body</Accordion.Content>
+</Accordion.Root>
+```
+
+### Lift state into providers
+
+Move state management into a provider component. UI pieces should only consume the context interface (`state`,
+`actions`, `meta`) and never know where state comes from. This lets sibling components outside the main UI access state
+and actions without prop drilling, and lets consumers swap providers while keeping the same UI.
+
+### Compose children over render props
+
+Use `children` for composition instead of `renderX` props — they are more readable and compose naturally. Render props
+are still fine when the parent needs to hand data to the child (e.g. `renderItem` in lists).
+
+### React 19
+
+The packages support React `>=18 || ^19`. In React 19, `ref` is a regular prop (no `forwardRef`) and `use()` replaces
+`useContext()` — prefer these when targeting React 19.
 
 ## Quick Start
 
@@ -38,10 +96,12 @@ The normal workflow looks as follows:
 
 ### Available Scripts
 
-All packages related to the design system are organized in this monorepo. 
-Thanks to [`pnpm workspaces`](https://pnpm.io/pt/workspaces) packages that depend on each other always use the latest version. 
-[`lerna`](https://lerna.js.org/) makes it possible to run scripts across all packages at the same time. 
-The list of scripts below can be run in each package directory individually, or in the repository's root directory for all packages at once.
+All packages related to the design system are organized in this monorepo.
+Thanks to [`pnpm workspaces`](https://pnpm.io/pt/workspaces) packages that depend on each other always use the latest
+version.
+[`lerna`](https://lerna.js.org/) makes it possible to run scripts across all packages at the same time.
+The list of scripts below can be run in each package directory individually, or in the repository's root directory for
+all packages at once.
 
 - `pnpm build` — will build packages once
 - `pnpm lint` — will lint the code once

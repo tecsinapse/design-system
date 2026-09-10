@@ -1,15 +1,15 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
 import {
   Button,
+  Table,
   TCell,
+  Td,
   TFoot,
   THead,
   THeadCell,
   TRow,
   TRowHeader,
-  Table,
-  Td,
 } from '../src';
 
 export default {

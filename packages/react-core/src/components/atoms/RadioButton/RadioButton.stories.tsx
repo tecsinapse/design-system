@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { default as RadioButton, RadioButtonProps } from './RadioButton';
 import { Text } from '../Text';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 
 export default {
   title: 'react-web-kit/Radio Button',

@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import { BoxContent, Text } from '@tecsinapse/react-native-kit';
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { BoxContentProps } from '@tecsinapse/react-core';
 
 const StoryMeta: Meta<typeof BoxContent> = {

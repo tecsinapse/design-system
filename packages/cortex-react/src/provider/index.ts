@@ -4,3 +4,4 @@ export * from './MenubarContext';
 export * from './useMenubar';
 export * from './CalendarProvider';
 export * from './ManagerContext';
+export * from './PortalProvider';

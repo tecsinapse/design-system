@@ -46,7 +46,7 @@ describe('Tag', () => {
   });
 
   it('dismiss should have been called', () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     render(
       <Tag.Face>
         <Tag.Label>tag label</Tag.Label>

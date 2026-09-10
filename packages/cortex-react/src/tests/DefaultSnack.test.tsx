@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 describe('DefaultSnack', () => {
   it('Should render DefaultSnack', () => {
     const textSnack = 'Text example';
-    render(<DefaultSnack text={textSnack} onDismiss={jest.fn} />);
+    render(<DefaultSnack text={textSnack} onDismiss={vi.fn} />);
     const snack = screen.getByTestId('snackbar');
     const iconInfo = screen.getByTestId('icon-info');
     const iconClose = screen.getByTestId('icon-close');
@@ -17,7 +17,7 @@ describe('DefaultSnack', () => {
   });
   it('Should render correctly text', () => {
     const textSnack = 'Text example';
-    render(<DefaultSnack text={textSnack} onDismiss={jest.fn} />);
+    render(<DefaultSnack text={textSnack} onDismiss={vi.fn} />);
     const snack = screen.getByTestId('snackbar');
 
     expect(snack).toHaveTextContent(textSnack);

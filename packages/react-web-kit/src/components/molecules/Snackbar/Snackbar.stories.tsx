@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import { default as Snackbar, SnackbarWebProps } from './Snackbar';
 
 export default {

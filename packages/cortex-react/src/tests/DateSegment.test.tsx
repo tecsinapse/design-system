@@ -9,11 +9,11 @@ import {
 } from 'react-stately';
 import { DateSegment } from '../components';
 
-jest.mock('react-aria', () => ({
-  useDateSegment: jest.fn(),
+vi.mock('react-aria', () => ({
+  useDateSegment: vi.fn(),
 }));
 
-const mockUseDateSegmentAria = jest.mocked(useDateSegment);
+const mockUseDateSegmentAria = vi.mocked(useDateSegment);
 
 const segment: DateSegmentType = {
   type: 'hour',
@@ -37,7 +37,7 @@ describe('DateSegment Component', () => {
     const { result } = renderHook(() =>
       useTimeFieldState({
         value: new Time(3, 26),
-        onChange: jest.fn(),
+        onChange: vi.fn(),
         locale: 'pt-BR',
       })
     );
@@ -56,7 +56,7 @@ describe('DateSegment Component', () => {
     const { result } = renderHook(() =>
       useTimeFieldState({
         value: new Time(3, 26),
-        onChange: jest.fn(),
+        onChange: vi.fn(),
         locale: 'pt-BR',
         isDisabled: true,
       })

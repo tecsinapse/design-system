@@ -1,5 +1,5 @@
 import styled from '@emotion/native';
-import { StoryFn } from '@storybook/react';
+import { StoryFn } from '@storybook/react-vite';
 import React from 'react';
 import { BoxContent, BoxContentProps } from '.';
 import { Text } from '../Text';

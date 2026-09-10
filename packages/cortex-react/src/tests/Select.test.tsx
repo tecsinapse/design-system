@@ -53,7 +53,7 @@ describe('Select', () => {
   let onSelectMock;
 
   beforeEach(() => {
-    onSelectMock = jest.fn();
+    onSelectMock = vi.fn();
   });
 
   describe('Options', () => {
@@ -66,7 +66,7 @@ describe('Select', () => {
         >
           <Select.Trigger label="Select an option" />
           <Select.Popover>
-            <Select.Options options={mockOptions} onSelect={jest.fn()} />
+            <Select.Options options={mockOptions} onSelect={vi.fn()} />
           </Select.Popover>
         </Select.Root>
       );
@@ -101,7 +101,7 @@ describe('Select', () => {
         >
           <Select.Trigger label="Select an option" />
           <Select.Popover>
-            <Select.Options options={mockOptions} onSelect={jest.fn()} />
+            <Select.Options options={mockOptions} onSelect={vi.fn()} />
           </Select.Popover>
         </Select.Root>
       );
@@ -128,7 +128,7 @@ describe('Select', () => {
         >
           <Select.Trigger label="Select an option" />
           <Select.Popover>
-            <Select.Options options={mockOptions} onSelect={jest.fn()} />
+            <Select.Options options={mockOptions} onSelect={vi.fn()} />
           </Select.Popover>
         </Select.Root>
       );

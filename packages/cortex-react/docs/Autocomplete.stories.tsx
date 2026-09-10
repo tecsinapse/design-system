@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useCallback, useMemo, useState } from 'react';
 import { groupedOptions, selectOptions } from './autocompleteMocks';
 import { Autocomplete } from '../src';

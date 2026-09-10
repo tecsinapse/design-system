@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import React from 'react';
+import React, { createRef } from 'react';
 import { Tooltip } from '../components';
+import { PortalProvider } from '../provider';
 
 const TooltipButton = () => {
   return (
@@ -29,10 +30,10 @@ describe('Tooltip', () => {
     const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
     // We should await same action again
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip on hover with delay', async () => {
@@ -50,9 +51,9 @@ describe('Tooltip', () => {
 
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip on click', async () => {
@@ -172,9 +173,9 @@ describe('Tooltip', () => {
     const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip with TooltipButton on hover delay', async () => {
@@ -190,9 +191,9 @@ describe('Tooltip', () => {
     const tooltip = await screen.findByText('Tooltip Content');
     expect(tooltip).toBeInTheDocument();
 
-    userEvent.unhover(trigger);
+    await userEvent.unhover(trigger);
 
-    expect(await screen.findByText('Tooltip Content')).not.toBeInTheDocument();
+    expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
   });
 
   it('Should show tooltip with TooltipButton on click', async () => {
@@ -210,5 +211,87 @@ describe('Tooltip', () => {
 
     fireEvent.click(trigger);
     expect(screen.queryByText('Tooltip Content')).not.toBeInTheDocument();
+  });
+
+  describe('root prop / PortalProvider integration', () => {
+    const getTooltipContainer = (): HTMLElement | null => {
+      const tooltip = screen.queryByText('RootProp Tooltip');
+      return tooltip?.closest('[data-floating-ui-portal]')?.parentElement ?? null;
+    };
+
+    it('Should portal into the root prop when provided', async () => {
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+
+      render(
+        <Tooltip text="RootProp Tooltip" trigger="click" root={container}>
+          <button>trigger</button>
+        </Tooltip>
+      );
+      fireEvent.click(screen.getByText('trigger'));
+
+      await screen.findByText('RootProp Tooltip');
+      expect(getTooltipContainer()).toBe(container);
+
+      document.body.removeChild(container);
+    });
+
+    it('Should fall back to the closest PortalProvider root when root is omitted', async () => {
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+
+      render(
+        <PortalProvider root={container}>
+          <Tooltip text="RootProp Tooltip" trigger="click">
+            <button>trigger</button>
+          </Tooltip>
+        </PortalProvider>
+      );
+      fireEvent.click(screen.getByText('trigger'));
+
+      await screen.findByText('RootProp Tooltip');
+      expect(getTooltipContainer()).toBe(container);
+
+      document.body.removeChild(container);
+    });
+
+    it('Should escape the PortalProvider when root={null}', async () => {
+      const providerContainer = document.createElement('div');
+      document.body.appendChild(providerContainer);
+
+      render(
+        <PortalProvider root={providerContainer}>
+          <Tooltip text="RootProp Tooltip" trigger="click" root={null}>
+            <button>trigger</button>
+          </Tooltip>
+        </PortalProvider>
+      );
+      fireEvent.click(screen.getByText('trigger'));
+
+      await screen.findByText('RootProp Tooltip');
+      expect(getTooltipContainer()).toBe(document.body);
+      expect(getTooltipContainer()).not.toBe(providerContainer);
+
+      document.body.removeChild(providerContainer);
+    });
+
+    it('Should accept a RefObject in the root prop', async () => {
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+      const ref = createRef<HTMLDivElement>();
+      ref.current = container;
+
+      render(
+        <Tooltip text="RootProp Tooltip" trigger="click" root={ref}>
+          <button>trigger</button>
+        </Tooltip>
+      );
+      fireEvent.click(screen.getByText('trigger'));
+
+      await screen.findByText('RootProp Tooltip');
+      expect(getTooltipContainer()).toBe(container);
+
+      document.body.removeChild(container);
+    });
   });
 });

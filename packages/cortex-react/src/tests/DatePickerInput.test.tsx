@@ -1,15 +1,16 @@
 import '@testing-library/jest-dom';
+import type { Mock } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { DatePickerInput, DatePickerInputProps } from '../components';
 import { useDatePickerInput } from '../hooks';
 
-jest.mock('../hooks/useDatePickerInput', () => ({
-  useDatePickerInput: jest.fn(),
+vi.mock('../hooks/useDatePickerInput', () => ({
+  useDatePickerInput: vi.fn(),
 }));
 
 describe('DatePickerInput', () => {
-  const mockOnChange = jest.fn();
+  const mockOnChange = vi.fn();
   const defaultProps: DatePickerInputProps = {
     value: undefined,
     onChange: mockOnChange,
@@ -22,16 +23,16 @@ describe('DatePickerInput', () => {
     state: {
       isOpen: false,
       isInvalid: false,
-      setValue: jest.fn(),
-      close: jest.fn(),
-      open: jest.fn(),
+      setValue: vi.fn(),
+      close: vi.fn(),
+      open: vi.fn(),
     },
     ref: React.createRef(),
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
-    (useDatePickerInput as jest.Mock).mockReturnValue(mockUseDatePickerInput);
+    vi.clearAllMocks();
+    (useDatePickerInput as Mock).mockReturnValue(mockUseDatePickerInput);
   });
 
   it('Should render correctly with initial props', () => {

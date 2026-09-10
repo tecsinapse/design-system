@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { PortalRoot } from '../../provider';
 
 export interface ContentProps {
   /** child element */
@@ -59,6 +60,11 @@ export interface SelectOptionsProps<T> {
 export interface SelectPopoverProps {
   /** child element */
   children: ReactNode;
+  /** Override the FloatingPortal mount node. Pass an `HTMLElement`, a
+   *  `RefObject<HTMLElement>`, or `null` to opt out of any ancestor
+   *  `<PortalProvider>`. When omitted, falls back to the closest
+   *  `<PortalProvider>`'s root, then to `document.body`. */
+  root?: PortalRoot;
 }
 export interface SelectRootProps<T> {
   /** child element */

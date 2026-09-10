@@ -5,7 +5,7 @@ import React from 'react';
 import { useCalendarState } from 'react-stately';
 import { CalendarGridBodyRows } from '../components/Calendar/CalendarGridBodyRows';
 
-jest.mock('../components/Calendar/CalendarCell', () => ({
+vi.mock('../components/Calendar/CalendarCell', () => ({
   CalendarCell: () => <div data-testid="calendar-cell" />,
 }));
 
