@@ -18,11 +18,13 @@ describe('Chip', () => {
   });
 
   it('reflects isSelected via aria-pressed', () => {
-    const { rerender } = render(<Chip isSelected={false}>My Chip</Chip>);
+    const { rerender } = render(
+      <Chip variants={{ isSelected: false }}>My Chip</Chip>
+    );
 
     expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', 'false');
 
-    rerender(<Chip isSelected>My Chip</Chip>);
+    rerender(<Chip variants={{ isSelected: true }}>My Chip</Chip>);
 
     expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', 'true');
   });
