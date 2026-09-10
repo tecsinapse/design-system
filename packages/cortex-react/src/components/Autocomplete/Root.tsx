@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Popover } from '../Popover';
 import { AutocompleteContext } from './context';
 import { AutocompleteRootProps } from './types';
@@ -12,9 +12,17 @@ export const AutocompleteRoot = <T,>({
   const [triggerWidth, setTriggerWidth] = useState<number>();
   const [open, setOpen] = useState<boolean>(false);
 
+  const onOpenChangeRef = useRef(onOpenChange);
+  onOpenChangeRef.current = onOpenChange;
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
-    onOpenChange?.(open);
-  }, [open, onOpenChange]);
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    onOpenChangeRef.current?.(open);
+  }, [open]);
 
   return (
     <AutocompleteContext.Provider

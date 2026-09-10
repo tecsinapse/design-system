@@ -11,6 +11,11 @@ export interface AutocompleteRootProps<T> {
   labelExtractor: (option: T) => string;
   children: ReactNode;
   className?: string;
+  /**
+   * Notifies when the popover's open state changes. Read-only: the open state
+   * is always controlled internally, this callback cannot be used to open or
+   * close the popover from the outside.
+   */
   onOpenChange?: (open: boolean) => void;
 }
 
