@@ -1,18 +1,29 @@
-import React, { ReactNode } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import { chip } from '@tecsinapse/cortex-core';
 
-export const Chip = ({
-  children,
-  isSelected,
-  onSelect,
-}: {
-  children: ReactNode;
-  isSelected: boolean;
-  onSelect: () => void;
-}) => {
+export interface ChipProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  /** child element */
+  children?: React.ReactNode;
+  /** React ref */
+  ref?: React.Ref<HTMLButtonElement>;
+  /** applies the selected background/text color */
+  isSelected?: boolean;
+  onSelect?: () => void;
+}
+
+/** Chip component */
+export const Chip = (props: ChipProps) => {
+  const { children, className, ref, isSelected, onSelect, ...rest } = props;
   return (
-    <div className={chip({ isSelected })} onClick={onSelect}>
+    <button
+      type="button"
+      className={chip({ isSelected, className })}
+      aria-pressed={isSelected}
+      onClick={onSelect}
+      ref={ref}
+      {...rest}
+    >
       {children}
-    </div>
+    </button>
   );
 };
