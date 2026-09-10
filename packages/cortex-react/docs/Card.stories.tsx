@@ -35,18 +35,23 @@ export const Selectable: StoryObj<typeof Card> = {
     return (
       <div className="w-80">
         <Card
-          variants={{ selectable: true, isSelected }}
+          selectable
+          isSelected={isSelected}
           className="flex items-center justify-between"
           onClick={() => setIsSelected(isSelected => !isSelected)}
         >
           My Selectable Card
-          <FiTrash
+          <button
+            type="button"
+            aria-label="Remover"
             className="cursor-pointer hover:text-primary-medium transition-all duration-300 text-deca"
             onClick={e => {
               e.stopPropagation();
               // handle remove
             }}
-          />
+          >
+            <FiTrash />
+          </button>
         </Card>
       </div>
     );
