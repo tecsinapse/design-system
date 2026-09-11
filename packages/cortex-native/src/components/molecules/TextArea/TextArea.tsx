@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { StyleProp, TextInput, View, ViewStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { useCSSVariable } from 'uniwind';
 import { inputElementClasses, inputElementDisabledClasses } from '../../../styles/input';
 import Hint from '../../atoms/Input/Hint';
@@ -54,7 +54,7 @@ const TextArea: FC<TextAreaProps> = ({
   placeholder,
   onFocus,
   onBlur,
-  testID,
+  className,
   ...rest
 }) => {
   const { focused: _focused, handleBlur, handleFocus } = useInputFocus(
@@ -93,13 +93,13 @@ const TextArea: FC<TextAreaProps> = ({
         focused={focused ?? _focused}
         disabled={disabled}
         variant={variant}
-        testID={testID}
       >
         <TextInput
           {...rest}
-          className={clsx(
+          className={cn(
             inputElementClasses,
             disabled && inputElementDisabledClasses,
+            className,
           )}
           placeholder={placeholder}
           placeholderTextColor={contentHigh}

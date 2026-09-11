@@ -3,7 +3,7 @@ import type { Locale } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useRef } from 'react';
 import { TouchableOpacity, View, ViewProps } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import Icon from '../../atoms/Icon/Icon';
 import Text, { TextProps } from '../../atoms/Text/Text';
 import PressableSurface from '../../atoms/PressableSurface/PressableSurface';
@@ -45,6 +45,7 @@ function Calendar<T extends SelectionType>({
   onChange,
   locale,
   selectYearProps,
+  className,
   ...rest
 }: CalendarProps<T>): React.ReactElement {
   const _referenceDate = React.useMemo(
@@ -95,9 +96,9 @@ function Calendar<T extends SelectionType>({
   const title = format(referenceDate, 'MMMM yyyy', { locale });
 
   return (
-    <View {...rest}>
+    <View className={cn(className)} {...rest}>
       {!showSelectYear && (
-        <View className={clsx(calendarTitleRowBase, 'justify-between')}>
+        <View className={cn(calendarTitleRowBase, 'justify-between')}>
           <PressableSurface
             onPress={handlePressPrev}
             style={{ alignItems: 'flex-start' }}

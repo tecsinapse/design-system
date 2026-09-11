@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Pressable, View, ViewProps } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { cn } from '@tecsinapse/cortex-core';
 import Text from '../../atoms/Text/Text';
 import Item, { BottomNavigatorItemProps } from './Item';
 
@@ -18,6 +19,7 @@ function BottomNavigator<T extends string | number | symbol>({
   onSelect,
   children,
   style,
+  className,
   ...rest
 }: BottomNavigatorProps<T>): React.ReactElement {
   const { bottom } = useSafeAreaInsets();
@@ -25,7 +27,10 @@ function BottomNavigator<T extends string | number | symbol>({
   return (
     <View
       {...rest}
-      className="flex-row justify-between px-deca bg-surface-overlay"
+      className={cn(
+        'flex-row justify-between px-deca bg-surface-overlay',
+        className
+      )}
       style={[style, { paddingBottom: 24 + bottom }]}
     >
       {React.Children.map(children, child => {

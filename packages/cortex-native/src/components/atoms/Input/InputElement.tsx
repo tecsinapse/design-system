@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleProp, TextInput, TextInputProps, TextStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { useCSSVariable } from 'uniwind';
 import {
   inputElementClasses,
@@ -16,43 +16,40 @@ export interface InputElementProps
   onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  ref?: React.Ref<TextInput>;
 }
 
-const InputElement = React.forwardRef<TextInput, InputElementProps>(
-  (
-    {
-      onChange,
-      placeholder,
-      value,
-      disabled = false,
-      placeholderTextColor,
-      style,
-      ...rest
-    },
-    ref
-  ): React.ReactElement => {
-    const contentHigh = useCSSVariable('--color-content-high') as string;
-    const _placeholderColor = placeholderTextColor || contentHigh;
+const InputElement = ({
+  onChange,
+  placeholder,
+  value,
+  disabled = false,
+  placeholderTextColor,
+  style,
+  className,
+  ref,
+  ...rest
+}: InputElementProps): React.ReactElement => {
+  const contentHigh = useCSSVariable('--color-content-high') as string;
+  const _placeholderColor = placeholderTextColor || contentHigh;
 
-    return (
-      <TextInput
-        {...rest}
-        ref={ref}
-        className={clsx(
-          inputElementClasses,
-          disabled && inputElementDisabledClasses,
-        )}
-        onChangeText={onChange}
-        value={value}
-        placeholder={placeholder}
-        placeholderTextColor={_placeholderColor}
-        editable={!disabled}
-        style={style}
-      />
-    );
-  },
-);
-
-InputElement.displayName = 'InputElement';
+  return (
+    <TextInput
+      {...rest}
+      ref={ref}
+      className={cn(
+        inputElementClasses,
+        disabled && inputElementDisabledClasses,
+        className,
+      )}
+      onChangeText={onChange}
+      value={value}
+      placeholder={placeholder}
+      placeholderTextColor={_placeholderColor}
+      editable={!disabled}
+      style={style}
+    />
+  );
+};
 
 export default InputElement;

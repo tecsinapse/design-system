@@ -1,5 +1,6 @@
 import React from 'react';
 import { DimensionValue, StyleProp, View, ViewProps, ViewStyle } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import {
   FlexAlignType,
   FlexSpacing,
@@ -51,6 +52,8 @@ const GridItem = ({
   justifyContent,
   flexBasis,
   style,
+  className,
+  testID,
   ...rest
 }: IGridItemNative): React.ReactElement => {
   if (!React.Children.only(children)) {
@@ -79,17 +82,21 @@ const GridItem = ({
   let clone: React.ReactElement | undefined = undefined;
   if (React.isValidElement(children)) {
     const childEl = children as React.ReactElement & {
-      props?: { style?: StyleProp<ViewStyle> };
+      props?: { style?: StyleProp<ViewStyle>; className?: string; testID?: string };
     };
     clone = React.cloneElement(childEl, {
       ...childEl.props,
       style: wrapper
         ? childEl.props?.style
         : { ..._style, ...childEl.props?.style },
+      ...(!wrapper && {
+        testID: testID ?? childEl.props?.testID,
+        className: cn(childEl.props?.className, className),
+      }),
     });
   }
   return wrapper ? (
-    <View {...rest} style={[style, _style]}>
+    <View {...rest} testID={testID} style={[style, _style]} className={cn(className)}>
       {clone}
     </View>
   ) : (

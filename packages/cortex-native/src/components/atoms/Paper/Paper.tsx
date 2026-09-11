@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 
 export interface PaperProps extends ViewProps {
   /** Creates elevation shadow */
@@ -15,7 +15,7 @@ const Paper = ({
 }: PaperProps): React.ReactElement => (
   <View
     {...rest}
-    className={clsx(
+    className={cn(
       'bg-surface-overlay rounded-mili',
       elevated && 'shadow-default',
       className

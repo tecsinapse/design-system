@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Dimensions, ScrollView, ScrollViewProps, View } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import { SPACING_PX, SpacingType } from '../Grid/functions';
 
 export interface SnappingSliderProps
@@ -28,6 +29,7 @@ const SnappingSlider: React.FC<SnappingSliderProps> = ({
   showAmount,
   scrollAmount,
   spacing,
+  className,
   ...rest
 }) => {
   const childCount = React.Children.count(children);
@@ -50,6 +52,7 @@ const SnappingSlider: React.FC<SnappingSliderProps> = ({
       snapToStart
       snapToEnd
       showsHorizontalScrollIndicator={false}
+      className={cn(className)}
       {...rest}
     >
       {React.Children.map(children, (child, index) => {

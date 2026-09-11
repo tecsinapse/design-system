@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Pressable, PressableProps, View } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import Switch, { SwitchProps } from '../../atoms/Switch/Switch';
 import Text, { TextProps } from '../../atoms/Text/Text';
 
@@ -9,6 +10,7 @@ export type LabeledSwitchProps = {
   pressableLabel?: boolean;
   leftLabel?: string;
   rightLabel?: string;
+  className?: string;
 } & (
   | {
       leftLabel: string;
@@ -69,10 +71,12 @@ const LabeledSwitch: FC<LabeledSwitchNativeProps> = ({
   active,
   disabled,
   onChange,
+  className,
+  testID,
   ...rest
 }) => {
   return (
-    <View className="flex-row items-center">
+    <View className={cn('flex-row items-center', className)} testID={testID}>
       {leftLabel ? (
         <LabelComponent
           active={active}

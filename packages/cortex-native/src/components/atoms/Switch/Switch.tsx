@@ -4,6 +4,7 @@ import {
   LayoutChangeEvent,
   Pressable,
   StyleProp,
+  ViewProps,
   ViewStyle,
 } from 'react-native';
 import { useCSSVariable } from 'uniwind';
@@ -14,17 +15,15 @@ import { transitionSwitch } from './animation';
 export const SWITCH_BODY_WIDTH = 40;
 export const SWITCH_PIN_WIDTH = 16;
 
-export interface SwitchProps {
+export interface SwitchProps extends ViewProps {
   onChange: (active: boolean) => void;
   active: boolean;
   activeColor?: ColorType;
   activeColorTone?: ColorGradationType;
   inactiveColor?: ColorType;
   inactiveColorTone?: ColorGradationType;
-  style?: StyleProp<ViewStyle>;
   dotStyle?: StyleProp<ViewStyle>;
   disabled?: boolean;
-  testID?: string;
 }
 
 const Switch: React.FC<SwitchProps> = ({

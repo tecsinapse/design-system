@@ -2,9 +2,10 @@ import { format as formatDate } from '@tecsinapse/cortex-core';
 import type { Locale } from '@tecsinapse/cortex-core';
 import * as React from 'react';
 import { useState } from 'react';
-import { Modal, Pressable, View } from 'react-native';
+import { Modal, Pressable, View, ViewProps } from 'react-native';
 import Icon from '../../atoms/Icon/Icon';
 import Text, { TextProps } from '../../atoms/Text/Text';
+import { cn } from '@tecsinapse/cortex-core';
 import { useInputFocus } from '../../atoms/Input';
 import HintInputContainer from '../HintInputContainer/HintInputContainer';
 import DateTimePickerSelector from '../DateTimePickerSelector/DateTimePickerSelector';
@@ -13,7 +14,7 @@ import { useBottomSafeAreaInset } from '../../../hooks/useBottomSafeAreaInset';
 
 export type DateTimePickerMode = 'date' | 'time' | 'datetime' | 'month';
 
-export interface DateTimePickerProps {
+export interface DateTimePickerProps extends ViewProps {
   value?: Date;
   onChange?: (value: Date) => void;
   mode?: DateTimePickerMode;
@@ -69,6 +70,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   hintComponent,
   hint,
   label,
+  className,
+  ...rest
 }) => {
   const { focused, handleBlur, handleFocus } = useInputFocus(
     onFocus,
@@ -124,6 +127,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   return (
     <>
       <HintInputContainer
+        {...rest}
         onPress={handleShowSelector}
         focused={focused}
         disabled={disabled}
@@ -165,7 +169,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
             <Pressable onPress={event => event.stopPropagation()}>
               <View
                 testID="datetimepicker-sheet"
-                className="bg-surface-overlay rounded-t-deca overflow-hidden"
+                className={cn('bg-surface-overlay rounded-t-deca overflow-hidden', className)}
               >
                 <DateTimePickerSelector
                   date={date}

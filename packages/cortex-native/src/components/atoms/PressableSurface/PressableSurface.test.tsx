@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 
 jest.mock('uniwind', () => ({
   useCSSVariable: () => '#ffffff',
@@ -30,5 +31,27 @@ describe('PressableSurface', () => {
     );
     const style = getByTestId('ps').props.style;
     expect(style[0]).toEqual({ backgroundColor: '#ff0000' });
+  });
+});
+
+describe('PressableSurface background invariant', () => {
+  it('carries no inline backgroundColor when surfaceColor is omitted', () => {
+    const { getByTestId } = render(<PressableSurface testID="ps" />);
+    const style = getByTestId('ps').props.style;
+    const resolved = StyleSheet.flatten(
+      typeof style === 'function' ? style({ pressed: false }) : style,
+    );
+    expect(resolved.backgroundColor).toBeUndefined();
+  });
+
+  it('carries exactly the given surfaceColor as inline backgroundColor', () => {
+    const { getByTestId } = render(
+      <PressableSurface testID="ps" surfaceColor="#123456" />,
+    );
+    const style = getByTestId('ps').props.style;
+    const resolved = StyleSheet.flatten(
+      typeof style === 'function' ? style({ pressed: false }) : style,
+    );
+    expect(resolved.backgroundColor).toBe('#123456');
   });
 });

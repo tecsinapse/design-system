@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import Hint from '../../atoms/Input/Hint';
 import PressableInputContainer, {
   PressableInputContainerProps,
@@ -17,6 +18,7 @@ export interface HintInputContainerProps extends PressableInputContainerProps {
   hintComponent?: React.ReactNode;
   variant?: InputVariantType;
   rightComponent?: React.ReactNode;
+  className?: string;
 }
 
 const HintInputContainer: React.FC<HintInputContainerProps> = ({
@@ -30,6 +32,8 @@ const HintInputContainer: React.FC<HintInputContainerProps> = ({
   children,
   hint,
   hintComponent,
+  className,
+  testID,
   ...rest
 }) => {
   const _hint = hintComponent || (
@@ -37,7 +41,7 @@ const HintInputContainer: React.FC<HintInputContainerProps> = ({
   );
 
   return (
-    <View style={viewStyle}>
+    <View style={viewStyle} testID={testID} className={cn(className)}>
       <PressableInputContainer
         onPress={onPress}
         focused={focused}

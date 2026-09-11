@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { View, ViewProps } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 
 export interface BoxContentProps extends ViewProps {
   variant: 'top' | 'bottom' | 'left' | 'right';
@@ -18,12 +18,14 @@ const BoxContent: FC<BoxContentProps> = ({
   variant,
   style,
   testID,
+  className,
   ...rest
 }) => (
   <View
-    className={clsx(
+    className={cn(
       'bg-surface-overlay min-h-kilo overflow-hidden shadow-default',
       variantClass[variant],
+      className,
     )}
     style={style}
     testID={testID}

@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Animated, Pressable, View, ViewProps } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { colorToneBg } from '../../../styles/colors';
 import type { ColorGradationType, ColorType } from '../../../styles/types';
 import Icon, { IconProps } from '../Icon/Icon';
@@ -31,6 +31,7 @@ const Tag: React.FC<TagProps> = ({
   backgroundColorTone = 'secondary',
   backgroundColorVariant = 'xlight',
   testID,
+  className,
   ...rest
 }) => {
   const [dismiss, setDismiss] = useState(false);
@@ -50,16 +51,17 @@ const Tag: React.FC<TagProps> = ({
     return null;
   }
 
-  const className = clsx(
+  const tagClassName = cn(
     'flex-row justify-center items-center self-center',
     variantClass[variant],
-    colorToneBg[backgroundColorTone][backgroundColorVariant]
+    colorToneBg[backgroundColorTone][backgroundColorVariant],
+    className,
   );
 
   return (
     <Animated.View
       testID={testID}
-      className={className}
+      className={tagClassName}
       style={[{ opacity: fadeAnim }, style]}
       {...rest}
     >

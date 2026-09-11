@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { cn } from '@tecsinapse/cortex-core';
 import { View } from 'react-native';
 import Text, { TextProps } from '../Text/Text';
 import Icon from '../Icon/Icon';
@@ -9,9 +10,17 @@ interface HintProps {
   text?: string;
   variant: InputVariantType;
   TextComponent?: FC<TextProps>;
+  className?: string;
+  testID?: string;
 }
 
-const Hint: FC<HintProps> = ({ variant, text, TextComponent = Text }) => {
+const Hint: FC<HintProps> = ({
+  variant,
+  text,
+  TextComponent = Text,
+  className,
+  testID,
+}) => {
   let color: ColorType;
   let icon;
 
@@ -30,7 +39,7 @@ const Hint: FC<HintProps> = ({ variant, text, TextComponent = Text }) => {
   }
 
   return (
-    <View className="mt-micro flex-row items-center">
+    <View className={cn('mt-micro flex-row items-center', className)} testID={testID}>
       {icon && (
         <View className="mr-micro">
           <Icon name={icon} type="ionicon" size="centi" colorVariant={color} />

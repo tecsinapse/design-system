@@ -7,6 +7,7 @@ import PressableSurface from '../../atoms/PressableSurface/PressableSurface';
 import { Calendar } from '../Calendar';
 import { ScrollableSelector } from '../ScrollableSelector';
 import { getLocale } from '../../../utils/date';
+import { cn } from '@tecsinapse/cortex-core';
 import type { Locale } from '@tecsinapse/cortex-core';
 
 export interface ControlledSelectorComponentProps {
@@ -48,10 +49,11 @@ const DateTimePickerSelector: React.FC<DateTimePickerSelectorProps> = ({
   monthLabel,
   hourLabel,
   minuteLabel,
+  className,
   ...rest
 }) => {
   return (
-    <View className="relative bg-surface-overlay" {...rest}>
+    <View className={cn('relative bg-surface-overlay', className)} {...rest}>
       {currentMode === 1 && (
         <PressableSurface
           onPress={handlePressBack}

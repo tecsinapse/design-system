@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Pressable, StyleProp, TextInput, ViewStyle } from 'react-native';
+import { Pressable, StyleProp, ViewStyle } from 'react-native';
 import Input, { InputNativeProps } from '../../atoms/Input/Input';
 import Icon from '../../atoms/Icon/Icon';
 
@@ -31,25 +31,25 @@ export const InputPasswordIcon: FC<InputPasswordIconProps> = ({
   );
 };
 
-const InputPassword = React.forwardRef<TextInput, InputPasswordNativeProps>(
-  ({ rightComponent, ...rest }, ref) => {
-    const [revealed, setRevealed] = useState(false);
-    return (
-      <Input
-        {...rest}
-        ref={ref}
-        secureTextEntry={!revealed}
-        rightComponent={
-          <>
-            <InputPasswordIcon onChangeState={setRevealed} revealed={revealed} />
-            {rightComponent}
-          </>
-        }
-      />
-    );
-  }
-);
-
-InputPassword.displayName = 'InputPassword';
+const InputPassword = ({
+  rightComponent,
+  ref,
+  ...rest
+}: InputPasswordNativeProps) => {
+  const [revealed, setRevealed] = useState(false);
+  return (
+    <Input
+      {...rest}
+      ref={ref}
+      secureTextEntry={!revealed}
+      rightComponent={
+        <>
+          <InputPasswordIcon onChangeState={setRevealed} revealed={revealed} />
+          {rightComponent}
+        </>
+      }
+    />
+  );
+};
 
 export default InputPassword;

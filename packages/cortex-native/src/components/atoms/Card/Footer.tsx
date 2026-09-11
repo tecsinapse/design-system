@@ -1,13 +1,11 @@
-import React, { ReactNode } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
+import React from 'react';
+import { View, ViewProps } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 
-export interface FooterProps {
-  style?: StyleProp<ViewStyle>;
-  children?: ReactNode;
-}
+export interface FooterProps extends ViewProps {}
 
-const Footer = ({ children, style }: FooterProps): React.ReactElement => (
-  <View style={style}>{children}</View>
+const Footer = ({ children, className, ...rest }: FooterProps): React.ReactElement => (
+  <View {...rest} className={cn(className)}>{children}</View>
 );
 
 export default Footer;

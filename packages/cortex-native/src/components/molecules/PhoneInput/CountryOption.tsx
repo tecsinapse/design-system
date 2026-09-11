@@ -1,11 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ViewProps } from 'react-native';
 import type { ParsedCountry } from 'react-international-phone';
+import { cn } from '@tecsinapse/cortex-core';
 import PressableSurface from '../../atoms/PressableSurface/PressableSurface';
 import Text from '../../atoms/Text/Text';
 import { FlagIcon } from './FlagIcon';
 
-export interface CountryOptionProps {
+export interface CountryOptionProps extends ViewProps {
   country: ParsedCountry;
   onPress: (country: ParsedCountry) => void;
   disabled?: boolean;
@@ -15,13 +16,20 @@ const CountryOption: React.FC<CountryOptionProps> = ({
   country,
   onPress,
   disabled = false,
+  className,
+  testID,
+  style,
+  ...rest
 }) => {
   return (
     <PressableSurface
+      {...rest}
+      testID={testID}
       onPress={() => onPress(country)}
       disabled={disabled}
       effect="darken"
-      style={{ paddingVertical: 12, paddingHorizontal: 16, minHeight: 44 }}
+      className={cn(className)}
+      style={[{ paddingVertical: 12, paddingHorizontal: 16, minHeight: 44 }, style]}
     >
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center flex-shrink">

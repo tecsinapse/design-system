@@ -1,14 +1,15 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { DimensionValue, Dimensions, StyleSheet, View } from 'react-native';
+import { DimensionValue, Dimensions, StyleSheet, View, ViewProps } from 'react-native';
 import type { Locale } from '@tecsinapse/cortex-core';
 import Text from '../../atoms/Text/Text';
 import type { TextProps } from '../../atoms/Text/Text';
 import { DateBlock } from './components';
 import { getLocale } from '../../../utils/date';
+import { cn } from '@tecsinapse/cortex-core';
 
 export type DateTimePickerMode = 'date' | 'time' | 'datetime' | 'month';
 
-export interface ScrollableSelectorProps {
+export interface ScrollableSelectorProps extends ViewProps {
   value?: Date;
   onChange?: (value: Date) => void;
   height?: number;
@@ -48,6 +49,10 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   minuteLabel,
   TextComponent = Text,
   locale = getLocale(),
+  className,
+  testID,
+  style,
+  ...rest
 }) => {
   const date = useMemo(() => value ?? new Date(), [value]);
   const [months, setMonths] = useState<number[]>([]);
@@ -131,7 +136,12 @@ const ScrollableSelector: React.FC<ScrollableSelectorProps> = ({
   }, [format, date, months, years, hour, minutes]);
 
   return (
-    <View style={{ flexDirection: 'column', width: '100%' }}>
+    <View
+      {...rest}
+      testID={testID}
+      className={cn(className)}
+      style={[{ flexDirection: 'column', width: '100%' }, style]}
+    >
       <View style={styles.blockLabels}>
         {format === 'MM-yyyy' ? (
           <>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text as RNText, type StyleProp, type TextStyle } from 'react-native';
-import { clsx } from 'clsx';
+import { Text as RNText, type TextProps as RNTextProps } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import { getLabel } from './functions';
 import {
   colorToneStyles,
@@ -11,7 +11,7 @@ import {
   type FontColorType,
 } from './styled';
 
-export interface TextProps {
+export interface TextProps extends RNTextProps {
   /** Font theme text color */
   fontColor?: FontColorType;
   /** Font theme weight */
@@ -24,13 +24,8 @@ export interface TextProps {
   colorVariant?: ColorType;
   /** Palette theme colors gradation */
   colorTone?: ColorGradationType;
-  numberOfLines?: number;
-  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip';
   textTransform?: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
   capitalFirst?: boolean;
-  style?: StyleProp<TextStyle>;
-  children?: React.ReactNode;
-  testID?: string;
 }
 
 const Text: React.FC<TextProps> = ({
@@ -44,10 +39,11 @@ const Text: React.FC<TextProps> = ({
   fontWeight,
   fontStack,
   textTransform,
+  className,
   ...rnProps
 }) => {
   const hasColorTone = !!colorVariant && !!colorTone;
-  const className = clsx(
+  const textClassName = cn(
     textStyles({
       typography,
       fontWeight,
@@ -56,11 +52,12 @@ const Text: React.FC<TextProps> = ({
     }),
     !colorVariant && fontColorStyles[fontColor],
     colorVariant && colorTone && colorToneStyles[colorVariant][colorTone],
+    className,
   );
 
   return (
     <RNText
-      className={className}
+      className={textClassName}
       style={[textTransform ? { textTransform } : null, style]}
       {...rnProps}
     >

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
+import { StyleSheet } from 'react-native';
 
 jest.mock('uniwind', () => ({
   useCSSVariable: () => '#353231',
@@ -123,5 +124,77 @@ describe('Calendar', () => {
       );
     });
     expect(titleRows.length).toBeGreaterThan(0);
+  });
+});
+
+describe('Calendar background invariant', () => {
+  it('keeps bg-transparent on a plain day cell with no inline backgroundColor', () => {
+    const { root } = render(
+      <Calendar type="day" year={2026} month={7} onChange={() => {}} />,
+    );
+    const cells = root.findAll(
+      n =>
+        typeof n.props?.className === 'string' &&
+        n.props.className.includes('bg-transparent') &&
+        n.props?.style !== undefined,
+    );
+    expect(cells.length).toBeGreaterThan(0);
+    expect(cells[0].props.className).toContain('bg-transparent');
+    const resolved = StyleSheet.flatten(
+      typeof cells[0].props.style === 'function'
+        ? cells[0].props.style({ pressed: false })
+        : cells[0].props.style,
+    );
+    expect(resolved.backgroundColor).toBeUndefined();
+  });
+
+  it('keeps bg-primary-light on a between-range MonthWeek cell with no inline backgroundColor', () => {
+    const { root } = render(
+      <Calendar
+        type="range"
+        year={2026}
+        month={7}
+        value={{
+          lowest: new Date(2026, 7, 4),
+          highest: new Date(2026, 7, 6),
+        }}
+        onChange={() => {}}
+      />,
+    );
+    const cells = root.findAll(
+      n =>
+        typeof n.props?.className === 'string' &&
+        n.props.className.includes('bg-primary-light') &&
+        n.props?.style !== undefined,
+    );
+    expect(cells.length).toBeGreaterThan(0);
+    expect(cells[0].props.className).toContain('bg-primary-light');
+    const resolved = StyleSheet.flatten(
+      typeof cells[0].props.style === 'function'
+        ? cells[0].props.style({ pressed: false })
+        : cells[0].props.style,
+    );
+    expect(resolved.backgroundColor).toBeUndefined();
+  });
+
+  it('keeps bg-primary-light on a selected SelectYear card with no inline backgroundColor', () => {
+    const { getByText, root } = render(
+      <Calendar type="day" year={2026} month={7} onChange={() => {}} />,
+    );
+    fireEvent.press(getByText('August 2026'));
+    const cells = root.findAll(
+      n =>
+        typeof n.props?.className === 'string' &&
+        n.props.className.includes('bg-primary-light') &&
+        n.props?.style !== undefined,
+    );
+    expect(cells.length).toBeGreaterThan(0);
+    expect(cells[0].props.className).toContain('bg-primary-light');
+    const resolved = StyleSheet.flatten(
+      typeof cells[0].props.style === 'function'
+        ? cells[0].props.style({ pressed: false })
+        : cells[0].props.style,
+    );
+    expect(resolved.backgroundColor).toBeUndefined();
   });
 });

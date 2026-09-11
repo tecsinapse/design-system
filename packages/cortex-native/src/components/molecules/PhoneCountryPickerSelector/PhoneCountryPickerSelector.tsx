@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import { Dimensions, useWindowDimensions, View } from 'react-native';
+import { cn } from '@tecsinapse/cortex-core';
 import Text from '../../atoms/Text/Text';
 import Header from '../Header/Header';
 import PhoneCountrySelector, {
@@ -29,6 +30,8 @@ const PhoneCountryPickerSelector: FC<PhoneCountryPickerSelectorProps> = ({
   title,
   onClose,
   hasSearch = true,
+  className,
+  testID,
   ...rest
 }) => {
   void onClose;
@@ -49,7 +52,8 @@ const PhoneCountryPickerSelector: FC<PhoneCountryPickerSelectorProps> = ({
 
   return (
     <View
-      className="w-full flex-col bg-surface-base"
+      testID={testID}
+      className={cn('w-full flex-col bg-surface-base', className)}
       style={{ height: drawerHeight }}
     >
       {title ? (

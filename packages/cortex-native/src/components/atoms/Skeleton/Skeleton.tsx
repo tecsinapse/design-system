@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LayoutChangeEvent, View, ViewProps } from 'react-native';
-import { clsx } from 'clsx';
+import { cn } from '@tecsinapse/cortex-core';
 import { Wave } from './Wave';
 import { Pulse } from './Pulse';
 import { ChildrenLayout } from './types';
@@ -32,6 +32,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
   active = true,
   animation = 'wave',
   style,
+  className,
   testID,
   ...rest
 }) => {
@@ -54,14 +55,14 @@ const Skeleton: React.FC<SkeletonProps> = ({
 
   return (
     <View
+      {...rest}
       testID={testID}
-      className={clsx('overflow-hidden relative', radius && radiusClass[radius])}
+      className={cn('overflow-hidden relative', radius && radiusClass[radius], className)}
       style={[
         width ? { width } : null,
         height ? { height } : null,
         style,
       ]}
-      {...rest}
     >
       {active && animation === 'wave' ? (
         <Wave
