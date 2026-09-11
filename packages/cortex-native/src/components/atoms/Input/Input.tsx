@@ -5,8 +5,10 @@ import InputContainer, {
   InputContainerProps,
 } from './InputContainer';
 import InputElement, { InputElementProps } from './InputElement';
+import Label from './Label';
+import LeftPart from './Left';
+import RightPart from './Right';
 import { useInputFocus } from './useInputFocus';
-import Text from '../Text/Text';
 
 export interface InputNativeProps
   extends Omit<InputElementProps, 'style'>,
@@ -17,7 +19,7 @@ export interface InputNativeProps
   style?: StyleProp<ViewStyle>;
 }
 
-const Input = ({
+const InputRoot = ({
   label,
   labelColor,
   labelColorVariant,
@@ -31,6 +33,7 @@ const Input = ({
   borderColor,
   borderColorGradation,
   inputContainerStyle,
+  inputContainerTestID,
   variant = 'default',
   hintComponent,
   hint,
@@ -49,10 +52,6 @@ const Input = ({
     !disabled
   );
 
-  const internalStyle: StyleProp<ViewStyle> = {
-    minHeight: 50,
-    ...(inputContainerStyle as object),
-  };
   const onlyLabel = label && !placeholder;
 
   return (
@@ -65,12 +64,13 @@ const Input = ({
         labelTypography={labelTypography}
         labelStack={labelStack}
         labelWeight={labelWeight}
-        LabelComponent={Text}
         leftComponent={leftComponent}
         rightComponent={rightComponent}
         borderColor={borderColor}
         borderColorGradation={borderColorGradation}
-        inputContainerStyle={internalStyle}
+        inputContainerStyle={inputContainerStyle}
+        inputContainerTestID={inputContainerTestID}
+        className="min-h-[50px]"
         focused={focused}
         disabled={disabled}
         variant={variant}
@@ -89,5 +89,17 @@ const Input = ({
     </View>
   );
 };
+
+InputRoot.displayName = 'Input';
+
+const Input = Object.assign(InputRoot, {
+  Root: InputRoot,
+  Face: InputContainer,
+  Box: InputElement,
+  Label,
+  Hint,
+  Left: LeftPart,
+  Right: RightPart,
+});
 
 export default Input;

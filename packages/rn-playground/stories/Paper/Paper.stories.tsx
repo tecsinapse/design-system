@@ -12,7 +12,7 @@ export default StoryMeta;
 type IStory = StoryFn<typeof Paper>;
 
 export const Base = () => (
-  <Paper className="bg-content-minimal">
+  <Paper className="bg-content-inverse">
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
@@ -21,7 +21,7 @@ export const Base = () => (
 );
 
 export const Elevated = () => (
-  <Paper elevated className="bg-content-minimal">
+  <Paper elevated className="bg-content-inverse">
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>
     <Text>I'm a paper</Text>

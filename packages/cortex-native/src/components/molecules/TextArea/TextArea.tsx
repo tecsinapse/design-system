@@ -3,10 +3,8 @@ import { StyleProp, TextInput, View, ViewStyle } from 'react-native';
 import { cn } from '@tecsinapse/cortex-core';
 import { useCSSVariable } from 'uniwind';
 import { inputElementClasses, inputElementDisabledClasses } from '../../../styles/input';
-import Hint from '../../atoms/Input/Hint';
-import InputContainer, {
-  InputContainerProps,
-} from '../../atoms/Input/InputContainer';
+import Input from '../../atoms/Input/Input';
+import { InputContainerProps } from '../../atoms/Input/InputContainer';
 import Text, { TextProps } from '../../atoms/Text/Text';
 import { useInputFocus } from '../../atoms/Input/useInputFocus';
 
@@ -43,6 +41,7 @@ const TextArea: FC<TextAreaProps> = ({
   borderColor,
   borderColorGradation,
   inputContainerStyle,
+  inputContainerTestID,
   variant = 'default',
   hintComponent,
   hint,
@@ -69,14 +68,14 @@ const TextArea: FC<TextAreaProps> = ({
   }
 
   const _hint = hintComponent || (
-    <Hint TextComponent={TextComponent} text={hint} variant={variant} />
+    <Input.Hint TextComponent={TextComponent} text={hint} variant={variant} />
   );
 
   const contentHigh = useCSSVariable('--color-content-high') as string;
 
   return (
     <View style={style}>
-      <InputContainer
+      <Input.Face
         label={label}
         labelColor={labelColor}
         labelColorVariant={labelColorVariant}
@@ -89,7 +88,9 @@ const TextArea: FC<TextAreaProps> = ({
         rightComponent={rightComponent}
         borderColor={borderColor}
         borderColorGradation={borderColorGradation}
-        inputContainerStyle={[inputContainerStyle, { minHeight: 50 }]}
+        inputContainerStyle={inputContainerStyle}
+        inputContainerTestID={inputContainerTestID}
+        className="min-h-[50px]"
         focused={focused ?? _focused}
         disabled={disabled}
         variant={variant}
@@ -124,7 +125,7 @@ const TextArea: FC<TextAreaProps> = ({
             {`${length}/${maxLength}`}
           </TextComponent>
         ) : null}
-      </InputContainer>
+      </Input.Face>
       {hint && _hint}
     </View>
   );

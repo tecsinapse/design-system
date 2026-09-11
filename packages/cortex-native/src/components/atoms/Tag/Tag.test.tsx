@@ -1,13 +1,9 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 
-jest.mock('../Icon/Icon', () => {
-  const { Text } = require('react-native');
-  return {
-    __esModule: true,
-    default: (props: { name: string }) => <Text>{props.name}</Text>,
-  };
-});
+jest.mock('uniwind', () => ({
+  useCSSVariable: () => '#ffffff',
+}));
 
 import Tag from './Tag';
 
@@ -39,5 +35,44 @@ describe('Tag', () => {
     const { getAllByRole } = render(<Tag value="label" dismiss onDismiss={onDismiss} />);
     fireEvent.press(getAllByRole('button')[0]);
     expect(onDismiss).toHaveBeenCalled();
+  });
+});
+
+describe('Tag compound', () => {
+  it('exposes parts with Root aliasing the callable', () => {
+    expect(Tag.Root).toBe(Tag);
+    ['Icon', 'Label', 'Close'].forEach(p => expect(Tag[p as 'Icon']).toBeDefined());
+  });
+
+  it('renders composed parts and dismisses through context', () => {
+    const onDismiss = jest.fn();
+    const { getByText, getByRole } = render(
+      <Tag onDismiss={onDismiss}>
+        <Tag.Icon name="star" type="ionicon" />
+        <Tag.Label>composed</Tag.Label>
+        <Tag.Close />
+      </Tag>
+    );
+    expect(getByText('composed')).toBeTruthy();
+    fireEvent.press(getByRole('button'));
+    expect(onDismiss).toHaveBeenCalled();
+  });
+
+  it('still supports the legacy value and icon props', () => {
+    const { getByText } = render(<Tag value="legacy" icon={{ name: 'star', type: 'ionicon' }} />);
+    expect(getByText('legacy')).toBeTruthy();
+  });
+
+  it('purges the inline marginLeft style from Tag.Close in favor of className', () => {
+    const { getByRole } = render(
+      <Tag>
+        <Tag.Close />
+      </Tag>
+    );
+    const closeButton = getByRole('button');
+    const className = closeButton.props.className as string;
+    expect(className).toContain('ml-[2px]');
+    const { StyleSheet } = require('react-native');
+    expect(StyleSheet.flatten(closeButton.props.style)?.marginLeft).toBeUndefined();
   });
 });

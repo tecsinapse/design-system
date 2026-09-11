@@ -38,6 +38,7 @@ export interface SelectNativeProps<Data, Type extends SelectType>
   selectModalTitle?: string;
   selectModalTitleComponent?: React.ReactNode;
   closeOnPick?: boolean;
+  /** @see Select.Trigger — composition alternative: `<Select.Root><Select.Trigger>…` */
   controlComponent?: (
     onPress: () => void,
     displayValue?: string

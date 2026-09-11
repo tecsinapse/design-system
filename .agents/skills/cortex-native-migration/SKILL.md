@@ -55,12 +55,17 @@ Follow in order. Do not skip verification.
 4. **Remove legacy deps** — uninstall `react-native-kit`, `react-core`, `react-charts`, and `@emotion/*`; delete any
    `styled`/`useTheme` usage from emotion.
 
-5. **Verify** — typecheck, build, run on a device, and toggle light/dark theme to confirm semantic tokens swap.
+5. **Verify** — typecheck, build, run on a device, and toggle light/dark theme to confirm semantic tokens swap. Also
+   confirm on-device that any consumer `className` override you added during migration actually paints (it only
+   wins if it twMerge-conflicts with the recipe's class) — both composition layout regressions found on this
+   branch were device-only and a unit-test suite missed them.
 
 ## Intentional divergences (checklist)
 
-- **`Button` children→`title`**: legacy `<Button><Text>…</Text></Button>` → `<Button title="…" />`. Title is a single
-  string (no custom child nodes); loading renders a spinner. `variant` is `outline` (no trailing `d`), not `outlined`.
+- **`Button` takes `children` OR `title`**: legacy `<Button><Text>…</Text></Button>` still works unchanged. `Button` now
+  accepts `children` (rendered when present); `title` is a plain-string fallback rendered in its place when there
+  are no `children`; the loading spinner replaces whichever is present. `Button.Icon`/`Button.Label` are the
+  composed spelling. `variant` is `outline` (no trailing `d`), not `outlined`.
 - **`fontColor` renames** (`Text`, `Icon`): legacy `dark`→`high`, `medium`→`low`; `light`/`orange` unchanged; new
   keys `medium`, `minimal`, `inverse` added.
 - **`fontWeight` expansion**: legacy `regular|bold|black` → full 8-weight `thin…black`.
@@ -83,13 +88,54 @@ Follow in order. Do not skip verification.
 - **Input/TextArea onChange signatures**: `InputMask.onChange` widened to `(value: string | number)` (cast a
   `useState<string>` setter); `TextArea.onChange` became `(e: TextInputChangeEvent)` — read `e.nativeEvent.text`.
 - **No emotion**: cortex-native has zero `@emotion/*`. Remove any emotion `styled`/`useTheme`.
+- **`className` merges instead of overriding**: every component composes
+  `className={cn(<recipe classes>, className)}` via `cn` (`@tecsinapse/cortex-core`, tailwind-merge-backed,
+  shares `tv`'s merge config) with the consumer's `className` last — a conflicting consumer class replaces the
+  component's class instead of losing a CSS source-order fight (`bg-primary-light` beats a recipe's
+  `bg-surface-overlay`). This also covers cortex-native's custom scales: `tv.ts`'s `twMergeConfig` registers
+  `font-size` (custom keys + t-shirt names), `spacing` (custom keys + `px`/numeric — backs margin/padding/gap/
+  min-max width-height/translate), `radius` (custom keys + t-shirt), and every `border-w*` group (custom keys) —
+  so `p-4` beats `p-centi`, `rounded-full` beats `rounded-mili`, `border-2` beats `border-nano`. Precedence is
+  three ordered layers: recipe/variant classes → consumer `className` (twMerge) → consumer `style` (plain RN
+  override, wins over everything — animated/measured values stay inline for this reason). See
+  `docs/setup/cortex-native.mdx` § "Styling and composition".
+- **Props extend the underlying RN primitive** (`ViewProps`/`PressableProps`/`TextProps`/`TextInputProps`/
+  `ScrollViewProps`), so `style`, `testID`, accessibility props, and event handlers are always inherited — check
+  the primitive's props, not just the component's own doc block, before assuming something is missing.
+- **`ref` is a plain prop, not `forwardRef`** (React 19): `Input`, `InputElement`, `InputMask`,
+  `InputMaskElement`, and `InputPassword` are plain function components now — `ref` still works the same way from
+  the caller's side.
+- **Composition (new, additive)**: the seven Tier 1 compounds — `Button`, `Input` (also backs
+  `InputMask`/`InputPassword`/`TextArea`/`PhoneInput`), `Card`, `Header`, `Snackbar`, `Tag`, `Select` — expose
+  their inner parts as statics (`X.Root === X`, e.g. `Card.Body`) and as flat barrel exports (e.g. `CardBody`);
+  the monolithic component is built from those same parts internally. Every legacy injection prop
+  (`leftComponent`, `rightComponent`, `hintComponent`, `LabelComponent`, `controlComponent`, `leftIcon`,
+  `rightIcon`, `icon`, `value`, `leftButton`, `rightButton`, `title`) keeps working and is annotated `@see`
+  (never `@deprecated`) — composition is additive, never a required rewrite. There is deliberately no
+  `classNames` slot map or per-part `*ClassName` prop. See the "Composed equivalent" column in
+  [references/component-mapping.md](references/component-mapping.md).
 
 ## Common mistakes / red flags
 
 - **Raw strings in a View** → RN runtime error "Text strings must be rendered within a `<Text>` component".
-  `Button.title`, `Tag.value`, `Badge.value`, and `Snackbar.children` are all rendered inside a View/Pressable —
-  wrap string/number values in `<Text>` (Tag/Badge now auto-wrap strings; Button requires a string `title`). Jest's test
-  renderer silently allows this, so it only shows up on a device.
+  `Tag.value`, `Badge.value`, and `Snackbar.children` are all rendered inside a View/Pressable — `Tag`/`Badge`
+  auto-wrap a string/number `value` in `<Text>`, but `Snackbar.children` does not, and neither does `Button`'s
+  `children` slot (only the `title` fallback auto-wraps): `<Button>{someString}</Button>` still needs the string
+  wrapped in `<Text>` yourself. Jest's test renderer silently allows this, so it only shows up on a device.
+- **Mixing a legacy injection prop with its composed part** behaves differently per compound — check before you
+  half-migrate a component. ADDITIVE (both render, so you double up the slot): `Input.Face` renders
+  `{leftChildren}{leftComponent}` / `{rightChildren}{rightComponent}` (`InputContainer.tsx`), and `Snackbar`
+  renders the legacy `leftIcon`/`dismissable` affordances alongside your children, which land inside `Content`
+  (`Snackbar.tsx`). EXCLUSIVE (children win, the legacy prop is silently ignored): `Tag` renders
+  `children ?? <legacy icon/value/close path>` (`Tag.tsx`), and `Header.Left`/`Header.Right` each render
+  `children ?? button` (`Header/Left.tsx`, `Header/Right.tsx`), so a composed child drops that slot's
+  `leftButton`/`rightButton` shorthand. Either way: pick one spelling per component.
+- **`Snackbar` is `position: absolute`, not a web `fixed` overlay** — it offsets `16`px (or `anchorDistance`)
+  from its immediate parent's `top`/`bottom` edge and `left`/`right: 16`, `zIndex: 1000`. It does not escape to
+  the screen edge on its own; render it as a direct child of a screen-level (typically full-bleed) container, not
+  nested inside a padded/flex content wrapper, or it clips/misplaces.
+- **Expecting a `classNames` slot-map prop or per-part `*ClassName` props** — neither exists, by design. Style an
+  inner part by composing it and passing `className` directly (`<Card.Root><Card.Body className="…">`).
 - **Copying `var(--color…)` strings from `tokens/definitions.ts` into a `color` prop** — RN can't evaluate them. For
   prop-valued colors (icon `color`, `ActivityIndicator`), resolve via Uniwind `useCSSVariable('--color-…')`; never
   copy the web `var()` string and never hardcode hex for token colors.

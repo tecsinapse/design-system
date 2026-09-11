@@ -6,7 +6,7 @@ import Icon from '../Icon/Icon';
 import { ColorType } from '../../../styles/types';
 import { InputVariantType } from './InputContainer';
 
-interface HintProps {
+export interface HintProps {
   text?: string;
   variant: InputVariantType;
   TextComponent?: FC<TextProps>;
