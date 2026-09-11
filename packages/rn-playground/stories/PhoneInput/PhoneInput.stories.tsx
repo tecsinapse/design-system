@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react-vite';
-import { PhoneInput } from '@tecsinapse/react-native-kit';
+import { PhoneInput } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { View } from 'react-native';
 

@@ -5,7 +5,7 @@ import Paper, { PaperProps } from './Paper';
 import { StyleProps } from '../../../types/defaults';
 
 export default {
-  title: 'react-web-kit/Paper',
+  title: 'react-core/Paper',
   component: Paper,
 };
 

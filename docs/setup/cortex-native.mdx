@@ -1,0 +1,145 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Cortex/Native" />
+
+# @tecsinapse/cortex-native
+
+React Native component library for the _cortex_ system, styled with [Uniwind](https://www.nativewind.dev/) (Tailwind
+v4 for React Native). It replaces the legacy emotion stack — `@tecsinapse/react-core` + `@tecsinapse/react-native-kit` +
+`@tecsinapse/react-charts` are deprecated/removed (see [Migration notes](#migration-notes)).
+
+We recommend [expo](https://docs.expo.dev/get-started/introduction/) as your mobile development framework. Make sure to
+configure your environment following the [official react native docs](https://reactnative.dev/docs/set-up-your-environment).
+
+## Install
+
+```shell
+pnpm add @tecsinapse/cortex-native uniwind react-native-svg react-native-vector-icons react-native-safe-area-context
+```
+
+`react-native-svg` is only required if you use the `PieChart`. `uniwind` is a peer dependency — the consumer owns the
+runtime (the workspace uses `autoInstallPeers: false`, so add peers explicitly).
+
+## Metro setup (Uniwind)
+
+Wrap your Metro config with Uniwind's plugin. The recommended shape (see `packages/rn-playground/metro.config.js` for
+the full example):
+
+```javascript
+const { getDefaultConfig } = require('expo/metro-config');
+const { withUniwindConfig } = require('uniwind/metro');
+
+const config = getDefaultConfig(__dirname);
+
+module.exports = withUniwindConfig(config, {
+  cssEntryFile: './global.css',
+  dtsFile: './uniwind-types.d.ts',
+});
+```
+
+## Global stylesheet
+
+Create a `global.css` that imports Tailwind, Uniwind, and the cortex tokens. You **must** import both
+`tokens.css` (web) and `tokens-native.css` (native) for tokens to render:
+
+```css
+@import 'tailwindcss';
+@import 'uniwind';
+@import '@tecsinapse/cortex-core/tokens.css';
+@import '@tecsinapse/cortex-core/tokens-native.css';
+
+@source '../node_modules/@tecsinapse/cortex-native';
+@source '../node_modules/@tecsinapse/cortex-core';
+```
+
+The `@source` directives tell Tailwind to scan the library's classes (in a monorepo, point them at the workspace
+`src` folders instead — see `packages/rn-playground/global.css`).
+
+Import it in your entry file before rendering anything:
+
+```javascript
+import './global.css';
+```
+
+## Theme
+
+Wrap your app with the native `ThemeProvider` from `@tecsinapse/cortex-native` (light/dark/system themes) and call
+`Uniwind.setTheme` / `useUniwind` when the theme changes — see the rn-playground `App.tsx` for a working example.
+
+## Modal system
+
+The `ModalView`/`useModalManager`/`useModalRemoteControl` system renders every open modal through a single native
+overlay. For modals to open you **must** mount `<ModalGroupManager />` once at your app root, alongside the
+`ThemeProvider`:
+
+```jsx
+import { ModalGroupManager, ThemeProvider } from '@tecsinapse/cortex-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <ThemeProvider theme="light">
+        <AppContent />
+        <ModalGroupManager />
+      </ThemeProvider>
+    </SafeAreaProvider>
+  );
+}
+```
+
+If it is missing, `show()` from `useModalManager` is a no-op and the modal never appears. (`Select` renders its option
+list through its own built-in modal and does not require `ModalGroupManager`.)
+
+## Icons & fonts
+
+Components use `react-native-vector-icons` (peer). Fonts must be linked per the RN env setup docs; the default font is
+[Lato](https://fonts.google.com/specimen/Lato).
+
+---
+
+## Migration notes
+
+If you're coming from the legacy emotion packages (`@tecsinapse/react-core` / `@tecsinapse/react-native-kit` /
+`@tecsinapse/react-charts`), note the intentional differences in `@tecsinapse/cortex-native`:
+
+### Intentional API renames (Task 5)
+
+`Text`/`Icon` `fontColor` and `fontWeight` were remapped onto the cortex content tokens:
+
+- `fontColor`: legacy `dark` → `high`, legacy `medium` → `low`; `light` and `orange` are kept. New keys `medium`,
+  `minimal` and `inverse` were added (`high` / `medium` / `low` / `minimal` / `inverse` / `light` / `orange`).
+- `fontWeight`: legacy `regular | bold | black` was expanded to the full 8-weight Tailwind scale
+  (`thin` … `black`).
+
+### Dropped `RFValue` responsive scaling
+
+Legacy `RFValue` / `RFPercentage` (responsive font-size scaling) were dropped. Font sizes use the fixed cortex
+font-size tokens (`micro: 12`, `mili: 14`, `centi: 16`, `deca: 18`, `kilo: 24`, `mega: 32`).
+
+### Dropped `react-native-svg-charts`
+
+The PieChart no longer depends on `react-native-svg-charts`; the slice math is implemented locally and unit-tested.
+Only `react-native-svg` is required as a peer.
+
+### Dropped `@tecsinapse/react-charts`
+
+The `react-charts` package is removed. Its only component, `PieChart` (plus `PieChartDot` / `PieChartLabel` /
+`PieChartData`), was ported to `@tecsinapse/cortex-native` with a compatible API (`data`, `sub`, `chartConfig`).
+
+```diff
+-import { PieChart, PieChartData } from '@tecsinapse/react-charts';
++import { PieChart, type PieChartData } from '@tecsinapse/cortex-native';
+```
+
+### date-fns v2 → v4
+
+The cortex stack uses **date-fns v4** (legacy packages pinned `~2.30.0`). v4 is ESM-only and has no default export;
+format tokens were tightened (`yyyy` vs `YYYY`, `d` vs `D`) — audit format strings when migrating.
+
+### DatePicker / DateTimePicker API divergence (Task 11)
+
+The legacy `react-core` `DatePicker` / `DateTimePicker` required a controlled API (`renderCalendar` / `request*` props,
+`DateTimeSelectorComponent` injection). The native versions are **self-contained**: they own their modal and internal
+state, and expose `value` / `onChange` / `format` / `placeholder` / `variant` / `hint` / `label` etc.
+`DateTimeSelector` / `ControlledDateTimeSelector` were merged into a single `DateTimePickerSelector`.

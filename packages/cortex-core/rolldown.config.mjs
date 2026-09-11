@@ -11,7 +11,11 @@ export default {
   },
   plugins: [
     copy({
-      targets: [{ src: 'src/default.css', dest: 'dist' }],
+      targets: [
+        { src: 'src/default.css', dest: 'dist' },
+        { src: 'src/tokens.css', dest: 'dist' },
+        { src: 'src/tokens-native.css', dest: 'dist' },
+      ],
     }),
   ],
   external: [

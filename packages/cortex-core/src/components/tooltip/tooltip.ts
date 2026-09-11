@@ -1,4 +1,4 @@
-import { ClassProp, tv, VariantProps } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from '../../tv';
 
 export const tooltipContainer = tv({
   base: 'group relative inline-block',

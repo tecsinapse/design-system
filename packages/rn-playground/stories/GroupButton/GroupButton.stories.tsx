@@ -1,8 +1,8 @@
 import {
   GroupButton,
   GroupButtonOption,
-  GroupButtonValue,
-} from '@tecsinapse/react-native-kit';
+  type GroupButtonValue,
+} from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react-vite';
 

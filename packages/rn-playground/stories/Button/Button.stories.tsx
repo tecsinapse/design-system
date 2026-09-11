@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react-vite';
-import { Button, Text } from '@tecsinapse/react-native-kit';
+import { Button } from '@tecsinapse/cortex-native';
 
 const ButtonMeta: Meta<typeof Button> = {
   title: 'Button',
@@ -15,9 +15,5 @@ export default ButtonMeta;
 type ButtonStory = StoryFn<typeof Button>;
 
 export const Basic: ButtonStory = args => (
-  <Button {...args}>
-    <Text fontColor="light" fontWeight="bold">
-      Hello world
-    </Text>
-  </Button>
+  <Button {...args} title="Hello world" />
 );

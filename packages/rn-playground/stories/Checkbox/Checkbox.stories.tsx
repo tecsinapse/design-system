@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox, Text } from '@tecsinapse/react-native-kit';
+import { Checkbox, Text } from '@tecsinapse/cortex-native';
 import { action } from 'storybook/actions';
 import { Meta } from '@storybook/react-vite';
 

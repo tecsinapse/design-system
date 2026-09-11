@@ -1,5 +1,6 @@
 import React from 'react';
-import { DateTimePicker } from '@tecsinapse/react-native-kit';
+import { View } from 'react-native';
+import { DateTimePicker } from '@tecsinapse/cortex-native';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof DateTimePicker> = {
@@ -8,7 +9,6 @@ const StoryMeta: Meta<typeof DateTimePicker> = {
   args: {
     timeModalTitle: 'Selecione a hora desejada:',
     dateModalTitle: 'Selecione a data desejada:',
-    dayLabel: 'Dia',
     monthLabel: 'Mês',
     yearLabel: 'Ano',
     hourLabel: 'Hora',
@@ -26,15 +26,16 @@ export const Date = (args: IStory) => {
   const [date, setDate] = React.useState<Date>();
 
   return (
-    <DateTimePicker
-      {...args}
-      value={date}
-      onChange={setDate}
-      mode={'date'}
-      format={'dd/MM/yyyy'}
-      label={'Select date'}
-      style={{ marginBottom: 15 }}
-    />
+    <View style={{ marginBottom: 15 }}>
+      <DateTimePicker
+        {...args}
+        value={date}
+        onChange={setDate}
+        mode={'date'}
+        format={'dd/MM/yyyy'}
+        label={'Select date'}
+      />
+    </View>
   );
 };
 
@@ -42,16 +43,16 @@ export const Month = (args: IStory) => {
   const [month, setMonth] = React.useState<Date>();
 
   return (
-    <DateTimePicker
-      {...args}
-      value={month}
-      onChange={setMonth}
-      mode={'month'}
-      format={'MM/yyyy'}
-      label={'Select month'}
-      style={{ marginBottom: 15 }}
-      offsetThreshold={15}
-    />
+    <View style={{ marginBottom: 15 }}>
+      <DateTimePicker
+        {...args}
+        value={month}
+        onChange={setMonth}
+        mode={'month'}
+        format={'MM/yyyy'}
+        label={'Select month'}
+      />
+    </View>
   );
 };
 
@@ -59,15 +60,16 @@ export const Time = (args: IStory) => {
   const [time, setTime] = React.useState<Date>();
 
   return (
-    <DateTimePicker
-      {...args}
-      value={time}
-      onChange={setTime}
-      mode={'time'}
-      label={'Select time'}
-      format={'HH:mm'}
-      style={{ marginBottom: 15 }}
-    />
+    <View style={{ marginBottom: 15 }}>
+      <DateTimePicker
+        {...args}
+        value={time}
+        onChange={setTime}
+        mode={'time'}
+        label={'Select time'}
+        format={'HH:mm'}
+      />
+    </View>
   );
 };
 

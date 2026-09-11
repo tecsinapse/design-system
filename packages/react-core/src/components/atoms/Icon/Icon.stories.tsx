@@ -3,7 +3,7 @@ import { StoryFn } from '@storybook/react-vite';
 import Icon, { IconProps } from './Icon';
 
 export default {
-  title: 'react-web-kit/Icon',
+  title: 'react-core/Icon',
   component: Icon,
 };
 

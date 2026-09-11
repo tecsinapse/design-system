@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProgressBar, ProgressBarProps } from '@tecsinapse/react-native-kit';
+import { ProgressBar, type ProgressBarProps } from '@tecsinapse/cortex-native';
 import { Meta } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof ProgressBar> = {

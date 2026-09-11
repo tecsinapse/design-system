@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import { tv } from '../../tv';
 
 export const option = tv({
   base: 'flex flex-row gap-x-deca items-center text-base py-mili px-deca font-bold hover:bg-primary-xlight hover:text-primary-medium cursor-pointer active:text-primary-medium',

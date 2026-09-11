@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import { tv } from '../../tv';
 
 export const manager = tv({
   base: 'fixed rounded-micro p-deca bg-surface-overlay shadow-xl flex transition bottom-deca right-deca z-modal',

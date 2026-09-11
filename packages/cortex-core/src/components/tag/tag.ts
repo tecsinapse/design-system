@@ -1,16 +1,6 @@
-import { createTV, VariantProps } from 'tailwind-variants';
-import { fontSize } from '../../tokens/definitions';
+import { tv, VariantProps } from '../../tv';
 
-const myTV = createTV({
-  twMergeConfig: {
-    //passar tema?
-    classGroups: {
-      'font-size': [{ text: Object.keys(fontSize) }],
-    },
-  },
-});
-
-const tagStyles = myTV({
+const tagStyles = tv({
   base: 'rounded-micro px-micro py-nano w-fit font-bold text-label items-center flex gap-1',
   variants: {
     intent: {

@@ -1,4 +1,4 @@
-import { Header } from '@tecsinapse/react-native-kit';
+import { Header } from '@tecsinapse/cortex-native';
 import React from 'react';
 import { Meta } from '@storybook/react-vite';
 

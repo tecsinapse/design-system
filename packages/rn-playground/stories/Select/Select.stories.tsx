@@ -1,4 +1,4 @@
-import { Button, Select, Text } from '@tecsinapse/react-native-kit';
+import { Button, Select, Text } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
@@ -85,12 +85,12 @@ export const MultiCustom = {
         onSearch={handleSearch}
         controlComponent={(onPress, displayValue) => (
           <>
-            <Button variant={'outlined'} onPress={onPress}>
-              <Text fontWeight={'bold'} fontColor={'orange'}>
-                Open select modal!
-              </Text>
-            </Button>
-            <Text fontWeight={'bold'} typography={'base'}>
+            <Button
+              variant="outline"
+              title="Open select modal!"
+              onPress={onPress}
+            />
+            <Text fontWeight="bold" typography="base">
               Selected values: {displayValue}
             </Text>
           </>
@@ -128,6 +128,38 @@ export const Single = {
         labelExtractor={labelExtractor}
         onSearch={handleSearch}
         keyExtractor={keyExtractor}
+      />
+    );
+  },
+};
+
+export const SingleSearch = {
+  render: (args: IStory) => {
+    const [singleValue, setSingleValue] = useState<Option | undefined>(
+      undefined
+    );
+
+    function handleSelectSingleValue(key: Option | undefined) {
+      setSingleValue(key);
+    }
+
+    const handleSearch = React.useCallback((searchArg: string) => {
+      return options.filter(value => {
+        if (searchArg) return value.label.includes(searchArg);
+        else return true;
+      });
+    }, []);
+
+    return (
+      <Select
+        {...args}
+        options={options}
+        value={singleValue}
+        type={'single'}
+        onSelect={handleSelectSingleValue}
+        labelExtractor={labelExtractor}
+        keyExtractor={keyExtractor}
+        onSearch={handleSearch}
       />
     );
   },

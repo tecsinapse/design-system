@@ -1,5 +1,5 @@
 import React from 'react';
-import { Snackbar, SnackbarNativeProps } from '@tecsinapse/react-native-kit';
+import { Snackbar, type SnackbarProps, Text } from '@tecsinapse/cortex-native';
 import { Meta } from '@storybook/react-vite';
 import { action } from 'storybook/actions';
 
@@ -10,9 +10,7 @@ const StoryMeta: Meta<typeof Snackbar> = {
     onClose: { action: 'close callback' },
   },
   args: {
-    colorVariant: 'success',
     timeout: undefined,
-    value: 'Snackbar message',
     dismissable: false,
     open: true,
   },
@@ -20,191 +18,158 @@ const StoryMeta: Meta<typeof Snackbar> = {
 
 export default StoryMeta;
 
-export const Success = (args: SnackbarNativeProps) => {
+export const Success = (args: SnackbarProps) => {
   const [open, setOpen] = React.useState(args?.open ?? true);
-
-  const colorVariant = args?.colorVariant;
-
   return (
     <Snackbar
       {...args}
       open={open}
-      textProps={{
-        colorVariant: colorVariant,
-        colorTone: 'medium',
-      }}
+      colorVariant="success"
       leftIcon={{
         name: 'alert-circle-outline',
         type: 'material-community',
-        colorVariant,
+        colorVariant: 'success',
         colorTone: 'medium',
       }}
-      rightIcon={{
-        colorTone: 'medium',
-        colorVariant,
-      }}
+      rightIcon={{ colorTone: 'medium', colorVariant: 'success' }}
       onClose={() => {
         action('onClose');
         setOpen(false);
       }}
-    />
+    >
+      <Text colorVariant="success" colorTone="medium">
+        Snackbar message
+      </Text>
+    </Snackbar>
   );
 };
 
-export const Error = ({ colorVariant: _, ...args }: SnackbarNativeProps) => {
+export const Error = (args: SnackbarProps) => {
   const [open, setOpen] = React.useState(args?.open ?? true);
-
-  const colorVariant = 'error';
-
   return (
     <Snackbar
       {...args}
       open={open}
-      textProps={{
-        colorVariant: colorVariant,
-        colorTone: 'medium',
-      }}
+      colorVariant="error"
       leftIcon={{
         name: 'alert-circle-outline',
         type: 'material-community',
-        colorVariant,
+        colorVariant: 'error',
         colorTone: 'medium',
       }}
-      rightIcon={{
-        colorTone: 'medium',
-        colorVariant,
-      }}
+      rightIcon={{ colorTone: 'medium', colorVariant: 'error' }}
       onClose={() => {
         action('onClose');
         setOpen(false);
       }}
-    />
+    >
+      <Text colorVariant="error" colorTone="medium">
+        Snackbar message
+      </Text>
+    </Snackbar>
   );
 };
 
-export const Warning = ({ colorVariant: _, ...args }: SnackbarNativeProps) => {
+export const Warning = (args: SnackbarProps) => {
   const [open, setOpen] = React.useState(args?.open ?? true);
-
-  const colorVariant = 'warning';
-
   return (
     <Snackbar
       {...args}
       open={open}
-      textProps={{
-        colorVariant: colorVariant,
-        colorTone: 'medium',
-      }}
+      colorVariant="warning"
       leftIcon={{
         name: 'alert-circle-outline',
         type: 'material-community',
-        colorVariant,
+        colorVariant: 'warning',
         colorTone: 'medium',
       }}
-      rightIcon={{
-        colorTone: 'medium',
-        colorVariant,
-      }}
+      rightIcon={{ colorTone: 'medium', colorVariant: 'warning' }}
       onClose={() => {
         action('onClose');
         setOpen(false);
       }}
-    />
+    >
+      <Text colorVariant="warning" colorTone="medium">
+        Snackbar message
+      </Text>
+    </Snackbar>
   );
 };
 
-export const Info = ({ colorVariant: _, ...args }: SnackbarNativeProps) => {
+export const Info = (args: SnackbarProps) => {
   const [open, setOpen] = React.useState(args?.open ?? true);
-
-  const colorVariant = 'info';
-
   return (
     <Snackbar
       {...args}
       open={open}
-      textProps={{
-        colorVariant: colorVariant,
-        colorTone: 'medium',
-      }}
+      colorVariant="info"
       leftIcon={{
         name: 'alert-circle-outline',
         type: 'material-community',
-        colorVariant,
+        colorVariant: 'info',
         colorTone: 'medium',
       }}
-      rightIcon={{
-        colorTone: 'medium',
-        colorVariant,
-      }}
+      rightIcon={{ colorTone: 'medium', colorVariant: 'info' }}
       onClose={() => {
         action('onClose');
         setOpen(false);
       }}
-    />
+    >
+      <Text colorVariant="info" colorTone="medium">
+        Snackbar message
+      </Text>
+    </Snackbar>
   );
 };
 
-export const Primary = ({ colorVariant: _, ...args }: SnackbarNativeProps) => {
+export const Primary = (args: SnackbarProps) => {
   const [open, setOpen] = React.useState(args?.open ?? true);
-
-  const colorVariant = 'primary';
-
   return (
     <Snackbar
       {...args}
       open={open}
-      textProps={{
-        colorVariant: colorVariant,
-        colorTone: 'medium',
-      }}
+      colorVariant="primary"
       leftIcon={{
         name: 'alert-circle-outline',
         type: 'material-community',
-        colorVariant,
+        colorVariant: 'primary',
         colorTone: 'medium',
       }}
-      rightIcon={{
-        colorTone: 'medium',
-        colorVariant,
-      }}
+      rightIcon={{ colorTone: 'medium', colorVariant: 'primary' }}
       onClose={() => {
         action('onClose');
         setOpen(false);
       }}
-    />
+    >
+      <Text colorVariant="primary" colorTone="medium">
+        Snackbar message
+      </Text>
+    </Snackbar>
   );
 };
 
-export const Secondary = ({
-  colorVariant: _,
-  ...args
-}: SnackbarNativeProps) => {
+export const Secondary = (args: SnackbarProps) => {
   const [open, setOpen] = React.useState(args?.open ?? true);
-
-  const colorVariant = 'secondary';
-
   return (
     <Snackbar
       {...args}
       open={open}
-      textProps={{
-        colorVariant: colorVariant,
-        colorTone: 'medium',
-      }}
+      colorVariant="secondary"
       leftIcon={{
         name: 'alert-circle-outline',
         type: 'material-community',
-        colorVariant,
+        colorVariant: 'secondary',
         colorTone: 'medium',
       }}
-      rightIcon={{
-        colorTone: 'medium',
-        colorVariant,
-      }}
+      rightIcon={{ colorTone: 'medium', colorVariant: 'secondary' }}
       onClose={() => {
         action('onClose');
         setOpen(false);
       }}
-    />
+    >
+      <Text colorVariant="secondary" colorTone="medium">
+        Snackbar message
+      </Text>
+    </Snackbar>
   );
 };
