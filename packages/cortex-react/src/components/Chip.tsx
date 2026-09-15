@@ -10,18 +10,24 @@ export interface ChipProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * all `chip` styles as object
    */
   variants?: ChipVariants;
-  onSelect?: () => void;
+  onSelectedChange?: () => void;
 }
 
 /** Chip component */
 export const Chip = (props: ChipProps) => {
-  const { children, className, ref, variants, onSelect, ...rest } = props;
+  const { children, className, ref, variants, onSelectedChange, onClick, ...rest } = props;
+
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = event => {
+    onClick?.(event);
+    onSelectedChange?.();
+  };
+
   return (
     <button
       type="button"
       className={chip({ ...variants, className })}
-      aria-pressed={variants?.isSelected}
-      onClick={onSelect}
+      aria-pressed={variants?.isSelected ?? false}
+      onClick={handleClick}
       ref={ref}
       {...rest}
     >

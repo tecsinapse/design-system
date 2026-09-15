@@ -14,7 +14,7 @@ export const Default: StoryObj<typeof Chip> = {
     return (
       <Chip
         variants={{ isSelected }}
-        onSelect={() => setIsSelected(isSelected => !isSelected)}
+        onSelectedChange={() => setIsSelected(isSelected => !isSelected)}
       >
         My Chip
       </Chip>

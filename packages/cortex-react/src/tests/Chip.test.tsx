@@ -29,28 +29,49 @@ describe('Chip', () => {
     expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', 'true');
   });
 
-  it('calls onSelect when clicked', () => {
-    const onSelect = vi.fn();
-    render(<Chip onSelect={onSelect}>My Chip</Chip>);
+  it('defaults aria-pressed to false when no variants are given', () => {
+    render(<Chip>My Chip</Chip>);
+
+    expect(screen.getByRole('button')).toHaveAttribute('aria-pressed', 'false');
+  });
+
+  it('calls onSelectedChange when clicked', () => {
+    const onSelectedChange = vi.fn();
+    render(<Chip onSelectedChange={onSelectedChange}>My Chip</Chip>);
 
     fireEvent.click(screen.getByRole('button'));
 
-    expect(onSelect).toHaveBeenCalledTimes(1);
+    expect(onSelectedChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls both the native onClick and onSelectedChange when both are provided', () => {
+    const onClick = vi.fn();
+    const onSelectedChange = vi.fn();
+    render(
+      <Chip onClick={onClick} onSelectedChange={onSelectedChange}>
+        My Chip
+      </Chip>
+    );
+
+    fireEvent.click(screen.getByRole('button'));
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onSelectedChange).toHaveBeenCalledTimes(1);
   });
 
   it('is keyboard-activatable with Enter and Space via native button semantics', async () => {
-    const onSelect = vi.fn();
+    const onSelectedChange = vi.fn();
     const user = userEvent.setup();
-    render(<Chip onSelect={onSelect}>My Chip</Chip>);
+    render(<Chip onSelectedChange={onSelectedChange}>My Chip</Chip>);
 
     await user.tab();
     expect(screen.getByRole('button')).toHaveFocus();
 
     await user.keyboard('{Enter}');
-    expect(onSelect).toHaveBeenCalledTimes(1);
+    expect(onSelectedChange).toHaveBeenCalledTimes(1);
 
     await user.keyboard(' ');
-    expect(onSelect).toHaveBeenCalledTimes(2);
+    expect(onSelectedChange).toHaveBeenCalledTimes(2);
   });
 
   it('forwards className and native button attributes', () => {
