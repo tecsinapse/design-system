@@ -14,14 +14,13 @@ export const AutocompleteRoot = <T,>({
 
   const onOpenChangeRef = useRef(onOpenChange);
   onOpenChangeRef.current = onOpenChange;
-  const isFirstRender = useRef(true);
+  const prevOpenRef = useRef(open);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
+    if (prevOpenRef.current !== open) {
+      prevOpenRef.current = open;
+      onOpenChangeRef.current?.(open);
     }
-    onOpenChangeRef.current?.(open);
   }, [open]);
 
   return (

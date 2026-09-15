@@ -73,4 +73,15 @@ describe('Autocomplete onOpenChange', () => {
 
     expect(calls).toHaveLength(0);
   });
+
+  it('does not call onOpenChange on mount under React.StrictMode double-invoked effects', () => {
+    const onOpenChange = vi.fn();
+    render(
+      <React.StrictMode>
+        <AutocompleteHarness onOpenChange={onOpenChange} />
+      </React.StrictMode>
+    );
+
+    expect(onOpenChange).not.toHaveBeenCalled();
+  });
 });
