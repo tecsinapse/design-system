@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.2](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-react%402.5.1...%40tecsinapse%2Fcortex-react%402.5.2) (2026-09-11)
+
+### Bug Fixes
+
+* **cortex-react:** parse formatted numeric masks ([a75e5a7](https://github.com/tecsinapse/design-system/commit/a75e5a7bec18a4c75123903ea2ef10e0a69bb9b3))
+
 ## [2.5.1](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-react%402.5.0...%40tecsinapse%2Fcortex-react%402.5.1) (2026-09-03)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
