@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: design-system-catalog
+  description: Entidades do produto design-system no Backstage
+spec:
+  type: url
+  targets:
+    - ./catalog/design-system.yaml
