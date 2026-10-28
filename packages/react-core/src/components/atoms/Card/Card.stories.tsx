@@ -13,7 +13,7 @@ const StyledCard = styled(Card)<Partial<StyleProps>>`
 `;
 
 export default {
-  title: 'react-web-kit/Card',
+  title: 'react-core/Card',
   component: Card,
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BottomNavigator, Text } from '@tecsinapse/react-native-kit';
+import { BottomNavigator, Text } from '@tecsinapse/cortex-native';
 import { Pressable } from 'react-native';
 import { Meta } from '@storybook/react-vite';
 

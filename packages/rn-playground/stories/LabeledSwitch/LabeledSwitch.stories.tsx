@@ -1,8 +1,8 @@
 import { Meta } from '@storybook/react-vite';
 import {
   LabeledSwitch,
-  LabeledSwitchNativeProps,
-} from '@tecsinapse/react-native-kit';
+  type LabeledSwitchNativeProps,
+} from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 
 const StoryMeta: Meta<typeof LabeledSwitch> = {

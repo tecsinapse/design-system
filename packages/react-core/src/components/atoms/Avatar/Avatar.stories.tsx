@@ -1,7 +1,7 @@
 import { default as Avatar } from './Avatar';
 
 export default {
-  title: 'react-web-kit/Avatar',
+  title: 'react-core/Avatar',
   component: Avatar,
 };
 

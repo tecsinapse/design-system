@@ -1,4 +1,4 @@
-import { ClassProp, tv, VariantProps } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from '../../tv';
 
 const toggleStyles = tv({
   base: "peer h-[22px] w-[40px] rounded-full bg-content-minimal after:absolute after:left-micro after:top-[3px] after:h-deca after:w-deca after:rounded-full after:border after:border-white after:bg-surface-overlay after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none",

@@ -6,10 +6,10 @@ import {
   Input,
   Select,
   Skeleton,
-  SkeletonProps,
+  type SkeletonProps,
   Text,
   TextArea,
-} from '@tecsinapse/react-native-kit';
+} from '@tecsinapse/cortex-native';
 
 import { Meta } from '@storybook/react-vite';
 
@@ -31,7 +31,7 @@ const options = new Array(20).fill(undefined).map((_, index) => ({
 export const Base = (args: SkeletonProps) => {
   const [seconds, setSeconds] = useState(0);
   const [active, setActive] = useState(false);
-  const interval = useRef<ReturnType<typeof setTimeout>>();
+  const interval = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const animation = args?.animation;
 
@@ -44,16 +44,17 @@ export const Base = (args: SkeletonProps) => {
       clearInterval(interval?.current);
     }
 
-    return () => clearInterval(interval.current);
+    return () => {
+      if (interval.current) clearInterval(interval.current);
+    };
   }, [active, seconds]);
 
   return (
     <>
-      <Button onPress={() => setActive(!active)}>
-        <Text fontColor={'light'} fontWeight={'bold'}>
-          {active ? 'Stop Skeleton' : 'Try Skeleton'}
-        </Text>
-      </Button>
+      <Button
+        title={active ? 'Stop Skeleton' : 'Try Skeleton'}
+        onPress={() => setActive(!active)}
+      />
 
       <Grid spacing={'mili'} layout={[[12], [6, 6], [12], [2, 10], [6, 6]]}>
         <Skeleton animation={animation} active={active}>
@@ -69,9 +70,7 @@ export const Base = (args: SkeletonProps) => {
         </Skeleton>
 
         <Skeleton animation={animation} active={active}>
-          <Button>
-            <Text>Button</Text>
-          </Button>
+          <Button title="Button" />
         </Skeleton>
 
         <Skeleton animation={animation} active={active} radius={'pill'}>

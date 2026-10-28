@@ -1,6 +1,6 @@
 import React from 'react';
-import { Badge, BadgeNativeProps, Icon } from '@tecsinapse/react-native-kit';
 import { Meta } from '@storybook/react-vite';
+import { Badge, BadgeProps, Icon, Text } from '@tecsinapse/cortex-native';
 
 const StoryMeta: Meta<typeof Badge> = {
   title: 'Badge',
@@ -13,8 +13,15 @@ const StoryMeta: Meta<typeof Badge> = {
 
 export default StoryMeta;
 
-export const Base = (args: BadgeNativeProps) => (
-  <Badge {...args}>
+export const Base = (args: BadgeProps) => (
+  <Badge
+    {...args}
+    value={
+      <Text fontColor="light" fontWeight="bold" typography="label">
+        {args.value}
+      </Text>
+    }
+  >
     <Icon name="user-circle" type="font-awesome" size="mega" />
   </Badge>
 );

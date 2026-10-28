@@ -1,4 +1,4 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { tv, VariantProps } from '../../tv';
 
 export const buttonStyles = tv({
   base: 'text-base h-fit font-bold disabled:text-on-primary enabled:active:scale-95 transform transition hover:text-on-primary text-on-primary cursor-pointer items-center flex justify-center',

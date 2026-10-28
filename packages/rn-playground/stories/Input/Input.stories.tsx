@@ -1,4 +1,4 @@
-import { Input } from '@tecsinapse/react-native-kit';
+import { Input } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react-vite';
 

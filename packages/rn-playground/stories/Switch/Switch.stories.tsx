@@ -1,4 +1,4 @@
-import { Switch, SwitchProps } from '@tecsinapse/react-native-kit';
+import { Switch, type SwitchProps } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react-vite';
 
