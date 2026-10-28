@@ -5,7 +5,7 @@ import { BoxContent, BoxContentProps } from '.';
 import { Text } from '../Text';
 
 export default {
-  title: 'react-web-kit/Box Content',
+  title: 'react-core/Box Content',
   component: BoxContent,
 };
 

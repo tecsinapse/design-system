@@ -1,4 +1,4 @@
-import { TextArea, TextAreaProps } from '@tecsinapse/react-native-kit';
+import { TextArea, type TextAreaProps } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react-vite';
 
@@ -22,12 +22,23 @@ export default StoryMeta;
 
 export const Base = (args: TextAreaProps) => {
   const [value, setValue] = useState<string>(args?.value);
-  return <TextArea {...args} value={value} onChange={setValue} />;
+  return (
+    <TextArea
+      {...args}
+      value={value}
+      onChange={e => setValue(e.nativeEvent.text)}
+    />
+  );
 };
 
 export const Variant = (args: TextAreaProps) => {
   const [value, setValue] = useState<string>(args?.value);
   return (
-    <TextArea {...args} variant={'error'} value={value} onChange={setValue} />
+    <TextArea
+      {...args}
+      variant={'error'}
+      value={value}
+      onChange={e => setValue(e.nativeEvent.text)}
+    />
   );
 };

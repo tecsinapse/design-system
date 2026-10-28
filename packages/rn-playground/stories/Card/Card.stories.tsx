@@ -1,4 +1,4 @@
-import { Card, Footer, Header, Text } from '@tecsinapse/react-native-kit';
+import { Card, CardFooter, CardHeader, Text } from '@tecsinapse/cortex-native';
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
@@ -16,24 +16,24 @@ type IStory = StoryFn<typeof Card>;
 
 export const Base = (args: IStory) => (
   <Card {...args}>
-    <Header>
+    <CardHeader>
       <Text>I'm a header card</Text>
-    </Header>
+    </CardHeader>
     <Text>I'm a card</Text>
-    <Footer>
+    <CardFooter>
       <Text>I'm a footer card</Text>
-    </Footer>
+    </CardFooter>
   </Card>
 );
 
 export const Elevated = (args: IStory) => (
   <Card elevated {...args}>
-    <Header>
+    <CardHeader>
       <Text>I'm a header card</Text>
-    </Header>
+    </CardHeader>
     <Text>I'm an elevated card</Text>
-    <Footer>
+    <CardFooter>
       <Text>I'm a footer card</Text>
-    </Footer>
+    </CardFooter>
   </Card>
 );

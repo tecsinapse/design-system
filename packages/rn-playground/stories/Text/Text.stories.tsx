@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '@tecsinapse/react-native-kit';
+import { Text } from '@tecsinapse/cortex-native';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
 const TextMeta: Meta<typeof Text> = {
@@ -7,9 +7,7 @@ const TextMeta: Meta<typeof Text> = {
   component: Text,
   args: {
     textTransform: 'none',
-    colorTone: undefined,
-    colorVariant: undefined,
-    fontColor: 'dark',
+    fontColor: 'high',
     capitalFirst: false,
     fontWeight: 'regular',
     ellipsizeMode: undefined,

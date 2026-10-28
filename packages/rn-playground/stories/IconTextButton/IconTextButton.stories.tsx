@@ -1,4 +1,4 @@
-import { IconTextButton } from '@tecsinapse/react-native-kit';
+import { IconTextButton } from '@tecsinapse/cortex-native';
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react-vite';
 

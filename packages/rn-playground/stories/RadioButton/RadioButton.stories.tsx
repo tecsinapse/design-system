@@ -1,4 +1,4 @@
-import { RadioButton, Text } from '@tecsinapse/react-native-kit';
+import { RadioButton, Text } from '@tecsinapse/cortex-native';
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react-vite';
 

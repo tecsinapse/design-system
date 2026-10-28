@@ -1,4 +1,4 @@
-import { ClassProp, tv, VariantProps } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from '../../tv';
 
 const drawerStyles = tv({
   base: 'bg-surface-overlay fixed  top-0 h-full p-deca shadow-lg transition-all duration-500 transform overflow-y-scroll',

@@ -15,7 +15,7 @@ const parameters: Parameters = {
         'tokens',
         'development',
         'Cortex',
-        'react-web-kit',
+        'react-core',
       ],
     },
   },
