@@ -20,6 +20,9 @@ pnpm add @tecsinapse/cortex-native uniwind react-native-svg react-native-vector-
 `react-native-svg` is only required if you use the `PieChart`. `uniwind` is a peer dependency — the consumer owns the
 runtime (the workspace uses `autoInstallPeers: false`, so add peers explicitly).
 
+Metro loads the published `dist/esm/index.js` entry, not the TypeScript source. When developing in this monorepo,
+run `pnpm dev:cortex` to keep the built workspace packages up to date.
+
 ## Metro setup (Uniwind)
 
 Wrap your Metro config with Uniwind's plugin. The recommended shape (see `packages/rn-playground/metro.config.js` for
