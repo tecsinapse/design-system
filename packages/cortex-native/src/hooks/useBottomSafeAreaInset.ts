@@ -18,6 +18,5 @@ export const MIN_ANDROID_BOTTOM_INSET = Platform.OS === 'android' ? 24 : 0;
  */
 export const useBottomSafeAreaInset = (): number => {
   const { bottom } = useSafeAreaInsets();
-
   return Math.max(bottom, MIN_ANDROID_BOTTOM_INSET);
 };
