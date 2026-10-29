@@ -86,6 +86,55 @@ describe('Card', () => {
     expect(onClick).toHaveBeenCalledTimes(2);
   });
 
+  it('should not intercept keyboard activation of an interactive child', async () => {
+    const onSelect = vi.fn();
+    const onRemove = vi.fn();
+    const user = userEvent.setup();
+    render(
+      <Card variants={{ selectable: true }} onClick={onSelect}>
+        Card test
+        <button
+          type="button"
+          onClick={e => {
+            e.stopPropagation();
+            onRemove();
+          }}
+        >
+          Remover
+        </button>
+      </Card>
+    );
+
+    screen.getByRole('button', { name: 'Remover' }).focus();
+
+    await user.keyboard('{Enter}');
+    expect(onRemove).toHaveBeenCalledTimes(1);
+
+    await user.keyboard(' ');
+    expect(onRemove).toHaveBeenCalledTimes(2);
+
+    expect(onSelect).not.toHaveBeenCalled();
+  });
+
+  it('should not activate when the consumer onKeyDown prevents default', () => {
+    const onClick = vi.fn();
+    render(
+      <Card
+        variants={{ selectable: true }}
+        onClick={onClick}
+        onKeyDown={event => event.preventDefault()}
+        data-testid="card"
+      >
+        Card test
+      </Card>
+    );
+
+    fireEvent.keyDown(screen.getByTestId('card'), { key: 'Enter' });
+    fireEvent.keyDown(screen.getByTestId('card'), { key: ' ' });
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
   it('does not trigger onClick on Enter/Space when not selectable', () => {
     const onClick = vi.fn();
     render(

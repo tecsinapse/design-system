@@ -19,7 +19,12 @@ export const Card = (props: CardProps) => {
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     onKeyDown?.(event);
-    if (!selectable || (event.key !== 'Enter' && event.key !== ' ')) {
+    if (
+      !selectable ||
+      event.defaultPrevented ||
+      event.target !== event.currentTarget ||
+      (event.key !== 'Enter' && event.key !== ' ')
+    ) {
       return;
     }
     event.preventDefault();
