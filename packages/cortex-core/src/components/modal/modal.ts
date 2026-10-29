@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import { tv } from '../../tv';
 
 export const modal = tv({
   base: 'fixed rounded-micro p-kilo bg-surface-overlay shadow-default flex transition inset-0 m-auto max-w-fit z-modal text-default',

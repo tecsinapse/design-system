@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.3](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Freact-core%404.2.2...%40tecsinapse%2Freact-core%404.2.3) (2026-10-28)
+
+### Bug Fixes
+
+* **native:** resolve published packages through built entries ([89ae57c](https://github.com/tecsinapse/design-system/commit/89ae57c76a5e7e292bfcfaac31cbef9d2bac8e68))
+
 ## [4.2.2](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Freact-core%404.2.1...%40tecsinapse%2Freact-core%404.2.2) (2026-09-01)
 
 **Note:** Version bump only for package @tecsinapse/react-core

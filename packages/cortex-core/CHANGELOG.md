@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.1.4...%40tecsinapse%2Fcortex-core%402.2.0) (2026-10-28)
+
+### Bug Fixes
+
+* **cortex-core:** register custom typography scale in shared tv twMerge config ([af080a4](https://github.com/tecsinapse/design-system/commit/af080a4aec146c355da4db7df0c11ba90fff2e69))
+* **cortex-core:** teach cn's twMerge config the custom border-width scale ([a75d410](https://github.com/tecsinapse/design-system/commit/a75d410e11ed07a7e5135b937fa11d00768cddad))
+* **cortex-native:** route composed Input parts to side slots, lay Button out as a row ([9773d17](https://github.com/tecsinapse/design-system/commit/9773d17a7c58da17d1467a94c89b7ea200ff9d2e))
+
+### Features
+
+* **cortex-core:** add cn class merger sharing tv's twMerge config ([59fc85d](https://github.com/tecsinapse/design-system/commit/59fc85d37d9db2848bc238319c47d1a18d5a97ef))
+* **cortex-core:** extract RN-safe tokens.css + tokens-native.css for shared web/native theming ([c6a425a](https://github.com/tecsinapse/design-system/commit/c6a425af14952c91e54899433f9bc62399c8d5ea))
+* **cortex-core:** share date utils (date-fns v4) ([f5ca17d](https://github.com/tecsinapse/design-system/commit/f5ca17df62f66b73a555c61e31534700a13ecce6))
+* **cortex-core:** share mask/currency utils with cortex-react ([6719b98](https://github.com/tecsinapse/design-system/commit/6719b983d95014e1aa09320ecf34f20755a2334e))
+* **cortex-native, rn-playground:** complete migration from react-native-kit to cortex-native ([24dcd11](https://github.com/tecsinapse/design-system/commit/24dcd11acfd09d2473fbcce5ab75b11678c99775))
+* **rollup:** optimize external dependencies handling across cortex packages ([eed9dc7](https://github.com/tecsinapse/design-system/commit/eed9dc75f6f1035607989e2510d027602f4e4415))
+
 ## [2.1.4](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.1.3...%40tecsinapse%2Fcortex-core%402.1.4) (2026-09-01)
 
 ### Bug Fixes

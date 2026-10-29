@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 permissions:
   id-token: write
-  contents: read
+  contents: write
 
 jobs:
   lerna:
@@ -18,21 +18,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v6
-        name: setup pnpm
-
-      - name: setup node
-        uses: actions/setup-node@v7
+      - uses: pnpm/setup@v3
         with:
-          node-version: 22
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
+          runtime: node@22
+          cache: true
+          install: false
+          registry: 'https://registry.npmjs.org'
+
+      - name: setup npm
+        run: |
+          pnpm add --global npm@12
+          npm --version
 
       - name: install and prepare
         run: pnpm i
 
       - name: run test suites
         run: pnpm test
+
+      - name: setup npm authentication
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.DESIGN_SYSTEM_NPM_TOKEN }}
+        run: npm config set //registry.npmjs.org/:_authToken "$NODE_AUTH_TOKEN"
 
       - name: version and publish
         env:

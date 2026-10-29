@@ -1,4 +1,5 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { VariantProps } from 'tailwind-variants';
+import { tv } from '../../tv';
 
 const cardStyles = tv({
   base: 'rounded-mili shadow-default bg-surface-overlay p-deca',

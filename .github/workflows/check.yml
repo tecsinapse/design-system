@@ -16,14 +16,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: pnpm/action-setup@v6
-        name: setup pnpm
-
-      - name: setup node
-        uses: actions/setup-node@v7
+      - uses: pnpm/setup@v3
         with:
-          node-version: 22
-          cache: 'pnpm'
+          runtime: node@22
+          cache: true
+          install: false
 
       - name: install and prepare
         run: pnpm i

@@ -1,4 +1,4 @@
-import { ClassProp, tv, VariantProps } from 'tailwind-variants';
+import { ClassProp, tv, VariantProps } from '../../tv';
 
 const hintStyles = tv({
   base: 'text-label font-bold flex items-center',

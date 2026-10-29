@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconProps, Tag, TagProps } from '@tecsinapse/react-native-kit';
+import { type IconProps, Tag, type TagProps } from '@tecsinapse/cortex-native';
 import { Meta } from '@storybook/react-vite';
 
 const StoryMeta: Meta<typeof Tag> = {

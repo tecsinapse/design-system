@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react-vite';
-import { Avatar, AvatarProps } from '@tecsinapse/react-native-kit';
+import { Avatar, AvatarProps } from '@tecsinapse/cortex-native';
 
 const StoryMeta: Meta<typeof Avatar> = {
   title: 'Avatar',

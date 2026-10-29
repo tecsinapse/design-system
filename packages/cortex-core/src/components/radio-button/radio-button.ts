@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import { tv } from '../../tv';
 
 export const radioButtonStyles = tv({
   slots: {

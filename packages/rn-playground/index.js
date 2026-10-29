@@ -1,3 +1,4 @@
+import './browser-shim';
 import { registerRootComponent } from 'expo';
 
 import './browser-shim';

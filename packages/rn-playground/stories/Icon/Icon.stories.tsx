@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@tecsinapse/react-native-kit';
+import { Icon } from '@tecsinapse/cortex-native';
 import { Meta, StoryFn } from '@storybook/react-vite';
 
 const IconMeta: Meta<typeof Icon> = {

@@ -1,11 +1,12 @@
 # AGENTS.md
 
 `@tecsinapse/react-native-kit` — legacy React Native emotion CSS-in-JS component library, built on
-`@tecsinapse/react-core`. Do not add new components here — new work goes to `cortex-react`; only touch for legacy fixes.
+`@tecsinapse/react-core`. **Deprecated in favor of `@tecsinapse/cortex-native`.** Do not add new components here —
+new work goes to `cortex-react`/`cortex-native`; only touch for legacy fixes.
 
 ## Layout
 
-- `src/components/atoms/` and `molecules/` — genuine RN components (no web alias at build time, unlike `react-web-kit`).
+- `src/components/atoms/` and `molecules/` — genuine RN components (no web alias at build time).
 - `src/utils/` — shared helpers.
 
 ## Quirks

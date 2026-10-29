@@ -1,4 +1,4 @@
-import { tv } from 'tailwind-variants';
+import { tv } from '../../tv';
 
 export const tHead = tv({
   base: '[&>tr]:rounded-none [&>tr]:shadow-none',
