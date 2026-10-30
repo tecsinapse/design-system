@@ -1,21 +1,23 @@
 name: publish
 
 on:
-  pull_request:
-    types: [ closed ]
-    branches:
-      - develop
-      - master
-      - 'legacy/**'
-    paths-ignore:
-      - '.husky/**'
-      - '.github/**'
-      - 'packages/rn-playground/**'
-      - '*.md'
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: Canal npm
+        required: true
+        type: choice
+        options:
+          - latest
+          - legacy
+          - beta
+
+permissions:
+  id-token: write
+  contents: write
 
 jobs:
   lerna:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
@@ -36,53 +38,42 @@ jobs:
         run: |
           pnpm add --global npm@12
           npm --version
+          node -e 'const p=process.versions.node.split(".").map(Number); if (p[0] < 22 || (p[0] === 22 && p[1] < 14)) { console.error(process.version); process.exit(1) }'
 
       - name: install and prepare
         run: pnpm i
 
-      - name: setup npm
-        run: |
-          npm set "//registry.npmjs.org/:_authToken=${{ secrets.DESIGN_SYSTEM_NPM_TOKEN }}"
+      - name: run test suites
+        run: pnpm test
 
       - name: version and publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHANNEL: ${{ inputs.channel }}
+          REF: ${{ github.ref_name }}
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
-          if [ "${{ github.base_ref }}" = "master" ]; then
+          if [ "$CHANNEL" = latest ] && [ "$REF" != master ]; then
+            echo "latest só roda na master (ref atual: $REF)"
+            exit 1
+          fi
+          if [ "$CHANNEL" = legacy ] && [[ "$REF" != legacy/* ]]; then
+            echo "legacy só roda em legacy/* (ref atual: $REF)"
+            exit 1
+          fi
+          if [ "$CHANNEL" = beta ] && { [ "$REF" = master ] || [[ "$REF" == legacy/* ]]; }; then
+            echo "beta não roda na master nem em legacy/* (ref atual: $REF)"
+            exit 1
+          fi
+
+          if [ "$CHANNEL" = latest ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
-
-            OUTPUT=$(npx --yes lerna publish from-git --ignore-scripts --yes)
-
-            echo "$OUTPUT"
-
-            PUBLISHED=$(echo "$OUTPUT" | grep -oE "@[^ ]+@[0-9][^ ]*")
-
-            echo "published_packages<<EOF" >> $GITHUB_OUTPUT
-            echo "$PUBLISHED" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-
-            echo "### 🚀 Latest publicados" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "$PUBLISHED" | sed 's/^/- `/; s/$/`/' >> $GITHUB_STEP_SUMMARY
-          elif [[ "${{ github.base_ref }}" == legacy/* ]]; then
+            npx --yes lerna publish from-git --ignore-scripts --yes
+          elif [ "$CHANNEL" = legacy ]; then
             npx --yes lerna version --no-private --ignore-scripts --exact --conventional-commits --conventional-graduate --create-release github --sync-workspace-lock --yes
-
-            OUTPUT=$(npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes)
-
-            echo "$OUTPUT"
-
-            PUBLISHED=$(echo "$OUTPUT" | grep -oE "@[^ ]+@[0-9][^ ]*")
-
-            echo "published_packages<<EOF" >> $GITHUB_OUTPUT
-            echo "$PUBLISHED" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-
-            echo "### 🚀 Legacy publicados" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "$PUBLISHED" | sed 's/^/- `/; s/$/`/' >> $GITHUB_STEP_SUMMARY
+            npx --yes lerna publish from-git --ignore-scripts --dist-tag legacy --yes
           else
             OUTPUT=$(npx --yes lerna publish --canary --preid beta --dist-tag beta --no-private --ignore-scripts --yes)
 
@@ -98,42 +89,3 @@ jobs:
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "$PUBLISHED" | sed 's/^/- `/; s/$/`/' >> $GITHUB_STEP_SUMMARY
           fi
-
-  docs:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
-
-      - uses: pnpm/setup@v3
-        with:
-          runtime: node@22
-          cache: true
-          install: false
-
-      - name: install deps
-        run: pnpm i
-
-      - name: build docs
-        run: pnpm build:storybook
-
-      - name: upload artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: './sbdocs'
-
-  deploy:
-    needs: docs
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: deploy pages
-        uses: actions/deploy-pages@v5
