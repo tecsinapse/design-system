@@ -30,6 +30,15 @@ describe('Checkbox', () => {
     expect(checkbox.indeterminate).toBe(false);
   });
 
+  it('should keep controlled checked state when mounted without indeterminate', () => {
+    render(
+      <Checkbox checked onChange={() => undefined} data-testid="checkbox" />
+    );
+    const checkbox = screen.getByTestId('checkbox') as HTMLInputElement;
+    expect(checkbox.checked).toBe(true);
+    expect(checkbox.indeterminate).toBe(false);
+  });
+
   it('should reset indeterminate and checked state when setIndeterminate is called', () => {
     const ref = React.createRef<CheckboxRef>();
     render(<Checkbox ref={ref} data-testid="checkbox" />);
