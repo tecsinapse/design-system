@@ -1,4 +1,5 @@
-import { tv, VariantProps } from 'tailwind-variants';
+import { VariantProps } from 'tailwind-variants';
+import { tv } from '../../tv';
 
 const chipStyles = tv({
   base: 'bg-inherit text-default border p-mili rounded-deca text-sm cursor-pointer shrink-0 flex gap-micro justify-center transition-all duration-300',
