@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-react%402.6.2...%40tecsinapse%2Fcortex-react%402.7.0) (2026-11-03)
+
+### Bug Fixes
+
+* **autocomplete:** onOpenChange não deve disparar a cada render do pai ([6eeedbb](https://github.com/tecsinapse/design-system/commit/6eeedbbdc92ca59bea1fe9d0c70c66f8079c7f37))
+* **autocomplete:** onOpenChange não deve disparar no mount em Strict Mode ([ee6bac8](https://github.com/tecsinapse/design-system/commit/ee6bac8bf021efc8e4627800ae58f846f82f35ea))
+* **card:** adiciona semântica de teclado quando selectable ([f261dab](https://github.com/tecsinapse/design-system/commit/f261dab40277a9a3cb7aa53e2771cfb10e3fc529))
+* **card:** correções no card + testes ([88c3c1c](https://github.com/tecsinapse/design-system/commit/88c3c1cf51d71ab57dde0fac8cb6acf44a95cd04))
+* **card:** isSelected só aplica borda quando selectable, API achatada ([88a1971](https://github.com/tecsinapse/design-system/commit/88a1971d137a998627d17af3fc1ba65d1036c9a8))
+* **chip:** a11y (button nativo + aria-pressed) e paridade de API com Card ([a43f990](https://github.com/tecsinapse/design-system/commit/a43f9907783f4983f250641ec79bcda6fee6e73b))
+* **chip:** renomeia onSelect para onSelectedChange e corrige aria-pressed padrão ([9caee61](https://github.com/tecsinapse/design-system/commit/9caee61d9ababe168761f12d0f0679d4a0b799bb))
+
+### Features
+
+* **autocomplete:** adicionando prop onOpenChange no autocomplete ([ab1f0c5](https://github.com/tecsinapse/design-system/commit/ab1f0c535d12e65bf27123dccda7cb3e7a006631))
+* **card:** adaptando seleção do card para variants em vez de props diretas ([ef5abc7](https://github.com/tecsinapse/design-system/commit/ef5abc791ac117deaa6379c74164779b4101c1ae))
+* **card:** criando componente selectable card ([728d9e0](https://github.com/tecsinapse/design-system/commit/728d9e0d6e3180e7bf3a9d2b56af7d09babbfcb2))
+* **card:** removendo componente separado de selectable card e adicionando variants selectable e isSelected no card ([2215439](https://github.com/tecsinapse/design-system/commit/22154392170ad4b8130ae1e6aff5c9248545754c))
+* **checkbox:** corrigindo comportamento no checkbox + testes ([b42fb43](https://github.com/tecsinapse/design-system/commit/b42fb43bb454c24c1c12996542a7d510e27c9309))
+* **chip:** adicionando os estilos do chip no core ([8df259f](https://github.com/tecsinapse/design-system/commit/8df259f22f094f50f14b140f8c506a05ff4cf4ab))
+* **chip:** convertando seleção do chip para variants em vez de props diretas ([8ed6b8f](https://github.com/tecsinapse/design-system/commit/8ed6b8fbcd9df24f4ff1c3e8dd196e312c5428f3))
+* **chip:** criando componente chip + stories ([73d5c6d](https://github.com/tecsinapse/design-system/commit/73d5c6d15bcfb2ed3deaadba42f6198b1b9afc78))
+
 ## [2.6.2](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-react%402.6.1...%40tecsinapse%2Fcortex-react%402.6.2) (2026-11-03)
 
 **Note:** Version bump only for package @tecsinapse/cortex-react
