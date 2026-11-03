@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-native%401.1.1...%40tecsinapse%2Fcortex-native%401.1.2) (2026-11-03)
+
+### Bug Fixes
+
+* **cortex-native:** normalize fields and empty selects ([d72fa61](https://github.com/tecsinapse/design-system/commit/d72fa61b7b36d4f983a0d088065e8447385723c1))
+
 ## Unreleased
 
 ### Bug Fixes
