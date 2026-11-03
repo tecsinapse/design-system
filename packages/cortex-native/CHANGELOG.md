@@ -10,6 +10,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **cortex-native:** normalize input and picker heights and horizontal spacing, including leading icons.
 * **cortex-native:** show configurable empty and no-results messages in Select sheets.
 
+## [1.1.1](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-native%401.1.0...%40tecsinapse%2Fcortex-native%401.1.1) (2026-10-28)
+
+**Note:** Version bump only for package @tecsinapse/cortex-native
+
 # 1.1.0 (2026-10-28)
 
 ### Bug Fixes
