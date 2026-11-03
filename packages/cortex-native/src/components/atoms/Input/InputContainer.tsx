@@ -134,7 +134,7 @@ const InputContainer: FC<InputContainerProps> = ({
         style={[focused && { borderWidth: 2 }, inputContainerStyle, style]}
       >
         {(leftComponent || leftChildren.length > 0) && (
-          <View className="flex-row items-center">
+          <View className="flex-row items-center pl-centi">
             {leftChildren}
             {leftComponent}
           </View>

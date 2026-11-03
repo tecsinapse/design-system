@@ -50,6 +50,8 @@ const Sheet = ({
     hideSearchBar,
     handleOnSearch,
     confirmButtonText,
+    emptyText,
+    emptySearchText,
     loading,
     closeOnPick,
   } = useSelectContext();
@@ -128,6 +130,8 @@ const Sheet = ({
                 hideSearchBar={hideSearchBar}
                 onSearch={handleOnSearch}
                 confirmButtonText={confirmButtonText}
+                emptyText={emptyText}
+                emptySearchText={emptySearchText}
                 loading={loading}
                 onClose={handleClose}
                 closeOnPick={closeOnPick}

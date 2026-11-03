@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## Unreleased
+
+### Bug Fixes
+
+* **cortex-native:** normalize input and picker heights and horizontal spacing, including leading icons.
+* **cortex-native:** show configurable empty and no-results messages in Select sheets.
+
 # 1.1.0 (2026-10-28)
 
 ### Bug Fixes
