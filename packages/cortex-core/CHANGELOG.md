@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.2.1...%40tecsinapse%2Fcortex-core%402.2.2) (2026-11-03)
+
+### Bug Fixes
+
+* remove mapeamento de pacotes legados ([392a786](https://github.com/tecsinapse/design-system/commit/392a7863fca2ad7c6a321121e6f50f4d820dc5d3))
+
 ## [2.2.1](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.2.0...%40tecsinapse%2Fcortex-core%402.2.1) (2026-11-03)
 
 ### Bug Fixes
