@@ -25,7 +25,7 @@ export const Checkbox = (props: CheckboxProps) => {
   const setIndeterminate = useCallback((value: boolean) => {
     if (localRef?.current) {
       localRef.current.indeterminate = value;
-      localRef.current.checked = false;
+      if (value) localRef.current.checked = false;
     }
   }, []);
 
