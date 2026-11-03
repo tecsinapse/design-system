@@ -63,6 +63,8 @@ export interface SelectContextValue<Data = unknown> {
   selectModalTitle?: string;
   selectModalTitleComponent?: React.ReactNode;
   confirmButtonText?: string;
+  emptyText?: string;
+  emptySearchText?: string;
 }
 
 export const SelectContext = createContext<

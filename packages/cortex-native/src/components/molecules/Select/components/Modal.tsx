@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import Text from '../../../atoms/Text/Text';
 import Confirm from '../parts/Confirm';
 import Options from '../parts/Options';
 import Search from '../parts/Search';
@@ -17,10 +18,16 @@ const Modal = <Data, Type extends SelectType>(
     groupLabelExtractor,
     keyExtractor,
     confirmButtonText,
+    emptyText = 'No options available',
+    emptySearchText = 'No results found',
   } = props;
 
   const { searchArg, setSearchArg, getData, renderItem, closeOnPick, handleConfirm } =
     useModal(props);
+  const isEmpty =
+    options instanceof Map
+      ? Array.from(options.values()).every(group => group.length === 0)
+      : options.length === 0;
 
   return (
     <View className="flex-1 w-full flex-col">
@@ -32,14 +39,22 @@ const Modal = <Data, Type extends SelectType>(
         />
       ) : null}
 
-      <Options
-        options={options}
-        getData={getData}
-        renderItem={renderItem}
-        keyExtractor={keyExtractor}
-        groupLabelExtractor={groupLabelExtractor}
-        loading={loading}
-      />
+      {!loading && isEmpty ? (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+          <Text fontColor="low" style={{ textAlign: 'center' }} accessibilityLiveRegion="polite">
+            {searchArg.trim() ? emptySearchText : emptyText}
+          </Text>
+        </View>
+      ) : (
+        <Options
+          options={options}
+          getData={getData}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          groupLabelExtractor={groupLabelExtractor}
+          loading={loading}
+        />
+      )}
 
       {!closeOnPick ? (
         <Confirm

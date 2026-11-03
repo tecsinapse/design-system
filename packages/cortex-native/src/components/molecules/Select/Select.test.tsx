@@ -39,6 +39,35 @@ const baseProps = {
 };
 
 describe('Select', () => {
+  it('shows the supplied empty message when a select has no options', () => {
+    const { getByRole, getByText } = render(
+      <Select
+        {...baseProps}
+        emptyText="Nothing available"
+        options={[]}
+        value={null}
+      />
+    );
+    fireEvent.press(getByRole('button'));
+    expect(getByText('Nothing available')).toBeTruthy();
+  });
+
+  it('shows the search-empty message for an empty grouped result', async () => {
+    const { getByRole, getByPlaceholderText, findByText } = render(
+      <Select
+        {...baseProps}
+        emptyText="Nothing available"
+        emptySearchText="No matches"
+        options={new Map([['Group', []]])}
+        value={null}
+        searchBarPlaceholder="Search"
+      />
+    );
+    fireEvent.press(getByRole('button'));
+    fireEvent.changeText(getByPlaceholderText('Search'), 'missing');
+    expect(await findByText('No matches')).toBeTruthy();
+  });
+
   it('renders the placeholder when there is no value', () => {
     const { getByText } = render(
       <Select {...baseProps} value={null} placeholder="pick one" />
