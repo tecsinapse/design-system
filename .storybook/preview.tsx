@@ -1,7 +1,6 @@
 import * as DocBlock from '@storybook/addon-docs/blocks';
 import { Parameters, Preview } from '@storybook/react-vite';
 import React from 'react';
-import { lightTheme, ThemeProvider } from '../packages/react-core';
 import './index.css';
 
 const parameters: Parameters = {
@@ -101,11 +100,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
-const withThemeProvider = Story => (
-  <ThemeProvider theme={lightTheme}>
-    <Story />
-  </ThemeProvider>
-);
-
-export const decorators = [withThemeProvider];

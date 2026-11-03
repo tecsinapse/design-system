@@ -35,6 +35,8 @@ export interface SelectNativeProps<Data, Type extends SelectType>
   onSearch?: ((searchArg: string) => void) | SearchFn<Data> | never;
   searchBarPlaceholder?: string;
   confirmButtonText?: string;
+  emptyText?: string;
+  emptySearchText?: string;
   selectModalTitle?: string;
   selectModalTitleComponent?: React.ReactNode;
   closeOnPick?: boolean;

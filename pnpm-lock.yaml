@@ -275,7 +275,7 @@ importers:
         version: 3.3.1(tailwindcss@4.3.3)
     devDependencies:
       rollup-plugin-copy:
-        specifier: ^3.4.0
+        specifier: ~3.5.0
         version: 3.5.0
 
   packages/cortex-native:
@@ -13048,7 +13048,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.1.2
+      minimatch: 3.1.5
       once: 1.4.0
       path-is-absolute: 1.0.1
 

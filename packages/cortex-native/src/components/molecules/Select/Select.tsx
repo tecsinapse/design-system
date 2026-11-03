@@ -19,6 +19,8 @@ function SelectRoot<Data, Type extends SelectType>(
     searchBarPlaceholder,
     hideSearchBar,
     confirmButtonText,
+    emptyText,
+    emptySearchText,
     rightComponent,
     variant = 'default',
     hintComponent,
@@ -80,6 +82,8 @@ function SelectRoot<Data, Type extends SelectType>(
     selectModalTitle,
     selectModalTitleComponent,
     confirmButtonText,
+    emptyText,
+    emptySearchText,
   };
 
   return (

@@ -1,0 +1,54 @@
+name: pages
+
+on:
+  pull_request:
+    types: [ closed ]
+    branches:
+      - develop
+      - master
+      - 'legacy/**'
+    paths-ignore:
+      - '.husky/**'
+      - '.github/**'
+      - 'packages/rn-playground/**'
+      - '*.md'
+
+jobs:
+  docs:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/setup@v3
+        with:
+          runtime: node@22
+          cache: true
+          install: false
+
+      - name: install deps
+        run: pnpm i
+
+      - name: build docs
+        run: pnpm build:storybook
+
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: './sbdocs'
+
+  deploy:
+    needs: docs
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: deploy pages
+        uses: actions/deploy-pages@v5

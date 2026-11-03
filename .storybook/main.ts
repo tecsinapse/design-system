@@ -3,7 +3,6 @@ export default {
     name: '@storybook/react-vite',
   },
   stories: [
-    '../packages/react-core/**/*.stories.@(tsx|jsx)',
     '../packages/cortex-react/**/*.stories.@(tsx|jsx)',
     '../docs/**/*.mdx',
   ],

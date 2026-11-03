@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.4](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Freact-core%404.2.3...%40tecsinapse%2Freact-core%404.2.4) (2026-11-03)
+
+### Bug Fixes
+
+* ajusta peerDeps ([be31be5](https://github.com/tecsinapse/design-system/commit/be31be5933489d49e75e62e32559230ecf7ad31f))
+
 ## [4.2.3](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Freact-core%404.2.2...%40tecsinapse%2Freact-core%404.2.3) (2026-10-28)
 
 ### Bug Fixes
