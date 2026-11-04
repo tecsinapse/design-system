@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.3.0...%40tecsinapse%2Fcortex-core%402.3.1) (2026-11-04)
+
+### Bug Fixes
+
+* atualizando types no package do cortex-core ([21f107f](https://github.com/tecsinapse/design-system/commit/21f107fffcdef82c3b184f82e734219a6afde690))
+
 # [2.3.0](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.2.2...%40tecsinapse%2Fcortex-core%402.3.0) (2026-11-03)
 
 ### Bug Fixes
