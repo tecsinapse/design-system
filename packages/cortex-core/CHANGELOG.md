@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.2.2...%40tecsinapse%2Fcortex-core%402.3.0) (2026-11-03)
+
+### Bug Fixes
+
+* **card:** isSelected só aplica borda quando selectable, API achatada ([88a1971](https://github.com/tecsinapse/design-system/commit/88a1971d137a998627d17af3fc1ba65d1036c9a8))
+* **chip:** a11y (button nativo + aria-pressed) e paridade de API com Card ([a43f990](https://github.com/tecsinapse/design-system/commit/a43f9907783f4983f250641ec79bcda6fee6e73b))
+* **chip:** ajustando import do tv ([66aa5e7](https://github.com/tecsinapse/design-system/commit/66aa5e73032aefcca251668a754eac29c9b8936d))
+
+### Features
+
+* **card:** removendo componente separado de selectable card e adicionando variants selectable e isSelected no card ([2215439](https://github.com/tecsinapse/design-system/commit/22154392170ad4b8130ae1e6aff5c9248545754c))
+* **chip:** adicionando os estilos do chip no core ([8df259f](https://github.com/tecsinapse/design-system/commit/8df259f22f094f50f14b140f8c506a05ff4cf4ab))
+
 ## [2.2.2](https://github.com/tecsinapse/design-system/compare/%40tecsinapse%2Fcortex-core%402.2.1...%40tecsinapse%2Fcortex-core%402.2.2) (2026-11-03)
 
 ### Bug Fixes
