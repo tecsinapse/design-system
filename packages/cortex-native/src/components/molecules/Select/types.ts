@@ -45,6 +45,7 @@ export interface SelectNativeProps<Data, Type extends SelectType>
     onPress: () => void,
     displayValue?: string
   ) => React.ReactElement;
+  /** Maximum lines for the selected label. Defaults to 1; use 0 for no limit. */
   numberOfLines?: number;
 }
 

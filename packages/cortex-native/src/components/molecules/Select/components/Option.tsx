@@ -5,6 +5,7 @@ import Text from '../../../atoms/Text/Text';
 import Checkbox from '../../../atoms/Checkbox/Checkbox';
 import RadioButton from '../../../atoms/RadioButton/RadioButton';
 import { OptionData, SelectType } from '../types';
+import { getOptionValue } from '../functions';
 
 interface IOption<Data> {
   item: OptionData<Data>;
@@ -19,13 +20,14 @@ const Option = <Data,>({
   item,
   type,
 }: IOption<Data>): React.ReactElement => {
-  const label = labelExtractor(item);
+  const option = getOptionValue(item);
+  const label = labelExtractor(option);
 
   const Selectable = type === 'multi' ? Checkbox : RadioButton;
 
   return (
     <PressableSurface
-      onPress={() => handlePressItem(item)}
+      onPress={() => handlePressItem(option)}
       effect="darken"
       style={{ paddingVertical: 8, paddingHorizontal: 16 }}
     >
@@ -38,6 +40,7 @@ const Option = <Data,>({
           <Text
             fontWeight={item._checked ? 'bold' : 'regular'}
             ellipsizeMode="tail"
+            style={{ flexShrink: 1 }}
             numberOfLines={1}
           >
             {label}

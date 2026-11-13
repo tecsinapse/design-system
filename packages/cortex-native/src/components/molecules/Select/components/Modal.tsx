@@ -16,13 +16,12 @@ const Modal = <Data, Type extends SelectType>(
     loading,
     options,
     groupLabelExtractor,
-    keyExtractor,
     confirmButtonText,
     emptyText = 'No options available',
     emptySearchText = 'No results found',
   } = props;
 
-  const { searchArg, setSearchArg, getData, renderItem, closeOnPick, handleConfirm } =
+  const { searchArg, setSearchArg, getData, renderItem, optionKeyExtractor, closeOnPick, handleConfirm } =
     useModal(props);
   const isEmpty =
     options instanceof Map
@@ -50,7 +49,7 @@ const Modal = <Data, Type extends SelectType>(
           options={options}
           getData={getData}
           renderItem={renderItem}
-          keyExtractor={keyExtractor}
+          keyExtractor={optionKeyExtractor}
           groupLabelExtractor={groupLabelExtractor}
           loading={loading}
         />

@@ -21,7 +21,7 @@ const Trigger = ({
     hintComponent,
     rightComponent,
     style,
-    numberOfLines,
+    numberOfLines = 1,
     label,
     getDisplayValue,
     triggerRest,

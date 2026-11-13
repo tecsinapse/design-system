@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 import {
+  getOptionValue,
   isOptionChecked,
+  makeOptionData,
   multiBuilder,
   singleBuilder,
 } from '../functions';
@@ -45,7 +47,7 @@ const useModal = <Data, Type extends SelectType>({
 
   React.useEffect(() => {
     setSelectedValues(
-      (value ? (type === 'multi' ? value : [value]) : []) as Data[]
+      (value != null ? (type === 'multi' ? value : [value]) : []) as Data[]
     );
   }, [value, focused, setSelectedValues]);
 
@@ -56,19 +58,19 @@ const useModal = <Data, Type extends SelectType>({
   const getData = React.useCallback(
     (_options: Data[]): OptionData<Data>[] => {
       return (_options ?? []).map((option, index) => {
-        return {
-          ...option,
-          _checked: isOptionChecked(
-            type,
-            option,
-            selectedValues,
-            keyExtractor,
-            index
-          ),
-        };
+        return makeOptionData(
+          option,
+          isOptionChecked(type, option, selectedValues, keyExtractor, index)
+        );
       });
     },
     [type, selectedValues, keyExtractor]
+  );
+
+  const optionKeyExtractor = React.useCallback(
+    (item: Data, index?: number) =>
+      keyExtractor(getOptionValue(item as OptionData<Data>), index),
+    [keyExtractor]
   );
 
   const handlePressItem = React.useCallback(
@@ -83,7 +85,7 @@ const useModal = <Data, Type extends SelectType>({
   );
 
   React.useEffect(() => {
-    if (_closeOnPick && selectedValues[0] && selectedValues[0] !== value) {
+    if (_closeOnPick && selectedValues.length > 0 && selectedValues[0] !== value) {
       handleConfirm();
     }
   }, [selectedValues[0], value, closeOnPick]);
@@ -115,6 +117,7 @@ const useModal = <Data, Type extends SelectType>({
     setSearchArg,
     renderItem,
     getData,
+    optionKeyExtractor,
     handleConfirm,
     close: onClose,
     closeOnPick: _closeOnPick,
