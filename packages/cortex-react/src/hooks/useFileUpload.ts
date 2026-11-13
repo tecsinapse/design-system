@@ -77,9 +77,11 @@ export const useFileUpload = <T>({
   }, []);
 
   const openManager = useCallback(() => {
-    setIsManagerOpen(true);
-    onOpenManager?.();
-  }, []);
+    if (!isManagerOpen) {
+      setIsManagerOpen(true);
+      onOpenManager?.();
+    }
+  }, [isManagerOpen]);
 
   const closeManager = useCallback(() => {
     handleClearFiles();
