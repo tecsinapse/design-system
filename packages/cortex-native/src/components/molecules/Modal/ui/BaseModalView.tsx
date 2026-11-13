@@ -46,12 +46,20 @@ export const ModalView: FC<IBaseModal> = ({
   };
 
   const show = useCallback(() => {
-    Animated.timing(backgroundCarrier, {
-      toValue: 1,
-      duration: INTERPOLATION_DURATION,
-      easing: Easing.out(Easing.circle),
-      useNativeDriver: false,
-    }).start();
+    Animated.parallel([
+      Animated.timing(translationCarrier, {
+        toValue: 0,
+        duration: INTERPOLATION_DURATION,
+        easing: Easing.out(Easing.circle),
+        useNativeDriver: true,
+      }),
+      Animated.timing(backgroundCarrier, {
+        toValue: 1,
+        duration: INTERPOLATION_DURATION,
+        easing: Easing.out(Easing.circle),
+        useNativeDriver: false,
+      }),
+    ]).start();
   }, []);
 
   const hide = useCallback(
@@ -69,7 +77,9 @@ export const ModalView: FC<IBaseModal> = ({
           easing: Easing.out(Easing.circle),
           useNativeDriver: false,
         }),
-      ]).start(onClose);
+      ]).start(({ finished }) => {
+        if (finished) onClose?.();
+      });
     },
     [onClose]
   );

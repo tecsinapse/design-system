@@ -139,6 +139,10 @@ importable flat from the package barrel:
 | `Tag` | `Root`, `Icon`, `Label`, `Close` | `TagIcon`, `TagLabel`, `TagClose` |
 | `Select` | `Root`, `Trigger`, `Sheet`, `Search`, `Options`, `Confirm` | `SelectTrigger`, `SelectSheet`, `SelectSearch`, `SelectOptions`, `SelectConfirm` |
 
+`Select` supports primitive and object options. For object options, selections from the built-in list retain the
+legacy `_checked` field; primitive selections are returned as their original values.
+Selected labels default to one line with an ellipsis; set `numberOfLines` to another value, or `0` for no limit.
+
 `Input`'s parts also back `InputMask`, `InputPassword`, `TextArea` and `PhoneInput` internally — they all render
 `Input.Face` / `Input.Box` / `Input.Hint` under the hood.
 

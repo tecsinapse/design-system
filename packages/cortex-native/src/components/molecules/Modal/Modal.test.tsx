@@ -25,7 +25,8 @@ const Opener = () => {
 };
 
 it('opens the modal when show is called', async () => {
-  const { getByText, queryByText } = render(
+  jest.useFakeTimers();
+  const { getByText, queryByText, unmount } = render(
     <ModalGroupManager>
       <Opener />
     </ModalGroupManager>
@@ -37,4 +38,42 @@ it('opens the modal when show is called', async () => {
   await act(async () => {});
 
   expect(queryByText('MODAL CONTENT')).toBeTruthy();
+  act(() => jest.advanceTimersByTime(250));
+  unmount();
+  jest.useRealTimers();
+});
+
+it('does not finish closing a modal reopened during its close animation', () => {
+  jest.useFakeTimers();
+  const onClose = jest.fn();
+  const { rerender, unmount } = render(
+    <ModalView visible onClose={onClose}>
+      <Text>MODAL CONTENT</Text>
+    </ModalView>
+  );
+
+  act(() => jest.advanceTimersByTime(250));
+  rerender(
+    <ModalView visible={false} onClose={onClose}>
+      <Text>MODAL CONTENT</Text>
+    </ModalView>
+  );
+  act(() => jest.advanceTimersByTime(50));
+  rerender(
+    <ModalView visible onClose={onClose}>
+      <Text>MODAL CONTENT</Text>
+    </ModalView>
+  );
+  act(() => jest.advanceTimersByTime(300));
+
+  expect(onClose).not.toHaveBeenCalled();
+  rerender(
+    <ModalView visible={false} onClose={onClose}>
+      <Text>MODAL CONTENT</Text>
+    </ModalView>
+  );
+  act(() => jest.advanceTimersByTime(300));
+  expect(onClose).toHaveBeenCalledTimes(1);
+  unmount();
+  jest.useRealTimers();
 });

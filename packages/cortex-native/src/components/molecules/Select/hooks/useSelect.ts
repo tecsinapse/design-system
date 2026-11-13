@@ -30,7 +30,7 @@ const useSelect = <Data, Type extends SelectType>({
 
   const onlyLabel = label && !placeholder;
   const hasValue =
-    type === 'single' ? !!value : ((value ?? []) as []).length > 0;
+    type === 'single' ? value != null : ((value ?? []) as []).length > 0;
   const _placeholder = onlyLabel ? label : placeholder;
   const _label = hasValue ? label : undefined;
 
@@ -48,9 +48,9 @@ const useSelect = <Data, Type extends SelectType>({
         if (result) {
           const _value = value as Data;
           if (
-            _value &&
+            _value != null &&
             !(result instanceof Map) &&
-            !findValue(result, _value, keyExtractor)
+            findValue(result, _value, keyExtractor) === undefined
           ) {
             setSelectOptions([_value, ...result]);
           } else setSelectOptions(result);
@@ -73,9 +73,9 @@ const useSelect = <Data, Type extends SelectType>({
             if (type === 'single') {
               const _value = value as Data;
               if (
-                _value &&
+                _value != null &&
                 !(result instanceof Map) &&
-                !findValue(result, _value, keyExtractor)
+                findValue(result, _value, keyExtractor) === undefined
               ) {
                 setSelectOptions([_value, ...result]);
               } else setSelectOptions(result);
@@ -83,7 +83,7 @@ const useSelect = <Data, Type extends SelectType>({
               const _value = value as Data[];
               if (_value?.length && !(result instanceof Map)) {
                 const selected =
-                  _value.filter(it => !findValue(result, it, keyExtractor)) ??
+                  _value.filter(it => findValue(result, it, keyExtractor) === undefined) ??
                   [];
                 setSelectOptions([...selected, ...result]);
               } else {

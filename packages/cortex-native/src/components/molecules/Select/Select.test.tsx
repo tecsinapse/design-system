@@ -86,6 +86,16 @@ describe('Select', () => {
     expect(getByText('Beta')).toBeTruthy();
   });
 
+  it('limits the selected label to one line unless overridden', () => {
+    const { getByText, rerender } = render(
+      <Select {...baseProps} value={options[0]} />
+    );
+    expect(getByText('Alpha').props.numberOfLines).toBe(1);
+
+    rerender(<Select {...baseProps} value={options[0]} numberOfLines={3} />);
+    expect(getByText('Alpha').props.numberOfLines).toBe(3);
+  });
+
   it('renders the chevron trigger', () => {
     const { getByText } = render(
       <Select {...baseProps} value={null} placeholder="pick" />
@@ -107,9 +117,81 @@ describe('Select', () => {
     fireEvent.press(getByRole('button'));
     expect(getByText('Choose')).toBeTruthy();
     fireEvent.press(getByText('Alpha'));
-    expect(onSelect).toHaveBeenCalledWith(
-      expect.objectContaining({ id: 1, label: 'Alpha' })
+    expect(onSelect).toHaveBeenCalledWith({ ...options[0], _checked: false });
+  });
+
+  it('selects a primitive option without changing the value passed to callbacks', () => {
+    const onSelect = jest.fn();
+    const { getByText, getByRole } = render(
+      <Select
+        options={['Alpha', 'Beta']}
+        type="single"
+        value={undefined}
+        onSelect={onSelect}
+        keyExtractor={item => item}
+        labelExtractor={item => item}
+        placeholder="pick"
+      />
     );
+    fireEvent.press(getByRole('button'));
+    fireEvent.press(getByText('Alpha'));
+    expect(onSelect).toHaveBeenCalledWith('Alpha');
+  });
+
+  it('selects zero from grouped numeric options', () => {
+    const onSelect = jest.fn();
+    const { getByText, getByRole } = render(
+      <Select
+        options={new Map([['Numbers', [0, 1]]])}
+        type="single"
+        value={undefined}
+        onSelect={onSelect}
+        keyExtractor={item => String(item)}
+        labelExtractor={item => `Number ${item}`}
+        placeholder="pick"
+      />
+    );
+    fireEvent.press(getByRole('button'));
+    fireEvent.press(getByText('Number 0'));
+    expect(onSelect).toHaveBeenCalledWith(0);
+  });
+
+  it('displays and selects zero in a multi-select', () => {
+    const onSelect = jest.fn();
+    const props = {
+      options: [0, 1],
+      type: 'multi' as const,
+      onSelect,
+      keyExtractor: (item: number) => String(item),
+      labelExtractor: (item: number) => `Number ${item}`,
+      placeholder: 'pick',
+    };
+    const { getByText, getByRole, rerender } = render(
+      <Select {...props} value={[]} />
+    );
+    fireEvent.press(getByRole('button'));
+    fireEvent.press(getByText('Number 0'));
+    fireEvent.press(getByText('Confirm'));
+    expect(onSelect).toHaveBeenCalledWith([0]);
+    rerender(<Select {...props} value={[0]} />);
+    expect(getByText('Number 0')).toBeTruthy();
+    fireEvent.press(getByRole('button'));
+    expect(getByRole('checkbox', { checked: true })).toBeTruthy();
+  });
+
+  it('displays zero as a selected single value', () => {
+    const { getByText } = render(
+      <Select
+        options={[0, 1]}
+        type="single"
+        value={0}
+        onSelect={() => {}}
+        keyExtractor={item => String(item)}
+        labelExtractor={item => `Number ${item}`}
+        placeholder="pick"
+      />
+    );
+    expect(getByText('Number 0')).toBeTruthy();
   });
 
   it('renders a backdrop and closes the modal when tapping outside', () => {
@@ -195,6 +277,19 @@ describe('Select compound', () => {
     (['Trigger', 'Sheet', 'Search', 'Options', 'Confirm'] as const).forEach(
       part => expect(Select[part]).toBeDefined()
     );
+  });
+
+  it('supports legacy object-shaped data in custom options', () => {
+    const { getByText } = render(
+      <Select.Options
+        options={options}
+        getData={items => items.map(item => ({ ...item, _checked: false }))}
+        keyExtractor={keyExtractor}
+        renderItem={({ item }) => <Text>{item.label}</Text>}
+      />
+    );
+    expect(getByText('Alpha')).toBeTruthy();
+    expect(getByText('Beta')).toBeTruthy();
   });
 
   it('opens the sheet from the composed trigger and selects an option', () => {

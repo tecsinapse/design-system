@@ -1,4 +1,14 @@
-import { Extractor, SelectType } from './types';
+import { Extractor, OptionData, SelectType } from './types';
+
+const primitiveValue = Symbol('select primitive value');
+
+export const makeOptionData = <Data>(option: Data, checked: boolean): OptionData<Data> =>
+  (option !== null && typeof option === 'object'
+    ? { ...option, _checked: checked }
+    : { [primitiveValue]: option, _checked: checked }) as OptionData<Data>;
+
+export const getOptionValue = <Data>(item: OptionData<Data>): Data =>
+  primitiveValue in item ? (item[primitiveValue] as Data) : item;
 
 export const findValue = <Data>(
   array: Data[],
@@ -15,8 +25,8 @@ export const isOptionChecked = <Data>(
   idx: number
 ) =>
   type === 'multi'
-    ? !!findValue(src, option, keyExtractor, idx)
-    : keyExtractor(src[0] ?? ({} as Data), idx) == keyExtractor(option, idx);
+    ? findValue(src, option, keyExtractor, idx) !== undefined
+    : src.length > 0 && keyExtractor(src[0], idx) === keyExtractor(option, idx);
 
 export const multiBuilder = <Data>(
   option: Data,
@@ -38,7 +48,7 @@ export const singleBuilder = <Data>(
   src: Data[],
   keyExtractor: Extractor<Data>
 ) =>
-  keyExtractor(src[0] ?? ({} as Data)) === keyExtractor(option) ? [] : [option];
+  src.length > 0 && keyExtractor(src[0]) === keyExtractor(option) ? [] : [option];
 
 export const isMap = <Data>(value: Data[] | Map<string, Data[]>) =>
   value instanceof Map;
@@ -61,7 +71,7 @@ export const getMultiLabel = <Data>(
     return available
       ?.reduce(
         (acc, option, index) =>
-          findValue(value, option, keyExtractor, index)
+          findValue(value, option, keyExtractor, index) !== undefined
             ? acc + labelExtractor(option) + ', '
             : acc,
         ''
@@ -77,7 +87,7 @@ export const getSingleLabel = <Data>(
   keyExtractor: Extractor<Data>,
   labelExtractor: Extractor<Data>
 ) => {
-  if (!value) return placeholder;
+  if (value == null) return placeholder;
   const optionsArray: Data[] =
     options instanceof Map ? mapToArray(options) : options;
   const selectedOption = optionsArray?.find(
