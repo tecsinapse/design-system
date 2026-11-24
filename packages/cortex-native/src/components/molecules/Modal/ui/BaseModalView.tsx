@@ -1,4 +1,11 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import {
   Animated,
   Dimensions,
@@ -12,6 +19,7 @@ import {
 import BoxContent from '../../../atoms/BoxContent/BoxContent';
 import { useBottomSafeAreaInset } from '../../../../hooks/useBottomSafeAreaInset';
 import { IBaseModal } from './types';
+import { ModalDismissContext } from '../ModalLifecycleHandler';
 
 const BACKDROP_COLOR = 'rgba(0, 0, 0, 0.5)';
 const INTERPOLATION_DURATION = 195; //ms
@@ -27,6 +35,7 @@ export const ModalView: FC<IBaseModal> = ({
   close,
   onClose,
 }) => {
+  const dismissManagedModal = useContext(ModalDismissContext);
   const bottomInset = useBottomSafeAreaInset();
   const [keyboardOpened, setKeyboardOpened] = useState(0);
   const [boxHeight, setBoxHeight] = useState(0);
@@ -78,10 +87,15 @@ export const ModalView: FC<IBaseModal> = ({
           useNativeDriver: false,
         }),
       ]).start(({ finished }) => {
-        if (finished) onClose?.();
+        if (!finished) return;
+        try {
+          onClose?.();
+        } finally {
+          dismissManagedModal?.();
+        }
       });
     },
-    [onClose]
+    [onClose, dismissManagedModal]
   );
 
   const handleBoxLayoutChanges = useCallback((lce: LayoutChangeEvent) => {

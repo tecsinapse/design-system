@@ -1,6 +1,10 @@
 import React, { ReactElement } from 'react';
 import { IBaseModal } from './ui/types';
 
+export const ModalDismissContext = React.createContext<(() => void) | undefined>(
+  undefined
+);
+
 interface ModalNode {
   id: string;
   visible?: boolean;
@@ -37,16 +41,26 @@ export class ModalLifecycleHandler {
       .map((node, index, filteredNodes) => {
         const modalElement = node.modal();
         const { props } = modalElement;
+        const dismiss = () => {
+          const current = this.nodeGroup.get(node.id);
+          if (
+            !current ||
+            current.visible ||
+            !current.lastVisualization ||
+            current.lastVisualization !== node.lastVisualization
+          ) {
+            return;
+          }
+          this.remove(node.id);
+          props.onClose?.();
+        };
         return React.cloneElement(modalElement, {
           ...props,
           key: node.id,
           visible: node.visible,
           isLastShown: filteredNodes.length - 1 === index,
           close: () => this.close(node.id),
-          onClose: () => {
-            this.remove(node.id);
-            props.onClose?.();
-          },
+          onClose: dismiss,
         });
       });
 

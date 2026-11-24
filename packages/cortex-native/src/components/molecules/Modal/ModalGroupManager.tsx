@@ -1,6 +1,9 @@
 import React, { FC, useSyncExternalStore } from 'react';
 import { Modal as RNModal, ModalProps } from 'react-native';
-import { createModalLifecycleHandler } from './ModalLifecycleHandler';
+import {
+  createModalLifecycleHandler,
+  ModalDismissContext,
+} from './ModalLifecycleHandler';
 
 export const modalLifecycle = createModalLifecycleHandler();
 
@@ -22,7 +25,14 @@ export const ModalGroupManager: FC<ModalProps> = ({ children, ...others }) => {
         onRequestClose={modalLifecycle.closeLastOpenedModal}
         {...others}
       >
-        {_render}
+        {_render.map(element => (
+          <ModalDismissContext.Provider
+            key={element.key}
+            value={element.props.onClose}
+          >
+            {element}
+          </ModalDismissContext.Provider>
+        ))}
       </RNModal>
     </>
   );
