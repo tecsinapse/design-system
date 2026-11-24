@@ -4,6 +4,7 @@ import { act, fireEvent, render } from '@testing-library/react-native';
 import { ModalGroupManager } from './ModalGroupManager';
 import { useModalManager } from './useModalManager';
 import { ModalView } from './ui/BaseModalView';
+import type { IBaseModal } from './ui/types';
 
 jest.mock('uniwind', () => ({
   useCSSVariable: () => '#353231',
@@ -76,4 +77,66 @@ it('does not finish closing a modal reopened during its close animation', () => 
   expect(onClose).toHaveBeenCalledTimes(1);
   unmount();
   jest.useRealTimers();
+});
+
+it('dismisses stacked modals even when their wrappers omit onClose', () => {
+  jest.useFakeTimers();
+  const onDismissLower = jest.fn();
+  const onDismissUpper = jest.fn();
+
+  const Stack = () => {
+    const upper = useModalManager(() => (
+      <UpperModal onClose={onDismissUpper} />
+    ));
+    const lower = useModalManager(() => (
+      <LowerModal onClose={onDismissLower} openUpper={upper.show} />
+    ));
+    return <Text onPress={lower.show}>OPEN LOWER</Text>;
+  };
+
+  const UpperModal = ({ visible, close }: IBaseModal) => (
+    <ModalView visible={visible} close={close}>
+      <Text onPress={close}>CLOSE UPPER</Text>
+    </ModalView>
+  );
+
+  const LowerModal = ({
+    visible,
+    close,
+    openUpper,
+  }: IBaseModal & { openUpper: () => void }) => (
+    <ModalView visible={visible} close={close}>
+      <Text onPress={openUpper}>OPEN UPPER</Text>
+      <Text onPress={close}>CLOSE LOWER</Text>
+    </ModalView>
+  );
+
+  const { getByText, queryByText, unmount } = render(
+    <ModalGroupManager>
+      <Stack />
+    </ModalGroupManager>
+  );
+  const settle = () => act(() => jest.advanceTimersByTime(250));
+
+  try {
+    fireEvent.press(getByText('OPEN LOWER'));
+    settle();
+    fireEvent.press(getByText('OPEN UPPER'));
+    settle();
+    fireEvent.press(getByText('CLOSE UPPER'));
+    settle();
+
+    expect(queryByText('CLOSE UPPER')).toBeNull();
+    expect(onDismissUpper).toHaveBeenCalledTimes(1);
+    expect(onDismissLower).not.toHaveBeenCalled();
+
+    fireEvent.press(getByText('CLOSE LOWER'));
+    settle();
+
+    expect(queryByText('CLOSE LOWER')).toBeNull();
+    expect(onDismissLower).toHaveBeenCalledTimes(1);
+  } finally {
+    unmount();
+    jest.useRealTimers();
+  }
 });

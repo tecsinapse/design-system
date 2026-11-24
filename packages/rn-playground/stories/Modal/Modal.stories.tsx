@@ -33,6 +33,32 @@ export const Remote = () => {
   );
 };
 
+export const InvisibleOverlay = () => {
+  const [taps, setTaps] = React.useState(0);
+  const control = useModalManager(() => <InnerModal />);
+  const broken = useModalManager(() => <DroppedCloseModal />);
+  return (
+    <View>
+      <Button title="Abrir controle" onPress={() => control.show()} />
+      <Button title="Reproduzir overlay" onPress={() => broken.show()} />
+      <Button
+        title={`Toques no fundo: ${taps}`}
+        onPress={() => setTaps(n => n + 1)}
+      />
+    </View>
+  );
+};
+
+const DroppedCloseModal: FC<IBaseModal> = ({
+  onClose: _onClose,
+  close,
+  ...props
+}) => (
+  <ModalView {...props} close={close}>
+    <Button title="Fechar sem encaminhar onClose" onPress={close} />
+  </ModalView>
+);
+
 const InnerModal: FC<IBaseModal> = ({ close, ...others }) => {
   return (
     <ModalView {...others} close={close}>
